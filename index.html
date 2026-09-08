@@ -872,7 +872,10 @@
         try {
           localStorage.setItem(lsKey(key), value);
           resolve({ key: key, value: value, shared: !!shared });
-        } catch (e){ resolve(null); }
+        } catch (e){
+          lastStorageErrorWasQuota = !!(e && (e.name === 'QuotaExceededError' || e.code === 22 || e.code === 1014));
+          resolve(null);
+        }
       });
     },
     delete: function(key, shared){
@@ -905,6 +908,7 @@
   var BASE_SETS_KEY = 'owned-sets-v1';
   var BASE_SET_PARTS_KEY = 'owned-sets-parts-v1';
   var currentProfileId = null;
+  var lastStorageErrorWasQuota = false;
   var profiles = [];
   var COLS = ['partNum','qty','color','desc','moc','elementId','onHand','built','priority'];
   var STORAGE_KEY = 'lego-moc-inventory-v1';
@@ -3627,6 +3631,7 @@
   function saveProfilesIndex(){
     var payload = JSON.stringify(profiles);
     function attempt(retriesLeft){
+      lastStorageErrorWasQuota = false;
       return storage.set(PROFILES_INDEX_KEY, payload, false).then(function(res){
         if (res) return res;
         if (retriesLeft > 0){
@@ -3741,7 +3746,11 @@
         unlockAndBoot(id);
       });
     }).catch(function(){
-      errorEl.textContent = 'Could not save that profile after a few tries. If this keeps happening, try reloading the page once and creating it again.';
+      if (lastStorageErrorWasQuota){
+        errorEl.textContent = 'Your browser\u2019s storage is full, so nothing new can be saved. This is usually caused by cached part images. Go to the Images tab and click "Clear all cached images," then try creating the profile again.';
+      } else {
+        errorEl.textContent = 'Could not save that profile after a few tries. If this keeps happening, try reloading the page once and creating it again.';
+      }
     });
   });
 
