@@ -521,6 +521,21 @@
     </div>
   </div>
 
+  <div style="background: var(--surface-1); border: 2px solid var(--lego-azure); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 1.25rem;">
+    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--lego-black); font-weight: 800;">Publish this collection to your site</p>
+    <p style="margin: 0 0 8px; color: var(--text-secondary);">
+      Your sets and their parts normally live only in this browser's storage. Publishing writes them to <code>data/official-collection.json</code> in your GitHub repo instead, so any browser or device that opens your site sees the same data &mdash; not just this one.
+    </p>
+    <p style="margin: 0 0 10px; color: var(--text-muted); font-size: 12px;">
+      Uses the same repo, branch, and token already entered on the Images tab. Editing still saves instantly to this browser as you go; nothing reaches your site until you click "Save to site."
+    </p>
+    <div class="row" style="margin-bottom: 6px;">
+      <button id="save-collection-github-btn"><i class="ti ti-cloud-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Save to site</button>
+      <button id="load-collection-github-btn" class="icon-btn"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Load from site</button>
+      <span id="collection-sync-status" style="font-size: 13px; color: var(--text-secondary);"></span>
+    </div>
+  </div>
+
   <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 6px;">Sets by theme</p>
   <div id="theme-summary-list" style="margin-bottom: 20px;"></div>
 
@@ -668,7 +683,7 @@
       <input type="number" id="dp-qty" placeholder="Qty" min="1" value="1" style="width:90px;" />
       <button id="drawer-add-part-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add part</button>
     </div>
-    <p style="color: var(--text-muted); font-size: 12px; margin: 8px 0 0;">If that part+color already exists in the chosen drawer, this adds to its quantity instead of creating a duplicate line.</p>
+    <p style="color: var(--text-muted); font-size: 12px; margin: 8px 0 0;">If that part+color already exists in the chosen drawer, this adds to its quantity instead of creating a duplicate line. Fill in any of Part #, Color, Description, or Element ID and tab to the next field &mdash; if that part is already known elsewhere in the app (a build, a set, or another drawer), the rest fill in automatically.</p>
     <span id="drawer-add-part-status" style="font-size:13px; color:var(--text-secondary);"></span>
   </div>
 
@@ -2323,6 +2338,80 @@
     }
   });
 
+  function normKey(s){ return String(s || '').trim().toLowerCase(); }
+
+  function buildPartLookupIndex(){
+    var byPartColor = {}, byElementId = {}, byPartNumOnly = {}, byDescOnly = {};
+    function ingest(r){
+      if (!r.partNum) return;
+      var pcKey = normKey(r.partNum) + '|' + normKey(r.color);
+      if (!byPartColor[pcKey]){
+        byPartColor[pcKey] = { partNum: r.partNum, color: r.color || '', desc: r.desc || '', elementId: r.elementId || '' };
+      } else {
+        if (!byPartColor[pcKey].desc && r.desc) byPartColor[pcKey].desc = r.desc;
+        if (!byPartColor[pcKey].elementId && r.elementId) byPartColor[pcKey].elementId = r.elementId;
+      }
+      if (r.elementId){
+        var eKey = normKey(r.elementId);
+        if (!byElementId[eKey]) byElementId[eKey] = { partNum: r.partNum, color: r.color || '', desc: r.desc || '', elementId: r.elementId };
+      }
+      var pKey = normKey(r.partNum);
+      if (!byPartNumOnly[pKey] && r.desc) byPartNumOnly[pKey] = { desc: r.desc };
+      if (r.desc){
+        var dKey = normKey(r.desc);
+        if (dKey && !byDescOnly[dKey]) byDescOnly[dKey] = { partNum: r.partNum };
+      }
+    }
+    state.rows.forEach(ingest);
+    setParts.forEach(ingest);
+    drawerParts.forEach(ingest);
+    return { byPartColor: byPartColor, byElementId: byElementId, byPartNumOnly: byPartNumOnly, byDescOnly: byDescOnly };
+  }
+
+  function tryAutofillAddPartForm(){
+    var partInput = document.getElementById('dp-partnum');
+    var colorInput = document.getElementById('dp-color');
+    var descInput = document.getElementById('dp-desc');
+    var elIdInput = document.getElementById('dp-elementid');
+
+    var partVal = partInput.value.trim();
+    var colorVal = colorInput.value.trim();
+    var descVal = descInput.value.trim();
+    var elIdVal = elIdInput.value.trim();
+
+    var idx = buildPartLookupIndex();
+
+    if (elIdVal){
+      var byEl = idx.byElementId[normKey(elIdVal)];
+      if (byEl){
+        if (!partVal) partInput.value = byEl.partNum;
+        if (!colorVal) colorInput.value = byEl.color;
+        if (!descVal) descInput.value = byEl.desc;
+        return;
+      }
+    }
+    if (partVal && colorVal){
+      var byPC = idx.byPartColor[normKey(partVal) + '|' + normKey(colorVal)];
+      if (byPC){
+        if (!descVal) descInput.value = byPC.desc;
+        if (!elIdVal) elIdInput.value = byPC.elementId;
+        return;
+      }
+    }
+    if (partVal && !colorVal){
+      var byP = idx.byPartNumOnly[normKey(partVal)];
+      if (byP && !descVal) descInput.value = byP.desc;
+    }
+    if (descVal && !partVal){
+      var byD = idx.byDescOnly[normKey(descVal)];
+      if (byD) partInput.value = byD.partNum;
+    }
+  }
+
+  ['dp-partnum','dp-color','dp-desc','dp-elementid'].forEach(function(id){
+    document.getElementById(id).addEventListener('change', tryAutofillAddPartForm);
+  });
+
   document.getElementById('drawer-add-part-btn').addEventListener('click', function(){
     var statusEl = document.getElementById('drawer-add-part-status');
     var drawerId = document.getElementById('dp-drawer-target').value;
@@ -3288,7 +3377,7 @@
     });
   }
 
-  function putFileToGithub(repo, branch, path, token, base64Content, elementId){
+  function putFileToGithub(repo, branch, path, token, base64Content, cacheKey, commitMessage){
     var apiUrl = 'https://api.github.com/repos/' + repo + '/contents/' + path;
     var headers = {
       'Authorization': 'Bearer ' + token,
@@ -3296,8 +3385,8 @@
       'X-GitHub-Api-Version': '2022-11-28',
       'Content-Type': 'application/json'
     };
-    var body = { message: 'Add/update image for element ' + elementId, content: base64Content, branch: branch };
-    if (ghShaMap[elementId]) body.sha = ghShaMap[elementId];
+    var body = { message: commitMessage || ('Add/update ' + cacheKey), content: base64Content, branch: branch };
+    if (ghShaMap[cacheKey]) body.sha = ghShaMap[cacheKey];
 
     function doPut(){
       return fetch(apiUrl, { method: 'PUT', headers: headers, body: JSON.stringify(body) });
@@ -3307,7 +3396,7 @@
       if (resp.status === 409 || resp.status === 422){
         // Likely needs the current sha (file already exists but we didn't know its sha)
         return fetch(apiUrl + '?ref=' + encodeURIComponent(branch), { headers: headers }).then(function(getResp){
-          if (!getResp.ok) throw new Error('Could not resolve existing file for ' + elementId);
+          if (!getResp.ok) throw new Error('Could not resolve existing file for ' + cacheKey);
           return getResp.json();
         }).then(function(existing){
           body.sha = existing.sha;
@@ -3320,11 +3409,77 @@
       return resp.json();
     }).then(function(result){
       if (result && result.content && result.content.sha){
-        ghShaMap[elementId] = result.content.sha;
+        ghShaMap[cacheKey] = result.content.sha;
       }
       return true;
     });
   }
+
+  var OFFICIAL_COLLECTION_PATH = 'data/official-collection.json';
+
+  function utf8ToBase64(str){
+    return btoa(unescape(encodeURIComponent(str)));
+  }
+
+  function saveOfficialCollectionToGithub(){
+    var statusEl = document.getElementById('collection-sync-status');
+    var repo = ghSettings.repo;
+    var branch = ghSettings.branch || 'main';
+    var token = ghSettings.token;
+    if (!repo || repo.indexOf('/') === -1 || !token){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Set up your repo and token on the Images tab first.';
+      return;
+    }
+    var payload = JSON.stringify({ ownedSets: ownedSets, setParts: setParts }, null, 2);
+    var base64 = utf8ToBase64(payload);
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Saving\u2026';
+    putFileToGithub(repo, branch, OFFICIAL_COLLECTION_PATH, token, base64, 'official-collection', 'Update official LEGO collection data').then(function(){
+      statusEl.style.color = 'var(--text-success)';
+      statusEl.textContent = 'Saved to your site. It may take a minute to go live.';
+    }).catch(function(err){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Could not save: ' + (err && err.message ? err.message : 'unknown error');
+    });
+  }
+
+  function loadOfficialCollectionFromGithub(silent){
+    var statusEl = document.getElementById('collection-sync-status');
+    if (!silent){
+      if (!confirm('Replace your current sets and set parts in this browser with the version saved on your site? This cannot be undone.')) return Promise.resolve(false);
+      statusEl.style.color = 'var(--text-secondary)';
+      statusEl.textContent = 'Loading\u2026';
+    }
+    return fetch(OFFICIAL_COLLECTION_PATH, { cache: 'no-store' }).then(function(resp){
+      if (!resp.ok) throw new Error('Not found on your site yet.');
+      return resp.json();
+    }).then(function(data){
+      if (data && Array.isArray(data.ownedSets) && Array.isArray(data.setParts)){
+        ownedSets = data.ownedSets;
+        setParts = data.setParts;
+        saveOwnedSets();
+        saveSetParts();
+        if (state.tab === 'sets') renderSetsTab();
+        if (state.tab === 'setparts') renderSetPartsSummaryTab();
+        if (!silent){
+          statusEl.style.color = 'var(--text-success)';
+          statusEl.textContent = 'Loaded from your site.';
+        }
+        return true;
+      }
+      throw new Error('Unexpected file format.');
+    }).catch(function(err){
+      if (!silent){
+        statusEl.style.color = 'var(--text-danger)';
+        statusEl.textContent = 'Could not load: ' + (err && err.message ? err.message : 'unknown error');
+      }
+      return false;
+    });
+  }
+
+  document.getElementById('save-collection-github-btn').addEventListener('click', saveOfficialCollectionToGithub);
+  document.getElementById('load-collection-github-btn').addEventListener('click', function(){ loadOfficialCollectionFromGithub(false); });
 
   function uploadImagesToGithub(){
     var statusEl = document.getElementById('gh-upload-status');
@@ -3371,7 +3526,7 @@
       }
       var elementId = ids[idx++];
       getImageBase64(elementId).then(function(base64){
-        return putFileToGithub(repo, branch, pathPrefix + elementId + '.jpg', token, base64, elementId);
+        return putFileToGithub(repo, branch, pathPrefix + elementId + '.jpg', token, base64, elementId, 'Add/update image for element ' + elementId);
       }).then(function(){
         ok++;
       }).catch(function(){
@@ -4022,7 +4177,11 @@
   });
 
   function bootApp(){
-    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadRebrickableKey(); }).then(function(){ return loadSetProxyPref(); }).then(function(){ return loadGithubSettings(); }).then(function(){ return loadGithubShaMap(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(render);
+    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){
+      if (!ownedSets.length && !setParts.length){
+        return loadOfficialCollectionFromGithub(true);
+      }
+    }).then(function(){ return loadRebrickableKey(); }).then(function(){ return loadSetProxyPref(); }).then(function(){ return loadGithubSettings(); }).then(function(){ return loadGithubShaMap(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(render);
   }
 
   bootApp();
