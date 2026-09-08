@@ -203,7 +203,13 @@
   #lego-inv-root .lego-header { display: none; }
   #lego-inv-root.printing-top20 > * { display: none !important; }
   #lego-inv-root.printing-top20 > #top20-print-report { display: block !important; }
-  #lego-inv-root #top20-items-list { column-count: 2; column-gap: 30px; column-rule: 1px solid var(--border); }
+  #lego-inv-root #top20-col-1 { border-right: 1px solid var(--border); padding-right: 24px; }
+  #lego-inv-root #top20-print-report .shop-item { break-inside: avoid; padding: 3px 2px; gap: 6px; align-items: center; }
+  #lego-inv-root #top20-print-report .shop-thumb { width: 22px; height: 22px; }
+  #lego-inv-root #top20-print-report .shop-desc { font-size: 11px; line-height: 1.25; }
+  #lego-inv-root #top20-print-report .shop-partnum { font-size: 9.5px; }
+  #lego-inv-root #top20-print-report .shop-qty { font-size: 11px; min-width: 22px; }
+  #lego-inv-root #top20-print-report .shop-combo-note { font-size: 9px; }
   #lego-inv-root.printing-sets > * { display: none !important; }
   #lego-inv-root.printing-sets > #sets-print-report { display: block !important; }
   #lego-inv-root .report-table td { padding: 5px 8px; border-bottom: 1px solid #ccc; font-size: 11px; }
@@ -856,7 +862,10 @@
     <h2 style="margin:0 0 4px; font-size:18px; text-transform:uppercase; letter-spacing:0.02em;">Top 20 Most Needed Parts</h2>
     <div class="report-meta" style="font-size:12px; color:var(--text-secondary); margin-bottom:16px;"></div>
   </div>
-  <div id="top20-items-list" class="shop-items"></div>
+  <div id="top20-columns" style="display:flex; gap: 24px;">
+    <div id="top20-col-1" class="shop-items" style="flex:1; min-width:0;"></div>
+    <div id="top20-col-2" class="shop-items" style="flex:1; min-width:0;"></div>
+  </div>
 </div>
 
 <div id="sets-print-report" style="display:none;">
@@ -2457,9 +2466,12 @@
       alert('Nothing to report \u2014 no parts are currently short.');
       return;
     }
-    var list = document.getElementById('top20-items-list');
-    list.innerHTML = '';
-    items.forEach(function(it, i){
+    var col1 = document.getElementById('top20-col-1');
+    var col2 = document.getElementById('top20-col-2');
+    col1.innerHTML = '';
+    col2.innerHTML = '';
+
+    function buildRow(it, i){
       var item = document.createElement('div');
       item.className = 'shop-item';
       item.innerHTML =
@@ -2469,8 +2481,13 @@
         '<span class="shop-combo-note">Short '+it.short.toLocaleString()+' (need '+it.need.toLocaleString()+', have '+it.onHand.toLocaleString()+')</span>' +
         '</span>';
       buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, item.querySelector('.part-thumb-wrap'));
-      list.appendChild(item);
-    });
+      return item;
+    }
+
+    var half = Math.ceil(items.length / 2);
+    items.slice(0, half).forEach(function(it, i){ col1.appendChild(buildRow(it, i)); });
+    items.slice(half).forEach(function(it, i){ col2.appendChild(buildRow(it, i + half)); });
+
     document.querySelector('#top20-print-report .report-meta').textContent =
       'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown';
 
