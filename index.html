@@ -3625,7 +3625,22 @@
   }
 
   function saveProfilesIndex(){
-    return storage.set(PROFILES_INDEX_KEY, JSON.stringify(profiles), false);
+    var payload = JSON.stringify(profiles);
+    function attempt(retriesLeft){
+      return storage.set(PROFILES_INDEX_KEY, payload, false).then(function(res){
+        if (res) return res;
+        if (retriesLeft > 0){
+          return new Promise(function(resolve){ setTimeout(resolve, 400); }).then(function(){ return attempt(retriesLeft - 1); });
+        }
+        return null;
+      }).catch(function(){
+        if (retriesLeft > 0){
+          return new Promise(function(resolve){ setTimeout(resolve, 400); }).then(function(){ return attempt(retriesLeft - 1); });
+        }
+        return null;
+      });
+    }
+    return attempt(3);
   }
 
   function applyProfileScoping(profileId){
@@ -3713,16 +3728,20 @@
     }
     hashPassword(pw).then(function(hash){
       var id = 'p' + Date.now() + Math.random().toString(36).slice(2,7);
-      profiles.push({ id: id, name: name, passwordHash: hash });
+      var entry = { id: id, name: name, passwordHash: hash };
+      profiles.push(entry);
       return saveProfilesIndex().then(function(res){
-        if (!res){ throw new Error('save failed'); }
+        if (!res){
+          profiles = profiles.filter(function(p){ return p !== entry; });
+          throw new Error('save failed');
+        }
         errorEl.textContent = '';
         document.getElementById('new-profile-name').value = '';
         document.getElementById('new-profile-password').value = '';
         unlockAndBoot(id);
       });
     }).catch(function(){
-      errorEl.textContent = 'Could not save that profile. Please try again.';
+      errorEl.textContent = 'Could not save that profile after a few tries. If this keeps happening, try reloading the page once and creating it again.';
     });
   });
 
