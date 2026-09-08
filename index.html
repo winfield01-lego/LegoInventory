@@ -272,6 +272,15 @@
       <p id="new-profile-error" style="color:var(--text-danger); font-size:12px; margin:8px 0 0;"></p>
     </div>
 
+    <div class="profile-new-panel" style="border-color: var(--lego-red);">
+      <p style="margin:0 0 8px; font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary);">Trouble creating a profile?</p>
+      <p style="color: var(--text-secondary); font-size: 13px; margin: 0 0 10px;">
+        A "could not save" error almost always means your browser's storage is full &mdash; usually from cached part images (a separate thing from your browser's regular cache, so clearing that in Edge's settings won't touch it). Clear it here, no profile needed.
+      </p>
+      <button id="gate-clear-images-btn" class="icon-btn" style="width:100%;"><i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Clear cached part images</button>
+      <p id="gate-clear-images-status" style="font-size:12px; margin:8px 0 0;"></p>
+    </div>
+
     <p style="color: var(--text-muted); font-size: 11px; margin-top: 16px;">
       This keeps casual mix-ups between profiles from happening on a shared device. It is not real security &mdash; anyone with browser developer tools can read the underlying data regardless of password. The Drawers tab is shared across every profile on this site.
     </p>
@@ -3751,6 +3760,29 @@
       } else {
         errorEl.textContent = 'Could not save that profile after a few tries. If this keeps happening, try reloading the page once and creating it again.';
       }
+    });
+  });
+
+  document.getElementById('gate-clear-images-btn').addEventListener('click', function(){
+    var btn = document.getElementById('gate-clear-images-btn');
+    var statusEl = document.getElementById('gate-clear-images-status');
+    btn.disabled = true;
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Clearing\u2026';
+    storage.list(IMG_PREFIX, false).then(function(res){
+      var keys = (res && res.keys) || [];
+      var ids = keys.map(function(k){ return k.indexOf(IMG_PREFIX) === 0 ? k.slice(IMG_PREFIX.length) : k; });
+      return Promise.all(ids.map(function(id){
+        return storage.delete(IMG_PREFIX + id, false).catch(function(){});
+      })).then(function(){ return ids.length; });
+    }).then(function(count){
+      btn.disabled = false;
+      statusEl.style.color = 'var(--text-success)';
+      statusEl.textContent = 'Cleared ' + count + ' cached image' + (count===1?'':'s') + '. Try creating your profile again now.';
+    }).catch(function(){
+      btn.disabled = false;
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Could not read the image cache to clear it. If this keeps happening, clearing this site\u2019s storage from your browser\u2019s settings (or dev tools \u2192 Application/Storage \u2192 Local Storage) will fix it.';
     });
   });
 
