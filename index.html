@@ -106,6 +106,11 @@
 #lego-inv-root .owned-set-card .set-edit-field input:focus { outline: none; border-color: var(--lego-blue); }
 #lego-inv-root .drawer-card { display: flex; align-items: center; gap: 12px; background: var(--surface-2); border: 2px solid var(--border); border-radius: 10px; padding: 8px 12px; margin-bottom: 6px; flex-wrap: wrap; }
 #lego-inv-root .theme-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--surface-2); border: 2px solid var(--border); border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; margin: 0 6px 6px 0; }
+#lego-inv-root .theme-group-header { display: flex; align-items: center; gap: 8px; width: 100%; background: var(--surface-1); border: 2px solid var(--border); border-radius: 10px; padding: 8px 12px; margin: 10px 0 6px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--lego-black); cursor: pointer; text-align: left; }
+#lego-inv-root .theme-group-header:hover { border-color: var(--lego-blue); }
+#lego-inv-root .theme-group-header i { font-size: 15px; flex-shrink: 0; }
+#lego-inv-root .theme-group-count { color: var(--text-secondary); font-weight: 400; text-transform: none; letter-spacing: normal; }
+#lego-inv-root .theme-group-body { padding-left: 4px; }
 #lego-inv-root .theme-chip-count { color: var(--text-secondary); font-weight: 400; }
 #lego-inv-root .drawer-card .drawer-edit-field input { height: 28px; padding: 3px 8px; font-size: 12px; border: 2px solid var(--border); border-radius: 8px; background: var(--surface-1); color: var(--text-primary); }
 #lego-inv-root .drawer-card .drawer-edit-field input:focus { outline: none; border-color: var(--lego-blue); }
@@ -1627,6 +1632,8 @@
     }).join('');
   }
 
+  var expandedThemes = new Set();
+
   function renderOwnedSetsList(){
     var container = document.getElementById('owned-sets-list');
     container.innerHTML = '';
@@ -1636,12 +1643,30 @@
       return;
     }
     themeGroupsSorted().forEach(function(g){
-      var header = document.createElement('div');
-      header.className = 'shop-group-title';
-      header.style.marginTop = '14px';
-      header.textContent = g.theme + ' (' + g.sets.length + ')';
+      var isOpen = expandedThemes.has(g.theme);
+      var header = document.createElement('button');
+      header.type = 'button';
+      header.className = 'theme-group-header';
+      header.innerHTML =
+        '<i class="ti '+(isOpen ? 'ti-chevron-down' : 'ti-chevron-right')+'" aria-hidden="true"></i>' +
+        '<span>'+escapeHtml(g.theme)+'</span>' +
+        '<span class="theme-group-count">('+g.sets.length+')</span>';
+
+      var body = document.createElement('div');
+      body.className = 'theme-group-body';
+      body.style.display = isOpen ? 'block' : 'none';
+      g.sets.forEach(function(s){ body.appendChild(buildSetCard(s)); });
+
+      header.addEventListener('click', function(){
+        if (expandedThemes.has(g.theme)) expandedThemes.delete(g.theme);
+        else expandedThemes.add(g.theme);
+        var nowOpen = expandedThemes.has(g.theme);
+        body.style.display = nowOpen ? 'block' : 'none';
+        header.querySelector('i').className = 'ti ' + (nowOpen ? 'ti-chevron-down' : 'ti-chevron-right');
+      });
+
       container.appendChild(header);
-      g.sets.forEach(function(s){ container.appendChild(buildSetCard(s)); });
+      container.appendChild(body);
     });
   }
 
