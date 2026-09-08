@@ -297,7 +297,8 @@
     <h1 class="lego-title">MOC parts inventory</h1>
     <p class="lego-subtitle">Track what you have, what's short, and what to order next</p>
   </div>
-  <button id="switch-profile-btn" class="icon-btn no-print" style="margin-left:auto;"><i class="ti ti-user-circle" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> <span id="current-profile-label"></span></button>
+  <button id="clear-profile-btn" class="icon-btn no-print" style="margin-left:auto;" title="Erase all data for this profile only"><i class="ti ti-eraser" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Clear all data</button>
+  <button id="switch-profile-btn" class="icon-btn no-print"><i class="ti ti-user-circle" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> <span id="current-profile-label"></span></button>
 </div>
 
 <div class="row no-print top-action-bar" style="justify-content: space-between; margin-bottom: 1rem;">
@@ -2931,7 +2932,28 @@
 '',
 '',
 'def main():',
-'    os.makedirs(OUTPUT_DIR, exist_ok=True)',
+'    if os.path.exists(OUTPUT_DIR) and not os.path.isdir(OUTPUT_DIR):',
+'        print(f"There is already a file (not a folder) named {OUTPUT_DIR} here,")',
+'        print("left over from an earlier attempt. Windows reports that as an")',
+'        print("Access is denied error instead of a clearer message.")',
+'        print(f"Delete or rename that {OUTPUT_DIR} file, then run this script again.")',
+'        return',
+'    try:',
+'        os.makedirs(OUTPUT_DIR, exist_ok=True)',
+'    except PermissionError:',
+'        print("Could not create the images folder here (permission denied).")',
+'        print("Since Controlled folder access is already off, other common")',
+'        print("causes on Windows are:")',
+'        print("  - Another program (antivirus, backup tool, OneDrive sync)")',
+'        print("    is scanning or has this folder locked right now.")',
+'        print("  - This folder needs admin rights, e.g. Program Files or")',
+'        print("    a system folder, or it is on a restricted network drive.")',
+'        print("  - The full folder path is very long (Windows can struggle")',
+'        print("    past roughly 260 characters).")',
+'        print("Try moving the repo to a short, simple folder path near the")',
+'        print("root of a drive, close any programs that might be watching")',
+'        print("this folder, then run the script again.")',
+'        return',
 '    total = len(ELEMENT_IDS)',
 '    ok = skipped = failed = 0',
 '',
@@ -3905,6 +3927,36 @@
     setParts = [];
     initProfileGate();
   }
+
+  document.getElementById('clear-profile-btn').addEventListener('click', function(){
+    var name = 'this profile';
+    var p = profiles.find(function(x){ return x.id === currentProfileId; });
+    if (p) name = '"' + p.name + '"';
+    var ok = confirm(
+      'This permanently erases ALL builds, parts, sets, priority labels, and shopping checkmarks for ' + name + '.\n\n' +
+      'Drawers, cached images, and other shared settings are not affected \u2014 only this profile\u2019s own data.\n\n' +
+      'This cannot be undone. Continue?'
+    );
+    if (!ok) return;
+
+    state.rows = [];
+    checkedItems = new Set();
+    shopSelected = new Set();
+    priorityLabels = [];
+    ownedSets = [];
+    setParts = [];
+
+    Promise.all([
+      storage.set(STORAGE_KEY, '[]', false),
+      storage.set(CHECKLIST_KEY, '[]', false),
+      storage.set(PRIORITY_LABELS_KEY, '[]', false),
+      storage.set(SETS_KEY, '[]', false),
+      storage.set(SET_PARTS_KEY, '[]', false)
+    ]).then(function(){
+      switchTab('overview');
+      render();
+    });
+  });
 
   function bootApp(){
     loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadRebrickableKey(); }).then(function(){ return loadSetProxyPref(); }).then(function(){ return loadGithubSettings(); }).then(function(){ return loadGithubShaMap(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(render);
