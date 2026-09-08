@@ -552,6 +552,7 @@
     <div class="controls" style="margin-bottom: 8px;">
       <select id="set-csv-target"><option value="">Which set is this for?</option></select>
       <input type="file" id="set-csv-file" accept=".csv,text/csv" />
+      <button id="set-csv-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
     </div>
     <textarea id="set-csv-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:100px; font-family: var(--font-mono); font-size: 12px;"></textarea>
     <div class="row" style="margin-top: 8px;">
@@ -661,6 +662,7 @@
     <div class="controls" style="margin-bottom: 8px;">
       <select id="drawer-csv-target"><option value="">Which drawer is this for?</option></select>
       <input type="file" id="drawer-csv-file" accept=".csv,text/csv" />
+      <button id="drawer-csv-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
     </div>
     <textarea id="drawer-csv-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:100px; font-family: var(--font-mono); font-size: 12px;"></textarea>
     <div class="row" style="margin-top: 8px;">
@@ -716,8 +718,9 @@
 
 <div id="tab-import" style="display:none;">
   <p style="color: var(--text-secondary); margin: 0 0 12px;">Import a parts list CSV (e.g. exported from Google Sheets or Rebrickable). New rows are added alongside your existing inventory &mdash; nothing gets overwritten.</p>
-  <div style="margin-bottom: 10px;">
+  <div class="row" style="margin-bottom: 10px;">
     <input type="file" id="import-file" accept=".csv,text/csv" />
+    <button id="import-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
   </div>
   <textarea id="import-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:140px; font-family: var(--font-mono); font-size: 12px;"></textarea>
   <div class="row" style="margin-top: 10px;">
@@ -733,8 +736,9 @@
     <p style="color: var(--text-secondary); margin: 0 0 12px;">
       Already have a spreadsheet of everything you own (e.g. a Rebrickable or BrickLink export)? Upload it here to set the <strong>on-hand</strong> quantity for every matching part across all your builds in one go &mdash; this overwrites the on-hand numbers currently in the app for any part it matches.
     </p>
-    <div style="margin-bottom: 10px;">
+    <div class="row" style="margin-bottom: 10px;">
       <input type="file" id="owned-file" accept=".csv,text/csv" />
+      <button id="owned-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
     </div>
     <textarea id="owned-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:120px; font-family: var(--font-mono); font-size: 12px;"></textarea>
     <div class="row" style="margin-top: 10px;">
@@ -2323,6 +2327,57 @@
     if (/[",\n]/.test(v)) return '"' + v.replace(/"/g,'""') + '"';
     return v;
   }
+
+  function downloadCsvTemplate(filename, headers, rows){
+    var lines = [headers.map(csvEscape).join(',')];
+    rows.forEach(function(row){ lines.push(row.map(csvEscape).join(',')); });
+    var csv = lines.join('\r\n');
+    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = filename;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+  }
+
+  document.getElementById('import-template-btn').addEventListener('click', function(){
+    downloadCsvTemplate('lego-inventory-import-template.csv',
+      ['Part Num','Quantity','Color','Description','MOC Name','elementId','Amount on Hand','Built?','Priority'],
+      [
+        ['3001','4','Red','Brick 2 x 4','My Awesome Spaceship','300121','2','','High'],
+        ['3023','8','Light Bluish Gray','Plate 1 x 2','My Awesome Spaceship','302324','0','','']
+      ]);
+  });
+
+  document.getElementById('owned-template-btn').addEventListener('click', function(){
+    downloadCsvTemplate('lego-owned-inventory-template.csv',
+      ['Part Num','Quantity','Color'],
+      [
+        ['3001','25','Red'],
+        ['3023','60','Light Bluish Gray']
+      ]);
+  });
+
+  document.getElementById('set-csv-template-btn').addEventListener('click', function(){
+    downloadCsvTemplate('lego-set-parts-template.csv',
+      ['Part Num','Quantity','Color','Description','elementId'],
+      [
+        ['3001','4','Red','Brick 2 x 4','300121'],
+        ['3023','8','Light Bluish Gray','Plate 1 x 2','302324']
+      ]);
+  });
+
+  document.getElementById('drawer-csv-template-btn').addEventListener('click', function(){
+    downloadCsvTemplate('lego-drawer-parts-template.csv',
+      ['Part Num','Quantity','Color','Description','elementId'],
+      [
+        ['3001','12','Red','Brick 2 x 4','300121'],
+        ['3023','40','Light Bluish Gray','Plate 1 x 2','302324']
+      ]);
+  });
 
   function exportShoppingList(){
     var rows = getShoppingListRows();
