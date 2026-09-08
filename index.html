@@ -514,14 +514,14 @@
   <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
     <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Option B (best-effort): fetch via Rebrickable API</p>
     <p style="color: var(--text-secondary); margin: 0 0 10px;">
-      Needs a free API key from <span style="font-family: var(--font-mono);">rebrickable.com/api</span>. Browsers sometimes block this kind of cross-site request (the same issue we ran into with LEGO's own images) &mdash; if it fails for you, Option A above always works.
+      Needs a free API key from <span style="font-family: var(--font-mono);">rebrickable.com/api</span>. Browsers sometimes block this kind of cross-site request (the same issue we ran into with LEGO's own images) &mdash; if it fails for you, Option A above always works. Alongside the parts, this also looks up each set's official name and theme by its set number and updates them here &mdash; including overwriting anything you'd typed in manually.
     </p>
     <div class="controls" style="margin-bottom: 8px;">
       <input type="password" id="rebrickable-key-input" placeholder="Rebrickable API key" style="min-width:220px;" />
       <label class="checkbox-label"><input type="checkbox" id="set-use-proxy-toggle" /> Use public CORS proxy if direct fails</label>
     </div>
     <div class="row">
-      <button id="set-fetch-all-btn"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch parts for all sets</button>
+      <button id="set-fetch-all-btn"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch parts &amp; names for all sets</button>
       <span id="set-fetch-status" style="font-size:13px; color:var(--text-secondary);"></span>
     </div>
   </div>
@@ -1668,8 +1668,8 @@
         return fetchSetDetailsFromApi(s.setNum);
       }).then(function(details){
         if (details){
-          if (!s.name && details.name) s.name = details.name;
-          if (!s.theme && details.theme) s.theme = details.theme;
+          if (details.name) s.name = details.name;
+          if (details.theme) s.theme = details.theme;
           saveOwnedSets();
         }
       }).catch(function(){
