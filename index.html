@@ -105,6 +105,8 @@
 #lego-inv-root .owned-set-card .set-edit-field input { width: 140px; height: 28px; padding: 3px 8px; font-size: 12px; border: 2px solid var(--border); border-radius: 8px; background: var(--surface-1); color: var(--text-primary); }
 #lego-inv-root .owned-set-card .set-edit-field input:focus { outline: none; border-color: var(--lego-blue); }
 #lego-inv-root .drawer-card { display: flex; align-items: center; gap: 12px; background: var(--surface-2); border: 2px solid var(--border); border-radius: 10px; padding: 8px 12px; margin-bottom: 6px; flex-wrap: wrap; }
+#lego-inv-root .theme-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--surface-2); border: 2px solid var(--border); border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; margin: 0 6px 6px 0; }
+#lego-inv-root .theme-chip-count { color: var(--text-secondary); font-weight: 400; }
 #lego-inv-root .drawer-card .drawer-edit-field input { height: 28px; padding: 3px 8px; font-size: 12px; border: 2px solid var(--border); border-radius: 8px; background: var(--surface-1); color: var(--text-primary); }
 #lego-inv-root .drawer-card .drawer-edit-field input:focus { outline: none; border-color: var(--lego-blue); }
 #lego-inv-root .drawer-card .drawer-label-edit { width: 130px; font-weight: 700; }
@@ -519,6 +521,9 @@
     </div>
   </div>
 
+  <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 6px;">Sets by theme</p>
+  <div id="theme-summary-list" style="margin-bottom: 20px;"></div>
+
   <div class="row" style="justify-content: space-between; margin-bottom: 8px;">
     <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0;">Your sets</p>
     <button id="sets-report-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Sets report (PDF)</button>
@@ -545,14 +550,14 @@
   <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
     <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Option B (best-effort): fetch via Rebrickable API</p>
     <p style="color: var(--text-secondary); margin: 0 0 10px;">
-      Needs a free API key from <span style="font-family: var(--font-mono);">rebrickable.com/api</span>. Browsers sometimes block this kind of cross-site request (the same issue we ran into with LEGO's own images) &mdash; if it fails for you, Option A above always works. Alongside the parts, this also looks up each set's official name and theme by its set number and updates them here &mdash; including overwriting anything you'd typed in manually.
+      Needs a free API key from <span style="font-family: var(--font-mono);">rebrickable.com/api</span>. Browsers sometimes block this kind of cross-site request (the same issue we ran into with LEGO's own images) &mdash; if it fails for you, Option A above always works. Alongside the parts, this also looks up each set's official name and theme by its set number and updates them here &mdash; including overwriting anything you'd typed in manually. Only fetches sets that don't already have parts on file, so it's fast to re-run after adding a new set &mdash; it won't re-download ones you already have.
     </p>
     <div class="controls" style="margin-bottom: 8px;">
       <input type="password" id="rebrickable-key-input" placeholder="Rebrickable API key" style="min-width:220px;" />
       <label class="checkbox-label"><input type="checkbox" id="set-use-proxy-toggle" /> Use public CORS proxy if direct fails</label>
     </div>
     <div class="row">
-      <button id="set-fetch-all-btn"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch parts &amp; names for all sets</button>
+      <button id="set-fetch-all-btn"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch parts &amp; names for new sets</button>
       <span id="set-fetch-status" style="font-size:13px; color:var(--text-secondary);"></span>
     </div>
   </div>
@@ -1550,41 +1555,78 @@
     return /-\d+$/.test(raw) ? raw : raw + '-1';
   }
 
+  function buildSetCard(s){
+    var rows = setParts.filter(function(p){ return p.setNum === s.setNum; });
+    var pieceTotal = rows.reduce(function(sum, r){ return sum + (r.qtyPerSet * s.qty); }, 0);
+    var card = document.createElement('div');
+    card.className = 'owned-set-card';
+    card.innerHTML =
+      '<span class="set-num">'+escapeHtml(s.setNum)+'</span>' +
+      '<span class="set-edit-field"><input type="text" class="set-name-edit" placeholder="Name" value="'+escapeHtml(s.name || '')+'" /></span>' +
+      '<span class="set-edit-field"><input type="text" class="set-theme-edit" placeholder="Theme" value="'+escapeHtml(s.theme || '')+'" /></span>' +
+      '<span class="set-meta">Qty owned: '+s.qty+' &middot; '+rows.length+' part line'+(rows.length===1?'':'s')+' &middot; '+pieceTotal.toLocaleString()+' pcs</span>';
+    var nameInput = card.querySelector('.set-name-edit');
+    var themeInput = card.querySelector('.set-theme-edit');
+    nameInput.addEventListener('change', function(){ s.name = nameInput.value.trim(); saveOwnedSets(); renderOwnedSetsList(); });
+    themeInput.addEventListener('change', function(){ s.theme = themeInput.value.trim(); saveOwnedSets(); renderOwnedSetsList(); });
+    var delBtn = document.createElement('button');
+    delBtn.className = 'row-delete-btn';
+    delBtn.title = 'Remove this set';
+    delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>';
+    delBtn.addEventListener('click', function(){
+      if (!confirm('Remove set '+s.setNum+' and its imported parts?')) return;
+      ownedSets = ownedSets.filter(function(x){ return x.setNum !== s.setNum; });
+      setParts = setParts.filter(function(p){ return p.setNum !== s.setNum; });
+      saveOwnedSets();
+      saveSetParts();
+      renderSetsTab();
+    });
+    card.appendChild(delBtn);
+    return card;
+  }
+
+  function themeGroupsSorted(){
+    var groups = {};
+    ownedSets.forEach(function(s){
+      var theme = (s.theme && s.theme.trim()) ? s.theme.trim() : '(No theme)';
+      if (!groups[theme]) groups[theme] = [];
+      groups[theme].push(s);
+    });
+    var names = Object.keys(groups).sort(function(a,b){
+      if (a === '(No theme)') return 1;
+      if (b === '(No theme)') return -1;
+      return a.localeCompare(b);
+    });
+    return names.map(function(theme){ return { theme: theme, sets: groups[theme] }; });
+  }
+
+  function renderThemeSummary(){
+    var container = document.getElementById('theme-summary-list');
+    if (!ownedSets.length){
+      container.innerHTML = '<span style="color:var(--text-muted); font-size:13px;">No sets yet.</span>';
+      return;
+    }
+    var groups = themeGroupsSorted();
+    container.innerHTML = groups.map(function(g){
+      return '<span class="theme-chip">'+escapeHtml(g.theme)+' <span class="theme-chip-count">'+g.sets.length+'</span></span>';
+    }).join('');
+  }
+
   function renderOwnedSetsList(){
     var container = document.getElementById('owned-sets-list');
     container.innerHTML = '';
+    renderThemeSummary();
     if (!ownedSets.length){
       container.innerHTML = '<div class="empty-msg">No sets added yet.</div>';
       return;
     }
-    ownedSets.forEach(function(s){
-      var rows = setParts.filter(function(p){ return p.setNum === s.setNum; });
-      var pieceTotal = rows.reduce(function(sum, r){ return sum + (r.qtyPerSet * s.qty); }, 0);
-      var card = document.createElement('div');
-      card.className = 'owned-set-card';
-      card.innerHTML =
-        '<span class="set-num">'+escapeHtml(s.setNum)+'</span>' +
-        '<span class="set-edit-field"><input type="text" class="set-name-edit" placeholder="Name" value="'+escapeHtml(s.name || '')+'" /></span>' +
-        '<span class="set-edit-field"><input type="text" class="set-theme-edit" placeholder="Theme" value="'+escapeHtml(s.theme || '')+'" /></span>' +
-        '<span class="set-meta">Qty owned: '+s.qty+' &middot; '+rows.length+' part line'+(rows.length===1?'':'s')+' &middot; '+pieceTotal.toLocaleString()+' pcs</span>';
-      var nameInput = card.querySelector('.set-name-edit');
-      var themeInput = card.querySelector('.set-theme-edit');
-      nameInput.addEventListener('change', function(){ s.name = nameInput.value.trim(); saveOwnedSets(); renderOwnedSetsList(); });
-      themeInput.addEventListener('change', function(){ s.theme = themeInput.value.trim(); saveOwnedSets(); });
-      var delBtn = document.createElement('button');
-      delBtn.className = 'row-delete-btn';
-      delBtn.title = 'Remove this set';
-      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>';
-      delBtn.addEventListener('click', function(){
-        if (!confirm('Remove set '+s.setNum+' and its imported parts?')) return;
-        ownedSets = ownedSets.filter(function(x){ return x.setNum !== s.setNum; });
-        setParts = setParts.filter(function(p){ return p.setNum !== s.setNum; });
-        saveOwnedSets();
-        saveSetParts();
-        renderSetsTab();
-      });
-      card.appendChild(delBtn);
-      container.appendChild(card);
+    themeGroupsSorted().forEach(function(g){
+      var header = document.createElement('div');
+      header.className = 'shop-group-title';
+      header.style.marginTop = '14px';
+      header.textContent = g.theme + ' (' + g.sets.length + ')';
+      container.appendChild(header);
+      g.sets.forEach(function(s){ container.appendChild(buildSetCard(s)); });
     });
   }
 
@@ -1711,19 +1753,29 @@
       statusEl.textContent = 'Add a set first.';
       return;
     }
-    var ok = 0, failed = 0, total = ownedSets.length, done = 0;
+    var setsToFetch = ownedSets.filter(function(s){
+      return !setParts.some(function(p){ return p.setNum === s.setNum; });
+    });
+    var skipped = ownedSets.length - setsToFetch.length;
+    if (!setsToFetch.length){
+      statusEl.style.color = 'var(--text-success)';
+      statusEl.textContent = 'Every set already has parts on file \u2014 nothing new to fetch. Remove a set\u2019s parts (or the set itself) and re-add it if you want to refresh one.';
+      return;
+    }
+    var ok = 0, failed = 0, total = setsToFetch.length, done = 0;
     statusEl.style.color = 'var(--text-secondary)';
     statusEl.textContent = 'Fetching\u2026 0 / ' + total;
     var idx = 0;
     function next(){
       if (idx >= total){
         statusEl.style.color = ok ? 'var(--text-success)' : 'var(--text-danger)';
-        statusEl.textContent = 'Fetched ' + ok + ' of ' + total + ' sets.' +
+        statusEl.textContent = 'Fetched ' + ok + ' new set' + (ok===1?'':'s') + ' of ' + total + '.' +
+          (skipped ? (' ' + skipped + ' already had parts on file and were skipped.') : '') +
           (failed ? (' ' + failed + ' failed \u2014 likely blocked by the browser; try the CSV import instead, or turn on the proxy toggle.') : '');
         renderSetsTab();
         return;
       }
-      var s = ownedSets[idx++];
+      var s = setsToFetch[idx++];
       fetchSetPartsFromApi(s.setNum).then(function(rows){
         importSetPartsFromRows(s.setNum, rows);
         ok++;
