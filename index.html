@@ -107,6 +107,11 @@
 #lego-inv-root .drawer-card { display: flex; align-items: center; gap: 12px; background: var(--surface-2); border: 2px solid var(--border); border-radius: 10px; padding: 8px 12px; margin-bottom: 6px; flex-wrap: wrap; }
 #lego-inv-root .theme-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--surface-2); border: 2px solid var(--border); border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; margin: 0 6px 6px 0; }
 #lego-inv-root .theme-group-header { display: flex; align-items: center; gap: 8px; width: 100%; background: var(--surface-1); border: 2px solid var(--border); border-radius: 10px; padding: 8px 12px; margin: 10px 0 6px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--lego-black); cursor: pointer; text-align: left; }
+#lego-inv-root .collapse-section { margin-bottom: 12px; }
+#lego-inv-root .collapse-header { display: flex; align-items: center; gap: 10px; width: 100%; background: var(--surface-2); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px 16px; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; color: var(--lego-black); cursor: pointer; text-align: left; }
+#lego-inv-root .collapse-header:hover { border-color: var(--lego-blue); }
+#lego-inv-root .collapse-header i { font-size: 16px; flex-shrink: 0; }
+#lego-inv-root .collapse-body { border: 2px solid var(--border); border-top: none; border-radius: 0 0 var(--radius) var(--radius); padding: 14px 16px; margin-top: -2px; }
 #lego-inv-root .theme-group-header:hover { border-color: var(--lego-blue); }
 #lego-inv-root .theme-group-header i { font-size: 15px; flex-shrink: 0; }
 #lego-inv-root .theme-group-count { color: var(--text-secondary); font-weight: 400; text-transform: none; letter-spacing: normal; }
@@ -526,19 +531,8 @@
     </div>
   </div>
 
-  <div style="background: var(--surface-1); border: 2px solid var(--lego-azure); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 1.25rem;">
-    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--lego-black); font-weight: 800;">Publish this collection to your site</p>
-    <p style="margin: 0 0 8px; color: var(--text-secondary);">
-      Your sets and their parts normally live only in this browser's storage. Publishing writes them to <code>data/official-collection.json</code> in your GitHub repo instead, so any browser or device that opens your site sees the same data &mdash; not just this one.
-    </p>
-    <p style="margin: 0 0 10px; color: var(--text-muted); font-size: 12px;">
-      Uses the same repo, branch, and token already entered on the Images tab. Editing still saves instantly to this browser as you go; nothing reaches your site until you click "Save to site."
-    </p>
-    <div class="row" style="margin-bottom: 6px;">
-      <button id="save-collection-github-btn"><i class="ti ti-cloud-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Save to site</button>
-      <button id="load-collection-github-btn" class="icon-btn"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Load from site</button>
-      <span id="collection-sync-status" style="font-size: 13px; color: var(--text-secondary);"></span>
-    </div>
+  <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 10px 16px; margin-bottom: 1.25rem; font-size: 13px; color: var(--text-secondary);">
+    Want your sets (and everything else) saved to your actual site instead of just this browser? See "Publish your whole collection" on the Import tab.
   </div>
 
   <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 6px;">Sets by theme</p>
@@ -550,27 +544,14 @@
   </div>
   <div id="owned-sets-list" style="margin-bottom: 20px;"></div>
 
-  <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 16px;">
-    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Option A (reliable): import a set's parts CSV</p>
-    <p style="color: var(--text-secondary); margin: 0 0 10px;">
-      On Rebrickable, open the set's page &rarr; "Parts" tab &rarr; download the CSV. No account or API key needed. Then pick which set it belongs to and upload it here.
-    </p>
-    <div class="controls" style="margin-bottom: 8px;">
-      <select id="set-csv-target"><option value="">Which set is this for?</option></select>
-      <input type="file" id="set-csv-file" accept=".csv,text/csv" />
-      <button id="set-csv-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
-    </div>
-    <textarea id="set-csv-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:100px; font-family: var(--font-mono); font-size: 12px;"></textarea>
-    <div class="row" style="margin-top: 8px;">
-      <button id="set-csv-import-btn"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts for this set</button>
-      <span id="set-csv-status" style="font-size:13px; color:var(--text-secondary);"></span>
-    </div>
+  <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 10px 16px; margin-bottom: 20px; font-size: 13px; color: var(--text-secondary);">
+    Want to bulk-import a set's parts from a CSV? See "Official Set Parts Upload" on the Import tab.
   </div>
 
   <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
     <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Option B (best-effort): fetch via Rebrickable API</p>
     <p style="color: var(--text-secondary); margin: 0 0 10px;">
-      Needs a free API key from <span style="font-family: var(--font-mono);">rebrickable.com/api</span>. Browsers sometimes block this kind of cross-site request (the same issue we ran into with LEGO's own images) &mdash; if it fails for you, Option A above always works. Alongside the parts, this also looks up each set's official name and theme by its set number and updates them here &mdash; including overwriting anything you'd typed in manually. Only fetches sets that don't already have parts on file, so it's fast to re-run after adding a new set &mdash; it won't re-download ones you already have.
+      Needs a free API key from <span style="font-family: var(--font-mono);">rebrickable.com/api</span>. Browsers sometimes block this kind of cross-site request (the same issue we ran into with LEGO's own images) &mdash; if it fails for you, the CSV upload on the Import tab always works. Alongside the parts, this also looks up each set's official name and theme by its set number and updates them here &mdash; including overwriting anything you'd typed in manually. Only fetches sets that don't already have parts on file, so it's fast to re-run after adding a new set &mdash; it won't re-download ones you already have.
     </p>
     <div class="controls" style="margin-bottom: 8px;">
       <input type="password" id="rebrickable-key-input" placeholder="Rebrickable API key" style="min-width:220px;" />
@@ -660,21 +641,8 @@
   <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 8px;">Your drawers</p>
   <div id="drawer-cards-list" style="margin-bottom: 20px;"></div>
 
-  <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 16px;">
-    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Option A: import a drawer's parts CSV</p>
-    <p style="color: var(--text-secondary); margin: 0 0 10px;">
-      Pick which drawer this CSV belongs to. Importing replaces that drawer's current contents &mdash; handy after a fresh recount.
-    </p>
-    <div class="controls" style="margin-bottom: 8px;">
-      <select id="drawer-csv-target"><option value="">Which drawer is this for?</option></select>
-      <input type="file" id="drawer-csv-file" accept=".csv,text/csv" />
-      <button id="drawer-csv-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
-    </div>
-    <textarea id="drawer-csv-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:100px; font-family: var(--font-mono); font-size: 12px;"></textarea>
-    <div class="row" style="margin-top: 8px;">
-      <button id="drawer-csv-import-btn"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts for this drawer</button>
-      <span id="drawer-csv-status" style="font-size:13px; color:var(--text-secondary);"></span>
-    </div>
+  <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 10px 16px; margin-bottom: 20px; font-size: 13px; color: var(--text-secondary);">
+    Want to bulk-import a drawer's parts from a CSV? See "Drawer Parts Upload" on the Import tab.
   </div>
 
   <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
@@ -738,84 +706,176 @@
 </div>
 
 <div id="tab-import" style="display:none;">
-  <p style="color: var(--text-secondary); margin: 0 0 12px;">Import a parts list CSV (e.g. exported from Google Sheets or Rebrickable). New rows are added alongside your existing inventory &mdash; nothing gets overwritten.</p>
-  <div class="row" style="margin-bottom: 10px;">
-    <input type="file" id="import-file" accept=".csv,text/csv" />
-    <button id="import-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
-  </div>
-  <textarea id="import-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:140px; font-family: var(--font-mono); font-size: 12px;"></textarea>
-  <div class="row" style="margin-top: 10px;">
-    <button id="import-btn"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts</button>
-    <span id="import-result" style="font-size: 13px; color: var(--text-secondary);"></span>
-  </div>
-  <p style="color: var(--text-muted); font-size: 12px; margin-top: 14px;">
-    Recognized columns (any order, header names flexible): Part Num, Quantity, Color, Description, MOC Name, elementId, Amount on Hand, Built?, Priorty?. Only Part Num, Quantity, and MOC Name are required &mdash; the rest default to blank or zero.
-  </p>
 
-  <div style="border-top: 2px solid var(--border); margin-top: 20px; padding-top: 18px;">
-    <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.02em; margin: 0 0 6px; color: var(--lego-black);">Update on-hand counts from your full inventory</h3>
-    <p style="color: var(--text-secondary); margin: 0 0 12px;">
-      Already have a spreadsheet of everything you own (e.g. a Rebrickable or BrickLink export)? Upload it here to set the <strong>on-hand</strong> quantity for every matching part across all your builds in one go &mdash; this overwrites the on-hand numbers currently in the app for any part it matches.
-    </p>
-    <div class="row" style="margin-bottom: 10px;">
-      <input type="file" id="owned-file" accept=".csv,text/csv" />
-      <button id="owned-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
+  <div class="collapse-section">
+    <button type="button" class="collapse-header" data-collapse-target="cs-github"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>GitHub Connection</span></button>
+    <div class="collapse-body" id="cs-github" style="display:none;">
+      <p style="margin: 0 0 10px; color: var(--text-secondary);">
+        One repo, branch, and token used by everything below that talks to GitHub &mdash; publishing your collection, and (if you use it) the download script's auto-commit step. Saved in this browser so you don't have to retype it, but each browser needs it entered once.
+      </p>
+      <div class="controls" style="margin-bottom: 8px;">
+        <input type="text" id="gh-repo-input" placeholder="owner/repo, e.g. yourname/lego-inventory" style="min-width:220px;" />
+        <input type="text" id="gh-branch-input" placeholder="Branch (default: main)" style="min-width:140px;" />
+      </div>
+      <div class="controls" style="margin-bottom: 8px;">
+        <input type="password" id="gh-token-input" placeholder="GitHub personal access token" style="min-width:260px;" />
+      </div>
+      <p style="margin: 0; color: var(--text-muted); font-size: 12px;">
+        Use a <strong>fine-grained</strong> token (github.com &rarr; Settings &rarr; Developer settings &rarr; Personal access tokens &rarr; Fine-grained tokens) scoped to <strong>only this one repository</strong>, with just "Contents: Read and write" permission &mdash; not a classic token with full account access. It's saved only in this browser and never sent anywhere except directly to GitHub; you can revoke it anytime from that same settings page.
+      </p>
     </div>
-    <textarea id="owned-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:120px; font-family: var(--font-mono); font-size: 12px;"></textarea>
-    <div class="row" style="margin-top: 10px;">
-      <button id="owned-btn"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Update on-hand counts</button>
-      <span id="owned-result" style="font-size: 13px; color: var(--text-secondary);"></span>
-    </div>
-    <p style="color: var(--text-muted); font-size: 12px; margin-top: 14px;">
-      Needs a Part Num column and a Quantity column (however labeled &mdash; Qty, Owned, Amount, Stock, etc. are all recognized). A Color column is optional but recommended: if present, matching is by part number + color; if absent, matching is by part number alone across all colors of that part.
-    </p>
   </div>
+
+  <div class="collapse-section">
+    <button type="button" class="collapse-header" data-collapse-target="cs-publish"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Publish Whole Collection to Site</span></button>
+    <div class="collapse-body" id="cs-publish" style="display:none;">
+      <p style="margin: 0 0 8px; color: var(--text-secondary);">
+        Everything you've entered &mdash; MOC builds and parts, priority labels, shopping list checkmarks, official sets and their parts, and drawers &mdash; normally lives only in this browser's storage. Publishing writes all of it to <code>data/inventory-data.json</code> in your GitHub repo instead, so any browser or device that opens your site sees the same data, not just this one.
+      </p>
+      <p style="margin: 0 0 10px; color: var(--text-muted); font-size: 12px;">
+        Uses the GitHub Connection above. Editing still saves instantly to this browser as you go; nothing reaches your site until you click "Save to site." Images aren't included here &mdash; see Image Upload below for those.
+      </p>
+      <div class="row" style="margin-bottom: 6px;">
+        <button id="save-all-data-github-btn"><i class="ti ti-cloud-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Save to site</button>
+        <button id="load-all-data-github-btn" class="icon-btn"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Load from site</button>
+        <span id="all-data-sync-status" style="font-size: 13px; color: var(--text-secondary);"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapse-section">
+    <button type="button" class="collapse-header" data-collapse-target="cs-moc-upload"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>MOC Inventory Upload</span></button>
+    <div class="collapse-body" id="cs-moc-upload" style="display:none;">
+      <p style="color: var(--text-secondary); margin: 0 0 12px;">Import a parts list CSV (e.g. exported from Google Sheets or Rebrickable). New rows are added alongside your existing inventory &mdash; nothing gets overwritten.</p>
+      <div class="row" style="margin-bottom: 10px;">
+        <input type="file" id="import-file" accept=".csv,text/csv" />
+        <button id="import-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
+      </div>
+      <textarea id="import-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:140px; font-family: var(--font-mono); font-size: 12px;"></textarea>
+      <div class="row" style="margin-top: 10px;">
+        <button id="import-btn"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts</button>
+        <span id="import-result" style="font-size: 13px; color: var(--text-secondary);"></span>
+      </div>
+      <p style="color: var(--text-muted); font-size: 12px; margin-top: 14px;">
+        Recognized columns (any order, header names flexible): Part Num, Quantity, Color, Description, MOC Name, elementId, Amount on Hand, Built?, Priorty?. Only Part Num, Quantity, and MOC Name are required &mdash; the rest default to blank or zero.
+      </p>
+    </div>
+  </div>
+
+  <div class="collapse-section">
+    <button type="button" class="collapse-header" data-collapse-target="cs-moc-onhand"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>MOC On-Hand Update</span></button>
+    <div class="collapse-body" id="cs-moc-onhand" style="display:none;">
+      <p style="color: var(--text-secondary); margin: 0 0 12px;">
+        Already have a spreadsheet of everything you own (e.g. a Rebrickable or BrickLink export)? Upload it here to set the <strong>on-hand</strong> quantity for every matching part across all your builds in one go &mdash; this overwrites the on-hand numbers currently in the app for any part it matches.
+      </p>
+      <div class="row" style="margin-bottom: 10px;">
+        <input type="file" id="owned-file" accept=".csv,text/csv" />
+        <button id="owned-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
+      </div>
+      <textarea id="owned-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:120px; font-family: var(--font-mono); font-size: 12px;"></textarea>
+      <div class="row" style="margin-top: 10px;">
+        <button id="owned-btn"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Update on-hand counts</button>
+        <span id="owned-result" style="font-size: 13px; color: var(--text-secondary);"></span>
+      </div>
+      <p style="color: var(--text-muted); font-size: 12px; margin-top: 14px;">
+        Needs a Part Num column and a Quantity column (however labeled &mdash; Qty, Owned, Amount, Stock, etc. are all recognized). A Color column is optional but recommended: if present, matching is by part number + color; if absent, matching is by part number alone across all colors of that part.
+      </p>
+    </div>
+  </div>
+
+  <div class="collapse-section">
+    <button type="button" class="collapse-header" data-collapse-target="cs-set-upload"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Official Set Parts Upload</span></button>
+    <div class="collapse-body" id="cs-set-upload" style="display:none;">
+      <p style="color: var(--text-secondary); margin: 0 0 10px;">
+        On Rebrickable, open the set's page &rarr; "Parts" tab &rarr; download the CSV. No account or API key needed. Then pick which set it belongs to and upload it here. (You can also fetch a set's parts automatically via the Rebrickable API from the Official Sets tab.)
+      </p>
+      <div class="controls" style="margin-bottom: 8px;">
+        <select id="set-csv-target"><option value="">Which set is this for?</option></select>
+        <input type="file" id="set-csv-file" accept=".csv,text/csv" />
+        <button id="set-csv-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
+      </div>
+      <textarea id="set-csv-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:100px; font-family: var(--font-mono); font-size: 12px;"></textarea>
+      <div class="row" style="margin-top: 8px;">
+        <button id="set-csv-import-btn"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts for this set</button>
+        <span id="set-csv-status" style="font-size:13px; color:var(--text-secondary);"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapse-section">
+    <button type="button" class="collapse-header" data-collapse-target="cs-drawer-upload"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Drawer Parts Upload</span></button>
+    <div class="collapse-body" id="cs-drawer-upload" style="display:none;">
+      <p style="color: var(--text-secondary); margin: 0 0 10px;">
+        Pick which drawer this CSV belongs to. Importing replaces that drawer's current contents &mdash; handy after a fresh recount. (For adding one part at a time instead, see the Drawers tab.)
+      </p>
+      <div class="controls" style="margin-bottom: 8px;">
+        <select id="drawer-csv-target"><option value="">Which drawer is this for?</option></select>
+        <input type="file" id="drawer-csv-file" accept=".csv,text/csv" />
+        <button id="drawer-csv-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
+      </div>
+      <textarea id="drawer-csv-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:100px; font-family: var(--font-mono); font-size: 12px;"></textarea>
+      <div class="row" style="margin-top: 8px;">
+        <button id="drawer-csv-import-btn"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts for this drawer</button>
+        <span id="drawer-csv-status" style="font-size:13px; color:var(--text-secondary);"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapse-section">
+    <button type="button" class="collapse-header" data-collapse-target="cs-image-upload"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Image Upload</span></button>
+    <div class="collapse-body" id="cs-image-upload" style="display:none;">
+      <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--lego-black); font-weight: 800;">Recommended: host images with your site</p>
+      <p style="margin: 0 0 10px; color: var(--text-secondary);">
+        The most reliable option isn't caching in the browser at all &mdash; it's downloading the images once and putting them in your GitHub repo as real files, right next to <code>index.html</code>. Then they load instantly from your own site for every visitor, with no CORS proxy, no per-browser storage limit, and no dependence on lego.com staying reachable.
+      </p>
+      <ol style="margin: 0 0 10px; padding-left: 20px; color: var(--text-secondary);">
+        <li>Click "Generate download script" below &mdash; it builds a script listing every element ID currently in your inventory.</li>
+        <li>Run <code>python3 download_part_images.py</code> on your own computer (needs internet; no extra installs required).</li>
+        <li>It creates an <code>images</code> folder containing one .jpg per part, and can commit &amp; push it for you automatically if run inside your repo folder.</li>
+      </ol>
+      <div class="row" style="margin-bottom: 8px;">
+        <button id="gen-script-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generate download script</button>
+        <span id="gen-script-status" style="font-size: 13px; color: var(--text-secondary);"></span>
+      </div>
+      <p style="margin: 0 0 16px; color: var(--text-muted); font-size: 12px;">
+        The app already checks <code>images/&lt;element id&gt;.jpg</code> on your site first, before ever trying a cache or lego.com &mdash; so this works automatically as soon as the folder exists. Whenever you add new parts, generate a fresh script and re-run it &mdash; it skips files it already has, so only the new element IDs get downloaded.
+      </p>
+
+      <p style="color: var(--text-secondary); margin: 0 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; border-top: 2px solid var(--border); padding-top: 14px;">Fallback: cache in this browser instead</p>
+      <p style="color: var(--text-secondary); margin: 0 0 8px;">
+        Once an image is cached here, it's stored in the app itself and will keep showing even with no internet connection.
+      </p>
+      <label class="checkbox-label" style="margin-bottom: 10px;">
+        <input type="checkbox" id="use-proxy-toggle" /> Use a public image proxy to enable automatic caching
+      </label>
+      <p style="color: var(--text-muted); font-size: 12px; margin: 0 0 14px;">
+        LEGO's own site blocks the direct download this feature needs (a browser security rule called CORS), so plain automatic caching usually fails silently. Turning this on routes image requests through <strong>images.weserv.nl</strong>, a free public image proxy, which re-serves the image with permission attached so caching can work. This means that third-party service sees which LEGO part images you're requesting. Off by default; the manual upload below never uses any third party.
+      </p>
+      <div class="row" style="margin-bottom: 18px;">
+        <button id="cache-fetch-btn"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch and cache all now</button>
+        <span id="cache-fetch-status" style="font-size: 13px; color: var(--text-secondary);"></span>
+      </div>
+      <p style="color: var(--text-muted); font-size: 12px; margin: 0 0 20px;">
+        Needs internet the first time. Without the proxy above, most browsers will block this automatic download for cross-site images &mdash; if a part stays uncached after trying, use the manual upload below instead. Cached images are stored in this browser's local storage, which typically holds 5&ndash;10MB total &mdash; plenty for a few hundred thumbnails, but caching every part across all builds may eventually hit that limit.
+      </p>
+
+      <div style="border-top: 0.5px solid var(--border); padding-top: 16px;">
+        <p style="color: var(--text-secondary); margin: 0 0 8px;">
+          Or add images yourself: select image files whose filenames are the element ID (e.g. <code style="font-family: var(--font-mono);">6269079.jpg</code>). No internet needed for this step.
+        </p>
+        <input type="file" id="img-upload" accept="image/*" multiple />
+        <div class="row" style="margin-top: 8px;">
+          <span id="img-upload-status" style="font-size: 13px; color: var(--text-secondary);"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
 </div>
 
 <div id="tab-images" style="display:none;">
-  <div style="background: var(--surface-1); border: 2px solid var(--lego-green); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 1.25rem;">
-    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--lego-black); font-weight: 800;">Recommended: host images with your site</p>
-    <p style="margin: 0 0 10px; color: var(--text-secondary);">
-      The most reliable option isn't caching in the browser at all &mdash; it's downloading the images once and putting them in your GitHub repo as real files, right next to <code>index.html</code>. Then they load instantly from your own site for every visitor, with no CORS proxy, no per-browser storage limit, and no dependence on lego.com staying reachable.
-    </p>
-    <ol style="margin: 0 0 10px; padding-left: 20px; color: var(--text-secondary);">
-      <li>Click "Generate download script" below \u2014 it builds a script listing every element ID currently in your inventory.</li>
-      <li>Run <code>python3 download_part_images.py</code> on your own computer (needs internet; no extra installs required).</li>
-      <li>It creates an <code>images</code> folder containing one .jpg per part.</li>
-      <li>Copy that <code>images</code> folder into your GitHub repo, at the same level as <code>index.html</code>, and push.</li>
-    </ol>
-    <div class="row" style="margin-bottom: 8px;">
-      <button id="gen-script-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generate download script</button>
-      <span id="gen-script-status" style="font-size: 13px; color: var(--text-secondary);"></span>
-    </div>
-    <p style="margin: 0; color: var(--text-muted); font-size: 12px;">
-      The app already checks <code>images/&lt;element id&gt;.jpg</code> on your site first, before ever trying a cache or lego.com &mdash; so this works automatically as soon as the folder exists. Whenever you add new parts, generate a fresh script and re-run it &mdash; it skips files it already has, so only the new element IDs get downloaded.
-    </p>
-  </div>
-
-  <div style="background: var(--surface-1); border: 2px solid var(--lego-azure); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 1.25rem;">
-    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--lego-black); font-weight: 800;">Or push images to GitHub directly from here</p>
-    <p style="margin: 0 0 10px; color: var(--text-secondary);">
-      Skip the script and manual folder copy: enter your repo and a token once, and the app writes each part's image straight into your repo's <code>images/</code> folder via GitHub's API, from right here in the browser.
-    </p>
-    <p style="margin: 0 0 10px; color: var(--text-danger); font-size: 12px;">
-      Heads up: GitHub's file API creates <strong>one commit per image</strong>. For your very first full batch (a few thousand parts), the Python script above is much faster and creates a single clean commit instead of thousands. This browser upload is best for smaller, ongoing additions &mdash; e.g. pushing images after adding a new build.
-    </p>
-    <div class="controls" style="margin-bottom: 8px;">
-      <input type="text" id="gh-repo-input" placeholder="owner/repo, e.g. yourname/lego-inventory" style="min-width:220px;" />
-      <input type="text" id="gh-branch-input" placeholder="Branch (default: main)" style="min-width:140px;" />
-      <input type="text" id="gh-path-input" placeholder="Folder path (default: images/)" style="min-width:160px;" />
-    </div>
-    <div class="controls" style="margin-bottom: 8px;">
-      <input type="password" id="gh-token-input" placeholder="GitHub personal access token" style="min-width:260px;" />
-    </div>
-    <p style="margin: 0 0 10px; color: var(--text-muted); font-size: 12px;">
-      Use a <strong>fine-grained</strong> token (github.com &rarr; Settings &rarr; Developer settings &rarr; Personal access tokens &rarr; Fine-grained tokens) scoped to <strong>only this one repository</strong>, with just "Contents: Read and write" permission &mdash; not a classic token with full account access. It's saved only in this browser and never sent anywhere except directly to GitHub; you can revoke it anytime from that same settings page.
-    </p>
-    <div class="row" style="margin-bottom: 8px;">
-      <button id="gh-upload-btn"><i class="ti ti-brand-github" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Upload images to GitHub</button>
-      <span id="gh-upload-status" style="font-size: 13px; color: var(--text-secondary);"></span>
-    </div>
+  <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 10px 16px; margin-bottom: 1.25rem; font-size: 13px; color: var(--text-secondary);">
+    This tab is a status dashboard. To actually add images (download script or browser caching), see "Image Upload" on the Import tab.
   </div>
 
   <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 1.25rem;">
@@ -836,35 +896,7 @@
     <div class="metric"><div class="label">Cached for offline use</div><div class="value" id="img-cached-count">-</div></div>
   </div>
 
-  <p style="color: var(--text-secondary); margin: 0 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em;">Fallback: cache in this browser instead</p>
-  <p style="color: var(--text-secondary); margin: 0 0 8px;">
-    Once an image is cached here, it's stored in the app itself and will keep showing even with no internet connection.
-  </p>
-  <label class="checkbox-label" style="margin-bottom: 10px;">
-    <input type="checkbox" id="use-proxy-toggle" /> Use a public image proxy to enable automatic caching
-  </label>
-  <p style="color: var(--text-muted); font-size: 12px; margin: 0 0 14px;">
-    LEGO's own site blocks the direct download this feature needs (a browser security rule called CORS), so plain automatic caching usually fails silently. Turning this on routes image requests through <strong>images.weserv.nl</strong>, a free public image proxy, which re-serves the image with permission attached so caching can work. This means that third-party service sees which LEGO part images you're requesting. Off by default; the manual upload below never uses any third party.
-  </p>
-  <div class="row" style="margin-bottom: 18px;">
-    <button id="cache-fetch-btn"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch and cache all now</button>
-    <span id="cache-fetch-status" style="font-size: 13px; color: var(--text-secondary);"></span>
-  </div>
-  <p style="color: var(--text-muted); font-size: 12px; margin: 0 0 20px;">
-    Needs internet the first time. Without the proxy above, most browsers will block this automatic download for cross-site images &mdash; if a part stays uncached after trying, use the manual upload below instead. Cached images are stored in this browser's local storage, which typically holds 5&ndash;10MB total &mdash; plenty for a few hundred thumbnails, but caching every part across all builds may eventually hit that limit.
-  </p>
-
-  <div style="border-top: 0.5px solid var(--border); padding-top: 16px;">
-    <p style="color: var(--text-secondary); margin: 0 0 8px;">
-      Or add images yourself: select image files whose filenames are the element ID (e.g. <code style="font-family: var(--font-mono);">6269079.jpg</code>). No internet needed for this step.
-    </p>
-    <input type="file" id="img-upload" accept="image/*" multiple />
-    <div class="row" style="margin-top: 8px;">
-      <span id="img-upload-status" style="font-size: 13px; color: var(--text-secondary);"></span>
-    </div>
-  </div>
-
-  <div class="row" style="margin-top: 20px;">
+  <div class="row" style="margin-top: 8px;">
     <button id="clear-cache-btn" class="icon-btn"><i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Clear all cached images</button>
   </div>
 </div>
@@ -957,7 +989,7 @@
   var cachedIds = new Set();
   var GH_SETTINGS_KEY = 'github-upload-settings-v1';
   var GH_SHA_MAP_KEY = 'github-upload-shas-v1';
-  var ghSettings = { repo: '', branch: '', path: '', token: '' };
+  var ghSettings = { repo: '', branch: '', token: '' };
   var ghShaMap = {};
   var attemptedCache = new Set();
   var checkedItems = new Set();
@@ -2808,6 +2840,7 @@
     if (tab === 'sets') renderSetsTab();
     if (tab === 'setparts') renderSetPartsSummaryTab();
     if (tab === 'drawers') renderDrawersTab();
+    if (tab === 'import'){ populateSetCsvTarget(); populateDrawerDropdowns(); }
   }
 
   function switchMainTab(mainTabId){
@@ -2831,6 +2864,15 @@
   });
   document.querySelectorAll('.sub-tabs .tab-btn').forEach(function(b){
     b.addEventListener('click', function(){ switchTab(b.dataset.tab); if (b.dataset.tab==='parts') renderParts(); });
+  });
+  document.querySelectorAll('.collapse-header').forEach(function(header){
+    header.addEventListener('click', function(){
+      var body = document.getElementById(header.dataset.collapseTarget);
+      if (!body) return;
+      var isOpen = body.style.display === 'block';
+      body.style.display = isOpen ? 'none' : 'block';
+      header.querySelector('i').className = 'ti ' + (isOpen ? 'ti-chevron-right' : 'ti-chevron-down');
+    });
   });
   document.getElementById('moc-search').addEventListener('input', renderOverview);
   document.getElementById('part-search').addEventListener('input', function(){ state.page = 1; renderParts(); });
@@ -3351,7 +3393,6 @@
       }
       document.getElementById('gh-repo-input').value = ghSettings.repo || '';
       document.getElementById('gh-branch-input').value = ghSettings.branch || '';
-      document.getElementById('gh-path-input').value = ghSettings.path || '';
       document.getElementById('gh-token-input').value = ghSettings.token || '';
     }).catch(function(){});
   }
@@ -3360,7 +3401,6 @@
     ghSettings = {
       repo: document.getElementById('gh-repo-input').value.trim(),
       branch: document.getElementById('gh-branch-input').value.trim(),
-      path: document.getElementById('gh-path-input').value.trim(),
       token: document.getElementById('gh-token-input').value.trim()
     };
     return storage.set(GH_SETTINGS_KEY, JSON.stringify(ghSettings), false);
@@ -3374,32 +3414,6 @@
 
   function saveGithubShaMap(){
     return storage.set(GH_SHA_MAP_KEY, JSON.stringify(ghShaMap), false);
-  }
-
-  function dataUrlToBase64(dataUrl){
-    var comma = dataUrl.indexOf(',');
-    return comma === -1 ? dataUrl : dataUrl.slice(comma + 1);
-  }
-
-  function getImageBase64(elementId){
-    if (cachedIds.has(elementId)){
-      return storage.get(IMG_PREFIX + elementId, false).then(function(res){
-        if (res && res.value) return dataUrlToBase64(res.value);
-        return fetchLiveImageBase64(elementId);
-      }).catch(function(){ return fetchLiveImageBase64(elementId); });
-    }
-    return fetchLiveImageBase64(elementId);
-  }
-
-  function fetchLiveImageBase64(elementId){
-    return fetch(fetchableUrl(liveImgUrl(elementId, 192)), { mode: 'cors' }).then(function(resp){
-      if (!resp.ok) throw new Error('Could not download image');
-      return resp.blob();
-    }).then(function(blob){
-      return blobToDataURL(blob);
-    }).then(function(dataUrl){
-      return dataUrlToBase64(dataUrl);
-    });
   }
 
   function putFileToGithub(repo, branch, path, token, base64Content, cacheKey, commitMessage){
@@ -3440,14 +3454,14 @@
     });
   }
 
-  var OFFICIAL_COLLECTION_PATH = 'data/official-collection.json';
+  var ALL_DATA_PATH = 'data/inventory-data.json';
 
   function utf8ToBase64(str){
     return btoa(unescape(encodeURIComponent(str)));
   }
 
-  function saveOfficialCollectionToGithub(){
-    var statusEl = document.getElementById('collection-sync-status');
+  function saveAllDataToGithub(){
+    var statusEl = document.getElementById('all-data-sync-status');
     var repo = ghSettings.repo;
     var branch = ghSettings.branch || 'main';
     var token = ghSettings.token;
@@ -3456,11 +3470,19 @@
       statusEl.textContent = 'Set up your repo and token on the Images tab first.';
       return;
     }
-    var payload = JSON.stringify({ ownedSets: ownedSets, setParts: setParts }, null, 2);
+    var payload = JSON.stringify({
+      rows: state.rows.map(objToRow),
+      checkedItems: Array.from(checkedItems),
+      priorityLabels: priorityLabels,
+      ownedSets: ownedSets,
+      setParts: setParts,
+      drawers: drawers,
+      drawerParts: drawerParts
+    }, null, 2);
     var base64 = utf8ToBase64(payload);
     statusEl.style.color = 'var(--text-secondary)';
     statusEl.textContent = 'Saving\u2026';
-    putFileToGithub(repo, branch, OFFICIAL_COLLECTION_PATH, token, base64, 'official-collection', 'Update official LEGO collection data').then(function(){
+    putFileToGithub(repo, branch, ALL_DATA_PATH, token, base64, 'inventory-data', 'Update inventory data').then(function(){
       statusEl.style.color = 'var(--text-success)';
       statusEl.textContent = 'Saved to your site. It may take a minute to go live.';
     }).catch(function(err){
@@ -3469,31 +3491,46 @@
     });
   }
 
-  function loadOfficialCollectionFromGithub(silent){
-    var statusEl = document.getElementById('collection-sync-status');
+  function loadAllDataFromGithub(silent){
+    var statusEl = document.getElementById('all-data-sync-status');
     if (!silent){
-      if (!confirm('Replace your current sets and set parts in this browser with the version saved on your site? This cannot be undone.')) return Promise.resolve(false);
+      if (!confirm('Replace ALL data in this browser \u2014 builds, parts, priorities, shopping checkmarks, sets, and drawers \u2014 with the version saved on your site? This cannot be undone.')) return Promise.resolve(false);
       statusEl.style.color = 'var(--text-secondary)';
       statusEl.textContent = 'Loading\u2026';
     }
-    return fetch(OFFICIAL_COLLECTION_PATH, { cache: 'no-store' }).then(function(resp){
+    return fetch(ALL_DATA_PATH, { cache: 'no-store' }).then(function(resp){
       if (!resp.ok) throw new Error('Not found on your site yet.');
       return resp.json();
     }).then(function(data){
-      if (data && Array.isArray(data.ownedSets) && Array.isArray(data.setParts)){
-        ownedSets = data.ownedSets;
-        setParts = data.setParts;
-        saveOwnedSets();
-        saveSetParts();
-        if (state.tab === 'sets') renderSetsTab();
-        if (state.tab === 'setparts') renderSetPartsSummaryTab();
-        if (!silent){
-          statusEl.style.color = 'var(--text-success)';
-          statusEl.textContent = 'Loaded from your site.';
-        }
-        return true;
+      if (!data || typeof data !== 'object') throw new Error('Unexpected file format.');
+      if (Array.isArray(data.rows)) state.rows = data.rows.map(rowToObj);
+      if (Array.isArray(data.checkedItems)) checkedItems = new Set(data.checkedItems);
+      if (Array.isArray(data.priorityLabels)) priorityLabels = data.priorityLabels;
+      if (Array.isArray(data.ownedSets)) ownedSets = data.ownedSets;
+      if (Array.isArray(data.setParts)) setParts = data.setParts;
+      if (Array.isArray(data.drawers)) drawers = data.drawers;
+      if (Array.isArray(data.drawerParts)) drawerParts = data.drawerParts;
+
+      saveState();
+      saveChecklist();
+      savePriorityLabels();
+      saveOwnedSets();
+      saveSetParts();
+      saveDrawers();
+      saveDrawerParts();
+
+      render();
+      if (state.tab === 'sets') renderSetsTab();
+      if (state.tab === 'setparts') renderSetPartsSummaryTab();
+      if (state.tab === 'drawers') renderDrawersTab();
+      if (state.tab === 'shopping'){ populateShopMocList(); renderShoppingList(); }
+      if (state.tab === 'inventory') renderInventoryTab();
+
+      if (!silent){
+        statusEl.style.color = 'var(--text-success)';
+        statusEl.textContent = 'Loaded from your site.';
       }
-      throw new Error('Unexpected file format.');
+      return true;
     }).catch(function(err){
       if (!silent){
         statusEl.style.color = 'var(--text-danger)';
@@ -3503,71 +3540,10 @@
     });
   }
 
-  document.getElementById('save-collection-github-btn').addEventListener('click', saveOfficialCollectionToGithub);
-  document.getElementById('load-collection-github-btn').addEventListener('click', function(){ loadOfficialCollectionFromGithub(false); });
+  document.getElementById('save-all-data-github-btn').addEventListener('click', saveAllDataToGithub);
+  document.getElementById('load-all-data-github-btn').addEventListener('click', function(){ loadAllDataFromGithub(false); });
 
-  function uploadImagesToGithub(){
-    var statusEl = document.getElementById('gh-upload-status');
-    saveGithubSettings();
-    var repo = ghSettings.repo;
-    var branch = ghSettings.branch || 'main';
-    var pathPrefix = ghSettings.path || 'images/';
-    if (pathPrefix && !pathPrefix.endsWith('/')) pathPrefix += '/';
-    var token = ghSettings.token;
-
-    if (!repo || repo.indexOf('/') === -1){
-      statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Enter your repo as owner/repo.';
-      return;
-    }
-    if (!token){
-      statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Enter a GitHub personal access token.';
-      return;
-    }
-
-    var ids = Array.from(new Set(state.rows.map(function(r){ return r.elementId; }).filter(Boolean)));
-    if (!ids.length){
-      statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'No element IDs found in your current inventory.';
-      return;
-    }
-
-    var btn = document.getElementById('gh-upload-btn');
-    btn.disabled = true;
-    var total = ids.length, done = 0, ok = 0, failed = 0;
-    var CONCURRENCY = 3;
-    var idx = 0;
-
-    function next(){
-      if (idx >= total){
-        if (done >= total){
-          btn.disabled = false;
-          saveGithubShaMap();
-          statusEl.style.color = ok ? 'var(--text-success)' : 'var(--text-danger)';
-          statusEl.textContent = 'Uploaded ' + ok + ' of ' + total + ' images to ' + repo + '.' + (failed ? (' ' + failed + ' failed.') : '');
-        }
-        return;
-      }
-      var elementId = ids[idx++];
-      getImageBase64(elementId).then(function(base64){
-        return putFileToGithub(repo, branch, pathPrefix + elementId + '.jpg', token, base64, elementId, 'Add/update image for element ' + elementId);
-      }).then(function(){
-        ok++;
-      }).catch(function(){
-        failed++;
-      }).then(function(){
-        done++;
-        statusEl.style.color = 'var(--text-secondary)';
-        statusEl.textContent = 'Uploading\u2026 ' + done + ' / ' + total + ' (' + ok + ' ok, ' + failed + ' failed)';
-        next();
-      });
-    }
-    for (var i = 0; i < CONCURRENCY && i < total; i++) next();
-  }
-
-  document.getElementById('gh-upload-btn').addEventListener('click', uploadImagesToGithub);
-  ['gh-repo-input','gh-branch-input','gh-path-input','gh-token-input'].forEach(function(id){
+  ['gh-repo-input','gh-branch-input','gh-token-input'].forEach(function(id){
     document.getElementById(id).addEventListener('change', saveGithubSettings);
   });
 
@@ -4202,11 +4178,12 @@
   });
 
   function bootApp(){
-    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){
-      if (!ownedSets.length && !setParts.length){
-        return loadOfficialCollectionFromGithub(true);
+    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(function(){
+      var hasAnyData = ownedSets.length || setParts.length || drawers.length || drawerParts.length;
+      if (!hasAnyData){
+        return loadAllDataFromGithub(true);
       }
-    }).then(function(){ return loadRebrickableKey(); }).then(function(){ return loadSetProxyPref(); }).then(function(){ return loadGithubSettings(); }).then(function(){ return loadGithubShaMap(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(render);
+    }).then(function(){ return loadRebrickableKey(); }).then(function(){ return loadSetProxyPref(); }).then(function(){ return loadGithubSettings(); }).then(function(){ return loadGithubShaMap(); }).then(render);
   }
 
   bootApp();
