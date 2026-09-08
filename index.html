@@ -278,7 +278,6 @@
   <div class="row">
     <span id="save-status" style="font-size: 12px; color: var(--text-muted);"></span>
     <button id="export-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Export CSV</button>
-    <button id="reset-btn" class="icon-btn"><i class="ti ti-refresh" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Reset to imported data</button>
   </div>
 </div>
 
@@ -599,6 +598,7 @@
   </p>
   <div class="controls">
     <input type="text" id="sp-search" placeholder="Search part #, description, color" />
+    <select id="sp-set-filter"><option value="">All sets</option></select>
     <select id="sp-color-filter"><option value="">All colors</option></select>
   </div>
   <div class="tbl-wrap">
@@ -1059,12 +1059,6 @@
     }).catch(function(){
       state.rows = seedData();
     });
-  }
-
-  function resetToImported(){
-    state.rows = seedData();
-    saveState();
-    render();
   }
 
   function statusFor(row){
@@ -1974,6 +1968,15 @@
   function renderSetPartsSummaryTab(){
     var q = (document.getElementById('sp-search').value || '').toLowerCase();
     var colorFilter = document.getElementById('sp-color-filter').value;
+    var setFilter = document.getElementById('sp-set-filter').value;
+
+    var setSel = document.getElementById('sp-set-filter');
+    var curSet = setSel.value;
+    setSel.innerHTML = '<option value="">All sets</option>' + ownedSets.map(function(s){
+      var label = s.setNum + (s.name ? ' \u2014 ' + s.name : '');
+      return '<option value="'+escapeHtml(s.setNum)+'">'+escapeHtml(label)+'</option>';
+    }).join('');
+    setSel.value = curSet;
 
     var colorSel = document.getElementById('sp-color-filter');
     var curColor = colorSel.value;
@@ -1983,6 +1986,7 @@
 
     var items = computeSetInventory().filter(function(it){
       if (colorFilter && it.color !== colorFilter) return false;
+      if (setFilter && !it.sets.has(setFilter)) return false;
       if (q){
         var hay = (it.partNum+' '+it.desc+' '+it.color).toLowerCase();
         if (hay.indexOf(q) === -1) return false;
@@ -2027,6 +2031,7 @@
   }
 
   document.getElementById('sp-search').addEventListener('input', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
+  document.getElementById('sp-set-filter').addEventListener('change', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
   document.getElementById('sp-color-filter').addEventListener('change', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
   document.getElementById('sp-prev-page').addEventListener('click', function(){ if (spState.page>1){ spState.page--; renderSetPartsSummaryTab(); } });
   document.getElementById('sp-next-page').addEventListener('click', function(){ spState.page++; renderSetPartsSummaryTab(); });
@@ -2947,9 +2952,6 @@
   document.getElementById('export-btn').addEventListener('click', exportShoppingList);
   document.getElementById('top-report-btn').addEventListener('click', exportTopNeededReport);
   document.getElementById('top-report-pdf-btn').addEventListener('click', generateTop20PDF);
-  document.getElementById('reset-btn').addEventListener('click', function(){
-    if (confirm('Reset all tracked quantities back to the originally imported sheet? This clears your edits.')) resetToImported();
-  });
   document.querySelectorAll('#lego-inv-root th[data-sort]').forEach(function(th){
     th.addEventListener('click', function(){
       var col = th.dataset.sort;
