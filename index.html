@@ -798,6 +798,19 @@
     </div>
   </div>
 
+  <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 1.25rem;">
+    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--lego-black); font-weight: 800;">Check which images are missing from your site</p>
+    <p style="margin: 0 0 10px; color: var(--text-secondary);">
+      Checks every part image used across your builds, sets, and drawers against <code>images/&lt;element id&gt;.jpg</code> on this live site, and lists exactly which ones aren't there yet &mdash; handy for confirming an upload actually went through, or spotting gaps after a big batch.
+    </p>
+    <div class="row" style="margin-bottom: 8px;">
+      <button id="check-missing-images-btn"><i class="ti ti-list-search" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Check for missing images</button>
+      <button id="export-missing-images-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Export list (CSV)</button>
+      <span id="missing-images-status" style="font-size: 13px; color: var(--text-secondary);"></span>
+    </div>
+    <div id="missing-images-list" style="max-height: 260px; overflow-y: auto;"></div>
+  </div>
+
   <div class="metric-grid" style="grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); margin-bottom: 1rem;">
     <div class="metric"><div class="label">Unique parts with an element ID</div><div class="value" id="img-total-count">-</div></div>
     <div class="metric"><div class="label">Cached for offline use</div><div class="value" id="img-cached-count">-</div></div>
@@ -3223,6 +3236,112 @@
   function localImgUrl(elementId){
     return LOCAL_IMG_DIR + encodeURIComponent(elementId) + '.jpg';
   }
+
+  var missingImageIds = [];
+
+  function collectAllElementIds(){
+    var ids = new Set();
+    state.rows.forEach(function(r){ if (r.elementId) ids.add(r.elementId); });
+    setParts.forEach(function(r){ if (r.elementId) ids.add(r.elementId); });
+    drawerParts.forEach(function(r){ if (r.elementId) ids.add(r.elementId); });
+    return Array.from(ids);
+  }
+
+  function findPartInfoForElementId(elementId){
+    var r = state.rows.find(function(x){ return x.elementId === elementId; }) ||
+      setParts.find(function(x){ return x.elementId === elementId; }) ||
+      drawerParts.find(function(x){ return x.elementId === elementId; });
+    return r ? { partNum: r.partNum || '', desc: r.desc || '', color: r.color || '' } : { partNum: '', desc: '', color: '' };
+  }
+
+  function checkOneImageExists(elementId){
+    return fetch(localImgUrl(elementId), { method: 'HEAD', cache: 'no-store' }).then(function(resp){
+      return resp.ok;
+    }).catch(function(){ return false; });
+  }
+
+  function renderMissingImagesList(){
+    var container = document.getElementById('missing-images-list');
+    container.innerHTML = '';
+    if (!missingImageIds.length) return;
+    missingImageIds.forEach(function(id){
+      var info = findPartInfoForElementId(id);
+      var row = document.createElement('div');
+      row.className = 'top-needed-item';
+      row.style.cursor = 'default';
+      var label = info.partNum ? (escapeHtml(info.color) + ' ' + escapeHtml(info.desc) + ' <span class="part-meta">#' + escapeHtml(info.partNum) + '</span>') : '(no matching part on file)';
+      row.innerHTML =
+        '<span class="part-thumb-wrap"><i class="ti ti-photo-off" aria-hidden="true"></i></span>' +
+        '<span class="top-needed-desc"><strong>' + escapeHtml(id) + '</strong> &mdash; ' + label + '</span>';
+      container.appendChild(row);
+    });
+  }
+
+  function checkForMissingImages(){
+    var statusEl = document.getElementById('missing-images-status');
+    var ids = collectAllElementIds();
+    if (!ids.length){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'No element IDs found across your builds, sets, or drawers to check.';
+      return;
+    }
+    var btn = document.getElementById('check-missing-images-btn');
+    btn.disabled = true;
+    missingImageIds = [];
+    document.getElementById('missing-images-list').innerHTML = '';
+    var total = ids.length, done = 0, found = 0;
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Checking\u2026 0 / ' + total;
+    var CONCURRENCY = 8;
+    var idx = 0;
+    function next(){
+      if (idx >= total){
+        if (done >= total){
+          btn.disabled = false;
+          statusEl.style.color = missingImageIds.length ? 'var(--text-danger)' : 'var(--text-success)';
+          statusEl.textContent = found.toLocaleString() + ' of ' + total.toLocaleString() + ' images found on your site. ' +
+            missingImageIds.length.toLocaleString() + ' missing.';
+          renderMissingImagesList();
+        }
+        return;
+      }
+      var id = ids[idx++];
+      checkOneImageExists(id).then(function(exists){
+        if (exists) found++; else missingImageIds.push(id);
+      }).then(function(){
+        done++;
+        statusEl.textContent = 'Checking\u2026 ' + done + ' / ' + total;
+        next();
+      });
+    }
+    for (var i = 0; i < CONCURRENCY && i < total; i++) next();
+  }
+
+  document.getElementById('check-missing-images-btn').addEventListener('click', checkForMissingImages);
+  document.getElementById('export-missing-images-btn').addEventListener('click', function(){
+    if (!missingImageIds.length){
+      alert('Nothing to export \u2014 click "Check for missing images" first.');
+      return;
+    }
+    var header = ['Element ID','Part Number','Color','Description'];
+    var lines = [header.map(csvEscape).join(',')];
+    missingImageIds.forEach(function(id){
+      var info = findPartInfoForElementId(id);
+      lines.push([id, info.partNum, info.color, info.desc].map(csvEscape).join(','));
+    });
+    var csv = lines.join('\r\n');
+    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    var d = new Date();
+    var stamp = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+    a.href = url;
+    a.download = 'missing-part-images-'+stamp+'.csv';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+  });
 
   function loadFromCacheOrLive(elementId, img, link){
     if (cachedIds.has(elementId)){
