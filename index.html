@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>MOC parts inventory</title>
+<title>Lego Collection Inventory</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.47.0/iconfont/tabler-icons.min.css">
 <style>
   * { box-sizing: border-box; }
@@ -22,7 +22,7 @@
 <body>
 <div class="page-wrap">
 <div id="lego-inv-root">
-<h2 class="sr-only">Lego MOC parts inventory tracker: search, filter, and track parts on hand across 44 builds</h2>
+<h2 class="sr-only">Lego Collection Inventory: search, filter, and track parts on hand across MOC builds and official sets</h2>
 <style>
 #lego-inv-root {
   --lego-red: #D9291D;
@@ -70,10 +70,15 @@
 #lego-inv-root .lego-title { font-size: 19px; font-weight: 800; letter-spacing: 0.02em; text-transform: uppercase; margin: 0; color: var(--lego-black); }
 #lego-inv-root .lego-subtitle { font-size: 13px; color: var(--text-secondary); margin: 2px 0 0; }
 #lego-inv-root .tabs { display: flex; gap: 4px; margin-bottom: 1rem; border-bottom: 3px solid var(--border); }
+#lego-inv-root .sub-tabs { border-bottom: 2px solid var(--border); padding-left: 4px; margin-top: -0.5rem; }
+#lego-inv-root .sub-tabs .tab-btn { font-size: 12px; padding: 6px 4px; }
 #lego-inv-root .tab-btn { display: flex; align-items: center; gap: 6px; background: none; border: none; border-bottom: 3px solid transparent; margin-bottom: -3px; padding: 8px 4px; margin-right: 16px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); cursor: pointer; }
 #lego-inv-root .tab-btn.active { color: var(--lego-black); border-bottom-color: var(--lego-blue); }
 #lego-inv-root .tab-dot { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
 #lego-inv-root .metric-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 12px; margin-bottom: 1.5rem; }
+#lego-inv-root .overview-group { background: var(--surface-2); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px 14px 0; }
+#lego-inv-root .overview-group .metric-grid { margin-bottom: 12px; }
+#lego-inv-root .overview-group-title { margin: 0 0 10px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); font-weight: 700; }
 #lego-inv-root .metric { background: var(--surface-1); border: 2px solid var(--border); border-left: 5px solid var(--lego-blue); border-radius: var(--radius); padding: 0.75rem 1rem; }
 #lego-inv-root .metric .label { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.02em; }
 #lego-inv-root .metric .value { font-size: 22px; font-weight: 800; margin-top: 2px; color: var(--lego-black); }
@@ -148,6 +153,7 @@
 #lego-inv-root .shop-group-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-secondary); margin: 10px 0 3px; padding-left: 2px; break-after: avoid; }
 #lego-inv-root .shop-items .shop-group-title:first-child { margin-top: 0; }
 #lego-inv-root .row-delete-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 4px; border-radius: 6px; }
+#lego-inv-root td.actions-cell { white-space: nowrap; }
 #lego-inv-root .row-delete-btn:hover { color: var(--lego-red); background: var(--bg-danger); }
 #lego-inv-root .priority-input { width: 100%; min-width: 0; padding: 3px 6px; height: 26px; font-size: 12px; }
 #lego-inv-root .qty-input { width: 52px; height: 28px; padding: 2px 4px; text-align: center; }
@@ -245,22 +251,17 @@
     <div class="body"></div>
   </div>
   <div>
-    <h1 class="lego-title">MOC parts inventory</h1>
+    <h1 class="lego-title">Lego Collection Inventory</h1>
     <p class="lego-subtitle">Track what you have, what's short, and what to order next</p>
   </div>
 </div>
 
 <div class="row no-print top-action-bar" style="justify-content: space-between; margin-bottom: 1rem;">
-  <div class="tabs" id="tabs" style="border-bottom: none; margin-bottom: 0;">
-    <button class="tab-btn active" data-tab="overview"><span class="tab-dot" style="background:var(--lego-blue);"></span>Overview</button>
-    <button class="tab-btn" data-tab="parts"><span class="tab-dot" style="background:var(--lego-yellow);"></span>Parts</button>
-    <button class="tab-btn" data-tab="shopping"><span class="tab-dot" style="background:var(--lego-orange);"></span>Shopping List</button>
-    <button class="tab-btn" data-tab="inventory"><span class="tab-dot" style="background:var(--lego-azure);"></span>Full Inventory</button>
-    <button class="tab-btn" data-tab="sets"><span class="tab-dot" style="background:var(--lego-purple);"></span>Sets</button>
-    <button class="tab-btn" data-tab="setparts"><span class="tab-dot" style="background:var(--lego-brown);"></span>Set Parts</button>
-    <button class="tab-btn" data-tab="drawers"><span class="tab-dot" style="background:var(--lego-lime);"></span>Drawers</button>
-    <button class="tab-btn" data-tab="import"><span class="tab-dot" style="background:var(--lego-blue);"></span>Import</button>
-    <button class="tab-btn" data-tab="images"><span class="tab-dot" style="background:var(--lego-green);"></span>Images</button>
+  <div class="tabs" id="main-tabs" style="border-bottom: none; margin-bottom: 0;">
+    <button class="tab-btn active" data-maintab="overview"><span class="tab-dot" style="background:var(--lego-blue);"></span>Overview</button>
+    <button class="tab-btn" data-maintab="moc-collection"><span class="tab-dot" style="background:var(--lego-yellow);"></span>MOC Collection</button>
+    <button class="tab-btn" data-maintab="official-collection"><span class="tab-dot" style="background:var(--lego-purple);"></span>Official LEGO Collection</button>
+    <button class="tab-btn" data-maintab="data-tools"><span class="tab-dot" style="background:var(--lego-lime);"></span>Data &amp; Tools</button>
   </div>
   <div class="row">
     <span id="save-status" style="font-size: 12px; color: var(--text-muted);"></span>
@@ -269,8 +270,38 @@
   </div>
 </div>
 
+<div class="tabs sub-tabs no-print" id="sub-tabs-moc-collection" style="display:none;">
+  <button class="tab-btn" data-tab="parts"><span class="tab-dot" style="background:var(--lego-yellow);"></span>MOC Parts</button>
+  <button class="tab-btn" data-tab="shopping"><span class="tab-dot" style="background:var(--lego-orange);"></span>Shopping List</button>
+  <button class="tab-btn" data-tab="inventory"><span class="tab-dot" style="background:var(--lego-azure);"></span>MOC Part Inventory</button>
+</div>
+<div class="tabs sub-tabs no-print" id="sub-tabs-official-collection" style="display:none;">
+  <button class="tab-btn" data-tab="sets"><span class="tab-dot" style="background:var(--lego-purple);"></span>Official Sets</button>
+  <button class="tab-btn" data-tab="setparts"><span class="tab-dot" style="background:var(--lego-brown);"></span>Official Set Parts</button>
+</div>
+<div class="tabs sub-tabs no-print" id="sub-tabs-data-tools" style="display:none;">
+  <button class="tab-btn" data-tab="drawers"><span class="tab-dot" style="background:var(--lego-lime);"></span>Drawers</button>
+  <button class="tab-btn" data-tab="import"><span class="tab-dot" style="background:var(--lego-blue);"></span>Import</button>
+  <button class="tab-btn" data-tab="images"><span class="tab-dot" style="background:var(--lego-green);"></span>Images</button>
+</div>
+
 <div id="tab-overview">
-  <div class="metric-grid" id="metrics"></div>
+  <div id="grand-total-section" style="text-align:center; background: var(--surface-1); border: 2px solid var(--lego-blue); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem;">
+    <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Total pieces across your whole collection</div>
+    <div id="grand-total-value" style="font-size: 36px; font-weight: 800; color: var(--lego-black); line-height:1.2;">-</div>
+    <div style="font-size: 11px; color: var(--text-muted);">MOC pieces on hand + official set pieces</div>
+  </div>
+
+  <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:1.5rem;">
+    <div class="overview-group" style="flex:2; min-width:280px;">
+      <p class="overview-group-title">MOC Builds</p>
+      <div class="metric-grid" id="moc-metrics"></div>
+    </div>
+    <div class="overview-group" style="flex:1; min-width:200px;">
+      <p class="overview-group-title">Official Sets</p>
+      <div class="metric-grid" id="sets-metrics"></div>
+    </div>
+  </div>
   <div id="top-needed-section" style="margin-bottom: 1.5rem;">
     <div class="row" style="justify-content: space-between; margin-bottom: 8px;">
       <button id="top-needed-toggle-btn" class="icon-btn" style="padding: 3px 10px; display:flex; align-items:center; gap:6px;">
@@ -558,7 +589,7 @@
 
 <div id="tab-setparts" style="display:none;">
   <p style="color: var(--text-secondary); margin: 0 0 12px;">
-    Every part combined across all your owned sets, by part number and color &mdash; the set-inventory equivalent of the Full Inventory tab.
+    Every part combined across all your owned sets, by part number and color &mdash; the set-inventory equivalent of the MOC Part Inventory tab.
   </p>
   <div class="controls">
     <input type="text" id="sp-search" placeholder="Search part #, description, color" />
@@ -636,6 +667,21 @@
     <span id="drawer-add-part-status" style="font-size:13px; color:var(--text-secondary);"></span>
   </div>
 
+  <div id="assign-to-moc-panel" style="display:none; background: var(--surface-1); border: 2px solid var(--lego-blue); border-radius: var(--radius); padding: 12px; margin-bottom: 16px;">
+    <p style="margin:0 0 8px; font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary);">Assign to a MOC build</p>
+    <p id="assign-part-label" style="margin:0 0 10px; font-weight:700;"></p>
+    <div class="controls" style="margin-bottom: 8px;">
+      <input type="text" id="assign-moc-input" placeholder="Build name" list="moc-options" style="min-width:200px;" />
+      <input type="number" id="assign-qty-input" min="1" placeholder="Qty to move" style="width:120px;" />
+    </div>
+    <div class="row">
+      <button id="assign-confirm-btn"><i class="ti ti-arrow-right" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Move to build</button>
+      <button id="assign-cancel-btn" class="icon-btn">Cancel</button>
+      <span id="assign-status" style="font-size:13px; color:var(--text-secondary);"></span>
+    </div>
+    <p style="color: var(--text-muted); font-size: 12px; margin: 8px 0 0;">Moves the quantity out of this drawer and adds it to that build's "On hand" count. If the build doesn't already need this part, a new line is added with 0 needed &mdash; edit "Need" on the MOC Parts tab afterward if you want.</p>
+  </div>
+
   <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 4px;">Find a part &amp; see its drawer</p>
   <div class="controls">
     <input type="text" id="drawer-parts-search" placeholder="Search part #, description, color, or drawer" />
@@ -646,13 +692,13 @@
     <table>
       <thead>
         <tr>
-          <th style="width:12%" data-dp-sort="drawerId">Drawer</th>
+          <th style="width:11%" data-dp-sort="drawerId">Drawer</th>
           <th style="width:6%">Image</th>
-          <th style="width:12%" data-dp-sort="partNum">Part #</th>
-          <th style="width:12%" data-dp-sort="color">Color</th>
-          <th style="width:42%" data-dp-sort="desc">Description</th>
-          <th style="width:10%" data-dp-sort="qty">Qty</th>
-          <th style="width:6%"></th>
+          <th style="width:11%" data-dp-sort="partNum">Part #</th>
+          <th style="width:11%" data-dp-sort="color">Color</th>
+          <th style="width:38%" data-dp-sort="desc">Description</th>
+          <th style="width:9%" data-dp-sort="qty">Qty</th>
+          <th style="width:14%"></th>
         </tr>
       </thead>
       <tbody id="drawer-parts-tbody"></tbody>
@@ -986,30 +1032,46 @@
 
   function renderOverview(){
     var mocs = computeMocs();
-    var totalNeed = 0, totalHave = 0, totalLines = 0, linesOk = 0;
-    state.rows.forEach(function(r){ totalNeed += r.qty; totalHave += Math.min(r.onHand,r.qty); totalLines++; if (statusFor(r)==='ok') linesOk++; });
+    var totalNeed = 0, totalHave = 0;
+    state.rows.forEach(function(r){ totalNeed += r.qty; totalHave += Math.min(r.onHand,r.qty); });
     var pct = totalNeed ? Math.round(100*totalHave/totalNeed) : 100;
     var totalSetPieces = setParts.reduce(function(sum, r){
       var setInfo = ownedSets.find(function(s){ return s.setNum === r.setNum; });
       return sum + (r.qtyPerSet * (setInfo ? setInfo.qty : 1));
     }, 0);
-    var mg = document.getElementById('metrics');
-    mg.innerHTML = '';
-    var metrics = [
+    var grandTotal = totalHave + totalSetPieces;
+    document.getElementById('grand-total-value').textContent = grandTotal.toLocaleString();
+
+    var mocMg = document.getElementById('moc-metrics');
+    mocMg.innerHTML = '';
+    var mocMetrics = [
       ['Builds', mocs.length],
-      ['Part lines', totalLines.toLocaleString()],
-      ['Pieces needed', totalNeed.toLocaleString()],
-      ['Pieces on hand', totalHave.toLocaleString()],
-      ['Overall complete', pct + '%'],
-      ['Pieces from sets', totalSetPieces.toLocaleString()]
+      ['MOC Parts Needed', totalNeed.toLocaleString()],
+      ['MOC Pieces On Hand', totalHave.toLocaleString()],
+      ['Overall Complete', pct + '%']
     ];
-    var accentColors = ['var(--lego-blue)','var(--lego-yellow)','var(--lego-blue)','var(--lego-green)','var(--lego-blue)','var(--lego-purple)'];
-    metrics.forEach(function(m, i){
+    var mocAccent = ['var(--lego-blue)','var(--lego-yellow)','var(--lego-green)','var(--lego-blue)'];
+    mocMetrics.forEach(function(m, i){
       var d = document.createElement('div');
       d.className = 'metric';
-      d.style.borderLeftColor = accentColors[i % accentColors.length];
+      d.style.borderLeftColor = mocAccent[i % mocAccent.length];
       d.innerHTML = '<div class="label">'+m[0]+'</div><div class="value">'+m[1]+'</div>';
-      mg.appendChild(d);
+      mocMg.appendChild(d);
+    });
+
+    var setsMg = document.getElementById('sets-metrics');
+    setsMg.innerHTML = '';
+    var setsMetrics = [
+      ['Official Sets', ownedSets.length],
+      ['Pieces', totalSetPieces.toLocaleString()]
+    ];
+    var setsAccent = ['var(--lego-purple)','var(--lego-brown)'];
+    setsMetrics.forEach(function(m, i){
+      var d = document.createElement('div');
+      d.className = 'metric';
+      d.style.borderLeftColor = setsAccent[i % setsAccent.length];
+      d.innerHTML = '<div class="label">'+m[0]+'</div><div class="value">'+m[1]+'</div>';
+      setsMg.appendChild(d);
     });
 
     renderTopNeeded();
@@ -2069,6 +2131,13 @@
       });
       tr.querySelector('.qty-cell').appendChild(qtyInput);
 
+      var assignBtn = document.createElement('button');
+      assignBtn.className = 'row-delete-btn';
+      assignBtn.title = 'Assign some of these to a MOC build';
+      assignBtn.innerHTML = '<i class="ti ti-arrow-right" style="font-size:15px;" aria-hidden="true"></i>';
+      assignBtn.addEventListener('click', function(){ openAssignPanel(r); });
+      tr.querySelector('.actions-cell').appendChild(assignBtn);
+
       var delBtn = document.createElement('button');
       delBtn.className = 'row-delete-btn';
       delBtn.title = 'Remove this part line';
@@ -2092,6 +2161,75 @@
     populateDrawerDropdowns();
     renderDrawerPartsTable();
   }
+
+  var assignContext = null;
+
+  function openAssignPanel(row){
+    assignContext = row;
+    var drawerInfo = drawers.find(function(d){ return d.id === row.drawerId; });
+    var drawerLabel = drawerInfo ? drawerInfo.label : row.drawerId;
+    document.getElementById('assign-part-label').textContent =
+      row.qty + '\u00d7 ' + (row.color || '') + ' ' + (row.desc || row.partNum) + ' (#' + row.partNum + ') from ' + drawerLabel;
+    document.getElementById('assign-moc-input').value = '';
+    document.getElementById('assign-qty-input').value = row.qty;
+    document.getElementById('assign-qty-input').max = row.qty;
+    document.getElementById('assign-status').textContent = '';
+    document.getElementById('assign-to-moc-panel').style.display = 'block';
+    document.getElementById('assign-to-moc-panel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function closeAssignPanel(){
+    assignContext = null;
+    document.getElementById('assign-to-moc-panel').style.display = 'none';
+  }
+
+  document.getElementById('assign-cancel-btn').addEventListener('click', closeAssignPanel);
+
+  document.getElementById('assign-confirm-btn').addEventListener('click', function(){
+    var statusEl = document.getElementById('assign-status');
+    if (!assignContext){ closeAssignPanel(); return; }
+    var mocName = document.getElementById('assign-moc-input').value.trim();
+    var qty = parseInt(document.getElementById('assign-qty-input').value, 10);
+    if (!mocName){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Enter or pick a build first.';
+      return;
+    }
+    if (isNaN(qty) || qty < 1){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Enter a quantity of at least 1.';
+      return;
+    }
+    if (qty > assignContext.qty){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Only ' + assignContext.qty + ' available in this drawer.';
+      return;
+    }
+
+    var match = state.rows.find(function(r){
+      return r.moc.toLowerCase() === mocName.toLowerCase() && r.partNum === assignContext.partNum && r.color === assignContext.color;
+    });
+    if (match){
+      match.onHand += qty;
+    } else {
+      state.rows.push({
+        partNum: assignContext.partNum, qty: 0, color: assignContext.color, desc: assignContext.desc,
+        moc: mocName, elementId: assignContext.elementId, onHand: qty, built: false, priority: ''
+      });
+    }
+    saveState();
+
+    assignContext.qty -= qty;
+    if (assignContext.qty <= 0){
+      var idx = drawerParts.indexOf(assignContext);
+      if (idx !== -1) drawerParts.splice(idx, 1);
+    }
+    saveDrawerParts();
+
+    closeAssignPanel();
+    renderDrawersTab();
+    render();
+  });
 
   document.getElementById('drawer-add-btn').addEventListener('click', function(){
     var label = document.getElementById('drawer-label-input').value.trim();
@@ -2462,9 +2600,33 @@
     ROOT.classList.remove('printing-sets');
   });
 
+  var TAB_TO_GROUP = {
+    overview: 'overview',
+    parts: 'moc-collection', shopping: 'moc-collection', inventory: 'moc-collection',
+    sets: 'official-collection', setparts: 'official-collection',
+    drawers: 'data-tools', import: 'data-tools', images: 'data-tools'
+  };
+  var GROUP_DEFAULT_LEAF = {
+    'moc-collection': 'parts',
+    'official-collection': 'sets',
+    'data-tools': 'drawers'
+  };
+  var lastLeafForGroup = { 'moc-collection': 'parts', 'official-collection': 'sets', 'data-tools': 'drawers' };
+
   function switchTab(tab){
     state.tab = tab;
-    document.querySelectorAll('#tabs .tab-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.tab === tab); });
+    var group = TAB_TO_GROUP[tab] || 'overview';
+    if (group !== 'overview') lastLeafForGroup[group] = tab;
+
+    document.querySelectorAll('#main-tabs .tab-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.maintab === group); });
+    ['moc-collection','official-collection','data-tools'].forEach(function(g){
+      var row = document.getElementById('sub-tabs-' + g);
+      if (row) row.style.display = (g === group) ? 'flex' : 'none';
+    });
+    if (group !== 'overview'){
+      document.querySelectorAll('#sub-tabs-' + group + ' .tab-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.tab === tab); });
+    }
+
     document.getElementById('tab-overview').style.display = tab === 'overview' ? 'block' : 'none';
     document.getElementById('tab-parts').style.display = tab === 'parts' ? 'block' : 'none';
     document.getElementById('tab-shopping').style.display = tab === 'shopping' ? 'block' : 'none';
@@ -2482,13 +2644,27 @@
     if (tab === 'drawers') renderDrawersTab();
   }
 
+  function switchMainTab(mainTabId){
+    if (mainTabId === 'overview'){
+      switchTab('overview');
+      renderOverview();
+      return;
+    }
+    var leaf = lastLeafForGroup[mainTabId] || GROUP_DEFAULT_LEAF[mainTabId];
+    switchTab(leaf);
+    if (leaf === 'parts') renderParts();
+  }
+
   function render(){
     renderOverview();
     renderParts();
   }
 
-  document.querySelectorAll('#tabs .tab-btn').forEach(function(b){
-    b.addEventListener('click', function(){ switchTab(b.dataset.tab); if (b.dataset.tab==='parts') renderParts(); else if (b.dataset.tab==='overview') renderOverview(); });
+  document.querySelectorAll('#main-tabs .tab-btn').forEach(function(b){
+    b.addEventListener('click', function(){ switchMainTab(b.dataset.maintab); });
+  });
+  document.querySelectorAll('.sub-tabs .tab-btn').forEach(function(b){
+    b.addEventListener('click', function(){ switchTab(b.dataset.tab); if (b.dataset.tab==='parts') renderParts(); });
   });
   document.getElementById('moc-search').addEventListener('input', renderOverview);
   document.getElementById('part-search').addEventListener('input', function(){ state.page = 1; renderParts(); });
