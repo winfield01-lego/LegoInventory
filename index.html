@@ -236,64 +236,9 @@
   #lego-inv-root .shop-tally-box .tally-blank { width: 38px; height: 18px; border: 1px solid #999; border-radius: 3px; }
 }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
-#lego-inv-root .profile-gate { max-width: 420px; margin: 40px auto; text-align: center; }
-#lego-inv-root .profile-card { display: flex; align-items: center; justify-content: space-between; gap: 12px; background: var(--surface-2); border: 2px solid var(--border); border-radius: 12px; padding: 14px 18px; margin-bottom: 10px; cursor: pointer; text-align: left; }
-#lego-inv-root .profile-card:hover { border-color: var(--lego-blue); }
-#lego-inv-root .profile-card .profile-name { font-weight: 800; font-size: 15px; color: var(--lego-black); }
-#lego-inv-root .profile-card .profile-lock-icon { color: var(--text-muted); }
-#lego-inv-root .profile-unlock-panel { background: var(--surface-1); border: 2px solid var(--border); border-radius: 12px; padding: 16px; margin-top: 12px; }
-#lego-inv-root .profile-new-panel { background: var(--surface-1); border: 2px dashed var(--border); border-radius: 12px; padding: 16px; margin-top: 16px; }
 </style>
 
-<div id="profile-gate-screen">
-  <div class="lego-header" style="justify-content: center;">
-    <div class="lego-brick" aria-hidden="true">
-      <div class="studs"><span class="stud"></span><span class="stud"></span></div>
-      <div class="body"></div>
-    </div>
-    <div>
-      <h1 class="lego-title">MOC parts inventory</h1>
-      <p class="lego-subtitle">Choose a profile to continue</p>
-    </div>
-  </div>
-
-  <div class="profile-gate">
-    <div id="profile-list"></div>
-
-    <div id="profile-unlock-panel" class="profile-unlock-panel" style="display:none;">
-      <p style="margin:0 0 8px; font-weight:700;" id="profile-unlock-name"></p>
-      <input type="password" id="profile-password-input" placeholder="Password" style="width:100%; margin-bottom:8px;" />
-      <div class="row" style="justify-content:center;">
-        <button id="profile-unlock-btn">Unlock</button>
-        <button id="profile-unlock-cancel" class="icon-btn">Cancel</button>
-      </div>
-      <p id="profile-unlock-error" style="color:var(--text-danger); font-size:12px; margin:8px 0 0;"></p>
-    </div>
-
-    <div class="profile-new-panel">
-      <p style="margin:0 0 8px; font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary);">Create a new profile</p>
-      <input type="text" id="new-profile-name" placeholder="Name, e.g. Alex" style="width:100%; margin-bottom:8px;" />
-      <input type="password" id="new-profile-password" placeholder="Password (optional)" style="width:100%; margin-bottom:8px;" />
-      <button id="new-profile-btn" style="width:100%;">Create profile</button>
-      <p id="new-profile-error" style="color:var(--text-danger); font-size:12px; margin:8px 0 0;"></p>
-    </div>
-
-    <div class="profile-new-panel" style="border-color: var(--lego-red);">
-      <p style="margin:0 0 8px; font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary);">Trouble creating a profile?</p>
-      <p style="color: var(--text-secondary); font-size: 13px; margin: 0 0 10px;">
-        A "could not save" error almost always means your browser's storage is full &mdash; usually from cached part images (a separate thing from your browser's regular cache, so clearing that in Edge's settings won't touch it). Clear it here, no profile needed.
-      </p>
-      <button id="gate-clear-images-btn" class="icon-btn" style="width:100%;"><i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Clear cached part images</button>
-      <p id="gate-clear-images-status" style="font-size:12px; margin:8px 0 0;"></p>
-    </div>
-
-    <p style="color: var(--text-muted); font-size: 11px; margin-top: 16px;">
-      This keeps casual mix-ups between profiles from happening on a shared device. It is not real security &mdash; anyone with browser developer tools can read the underlying data regardless of password. The Drawers tab is shared across every profile on this site.
-    </p>
-  </div>
-</div>
-
-<div id="app-main-content" style="display:none;">
+<div id="app-main-content">
 <div class="lego-header">
   <div class="lego-brick" aria-hidden="true">
     <div class="studs"><span class="stud"></span><span class="stud"></span></div>
@@ -303,8 +248,6 @@
     <h1 class="lego-title">MOC parts inventory</h1>
     <p class="lego-subtitle">Track what you have, what's short, and what to order next</p>
   </div>
-  <button id="clear-profile-btn" class="icon-btn no-print" style="margin-left:auto;" title="Erase all data for this profile only"><i class="ti ti-eraser" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Clear all data</button>
-  <button id="switch-profile-btn" class="icon-btn no-print"><i class="ti ti-user-circle" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> <span id="current-profile-label"></span></button>
 </div>
 
 <div class="row no-print top-action-bar" style="justify-content: space-between; margin-bottom: 1rem;">
@@ -908,10 +851,7 @@
         try {
           localStorage.setItem(lsKey(key), value);
           resolve({ key: key, value: value, shared: !!shared });
-        } catch (e){
-          lastStorageErrorWasQuota = !!(e && (e.name === 'QuotaExceededError' || e.code === 22 || e.code === 1014));
-          resolve(null);
-        }
+        } catch (e){ resolve(null); }
       });
     },
     delete: function(key, shared){
@@ -937,15 +877,6 @@
       });
     }
   };
-  var PROFILES_INDEX_KEY = 'app-profiles-index-v1';
-  var BASE_STORAGE_KEY = 'lego-moc-inventory-v1';
-  var BASE_CHECKLIST_KEY = 'shopping-checked-v1';
-  var BASE_PRIORITY_LABELS_KEY = 'priority-labels-v1';
-  var BASE_SETS_KEY = 'owned-sets-v1';
-  var BASE_SET_PARTS_KEY = 'owned-sets-parts-v1';
-  var currentProfileId = null;
-  var lastStorageErrorWasQuota = false;
-  var profiles = [];
   var COLS = ['partNum','qty','color','desc','moc','elementId','onHand','built','priority'];
   var STORAGE_KEY = 'lego-moc-inventory-v1';
   var IMG_PREFIX = 'img:';
@@ -3862,243 +3793,11 @@
     updateShopTally();
   });
 
-  function simpleHash(str){
-    var hash = 0;
-    for (var i = 0; i < str.length; i++){
-      hash = ((hash << 5) - hash + str.charCodeAt(i)) | 0;
-    }
-    return 'fb:' + (hash >>> 0).toString(16);
-  }
-
-  function hashPassword(pw){
-    if (!pw) return Promise.resolve('');
-    try {
-      if (window.crypto && window.crypto.subtle && window.crypto.subtle.digest){
-        var data = new TextEncoder().encode(pw);
-        return crypto.subtle.digest('SHA-256', data).then(function(buf){
-          return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
-        }).catch(function(){ return simpleHash(pw); });
-      }
-    } catch(e){ /* fall through to simple hash */ }
-    return Promise.resolve(simpleHash(pw));
-  }
-
-  function loadProfilesIndex(){
-    return storage.get(PROFILES_INDEX_KEY, false).then(function(res){
-      if (res && res.value){ try { profiles = JSON.parse(res.value); } catch(e){ profiles = []; } }
-    }).catch(function(){});
-  }
-
-  function saveProfilesIndex(){
-    var payload = JSON.stringify(profiles);
-    function attempt(retriesLeft){
-      lastStorageErrorWasQuota = false;
-      return storage.set(PROFILES_INDEX_KEY, payload, false).then(function(res){
-        if (res) return res;
-        if (retriesLeft > 0){
-          return new Promise(function(resolve){ setTimeout(resolve, 400); }).then(function(){ return attempt(retriesLeft - 1); });
-        }
-        return null;
-      }).catch(function(){
-        if (retriesLeft > 0){
-          return new Promise(function(resolve){ setTimeout(resolve, 400); }).then(function(){ return attempt(retriesLeft - 1); });
-        }
-        return null;
-      });
-    }
-    return attempt(3);
-  }
-
-  function applyProfileScoping(profileId){
-    currentProfileId = profileId;
-    var p = 'profile:' + profileId + ':';
-    STORAGE_KEY = p + BASE_STORAGE_KEY;
-    CHECKLIST_KEY = p + BASE_CHECKLIST_KEY;
-    PRIORITY_LABELS_KEY = p + BASE_PRIORITY_LABELS_KEY;
-    SETS_KEY = p + BASE_SETS_KEY;
-    SET_PARTS_KEY = p + BASE_SET_PARTS_KEY;
-  }
-
-  function renderProfileList(){
-    var container = document.getElementById('profile-list');
-    container.innerHTML = '';
-    if (!profiles.length){
-      container.innerHTML = '<p style="color:var(--text-muted); font-size:13px;">No profiles yet \u2014 create one below.</p>';
-      return;
-    }
-    profiles.forEach(function(p){
-      var card = document.createElement('div');
-      card.className = 'profile-card';
-      card.innerHTML =
-        '<span class="profile-name">'+escapeHtml(p.name)+'</span>' +
-        '<span class="profile-lock-icon"><i class="ti ti-'+(p.passwordHash ? 'lock' : 'lock-open')+'" style="font-size:16px;" aria-hidden="true"></i></span>';
-      card.addEventListener('click', function(){ selectProfile(p); });
-      container.appendChild(card);
-    });
-  }
-
-  function selectProfile(p){
-    if (!p.passwordHash){
-      unlockAndBoot(p.id);
-      return;
-    }
-    document.getElementById('profile-unlock-panel').style.display = 'block';
-    document.getElementById('profile-unlock-name').textContent = 'Unlock "' + p.name + '"';
-    document.getElementById('profile-password-input').value = '';
-    document.getElementById('profile-unlock-error').textContent = '';
-    document.getElementById('profile-password-input').focus();
-    document.getElementById('profile-unlock-btn').onclick = function(){
-      var entered = document.getElementById('profile-password-input').value;
-      hashPassword(entered).then(function(hash){
-        if (hash === p.passwordHash){
-          unlockAndBoot(p.id);
-        } else {
-          document.getElementById('profile-unlock-error').textContent = 'Wrong password.';
-        }
-      }).catch(function(){
-        document.getElementById('profile-unlock-error').textContent = 'Something went wrong. Please try again.';
-      });
-    };
-  }
-
-  function unlockAndBoot(profileId){
-    applyProfileScoping(profileId);
-    var p = profiles.find(function(x){ return x.id === profileId; });
-    document.getElementById('current-profile-label').textContent = p ? p.name : '';
-    document.getElementById('profile-gate-screen').style.display = 'none';
-    document.getElementById('app-main-content').style.display = 'block';
-    bootApp();
-  }
-
-  document.getElementById('profile-unlock-cancel').addEventListener('click', function(){
-    document.getElementById('profile-unlock-panel').style.display = 'none';
-  });
-  document.getElementById('profile-password-input').addEventListener('keydown', function(e){
-    if (e.key === 'Enter'){ e.preventDefault(); document.getElementById('profile-unlock-btn').click(); }
-  });
-  document.getElementById('new-profile-password').addEventListener('keydown', function(e){
-    if (e.key === 'Enter'){ e.preventDefault(); document.getElementById('new-profile-btn').click(); }
-  });
-
-  document.getElementById('new-profile-btn').addEventListener('click', function(){
-    var errorEl = document.getElementById('new-profile-error');
-    var name = document.getElementById('new-profile-name').value.trim();
-    var pw = document.getElementById('new-profile-password').value;
-    if (!name){
-      errorEl.textContent = 'Enter a name first.';
-      return;
-    }
-    if (profiles.some(function(p){ return p.name.toLowerCase() === name.toLowerCase(); })){
-      errorEl.textContent = 'A profile with that name already exists.';
-      return;
-    }
-    hashPassword(pw).then(function(hash){
-      var id = 'p' + Date.now() + Math.random().toString(36).slice(2,7);
-      var entry = { id: id, name: name, passwordHash: hash };
-      profiles.push(entry);
-      return saveProfilesIndex().then(function(res){
-        if (!res){
-          profiles = profiles.filter(function(p){ return p !== entry; });
-          throw new Error('save failed');
-        }
-        errorEl.textContent = '';
-        document.getElementById('new-profile-name').value = '';
-        document.getElementById('new-profile-password').value = '';
-        unlockAndBoot(id);
-      });
-    }).catch(function(){
-      if (lastStorageErrorWasQuota){
-        errorEl.textContent = 'Your browser\u2019s storage is full, so nothing new can be saved. This is usually caused by cached part images. Go to the Images tab and click "Clear all cached images," then try creating the profile again.';
-      } else {
-        errorEl.textContent = 'Could not save that profile after a few tries. If this keeps happening, try reloading the page once and creating it again.';
-      }
-    });
-  });
-
-  document.getElementById('gate-clear-images-btn').addEventListener('click', function(){
-    var btn = document.getElementById('gate-clear-images-btn');
-    var statusEl = document.getElementById('gate-clear-images-status');
-    btn.disabled = true;
-    statusEl.style.color = 'var(--text-secondary)';
-    statusEl.textContent = 'Clearing\u2026';
-    storage.list(IMG_PREFIX, false).then(function(res){
-      var keys = (res && res.keys) || [];
-      var ids = keys.map(function(k){ return k.indexOf(IMG_PREFIX) === 0 ? k.slice(IMG_PREFIX.length) : k; });
-      return Promise.all(ids.map(function(id){
-        return storage.delete(IMG_PREFIX + id, false).catch(function(){});
-      })).then(function(){ return ids.length; });
-    }).then(function(count){
-      btn.disabled = false;
-      statusEl.style.color = 'var(--text-success)';
-      statusEl.textContent = 'Cleared ' + count + ' cached image' + (count===1?'':'s') + '. Try creating your profile again now.';
-    }).catch(function(){
-      btn.disabled = false;
-      statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Could not read the image cache to clear it. If this keeps happening, clearing this site\u2019s storage from your browser\u2019s settings (or dev tools \u2192 Application/Storage \u2192 Local Storage) will fix it.';
-    });
-  });
-
-  function initProfileGate(){
-    loadProfilesIndex().then(function(){
-      renderProfileList();
-    }).catch(function(){
-      renderProfileList();
-    });
-  }
-
-  document.getElementById('switch-profile-btn').addEventListener('click', function(){
-    returnToProfileGate();
-  });
-
-  function returnToProfileGate(){
-    document.getElementById('app-main-content').style.display = 'none';
-    document.getElementById('profile-gate-screen').style.display = 'block';
-    document.getElementById('profile-unlock-panel').style.display = 'none';
-    currentProfileId = null;
-    state.rows = [];
-    checkedItems = new Set();
-    shopSelected = new Set();
-    priorityLabels = [];
-    ownedSets = [];
-    setParts = [];
-    initProfileGate();
-  }
-
-  document.getElementById('clear-profile-btn').addEventListener('click', function(){
-    var name = 'this profile';
-    var p = profiles.find(function(x){ return x.id === currentProfileId; });
-    if (p) name = '"' + p.name + '"';
-    var ok = confirm(
-      'This permanently erases ALL builds, parts, sets, priority labels, and shopping checkmarks for ' + name + '.\n\n' +
-      'Drawers, cached images, and other shared settings are not affected \u2014 only this profile\u2019s own data.\n\n' +
-      'This cannot be undone. Continue?'
-    );
-    if (!ok) return;
-
-    state.rows = [];
-    checkedItems = new Set();
-    shopSelected = new Set();
-    priorityLabels = [];
-    ownedSets = [];
-    setParts = [];
-
-    Promise.all([
-      storage.set(STORAGE_KEY, '[]', false),
-      storage.set(CHECKLIST_KEY, '[]', false),
-      storage.set(PRIORITY_LABELS_KEY, '[]', false),
-      storage.set(SETS_KEY, '[]', false),
-      storage.set(SET_PARTS_KEY, '[]', false)
-    ]).then(function(){
-      switchTab('overview');
-      render();
-    });
-  });
-
   function bootApp(){
     loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadRebrickableKey(); }).then(function(){ return loadSetProxyPref(); }).then(function(){ return loadGithubSettings(); }).then(function(){ return loadGithubShaMap(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(render);
   }
 
-  initProfileGate();
+  bootApp();
 })();
 </script>
 
