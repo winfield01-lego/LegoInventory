@@ -2595,9 +2595,10 @@
       });
       notesInput.addEventListener('change', function(){ d.notes = notesInput.value.trim(); saveDrawers(); });
       var delBtn = document.createElement('button');
-      delBtn.className = 'row-delete-btn';
+      delBtn.className = 'icon-btn';
+      delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); flex-shrink:0;';
       delBtn.title = 'Remove this drawer';
-      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>';
+      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Delete drawer';
       delBtn.addEventListener('click', function(){
         if (!confirm('Remove drawer "'+d.label+'" and its '+rows.length+' part line'+(rows.length===1?'':'s')+'?')) return;
         drawers = drawers.filter(function(x){ return x.id !== d.id; });
