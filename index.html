@@ -101,7 +101,8 @@
 #lego-inv-root .moc-card-editable .set-edit-field { display: block; margin-bottom: 4px; }
 #lego-inv-root .moc-card-editable .moc-name-edit { font-weight: 700; font-size: 14px; width: 100%; }
 #lego-inv-root .moc-card-editable .moc-location-edit { font-size: 12px; width: 100%; }
-#lego-inv-root .moc-card-actions { display: flex; justify-content: flex-end; gap: 2px; margin-top: 6px; }
+#lego-inv-root .moc-card-actions { display: flex; justify-content: flex-end; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+#lego-inv-root .moc-card-actions button { padding: 4px 8px; font-size: 11px; }
 #lego-inv-root .owned-set-card { display: flex; align-items: center; gap: 12px; background: var(--surface-2); border: 2px solid var(--border); border-radius: 10px; padding: 8px 12px; margin-bottom: 6px; flex-wrap: wrap; }
 #lego-inv-root .owned-set-card .set-num { font-weight: 800; font-size: 14px; color: var(--lego-black); min-width: 70px; }
 #lego-inv-root .owned-set-card .set-meta { flex: 1 1 auto; font-size: 12px; color: var(--text-secondary); white-space: nowrap; }
@@ -167,8 +168,10 @@
 #lego-inv-root .shop-group-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-secondary); margin: 10px 0 3px; padding-left: 2px; break-after: avoid; }
 #lego-inv-root .shop-items .shop-group-title:first-child { margin-top: 0; }
 #lego-inv-root .row-delete-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 4px; border-radius: 6px; }
-#lego-inv-root td.actions-cell { white-space: nowrap; }
+#lego-inv-root td.actions-cell { white-space: nowrap; overflow: visible; }
 #lego-inv-root .row-delete-btn:hover { color: var(--lego-red); background: var(--bg-danger); }
+#lego-inv-root .row-delete-btn.danger { color: var(--text-danger); }
+#lego-inv-root .row-delete-btn.danger:hover { background: var(--bg-danger); }
 #lego-inv-root .priority-input { width: 100%; min-width: 0; padding: 3px 6px; height: 26px; font-size: 12px; }
 #lego-inv-root .qty-input { width: 52px; height: 28px; padding: 2px 4px; text-align: center; }
 #lego-inv-root .used-in-count { cursor: help; border-bottom: 1px dotted var(--text-muted); }
@@ -573,23 +576,25 @@
 
 <div id="tab-setparts" style="display:none;">
   <p style="color: var(--text-secondary); margin: 0 0 12px;">
-    Every part combined across all your owned sets, by part number and color &mdash; similar to turning on "Combine matching parts across builds" on the MOC Parts tab, but for your official sets.
+    By default, shows each set's parts separately. Check the box below to combine matching parts across all your sets into one list &mdash; similar to "Combine matching parts across builds" on the MOC Parts tab.
   </p>
   <div class="controls">
     <input type="text" id="sp-search" placeholder="Search part #, description, color" />
     <select id="sp-set-filter"><option value="">All sets</option></select>
     <select id="sp-color-filter"><option value="">All colors</option></select>
+    <label class="checkbox-label"><input type="checkbox" id="sp-combine-toggle" /> Combine matching parts across sets</label>
   </div>
   <div class="tbl-wrap">
     <table>
       <thead>
         <tr>
           <th style="width:6%">Image</th>
-          <th style="width:13%" data-sp-sort="partNum">Part #</th>
-          <th style="width:13%" data-sp-sort="color">Color</th>
-          <th style="width:40%" data-sp-sort="desc">Description</th>
+          <th style="width:10%" id="sp-setnum-header">Set #</th>
+          <th style="width:12%" data-sp-sort="partNum">Part #</th>
+          <th style="width:12%" data-sp-sort="color">Color</th>
+          <th style="width:36%" data-sp-sort="desc">Description</th>
+          <th style="width:10%" id="sp-qtyperset-header">Qty / set</th>
           <th style="width:14%" data-sp-sort="totalQty">Total qty</th>
-          <th style="width:14%">Used in sets</th>
         </tr>
       </thead>
       <tbody id="sp-tbody"></tbody>
@@ -604,83 +609,94 @@
 </div>
 
 <div id="tab-drawers" style="display:none;">
-  <p style="color: var(--text-secondary); margin: 0 0 6px;">
-    A standalone inventory of your physical storage drawers/bins, separate from your builds and sets. Find any part by number, description, or color and see exactly which drawer it's in.
+  <p style="color: var(--text-secondary); margin: 0 0 12px;">
+    A standalone inventory of your physical storage drawers/bins, separate from your builds and sets.
   </p>
 
-  <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 16px;">
-    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Add a drawer</p>
-    <div class="controls" style="margin-bottom: 0;">
-      <input type="text" id="drawer-label-input" placeholder="Drawer label, e.g. A3 or Red Bin" style="min-width:180px;" />
-      <input type="text" id="drawer-notes-input" placeholder="Notes / location (optional)" style="min-width:200px;" />
-      <button id="drawer-add-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add drawer</button>
+  <div class="collapse-section">
+    <button type="button" class="collapse-header" data-collapse-target="cs-manage-drawers"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Manage Drawers &amp; Add Parts</span></button>
+    <div class="collapse-body" id="cs-manage-drawers" style="display:none;">
+      <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 16px;">
+        <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Add a drawer</p>
+        <div class="controls" style="margin-bottom: 0;">
+          <input type="text" id="drawer-label-input" placeholder="Drawer label, e.g. A3 or Red Bin" style="min-width:180px;" />
+          <input type="text" id="drawer-notes-input" placeholder="Notes / location (optional)" style="min-width:200px;" />
+          <button id="drawer-add-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add drawer</button>
+        </div>
+      </div>
+
+      <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 8px;">Your drawers</p>
+      <div id="drawer-cards-list" style="margin-bottom: 20px;"></div>
+
+      <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 10px 16px; margin-bottom: 20px; font-size: 13px; color: var(--text-secondary);">
+        Want to bulk-import a drawer's parts from a CSV? See "Drawer Parts Upload" on the Import tab.
+      </div>
+
+      <div style="border-top: 2px solid var(--border); padding-top: 16px;">
+        <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Add a part directly</p>
+        <div class="controls" style="margin-bottom: 0;">
+          <select id="dp-drawer-target"><option value="">Which drawer?</option></select>
+          <input type="text" id="dp-partnum" placeholder="Part #" style="min-width:100px;" />
+          <input type="text" id="dp-color" placeholder="Color" list="color-options" style="min-width:120px;" />
+          <input type="text" id="dp-desc" placeholder="Description" style="min-width:200px;" />
+          <input type="text" id="dp-elementid" placeholder="Element ID (optional)" style="min-width:140px;" />
+          <input type="number" id="dp-qty" placeholder="Qty" min="1" value="1" style="width:90px;" />
+          <button id="drawer-add-part-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add part</button>
+        </div>
+        <p style="color: var(--text-muted); font-size: 12px; margin: 8px 0 0;">If that part+color already exists in the chosen drawer, this adds to its quantity instead of creating a duplicate line. Fill in any of Part #, Color, Description, or Element ID and tab to the next field &mdash; if that part is already known elsewhere in the app (a build, a set, or another drawer), the rest fill in automatically.</p>
+        <span id="drawer-add-part-status" style="font-size:13px; color:var(--text-secondary);"></span>
+      </div>
     </div>
   </div>
 
-  <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 8px;">Your drawers</p>
-  <div id="drawer-cards-list" style="margin-bottom: 20px;"></div>
+  <div class="collapse-section">
+    <button type="button" class="collapse-header" data-collapse-target="cs-find-drawer-parts"><i class="ti ti-chevron-down" aria-hidden="true"></i><span>Find &amp; Manage Drawer Parts</span></button>
+    <div class="collapse-body" id="cs-find-drawer-parts" style="display:block;">
+      <p style="color: var(--text-secondary); margin: 0 0 12px;">Find any part by number, description, or color, see exactly which drawer it's in, and remove or reassign it from here.</p>
 
-  <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 10px 16px; margin-bottom: 20px; font-size: 13px; color: var(--text-secondary);">
-    Want to bulk-import a drawer's parts from a CSV? See "Drawer Parts Upload" on the Import tab.
-  </div>
+      <div id="assign-to-moc-panel" style="display:none; background: var(--surface-1); border: 2px solid var(--lego-blue); border-radius: var(--radius); padding: 12px; margin-bottom: 16px;">
+        <p style="margin:0 0 8px; font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary);">Assign to a MOC build</p>
+        <p id="assign-part-label" style="margin:0 0 10px; font-weight:700;"></p>
+        <div class="controls" style="margin-bottom: 8px;">
+          <input type="text" id="assign-moc-input" placeholder="Build name" list="moc-options" style="min-width:200px;" />
+          <input type="number" id="assign-qty-input" min="1" placeholder="Qty to move" style="width:120px;" />
+        </div>
+        <div class="row">
+          <button id="assign-confirm-btn"><i class="ti ti-arrow-right" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Move to build</button>
+          <button id="assign-cancel-btn" class="icon-btn">Cancel</button>
+          <span id="assign-status" style="font-size:13px; color:var(--text-secondary);"></span>
+        </div>
+        <p style="color: var(--text-muted); font-size: 12px; margin: 8px 0 0;">Moves the quantity out of this drawer and adds it to that build's "On hand" count. If the build doesn't already need this part, a new line is added with 0 needed &mdash; edit "Need" on the MOC Parts tab afterward if you want.</p>
+      </div>
 
-  <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
-    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Option B: add a part directly</p>
-    <div class="controls" style="margin-bottom: 0;">
-      <select id="dp-drawer-target"><option value="">Which drawer?</option></select>
-      <input type="text" id="dp-partnum" placeholder="Part #" style="min-width:100px;" />
-      <input type="text" id="dp-color" placeholder="Color" list="color-options" style="min-width:120px;" />
-      <input type="text" id="dp-desc" placeholder="Description" style="min-width:200px;" />
-      <input type="text" id="dp-elementid" placeholder="Element ID (optional)" style="min-width:140px;" />
-      <input type="number" id="dp-qty" placeholder="Qty" min="1" value="1" style="width:90px;" />
-      <button id="drawer-add-part-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add part</button>
+      <div class="controls">
+        <input type="text" id="drawer-parts-search" placeholder="Search part #, description, color, or drawer" />
+        <select id="drawer-parts-drawer-filter"><option value="">All drawers</option></select>
+        <select id="drawer-parts-color-filter"><option value="">All colors</option></select>
+      </div>
+      <div class="tbl-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th style="width:11%" data-dp-sort="drawerId">Drawer</th>
+              <th style="width:6%">Image</th>
+              <th style="width:11%" data-dp-sort="partNum">Part #</th>
+              <th style="width:11%" data-dp-sort="color">Color</th>
+              <th style="width:35%" data-dp-sort="desc">Description</th>
+              <th style="width:9%" data-dp-sort="qty">Qty</th>
+              <th style="width:17%"></th>
+            </tr>
+          </thead>
+          <tbody id="drawer-parts-tbody"></tbody>
+        </table>
+      </div>
+      <div id="drawer-parts-empty-msg" class="empty-msg" style="display:none;">No drawer parts yet &mdash; add a drawer and import or enter its contents in "Manage Drawers &amp; Add Parts" above.</div>
+      <div class="pager">
+        <span id="drawer-parts-page-info"></span>
+        <button id="drawer-parts-prev-page" class="icon-btn"><i class="ti ti-chevron-left" style="font-size:14px;" aria-hidden="true"></i></button>
+        <button id="drawer-parts-next-page" class="icon-btn"><i class="ti ti-chevron-right" style="font-size:14px;" aria-hidden="true"></i></button>
+      </div>
     </div>
-    <p style="color: var(--text-muted); font-size: 12px; margin: 8px 0 0;">If that part+color already exists in the chosen drawer, this adds to its quantity instead of creating a duplicate line. Fill in any of Part #, Color, Description, or Element ID and tab to the next field &mdash; if that part is already known elsewhere in the app (a build, a set, or another drawer), the rest fill in automatically.</p>
-    <span id="drawer-add-part-status" style="font-size:13px; color:var(--text-secondary);"></span>
-  </div>
-
-  <div id="assign-to-moc-panel" style="display:none; background: var(--surface-1); border: 2px solid var(--lego-blue); border-radius: var(--radius); padding: 12px; margin-bottom: 16px;">
-    <p style="margin:0 0 8px; font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary);">Assign to a MOC build</p>
-    <p id="assign-part-label" style="margin:0 0 10px; font-weight:700;"></p>
-    <div class="controls" style="margin-bottom: 8px;">
-      <input type="text" id="assign-moc-input" placeholder="Build name" list="moc-options" style="min-width:200px;" />
-      <input type="number" id="assign-qty-input" min="1" placeholder="Qty to move" style="width:120px;" />
-    </div>
-    <div class="row">
-      <button id="assign-confirm-btn"><i class="ti ti-arrow-right" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Move to build</button>
-      <button id="assign-cancel-btn" class="icon-btn">Cancel</button>
-      <span id="assign-status" style="font-size:13px; color:var(--text-secondary);"></span>
-    </div>
-    <p style="color: var(--text-muted); font-size: 12px; margin: 8px 0 0;">Moves the quantity out of this drawer and adds it to that build's "On hand" count. If the build doesn't already need this part, a new line is added with 0 needed &mdash; edit "Need" on the MOC Parts tab afterward if you want.</p>
-  </div>
-
-  <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 4px;">Find a part &amp; see its drawer</p>
-  <div class="controls">
-    <input type="text" id="drawer-parts-search" placeholder="Search part #, description, color, or drawer" />
-    <select id="drawer-parts-drawer-filter"><option value="">All drawers</option></select>
-    <select id="drawer-parts-color-filter"><option value="">All colors</option></select>
-  </div>
-  <div class="tbl-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th style="width:11%" data-dp-sort="drawerId">Drawer</th>
-          <th style="width:6%">Image</th>
-          <th style="width:11%" data-dp-sort="partNum">Part #</th>
-          <th style="width:11%" data-dp-sort="color">Color</th>
-          <th style="width:38%" data-dp-sort="desc">Description</th>
-          <th style="width:9%" data-dp-sort="qty">Qty</th>
-          <th style="width:14%"></th>
-        </tr>
-      </thead>
-      <tbody id="drawer-parts-tbody"></tbody>
-    </table>
-  </div>
-  <div id="drawer-parts-empty-msg" class="empty-msg" style="display:none;">No drawer parts yet &mdash; add a drawer and import or enter its contents above.</div>
-  <div class="pager">
-    <span id="drawer-parts-page-info"></span>
-    <button id="drawer-parts-prev-page" class="icon-btn"><i class="ti ti-chevron-left" style="font-size:14px;" aria-hidden="true"></i></button>
-    <button id="drawer-parts-next-page" class="icon-btn"><i class="ti ti-chevron-right" style="font-size:14px;" aria-hidden="true"></i></button>
   </div>
 </div>
 
@@ -1219,9 +1235,9 @@
       actionsRow.className = 'moc-card-actions';
 
       var filterBtn = document.createElement('button');
-      filterBtn.className = 'row-delete-btn';
+      filterBtn.className = 'icon-btn';
       filterBtn.title = 'View parts for this build';
-      filterBtn.innerHTML = '<i class="ti ti-list" style="font-size:15px;" aria-hidden="true"></i>';
+      filterBtn.innerHTML = '<i class="ti ti-list" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Parts';
       filterBtn.addEventListener('click', function(){
         document.getElementById('moc-filter').value = currentName;
         state.page = 1;
@@ -1230,15 +1246,16 @@
       });
 
       var viewBtn = document.createElement('button');
-      viewBtn.className = 'row-delete-btn';
-      viewBtn.title = 'View summary';
-      viewBtn.innerHTML = '<i class="ti ti-eye" style="font-size:15px;" aria-hidden="true"></i>';
+      viewBtn.className = 'icon-btn';
+      viewBtn.title = 'View summary and photo';
+      viewBtn.innerHTML = '<i class="ti ti-eye" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Summary';
       viewBtn.addEventListener('click', function(){ openMocDetail(currentName); });
 
       var delBtn = document.createElement('button');
-      delBtn.className = 'row-delete-btn';
+      delBtn.className = 'icon-btn';
+      delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger);';
       delBtn.title = 'Remove this build';
-      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>';
+      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Delete';
       delBtn.addEventListener('click', function(){ deleteMocBuild(currentName); });
 
       actionsRow.appendChild(filterBtn);
@@ -1380,7 +1397,7 @@
       chip.style.cssText = 'display:inline-flex; align-items:center; gap:6px; background: var(--surface-2); border: 2px solid var(--border); border-radius: 20px; padding: 3px 6px 3px 12px; font-size: 12px; font-weight: 600;';
       chip.innerHTML = '<span>'+escapeHtml(label)+'</span>';
       var delBtn = document.createElement('button');
-      delBtn.className = 'row-delete-btn';
+      delBtn.className = 'row-delete-btn danger';
       delBtn.style.padding = '2px';
       delBtn.title = 'Remove location';
       delBtn.innerHTML = '<i class="ti ti-x" style="font-size:13px;" aria-hidden="true"></i>';
@@ -1455,7 +1472,7 @@
       chip.style.cssText = 'display:inline-flex; align-items:center; gap:6px; background: var(--surface-2); border: 2px solid var(--border); border-radius: 20px; padding: 3px 6px 3px 12px; font-size: 12px; font-weight: 600;';
       chip.innerHTML = '<span>'+escapeHtml(label)+'</span>';
       var delBtn = document.createElement('button');
-      delBtn.className = 'row-delete-btn';
+      delBtn.className = 'row-delete-btn danger';
       delBtn.style.padding = '2px';
       delBtn.title = 'Remove label';
       delBtn.innerHTML = '<i class="ti ti-x" style="font-size:13px;" aria-hidden="true"></i>';
@@ -1616,7 +1633,7 @@
       tr.querySelector('.priority-cell').appendChild(prioritySelect);
 
       var delBtn = document.createElement('button');
-      delBtn.className = 'row-delete-btn';
+      delBtn.className = 'row-delete-btn danger';
       delBtn.title = 'Remove this part line';
       delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>';
       delBtn.addEventListener('click', function(){ deleteRow(r); });
@@ -1760,9 +1777,10 @@
     themeInput.addEventListener('change', function(){ s.theme = themeInput.value.trim(); saveOwnedSets(); renderOwnedSetsList(); });
     locationInput.addEventListener('change', function(){ s.location = locationInput.value.trim(); saveOwnedSets(); });
     var delBtn = document.createElement('button');
-    delBtn.className = 'row-delete-btn';
+    delBtn.className = 'icon-btn';
+    delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); flex-shrink:0;';
     delBtn.title = 'Remove this set';
-    delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>';
+    delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Delete set';
     delBtn.addEventListener('click', function(){
       if (!confirm('Remove set '+s.setNum+' and its imported parts?')) return;
       ownedSets = ownedSets.filter(function(x){ return x.setNum !== s.setNum; });
@@ -2115,7 +2133,7 @@
         '<td class="actions-cell"></td>';
       buildThumb({ elementId: r.elementId, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
       var delBtn = document.createElement('button');
-      delBtn.className = 'row-delete-btn';
+      delBtn.className = 'row-delete-btn danger';
       delBtn.title = 'Remove this part line';
       delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>';
       delBtn.addEventListener('click', function(){
@@ -2174,23 +2192,43 @@
     colorSel.innerHTML = '<option value="">All colors</option>' + colors.map(function(c){ return '<option value="'+escapeHtml(c)+'">'+escapeHtml(c)+'</option>'; }).join('');
     colorSel.value = curColor;
 
-    var items = computeSetInventory().filter(function(it){
-      if (colorFilter && it.color !== colorFilter) return false;
-      if (setFilter && !it.sets.has(setFilter)) return false;
+    var rawRows = setParts.filter(function(r){
+      if (setFilter && r.setNum !== setFilter) return false;
+      if (colorFilter && r.color !== colorFilter) return false;
       if (q){
-        var hay = (it.partNum+' '+it.desc+' '+it.color).toLowerCase();
+        var hay = (r.partNum+' '+r.desc+' '+r.color+' '+r.setNum).toLowerCase();
         if (hay.indexOf(q) === -1) return false;
       }
       return true;
     });
 
-    items.sort(function(a,b){
-      var col = spState.sortCol;
-      var av = col === 'totalQty' ? a.totalQty : (a[col] || '');
-      var bv = col === 'totalQty' ? b.totalQty : (b[col] || '');
-      if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * spState.sortDir;
-      return String(av).localeCompare(String(bv), undefined, {numeric:true}) * spState.sortDir;
-    });
+    var combineOn = document.getElementById('sp-combine-toggle').checked;
+    document.getElementById('sp-setnum-header').textContent = combineOn ? 'Used In' : 'Set #';
+    document.getElementById('sp-qtyperset-header').textContent = combineOn ? '\u2014' : 'Qty / set';
+
+    var items;
+    if (combineOn){
+      items = computeSetInventory(rawRows);
+      items.sort(function(a,b){
+        var col = spState.sortCol === 'setNum' ? 'partNum' : (spState.sortCol === 'qtyPerSet' ? 'totalQty' : spState.sortCol);
+        var av = col === 'totalQty' ? a.totalQty : (a[col] || '');
+        var bv = col === 'totalQty' ? b.totalQty : (b[col] || '');
+        if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * spState.sortDir;
+        return String(av).localeCompare(String(bv), undefined, {numeric:true}) * spState.sortDir;
+      });
+    } else {
+      items = rawRows.map(function(r){
+        var setInfo = ownedSets.find(function(s){ return s.setNum === r.setNum; });
+        return { setNum: r.setNum, partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId, qtyPerSet: r.qtyPerSet, totalQty: r.qtyPerSet * (setInfo ? setInfo.qty : 1) };
+      });
+      items.sort(function(a,b){
+        var col = spState.sortCol;
+        var av = col === 'totalQty' ? a.totalQty : (col === 'qtyPerSet' ? a.qtyPerSet : (a[col] || ''));
+        var bv = col === 'totalQty' ? b.totalQty : (col === 'qtyPerSet' ? b.qtyPerSet : (b[col] || ''));
+        if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * spState.sortDir;
+        return String(av).localeCompare(String(bv), undefined, {numeric:true}) * spState.sortDir;
+      });
+    }
 
     var totalPages = Math.max(1, Math.ceil(items.length / spState.pageSize));
     if (spState.page > totalPages) spState.page = totalPages;
@@ -2201,21 +2239,39 @@
     tbody.innerHTML = '';
     document.getElementById('sp-empty-msg').style.display = items.length ? 'none' : 'block';
 
-    pageItems.forEach(function(it){
-      var setList = Array.from(it.sets).sort();
-      var tr = document.createElement('tr');
-      tr.innerHTML =
-        '<td class="img-cell"><div class="part-thumb-wrap"></div></td>' +
-        '<td class="wrap-cell">'+escapeHtml(it.partNum)+'</td>' +
-        '<td class="wrap-cell">'+escapeHtml(it.color)+'</td>' +
-        '<td class="wrap-cell">'+escapeHtml(it.desc)+'</td>' +
-        '<td class="wrap-cell">'+it.totalQty.toLocaleString()+'</td>' +
-        '<td title="'+escapeHtml(setList.join(', '))+'">'+setList.length+' set'+(setList.length===1?'':'s')+'</td>';
-      buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
-      tbody.appendChild(tr);
-    });
+    if (combineOn){
+      pageItems.forEach(function(it){
+        var setList = Array.from(it.sets).sort();
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td class="img-cell"><div class="part-thumb-wrap"></div></td>' +
+          '<td><span class="used-in-count" title="'+escapeHtml(setList.join(', '))+'">'+setList.length+' set'+(setList.length===1?'':'s')+'</span></td>' +
+          '<td class="wrap-cell">'+escapeHtml(it.partNum)+'</td>' +
+          '<td class="wrap-cell">'+escapeHtml(it.color)+'</td>' +
+          '<td class="wrap-cell">'+escapeHtml(it.desc)+'</td>' +
+          '<td style="color:var(--text-muted);">&mdash;</td>' +
+          '<td class="wrap-cell">'+it.totalQty.toLocaleString()+'</td>';
+        buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
+        tbody.appendChild(tr);
+      });
+      document.getElementById('sp-page-info').textContent = items.length ? ('Showing '+(start+1)+'-'+Math.min(start+pageItems.length, items.length)+' of '+items.length+' unique parts') : '';
+    } else {
+      pageItems.forEach(function(it){
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td class="img-cell"><div class="part-thumb-wrap"></div></td>' +
+          '<td>'+escapeHtml(it.setNum)+'</td>' +
+          '<td class="wrap-cell">'+escapeHtml(it.partNum)+'</td>' +
+          '<td class="wrap-cell">'+escapeHtml(it.color)+'</td>' +
+          '<td class="wrap-cell">'+escapeHtml(it.desc)+'</td>' +
+          '<td class="wrap-cell">'+it.qtyPerSet+'</td>' +
+          '<td class="wrap-cell">'+it.totalQty.toLocaleString()+'</td>';
+        buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
+        tbody.appendChild(tr);
+      });
+      document.getElementById('sp-page-info').textContent = items.length ? ('Showing '+(start+1)+'-'+Math.min(start+pageItems.length, items.length)+' of '+items.length) : '';
+    }
 
-    document.getElementById('sp-page-info').textContent = items.length ? ('Showing '+(start+1)+'-'+Math.min(start+pageItems.length, items.length)+' of '+items.length+' unique parts') : '';
     document.getElementById('sp-prev-page').disabled = spState.page <= 1;
     document.getElementById('sp-next-page').disabled = spState.page >= totalPages;
   }
@@ -2223,6 +2279,7 @@
   document.getElementById('sp-search').addEventListener('input', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
   document.getElementById('sp-set-filter').addEventListener('change', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
   document.getElementById('sp-color-filter').addEventListener('change', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
+  document.getElementById('sp-combine-toggle').addEventListener('change', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
   document.getElementById('sp-prev-page').addEventListener('click', function(){ if (spState.page>1){ spState.page--; renderSetPartsSummaryTab(); } });
   document.getElementById('sp-next-page').addEventListener('click', function(){ spState.page++; renderSetPartsSummaryTab(); });
   document.querySelectorAll('#lego-inv-root th[data-sp-sort]').forEach(function(th){
@@ -2759,7 +2816,7 @@
       tr.querySelector('.actions-cell').appendChild(assignBtn);
 
       var delBtn = document.createElement('button');
-      delBtn.className = 'row-delete-btn';
+      delBtn.className = 'row-delete-btn danger';
       delBtn.title = 'Remove this part line';
       delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>';
       delBtn.addEventListener('click', function(){
