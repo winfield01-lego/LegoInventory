@@ -113,6 +113,11 @@
 #lego-inv-root .theme-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--surface-2); border: 2px solid var(--border); border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; margin: 0 6px 6px 0; }
 #lego-inv-root .theme-group-header { display: flex; align-items: center; gap: 8px; width: 100%; background: var(--surface-1); border: 2px solid var(--border); border-radius: 10px; padding: 8px 12px; margin: 10px 0 6px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--lego-black); cursor: pointer; text-align: left; }
 #lego-inv-root .collapse-section { margin-bottom: 12px; }
+#lego-inv-root .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; align-items: start; }
+#lego-inv-root .card-grid .moc-card,
+#lego-inv-root .card-grid .owned-set-card { margin-bottom: 0; }
+#lego-inv-root .card-grid .owned-set-card { flex-direction: column; align-items: stretch; }
+#lego-inv-root .card-grid .owned-set-card .set-meta { white-space: normal; }
 #lego-inv-root .collapse-header { display: flex; align-items: center; gap: 10px; width: 100%; background: var(--surface-2); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px 16px; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; color: var(--lego-black); cursor: pointer; text-align: left; }
 #lego-inv-root .collapse-header:hover { border-color: var(--lego-blue); }
 #lego-inv-root .collapse-header i { font-size: 16px; flex-shrink: 0; }
@@ -330,17 +335,30 @@
     </div>
     <div id="top-needed-list" style="display:none;"></div>
   </div>
-  <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 14px;">
-    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Add a build</p>
-    <div class="controls" style="margin-bottom: 0;">
-      <input type="text" id="build-name-input" placeholder="Build name" style="min-width:200px;" />
-      <select id="build-location-input" style="min-width:180px;"></select>
-      <button id="manage-locations-toggle-overview" class="icon-btn"><i class="ti ti-map-pin" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Locations</button>
-      <button id="build-add-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add build</button>
+  <div class="collapse-section">
+    <button type="button" class="collapse-header" data-collapse-target="cs-overview-mocs"><i class="ti ti-chevron-down" aria-hidden="true"></i><span>MOC Builds</span></button>
+    <div class="collapse-body" id="cs-overview-mocs" style="display:block;">
+      <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 14px;">
+        <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Add a build</p>
+        <div class="controls" style="margin-bottom: 0;">
+          <input type="text" id="build-name-input" placeholder="Build name" style="min-width:200px;" />
+          <select id="build-location-input" style="min-width:180px;"></select>
+          <button id="manage-locations-toggle-overview" class="icon-btn"><i class="ti ti-map-pin" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Locations</button>
+          <button id="build-add-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add build</button>
+        </div>
+      </div>
+      <input type="text" id="moc-search" placeholder="Search builds" style="width: 100%; margin-bottom: 10px;" />
+      <div id="moc-list" class="card-grid"></div>
     </div>
   </div>
-  <input type="text" id="moc-search" placeholder="Search builds" style="width: 100%; margin-bottom: 10px;" />
-  <div id="moc-list"></div>
+
+  <div class="collapse-section">
+    <button type="button" class="collapse-header" data-collapse-target="cs-overview-sets"><i class="ti ti-chevron-down" aria-hidden="true"></i><span>Official Sets</span></button>
+    <div class="collapse-body" id="cs-overview-sets" style="display:block;">
+      <input type="text" id="overview-sets-search" placeholder="Search sets" style="width: 100%; margin-bottom: 10px;" />
+      <div id="overview-sets-list" class="card-grid"></div>
+    </div>
+  </div>
 </div>
 
 <div id="tab-parts" style="display:none;">
@@ -923,6 +941,10 @@
       <button id="detail-modal-manage-locations" class="icon-btn" title="Manage locations"><i class="ti ti-settings" style="font-size:13px;" aria-hidden="true"></i></button>
     </div>
 
+    <div style="margin:0 0 14px;">
+      <textarea id="detail-modal-description" placeholder="Short description (optional)" style="width:100%; min-height:56px; font-size:13px; font-family:inherit; resize:vertical;"></textarea>
+    </div>
+
     <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:18px;">
       <div style="flex-shrink:0; width:160px;">
         <img id="detail-modal-photo" style="display:none; width:160px; height:160px; object-fit:cover; border-radius:8px; border:2px solid var(--border);" alt="" />
@@ -1037,6 +1059,8 @@
   var MOC_PHOTOS_KEY = 'moc-photos-v1';
   var MOC_LOCATIONS_KEY = 'moc-locations-v1';
   var MOC_BUILDS_KEY = 'moc-builds-v1';
+  var MOC_DESCRIPTIONS_KEY = 'moc-descriptions-v1';
+  var mocDescriptions = {};
   var mocBuilds = [];
   var setPhotos = {};
   var mocPhotos = {};
@@ -1265,6 +1289,8 @@
 
       list.appendChild(card);
     });
+
+    renderOverviewSetsList();
   }
 
   function escapeHtml(s){
@@ -1773,9 +1799,14 @@
     var nameInput = card.querySelector('.set-name-edit');
     var themeInput = card.querySelector('.set-theme-edit');
     var locationInput = card.querySelector('.set-location-edit');
-    nameInput.addEventListener('change', function(){ s.name = nameInput.value.trim(); saveOwnedSets(); renderOwnedSetsList(); });
-    themeInput.addEventListener('change', function(){ s.theme = themeInput.value.trim(); saveOwnedSets(); renderOwnedSetsList(); });
+    nameInput.addEventListener('change', function(){ s.name = nameInput.value.trim(); saveOwnedSets(); refreshSetViews(); });
+    themeInput.addEventListener('change', function(){ s.theme = themeInput.value.trim(); saveOwnedSets(); refreshSetViews(); });
     locationInput.addEventListener('change', function(){ s.location = locationInput.value.trim(); saveOwnedSets(); });
+    var viewBtn = document.createElement('button');
+    viewBtn.className = 'icon-btn';
+    viewBtn.title = 'View summary and photo';
+    viewBtn.innerHTML = '<i class="ti ti-eye" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Summary';
+    viewBtn.addEventListener('click', function(){ openSetDetail(s.setNum); });
     var delBtn = document.createElement('button');
     delBtn.className = 'icon-btn';
     delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); flex-shrink:0;';
@@ -1788,12 +1819,8 @@
       saveOwnedSets();
       saveSetParts();
       renderSetsTab();
+      renderOverviewSetsList();
     });
-    var viewBtn = document.createElement('button');
-    viewBtn.className = 'row-delete-btn';
-    viewBtn.title = 'View summary';
-    viewBtn.innerHTML = '<i class="ti ti-eye" style="font-size:15px;" aria-hidden="true"></i>';
-    viewBtn.addEventListener('click', function(){ openSetDetail(s.setNum); });
     card.appendChild(viewBtn);
     card.appendChild(delBtn);
     return card;
@@ -1862,6 +1889,32 @@
       container.appendChild(header);
       container.appendChild(body);
     });
+  }
+
+  function renderOverviewSetsList(){
+    var listEl = document.getElementById('overview-sets-list');
+    if (!listEl) return;
+    var q = (document.getElementById('overview-sets-search').value || '').toLowerCase();
+    listEl.innerHTML = '';
+    if (!ownedSets.length){
+      listEl.innerHTML = '<div class="empty-msg">No sets added yet \u2014 add one on the Official Sets tab.</div>';
+      return;
+    }
+    var filtered = ownedSets.filter(function(s){
+      if (!q) return true;
+      var hay = (s.setNum+' '+(s.name||'')+' '+(s.theme||'')).toLowerCase();
+      return hay.indexOf(q) !== -1;
+    }).sort(function(a,b){ return a.setNum.localeCompare(b.setNum, undefined, {numeric:true}); });
+    if (!filtered.length){
+      listEl.innerHTML = '<div class="empty-msg">No sets match your search.</div>';
+      return;
+    }
+    filtered.forEach(function(s){ listEl.appendChild(buildSetCard(s)); });
+  }
+
+  function refreshSetViews(){
+    renderOwnedSetsList();
+    renderOverviewSetsList();
   }
 
   function populateSetCsvTarget(){
@@ -2349,6 +2402,14 @@
   function saveMocBuilds(){
     return storage.set(MOC_BUILDS_KEY, JSON.stringify(mocBuilds), false);
   }
+  function loadMocDescriptions(){
+    return storage.get(MOC_DESCRIPTIONS_KEY, false).then(function(res){
+      if (res && res.value){ try { mocDescriptions = JSON.parse(res.value); } catch(e){ mocDescriptions = {}; } }
+    }).catch(function(){});
+  }
+  function saveMocDescriptions(){
+    return storage.set(MOC_DESCRIPTIONS_KEY, JSON.stringify(mocDescriptions), false);
+  }
   function ensureMocBuildsSynced(){
     var names = new Set(state.rows.map(function(r){ return r.moc; }).filter(Boolean));
     var changed = false;
@@ -2514,6 +2575,7 @@
     if (setInfo.theme){ themeEl.textContent = 'Theme: ' + setInfo.theme; themeEl.style.display = 'block'; }
     else { themeEl.style.display = 'none'; }
     document.getElementById('detail-modal-location').innerHTML = locationOptionsHtml(setInfo.location || '');
+    document.getElementById('detail-modal-description').value = setInfo.description || '';
 
     var rows = setParts.filter(function(r){ return r.setNum === setNum; });
     var pieceTotal = rows.reduce(function(sum, r){ return sum + r.qtyPerSet * setInfo.qty; }, 0);
@@ -2549,6 +2611,7 @@
     document.getElementById('detail-modal-title').textContent = mocName;
     document.getElementById('detail-modal-theme').style.display = 'none';
     document.getElementById('detail-modal-location').innerHTML = locationOptionsHtml(mocLocations[mocName] || '');
+    document.getElementById('detail-modal-description').value = mocDescriptions[mocName] || '';
 
     var need = 0, have = 0;
     rows.forEach(function(r){ need += r.qty; have += Math.min(r.onHand, r.qty); });
@@ -2592,6 +2655,17 @@
     }
   });
   document.getElementById('detail-modal-manage-locations').addEventListener('click', openLocationManager);
+  document.getElementById('detail-modal-description').addEventListener('change', function(){
+    if (!detailContext) return;
+    var val = document.getElementById('detail-modal-description').value.trim();
+    if (detailContext.kind === 'set'){
+      var setInfo = ownedSets.find(function(s){ return s.setNum === detailContext.key; });
+      if (setInfo){ setInfo.description = val; saveOwnedSets(); }
+    } else {
+      if (val){ mocDescriptions[detailContext.key] = val; } else { delete mocDescriptions[detailContext.key]; }
+      saveMocDescriptions();
+    }
+  });
   document.getElementById('detail-modal-overlay').addEventListener('click', function(e){
     if (e.target.id === 'detail-modal-overlay') closeDetailModal();
   });
@@ -3484,6 +3558,7 @@
     });
   });
   document.getElementById('moc-search').addEventListener('input', renderOverview);
+  document.getElementById('overview-sets-search').addEventListener('input', renderOverviewSetsList);
   document.getElementById('part-search').addEventListener('input', function(){ state.page = 1; renderParts(); });
   document.getElementById('moc-filter').addEventListener('change', function(){ state.page = 1; renderParts(); });
   document.getElementById('color-filter').addEventListener('change', function(){ state.page = 1; renderParts(); });
@@ -4119,7 +4194,8 @@
       drawerParts: drawerParts,
       mocLocations: mocLocations,
       mocBuilds: mocBuilds,
-      locationLabels: locationLabels
+      locationLabels: locationLabels,
+      mocDescriptions: mocDescriptions
     }, null, 2);
     var base64 = utf8ToBase64(payload);
     statusEl.style.color = 'var(--text-secondary)';
@@ -4155,6 +4231,7 @@
       if (data.mocLocations && typeof data.mocLocations === 'object') mocLocations = data.mocLocations;
       if (Array.isArray(data.mocBuilds)) mocBuilds = data.mocBuilds;
       if (Array.isArray(data.locationLabels)) locationLabels = data.locationLabels;
+      if (data.mocDescriptions && typeof data.mocDescriptions === 'object') mocDescriptions = data.mocDescriptions;
 
       saveState();
       saveChecklist();
@@ -4165,6 +4242,7 @@
       saveDrawerParts();
       saveMocLocations();
       saveMocBuilds();
+      saveMocDescriptions();
 
       render();
       if (state.tab === 'sets') renderSetsTab();
@@ -4824,7 +4902,7 @@
   });
 
   function bootApp(){
-    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(function(){ return loadSetPhotos(); }).then(function(){ return loadMocPhotos(); }).then(function(){ return loadMocLocations(); }).then(function(){ return loadMocBuilds(); }).then(function(){ return loadLocationLabels(); }).then(function(){
+    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(function(){ return loadSetPhotos(); }).then(function(){ return loadMocPhotos(); }).then(function(){ return loadMocLocations(); }).then(function(){ return loadMocBuilds(); }).then(function(){ return loadMocDescriptions(); }).then(function(){ return loadLocationLabels(); }).then(function(){
       var hasAnyData = ownedSets.length || setParts.length || drawers.length || drawerParts.length;
       if (!hasAnyData){
         return loadAllDataFromGithub(true);
