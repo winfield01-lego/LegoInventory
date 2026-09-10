@@ -302959,6 +302959,15 @@
       "setNum": "10266-1"
     }
   ],
+  "mocSets": [
+    {
+      "mocId": "MOC-234160",
+      "qty": 1,
+      "name": "",
+      "theme": ""
+    }
+  ],
+  "mocSetParts": [],
   "drawers": [
     {
       "id": "Test",
@@ -302966,16 +302975,7 @@
       "notes": "Test"
     }
   ],
-  "drawerParts": [
-    {
-      "drawerId": "Test",
-      "partNum": "4002",
-      "color": "Blue",
-      "desc": "",
-      "elementId": "",
-      "qty": 1
-    }
-  ],
+  "drawerParts": [],
   "mocLocations": {},
   "mocBuilds": [
     {
