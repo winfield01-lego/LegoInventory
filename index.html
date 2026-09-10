@@ -1002,10 +1002,11 @@
         <thead>
           <tr>
             <th style="width:8%">Image</th>
-            <th style="width:15%">Part #</th>
-            <th style="width:15%">Color</th>
-            <th style="width:42%">Description</th>
-            <th style="width:20%">Qty</th>
+            <th style="width:14%">Part #</th>
+            <th style="width:14%">Color</th>
+            <th style="width:36%">Description</th>
+            <th style="width:18%">Qty</th>
+            <th style="width:10%"></th>
           </tr>
         </thead>
         <tbody id="detail-modal-parts-tbody"></tbody>
@@ -2751,7 +2752,8 @@
         '<td class="wrap-cell">'+escapeHtml(r.partNum)+'</td>'+
         '<td class="wrap-cell">'+escapeHtml(r.color)+'</td>'+
         '<td class="wrap-cell">'+escapeHtml(r.desc)+'</td>'+
-        '<td>'+(r.qtyPerSet * setInfo.qty).toLocaleString()+'</td>';
+        '<td>'+(r.qtyPerSet * setInfo.qty).toLocaleString()+'</td>'+
+        '<td></td>';
       buildThumb({ elementId: r.elementId, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
       tbody.appendChild(tr);
     });
@@ -2791,8 +2793,22 @@
         '<td class="wrap-cell">'+escapeHtml(r.partNum)+'</td>'+
         '<td class="wrap-cell">'+escapeHtml(r.color)+'</td>'+
         '<td class="wrap-cell">'+escapeHtml(r.desc)+'</td>'+
-        '<td>'+r.onHand.toLocaleString()+' / '+r.qty.toLocaleString()+'</td>';
+        '<td>'+r.onHand.toLocaleString()+' / '+r.qty.toLocaleString()+'</td>'+
+        '<td class="actions-cell"></td>';
       buildThumb({ elementId: r.elementId, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
+      var delBtn = document.createElement('button');
+      delBtn.className = 'row-delete-btn danger';
+      delBtn.title = 'Remove this part line';
+      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>';
+      delBtn.addEventListener('click', function(){
+        if (!confirm('Remove this part line from ' + mocName + '? This can\'t be undone.')) return;
+        var idx = state.rows.indexOf(r);
+        if (idx !== -1){ state.rows.splice(idx, 1); saveState(); }
+        render();
+        refreshMocBuildViews();
+        openMocDetail(mocName);
+      });
+      tr.querySelector('.actions-cell').appendChild(delBtn);
       tbody.appendChild(tr);
     });
 
