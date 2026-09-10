@@ -94,6 +94,9 @@
 #lego-inv-root .tbl-wrap { max-height: 480px; overflow-y: auto; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 2px solid var(--border); border-radius: var(--radius); }
 #lego-inv-root table { min-width: 760px; }
 #lego-inv-root .onhand-input { width: 56px; height: 28px; padding: 2px 6px; text-align: center; }
+#lego-inv-root .field-edit-input { width: 100%; height: 28px; padding: 2px 6px; border: 2px solid var(--border); border-radius: 6px; background: var(--surface-1); color: var(--text-primary); font-size: 12px; }
+#lego-inv-root .field-edit-input:focus { outline: none; border-color: var(--lego-blue); }
+#lego-inv-root .field-edit-input.field-missing { border-color: var(--text-danger); background: var(--bg-danger); }
 #lego-inv-root .pill { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; }
 #lego-inv-root .pill-ok { background: var(--bg-success); color: var(--text-success); }
 #lego-inv-root .pill-short { background: var(--bg-danger); color: var(--text-danger); }
@@ -295,8 +298,7 @@
 <div class="tabs sub-tabs no-print" id="sub-tabs-moc-collection" style="display:none;">
   <button class="tab-btn" data-tab="parts"><span class="tab-dot" style="background:var(--lego-yellow);"></span>MOC Parts</button>
   <button class="tab-btn" data-tab="shopping"><span class="tab-dot" style="background:var(--lego-orange);"></span>Shopping List</button>
-  <button class="tab-btn" data-tab="mocsets"><span class="tab-dot" style="background:var(--lego-teal);"></span>MOC Sets</button>
-  <button class="tab-btn" data-tab="mocsetparts"><span class="tab-dot" style="background:var(--lego-lime);"></span>MOC Set Parts</button>
+  <button class="tab-btn" data-tab="mocsets"><span class="tab-dot" style="background:var(--lego-teal);"></span>MOC Builds</button>
 </div>
 <div class="tabs sub-tabs no-print" id="sub-tabs-official-collection" style="display:none;">
   <button class="tab-btn" data-tab="sets"><span class="tab-dot" style="background:var(--lego-purple);"></span>Official Sets</button>
@@ -338,26 +340,10 @@
     </div>
     <div id="top-needed-list" style="display:none;"></div>
   </div>
-  <div class="collapse-section">
-    <button type="button" class="collapse-header" data-collapse-target="cs-overview-mocs"><i class="ti ti-chevron-down" aria-hidden="true"></i><span>MOC Builds</span></button>
-    <div class="collapse-body" id="cs-overview-mocs" style="display:block;">
-      <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 14px;">
-        <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Add a build</p>
-        <div class="controls" style="margin-bottom: 0;">
-          <input type="text" id="build-name-input" placeholder="Build name" style="min-width:200px;" />
-          <select id="build-location-input" style="min-width:180px;"></select>
-          <button id="manage-locations-toggle-overview" class="icon-btn"><i class="ti ti-map-pin" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Locations</button>
-          <button id="build-add-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add build</button>
-        </div>
-      </div>
-      <input type="text" id="moc-search" placeholder="Search builds" style="width: 100%; margin-bottom: 10px;" />
-      <div id="moc-list" class="card-grid"></div>
-    </div>
-  </div>
 
   <div class="collapse-section">
-    <button type="button" class="collapse-header" data-collapse-target="cs-overview-sets"><i class="ti ti-chevron-down" aria-hidden="true"></i><span>Official Sets</span></button>
-    <div class="collapse-body" id="cs-overview-sets" style="display:block;">
+    <button type="button" class="collapse-header" data-collapse-target="cs-overview-sets"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Official Sets</span></button>
+    <div class="collapse-body" id="cs-overview-sets" style="display:none;">
       <input type="text" id="overview-sets-search" placeholder="Search sets" style="width: 100%; margin-bottom: 10px;" />
       <div id="overview-sets-list" class="card-grid"></div>
     </div>
@@ -371,6 +357,7 @@
     <select id="color-filter"><option value="">All colors</option></select>
     <select id="priority-filter"><option value="">All priorities</option></select>
     <label class="checkbox-label"><input type="checkbox" id="missing-only" /> Missing only</label>
+    <label class="checkbox-label"><input type="checkbox" id="incomplete-info-only" /> Incomplete info</label>
     <label class="checkbox-label"><input type="checkbox" id="combine-parts-toggle" /> Combine matching parts across builds</label>
     <button id="manage-priorities-toggle" class="icon-btn" style="margin-left:auto;"><i class="ti ti-flag" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Priority labels</button>
     <button id="add-part-toggle" class="icon-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add part</button>
@@ -517,72 +504,42 @@
 
 <div id="tab-mocsets" style="display:none;">
   <p style="color: var(--text-secondary); margin: 0 0 12px;">
-    Track MOCs by their Rebrickable MOC ID (e.g. <span style="font-family: var(--font-mono);">MOC-12345</span>) &mdash; your own designs if you've uploaded them, or ones you're building from someone else's instructions. Fetch parts automatically, or build the list yourself.
+    Manage your MOC builds here &mdash; each one gets a summary with a photo, storage location, and description, plus the ability to upload its parts list from a CSV. For the full combined parts table across every build (with sorting, filtering, and a combine-across-builds option), see the MOC Parts tab.
   </p>
 
   <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 16px;">
-    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Add a MOC set</p>
+    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Add a build</p>
     <div class="controls" style="margin-bottom: 0;">
-      <input type="text" id="mocset-id-input" placeholder="MOC ID, e.g. MOC-12345" style="min-width:160px;" />
-      <input type="number" id="mocset-qty-input" placeholder="Qty" min="1" value="1" style="width:100px;" />
-      <input type="text" id="mocset-name-input" placeholder="Name (optional)" style="min-width:180px;" />
-      <input type="text" id="mocset-theme-input" placeholder="Theme (optional)" style="min-width:160px;" />
+      <input type="text" id="build-name-input" placeholder="Build name" style="min-width:200px;" />
+      <input type="text" id="mocbuild-theme-input" placeholder="Theme (optional)" style="min-width:160px;" />
+      <select id="build-location-input" style="min-width:180px;"></select>
       <button id="manage-locations-toggle-mocsets" class="icon-btn"><i class="ti ti-map-pin" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Locations</button>
-      <button id="mocset-add-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add MOC set</button>
+      <button id="build-add-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add build</button>
     </div>
   </div>
 
-  <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 6px;">MOC sets by theme</p>
-  <div id="mocset-theme-summary-list" style="margin-bottom: 16px;"></div>
+  <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 6px;">Builds by theme</p>
+  <div id="mocbuild-theme-summary-list" style="margin-bottom: 16px;"></div>
 
-  <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 8px;">Your MOC sets</p>
-  <input type="text" id="mocset-search" placeholder="Search MOC sets" style="width:100%; margin-bottom: 10px;" />
-  <div id="moc-sets-list" style="margin-bottom: 20px;"></div>
-
-  <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 10px 16px; margin-bottom: 20px; font-size: 13px; color: var(--text-secondary);">
-    Want to bulk-import a MOC set's parts from a CSV? See "MOC Set Parts Upload" on the Import tab.
-  </div>
+  <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 8px;">Your builds</p>
+  <input type="text" id="mocbuild-search" placeholder="Search builds" style="width:100%; margin-bottom: 10px;" />
+  <div id="moc-builds-list" style="margin-bottom: 20px;"></div>
 
   <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
-    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Fetch via Rebrickable API</p>
+    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Upload parts for a build</p>
     <p style="color: var(--text-secondary); margin: 0 0 10px;">
-      Uses the same API key and proxy setting already entered on the Official Sets tab. Only works for MOCs that are public on Rebrickable &mdash; if a MOC ID isn't found, use the CSV import instead. Only fetches MOC sets that don't already have parts on file.
+      Works with a full CSV (Part Num, Quantity, Color, Description, elementId) or with Rebrickable's own parts-list export, which only includes <strong>Element ID</strong> and <strong>Quantity</strong> &mdash; if Part Num is missing, each element ID is looked up against parts already known elsewhere in the app (other builds, sets, or drawers) to fill in the part number, color, and description automatically. Anything that can't be matched is imported with those fields left blank, so you can search for and fill them in afterward.
     </p>
-    <div class="row">
-      <button id="mocset-fetch-all-btn"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch parts &amp; names for new MOC sets</button>
-      <span id="mocset-fetch-status" style="font-size:13px; color:var(--text-secondary);"></span>
+    <div class="controls" style="margin-bottom: 8px;">
+      <select id="mocbuild-csv-target"><option value="">Which build is this for?</option></select>
+      <input type="file" id="mocbuild-csv-file" accept=".csv,text/csv" />
+      <button id="mocbuild-csv-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
     </div>
-  </div>
-
-  <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 4px;">All MOC set parts</p>
-  <div class="controls">
-    <input type="text" id="mocset-parts-search" placeholder="Search part #, description, color, or MOC ID" />
-    <select id="mocset-parts-filter"><option value="">All MOC sets</option></select>
-    <select id="mocset-parts-color-filter"><option value="">All colors</option></select>
-    <label class="checkbox-label"><input type="checkbox" id="mocset-parts-combine-toggle" /> Combine matching parts across MOC sets</label>
-  </div>
-  <div class="tbl-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th style="width:6%">Image</th>
-          <th style="width:12%" id="mocset-parts-mocid-header">MOC ID</th>
-          <th style="width:12%" data-mocset-sort="partNum">Part #</th>
-          <th style="width:12%" data-mocset-sort="color">Color</th>
-          <th style="width:34%" data-mocset-sort="desc">Description</th>
-          <th style="width:9%" id="mocset-parts-qtyperset-header">Qty / set</th>
-          <th style="width:9%" data-mocset-sort="totalQty">Total qty</th>
-          <th style="width:6%"></th>
-        </tr>
-      </thead>
-      <tbody id="mocset-parts-tbody"></tbody>
-    </table>
-  </div>
-  <div id="mocset-parts-empty-msg" class="empty-msg" style="display:none;">No MOC set parts yet.</div>
-  <div class="pager">
-    <span id="mocset-parts-page-info"></span>
-    <button id="mocset-parts-prev-page" class="icon-btn"><i class="ti ti-chevron-left" style="font-size:14px;" aria-hidden="true"></i></button>
-    <button id="mocset-parts-next-page" class="icon-btn"><i class="ti ti-chevron-right" style="font-size:14px;" aria-hidden="true"></i></button>
+    <textarea id="mocbuild-csv-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:100px; font-family: var(--font-mono); font-size: 12px;"></textarea>
+    <div class="row" style="margin-top: 8px;">
+      <button id="mocbuild-csv-import-btn"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts for this build</button>
+      <span id="mocbuild-csv-status" style="font-size:13px; color:var(--text-secondary);"></span>
+    </div>
   </div>
 </div>
 
@@ -697,40 +654,6 @@
     <span id="sp-page-info"></span>
     <button id="sp-prev-page" class="icon-btn"><i class="ti ti-chevron-left" style="font-size:14px;" aria-hidden="true"></i></button>
     <button id="sp-next-page" class="icon-btn"><i class="ti ti-chevron-right" style="font-size:14px;" aria-hidden="true"></i></button>
-  </div>
-</div>
-
-<div id="tab-mocsetparts" style="display:none;">
-  <p style="color: var(--text-secondary); margin: 0 0 12px;">
-    By default, shows each MOC set's parts separately. Check the box below to combine matching parts across all your MOC sets into one list.
-  </p>
-  <div class="controls">
-    <input type="text" id="mocsetsp-search" placeholder="Search part #, description, color" />
-    <select id="mocsetsp-set-filter"><option value="">All MOC sets</option></select>
-    <select id="mocsetsp-color-filter"><option value="">All colors</option></select>
-    <label class="checkbox-label"><input type="checkbox" id="mocsetsp-combine-toggle" /> Combine matching parts across MOC sets</label>
-  </div>
-  <div class="tbl-wrap">
-    <table>
-      <thead>
-        <tr>
-          <th style="width:6%">Image</th>
-          <th style="width:10%" id="mocsetsp-mocid-header">MOC ID</th>
-          <th style="width:12%" data-mocsetsp-sort="partNum">Part #</th>
-          <th style="width:12%" data-mocsetsp-sort="color">Color</th>
-          <th style="width:36%" data-mocsetsp-sort="desc">Description</th>
-          <th style="width:10%" id="mocsetsp-qtyperset-header">Qty / set</th>
-          <th style="width:14%" data-mocsetsp-sort="totalQty">Total qty</th>
-        </tr>
-      </thead>
-      <tbody id="mocsetsp-tbody"></tbody>
-    </table>
-  </div>
-  <div id="mocsetsp-empty-msg" class="empty-msg" style="display:none;">No MOC set parts yet &mdash; import parts for a MOC set on the MOC Sets tab.</div>
-  <div class="pager">
-    <span id="mocsetsp-page-info"></span>
-    <button id="mocsetsp-prev-page" class="icon-btn"><i class="ti ti-chevron-left" style="font-size:14px;" aria-hidden="true"></i></button>
-    <button id="mocsetsp-next-page" class="icon-btn"><i class="ti ti-chevron-right" style="font-size:14px;" aria-hidden="true"></i></button>
   </div>
 </div>
 
@@ -919,25 +842,6 @@
       <div class="row" style="margin-top: 8px;">
         <button id="set-csv-import-btn"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts for this set</button>
         <span id="set-csv-status" style="font-size:13px; color:var(--text-secondary);"></span>
-      </div>
-    </div>
-  </div>
-
-  <div class="collapse-section">
-    <button type="button" class="collapse-header" data-collapse-target="cs-mocset-upload"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>MOC Set Parts Upload</span></button>
-    <div class="collapse-body" id="cs-mocset-upload" style="display:none;">
-      <p style="color: var(--text-secondary); margin: 0 0 10px;">
-        Same idea as Official Set Parts Upload, but for a MOC set. Add the MOC set on the MOC Sets tab first, then pick it here and upload its parts CSV. (You can also fetch a MOC's parts automatically via the Rebrickable API from the MOC Sets tab.)
-      </p>
-      <div class="controls" style="margin-bottom: 8px;">
-        <select id="mocset-csv-target"><option value="">Which MOC set is this for?</option></select>
-        <input type="file" id="mocset-csv-file" accept=".csv,text/csv" />
-        <button id="mocset-csv-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
-      </div>
-      <textarea id="mocset-csv-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:100px; font-family: var(--font-mono); font-size: 12px;"></textarea>
-      <div class="row" style="margin-top: 8px;">
-        <button id="mocset-csv-import-btn"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts for this MOC set</button>
-        <span id="mocset-csv-status" style="font-size:13px; color:var(--text-secondary);"></span>
       </div>
     </div>
   </div>
@@ -1210,15 +1114,9 @@
   var locationLabels = [];
   var SETS_KEY = 'owned-sets-v1';
   var SET_PARTS_KEY = 'owned-sets-parts-v1';
-  var MOC_SETS_KEY = 'moc-sets-v1';
-  var MOC_SET_PARTS_KEY = 'moc-set-parts-v1';
-  var mocSets = [];
-  var mocSetParts = [];
-  var mocSetPartsState = { page: 1, pageSize: 100, sortCol: 'desc', sortDir: 1 };
-  var mocsetSpState = { page: 1, pageSize: 100, sortCol: 'desc', sortDir: 1 };
-  var expandedMocSetThemes = new Set();
-  var MOCSET_PHOTOS_KEY = 'mocset-photos-v1';
-  var mocSetPhotos = {};
+  var MOC_THEMES_KEY = 'moc-themes-v1';
+  var mocThemes = {};
+  var expandedMocBuildThemes = new Set();
   var REBRICKABLE_KEY_STORAGE = 'rebrickable-api-key';
   var USE_SET_PROXY_KEY = 'use-set-cors-proxy';
   var ownedSets = [];
@@ -1283,6 +1181,10 @@
 
   function statusFor(row){
     return row.onHand >= row.qty ? 'ok' : 'short';
+  }
+
+  function rowIsIncomplete(r){
+    return !r.partNum || !r.color || !r.desc || !r.elementId || !r.qty;
   }
 
   function computeMocs(){
@@ -1351,81 +1253,6 @@
     });
 
     renderTopNeeded();
-
-    var q = (document.getElementById('moc-search').value || '').toLowerCase();
-    var list = document.getElementById('moc-list');
-    list.innerHTML = '';
-    var filtered = mocs.filter(function(m){ return m.name.toLowerCase().indexOf(q) !== -1; });
-    if (!filtered.length){
-      list.innerHTML = '<div class="empty-msg">No builds match.</div>';
-      return;
-    }
-    var studColors = ['var(--lego-blue)','var(--lego-yellow)','var(--lego-blue-dark)','var(--lego-green)'];
-    filtered.forEach(function(m, i){
-      var p = m.need ? Math.round(100*m.have/m.need) : 100;
-      var barColor = p >= 100 ? 'var(--lego-green)' : (p >= 50 ? 'var(--lego-yellow)' : 'var(--lego-red)');
-      var studs = '';
-      for (var s = 0; s < 4; s++){ studs += '<span style="background:'+studColors[(i+s)%studColors.length]+';"></span>'; }
-      var card = document.createElement('div');
-      card.className = 'moc-card moc-card-editable';
-      card.innerHTML = '<div class="moc-studs">'+studs+'</div>'+
-        '<span class="set-edit-field"><input type="text" class="moc-name-edit" value="'+escapeHtml(m.name)+'" /></span>'+
-        '<span class="set-edit-field"><select class="moc-location-edit">'+locationOptionsHtml(mocLocations[m.name] || '')+'</select></span>'+
-        '<div class="moc-top"><span class="moc-pct">'+m.have.toLocaleString()+' / '+m.need.toLocaleString()+' pcs · '+p+'%</span></div>'+
-        '<div class="bar-bg"><div class="bar-fill" style="width:'+p+'%; background:'+barColor+';"></div></div>';
-
-      var nameInput = card.querySelector('.moc-name-edit');
-      var locationInput = card.querySelector('.moc-location-edit');
-      var currentName = m.name;
-      nameInput.addEventListener('change', function(){
-        if (renameMocBuild(currentName, nameInput.value)){
-          currentName = nameInput.value.trim();
-          renderOverview();
-        } else {
-          nameInput.value = currentName;
-        }
-      });
-      locationInput.addEventListener('change', function(){
-        var val = locationInput.value.trim();
-        if (val){ mocLocations[currentName] = val; } else { delete mocLocations[currentName]; }
-        saveMocLocations();
-      });
-
-      var actionsRow = document.createElement('div');
-      actionsRow.className = 'moc-card-actions';
-
-      var filterBtn = document.createElement('button');
-      filterBtn.className = 'icon-btn';
-      filterBtn.title = 'View parts for this build';
-      filterBtn.innerHTML = '<i class="ti ti-list" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Parts';
-      filterBtn.addEventListener('click', function(){
-        document.getElementById('moc-filter').value = currentName;
-        state.page = 1;
-        switchTab('parts');
-        renderParts();
-      });
-
-      var viewBtn = document.createElement('button');
-      viewBtn.className = 'icon-btn';
-      viewBtn.title = 'View summary and photo';
-      viewBtn.innerHTML = '<i class="ti ti-eye" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Summary';
-      viewBtn.addEventListener('click', function(){ openMocDetail(currentName); });
-
-      var delBtn = document.createElement('button');
-      delBtn.className = 'icon-btn';
-      delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger);';
-      delBtn.title = 'Remove this build';
-      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Delete';
-      delBtn.addEventListener('click', function(){ deleteMocBuild(currentName); });
-
-      actionsRow.appendChild(filterBtn);
-      actionsRow.appendChild(viewBtn);
-      actionsRow.appendChild(delBtn);
-      card.appendChild(actionsRow);
-
-      list.appendChild(card);
-    });
-
     renderOverviewSetsList();
   }
 
@@ -1453,6 +1280,7 @@
     var color = document.getElementById('color-filter').value;
     var priority = document.getElementById('priority-filter').value;
     var missingOnly = document.getElementById('missing-only').checked;
+    var incompleteOnly = document.getElementById('incomplete-info-only').checked;
     var rows = state.rows.filter(function(r){
       if (moc && r.moc !== moc) return false;
       if (color && r.color !== color) return false;
@@ -1461,6 +1289,7 @@
         else if (r.priority !== priority) return false;
       }
       if (missingOnly && statusFor(r) === 'ok') return false;
+      if (incompleteOnly && !rowIsIncomplete(r)) return false;
       if (q){
         var hay = (r.partNum+' '+r.desc+' '+r.color+' '+r.moc).toLowerCase();
         if (hay.indexOf(q) === -1) return false;
@@ -1577,7 +1406,6 @@
 
   function findEntityForDetail(kind, key){
     if (kind === 'set') return ownedSets.find(function(s){ return s.setNum === key; });
-    if (kind === 'mocset') return mocSets.find(function(s){ return s.mocId === key; });
     return null;
   }
 
@@ -1745,9 +1573,9 @@
       tr.innerHTML =
         imgCell +
         '<td title="'+escapeHtml(r.moc)+'">'+escapeHtml(r.moc)+'</td>'+
-        '<td class="wrap-cell">'+escapeHtml(r.partNum)+'</td>'+
-        '<td class="wrap-cell">'+escapeHtml(r.color)+'</td>'+
-        '<td class="wrap-cell">'+escapeHtml(r.desc)+'</td>'+
+        '<td class="partnum-cell"></td>'+
+        '<td class="color-cell"></td>'+
+        '<td class="desc-cell"></td>'+
         '<td class="qty-cell"></td>'+
         '<td class="onhand-cell"></td>'+
         '<td class="priority-cell"></td>'+
@@ -1755,6 +1583,25 @@
         '<td class="actions-cell"></td>';
       var thumbWrap = tr.querySelector('.part-thumb-wrap');
       buildThumb(r, thumbWrap);
+
+      function makeFieldEditor(cellClass, field, placeholder){
+        var input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'field-edit-input';
+        input.value = r[field] || '';
+        input.placeholder = placeholder;
+        if (!r[field]) input.classList.add('field-missing');
+        input.addEventListener('change', function(){
+          r[field] = input.value.trim();
+          input.classList.toggle('field-missing', !r[field]);
+          saveState();
+          if (state.tab === 'parts') buildThumb(r, thumbWrap);
+        });
+        tr.querySelector(cellClass).appendChild(input);
+      }
+      makeFieldEditor('.partnum-cell', 'partNum', 'Part #');
+      makeFieldEditor('.color-cell', 'color', 'Color');
+      makeFieldEditor('.desc-cell', 'desc', 'Description');
 
       function refreshStatus(){
         var pill = tr.querySelector('.pill');
@@ -1908,21 +1755,13 @@
   function saveSetParts(){
     return storage.set(SET_PARTS_KEY, JSON.stringify(setParts), false);
   }
-  function loadMocSets(){
-    return storage.get(MOC_SETS_KEY, false).then(function(res){
-      if (res && res.value){ try { mocSets = JSON.parse(res.value); } catch(e){ mocSets = []; } }
+  function loadMocThemes(){
+    return storage.get(MOC_THEMES_KEY, false).then(function(res){
+      if (res && res.value){ try { mocThemes = JSON.parse(res.value); } catch(e){ mocThemes = {}; } }
     }).catch(function(){});
   }
-  function saveMocSets(){
-    return storage.set(MOC_SETS_KEY, JSON.stringify(mocSets), false);
-  }
-  function loadMocSetParts(){
-    return storage.get(MOC_SET_PARTS_KEY, false).then(function(res){
-      if (res && res.value){ try { mocSetParts = JSON.parse(res.value); } catch(e){ mocSetParts = []; } }
-    }).catch(function(){});
-  }
-  function saveMocSetParts(){
-    return storage.set(MOC_SET_PARTS_KEY, JSON.stringify(mocSetParts), false);
+  function saveMocThemes(){
+    return storage.set(MOC_THEMES_KEY, JSON.stringify(mocThemes), false);
   }
   function loadRebrickableKey(){
     return storage.get(REBRICKABLE_KEY_STORAGE, false).then(function(res){
@@ -1984,113 +1823,117 @@
     return card;
   }
 
-  function buildMocSetCard(s){
-    var rows = mocSetParts.filter(function(p){ return p.mocId === s.mocId; });
-    var pieceTotal = rows.reduce(function(sum, r){ return sum + (r.qtyPerSet * s.qty); }, 0);
+  function buildMocBuildCard(m){
     var card = document.createElement('div');
     card.className = 'owned-set-card';
     card.innerHTML =
-      '<span class="set-num">'+escapeHtml(s.mocId)+'</span>' +
-      '<span class="set-edit-field"><input type="text" class="mocset-name-edit" placeholder="Name" value="'+escapeHtml(s.name || '')+'" /></span>' +
-      '<span class="set-edit-field"><input type="text" class="mocset-theme-edit" placeholder="Theme" value="'+escapeHtml(s.theme || '')+'" /></span>' +
-      '<span class="set-edit-field"><select class="mocset-location-edit">'+locationOptionsHtml(s.location || '')+'</select></span>' +
-      '<span class="set-meta">Qty: '+s.qty+' &middot; '+rows.length+' part line'+(rows.length===1?'':'s')+' &middot; '+pieceTotal.toLocaleString()+' pcs</span>';
-    var nameInput = card.querySelector('.mocset-name-edit');
-    var themeInput = card.querySelector('.mocset-theme-edit');
-    var locationInput = card.querySelector('.mocset-location-edit');
-    nameInput.addEventListener('change', function(){ s.name = nameInput.value.trim(); saveMocSets(); refreshMocSetViews(); });
-    themeInput.addEventListener('change', function(){ s.theme = themeInput.value.trim(); saveMocSets(); refreshMocSetViews(); });
-    locationInput.addEventListener('change', function(){ s.location = locationInput.value.trim(); saveMocSets(); });
+      '<span class="set-edit-field"><input type="text" class="mocbuild-name-edit" placeholder="Build name" value="'+escapeHtml(m.name)+'" /></span>' +
+      '<span class="set-edit-field"><input type="text" class="mocbuild-theme-edit" placeholder="Theme" value="'+escapeHtml(mocThemes[m.name] || '')+'" /></span>' +
+      '<span class="set-edit-field"><select class="mocbuild-location-edit">'+locationOptionsHtml(mocLocations[m.name] || '')+'</select></span>' +
+      '<span class="set-meta">'+m.lines+' part line'+(m.lines===1?'':'s')+' &middot; '+m.have.toLocaleString()+' / '+m.need.toLocaleString()+' pcs</span>';
+    var nameInput = card.querySelector('.mocbuild-name-edit');
+    var themeInput = card.querySelector('.mocbuild-theme-edit');
+    var locationInput = card.querySelector('.mocbuild-location-edit');
+    var currentName = m.name;
+    nameInput.addEventListener('change', function(){
+      if (renameMocBuild(currentName, nameInput.value)){
+        currentName = nameInput.value.trim();
+        renderMocBuildsTab();
+      } else {
+        nameInput.value = currentName;
+      }
+    });
+    themeInput.addEventListener('change', function(){
+      var val = themeInput.value.trim();
+      if (val){ mocThemes[currentName] = val; } else { delete mocThemes[currentName]; }
+      saveMocThemes();
+      renderMocBuildsTab();
+    });
+    locationInput.addEventListener('change', function(){
+      var val = locationInput.value.trim();
+      if (val){ mocLocations[currentName] = val; } else { delete mocLocations[currentName]; }
+      saveMocLocations();
+    });
     var viewBtn = document.createElement('button');
     viewBtn.className = 'icon-btn';
     viewBtn.title = 'View summary and photo';
     viewBtn.innerHTML = '<i class="ti ti-eye" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Summary';
-    viewBtn.addEventListener('click', function(){ openMocSetDetail(s.mocId); });
+    viewBtn.addEventListener('click', function(){ openMocDetail(currentName); });
     var delBtn = document.createElement('button');
     delBtn.className = 'icon-btn';
     delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); flex-shrink:0;';
-    delBtn.title = 'Remove this MOC set';
+    delBtn.title = 'Remove this build';
     delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Delete';
-    delBtn.addEventListener('click', function(){
-      if (!confirm('Remove MOC set '+s.mocId+' and its imported parts?')) return;
-      mocSets = mocSets.filter(function(x){ return x.mocId !== s.mocId; });
-      mocSetParts = mocSetParts.filter(function(p){ return p.mocId !== s.mocId; });
-      saveMocSets();
-      saveMocSetParts();
-      renderMocSetsTab();
-    });
+    delBtn.addEventListener('click', function(){ deleteMocBuild(currentName); });
     card.appendChild(viewBtn);
     card.appendChild(delBtn);
     return card;
   }
 
-  function mocSetThemeGroupsSorted(filteredSets){
+  function mocBuildThemeGroupsSorted(mocs){
     var groups = {};
-    filteredSets.forEach(function(s){
-      var theme = (s.theme && s.theme.trim()) ? s.theme.trim() : '(No theme)';
+    mocs.forEach(function(m){
+      var theme = (mocThemes[m.name] && mocThemes[m.name].trim()) ? mocThemes[m.name].trim() : '(No theme)';
       if (!groups[theme]) groups[theme] = [];
-      groups[theme].push(s);
+      groups[theme].push(m);
     });
     var names = Object.keys(groups).sort(function(a,b){
       if (a === '(No theme)') return 1;
       if (b === '(No theme)') return -1;
       return a.localeCompare(b);
     });
-    return names.map(function(theme){ return { theme: theme, sets: groups[theme] }; });
+    return names.map(function(theme){ return { theme: theme, mocs: groups[theme] }; });
   }
 
-  function renderMocSetThemeSummary(filteredSets){
-    var container = document.getElementById('mocset-theme-summary-list');
+  function renderMocBuildThemeSummary(mocs){
+    var container = document.getElementById('mocbuild-theme-summary-list');
     if (!container) return;
-    if (!filteredSets.length){
-      container.innerHTML = '<span style="color:var(--text-muted); font-size:13px;">No MOC sets yet.</span>';
+    if (!mocs.length){
+      container.innerHTML = '<span style="color:var(--text-muted); font-size:13px;">No builds yet.</span>';
       return;
     }
-    var groups = mocSetThemeGroupsSorted(filteredSets);
+    var groups = mocBuildThemeGroupsSorted(mocs);
     container.innerHTML = groups.map(function(g){
-      return '<span class="theme-chip">'+escapeHtml(g.theme)+' <span class="theme-chip-count">'+g.sets.length+'</span></span>';
+      return '<span class="theme-chip">'+escapeHtml(g.theme)+' <span class="theme-chip-count">'+g.mocs.length+'</span></span>';
     }).join('');
   }
 
-  function renderMocSetsList(){
-    var container = document.getElementById('moc-sets-list');
-    var q = (document.getElementById('mocset-search').value || '').toLowerCase();
-    container.innerHTML = '';
-    if (!mocSets.length){
-      renderMocSetThemeSummary([]);
-      container.innerHTML = '<div class="empty-msg">No MOC sets added yet.</div>';
-      return;
-    }
-    var filtered = mocSets.filter(function(s){
+  function renderMocBuildsList(){
+    var container = document.getElementById('moc-builds-list');
+    if (!container) return;
+    ensureMocBuildsSynced();
+    var q = (document.getElementById('mocbuild-search').value || '').toLowerCase();
+    var mocs = computeMocs().filter(function(m){
       if (!q) return true;
-      var hay = (s.mocId+' '+(s.name||'')+' '+(s.theme||'')).toLowerCase();
+      var hay = (m.name+' '+(mocThemes[m.name]||'')).toLowerCase();
       return hay.indexOf(q) !== -1;
     });
-    renderMocSetThemeSummary(filtered);
-    if (!filtered.length){
-      container.innerHTML = '<div class="empty-msg">No MOC sets match your search.</div>';
+    container.innerHTML = '';
+    if (!mocs.length){
+      renderMocBuildThemeSummary([]);
+      container.innerHTML = '<div class="empty-msg">No builds match your search.</div>';
       return;
     }
-    container.className = '';
-    mocSetThemeGroupsSorted(filtered).forEach(function(g){
-      var isOpen = expandedMocSetThemes.has(g.theme);
+    renderMocBuildThemeSummary(mocs);
+    mocBuildThemeGroupsSorted(mocs).forEach(function(g){
+      var isOpen = expandedMocBuildThemes.has(g.theme);
       var header = document.createElement('button');
       header.type = 'button';
       header.className = 'theme-group-header';
       header.innerHTML =
         '<i class="ti '+(isOpen ? 'ti-chevron-down' : 'ti-chevron-right')+'" aria-hidden="true"></i>' +
         '<span>'+escapeHtml(g.theme)+'</span>' +
-        '<span class="theme-group-count">('+g.sets.length+')</span>';
+        '<span class="theme-group-count">('+g.mocs.length+')</span>';
 
       var body = document.createElement('div');
       body.className = 'theme-group-body card-grid';
       body.style.display = isOpen ? 'grid' : 'none';
-      g.sets.forEach(function(s){ body.appendChild(buildMocSetCard(s)); });
+      g.mocs.forEach(function(m){ body.appendChild(buildMocBuildCard(m)); });
 
       header.addEventListener('click', function(){
-        if (expandedMocSetThemes.has(g.theme)) expandedMocSetThemes.delete(g.theme);
-        else expandedMocSetThemes.add(g.theme);
-        var nowOpen = expandedMocSetThemes.has(g.theme);
+        if (expandedMocBuildThemes.has(g.theme)) expandedMocBuildThemes.delete(g.theme);
+        else expandedMocBuildThemes.add(g.theme);
+        var nowOpen = expandedMocBuildThemes.has(g.theme);
         body.style.display = nowOpen ? 'grid' : 'none';
         header.querySelector('i').className = 'ti ' + (nowOpen ? 'ti-chevron-down' : 'ti-chevron-right');
       });
@@ -2100,8 +1943,93 @@
     });
   }
 
-  function refreshMocSetViews(){
-    renderMocSetsList();
+  function populateMocBuildCsvTarget(){
+    var sel = document.getElementById('mocbuild-csv-target');
+    if (!sel) return;
+    var cur = sel.value;
+    var names = Array.from(new Set(state.rows.map(function(r){ return r.moc; }).concat(mocBuilds.map(function(b){ return b.name; })))).filter(Boolean).sort();
+    sel.innerHTML = '<option value="">Which build is this for?</option>' + names.map(function(n){ return '<option value="'+escapeHtml(n)+'">'+escapeHtml(n)+'</option>'; }).join('');
+    sel.value = cur;
+  }
+
+  function importBuildPartsCSVText(buildName, text){
+    var statusEl = document.getElementById('mocbuild-csv-status');
+    var table = parseCSV(text);
+    if (table.length < 2){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Could not find any data rows in that CSV.';
+      return;
+    }
+    var headers = table[0];
+    var map = mapHeaders(headers, HEADER_ALIASES);
+    if (map.qty === undefined || (map.partNum === undefined && map.elementId === undefined)){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Need at least a Quantity column, plus either a Part Num column or an Element ID column.';
+      return;
+    }
+
+    var lookupIndex = buildPartLookupIndex();
+    var added = 0, resolved = 0, unresolved = 0;
+    for (var i = 1; i < table.length; i++){
+      var cols = table[i];
+      if (!cols || !cols.length) continue;
+      var qty = parseInt(cols[map.qty], 10);
+      if (isNaN(qty)) continue;
+
+      var partNum = map.partNum !== undefined ? (cols[map.partNum] || '').trim() : '';
+      var color = map.color !== undefined ? (cols[map.color] || '').trim() : '';
+      var desc = map.desc !== undefined ? (cols[map.desc] || '').trim() : '';
+      var elementId = map.elementId !== undefined ? (cols[map.elementId] || '').trim() : '';
+      var onHand = map.onHand !== undefined ? (parseInt(cols[map.onHand], 10) || 0) : 0;
+      var priority = map.priority !== undefined ? (cols[map.priority] || '').trim() : '';
+
+      if (!partNum && elementId){
+        var byEl = lookupIndex.byElementId[normKey(elementId)];
+        if (byEl){
+          partNum = byEl.partNum;
+          if (!color) color = byEl.color;
+          if (!desc) desc = byEl.desc;
+          resolved++;
+        } else {
+          unresolved++;
+        }
+      }
+      if (!partNum && !elementId) continue;
+
+      state.rows.push({
+        partNum: partNum, qty: qty, color: color, desc: desc, moc: buildName,
+        elementId: elementId, onHand: onHand, built: false, priority: priority
+      });
+      added++;
+    }
+
+    if (!added){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'No usable rows found in that CSV.';
+      return;
+    }
+
+    saveState();
+    if (!mocBuilds.some(function(b){ return b.name === buildName; })){
+      mocBuilds.push({ name: buildName });
+      saveMocBuilds();
+    }
+
+    statusEl.style.color = unresolved ? 'var(--text-danger)' : 'var(--text-success)';
+    statusEl.textContent = 'Imported ' + added + ' part line' + (added===1?'':'s') + ' for ' + buildName + '.' +
+      (resolved ? (' ' + resolved + ' matched by element ID.') : '') +
+      (unresolved ? (' ' + unresolved + ' element ID' + (unresolved===1?'':'s') + ' couldn\u2019t be matched and ' + (unresolved===1?'was':'were') + ' added with blank part info \u2014 use "Find incomplete parts" on the MOC Parts tab to fill ' + (unresolved===1?'it':'them') + ' in.') : '');
+
+    document.getElementById('mocbuild-csv-paste').value = '';
+    document.getElementById('mocbuild-csv-file').value = '';
+    renderOverview();
+    renderMocBuildsTab();
+    if (state.tab === 'parts') renderParts();
+  }
+
+  function renderMocBuildsTab(){
+    renderMocBuildsList();
+    populateMocBuildCsvTarget();
   }
 
   function themeGroupsSorted(){
@@ -2362,139 +2290,6 @@
     next();
   }
 
-  function importMocSetPartsFromRows(mocId, rows){
-    mocSetParts = mocSetParts.filter(function(p){ return p.mocId !== mocId; });
-    rows.forEach(function(r){ r.mocId = mocId; mocSetParts.push(r); });
-    saveMocSetParts();
-  }
-
-  function importMocSetCSVText(mocId, text){
-    var statusEl = document.getElementById('mocset-csv-status');
-    var table = parseCSV(text);
-    if (table.length < 2){
-      statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Could not find any data rows in that CSV.';
-      return;
-    }
-    var headers = table[0];
-    var map = mapHeaders(headers, SET_CSV_ALIASES);
-    if (map.partNum === undefined || map.qty === undefined){
-      statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Missing required columns \u2014 need at least a part number column and a quantity column.';
-      return;
-    }
-    var rows = [];
-    for (var i = 1; i < table.length; i++){
-      var cols = table[i];
-      if (!cols || !cols.length) continue;
-      var partNum = (cols[map.partNum] || '').trim();
-      var qty = parseInt(cols[map.qty], 10);
-      if (!partNum || isNaN(qty)) continue;
-      rows.push({
-        partNum: partNum,
-        color: map.color !== undefined ? (cols[map.color] || '').trim() : '',
-        desc: map.desc !== undefined ? (cols[map.desc] || '').trim() : '',
-        elementId: map.elementId !== undefined ? (cols[map.elementId] || '').trim() : '',
-        qtyPerSet: qty
-      });
-    }
-    if (!rows.length){
-      statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'No valid rows found in that CSV.';
-      return;
-    }
-    importMocSetPartsFromRows(mocId, rows);
-    statusEl.style.color = 'var(--text-success)';
-    statusEl.textContent = 'Imported ' + rows.length + ' part line' + (rows.length===1?'':'s') + ' for ' + mocId + '.';
-    document.getElementById('mocset-csv-paste').value = '';
-    document.getElementById('mocset-csv-file').value = '';
-    renderMocSetsTab();
-  }
-
-  function fetchMocSetPartsFromApi(mocId){
-    var url = 'https://rebrickable.com/api/v3/lego/mocs/' + encodeURIComponent(mocId) + '/parts/?page_size=1000&key=' + encodeURIComponent(rebrickableApiKey);
-    return fetchUrlMaybeProxied(url).then(function(resp){
-      if (!resp.ok) throw new Error('HTTP ' + resp.status);
-      return resp.json();
-    }).then(function(data){
-      var results = data.results || data;
-      if (!Array.isArray(results)) throw new Error('Unexpected response shape');
-      return results.map(function(item){
-        return {
-          partNum: (item.part && item.part.part_num) || item.part_num || '',
-          color: (item.color && item.color.name) || '',
-          desc: (item.part && item.part.name) || '',
-          elementId: item.element_id || (item.part && item.part.element_id) || '',
-          qtyPerSet: item.quantity || 1
-        };
-      }).filter(function(r){ return r.partNum; });
-    });
-  }
-
-  function fetchMocSetDetailsFromApi(mocId){
-    var url = 'https://rebrickable.com/api/v3/lego/mocs/' + encodeURIComponent(mocId) + '/?key=' + encodeURIComponent(rebrickableApiKey);
-    return fetchUrlMaybeProxied(url).then(function(resp){
-      if (!resp.ok) throw new Error('HTTP ' + resp.status);
-      return resp.json();
-    }).then(function(data){
-      return { name: data.name || '' };
-    }).catch(function(){ return null; });
-  }
-
-  function fetchAllMocSetsViaApi(){
-    var statusEl = document.getElementById('mocset-fetch-status');
-    if (!rebrickableApiKey){
-      statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Enter your Rebrickable API key on the Official Sets tab first \u2014 it\u2019s shared here.';
-      return;
-    }
-    if (!mocSets.length){
-      statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Add a MOC set first.';
-      return;
-    }
-    var toFetch = mocSets.filter(function(s){
-      return !mocSetParts.some(function(p){ return p.mocId === s.mocId; });
-    });
-    var skipped = mocSets.length - toFetch.length;
-    if (!toFetch.length){
-      statusEl.style.color = 'var(--text-success)';
-      statusEl.textContent = 'Every MOC set already has parts on file \u2014 nothing new to fetch.';
-      return;
-    }
-    var ok = 0, failed = 0, total = toFetch.length, done = 0;
-    statusEl.style.color = 'var(--text-secondary)';
-    statusEl.textContent = 'Fetching\u2026 0 / ' + total;
-    var idx = 0;
-    function next(){
-      if (idx >= total){
-        statusEl.style.color = ok ? 'var(--text-success)' : 'var(--text-danger)';
-        statusEl.textContent = 'Fetched ' + ok + ' new MOC set' + (ok===1?'':'s') + ' of ' + total + '.' +
-          (skipped ? (' ' + skipped + ' already had parts on file and were skipped.') : '') +
-          (failed ? (' ' + failed + ' failed \u2014 likely blocked by the browser, or that MOC ID isn\u2019t public/valid on Rebrickable; try the CSV import instead.') : '');
-        renderMocSetsTab();
-        return;
-      }
-      var s = toFetch[idx++];
-      fetchMocSetPartsFromApi(s.mocId).then(function(rows){
-        importMocSetPartsFromRows(s.mocId, rows);
-        ok++;
-        return fetchMocSetDetailsFromApi(s.mocId);
-      }).then(function(details){
-        if (details && details.name){
-          s.name = details.name;
-          saveMocSets();
-        }
-      }).catch(function(){
-        failed++;
-      }).then(function(){
-        done++;
-        statusEl.textContent = 'Fetching\u2026 ' + done + ' / ' + total;
-        next();
-      });
-    }
-    next();
-  }
 
   function getFilteredSetPartsRaw(){
     var q = (document.getElementById('set-parts-search').value || '').toLowerCase();
@@ -2620,136 +2415,6 @@
     renderSetPartsTable();
   }
 
-  function getFilteredMocSetPartsRaw(){
-    var q = (document.getElementById('mocset-parts-search').value || '').toLowerCase();
-    var mocSetFilter = document.getElementById('mocset-parts-filter').value;
-    var colorFilter = document.getElementById('mocset-parts-color-filter').value;
-    return mocSetParts.filter(function(r){
-      if (mocSetFilter && r.mocId !== mocSetFilter) return false;
-      if (colorFilter && r.color !== colorFilter) return false;
-      if (q){
-        var hay = (r.partNum+' '+r.desc+' '+r.color+' '+r.mocId).toLowerCase();
-        if (hay.indexOf(q) === -1) return false;
-      }
-      return true;
-    });
-  }
-
-  function getFilteredMocSetParts(){
-    var rows = getFilteredMocSetPartsRaw();
-    rows.forEach(function(r){
-      var mocSetInfo = mocSets.find(function(s){ return s.mocId === r.mocId; });
-      r._totalQty = r.qtyPerSet * (mocSetInfo ? mocSetInfo.qty : 1);
-    });
-    rows.sort(function(a,b){
-      var col = mocSetPartsState.sortCol;
-      var av = col === 'totalQty' ? a._totalQty : (col === 'qtyPerSet' ? a.qtyPerSet : (a[col] || ''));
-      var bv = col === 'totalQty' ? b._totalQty : (col === 'qtyPerSet' ? b.qtyPerSet : (b[col] || ''));
-      if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * mocSetPartsState.sortDir;
-      return String(av).localeCompare(String(bv), undefined, {numeric:true}) * mocSetPartsState.sortDir;
-    });
-    return rows;
-  }
-
-  function renderMocSetPartsTable(){
-    var mocSetSel = document.getElementById('mocset-parts-filter');
-    var curMocSet = mocSetSel.value;
-    mocSetSel.innerHTML = '<option value="">All MOC sets</option>' + mocSets.map(function(s){ return '<option value="'+escapeHtml(s.mocId)+'">'+escapeHtml(s.mocId)+'</option>'; }).join('');
-    mocSetSel.value = curMocSet;
-
-    var colorSel = document.getElementById('mocset-parts-color-filter');
-    var curColor = colorSel.value;
-    var colors = Array.from(new Set(mocSetParts.map(function(r){ return r.color; }).filter(Boolean))).sort();
-    colorSel.innerHTML = '<option value="">All colors</option>' + colors.map(function(c){ return '<option value="'+escapeHtml(c)+'">'+escapeHtml(c)+'</option>'; }).join('');
-    colorSel.value = curColor;
-
-    var combineOn = document.getElementById('mocset-parts-combine-toggle').checked;
-    document.getElementById('mocset-parts-mocid-header').textContent = combineOn ? 'Used In' : 'MOC ID';
-    document.getElementById('mocset-parts-qtyperset-header').textContent = combineOn ? '\u2014' : 'Qty / set';
-
-    var rows = combineOn ? computeMocSetInventory(getFilteredMocSetPartsRaw()) : getFilteredMocSetParts();
-    if (combineOn){
-      rows.sort(function(a,b){
-        var col = mocSetPartsState.sortCol === 'mocId' ? 'partNum' : (mocSetPartsState.sortCol === 'qtyPerSet' ? 'totalQty' : mocSetPartsState.sortCol);
-        var av = col === 'totalQty' ? a.totalQty : (a[col] || '');
-        var bv = col === 'totalQty' ? b.totalQty : (b[col] || '');
-        if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * mocSetPartsState.sortDir;
-        return String(av).localeCompare(String(bv), undefined, {numeric:true}) * mocSetPartsState.sortDir;
-      });
-    }
-
-    var totalPages = Math.max(1, Math.ceil(rows.length / mocSetPartsState.pageSize));
-    if (mocSetPartsState.page > totalPages) mocSetPartsState.page = totalPages;
-    var start = (mocSetPartsState.page-1)*mocSetPartsState.pageSize;
-    var pageRows = rows.slice(start, start+mocSetPartsState.pageSize);
-
-    var tbody = document.getElementById('mocset-parts-tbody');
-    tbody.innerHTML = '';
-    document.getElementById('mocset-parts-empty-msg').style.display = rows.length ? 'none' : 'block';
-
-    if (combineOn){
-      pageRows.forEach(function(it){
-        var setList = Array.from(it.sets).sort();
-        var tr = document.createElement('tr');
-        tr.innerHTML =
-          '<td class="img-cell"><div class="part-thumb-wrap"></div></td>' +
-          '<td><span class="used-in-count" title="'+escapeHtml(setList.join(', '))+'">'+setList.length+' MOC set'+(setList.length===1?'':'s')+'</span></td>' +
-          '<td class="wrap-cell">'+escapeHtml(it.partNum)+'</td>' +
-          '<td class="wrap-cell">'+escapeHtml(it.color)+'</td>' +
-          '<td class="wrap-cell">'+escapeHtml(it.desc)+'</td>' +
-          '<td style="color:var(--text-muted);">&mdash;</td>' +
-          '<td class="wrap-cell">'+it.totalQty.toLocaleString()+'</td>' +
-          '<td></td>';
-        buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
-        tbody.appendChild(tr);
-      });
-      document.getElementById('mocset-parts-page-info').textContent = rows.length ? ('Showing '+(start+1)+'-'+Math.min(start+pageRows.length, rows.length)+' of '+rows.length+' unique parts') : '';
-      document.getElementById('mocset-parts-prev-page').disabled = mocSetPartsState.page <= 1;
-      document.getElementById('mocset-parts-next-page').disabled = mocSetPartsState.page >= totalPages;
-      return;
-    }
-
-    pageRows.forEach(function(r){
-      var tr = document.createElement('tr');
-      tr.innerHTML =
-        '<td class="img-cell"><div class="part-thumb-wrap"></div></td>' +
-        '<td>'+escapeHtml(r.mocId)+'</td>' +
-        '<td class="wrap-cell">'+escapeHtml(r.partNum)+'</td>' +
-        '<td class="wrap-cell">'+escapeHtml(r.color)+'</td>' +
-        '<td class="wrap-cell">'+escapeHtml(r.desc)+'</td>' +
-        '<td class="wrap-cell">'+r.qtyPerSet+'</td>' +
-        '<td class="wrap-cell">'+r._totalQty+'</td>' +
-        '<td class="actions-cell"></td>';
-      buildThumb({ elementId: r.elementId, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
-      var delBtn = document.createElement('button');
-      delBtn.className = 'row-delete-btn danger';
-      delBtn.title = 'Remove this part line';
-      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>';
-      delBtn.addEventListener('click', function(){
-        var idx = mocSetParts.indexOf(r);
-        if (idx !== -1){ mocSetParts.splice(idx, 1); saveMocSetParts(); renderMocSetsTab(); }
-      });
-      tr.querySelector('.actions-cell').appendChild(delBtn);
-      tbody.appendChild(tr);
-    });
-
-    document.getElementById('mocset-parts-page-info').textContent = rows.length ? ('Showing '+(start+1)+'-'+Math.min(start+pageRows.length, rows.length)+' of '+rows.length) : '';
-    document.getElementById('mocset-parts-prev-page').disabled = mocSetPartsState.page <= 1;
-    document.getElementById('mocset-parts-next-page').disabled = mocSetPartsState.page >= totalPages;
-  }
-
-  function populateMocSetCsvTarget(){
-    var sel = document.getElementById('mocset-csv-target');
-    var cur = sel.value;
-    sel.innerHTML = '<option value="">Which MOC set is this for?</option>' + mocSets.map(function(s){ return '<option value="'+escapeHtml(s.mocId)+'">'+escapeHtml(s.mocId)+(s.name?' \u2014 '+escapeHtml(s.name):'')+'</option>'; }).join('');
-    sel.value = cur;
-  }
-
-  function renderMocSetsTab(){
-    renderMocSetsList();
-    populateMocSetCsvTarget();
-    renderMocSetPartsTable();
-  }
 
   function computeSetInventory(sourceRows){
     var map = {};
@@ -2768,244 +2433,6 @@
     });
     return Object.keys(map).map(function(k){ return map[k]; });
   }
-
-  function computeMocSetInventory(sourceRows){
-    var map = {};
-    (sourceRows || mocSetParts).forEach(function(r){
-      var mocSetInfo = mocSets.find(function(s){ return s.mocId === r.mocId; });
-      var ownedQty = mocSetInfo ? mocSetInfo.qty : 1;
-      var key = r.partNum + '|' + r.color;
-      if (!map[key]){
-        map[key] = { partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId, totalQty: 0, sets: new Set() };
-      }
-      var entry = map[key];
-      entry.totalQty += r.qtyPerSet * ownedQty;
-      entry.sets.add(r.mocId);
-      if (!entry.desc && r.desc) entry.desc = r.desc;
-      if (!entry.elementId && r.elementId) entry.elementId = r.elementId;
-    });
-    return Object.keys(map).map(function(k){ return map[k]; });
-  }
-
-  function renderSetPartsSummaryTab(){
-    var q = (document.getElementById('sp-search').value || '').toLowerCase();
-    var colorFilter = document.getElementById('sp-color-filter').value;
-    var setFilter = document.getElementById('sp-set-filter').value;
-
-    var setSel = document.getElementById('sp-set-filter');
-    var curSet = setSel.value;
-    setSel.innerHTML = '<option value="">All sets</option>' + ownedSets.map(function(s){
-      var label = s.setNum + (s.name ? ' \u2014 ' + s.name : '');
-      return '<option value="'+escapeHtml(s.setNum)+'">'+escapeHtml(label)+'</option>';
-    }).join('');
-    setSel.value = curSet;
-
-    var colorSel = document.getElementById('sp-color-filter');
-    var curColor = colorSel.value;
-    var colors = Array.from(new Set(setParts.map(function(r){ return r.color; }).filter(Boolean))).sort();
-    colorSel.innerHTML = '<option value="">All colors</option>' + colors.map(function(c){ return '<option value="'+escapeHtml(c)+'">'+escapeHtml(c)+'</option>'; }).join('');
-    colorSel.value = curColor;
-
-    var rawRows = setParts.filter(function(r){
-      if (setFilter && r.setNum !== setFilter) return false;
-      if (colorFilter && r.color !== colorFilter) return false;
-      if (q){
-        var hay = (r.partNum+' '+r.desc+' '+r.color+' '+r.setNum).toLowerCase();
-        if (hay.indexOf(q) === -1) return false;
-      }
-      return true;
-    });
-
-    var combineOn = document.getElementById('sp-combine-toggle').checked;
-    document.getElementById('sp-setnum-header').textContent = combineOn ? 'Used In' : 'Set #';
-    document.getElementById('sp-qtyperset-header').textContent = combineOn ? '\u2014' : 'Qty / set';
-
-    var items;
-    if (combineOn){
-      items = computeSetInventory(rawRows);
-      items.sort(function(a,b){
-        var col = spState.sortCol === 'setNum' ? 'partNum' : (spState.sortCol === 'qtyPerSet' ? 'totalQty' : spState.sortCol);
-        var av = col === 'totalQty' ? a.totalQty : (a[col] || '');
-        var bv = col === 'totalQty' ? b.totalQty : (b[col] || '');
-        if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * spState.sortDir;
-        return String(av).localeCompare(String(bv), undefined, {numeric:true}) * spState.sortDir;
-      });
-    } else {
-      items = rawRows.map(function(r){
-        var setInfo = ownedSets.find(function(s){ return s.setNum === r.setNum; });
-        return { setNum: r.setNum, partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId, qtyPerSet: r.qtyPerSet, totalQty: r.qtyPerSet * (setInfo ? setInfo.qty : 1) };
-      });
-      items.sort(function(a,b){
-        var col = spState.sortCol;
-        var av = col === 'totalQty' ? a.totalQty : (col === 'qtyPerSet' ? a.qtyPerSet : (a[col] || ''));
-        var bv = col === 'totalQty' ? b.totalQty : (col === 'qtyPerSet' ? b.qtyPerSet : (b[col] || ''));
-        if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * spState.sortDir;
-        return String(av).localeCompare(String(bv), undefined, {numeric:true}) * spState.sortDir;
-      });
-    }
-
-    var totalPages = Math.max(1, Math.ceil(items.length / spState.pageSize));
-    if (spState.page > totalPages) spState.page = totalPages;
-    var start = (spState.page-1)*spState.pageSize;
-    var pageItems = items.slice(start, start+spState.pageSize);
-
-    var tbody = document.getElementById('sp-tbody');
-    tbody.innerHTML = '';
-    document.getElementById('sp-empty-msg').style.display = items.length ? 'none' : 'block';
-
-    if (combineOn){
-      pageItems.forEach(function(it){
-        var setList = Array.from(it.sets).sort();
-        var tr = document.createElement('tr');
-        tr.innerHTML =
-          '<td class="img-cell"><div class="part-thumb-wrap"></div></td>' +
-          '<td><span class="used-in-count" title="'+escapeHtml(setList.join(', '))+'">'+setList.length+' set'+(setList.length===1?'':'s')+'</span></td>' +
-          '<td class="wrap-cell">'+escapeHtml(it.partNum)+'</td>' +
-          '<td class="wrap-cell">'+escapeHtml(it.color)+'</td>' +
-          '<td class="wrap-cell">'+escapeHtml(it.desc)+'</td>' +
-          '<td style="color:var(--text-muted);">&mdash;</td>' +
-          '<td class="wrap-cell">'+it.totalQty.toLocaleString()+'</td>';
-        buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
-        tbody.appendChild(tr);
-      });
-      document.getElementById('sp-page-info').textContent = items.length ? ('Showing '+(start+1)+'-'+Math.min(start+pageItems.length, items.length)+' of '+items.length+' unique parts') : '';
-    } else {
-      pageItems.forEach(function(it){
-        var tr = document.createElement('tr');
-        tr.innerHTML =
-          '<td class="img-cell"><div class="part-thumb-wrap"></div></td>' +
-          '<td>'+escapeHtml(it.setNum)+'</td>' +
-          '<td class="wrap-cell">'+escapeHtml(it.partNum)+'</td>' +
-          '<td class="wrap-cell">'+escapeHtml(it.color)+'</td>' +
-          '<td class="wrap-cell">'+escapeHtml(it.desc)+'</td>' +
-          '<td class="wrap-cell">'+it.qtyPerSet+'</td>' +
-          '<td class="wrap-cell">'+it.totalQty.toLocaleString()+'</td>';
-        buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
-        tbody.appendChild(tr);
-      });
-      document.getElementById('sp-page-info').textContent = items.length ? ('Showing '+(start+1)+'-'+Math.min(start+pageItems.length, items.length)+' of '+items.length) : '';
-    }
-
-    document.getElementById('sp-prev-page').disabled = spState.page <= 1;
-    document.getElementById('sp-next-page').disabled = spState.page >= totalPages;
-  }
-
-  function renderMocSetPartsSummaryTab(){
-    var q = (document.getElementById('mocsetsp-search').value || '').toLowerCase();
-    var colorFilter = document.getElementById('mocsetsp-color-filter').value;
-    var mocSetFilter = document.getElementById('mocsetsp-set-filter').value;
-
-    var setSel = document.getElementById('mocsetsp-set-filter');
-    var curSet = setSel.value;
-    setSel.innerHTML = '<option value="">All MOC sets</option>' + mocSets.map(function(s){
-      var label = s.mocId + (s.name ? ' \u2014 ' + s.name : '');
-      return '<option value="'+escapeHtml(s.mocId)+'">'+escapeHtml(label)+'</option>';
-    }).join('');
-    setSel.value = curSet;
-
-    var colorSel = document.getElementById('mocsetsp-color-filter');
-    var curColor = colorSel.value;
-    var colors = Array.from(new Set(mocSetParts.map(function(r){ return r.color; }).filter(Boolean))).sort();
-    colorSel.innerHTML = '<option value="">All colors</option>' + colors.map(function(c){ return '<option value="'+escapeHtml(c)+'">'+escapeHtml(c)+'</option>'; }).join('');
-    colorSel.value = curColor;
-
-    var rawRows = mocSetParts.filter(function(r){
-      if (mocSetFilter && r.mocId !== mocSetFilter) return false;
-      if (colorFilter && r.color !== colorFilter) return false;
-      if (q){
-        var hay = (r.partNum+' '+r.desc+' '+r.color+' '+r.mocId).toLowerCase();
-        if (hay.indexOf(q) === -1) return false;
-      }
-      return true;
-    });
-
-    var combineOn = document.getElementById('mocsetsp-combine-toggle').checked;
-    document.getElementById('mocsetsp-mocid-header').textContent = combineOn ? 'Used In' : 'MOC ID';
-    document.getElementById('mocsetsp-qtyperset-header').textContent = combineOn ? '\u2014' : 'Qty / set';
-
-    var items;
-    if (combineOn){
-      items = computeMocSetInventory(rawRows);
-      items.sort(function(a,b){
-        var col = mocsetSpState.sortCol === 'mocId' ? 'partNum' : (mocsetSpState.sortCol === 'qtyPerSet' ? 'totalQty' : mocsetSpState.sortCol);
-        var av = col === 'totalQty' ? a.totalQty : (a[col] || '');
-        var bv = col === 'totalQty' ? b.totalQty : (b[col] || '');
-        if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * mocsetSpState.sortDir;
-        return String(av).localeCompare(String(bv), undefined, {numeric:true}) * mocsetSpState.sortDir;
-      });
-    } else {
-      items = rawRows.map(function(r){
-        var mocSetInfo = mocSets.find(function(s){ return s.mocId === r.mocId; });
-        return { mocId: r.mocId, partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId, qtyPerSet: r.qtyPerSet, totalQty: r.qtyPerSet * (mocSetInfo ? mocSetInfo.qty : 1) };
-      });
-      items.sort(function(a,b){
-        var col = mocsetSpState.sortCol;
-        var av = col === 'totalQty' ? a.totalQty : (col === 'qtyPerSet' ? a.qtyPerSet : (a[col] || ''));
-        var bv = col === 'totalQty' ? b.totalQty : (col === 'qtyPerSet' ? b.qtyPerSet : (b[col] || ''));
-        if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * mocsetSpState.sortDir;
-        return String(av).localeCompare(String(bv), undefined, {numeric:true}) * mocsetSpState.sortDir;
-      });
-    }
-
-    var totalPages = Math.max(1, Math.ceil(items.length / mocsetSpState.pageSize));
-    if (mocsetSpState.page > totalPages) mocsetSpState.page = totalPages;
-    var start = (mocsetSpState.page-1)*mocsetSpState.pageSize;
-    var pageItems = items.slice(start, start+mocsetSpState.pageSize);
-
-    var tbody = document.getElementById('mocsetsp-tbody');
-    tbody.innerHTML = '';
-    document.getElementById('mocsetsp-empty-msg').style.display = items.length ? 'none' : 'block';
-
-    if (combineOn){
-      pageItems.forEach(function(it){
-        var setList = Array.from(it.sets).sort();
-        var tr = document.createElement('tr');
-        tr.innerHTML =
-          '<td class="img-cell"><div class="part-thumb-wrap"></div></td>' +
-          '<td><span class="used-in-count" title="'+escapeHtml(setList.join(', '))+'">'+setList.length+' MOC set'+(setList.length===1?'':'s')+'</span></td>' +
-          '<td class="wrap-cell">'+escapeHtml(it.partNum)+'</td>' +
-          '<td class="wrap-cell">'+escapeHtml(it.color)+'</td>' +
-          '<td class="wrap-cell">'+escapeHtml(it.desc)+'</td>' +
-          '<td style="color:var(--text-muted);">&mdash;</td>' +
-          '<td class="wrap-cell">'+it.totalQty.toLocaleString()+'</td>';
-        buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
-        tbody.appendChild(tr);
-      });
-      document.getElementById('mocsetsp-page-info').textContent = items.length ? ('Showing '+(start+1)+'-'+Math.min(start+pageItems.length, items.length)+' of '+items.length+' unique parts') : '';
-    } else {
-      pageItems.forEach(function(it){
-        var tr = document.createElement('tr');
-        tr.innerHTML =
-          '<td class="img-cell"><div class="part-thumb-wrap"></div></td>' +
-          '<td>'+escapeHtml(it.mocId)+'</td>' +
-          '<td class="wrap-cell">'+escapeHtml(it.partNum)+'</td>' +
-          '<td class="wrap-cell">'+escapeHtml(it.color)+'</td>' +
-          '<td class="wrap-cell">'+escapeHtml(it.desc)+'</td>' +
-          '<td class="wrap-cell">'+it.qtyPerSet+'</td>' +
-          '<td class="wrap-cell">'+it.totalQty.toLocaleString()+'</td>';
-        buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
-        tbody.appendChild(tr);
-      });
-      document.getElementById('mocsetsp-page-info').textContent = items.length ? ('Showing '+(start+1)+'-'+Math.min(start+pageItems.length, items.length)+' of '+items.length) : '';
-    }
-
-    document.getElementById('mocsetsp-prev-page').disabled = mocsetSpState.page <= 1;
-    document.getElementById('mocsetsp-next-page').disabled = mocsetSpState.page >= totalPages;
-  }
-
-  document.getElementById('mocsetsp-search').addEventListener('input', function(){ mocsetSpState.page = 1; renderMocSetPartsSummaryTab(); });
-  document.getElementById('mocsetsp-set-filter').addEventListener('change', function(){ mocsetSpState.page = 1; renderMocSetPartsSummaryTab(); });
-  document.getElementById('mocsetsp-color-filter').addEventListener('change', function(){ mocsetSpState.page = 1; renderMocSetPartsSummaryTab(); });
-  document.getElementById('mocsetsp-combine-toggle').addEventListener('change', function(){ mocsetSpState.page = 1; renderMocSetPartsSummaryTab(); });
-  document.getElementById('mocsetsp-prev-page').addEventListener('click', function(){ if (mocsetSpState.page>1){ mocsetSpState.page--; renderMocSetPartsSummaryTab(); } });
-  document.getElementById('mocsetsp-next-page').addEventListener('click', function(){ mocsetSpState.page++; renderMocSetPartsSummaryTab(); });
-  document.querySelectorAll('#lego-inv-root th[data-mocsetsp-sort]').forEach(function(th){
-    th.addEventListener('click', function(){
-      var col = th.dataset.mocsetspSort;
-      if (mocsetSpState.sortCol === col) mocsetSpState.sortDir *= -1; else { mocsetSpState.sortCol = col; mocsetSpState.sortDir = 1; }
-      renderMocSetPartsSummaryTab();
-    });
-  });
 
   document.getElementById('sp-search').addEventListener('input', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
   document.getElementById('sp-set-filter').addEventListener('change', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
@@ -3055,14 +2482,6 @@
   }
   function saveSetPhotos(){
     return storage.set(SET_PHOTOS_KEY, JSON.stringify(setPhotos), false);
-  }
-  function loadMocSetPhotos(){
-    return storage.get(MOCSET_PHOTOS_KEY, false).then(function(res){
-      if (res && res.value){ try { mocSetPhotos = JSON.parse(res.value); } catch(e){ mocSetPhotos = {}; } }
-    }).catch(function(){});
-  }
-  function saveMocSetPhotos(){
-    return storage.set(MOCSET_PHOTOS_KEY, JSON.stringify(mocSetPhotos), false);
   }
   function loadMocPhotos(){
     return storage.get(MOC_PHOTOS_KEY, false).then(function(res){
@@ -3119,10 +2538,14 @@
     if (buildRec) buildRec.name = newName;
     if (mocLocations[oldName] !== undefined){ mocLocations[newName] = mocLocations[oldName]; delete mocLocations[oldName]; }
     if (mocPhotos[oldName] !== undefined){ mocPhotos[newName] = mocPhotos[oldName]; delete mocPhotos[oldName]; }
+    if (mocThemes[oldName] !== undefined){ mocThemes[newName] = mocThemes[oldName]; delete mocThemes[oldName]; }
+    if (mocDescriptions[oldName] !== undefined){ mocDescriptions[newName] = mocDescriptions[oldName]; delete mocDescriptions[oldName]; }
     saveState();
     saveMocBuilds();
     saveMocLocations();
     saveMocPhotos();
+    saveMocThemes();
+    saveMocDescriptions();
     return true;
   }
   function deleteMocBuild(name){
@@ -3135,11 +2558,16 @@
     mocBuilds = mocBuilds.filter(function(b){ return b.name !== name; });
     delete mocLocations[name];
     delete mocPhotos[name];
+    delete mocThemes[name];
+    delete mocDescriptions[name];
     saveState();
     saveMocBuilds();
     saveMocLocations();
     saveMocPhotos();
+    saveMocThemes();
+    saveMocDescriptions();
     renderOverview();
+    renderMocBuildsTab();
   }
 
   function resizeImageFile(file, maxDim, quality){
@@ -3175,13 +2603,11 @@
   }
   function photoMapFor(kind){
     if (kind === 'set') return setPhotos;
-    if (kind === 'mocset') return mocSetPhotos;
     return mocPhotos;
   }
 
   function photoSitePath(kind, key){
     if (kind === 'set') return 'set-photos/' + encodeURIComponent(key) + '.jpg';
-    if (kind === 'mocset') return 'mocset-photos/' + encodeURIComponent(key) + '.jpg';
     return 'moc-photos/' + slugify(key) + '.jpg';
   }
 
@@ -3297,51 +2723,15 @@
     document.getElementById('detail-modal-overlay').style.display = 'flex';
   }
 
-  function openMocSetDetail(mocId){
-    var mocSetInfo = mocSets.find(function(s){ return s.mocId === mocId; });
-    if (!mocSetInfo) return;
-    detailContext = { kind: 'mocset', key: mocId };
-
-    document.getElementById('detail-modal-title').textContent = mocSetInfo.mocId + (mocSetInfo.name ? ' \u2014 ' + mocSetInfo.name : '');
-    var themeEl = document.getElementById('detail-modal-theme');
-    if (mocSetInfo.theme){ themeEl.textContent = 'Theme: ' + mocSetInfo.theme; themeEl.style.display = 'block'; }
-    else { themeEl.style.display = 'none'; }
-    document.getElementById('detail-modal-location').innerHTML = locationOptionsHtml(mocSetInfo.location || '');
-    document.getElementById('detail-modal-description').value = mocSetInfo.description || '';
-
-    var rows = mocSetParts.filter(function(r){ return r.mocId === mocId; });
-    var pieceTotal = rows.reduce(function(sum, r){ return sum + r.qtyPerSet * mocSetInfo.qty; }, 0);
-    var metricsEl = document.getElementById('detail-modal-metrics');
-    metricsEl.innerHTML = '';
-    metricsEl.appendChild(buildDetailMetric('Qty', mocSetInfo.qty));
-    metricsEl.appendChild(buildDetailMetric('Unique parts', rows.length));
-    metricsEl.appendChild(buildDetailMetric('Total pieces', pieceTotal.toLocaleString()));
-
-    var tbody = document.getElementById('detail-modal-parts-tbody');
-    tbody.innerHTML = '';
-    rows.slice().sort(function(a,b){ return String(a.desc||'').localeCompare(String(b.desc||'')); }).forEach(function(r){
-      var tr = document.createElement('tr');
-      tr.innerHTML =
-        '<td class="img-cell"><div class="part-thumb-wrap"></div></td>'+
-        '<td class="wrap-cell">'+escapeHtml(r.partNum)+'</td>'+
-        '<td class="wrap-cell">'+escapeHtml(r.color)+'</td>'+
-        '<td class="wrap-cell">'+escapeHtml(r.desc)+'</td>'+
-        '<td>'+(r.qtyPerSet * mocSetInfo.qty).toLocaleString()+'</td>';
-      buildThumb({ elementId: r.elementId, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
-      tbody.appendChild(tr);
-    });
-
-    renderDetailPhoto();
-    document.getElementById('detail-modal-overlay').style.display = 'flex';
-  }
-
   function openMocDetail(mocName){
     var rows = state.rows.filter(function(r){ return r.moc === mocName; });
-    if (!rows.length) return;
+    if (!rows.length && !mocBuilds.some(function(b){ return b.name === mocName; })) return;
     detailContext = { kind: 'moc', key: mocName };
 
     document.getElementById('detail-modal-title').textContent = mocName;
-    document.getElementById('detail-modal-theme').style.display = 'none';
+    var themeEl = document.getElementById('detail-modal-theme');
+    if (mocThemes[mocName]){ themeEl.textContent = 'Theme: ' + mocThemes[mocName]; themeEl.style.display = 'block'; }
+    else { themeEl.style.display = 'none'; }
     document.getElementById('detail-modal-location').innerHTML = locationOptionsHtml(mocLocations[mocName] || '');
     document.getElementById('detail-modal-description').value = mocDescriptions[mocName] || '';
 
@@ -3380,13 +2770,11 @@
     if (detailContext.kind === 'set'){
       var setInfo = ownedSets.find(function(s){ return s.setNum === detailContext.key; });
       if (setInfo){ setInfo.location = val; saveOwnedSets(); refreshSetViews(); }
-    } else if (detailContext.kind === 'mocset'){
-      var mocSetInfo = mocSets.find(function(s){ return s.mocId === detailContext.key; });
-      if (mocSetInfo){ mocSetInfo.location = val; saveMocSets(); }
     } else {
       if (val){ mocLocations[detailContext.key] = val; } else { delete mocLocations[detailContext.key]; }
       saveMocLocations();
       renderOverview();
+      renderMocBuildsTab();
     }
   });
   document.getElementById('detail-modal-manage-locations').addEventListener('click', openLocationManager);
@@ -3396,9 +2784,6 @@
     if (detailContext.kind === 'set'){
       var setInfo = ownedSets.find(function(s){ return s.setNum === detailContext.key; });
       if (setInfo){ setInfo.description = val; saveOwnedSets(); }
-    } else if (detailContext.kind === 'mocset'){
-      var mocSetInfo = mocSets.find(function(s){ return s.mocId === detailContext.key; });
-      if (mocSetInfo){ mocSetInfo.description = val; saveMocSets(); }
     } else {
       if (val){ mocDescriptions[detailContext.key] = val; } else { delete mocDescriptions[detailContext.key]; }
       saveMocDescriptions();
@@ -3409,7 +2794,6 @@
   });
   function savePhotoMapFor(kind){
     if (kind === 'set') return saveSetPhotos();
-    if (kind === 'mocset') return saveMocSetPhotos();
     return saveMocPhotos();
   }
 
@@ -3890,23 +3274,6 @@
     });
   });
 
-  document.getElementById('build-add-btn').addEventListener('click', function(){
-    var name = document.getElementById('build-name-input').value.trim();
-    var location = document.getElementById('build-location-input').value.trim();
-    if (!name){ return; }
-    if (mocBuilds.some(function(b){ return b.name === name; }) || state.rows.some(function(r){ return r.moc === name; })){
-      alert('A build named "' + name + '" already exists.');
-      return;
-    }
-    mocBuilds.push({ name: name });
-    if (location) mocLocations[name] = location;
-    saveMocBuilds();
-    saveMocLocations();
-    document.getElementById('build-name-input').value = '';
-    document.getElementById('build-location-input').value = '';
-    renderOverview();
-  });
-
   document.getElementById('set-add-btn').addEventListener('click', function(){
     var raw = document.getElementById('set-num-input').value;
     var setNum = normalizedSetNum(raw);
@@ -3931,27 +3298,25 @@
     renderSetsTab();
   });
 
-  document.getElementById('mocset-add-btn').addEventListener('click', function(){
-    var mocId = document.getElementById('mocset-id-input').value.trim();
-    if (!mocId){ return; }
-    var qty = parseInt(document.getElementById('mocset-qty-input').value, 10);
-    if (isNaN(qty) || qty < 1) qty = 1;
-    var name = document.getElementById('mocset-name-input').value.trim();
-    var theme = document.getElementById('mocset-theme-input').value.trim();
-    var existing = mocSets.find(function(s){ return s.mocId === mocId; });
-    if (existing){
-      existing.qty = qty;
-      if (name) existing.name = name;
-      if (theme) existing.theme = theme;
-    } else {
-      mocSets.push({ mocId: mocId, qty: qty, name: name, theme: theme });
+  document.getElementById('build-add-btn').addEventListener('click', function(){
+    var name = document.getElementById('build-name-input').value.trim();
+    var location = document.getElementById('build-location-input').value.trim();
+    var theme = document.getElementById('mocbuild-theme-input').value.trim();
+    if (!name){ return; }
+    if (mocBuilds.some(function(b){ return b.name === name; }) || state.rows.some(function(r){ return r.moc === name; })){
+      alert('A build named "' + name + '" already exists.');
+      return;
     }
-    saveMocSets();
-    document.getElementById('mocset-id-input').value = '';
-    document.getElementById('mocset-qty-input').value = '1';
-    document.getElementById('mocset-name-input').value = '';
-    document.getElementById('mocset-theme-input').value = '';
-    renderMocSetsTab();
+    mocBuilds.push({ name: name });
+    if (location) mocLocations[name] = location;
+    if (theme) mocThemes[name] = theme;
+    saveMocBuilds();
+    saveMocLocations();
+    saveMocThemes();
+    document.getElementById('build-name-input').value = '';
+    document.getElementById('build-location-input').value = '';
+    document.getElementById('mocbuild-theme-input').value = '';
+    renderMocBuildsTab();
   });
   document.getElementById('manage-locations-toggle-mocsets').addEventListener('click', openLocationManager);
 
@@ -3980,28 +3345,28 @@
     }
   });
 
-  document.getElementById('mocset-csv-import-btn').addEventListener('click', function(){
-    var mocId = document.getElementById('mocset-csv-target').value;
-    var statusEl = document.getElementById('mocset-csv-status');
-    if (!mocId){
+  document.getElementById('mocbuild-csv-import-btn').addEventListener('click', function(){
+    var buildName = document.getElementById('mocbuild-csv-target').value;
+    var statusEl = document.getElementById('mocbuild-csv-status');
+    if (!buildName){
       statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Add a MOC set and choose it from the dropdown first.';
+      statusEl.textContent = 'Choose a build from the dropdown first.';
       return;
     }
-    var fileInput = document.getElementById('mocset-csv-file');
+    var fileInput = document.getElementById('mocbuild-csv-file');
     if (fileInput.files && fileInput.files[0]){
       var reader = new FileReader();
-      reader.onload = function(e){ importMocSetCSVText(mocId, e.target.result); };
+      reader.onload = function(e){ importBuildPartsCSVText(buildName, e.target.result); };
       reader.onerror = function(){ statusEl.style.color = 'var(--text-danger)'; statusEl.textContent = 'Could not read that file.'; };
       reader.readAsText(fileInput.files[0]);
     } else {
-      var text = document.getElementById('mocset-csv-paste').value;
+      var text = document.getElementById('mocbuild-csv-paste').value;
       if (!text.trim()){
         statusEl.style.color = 'var(--text-danger)';
         statusEl.textContent = 'Choose a file or paste CSV text first.';
         return;
       }
-      importMocSetCSVText(mocId, text);
+      importBuildPartsCSVText(buildName, text);
     }
   });
 
@@ -4014,23 +3379,8 @@
     storage.set(USE_SET_PROXY_KEY, useSetProxy ? '1' : '0', false);
   });
   document.getElementById('set-fetch-all-btn').addEventListener('click', fetchAllSetsViaApi);
-  document.getElementById('mocset-fetch-all-btn').addEventListener('click', fetchAllMocSetsViaApi);
 
-  document.getElementById('mocset-search').addEventListener('input', renderMocSetsList);
-  document.getElementById('mocset-parts-search').addEventListener('input', function(){ mocSetPartsState.page = 1; renderMocSetPartsTable(); });
-  document.getElementById('mocset-parts-filter').addEventListener('change', function(){ mocSetPartsState.page = 1; renderMocSetPartsTable(); });
-  document.getElementById('mocset-parts-color-filter').addEventListener('change', function(){ mocSetPartsState.page = 1; renderMocSetPartsTable(); });
-  document.getElementById('mocset-parts-combine-toggle').addEventListener('change', function(){ mocSetPartsState.page = 1; renderMocSetPartsTable(); });
-  document.getElementById('mocset-parts-prev-page').addEventListener('click', function(){ if (mocSetPartsState.page>1){ mocSetPartsState.page--; renderMocSetPartsTable(); } });
-  document.getElementById('mocset-parts-next-page').addEventListener('click', function(){ mocSetPartsState.page++; renderMocSetPartsTable(); });
-  document.querySelectorAll('#lego-inv-root th[data-mocset-sort]').forEach(function(th){
-    th.addEventListener('click', function(){
-      var col = th.dataset.mocsetSort;
-      if (mocSetPartsState.sortCol === col) mocSetPartsState.sortDir *= -1; else { mocSetPartsState.sortCol = col; mocSetPartsState.sortDir = 1; }
-      renderMocSetPartsTable();
-    });
-  });
-
+  document.getElementById('mocbuild-search').addEventListener('input', renderMocBuildsList);
   document.getElementById('set-parts-search').addEventListener('input', function(){ setPartsState.page = 1; renderSetPartsTable(); });
   document.getElementById('set-parts-set-filter').addEventListener('change', function(){ setPartsState.page = 1; renderSetPartsTable(); });
   document.getElementById('set-parts-color-filter').addEventListener('change', function(){ setPartsState.page = 1; renderSetPartsTable(); });
@@ -4114,8 +3464,8 @@
       ]);
   });
 
-  document.getElementById('mocset-csv-template-btn').addEventListener('click', function(){
-    downloadCsvTemplate('lego-mocset-parts-template.csv',
+  document.getElementById('mocbuild-csv-template-btn').addEventListener('click', function(){
+    downloadCsvTemplate('lego-build-parts-template.csv',
       ['Part Num','Quantity','Color','Description','elementId'],
       [
         ['3001','4','Red','Brick 2 x 4','300121'],
@@ -4303,7 +3653,7 @@
 
   var TAB_TO_GROUP = {
     overview: 'overview',
-    parts: 'moc-collection', shopping: 'moc-collection', mocsets: 'moc-collection', mocsetparts: 'moc-collection',
+    parts: 'moc-collection', shopping: 'moc-collection', mocsets: 'moc-collection',
     sets: 'official-collection', setparts: 'official-collection',
     drawers: 'data-tools', import: 'data-tools', images: 'data-tools'
   };
@@ -4332,7 +3682,6 @@
     document.getElementById('tab-parts').style.display = tab === 'parts' ? 'block' : 'none';
     document.getElementById('tab-shopping').style.display = tab === 'shopping' ? 'block' : 'none';
     document.getElementById('tab-mocsets').style.display = tab === 'mocsets' ? 'block' : 'none';
-    document.getElementById('tab-mocsetparts').style.display = tab === 'mocsetparts' ? 'block' : 'none';
     document.getElementById('tab-sets').style.display = tab === 'sets' ? 'block' : 'none';
     document.getElementById('tab-setparts').style.display = tab === 'setparts' ? 'block' : 'none';
     document.getElementById('tab-drawers').style.display = tab === 'drawers' ? 'block' : 'none';
@@ -4340,12 +3689,11 @@
     document.getElementById('tab-images').style.display = tab === 'images' ? 'block' : 'none';
     if (tab === 'images') renderImagesTab();
     if (tab === 'shopping'){ populateShopMocList(); renderShoppingList(); }
-    if (tab === 'mocsets') renderMocSetsTab();
-    if (tab === 'mocsetparts') renderMocSetPartsSummaryTab();
+    if (tab === 'mocsets') renderMocBuildsTab();
     if (tab === 'sets') renderSetsTab();
     if (tab === 'setparts') renderSetPartsSummaryTab();
     if (tab === 'drawers') renderDrawersTab();
-    if (tab === 'import'){ populateSetCsvTarget(); populateMocSetCsvTarget(); populateDrawerDropdowns(); }
+    if (tab === 'import'){ populateSetCsvTarget(); populateDrawerDropdowns(); }
   }
 
   function switchMainTab(mainTabId){
@@ -4379,13 +3727,13 @@
       header.querySelector('i').className = 'ti ' + (isOpen ? 'ti-chevron-right' : 'ti-chevron-down');
     });
   });
-  document.getElementById('moc-search').addEventListener('input', renderOverview);
   document.getElementById('overview-sets-search').addEventListener('input', renderOverviewSetsList);
   document.getElementById('part-search').addEventListener('input', function(){ state.page = 1; renderParts(); });
   document.getElementById('moc-filter').addEventListener('change', function(){ state.page = 1; renderParts(); });
   document.getElementById('color-filter').addEventListener('change', function(){ state.page = 1; renderParts(); });
   document.getElementById('priority-filter').addEventListener('change', function(){ state.page = 1; renderParts(); });
   document.getElementById('missing-only').addEventListener('change', function(){ state.page = 1; renderParts(); });
+  document.getElementById('incomplete-info-only').addEventListener('change', function(){ state.page = 1; renderParts(); });
   document.getElementById('combine-parts-toggle').addEventListener('change', function(){ state.page = 1; renderParts(); });
   document.getElementById('prev-page').addEventListener('click', function(){ if (state.page>1){ state.page--; renderParts(); } });
   document.getElementById('next-page').addEventListener('click', function(){ state.page++; renderParts(); });
@@ -5012,12 +4360,11 @@
       priorityLabels: priorityLabels,
       ownedSets: ownedSets,
       setParts: setParts,
-      mocSets: mocSets,
-      mocSetParts: mocSetParts,
       drawers: drawers,
       drawerParts: drawerParts,
       mocLocations: mocLocations,
       mocBuilds: mocBuilds,
+      mocThemes: mocThemes,
       locationLabels: locationLabels,
       mocDescriptions: mocDescriptions
     }, null, 2);
@@ -5054,6 +4401,7 @@
       if (Array.isArray(data.drawerParts)) drawerParts = data.drawerParts;
       if (data.mocLocations && typeof data.mocLocations === 'object') mocLocations = data.mocLocations;
       if (Array.isArray(data.mocBuilds)) mocBuilds = data.mocBuilds;
+      if (data.mocThemes && typeof data.mocThemes === 'object') mocThemes = data.mocThemes;
       if (Array.isArray(data.locationLabels)) locationLabels = data.locationLabels;
       if (data.mocDescriptions && typeof data.mocDescriptions === 'object') mocDescriptions = data.mocDescriptions;
 
@@ -5067,12 +4415,14 @@
       saveMocLocations();
       saveMocBuilds();
       saveMocDescriptions();
+      saveMocThemes();
 
       render();
       if (state.tab === 'sets') renderSetsTab();
       if (state.tab === 'setparts') renderSetPartsSummaryTab();
       if (state.tab === 'drawers') renderDrawersTab();
       if (state.tab === 'shopping'){ populateShopMocList(); renderShoppingList(); }
+      if (state.tab === 'mocsets') renderMocBuildsTab();
 
       if (!silent){
         statusEl.style.color = 'var(--text-success)';
@@ -5726,7 +5076,7 @@
   });
 
   function bootApp(){
-    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadMocSets(); }).then(function(){ return loadMocSetParts(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(function(){ return loadSetPhotos(); }).then(function(){ return loadMocPhotos(); }).then(function(){ return loadMocSetPhotos(); }).then(function(){ return loadMocLocations(); }).then(function(){ return loadMocBuilds(); }).then(function(){ return loadMocDescriptions(); }).then(function(){ return loadLocationLabels(); }).then(function(){
+    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(function(){ return loadSetPhotos(); }).then(function(){ return loadMocPhotos(); }).then(function(){ return loadMocLocations(); }).then(function(){ return loadMocBuilds(); }).then(function(){ return loadMocThemes(); }).then(function(){ return loadMocDescriptions(); }).then(function(){ return loadLocationLabels(); }).then(function(){
       var hasAnyData = ownedSets.length || setParts.length || drawers.length || drawerParts.length;
       if (!hasAnyData){
         return loadAllDataFromGithub(true);
