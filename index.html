@@ -342,6 +342,14 @@
   </div>
 
   <div class="collapse-section">
+    <button type="button" class="collapse-header" data-collapse-target="cs-overview-mocs"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>MOC Builds</span></button>
+    <div class="collapse-body" id="cs-overview-mocs" style="display:none;">
+      <input type="text" id="overview-mocs-search" placeholder="Search builds" style="width: 100%; margin-bottom: 10px;" />
+      <div id="overview-mocs-list" class="card-grid"></div>
+    </div>
+  </div>
+
+  <div class="collapse-section">
     <button type="button" class="collapse-header" data-collapse-target="cs-overview-sets"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Official Sets</span></button>
     <div class="collapse-body" id="cs-overview-sets" style="display:none;">
       <input type="text" id="overview-sets-search" placeholder="Search sets" style="width: 100%; margin-bottom: 10px;" />
@@ -1253,6 +1261,7 @@
     });
 
     renderTopNeeded();
+    renderOverviewMocsList();
     renderOverviewSetsList();
   }
 
@@ -1823,6 +1832,11 @@
     return card;
   }
 
+  function refreshMocBuildViews(){
+    renderMocBuildsList();
+    renderOverviewMocsList();
+  }
+
   function buildMocBuildCard(m){
     var card = document.createElement('div');
     card.className = 'owned-set-card';
@@ -1838,7 +1852,7 @@
     nameInput.addEventListener('change', function(){
       if (renameMocBuild(currentName, nameInput.value)){
         currentName = nameInput.value.trim();
-        renderMocBuildsTab();
+        refreshMocBuildViews();
       } else {
         nameInput.value = currentName;
       }
@@ -1847,7 +1861,7 @@
       var val = themeInput.value.trim();
       if (val){ mocThemes[currentName] = val; } else { delete mocThemes[currentName]; }
       saveMocThemes();
-      renderMocBuildsTab();
+      refreshMocBuildViews();
     });
     locationInput.addEventListener('change', function(){
       var val = locationInput.value.trim();
@@ -2116,6 +2130,29 @@
       return;
     }
     filtered.forEach(function(s){ listEl.appendChild(buildSetCard(s)); });
+  }
+
+  function renderOverviewMocsList(){
+    var listEl = document.getElementById('overview-mocs-list');
+    if (!listEl) return;
+    ensureMocBuildsSynced();
+    var q = (document.getElementById('overview-mocs-search').value || '').toLowerCase();
+    listEl.innerHTML = '';
+    var mocs = computeMocs();
+    if (!mocs.length){
+      listEl.innerHTML = '<div class="empty-msg">No builds added yet \u2014 add one on the MOC Builds tab.</div>';
+      return;
+    }
+    var filtered = mocs.filter(function(m){
+      if (!q) return true;
+      var hay = (m.name+' '+(mocThemes[m.name]||'')).toLowerCase();
+      return hay.indexOf(q) !== -1;
+    });
+    if (!filtered.length){
+      listEl.innerHTML = '<div class="empty-msg">No builds match your search.</div>';
+      return;
+    }
+    filtered.forEach(function(m){ listEl.appendChild(buildMocBuildCard(m)); });
   }
 
   function refreshSetViews(){
@@ -3727,6 +3764,7 @@
       header.querySelector('i').className = 'ti ' + (isOpen ? 'ti-chevron-right' : 'ti-chevron-down');
     });
   });
+  document.getElementById('overview-mocs-search').addEventListener('input', renderOverviewMocsList);
   document.getElementById('overview-sets-search').addEventListener('input', renderOverviewSetsList);
   document.getElementById('part-search').addEventListener('input', function(){ state.page = 1; renderParts(); });
   document.getElementById('moc-filter').addEventListener('change', function(){ state.page = 1; renderParts(); });
