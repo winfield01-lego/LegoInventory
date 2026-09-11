@@ -612,12 +612,13 @@
       <thead>
         <tr>
           <th style="width:6%">Image</th>
-          <th style="width:10%" data-set-sort="setNum" id="set-parts-setnum-header">Set #</th>
-          <th style="width:11%" data-set-sort="partNum">Part #</th>
-          <th style="width:11%" data-set-sort="color">Color</th>
-          <th style="width:38%" data-set-sort="desc">Description</th>
-          <th style="width:9%" data-set-sort="qtyPerSet" id="set-parts-qtyperset-header">Qty / set</th>
-          <th style="width:9%" data-set-sort="totalQty">Total qty</th>
+          <th style="width:9%" data-set-sort="setNum" id="set-parts-setnum-header">Set #</th>
+          <th style="width:10%" data-set-sort="partNum">Part #</th>
+          <th style="width:10%" data-set-sort="color">Color</th>
+          <th style="width:31%" data-set-sort="desc">Description</th>
+          <th style="width:8%" data-set-sort="qtyPerSet" id="set-parts-qtyperset-header">Qty / set</th>
+          <th style="width:10%" data-set-sort="totalQty" id="set-parts-totalqty-header">Total On Hand</th>
+          <th style="width:10%">Status</th>
           <th style="width:6%"></th>
         </tr>
       </thead>
@@ -647,12 +648,13 @@
       <thead>
         <tr>
           <th style="width:6%">Image</th>
-          <th style="width:10%" id="sp-setnum-header">Set</th>
-          <th style="width:12%" data-sp-sort="partNum">Part #</th>
-          <th style="width:12%" data-sp-sort="color">Color</th>
-          <th style="width:36%" data-sp-sort="desc">Description</th>
-          <th style="width:10%" id="sp-qtyperset-header">Qty / set</th>
-          <th style="width:14%" data-sp-sort="totalQty">Total qty</th>
+          <th style="width:9%" id="sp-setnum-header">Set</th>
+          <th style="width:11%" data-sp-sort="partNum">Part #</th>
+          <th style="width:11%" data-sp-sort="color">Color</th>
+          <th style="width:29%" data-sp-sort="desc">Description</th>
+          <th style="width:9%" id="sp-qtyperset-header">Qty / set</th>
+          <th style="width:12%" data-sp-sort="totalQty">Total On Hand</th>
+          <th style="width:10%">Status</th>
         </tr>
       </thead>
       <tbody id="sp-tbody"></tbody>
@@ -997,6 +999,8 @@
       <div class="metric-grid" id="detail-modal-metrics" style="flex:1; min-width:220px; margin-bottom:0;"></div>
     </div>
 
+    <button id="detail-modal-mark-complete" class="icon-btn" style="display:none; color: var(--lego-green); border-color: var(--lego-green); margin-bottom:14px;"><i class="ti ti-checkbox" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Mark Complete (set On Hand to Needed for every part)</button>
+
     <p style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary); margin:0 0 8px;">Parts list</p>
     <div class="tbl-wrap" style="max-height:320px;">
       <table>
@@ -1198,6 +1202,17 @@
     return !r.partNum || !r.color || !r.desc || !r.elementId || !r.qty;
   }
 
+  function focusAdjacentOnHandInput(currentInput, direction){
+    var allInputs = Array.prototype.slice.call(document.querySelectorAll('#parts-tbody .onhand-input'));
+    var idx = allInputs.indexOf(currentInput);
+    if (idx === -1) return false;
+    var nextIdx = idx + direction;
+    if (nextIdx < 0 || nextIdx >= allInputs.length) return false;
+    allInputs[nextIdx].focus();
+    allInputs[nextIdx].select();
+    return true;
+  }
+
   function computeMocs(){
     var map = {};
     state.rows.forEach(function(r){
@@ -1224,11 +1239,9 @@
     var totalNeed = 0, totalHave = 0;
     state.rows.forEach(function(r){ totalNeed += r.qty; totalHave += Math.min(r.onHand,r.qty); });
     var pct = totalNeed ? Math.round(100*totalHave/totalNeed) : 100;
-    var totalSetPieces = setParts.reduce(function(sum, r){
-      var setInfo = ownedSets.find(function(s){ return s.setNum === r.setNum; });
-      return sum + (r.qtyPerSet * (setInfo ? setInfo.qty : 1));
-    }, 0);
-    var grandTotal = totalHave + totalSetPieces;
+    var totalSetPiecesNeeded = setParts.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
+    var totalSetPiecesOnHand = setParts.reduce(function(sum, r){ return sum + setPartOnHand(r); }, 0);
+    var grandTotal = totalHave + totalSetPiecesOnHand;
     document.getElementById('grand-total-value').textContent = grandTotal.toLocaleString();
 
     var mocMg = document.getElementById('moc-metrics');
@@ -1250,11 +1263,13 @@
 
     var setsMg = document.getElementById('sets-metrics');
     setsMg.innerHTML = '';
+    var setsMissing = totalSetPiecesNeeded - totalSetPiecesOnHand;
     var setsMetrics = [
       ['Official Sets', ownedSets.length],
-      ['Pieces', totalSetPieces.toLocaleString()]
+      ['Pieces On Hand', totalSetPiecesOnHand.toLocaleString()],
+      ['Missing Pieces', setsMissing.toLocaleString()]
     ];
-    var setsAccent = ['var(--lego-purple)','var(--lego-brown)'];
+    var setsAccent = ['var(--lego-purple)','var(--lego-brown)','var(--lego-red)'];
     setsMetrics.forEach(function(m, i){
       var d = document.createElement('div');
       d.className = 'metric';
@@ -1562,12 +1577,29 @@
         onHandInput.min = '0';
         onHandInput.className = 'onhand-input';
         onHandInput.value = it.onHand;
-        onHandInput.addEventListener('change', function(){
+        onHandInput.dataset.partKey = it.partNum + '|' + it.color;
+        function commitOnHand(){
           var v = parseInt(onHandInput.value, 10);
           if (isNaN(v) || v < 0) v = 0;
           setOnHandForPart(it.partNum, it.color, v);
           saveState();
+        }
+        onHandInput.addEventListener('change', function(){
+          commitOnHand();
           renderParts();
+        });
+        onHandInput.addEventListener('keydown', function(e){
+          if (e.key !== 'Tab') return;
+          var idx = pageRows.indexOf(it);
+          var nextIdx = idx + (e.shiftKey ? -1 : 1);
+          if (nextIdx < 0 || nextIdx >= pageRows.length) return;
+          e.preventDefault();
+          var targetKey = pageRows[nextIdx].partNum + '|' + pageRows[nextIdx].color;
+          commitOnHand();
+          renderParts();
+          var allInputs = Array.prototype.slice.call(document.querySelectorAll('#parts-tbody .onhand-input'));
+          var targetInput = allInputs.filter(function(el){ return el.dataset.partKey === targetKey; })[0];
+          if (targetInput){ targetInput.focus(); targetInput.select(); }
         });
         tr.querySelector('.onhand-cell').appendChild(onHandInput);
         tbody.appendChild(tr);
@@ -1647,6 +1679,11 @@
         onHandInput.value = r.onHand;
         saveState();
         refreshStatus();
+      });
+      onHandInput.addEventListener('keydown', function(e){
+        if (e.key === 'Tab'){
+          if (focusAdjacentOnHandInput(onHandInput, e.shiftKey ? -1 : 1)) e.preventDefault();
+        }
       });
       tr.querySelector('.onhand-cell').appendChild(onHandInput);
 
@@ -1796,7 +1833,9 @@
 
   function buildSetCard(s){
     var rows = setParts.filter(function(p){ return p.setNum === s.setNum; });
-    var pieceTotal = rows.reduce(function(sum, r){ return sum + (r.qtyPerSet * s.qty); }, 0);
+    var neededTotal = rows.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
+    var onHandTotal = rows.reduce(function(sum, r){ return sum + setPartOnHand(r); }, 0);
+    var short = neededTotal - onHandTotal;
     var card = document.createElement('div');
     card.className = 'owned-set-card';
     card.innerHTML =
@@ -1804,7 +1843,7 @@
       '<span class="set-edit-field"><input type="text" class="set-name-edit" placeholder="Name" value="'+escapeHtml(s.name || '')+'" /></span>' +
       '<span class="set-edit-field"><input type="text" class="set-theme-edit" placeholder="Theme" value="'+escapeHtml(s.theme || '')+'" /></span>' +
       '<span class="set-edit-field"><select class="set-location-edit">'+locationOptionsHtml(s.location || '')+'</select></span>' +
-      '<span class="set-meta">Qty owned: '+s.qty+' &middot; '+rows.length+' part line'+(rows.length===1?'':'s')+' &middot; '+pieceTotal.toLocaleString()+' pcs</span>';
+      '<span class="set-meta">Qty owned: '+s.qty+' &middot; '+rows.length+' part line'+(rows.length===1?'':'s')+' &middot; '+onHandTotal.toLocaleString()+' / '+neededTotal.toLocaleString()+' pcs'+(short>0 ? ' <span class="pill pill-short" style="margin-left:4px;">Missing '+short.toLocaleString()+'</span>' : '')+'</span>';
     var nameInput = card.querySelector('.set-name-edit');
     var themeInput = card.querySelector('.set-theme-edit');
     var locationInput = card.querySelector('.set-location-edit');
@@ -1876,6 +1915,12 @@
     viewBtn.title = 'View summary and photo';
     viewBtn.innerHTML = '<i class="ti ti-eye" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Summary';
     viewBtn.addEventListener('click', function(){ openMocDetail(currentName); });
+    var completeBtn = document.createElement('button');
+    completeBtn.className = 'icon-btn';
+    completeBtn.style.cssText = 'color: var(--lego-green); border-color: var(--lego-green); flex-shrink:0;';
+    completeBtn.title = 'Set On Hand to Needed for every part in this build';
+    completeBtn.innerHTML = '<i class="ti ti-checkbox" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Mark Complete';
+    completeBtn.addEventListener('click', function(){ markBuildComplete(currentName); });
     var delBtn = document.createElement('button');
     delBtn.className = 'icon-btn';
     delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); flex-shrink:0;';
@@ -1883,6 +1928,7 @@
     delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Delete';
     delBtn.addEventListener('click', function(){ deleteMocBuild(currentName); });
     card.appendChild(viewBtn);
+    card.appendChild(completeBtn);
     card.appendChild(delBtn);
     return card;
   }
@@ -2428,8 +2474,8 @@
   function getFilteredSetParts(){
     var rows = getFilteredSetPartsRaw();
     rows.forEach(function(r){
-      var setInfo = ownedSets.find(function(s){ return s.setNum === r.setNum; });
-      r._totalQty = r.qtyPerSet * (setInfo ? setInfo.qty : 1);
+      r._totalQty = setPartNeeded(r);
+      r._onHand = setPartOnHand(r);
     });
     rows.sort(function(a,b){
       var col = setPartsState.sortCol;
@@ -2481,6 +2527,7 @@
       pageRows.forEach(function(it){
         var tr = document.createElement('tr');
         var setList = Array.from(it.sets).sort();
+        var short = it.totalQty - it.totalOnHand;
         tr.innerHTML =
           '<td class="img-cell"><div class="part-thumb-wrap"></div></td>' +
           '<td><span class="used-in-count" title="'+escapeHtml(setList.join(', '))+'">'+setList.length+' set'+(setList.length===1?'':'s')+'</span></td>' +
@@ -2488,7 +2535,8 @@
           '<td class="wrap-cell">'+escapeHtml(it.color)+'</td>' +
           '<td class="wrap-cell">'+escapeHtml(it.desc)+'</td>' +
           '<td style="color:var(--text-muted);">&mdash;</td>' +
-          '<td class="wrap-cell">'+it.totalQty.toLocaleString()+'</td>' +
+          '<td class="wrap-cell">'+it.totalOnHand.toLocaleString()+' / '+it.totalQty.toLocaleString()+'</td>' +
+          '<td><span class="pill '+(short>0?'pill-short':'pill-ok')+'">'+(short>0 ? 'Missing '+short.toLocaleString() : 'Complete')+'</span></td>' +
           '<td></td>';
         buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
         tbody.appendChild(tr);
@@ -2508,9 +2556,35 @@
         '<td class="wrap-cell">'+escapeHtml(r.color)+'</td>' +
         '<td class="wrap-cell">'+escapeHtml(r.desc)+'</td>' +
         '<td class="wrap-cell">'+r.qtyPerSet+'</td>' +
-        '<td class="wrap-cell">'+r._totalQty+'</td>' +
+        '<td class="onhand-cell"></td>' +
+        '<td class="status-cell"></td>' +
         '<td class="actions-cell"></td>';
       buildThumb({ elementId: r.elementId, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
+
+      function refreshSetPartStatus(){
+        var short = r._totalQty - r._onHand;
+        tr.querySelector('.status-cell').innerHTML = '<span class="pill '+(short>0?'pill-short':'pill-ok')+'">'+(short>0 ? 'Missing '+short.toLocaleString() : 'Complete')+'</span>';
+      }
+
+      var onHandInput = document.createElement('input');
+      onHandInput.type = 'number';
+      onHandInput.min = '0';
+      onHandInput.className = 'onhand-input';
+      onHandInput.title = 'Total on hand across all copies of this set \u2014 edit down if a piece is missing';
+      onHandInput.value = r._onHand;
+      onHandInput.addEventListener('change', function(){
+        var v = parseInt(onHandInput.value, 10);
+        if (isNaN(v) || v < 0) v = 0;
+        r.onHand = v;
+        r._onHand = v;
+        onHandInput.value = v;
+        saveSetParts();
+        refreshSetPartStatus();
+        renderOverview();
+      });
+      tr.querySelector('.onhand-cell').appendChild(onHandInput);
+      refreshSetPartStatus();
+
       var delBtn = document.createElement('button');
       delBtn.className = 'row-delete-btn danger';
       delBtn.title = 'Remove this part line';
@@ -2534,6 +2608,18 @@
     renderSetPartsTable();
   }
 
+  function setPartNeeded(r){
+    var setInfo = ownedSets.find(function(s){ return s.setNum === r.setNum; });
+    return r.qtyPerSet * (setInfo ? setInfo.qty : 1);
+  }
+
+  function setPartOnHand(r){
+    return (r.onHand !== undefined && r.onHand !== null) ? r.onHand : setPartNeeded(r);
+  }
+
+  function setHasShortage(setNum){
+    return setParts.some(function(r){ return r.setNum === setNum && setPartOnHand(r) < setPartNeeded(r); });
+  }
 
   function computeSetInventory(sourceRows){
     var map = {};
@@ -2542,10 +2628,11 @@
       var ownedQty = setInfo ? setInfo.qty : 1;
       var key = r.partNum + '|' + r.color;
       if (!map[key]){
-        map[key] = { partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId, totalQty: 0, sets: new Set() };
+        map[key] = { partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId, totalQty: 0, totalOnHand: 0, sets: new Set() };
       }
       var entry = map[key];
       entry.totalQty += r.qtyPerSet * ownedQty;
+      entry.totalOnHand += setPartOnHand(r);
       entry.sets.add(r.setNum);
       if (!entry.desc && r.desc) entry.desc = r.desc;
       if (!entry.elementId && r.elementId) entry.elementId = r.elementId;
@@ -2607,8 +2694,7 @@
       });
     } else {
       items = rawRows.map(function(r){
-        var setInfo = ownedSets.find(function(s){ return s.setNum === r.setNum; });
-        return { setNum: r.setNum, partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId, qtyPerSet: r.qtyPerSet, totalQty: r.qtyPerSet * (setInfo ? setInfo.qty : 1) };
+        return { setNum: r.setNum, partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId, qtyPerSet: r.qtyPerSet, totalQty: setPartNeeded(r), onHand: setPartOnHand(r), sourceRow: r };
       });
       items.sort(function(a,b){
         var col = spState.sortCol;
@@ -2631,6 +2717,7 @@
     if (combineOn){
       pageItems.forEach(function(it){
         var setList = Array.from(it.sets).map(setLabelFor).sort();
+        var short = it.totalQty - it.totalOnHand;
         var tr = document.createElement('tr');
         tr.innerHTML =
           '<td class="img-cell"><div class="part-thumb-wrap"></div></td>' +
@@ -2639,7 +2726,8 @@
           '<td class="wrap-cell">'+escapeHtml(it.color)+'</td>' +
           '<td class="wrap-cell">'+escapeHtml(it.desc)+'</td>' +
           '<td style="color:var(--text-muted);">&mdash;</td>' +
-          '<td class="wrap-cell">'+it.totalQty.toLocaleString()+'</td>';
+          '<td class="wrap-cell">'+it.totalOnHand.toLocaleString()+' / '+it.totalQty.toLocaleString()+'</td>' +
+          '<td><span class="pill '+(short>0?'pill-short':'pill-ok')+'">'+(short>0 ? 'Missing '+short.toLocaleString() : 'Complete')+'</span></td>';
         buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
         tbody.appendChild(tr);
       });
@@ -2654,8 +2742,33 @@
           '<td class="wrap-cell">'+escapeHtml(it.color)+'</td>' +
           '<td class="wrap-cell">'+escapeHtml(it.desc)+'</td>' +
           '<td class="wrap-cell">'+it.qtyPerSet+'</td>' +
-          '<td class="wrap-cell">'+it.totalQty.toLocaleString()+'</td>';
+          '<td class="onhand-cell"></td>' +
+          '<td class="status-cell"></td>';
         buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
+
+        function refreshSpStatus(){
+          var short = it.totalQty - it.onHand;
+          tr.querySelector('.status-cell').innerHTML = '<span class="pill '+(short>0?'pill-short':'pill-ok')+'">'+(short>0 ? 'Missing '+short.toLocaleString() : 'Complete')+'</span>';
+        }
+
+        var onHandInput = document.createElement('input');
+        onHandInput.type = 'number';
+        onHandInput.min = '0';
+        onHandInput.className = 'onhand-input';
+        onHandInput.title = 'Total on hand across all copies of this set \u2014 edit down if a piece is missing';
+        onHandInput.value = it.onHand;
+        onHandInput.addEventListener('change', function(){
+          var v = parseInt(onHandInput.value, 10);
+          if (isNaN(v) || v < 0) v = 0;
+          it.sourceRow.onHand = v;
+          it.onHand = v;
+          onHandInput.value = v;
+          saveSetParts();
+          refreshSpStatus();
+          renderOverview();
+        });
+        tr.querySelector('.onhand-cell').appendChild(onHandInput);
+        refreshSpStatus();
         tbody.appendChild(tr);
       });
       document.getElementById('sp-page-info').textContent = items.length ? ('Showing '+(start+1)+'-'+Math.min(start+pageItems.length, items.length)+' of '+items.length) : '';
@@ -2801,6 +2914,25 @@
     renderMocBuildsTab();
   }
 
+  function markBuildComplete(name){
+    var rows = state.rows.filter(function(r){ return r.moc === name; });
+    if (!rows.length){
+      alert('"'+name+'" doesn\u2019t have any parts yet.');
+      return;
+    }
+    var alreadyDone = rows.every(function(r){ return r.onHand >= r.qty; });
+    if (alreadyDone){
+      alert('"'+name+'" is already marked complete \u2014 every part already has enough on hand.');
+      return;
+    }
+    if (!confirm('Mark "'+name+'" complete? This sets On Hand to the Needed quantity for all '+rows.length+' part line'+(rows.length===1?'':'s')+' in this build.')) return;
+    rows.forEach(function(r){ r.onHand = r.qty; });
+    saveState();
+    render();
+    refreshMocBuildViews();
+    if (detailContext && detailContext.kind === 'moc' && detailContext.key === name) openMocDetail(name);
+  }
+
   function resizeImageFile(file, maxDim, quality){
     return new Promise(function(resolve, reject){
       var reader = new FileReader();
@@ -2927,25 +3059,30 @@
     else { themeEl.style.display = 'none'; }
     document.getElementById('detail-modal-location').innerHTML = locationOptionsHtml(setInfo.location || '');
     document.getElementById('detail-modal-description').value = setInfo.description || '';
+    document.getElementById('detail-modal-mark-complete').style.display = 'none';
 
     var rows = setParts.filter(function(r){ return r.setNum === setNum; });
-    var pieceTotal = rows.reduce(function(sum, r){ return sum + r.qtyPerSet * setInfo.qty; }, 0);
+    var pieceNeeded = rows.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
+    var pieceOnHand = rows.reduce(function(sum, r){ return sum + setPartOnHand(r); }, 0);
     var metricsEl = document.getElementById('detail-modal-metrics');
     metricsEl.innerHTML = '';
     metricsEl.appendChild(buildDetailMetric('Qty owned', setInfo.qty));
     metricsEl.appendChild(buildDetailMetric('Unique parts', rows.length));
-    metricsEl.appendChild(buildDetailMetric('Total pieces', pieceTotal.toLocaleString()));
+    metricsEl.appendChild(buildDetailMetric('Pieces on hand', pieceOnHand.toLocaleString() + ' / ' + pieceNeeded.toLocaleString()));
 
     var tbody = document.getElementById('detail-modal-parts-tbody');
     tbody.innerHTML = '';
     rows.slice().sort(function(a,b){ return String(a.desc||'').localeCompare(String(b.desc||'')); }).forEach(function(r){
+      var needed = setPartNeeded(r);
+      var onHand = setPartOnHand(r);
+      var short = needed - onHand;
       var tr = document.createElement('tr');
       tr.innerHTML =
         '<td class="img-cell"><div class="part-thumb-wrap"></div></td>'+
         '<td class="wrap-cell">'+escapeHtml(r.partNum)+'</td>'+
         '<td class="wrap-cell">'+escapeHtml(r.color)+'</td>'+
         '<td class="wrap-cell">'+escapeHtml(r.desc)+'</td>'+
-        '<td>'+(r.qtyPerSet * setInfo.qty).toLocaleString()+'</td>'+
+        '<td>'+onHand.toLocaleString()+' / '+needed.toLocaleString()+(short>0 ? ' <span class="pill pill-short">Missing '+short.toLocaleString()+'</span>' : '')+'</td>'+
         '<td></td>';
       buildThumb({ elementId: r.elementId, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
       tbody.appendChild(tr);
@@ -2966,6 +3103,7 @@
     else { themeEl.style.display = 'none'; }
     document.getElementById('detail-modal-location').innerHTML = locationOptionsHtml(mocLocations[mocName] || '');
     document.getElementById('detail-modal-description').value = mocDescriptions[mocName] || '';
+    document.getElementById('detail-modal-mark-complete').style.display = rows.length ? 'inline-block' : 'none';
 
     var need = 0, have = 0;
     rows.forEach(function(r){ need += r.qty; have += Math.min(r.onHand, r.qty); });
@@ -3024,6 +3162,10 @@
     }
   });
   document.getElementById('detail-modal-manage-locations').addEventListener('click', openLocationManager);
+  document.getElementById('detail-modal-mark-complete').addEventListener('click', function(){
+    if (!detailContext || detailContext.kind !== 'moc') return;
+    markBuildComplete(detailContext.key);
+  });
   document.getElementById('detail-modal-description').addEventListener('change', function(){
     if (!detailContext) return;
     var val = document.getElementById('detail-modal-description').value.trim();
