@@ -282,6 +282,13 @@
   </div>
 </div>
 
+<div id="sync-warning-banner" class="no-print" style="display:none; background: var(--bg-danger); border: 2px solid var(--text-danger); border-radius: var(--radius); padding: 10px 14px; margin-bottom: 14px; align-items:center; gap:10px; flex-wrap:wrap;">
+  <i class="ti ti-alert-triangle" style="font-size:18px; color:var(--text-danger); flex-shrink:0;" aria-hidden="true"></i>
+  <span style="flex:1; min-width:200px; font-size:13px; color:var(--text-danger);">This browser's data doesn't match what's published on your site &mdash; you may be looking at an older or newer version than another device.</span>
+  <button id="sync-banner-review-btn" class="icon-btn" style="flex-shrink:0;">Review differences</button>
+  <button id="sync-banner-dismiss-btn" class="icon-btn" style="flex-shrink:0;" title="Dismiss until next visit"><i class="ti ti-x" style="font-size:14px;" aria-hidden="true"></i></button>
+</div>
+
 <div class="row no-print top-action-bar" style="justify-content: space-between; margin-bottom: 1rem;">
   <div class="tabs" id="main-tabs" style="border-bottom: none; margin-bottom: 0;">
     <button class="tab-btn active" data-maintab="overview"><span class="tab-dot" style="background:var(--lego-blue);"></span>Overview</button>
@@ -794,6 +801,27 @@
         <button id="save-all-data-github-btn"><i class="ti ti-cloud-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Save to site</button>
         <button id="load-all-data-github-btn" class="icon-btn"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Load from site</button>
         <span id="all-data-sync-status" style="font-size: 13px; color: var(--text-secondary);"></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="collapse-section">
+    <button type="button" class="collapse-header" data-collapse-target="cs-sync-status"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Data Sync Status</span></button>
+    <div class="collapse-body" id="cs-sync-status" style="display:none;">
+      <p style="margin: 0 0 10px; color: var(--text-secondary);">
+        Compares this browser's data against what's currently published on your site, without changing anything. Use this before "Save to site" or "Load from site" if you're not sure which one has your latest work &mdash; especially useful when you use this on more than one device.
+      </p>
+      <div class="row" style="margin-bottom: 10px;">
+        <button id="check-diff-btn"><i class="ti ti-refresh" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Check for differences</button>
+        <span id="diff-check-status" style="font-size: 13px; color: var(--text-secondary);"></span>
+      </div>
+      <div id="diff-results" style="display:none;">
+        <div id="diff-summary" style="margin-bottom: 10px;"></div>
+        <div id="diff-detail-list" style="margin-bottom: 12px;"></div>
+        <div class="row">
+          <button id="diff-load-from-site-btn" class="icon-btn"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Use the site's version (overwrite this browser)</button>
+          <button id="diff-publish-to-site-btn" class="icon-btn"><i class="ti ti-cloud-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Use this browser's version (overwrite the site)</button>
+        </div>
       </div>
     </div>
   </div>
@@ -4727,6 +4755,188 @@
   }
 
   var ALL_DATA_PATH = 'data/inventory-data.json';
+  var lastDiffReport = null;
+
+  function deepEqual(a, b){
+    if (a === b) return true;
+    if (a === null || b === null || a === undefined || b === undefined) return a === b;
+    if (typeof a !== typeof b) return false;
+    if (typeof a !== 'object') return false;
+    if (Array.isArray(a) !== Array.isArray(b)) return false;
+    var aKeys = Object.keys(a), bKeys = Object.keys(b);
+    if (aKeys.length !== bKeys.length) return false;
+    return aKeys.every(function(k){ return deepEqual(a[k], b[k]); });
+  }
+
+  function diffArrayByKey(localArr, remoteArr, keyFn, labelFn){
+    var localMap = {}, remoteMap = {};
+    (localArr||[]).forEach(function(item){ localMap[keyFn(item)] = item; });
+    (remoteArr||[]).forEach(function(item){ remoteMap[keyFn(item)] = item; });
+    var onlyLocal = [], onlyRemote = [], changed = [];
+    Object.keys(localMap).forEach(function(k){
+      if (!(k in remoteMap)) onlyLocal.push(labelFn ? labelFn(localMap[k]) : k);
+      else if (!deepEqual(localMap[k], remoteMap[k])) changed.push(labelFn ? labelFn(localMap[k]) : k);
+    });
+    Object.keys(remoteMap).forEach(function(k){
+      if (!(k in localMap)) onlyRemote.push(labelFn ? labelFn(remoteMap[k]) : k);
+    });
+    return { onlyLocal: onlyLocal, onlyRemote: onlyRemote, changed: changed, localCount: (localArr||[]).length, remoteCount: (remoteArr||[]).length };
+  }
+
+  function diffMap(localMap, remoteMap, label){
+    localMap = localMap || {}; remoteMap = remoteMap || {};
+    var onlyLocal = [], onlyRemote = [], changed = [];
+    Object.keys(localMap).forEach(function(k){
+      if (!(k in remoteMap)) onlyLocal.push(label ? (label + ': ' + k) : k);
+      else if (!deepEqual(localMap[k], remoteMap[k])) changed.push(label ? (label + ': ' + k) : k);
+    });
+    Object.keys(remoteMap).forEach(function(k){
+      if (!(k in localMap)) onlyRemote.push(label ? (label + ': ' + k) : k);
+    });
+    return { onlyLocal: onlyLocal, onlyRemote: onlyRemote, changed: changed, localCount: Object.keys(localMap).length, remoteCount: Object.keys(remoteMap).length };
+  }
+
+  function diffSectionHasChanges(section){
+    return section.onlyLocal.length > 0 || section.onlyRemote.length > 0 || section.changed.length > 0;
+  }
+
+  function computeDataDiff(remoteData){
+    var report = {};
+    report.rows = diffArrayByKey(
+      state.rows.map(objToRow), remoteData.rows || [],
+      function(r){ return r.moc+'|'+r.partNum+'|'+r.color; },
+      function(r){ return r.moc+': '+r.partNum+' ('+r.color+')'; }
+    );
+    report.ownedSets = diffArrayByKey(
+      ownedSets, remoteData.ownedSets || [],
+      function(s){ return s.setNum; },
+      function(s){ return s.setNum + (s.name ? ' \u2014 '+s.name : ''); }
+    );
+    report.setParts = diffArrayByKey(
+      setParts, remoteData.setParts || [],
+      function(r){ return r.setNum+'|'+r.partNum+'|'+r.color; },
+      function(r){ return r.setNum+': '+r.partNum+' ('+r.color+')'; }
+    );
+    report.drawers = diffArrayByKey(
+      drawers, remoteData.drawers || [],
+      function(d){ return d.id; },
+      function(d){ return d.label; }
+    );
+    report.drawerParts = diffArrayByKey(
+      drawerParts, remoteData.drawerParts || [],
+      function(r){ return r.drawerId+'|'+r.partNum+'|'+r.color; },
+      function(r){ return r.partNum+' ('+r.color+')'; }
+    );
+    report.mocBuilds = diffArrayByKey(
+      mocBuilds, remoteData.mocBuilds || [],
+      function(b){ return b.name; },
+      function(b){ return b.name; }
+    );
+    report.mocLocations = diffMap(mocLocations, remoteData.mocLocations, 'Location');
+    report.mocThemes = diffMap(mocThemes, remoteData.mocThemes, 'Theme');
+    report.mocDescriptions = diffMap(mocDescriptions, remoteData.mocDescriptions, 'Description');
+    return report;
+  }
+
+  function diffReportHasAnyChanges(report){
+    return Object.keys(report).some(function(k){ return diffSectionHasChanges(report[k]); });
+  }
+
+  function fetchPublishedSnapshot(){
+    return fetch(ALL_DATA_PATH, { cache: 'no-store' }).then(function(resp){
+      if (!resp.ok) throw new Error('Nothing published to your site yet.');
+      return resp.json();
+    }).then(function(data){
+      if (!data || typeof data !== 'object') throw new Error('Unexpected file format.');
+      return data;
+    });
+  }
+
+  var SECTION_LABELS = {
+    rows: 'MOC Parts', ownedSets: 'Official Sets', setParts: 'Official Set Parts',
+    drawers: 'Drawers', drawerParts: 'Drawer Parts', mocBuilds: 'MOC Builds',
+    mocLocations: 'Storage Locations', mocThemes: 'Build Themes', mocDescriptions: 'Descriptions'
+  };
+
+  function renderDiffResults(report){
+    var summaryEl = document.getElementById('diff-summary');
+    var detailEl = document.getElementById('diff-detail-list');
+    var hasChanges = diffReportHasAnyChanges(report);
+
+    if (!hasChanges){
+      summaryEl.innerHTML = '<span class="pill pill-ok">In sync</span> <span style="color:var(--text-secondary); font-size:13px;">This browser matches what\u2019s published on your site.</span>';
+      detailEl.innerHTML = '';
+      document.getElementById('diff-load-from-site-btn').style.display = 'none';
+      document.getElementById('diff-publish-to-site-btn').style.display = 'none';
+      return;
+    }
+
+    document.getElementById('diff-load-from-site-btn').style.display = 'inline-block';
+    document.getElementById('diff-publish-to-site-btn').style.display = 'inline-block';
+
+    var totalOnlyLocal = 0, totalOnlyRemote = 0, totalChanged = 0;
+    Object.keys(report).forEach(function(k){
+      totalOnlyLocal += report[k].onlyLocal.length;
+      totalOnlyRemote += report[k].onlyRemote.length;
+      totalChanged += report[k].changed.length;
+    });
+    summaryEl.innerHTML = '<span class="pill pill-short">Differences found</span> <span style="color:var(--text-secondary); font-size:13px;">'+
+      totalOnlyLocal+' only in this browser, '+totalOnlyRemote+' only on the site, '+totalChanged+' changed in both.</span>';
+
+    var html = '';
+    Object.keys(report).forEach(function(key){
+      var section = report[key];
+      if (!diffSectionHasChanges(section)) return;
+      var label = SECTION_LABELS[key] || key;
+      html += '<div style="margin-bottom:10px; border:2px solid var(--border); border-radius:var(--radius); padding:8px 12px;">';
+      html += '<p style="margin:0 0 6px; font-weight:700; font-size:13px;">'+escapeHtml(label)+'</p>';
+      if (section.onlyLocal.length){
+        html += '<p style="margin:2px 0; font-size:12px;"><span style="color:var(--lego-blue); font-weight:700;">Only in this browser ('+section.onlyLocal.length+'):</span> '+escapeHtml(section.onlyLocal.slice(0,10).join(', '))+(section.onlyLocal.length>10 ? ', \u2026' : '')+'</p>';
+      }
+      if (section.onlyRemote.length){
+        html += '<p style="margin:2px 0; font-size:12px;"><span style="color:var(--lego-purple); font-weight:700;">Only on the site ('+section.onlyRemote.length+'):</span> '+escapeHtml(section.onlyRemote.slice(0,10).join(', '))+(section.onlyRemote.length>10 ? ', \u2026' : '')+'</p>';
+      }
+      if (section.changed.length){
+        html += '<p style="margin:2px 0; font-size:12px;"><span style="color:var(--text-danger); font-weight:700;">Different values in both ('+section.changed.length+'):</span> '+escapeHtml(section.changed.slice(0,10).join(', '))+(section.changed.length>10 ? ', \u2026' : '')+'</p>';
+      }
+      html += '</div>';
+    });
+    detailEl.innerHTML = html;
+  }
+
+  function runDiffCheck(silent){
+    var statusEl = document.getElementById('diff-check-status');
+    var resultsEl = document.getElementById('diff-results');
+    if (!silent){
+      statusEl.style.color = 'var(--text-secondary)';
+      statusEl.textContent = 'Checking\u2026';
+      resultsEl.style.display = 'none';
+    }
+    return fetchPublishedSnapshot().then(function(remoteData){
+      var report = computeDataDiff(remoteData);
+      lastDiffReport = report;
+      if (!silent){
+        statusEl.textContent = '';
+        resultsEl.style.display = 'block';
+        renderDiffResults(report);
+      }
+      var banner = document.getElementById('sync-warning-banner');
+      if (diffReportHasAnyChanges(report)){
+        banner.style.display = 'flex';
+      } else {
+        banner.style.display = 'none';
+      }
+      return report;
+    }).catch(function(err){
+      lastDiffReport = null;
+      if (!silent){
+        statusEl.style.color = 'var(--text-danger)';
+        statusEl.textContent = 'Could not check: ' + (err && err.message ? err.message : 'unknown error');
+        resultsEl.style.display = 'none';
+      }
+      return null;
+    });
+  }
 
   function utf8ToBase64(str){
     return btoa(unescape(encodeURIComponent(str)));
@@ -4828,6 +5038,34 @@
 
   document.getElementById('save-all-data-github-btn').addEventListener('click', saveAllDataToGithub);
   document.getElementById('load-all-data-github-btn').addEventListener('click', function(){ loadAllDataFromGithub(false); });
+  document.getElementById('check-diff-btn').addEventListener('click', function(){ runDiffCheck(false); });
+  document.getElementById('diff-load-from-site-btn').addEventListener('click', function(){
+    loadAllDataFromGithub(false).then(function(){
+      document.getElementById('diff-results').style.display = 'none';
+      document.getElementById('sync-warning-banner').style.display = 'none';
+    });
+  });
+  document.getElementById('diff-publish-to-site-btn').addEventListener('click', function(){
+    if (!confirm('Overwrite the version on your site with this browser\u2019s data? This replaces everything currently published, including anything only on the site.')) return;
+    saveAllDataToGithub();
+    document.getElementById('diff-results').style.display = 'none';
+    document.getElementById('sync-warning-banner').style.display = 'none';
+  });
+  document.getElementById('sync-banner-review-btn').addEventListener('click', function(){
+    switchMainTab('data-tools');
+    switchTab('import');
+    var body = document.getElementById('cs-sync-status');
+    var header = body.previousElementSibling;
+    if (body.style.display !== 'block'){ header.click(); }
+    body.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (lastDiffReport){
+      document.getElementById('diff-results').style.display = 'block';
+      renderDiffResults(lastDiffReport);
+    }
+  });
+  document.getElementById('sync-banner-dismiss-btn').addEventListener('click', function(){
+    document.getElementById('sync-warning-banner').style.display = 'none';
+  });
 
   ['gh-repo-input','gh-branch-input','gh-token-input'].forEach(function(id){
     document.getElementById(id).addEventListener('change', saveGithubSettings);
@@ -5490,12 +5728,17 @@
   });
 
   function bootApp(){
+    var wasFreshBootstrap = false;
     loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(function(){ return loadSetPhotos(); }).then(function(){ return loadMocPhotos(); }).then(function(){ return loadMocLocations(); }).then(function(){ return loadMocBuilds(); }).then(function(){ return loadMocThemes(); }).then(function(){ return loadMocDescriptions(); }).then(function(){ return loadLocationLabels(); }).then(function(){
       var hasAnyData = ownedSets.length || setParts.length || drawers.length || drawerParts.length;
       if (!hasAnyData){
+        wasFreshBootstrap = true;
         return loadAllDataFromGithub(true);
       }
-    }).then(function(){ return loadRebrickableKey(); }).then(function(){ return loadSetProxyPref(); }).then(function(){ return loadGithubSettings(); }).then(function(){ return loadGithubShaMap(); }).then(render);
+    }).then(function(){ return loadRebrickableKey(); }).then(function(){ return loadSetProxyPref(); }).then(function(){ return loadGithubSettings(); }).then(function(){ return loadGithubShaMap(); }).then(function(){
+      render();
+      if (!wasFreshBootstrap){ runDiffCheck(true); }
+    });
   }
 
   bootApp();
