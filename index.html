@@ -325,11 +325,11 @@
   </div>
 
   <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:1.5rem;">
-    <div class="overview-group" style="flex:2; min-width:280px;">
+    <div class="overview-group" style="flex:1; min-width:280px;">
       <p class="overview-group-title">MOC Builds</p>
       <div class="metric-grid" id="moc-metrics"></div>
     </div>
-    <div class="overview-group" style="flex:1; min-width:200px;">
+    <div class="overview-group" style="flex:1; min-width:280px;">
       <p class="overview-group-title">Official Sets</p>
       <div class="metric-grid" id="sets-metrics"></div>
     </div>
@@ -352,7 +352,7 @@
     <button type="button" class="collapse-header" data-collapse-target="cs-overview-mocs"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>MOC Builds</span></button>
     <div class="collapse-body" id="cs-overview-mocs" style="display:none;">
       <input type="text" id="overview-mocs-search" placeholder="Search builds" style="width: 100%; margin-bottom: 10px;" />
-      <div id="overview-mocs-list" class="card-grid"></div>
+      <div id="overview-mocs-list"></div>
     </div>
   </div>
 
@@ -360,7 +360,7 @@
     <button type="button" class="collapse-header" data-collapse-target="cs-overview-sets"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Official Sets</span></button>
     <div class="collapse-body" id="cs-overview-sets" style="display:none;">
       <input type="text" id="overview-sets-search" placeholder="Search sets" style="width: 100%; margin-bottom: 10px;" />
-      <div id="overview-sets-list" class="card-grid"></div>
+      <div id="overview-sets-list"></div>
     </div>
   </div>
 </div>
@@ -1160,6 +1160,7 @@
   var MOC_THEMES_KEY = 'moc-themes-v1';
   var mocThemes = {};
   var expandedMocBuildThemes = new Set();
+  var expandedOverviewMocThemes = new Set();
   var REBRICKABLE_KEY_STORAGE = 'rebrickable-api-key';
   var USE_SET_PROXY_KEY = 'use-set-cors-proxy';
   var ownedSets = [];
@@ -1266,6 +1267,7 @@
     var mocs = computeMocs();
     var totalNeed = 0, totalHave = 0;
     state.rows.forEach(function(r){ totalNeed += r.qty; totalHave += Math.min(r.onHand,r.qty); });
+    var mocMissing = Math.max(totalNeed - totalHave, 0);
     var pct = totalNeed ? Math.round(100*totalHave/totalNeed) : 100;
     var totalSetPiecesNeeded = setParts.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
     var totalSetPiecesOnHand = setParts.reduce(function(sum, r){ return sum + setPartOnHand(r); }, 0);
@@ -1276,8 +1278,8 @@
     mocMg.innerHTML = '';
     var mocMetrics = [
       ['Builds', mocs.length],
-      ['MOC Parts Needed', totalNeed.toLocaleString()],
-      ['MOC Pieces On Hand', totalHave.toLocaleString()],
+      ['Missing Pieces', mocMissing.toLocaleString()],
+      ['Pieces On Hand', totalHave.toLocaleString()],
       ['Overall Complete', pct + '%']
     ];
     var mocAccent = ['var(--lego-blue)','var(--lego-yellow)','var(--lego-green)','var(--lego-blue)'];
@@ -1292,12 +1294,14 @@
     var setsMg = document.getElementById('sets-metrics');
     setsMg.innerHTML = '';
     var setsMissing = totalSetPiecesNeeded - totalSetPiecesOnHand;
+    var setsPct = totalSetPiecesNeeded ? Math.round(100*totalSetPiecesOnHand/totalSetPiecesNeeded) : 100;
     var setsMetrics = [
       ['Official Sets', ownedSets.length],
+      ['Missing Pieces', setsMissing.toLocaleString()],
       ['Pieces On Hand', totalSetPiecesOnHand.toLocaleString()],
-      ['Missing Pieces', setsMissing.toLocaleString()]
+      ['Overall Complete', setsPct + '%']
     ];
-    var setsAccent = ['var(--lego-purple)','var(--lego-brown)','var(--lego-red)'];
+    var setsAccent = ['var(--lego-purple)','var(--lego-red)','var(--lego-brown)','var(--lego-purple)'];
     setsMetrics.forEach(function(m, i){
       var d = document.createElement('div');
       d.className = 'metric';
@@ -2230,6 +2234,7 @@
   }
 
   var expandedThemes = new Set();
+  var expandedOverviewSetThemes = new Set();
 
   function renderOwnedSetsList(){
     var container = document.getElementById('owned-sets-list');
@@ -2280,12 +2285,49 @@
       if (!q) return true;
       var hay = (s.setNum+' '+(s.name||'')+' '+(s.theme||'')).toLowerCase();
       return hay.indexOf(q) !== -1;
-    }).sort(function(a,b){ return a.setNum.localeCompare(b.setNum, undefined, {numeric:true}); });
+    });
     if (!filtered.length){
       listEl.innerHTML = '<div class="empty-msg">No sets match your search.</div>';
       return;
     }
-    filtered.forEach(function(s){ listEl.appendChild(buildSetCard(s)); });
+    var groups = {};
+    filtered.forEach(function(s){
+      var theme = (s.theme && s.theme.trim()) ? s.theme.trim() : '(No theme)';
+      if (!groups[theme]) groups[theme] = [];
+      groups[theme].push(s);
+    });
+    var themeNames = Object.keys(groups).sort(function(a,b){
+      if (a === '(No theme)') return 1;
+      if (b === '(No theme)') return -1;
+      return a.localeCompare(b);
+    });
+    themeNames.forEach(function(theme){
+      var sets = groups[theme].slice().sort(function(a,b){ return a.setNum.localeCompare(b.setNum, undefined, {numeric:true}); });
+      var isOpen = expandedOverviewSetThemes.has(theme);
+      var header = document.createElement('button');
+      header.type = 'button';
+      header.className = 'theme-group-header';
+      header.innerHTML =
+        '<i class="ti '+(isOpen ? 'ti-chevron-down' : 'ti-chevron-right')+'" aria-hidden="true"></i>' +
+        '<span>'+escapeHtml(theme)+'</span>' +
+        '<span class="theme-group-count">('+sets.length+')</span>';
+
+      var body = document.createElement('div');
+      body.className = 'theme-group-body card-grid';
+      body.style.display = isOpen ? 'grid' : 'none';
+      sets.forEach(function(s){ body.appendChild(buildSetCard(s)); });
+
+      header.addEventListener('click', function(){
+        if (expandedOverviewSetThemes.has(theme)) expandedOverviewSetThemes.delete(theme);
+        else expandedOverviewSetThemes.add(theme);
+        var nowOpen = expandedOverviewSetThemes.has(theme);
+        body.style.display = nowOpen ? 'grid' : 'none';
+        header.querySelector('i').className = 'ti ' + (nowOpen ? 'ti-chevron-down' : 'ti-chevron-right');
+      });
+
+      listEl.appendChild(header);
+      listEl.appendChild(body);
+    });
   }
 
   function renderOverviewMocsList(){
@@ -2308,7 +2350,32 @@
       listEl.innerHTML = '<div class="empty-msg">No builds match your search.</div>';
       return;
     }
-    filtered.forEach(function(m){ listEl.appendChild(buildMocBuildCard(m)); });
+    mocBuildThemeGroupsSorted(filtered).forEach(function(g){
+      var isOpen = expandedOverviewMocThemes.has(g.theme);
+      var header = document.createElement('button');
+      header.type = 'button';
+      header.className = 'theme-group-header';
+      header.innerHTML =
+        '<i class="ti '+(isOpen ? 'ti-chevron-down' : 'ti-chevron-right')+'" aria-hidden="true"></i>' +
+        '<span>'+escapeHtml(g.theme)+'</span>' +
+        '<span class="theme-group-count">('+g.mocs.length+')</span>';
+
+      var body = document.createElement('div');
+      body.className = 'theme-group-body card-grid';
+      body.style.display = isOpen ? 'grid' : 'none';
+      g.mocs.forEach(function(m){ body.appendChild(buildMocBuildCard(m)); });
+
+      header.addEventListener('click', function(){
+        if (expandedOverviewMocThemes.has(g.theme)) expandedOverviewMocThemes.delete(g.theme);
+        else expandedOverviewMocThemes.add(g.theme);
+        var nowOpen = expandedOverviewMocThemes.has(g.theme);
+        body.style.display = nowOpen ? 'grid' : 'none';
+        header.querySelector('i').className = 'ti ' + (nowOpen ? 'ti-chevron-down' : 'ti-chevron-right');
+      });
+
+      listEl.appendChild(header);
+      listEl.appendChild(body);
+    });
   }
 
   function refreshSetViews(){
