@@ -437,6 +437,7 @@
         <strong style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color: var(--text-secondary);">Select builds</strong>
         <button id="shop-select-all" class="icon-btn" style="margin-left:auto; padding:3px 8px;">Select all</button>
         <button id="shop-select-none" class="icon-btn" style="padding:3px 8px;">Clear</button>
+        <button id="shop-top20-btn" class="icon-btn" style="padding:3px 8px;" title="Selects all builds and shows only the 20 parts you're shortest on"><i class="ti ti-flame" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 Most Needed</button>
       </div>
       <div id="shop-moc-checks" style="max-height:180px; overflow-y:auto; border:2px solid var(--border); border-radius:var(--radius); padding:8px; background: var(--surface-2);"></div>
     </div>
@@ -536,7 +537,7 @@
   <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
     <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Upload parts for a build</p>
     <p style="color: var(--text-secondary); margin: 0 0 10px;">
-      Works with a full CSV (Part Num, Quantity, Color, Description, elementId) or with Rebrickable's own parts-list export, which only includes <strong>Element ID</strong> and <strong>Quantity</strong> &mdash; if Part Num is missing, each element ID is looked up against parts already known elsewhere in the app (other builds, sets, or drawers) to fill in the part number, color, and description automatically. Anything that can't be matched is imported with those fields left blank, so you can search for and fill them in afterward.
+      Works with a full CSV (Part Num, Quantity, Color, Description, elementId) or with Rebrickable's own parts-list export, which only includes <strong>Element ID</strong> and <strong>Quantity</strong> &mdash; if Part Num is missing, each element ID is first looked up against parts already known elsewhere in the app (other builds, sets, or drawers), then against the Rebrickable API for anything still unmatched (uses the same API key entered on the Official Sets tab). Anything that still can't be matched is imported with those fields left blank, so you can search for and fill them in afterward using "Incomplete info" on the MOC Parts tab.
     </p>
     <div class="controls" style="margin-bottom: 8px;">
       <select id="mocbuild-csv-target"><option value="">Which build is this for?</option></select>
@@ -646,7 +647,7 @@
       <thead>
         <tr>
           <th style="width:6%">Image</th>
-          <th style="width:10%" id="sp-setnum-header">Set #</th>
+          <th style="width:10%" id="sp-setnum-header">Set</th>
           <th style="width:12%" data-sp-sort="partNum">Part #</th>
           <th style="width:12%" data-sp-sort="color">Color</th>
           <th style="width:36%" data-sp-sort="desc">Description</th>
@@ -1117,6 +1118,7 @@
   var attemptedCache = new Set();
   var checkedItems = new Set();
   var shopSelected = new Set();
+  var shopTop20Only = false;
   var CHECKLIST_KEY = 'shopping-checked-v1';
   var PRIORITY_LABELS_KEY = 'priority-labels-v1';
   var LOCATION_LABELS_KEY = 'location-labels-v1';
@@ -1967,6 +1969,20 @@
     sel.value = cur;
   }
 
+  function fetchElementFromApi(elementId){
+    var url = 'https://rebrickable.com/api/v3/lego/elements/' + encodeURIComponent(elementId) + '/?key=' + encodeURIComponent(rebrickableApiKey);
+    return fetchUrlMaybeProxied(url).then(function(resp){
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      return resp.json();
+    }).then(function(data){
+      return {
+        partNum: (data.part && data.part.part_num) || '',
+        color: (data.color && data.color.name) || '',
+        desc: (data.part && data.part.name) || ''
+      };
+    });
+  }
+
   function importBuildPartsCSVText(buildName, text){
     var statusEl = document.getElementById('mocbuild-csv-status');
     var table = parseCSV(text);
@@ -1984,7 +2000,7 @@
     }
 
     var lookupIndex = buildPartLookupIndex();
-    var added = 0, resolved = 0, unresolved = 0;
+    var pending = [];
     for (var i = 1; i < table.length; i++){
       var cols = table[i];
       if (!cols || !cols.length) continue;
@@ -1998,49 +2014,114 @@
       var onHand = map.onHand !== undefined ? (parseInt(cols[map.onHand], 10) || 0) : 0;
       var priority = map.priority !== undefined ? (cols[map.priority] || '').trim() : '';
 
+      var resolvedLocally = false;
       if (!partNum && elementId){
         var byEl = lookupIndex.byElementId[normKey(elementId)];
         if (byEl){
           partNum = byEl.partNum;
           if (!color) color = byEl.color;
           if (!desc) desc = byEl.desc;
-          resolved++;
-        } else {
-          unresolved++;
+          resolvedLocally = true;
         }
       }
       if (!partNum && !elementId) continue;
 
-      state.rows.push({
-        partNum: partNum, qty: qty, color: color, desc: desc, moc: buildName,
-        elementId: elementId, onHand: onHand, built: false, priority: priority
-      });
-      added++;
+      pending.push({ partNum: partNum, color: color, desc: desc, elementId: elementId, qty: qty, onHand: onHand, priority: priority, resolvedLocally: resolvedLocally });
     }
 
-    if (!added){
+    if (!pending.length){
       statusEl.style.color = 'var(--text-danger)';
       statusEl.textContent = 'No usable rows found in that CSV.';
       return;
     }
 
-    saveState();
-    if (!mocBuilds.some(function(b){ return b.name === buildName; })){
-      mocBuilds.push({ name: buildName });
-      saveMocBuilds();
+    function finalize(apiResults){
+      var localResolved = 0, apiResolved = 0, unresolved = 0, added = 0;
+      pending.forEach(function(p){
+        if (p.resolvedLocally){
+          localResolved++;
+        } else if (!p.partNum && p.elementId && apiResults[normKey(p.elementId)]){
+          var hit = apiResults[normKey(p.elementId)];
+          p.partNum = p.partNum || hit.partNum;
+          p.color = p.color || hit.color;
+          p.desc = p.desc || hit.desc;
+          if (p.partNum) apiResolved++; else unresolved++;
+        } else if (!p.partNum){
+          unresolved++;
+        }
+        if (!p.partNum && !p.elementId) return;
+        state.rows.push({
+          partNum: p.partNum, qty: p.qty, color: p.color, desc: p.desc, moc: buildName,
+          elementId: p.elementId, onHand: p.onHand, built: false, priority: p.priority
+        });
+        added++;
+      });
+
+      if (!added){
+        statusEl.style.color = 'var(--text-danger)';
+        statusEl.textContent = 'No usable rows found in that CSV.';
+        return;
+      }
+
+      saveState();
+      if (!mocBuilds.some(function(b){ return b.name === buildName; })){
+        mocBuilds.push({ name: buildName });
+        saveMocBuilds();
+      }
+
+      var unresolvedMsg = '';
+      if (unresolved){
+        unresolvedMsg = ' ' + unresolved + ' element ID' + (unresolved===1?'':'s') + ' couldn\u2019t be matched and ' + (unresolved===1?'was':'were') + ' added with blank part info \u2014 use "Incomplete info" on the MOC Parts tab to fill ' + (unresolved===1?'it':'them') + ' in.';
+      }
+      statusEl.style.color = unresolved ? 'var(--text-danger)' : 'var(--text-success)';
+      statusEl.textContent = 'Imported ' + added + ' part line' + (added===1?'':'s') + ' for ' + buildName + '.' +
+        (localResolved ? (' ' + localResolved + ' matched from your existing inventory.') : '') +
+        (apiResolved ? (' ' + apiResolved + ' matched via Rebrickable.') : '') +
+        unresolvedMsg;
+
+      document.getElementById('mocbuild-csv-paste').value = '';
+      document.getElementById('mocbuild-csv-file').value = '';
+      renderOverview();
+      renderMocBuildsTab();
+      if (state.tab === 'parts') renderParts();
     }
 
-    statusEl.style.color = unresolved ? 'var(--text-danger)' : 'var(--text-success)';
-    statusEl.textContent = 'Imported ' + added + ' part line' + (added===1?'':'s') + ' for ' + buildName + '.' +
-      (resolved ? (' ' + resolved + ' matched by element ID.') : '') +
-      (unresolved ? (' ' + unresolved + ' element ID' + (unresolved===1?'':'s') + ' couldn\u2019t be matched and ' + (unresolved===1?'was':'were') + ' added with blank part info \u2014 use "Find incomplete parts" on the MOC Parts tab to fill ' + (unresolved===1?'it':'them') + ' in.') : '');
+    var needsApi = pending.filter(function(p){ return !p.partNum && p.elementId; });
+    var uniqueApiIds = Array.from(new Set(needsApi.map(function(p){ return p.elementId; })));
 
-    document.getElementById('mocbuild-csv-paste').value = '';
-    document.getElementById('mocbuild-csv-file').value = '';
-    renderOverview();
-    renderMocBuildsTab();
-    if (state.tab === 'parts') renderParts();
+    if (!uniqueApiIds.length){
+      finalize({});
+      return;
+    }
+    if (!rebrickableApiKey){
+      statusEl.style.color = 'var(--text-secondary)';
+      statusEl.textContent = 'No Rebrickable API key set (add one on the Official Sets tab) \u2014 skipping lookup for ' + uniqueApiIds.length + ' unmatched element ID' + (uniqueApiIds.length===1?'':'s') + '.';
+      finalize({});
+      return;
+    }
+
+    var apiResults = {};
+    var idx = 0, total = uniqueApiIds.length, done = 0;
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Looking up ' + total + ' element ID' + (total===1?'':'s') + ' on Rebrickable\u2026 0 / ' + total;
+    function next(){
+      if (idx >= total){
+        finalize(apiResults);
+        return;
+      }
+      var elId = uniqueApiIds[idx++];
+      fetchElementFromApi(elId).then(function(info){
+        if (info && info.partNum) apiResults[normKey(elId)] = info;
+      }).catch(function(){
+      }).then(function(){
+        done++;
+        statusEl.textContent = 'Looking up element IDs on Rebrickable\u2026 ' + done + ' / ' + total;
+        next();
+      });
+    }
+    next();
   }
+
 
   function renderMocBuildsTab(){
     renderMocBuildsList();
@@ -2470,6 +2551,118 @@
       if (!entry.elementId && r.elementId) entry.elementId = r.elementId;
     });
     return Object.keys(map).map(function(k){ return map[k]; });
+  }
+
+  function setLabelFor(setNum){
+    var setInfo = ownedSets.find(function(s){ return s.setNum === setNum; });
+    if (setInfo && setInfo.name) return setInfo.name;
+    return setNum;
+  }
+
+  function renderSetPartsSummaryTab(){
+    var q = (document.getElementById('sp-search').value || '').toLowerCase();
+    var colorFilter = document.getElementById('sp-color-filter').value;
+    var setFilter = document.getElementById('sp-set-filter').value;
+
+    var setSel = document.getElementById('sp-set-filter');
+    var curSet = setSel.value;
+    var sortedSets = ownedSets.slice().sort(function(a,b){
+      return setLabelFor(a.setNum).localeCompare(setLabelFor(b.setNum), undefined, {numeric:true});
+    });
+    setSel.innerHTML = '<option value="">All sets</option>' + sortedSets.map(function(s){
+      var label = s.name ? s.name : s.setNum;
+      return '<option value="'+escapeHtml(s.setNum)+'">'+escapeHtml(label)+'</option>';
+    }).join('');
+    setSel.value = curSet;
+
+    var colorSel = document.getElementById('sp-color-filter');
+    var curColor = colorSel.value;
+    var colors = Array.from(new Set(setParts.map(function(r){ return r.color; }).filter(Boolean))).sort();
+    colorSel.innerHTML = '<option value="">All colors</option>' + colors.map(function(c){ return '<option value="'+escapeHtml(c)+'">'+escapeHtml(c)+'</option>'; }).join('');
+    colorSel.value = curColor;
+
+    var rawRows = setParts.filter(function(r){
+      if (setFilter && r.setNum !== setFilter) return false;
+      if (colorFilter && r.color !== colorFilter) return false;
+      if (q){
+        var hay = (r.partNum+' '+r.desc+' '+r.color+' '+r.setNum+' '+setLabelFor(r.setNum)).toLowerCase();
+        if (hay.indexOf(q) === -1) return false;
+      }
+      return true;
+    });
+
+    var combineOn = document.getElementById('sp-combine-toggle').checked;
+    document.getElementById('sp-setnum-header').textContent = combineOn ? 'Used In' : 'Set';
+    document.getElementById('sp-qtyperset-header').textContent = combineOn ? '\u2014' : 'Qty / set';
+
+    var items;
+    if (combineOn){
+      items = computeSetInventory(rawRows);
+      items.sort(function(a,b){
+        var col = spState.sortCol === 'setNum' ? 'partNum' : (spState.sortCol === 'qtyPerSet' ? 'totalQty' : spState.sortCol);
+        var av = col === 'totalQty' ? a.totalQty : (a[col] || '');
+        var bv = col === 'totalQty' ? b.totalQty : (b[col] || '');
+        if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * spState.sortDir;
+        return String(av).localeCompare(String(bv), undefined, {numeric:true}) * spState.sortDir;
+      });
+    } else {
+      items = rawRows.map(function(r){
+        var setInfo = ownedSets.find(function(s){ return s.setNum === r.setNum; });
+        return { setNum: r.setNum, partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId, qtyPerSet: r.qtyPerSet, totalQty: r.qtyPerSet * (setInfo ? setInfo.qty : 1) };
+      });
+      items.sort(function(a,b){
+        var col = spState.sortCol;
+        var av = col === 'totalQty' ? a.totalQty : (col === 'qtyPerSet' ? a.qtyPerSet : (a[col] || ''));
+        var bv = col === 'totalQty' ? b.totalQty : (col === 'qtyPerSet' ? b.qtyPerSet : (b[col] || ''));
+        if (typeof av === 'number' && typeof bv === 'number') return (av - bv) * spState.sortDir;
+        return String(av).localeCompare(String(bv), undefined, {numeric:true}) * spState.sortDir;
+      });
+    }
+
+    var totalPages = Math.max(1, Math.ceil(items.length / spState.pageSize));
+    if (spState.page > totalPages) spState.page = totalPages;
+    var start = (spState.page-1)*spState.pageSize;
+    var pageItems = items.slice(start, start+spState.pageSize);
+
+    var tbody = document.getElementById('sp-tbody');
+    tbody.innerHTML = '';
+    document.getElementById('sp-empty-msg').style.display = items.length ? 'none' : 'block';
+
+    if (combineOn){
+      pageItems.forEach(function(it){
+        var setList = Array.from(it.sets).map(setLabelFor).sort();
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td class="img-cell"><div class="part-thumb-wrap"></div></td>' +
+          '<td><span class="used-in-count" title="'+escapeHtml(setList.join(', '))+'">'+setList.length+' set'+(setList.length===1?'':'s')+'</span></td>' +
+          '<td class="wrap-cell">'+escapeHtml(it.partNum)+'</td>' +
+          '<td class="wrap-cell">'+escapeHtml(it.color)+'</td>' +
+          '<td class="wrap-cell">'+escapeHtml(it.desc)+'</td>' +
+          '<td style="color:var(--text-muted);">&mdash;</td>' +
+          '<td class="wrap-cell">'+it.totalQty.toLocaleString()+'</td>';
+        buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
+        tbody.appendChild(tr);
+      });
+      document.getElementById('sp-page-info').textContent = items.length ? ('Showing '+(start+1)+'-'+Math.min(start+pageItems.length, items.length)+' of '+items.length+' unique parts') : '';
+    } else {
+      pageItems.forEach(function(it){
+        var tr = document.createElement('tr');
+        tr.innerHTML =
+          '<td class="img-cell"><div class="part-thumb-wrap"></div></td>' +
+          '<td>'+escapeHtml(setLabelFor(it.setNum))+'</td>' +
+          '<td class="wrap-cell">'+escapeHtml(it.partNum)+'</td>' +
+          '<td class="wrap-cell">'+escapeHtml(it.color)+'</td>' +
+          '<td class="wrap-cell">'+escapeHtml(it.desc)+'</td>' +
+          '<td class="wrap-cell">'+it.qtyPerSet+'</td>' +
+          '<td class="wrap-cell">'+it.totalQty.toLocaleString()+'</td>';
+        buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
+        tbody.appendChild(tr);
+      });
+      document.getElementById('sp-page-info').textContent = items.length ? ('Showing '+(start+1)+'-'+Math.min(start+pageItems.length, items.length)+' of '+items.length) : '';
+    }
+
+    document.getElementById('sp-prev-page').disabled = spState.page <= 1;
+    document.getElementById('sp-next-page').disabled = spState.page >= totalPages;
   }
 
   document.getElementById('sp-search').addEventListener('input', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
@@ -4808,6 +5001,7 @@
       cb.addEventListener('change', function(){
         var name = cb.dataset.moc;
         if (cb.checked) shopSelected.add(name); else shopSelected.delete(name);
+        shopTop20Only = false;
         renderShoppingList();
       });
     });
@@ -4967,6 +5161,16 @@
     var minQty = parseInt(document.getElementById('shop-min-qty').value, 10);
     if (isNaN(minQty)) minQty = 0;
 
+    var top20Btn = document.getElementById('shop-top20-btn');
+    top20Btn.style.background = shopTop20Only ? 'var(--lego-blue)' : '';
+    top20Btn.style.color = shopTop20Only ? '#fff' : '';
+    top20Btn.style.borderColor = shopTop20Only ? 'var(--lego-blue)' : '';
+    var top20Keys = null;
+    if (shopTop20Only){
+      var top20Items = getTop20Items();
+      top20Keys = new Set(top20Items.map(function(it){ return it.partNum + '|' + it.color; }));
+    }
+
     populateShopColorFilter();
     populateShopPriorityFilter();
     output.innerHTML = '';
@@ -4976,12 +5180,16 @@
       output.innerHTML = '<div class="empty-msg">Pick one or more builds above to generate a list.</div>';
       return;
     }
+    if (top20Keys && !top20Keys.size){
+      output.innerHTML = '<div class="empty-msg">Nothing to show \u2014 no parts are currently short across any build.</div>';
+      return;
+    }
     var names = Array.from(shopSelected).sort();
     var frag = document.createDocumentFragment();
 
     var printHeader = document.createElement('div');
     printHeader.className = 'shop-print-header';
-    printHeader.innerHTML = '<h2 style="margin:0 0 4px; font-size:18px; text-transform:uppercase; letter-spacing:0.02em;">Shopping list</h2>' +
+    printHeader.innerHTML = '<h2 style="margin:0 0 4px; font-size:18px; text-transform:uppercase; letter-spacing:0.02em;">'+(shopTop20Only ? 'Top 20 most needed parts' : 'Shopping list')+'</h2>' +
       '<div style="font-size:12px; color:var(--text-secondary); margin-bottom:16px;">'+escapeHtml(names.join(', '))+' &middot; generated '+new Date().toLocaleDateString()+'</div>';
     headerSlot.appendChild(printHeader);
 
@@ -4989,6 +5197,7 @@
     var pool = [];
     names.forEach(function(moc){
       state.rows.filter(function(r){ return r.moc === moc; }).forEach(function(r){
+        if (top20Keys && !top20Keys.has(r.partNum + '|' + r.color)) return;
         if (onlyShort && statusFor(r) !== 'short') return;
         var needCount = onlyShort ? Math.max(r.qty - r.onHand, 0) : r.qty;
         if (!passesShopFilters(r, q, colorFilter, minQty, needCount, priorityFilter)) return;
@@ -5096,12 +5305,22 @@
 
   document.getElementById('shop-select-all').addEventListener('click', function(){
     mocSummaries().forEach(function(m){ shopSelected.add(m.name); });
+    shopTop20Only = false;
     populateShopMocList();
     renderShoppingList();
   });
   document.getElementById('shop-select-none').addEventListener('click', function(){
     shopSelected.clear();
+    shopTop20Only = false;
     populateShopMocList();
+    renderShoppingList();
+  });
+  document.getElementById('shop-top20-btn').addEventListener('click', function(){
+    shopTop20Only = !shopTop20Only;
+    if (shopTop20Only){
+      mocSummaries().forEach(function(m){ shopSelected.add(m.name); });
+      populateShopMocList();
+    }
     renderShoppingList();
   });
   document.getElementById('shop-only-short').addEventListener('change', renderShoppingList);
