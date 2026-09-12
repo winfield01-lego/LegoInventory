@@ -22,6 +22,7 @@
 <body>
 <div class="page-wrap">
 <div id="lego-inv-root">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <h2 class="sr-only">Lego Collection Inventory: search, filter, and track parts on hand across MOC builds and official sets</h2>
 <style>
 #lego-inv-root {
@@ -1962,8 +1963,7 @@
     document.querySelector('#almost-complete-print-report .report-meta').textContent =
       'Generated ' + new Date().toLocaleDateString() + ' \u00b7 missing ' + threshold + ' pieces or fewer \u00b7 ' + items.length + ' item' + (items.length===1?'':'s') + ' shown';
 
-    ROOT.classList.add('printing-almost-complete');
-    window.print();
+    exportElementAsPdf('almost-complete-print-report', 'lego-almost-complete.pdf', 760);
   }
   document.getElementById('almost-complete-report-pdf-btn').addEventListener('click', generateAlmostCompletePDF);
 
@@ -4226,6 +4226,39 @@
     setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
   }
 
+  function exportElementAsPdf(elementId, filename, widthPx){
+    if (typeof html2pdf === 'undefined'){
+      alert('The PDF library hasn\u2019t finished loading yet \u2014 please wait a moment and try again.');
+      return;
+    }
+    var el = document.getElementById(elementId);
+    if (!el) return;
+    var prevStyle = el.getAttribute('style') || '';
+    el.style.display = 'block';
+    el.style.position = 'fixed';
+    el.style.left = '-9999px';
+    el.style.top = '0';
+    el.style.width = (widthPx || 760) + 'px';
+    el.style.background = '#ffffff';
+    el.style.padding = '20px';
+
+    var opt = {
+      margin: 10,
+      filename: filename,
+      image: { type: 'jpeg', quality: 0.95 },
+      html2canvas: { scale: 2, backgroundColor: '#ffffff' },
+      jsPDF: { unit: 'pt', format: 'letter', orientation: 'portrait' },
+      pagebreak: { mode: ['css', 'avoid-all'] }
+    };
+
+    html2pdf().from(el).set(opt).save().then(function(){
+      el.setAttribute('style', prevStyle);
+    }).catch(function(err){
+      el.setAttribute('style', prevStyle);
+      alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
+    });
+  }
+
   function generateTop20PDF(){
     var items = getTop20Items();
     if (!items.length){
@@ -4257,8 +4290,7 @@
     document.querySelector('#top20-print-report .report-meta').textContent =
       'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown';
 
-    ROOT.classList.add('printing-top20');
-    window.print();
+    exportElementAsPdf('top20-print-report', 'lego-top-20-most-needed.pdf', 760);
   }
 
   function generateSetsPDF(){
@@ -4286,8 +4318,7 @@
     document.querySelector('#sets-print-report .report-meta').textContent =
       'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + ownedSets.length + ' set' + (ownedSets.length===1?'':'s') + ' \u00b7 ' + totalPiecesAll.toLocaleString() + ' total pieces';
 
-    ROOT.classList.add('printing-sets');
-    window.print();
+    exportElementAsPdf('sets-print-report', 'lego-official-sets-report.pdf', 760);
   }
 
   document.getElementById('sets-report-btn').addEventListener('click', generateSetsPDF);
