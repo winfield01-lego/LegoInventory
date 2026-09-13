@@ -253,33 +253,6 @@
   #lego-inv-root .report-table td { padding: 5px 8px; border-bottom: 1px solid #ccc; font-size: 11px; }
   #lego-inv-root .report-table tr { break-inside: avoid; }
   #lego-inv-root .shop-print-header { display: block; margin-bottom: 10px; break-after: avoid; }
-
-  #lego-inv-root.view-locked .set-edit-field input,
-  #lego-inv-root.view-locked .set-edit-field select,
-  #lego-inv-root.view-locked .drawer-edit-field input,
-  #lego-inv-root.view-locked .qty-input,
-  #lego-inv-root.view-locked .onhand-input,
-  #lego-inv-root.view-locked .priority-input,
-  #lego-inv-root.view-locked .field-edit-input,
-  #lego-inv-root.view-locked .row-delete-btn,
-  #lego-inv-root.view-locked .lockable {
-    pointer-events: none !important;
-    opacity: 0.5;
-    filter: grayscale(0.4);
-  }
-  #lego-inv-root.view-locked .set-edit-field input,
-  #lego-inv-root.view-locked .set-edit-field select,
-  #lego-inv-root.view-locked .drawer-edit-field input,
-  #lego-inv-root.view-locked .qty-input,
-  #lego-inv-root.view-locked .onhand-input,
-  #lego-inv-root.view-locked .priority-input,
-  #lego-inv-root.view-locked .field-edit-input {
-    background: var(--surface-0);
-    cursor: not-allowed;
-  }
-  #lego-inv-root #view-lock-toggle-btn { flex-shrink: 0; }
-  #lego-inv-root #view-lock-toggle-btn.locked { color: var(--text-danger); border-color: var(--text-danger); }
-  #lego-inv-root #view-lock-toggle-btn.unlocked { color: var(--lego-green); border-color: var(--lego-green); }
   #lego-inv-root .shop-print-header h2 { font-size: 17px !important; margin: 0 0 3px !important; }
   #lego-inv-root .shop-print-header > div { font-size: 11px !important; margin-bottom: 0 !important; }
   #lego-inv-root #shopping-list-output { column-count: 2; column-gap: 30px; column-rule: 1px solid var(--border); }
@@ -330,7 +303,6 @@
     <button class="tab-btn" data-maintab="data-tools"><span class="tab-dot" style="background:var(--lego-lime);"></span>Data &amp; Tools</button>
   </div>
   <div class="row">
-    <button id="view-lock-toggle-btn" class="icon-btn"></button>
     <span id="save-status" style="font-size: 12px; color: var(--text-muted);"></span>
     <button id="export-btn" class="icon-btn" title="Exports every part across your MOC builds, official sets, and drawers into one CSV"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Export CSV</button>
   </div>
@@ -450,7 +422,7 @@
       <select id="ap-priority" style="min-width:140px;"><option value="">No priority</option></select>
     </div>
     <div class="row">
-      <button id="ap-submit" class="lockable"><i class="ti ti-check" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add to build</button>
+      <button id="ap-submit"><i class="ti ti-check" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add to build</button>
       <button id="ap-cancel" class="icon-btn">Cancel</button>
       <span id="ap-status" style="font-size:13px; color:var(--text-secondary);"></span>
     </div>
@@ -579,7 +551,7 @@
       <input type="text" id="mocbuild-theme-input" placeholder="Theme (optional)" style="min-width:160px;" />
       <select id="build-location-input" style="min-width:180px;"></select>
       <button id="manage-locations-toggle-mocsets" class="icon-btn"><i class="ti ti-map-pin" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Locations</button>
-      <button id="build-add-btn" class="lockable"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add build</button>
+      <button id="build-add-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add build</button>
     </div>
   </div>
 
@@ -602,7 +574,7 @@
     </div>
     <textarea id="mocbuild-csv-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:100px; font-family: var(--font-mono); font-size: 12px;"></textarea>
     <div class="row" style="margin-top: 8px;">
-      <button id="mocbuild-csv-import-btn" class="lockable"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts for this build</button>
+      <button id="mocbuild-csv-import-btn"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts for this build</button>
       <span id="mocbuild-csv-status" style="font-size:13px; color:var(--text-secondary);"></span>
     </div>
   </div>
@@ -621,7 +593,7 @@
       <input type="text" id="set-name-input" placeholder="Name (optional)" style="min-width:180px;" />
       <input type="text" id="set-theme-input" placeholder="Theme (optional)" style="min-width:160px;" />
       <button id="manage-locations-toggle-sets" class="icon-btn"><i class="ti ti-map-pin" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Locations</button>
-      <button id="set-add-btn" class="lockable"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add set</button>
+      <button id="set-add-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add set</button>
     </div>
   </div>
 
@@ -737,7 +709,7 @@
         <div class="controls" style="margin-bottom: 0;">
           <input type="text" id="drawer-label-input" placeholder="Drawer label, e.g. A3 or Red Bin" style="min-width:180px;" />
           <input type="text" id="drawer-notes-input" placeholder="Notes / location (optional)" style="min-width:200px;" />
-          <button id="drawer-add-btn" class="lockable"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add drawer</button>
+          <button id="drawer-add-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add drawer</button>
         </div>
       </div>
 
@@ -757,7 +729,7 @@
           <input type="text" id="dp-desc" placeholder="Description" style="min-width:200px;" />
           <input type="text" id="dp-elementid" placeholder="Element ID (optional)" style="min-width:140px;" />
           <input type="number" id="dp-qty" placeholder="Qty" min="1" value="1" style="width:90px;" />
-          <button id="drawer-add-part-btn" class="lockable"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add part</button>
+          <button id="drawer-add-part-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add part</button>
         </div>
         <p style="color: var(--text-muted); font-size: 12px; margin: 8px 0 0;">If that part+color already exists in the chosen drawer, this adds to its quantity instead of creating a duplicate line. Fill in any of Part #, Color, Description, or Element ID and tab to the next field &mdash; if that part is already known elsewhere in the app (a build, a set, or another drawer), the rest fill in automatically.</p>
         <span id="drawer-add-part-status" style="font-size:13px; color:var(--text-secondary);"></span>
@@ -778,7 +750,7 @@
           <input type="number" id="assign-qty-input" min="1" placeholder="Qty to move" style="width:120px;" />
         </div>
         <div class="row">
-          <button id="assign-confirm-btn" class="lockable"><i class="ti ti-arrow-right" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Move to build</button>
+          <button id="assign-confirm-btn"><i class="ti ti-arrow-right" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Move to build</button>
           <button id="assign-cancel-btn" class="icon-btn">Cancel</button>
           <span id="assign-status" style="font-size:13px; color:var(--text-secondary);"></span>
         </div>
@@ -841,14 +813,14 @@
     <button type="button" class="collapse-header" data-collapse-target="cs-publish"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Publish Whole Collection to Site</span></button>
     <div class="collapse-body" id="cs-publish" style="display:none;">
       <p style="margin: 0 0 8px; color: var(--text-secondary);">
-        Your site (<code>data/inventory-data.json</code> in your GitHub repo) is now the master copy. Every change you make here &mdash; MOC builds and parts, priority labels, shopping list checkmarks, official sets and their parts, drawers, and storage locations &mdash; auto-saves to your site a few seconds after you stop editing, and every time you open the app it loads the current version from your site first. Images aren't included here &mdash; see Image Upload below for those.
+        Everything you've entered &mdash; MOC builds and parts, priority labels, shopping list checkmarks, official sets and their parts, drawers, and storage locations &mdash; normally lives only in this browser's storage. Publishing writes all of it to <code>data/inventory-data.json</code> in your GitHub repo instead, so any browser or device that opens your site sees the same data, not just this one.
       </p>
       <p style="margin: 0 0 10px; color: var(--text-muted); font-size: 12px;">
-        Uses the GitHub Connection above. The buttons below are for manual use only &mdash; forcing an immediate save, or pulling the site's version again if you ever need to.
+        Uses the GitHub Connection above. Editing still saves instantly to this browser as you go; nothing reaches your site until you click "Save to site." Images aren't included here &mdash; see Image Upload below for those.
       </p>
       <div class="row" style="margin-bottom: 6px;">
-        <button id="save-all-data-github-btn"><i class="ti ti-cloud-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Save to site now</button>
-        <button id="load-all-data-github-btn" class="icon-btn"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Reload from site</button>
+        <button id="save-all-data-github-btn"><i class="ti ti-cloud-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Save to site</button>
+        <button id="load-all-data-github-btn" class="icon-btn"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Load from site</button>
         <span id="all-data-sync-status" style="font-size: 13px; color: var(--text-secondary);"></span>
       </div>
     </div>
@@ -928,7 +900,7 @@
       </div>
       <textarea id="set-csv-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:100px; font-family: var(--font-mono); font-size: 12px;"></textarea>
       <div class="row" style="margin-top: 8px;">
-        <button id="set-csv-import-btn" class="lockable"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts for this set</button>
+        <button id="set-csv-import-btn"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts for this set</button>
         <span id="set-csv-status" style="font-size:13px; color:var(--text-secondary);"></span>
       </div>
     </div>
@@ -1056,27 +1028,27 @@
     <p id="detail-modal-theme" style="margin:0 0 6px; color:var(--text-secondary); font-size:13px;"></p>
     <div style="margin:0 0 14px; display:flex; align-items:center; gap:8px;">
       <i class="ti ti-map-pin" style="font-size:14px; color:var(--text-muted);" aria-hidden="true"></i>
-      <select id="detail-modal-location" class="lockable" style="flex:1; min-width:180px; font-size:13px;"></select>
+      <select id="detail-modal-location" style="flex:1; min-width:180px; font-size:13px;"></select>
       <button id="detail-modal-manage-locations" class="icon-btn" title="Manage locations"><i class="ti ti-settings" style="font-size:13px;" aria-hidden="true"></i></button>
     </div>
 
     <div style="margin:0 0 14px;">
-      <textarea id="detail-modal-description" class="lockable" placeholder="Short description (optional)" style="width:100%; min-height:56px; font-size:13px; font-family:inherit; resize:vertical;"></textarea>
+      <textarea id="detail-modal-description" placeholder="Short description (optional)" style="width:100%; min-height:56px; font-size:13px; font-family:inherit; resize:vertical;"></textarea>
     </div>
 
     <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:18px;">
       <div style="flex-shrink:0; width:160px;">
         <img id="detail-modal-photo" style="display:none; width:160px; height:160px; object-fit:cover; border-radius:8px; border:2px solid var(--border);" alt="" />
         <div id="detail-modal-photo-placeholder" style="width:160px; height:160px; border-radius:8px; border:2px dashed var(--border); display:flex; align-items:center; justify-content:center; color:var(--text-muted); font-size:12px; text-align:center; padding:8px; box-sizing:border-box;">No photo yet</div>
-        <input type="file" id="detail-modal-photo-input" class="lockable" accept="image/*" style="margin-top:8px; font-size:11px; width:160px;" />
-        <button id="detail-modal-photo-remove" class="icon-btn lockable" style="margin-top:6px; font-size:11px; display:none; width:100%;"><i class="ti ti-trash" style="font-size:12px; vertical-align:-1px;" aria-hidden="true"></i> Remove local copy</button>
-        <button id="detail-modal-photo-push" class="icon-btn lockable" style="margin-top:4px; font-size:11px; display:none; width:100%;"><i class="ti ti-cloud-upload" style="font-size:12px; vertical-align:-1px;" aria-hidden="true"></i> Push to site</button>
+        <input type="file" id="detail-modal-photo-input" accept="image/*" style="margin-top:8px; font-size:11px; width:160px;" />
+        <button id="detail-modal-photo-remove" class="icon-btn" style="margin-top:6px; font-size:11px; display:none; width:100%;"><i class="ti ti-trash" style="font-size:12px; vertical-align:-1px;" aria-hidden="true"></i> Remove local copy</button>
+        <button id="detail-modal-photo-push" class="icon-btn" style="margin-top:4px; font-size:11px; display:none; width:100%;"><i class="ti ti-cloud-upload" style="font-size:12px; vertical-align:-1px;" aria-hidden="true"></i> Push to site</button>
         <p id="detail-modal-photo-status" style="font-size:11px; color:var(--text-secondary); margin:6px 0 0;"></p>
       </div>
       <div class="metric-grid" id="detail-modal-metrics" style="flex:1; min-width:220px; margin-bottom:0;"></div>
     </div>
 
-    <button id="detail-modal-mark-complete" class="icon-btn lockable" style="display:none; color: var(--lego-green); border-color: var(--lego-green); margin-bottom:14px;"><i class="ti ti-checkbox" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Mark Complete (set On Hand to Needed for every part)</button>
+    <button id="detail-modal-mark-complete" class="icon-btn" style="display:none; color: var(--lego-green); border-color: var(--lego-green); margin-bottom:14px;"><i class="ti ti-checkbox" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Mark Complete (set On Hand to Needed for every part)</button>
 
     <p style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary); margin:0 0 8px;">Parts list</p>
     <div class="tbl-wrap" style="max-height:320px;">
@@ -1205,62 +1177,7 @@
   var cachedIds = new Set();
   var GH_SETTINGS_KEY = 'github-upload-settings-v1';
   var GH_SHA_MAP_KEY = 'github-upload-shas-v1';
-  var VIEW_LOCKED_KEY = 'view-locked-v1';
-  var viewLocked = true;
-
-  function loadViewLocked(){
-    return storage.get(VIEW_LOCKED_KEY, false).then(function(res){
-      viewLocked = !(res && res.value === '0');
-    }).catch(function(){});
-  }
-  function saveViewLocked(){
-    return storage.set(VIEW_LOCKED_KEY, viewLocked ? '1' : '0', false);
-  }
-  function applyViewLockState(){
-    ROOT.classList.toggle('view-locked', viewLocked);
-    var btn = document.getElementById('view-lock-toggle-btn');
-    if (btn){
-      btn.classList.toggle('locked', viewLocked);
-      btn.classList.toggle('unlocked', !viewLocked);
-      btn.innerHTML = viewLocked
-        ? '<i class="ti ti-lock" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> View Only'
-        : '<i class="ti ti-lock-open" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Edit Mode';
-      btn.title = viewLocked ? 'Locked \u2014 click to allow edits' : 'Unlocked \u2014 click to lock and prevent accidental edits';
-    }
-  }
-
   var ghSettings = { repo: '', branch: '', token: '' };
-  var LOCAL_DIRTY_KEY = 'local-dirty-v1';
-  var localDirty = false;
-  var autoPublishTimer = null;
-  var AUTO_PUBLISH_DELAY_MS = 4000;
-  var suppressAutoPublish = false;
-
-  function loadDirtyFlag(){
-    return storage.get(LOCAL_DIRTY_KEY, false).then(function(res){
-      localDirty = !!(res && res.value === '1');
-    }).catch(function(){});
-  }
-  function saveDirtyFlag(){
-    return storage.set(LOCAL_DIRTY_KEY, localDirty ? '1' : '0', false);
-  }
-
-  function scheduleAutoPublish(){
-    if (suppressAutoPublish) return;
-    localDirty = true;
-    saveDirtyFlag();
-    var statusEl = document.getElementById('all-data-sync-status');
-    if (statusEl){
-      statusEl.style.color = 'var(--text-secondary)';
-      statusEl.textContent = 'Unsaved changes \u2014 saving to site shortly\u2026';
-    }
-    clearTimeout(autoPublishTimer);
-    autoPublishTimer = setTimeout(function(){
-      saveAllDataToGithub(true).then(function(ok){
-        if (ok){ localDirty = false; saveDirtyFlag(); }
-      });
-    }, AUTO_PUBLISH_DELAY_MS);
-  }
   var ghShaMap = {};
   var attemptedCache = new Set();
   var checkedItems = new Set();
@@ -1311,7 +1228,6 @@
 
   var saveTimer = null;
   function saveState(){
-    scheduleAutoPublish();
     setSaveStatus('Saving…');
     clearTimeout(saveTimer);
     saveTimer = setTimeout(function(){
@@ -1502,7 +1418,6 @@
   }
 
   function savePriorityLabels(){
-    scheduleAutoPublish();
     return storage.set(PRIORITY_LABELS_KEY, JSON.stringify(priorityLabels), false);
   }
 
@@ -1520,7 +1435,6 @@
   }
 
   function saveLocationLabels(){
-    scheduleAutoPublish();
     return storage.set(LOCATION_LABELS_KEY, JSON.stringify(locationLabels), false);
   }
 
@@ -2075,7 +1989,6 @@
     }).catch(function(){});
   }
   function saveOwnedSets(){
-    scheduleAutoPublish();
     return storage.set(SETS_KEY, JSON.stringify(ownedSets), false);
   }
   function loadSetParts(){
@@ -2084,7 +1997,6 @@
     }).catch(function(){});
   }
   function saveSetParts(){
-    scheduleAutoPublish();
     return storage.set(SET_PARTS_KEY, JSON.stringify(setParts), false);
   }
   function loadMocThemes(){
@@ -2093,7 +2005,6 @@
     }).catch(function(){});
   }
   function saveMocThemes(){
-    scheduleAutoPublish();
     return storage.set(MOC_THEMES_KEY, JSON.stringify(mocThemes), false);
   }
   function loadRebrickableKey(){
@@ -2140,7 +2051,7 @@
     viewBtn.innerHTML = '<i class="ti ti-eye" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Summary';
     viewBtn.addEventListener('click', function(){ openSetDetail(s.setNum); });
     var delBtn = document.createElement('button');
-    delBtn.className = 'icon-btn lockable';
+    delBtn.className = 'icon-btn';
     delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); flex-shrink:0;';
     delBtn.title = 'Remove this set';
     delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Delete set';
@@ -2200,13 +2111,13 @@
     viewBtn.innerHTML = '<i class="ti ti-eye" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Summary';
     viewBtn.addEventListener('click', function(){ openMocDetail(currentName); });
     var completeBtn = document.createElement('button');
-    completeBtn.className = 'icon-btn lockable';
+    completeBtn.className = 'icon-btn';
     completeBtn.style.cssText = 'color: var(--lego-green); border-color: var(--lego-green); flex-shrink:0;';
     completeBtn.title = 'Set On Hand to Needed for every part in this build';
     completeBtn.innerHTML = '<i class="ti ti-checkbox" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Mark Complete';
     completeBtn.addEventListener('click', function(){ markBuildComplete(currentName); });
     var delBtn = document.createElement('button');
-    delBtn.className = 'icon-btn lockable';
+    delBtn.className = 'icon-btn';
     delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); flex-shrink:0;';
     delBtn.title = 'Remove this build';
     delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Delete';
@@ -3155,7 +3066,6 @@
     }).catch(function(){});
   }
   function saveDrawers(){
-    scheduleAutoPublish();
     return storage.set(DRAWERS_KEY, JSON.stringify(drawers), false);
   }
   function loadDrawerParts(){
@@ -3164,7 +3074,6 @@
     }).catch(function(){});
   }
   function saveDrawerParts(){
-    scheduleAutoPublish();
     return storage.set(DRAWER_PARTS_KEY, JSON.stringify(drawerParts), false);
   }
 
@@ -3190,7 +3099,6 @@
     }).catch(function(){});
   }
   function saveMocLocations(){
-    scheduleAutoPublish();
     return storage.set(MOC_LOCATIONS_KEY, JSON.stringify(mocLocations), false);
   }
   function loadMocBuilds(){
@@ -3199,7 +3107,6 @@
     }).catch(function(){});
   }
   function saveMocBuilds(){
-    scheduleAutoPublish();
     return storage.set(MOC_BUILDS_KEY, JSON.stringify(mocBuilds), false);
   }
   function loadMocDescriptions(){
@@ -3208,7 +3115,6 @@
     }).catch(function(){});
   }
   function saveMocDescriptions(){
-    scheduleAutoPublish();
     return storage.set(MOC_DESCRIPTIONS_KEY, JSON.stringify(mocDescriptions), false);
   }
   function ensureMocBuildsSynced(){
@@ -3594,7 +3500,7 @@
       });
       notesInput.addEventListener('change', function(){ d.notes = notesInput.value.trim(); saveDrawers(); });
       var delBtn = document.createElement('button');
-      delBtn.className = 'icon-btn lockable';
+      delBtn.className = 'icon-btn';
       delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); flex-shrink:0;';
       delBtn.title = 'Remove this drawer';
       delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Delete drawer';
@@ -4597,11 +4503,6 @@
     });
   });
 
-  document.getElementById('view-lock-toggle-btn').addEventListener('click', function(){
-    viewLocked = !viewLocked;
-    saveViewLocked();
-    applyViewLockState();
-  });
   document.getElementById('export-btn').addEventListener('click', exportAllPartsCSV);
   document.getElementById('shop-export-csv-btn').addEventListener('click', exportShoppingList);
   document.getElementById('top-report-btn').addEventListener('click', exportTopNeededReport);
@@ -5303,17 +5204,15 @@
     return btoa(unescape(encodeURIComponent(str)));
   }
 
-  function saveAllDataToGithub(silent){
+  function saveAllDataToGithub(){
     var statusEl = document.getElementById('all-data-sync-status');
     var repo = ghSettings.repo;
     var branch = ghSettings.branch || 'main';
     var token = ghSettings.token;
     if (!repo || repo.indexOf('/') === -1 || !token){
-      if (!silent && statusEl){
-        statusEl.style.color = 'var(--text-danger)';
-        statusEl.textContent = 'Set up your repo and token in GitHub Connection above first.';
-      }
-      return Promise.resolve(false);
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Set up your repo and token on the Images tab first.';
+      return;
     }
     var payload = JSON.stringify({
       rows: state.rows.map(objToRow),
@@ -5330,22 +5229,14 @@
       mocDescriptions: mocDescriptions
     }, null, 2);
     var base64 = utf8ToBase64(payload);
-    if (statusEl){
-      statusEl.style.color = 'var(--text-secondary)';
-      statusEl.textContent = 'Saving to site\u2026';
-    }
-    return putFileToGithub(repo, branch, ALL_DATA_PATH, token, base64, 'inventory-data', 'Update inventory data').then(function(){
-      if (statusEl){
-        statusEl.style.color = 'var(--text-success)';
-        statusEl.textContent = 'All changes saved to your site.';
-      }
-      return true;
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Saving\u2026';
+    putFileToGithub(repo, branch, ALL_DATA_PATH, token, base64, 'inventory-data', 'Update inventory data').then(function(){
+      statusEl.style.color = 'var(--text-success)';
+      statusEl.textContent = 'Saved to your site. It may take a minute to go live.';
     }).catch(function(err){
-      if (statusEl){
-        statusEl.style.color = 'var(--text-danger)';
-        statusEl.textContent = 'Could not save: ' + (err && err.message ? err.message : 'unknown error');
-      }
-      return false;
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Could not save: ' + (err && err.message ? err.message : 'unknown error');
     });
   }
 
@@ -5374,7 +5265,6 @@
       if (Array.isArray(data.locationLabels)) locationLabels = data.locationLabels;
       if (data.mocDescriptions && typeof data.mocDescriptions === 'object') mocDescriptions = data.mocDescriptions;
 
-      suppressAutoPublish = true;
       saveState();
       saveChecklist();
       savePriorityLabels();
@@ -5386,9 +5276,6 @@
       saveMocBuilds();
       saveMocDescriptions();
       saveMocThemes();
-      suppressAutoPublish = false;
-      localDirty = false;
-      saveDirtyFlag();
 
       render();
       if (state.tab === 'sets') renderSetsTab();
@@ -5411,7 +5298,7 @@
     });
   }
 
-  document.getElementById('save-all-data-github-btn').addEventListener('click', function(){ saveAllDataToGithub(false); });
+  document.getElementById('save-all-data-github-btn').addEventListener('click', saveAllDataToGithub);
   document.getElementById('load-all-data-github-btn').addEventListener('click', function(){ loadAllDataFromGithub(false); });
   document.getElementById('check-diff-btn').addEventListener('click', function(){ runDiffCheck(false); });
   document.getElementById('diff-load-from-site-btn').addEventListener('click', function(){
@@ -5422,7 +5309,7 @@
   });
   document.getElementById('diff-publish-to-site-btn').addEventListener('click', function(){
     if (!confirm('Overwrite the version on your site with this browser\u2019s data? This replaces everything currently published, including anything only on the site.')) return;
-    saveAllDataToGithub(false);
+    saveAllDataToGithub();
     document.getElementById('diff-results').style.display = 'none';
     document.getElementById('sync-warning-banner').style.display = 'none';
   });
@@ -6055,7 +5942,6 @@
   }
 
   function saveChecklist(){
-    scheduleAutoPublish();
     return storage.set(CHECKLIST_KEY, JSON.stringify(Array.from(checkedItems)), false);
   }
 
@@ -6104,21 +5990,16 @@
   });
 
   function bootApp(){
-    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(function(){ return loadSetPhotos(); }).then(function(){ return loadMocPhotos(); }).then(function(){ return loadMocLocations(); }).then(function(){ return loadMocBuilds(); }).then(function(){ return loadMocThemes(); }).then(function(){ return loadMocDescriptions(); }).then(function(){ return loadLocationLabels(); })
-    .then(function(){ return loadRebrickableKey(); }).then(function(){ return loadSetProxyPref(); }).then(function(){ return loadGithubSettings(); }).then(function(){ return loadGithubShaMap(); }).then(function(){ return loadDirtyFlag(); }).then(function(){ return loadViewLocked(); })
-    .then(function(){
-      var repoConfigured = ghSettings.repo && ghSettings.repo.indexOf('/') !== -1 && ghSettings.token;
-      if (!repoConfigured) return;
-
-      var flush = localDirty ? saveAllDataToGithub(true) : Promise.resolve(true);
-      return flush.then(function(flushed){
-        if (localDirty && !flushed) return; // couldn't publish pending changes yet (e.g. offline) - don't overwrite them with the older site version
+    var wasFreshBootstrap = false;
+    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(function(){ return loadSetPhotos(); }).then(function(){ return loadMocPhotos(); }).then(function(){ return loadMocLocations(); }).then(function(){ return loadMocBuilds(); }).then(function(){ return loadMocThemes(); }).then(function(){ return loadMocDescriptions(); }).then(function(){ return loadLocationLabels(); }).then(function(){
+      var hasAnyData = ownedSets.length || setParts.length || drawers.length || drawerParts.length;
+      if (!hasAnyData){
+        wasFreshBootstrap = true;
         return loadAllDataFromGithub(true);
-      });
-    })
-    .then(function(){
-      applyViewLockState();
+      }
+    }).then(function(){ return loadRebrickableKey(); }).then(function(){ return loadSetProxyPref(); }).then(function(){ return loadGithubSettings(); }).then(function(){ return loadGithubShaMap(); }).then(function(){
       render();
+      if (!wasFreshBootstrap){ runDiffCheck(true); }
     });
   }
 
