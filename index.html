@@ -1888,7 +1888,7 @@
       var missing = Math.max(m.need - m.have, 0);
       if (missing > 0 && missing <= threshold){
         var shortParts = state.rows.filter(function(r){ return r.moc === m.name && r.onHand < r.qty; })
-          .map(function(r){ return { partNum: r.partNum, color: r.color, desc: r.desc, short: r.qty - r.onHand }; })
+          .map(function(r){ return { partNum: r.partNum, color: r.color, desc: r.desc, short: r.qty - r.onHand, elementId: r.elementId }; })
           .sort(function(a,b){ return b.short - a.short; });
         items.push({ type: 'moc', key: m.name, label: m.name, missing: missing, parts: shortParts });
       }
@@ -1901,7 +1901,7 @@
       var missing = needed - onHand;
       if (missing > 0 && missing <= threshold){
         var shortSetParts = rows.filter(function(r){ return setPartOnHand(r) < setPartNeeded(r); })
-          .map(function(r){ return { partNum: r.partNum, color: r.color, desc: r.desc, short: setPartNeeded(r) - setPartOnHand(r) }; })
+          .map(function(r){ return { partNum: r.partNum, color: r.color, desc: r.desc, short: setPartNeeded(r) - setPartOnHand(r), elementId: r.elementId }; })
           .sort(function(a,b){ return b.short - a.short; });
         items.push({ type: 'set', key: s.setNum, label: s.setNum + (s.name ? ' \u2014 ' + s.name : ''), missing: missing, parts: shortSetParts });
       }
@@ -1984,37 +1984,75 @@
       alert('Nothing to report \u2014 nothing is within ' + threshold + ' pieces of complete right now.');
       return;
     }
-    var doc = getPdfDoc();
-    if (!doc) return;
-    pdfHeader(doc, 'Almost Complete \u2014 Parts Needed',
-      'Generated ' + new Date().toLocaleDateString() + ' \u00b7 missing ' + threshold + ' pieces or fewer \u00b7 ' + items.length + ' item' + (items.length===1?'':'s') + ' shown');
+    var btn = document.getElementById('almost-complete-report-pdf-btn');
+    var prevBtnHtml = btn ? btn.innerHTML : null;
+    if (btn){
+      btn.disabled = true;
+      btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating\u2026';
+    }
 
-    var body = [];
-    items.forEach(function(it){
-      var typeLabel = it.type === 'moc' ? 'MOC Build' : 'Official Set';
-      body.push([{
-        content: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' piece' + (it.missing===1?'':'s') + ' total',
-        colSpan: 4,
-        styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] }
-      }]);
-      if (!it.parts.length){
-        body.push([{ content: 'No specific part shortages recorded.', colSpan: 4, styles: { fontStyle: 'italic', textColor: [130, 130, 130] } }]);
-      } else {
-        it.parts.forEach(function(p){
-          body.push([p.partNum, p.color, p.desc, String(p.short)]);
-        });
-      }
-    });
+    var allElementIds = [];
+    items.forEach(function(it){ it.parts.forEach(function(p){ if (p.elementId) allElementIds.push(p.elementId); }); });
+    var uniqueIds = Array.from(new Set(allElementIds));
 
-    doc.autoTable({
-      startY: 70,
-      head: [['Part #','Color','Description','Short']],
-      body: body,
-      styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak' },
-      headStyles: { fillColor: [0, 166, 94], textColor: 255 },
-      columnStyles: { 2: { cellWidth: 220 } }
+    Promise.all(uniqueIds.map(function(id){
+      return fetchPartImageForPdf(id).then(function(dataUrl){ return [id, dataUrl]; });
+    })).then(function(pairs){
+      var imgMap = {};
+      pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
+
+      var doc = getPdfDoc();
+      if (!doc) return;
+      pdfHeader(doc, 'Almost Complete \u2014 Parts Needed',
+        'Generated ' + new Date().toLocaleDateString() + ' \u00b7 missing ' + threshold + ' pieces or fewer \u00b7 ' + items.length + ' item' + (items.length===1?'':'s') + ' shown');
+
+      var body = [];
+      var rowMeta = [];
+      items.forEach(function(it){
+        var typeLabel = it.type === 'moc' ? 'MOC Build' : 'Official Set';
+        body.push([{
+          content: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' piece' + (it.missing===1?'':'s') + ' total',
+          colSpan: 5,
+          styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] }
+        }]);
+        rowMeta.push(null);
+        if (!it.parts.length){
+          body.push([{ content: 'No specific part shortages recorded.', colSpan: 5, styles: { fontStyle: 'italic', textColor: [130, 130, 130] } }]);
+          rowMeta.push(null);
+        } else {
+          it.parts.forEach(function(p){
+            body.push(['', p.partNum, p.color, p.desc, String(p.short)]);
+            rowMeta.push(p.elementId || null);
+          });
+        }
+      });
+
+      doc.autoTable({
+        startY: 70,
+        head: [['','Part #','Color','Description','Short']],
+        body: body,
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 24, valign: 'middle' },
+        headStyles: { fillColor: [0, 166, 94], textColor: 255 },
+        columnStyles: { 0: { cellWidth: 26 }, 3: { cellWidth: 200 } },
+        didDrawCell: function(data){
+          if (data.section !== 'body' || data.column.index !== 0) return;
+          var elementId = rowMeta[data.row.index];
+          var dataUrl = elementId && imgMap[elementId];
+          if (!dataUrl) return;
+          try {
+            var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
+            var pad = 2;
+            var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
+            doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
+          } catch(e){ /* skip malformed image, leave cell blank */ }
+        }
+      });
+      doc.save('lego-almost-complete-parts-needed.pdf');
+    }).catch(function(err){
+      alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
+    }).then(function(){
+      if (btn){ btn.disabled = false; btn.innerHTML = prevBtnHtml; }
     });
-    doc.save('lego-almost-complete-parts-needed.pdf');
   }
   document.getElementById('almost-complete-report-pdf-btn').addEventListener('click', generateAlmostCompletePDF);
 
@@ -4293,28 +4331,40 @@
     return new jspdf.jsPDF({ unit: 'pt', format: 'letter' });
   }
 
+  function forceProxyImgUrl(url){
+    var withoutProtocol = url.replace(/^https?:\/\//, '');
+    return 'https://images.weserv.nl/?url=' + encodeURIComponent(withoutProtocol);
+  }
+
   function fetchPartImageForPdf(elementId){
     return new Promise(function(resolve){
       var settled = false;
-      var timer = setTimeout(function(){ if (!settled){ settled = true; resolve(null); } }, 3000);
+      var timer = setTimeout(function(){ if (!settled){ settled = true; resolve(null); } }, 5000);
       function finish(val){
         if (settled) return;
         settled = true;
         clearTimeout(timer);
         resolve(val);
       }
-      function tryLive(){
-        fetch(fetchableUrl(liveImgUrl(elementId, 192)), { mode: 'cors' }).then(function(resp){
+      var rawUrl = liveImgUrl(elementId, 192);
+      function tryProxied(){
+        fetch(forceProxyImgUrl(rawUrl), { mode: 'cors' }).then(function(resp){
           if (!resp.ok) throw new Error('not found');
           return resp.blob();
         }).then(blobToDataURL).then(finish).catch(function(){ finish(null); });
       }
+      function tryDirect(){
+        fetch(fetchableUrl(rawUrl), { mode: 'cors' }).then(function(resp){
+          if (!resp.ok) throw new Error('not found');
+          return resp.blob();
+        }).then(blobToDataURL).then(finish).catch(tryProxied);
+      }
       if (cachedIds.has(elementId)){
         storage.get(IMG_PREFIX + elementId, false).then(function(res){
-          if (res && res.value) finish(res.value); else tryLive();
-        }).catch(tryLive);
+          if (res && res.value) finish(res.value); else tryDirect();
+        }).catch(tryDirect);
       } else {
-        tryLive();
+        tryDirect();
       }
     });
   }
