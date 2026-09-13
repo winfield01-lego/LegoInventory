@@ -2049,7 +2049,7 @@
     document.querySelector('#almost-complete-print-report .report-meta').textContent =
       'Generated ' + new Date().toLocaleDateString() + ' \u00b7 missing ' + threshold + ' pieces or fewer \u00b7 ' + items.length + ' item' + (items.length===1?'':'s') + ' shown';
 
-    exportElementAsPdf('almost-complete-print-report', 'lego-almost-complete.pdf', 760);
+    exportElementAsPdf('almost-complete-print-report', 'lego-almost-complete.pdf', 760, 'almost-complete-report-pdf-btn');
   }
   document.getElementById('almost-complete-report-pdf-btn').addEventListener('click', generateAlmostCompletePDF);
 
@@ -4320,13 +4320,20 @@
     setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
   }
 
-  function exportElementAsPdf(elementId, filename, widthPx){
+  function exportElementAsPdf(elementId, filename, widthPx, triggerBtnId){
     if (typeof html2pdf === 'undefined'){
       alert('The PDF library hasn\u2019t finished loading yet \u2014 please wait a moment and try again.');
       return;
     }
     var el = document.getElementById(elementId);
     if (!el) return;
+    var btn = triggerBtnId ? document.getElementById(triggerBtnId) : null;
+    var prevBtnHtml = btn ? btn.innerHTML : null;
+    if (btn){
+      btn.disabled = true;
+      btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating\u2026';
+    }
+
     var prevStyle = el.getAttribute('style') || '';
     el.style.display = 'block';
     el.style.position = 'fixed';
@@ -4340,15 +4347,34 @@
       margin: 10,
       filename: filename,
       image: { type: 'jpeg', quality: 0.95 },
-      html2canvas: { scale: 2, backgroundColor: '#ffffff' },
+      html2canvas: { scale: 2, backgroundColor: '#ffffff', useCORS: true, allowTaint: true, imageTimeout: 3000, logging: false },
       jsPDF: { unit: 'pt', format: 'letter', orientation: 'portrait' },
       pagebreak: { mode: ['css', 'avoid-all'] }
     };
 
+    function cleanup(){
+      el.setAttribute('style', prevStyle);
+      if (btn){
+        btn.disabled = false;
+        btn.innerHTML = prevBtnHtml;
+      }
+    }
+
+    var timedOut = false;
+    var timeoutId = setTimeout(function(){
+      timedOut = true;
+      cleanup();
+      alert('The PDF took too long to generate and was cancelled. This can happen if part images fail to load \u2014 try again, and if it keeps happening, use your browser\u2019s Print option on this page instead and choose "Save as PDF."');
+    }, 15000);
+
     html2pdf().from(el).set(opt).save().then(function(){
-      el.setAttribute('style', prevStyle);
+      if (timedOut) return;
+      clearTimeout(timeoutId);
+      cleanup();
     }).catch(function(err){
-      el.setAttribute('style', prevStyle);
+      if (timedOut) return;
+      clearTimeout(timeoutId);
+      cleanup();
       alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
     });
   }
@@ -4368,12 +4394,10 @@
       var item = document.createElement('div');
       item.className = 'shop-item';
       item.innerHTML =
-        '<span class="part-thumb-wrap shop-thumb"></span>' +
         '<span class="shop-qty">'+(i+1)+'.</span>' +
         '<span class="shop-desc">'+escapeHtml(it.color)+' '+escapeHtml(it.desc)+' <span class="shop-partnum">#'+escapeHtml(it.partNum)+'</span>' +
         '<span class="shop-combo-note">Short '+it.short.toLocaleString()+' (need '+it.need.toLocaleString()+', have '+it.onHand.toLocaleString()+')</span>' +
         '</span>';
-      buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, item.querySelector('.part-thumb-wrap'));
       return item;
     }
 
@@ -4384,7 +4408,7 @@
     document.querySelector('#top20-print-report .report-meta').textContent =
       'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown';
 
-    exportElementAsPdf('top20-print-report', 'lego-top-20-most-needed.pdf', 760);
+    exportElementAsPdf('top20-print-report', 'lego-top-20-most-needed.pdf', 760, 'top-report-pdf-btn');
   }
 
   function generateSetsPDF(){
@@ -4412,7 +4436,7 @@
     document.querySelector('#sets-print-report .report-meta').textContent =
       'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + ownedSets.length + ' set' + (ownedSets.length===1?'':'s') + ' \u00b7 ' + totalPiecesAll.toLocaleString() + ' total pieces';
 
-    exportElementAsPdf('sets-print-report', 'lego-official-sets-report.pdf', 760);
+    exportElementAsPdf('sets-print-report', 'lego-official-sets-report.pdf', 760, 'sets-report-btn');
   }
 
   document.getElementById('sets-report-btn').addEventListener('click', generateSetsPDF);
