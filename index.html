@@ -191,6 +191,16 @@
 #lego-inv-root .shop-item:hover { background: var(--surface-1); }
 #lego-inv-root .shop-item.checked .shop-desc, #lego-inv-root .shop-item.checked .shop-qty { text-decoration: line-through; color: var(--text-muted); }
 #lego-inv-root .shop-item input[type=checkbox] { width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--lego-green); }
+#lego-inv-root .shop-item-tally { cursor: default; }
+#lego-inv-root .shop-item-tally .shop-desc { flex: 1 1 auto; }
+#lego-inv-root .shop-item-tally.checked { background: var(--bg-success); }
+#lego-inv-root .shop-item-tally.checked .shop-desc { color: var(--text-secondary); }
+#lego-inv-root .tally-counter { display: flex; align-items: center; gap: 8px; flex-shrink: 0; margin-left: auto; }
+#lego-inv-root .tally-counter button { width: 32px; height: 32px; border-radius: 8px; border: 2px solid var(--border); background: var(--surface-2); font-size: 18px; font-weight: 800; line-height: 1; cursor: pointer; color: var(--lego-black); }
+#lego-inv-root .tally-counter button:hover { border-color: var(--lego-blue); background: var(--surface-1); }
+#lego-inv-root .tally-counter .tally-minus { color: var(--text-danger); }
+#lego-inv-root .tally-counter .tally-plus { color: var(--lego-green); }
+#lego-inv-root .tally-count { font-weight: 800; font-size: 14px; min-width: 52px; text-align: center; }
 #lego-inv-root .shop-qty { font-weight: 800; min-width: 34px; }
 #lego-inv-root .shop-desc { font-size: 13px; }
 #lego-inv-root .shop-partnum { color: var(--text-muted); font-size: 12px; }
@@ -479,6 +489,8 @@
         <button id="shop-select-all" class="icon-btn" style="margin-left:auto; padding:3px 8px;">Select all</button>
         <button id="shop-select-none" class="icon-btn" style="padding:3px 8px;">Clear</button>
         <button id="shop-top20-btn" class="icon-btn" style="padding:3px 8px;" title="Selects all builds and shows only the 20 parts you're shortest on"><i class="ti ti-flame" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 Most Needed</button>
+        <button id="shop-tally-mode-btn" class="icon-btn" style="padding:3px 8px;" title="Switch to a counter view for tallying parts as you find them while shopping"><i class="ti ti-hash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Tally Mode</button>
+        <button id="shop-tally-reset-btn" class="icon-btn" style="padding:3px 8px; display:none;" title="Zero out the found counts for everything in the current list"><i class="ti ti-refresh" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Reset Tally</button>
       </div>
       <div id="shop-moc-checks" style="max-height:180px; overflow-y:auto; border:2px solid var(--border); border-radius:var(--radius); padding:8px; background: var(--surface-2);"></div>
     </div>
@@ -1211,7 +1223,10 @@
   var checkedItems = new Set();
   var shopSelected = new Set();
   var shopTop20Only = false;
+  var shopTallyMode = false;
+  var tallyCounts = {};
   var CHECKLIST_KEY = 'shopping-checked-v1';
+  var TALLY_COUNTS_KEY = 'shop-tally-counts-v1';
   var PRIORITY_LABELS_KEY = 'priority-labels-v1';
   var LOCATION_LABELS_KEY = 'location-labels-v1';
   var locationLabels = [];
@@ -5362,6 +5377,7 @@
     var payload = JSON.stringify({
       rows: state.rows.map(objToRow),
       checkedItems: Array.from(checkedItems),
+      tallyCounts: tallyCounts,
       priorityLabels: priorityLabels,
       ownedSets: ownedSets,
       setParts: setParts,
@@ -5407,6 +5423,7 @@
       if (!data || typeof data !== 'object') throw new Error('Unexpected file format.');
       if (Array.isArray(data.rows)) state.rows = data.rows.map(rowToObj);
       if (Array.isArray(data.checkedItems)) checkedItems = new Set(data.checkedItems);
+      if (data.tallyCounts && typeof data.tallyCounts === 'object') tallyCounts = data.tallyCounts;
       if (Array.isArray(data.priorityLabels)) priorityLabels = data.priorityLabels;
       if (Array.isArray(data.ownedSets)) ownedSets = data.ownedSets;
       if (Array.isArray(data.setParts)) setParts = data.setParts;
@@ -5421,6 +5438,7 @@
       suppressAutoPublish = true;
       saveState();
       saveChecklist();
+      saveTallyCounts();
       savePriorityLabels();
       saveOwnedSets();
       saveSetParts();
@@ -5808,10 +5826,42 @@
 
   function updateShopTally(){
     var output = document.getElementById('shopping-list-output');
+    var tallyBar = output.querySelector('.shop-tally-bar');
+
+    if (shopTallyMode){
+      var rows = output.querySelectorAll('.shop-item-tally .tally-count');
+      var totalNeed = 0, totalFound = 0;
+      rows.forEach(function(span){
+        var parts = span.textContent.split('/');
+        var found = parseInt(parts[0], 10) || 0;
+        var need = parseInt(parts[1], 10) || 0;
+        totalFound += Math.min(found, need);
+        totalNeed += need;
+      });
+      if (tallyBar){
+        var pct = totalNeed ? Math.round(100*totalFound/totalNeed) : 0;
+        tallyBar.innerHTML = '<div class="bar-bg"><div class="bar-fill" style="width:'+pct+'%; background: var(--lego-green);"></div></div>' +
+          '<div style="font-size:13px; color:var(--text-secondary);">'+totalFound.toLocaleString()+' of '+totalNeed.toLocaleString()+' pieces found</div>';
+      }
+      output.querySelectorAll('.shop-section').forEach(function(section){
+        var spans = section.querySelectorAll('.tally-count');
+        var need = 0, found = 0;
+        spans.forEach(function(span){
+          var parts = span.textContent.split('/');
+          var f = parseInt(parts[0], 10) || 0;
+          var n = parseInt(parts[1], 10) || 0;
+          found += Math.min(f, n);
+          need += n;
+        });
+        var tallySpan = section.querySelector('.shop-build-tally');
+        if (tallySpan) tallySpan.textContent = '('+found.toLocaleString()+'/'+need.toLocaleString()+' pcs found)';
+      });
+      return;
+    }
+
     var items = output.querySelectorAll('.shop-item input[type=checkbox]');
     var total = items.length, checked = 0;
     items.forEach(function(cb){ if (cb.checked) checked++; });
-    var tallyBar = output.querySelector('.shop-tally-bar');
     if (tallyBar){
       var pct = total ? Math.round(100*checked/total) : 0;
       tallyBar.innerHTML = '<div class="bar-bg"><div class="bar-fill" style="width:'+pct+'%; background: var(--lego-green);"></div></div>' +
@@ -5929,7 +5979,57 @@
     return true;
   }
 
+  function shopSectionLabel(items, keyFn, needFn){
+    if (shopTallyMode){
+      var need = 0, found = 0;
+      items.forEach(function(it){
+        var n = needFn(it);
+        need += n;
+        found += Math.min(tallyCounts[keyFn(it)] || 0, n);
+      });
+      return '('+found.toLocaleString()+'/'+need.toLocaleString()+' pcs found)';
+    }
+    var haveCount = items.filter(function(it){ return checkedItems.has(keyFn(it)); }).length;
+    return '('+haveCount+'/'+items.length+' found)';
+  }
+
   function buildShopItemRow(r, key, needCount){
+    if (shopTallyMode){
+      var count = tallyCounts[key] || 0;
+      var item = document.createElement('div');
+      item.className = 'shop-item shop-item-tally' + (count >= needCount ? ' checked' : '');
+      item.dataset.key = key;
+      item.innerHTML =
+        '<span class="part-thumb-wrap shop-thumb"></span>' +
+        '<span class="shop-desc">'+escapeHtml(r.color)+' '+escapeHtml(r.desc)+' <span class="shop-partnum">#'+escapeHtml(r.partNum)+'</span></span>' +
+        '<div class="tally-counter">' +
+          '<button type="button" class="tally-minus" aria-label="Decrease found count">\u2212</button>' +
+          '<span class="tally-count">'+count+' / '+needCount+'</span>' +
+          '<button type="button" class="tally-plus" aria-label="Increase found count">+</button>' +
+        '</div>';
+      buildThumb(r, item.querySelector('.part-thumb-wrap'));
+      var countSpan = item.querySelector('.tally-count');
+      function refreshCount(){
+        countSpan.textContent = (tallyCounts[key] || 0) + ' / ' + needCount;
+        item.classList.toggle('checked', (tallyCounts[key] || 0) >= needCount);
+      }
+      item.querySelector('.tally-plus').addEventListener('click', function(e){
+        e.preventDefault();
+        tallyCounts[key] = (tallyCounts[key] || 0) + 1;
+        refreshCount();
+        saveTallyCounts();
+        updateShopTally();
+      });
+      item.querySelector('.tally-minus').addEventListener('click', function(e){
+        e.preventDefault();
+        tallyCounts[key] = Math.max((tallyCounts[key] || 0) - 1, 0);
+        refreshCount();
+        saveTallyCounts();
+        updateShopTally();
+      });
+      return item;
+    }
+
     var isChecked = checkedItems.has(key);
     var item = document.createElement('label');
     item.className = 'shop-item' + (isChecked ? ' checked' : '');
@@ -5964,6 +6064,11 @@
     top20Btn.style.background = shopTop20Only ? 'var(--lego-blue)' : '';
     top20Btn.style.color = shopTop20Only ? '#fff' : '';
     top20Btn.style.borderColor = shopTop20Only ? 'var(--lego-blue)' : '';
+    var tallyModeBtn = document.getElementById('shop-tally-mode-btn');
+    tallyModeBtn.style.background = shopTallyMode ? 'var(--lego-green)' : '';
+    tallyModeBtn.style.color = shopTallyMode ? '#fff' : '';
+    tallyModeBtn.style.borderColor = shopTallyMode ? 'var(--lego-green)' : '';
+    document.getElementById('shop-tally-reset-btn').style.display = shopTallyMode ? 'inline-block' : 'none';
     var top20Keys = null;
     if (shopTop20Only){
       var top20Items = getTop20Items();
@@ -6042,8 +6147,8 @@
 
       var section = document.createElement('div');
       section.className = 'shop-section';
-      var haveCount = comboItems.filter(function(it){ return checkedItems.has('combo|'+it.partNum+'|'+it.color); }).length;
-      section.innerHTML = '<h3 class="shop-build-title">Combined list <span class="shop-build-tally">('+haveCount+'/'+comboItems.length+' found)</span></h3>';
+      var haveLabel = shopSectionLabel(comboItems, function(it){ return 'combo|'+it.partNum+'|'+it.color; }, function(it){ return it.need; });
+      section.innerHTML = '<h3 class="shop-build-title">Combined list <span class="shop-build-tally">'+haveLabel+'</span></h3>';
       var list = document.createElement('div');
       list.className = 'shop-items';
       appendGroupedItems(list, comboItems, sortRules[0].field, false, function(it){
@@ -6068,8 +6173,8 @@
         rows = rows.slice().sort(shopCompoundComparator(sortRules));
         var section = document.createElement('div');
         section.className = 'shop-section';
-        var haveCount = rows.filter(function(r){ return checkedItems.has(itemKey(r)); }).length;
-        section.innerHTML = '<h3 class="shop-build-title">'+escapeHtml(moc)+' <span class="shop-build-tally">('+haveCount+'/'+rows.length+' found)</span></h3>';
+        var haveLabel = shopSectionLabel(rows, itemKey, function(r){ return r._need; });
+        section.innerHTML = '<h3 class="shop-build-title">'+escapeHtml(moc)+' <span class="shop-build-tally">'+haveLabel+'</span></h3>';
         var list = document.createElement('div');
         list.className = 'shop-items';
         appendGroupedItems(list, rows, sortRules[0].field, sortRules[0].field === 'build', function(r){
@@ -6103,6 +6208,17 @@
     return storage.set(CHECKLIST_KEY, JSON.stringify(Array.from(checkedItems)), false);
   }
 
+  function loadTallyCounts(){
+    return storage.get(TALLY_COUNTS_KEY, false).then(function(res){
+      if (res && res.value){ try { tallyCounts = JSON.parse(res.value); } catch(e){ tallyCounts = {}; } }
+    }).catch(function(){});
+  }
+
+  function saveTallyCounts(){
+    scheduleAutoPublish();
+    return storage.set(TALLY_COUNTS_KEY, JSON.stringify(tallyCounts), false);
+  }
+
   document.getElementById('shop-select-all').addEventListener('click', function(){
     mocSummaries().forEach(function(m){ shopSelected.add(m.name); });
     shopTop20Only = false;
@@ -6121,6 +6237,19 @@
       mocSummaries().forEach(function(m){ shopSelected.add(m.name); });
       populateShopMocList();
     }
+    renderShoppingList();
+  });
+  document.getElementById('shop-tally-mode-btn').addEventListener('click', function(){
+    shopTallyMode = !shopTallyMode;
+    renderShoppingList();
+  });
+  document.getElementById('shop-tally-reset-btn').addEventListener('click', function(){
+    var output = document.getElementById('shopping-list-output');
+    var keys = Array.from(output.querySelectorAll('.shop-item-tally')).map(function(el){ return el.dataset.key; });
+    if (!keys.length) return;
+    if (!confirm('Reset the found count back to 0 for all '+keys.length+' item'+(keys.length===1?'':'s')+' in this list?')) return;
+    keys.forEach(function(k){ delete tallyCounts[k]; });
+    saveTallyCounts();
     renderShoppingList();
   });
   document.getElementById('shop-only-short').addEventListener('change', renderShoppingList);
@@ -6148,7 +6277,7 @@
   });
 
   function bootApp(){
-    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(function(){ return loadSetPhotos(); }).then(function(){ return loadMocPhotos(); }).then(function(){ return loadMocLocations(); }).then(function(){ return loadMocBuilds(); }).then(function(){ return loadMocThemes(); }).then(function(){ return loadMocDescriptions(); }).then(function(){ return loadLocationLabels(); })
+    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadTallyCounts(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(function(){ return loadSetPhotos(); }).then(function(){ return loadMocPhotos(); }).then(function(){ return loadMocLocations(); }).then(function(){ return loadMocBuilds(); }).then(function(){ return loadMocThemes(); }).then(function(){ return loadMocDescriptions(); }).then(function(){ return loadLocationLabels(); })
     .then(function(){ return loadRebrickableKey(); }).then(function(){ return loadSetProxyPref(); }).then(function(){ return loadGithubSettings(); }).then(function(){ return loadGithubShaMap(); }).then(function(){ return loadDirtyFlag(); }).then(function(){ return loadViewLocked(); })
     .then(function(){
       var repoConfigured = ghSettings.repo && ghSettings.repo.indexOf('/') !== -1 && ghSettings.token;
