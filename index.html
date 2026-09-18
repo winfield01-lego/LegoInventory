@@ -174,7 +174,6 @@
 #lego-inv-root .shop-summary { display: flex; gap: 20px; flex-wrap: wrap; background: var(--surface-1); border: 2px solid var(--border); border-left: 5px solid var(--lego-orange); border-radius: var(--radius); padding: 0.65rem 1rem; margin-bottom: 14px; }
 #lego-inv-root .shop-summary .stat-value { font-size: 18px; font-weight: 800; color: var(--lego-black); }
 #lego-inv-root .shop-summary .stat-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); }
-#lego-inv-root .shop-combo-note { font-size: 11px; color: var(--text-muted); display: block; }
 #lego-inv-root .shop-group-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-secondary); margin: 10px 0 3px; padding-left: 2px; break-after: avoid; }
 #lego-inv-root .shop-items .shop-group-title:first-child { margin-top: 0; }
 #lego-inv-root .row-delete-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 4px; border-radius: 6px; }
@@ -191,16 +190,17 @@
 #lego-inv-root .shop-item:hover { background: var(--surface-1); }
 #lego-inv-root .shop-item.checked .shop-desc, #lego-inv-root .shop-item.checked .shop-qty { text-decoration: line-through; color: var(--text-muted); }
 #lego-inv-root .shop-item input[type=checkbox] { width: 18px; height: 18px; flex-shrink: 0; accent-color: var(--lego-green); }
-#lego-inv-root .shop-item-tally { cursor: default; }
+#lego-inv-root .shop-item-tally { cursor: default; flex-direction: column; align-items: stretch; gap: 8px; padding: 10px 10px 12px; }
+#lego-inv-root .shop-item-tally-top { display: flex; align-items: center; gap: 10px; }
 #lego-inv-root .shop-item-tally .shop-desc { flex: 1 1 auto; }
 #lego-inv-root .shop-item-tally.checked { background: var(--bg-success); }
 #lego-inv-root .shop-item-tally.checked .shop-desc { color: var(--text-secondary); }
-#lego-inv-root .tally-counter { display: flex; align-items: center; gap: 8px; flex-shrink: 0; margin-left: auto; }
-#lego-inv-root .tally-counter button { width: 32px; height: 32px; border-radius: 8px; border: 2px solid var(--border); background: var(--surface-2); font-size: 18px; font-weight: 800; line-height: 1; cursor: pointer; color: var(--lego-black); }
+#lego-inv-root .tally-counter { display: flex; align-items: center; justify-content: center; gap: 16px; flex-shrink: 0; }
+#lego-inv-root .tally-counter button { width: 44px; height: 44px; border-radius: 10px; border: 2px solid var(--border); background: var(--surface-2); font-size: 22px; font-weight: 800; line-height: 1; cursor: pointer; color: var(--lego-black); }
 #lego-inv-root .tally-counter button:hover { border-color: var(--lego-blue); background: var(--surface-1); }
 #lego-inv-root .tally-counter .tally-minus { color: var(--text-danger); }
 #lego-inv-root .tally-counter .tally-plus { color: var(--lego-green); }
-#lego-inv-root .tally-count { font-weight: 800; font-size: 14px; min-width: 52px; text-align: center; }
+#lego-inv-root .tally-count { font-weight: 800; font-size: 16px; min-width: 64px; text-align: center; }
 #lego-inv-root .shop-qty { font-weight: 800; min-width: 34px; }
 #lego-inv-root .shop-desc { font-size: 13px; }
 #lego-inv-root .shop-partnum { color: var(--text-muted); font-size: 12px; }
@@ -286,7 +286,6 @@
   #lego-inv-root .shop-desc { font-size: 11.5px; line-height: 1.35; }
   #lego-inv-root .shop-partnum { font-size: 10px; }
   #lego-inv-root .shop-qty { font-size: 11.5px; min-width: 26px; }
-  #lego-inv-root .shop-combo-note { font-size: 9.5px; }
   #lego-inv-root .shop-item input[type=checkbox] { width: 13px; height: 13px; }
   #lego-inv-root .lego-subtitle { display: none; }
   #lego-inv-root .shop-thumb { width: 26px; height: 26px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -6000,8 +5999,10 @@
       item.className = 'shop-item shop-item-tally' + (count >= needCount ? ' checked' : '');
       item.dataset.key = key;
       item.innerHTML =
-        '<span class="part-thumb-wrap shop-thumb"></span>' +
-        '<span class="shop-desc">'+escapeHtml(r.color)+' '+escapeHtml(r.desc)+' <span class="shop-partnum">#'+escapeHtml(r.partNum)+'</span></span>' +
+        '<div class="shop-item-tally-top">' +
+          '<span class="part-thumb-wrap shop-thumb"></span>' +
+          '<span class="shop-desc">'+escapeHtml(r.color)+' '+escapeHtml(r.desc)+' <span class="shop-partnum">#'+escapeHtml(r.partNum)+'</span></span>' +
+        '</div>' +
         '<div class="tally-counter">' +
           '<button type="button" class="tally-minus" aria-label="Decrease found count">\u2212</button>' +
           '<span class="tally-count">'+count+' / '+needCount+'</span>' +
@@ -6154,15 +6155,7 @@
       appendGroupedItems(list, comboItems, sortRules[0].field, false, function(it){
         var key = 'combo|' + it.partNum + '|' + it.color;
         var fakeRow = { partNum: it.partNum, color: it.color, desc: it.desc, elementId: it.elementId };
-        var item = buildShopItemRow(fakeRow, key, it.need);
-        var buildNames = Object.keys(it.builds).sort();
-        if (buildNames.length){
-          var note = document.createElement('span');
-          note.className = 'shop-combo-note';
-          note.textContent = 'Used in: ' + buildNames.join(', ');
-          item.querySelector('.shop-desc').appendChild(note);
-        }
-        return item;
+        return buildShopItemRow(fakeRow, key, it.need);
       });
       section.appendChild(list);
       frag.appendChild(section);
