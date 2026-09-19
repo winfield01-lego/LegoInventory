@@ -201,6 +201,8 @@
 #lego-inv-root .tally-counter .tally-minus { color: var(--text-danger); }
 #lego-inv-root .tally-counter .tally-plus { color: var(--lego-green); }
 #lego-inv-root .tally-count { font-weight: 800; font-size: 16px; min-width: 64px; text-align: center; }
+#lego-inv-root .tally-controls-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
+#lego-inv-root .tally-drawer-select { flex: 1 1 130px; min-width: 0; height: 32px; font-size: 12px; }
 #lego-inv-root .shop-qty { font-weight: 800; min-width: 34px; }
 #lego-inv-root .shop-desc { font-size: 13px; }
 #lego-inv-root .shop-partnum { color: var(--text-muted); font-size: 12px; }
@@ -490,6 +492,7 @@
         <button id="shop-top20-btn" class="icon-btn" style="padding:3px 8px;" title="Selects all builds and shows only the 20 parts you're shortest on"><i class="ti ti-flame" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 Most Needed</button>
         <button id="shop-tally-mode-btn" class="icon-btn" style="padding:3px 8px;" title="Switch to a counter view for tallying parts as you find them while shopping"><i class="ti ti-hash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Tally Mode</button>
         <button id="shop-tally-reset-btn" class="icon-btn" style="padding:3px 8px; display:none;" title="Zero out the found counts for everything in the current list"><i class="ti ti-refresh" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Reset Tally</button>
+        <button id="shop-tally-commit-btn" class="icon-btn lockable" style="padding:3px 8px; display:none; color: var(--lego-green); border-color: var(--lego-green);" title="Add found quantities to On Hand, and file into any assigned drawers"><i class="ti ti-check" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Commit to Inventory</button>
       </div>
       <div id="shop-moc-checks" style="max-height:180px; overflow-y:auto; border:2px solid var(--border); border-radius:var(--radius); padding:8px; background: var(--surface-2);"></div>
     </div>
@@ -1224,8 +1227,11 @@
   var shopTop20Only = false;
   var shopTallyMode = false;
   var tallyCounts = {};
+  var tallyDrawerAssignments = {};
+  var tallyRowResolvers = {};
   var CHECKLIST_KEY = 'shopping-checked-v1';
   var TALLY_COUNTS_KEY = 'shop-tally-counts-v1';
+  var TALLY_DRAWER_KEY = 'shop-tally-drawers-v1';
   var PRIORITY_LABELS_KEY = 'priority-labels-v1';
   var LOCATION_LABELS_KEY = 'location-labels-v1';
   var locationLabels = [];
@@ -5377,6 +5383,7 @@
       rows: state.rows.map(objToRow),
       checkedItems: Array.from(checkedItems),
       tallyCounts: tallyCounts,
+      tallyDrawerAssignments: tallyDrawerAssignments,
       priorityLabels: priorityLabels,
       ownedSets: ownedSets,
       setParts: setParts,
@@ -5423,6 +5430,7 @@
       if (Array.isArray(data.rows)) state.rows = data.rows.map(rowToObj);
       if (Array.isArray(data.checkedItems)) checkedItems = new Set(data.checkedItems);
       if (data.tallyCounts && typeof data.tallyCounts === 'object') tallyCounts = data.tallyCounts;
+      if (data.tallyDrawerAssignments && typeof data.tallyDrawerAssignments === 'object') tallyDrawerAssignments = data.tallyDrawerAssignments;
       if (Array.isArray(data.priorityLabels)) priorityLabels = data.priorityLabels;
       if (Array.isArray(data.ownedSets)) ownedSets = data.ownedSets;
       if (Array.isArray(data.setParts)) setParts = data.setParts;
@@ -5438,6 +5446,7 @@
       saveState();
       saveChecklist();
       saveTallyCounts();
+      saveTallyDrawerAssignments();
       savePriorityLabels();
       saveOwnedSets();
       saveSetParts();
@@ -5874,6 +5883,77 @@
     });
   }
 
+  function resolveRowsForTallyKey(key){
+    var info = tallyRowResolvers[key];
+    if (!info) return [];
+    if (info.mode === 'single'){
+      return state.rows.filter(function(r){ return r.partNum === info.partNum && r.color === info.color && r.moc === info.moc; });
+    }
+    return state.rows.filter(function(r){ return r.partNum === info.partNum && r.color === info.color; });
+  }
+
+  function addFoundQtyToDrawer(drawerId, partNum, color, desc, elementId, qty){
+    var existing = drawerParts.find(function(p){ return p.drawerId === drawerId && p.partNum === partNum && p.color === color; });
+    if (existing){
+      existing.qty = (existing.qty || 0) + qty;
+    } else {
+      drawerParts.push({ drawerId: drawerId, partNum: partNum, color: color, desc: desc, elementId: elementId, qty: qty });
+    }
+  }
+
+  function commitTallyToInventory(){
+    var output = document.getElementById('shopping-list-output');
+    var tallyEls = Array.from(output.querySelectorAll('.shop-item-tally'));
+    var toCommit = tallyEls.map(function(el){
+      var key = el.dataset.key;
+      return { key: key, found: tallyCounts[key] || 0, drawerId: tallyDrawerAssignments[key] || '' };
+    }).filter(function(x){ return x.found > 0; });
+
+    if (!toCommit.length){
+      alert('Nothing to commit \u2014 tally at least one part first.');
+      return;
+    }
+
+    var totalPieces = toCommit.reduce(function(sum, x){ return sum + x.found; }, 0);
+    var drawerCount = toCommit.filter(function(x){ return x.drawerId; }).length;
+    var msg = 'Add ' + totalPieces.toLocaleString() + ' found piece' + (totalPieces===1?'':'s') + ' across ' + toCommit.length + ' part' + (toCommit.length===1?'':'s') + ' to your On Hand counts' +
+      (drawerCount ? (', and file ' + drawerCount + ' of them into ' + (drawerCount===1?'its':'their') + ' assigned drawer' + (drawerCount===1?'':'s')) : '') +
+      '? This updates your inventory directly and can\u2019t be automatically undone.';
+    if (!confirm(msg)) return;
+
+    var skipped = 0;
+    toCommit.forEach(function(x){
+      var rows = resolveRowsForTallyKey(x.key);
+      if (!rows.length){ skipped++; return; }
+      var remaining = x.found;
+      var sorted = rows.slice().sort(function(a,b){ return (b.qty - b.onHand) - (a.qty - a.onHand); });
+      sorted.forEach(function(r){
+        if (remaining <= 0) return;
+        var shortage = Math.max(r.qty - r.onHand, 0);
+        var add = Math.min(shortage, remaining);
+        r.onHand += add;
+        remaining -= add;
+      });
+      if (remaining > 0){
+        sorted[sorted.length - 1].onHand += remaining;
+      }
+      if (x.drawerId){
+        var sample = rows[0];
+        addFoundQtyToDrawer(x.drawerId, sample.partNum, sample.color, sample.desc, sample.elementId, x.found);
+      }
+      tallyCounts[x.key] = 0;
+    });
+
+    saveState();
+    saveDrawerParts();
+    saveTallyCounts();
+    render();
+    renderShoppingList();
+    if (state.tab === 'drawers') renderDrawersTab();
+    alert('Added ' + totalPieces.toLocaleString() + ' piece' + (totalPieces===1?'':'s') + ' to your inventory' + (drawerCount ? ' and filed into drawers' : '') + '.' +
+      (skipped ? (' ' + skipped + ' item' + (skipped===1?'':'s') + " couldn't be matched back to your builds and " + (skipped===1?'was':'were') + ' skipped.') : ''));
+  }
+
   function populateShopColorFilter(){
     var sel = document.getElementById('shop-color-filter');
     var cur = sel.value;
@@ -5992,21 +6072,29 @@
     return '('+haveCount+'/'+items.length+' found)';
   }
 
-  function buildShopItemRow(r, key, needCount){
+  function buildShopItemRow(r, key, needCount, resolveInfo){
+    if (resolveInfo) tallyRowResolvers[key] = resolveInfo;
     if (shopTallyMode){
       var count = tallyCounts[key] || 0;
       var item = document.createElement('div');
       item.className = 'shop-item shop-item-tally' + (count >= needCount ? ' checked' : '');
       item.dataset.key = key;
+      var assignedDrawer = tallyDrawerAssignments[key] || '';
+      var drawerOptions = '<option value="">No drawer assigned</option>' + drawers.map(function(d){
+        return '<option value="'+escapeHtml(d.id)+'"'+(d.id===assignedDrawer?' selected':'')+'>'+escapeHtml(d.label)+'</option>';
+      }).join('');
       item.innerHTML =
         '<div class="shop-item-tally-top">' +
           '<span class="part-thumb-wrap shop-thumb"></span>' +
           '<span class="shop-desc">'+escapeHtml(r.color)+' '+escapeHtml(r.desc)+' <span class="shop-partnum">#'+escapeHtml(r.partNum)+'</span></span>' +
         '</div>' +
-        '<div class="tally-counter">' +
-          '<button type="button" class="tally-minus" aria-label="Decrease found count">\u2212</button>' +
-          '<span class="tally-count">'+count+' / '+needCount+'</span>' +
-          '<button type="button" class="tally-plus" aria-label="Increase found count">+</button>' +
+        '<div class="tally-controls-row">' +
+          '<select class="tally-drawer-select" aria-label="Drawer for this part">'+drawerOptions+'</select>' +
+          '<div class="tally-counter">' +
+            '<button type="button" class="tally-minus" aria-label="Decrease found count">\u2212</button>' +
+            '<span class="tally-count">'+count+' / '+needCount+'</span>' +
+            '<button type="button" class="tally-plus" aria-label="Increase found count">+</button>' +
+          '</div>' +
         '</div>';
       buildThumb(r, item.querySelector('.part-thumb-wrap'));
       var countSpan = item.querySelector('.tally-count');
@@ -6027,6 +6115,11 @@
         refreshCount();
         saveTallyCounts();
         updateShopTally();
+      });
+      item.querySelector('.tally-drawer-select').addEventListener('change', function(e){
+        var val = e.target.value;
+        if (val) tallyDrawerAssignments[key] = val; else delete tallyDrawerAssignments[key];
+        saveTallyDrawerAssignments();
       });
       return item;
     }
@@ -6051,6 +6144,7 @@
   }
 
   function renderShoppingList(){
+    tallyRowResolvers = {};
     var output = document.getElementById('shopping-list-output');
     var onlyShort = document.getElementById('shop-only-short').checked;
     var combine = document.getElementById('shop-combine-toggle').checked;
@@ -6070,6 +6164,7 @@
     tallyModeBtn.style.color = shopTallyMode ? '#fff' : '';
     tallyModeBtn.style.borderColor = shopTallyMode ? 'var(--lego-green)' : '';
     document.getElementById('shop-tally-reset-btn').style.display = shopTallyMode ? 'inline-block' : 'none';
+    document.getElementById('shop-tally-commit-btn').style.display = shopTallyMode ? 'inline-block' : 'none';
     var top20Keys = null;
     if (shopTop20Only){
       var top20Items = getTop20Items();
@@ -6155,7 +6250,7 @@
       appendGroupedItems(list, comboItems, sortRules[0].field, false, function(it){
         var key = 'combo|' + it.partNum + '|' + it.color;
         var fakeRow = { partNum: it.partNum, color: it.color, desc: it.desc, elementId: it.elementId };
-        return buildShopItemRow(fakeRow, key, it.need);
+        return buildShopItemRow(fakeRow, key, it.need, { mode: 'combo', partNum: it.partNum, color: it.color });
       });
       section.appendChild(list);
       frag.appendChild(section);
@@ -6172,7 +6267,7 @@
         list.className = 'shop-items';
         appendGroupedItems(list, rows, sortRules[0].field, sortRules[0].field === 'build', function(r){
           var key = itemKey(r);
-          return buildShopItemRow(r, key, r._need);
+          return buildShopItemRow(r, key, r._need, { mode: 'single', partNum: r.partNum, color: r.color, moc: r.moc });
         });
         section.appendChild(list);
         frag.appendChild(section);
@@ -6212,6 +6307,17 @@
     return storage.set(TALLY_COUNTS_KEY, JSON.stringify(tallyCounts), false);
   }
 
+  function loadTallyDrawerAssignments(){
+    return storage.get(TALLY_DRAWER_KEY, false).then(function(res){
+      if (res && res.value){ try { tallyDrawerAssignments = JSON.parse(res.value); } catch(e){ tallyDrawerAssignments = {}; } }
+    }).catch(function(){});
+  }
+
+  function saveTallyDrawerAssignments(){
+    scheduleAutoPublish();
+    return storage.set(TALLY_DRAWER_KEY, JSON.stringify(tallyDrawerAssignments), false);
+  }
+
   document.getElementById('shop-select-all').addEventListener('click', function(){
     mocSummaries().forEach(function(m){ shopSelected.add(m.name); });
     shopTop20Only = false;
@@ -6245,6 +6351,7 @@
     saveTallyCounts();
     renderShoppingList();
   });
+  document.getElementById('shop-tally-commit-btn').addEventListener('click', commitTallyToInventory);
   document.getElementById('shop-only-short').addEventListener('change', renderShoppingList);
   document.getElementById('shop-combine-toggle').addEventListener('change', renderShoppingList);
   document.querySelectorAll('.shop-sort-select').forEach(function(sel){
@@ -6270,7 +6377,7 @@
   });
 
   function bootApp(){
-    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadTallyCounts(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(function(){ return loadSetPhotos(); }).then(function(){ return loadMocPhotos(); }).then(function(){ return loadMocLocations(); }).then(function(){ return loadMocBuilds(); }).then(function(){ return loadMocThemes(); }).then(function(){ return loadMocDescriptions(); }).then(function(){ return loadLocationLabels(); })
+    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadTallyCounts(); }).then(function(){ return loadTallyDrawerAssignments(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(function(){ return loadSetPhotos(); }).then(function(){ return loadMocPhotos(); }).then(function(){ return loadMocLocations(); }).then(function(){ return loadMocBuilds(); }).then(function(){ return loadMocThemes(); }).then(function(){ return loadMocDescriptions(); }).then(function(){ return loadLocationLabels(); })
     .then(function(){ return loadRebrickableKey(); }).then(function(){ return loadSetProxyPref(); }).then(function(){ return loadGithubSettings(); }).then(function(){ return loadGithubShaMap(); }).then(function(){ return loadDirtyFlag(); }).then(function(){ return loadViewLocked(); })
     .then(function(){
       var repoConfigured = ghSettings.repo && ghSettings.repo.indexOf('/') !== -1 && ghSettings.token;
