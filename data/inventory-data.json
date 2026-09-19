@@ -67745,10 +67745,18 @@
   ],
   "tallyCounts": {
     "combo|3004|Tan": 0,
-    "combo|3005|Tan": 0
+    "combo|3005|Tan": 0,
+    "3943b|Light Bluish Gray|Benny's Convertible Spaceship": 1,
+    "10247|Light Bluish Gray|Benny's Convertible Spaceship": 3,
+    "4346|Trans Red|Blacktron Galaxy Explorer": 1,
+    "43898|Trans-Red|Blacktron Galaxy Explorer": 2
   },
   "tallyDrawerAssignments": {
-    "combo|3005|Tan": "test"
+    "combo|3005|Tan": "test",
+    "43898|Trans-Red|Blacktron Galaxy Explorer": "test",
+    "4346|Trans Red|Blacktron Galaxy Explorer": "test",
+    "10247|Light Bluish Gray|Benny's Convertible Spaceship": "test",
+    "3943b|Light Bluish Gray|Benny's Convertible Spaceship": "test"
   },
   "priorityLabels": [
     "1",
@@ -343936,6 +343944,11 @@
     {
       "id": "test",
       "label": "test",
+      "notes": ""
+    },
+    {
+      "id": "BAM bag",
+      "label": "BAM bag",
       "notes": ""
     }
   ],
