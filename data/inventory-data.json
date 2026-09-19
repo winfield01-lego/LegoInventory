@@ -343932,7 +343932,13 @@
       "_onHand": 1
     }
   ],
-  "drawers": [],
+  "drawers": [
+    {
+      "id": "test",
+      "label": "test",
+      "notes": ""
+    }
+  ],
   "drawerParts": [],
   "mocLocations": {
     "Blacktron Interstellar Spaceship": "Zorah's House",
