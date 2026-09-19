@@ -2035,16 +2035,16 @@
         var typeLabel = it.type === 'moc' ? 'MOC Build' : 'Official Set';
         body.push([{
           content: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' piece' + (it.missing===1?'':'s') + ' total',
-          colSpan: 5,
+          colSpan: 4,
           styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] }
         }]);
         rowMeta.push(null);
         if (!it.parts.length){
-          body.push([{ content: 'No specific part shortages recorded.', colSpan: 5, styles: { fontStyle: 'italic', textColor: [130, 130, 130] } }]);
+          body.push([{ content: 'No specific part shortages recorded.', colSpan: 4, styles: { fontStyle: 'italic', textColor: [130, 130, 130] } }]);
           rowMeta.push(null);
         } else {
           it.parts.forEach(function(p){
-            body.push(['', p.partNum, p.color, p.desc, String(p.short)]);
+            body.push(['', p.color, p.desc, String(p.short)]);
             rowMeta.push(p.elementId || null);
           });
         }
@@ -2052,11 +2052,11 @@
 
       doc.autoTable({
         startY: 70,
-        head: [['','Part #','Color','Description','Short']],
+        head: [['','Color','Description','Short']],
         body: body,
         styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 24, valign: 'middle' },
         headStyles: { fillColor: [0, 166, 94], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 26 }, 3: { cellWidth: 200 } },
+        columnStyles: { 0: { cellWidth: 26 }, 2: { cellWidth: 230 } },
         didDrawCell: function(data){
           if (data.section !== 'body' || data.column.index !== 0) return;
           var elementId = rowMeta[data.row.index];
