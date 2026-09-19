@@ -490,9 +490,11 @@
         <button id="shop-select-all" class="icon-btn" style="margin-left:auto; padding:3px 8px;">Select all</button>
         <button id="shop-select-none" class="icon-btn" style="padding:3px 8px;">Clear</button>
         <button id="shop-top20-btn" class="icon-btn" style="padding:3px 8px;" title="Selects all builds and shows only the 20 parts you're shortest on"><i class="ti ti-flame" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 Most Needed</button>
+        <button id="shop-almost-complete-btn" class="icon-btn" style="padding:3px 8px;" title="Selects only the builds missing a small number of pieces, and shows everything they still need"><i class="ti ti-hourglass-low" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Almost Complete</button>
+        <label style="font-size:12px; color:var(--text-secondary); display:flex; align-items:center; gap:6px;">Missing &le; <input type="number" id="shop-almost-complete-threshold" value="25" min="1" style="width:60px;" /></label>
         <button id="shop-tally-mode-btn" class="icon-btn" style="padding:3px 8px;" title="Switch to a counter view for tallying parts as you find them while shopping"><i class="ti ti-hash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Tally Mode</button>
         <button id="shop-tally-reset-btn" class="icon-btn" style="padding:3px 8px; display:none;" title="Zero out the found counts for everything in the current list"><i class="ti ti-refresh" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Reset Tally</button>
-        <button id="shop-tally-commit-btn" class="icon-btn lockable" style="padding:3px 8px; display:none; color: var(--lego-green); border-color: var(--lego-green);" title="Add found quantities to On Hand, and file into any assigned drawers"><i class="ti ti-check" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Commit to Inventory</button>
+        <button id="shop-tally-commit-btn" class="icon-btn lockable" style="padding:3px 8px; display:none; color: var(--lego-green); border-color: var(--lego-green);" title="Files found quantities into their assigned drawers. Does not change how many pieces your builds show as still needed."><i class="ti ti-check" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> File to Drawers</button>
       </div>
       <div id="shop-moc-checks" style="max-height:180px; overflow-y:auto; border:2px solid var(--border); border-radius:var(--radius); padding:8px; background: var(--surface-2);"></div>
     </div>
@@ -1225,6 +1227,7 @@
   var checkedItems = new Set();
   var shopSelected = new Set();
   var shopTop20Only = false;
+  var shopAlmostCompleteOnly = false;
   var shopTallyMode = false;
   var tallyCounts = {};
   var tallyDrawerAssignments = {};
@@ -5827,6 +5830,7 @@
         var name = cb.dataset.moc;
         if (cb.checked) shopSelected.add(name); else shopSelected.delete(name);
         shopTop20Only = false;
+        shopAlmostCompleteOnly = false;
         renderShoppingList();
       });
     });
@@ -5910,48 +5914,38 @@
     }).filter(function(x){ return x.found > 0; });
 
     if (!toCommit.length){
-      alert('Nothing to commit \u2014 tally at least one part first.');
+      alert('Nothing to file \u2014 tally at least one part first.');
       return;
     }
 
-    var totalPieces = toCommit.reduce(function(sum, x){ return sum + x.found; }, 0);
-    var drawerCount = toCommit.filter(function(x){ return x.drawerId; }).length;
-    var msg = 'Add ' + totalPieces.toLocaleString() + ' found piece' + (totalPieces===1?'':'s') + ' across ' + toCommit.length + ' part' + (toCommit.length===1?'':'s') + ' to your On Hand counts' +
-      (drawerCount ? (', and file ' + drawerCount + ' of them into ' + (drawerCount===1?'its':'their') + ' assigned drawer' + (drawerCount===1?'':'s')) : '') +
-      '? This updates your inventory directly and can\u2019t be automatically undone.';
+    var withDrawer = toCommit.filter(function(x){ return x.drawerId; });
+    var withoutDrawer = toCommit.length - withDrawer.length;
+
+    if (!withDrawer.length){
+      alert('Nothing to file \u2014 assign a drawer to at least one tallied part first. This button only files found parts into drawers; it doesn\u2019t change how many pieces your builds show as still needed.');
+      return;
+    }
+
+    var totalPieces = withDrawer.reduce(function(sum, x){ return sum + x.found; }, 0);
+    var msg = 'File ' + totalPieces.toLocaleString() + ' found piece' + (totalPieces===1?'':'s') + ' across ' + withDrawer.length + ' part' + (withDrawer.length===1?'':'s') + ' into ' + (withDrawer.length===1?'its':'their') + ' assigned drawer' + (withDrawer.length===1?'':'s') + '.\n\n' +
+      'This does NOT change how many pieces your builds show as still needed \u2014 use "Assign to MOC" on the Drawers tab afterward if you want to move some of these into a build\u2019s On Hand count.' +
+      (withoutDrawer ? ('\n\n' + withoutDrawer + ' tallied part' + (withoutDrawer===1?'':'s') + ' with no drawer assigned will be skipped.') : '');
     if (!confirm(msg)) return;
 
-    var skipped = 0;
-    toCommit.forEach(function(x){
+    withDrawer.forEach(function(x){
       var rows = resolveRowsForTallyKey(x.key);
-      if (!rows.length){ skipped++; return; }
-      var remaining = x.found;
-      var sorted = rows.slice().sort(function(a,b){ return (b.qty - b.onHand) - (a.qty - a.onHand); });
-      sorted.forEach(function(r){
-        if (remaining <= 0) return;
-        var shortage = Math.max(r.qty - r.onHand, 0);
-        var add = Math.min(shortage, remaining);
-        r.onHand += add;
-        remaining -= add;
-      });
-      if (remaining > 0){
-        sorted[sorted.length - 1].onHand += remaining;
-      }
-      if (x.drawerId){
-        var sample = rows[0];
-        addFoundQtyToDrawer(x.drawerId, sample.partNum, sample.color, sample.desc, sample.elementId, x.found);
-      }
+      if (!rows.length) return;
+      var sample = rows[0];
+      addFoundQtyToDrawer(x.drawerId, sample.partNum, sample.color, sample.desc, sample.elementId, x.found);
       tallyCounts[x.key] = 0;
     });
 
-    saveState();
     saveDrawerParts();
     saveTallyCounts();
-    render();
     renderShoppingList();
     if (state.tab === 'drawers') renderDrawersTab();
-    alert('Added ' + totalPieces.toLocaleString() + ' piece' + (totalPieces===1?'':'s') + ' to your inventory' + (drawerCount ? ' and filed into drawers' : '') + '.' +
-      (skipped ? (' ' + skipped + ' item' + (skipped===1?'':'s') + " couldn't be matched back to your builds and " + (skipped===1?'was':'were') + ' skipped.') : ''));
+    alert('Filed ' + totalPieces.toLocaleString() + ' piece' + (totalPieces===1?'':'s') + ' into your drawers.' +
+      (withoutDrawer ? (' ' + withoutDrawer + ' tallied part' + (withoutDrawer===1?'':'s') + ' skipped (no drawer assigned).') : ''));
   }
 
   function populateShopColorFilter(){
@@ -6159,6 +6153,10 @@
     top20Btn.style.background = shopTop20Only ? 'var(--lego-blue)' : '';
     top20Btn.style.color = shopTop20Only ? '#fff' : '';
     top20Btn.style.borderColor = shopTop20Only ? 'var(--lego-blue)' : '';
+    var almostBtn = document.getElementById('shop-almost-complete-btn');
+    almostBtn.style.background = shopAlmostCompleteOnly ? 'var(--lego-green)' : '';
+    almostBtn.style.color = shopAlmostCompleteOnly ? '#fff' : '';
+    almostBtn.style.borderColor = shopAlmostCompleteOnly ? 'var(--lego-green)' : '';
     var tallyModeBtn = document.getElementById('shop-tally-mode-btn');
     tallyModeBtn.style.background = shopTallyMode ? 'var(--lego-green)' : '';
     tallyModeBtn.style.color = shopTallyMode ? '#fff' : '';
@@ -6170,6 +6168,13 @@
       var top20Items = getTop20Items();
       top20Keys = new Set(top20Items.map(function(it){ return it.partNum + '|' + it.color; }));
     }
+    if (shopAlmostCompleteOnly){
+      var threshold = parseInt(document.getElementById('shop-almost-complete-threshold').value, 10);
+      if (isNaN(threshold) || threshold < 1) threshold = 25;
+      var qualifyingMocs = getAlmostCompleteItems(threshold).filter(function(it){ return it.type === 'moc'; }).map(function(it){ return it.key; });
+      shopSelected = new Set(qualifyingMocs);
+      populateShopMocList();
+    }
 
     populateShopColorFilter();
     populateShopPriorityFilter();
@@ -6177,7 +6182,7 @@
     var headerSlot = document.getElementById('shop-print-header-slot');
     headerSlot.innerHTML = '';
     if (!shopSelected.size){
-      output.innerHTML = '<div class="empty-msg">Pick one or more builds above to generate a list.</div>';
+      output.innerHTML = '<div class="empty-msg">'+(shopAlmostCompleteOnly ? 'Nothing to show \u2014 no builds are currently within that many pieces of complete.' : 'Pick one or more builds above to generate a list.')+'</div>';
       return;
     }
     if (top20Keys && !top20Keys.size){
@@ -6189,7 +6194,8 @@
 
     var printHeader = document.createElement('div');
     printHeader.className = 'shop-print-header';
-    printHeader.innerHTML = '<h2 style="margin:0 0 4px; font-size:18px; text-transform:uppercase; letter-spacing:0.02em;">'+(shopTop20Only ? 'Top 20 most needed parts' : 'Shopping list')+'</h2>' +
+    var listTitle = shopTop20Only ? 'Top 20 most needed parts' : (shopAlmostCompleteOnly ? 'Almost complete \u2014 parts needed' : 'Shopping list');
+    printHeader.innerHTML = '<h2 style="margin:0 0 4px; font-size:18px; text-transform:uppercase; letter-spacing:0.02em;">'+listTitle+'</h2>' +
       '<div style="font-size:12px; color:var(--text-secondary); margin-bottom:16px;">'+escapeHtml(names.join(', '))+' &middot; generated '+new Date().toLocaleDateString()+'</div>';
     headerSlot.appendChild(printHeader);
 
@@ -6321,22 +6327,33 @@
   document.getElementById('shop-select-all').addEventListener('click', function(){
     mocSummaries().forEach(function(m){ shopSelected.add(m.name); });
     shopTop20Only = false;
+    shopAlmostCompleteOnly = false;
     populateShopMocList();
     renderShoppingList();
   });
   document.getElementById('shop-select-none').addEventListener('click', function(){
     shopSelected.clear();
     shopTop20Only = false;
+    shopAlmostCompleteOnly = false;
     populateShopMocList();
     renderShoppingList();
   });
   document.getElementById('shop-top20-btn').addEventListener('click', function(){
     shopTop20Only = !shopTop20Only;
+    shopAlmostCompleteOnly = false;
     if (shopTop20Only){
       mocSummaries().forEach(function(m){ shopSelected.add(m.name); });
       populateShopMocList();
     }
     renderShoppingList();
+  });
+  document.getElementById('shop-almost-complete-btn').addEventListener('click', function(){
+    shopAlmostCompleteOnly = !shopAlmostCompleteOnly;
+    shopTop20Only = false;
+    renderShoppingList();
+  });
+  document.getElementById('shop-almost-complete-threshold').addEventListener('input', function(){
+    if (shopAlmostCompleteOnly) renderShoppingList();
   });
   document.getElementById('shop-tally-mode-btn').addEventListener('click', function(){
     shopTallyMode = !shopTallyMode;
