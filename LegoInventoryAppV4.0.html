@@ -373,7 +373,6 @@
       <div class="row" style="gap:8px;">
         <button id="top-report-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 report (CSV)</button>
         <button id="top-report-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 report (PDF)</button>
-        <button id="top-report-landscape-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="Landscape layout with two columns of parts side by side"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 report (Landscape, 2-col)</button>
       </div>
     </div>
     <div id="top-needed-list" style="display:none;"></div>
@@ -503,7 +502,7 @@
       <label class="checkbox-label" style="margin-bottom:14px;"><input type="checkbox" id="shop-only-short" checked /> Only show parts still needed</label>
       <label class="checkbox-label" style="margin-bottom:14px;"><input type="checkbox" id="shop-combine-toggle" /> Combine matching parts across builds into one list</label>
       <div class="row">
-        <button id="shop-print-btn"><i class="ti ti-file-type-pdf" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Shopping list report (PDF)</button>
+        <button id="shop-print-btn"><i class="ti ti-printer" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Print / Save as PDF</button>
         <button id="shop-export-csv-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Export CSV</button>
         <button id="shop-clear-checks-btn" class="icon-btn"><i class="ti ti-eraser" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Clear checkmarks</button>
       </div>
@@ -1233,8 +1232,6 @@
   var tallyCounts = {};
   var tallyDrawerAssignments = {};
   var tallyRowResolvers = {};
-  var lastShopListItems = [];
-  var lastShopListMeta = { title: '', subtitle: '' };
   var CHECKLIST_KEY = 'shopping-checked-v1';
   var TALLY_COUNTS_KEY = 'shop-tally-counts-v1';
   var TALLY_DRAWER_KEY = 'shop-tally-drawers-v1';
@@ -1915,7 +1912,7 @@
       if (missing > 0 && missing <= threshold){
         var shortParts = state.rows.filter(function(r){ return r.moc === m.name && r.onHand < r.qty; })
           .map(function(r){ return { partNum: r.partNum, color: r.color, desc: r.desc, short: r.qty - r.onHand, elementId: r.elementId }; })
-          .sort(function(a,b){ return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.short - b.short); });
+          .sort(function(a,b){ return b.short - a.short; });
         items.push({ type: 'moc', key: m.name, label: m.name, missing: missing, parts: shortParts });
       }
     });
@@ -1928,7 +1925,7 @@
       if (missing > 0 && missing <= threshold){
         var shortSetParts = rows.filter(function(r){ return setPartOnHand(r) < setPartNeeded(r); })
           .map(function(r){ return { partNum: r.partNum, color: r.color, desc: r.desc, short: setPartNeeded(r) - setPartOnHand(r), elementId: r.elementId }; })
-          .sort(function(a,b){ return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.short - b.short); });
+          .sort(function(a,b){ return b.short - a.short; });
         items.push({ type: 'set', key: s.setNum, label: s.setNum + (s.name ? ' \u2014 ' + s.name : ''), missing: missing, parts: shortSetParts });
       }
     });
@@ -2057,9 +2054,9 @@
         startY: 70,
         head: [['','Color','Description','Short']],
         body: body,
-        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 30, valign: 'middle' },
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 24, valign: 'middle' },
         headStyles: { fillColor: [0, 166, 94], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 34 }, 2: { cellWidth: 222 } },
+        columnStyles: { 0: { cellWidth: 26 }, 2: { cellWidth: 230 } },
         didDrawCell: function(data){
           if (data.section !== 'body' || data.column.index !== 0) return;
           var elementId = rowMeta[data.row.index];
@@ -2067,7 +2064,7 @@
           if (!dataUrl) return;
           try {
             var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
-            var pad = 3;
+            var pad = 2;
             var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
             doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
           } catch(e){ /* skip malformed image, leave cell blank */ }
@@ -4404,62 +4401,6 @@
     doc.text(subtitle, 40, 56);
   }
 
-  function generateShoppingListPDF(){
-    var items = lastShopListItems;
-    if (!items.length){
-      alert('Nothing to report \u2014 pick one or more builds and make sure your filters leave at least one part.');
-      return;
-    }
-    var btn = document.getElementById('shop-print-btn');
-    var prevBtnHtml = btn ? btn.innerHTML : null;
-    if (btn){
-      btn.disabled = true;
-      btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating\u2026';
-    }
-
-    var uniqueIds = Array.from(new Set(items.map(function(it){ return it.elementId; }).filter(Boolean)));
-    Promise.all(uniqueIds.map(function(id){
-      return fetchPartImageForPdf(id).then(function(dataUrl){ return [id, dataUrl]; });
-    })).then(function(pairs){
-      var imgMap = {};
-      pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
-
-      var doc = getPdfDoc();
-      if (!doc) return;
-      pdfHeader(doc, lastShopListMeta.title || 'Shopping List',
-        (lastShopListMeta.subtitle ? lastShopListMeta.subtitle + ' \u00b7 ' : '') + 'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
-
-      var body = items.map(function(it, i){
-        return ['', String(i+1), it.color, it.desc, it.buildLabel || '', it.need.toLocaleString()];
-      });
-      doc.autoTable({
-        startY: 70,
-        head: [['','#','Color','Description','Build','Qty']],
-        body: body,
-        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 30, valign: 'middle' },
-        headStyles: { fillColor: [255, 130, 0], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 34 }, 1: { cellWidth: 20 }, 3: { cellWidth: 155 }, 4: { cellWidth: 105 } },
-        didDrawCell: function(data){
-          if (data.section !== 'body' || data.column.index !== 0) return;
-          var it = items[data.row.index];
-          var dataUrl = it.elementId && imgMap[it.elementId];
-          if (!dataUrl) return;
-          try {
-            var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
-            var pad = 3;
-            var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
-            doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
-          } catch(e){ /* skip malformed image, leave cell blank */ }
-        }
-      });
-      doc.save('lego-shopping-list.pdf');
-    }).catch(function(err){
-      alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
-    }).then(function(){
-      if (btn){ btn.disabled = false; btn.innerHTML = prevBtnHtml; }
-    });
-  }
-
   function generateTop20PDF(){
     var items = getTop20Items();
     if (!items.length){
@@ -4492,9 +4433,9 @@
         startY: 70,
         head: [['','#','Color','Description','Short']],
         body: body,
-        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 30, valign: 'middle' },
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 26, valign: 'middle' },
         headStyles: { fillColor: [0, 85, 191], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 34 }, 1: { cellWidth: 20 }, 3: { cellWidth: 270 } },
+        columnStyles: { 0: { cellWidth: 28 }, 1: { cellWidth: 20 }, 3: { cellWidth: 280 } },
         didDrawCell: function(data){
           if (data.section !== 'body' || data.column.index !== 0) return;
           var it = items[data.row.index];
@@ -4509,88 +4450,6 @@
         }
       });
       doc.save('lego-top-20-most-needed.pdf');
-    }).catch(function(err){
-      alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
-    }).then(function(){
-      if (btn){ btn.disabled = false; btn.innerHTML = prevBtnHtml; }
-    });
-  }
-
-  function generateTop20LandscapePDF(){
-    var items = getTop20Items();
-    if (!items.length){
-      alert('Nothing to report \u2014 no parts are currently short.');
-      return;
-    }
-    var btn = document.getElementById('top-report-landscape-pdf-btn');
-    var prevBtnHtml = btn ? btn.innerHTML : null;
-    if (btn){
-      btn.disabled = true;
-      btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating\u2026';
-    }
-
-    var uniqueIds = Array.from(new Set(items.map(function(it){ return it.elementId; }).filter(Boolean)));
-    Promise.all(uniqueIds.map(function(id){
-      return fetchPartImageForPdf(id).then(function(dataUrl){ return [id, dataUrl]; });
-    })).then(function(pairs){
-      var imgMap = {};
-      pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
-
-      var doc = new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' });
-      pdfHeader(doc, 'Top 20 Most Needed Parts',
-        'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
-
-      var half = Math.ceil(items.length / 2);
-      var leftItems = items.slice(0, half);
-      var rightItems = items.slice(half);
-      var rowCount = Math.max(leftItems.length, rightItems.length);
-
-      var body = [];
-      var rowElementIds = [];
-      for (var i = 0; i < rowCount; i++){
-        var L = leftItems[i], R = rightItems[i];
-        body.push([
-          '', L ? String(i + 1) : '', L ? L.color : '', L ? L.desc : '', L ? L.short.toLocaleString() : '',
-          '',
-          '', R ? String(half + i + 1) : '', R ? R.color : '', R ? R.desc : '', R ? R.short.toLocaleString() : ''
-        ]);
-        rowElementIds.push([L ? L.elementId : null, R ? R.elementId : null]);
-      }
-
-      doc.autoTable({
-        startY: 70,
-        head: [['','#','Color','Description','Short','','','#','Color','Description','Short']],
-        body: body,
-        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 30, valign: 'middle' },
-        headStyles: { fillColor: [0, 85, 191], textColor: 255 },
-        columnStyles: {
-          0: { cellWidth: 34 }, 1: { cellWidth: 20 }, 2: { cellWidth: 50 }, 3: { cellWidth: 207 }, 4: { cellWidth: 32 },
-          5: { cellWidth: 14 },
-          6: { cellWidth: 34 }, 7: { cellWidth: 20 }, 8: { cellWidth: 50 }, 9: { cellWidth: 207 }, 10: { cellWidth: 32 }
-        },
-        didParseCell: function(data){
-          if (data.column.index === 5){
-            data.cell.styles.lineWidth = 0;
-            data.cell.styles.fillColor = data.section === 'head' ? [0, 85, 191] : 255;
-          }
-        },
-        didDrawCell: function(data){
-          if (data.section !== 'body') return;
-          var pair = rowElementIds[data.row.index];
-          var slot = data.column.index === 0 ? 0 : (data.column.index === 6 ? 1 : null);
-          if (slot === null) return;
-          var elementId = pair[slot];
-          var dataUrl = elementId && imgMap[elementId];
-          if (!dataUrl) return;
-          try {
-            var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
-            var pad = 3;
-            var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
-            doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
-          } catch(e){ /* skip malformed image, leave cell blank */ }
-        }
-      });
-      doc.save('lego-top-20-landscape.pdf');
     }).catch(function(err){
       alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
     }).then(function(){
@@ -4814,7 +4673,6 @@
   document.getElementById('shop-export-csv-btn').addEventListener('click', exportShoppingList);
   document.getElementById('top-report-btn').addEventListener('click', exportTopNeededReport);
   document.getElementById('top-report-pdf-btn').addEventListener('click', generateTop20PDF);
-  document.getElementById('top-report-landscape-pdf-btn').addEventListener('click', generateTop20LandscapePDF);
   document.querySelectorAll('#lego-inv-root th[data-sort]').forEach(function(th){
     th.addEventListener('click', function(){
       var col = th.dataset.sort;
@@ -6281,7 +6139,6 @@
 
   function renderShoppingList(){
     tallyRowResolvers = {};
-    lastShopListItems = [];
     var output = document.getElementById('shopping-list-output');
     var onlyShort = document.getElementById('shop-only-short').checked;
     var combine = document.getElementById('shop-combine-toggle').checked;
@@ -6338,10 +6195,8 @@
     var printHeader = document.createElement('div');
     printHeader.className = 'shop-print-header';
     var listTitle = shopTop20Only ? 'Top 20 most needed parts' : (shopAlmostCompleteOnly ? 'Almost complete \u2014 parts needed' : 'Shopping list');
-    var namesSubtitle = names.length === 1 ? escapeHtml(names[0]) : (names.length + ' builds selected');
-    lastShopListMeta = { title: listTitle, subtitle: namesSubtitle };
     printHeader.innerHTML = '<h2 style="margin:0 0 4px; font-size:18px; text-transform:uppercase; letter-spacing:0.02em;">'+listTitle+'</h2>' +
-      '<div style="font-size:12px; color:var(--text-secondary); margin-bottom:16px;">'+namesSubtitle+' &middot; generated '+new Date().toLocaleDateString()+'</div>';
+      '<div style="font-size:12px; color:var(--text-secondary); margin-bottom:16px;">'+escapeHtml(names.join(', '))+' &middot; generated '+new Date().toLocaleDateString()+'</div>';
     headerSlot.appendChild(printHeader);
 
     // Gather filtered rows across all selected builds with their per-row need count
@@ -6391,9 +6246,6 @@
       var comboItems = Object.keys(byKey).map(function(k){ return byKey[k]; });
       comboItems.forEach(function(it){ it._need = it.need; it._buildLabel = Object.keys(it.builds).sort().join(', '); });
       comboItems.sort(shopCompoundComparator(sortRules));
-      lastShopListItems = comboItems.map(function(it){
-        return { partNum: it.partNum, color: it.color, desc: it.desc, elementId: it.elementId, need: it._need, buildLabel: it._buildLabel };
-      });
 
       var section = document.createElement('div');
       section.className = 'shop-section';
@@ -6413,9 +6265,6 @@
         var rows = pool.filter(function(p){ return p.row.moc === moc; }).map(function(p){ p.row._need = p.need; p.row._buildLabel = moc; return p.row; });
         if (!rows.length) return;
         rows = rows.slice().sort(shopCompoundComparator(sortRules));
-        lastShopListItems = lastShopListItems.concat(rows.map(function(r){
-          return { partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId, need: r._need, buildLabel: r._buildLabel };
-        }));
         var section = document.createElement('div');
         section.className = 'shop-section';
         var haveLabel = shopSectionLabel(rows, itemKey, function(r){ return r._need; });
@@ -6529,7 +6378,7 @@
   document.getElementById('shop-color-filter').addEventListener('change', renderShoppingList);
   document.getElementById('shop-priority-filter').addEventListener('change', renderShoppingList);
   document.getElementById('shop-min-qty').addEventListener('input', renderShoppingList);
-  document.getElementById('shop-print-btn').addEventListener('click', generateShoppingListPDF);
+  document.getElementById('shop-print-btn').addEventListener('click', function(){ window.print(); });
   document.getElementById('shop-clear-checks-btn').addEventListener('click', function(){
     var output = document.getElementById('shopping-list-output');
     var boxes = output.querySelectorAll('.shop-item input[type=checkbox]');
