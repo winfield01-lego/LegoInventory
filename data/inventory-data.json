@@ -64544,7 +64544,7 @@
       "Brick 1 x 1",
       "Enterprise D Main Engineering Part 2",
       "4113915",
-      14,
+      15,
       0,
       ""
     ],
@@ -67745,10 +67745,10 @@
   ],
   "tallyCounts": {
     "combo|3004|Tan": 0,
-    "combo|3005|Tan": 1
+    "combo|3005|Tan": 0
   },
   "tallyDrawerAssignments": {
-    "combo|3005|Tan": "Test"
+    "combo|3005|Tan": "test"
   },
   "priorityLabels": [
     "1",
@@ -343939,7 +343939,16 @@
       "notes": ""
     }
   ],
-  "drawerParts": [],
+  "drawerParts": [
+    {
+      "drawerId": "test",
+      "partNum": "3005",
+      "color": "Tan",
+      "desc": "Brick 1 x 1",
+      "elementId": "4113915",
+      "qty": 1
+    }
+  ],
   "mocLocations": {
     "Blacktron Interstellar Spaceship": "Zorah's House",
     "Lego House": "Zorah's House"
