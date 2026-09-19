@@ -2057,9 +2057,9 @@
         startY: 70,
         head: [['','Color','Description','Short']],
         body: body,
-        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 30, valign: 'middle' },
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 35, valign: 'middle' },
         headStyles: { fillColor: [0, 166, 94], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 34 }, 2: { cellWidth: 222 } },
+        columnStyles: { 0: { cellWidth: 40 }, 2: { cellWidth: 216 } },
         didDrawCell: function(data){
           if (data.section !== 'body' || data.column.index !== 0) return;
           var elementId = rowMeta[data.row.index];
@@ -4429,16 +4429,23 @@
       pdfHeader(doc, lastShopListMeta.title || 'Shopping List',
         (lastShopListMeta.subtitle ? lastShopListMeta.subtitle + ' \u00b7 ' : '') + 'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
 
+      var showBuildCol = !shopTop20Only;
+      var head = showBuildCol ? ['','#','Color','Description','Build','Qty'] : ['','#','Color','Description','Qty'];
       var body = items.map(function(it, i){
-        return ['', String(i+1), it.color, it.desc, it.buildLabel || '', it.need.toLocaleString()];
+        return showBuildCol
+          ? ['', String(i+1), it.color, it.desc, it.buildLabel || '', it.need.toLocaleString()]
+          : ['', String(i+1), it.color, it.desc, it.need.toLocaleString()];
       });
+      var columnStyles = showBuildCol
+        ? { 0: { cellWidth: 40 }, 1: { cellWidth: 20 }, 3: { cellWidth: 149 }, 4: { cellWidth: 105 } }
+        : { 0: { cellWidth: 40 }, 1: { cellWidth: 20 }, 3: { cellWidth: 254 } };
       doc.autoTable({
         startY: 70,
-        head: [['','#','Color','Description','Build','Qty']],
+        head: [head],
         body: body,
-        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 30, valign: 'middle' },
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 35, valign: 'middle' },
         headStyles: { fillColor: [255, 130, 0], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 34 }, 1: { cellWidth: 20 }, 3: { cellWidth: 155 }, 4: { cellWidth: 105 } },
+        columnStyles: columnStyles,
         didDrawCell: function(data){
           if (data.section !== 'body' || data.column.index !== 0) return;
           var it = items[data.row.index];
@@ -4493,9 +4500,9 @@
         startY: 70,
         head: [['','#','Color','Description','Short']],
         body: body,
-        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 30, valign: 'middle' },
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 35, valign: 'middle' },
         headStyles: { fillColor: [0, 85, 191], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 34 }, 1: { cellWidth: 20 }, 3: { cellWidth: 270 } },
+        columnStyles: { 0: { cellWidth: 40 }, 1: { cellWidth: 20 }, 3: { cellWidth: 264 } },
         didDrawCell: function(data){
           if (data.section !== 'body' || data.column.index !== 0) return;
           var it = items[data.row.index];
@@ -4563,12 +4570,12 @@
         startY: 70,
         head: [['','#','Color','Description','Short','','','#','Color','Description','Short']],
         body: body,
-        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 30, valign: 'middle' },
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 35, valign: 'middle' },
         headStyles: { fillColor: [0, 85, 191], textColor: 255 },
         columnStyles: {
-          0: { cellWidth: 34 }, 1: { cellWidth: 20 }, 2: { cellWidth: 50 }, 3: { cellWidth: 207 }, 4: { cellWidth: 32 },
+          0: { cellWidth: 40 }, 1: { cellWidth: 20 }, 2: { cellWidth: 50 }, 3: { cellWidth: 201 }, 4: { cellWidth: 32 },
           5: { cellWidth: 14 },
-          6: { cellWidth: 34 }, 7: { cellWidth: 20 }, 8: { cellWidth: 50 }, 9: { cellWidth: 207 }, 10: { cellWidth: 32 }
+          6: { cellWidth: 40 }, 7: { cellWidth: 20 }, 8: { cellWidth: 50 }, 9: { cellWidth: 201 }, 10: { cellWidth: 32 }
         },
         didParseCell: function(data){
           if (data.column.index === 5){
