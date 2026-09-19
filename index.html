@@ -4327,10 +4327,10 @@
       alert('Nothing to report \u2014 no parts are currently short.');
       return;
     }
-    var header = ['Rank','Part Number','Element ID','Color','Description','Total Needed','Total On Hand','Short','Used In Builds'];
+    var header = ['Rank','Element ID','Color','Description','Short','Used In Builds'];
     var lines = [header.map(csvEscape).join(',')];
     items.forEach(function(it, i){
-      lines.push([i+1, it.partNum, it.elementId, it.color, it.desc, it.need, it.onHand, it.short, Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
+      lines.push([i+1, it.elementId, it.color, it.desc, it.short, Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
     });
     var csv = lines.join('\r\n');
     var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -4427,15 +4427,15 @@
         'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
 
       var body = items.map(function(it, i){
-        return ['', String(i+1), it.partNum, it.color, it.desc, it.need.toLocaleString(), it.onHand.toLocaleString(), it.short.toLocaleString()];
+        return ['', String(i+1), it.color, it.desc, it.short.toLocaleString()];
       });
       doc.autoTable({
         startY: 70,
-        head: [['','#','Part #','Color','Description','Need','Have','Short']],
+        head: [['','#','Color','Description','Short']],
         body: body,
         styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 26, valign: 'middle' },
         headStyles: { fillColor: [0, 85, 191], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 28 }, 1: { cellWidth: 20 }, 4: { cellWidth: 160 } },
+        columnStyles: { 0: { cellWidth: 28 }, 1: { cellWidth: 20 }, 3: { cellWidth: 280 } },
         didDrawCell: function(data){
           if (data.section !== 'body' || data.column.index !== 0) return;
           var it = items[data.row.index];
