@@ -4442,6 +4442,7 @@
         didDrawCell: function(data){
           if (data.section !== 'body' || data.column.index !== 0) return;
           var it = items[data.row.index];
+          if (!it) return;
           var dataUrl = it.elementId && imgMap[it.elementId];
           if (!dataUrl) return;
           try {
@@ -4498,6 +4499,7 @@
         didDrawCell: function(data){
           if (data.section !== 'body' || data.column.index !== 0) return;
           var it = items[data.row.index];
+          if (!it) return;
           var dataUrl = it.elementId && imgMap[it.elementId];
           if (!dataUrl) return;
           try {
@@ -4577,6 +4579,7 @@
         didDrawCell: function(data){
           if (data.section !== 'body') return;
           var pair = rowElementIds[data.row.index];
+          if (!pair) return;
           var slot = data.column.index === 0 ? 0 : (data.column.index === 6 ? 1 : null);
           if (slot === null) return;
           var elementId = pair[slot];
