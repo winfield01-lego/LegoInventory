@@ -95,7 +95,7 @@
 #lego-inv-root td.wrap-cell { overflow: visible; text-overflow: clip; white-space: normal; word-break: break-word; }
 #lego-inv-root .tbl-wrap { max-height: 480px; overflow-y: auto; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 2px solid var(--border); border-radius: var(--radius); }
 #lego-inv-root table { min-width: 760px; }
-#lego-inv-root .onhand-input { width: 56px; height: 28px; padding: 2px 6px; text-align: center; }
+#lego-inv-root .onhand-input { width: 100%; max-width: 56px; box-sizing: border-box; height: 28px; padding: 2px 6px; text-align: center; }
 #lego-inv-root .field-edit-input { width: 100%; height: 28px; padding: 2px 6px; border: 2px solid var(--border); border-radius: 6px; background: var(--surface-1); color: var(--text-primary); font-size: 12px; }
 #lego-inv-root .field-edit-input:focus { outline: none; border-color: var(--lego-blue); }
 #lego-inv-root .field-edit-input.field-missing { border-color: var(--text-danger); background: var(--bg-danger); }
@@ -137,7 +137,7 @@
 #lego-inv-root .drawer-card .drawer-label-edit { width: 130px; font-weight: 700; }
 #lego-inv-root .drawer-card .drawer-notes-edit { width: 200px; }
 #lego-inv-root .drawer-card .drawer-meta { flex: 1 1 auto; font-size: 12px; color: var(--text-secondary); white-space: nowrap; }
-#lego-inv-root .qty-edit-input { width: 60px; height: 28px; padding: 2px 6px; text-align: center; }
+#lego-inv-root .qty-edit-input { width: 100%; max-width: 60px; box-sizing: border-box; height: 28px; padding: 2px 6px; text-align: center; }
 #lego-inv-root .top-needed-item { display: flex; align-items: center; gap: 10px; padding: 6px 10px; background: var(--surface-2); border: 2px solid var(--border); border-radius: 10px; margin-bottom: 5px; cursor: pointer; }
 #lego-inv-root .top-needed-item:hover { border-color: var(--lego-blue); }
 #lego-inv-root .top-needed-rank { font-size: 12px; font-weight: 800; color: var(--text-muted); width: 18px; flex-shrink: 0; text-align: right; }
@@ -499,6 +499,7 @@
         <label style="font-size:12px; color:var(--text-secondary); display:flex; align-items:center; gap:6px;">Missing &le; <input type="number" id="shop-almost-complete-threshold" value="25" min="1" style="width:60px;" /></label>
         <button id="shop-tally-mode-btn" class="icon-btn" style="padding:3px 8px;" title="Switch to a counter view for tallying parts as you find them while shopping"><i class="ti ti-hash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Tally Mode</button>
         <button id="shop-tally-reset-btn" class="icon-btn" style="padding:3px 8px; display:none;" title="Zero out the found counts for everything in the current list"><i class="ti ti-refresh" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Reset Tally</button>
+        <label id="shop-tally-show-completed-label" class="checkbox-label" style="display:none; font-size:12px;"><input type="checkbox" id="shop-tally-show-completed" /> Show completed parts</label>
         <button id="shop-tally-commit-btn" class="icon-btn lockable" style="padding:3px 8px; display:none; color: var(--lego-green); border-color: var(--lego-green);" title="Files found quantities into their assigned drawers. Does not change how many pieces your builds show as still needed."><i class="ti ti-check" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> File to Drawers</button>
       </div>
       <div id="shop-moc-checks" style="max-height:180px; overflow-y:auto; border:2px solid var(--border); border-radius:var(--radius); padding:8px; background: var(--surface-2);"></div>
@@ -801,13 +802,13 @@
         <table>
           <thead>
             <tr>
-              <th style="width:11%" data-dp-sort="drawerId">Drawer</th>
+              <th style="width:10%" data-dp-sort="drawerId">Drawer</th>
               <th style="width:6%">Image</th>
-              <th style="width:11%" data-dp-sort="partNum">Part #</th>
-              <th style="width:11%" data-dp-sort="color">Color</th>
-              <th style="width:35%" data-dp-sort="desc">Description</th>
-              <th style="width:9%" data-dp-sort="qty">Qty</th>
-              <th style="width:17%"></th>
+              <th style="width:10%" data-dp-sort="partNum">Part #</th>
+              <th style="width:10%" data-dp-sort="color">Color</th>
+              <th style="width:30%" data-dp-sort="desc">Description</th>
+              <th style="width:12%" data-dp-sort="qty">Qty</th>
+              <th style="width:22%"></th>
             </tr>
           </thead>
           <tbody id="drawer-parts-tbody"></tbody>
@@ -1239,6 +1240,7 @@
   var tallyDrawerAssignments = {};
   var tallyRowResolvers = {};
   var lastShopListItems = [];
+  var lastShopSections = [];
   var lastShopListMeta = { title: '', subtitle: '' };
   var CHECKLIST_KEY = 'shopping-checked-v1';
   var TALLY_COUNTS_KEY = 'shop-tally-counts-v1';
@@ -6144,31 +6146,24 @@
     var tallyBar = output.querySelector('.shop-tally-bar');
 
     if (shopTallyMode){
-      var rows = output.querySelectorAll('.shop-item-tally');
       var totalNeed = 0, totalFound = 0;
-      rows.forEach(function(el){
-        var need = parseInt(el.dataset.need, 10) || 0;
-        var found = tallyCounts[el.dataset.key] || 0;
-        totalFound += Math.min(found, need);
+      lastShopSections.forEach(function(sec){
+        var need = 0, found = 0;
+        sec.items.forEach(function(item){
+          var f = tallyCounts[item.key] || 0;
+          found += Math.min(f, item.need);
+          need += item.need;
+        });
         totalNeed += need;
+        totalFound += found;
+        var tallySpan = sec.el.querySelector('.shop-build-tally');
+        if (tallySpan) tallySpan.textContent = '('+found.toLocaleString()+'/'+need.toLocaleString()+' pcs found)';
       });
       if (tallyBar){
         var pct = totalNeed ? Math.round(100*totalFound/totalNeed) : 0;
         tallyBar.innerHTML = '<div class="bar-bg"><div class="bar-fill" style="width:'+pct+'%; background: var(--lego-green);"></div></div>' +
           '<div style="font-size:13px; color:var(--text-secondary);">'+totalFound.toLocaleString()+' of '+totalNeed.toLocaleString()+' pieces found</div>';
       }
-      output.querySelectorAll('.shop-section').forEach(function(section){
-        var els = section.querySelectorAll('.shop-item-tally');
-        var need = 0, found = 0;
-        els.forEach(function(el){
-          var n = parseInt(el.dataset.need, 10) || 0;
-          var f = tallyCounts[el.dataset.key] || 0;
-          found += Math.min(f, n);
-          need += n;
-        });
-        var tallySpan = section.querySelector('.shop-build-tally');
-        if (tallySpan) tallySpan.textContent = '('+found.toLocaleString()+'/'+need.toLocaleString()+' pcs found)';
-      });
       return;
     }
 
@@ -6207,10 +6202,14 @@
   }
 
   function commitTallyToInventory(){
-    var output = document.getElementById('shopping-list-output');
-    var tallyEls = Array.from(output.querySelectorAll('.shop-item-tally'));
-    var toCommit = tallyEls.map(function(el){
-      var key = el.dataset.key;
+    var seen = {};
+    var allKeys = [];
+    lastShopSections.forEach(function(sec){
+      sec.items.forEach(function(item){
+        if (!seen[item.key]){ seen[item.key] = true; allKeys.push(item.key); }
+      });
+    });
+    var toCommit = allKeys.map(function(key){
       return { key: key, found: tallyCounts[key] || 0, drawerId: tallyDrawerAssignments[key] || '' };
     }).filter(function(x){ return x.found > 0; });
 
@@ -6367,6 +6366,22 @@
     return '('+haveCount+'/'+items.length+' found)';
   }
 
+  function isTallyItemComplete(key, need){
+    return (tallyCounts[key] || 0) >= need;
+  }
+
+  function applyTallyCompletionFilter(items, keyFn, needFn, showCompleted){
+    if (!shopTallyMode) return items;
+    if (!showCompleted){
+      return items.filter(function(it){ return !isTallyItemComplete(keyFn(it), needFn(it)); });
+    }
+    return items.slice().sort(function(a, b){
+      var ac = isTallyItemComplete(keyFn(a), needFn(a)) ? 1 : 0;
+      var bc = isTallyItemComplete(keyFn(b), needFn(b)) ? 1 : 0;
+      return ac - bc;
+    });
+  }
+
   function buildShopItemRow(r, key, needCount, resolveInfo){
     if (resolveInfo) tallyRowResolvers[key] = resolveInfo;
     if (shopTallyMode){
@@ -6399,27 +6414,34 @@
         countInput.value = tallyCounts[key] || 0;
         item.classList.toggle('checked', (tallyCounts[key] || 0) >= needCount);
       }
+      function afterTallyChange(wasComplete){
+        saveTallyCounts();
+        var isComplete = (tallyCounts[key] || 0) >= needCount;
+        if (isComplete !== wasComplete){
+          renderShoppingList();
+        } else {
+          refreshCount();
+          updateShopTally();
+        }
+      }
       item.querySelector('.tally-plus').addEventListener('click', function(e){
         e.preventDefault();
+        var wasComplete = (tallyCounts[key] || 0) >= needCount;
         tallyCounts[key] = (tallyCounts[key] || 0) + 1;
-        refreshCount();
-        saveTallyCounts();
-        updateShopTally();
+        afterTallyChange(wasComplete);
       });
       item.querySelector('.tally-minus').addEventListener('click', function(e){
         e.preventDefault();
+        var wasComplete = (tallyCounts[key] || 0) >= needCount;
         tallyCounts[key] = Math.max((tallyCounts[key] || 0) - 1, 0);
-        refreshCount();
-        saveTallyCounts();
-        updateShopTally();
+        afterTallyChange(wasComplete);
       });
       countInput.addEventListener('change', function(){
+        var wasComplete = (tallyCounts[key] || 0) >= needCount;
         var val = parseInt(countInput.value, 10);
         if (isNaN(val) || val < 0) val = 0;
         tallyCounts[key] = val;
-        refreshCount();
-        saveTallyCounts();
-        updateShopTally();
+        afterTallyChange(wasComplete);
       });
       item.querySelector('.tally-drawer-select').addEventListener('change', function(e){
         var val = e.target.value;
@@ -6451,6 +6473,7 @@
   function renderShoppingList(){
     tallyRowResolvers = {};
     lastShopListItems = [];
+    lastShopSections = [];
     var output = document.getElementById('shopping-list-output');
     var onlyShort = document.getElementById('shop-only-short').checked;
     var combine = document.getElementById('shop-combine-toggle').checked;
@@ -6475,6 +6498,7 @@
     tallyModeBtn.style.borderColor = shopTallyMode ? 'var(--lego-green)' : '';
     document.getElementById('shop-tally-reset-btn').style.display = shopTallyMode ? 'inline-block' : 'none';
     document.getElementById('shop-tally-commit-btn').style.display = shopTallyMode ? 'inline-block' : 'none';
+    document.getElementById('shop-tally-show-completed-label').style.display = shopTallyMode ? 'flex' : 'none';
     var top20Keys = null;
     if (shopTop20Only){
       var top20Items = getTop20Items();
@@ -6575,21 +6599,33 @@
       var comboItems = Object.keys(byKey).map(function(k){ return byKey[k]; });
       comboItems.forEach(function(it){ it._need = it.need; it._buildLabel = Object.keys(it.builds).sort().join(', '); });
       comboItems.sort(shopCompoundComparator(sortRules));
-      lastShopListItems = comboItems.map(function(it){
-        return { partNum: it.partNum, color: it.color, desc: it.desc, elementId: it.elementId, need: it._need, buildLabel: it._buildLabel };
-      });
 
       var section = document.createElement('div');
       section.className = 'shop-section';
       var haveLabel = shopSectionLabel(comboItems, function(it){ return 'combo|'+it.partNum+'|'+it.color; }, function(it){ return it.need; });
       section.innerHTML = '<h3 class="shop-build-title">Combined list <span class="shop-build-tally">'+haveLabel+'</span></h3>';
+      lastShopSections.push({ el: section, items: comboItems.map(function(it){ return { key: 'combo|'+it.partNum+'|'+it.color, need: it._need }; }) });
+      comboItems.forEach(function(it){
+        tallyRowResolvers['combo|'+it.partNum+'|'+it.color] = { mode: 'combo', partNum: it.partNum, color: it.color };
+      });
+
+      var showCompleted = shopTallyMode && document.getElementById('shop-tally-show-completed').checked;
+      var displayComboItems = applyTallyCompletionFilter(comboItems, function(it){ return 'combo|'+it.partNum+'|'+it.color; }, function(it){ return it._need; }, showCompleted);
+      lastShopListItems = displayComboItems.map(function(it){
+        return { partNum: it.partNum, color: it.color, desc: it.desc, elementId: it.elementId, need: it._need, buildLabel: it._buildLabel };
+      });
+
       var list = document.createElement('div');
       list.className = 'shop-items';
-      appendGroupedItems(list, comboItems, sortRules[0].field, false, function(it){
-        var key = 'combo|' + it.partNum + '|' + it.color;
-        var fakeRow = { partNum: it.partNum, color: it.color, desc: it.desc, elementId: it.elementId };
-        return buildShopItemRow(fakeRow, key, it.need, { mode: 'combo', partNum: it.partNum, color: it.color });
-      });
+      if (shopTallyMode && !displayComboItems.length && comboItems.length){
+        list.innerHTML = '<div class="empty-msg">All found \u2014 nice work! Check "Show completed parts" to see them again.</div>';
+      } else {
+        appendGroupedItems(list, displayComboItems, sortRules[0].field, false, function(it){
+          var key = 'combo|' + it.partNum + '|' + it.color;
+          var fakeRow = { partNum: it.partNum, color: it.color, desc: it.desc, elementId: it.elementId };
+          return buildShopItemRow(fakeRow, key, it.need, { mode: 'combo', partNum: it.partNum, color: it.color });
+        });
+      }
       section.appendChild(list);
       frag.appendChild(section);
     } else {
@@ -6597,19 +6633,32 @@
         var rows = pool.filter(function(p){ return p.row.moc === moc; }).map(function(p){ p.row._need = p.need; p.row._buildLabel = moc; return p.row; });
         if (!rows.length) return;
         rows = rows.slice().sort(shopCompoundComparator(sortRules));
-        lastShopListItems = lastShopListItems.concat(rows.map(function(r){
-          return { partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId, need: r._need, buildLabel: r._buildLabel };
-        }));
+
         var section = document.createElement('div');
         section.className = 'shop-section';
         var haveLabel = shopSectionLabel(rows, itemKey, function(r){ return r._need; });
         section.innerHTML = '<h3 class="shop-build-title">'+escapeHtml(moc)+' <span class="shop-build-tally">'+haveLabel+'</span></h3>';
+        lastShopSections.push({ el: section, items: rows.map(function(r){ return { key: itemKey(r), need: r._need }; }) });
+        rows.forEach(function(r){
+          tallyRowResolvers[itemKey(r)] = { mode: 'single', partNum: r.partNum, color: r.color, moc: r.moc };
+        });
+
+        var showCompleted = shopTallyMode && document.getElementById('shop-tally-show-completed').checked;
+        var displayRows = applyTallyCompletionFilter(rows, itemKey, function(r){ return r._need; }, showCompleted);
+        lastShopListItems = lastShopListItems.concat(displayRows.map(function(r){
+          return { partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId, need: r._need, buildLabel: r._buildLabel };
+        }));
+
         var list = document.createElement('div');
         list.className = 'shop-items';
-        appendGroupedItems(list, rows, sortRules[0].field, sortRules[0].field === 'build', function(r){
-          var key = itemKey(r);
-          return buildShopItemRow(r, key, r._need, { mode: 'single', partNum: r.partNum, color: r.color, moc: r.moc });
-        });
+        if (shopTallyMode && !displayRows.length && rows.length){
+          list.innerHTML = '<div class="empty-msg">All found \u2014 nice work! Check "Show completed parts" to see them again.</div>';
+        } else {
+          appendGroupedItems(list, displayRows, sortRules[0].field, sortRules[0].field === 'build', function(r){
+            var key = itemKey(r);
+            return buildShopItemRow(r, key, r._need, { mode: 'single', partNum: r.partNum, color: r.color, moc: r.moc });
+          });
+        }
         section.appendChild(list);
         frag.appendChild(section);
       });
@@ -6694,9 +6743,15 @@
     shopTallyMode = !shopTallyMode;
     renderShoppingList();
   });
+  document.getElementById('shop-tally-show-completed').addEventListener('change', renderShoppingList);
   document.getElementById('shop-tally-reset-btn').addEventListener('click', function(){
-    var output = document.getElementById('shopping-list-output');
-    var keys = Array.from(output.querySelectorAll('.shop-item-tally')).map(function(el){ return el.dataset.key; });
+    var seen = {};
+    var keys = [];
+    lastShopSections.forEach(function(sec){
+      sec.items.forEach(function(item){
+        if (!seen[item.key]){ seen[item.key] = true; keys.push(item.key); }
+      });
+    });
     if (!keys.length) return;
     if (!confirm('Reset the found count back to 0 for all '+keys.length+' item'+(keys.length===1?'':'s')+' in this list?')) return;
     keys.forEach(function(k){ delete tallyCounts[k]; });
