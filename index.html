@@ -373,6 +373,7 @@
       <div class="row" style="gap:8px;">
         <button id="top-report-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 report (CSV)</button>
         <button id="top-report-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 report (PDF)</button>
+        <button id="top-report-bycolor-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="Same 20 parts, sorted by color, then part, then quantity"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 report (by Color, PDF)</button>
         <button id="top-report-landscape-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="Landscape layout with two columns of parts side by side"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 report (Landscape, 2-col)</button>
       </div>
     </div>
@@ -508,6 +509,7 @@
         <button id="shop-clear-checks-btn" class="icon-btn"><i class="ti ti-eraser" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Clear checkmarks</button>
       </div>
       <p style="color: var(--text-muted); font-size: 12px; margin-top: 10px;">Checkmarks are saved as you go, so you can close this and pick up your shopping trip later.</p>
+      <p style="color: var(--text-muted); font-size: 12px; margin-top: 4px;">Quantities here are reduced by anything already found and filed into a drawer, even before it's officially assigned to a build.</p>
     </div>
   </div>
 
@@ -2057,9 +2059,9 @@
         startY: 70,
         head: [['','Color','Description','Short']],
         body: body,
-        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 35, valign: 'middle' },
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
         headStyles: { fillColor: [0, 166, 94], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 40 }, 2: { cellWidth: 216 } },
+        columnStyles: { 0: { cellWidth: 44 }, 2: { cellWidth: 212 } },
         didDrawCell: function(data){
           if (data.section !== 'body' || data.column.index !== 0) return;
           var elementId = rowMeta[data.row.index];
@@ -4437,13 +4439,13 @@
           : ['', String(i+1), it.color, it.desc, it.need.toLocaleString()];
       });
       var columnStyles = showBuildCol
-        ? { 0: { cellWidth: 40 }, 1: { cellWidth: 20 }, 3: { cellWidth: 149 }, 4: { cellWidth: 105 } }
-        : { 0: { cellWidth: 40 }, 1: { cellWidth: 20 }, 3: { cellWidth: 254 } };
+        ? { 0: { cellWidth: 44 }, 1: { cellWidth: 20 }, 3: { cellWidth: 145 }, 4: { cellWidth: 105 } }
+        : { 0: { cellWidth: 44 }, 1: { cellWidth: 20 }, 3: { cellWidth: 250 } };
       doc.autoTable({
         startY: 70,
         head: [head],
         body: body,
-        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 35, valign: 'middle' },
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
         headStyles: { fillColor: [255, 130, 0], textColor: 255 },
         columnStyles: columnStyles,
         didDrawCell: function(data){
@@ -4500,9 +4502,9 @@
         startY: 70,
         head: [['','#','Color','Description','Short']],
         body: body,
-        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 35, valign: 'middle' },
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
         headStyles: { fillColor: [0, 85, 191], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 40 }, 1: { cellWidth: 20 }, 3: { cellWidth: 264 } },
+        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 20 }, 3: { cellWidth: 260 } },
         didDrawCell: function(data){
           if (data.section !== 'body' || data.column.index !== 0) return;
           var it = items[data.row.index];
@@ -4518,6 +4520,65 @@
         }
       });
       doc.save('lego-top-20-most-needed.pdf');
+    }).catch(function(err){
+      alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
+    }).then(function(){
+      if (btn){ btn.disabled = false; btn.innerHTML = prevBtnHtml; }
+    });
+  }
+
+  function generateTop20ByColorPDF(){
+    var items = getTop20Items().slice().sort(function(a,b){
+      return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.short - b.short);
+    });
+    if (!items.length){
+      alert('Nothing to report \u2014 no parts are currently short.');
+      return;
+    }
+    var btn = document.getElementById('top-report-bycolor-pdf-btn');
+    var prevBtnHtml = btn ? btn.innerHTML : null;
+    if (btn){
+      btn.disabled = true;
+      btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating\u2026';
+    }
+
+    var uniqueIds = Array.from(new Set(items.map(function(it){ return it.elementId; }).filter(Boolean)));
+    Promise.all(uniqueIds.map(function(id){
+      return fetchPartImageForPdf(id).then(function(dataUrl){ return [id, dataUrl]; });
+    })).then(function(pairs){
+      var imgMap = {};
+      pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
+
+      var doc = getPdfDoc();
+      if (!doc) return;
+      pdfHeader(doc, 'Top 20 Most Needed Parts \u2014 by Color',
+        'Generated ' + new Date().toLocaleDateString() + ' \u00b7 sorted by color, then part, then quantity \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
+
+      var body = items.map(function(it, i){
+        return ['', String(i+1), it.color, it.desc, it.short.toLocaleString()];
+      });
+      doc.autoTable({
+        startY: 70,
+        head: [['','#','Color','Description','Short']],
+        body: body,
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
+        headStyles: { fillColor: [0, 85, 191], textColor: 255 },
+        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 20 }, 3: { cellWidth: 260 } },
+        didDrawCell: function(data){
+          if (data.section !== 'body' || data.column.index !== 0) return;
+          var it = items[data.row.index];
+          if (!it) return;
+          var dataUrl = it.elementId && imgMap[it.elementId];
+          if (!dataUrl) return;
+          try {
+            var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
+            var pad = 3;
+            var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
+            doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
+          } catch(e){ /* skip malformed image, leave cell blank */ }
+        }
+      });
+      doc.save('lego-top-20-by-color.pdf');
     }).catch(function(err){
       alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
     }).then(function(){
@@ -4570,12 +4631,12 @@
         startY: 70,
         head: [['','#','Color','Description','Short','','','#','Color','Description','Short']],
         body: body,
-        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 35, valign: 'middle' },
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
         headStyles: { fillColor: [0, 85, 191], textColor: 255 },
         columnStyles: {
-          0: { cellWidth: 40 }, 1: { cellWidth: 20 }, 2: { cellWidth: 50 }, 3: { cellWidth: 201 }, 4: { cellWidth: 32 },
+          0: { cellWidth: 44 }, 1: { cellWidth: 20 }, 2: { cellWidth: 50 }, 3: { cellWidth: 197 }, 4: { cellWidth: 32 },
           5: { cellWidth: 14 },
-          6: { cellWidth: 40 }, 7: { cellWidth: 20 }, 8: { cellWidth: 50 }, 9: { cellWidth: 201 }, 10: { cellWidth: 32 }
+          6: { cellWidth: 44 }, 7: { cellWidth: 20 }, 8: { cellWidth: 50 }, 9: { cellWidth: 197 }, 10: { cellWidth: 32 }
         },
         didParseCell: function(data){
           if (data.column.index === 5){
@@ -4824,6 +4885,7 @@
   document.getElementById('shop-export-csv-btn').addEventListener('click', exportShoppingList);
   document.getElementById('top-report-btn').addEventListener('click', exportTopNeededReport);
   document.getElementById('top-report-pdf-btn').addEventListener('click', generateTop20PDF);
+  document.getElementById('top-report-bycolor-pdf-btn').addEventListener('click', generateTop20ByColorPDF);
   document.getElementById('top-report-landscape-pdf-btn').addEventListener('click', generateTop20LandscapePDF);
   document.querySelectorAll('#lego-inv-root th[data-sort]').forEach(function(th){
     th.addEventListener('click', function(){
@@ -6354,13 +6416,28 @@
       '<div style="font-size:12px; color:var(--text-secondary); margin-bottom:16px;">'+namesSubtitle+' &middot; generated '+new Date().toLocaleDateString()+'</div>';
     headerSlot.appendChild(printHeader);
 
-    // Gather filtered rows across all selected builds with their per-row need count
+    // Gather filtered rows across all selected builds with their per-row need count,
+    // net of anything already found and sitting in a drawer (not yet assigned to a build)
+    var drawerStockByPartColor = {};
+    drawerParts.forEach(function(p){
+      var key = p.partNum + '|' + p.color;
+      drawerStockByPartColor[key] = (drawerStockByPartColor[key] || 0) + (p.qty || 0);
+    });
+
     var pool = [];
     names.forEach(function(moc){
       state.rows.filter(function(r){ return r.moc === moc; }).forEach(function(r){
         if (top20Keys && !top20Keys.has(r.partNum + '|' + r.color)) return;
         if (onlyShort && statusFor(r) !== 'short') return;
         var needCount = onlyShort ? Math.max(r.qty - r.onHand, 0) : r.qty;
+        var pcKey = r.partNum + '|' + r.color;
+        var availableInDrawers = drawerStockByPartColor[pcKey] || 0;
+        if (availableInDrawers > 0){
+          var claimed = Math.min(availableInDrawers, needCount);
+          drawerStockByPartColor[pcKey] = availableInDrawers - claimed;
+          needCount -= claimed;
+        }
+        if (needCount <= 0) return;
         if (!passesShopFilters(r, q, colorFilter, minQty, needCount, priorityFilter)) return;
         pool.push({ row: r, need: needCount });
       });
