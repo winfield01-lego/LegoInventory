@@ -200,7 +200,9 @@
 #lego-inv-root .tally-counter button:hover { border-color: var(--lego-blue); background: var(--surface-1); }
 #lego-inv-root .tally-counter .tally-minus { color: var(--text-danger); }
 #lego-inv-root .tally-counter .tally-plus { color: var(--lego-green); }
-#lego-inv-root .tally-count { font-weight: 800; font-size: 16px; min-width: 64px; text-align: center; }
+#lego-inv-root .tally-count-input { font-weight: 800; font-size: 16px; text-align: center; width: 56px; height: 40px; border-radius: 10px; border: 2px solid var(--border); background: var(--surface-2); color: var(--lego-black); }
+#lego-inv-root .tally-count-input:focus { outline: none; border-color: var(--lego-blue); }
+#lego-inv-root .tally-need-label { font-weight: 700; font-size: 14px; color: var(--text-secondary); }
 #lego-inv-root .tally-controls-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
 #lego-inv-root .tally-drawer-select { flex: 1 1 130px; min-width: 0; height: 32px; font-size: 12px; }
 #lego-inv-root .shop-qty { font-weight: 800; min-width: 34px; }
@@ -374,6 +376,7 @@
         <button id="top-report-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 report (CSV)</button>
         <button id="top-report-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 report (PDF)</button>
         <button id="top-report-bycolor-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="Same 20 parts, sorted by color, then part, then quantity"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 report (by Color, PDF)</button>
+        <button id="top-report-bycolor-landscape-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="Landscape layout with two columns, sorted by color, then part, then quantity"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 report (by Color, Landscape, 2-col)</button>
         <button id="top-report-landscape-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="Landscape layout with two columns of parts side by side"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 report (Landscape, 2-col)</button>
       </div>
     </div>
@@ -487,7 +490,7 @@
 <div id="tab-shopping" style="display:none;">
   <div class="row no-print" style="justify-content: space-between; align-items:flex-start; flex-wrap:wrap; gap:16px; margin-bottom: 16px;">
     <div style="flex:1; min-width:220px;">
-      <div class="row" style="margin-bottom:8px;">
+      <div class="row" style="margin-bottom:8px; flex-wrap:wrap; row-gap:8px;">
         <strong style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color: var(--text-secondary);">Select builds</strong>
         <button id="shop-select-all" class="icon-btn" style="margin-left:auto; padding:3px 8px;">Select all</button>
         <button id="shop-select-none" class="icon-btn" style="padding:3px 8px;">Clear</button>
@@ -4669,6 +4672,91 @@
     });
   }
 
+  function generateTop20ByColorLandscapePDF(){
+    var items = getTop20Items().slice().sort(function(a,b){
+      return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.short - b.short);
+    });
+    if (!items.length){
+      alert('Nothing to report \u2014 no parts are currently short.');
+      return;
+    }
+    var btn = document.getElementById('top-report-bycolor-landscape-pdf-btn');
+    var prevBtnHtml = btn ? btn.innerHTML : null;
+    if (btn){
+      btn.disabled = true;
+      btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating\u2026';
+    }
+
+    var uniqueIds = Array.from(new Set(items.map(function(it){ return it.elementId; }).filter(Boolean)));
+    Promise.all(uniqueIds.map(function(id){
+      return fetchPartImageForPdf(id).then(function(dataUrl){ return [id, dataUrl]; });
+    })).then(function(pairs){
+      var imgMap = {};
+      pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
+
+      var doc = new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' });
+      pdfHeader(doc, 'Top 20 Most Needed Parts \u2014 by Color',
+        'Generated ' + new Date().toLocaleDateString() + ' \u00b7 sorted by color, then part, then quantity \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
+
+      var half = Math.ceil(items.length / 2);
+      var leftItems = items.slice(0, half);
+      var rightItems = items.slice(half);
+      var rowCount = Math.max(leftItems.length, rightItems.length);
+
+      var body = [];
+      var rowElementIds = [];
+      for (var i = 0; i < rowCount; i++){
+        var L = leftItems[i], R = rightItems[i];
+        body.push([
+          '', L ? String(i + 1) : '', L ? L.color : '', L ? L.desc : '', L ? L.short.toLocaleString() : '',
+          '',
+          '', R ? String(half + i + 1) : '', R ? R.color : '', R ? R.desc : '', R ? R.short.toLocaleString() : ''
+        ]);
+        rowElementIds.push([L ? L.elementId : null, R ? R.elementId : null]);
+      }
+
+      doc.autoTable({
+        startY: 70,
+        head: [['','#','Color','Description','Short','','','#','Color','Description','Short']],
+        body: body,
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
+        headStyles: { fillColor: [0, 85, 191], textColor: 255 },
+        columnStyles: {
+          0: { cellWidth: 44 }, 1: { cellWidth: 20 }, 2: { cellWidth: 50 }, 3: { cellWidth: 197 }, 4: { cellWidth: 32 },
+          5: { cellWidth: 14 },
+          6: { cellWidth: 44 }, 7: { cellWidth: 20 }, 8: { cellWidth: 50 }, 9: { cellWidth: 197 }, 10: { cellWidth: 32 }
+        },
+        didParseCell: function(data){
+          if (data.column.index === 5){
+            data.cell.styles.lineWidth = 0;
+            data.cell.styles.fillColor = data.section === 'head' ? [0, 85, 191] : 255;
+          }
+        },
+        didDrawCell: function(data){
+          if (data.section !== 'body') return;
+          var pair = rowElementIds[data.row.index];
+          if (!pair) return;
+          var slot = data.column.index === 0 ? 0 : (data.column.index === 6 ? 1 : null);
+          if (slot === null) return;
+          var elementId = pair[slot];
+          var dataUrl = elementId && imgMap[elementId];
+          if (!dataUrl) return;
+          try {
+            var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
+            var pad = 3;
+            var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
+            doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
+          } catch(e){ /* skip malformed image, leave cell blank */ }
+        }
+      });
+      doc.save('lego-top-20-by-color-landscape.pdf');
+    }).catch(function(err){
+      alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
+    }).then(function(){
+      if (btn){ btn.disabled = false; btn.innerHTML = prevBtnHtml; }
+    });
+  }
+
   function generateSetsPDF(){
     if (!ownedSets.length){
       alert('No sets to report \u2014 add a set first.');
@@ -4886,6 +4974,7 @@
   document.getElementById('top-report-btn').addEventListener('click', exportTopNeededReport);
   document.getElementById('top-report-pdf-btn').addEventListener('click', generateTop20PDF);
   document.getElementById('top-report-bycolor-pdf-btn').addEventListener('click', generateTop20ByColorPDF);
+  document.getElementById('top-report-bycolor-landscape-pdf-btn').addEventListener('click', generateTop20ByColorLandscapePDF);
   document.getElementById('top-report-landscape-pdf-btn').addEventListener('click', generateTop20LandscapePDF);
   document.querySelectorAll('#lego-inv-root th[data-sort]').forEach(function(th){
     th.addEventListener('click', function(){
@@ -6055,12 +6144,11 @@
     var tallyBar = output.querySelector('.shop-tally-bar');
 
     if (shopTallyMode){
-      var rows = output.querySelectorAll('.shop-item-tally .tally-count');
+      var rows = output.querySelectorAll('.shop-item-tally');
       var totalNeed = 0, totalFound = 0;
-      rows.forEach(function(span){
-        var parts = span.textContent.split('/');
-        var found = parseInt(parts[0], 10) || 0;
-        var need = parseInt(parts[1], 10) || 0;
+      rows.forEach(function(el){
+        var need = parseInt(el.dataset.need, 10) || 0;
+        var found = tallyCounts[el.dataset.key] || 0;
         totalFound += Math.min(found, need);
         totalNeed += need;
       });
@@ -6070,12 +6158,11 @@
           '<div style="font-size:13px; color:var(--text-secondary);">'+totalFound.toLocaleString()+' of '+totalNeed.toLocaleString()+' pieces found</div>';
       }
       output.querySelectorAll('.shop-section').forEach(function(section){
-        var spans = section.querySelectorAll('.tally-count');
+        var els = section.querySelectorAll('.shop-item-tally');
         var need = 0, found = 0;
-        spans.forEach(function(span){
-          var parts = span.textContent.split('/');
-          var f = parseInt(parts[0], 10) || 0;
-          var n = parseInt(parts[1], 10) || 0;
+        els.forEach(function(el){
+          var n = parseInt(el.dataset.need, 10) || 0;
+          var f = tallyCounts[el.dataset.key] || 0;
           found += Math.min(f, n);
           need += n;
         });
@@ -6287,6 +6374,7 @@
       var item = document.createElement('div');
       item.className = 'shop-item shop-item-tally' + (count >= needCount ? ' checked' : '');
       item.dataset.key = key;
+      item.dataset.need = needCount;
       var assignedDrawer = tallyDrawerAssignments[key] || '';
       var drawerOptions = '<option value="">No drawer assigned</option>' + drawers.map(function(d){
         return '<option value="'+escapeHtml(d.id)+'"'+(d.id===assignedDrawer?' selected':'')+'>'+escapeHtml(d.label)+'</option>';
@@ -6300,14 +6388,15 @@
           '<select class="tally-drawer-select" aria-label="Drawer for this part">'+drawerOptions+'</select>' +
           '<div class="tally-counter">' +
             '<button type="button" class="tally-minus" aria-label="Decrease found count">\u2212</button>' +
-            '<span class="tally-count">'+count+' / '+needCount+'</span>' +
+            '<input type="number" class="tally-count-input" min="0" step="1" value="'+count+'" aria-label="Found count for this part" />' +
+            '<span class="tally-need-label">/ '+needCount+'</span>' +
             '<button type="button" class="tally-plus" aria-label="Increase found count">+</button>' +
           '</div>' +
         '</div>';
       buildThumb(r, item.querySelector('.part-thumb-wrap'));
-      var countSpan = item.querySelector('.tally-count');
+      var countInput = item.querySelector('.tally-count-input');
       function refreshCount(){
-        countSpan.textContent = (tallyCounts[key] || 0) + ' / ' + needCount;
+        countInput.value = tallyCounts[key] || 0;
         item.classList.toggle('checked', (tallyCounts[key] || 0) >= needCount);
       }
       item.querySelector('.tally-plus').addEventListener('click', function(e){
@@ -6320,6 +6409,14 @@
       item.querySelector('.tally-minus').addEventListener('click', function(e){
         e.preventDefault();
         tallyCounts[key] = Math.max((tallyCounts[key] || 0) - 1, 0);
+        refreshCount();
+        saveTallyCounts();
+        updateShopTally();
+      });
+      countInput.addEventListener('change', function(){
+        var val = parseInt(countInput.value, 10);
+        if (isNaN(val) || val < 0) val = 0;
+        tallyCounts[key] = val;
         refreshCount();
         saveTallyCounts();
         updateShopTally();
