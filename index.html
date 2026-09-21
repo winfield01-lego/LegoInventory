@@ -135,6 +135,7 @@
 #lego-inv-root .drawer-card .drawer-edit-field input { height: 28px; padding: 3px 8px; font-size: 12px; border: 2px solid var(--border); border-radius: 8px; background: var(--surface-1); color: var(--text-primary); }
 #lego-inv-root .drawer-card .drawer-edit-field input:focus { outline: none; border-color: var(--lego-blue); }
 #lego-inv-root .drawer-card .drawer-label-edit { width: 130px; font-weight: 700; }
+#lego-inv-root .drawer-card .drawer-group-edit { width: 90px; }
 #lego-inv-root .drawer-card .drawer-notes-edit { width: 200px; }
 #lego-inv-root .drawer-card .drawer-meta { flex: 1 1 auto; font-size: 12px; color: var(--text-secondary); white-space: nowrap; }
 #lego-inv-root .qty-edit-input { width: 100%; max-width: 60px; box-sizing: border-box; height: 28px; padding: 2px 6px; text-align: center; }
@@ -500,6 +501,7 @@
         <button id="shop-tally-mode-btn" class="icon-btn" style="padding:3px 8px;" title="Switch to a counter view for tallying parts as you find them while shopping"><i class="ti ti-hash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Tally Mode</button>
         <button id="shop-tally-reset-btn" class="icon-btn" style="padding:3px 8px; display:none;" title="Zero out the found counts for everything in the current list"><i class="ti ti-refresh" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Reset Tally</button>
         <label id="shop-tally-show-completed-label" class="checkbox-label" style="display:none; font-size:12px;"><input type="checkbox" id="shop-tally-show-completed" /> Show completed parts</label>
+        <label id="shop-tally-drawer-group-label" style="display:none; font-size:12px; align-items:center; gap:6px;">Drawer picker: <select id="shop-tally-drawer-group-filter"><option value="">All groups</option></select></label>
         <button id="shop-tally-commit-btn" class="icon-btn lockable" style="padding:3px 8px; display:none; color: var(--lego-green); border-color: var(--lego-green);" title="Files found quantities into their assigned drawers. Does not change how many pieces your builds show as still needed."><i class="ti ti-check" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> File to Drawers</button>
       </div>
       <div id="shop-moc-checks" style="max-height:180px; overflow-y:auto; border:2px solid var(--border); border-radius:var(--radius); padding:8px; background: var(--surface-2);"></div>
@@ -744,6 +746,7 @@
         <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Add a drawer</p>
         <div class="controls" style="margin-bottom: 0;">
           <input type="text" id="drawer-label-input" placeholder="Drawer label, e.g. A3 or Red Bin" style="min-width:180px;" />
+          <input type="text" id="drawer-group-input" placeholder="Group (optional), e.g. A" style="min-width:130px;" />
           <input type="text" id="drawer-notes-input" placeholder="Notes / location (optional)" style="min-width:200px;" />
           <button id="drawer-add-btn" class="lockable"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add drawer</button>
         </div>
@@ -752,11 +755,29 @@
       <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 16px;">
         <button type="button" id="drawer-bulk-add-toggle" class="icon-btn" style="padding:3px 10px;"><i class="ti ti-chevron-right" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Bulk add drawers</button>
         <div id="drawer-bulk-add-panel" style="display:none; margin-top:10px;">
-          <p style="margin: 0 0 8px; color: var(--text-secondary); font-size: 12px;">Paste or type a list of drawer names, one per line (commas also work). Each becomes its own drawer with no notes; add notes individually afterward if you want them.</p>
+          <p style="margin: 0 0 8px; color: var(--text-secondary); font-size: 12px;">Paste or type a list of drawer names, one per line (commas also work). Optionally assign them all to the same group right away.</p>
           <textarea id="drawer-bulk-add-textarea" class="lockable" placeholder="A1&#10;A2&#10;A3&#10;Red Bin" style="width:100%; min-height:110px; font-family:inherit; font-size:13px; padding:8px; border-radius:8px; border:2px solid var(--border); background:var(--surface-2); color:var(--lego-black); resize:vertical;"></textarea>
           <div class="row" style="margin-top:8px;">
+            <input type="text" id="drawer-bulk-add-group" class="lockable" placeholder="Group for all of these (optional), e.g. A" style="min-width:200px;" />
             <button id="drawer-bulk-add-btn" class="lockable"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add all</button>
+          </div>
+          <div class="row" style="margin-top:6px;">
             <span id="drawer-bulk-add-status" style="font-size:12px; color:var(--text-secondary);"></span>
+          </div>
+        </div>
+      </div>
+
+      <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 16px;">
+        <button type="button" id="drawer-bulk-group-toggle" class="icon-btn" style="padding:3px 10px;"><i class="ti ti-chevron-right" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Group existing drawers</button>
+        <div id="drawer-bulk-group-panel" style="display:none; margin-top:10px;">
+          <p style="margin: 0 0 8px; color: var(--text-secondary); font-size: 12px;">Assign a group to every existing drawer whose name starts with a given prefix &mdash; useful for labeling A1&ndash;A60 as group "A" in one step, without retyping each drawer.</p>
+          <div class="controls" style="margin-bottom: 0;">
+            <input type="text" id="drawer-bulk-group-prefix" class="lockable" placeholder="Name starts with, e.g. A" style="min-width:160px;" />
+            <input type="text" id="drawer-bulk-group-name" class="lockable" placeholder="Group name, e.g. A" style="min-width:160px;" />
+            <button id="drawer-bulk-group-btn" class="lockable"><i class="ti ti-tags" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Assign group</button>
+          </div>
+          <div class="row" style="margin-top:6px;">
+            <span id="drawer-bulk-group-status" style="font-size:12px; color:var(--text-secondary);"></span>
           </div>
         </div>
       </div>
@@ -807,6 +828,7 @@
 
       <div class="controls">
         <input type="text" id="drawer-parts-search" placeholder="Search part #, description, color, or drawer" />
+        <select id="drawer-parts-group-filter"><option value="">All groups</option></select>
         <select id="drawer-parts-drawer-filter"><option value="">All drawers</option></select>
         <select id="drawer-parts-color-filter"><option value="">All colors</option></select>
       </div>
@@ -1248,6 +1270,7 @@
   var shopTop20Only = false;
   var shopAlmostCompleteOnly = false;
   var shopTallyMode = false;
+  var shopTallyDrawerGroupFilter = '';
   var tallyCounts = {};
   var tallyDrawerAssignments = {};
   var tallyRowResolvers = {};
@@ -1265,6 +1288,7 @@
   var MOC_THEMES_KEY = 'moc-themes-v1';
   var mocThemes = {};
   var expandedMocBuildThemes = new Set();
+  var expandedDrawerGroups = new Set();
   var expandedOverviewMocThemes = new Set();
   var REBRICKABLE_KEY_STORAGE = 'rebrickable-api-key';
   var USE_SET_PROXY_KEY = 'use-set-cors-proxy';
@@ -3720,6 +3744,100 @@
   });
   document.getElementById('detail-modal-photo-push').addEventListener('click', pushPhotoToGithub);
 
+  var DRAWER_UNGROUPED_LABEL = '(Ungrouped)';
+
+  function isDrawerGroupOpen(groupKey){
+    if (groupKey === DRAWER_UNGROUPED_LABEL) return !expandedDrawerGroups.has('__closed__' + groupKey);
+    return expandedDrawerGroups.has(groupKey);
+  }
+  function toggleDrawerGroupOpen(groupKey){
+    if (groupKey === DRAWER_UNGROUPED_LABEL){
+      var closedKey = '__closed__' + groupKey;
+      if (expandedDrawerGroups.has(closedKey)) expandedDrawerGroups.delete(closedKey); else expandedDrawerGroups.add(closedKey);
+    } else if (expandedDrawerGroups.has(groupKey)){
+      expandedDrawerGroups.delete(groupKey);
+    } else {
+      expandedDrawerGroups.add(groupKey);
+    }
+  }
+
+  function drawerGroupsSorted(){
+    var groups = {};
+    drawers.forEach(function(d){
+      var g = (d.group && d.group.trim()) ? d.group.trim() : DRAWER_UNGROUPED_LABEL;
+      if (!groups[g]) groups[g] = [];
+      groups[g].push(d);
+    });
+    var names = Object.keys(groups).sort(function(a,b){
+      if (a === DRAWER_UNGROUPED_LABEL) return 1;
+      if (b === DRAWER_UNGROUPED_LABEL) return -1;
+      return a.localeCompare(b, undefined, {numeric:true});
+    });
+    return names.map(function(g){ return { group: g, drawers: groups[g] }; });
+  }
+
+  function drawerOptGroupsHtml(selectedId, blankLabel, groupFilter){
+    var html = blankLabel ? '<option value="">'+escapeHtml(blankLabel)+'</option>' : '';
+    drawerGroupsSorted().forEach(function(g){
+      if (groupFilter && g.group !== groupFilter) return;
+      var opts = g.drawers.slice().sort(function(a,b){ return a.label.localeCompare(b.label, undefined, {numeric:true}); })
+        .map(function(d){ return '<option value="'+escapeHtml(d.id)+'"'+(d.id===selectedId?' selected':'')+'>'+escapeHtml(d.label)+'</option>'; }).join('');
+      html += '<optgroup label="'+escapeHtml(g.group)+'">'+opts+'</optgroup>';
+    });
+    return html;
+  }
+
+  function buildDrawerCard(d){
+    var rows = drawerParts.filter(function(p){ return p.drawerId === d.id; });
+    var totalQty = rows.reduce(function(sum, r){ return sum + r.qty; }, 0);
+    var card = document.createElement('div');
+    card.className = 'drawer-card';
+    card.innerHTML =
+      '<span class="drawer-edit-field"><input type="text" class="drawer-label-edit" value="'+escapeHtml(d.label)+'" /></span>' +
+      '<span class="drawer-edit-field"><input type="text" class="drawer-group-edit" placeholder="Group" value="'+escapeHtml(d.group || '')+'" /></span>' +
+      '<span class="drawer-edit-field"><input type="text" class="drawer-notes-edit" placeholder="Notes / location" value="'+escapeHtml(d.notes || '')+'" /></span>' +
+      '<span class="drawer-meta">'+rows.length+' part line'+(rows.length===1?'':'s')+' &middot; '+totalQty.toLocaleString()+' pcs</span>';
+    var labelInput = card.querySelector('.drawer-label-edit');
+    var groupInput = card.querySelector('.drawer-group-edit');
+    var notesInput = card.querySelector('.drawer-notes-edit');
+    labelInput.addEventListener('change', function(){
+      var newLabel = labelInput.value.trim();
+      if (!newLabel || newLabel === d.label) { labelInput.value = d.label; return; }
+      if (drawers.some(function(x){ return x !== d && x.label === newLabel; })){
+        alert('A drawer with that label already exists.');
+        labelInput.value = d.label;
+        return;
+      }
+      drawerParts.forEach(function(p){ if (p.drawerId === d.id) p.drawerId = newLabel; });
+      d.id = newLabel;
+      d.label = newLabel;
+      saveDrawers();
+      saveDrawerParts();
+      renderDrawersTab();
+    });
+    groupInput.addEventListener('change', function(){
+      d.group = groupInput.value.trim();
+      saveDrawers();
+      renderDrawersTab();
+    });
+    notesInput.addEventListener('change', function(){ d.notes = notesInput.value.trim(); saveDrawers(); });
+    var delBtn = document.createElement('button');
+    delBtn.className = 'icon-btn lockable';
+    delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); flex-shrink:0;';
+    delBtn.title = 'Remove this drawer';
+    delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Delete drawer';
+    delBtn.addEventListener('click', function(){
+      if (!confirm('Remove drawer "'+d.label+'" and its '+rows.length+' part line'+(rows.length===1?'':'s')+'?')) return;
+      drawers = drawers.filter(function(x){ return x.id !== d.id; });
+      drawerParts = drawerParts.filter(function(p){ return p.drawerId !== d.id; });
+      saveDrawers();
+      saveDrawerParts();
+      renderDrawersTab();
+    });
+    card.appendChild(delBtn);
+    return card;
+  }
+
   function renderDrawerCards(){
     var container = document.getElementById('drawer-cards-list');
     container.innerHTML = '';
@@ -3727,61 +3845,42 @@
       container.innerHTML = '<div class="empty-msg">No drawers added yet.</div>';
       return;
     }
-    drawers.forEach(function(d){
-      var rows = drawerParts.filter(function(p){ return p.drawerId === d.id; });
-      var totalQty = rows.reduce(function(sum, r){ return sum + r.qty; }, 0);
-      var card = document.createElement('div');
-      card.className = 'drawer-card';
-      card.innerHTML =
-        '<span class="drawer-edit-field"><input type="text" class="drawer-label-edit" value="'+escapeHtml(d.label)+'" /></span>' +
-        '<span class="drawer-edit-field"><input type="text" class="drawer-notes-edit" placeholder="Notes / location" value="'+escapeHtml(d.notes || '')+'" /></span>' +
-        '<span class="drawer-meta">'+rows.length+' part line'+(rows.length===1?'':'s')+' &middot; '+totalQty.toLocaleString()+' pcs</span>';
-      var labelInput = card.querySelector('.drawer-label-edit');
-      var notesInput = card.querySelector('.drawer-notes-edit');
-      labelInput.addEventListener('change', function(){
-        var newLabel = labelInput.value.trim();
-        if (!newLabel || newLabel === d.label) { labelInput.value = d.label; return; }
-        if (drawers.some(function(x){ return x !== d && x.label === newLabel; })){
-          alert('A drawer with that label already exists.');
-          labelInput.value = d.label;
-          return;
-        }
-        drawerParts.forEach(function(p){ if (p.drawerId === d.id) p.drawerId = newLabel; });
-        d.id = newLabel;
-        d.label = newLabel;
-        saveDrawers();
-        saveDrawerParts();
-        renderDrawersTab();
+    drawerGroupsSorted().forEach(function(g){
+      var isOpen = isDrawerGroupOpen(g.group);
+      var header = document.createElement('button');
+      header.type = 'button';
+      header.className = 'theme-group-header';
+      header.innerHTML =
+        '<i class="ti '+(isOpen ? 'ti-chevron-down' : 'ti-chevron-right')+'" aria-hidden="true"></i>' +
+        '<span>'+escapeHtml(g.group)+'</span>' +
+        '<span class="theme-group-count">('+g.drawers.length+')</span>';
+
+      var body = document.createElement('div');
+      body.style.display = isOpen ? 'block' : 'none';
+      g.drawers.slice().sort(function(a,b){ return a.label.localeCompare(b.label, undefined, {numeric:true}); }).forEach(function(d){
+        body.appendChild(buildDrawerCard(d));
       });
-      notesInput.addEventListener('change', function(){ d.notes = notesInput.value.trim(); saveDrawers(); });
-      var delBtn = document.createElement('button');
-      delBtn.className = 'icon-btn lockable';
-      delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); flex-shrink:0;';
-      delBtn.title = 'Remove this drawer';
-      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Delete drawer';
-      delBtn.addEventListener('click', function(){
-        if (!confirm('Remove drawer "'+d.label+'" and its '+rows.length+' part line'+(rows.length===1?'':'s')+'?')) return;
-        drawers = drawers.filter(function(x){ return x.id !== d.id; });
-        drawerParts = drawerParts.filter(function(p){ return p.drawerId !== d.id; });
-        saveDrawers();
-        saveDrawerParts();
-        renderDrawersTab();
+
+      header.addEventListener('click', function(){
+        toggleDrawerGroupOpen(g.group);
+        var nowOpen = isDrawerGroupOpen(g.group);
+        body.style.display = nowOpen ? 'block' : 'none';
+        header.querySelector('i').className = 'ti ' + (nowOpen ? 'ti-chevron-down' : 'ti-chevron-right');
       });
-      card.appendChild(delBtn);
-      container.appendChild(card);
+
+      container.appendChild(header);
+      container.appendChild(body);
     });
   }
 
   function populateDrawerDropdowns(){
-    var options = '<option value="">Which drawer?</option>' +
-      drawers.map(function(d){ return '<option value="'+escapeHtml(d.id)+'">'+escapeHtml(d.label)+'</option>'; }).join('');
     var csvSel = document.getElementById('drawer-csv-target');
     var csvCur = csvSel.value;
-    csvSel.innerHTML = options.replace('Which drawer?', 'Which drawer is this for?');
+    csvSel.innerHTML = drawerOptGroupsHtml(csvCur, 'Which drawer is this for?');
     csvSel.value = csvCur;
     var addSel = document.getElementById('dp-drawer-target');
     var addCur = addSel.value;
-    addSel.innerHTML = options;
+    addSel.innerHTML = drawerOptGroupsHtml(addCur, 'Which drawer?');
     addSel.value = addCur;
   }
 
@@ -3836,10 +3935,16 @@
 
   function getFilteredDrawerParts(){
     var q = (document.getElementById('drawer-parts-search').value || '').toLowerCase();
+    var groupFilter = document.getElementById('drawer-parts-group-filter').value;
     var drawerFilter = document.getElementById('drawer-parts-drawer-filter').value;
     var colorFilter = document.getElementById('drawer-parts-color-filter').value;
     var rows = drawerParts.filter(function(r){
       if (drawerFilter && r.drawerId !== drawerFilter) return false;
+      if (groupFilter){
+        var dInfo = drawers.find(function(d){ return d.id === r.drawerId; });
+        var dGroup = (dInfo && dInfo.group && dInfo.group.trim()) ? dInfo.group.trim() : DRAWER_UNGROUPED_LABEL;
+        if (dGroup !== groupFilter) return false;
+      }
       if (colorFilter && r.color !== colorFilter) return false;
       if (q){
         var drawerLabel = (drawers.find(function(d){ return d.id === r.drawerId; }) || {}).label || r.drawerId;
@@ -3862,10 +3967,24 @@
   }
 
   function renderDrawerPartsTable(){
+    var groupSel = document.getElementById('drawer-parts-group-filter');
+    var curGroup = groupSel.value;
+    var groupList = drawerGroupsSorted();
+    groupSel.innerHTML = '<option value="">All groups</option>' + groupList.map(function(g){ return '<option value="'+escapeHtml(g.group)+'">'+escapeHtml(g.group)+'</option>'; }).join('');
+    groupSel.value = curGroup;
+
     var drawerSel = document.getElementById('drawer-parts-drawer-filter');
     var curDrawer = drawerSel.value;
-    drawerSel.innerHTML = '<option value="">All drawers</option>' + drawers.map(function(d){ return '<option value="'+escapeHtml(d.id)+'">'+escapeHtml(d.label)+'</option>'; }).join('');
-    drawerSel.value = curDrawer;
+    var drawersForFilter = curGroup ? drawers.filter(function(d){ return ((d.group && d.group.trim()) ? d.group.trim() : DRAWER_UNGROUPED_LABEL) === curGroup; }) : drawers;
+    if (curGroup){
+      drawerSel.innerHTML = '<option value="">All drawers</option>' +
+        drawersForFilter.slice().sort(function(a,b){ return a.label.localeCompare(b.label, undefined, {numeric:true}); })
+          .map(function(d){ return '<option value="'+escapeHtml(d.id)+'">'+escapeHtml(d.label)+'</option>'; }).join('');
+    } else {
+      drawerSel.innerHTML = drawerOptGroupsHtml('', 'All drawers');
+    }
+    if (curDrawer && drawersForFilter.some(function(d){ return d.id === curDrawer; })) drawerSel.value = curDrawer;
+    else drawerSel.value = '';
 
     var colorSel = document.getElementById('drawer-parts-color-filter');
     var curColor = colorSel.value;
@@ -4019,9 +4138,11 @@
       return;
     }
     var notes = document.getElementById('drawer-notes-input').value.trim();
-    drawers.push({ id: label, label: label, notes: notes });
+    var group = document.getElementById('drawer-group-input').value.trim();
+    drawers.push({ id: label, label: label, notes: notes, group: group });
     saveDrawers();
     document.getElementById('drawer-label-input').value = '';
+    document.getElementById('drawer-group-input').value = '';
     document.getElementById('drawer-notes-input').value = '';
     renderDrawersTab();
   });
@@ -4034,9 +4155,45 @@
     icon.className = 'ti ' + (isOpen ? 'ti-chevron-right' : 'ti-chevron-down');
   });
 
+  document.getElementById('drawer-bulk-group-toggle').addEventListener('click', function(){
+    var panel = document.getElementById('drawer-bulk-group-panel');
+    var icon = this.querySelector('i');
+    var isOpen = panel.style.display !== 'none';
+    panel.style.display = isOpen ? 'none' : 'block';
+    icon.className = 'ti ' + (isOpen ? 'ti-chevron-right' : 'ti-chevron-down');
+  });
+
+  document.getElementById('drawer-bulk-group-btn').addEventListener('click', function(){
+    var prefix = document.getElementById('drawer-bulk-group-prefix').value.trim();
+    var groupName = document.getElementById('drawer-bulk-group-name').value.trim();
+    var statusEl = document.getElementById('drawer-bulk-group-status');
+    if (!prefix || !groupName){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Enter both a name prefix and a group name.';
+      return;
+    }
+    var prefixLower = prefix.toLowerCase();
+    var matches = drawers.filter(function(d){ return d.label.toLowerCase().indexOf(prefixLower) === 0; });
+    if (!matches.length){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'No drawers found starting with "' + prefix + '".';
+      return;
+    }
+    var preview = matches.slice(0, 8).map(function(d){ return d.label; }).join(', ') + (matches.length > 8 ? ', \u2026' : '');
+    if (!confirm('Set group to "' + groupName + '" for ' + matches.length + ' drawer' + (matches.length===1?'':'s') + ' starting with "' + prefix + '"?\n\n' + preview)) return;
+    matches.forEach(function(d){ d.group = groupName; });
+    saveDrawers();
+    renderDrawersTab();
+    document.getElementById('drawer-bulk-group-prefix').value = '';
+    document.getElementById('drawer-bulk-group-name').value = '';
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Set group "' + groupName + '" for ' + matches.length + ' drawer' + (matches.length===1?'':'s') + '.';
+  });
+
   document.getElementById('drawer-bulk-add-btn').addEventListener('click', function(){
     var textarea = document.getElementById('drawer-bulk-add-textarea');
     var statusEl = document.getElementById('drawer-bulk-add-status');
+    var group = document.getElementById('drawer-bulk-add-group').value.trim();
     var names = textarea.value.split(/[\n,]+/).map(function(s){ return s.trim(); }).filter(Boolean);
     if (!names.length){
       statusEl.style.color = 'var(--text-danger)';
@@ -4052,7 +4209,7 @@
         return;
       }
       seenThisBatch[label] = true;
-      drawers.push({ id: label, label: label, notes: '' });
+      drawers.push({ id: label, label: label, notes: '', group: group });
       added.push(label);
     });
     if (added.length){
@@ -4060,8 +4217,9 @@
       renderDrawersTab();
     }
     textarea.value = '';
+    document.getElementById('drawer-bulk-add-group').value = '';
     statusEl.style.color = skippedDupes.length && !added.length ? 'var(--text-danger)' : 'var(--text-secondary)';
-    var msg = 'Added ' + added.length + ' drawer' + (added.length===1?'':'s') + '.';
+    var msg = 'Added ' + added.length + ' drawer' + (added.length===1?'':'s') + (group ? (' to group "'+group+'"') : '') + '.';
     if (skippedDupes.length) msg += ' Skipped ' + skippedDupes.length + ' already existing: ' + skippedDupes.join(', ') + '.';
     statusEl.textContent = msg;
   });
@@ -4203,6 +4361,7 @@
   });
 
   document.getElementById('drawer-parts-search').addEventListener('input', function(){ drawerPartsState.page = 1; renderDrawerPartsTable(); });
+  document.getElementById('drawer-parts-group-filter').addEventListener('change', function(){ drawerPartsState.page = 1; renderDrawerPartsTable(); });
   document.getElementById('drawer-parts-drawer-filter').addEventListener('change', function(){ drawerPartsState.page = 1; renderDrawerPartsTable(); });
   document.getElementById('drawer-parts-color-filter').addEventListener('change', function(){ drawerPartsState.page = 1; renderDrawerPartsTable(); });
   document.getElementById('drawer-parts-prev-page').addEventListener('click', function(){ if (drawerPartsState.page>1){ drawerPartsState.page--; renderDrawerPartsTable(); } });
@@ -6556,9 +6715,7 @@
       item.dataset.key = key;
       item.dataset.need = needCount;
       var assignedDrawer = tallyDrawerAssignments[key] || '';
-      var drawerOptions = '<option value="">No drawer assigned</option>' + drawers.map(function(d){
-        return '<option value="'+escapeHtml(d.id)+'"'+(d.id===assignedDrawer?' selected':'')+'>'+escapeHtml(d.label)+'</option>';
-      }).join('');
+      var drawerOptions = drawerOptGroupsHtml(assignedDrawer, 'No drawer assigned', shopTallyDrawerGroupFilter);
       item.innerHTML =
         '<div class="shop-item-tally-top">' +
           '<span class="part-thumb-wrap shop-thumb"></span>' +
@@ -6664,6 +6821,16 @@
     document.getElementById('shop-tally-reset-btn').style.display = shopTallyMode ? 'inline-block' : 'none';
     document.getElementById('shop-tally-commit-btn').style.display = shopTallyMode ? 'inline-block' : 'none';
     document.getElementById('shop-tally-show-completed-label').style.display = shopTallyMode ? 'flex' : 'none';
+    var drawerGroupLabel = document.getElementById('shop-tally-drawer-group-label');
+    drawerGroupLabel.style.display = shopTallyMode ? 'flex' : 'none';
+    if (shopTallyMode){
+      var groupFilterSel = document.getElementById('shop-tally-drawer-group-filter');
+      var curGroupFilter = groupFilterSel.value;
+      groupFilterSel.innerHTML = '<option value="">All groups</option>' + drawerGroupsSorted().map(function(g){
+        return '<option value="'+escapeHtml(g.group)+'">'+escapeHtml(g.group)+'</option>';
+      }).join('');
+      groupFilterSel.value = curGroupFilter;
+    }
     var top20Keys = null;
     if (shopTop20Only){
       var top20Items = getTop20Items();
@@ -6909,6 +7076,10 @@
     renderShoppingList();
   });
   document.getElementById('shop-tally-show-completed').addEventListener('change', renderShoppingList);
+  document.getElementById('shop-tally-drawer-group-filter').addEventListener('change', function(){
+    shopTallyDrawerGroupFilter = this.value;
+    renderShoppingList();
+  });
   document.getElementById('shop-tally-reset-btn').addEventListener('click', function(){
     var seen = {};
     var keys = [];
