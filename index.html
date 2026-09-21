@@ -749,6 +749,18 @@
         </div>
       </div>
 
+      <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 16px;">
+        <button type="button" id="drawer-bulk-add-toggle" class="icon-btn" style="padding:3px 10px;"><i class="ti ti-chevron-right" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Bulk add drawers</button>
+        <div id="drawer-bulk-add-panel" style="display:none; margin-top:10px;">
+          <p style="margin: 0 0 8px; color: var(--text-secondary); font-size: 12px;">Paste or type a list of drawer names, one per line (commas also work). Each becomes its own drawer with no notes; add notes individually afterward if you want them.</p>
+          <textarea id="drawer-bulk-add-textarea" class="lockable" placeholder="A1&#10;A2&#10;A3&#10;Red Bin" style="width:100%; min-height:110px; font-family:inherit; font-size:13px; padding:8px; border-radius:8px; border:2px solid var(--border); background:var(--surface-2); color:var(--lego-black); resize:vertical;"></textarea>
+          <div class="row" style="margin-top:8px;">
+            <button id="drawer-bulk-add-btn" class="lockable"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add all</button>
+            <span id="drawer-bulk-add-status" style="font-size:12px; color:var(--text-secondary);"></span>
+          </div>
+        </div>
+      </div>
+
       <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 8px;">Your drawers</p>
       <div id="drawer-cards-list" style="margin-bottom: 20px;"></div>
 
@@ -1092,11 +1104,11 @@
         <thead>
           <tr>
             <th style="width:8%">Image</th>
-            <th style="width:14%">Part #</th>
-            <th style="width:14%">Color</th>
-            <th style="width:36%">Description</th>
-            <th style="width:18%">Qty</th>
-            <th style="width:10%"></th>
+            <th style="width:12%">Part #</th>
+            <th style="width:12%">Color</th>
+            <th style="width:28%">Description</th>
+            <th style="width:28%">On Hand / Qty</th>
+            <th style="width:12%"></th>
           </tr>
         </thead>
         <tbody id="detail-modal-parts-tbody"></tbody>
@@ -3436,6 +3448,16 @@
     return d;
   }
 
+  function refreshSetDetailMetrics(rows, setInfo){
+    var pieceNeeded = rows.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
+    var pieceOnHand = rows.reduce(function(sum, r){ return sum + setPartOnHand(r); }, 0);
+    var metricsEl = document.getElementById('detail-modal-metrics');
+    metricsEl.innerHTML = '';
+    metricsEl.appendChild(buildDetailMetric('Qty owned', setInfo.qty));
+    metricsEl.appendChild(buildDetailMetric('Unique parts', rows.length));
+    metricsEl.appendChild(buildDetailMetric('Pieces on hand', pieceOnHand.toLocaleString() + ' / ' + pieceNeeded.toLocaleString()));
+  }
+
   function openSetDetail(setNum){
     var setInfo = ownedSets.find(function(s){ return s.setNum === setNum; });
     if (!setInfo) return;
@@ -3450,34 +3472,84 @@
     document.getElementById('detail-modal-mark-complete').style.display = 'none';
 
     var rows = setParts.filter(function(r){ return r.setNum === setNum; });
-    var pieceNeeded = rows.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
-    var pieceOnHand = rows.reduce(function(sum, r){ return sum + setPartOnHand(r); }, 0);
-    var metricsEl = document.getElementById('detail-modal-metrics');
-    metricsEl.innerHTML = '';
-    metricsEl.appendChild(buildDetailMetric('Qty owned', setInfo.qty));
-    metricsEl.appendChild(buildDetailMetric('Unique parts', rows.length));
-    metricsEl.appendChild(buildDetailMetric('Pieces on hand', pieceOnHand.toLocaleString() + ' / ' + pieceNeeded.toLocaleString()));
+    refreshSetDetailMetrics(rows, setInfo);
 
     var tbody = document.getElementById('detail-modal-parts-tbody');
     tbody.innerHTML = '';
     rows.slice().sort(function(a,b){ return String(a.desc||'').localeCompare(String(b.desc||'')); }).forEach(function(r){
-      var needed = setPartNeeded(r);
-      var onHand = setPartOnHand(r);
-      var short = needed - onHand;
       var tr = document.createElement('tr');
       tr.innerHTML =
         '<td class="img-cell"><div class="part-thumb-wrap"></div></td>'+
         '<td class="wrap-cell">'+escapeHtml(r.partNum)+'</td>'+
         '<td class="wrap-cell">'+escapeHtml(r.color)+'</td>'+
         '<td class="wrap-cell">'+escapeHtml(r.desc)+'</td>'+
-        '<td>'+onHand.toLocaleString()+' / '+needed.toLocaleString()+(short>0 ? ' <span class="pill pill-short">Missing '+short.toLocaleString()+'</span>' : '')+'</td>'+
-        '<td></td>';
+        '<td class="onhand-qty-cell" style="white-space:nowrap;"></td>'+
+        '<td class="actions-cell"></td>';
       buildThumb({ elementId: r.elementId, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
+
+      var needed = setPartNeeded(r);
+      var qtyOnHandCell = tr.querySelector('.onhand-qty-cell');
+      var onHandInput = document.createElement('input');
+      onHandInput.type = 'number';
+      onHandInput.min = '0';
+      onHandInput.className = 'onhand-input lockable';
+      onHandInput.style.cssText = 'width:44px; max-width:44px;';
+      onHandInput.title = 'Total on hand across all copies of this set';
+      onHandInput.value = setPartOnHand(r);
+      var shortPill = document.createElement('span');
+      shortPill.className = 'pill pill-short';
+      shortPill.style.cssText = 'margin-left:6px; display:none;';
+      function refreshShortPill(){
+        var short = needed - setPartOnHand(r);
+        if (short > 0){ shortPill.style.display = 'inline-block'; shortPill.textContent = 'Missing ' + short.toLocaleString(); }
+        else { shortPill.style.display = 'none'; }
+      }
+      onHandInput.addEventListener('change', function(){
+        var v = parseInt(onHandInput.value, 10);
+        if (isNaN(v) || v < 0) v = 0;
+        r.onHand = v;
+        onHandInput.value = v;
+        saveSetParts();
+        refreshShortPill();
+        refreshSetDetailMetrics(rows, setInfo);
+        render();
+        renderSetsTab();
+      });
+      qtyOnHandCell.appendChild(onHandInput);
+      qtyOnHandCell.appendChild(document.createTextNode(' / ' + needed.toLocaleString()));
+      qtyOnHandCell.appendChild(shortPill);
+      refreshShortPill();
+
+      var delBtn = document.createElement('button');
+      delBtn.className = 'row-delete-btn danger';
+      delBtn.title = 'Remove this part line';
+      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>';
+      delBtn.addEventListener('click', function(){
+        if (!confirm('Remove this part line from ' + setInfo.setNum + '? This can\'t be undone.')) return;
+        var idx = setParts.indexOf(r);
+        if (idx !== -1){ setParts.splice(idx, 1); saveSetParts(); }
+        render();
+        renderSetsTab();
+        openSetDetail(setNum);
+      });
+      tr.querySelector('.actions-cell').appendChild(delBtn);
       tbody.appendChild(tr);
     });
 
     renderDetailPhoto();
     document.getElementById('detail-modal-overlay').style.display = 'flex';
+  }
+
+  function refreshMocDetailMetrics(rows){
+    var need = 0, have = 0;
+    rows.forEach(function(r){ need += r.qty; have += Math.min(r.onHand, r.qty); });
+    var pct = need ? Math.round(100*have/need) : 100;
+    var metricsEl = document.getElementById('detail-modal-metrics');
+    metricsEl.innerHTML = '';
+    metricsEl.appendChild(buildDetailMetric('Unique parts', rows.length));
+    metricsEl.appendChild(buildDetailMetric('Pieces needed', need.toLocaleString()));
+    metricsEl.appendChild(buildDetailMetric('Pieces on hand', have.toLocaleString()));
+    metricsEl.appendChild(buildDetailMetric('Complete', pct + '%'));
   }
 
   function openMocDetail(mocName){
@@ -3493,15 +3565,7 @@
     document.getElementById('detail-modal-description').value = mocDescriptions[mocName] || '';
     document.getElementById('detail-modal-mark-complete').style.display = rows.length ? 'inline-block' : 'none';
 
-    var need = 0, have = 0;
-    rows.forEach(function(r){ need += r.qty; have += Math.min(r.onHand, r.qty); });
-    var pct = need ? Math.round(100*have/need) : 100;
-    var metricsEl = document.getElementById('detail-modal-metrics');
-    metricsEl.innerHTML = '';
-    metricsEl.appendChild(buildDetailMetric('Unique parts', rows.length));
-    metricsEl.appendChild(buildDetailMetric('Pieces needed', need.toLocaleString()));
-    metricsEl.appendChild(buildDetailMetric('Pieces on hand', have.toLocaleString()));
-    metricsEl.appendChild(buildDetailMetric('Complete', pct + '%'));
+    refreshMocDetailMetrics(rows);
 
     var tbody = document.getElementById('detail-modal-parts-tbody');
     tbody.innerHTML = '';
@@ -3509,12 +3573,73 @@
       var tr = document.createElement('tr');
       tr.innerHTML =
         '<td class="img-cell"><div class="part-thumb-wrap"></div></td>'+
-        '<td class="wrap-cell">'+escapeHtml(r.partNum)+'</td>'+
-        '<td class="wrap-cell">'+escapeHtml(r.color)+'</td>'+
-        '<td class="wrap-cell">'+escapeHtml(r.desc)+'</td>'+
-        '<td>'+r.onHand.toLocaleString()+' / '+r.qty.toLocaleString()+'</td>'+
+        '<td class="partnum-cell"></td>'+
+        '<td class="color-cell"></td>'+
+        '<td class="desc-cell"></td>'+
+        '<td class="onhand-qty-cell" style="white-space:nowrap;"></td>'+
         '<td class="actions-cell"></td>';
-      buildThumb({ elementId: r.elementId, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
+      var thumbWrap = tr.querySelector('.part-thumb-wrap');
+      buildThumb(r, thumbWrap);
+
+      function makeFieldEditor(cellClass, field, placeholder){
+        var input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'field-edit-input lockable';
+        input.value = r[field] || '';
+        input.placeholder = placeholder;
+        if (!r[field]) input.classList.add('field-missing');
+        input.addEventListener('change', function(){
+          r[field] = input.value.trim();
+          input.classList.toggle('field-missing', !r[field]);
+          saveState();
+          buildThumb(r, thumbWrap);
+          render();
+          refreshMocBuildViews();
+        });
+        tr.querySelector(cellClass).appendChild(input);
+      }
+      makeFieldEditor('.partnum-cell', 'partNum', 'Part #');
+      makeFieldEditor('.color-cell', 'color', 'Color');
+      makeFieldEditor('.desc-cell', 'desc', 'Description');
+
+      var qtyOnHandCell = tr.querySelector('.onhand-qty-cell');
+      var onHandInput = document.createElement('input');
+      onHandInput.type = 'number';
+      onHandInput.min = '0';
+      onHandInput.className = 'onhand-input lockable';
+      onHandInput.style.cssText = 'width:44px; max-width:44px;';
+      onHandInput.value = r.onHand;
+      onHandInput.title = 'On hand';
+      var qtyInput = document.createElement('input');
+      qtyInput.type = 'number';
+      qtyInput.min = '0';
+      qtyInput.className = 'qty-input lockable';
+      qtyInput.style.cssText = 'width:44px; max-width:44px;';
+      qtyInput.value = r.qty;
+      qtyInput.title = 'Needed';
+
+      onHandInput.addEventListener('change', function(){
+        var v = parseInt(onHandInput.value, 10);
+        r.onHand = isNaN(v) || v < 0 ? 0 : v;
+        onHandInput.value = r.onHand;
+        saveState();
+        refreshMocDetailMetrics(rows);
+        render();
+        refreshMocBuildViews();
+      });
+      qtyInput.addEventListener('change', function(){
+        var v = parseInt(qtyInput.value, 10);
+        r.qty = isNaN(v) || v < 0 ? 0 : v;
+        qtyInput.value = r.qty;
+        saveState();
+        refreshMocDetailMetrics(rows);
+        render();
+        refreshMocBuildViews();
+      });
+      qtyOnHandCell.appendChild(onHandInput);
+      qtyOnHandCell.appendChild(document.createTextNode(' / '));
+      qtyOnHandCell.appendChild(qtyInput);
+
       var delBtn = document.createElement('button');
       delBtn.className = 'row-delete-btn danger';
       delBtn.title = 'Remove this part line';
@@ -3899,6 +4024,46 @@
     document.getElementById('drawer-label-input').value = '';
     document.getElementById('drawer-notes-input').value = '';
     renderDrawersTab();
+  });
+
+  document.getElementById('drawer-bulk-add-toggle').addEventListener('click', function(){
+    var panel = document.getElementById('drawer-bulk-add-panel');
+    var icon = this.querySelector('i');
+    var isOpen = panel.style.display !== 'none';
+    panel.style.display = isOpen ? 'none' : 'block';
+    icon.className = 'ti ' + (isOpen ? 'ti-chevron-right' : 'ti-chevron-down');
+  });
+
+  document.getElementById('drawer-bulk-add-btn').addEventListener('click', function(){
+    var textarea = document.getElementById('drawer-bulk-add-textarea');
+    var statusEl = document.getElementById('drawer-bulk-add-status');
+    var names = textarea.value.split(/[\n,]+/).map(function(s){ return s.trim(); }).filter(Boolean);
+    if (!names.length){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Enter at least one drawer name first.';
+      return;
+    }
+    var added = [];
+    var skippedDupes = [];
+    var seenThisBatch = {};
+    names.forEach(function(label){
+      if (drawers.some(function(d){ return d.label === label; }) || seenThisBatch[label]){
+        skippedDupes.push(label);
+        return;
+      }
+      seenThisBatch[label] = true;
+      drawers.push({ id: label, label: label, notes: '' });
+      added.push(label);
+    });
+    if (added.length){
+      saveDrawers();
+      renderDrawersTab();
+    }
+    textarea.value = '';
+    statusEl.style.color = skippedDupes.length && !added.length ? 'var(--text-danger)' : 'var(--text-secondary)';
+    var msg = 'Added ' + added.length + ' drawer' + (added.length===1?'':'s') + '.';
+    if (skippedDupes.length) msg += ' Skipped ' + skippedDupes.length + ' already existing: ' + skippedDupes.join(', ') + '.';
+    statusEl.textContent = msg;
   });
 
   document.getElementById('drawer-csv-import-btn').addEventListener('click', function(){
