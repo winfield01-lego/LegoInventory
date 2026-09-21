@@ -343956,11 +343956,6 @@
   ],
   "drawers": [
     {
-      "id": "test",
-      "label": "test",
-      "notes": ""
-    },
-    {
       "id": "Unsorted Container",
       "label": "Unsorted Container",
       "notes": "Location of all unsorted parts that are inventoried"
@@ -344038,16 +344033,7 @@
       "group": "A Drawers"
     }
   ],
-  "drawerParts": [
-    {
-      "drawerId": "test",
-      "partNum": "3005",
-      "color": "Tan",
-      "desc": "Brick 1 x 1",
-      "elementId": "4113915",
-      "qty": 1
-    }
-  ],
+  "drawerParts": [],
   "mocLocations": {
     "Blacktron Interstellar Spaceship": "Zorah's House",
     "Lego House": "Zorah's House"
