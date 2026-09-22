@@ -1143,11 +1143,11 @@
         <thead>
           <tr>
             <th style="width:8%">Image</th>
-            <th style="width:12%">Part #</th>
-            <th style="width:12%">Color</th>
-            <th style="width:28%">Description</th>
-            <th style="width:28%">On Hand / Qty</th>
-            <th style="width:12%"></th>
+            <th style="width:11%">Part #</th>
+            <th style="width:11%">Color</th>
+            <th style="width:24%">Description</th>
+            <th style="width:26%">On Hand / Qty</th>
+            <th style="width:20%"></th>
           </tr>
         </thead>
         <tbody id="detail-modal-parts-tbody"></tbody>
@@ -1186,11 +1186,11 @@
         <thead>
           <tr>
             <th style="width:8%">Image</th>
-            <th style="width:14%">Part #</th>
-            <th style="width:14%">Color</th>
-            <th style="width:36%">Description</th>
-            <th style="width:14%">Qty</th>
-            <th style="width:14%"></th>
+            <th style="width:13%">Part #</th>
+            <th style="width:13%">Color</th>
+            <th style="width:24%">Description</th>
+            <th style="width:12%">Qty</th>
+            <th style="width:30%"></th>
           </tr>
         </thead>
         <tbody id="drawer-detail-parts-tbody"></tbody>
@@ -3721,9 +3721,10 @@
       refreshShortPill();
 
       var delBtn = document.createElement('button');
-      delBtn.className = 'row-delete-btn danger';
+      delBtn.className = 'icon-btn lockable';
+      delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); white-space:nowrap; flex-shrink:0;';
       delBtn.title = 'Remove this part line';
-      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>';
+      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Delete';
       delBtn.addEventListener('click', function(){
         if (!confirm('Remove this part line from ' + setInfo.setNum + '? This can\'t be undone.')) return;
         var idx = setParts.indexOf(r);
@@ -3841,9 +3842,10 @@
       qtyOnHandCell.appendChild(qtyInput);
 
       var delBtn = document.createElement('button');
-      delBtn.className = 'row-delete-btn danger';
+      delBtn.className = 'icon-btn lockable';
+      delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); white-space:nowrap; flex-shrink:0;';
       delBtn.title = 'Remove this part line';
-      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>';
+      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Delete';
       delBtn.addEventListener('click', function(){
         if (!confirm('Remove this part line from ' + mocName + '? This can\'t be undone.')) return;
         var idx = state.rows.indexOf(r);
@@ -4222,9 +4224,10 @@
       tr.querySelector('.actions-cell-inner').appendChild(assignBtn);
 
       var delBtn = document.createElement('button');
-      delBtn.className = 'row-delete-btn danger';
+      delBtn.className = 'icon-btn lockable';
+      delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); white-space:nowrap; flex-shrink:0;';
       delBtn.title = 'Remove this part line';
-      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>';
+      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Delete';
       delBtn.addEventListener('click', function(){
         var idx = drawerParts.indexOf(r);
         if (idx !== -1){ drawerParts.splice(idx, 1); saveDrawerParts(); renderDrawersTab(); }
@@ -4440,9 +4443,10 @@
       tr.querySelector('.actions-cell-inner').appendChild(assignBtn);
 
       var delBtn = document.createElement('button');
-      delBtn.className = 'row-delete-btn danger';
+      delBtn.className = 'icon-btn lockable';
+      delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); white-space:nowrap; flex-shrink:0;';
       delBtn.title = 'Remove this part line';
-      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>';
+      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Delete';
       delBtn.addEventListener('click', function(){
         var idx = drawerParts.indexOf(r);
         if (idx !== -1){ drawerParts.splice(idx, 1); saveDrawerParts(); }
