@@ -67745,7 +67745,6 @@
   ],
   "tallyCounts": {
     "combo|3004|Tan": 0,
-    "combo|3005|Tan": 0,
     "3943b|Light Bluish Gray|Benny's Convertible Spaceship": 1,
     "10247|Light Bluish Gray|Benny's Convertible Spaceship": 3,
     "4346|Trans Red|Blacktron Galaxy Explorer": 1,
@@ -67763,7 +67762,7 @@
     "3035|Black|Cargo Shuttle Pod": 1,
     "22885|Black|Cargo Shuttle Pod": 2,
     "78329|Black|Cargo Shuttle Pod": 1,
-    "combo|30136|Dark Tan": 327
+    "combo|30136|Dark Tan": 0
   },
   "tallyDrawerAssignments": {
     "combo|3005|Tan": "test",
@@ -344041,7 +344040,16 @@
       "group": "E"
     }
   ],
-  "drawerParts": [],
+  "drawerParts": [
+    {
+      "drawerId": "E10",
+      "partNum": "30136",
+      "color": "Dark Tan",
+      "desc": "Brick Special 1 x 2 Palisade [aka Log]",
+      "elementId": "4520257",
+      "qty": 327
+    }
+  ],
   "mocLocations": {
     "Blacktron Interstellar Spaceship": "Zorah's House",
     "Lego House": "Zorah's House"
