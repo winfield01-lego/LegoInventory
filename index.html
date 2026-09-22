@@ -752,8 +752,8 @@
   </p>
 
   <div class="collapse-section">
-    <button type="button" class="collapse-header" data-collapse-target="cs-manage-drawers"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Manage Drawers &amp; Add Parts</span></button>
-    <div class="collapse-body" id="cs-manage-drawers" style="display:none;">
+    <button type="button" class="collapse-header" data-collapse-target="cs-manage-drawers"><i class="ti ti-chevron-down" aria-hidden="true"></i><span>Manage Drawers &amp; Add Parts</span></button>
+    <div class="collapse-body" id="cs-manage-drawers" style="display:block;">
       <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 16px;">
         <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Add a drawer</p>
         <div class="controls" style="margin-bottom: 0;">
@@ -2260,13 +2260,25 @@
       '<span class="set-edit-field"><input type="text" class="set-name-edit" placeholder="Name" value="'+escapeHtml(s.name || '')+'" /></span>' +
       '<span class="set-edit-field"><input type="text" class="set-theme-edit" placeholder="Theme" value="'+escapeHtml(s.theme || '')+'" /></span>' +
       '<span class="set-edit-field"><select class="set-location-edit">'+locationOptionsHtml(s.location || '')+'</select></span>' +
-      '<span class="set-meta">Qty owned: '+s.qty+' &middot; '+rows.length+' part line'+(rows.length===1?'':'s')+' &middot; '+onHandTotal.toLocaleString()+' / '+neededTotal.toLocaleString()+' pcs'+(short>0 ? ' <span class="pill pill-short" style="margin-left:4px;">Missing '+short.toLocaleString()+'</span>' : '')+'</span>';
+      '<span class="set-edit-field" style="display:inline-flex; align-items:center; gap:4px; white-space:nowrap;">Qty owned: <input type="number" min="1" class="set-qty-edit lockable" value="'+s.qty+'" style="width:56px;" /></span>' +
+      '<span class="set-meta">'+rows.length+' part line'+(rows.length===1?'':'s')+' &middot; '+onHandTotal.toLocaleString()+' / '+neededTotal.toLocaleString()+' pcs'+(short>0 ? ' <span class="pill pill-short" style="margin-left:4px;">Missing '+short.toLocaleString()+'</span>' : '')+'</span>';
     var nameInput = card.querySelector('.set-name-edit');
     var themeInput = card.querySelector('.set-theme-edit');
     var locationInput = card.querySelector('.set-location-edit');
+    var qtyInput = card.querySelector('.set-qty-edit');
     nameInput.addEventListener('change', function(){ s.name = nameInput.value.trim(); saveOwnedSets(); refreshSetViews(); });
     themeInput.addEventListener('change', function(){ s.theme = themeInput.value.trim(); saveOwnedSets(); refreshSetViews(); });
     locationInput.addEventListener('change', function(){ s.location = locationInput.value.trim(); saveOwnedSets(); });
+    qtyInput.addEventListener('change', function(){
+      var v = parseInt(qtyInput.value, 10);
+      if (isNaN(v) || v < 1) v = 1;
+      s.qty = v;
+      qtyInput.value = v;
+      saveOwnedSets();
+      refreshSetViews();
+      renderSetPartsTable();
+      render();
+    });
     var viewBtn = document.createElement('button');
     viewBtn.className = 'icon-btn';
     viewBtn.title = 'View summary and photo';
@@ -3612,12 +3624,36 @@
     return d;
   }
 
+  function buildQtyOwnedMetric(setInfo, rows){
+    var d = document.createElement('div');
+    d.className = 'metric';
+    d.innerHTML = '<div class="label">Qty owned</div><div class="value"></div>';
+    var input = document.createElement('input');
+    input.type = 'number';
+    input.min = '1';
+    input.className = 'set-qty-edit lockable';
+    input.style.cssText = 'width:60px; font-size:16px; font-weight:700; text-align:center;';
+    input.value = setInfo.qty;
+    input.addEventListener('change', function(){
+      var v = parseInt(input.value, 10);
+      if (isNaN(v) || v < 1) v = 1;
+      setInfo.qty = v;
+      saveOwnedSets();
+      refreshSetViews();
+      renderSetPartsTable();
+      render();
+      refreshSetDetailMetrics(rows, setInfo);
+    });
+    d.querySelector('.value').appendChild(input);
+    return d;
+  }
+
   function refreshSetDetailMetrics(rows, setInfo){
     var pieceNeeded = rows.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
     var pieceOnHand = rows.reduce(function(sum, r){ return sum + setPartOnHand(r); }, 0);
     var metricsEl = document.getElementById('detail-modal-metrics');
     metricsEl.innerHTML = '';
-    metricsEl.appendChild(buildDetailMetric('Qty owned', setInfo.qty));
+    metricsEl.appendChild(buildQtyOwnedMetric(setInfo, rows));
     metricsEl.appendChild(buildDetailMetric('Unique parts', rows.length));
     metricsEl.appendChild(buildDetailMetric('Pieces on hand', pieceOnHand.toLocaleString() + ' / ' + pieceNeeded.toLocaleString()));
   }
@@ -4178,9 +4214,10 @@
       tr.querySelector('.qty-cell').appendChild(qtyInput);
 
       var assignBtn = document.createElement('button');
-      assignBtn.className = 'row-delete-btn';
-      assignBtn.title = 'Assign some of these to a MOC build';
-      assignBtn.innerHTML = '<i class="ti ti-arrow-right" style="font-size:15px;" aria-hidden="true"></i>';
+      assignBtn.className = 'icon-btn lockable';
+      assignBtn.style.cssText = 'white-space:nowrap; flex-shrink:0;';
+      assignBtn.title = 'Assign some of these to a MOC build or Official Set';
+      assignBtn.innerHTML = '<i class="ti ti-arrow-right" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Assign';
       assignBtn.addEventListener('click', function(){ openAssignPanel(r); });
       tr.querySelector('.actions-cell-inner').appendChild(assignBtn);
 
@@ -4389,9 +4426,10 @@
       tr.querySelector('.qty-cell').appendChild(qtyInput);
 
       var assignBtn = document.createElement('button');
-      assignBtn.className = 'row-delete-btn';
+      assignBtn.className = 'icon-btn lockable';
+      assignBtn.style.cssText = 'white-space:nowrap; flex-shrink:0;';
       assignBtn.title = 'Assign some of these to a MOC build or Official Set';
-      assignBtn.innerHTML = '<i class="ti ti-arrow-right" style="font-size:15px;" aria-hidden="true"></i>';
+      assignBtn.innerHTML = '<i class="ti ti-arrow-right" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Assign';
       assignBtn.addEventListener('click', function(){
         moveAssignPanelTo(document.getElementById('drawer-detail-assign-slot'));
         openAssignPanel(r, function(){
