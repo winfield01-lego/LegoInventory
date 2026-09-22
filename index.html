@@ -326,7 +326,8 @@
     <button class="tab-btn active" data-maintab="overview"><span class="tab-dot" style="background:var(--lego-blue);"></span>Overview</button>
     <button class="tab-btn" data-maintab="moc-collection"><span class="tab-dot" style="background:var(--lego-yellow);"></span>MOC Collection</button>
     <button class="tab-btn" data-maintab="official-collection"><span class="tab-dot" style="background:var(--lego-purple);"></span>Official LEGO Collection</button>
-    <button class="tab-btn" data-maintab="data-tools"><span class="tab-dot" style="background:var(--lego-lime);"></span>Data &amp; Tools</button>
+    <button class="tab-btn" data-maintab="drawers"><span class="tab-dot" style="background:var(--lego-lime);"></span>Drawers</button>
+    <button class="tab-btn" data-maintab="data-tools"><span class="tab-dot" style="background:var(--lego-azure);"></span>Data &amp; Tools</button>
   </div>
   <div class="row">
     <button id="view-lock-toggle-btn" class="icon-btn"></button>
@@ -345,7 +346,6 @@
   <button class="tab-btn" data-tab="setparts"><span class="tab-dot" style="background:var(--lego-brown);"></span>Official Set Parts</button>
 </div>
 <div class="tabs sub-tabs no-print" id="sub-tabs-data-tools" style="display:none;">
-  <button class="tab-btn" data-tab="drawers"><span class="tab-dot" style="background:var(--lego-lime);"></span>Drawers</button>
   <button class="tab-btn" data-tab="import"><span class="tab-dot" style="background:var(--lego-blue);"></span>Import</button>
   <button class="tab-btn" data-tab="images"><span class="tab-dot" style="background:var(--lego-green);"></span>Images</button>
 </div>
@@ -487,6 +487,7 @@
 
 <datalist id="color-options"></datalist>
 <datalist id="moc-options"></datalist>
+<datalist id="set-options"></datalist>
 
 <div id="tab-shopping" style="display:none;">
   <div class="row no-print" style="justify-content: space-between; align-items:flex-start; flex-wrap:wrap; gap:16px; margin-bottom: 16px;">
@@ -667,6 +668,17 @@
     </div>
   </div>
 
+  <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
+    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Fill in missing element IDs</p>
+    <p style="color: var(--text-secondary); margin: 0 0 10px;">
+      Scans every part line across MOC Builds, Official Sets, and Drawers for a part #/color combo with no element ID, and looks each one up on Rebrickable. Uses the same API key as above. One lookup per unique part #/color combo &mdash; the result is applied to every matching line everywhere it appears, so a part missing its ID in five different builds only costs one request.
+    </p>
+    <div class="row">
+      <button id="fill-element-ids-btn"><i class="ti ti-barcode" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Look up missing element IDs</button>
+      <span id="fill-element-ids-status" style="font-size:13px; color:var(--text-secondary);"></span>
+    </div>
+  </div>
+
   <div class="controls">
     <input type="text" id="set-parts-search" placeholder="Search part #, description, color" />
     <select id="set-parts-set-filter"><option value="">All sets</option></select>
@@ -812,14 +824,19 @@
       <p style="color: var(--text-secondary); margin: 0 0 12px;">Find any part by number, description, or color, see exactly which drawer it's in, and remove or reassign it from here.</p>
 
       <div id="assign-to-moc-panel" style="display:none; background: var(--surface-1); border: 2px solid var(--lego-blue); border-radius: var(--radius); padding: 12px; margin-bottom: 16px;">
-        <p style="margin:0 0 8px; font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary);">Assign to a MOC build</p>
+        <p style="margin:0 0 8px; font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary);">Assign to a build or set</p>
         <p id="assign-part-label" style="margin:0 0 10px; font-weight:700;"></p>
         <div class="controls" style="margin-bottom: 8px;">
+          <select id="assign-target-type">
+            <option value="moc">MOC Build</option>
+            <option value="set">Official Set</option>
+          </select>
           <input type="text" id="assign-moc-input" placeholder="Build name" list="moc-options" style="min-width:200px;" />
+          <input type="text" id="assign-set-input" placeholder="Set number" list="set-options" style="min-width:160px; display:none;" />
           <input type="number" id="assign-qty-input" min="1" placeholder="Qty to move" style="width:120px;" />
         </div>
         <div class="row">
-          <button id="assign-confirm-btn" class="lockable"><i class="ti ti-arrow-right" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Move to build</button>
+          <button id="assign-confirm-btn" class="lockable"><i class="ti ti-arrow-right" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Move to build/set</button>
           <button id="assign-cancel-btn" class="icon-btn">Cancel</button>
           <span id="assign-status" style="font-size:13px; color:var(--text-secondary);"></span>
         </div>
@@ -1134,6 +1151,49 @@
           </tr>
         </thead>
         <tbody id="detail-modal-parts-tbody"></tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div id="drawer-detail-modal-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1000; align-items:center; justify-content:center; padding:20px;">
+  <div id="drawer-detail-modal" style="background:var(--surface-2); border-radius:var(--radius); max-width:760px; width:100%; max-height:88vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
+    <button id="drawer-detail-modal-close" class="icon-btn" style="position:absolute; top:14px; right:14px;"><i class="ti ti-x" style="font-size:16px;" aria-hidden="true"></i></button>
+    <h2 id="drawer-detail-modal-title" style="margin:0 0 2px; font-size:20px; color:var(--lego-black); padding-right:36px;"></h2>
+    <p id="drawer-detail-modal-group" style="margin:0 0 10px; color:var(--text-secondary); font-size:13px;"></p>
+
+    <div style="margin:0 0 14px;">
+      <input type="text" id="drawer-detail-notes-input" class="lockable" placeholder="Notes / location (optional)" style="width:100%; font-size:13px;" />
+    </div>
+
+    <div class="metric-grid" id="drawer-detail-metrics" style="margin-bottom:16px;"></div>
+
+    <p style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary); margin:0 0 8px;">Add a part to this drawer</p>
+    <div class="controls" style="margin-bottom:14px;">
+      <input type="text" id="drawer-detail-add-partnum" class="lockable" placeholder="Part #" style="min-width:110px;" />
+      <input type="text" id="drawer-detail-add-color" class="lockable" placeholder="Color" style="min-width:110px;" />
+      <input type="text" id="drawer-detail-add-desc" class="lockable" placeholder="Description" style="min-width:160px;" />
+      <input type="number" id="drawer-detail-add-qty" class="lockable" placeholder="Qty" min="1" value="1" style="width:70px;" />
+      <button id="drawer-detail-add-btn" class="lockable"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add to drawer</button>
+    </div>
+    <p id="drawer-detail-add-status" style="font-size:12px; color:var(--text-secondary); margin:-8px 0 14px;"></p>
+
+    <div id="drawer-detail-assign-slot"></div>
+
+    <p style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary); margin:0 0 8px;">Parts in this drawer</p>
+    <div class="tbl-wrap" style="max-height:320px;">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:8%">Image</th>
+            <th style="width:14%">Part #</th>
+            <th style="width:14%">Color</th>
+            <th style="width:36%">Description</th>
+            <th style="width:14%">Qty</th>
+            <th style="width:14%"></th>
+          </tr>
+        </thead>
+        <tbody id="drawer-detail-parts-tbody"></tbody>
       </table>
     </div>
   </div>
@@ -1500,6 +1560,7 @@
     var mocs = Array.from(new Set(state.rows.map(function(r){ return r.moc; }).filter(Boolean))).sort();
     document.getElementById('color-options').innerHTML = colors.map(function(c){ return '<option value="'+escapeHtml(c)+'"></option>'; }).join('');
     document.getElementById('moc-options').innerHTML = mocs.map(function(m){ return '<option value="'+escapeHtml(m)+'"></option>'; }).join('');
+    document.getElementById('set-options').innerHTML = ownedSets.map(function(s){ return '<option value="'+escapeHtml(s.setNum)+'"></option>'; }).join('');
   }
 
   function loadPriorityLabels(){
@@ -2383,6 +2444,85 @@
         desc: (data.part && data.part.name) || ''
       };
     });
+  }
+
+  function fetchElementIdForPartColor(partNum, colorName){
+    var url = 'https://rebrickable.com/api/v3/lego/parts/' + encodeURIComponent(partNum) + '/colors/?key=' + encodeURIComponent(rebrickableApiKey);
+    return fetchUrlMaybeProxied(url).then(function(resp){
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      return resp.json();
+    }).then(function(data){
+      var results = (data && data.results) || [];
+      var wanted = normKey(colorName);
+      var match = results.find(function(c){ return normKey(c.color_name) === wanted; });
+      if (match && match.elements && match.elements.length) return match.elements[0];
+      return '';
+    });
+  }
+
+  function fillMissingElementIds(){
+    var statusEl = document.getElementById('fill-element-ids-status');
+    if (!rebrickableApiKey){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Add a Rebrickable API key above first.';
+      return;
+    }
+
+    var sources = [state.rows, setParts, drawerParts];
+    var combos = {};
+    sources.forEach(function(list){
+      list.forEach(function(r){
+        if (r.elementId || !r.partNum || !r.color) return;
+        var key = normKey(r.partNum) + '|' + normKey(r.color);
+        if (!combos[key]) combos[key] = { partNum: r.partNum, color: r.color, rows: [] };
+        combos[key].rows.push(r);
+      });
+    });
+    var keys = Object.keys(combos);
+    if (!keys.length){
+      statusEl.style.color = 'var(--text-secondary)';
+      statusEl.textContent = 'Nothing to look up \u2014 every part/color combo already has an element ID.';
+      return;
+    }
+
+    var idx = 0, total = keys.length, done = 0, found = 0, notFound = 0, errored = 0;
+    var btn = document.getElementById('fill-element-ids-btn');
+    btn.disabled = true;
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Looking up ' + total + ' part/color combo' + (total===1?'':'s') + '\u2026 0 / ' + total;
+
+    function next(){
+      if (idx >= total){
+        btn.disabled = false;
+        saveState();
+        saveSetParts();
+        saveDrawerParts();
+        render();
+        renderSetsTab();
+        renderDrawersTab();
+        statusEl.style.color = notFound || errored ? 'var(--text-danger)' : 'var(--text-success)';
+        statusEl.textContent = 'Found ' + found + ' element ID' + (found===1?'':'s') + ' for ' + total + ' combo' + (total===1?'':'s') + '.' +
+          (notFound ? (' ' + notFound + ' had no match on Rebrickable.') : '') +
+          (errored ? (' ' + errored + ' lookup' + (errored===1?'':'s') + ' failed \u2014 try again later.') : '');
+        return;
+      }
+      var combo = combos[keys[idx++]];
+      fetchElementIdForPartColor(combo.partNum, combo.color).then(function(elId){
+        if (elId){
+          combo.rows.forEach(function(r){ r.elementId = elId; });
+          found++;
+        } else {
+          notFound++;
+        }
+      }).catch(function(){
+        errored++;
+      }).then(function(){
+        done++;
+        statusEl.textContent = 'Looking up ' + total + ' part/color combo' + (total===1?'':'s') + '\u2026 ' + done + ' / ' + total;
+        next();
+      });
+    }
+    next();
   }
 
   function importBuildPartsCSVText(buildName, text){
@@ -3821,6 +3961,13 @@
       renderDrawersTab();
     });
     notesInput.addEventListener('change', function(){ d.notes = notesInput.value.trim(); saveDrawers(); });
+    var manageBtn = document.createElement('button');
+    manageBtn.className = 'icon-btn';
+    manageBtn.style.cssText = 'flex-shrink:0;';
+    manageBtn.title = 'Manage contents of this drawer';
+    manageBtn.innerHTML = '<i class="ti ti-list-details" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Manage contents';
+    manageBtn.addEventListener('click', function(){ openDrawerDetail(d.id); });
+    card.appendChild(manageBtn);
     var delBtn = document.createElement('button');
     delBtn.className = 'icon-btn lockable';
     delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); flex-shrink:0;';
@@ -4062,14 +4209,42 @@
   }
 
   var assignContext = null;
+  var assignAfterCallback = null;
+  var assignPanelHome = null;
 
-  function openAssignPanel(row){
+  function ensureAssignPanelHomeCaptured(){
+    if (!assignPanelHome){
+      var panel = document.getElementById('assign-to-moc-panel');
+      assignPanelHome = { parent: panel.parentNode, nextSibling: panel.nextSibling };
+    }
+  }
+  function moveAssignPanelTo(container){
+    ensureAssignPanelHomeCaptured();
+    container.appendChild(document.getElementById('assign-to-moc-panel'));
+  }
+  function restoreAssignPanelHome(){
+    if (!assignPanelHome) return;
+    var panel = document.getElementById('assign-to-moc-panel');
+    if (assignPanelHome.nextSibling && assignPanelHome.nextSibling.parentNode === assignPanelHome.parent){
+      assignPanelHome.parent.insertBefore(panel, assignPanelHome.nextSibling);
+    } else {
+      assignPanelHome.parent.appendChild(panel);
+    }
+  }
+
+  function openAssignPanel(row, afterCallback){
     assignContext = row;
+    assignAfterCallback = afterCallback || null;
+    refreshDatalists();
     var drawerInfo = drawers.find(function(d){ return d.id === row.drawerId; });
     var drawerLabel = drawerInfo ? drawerInfo.label : row.drawerId;
     document.getElementById('assign-part-label').textContent =
       row.qty + '\u00d7 ' + (row.color || '') + ' ' + (row.desc || row.partNum) + ' (#' + row.partNum + ') from ' + drawerLabel;
+    document.getElementById('assign-target-type').value = 'moc';
     document.getElementById('assign-moc-input').value = '';
+    document.getElementById('assign-moc-input').style.display = 'inline-block';
+    document.getElementById('assign-set-input').value = '';
+    document.getElementById('assign-set-input').style.display = 'none';
     document.getElementById('assign-qty-input').value = row.qty;
     document.getElementById('assign-qty-input').max = row.qty;
     document.getElementById('assign-status').textContent = '';
@@ -4079,21 +4254,24 @@
 
   function closeAssignPanel(){
     assignContext = null;
+    assignAfterCallback = null;
     document.getElementById('assign-to-moc-panel').style.display = 'none';
+    restoreAssignPanelHome();
   }
 
   document.getElementById('assign-cancel-btn').addEventListener('click', closeAssignPanel);
 
+  document.getElementById('assign-target-type').addEventListener('change', function(){
+    var isSet = this.value === 'set';
+    document.getElementById('assign-moc-input').style.display = isSet ? 'none' : 'inline-block';
+    document.getElementById('assign-set-input').style.display = isSet ? 'inline-block' : 'none';
+  });
+
   document.getElementById('assign-confirm-btn').addEventListener('click', function(){
     var statusEl = document.getElementById('assign-status');
     if (!assignContext){ closeAssignPanel(); return; }
-    var mocName = document.getElementById('assign-moc-input').value.trim();
+    var targetType = document.getElementById('assign-target-type').value;
     var qty = parseInt(document.getElementById('assign-qty-input').value, 10);
-    if (!mocName){
-      statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Enter or pick a build first.';
-      return;
-    }
     if (isNaN(qty) || qty < 1){
       statusEl.style.color = 'var(--text-danger)';
       statusEl.textContent = 'Enter a quantity of at least 1.';
@@ -4105,18 +4283,50 @@
       return;
     }
 
-    var match = state.rows.find(function(r){
-      return r.moc.toLowerCase() === mocName.toLowerCase() && r.partNum === assignContext.partNum && r.color === assignContext.color;
-    });
-    if (match){
-      match.onHand += qty;
-    } else {
-      state.rows.push({
-        partNum: assignContext.partNum, qty: 0, color: assignContext.color, desc: assignContext.desc,
-        moc: mocName, elementId: assignContext.elementId, onHand: qty, built: false, priority: ''
+    if (targetType === 'set'){
+      var setNum = document.getElementById('assign-set-input').value.trim();
+      if (!setNum){
+        statusEl.style.color = 'var(--text-danger)';
+        statusEl.textContent = 'Enter or pick a set first.';
+        return;
+      }
+      if (!ownedSets.some(function(s){ return s.setNum === setNum; })){
+        statusEl.style.color = 'var(--text-danger)';
+        statusEl.textContent = 'That set number isn\u2019t in your Official Sets yet \u2014 add it there first.';
+        return;
+      }
+      var setMatch = setParts.find(function(r){
+        return r.setNum === setNum && r.partNum === assignContext.partNum && r.color === assignContext.color;
       });
+      if (setMatch){
+        setMatch.onHand = setPartOnHand(setMatch) + qty;
+      } else {
+        setParts.push({
+          setNum: setNum, partNum: assignContext.partNum, qtyPerSet: 0, color: assignContext.color, desc: assignContext.desc,
+          elementId: assignContext.elementId, onHand: qty
+        });
+      }
+      saveSetParts();
+    } else {
+      var mocName = document.getElementById('assign-moc-input').value.trim();
+      if (!mocName){
+        statusEl.style.color = 'var(--text-danger)';
+        statusEl.textContent = 'Enter or pick a build first.';
+        return;
+      }
+      var match = state.rows.find(function(r){
+        return r.moc.toLowerCase() === mocName.toLowerCase() && r.partNum === assignContext.partNum && r.color === assignContext.color;
+      });
+      if (match){
+        match.onHand += qty;
+      } else {
+        state.rows.push({
+          partNum: assignContext.partNum, qty: 0, color: assignContext.color, desc: assignContext.desc,
+          moc: mocName, elementId: assignContext.elementId, onHand: qty, built: false, priority: ''
+        });
+      }
+      saveState();
     }
-    saveState();
 
     assignContext.qty -= qty;
     if (assignContext.qty <= 0){
@@ -4125,9 +4335,157 @@
     }
     saveDrawerParts();
 
+    var cb = assignAfterCallback;
     closeAssignPanel();
     renderDrawersTab();
     render();
+    if (targetType === 'set') renderSetsTab();
+    if (cb) cb();
+  });
+
+  var drawerDetailContext = null;
+
+  function refreshDrawerDetailMetrics(drawerId){
+    var rows = drawerParts.filter(function(p){ return p.drawerId === drawerId; });
+    var totalQty = rows.reduce(function(sum, r){ return sum + r.qty; }, 0);
+    var metricsEl = document.getElementById('drawer-detail-metrics');
+    metricsEl.innerHTML = '';
+    metricsEl.appendChild(buildDetailMetric('Part lines', rows.length));
+    metricsEl.appendChild(buildDetailMetric('Total pieces', totalQty.toLocaleString()));
+  }
+
+  function renderDrawerDetailTable(drawerId){
+    var rows = drawerParts.filter(function(p){ return p.drawerId === drawerId; });
+    var tbody = document.getElementById('drawer-detail-parts-tbody');
+    tbody.innerHTML = '';
+    if (!rows.length){
+      tbody.innerHTML = '<tr><td colspan="6" class="empty-msg">No parts filed in this drawer yet.</td></tr>';
+      return;
+    }
+    rows.slice().sort(function(a,b){ return String(a.desc||'').localeCompare(String(b.desc||'')); }).forEach(function(r){
+      var tr = document.createElement('tr');
+      tr.innerHTML =
+        '<td class="img-cell"><div class="part-thumb-wrap"></div></td>' +
+        '<td class="wrap-cell">'+escapeHtml(r.partNum)+'</td>' +
+        '<td class="wrap-cell">'+escapeHtml(r.color)+'</td>' +
+        '<td class="wrap-cell">'+escapeHtml(r.desc)+'</td>' +
+        '<td class="qty-cell"></td>' +
+        '<td class="actions-cell"><div class="actions-cell-inner"></div></td>';
+      buildThumb({ elementId: r.elementId, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
+
+      var qtyInput = document.createElement('input');
+      qtyInput.type = 'number';
+      qtyInput.min = '0';
+      qtyInput.className = 'qty-edit-input lockable';
+      qtyInput.value = r.qty;
+      qtyInput.addEventListener('change', function(){
+        var v = parseInt(qtyInput.value, 10);
+        r.qty = isNaN(v) || v < 0 ? 0 : v;
+        qtyInput.value = r.qty;
+        saveDrawerParts();
+        renderDrawerCards();
+        refreshDrawerDetailMetrics(drawerId);
+      });
+      tr.querySelector('.qty-cell').appendChild(qtyInput);
+
+      var assignBtn = document.createElement('button');
+      assignBtn.className = 'row-delete-btn';
+      assignBtn.title = 'Assign some of these to a MOC build or Official Set';
+      assignBtn.innerHTML = '<i class="ti ti-arrow-right" style="font-size:15px;" aria-hidden="true"></i>';
+      assignBtn.addEventListener('click', function(){
+        moveAssignPanelTo(document.getElementById('drawer-detail-assign-slot'));
+        openAssignPanel(r, function(){
+          renderDrawerDetailTable(drawerId);
+          refreshDrawerDetailMetrics(drawerId);
+        });
+      });
+      tr.querySelector('.actions-cell-inner').appendChild(assignBtn);
+
+      var delBtn = document.createElement('button');
+      delBtn.className = 'row-delete-btn danger';
+      delBtn.title = 'Remove this part line';
+      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>';
+      delBtn.addEventListener('click', function(){
+        var idx = drawerParts.indexOf(r);
+        if (idx !== -1){ drawerParts.splice(idx, 1); saveDrawerParts(); }
+        renderDrawerCards();
+        renderDrawerDetailTable(drawerId);
+        refreshDrawerDetailMetrics(drawerId);
+      });
+      tr.querySelector('.actions-cell-inner').appendChild(delBtn);
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  function openDrawerDetail(drawerId){
+    var d = drawers.find(function(x){ return x.id === drawerId; });
+    if (!d) return;
+    drawerDetailContext = drawerId;
+    document.getElementById('drawer-detail-modal-title').textContent = d.label;
+    var groupEl = document.getElementById('drawer-detail-modal-group');
+    if (d.group){ groupEl.textContent = 'Group: ' + d.group; groupEl.style.display = 'block'; }
+    else { groupEl.style.display = 'none'; }
+    document.getElementById('drawer-detail-notes-input').value = d.notes || '';
+    document.getElementById('drawer-detail-add-partnum').value = '';
+    document.getElementById('drawer-detail-add-color').value = '';
+    document.getElementById('drawer-detail-add-desc').value = '';
+    document.getElementById('drawer-detail-add-qty').value = '1';
+    document.getElementById('drawer-detail-add-status').textContent = '';
+    refreshDrawerDetailMetrics(drawerId);
+    renderDrawerDetailTable(drawerId);
+    document.getElementById('drawer-detail-modal-overlay').style.display = 'flex';
+  }
+
+  function closeDrawerDetailModal(){
+    document.getElementById('drawer-detail-modal-overlay').style.display = 'none';
+    closeAssignPanel();
+    drawerDetailContext = null;
+  }
+
+  document.getElementById('drawer-detail-modal-close').addEventListener('click', closeDrawerDetailModal);
+
+  document.getElementById('drawer-detail-notes-input').addEventListener('change', function(){
+    if (!drawerDetailContext) return;
+    var d = drawers.find(function(x){ return x.id === drawerDetailContext; });
+    if (d){ d.notes = this.value.trim(); saveDrawers(); }
+  });
+
+  document.getElementById('drawer-detail-add-btn').addEventListener('click', function(){
+    if (!drawerDetailContext) return;
+    var statusEl = document.getElementById('drawer-detail-add-status');
+    var partNum = document.getElementById('drawer-detail-add-partnum').value.trim();
+    var color = document.getElementById('drawer-detail-add-color').value.trim();
+    var desc = document.getElementById('drawer-detail-add-desc').value.trim();
+    var qty = parseInt(document.getElementById('drawer-detail-add-qty').value, 10);
+    if (!partNum && !desc){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Enter at least a part number or description.';
+      return;
+    }
+    if (isNaN(qty) || qty < 1){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Enter a quantity of at least 1.';
+      return;
+    }
+    var existing = drawerParts.find(function(p){
+      return p.drawerId === drawerDetailContext && p.partNum === partNum && p.color === color;
+    });
+    if (existing){
+      existing.qty += qty;
+    } else {
+      drawerParts.push({ drawerId: drawerDetailContext, partNum: partNum, color: color, desc: desc, qty: qty, elementId: '' });
+    }
+    saveDrawerParts();
+    document.getElementById('drawer-detail-add-partnum').value = '';
+    document.getElementById('drawer-detail-add-color').value = '';
+    document.getElementById('drawer-detail-add-desc').value = '';
+    document.getElementById('drawer-detail-add-qty').value = '1';
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = existing ? 'Added to existing part line.' : 'New part line added.';
+    renderDrawerCards();
+    refreshDrawerDetailMetrics(drawerDetailContext);
+    renderDrawerDetailTable(drawerDetailContext);
   });
 
   document.getElementById('drawer-add-btn').addEventListener('click', function(){
@@ -4479,6 +4837,7 @@
     storage.set(USE_SET_PROXY_KEY, useSetProxy ? '1' : '0', false);
   });
   document.getElementById('set-fetch-all-btn').addEventListener('click', fetchAllSetsViaApi);
+  document.getElementById('fill-element-ids-btn').addEventListener('click', fillMissingElementIds);
 
   document.getElementById('mocbuild-search').addEventListener('input', renderMocBuildsList);
   document.getElementById('set-parts-search').addEventListener('input', function(){ setPartsState.page = 1; renderSetPartsTable(); });
@@ -5120,14 +5479,16 @@
     overview: 'overview',
     parts: 'moc-collection', shopping: 'moc-collection', mocsets: 'moc-collection',
     sets: 'official-collection', setparts: 'official-collection',
-    drawers: 'data-tools', import: 'data-tools', images: 'data-tools'
+    drawers: 'drawers',
+    import: 'data-tools', images: 'data-tools'
   };
   var GROUP_DEFAULT_LEAF = {
     'moc-collection': 'parts',
     'official-collection': 'sets',
-    'data-tools': 'drawers'
+    'drawers': 'drawers',
+    'data-tools': 'import'
   };
-  var lastLeafForGroup = { 'moc-collection': 'parts', 'official-collection': 'sets', 'data-tools': 'drawers' };
+  var lastLeafForGroup = { 'moc-collection': 'parts', 'official-collection': 'sets', 'drawers': 'drawers', 'data-tools': 'import' };
 
   function switchTab(tab){
     state.tab = tab;
@@ -5139,7 +5500,7 @@
       var row = document.getElementById('sub-tabs-' + g);
       if (row) row.style.display = (g === group) ? 'flex' : 'none';
     });
-    if (group !== 'overview'){
+    if (group === 'moc-collection' || group === 'official-collection' || group === 'data-tools'){
       document.querySelectorAll('#sub-tabs-' + group + ' .tab-btn').forEach(function(b){ b.classList.toggle('active', b.dataset.tab === tab); });
     }
 
