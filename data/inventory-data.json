@@ -67762,7 +67762,8 @@
     "3035|Black|Cargo Shuttle Pod": 1,
     "22885|Black|Cargo Shuttle Pod": 2,
     "78329|Black|Cargo Shuttle Pod": 1,
-    "combo|30136|Dark Tan": 0
+    "combo|30136|Dark Tan": 0,
+    "combo|30136|Tan": 0
   },
   "tallyDrawerAssignments": {
     "combo|3005|Tan": "test",
@@ -344049,6 +344050,14 @@
       "desc": "Brick Special 1 x 2 Palisade [aka Log]",
       "elementId": "4520257",
       "qty": 327
+    },
+    {
+      "drawerId": "E10",
+      "partNum": "30136",
+      "color": "Tan",
+      "desc": "Brick Special 1 x 2 Palisade [aka Log]",
+      "elementId": "4218749",
+      "qty": 25
     }
   ],
   "mocLocations": {
