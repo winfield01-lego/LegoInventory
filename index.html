@@ -278,8 +278,8 @@
     cursor: not-allowed;
   }
   #lego-inv-root #view-lock-toggle-btn { flex-shrink: 0; }
-  #lego-inv-root #view-lock-toggle-btn.locked { color: var(--text-danger); border-color: var(--text-danger); }
-  #lego-inv-root #view-lock-toggle-btn.unlocked { color: var(--lego-green); border-color: var(--lego-green); }
+  #lego-inv-root #view-lock-toggle-btn.locked { color: var(--text-danger); border-color: var(--text-danger); background: rgba(220,38,38,0.08); font-weight: 700; }
+  #lego-inv-root #view-lock-toggle-btn.unlocked { color: var(--lego-green); border-color: var(--lego-green); background: rgba(22,163,74,0.08); font-weight: 700; }
   #lego-inv-root .shop-print-header h2 { font-size: 17px !important; margin: 0 0 3px !important; }
   #lego-inv-root .shop-print-header > div { font-size: 11px !important; margin-bottom: 0 !important; }
   #lego-inv-root #shopping-list-output { column-count: 2; column-gap: 30px; column-rule: 1px solid var(--border); }
@@ -433,8 +433,8 @@
     <p style="margin: 0 0 8px; font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.02em;">Priority labels</p>
     <div id="priority-chip-list" style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom: 10px;"></div>
     <div class="row">
-      <input type="text" id="new-priority-input" placeholder="New priority label" style="min-width:160px;" />
-      <button id="add-priority-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add label</button>
+      <input type="text" id="new-priority-input" class="lockable" placeholder="New priority label" style="min-width:160px;" />
+      <button id="add-priority-btn" class="lockable"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add label</button>
       <span id="priority-status" style="font-size:13px; color:var(--text-secondary);"></span>
     </div>
     <p style="color: var(--text-muted); font-size: 12px; margin: 10px 0 0;">These labels show up as the pick-list options on every part's Priority column. Removing a label here won't change parts already set to it &mdash; it just stops offering that label for new picks.</p>
@@ -500,7 +500,7 @@
         <button id="shop-almost-complete-btn" class="icon-btn" style="padding:3px 8px;" title="Selects only the builds missing a small number of pieces, and shows everything they still need"><i class="ti ti-hourglass-low" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Almost Complete</button>
         <label style="font-size:12px; color:var(--text-secondary); display:flex; align-items:center; gap:6px;">Missing &le; <input type="number" id="shop-almost-complete-threshold" value="25" min="1" style="width:60px;" /></label>
         <button id="shop-tally-mode-btn" class="icon-btn" style="padding:3px 8px;" title="Switch to a counter view for tallying parts as you find them while shopping"><i class="ti ti-hash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Tally Mode</button>
-        <button id="shop-tally-reset-btn" class="icon-btn" style="padding:3px 8px; display:none;" title="Zero out the found counts for everything in the current list"><i class="ti ti-refresh" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Reset Tally</button>
+        <button id="shop-tally-reset-btn" class="icon-btn lockable" style="padding:3px 8px; display:none;" title="Zero out the found counts for everything in the current list"><i class="ti ti-refresh" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Reset Tally</button>
         <label id="shop-tally-show-completed-label" class="checkbox-label" style="display:none; font-size:12px;"><input type="checkbox" id="shop-tally-show-completed" /> Show completed parts</label>
         <label id="shop-tally-drawer-group-label" style="display:none; font-size:12px; align-items:center; gap:6px;">Drawer picker: <select id="shop-tally-drawer-group-filter"><option value="">All groups</option></select></label>
         <button id="shop-tally-commit-btn" class="icon-btn lockable" style="padding:3px 8px; display:none; color: var(--lego-green); border-color: var(--lego-green);" title="Files found quantities into their assigned drawers. Does not change how many pieces your builds show as still needed."><i class="ti ti-check" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> File to Drawers</button>
@@ -513,7 +513,7 @@
       <div class="row">
         <button id="shop-print-btn"><i class="ti ti-file-type-pdf" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Shopping list report (PDF)</button>
         <button id="shop-export-csv-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Export CSV</button>
-        <button id="shop-clear-checks-btn" class="icon-btn"><i class="ti ti-eraser" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Clear checkmarks</button>
+        <button id="shop-clear-checks-btn" class="icon-btn lockable"><i class="ti ti-eraser" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Clear checkmarks</button>
       </div>
       <p style="color: var(--text-muted); font-size: 12px; margin-top: 10px;">Checkmarks are saved as you go, so you can close this and pick up your shopping trip later.</p>
       <p style="color: var(--text-muted); font-size: 12px; margin-top: 4px;">Quantities here are reduced by anything already found and filed into a drawer, even before it's officially assigned to a build.</p>
@@ -586,9 +586,9 @@
   <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 16px;">
     <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Add a build</p>
     <div class="controls" style="margin-bottom: 0;">
-      <input type="text" id="build-name-input" placeholder="Build name" style="min-width:200px;" />
-      <input type="text" id="mocbuild-theme-input" placeholder="Theme (optional)" style="min-width:160px;" />
-      <select id="build-location-input" style="min-width:180px;"></select>
+      <input type="text" id="build-name-input" class="lockable" placeholder="Build name" style="min-width:200px;" />
+      <input type="text" id="mocbuild-theme-input" class="lockable" placeholder="Theme (optional)" style="min-width:160px;" />
+      <select id="build-location-input" class="lockable" style="min-width:180px;"></select>
       <button id="manage-locations-toggle-mocsets" class="icon-btn"><i class="ti ti-map-pin" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Locations</button>
       <button id="build-add-btn" class="lockable"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add build</button>
     </div>
@@ -607,11 +607,11 @@
       Works with a full CSV (Part Num, Quantity, Color, Description, elementId) or with Rebrickable's own parts-list export, which only includes <strong>Element ID</strong> and <strong>Quantity</strong> &mdash; if Part Num is missing, each element ID is first looked up against parts already known elsewhere in the app (other builds, sets, or drawers), then against the Rebrickable API for anything still unmatched (uses the same API key entered on the Official Sets tab). Anything that still can't be matched is imported with those fields left blank, so you can search for and fill them in afterward using "Incomplete info" on the MOC Parts tab.
     </p>
     <div class="controls" style="margin-bottom: 8px;">
-      <select id="mocbuild-csv-target"><option value="">Which build is this for?</option></select>
-      <input type="file" id="mocbuild-csv-file" accept=".csv,text/csv" />
+      <select id="mocbuild-csv-target" class="lockable"><option value="">Which build is this for?</option></select>
+      <input type="file" id="mocbuild-csv-file" class="lockable" accept=".csv,text/csv" />
       <button id="mocbuild-csv-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
     </div>
-    <textarea id="mocbuild-csv-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:100px; font-family: var(--font-mono); font-size: 12px;"></textarea>
+    <textarea id="mocbuild-csv-paste" class="lockable" placeholder="Or paste CSV text here" style="width:100%; min-height:100px; font-family: var(--font-mono); font-size: 12px;"></textarea>
     <div class="row" style="margin-top: 8px;">
       <button id="mocbuild-csv-import-btn" class="lockable"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts for this build</button>
       <span id="mocbuild-csv-status" style="font-size:13px; color:var(--text-secondary);"></span>
@@ -663,7 +663,7 @@
       <label class="checkbox-label"><input type="checkbox" id="set-use-proxy-toggle" /> Use public CORS proxy if direct fails</label>
     </div>
     <div class="row">
-      <button id="set-fetch-all-btn"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch parts &amp; names for new sets</button>
+      <button id="set-fetch-all-btn" class="lockable"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch parts &amp; names for new sets</button>
       <span id="set-fetch-status" style="font-size:13px; color:var(--text-secondary);"></span>
     </div>
   </div>
@@ -674,7 +674,7 @@
       Scans every part line across MOC Builds, Official Sets, and Drawers for a part #/color combo with no element ID, and looks each one up on Rebrickable. Uses the same API key as above. One lookup per unique part #/color combo &mdash; the result is applied to every matching line everywhere it appears, so a part missing its ID in five different builds only costs one request.
     </p>
     <div class="row">
-      <button id="fill-element-ids-btn"><i class="ti ti-barcode" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Look up missing element IDs</button>
+      <button id="fill-element-ids-btn" class="lockable"><i class="ti ti-barcode" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Look up missing element IDs</button>
       <span id="fill-element-ids-status" style="font-size:13px; color:var(--text-secondary);"></span>
     </div>
   </div>
@@ -827,13 +827,13 @@
         <p style="margin:0 0 8px; font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary);">Assign to a build or set</p>
         <p id="assign-part-label" style="margin:0 0 10px; font-weight:700;"></p>
         <div class="controls" style="margin-bottom: 8px;">
-          <select id="assign-target-type">
+          <select id="assign-target-type" class="lockable">
             <option value="moc">MOC Build</option>
             <option value="set">Official Set</option>
           </select>
-          <input type="text" id="assign-moc-input" placeholder="Build name" list="moc-options" style="min-width:200px;" />
-          <input type="text" id="assign-set-input" placeholder="Set number" list="set-options" style="min-width:160px; display:none;" />
-          <input type="number" id="assign-qty-input" min="1" placeholder="Qty to move" style="width:120px;" />
+          <input type="text" id="assign-moc-input" class="lockable" placeholder="Build name" list="moc-options" style="min-width:200px;" />
+          <input type="text" id="assign-set-input" class="lockable" placeholder="Set number" list="set-options" style="min-width:160px; display:none;" />
+          <input type="number" id="assign-qty-input" class="lockable" min="1" placeholder="Qty to move" style="width:120px;" />
         </div>
         <div class="row">
           <button id="assign-confirm-btn" class="lockable"><i class="ti ti-arrow-right" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Move to build/set</button>
@@ -906,7 +906,7 @@
         Uses the GitHub Connection above. The buttons below are for manual use only &mdash; forcing an immediate save, or pulling the site's version again if you ever need to.
       </p>
       <div class="row" style="margin-bottom: 6px;">
-        <button id="save-all-data-github-btn"><i class="ti ti-cloud-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Save to site now</button>
+        <button id="save-all-data-github-btn" class="lockable"><i class="ti ti-cloud-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Save to site now</button>
         <button id="load-all-data-github-btn" class="icon-btn"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Reload from site</button>
         <span id="all-data-sync-status" style="font-size: 13px; color: var(--text-secondary);"></span>
       </div>
@@ -928,7 +928,7 @@
         <div id="diff-detail-list" style="margin-bottom: 12px;"></div>
         <div class="row">
           <button id="diff-load-from-site-btn" class="icon-btn"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Use the site's version (overwrite this browser)</button>
-          <button id="diff-publish-to-site-btn" class="icon-btn"><i class="ti ti-cloud-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Use this browser's version (overwrite the site)</button>
+          <button id="diff-publish-to-site-btn" class="icon-btn lockable"><i class="ti ti-cloud-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Use this browser's version (overwrite the site)</button>
         </div>
       </div>
     </div>
@@ -939,12 +939,12 @@
     <div class="collapse-body" id="cs-moc-upload" style="display:none;">
       <p style="color: var(--text-secondary); margin: 0 0 12px;">Import a parts list CSV (e.g. exported from Google Sheets or Rebrickable). New rows are added alongside your existing inventory &mdash; nothing gets overwritten.</p>
       <div class="row" style="margin-bottom: 10px;">
-        <input type="file" id="import-file" accept=".csv,text/csv" />
+        <input type="file" id="import-file" class="lockable" accept=".csv,text/csv" />
         <button id="import-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
       </div>
-      <textarea id="import-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:140px; font-family: var(--font-mono); font-size: 12px;"></textarea>
+      <textarea id="import-paste" class="lockable" placeholder="Or paste CSV text here" style="width:100%; min-height:140px; font-family: var(--font-mono); font-size: 12px;"></textarea>
       <div class="row" style="margin-top: 10px;">
-        <button id="import-btn"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts</button>
+        <button id="import-btn" class="lockable"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts</button>
         <span id="import-result" style="font-size: 13px; color: var(--text-secondary);"></span>
       </div>
       <p style="color: var(--text-muted); font-size: 12px; margin-top: 14px;">
@@ -960,12 +960,12 @@
         Already have a spreadsheet of everything you own (e.g. a Rebrickable or BrickLink export)? Upload it here to set the <strong>on-hand</strong> quantity for every matching part across all your builds in one go &mdash; this overwrites the on-hand numbers currently in the app for any part it matches.
       </p>
       <div class="row" style="margin-bottom: 10px;">
-        <input type="file" id="owned-file" accept=".csv,text/csv" />
+        <input type="file" id="owned-file" class="lockable" accept=".csv,text/csv" />
         <button id="owned-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
       </div>
-      <textarea id="owned-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:120px; font-family: var(--font-mono); font-size: 12px;"></textarea>
+      <textarea id="owned-paste" class="lockable" placeholder="Or paste CSV text here" style="width:100%; min-height:120px; font-family: var(--font-mono); font-size: 12px;"></textarea>
       <div class="row" style="margin-top: 10px;">
-        <button id="owned-btn"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Update on-hand counts</button>
+        <button id="owned-btn" class="lockable"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Update on-hand counts</button>
         <span id="owned-result" style="font-size: 13px; color: var(--text-secondary);"></span>
       </div>
       <p style="color: var(--text-muted); font-size: 12px; margin-top: 14px;">
@@ -981,11 +981,11 @@
         On Rebrickable, open the set's page &rarr; "Parts" tab &rarr; download the CSV. No account or API key needed. Then pick which set it belongs to and upload it here. (You can also fetch a set's parts automatically via the Rebrickable API from the Official Sets tab.)
       </p>
       <div class="controls" style="margin-bottom: 8px;">
-        <select id="set-csv-target"><option value="">Which set is this for?</option></select>
-        <input type="file" id="set-csv-file" accept=".csv,text/csv" />
+        <select id="set-csv-target" class="lockable"><option value="">Which set is this for?</option></select>
+        <input type="file" id="set-csv-file" class="lockable" accept=".csv,text/csv" />
         <button id="set-csv-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
       </div>
-      <textarea id="set-csv-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:100px; font-family: var(--font-mono); font-size: 12px;"></textarea>
+      <textarea id="set-csv-paste" class="lockable" placeholder="Or paste CSV text here" style="width:100%; min-height:100px; font-family: var(--font-mono); font-size: 12px;"></textarea>
       <div class="row" style="margin-top: 8px;">
         <button id="set-csv-import-btn" class="lockable"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts for this set</button>
         <span id="set-csv-status" style="font-size:13px; color:var(--text-secondary);"></span>
@@ -1000,13 +1000,13 @@
         Pick which drawer this CSV belongs to. Importing replaces that drawer's current contents &mdash; handy after a fresh recount. (For adding one part at a time instead, see the Drawers tab.)
       </p>
       <div class="controls" style="margin-bottom: 8px;">
-        <select id="drawer-csv-target"><option value="">Which drawer is this for?</option></select>
-        <input type="file" id="drawer-csv-file" accept=".csv,text/csv" />
+        <select id="drawer-csv-target" class="lockable"><option value="">Which drawer is this for?</option></select>
+        <input type="file" id="drawer-csv-file" class="lockable" accept=".csv,text/csv" />
         <button id="drawer-csv-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
       </div>
-      <textarea id="drawer-csv-paste" placeholder="Or paste CSV text here" style="width:100%; min-height:100px; font-family: var(--font-mono); font-size: 12px;"></textarea>
+      <textarea id="drawer-csv-paste" class="lockable" placeholder="Or paste CSV text here" style="width:100%; min-height:100px; font-family: var(--font-mono); font-size: 12px;"></textarea>
       <div class="row" style="margin-top: 8px;">
-        <button id="drawer-csv-import-btn"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts for this drawer</button>
+        <button id="drawer-csv-import-btn" class="lockable"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts for this drawer</button>
         <span id="drawer-csv-status" style="font-size:13px; color:var(--text-secondary);"></span>
       </div>
     </div>
@@ -1100,8 +1100,8 @@
     <p style="margin:0 0 8px; font-size:12px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.02em;">Storage locations</p>
     <div id="location-chip-list" style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px;"></div>
     <div class="row">
-      <input type="text" id="new-location-input" placeholder="New location, e.g. Bin A3" style="min-width:160px;" />
-      <button id="add-location-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add</button>
+      <input type="text" id="new-location-input" class="lockable" placeholder="New location, e.g. Bin A3" style="min-width:160px;" />
+      <button id="add-location-btn" class="lockable"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add</button>
     </div>
     <p id="location-manage-status" style="font-size:13px; color:var(--text-secondary); margin:8px 0 0;"></p>
     <p style="color: var(--text-muted); font-size: 12px; margin: 10px 0 0;">These show up as the pick-list options for build and set storage locations. Removing one here won't change anything already set to it &mdash; it just stops offering that option for new picks.</p>
@@ -1269,6 +1269,7 @@
   var GH_SHA_MAP_KEY = 'github-upload-shas-v1';
   var VIEW_LOCKED_KEY = 'view-locked-v1';
   var viewLocked = true;
+  var viewLockStatusTimer = null;
 
   function loadViewLocked(){
     return storage.get(VIEW_LOCKED_KEY, false).then(function(res){
@@ -1285,9 +1286,11 @@
       btn.classList.toggle('locked', viewLocked);
       btn.classList.toggle('unlocked', !viewLocked);
       btn.innerHTML = viewLocked
-        ? '<i class="ti ti-lock" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> View Only'
-        : '<i class="ti ti-lock-open" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Edit Mode';
-      btn.title = viewLocked ? 'Locked \u2014 click to allow edits' : 'Unlocked \u2014 click to lock and prevent accidental edits';
+        ? '<i class="ti ti-lock" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Locked (View Only)'
+        : '<i class="ti ti-lock-open" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Unlocked (Editing On)';
+      btn.title = viewLocked
+        ? 'Currently LOCKED: editing is switched off and nothing can be changed or uploaded. Click to unlock.'
+        : 'Currently UNLOCKED: edits are allowed and will auto-save to the site. Click to lock and prevent changes.';
     }
   }
 
@@ -1309,6 +1312,7 @@
 
   function scheduleAutoPublish(){
     if (suppressAutoPublish) return;
+    if (viewLocked) return;
     localDirty = true;
     saveDirtyFlag();
     var statusEl = document.getElementById('all-data-sync-status');
@@ -1379,6 +1383,7 @@
 
   function setSaveStatus(text){
     var el = document.getElementById('save-status');
+    el.style.color = 'var(--text-muted)';
     el.textContent = text;
     if (text) setTimeout(function(){ if (el.textContent === text) el.textContent = ''; }, 1500);
   }
@@ -5697,6 +5702,19 @@
     viewLocked = !viewLocked;
     saveViewLocked();
     applyViewLockState();
+    var statusEl = document.getElementById('save-status');
+    clearTimeout(viewLockStatusTimer);
+    statusEl.style.color = viewLocked ? 'var(--text-danger)' : 'var(--lego-green)';
+    var lockMsg = viewLocked
+      ? 'Locked \u2014 no edits or uploads can happen until you unlock.'
+      : 'Unlocked \u2014 edits will now save and upload automatically.';
+    statusEl.textContent = lockMsg;
+    viewLockStatusTimer = setTimeout(function(){
+      if (statusEl.textContent === lockMsg){
+        statusEl.textContent = '';
+        statusEl.style.color = 'var(--text-muted)';
+      }
+    }, 4000);
   });
   document.getElementById('export-btn').addEventListener('click', exportAllPartsCSV);
   document.getElementById('shop-export-csv-btn').addEventListener('click', exportShoppingList);
@@ -7125,12 +7143,12 @@
           '<span class="shop-desc">'+escapeHtml(r.color)+' '+escapeHtml(r.desc)+' <span class="shop-partnum">#'+escapeHtml(r.partNum)+'</span></span>' +
         '</div>' +
         '<div class="tally-controls-row">' +
-          '<select class="tally-drawer-select" aria-label="Drawer for this part">'+drawerOptions+'</select>' +
+          '<select class="tally-drawer-select lockable" aria-label="Drawer for this part">'+drawerOptions+'</select>' +
           '<div class="tally-counter">' +
-            '<button type="button" class="tally-minus" aria-label="Decrease found count">\u2212</button>' +
-            '<input type="number" class="tally-count-input" min="0" step="1" value="'+count+'" aria-label="Found count for this part" />' +
+            '<button type="button" class="tally-minus lockable" aria-label="Decrease found count">\u2212</button>' +
+            '<input type="number" class="tally-count-input lockable" min="0" step="1" value="'+count+'" aria-label="Found count for this part" />' +
             '<span class="tally-need-label">/ '+needCount+'</span>' +
-            '<button type="button" class="tally-plus" aria-label="Increase found count">+</button>' +
+            '<button type="button" class="tally-plus lockable" aria-label="Increase found count">+</button>' +
           '</div>' +
         '</div>';
       buildThumb(r, item.querySelector('.part-thumb-wrap'));
