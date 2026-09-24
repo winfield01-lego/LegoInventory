@@ -451,8 +451,11 @@
       <input type="number" id="ap-onhand" placeholder="On hand" min="0" style="width:100px;" />
       <select id="ap-priority" style="min-width:140px;"><option value="">No priority</option></select>
     </div>
+    <datalist id="ap-part-colors"></datalist>
+    <p id="ap-lookup-status" style="font-size:12px; color:var(--text-secondary); margin:0 0 8px;"></p>
     <div class="row">
       <button id="ap-submit" class="lockable"><i class="ti ti-check" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add to build</button>
+      <button id="ap-search-btn" class="icon-btn lockable"><i class="ti ti-search" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Search parts catalog</button>
       <button id="ap-cancel" class="icon-btn">Cancel</button>
       <span id="ap-status" style="font-size:13px; color:var(--text-secondary);"></span>
     </div>
@@ -811,8 +814,11 @@
           <input type="text" id="dp-elementid" placeholder="Element ID (optional)" style="min-width:140px;" />
           <input type="number" id="dp-qty" placeholder="Qty" min="1" value="1" style="width:90px;" />
           <button id="drawer-add-part-btn" class="lockable"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add part</button>
+          <button id="dp-search-btn" class="icon-btn lockable"><i class="ti ti-search" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Search parts catalog</button>
         </div>
-        <p style="color: var(--text-muted); font-size: 12px; margin: 8px 0 0;">If that part+color already exists in the chosen drawer, this adds to its quantity instead of creating a duplicate line. Fill in any of Part #, Color, Description, or Element ID and tab to the next field &mdash; if that part is already known elsewhere in the app (a build, a set, or another drawer), the rest fill in automatically.</p>
+        <datalist id="dp-part-colors"></datalist>
+        <p id="dp-lookup-status" style="font-size:12px; color:var(--text-secondary); margin:8px 0 0;"></p>
+        <p style="color: var(--text-muted); font-size: 12px; margin: 8px 0 0;">If that part+color already exists in the chosen drawer, this adds to its quantity instead of creating a duplicate line. Type a Part # and Color (or just an Element ID) and tab to the next field &mdash; the description and element ID fill in automatically, first from matching parts already in your collection, then from the full LEGO catalog on Rebrickable. Not sure of the part number? Use Search parts catalog to find it by description.</p>
         <span id="drawer-add-part-status" style="font-size:13px; color:var(--text-secondary);"></span>
       </div>
     </div>
@@ -1170,64 +1176,17 @@
 
     <p style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary); margin:0 0 8px;">Add a part to this drawer</p>
 
-    <div style="background: var(--surface-1); border: 2px dashed var(--border); border-radius: var(--radius); padding: 10px; margin-bottom: 10px;">
-      <div class="row" style="align-items:center;">
-        <label class="icon-btn lockable" style="cursor:pointer; margin:0;">
-          <i class="ti ti-camera" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Identify from photo
-          <input type="file" id="drawer-photo-id-input" class="lockable" accept="image/*" capture="environment" style="display:none;" />
-        </label>
-        <span id="drawer-photo-id-status" style="font-size:12px; color:var(--text-secondary);"></span>
-      </div>
-      <p style="color: var(--text-muted); font-size: 11px; margin: 8px 0 0;">
-        Best-effort part matching via the free community tool <strong>Brickognize</strong> (not affiliated with LEGO), plus a rough color guess sampled from the photo itself. Always double-check the match before adding &mdash; lighting, background, and similar-looking parts can throw both off.
-      </p>
-      <div id="drawer-photo-id-results" style="display:none; margin-top:10px;">
-        <div class="row" style="align-items:flex-start; gap:14px;">
-          <img id="drawer-photo-id-preview" style="width:70px; height:70px; object-fit:contain; background:var(--surface-2); border:2px solid var(--border); border-radius:8px;" />
-          <div style="flex:1; min-width:0;">
-            <div id="drawer-photo-id-color-row" style="display:none; align-items:center; gap:8px; margin-bottom:8px;">
-              <span style="font-size:12px; color:var(--text-secondary);">Guessed color:</span>
-              <span id="drawer-photo-id-color-swatch" style="width:18px; height:18px; border-radius:4px; border:2px solid var(--border); display:inline-block;"></span>
-              <span id="drawer-photo-id-color-name" style="font-size:12px; font-weight:700;"></span>
-              <button id="drawer-photo-id-color-use-btn" class="icon-btn lockable" style="padding:2px 8px; font-size:11px;">Use this color</button>
-            </div>
-            <div id="drawer-photo-id-candidates"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div style="background: var(--surface-1); border: 2px dashed var(--border); border-radius: var(--radius); padding: 10px; margin-bottom: 10px;">
-      <div class="row" style="align-items:center;">
-        <label class="icon-btn lockable" style="cursor:pointer; margin:0;">
-          <i class="ti ti-number" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Count from photo
-          <input type="file" id="drawer-photo-count-input" class="lockable" accept="image/*" capture="environment" style="display:none;" />
-        </label>
-        <span id="drawer-photo-count-status" style="font-size:12px; color:var(--text-secondary);"></span>
-      </div>
-      <p style="color: var(--text-muted); font-size: 11px; margin: 8px 0 0;">
-        Spread the parts out on a plain background that contrasts with their color (e.g. dark parts on white paper), not touching each other, and photograph from straight above. The count is an automatic estimate &mdash; tap a dot to remove it (or reduce a &times;2 group), tap an uncounted part to add one.
-      </p>
-      <div id="drawer-photo-count-panel" style="display:none; margin-top:10px;">
-        <canvas id="drawer-photo-count-canvas" style="display:block; width:100%; max-width:480px; height:auto; border:2px solid var(--border); border-radius:8px; cursor:crosshair; touch-action:manipulation;"></canvas>
-        <div class="row" style="align-items:center; margin-top:8px; gap:10px;">
-          <label style="font-size:12px; color:var(--text-secondary); display:inline-flex; align-items:center; gap:6px;">Sensitivity
-            <input type="range" id="drawer-photo-count-sensitivity" min="1" max="10" value="5" style="width:110px;" />
-          </label>
-          <span style="font-size:14px;">Count: <strong id="drawer-photo-count-total" style="font-size:18px;">0</strong></span>
-          <button id="drawer-photo-count-use-btn" class="icon-btn lockable" style="padding:3px 10px;">Use this count</button>
-          <button id="drawer-photo-count-reset-btn" class="icon-btn" style="padding:3px 10px;" title="Re-run automatic detection (clears your manual taps)">Re-detect</button>
-        </div>
-      </div>
-    </div>
-
     <div class="controls" style="margin-bottom:14px;">
       <input type="text" id="drawer-detail-add-partnum" class="lockable" placeholder="Part #" style="min-width:110px;" />
       <input type="text" id="drawer-detail-add-color" class="lockable" placeholder="Color" style="min-width:110px;" />
       <input type="text" id="drawer-detail-add-desc" class="lockable" placeholder="Description" style="min-width:160px;" />
+      <input type="text" id="drawer-detail-add-elementid" class="lockable" placeholder="Element ID" style="min-width:110px;" />
       <input type="number" id="drawer-detail-add-qty" class="lockable" placeholder="Qty" min="1" value="1" style="width:70px;" />
       <button id="drawer-detail-add-btn" class="lockable"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add to drawer</button>
+      <button id="drawer-detail-search-btn" class="icon-btn lockable"><i class="ti ti-search" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Search parts catalog</button>
     </div>
+    <datalist id="drawer-detail-part-colors"></datalist>
+    <p id="drawer-detail-lookup-status" style="font-size:12px; color:var(--text-secondary); margin:-8px 0 10px;"></p>
     <p id="drawer-detail-add-status" style="font-size:12px; color:var(--text-secondary); margin:-8px 0 14px;"></p>
 
     <div id="drawer-detail-assign-slot"></div>
@@ -1247,6 +1206,29 @@
         </thead>
         <tbody id="drawer-detail-parts-tbody"></tbody>
       </table>
+    </div>
+  </div>
+</div>
+
+<div id="part-search-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1100; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:var(--surface-2); border-radius:var(--radius); max-width:680px; width:100%; max-height:88vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
+    <button id="part-search-close" class="icon-btn" style="position:absolute; top:14px; right:14px;"><i class="ti ti-x" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Close</button>
+    <h2 style="margin:0 0 4px; font-size:20px; color:var(--lego-black); padding-right:90px;">Search the LEGO parts catalog</h2>
+    <p style="margin:0 0 12px; color:var(--text-secondary); font-size:12px;">Searches Rebrickable&rsquo;s full catalog of LEGO parts by description or part number. Choose a part, then a color, and the Part #, Color, Description and Element ID fill in on the form you came from.</p>
+    <div class="controls" style="margin-bottom:8px;">
+      <input type="text" id="part-search-input" placeholder="e.g. plate 1 x 2, slope 45 2 x 2, tile grille" style="flex:1; min-width:220px;" />
+      <button id="part-search-go"><i class="ti ti-search" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Search</button>
+    </div>
+    <p id="part-search-status" style="font-size:12px; color:var(--text-secondary); margin:0 0 8px;"></p>
+    <div id="part-search-results-view">
+      <div id="part-search-results"></div>
+      <button id="part-search-more" class="icon-btn" style="display:none; margin-top:8px;">Show more results</button>
+    </div>
+    <div id="part-search-colors-view" style="display:none;">
+      <button id="part-search-back" class="icon-btn" style="margin-bottom:10px;"><i class="ti ti-arrow-left" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Back to results</button>
+      <div id="part-search-colors-head" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;"></div>
+      <input type="text" id="part-search-color-filter" placeholder="Filter colors, e.g. gray" style="width:100%; margin-bottom:8px;" />
+      <div id="part-search-colors-list"></div>
     </div>
   </div>
 </div>
@@ -4531,11 +4513,9 @@
     document.getElementById('drawer-detail-add-desc').value = '';
     document.getElementById('drawer-detail-add-qty').value = '1';
     document.getElementById('drawer-detail-add-status').textContent = '';
-    partCountState = null;
-    document.getElementById('drawer-photo-count-panel').style.display = 'none';
-    document.getElementById('drawer-photo-count-status').textContent = '';
-    document.getElementById('drawer-photo-id-results').style.display = 'none';
-    document.getElementById('drawer-photo-id-status').textContent = '';
+    document.getElementById('drawer-detail-add-elementid').value = '';
+    ['drawer-detail-add-partnum','drawer-detail-add-color','drawer-detail-add-desc','drawer-detail-add-elementid'].forEach(function(id){ document.getElementById(id).dataset.autofilled = ''; });
+    if (partForms.dd) partForms.dd.reset();
     refreshDrawerDetailMetrics(drawerId);
     renderDrawerDetailTable(drawerId);
     document.getElementById('drawer-detail-modal-overlay').style.display = 'flex';
@@ -4561,6 +4541,7 @@
     var partNum = document.getElementById('drawer-detail-add-partnum').value.trim();
     var color = document.getElementById('drawer-detail-add-color').value.trim();
     var desc = document.getElementById('drawer-detail-add-desc').value.trim();
+    var elementId = document.getElementById('drawer-detail-add-elementid').value.trim();
     var qty = parseInt(document.getElementById('drawer-detail-add-qty').value, 10);
     if (!partNum && !desc){
       statusEl.style.color = 'var(--text-danger)';
@@ -4577,10 +4558,13 @@
     });
     if (existing){
       existing.qty += qty;
+      if (!existing.elementId && elementId) existing.elementId = elementId;
     } else {
-      drawerParts.push({ drawerId: drawerDetailContext, partNum: partNum, color: color, desc: desc, qty: qty, elementId: '' });
+      drawerParts.push({ drawerId: drawerDetailContext, partNum: partNum, color: color, desc: desc, qty: qty, elementId: elementId });
     }
     saveDrawerParts();
+    document.getElementById('drawer-detail-add-elementid').value = '';
+    if (partForms.dd) partForms.dd.reset();
     document.getElementById('drawer-detail-add-partnum').value = '';
     document.getElementById('drawer-detail-add-color').value = '';
     document.getElementById('drawer-detail-add-desc').value = '';
@@ -4592,377 +4576,359 @@
     renderDrawerDetailTable(drawerDetailContext);
   });
 
-  // --- Photo-based part identification (Brickognize) + color sampling ---
-  var LEGO_COLOR_TABLE = [
-    { name: 'Black', r: 5, g: 19, b: 29 },
-    { name: 'White', r: 255, g: 255, b: 255 },
-    { name: 'Light Bluish Gray', r: 160, g: 165, b: 169 },
-    { name: 'Dark Bluish Gray', r: 108, g: 110, b: 104 },
-    { name: 'Light Gray', r: 155, g: 161, b: 157 },
-    { name: 'Dark Gray', r: 109, g: 110, b: 92 },
-    { name: 'Red', r: 201, g: 26, b: 9 },
-    { name: 'Dark Red', r: 114, g: 14, b: 15 },
-    { name: 'Blue', r: 0, g: 85, b: 191 },
-    { name: 'Dark Blue', r: 10, g: 52, b: 99 },
-    { name: 'Medium Blue', r: 90, g: 147, b: 219 },
-    { name: 'Sand Blue', r: 96, g: 116, b: 161 },
-    { name: 'Maersk Blue', r: 53, g: 165, b: 216 },
-    { name: 'Dark Azure', r: 21, g: 145, b: 196 },
-    { name: 'Medium Azure', r: 54, g: 174, b: 191 },
-    { name: 'Sky Blue', r: 119, g: 201, b: 216 },
-    { name: 'Yellow', r: 242, g: 205, b: 55 },
-    { name: 'Bright Light Yellow', r: 255, g: 240, b: 58 },
-    { name: 'Orange', r: 254, g: 138, b: 24 },
-    { name: 'Bright Light Orange', r: 248, g: 187, b: 61 },
-    { name: 'Dark Orange', r: 169, g: 85, b: 0 },
-    { name: 'Medium Orange', r: 255, g: 167, b: 11 },
-    { name: 'Green', r: 35, g: 120, b: 65 },
-    { name: 'Dark Green', r: 24, g: 70, b: 50 },
-    { name: 'Bright Green', r: 75, g: 159, b: 74 },
-    { name: 'Lime', r: 187, g: 233, b: 11 },
-    { name: 'Sand Green', r: 160, g: 188, b: 172 },
-    { name: 'Olive Green', r: 155, g: 155, b: 96 },
-    { name: 'Tan', r: 228, g: 205, b: 158 },
-    { name: 'Dark Tan', r: 149, g: 138, b: 115 },
-    { name: 'Reddish Brown', r: 88, g: 42, b: 18 },
-    { name: 'Brown', r: 88, g: 57, b: 39 },
-    { name: 'Medium Nougat', r: 170, g: 125, b: 85 },
-    { name: 'Nougat', r: 214, g: 144, b: 92 },
-    { name: 'Light Nougat', r: 245, g: 200, b: 165 },
-    { name: 'Magenta', r: 146, g: 57, b: 120 },
-    { name: 'Dark Pink', r: 200, g: 112, b: 160 },
-    { name: 'Bright Pink', r: 252, g: 151, b: 172 },
-    { name: 'Coral', r: 255, g: 105, b: 143 },
-    { name: 'Purple', r: 129, g: 0, b: 123 },
-    { name: 'Dark Purple', r: 63, g: 54, b: 145 },
-    { name: 'Lavender', r: 173, g: 178, b: 203 },
-    { name: 'Medium Lavender', r: 147, g: 145, b: 228 },
-    { name: 'Trans-Clear', r: 252, g: 252, b: 252 },
-    { name: 'Metallic Silver', r: 165, g: 173, b: 180 },
-    { name: 'Metallic Gold', r: 219, g: 172, b: 52 }
-  ];
+  // --- Rebrickable catalog lookups: add-part autofill + parts catalog search ---
+  var rbPartCache = {};
+  var rbColorsCache = {};
+  var partForms = {};
+  var RB_NO_KEY_MSG = 'Add your Rebrickable API key (Official LEGO Collection tab) to auto-fill descriptions and element IDs from the full LEGO catalog.';
 
-  function nearestLegoColorName(rgb){
-    var best = null, bestDist = Infinity;
-    LEGO_COLOR_TABLE.forEach(function(c){
-      var dr = rgb.r - c.r, dg = rgb.g - c.g, db = rgb.b - c.b;
-      var dist = dr*dr + dg*dg + db*db;
-      if (dist < bestDist){ bestDist = dist; best = c; }
-    });
-    return best;
+  function rbApiUrl(pathAndQuery){
+    return 'https://rebrickable.com/api/v3/lego/' + pathAndQuery + (pathAndQuery.indexOf('?') === -1 ? '?' : '&') + 'key=' + encodeURIComponent(rebrickableApiKey);
   }
 
-  function sampleDominantColorFromImage(imgEl){
-    try {
-      var canvas = document.createElement('canvas');
-      var maxDim = 200;
-      var scale = Math.min(1, maxDim / Math.max(imgEl.naturalWidth, imgEl.naturalHeight));
-      canvas.width = Math.max(1, Math.round(imgEl.naturalWidth * scale));
-      canvas.height = Math.max(1, Math.round(imgEl.naturalHeight * scale));
-      var ctx = canvas.getContext('2d');
-      ctx.drawImage(imgEl, 0, 0, canvas.width, canvas.height);
-      var boxW = Math.max(1, Math.round(canvas.width * 0.5));
-      var boxH = Math.max(1, Math.round(canvas.height * 0.5));
-      var boxX = Math.round((canvas.width - boxW) / 2);
-      var boxY = Math.round((canvas.height - boxH) / 2);
-      var data = ctx.getImageData(boxX, boxY, boxW, boxH).data;
-      var buckets = {};
-      for (var i = 0; i < data.length; i += 4){
-        if (data[i+3] < 200) continue;
-        var r = Math.round(data[i] / 24) * 24;
-        var g = Math.round(data[i+1] / 24) * 24;
-        var b = Math.round(data[i+2] / 24) * 24;
-        var key = r+','+g+','+b;
-        buckets[key] = (buckets[key] || 0) + 1;
-      }
-      var bestKey = null, bestCount = 0;
-      Object.keys(buckets).forEach(function(k){
-        if (buckets[k] > bestCount){ bestCount = buckets[k]; bestKey = k; }
-      });
-      if (!bestKey) return null;
-      var parts = bestKey.split(',').map(Number);
-      return { r: parts[0], g: parts[1], b: parts[2] };
-    } catch (e){
-      return null;
-    }
-  }
-
-  function identifyPartFromImage(file){
-    var form = new FormData();
-    form.append('query_image', file, file.name || 'photo.jpg');
-    return fetch('https://api.brickognize.com/predict/', {
-      method: 'POST',
-      headers: { 'accept': 'application/json' },
-      body: form
-    }).then(function(resp){
-      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+  function rbFetchJson(url){
+    return fetchUrlMaybeProxied(url).then(function(resp){
+      if (resp.status === 404) return null;
+      if (resp.status === 429) throw new Error('Rebrickable is rate-limiting requests \u2014 wait a few seconds and try again.');
+      if (resp.status === 401 || resp.status === 403) throw new Error('Rebrickable rejected the API key \u2014 check it on the Official LEGO Collection tab.');
+      if (!resp.ok) throw new Error('Rebrickable returned HTTP ' + resp.status + '.');
       return resp.json();
-    }).then(function(data){
-      var list = data.items || data.predictions || data.results || (Array.isArray(data) ? data : []) || [];
-      return list.slice(0, 3).map(function(it){
-        var candidate = it.item || it;
-        return {
-          partNum: candidate.id || candidate.part_num || candidate.no || '',
-          name: candidate.name || candidate.title || '',
-          score: typeof it.score === 'number' ? it.score : (typeof candidate.score === 'number' ? candidate.score : null)
-        };
-      }).filter(function(c){ return c.partNum || c.name; });
     });
   }
 
-  document.getElementById('drawer-photo-id-input').addEventListener('change', function(e){
-    var file = e.target.files && e.target.files[0];
-    if (!file) return;
-    var statusEl = document.getElementById('drawer-photo-id-status');
-    var resultsEl = document.getElementById('drawer-photo-id-results');
-    var preview = document.getElementById('drawer-photo-id-preview');
-    var colorRow = document.getElementById('drawer-photo-id-color-row');
-    var candidatesEl = document.getElementById('drawer-photo-id-candidates');
-    candidatesEl.innerHTML = '';
-    colorRow.style.display = 'none';
-    resultsEl.style.display = 'none';
-    statusEl.style.color = 'var(--text-secondary)';
-    statusEl.textContent = 'Identifying\u2026';
+  function rbGetPart(partNum){
+    var k = normKey(partNum);
+    if (!rbPartCache[k]){
+      rbPartCache[k] = rbFetchJson(rbApiUrl('parts/' + encodeURIComponent(partNum) + '/')).then(function(d){
+        return d ? { partNum: d.part_num || partNum, name: d.name || '', img: d.part_img_url || '' } : null;
+      }).catch(function(err){ delete rbPartCache[k]; throw err; });
+    }
+    return rbPartCache[k];
+  }
 
-    var objectUrl = URL.createObjectURL(file);
-    preview.src = objectUrl;
-    preview.onload = function(){
-      var rgb = sampleDominantColorFromImage(preview);
-      if (rgb){
-        var match = nearestLegoColorName(rgb);
-        if (match){
-          document.getElementById('drawer-photo-id-color-swatch').style.background = 'rgb('+rgb.r+','+rgb.g+','+rgb.b+')';
-          document.getElementById('drawer-photo-id-color-name').textContent = match.name;
-          colorRow.style.display = 'flex';
-          document.getElementById('drawer-photo-id-color-use-btn').onclick = function(){
-            document.getElementById('drawer-detail-add-color').value = match.name;
-          };
-        }
+  function rbGetPartColors(partNum){
+    var k = normKey(partNum);
+    if (!rbColorsCache[k]){
+      rbColorsCache[k] = rbFetchJson(rbApiUrl('parts/' + encodeURIComponent(partNum) + '/colors/?page_size=1000')).then(function(d){
+        var list = (d && d.results) || [];
+        return list.map(function(col){
+          return { color: col.color_name || '', elements: col.elements || [], img: col.part_img_url || '', numSets: col.num_sets || 0 };
+        }).sort(function(a, b){ return a.color.localeCompare(b.color); });
+      }).catch(function(err){ delete rbColorsCache[k]; throw err; });
+    }
+    return rbColorsCache[k];
+  }
+
+  function rbColorMatch(colors, colorName){
+    var want = normKey(colorName);
+    return colors.find(function(col){ return normKey(col.color) === want; }) || null;
+  }
+
+  function describeElements(els){
+    if (!els.length) return '';
+    return els[0] + (els.length > 1 ? ' (also ' + els.slice(1, 4).join(', ') + (els.length > 4 ? '\u2026' : '') + ')' : '');
+  }
+
+  function attachPartAutofill(key, cfg){
+    var partEl = document.getElementById(cfg.part);
+    var colorEl = document.getElementById(cfg.color);
+    var descEl = document.getElementById(cfg.desc);
+    var elEl = cfg.element ? document.getElementById(cfg.element) : null;
+    var statusEl = document.getElementById(cfg.status);
+    var listEl = document.getElementById(cfg.colorList);
+    var origList = colorEl.getAttribute('list');
+    var seq = 0;
+
+    [partEl, colorEl, descEl, elEl].forEach(function(el){
+      if (el) el.addEventListener('input', function(){ el.dataset.autofilled = ''; });
+    });
+
+    function setStatus(text, isErr){
+      statusEl.style.color = isErr ? 'var(--text-danger)' : 'var(--text-secondary)';
+      statusEl.textContent = text || '';
+    }
+    function setAuto(el, value){
+      if (!el || !value) return;
+      if (el.value.trim() && el.dataset.autofilled !== '1') return;
+      el.value = value;
+      el.dataset.autofilled = '1';
+    }
+    function clearAuto(el){
+      if (el && el.dataset.autofilled === '1'){ el.value = ''; el.dataset.autofilled = ''; }
+    }
+    function setColorList(colors){
+      if (!listEl) return;
+      if (colors && colors.length){
+        listEl.innerHTML = colors.map(function(col){ return '<option value="' + escapeHtml(col.color) + '"></option>'; }).join('');
+        colorEl.setAttribute('list', listEl.id);
+      } else if (origList){
+        colorEl.setAttribute('list', origList);
+      } else {
+        colorEl.removeAttribute('list');
       }
-      resultsEl.style.display = 'block';
-    };
+    }
 
-    identifyPartFromImage(file).then(function(candidates){
-      if (!candidates.length){
-        statusEl.style.color = 'var(--text-danger)';
-        statusEl.textContent = 'No confident part matches found \u2014 try a closer, plainer-background photo, or fill in the fields manually.';
+    function run(trigger){
+      var mySeq = ++seq;
+      if (trigger === 'part'){ clearAuto(descEl); clearAuto(elEl); }
+      if (trigger === 'color'){ clearAuto(elEl); }
+      var partVal = partEl.value.trim();
+      var colorVal = colorEl.value.trim();
+      var elVal = elEl ? elEl.value.trim() : '';
+      var idx = buildPartLookupIndex();
+
+      if (trigger === 'element'){
+        if (!elVal) return;
+        var byEl = idx.byElementId[normKey(elVal)];
+        if (byEl){
+          setAuto(partEl, byEl.partNum); setAuto(colorEl, byEl.color); setAuto(descEl, byEl.desc);
+          setStatus('Filled from a matching part already in your collection.');
+          return;
+        }
+        if (!rebrickableApiKey){ setStatus(RB_NO_KEY_MSG); return; }
+        setStatus('Looking up element ' + elVal + '\u2026');
+        fetchElementFromApi(elVal).then(function(info){
+          if (mySeq !== seq) return;
+          setAuto(partEl, info.partNum); setAuto(colorEl, info.color); setAuto(descEl, info.desc);
+          setStatus('Found element ' + elVal + ': ' + info.desc + ' in ' + info.color + '.');
+          if (info.partNum) rbGetPartColors(info.partNum).then(function(colors){ if (mySeq === seq) setColorList(colors); }).catch(function(){});
+        }).catch(function(){
+          if (mySeq !== seq) return;
+          setStatus('Couldn\u2019t find element ' + elVal + ' in the Rebrickable catalog (or Rebrickable couldn\u2019t be reached).', true);
+        });
         return;
       }
-      statusEl.style.color = 'var(--text-secondary)';
-      statusEl.textContent = 'Pick a match below if one looks right (unverified \u2014 always double-check):';
-      candidates.forEach(function(c){
-        var row = document.createElement('div');
-        row.style.cssText = 'display:flex; align-items:center; gap:8px; margin-bottom:4px;';
-        var pct = c.score !== null ? Math.round(c.score * 100) + '%' : '';
-        row.innerHTML = '<span style="font-size:12px; flex:1; min-width:0;">'+
-          '<strong>'+escapeHtml(c.partNum)+'</strong> '+escapeHtml(c.name)+
-          (pct ? ' <span style="color:var(--text-muted);">('+pct+' match)</span>' : '') +
-          '</span>';
-        var useBtn = document.createElement('button');
-        useBtn.className = 'icon-btn lockable';
-        useBtn.style.cssText = 'padding:2px 8px; font-size:11px; flex-shrink:0;';
-        useBtn.textContent = 'Use this part';
-        useBtn.addEventListener('click', function(){
-          document.getElementById('drawer-detail-add-partnum').value = c.partNum;
-          document.getElementById('drawer-detail-add-desc').value = c.name;
+
+      if (trigger === 'desc'){
+        var descVal = descEl.value.trim();
+        if (partVal || !descVal) return;
+        var byD = idx.byDescOnly[normKey(descVal)];
+        if (byD){ setAuto(partEl, byD.partNum); run('part'); }
+        else setStatus('Not sure of the part number? Use Search parts catalog to look it up by description.');
+        return;
+      }
+
+      if (!partVal){ setColorList(null); setStatus(''); return; }
+
+      var localFull = false, localDesc = false;
+      if (colorVal){
+        var byPC = idx.byPartColor[normKey(partVal) + '|' + normKey(colorVal)];
+        if (byPC){
+          setAuto(descEl, byPC.desc);
+          if (elEl) setAuto(elEl, byPC.elementId);
+          localDesc = !!byPC.desc;
+          localFull = localDesc && (!elEl || !!byPC.elementId);
+        }
+      }
+      if (!localDesc){
+        var byP = idx.byPartNumOnly[normKey(partVal)];
+        if (byP && byP.desc){ setAuto(descEl, byP.desc); localDesc = true; }
+      }
+      if (localFull) setStatus('Filled from a matching part already in your collection.');
+      if (!rebrickableApiKey){ if (!localFull) setStatus(RB_NO_KEY_MSG); return; }
+      if (!localFull) setStatus('Looking up ' + partVal + ' in the LEGO catalog\u2026');
+
+      Promise.all([rbGetPart(partVal), rbGetPartColors(partVal)]).then(function(res){
+        if (mySeq !== seq) return;
+        var part = res[0], colors = res[1] || [];
+        if (!part){
+          setColorList(null);
+          if (!localFull) setStatus('Part ' + partVal + ' isn\u2019t in the Rebrickable catalog \u2014 double-check the number, or use Search parts catalog.', true);
+          return;
+        }
+        setColorList(colors);
+        if (!localDesc) setAuto(descEl, part.name);
+        if (localFull) return;
+        if (!colorVal){
+          setStatus('Found: ' + part.name + '. Pick one of its ' + colors.length + ' catalog colors to fill the element ID.');
+          return;
+        }
+        var match = rbColorMatch(colors, colorVal);
+        if (!match){
+          setStatus('Found: ' + part.name + ', but the catalog has no \u201c' + colorVal + '\u201d version \u2014 pick a color from the list (catalog color names).', true);
+          return;
+        }
+        if (elEl && match.elements.length) setAuto(elEl, match.elements[0]);
+        setStatus('Found: ' + part.name + ' in ' + match.color +
+          (elEl ? (match.elements.length ? ' \u2014 element ' + describeElements(match.elements) : ' \u2014 no element ID on record for this color') : '') + '.');
+      }).catch(function(err){
+        if (mySeq !== seq) return;
+        if (!localFull) setStatus('Lookup failed: ' + (err && err.message ? err.message : 'couldn\u2019t reach Rebrickable.') + ' If this keeps happening, try the CORS proxy toggle on the Official LEGO Collection tab.', true);
+      });
+    }
+
+    partEl.addEventListener('change', function(){ run('part'); });
+    colorEl.addEventListener('change', function(){ run('color'); });
+    descEl.addEventListener('change', function(){ run('desc'); });
+    if (elEl) elEl.addEventListener('change', function(){ run('element'); });
+
+    partForms[key] = {
+      cfg: cfg,
+      reset: function(){ ++seq; setStatus(''); setColorList(null); },
+      fillFromCatalog: function(partNum, color, desc, elementId, colors){
+        ++seq;
+        [[partEl, partNum], [colorEl, color], [descEl, desc], [elEl, elementId]].forEach(function(pair){
+          if (pair[0]){ pair[0].value = pair[1] || ''; pair[0].dataset.autofilled = '1'; }
         });
-        row.appendChild(useBtn);
-        candidatesEl.appendChild(row);
-      });
-    }).catch(function(){
-      statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Couldn\u2019t reach the identification service from this page (it may be blocking direct browser requests). Try brickognize.com directly, or fill in the fields manually.';
-    });
-  });
-
-
-  // --- Photo-based part counting (in-browser blob detection + tap correction) ---
-  var partCountState = null;
-
-  function detectPartBlobs(imgEl, threshold){
-    var maxDim = 480;
-    var scale = Math.min(1, maxDim / Math.max(imgEl.naturalWidth, imgEl.naturalHeight));
-    var w = Math.max(1, Math.round(imgEl.naturalWidth * scale));
-    var h = Math.max(1, Math.round(imgEl.naturalHeight * scale));
-    var c = document.createElement('canvas');
-    c.width = w; c.height = h;
-    var ctx = c.getContext('2d');
-    ctx.drawImage(imgEl, 0, 0, w, h);
-    var data = ctx.getImageData(0, 0, w, h).data;
-
-    // Estimate background color from the image border (median per channel)
-    var border = Math.max(2, Math.round(Math.min(w, h) * 0.03));
-    var rs = [], gs = [], bs = [];
-    for (var y = 0; y < h; y += 2){
-      for (var x = 0; x < w; x += 2){
-        if (x < border || y < border || x >= w - border || y >= h - border){
-          var bi = (y * w + x) * 4;
-          rs.push(data[bi]); gs.push(data[bi+1]); bs.push(data[bi+2]);
-        }
+        setColorList(colors);
+        setStatus('Filled from the LEGO catalog: ' + desc + ' in ' + color + (elementId ? ' \u2014 element ' + elementId : '') + '.');
       }
-    }
-    function median(arr){ arr.sort(function(a,b){ return a-b; }); return arr.length ? arr[Math.floor(arr.length/2)] : 0; }
-    var bgR = median(rs), bgG = median(gs), bgB = median(bs);
-
-    // Foreground mask: pixels far enough from the background color
-    var thr2 = threshold * threshold;
-    var mask = new Uint8Array(w * h);
-    for (var i = 0, p = 0; i < mask.length; i++, p += 4){
-      var dr = data[p] - bgR, dg = data[p+1] - bgG, db = data[p+2] - bgB;
-      if (dr*dr + dg*dg + db*db > thr2) mask[i] = 1;
-    }
-
-    // Connected components (8-neighbour flood fill)
-    var seen = new Uint8Array(w * h);
-    var comps = [];
-    var stack = [];
-    for (var start = 0; start < mask.length; start++){
-      if (!mask[start] || seen[start]) continue;
-      var area = 0, sx = 0, sy = 0;
-      stack.push(start); seen[start] = 1;
-      while (stack.length){
-        var idx = stack.pop();
-        var px = idx % w, py = (idx - px) / w;
-        area++; sx += px; sy += py;
-        for (var oy = -1; oy <= 1; oy++){
-          var ny = py + oy;
-          if (ny < 0 || ny >= h) continue;
-          for (var ox = -1; ox <= 1; ox++){
-            var nx = px + ox;
-            if (nx < 0 || nx >= w) continue;
-            var nIdx = ny * w + nx;
-            if (mask[nIdx] && !seen[nIdx]){ seen[nIdx] = 1; stack.push(nIdx); }
-          }
-        }
-      }
-      comps.push({ area: area, cx: sx / area, cy: sy / area });
-    }
-
-    var minArea = Math.max(12, w * h * 0.0004);
-    var maxArea = w * h * 0.4;
-    comps = comps.filter(function(cc){ return cc.area >= minArea && cc.area <= maxArea; });
-    var markers = [];
-    if (comps.length){
-      var med = median(comps.map(function(cc){ return cc.area; }));
-      comps.forEach(function(cc){
-        if (cc.area < med * 0.3) return;
-        var n = cc.area > med * 1.6 ? Math.round(cc.area / med) : 1;
-        markers.push({ x: cc.cx, y: cc.cy, n: n, auto: true });
-      });
-    }
-    return { w: w, h: h, markers: markers };
-  }
-
-  function partCountTotal(){
-    if (!partCountState) return 0;
-    return partCountState.markers.reduce(function(s, m){ return s + m.n; }, 0);
-  }
-
-  function drawPartCount(){
-    var st = partCountState;
-    if (!st) return;
-    var cv = document.getElementById('drawer-photo-count-canvas');
-    cv.width = st.w; cv.height = st.h;
-    var ctx = cv.getContext('2d');
-    ctx.drawImage(st.img, 0, 0, st.w, st.h);
-    st.markers.forEach(function(m){
-      var r = m.n > 1 ? st.r * 1.5 : st.r;
-      ctx.beginPath();
-      ctx.arc(m.x, m.y, r, 0, Math.PI * 2);
-      ctx.fillStyle = m.auto ? 'rgba(22,163,74,0.78)' : 'rgba(37,99,235,0.82)';
-      ctx.fill();
-      ctx.lineWidth = 2;
-      ctx.strokeStyle = '#ffffff';
-      ctx.stroke();
-      if (m.n > 1){
-        ctx.fillStyle = '#ffffff';
-        ctx.font = 'bold ' + Math.round(r * 0.9) + 'px sans-serif';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText('\u00d7' + m.n, m.x, m.y);
-      }
-    });
-    document.getElementById('drawer-photo-count-total').textContent = partCountTotal();
-  }
-
-  function runPartCountDetection(){
-    var st = partCountState;
-    if (!st) return;
-    var s = parseInt(document.getElementById('drawer-photo-count-sensitivity').value, 10) || 5;
-    var threshold = 140 - s * 12;
-    var statusEl = document.getElementById('drawer-photo-count-status');
-    var res = detectPartBlobs(st.img, threshold);
-    st.w = res.w; st.h = res.h; st.markers = res.markers;
-    st.r = Math.max(7, Math.round(Math.min(res.w, res.h) * 0.02));
-    drawPartCount();
-    if (res.markers.length){
-      statusEl.style.color = 'var(--text-secondary)';
-      statusEl.textContent = 'Estimated ' + partCountTotal() + ' \u2014 check the dots and tap to correct.';
-    } else {
-      statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Nothing detected \u2014 try moving the sensitivity slider, or a plainer, more contrasting background.';
-    }
-  }
-
-  document.getElementById('drawer-photo-count-input').addEventListener('change', function(e){
-    var file = e.target.files && e.target.files[0];
-    e.target.value = '';
-    if (!file) return;
-    var statusEl = document.getElementById('drawer-photo-count-status');
-    statusEl.style.color = 'var(--text-secondary)';
-    statusEl.textContent = 'Counting\u2026';
-    var img = new Image();
-    img.onload = function(){
-      partCountState = { img: img, w: 0, h: 0, markers: [], r: 8 };
-      document.getElementById('drawer-photo-count-panel').style.display = 'block';
-      runPartCountDetection();
     };
-    img.onerror = function(){
-      statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Couldn\u2019t read that image \u2014 try a JPG or PNG.';
-    };
-    img.src = URL.createObjectURL(file);
-  });
+  }
 
-  document.getElementById('drawer-photo-count-sensitivity').addEventListener('change', runPartCountDetection);
-  document.getElementById('drawer-photo-count-reset-btn').addEventListener('click', runPartCountDetection);
+  var partSearchTargetKey = null;
+  var partSearchNextUrl = null;
+  var partSearchShown = 0;
+  var partSearchSelected = null;
 
-  document.getElementById('drawer-photo-count-canvas').addEventListener('click', function(e){
-    var st = partCountState;
-    if (!st) return;
-    var cv = this;
-    var rect = cv.getBoundingClientRect();
-    var x = (e.clientX - rect.left) * (cv.width / rect.width);
-    var y = (e.clientY - rect.top) * (cv.height / rect.height);
-    var hitIdx = -1, hitDist = Infinity;
-    st.markers.forEach(function(m, i){
-      var r = m.n > 1 ? st.r * 1.5 : st.r;
-      var d = Math.hypot(m.x - x, m.y - y);
-      if (d <= r * 1.6 && d < hitDist){ hitDist = d; hitIdx = i; }
+  function setPartSearchStatus(text, isErr){
+    var el = document.getElementById('part-search-status');
+    el.style.color = isErr ? 'var(--text-danger)' : 'var(--text-secondary)';
+    el.textContent = text || '';
+  }
+
+  function showPartSearchView(which){
+    document.getElementById('part-search-results-view').style.display = which === 'results' ? 'block' : 'none';
+    document.getElementById('part-search-colors-view').style.display = which === 'colors' ? 'block' : 'none';
+  }
+
+  function partThumbHtml(url){
+    return url
+      ? '<img src="' + escapeHtml(url) + '" loading="lazy" alt="" style="width:44px; height:44px; object-fit:contain; background:#fff; border-radius:6px; flex-shrink:0;" />'
+      : '<div style="width:44px; height:44px; background:var(--surface-1); border-radius:6px; flex-shrink:0;"></div>';
+  }
+
+  function openPartSearch(targetKey){
+    partSearchTargetKey = targetKey;
+    var cfg = partForms[targetKey] && partForms[targetKey].cfg;
+    var input = document.getElementById('part-search-input');
+    if (cfg){
+      var seed = document.getElementById(cfg.desc).value.trim() || document.getElementById(cfg.part).value.trim();
+      if (seed) input.value = seed;
+    }
+    showPartSearchView('results');
+    document.getElementById('part-search-overlay').style.display = 'flex';
+    setPartSearchStatus(rebrickableApiKey ? '' : RB_NO_KEY_MSG, !rebrickableApiKey);
+    input.focus();
+    input.select();
+  }
+
+  function closePartSearch(){
+    document.getElementById('part-search-overlay').style.display = 'none';
+  }
+
+  function renderPartSearchResults(data, append){
+    var list = document.getElementById('part-search-results');
+    if (!append){ list.innerHTML = ''; partSearchShown = 0; }
+    var results = (data && data.results) || [];
+    var total = (data && data.count) || 0;
+    if (!append && !results.length){
+      list.innerHTML = '<div class="empty-msg">No parts matched. Try fewer or different words, e.g. \u201cplate 1 x 2\u201d or \u201cslope 45\u201d.</div>';
+    }
+    results.forEach(function(p){
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex; align-items:center; gap:10px; padding:6px 0; border-bottom:1px solid var(--border);';
+      row.innerHTML = partThumbHtml(p.part_img_url) +
+        '<div style="flex:1; min-width:0;"><div style="font-weight:700; font-size:13px;">' + escapeHtml(p.part_num) + '</div>' +
+        '<div style="font-size:12px; color:var(--text-secondary);">' + escapeHtml(p.name) + '</div></div>';
+      var btn = document.createElement('button');
+      btn.className = 'icon-btn';
+      btn.style.flexShrink = '0';
+      btn.textContent = 'Choose';
+      btn.addEventListener('click', function(){ showPartColors({ partNum: p.part_num, name: p.name || '', img: p.part_img_url || '' }); });
+      row.appendChild(btn);
+      list.appendChild(row);
     });
-    if (hitIdx >= 0){
-      var hit = st.markers[hitIdx];
-      if (hit.n > 1) hit.n--; else st.markers.splice(hitIdx, 1);
-    } else {
-      st.markers.push({ x: x, y: y, n: 1, auto: false });
-    }
-    drawPartCount();
-    var statusEl = document.getElementById('drawer-photo-count-status');
-    statusEl.style.color = 'var(--text-secondary)';
-    statusEl.textContent = 'Adjusted count: ' + partCountTotal();
-  });
+    partSearchShown += results.length;
+    partSearchNextUrl = (data && data.next) || null;
+    document.getElementById('part-search-more').style.display = partSearchNextUrl ? 'inline-block' : 'none';
+    if (partSearchShown) setPartSearchStatus('Showing ' + partSearchShown + ' of ' + total + ' matching part' + (total === 1 ? '' : 's') + '. Choose one to see its colors and element IDs.');
+    else setPartSearchStatus('');
+  }
 
-  document.getElementById('drawer-photo-count-use-btn').addEventListener('click', function(){
-    var total = partCountTotal();
-    var statusEl = document.getElementById('drawer-photo-count-status');
-    if (!total){
-      statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Count is 0 \u2014 nothing to use yet.';
-      return;
-    }
-    document.getElementById('drawer-detail-add-qty').value = total;
-    statusEl.style.color = 'var(--text-secondary)';
-    statusEl.textContent = 'Quantity set to ' + total + ' below \u2014 fill in the part and hit \u201cAdd to drawer\u201d.';
+  function runPartSearch(){
+    var q = document.getElementById('part-search-input').value.trim();
+    if (!q) return;
+    if (!rebrickableApiKey){ setPartSearchStatus(RB_NO_KEY_MSG, true); return; }
+    showPartSearchView('results');
+    setPartSearchStatus('Searching\u2026');
+    rbFetchJson(rbApiUrl('parts/?search=' + encodeURIComponent(q) + '&page_size=25')).then(function(data){
+      renderPartSearchResults(data, false);
+    }).catch(function(err){
+      setPartSearchStatus('Search failed: ' + (err && err.message ? err.message : 'couldn\u2019t reach Rebrickable.'), true);
+    });
+  }
+
+  function showPartColors(part){
+    partSearchSelected = part;
+    showPartSearchView('colors');
+    document.getElementById('part-search-color-filter').value = '';
+    document.getElementById('part-search-colors-head').innerHTML = partThumbHtml(part.img) +
+      '<div><div style="font-weight:700;">' + escapeHtml(part.partNum) + '</div><div style="font-size:12px; color:var(--text-secondary);">' + escapeHtml(part.name) + '</div></div>';
+    document.getElementById('part-search-colors-list').innerHTML = '';
+    setPartSearchStatus('Loading colors\u2026');
+    rbGetPartColors(part.partNum).then(function(colors){
+      if (partSearchSelected !== part) return;
+      part.colors = colors;
+      setPartSearchStatus(colors.length ? (colors.length + ' color' + (colors.length === 1 ? '' : 's') + ' in the catalog for this part.') : 'The catalog has no color records for this part.');
+      renderPartColors();
+    }).catch(function(err){
+      setPartSearchStatus('Couldn\u2019t load colors: ' + (err && err.message ? err.message : 'couldn\u2019t reach Rebrickable.'), true);
+    });
+  }
+
+  function renderPartColors(){
+    var part = partSearchSelected;
+    if (!part || !part.colors) return;
+    var filter = normKey(document.getElementById('part-search-color-filter').value);
+    var list = document.getElementById('part-search-colors-list');
+    list.innerHTML = '';
+    part.colors.filter(function(col){ return !filter || normKey(col.color).indexOf(filter) !== -1; }).forEach(function(col){
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex; align-items:center; gap:10px; padding:6px 0; border-bottom:1px solid var(--border); flex-wrap:wrap;';
+      row.innerHTML = partThumbHtml(col.img || part.img) +
+        '<div style="flex:1; min-width:140px;"><div style="font-weight:700; font-size:13px;">' + escapeHtml(col.color) + '</div>' +
+        '<div style="font-size:12px; color:var(--text-secondary);">' + (col.elements.length ? (col.elements.length + ' element ID' + (col.elements.length === 1 ? '' : 's')) : 'No element ID on record') +
+        ' &middot; in ' + col.numSets + ' set' + (col.numSets === 1 ? '' : 's') + '</div></div>';
+      var sel = null;
+      if (col.elements.length > 1){
+        sel = document.createElement('select');
+        sel.style.cssText = 'max-width:130px; flex-shrink:0;';
+        sel.innerHTML = col.elements.map(function(id){ return '<option value="' + escapeHtml(id) + '">' + escapeHtml(id) + '</option>'; }).join('');
+        row.appendChild(sel);
+      } else if (col.elements.length === 1){
+        var span = document.createElement('span');
+        span.style.cssText = 'font-size:12px; font-weight:700; flex-shrink:0;';
+        span.textContent = col.elements[0];
+        row.appendChild(span);
+      }
+      var useBtn = document.createElement('button');
+      useBtn.className = 'icon-btn';
+      useBtn.style.flexShrink = '0';
+      useBtn.textContent = 'Use';
+      useBtn.addEventListener('click', function(){
+        var elementId = sel ? sel.value : (col.elements[0] || '');
+        var target = partForms[partSearchTargetKey];
+        if (target) target.fillFromCatalog(part.partNum, col.color, part.name, elementId, part.colors);
+        closePartSearch();
+      });
+      row.appendChild(useBtn);
+      list.appendChild(row);
+    });
+    if (!list.children.length) list.innerHTML = '<div class="empty-msg">No colors match that filter.</div>';
+  }
+
+  document.getElementById('part-search-close').addEventListener('click', closePartSearch);
+  document.getElementById('part-search-go').addEventListener('click', runPartSearch);
+  document.getElementById('part-search-input').addEventListener('keydown', function(e){ if (e.key === 'Enter') runPartSearch(); });
+  document.getElementById('part-search-back').addEventListener('click', function(){ showPartSearchView('results'); setPartSearchStatus(partSearchShown ? ('Showing ' + partSearchShown + ' matching parts.') : ''); });
+  document.getElementById('part-search-color-filter').addEventListener('input', renderPartColors);
+  document.getElementById('part-search-more').addEventListener('click', function(){
+    if (!partSearchNextUrl) return;
+    setPartSearchStatus('Loading more\u2026');
+    rbFetchJson(partSearchNextUrl).then(function(data){ renderPartSearchResults(data, true); }).catch(function(err){
+      setPartSearchStatus('Couldn\u2019t load more: ' + (err && err.message ? err.message : 'couldn\u2019t reach Rebrickable.'), true);
+    });
   });
 
   document.getElementById('drawer-add-btn').addEventListener('click', function(){
@@ -5115,49 +5081,12 @@
     return { byPartColor: byPartColor, byElementId: byElementId, byPartNumOnly: byPartNumOnly, byDescOnly: byDescOnly };
   }
 
-  function tryAutofillAddPartForm(){
-    var partInput = document.getElementById('dp-partnum');
-    var colorInput = document.getElementById('dp-color');
-    var descInput = document.getElementById('dp-desc');
-    var elIdInput = document.getElementById('dp-elementid');
-
-    var partVal = partInput.value.trim();
-    var colorVal = colorInput.value.trim();
-    var descVal = descInput.value.trim();
-    var elIdVal = elIdInput.value.trim();
-
-    var idx = buildPartLookupIndex();
-
-    if (elIdVal){
-      var byEl = idx.byElementId[normKey(elIdVal)];
-      if (byEl){
-        if (!partVal) partInput.value = byEl.partNum;
-        if (!colorVal) colorInput.value = byEl.color;
-        if (!descVal) descInput.value = byEl.desc;
-        return;
-      }
-    }
-    if (partVal && colorVal){
-      var byPC = idx.byPartColor[normKey(partVal) + '|' + normKey(colorVal)];
-      if (byPC){
-        if (!descVal) descInput.value = byPC.desc;
-        if (!elIdVal) elIdInput.value = byPC.elementId;
-        return;
-      }
-    }
-    if (partVal && !colorVal){
-      var byP = idx.byPartNumOnly[normKey(partVal)];
-      if (byP && !descVal) descInput.value = byP.desc;
-    }
-    if (descVal && !partVal){
-      var byD = idx.byDescOnly[normKey(descVal)];
-      if (byD) partInput.value = byD.partNum;
-    }
-  }
-
-  ['dp-partnum','dp-color','dp-desc','dp-elementid'].forEach(function(id){
-    document.getElementById(id).addEventListener('change', tryAutofillAddPartForm);
-  });
+  attachPartAutofill('ap', { part: 'ap-partnum', color: 'ap-color', desc: 'ap-desc', element: 'ap-elementid', status: 'ap-lookup-status', colorList: 'ap-part-colors' });
+  attachPartAutofill('dp', { part: 'dp-partnum', color: 'dp-color', desc: 'dp-desc', element: 'dp-elementid', status: 'dp-lookup-status', colorList: 'dp-part-colors' });
+  attachPartAutofill('dd', { part: 'drawer-detail-add-partnum', color: 'drawer-detail-add-color', desc: 'drawer-detail-add-desc', element: 'drawer-detail-add-elementid', status: 'drawer-detail-lookup-status', colorList: 'drawer-detail-part-colors' });
+  document.getElementById('ap-search-btn').addEventListener('click', function(){ openPartSearch('ap'); });
+  document.getElementById('dp-search-btn').addEventListener('click', function(){ openPartSearch('dp'); });
+  document.getElementById('drawer-detail-search-btn').addEventListener('click', function(){ openPartSearch('dd'); });
 
   document.getElementById('drawer-add-part-btn').addEventListener('click', function(){
     var statusEl = document.getElementById('drawer-add-part-status');
