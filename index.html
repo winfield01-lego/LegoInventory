@@ -7598,12 +7598,18 @@
     }
   }
 
-  function updateElementIdForPartColor(partNum, color, newElementId){
+  function updateElementIdForPartColor(partNum, color, newElementId, oldElementId){
     var pk = normKey(partNum), ck = normKey(color);
     var touched = { moc: false, set: false, drawer: false };
-    state.rows.forEach(function(r){ if (!r.elementId && normKey(r.partNum) === pk && normKey(r.color) === ck){ r.elementId = newElementId; touched.moc = true; } });
-    setParts.forEach(function(r){ if (!r.elementId && normKey(r.partNum) === pk && normKey(r.color) === ck){ r.elementId = newElementId; touched.set = true; } });
-    drawerParts.forEach(function(r){ if (!r.elementId && normKey(r.partNum) === pk && normKey(r.color) === ck){ r.elementId = newElementId; touched.drawer = true; } });
+    function matches(r){
+      if (normKey(r.partNum) !== pk || normKey(r.color) !== ck) return false;
+      if (!r.elementId) return true;
+      if (oldElementId && r.elementId === oldElementId) return true;
+      return false;
+    }
+    state.rows.forEach(function(r){ if (matches(r)){ r.elementId = newElementId; touched.moc = true; } });
+    setParts.forEach(function(r){ if (matches(r)){ r.elementId = newElementId; touched.set = true; } });
+    drawerParts.forEach(function(r){ if (matches(r)){ r.elementId = newElementId; touched.drawer = true; } });
     if (touched.moc) saveState();
     if (touched.set) saveSetParts();
     if (touched.drawer) saveDrawerParts();
@@ -7627,17 +7633,23 @@
       field.value = ctx.elementId || '';
       return;
     }
+    var wasCorrection = !!ctx.elementId;
+    var oldElementId = ctx.elementId || '';
     var oldPartKey = !ctx.elementId && cachedPartImgKeys.has(normKey(ctx.partNum)) ? normKey(ctx.partNum) : null;
-    var touched = updateElementIdForPartColor(ctx.partNum, ctx.color, newId);
+    var touched = updateElementIdForPartColor(ctx.partNum, ctx.color, newId, oldElementId);
     ctx.elementId = newId;
     var where = [];
     if (touched.moc) where.push('MOC builds');
     if (touched.set) where.push('official sets');
     if (touched.drawer) where.push('drawers');
     idStatusEl.style.color = 'var(--text-success)';
-    idStatusEl.textContent = where.length
-      ? ('Saved \u2014 filled this element ID in for this part/color wherever it was blank (' + where.join(', ') + ').')
-      : 'Saved for this upload. No other rows for this part/color had a blank element ID to update.';
+    if (where.length){
+      idStatusEl.textContent = wasCorrection
+        ? ('Saved \u2014 corrected ' + oldElementId + ' to ' + newId + ' wherever this exact part/color/element ID combo appeared (' + where.join(', ') + ').')
+        : ('Saved \u2014 filled this element ID in for this part/color wherever it was blank (' + where.join(', ') + ').');
+    } else {
+      idStatusEl.textContent = 'Saved for this upload, but no matching rows were found to update in your builds, sets, or drawers.';
+    }
     if (oldPartKey){
       storage.get(IMG_PART_PREFIX + oldPartKey, false).then(function(res){
         if (res && res.value){
