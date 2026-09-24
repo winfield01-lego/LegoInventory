@@ -430,6 +430,7 @@
     <select id="priority-filter"><option value="">All priorities</option></select>
     <label class="checkbox-label"><input type="checkbox" id="missing-only" /> Missing only</label>
     <label class="checkbox-label"><input type="checkbox" id="incomplete-info-only" /> Incomplete info</label>
+    <label class="checkbox-label" title="Parts with no element ID, or an element ID that hasn&#39;t been cached or manually uploaded on this device"><input type="checkbox" id="no-photo-only" /> No photo</label>
     <label class="checkbox-label"><input type="checkbox" id="combine-parts-toggle" /> Combine matching parts across builds</label>
     <button id="manage-priorities-toggle" class="icon-btn" style="margin-left:auto;"><i class="ti ti-flag" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Priority labels</button>
     <button id="add-part-toggle" class="icon-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add part</button>
@@ -1509,6 +1510,12 @@
     return !r.partNum || !r.color || !r.desc || !r.elementId || !r.qty;
   }
 
+  function rowHasNoPhoto(r){
+    if (r.elementId) return !cachedIds.has(r.elementId);
+    if (r.partNum) return !cachedPartImgKeys.has(normKey(r.partNum));
+    return true;
+  }
+
   function focusAdjacentOnHandInput(currentInput, direction){
     var allInputs = Array.prototype.slice.call(document.querySelectorAll('#parts-tbody .onhand-input'));
     var idx = allInputs.indexOf(currentInput);
@@ -1638,6 +1645,7 @@
     var priority = document.getElementById('priority-filter').value;
     var missingOnly = document.getElementById('missing-only').checked;
     var incompleteOnly = document.getElementById('incomplete-info-only').checked;
+    var noPhotoOnly = document.getElementById('no-photo-only').checked;
     var rows = state.rows.filter(function(r){
       if (moc && r.moc !== moc) return false;
       if (color && r.color !== color) return false;
@@ -1647,6 +1655,7 @@
       }
       if (missingOnly && statusFor(r) === 'ok') return false;
       if (incompleteOnly && !rowIsIncomplete(r)) return false;
+      if (noPhotoOnly && !rowHasNoPhoto(r)) return false;
       if (q){
         var hay = (r.partNum+' '+r.desc+' '+r.color+' '+r.moc).toLowerCase();
         if (hay.indexOf(q) === -1) return false;
@@ -6284,6 +6293,7 @@
     document.getElementById('fill-incomplete-row').style.display = this.checked ? 'flex' : 'none';
   });
   document.getElementById('fill-incomplete-btn').addEventListener('click', fillIncompleteMocInfo);
+  document.getElementById('no-photo-only').addEventListener('change', function(){ state.page = 1; renderParts(); });
   document.getElementById('combine-parts-toggle').addEventListener('change', function(){ state.page = 1; renderParts(); });
   document.getElementById('prev-page').addEventListener('click', function(){ if (state.page>1){ state.page--; renderParts(); } });
   document.getElementById('next-page').addEventListener('click', function(){ state.page++; renderParts(); });
@@ -6830,6 +6840,38 @@
       reader.onload = function(){ resolve(reader.result); };
       reader.onerror = reject;
       reader.readAsDataURL(blob);
+    });
+  }
+
+  function resizeImageForStorage(file, maxDim, quality){
+    return new Promise(function(resolve, reject){
+      var objectUrl = URL.createObjectURL(file);
+      var img = new Image();
+      img.onload = function(){
+        URL.revokeObjectURL(objectUrl);
+        try {
+          var w = img.naturalWidth, h = img.naturalHeight;
+          if (!w || !h){ reject(new Error('Empty image.')); return; }
+          var scale = Math.min(1, maxDim / Math.max(w, h));
+          var cw = Math.max(1, Math.round(w * scale));
+          var ch = Math.max(1, Math.round(h * scale));
+          var canvas = document.createElement('canvas');
+          canvas.width = cw;
+          canvas.height = ch;
+          var ctx = canvas.getContext('2d');
+          ctx.fillStyle = '#ffffff';
+          ctx.fillRect(0, 0, cw, ch);
+          ctx.drawImage(img, 0, 0, cw, ch);
+          resolve(canvas.toDataURL('image/jpeg', quality));
+        } catch (e){
+          reject(e);
+        }
+      };
+      img.onerror = function(){
+        URL.revokeObjectURL(objectUrl);
+        reject(new Error('Could not read that image file.'));
+      };
+      img.src = objectUrl;
     });
   }
 
@@ -7598,6 +7640,20 @@
 
   document.getElementById('part-image-modal-close').addEventListener('click', closePartImageManager);
 
+  function attemptImageSave(key, file, sizeSteps){
+    var i = 0;
+    function tryNext(){
+      if (i >= sizeSteps.length) return Promise.resolve(null);
+      var step = sizeSteps[i++];
+      return resizeImageForStorage(file, step[0], step[1]).then(function(dataUrl){
+        return storage.set(key, dataUrl, false).then(function(res){
+          return res || tryNext();
+        });
+      });
+    }
+    return tryNext();
+  }
+
   document.getElementById('part-image-modal-file').addEventListener('change', function(e){
     var file = e.target.files && e.target.files[0];
     if (!file || !partImageManagerContext) return;
@@ -7612,10 +7668,8 @@
     statusEl.style.color = 'var(--text-secondary)';
     statusEl.textContent = 'Uploading\u2026';
     var oldPartKey = !ctx.elementId ? null : (cachedPartImgKeys.has(normKey(ctx.partNum)) ? normKey(ctx.partNum) : null);
-    blobToDataURL(file).then(function(dataUrl){
-      var key = ctx.elementId ? (IMG_PREFIX + ctx.elementId) : (IMG_PART_PREFIX + normKey(ctx.partNum));
-      return storage.set(key, dataUrl, false);
-    }).then(function(res){
+    var key = ctx.elementId ? (IMG_PREFIX + ctx.elementId) : (IMG_PART_PREFIX + normKey(ctx.partNum));
+    attemptImageSave(key, file, [[400, 0.82], [260, 0.7], [150, 0.6]]).then(function(res){
       if (!res){ throw new Error('save failed'); }
       if (ctx.elementId) cachedIds.add(ctx.elementId);
       else cachedPartImgKeys.add(normKey(ctx.partNum));
@@ -7627,9 +7681,13 @@
       statusEl.textContent = ctx.elementId ? ('Photo saved under element ID ' + ctx.elementId + '.') : 'Photo saved for this part.';
       refreshPartImageModalPreview();
       refreshAllThumbnails();
-    }).catch(function(){
+    }).catch(function(err){
       statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Couldn\u2019t save that photo \u2014 try again.';
+      if (err && /read/i.test(err.message || '')){
+        statusEl.textContent = 'Couldn\u2019t read that file as an image \u2014 try a different photo (JPG or PNG).';
+      } else {
+        statusEl.textContent = 'Couldn\u2019t save that photo, even after shrinking it \u2014 this browser\u2019s storage is likely full. Try Data & Tools \u2192 Images \u2192 Clear all cached images to free up space, then try again.';
+      }
     });
   });
 
@@ -7695,19 +7753,21 @@
     var statusEl = document.getElementById('img-upload-status');
     var files = Array.from(fileList);
     if (!files.length) return;
+    statusEl.style.color = 'var(--text-secondary)';
     statusEl.textContent = 'Adding\u2026';
-    var added = 0, skipped = 0;
+    var added = 0, skipped = 0, tooLarge = 0;
     var promises = files.map(function(file){
       var id = file.name.replace(/\.[^.]+$/, '').trim();
       if (!id || !/^image\//.test(file.type)){ skipped++; return Promise.resolve(); }
-      return blobToDataURL(file).then(function(dataUrl){
-        return storage.set(IMG_PREFIX + id, dataUrl, false);
-      }).then(function(res){
-        if (res){ cachedIds.add(id); added++; } else skipped++;
+      return attemptImageSave(IMG_PREFIX + id, file, [[400, 0.82], [260, 0.7], [150, 0.6]]).then(function(res){
+        if (res){ cachedIds.add(id); added++; } else { tooLarge++; }
       }).catch(function(){ skipped++; });
     });
     Promise.all(promises).then(function(){
-      statusEl.textContent = 'Added ' + added + ' image' + (added===1?'':'s') + (skipped ? (', skipped ' + skipped) : '') + '.';
+      statusEl.style.color = tooLarge ? 'var(--text-danger)' : 'var(--text-secondary)';
+      statusEl.textContent = 'Added ' + added + ' image' + (added===1?'':'s') + '.' +
+        (skipped ? (' Skipped ' + skipped + ' (not an image, or the filename doesn\u2019t match an element ID).') : '') +
+        (tooLarge ? (' ' + tooLarge + ' couldn\u2019t be saved \u2014 storage is likely full; try \u201cClear all cached images\u201d first.') : '');
       renderImagesTab();
       if (state.tab === 'parts') renderParts();
       document.getElementById('img-upload').value = '';
