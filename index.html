@@ -1169,6 +1169,61 @@
     <div class="metric-grid" id="drawer-detail-metrics" style="margin-bottom:16px;"></div>
 
     <p style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary); margin:0 0 8px;">Add a part to this drawer</p>
+<<<<<<< Updated upstream
+=======
+
+    <div style="background: var(--surface-1); border: 2px dashed var(--border); border-radius: var(--radius); padding: 10px; margin-bottom: 10px;">
+      <div class="row" style="align-items:center;">
+        <label class="icon-btn lockable" style="cursor:pointer; margin:0;">
+          <i class="ti ti-camera" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Identify from photo
+          <input type="file" id="drawer-photo-id-input" class="lockable" accept="image/*" capture="environment" style="display:none;" />
+        </label>
+        <span id="drawer-photo-id-status" style="font-size:12px; color:var(--text-secondary);"></span>
+      </div>
+      <p style="color: var(--text-muted); font-size: 11px; margin: 8px 0 0;">
+        Best-effort part matching via the free community tool <strong>Brickognize</strong> (not affiliated with LEGO), plus a rough color guess sampled from the photo itself. Always double-check the match before adding &mdash; lighting, background, and similar-looking parts can throw both off.
+      </p>
+      <div id="drawer-photo-id-results" style="display:none; margin-top:10px;">
+        <div class="row" style="align-items:flex-start; gap:14px;">
+          <img id="drawer-photo-id-preview" style="width:70px; height:70px; object-fit:contain; background:var(--surface-2); border:2px solid var(--border); border-radius:8px;" />
+          <div style="flex:1; min-width:0;">
+            <div id="drawer-photo-id-color-row" style="display:none; align-items:center; gap:8px; margin-bottom:8px;">
+              <span style="font-size:12px; color:var(--text-secondary);">Guessed color:</span>
+              <span id="drawer-photo-id-color-swatch" style="width:18px; height:18px; border-radius:4px; border:2px solid var(--border); display:inline-block;"></span>
+              <span id="drawer-photo-id-color-name" style="font-size:12px; font-weight:700;"></span>
+              <button id="drawer-photo-id-color-use-btn" class="icon-btn lockable" style="padding:2px 8px; font-size:11px;">Use this color</button>
+            </div>
+            <div id="drawer-photo-id-candidates"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="background: var(--surface-1); border: 2px dashed var(--border); border-radius: var(--radius); padding: 10px; margin-bottom: 10px;">
+      <div class="row" style="align-items:center;">
+        <label class="icon-btn lockable" style="cursor:pointer; margin:0;">
+          <i class="ti ti-number" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Count from photo
+          <input type="file" id="drawer-photo-count-input" class="lockable" accept="image/*" capture="environment" style="display:none;" />
+        </label>
+        <span id="drawer-photo-count-status" style="font-size:12px; color:var(--text-secondary);"></span>
+      </div>
+      <p style="color: var(--text-muted); font-size: 11px; margin: 8px 0 0;">
+        Spread the parts out on a plain background that contrasts with their color (e.g. dark parts on white paper), not touching each other, and photograph from straight above. The count is an automatic estimate &mdash; tap a dot to remove it (or reduce a &times;2 group), tap an uncounted part to add one.
+      </p>
+      <div id="drawer-photo-count-panel" style="display:none; margin-top:10px;">
+        <canvas id="drawer-photo-count-canvas" style="display:block; width:100%; max-width:480px; height:auto; border:2px solid var(--border); border-radius:8px; cursor:crosshair; touch-action:manipulation;"></canvas>
+        <div class="row" style="align-items:center; margin-top:8px; gap:10px;">
+          <label style="font-size:12px; color:var(--text-secondary); display:inline-flex; align-items:center; gap:6px;">Sensitivity
+            <input type="range" id="drawer-photo-count-sensitivity" min="1" max="10" value="5" style="width:110px;" />
+          </label>
+          <span style="font-size:14px;">Count: <strong id="drawer-photo-count-total" style="font-size:18px;">0</strong></span>
+          <button id="drawer-photo-count-use-btn" class="icon-btn lockable" style="padding:3px 10px;">Use this count</button>
+          <button id="drawer-photo-count-reset-btn" class="icon-btn" style="padding:3px 10px;" title="Re-run automatic detection (clears your manual taps)">Re-detect</button>
+        </div>
+      </div>
+    </div>
+
+>>>>>>> Stashed changes
     <div class="controls" style="margin-bottom:14px;">
       <input type="text" id="drawer-detail-add-partnum" class="lockable" placeholder="Part #" style="min-width:110px;" />
       <input type="text" id="drawer-detail-add-color" class="lockable" placeholder="Color" style="min-width:110px;" />
@@ -4479,6 +4534,14 @@
     document.getElementById('drawer-detail-add-desc').value = '';
     document.getElementById('drawer-detail-add-qty').value = '1';
     document.getElementById('drawer-detail-add-status').textContent = '';
+<<<<<<< Updated upstream
+=======
+    partCountState = null;
+    document.getElementById('drawer-photo-count-panel').style.display = 'none';
+    document.getElementById('drawer-photo-count-status').textContent = '';
+    document.getElementById('drawer-photo-id-results').style.display = 'none';
+    document.getElementById('drawer-photo-id-status').textContent = '';
+>>>>>>> Stashed changes
     refreshDrawerDetailMetrics(drawerId);
     renderDrawerDetailTable(drawerId);
     document.getElementById('drawer-detail-modal-overlay').style.display = 'flex';
@@ -4533,11 +4596,388 @@
     renderDrawerCards();
     refreshDrawerDetailMetrics(drawerDetailContext);
     renderDrawerDetailTable(drawerDetailContext);
+<<<<<<< Updated upstream
+=======
+  });
+
+  // --- Photo-based part identification (Brickognize) + color sampling ---
+  var LEGO_COLOR_TABLE = [
+    { name: 'Black', r: 5, g: 19, b: 29 },
+    { name: 'White', r: 255, g: 255, b: 255 },
+    { name: 'Light Bluish Gray', r: 160, g: 165, b: 169 },
+    { name: 'Dark Bluish Gray', r: 108, g: 110, b: 104 },
+    { name: 'Light Gray', r: 155, g: 161, b: 157 },
+    { name: 'Dark Gray', r: 109, g: 110, b: 92 },
+    { name: 'Red', r: 201, g: 26, b: 9 },
+    { name: 'Dark Red', r: 114, g: 14, b: 15 },
+    { name: 'Blue', r: 0, g: 85, b: 191 },
+    { name: 'Dark Blue', r: 10, g: 52, b: 99 },
+    { name: 'Medium Blue', r: 90, g: 147, b: 219 },
+    { name: 'Sand Blue', r: 96, g: 116, b: 161 },
+    { name: 'Maersk Blue', r: 53, g: 165, b: 216 },
+    { name: 'Dark Azure', r: 21, g: 145, b: 196 },
+    { name: 'Medium Azure', r: 54, g: 174, b: 191 },
+    { name: 'Sky Blue', r: 119, g: 201, b: 216 },
+    { name: 'Yellow', r: 242, g: 205, b: 55 },
+    { name: 'Bright Light Yellow', r: 255, g: 240, b: 58 },
+    { name: 'Orange', r: 254, g: 138, b: 24 },
+    { name: 'Bright Light Orange', r: 248, g: 187, b: 61 },
+    { name: 'Dark Orange', r: 169, g: 85, b: 0 },
+    { name: 'Medium Orange', r: 255, g: 167, b: 11 },
+    { name: 'Green', r: 35, g: 120, b: 65 },
+    { name: 'Dark Green', r: 24, g: 70, b: 50 },
+    { name: 'Bright Green', r: 75, g: 159, b: 74 },
+    { name: 'Lime', r: 187, g: 233, b: 11 },
+    { name: 'Sand Green', r: 160, g: 188, b: 172 },
+    { name: 'Olive Green', r: 155, g: 155, b: 96 },
+    { name: 'Tan', r: 228, g: 205, b: 158 },
+    { name: 'Dark Tan', r: 149, g: 138, b: 115 },
+    { name: 'Reddish Brown', r: 88, g: 42, b: 18 },
+    { name: 'Brown', r: 88, g: 57, b: 39 },
+    { name: 'Medium Nougat', r: 170, g: 125, b: 85 },
+    { name: 'Nougat', r: 214, g: 144, b: 92 },
+    { name: 'Light Nougat', r: 245, g: 200, b: 165 },
+    { name: 'Magenta', r: 146, g: 57, b: 120 },
+    { name: 'Dark Pink', r: 200, g: 112, b: 160 },
+    { name: 'Bright Pink', r: 252, g: 151, b: 172 },
+    { name: 'Coral', r: 255, g: 105, b: 143 },
+    { name: 'Purple', r: 129, g: 0, b: 123 },
+    { name: 'Dark Purple', r: 63, g: 54, b: 145 },
+    { name: 'Lavender', r: 173, g: 178, b: 203 },
+    { name: 'Medium Lavender', r: 147, g: 145, b: 228 },
+    { name: 'Trans-Clear', r: 252, g: 252, b: 252 },
+    { name: 'Metallic Silver', r: 165, g: 173, b: 180 },
+    { name: 'Metallic Gold', r: 219, g: 172, b: 52 }
+  ];
+
+  function nearestLegoColorName(rgb){
+    var best = null, bestDist = Infinity;
+    LEGO_COLOR_TABLE.forEach(function(c){
+      var dr = rgb.r - c.r, dg = rgb.g - c.g, db = rgb.b - c.b;
+      var dist = dr*dr + dg*dg + db*db;
+      if (dist < bestDist){ bestDist = dist; best = c; }
+    });
+    return best;
+  }
+
+  function sampleDominantColorFromImage(imgEl){
+    try {
+      var canvas = document.createElement('canvas');
+      var maxDim = 200;
+      var scale = Math.min(1, maxDim / Math.max(imgEl.naturalWidth, imgEl.naturalHeight));
+      canvas.width = Math.max(1, Math.round(imgEl.naturalWidth * scale));
+      canvas.height = Math.max(1, Math.round(imgEl.naturalHeight * scale));
+      var ctx = canvas.getContext('2d');
+      ctx.drawImage(imgEl, 0, 0, canvas.width, canvas.height);
+      var boxW = Math.max(1, Math.round(canvas.width * 0.5));
+      var boxH = Math.max(1, Math.round(canvas.height * 0.5));
+      var boxX = Math.round((canvas.width - boxW) / 2);
+      var boxY = Math.round((canvas.height - boxH) / 2);
+      var data = ctx.getImageData(boxX, boxY, boxW, boxH).data;
+      var buckets = {};
+      for (var i = 0; i < data.length; i += 4){
+        if (data[i+3] < 200) continue;
+        var r = Math.round(data[i] / 24) * 24;
+        var g = Math.round(data[i+1] / 24) * 24;
+        var b = Math.round(data[i+2] / 24) * 24;
+        var key = r+','+g+','+b;
+        buckets[key] = (buckets[key] || 0) + 1;
+      }
+      var bestKey = null, bestCount = 0;
+      Object.keys(buckets).forEach(function(k){
+        if (buckets[k] > bestCount){ bestCount = buckets[k]; bestKey = k; }
+      });
+      if (!bestKey) return null;
+      var parts = bestKey.split(',').map(Number);
+      return { r: parts[0], g: parts[1], b: parts[2] };
+    } catch (e){
+      return null;
+    }
+  }
+
+  function identifyPartFromImage(file){
+    var form = new FormData();
+    form.append('query_image', file, file.name || 'photo.jpg');
+    return fetch('https://api.brickognize.com/predict/', {
+      method: 'POST',
+      headers: { 'accept': 'application/json' },
+      body: form
+    }).then(function(resp){
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      return resp.json();
+    }).then(function(data){
+      var list = data.items || data.predictions || data.results || (Array.isArray(data) ? data : []) || [];
+      return list.slice(0, 3).map(function(it){
+        var candidate = it.item || it;
+        return {
+          partNum: candidate.id || candidate.part_num || candidate.no || '',
+          name: candidate.name || candidate.title || '',
+          score: typeof it.score === 'number' ? it.score : (typeof candidate.score === 'number' ? candidate.score : null)
+        };
+      }).filter(function(c){ return c.partNum || c.name; });
+    });
+  }
+
+  document.getElementById('drawer-photo-id-input').addEventListener('change', function(e){
+    var file = e.target.files && e.target.files[0];
+    if (!file) return;
+    var statusEl = document.getElementById('drawer-photo-id-status');
+    var resultsEl = document.getElementById('drawer-photo-id-results');
+    var preview = document.getElementById('drawer-photo-id-preview');
+    var colorRow = document.getElementById('drawer-photo-id-color-row');
+    var candidatesEl = document.getElementById('drawer-photo-id-candidates');
+    candidatesEl.innerHTML = '';
+    colorRow.style.display = 'none';
+    resultsEl.style.display = 'none';
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Identifying\u2026';
+
+    var objectUrl = URL.createObjectURL(file);
+    preview.src = objectUrl;
+    preview.onload = function(){
+      var rgb = sampleDominantColorFromImage(preview);
+      if (rgb){
+        var match = nearestLegoColorName(rgb);
+        if (match){
+          document.getElementById('drawer-photo-id-color-swatch').style.background = 'rgb('+rgb.r+','+rgb.g+','+rgb.b+')';
+          document.getElementById('drawer-photo-id-color-name').textContent = match.name;
+          colorRow.style.display = 'flex';
+          document.getElementById('drawer-photo-id-color-use-btn').onclick = function(){
+            document.getElementById('drawer-detail-add-color').value = match.name;
+          };
+        }
+      }
+      resultsEl.style.display = 'block';
+    };
+
+    identifyPartFromImage(file).then(function(candidates){
+      if (!candidates.length){
+        statusEl.style.color = 'var(--text-danger)';
+        statusEl.textContent = 'No confident part matches found \u2014 try a closer, plainer-background photo, or fill in the fields manually.';
+        return;
+      }
+      statusEl.style.color = 'var(--text-secondary)';
+      statusEl.textContent = 'Pick a match below if one looks right (unverified \u2014 always double-check):';
+      candidates.forEach(function(c){
+        var row = document.createElement('div');
+        row.style.cssText = 'display:flex; align-items:center; gap:8px; margin-bottom:4px;';
+        var pct = c.score !== null ? Math.round(c.score * 100) + '%' : '';
+        row.innerHTML = '<span style="font-size:12px; flex:1; min-width:0;">'+
+          '<strong>'+escapeHtml(c.partNum)+'</strong> '+escapeHtml(c.name)+
+          (pct ? ' <span style="color:var(--text-muted);">('+pct+' match)</span>' : '') +
+          '</span>';
+        var useBtn = document.createElement('button');
+        useBtn.className = 'icon-btn lockable';
+        useBtn.style.cssText = 'padding:2px 8px; font-size:11px; flex-shrink:0;';
+        useBtn.textContent = 'Use this part';
+        useBtn.addEventListener('click', function(){
+          document.getElementById('drawer-detail-add-partnum').value = c.partNum;
+          document.getElementById('drawer-detail-add-desc').value = c.name;
+        });
+        row.appendChild(useBtn);
+        candidatesEl.appendChild(row);
+      });
+    }).catch(function(){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Couldn\u2019t reach the identification service from this page (it may be blocking direct browser requests). Try brickognize.com directly, or fill in the fields manually.';
+    });
+  });
+
+
+  // --- Photo-based part counting (in-browser blob detection + tap correction) ---
+  var partCountState = null;
+
+  function detectPartBlobs(imgEl, threshold){
+    var maxDim = 480;
+    var scale = Math.min(1, maxDim / Math.max(imgEl.naturalWidth, imgEl.naturalHeight));
+    var w = Math.max(1, Math.round(imgEl.naturalWidth * scale));
+    var h = Math.max(1, Math.round(imgEl.naturalHeight * scale));
+    var c = document.createElement('canvas');
+    c.width = w; c.height = h;
+    var ctx = c.getContext('2d');
+    ctx.drawImage(imgEl, 0, 0, w, h);
+    var data = ctx.getImageData(0, 0, w, h).data;
+
+    // Estimate background color from the image border (median per channel)
+    var border = Math.max(2, Math.round(Math.min(w, h) * 0.03));
+    var rs = [], gs = [], bs = [];
+    for (var y = 0; y < h; y += 2){
+      for (var x = 0; x < w; x += 2){
+        if (x < border || y < border || x >= w - border || y >= h - border){
+          var bi = (y * w + x) * 4;
+          rs.push(data[bi]); gs.push(data[bi+1]); bs.push(data[bi+2]);
+        }
+      }
+    }
+    function median(arr){ arr.sort(function(a,b){ return a-b; }); return arr.length ? arr[Math.floor(arr.length/2)] : 0; }
+    var bgR = median(rs), bgG = median(gs), bgB = median(bs);
+
+    // Foreground mask: pixels far enough from the background color
+    var thr2 = threshold * threshold;
+    var mask = new Uint8Array(w * h);
+    for (var i = 0, p = 0; i < mask.length; i++, p += 4){
+      var dr = data[p] - bgR, dg = data[p+1] - bgG, db = data[p+2] - bgB;
+      if (dr*dr + dg*dg + db*db > thr2) mask[i] = 1;
+    }
+
+    // Connected components (8-neighbour flood fill)
+    var seen = new Uint8Array(w * h);
+    var comps = [];
+    var stack = [];
+    for (var start = 0; start < mask.length; start++){
+      if (!mask[start] || seen[start]) continue;
+      var area = 0, sx = 0, sy = 0;
+      stack.push(start); seen[start] = 1;
+      while (stack.length){
+        var idx = stack.pop();
+        var px = idx % w, py = (idx - px) / w;
+        area++; sx += px; sy += py;
+        for (var oy = -1; oy <= 1; oy++){
+          var ny = py + oy;
+          if (ny < 0 || ny >= h) continue;
+          for (var ox = -1; ox <= 1; ox++){
+            var nx = px + ox;
+            if (nx < 0 || nx >= w) continue;
+            var nIdx = ny * w + nx;
+            if (mask[nIdx] && !seen[nIdx]){ seen[nIdx] = 1; stack.push(nIdx); }
+          }
+        }
+      }
+      comps.push({ area: area, cx: sx / area, cy: sy / area });
+    }
+
+    var minArea = Math.max(12, w * h * 0.0004);
+    var maxArea = w * h * 0.4;
+    comps = comps.filter(function(cc){ return cc.area >= minArea && cc.area <= maxArea; });
+    var markers = [];
+    if (comps.length){
+      var med = median(comps.map(function(cc){ return cc.area; }));
+      comps.forEach(function(cc){
+        if (cc.area < med * 0.3) return;
+        var n = cc.area > med * 1.6 ? Math.round(cc.area / med) : 1;
+        markers.push({ x: cc.cx, y: cc.cy, n: n, auto: true });
+      });
+    }
+    return { w: w, h: h, markers: markers };
+  }
+
+  function partCountTotal(){
+    if (!partCountState) return 0;
+    return partCountState.markers.reduce(function(s, m){ return s + m.n; }, 0);
+  }
+
+  function drawPartCount(){
+    var st = partCountState;
+    if (!st) return;
+    var cv = document.getElementById('drawer-photo-count-canvas');
+    cv.width = st.w; cv.height = st.h;
+    var ctx = cv.getContext('2d');
+    ctx.drawImage(st.img, 0, 0, st.w, st.h);
+    st.markers.forEach(function(m){
+      var r = m.n > 1 ? st.r * 1.5 : st.r;
+      ctx.beginPath();
+      ctx.arc(m.x, m.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = m.auto ? 'rgba(22,163,74,0.78)' : 'rgba(37,99,235,0.82)';
+      ctx.fill();
+      ctx.lineWidth = 2;
+      ctx.strokeStyle = '#ffffff';
+      ctx.stroke();
+      if (m.n > 1){
+        ctx.fillStyle = '#ffffff';
+        ctx.font = 'bold ' + Math.round(r * 0.9) + 'px sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText('\u00d7' + m.n, m.x, m.y);
+      }
+    });
+    document.getElementById('drawer-photo-count-total').textContent = partCountTotal();
+  }
+
+  function runPartCountDetection(){
+    var st = partCountState;
+    if (!st) return;
+    var s = parseInt(document.getElementById('drawer-photo-count-sensitivity').value, 10) || 5;
+    var threshold = 140 - s * 12;
+    var statusEl = document.getElementById('drawer-photo-count-status');
+    var res = detectPartBlobs(st.img, threshold);
+    st.w = res.w; st.h = res.h; st.markers = res.markers;
+    st.r = Math.max(7, Math.round(Math.min(res.w, res.h) * 0.02));
+    drawPartCount();
+    if (res.markers.length){
+      statusEl.style.color = 'var(--text-secondary)';
+      statusEl.textContent = 'Estimated ' + partCountTotal() + ' \u2014 check the dots and tap to correct.';
+    } else {
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Nothing detected \u2014 try moving the sensitivity slider, or a plainer, more contrasting background.';
+    }
+  }
+
+  document.getElementById('drawer-photo-count-input').addEventListener('change', function(e){
+    var file = e.target.files && e.target.files[0];
+    e.target.value = '';
+    if (!file) return;
+    var statusEl = document.getElementById('drawer-photo-count-status');
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Counting\u2026';
+    var img = new Image();
+    img.onload = function(){
+      partCountState = { img: img, w: 0, h: 0, markers: [], r: 8 };
+      document.getElementById('drawer-photo-count-panel').style.display = 'block';
+      runPartCountDetection();
+    };
+    img.onerror = function(){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Couldn\u2019t read that image \u2014 try a JPG or PNG.';
+    };
+    img.src = URL.createObjectURL(file);
+  });
+
+  document.getElementById('drawer-photo-count-sensitivity').addEventListener('change', runPartCountDetection);
+  document.getElementById('drawer-photo-count-reset-btn').addEventListener('click', runPartCountDetection);
+
+  document.getElementById('drawer-photo-count-canvas').addEventListener('click', function(e){
+    var st = partCountState;
+    if (!st) return;
+    var cv = this;
+    var rect = cv.getBoundingClientRect();
+    var x = (e.clientX - rect.left) * (cv.width / rect.width);
+    var y = (e.clientY - rect.top) * (cv.height / rect.height);
+    var hitIdx = -1, hitDist = Infinity;
+    st.markers.forEach(function(m, i){
+      var r = m.n > 1 ? st.r * 1.5 : st.r;
+      var d = Math.hypot(m.x - x, m.y - y);
+      if (d <= r * 1.6 && d < hitDist){ hitDist = d; hitIdx = i; }
+    });
+    if (hitIdx >= 0){
+      var hit = st.markers[hitIdx];
+      if (hit.n > 1) hit.n--; else st.markers.splice(hitIdx, 1);
+    } else {
+      st.markers.push({ x: x, y: y, n: 1, auto: false });
+    }
+    drawPartCount();
+    var statusEl = document.getElementById('drawer-photo-count-status');
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Adjusted count: ' + partCountTotal();
+  });
+
+  document.getElementById('drawer-photo-count-use-btn').addEventListener('click', function(){
+    var total = partCountTotal();
+    var statusEl = document.getElementById('drawer-photo-count-status');
+    if (!total){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Count is 0 \u2014 nothing to use yet.';
+      return;
+    }
+    document.getElementById('drawer-detail-add-qty').value = total;
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Quantity set to ' + total + ' below \u2014 fill in the part and hit \u201cAdd to drawer\u201d.';
+>>>>>>> Stashed changes
   });
 
   document.getElementById('drawer-add-btn').addEventListener('click', function(){
     var label = document.getElementById('drawer-label-input').value.trim();
     if (!label) return;
+
     if (drawers.some(function(d){ return d.label === label; })){
       alert('A drawer with that label already exists.');
       return;
