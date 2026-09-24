@@ -1236,6 +1236,9 @@
     <div style="display:flex; justify-content:center; margin-bottom:14px;">
       <div id="part-image-modal-preview" style="width:140px; height:140px; display:flex; align-items:center; justify-content:center; background:var(--surface-1); border:2px solid var(--border); border-radius:var(--radius); overflow:hidden;"></div>
     </div>
+    <label style="display:block; font-size:11px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.02em; margin-bottom:4px;">Element ID</label>
+    <input type="text" id="part-image-modal-elementid" class="lockable" placeholder="e.g. 300121 (leave blank if unknown)" style="width:100%; margin-bottom:6px;" />
+    <p id="part-image-modal-elementid-status" style="font-size:11px; color:var(--text-secondary); margin:0 0 10px;">Know the element ID for this part and color, even a retired one? Add it here first &mdash; the photo you upload will be filed under that ID instead of just the part number, and this part's record is updated to match.</p>
     <p id="part-image-modal-status" style="font-size:12px; color:var(--text-secondary); margin:0 0 10px; text-align:center;"></p>
     <div class="row" style="justify-content:center; flex-wrap:wrap;">
       <label class="icon-btn lockable" style="cursor:pointer; margin:0;">
@@ -7510,16 +7513,80 @@
     }
   }
 
+  function updateElementIdForPartColor(partNum, color, newElementId){
+    var pk = normKey(partNum), ck = normKey(color);
+    var touched = { moc: false, set: false, drawer: false };
+    state.rows.forEach(function(r){ if (!r.elementId && normKey(r.partNum) === pk && normKey(r.color) === ck){ r.elementId = newElementId; touched.moc = true; } });
+    setParts.forEach(function(r){ if (!r.elementId && normKey(r.partNum) === pk && normKey(r.color) === ck){ r.elementId = newElementId; touched.set = true; } });
+    drawerParts.forEach(function(r){ if (!r.elementId && normKey(r.partNum) === pk && normKey(r.color) === ck){ r.elementId = newElementId; touched.drawer = true; } });
+    if (touched.moc) saveState();
+    if (touched.set) saveSetParts();
+    if (touched.drawer) saveDrawerParts();
+    return touched;
+  }
+
+  function syncElementIdFromField(){
+    var ctx = partImageManagerContext;
+    if (!ctx) return;
+    var field = document.getElementById('part-image-modal-elementid');
+    var idStatusEl = document.getElementById('part-image-modal-elementid-status');
+    var newId = field.value.trim();
+    if (newId === (ctx.elementId || '')) return;
+    if (!newId){
+      ctx.elementId = '';
+      return;
+    }
+    if (!ctx.partNum){
+      idStatusEl.style.color = 'var(--text-danger)';
+      idStatusEl.textContent = 'No part number on this row to match against \u2014 can\u2019t save an element ID here.';
+      field.value = ctx.elementId || '';
+      return;
+    }
+    var oldPartKey = !ctx.elementId && cachedPartImgKeys.has(normKey(ctx.partNum)) ? normKey(ctx.partNum) : null;
+    var touched = updateElementIdForPartColor(ctx.partNum, ctx.color, newId);
+    ctx.elementId = newId;
+    var where = [];
+    if (touched.moc) where.push('MOC builds');
+    if (touched.set) where.push('official sets');
+    if (touched.drawer) where.push('drawers');
+    idStatusEl.style.color = 'var(--text-success)';
+    idStatusEl.textContent = where.length
+      ? ('Saved \u2014 filled this element ID in for this part/color wherever it was blank (' + where.join(', ') + ').')
+      : 'Saved for this upload. No other rows for this part/color had a blank element ID to update.';
+    if (oldPartKey){
+      storage.get(IMG_PART_PREFIX + oldPartKey, false).then(function(res){
+        if (res && res.value){
+          return storage.set(IMG_PREFIX + newId, res.value, false).then(function(){
+            return storage.delete(IMG_PART_PREFIX + oldPartKey, false);
+          }).then(function(){
+            cachedPartImgKeys.delete(oldPartKey);
+            cachedIds.add(newId);
+            refreshPartImageModalPreview();
+            refreshAllThumbnails();
+          });
+        }
+      }).catch(function(){});
+    }
+    refreshAllThumbnails();
+    refreshPartImageModalPreview();
+  }
+
+  document.getElementById('part-image-modal-elementid').addEventListener('change', syncElementIdFromField);
+
   function openPartImageManager(r){
     partImageManagerContext = { elementId: r.elementId || '', partNum: r.partNum || '', color: r.color || '', desc: r.desc || '' };
     document.getElementById('part-image-modal-title').textContent = r.desc || r.partNum || 'This part';
     var subtitleBits = [];
     if (r.partNum) subtitleBits.push('#' + r.partNum);
     if (r.color) subtitleBits.push(r.color);
-    subtitleBits.push(r.elementId ? ('Element ' + r.elementId) : 'No element ID on file \u2014 the photo you upload here is matched by part number only, so it may show for other colors of this same part too.');
+    subtitleBits.push(r.elementId ? ('Element ' + r.elementId) : 'No element ID on file yet');
     document.getElementById('part-image-modal-subtitle').textContent = subtitleBits.join(' \u00b7 ');
     document.getElementById('part-image-modal-status').textContent = '';
     document.getElementById('part-image-modal-file').value = '';
+    document.getElementById('part-image-modal-elementid').value = r.elementId || '';
+    var idStatusEl = document.getElementById('part-image-modal-elementid-status');
+    idStatusEl.style.color = 'var(--text-secondary)';
+    idStatusEl.textContent = 'Know the element ID for this part and color, even a retired one? Add it here first \u2014 the photo you upload will be filed under that ID instead of just the part number, and this part\u2019s record is updated to match.';
     refreshPartImageModalPreview();
     document.getElementById('part-image-modal-overlay').style.display = 'flex';
   }
@@ -7534,6 +7601,7 @@
   document.getElementById('part-image-modal-file').addEventListener('change', function(e){
     var file = e.target.files && e.target.files[0];
     if (!file || !partImageManagerContext) return;
+    syncElementIdFromField();
     var ctx = partImageManagerContext;
     var statusEl = document.getElementById('part-image-modal-status');
     if (!/^image\//.test(file.type)){
@@ -7543,6 +7611,7 @@
     }
     statusEl.style.color = 'var(--text-secondary)';
     statusEl.textContent = 'Uploading\u2026';
+    var oldPartKey = !ctx.elementId ? null : (cachedPartImgKeys.has(normKey(ctx.partNum)) ? normKey(ctx.partNum) : null);
     blobToDataURL(file).then(function(dataUrl){
       var key = ctx.elementId ? (IMG_PREFIX + ctx.elementId) : (IMG_PART_PREFIX + normKey(ctx.partNum));
       return storage.set(key, dataUrl, false);
@@ -7550,8 +7619,12 @@
       if (!res){ throw new Error('save failed'); }
       if (ctx.elementId) cachedIds.add(ctx.elementId);
       else cachedPartImgKeys.add(normKey(ctx.partNum));
+      if (oldPartKey){
+        storage.delete(IMG_PART_PREFIX + oldPartKey, false).catch(function(){});
+        cachedPartImgKeys.delete(oldPartKey);
+      }
       statusEl.style.color = 'var(--text-success)';
-      statusEl.textContent = 'Photo saved for this part.';
+      statusEl.textContent = ctx.elementId ? ('Photo saved under element ID ' + ctx.elementId + '.') : 'Photo saved for this part.';
       refreshPartImageModalPreview();
       refreshAllThumbnails();
     }).catch(function(){
