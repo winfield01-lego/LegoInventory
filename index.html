@@ -1169,8 +1169,6 @@
     <div class="metric-grid" id="drawer-detail-metrics" style="margin-bottom:16px;"></div>
 
     <p style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary); margin:0 0 8px;">Add a part to this drawer</p>
-<<<<<<< Updated upstream
-=======
 
     <div style="background: var(--surface-1); border: 2px dashed var(--border); border-radius: var(--radius); padding: 10px; margin-bottom: 10px;">
       <div class="row" style="align-items:center;">
@@ -1223,7 +1221,6 @@
       </div>
     </div>
 
->>>>>>> Stashed changes
     <div class="controls" style="margin-bottom:14px;">
       <input type="text" id="drawer-detail-add-partnum" class="lockable" placeholder="Part #" style="min-width:110px;" />
       <input type="text" id="drawer-detail-add-color" class="lockable" placeholder="Color" style="min-width:110px;" />
@@ -4534,14 +4531,11 @@
     document.getElementById('drawer-detail-add-desc').value = '';
     document.getElementById('drawer-detail-add-qty').value = '1';
     document.getElementById('drawer-detail-add-status').textContent = '';
-<<<<<<< Updated upstream
-=======
     partCountState = null;
     document.getElementById('drawer-photo-count-panel').style.display = 'none';
     document.getElementById('drawer-photo-count-status').textContent = '';
     document.getElementById('drawer-photo-id-results').style.display = 'none';
     document.getElementById('drawer-photo-id-status').textContent = '';
->>>>>>> Stashed changes
     refreshDrawerDetailMetrics(drawerId);
     renderDrawerDetailTable(drawerId);
     document.getElementById('drawer-detail-modal-overlay').style.display = 'flex';
@@ -4596,8 +4590,6 @@
     renderDrawerCards();
     refreshDrawerDetailMetrics(drawerDetailContext);
     renderDrawerDetailTable(drawerDetailContext);
-<<<<<<< Updated upstream
-=======
   });
 
   // --- Photo-based part identification (Brickognize) + color sampling ---
@@ -4971,7 +4963,6 @@
     document.getElementById('drawer-detail-add-qty').value = total;
     statusEl.style.color = 'var(--text-secondary)';
     statusEl.textContent = 'Quantity set to ' + total + ' below \u2014 fill in the part and hit \u201cAdd to drawer\u201d.';
->>>>>>> Stashed changes
   });
 
   document.getElementById('drawer-add-btn').addEventListener('click', function(){
