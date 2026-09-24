@@ -1241,6 +1241,7 @@
     <label style="display:block; font-size:11px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.02em; margin-bottom:4px;">Element ID</label>
     <input type="text" id="part-image-modal-elementid" class="lockable" placeholder="e.g. 300121 (leave blank if unknown)" style="width:100%; margin-bottom:6px;" />
     <p id="part-image-modal-elementid-status" style="font-size:11px; color:var(--text-secondary); margin:0 0 10px;">Know the element ID for this part and color, even a retired one? Add it here first &mdash; the photo you upload will be filed under that ID instead of just the part number, and this part's record is updated to match.</p>
+    <p id="part-image-modal-sync-note" style="font-size:11px; color:var(--text-secondary); margin:0 0 8px; text-align:center;"></p>
     <p id="part-image-modal-status" style="font-size:12px; color:var(--text-secondary); margin:0 0 10px; text-align:center;"></p>
     <div class="row" style="justify-content:center; flex-wrap:wrap;">
       <label class="icon-btn lockable" style="cursor:pointer; margin:0;">
@@ -6993,6 +6994,36 @@
     });
   }
 
+  function deleteFileFromGithub(repo, branch, path, token, cacheKey){
+    var apiUrl = 'https://api.github.com/repos/' + repo + '/contents/' + path;
+    var headers = {
+      'Authorization': 'Bearer ' + token,
+      'Accept': 'application/vnd.github+json',
+      'X-GitHub-Api-Version': '2022-11-28',
+      'Content-Type': 'application/json'
+    };
+    function withSha(sha){
+      return fetch(apiUrl, {
+        method: 'DELETE',
+        headers: headers,
+        body: JSON.stringify({ message: 'Remove ' + cacheKey, sha: sha, branch: branch })
+      }).then(function(resp){
+        if (!resp.ok) return resp.json().then(function(err){ throw new Error((err && err.message) || ('HTTP ' + resp.status)); });
+        delete ghShaMap[cacheKey];
+        return true;
+      });
+    }
+    if (ghShaMap[cacheKey]) return withSha(ghShaMap[cacheKey]);
+    return fetch(apiUrl + '?ref=' + encodeURIComponent(branch), { headers: headers }).then(function(resp){
+      if (resp.status === 404) return true;
+      if (!resp.ok) throw new Error('Could not resolve existing file for ' + cacheKey);
+      return resp.json();
+    }).then(function(existing){
+      if (existing === true) return true;
+      return withSha(existing.sha);
+    });
+  }
+
   var ALL_DATA_PATH = 'data/inventory-data.json';
   var lastDiffReport = null;
 
@@ -7679,6 +7710,14 @@
     subtitleBits.push(r.elementId ? ('Element ' + r.elementId) : 'No element ID on file yet');
     document.getElementById('part-image-modal-subtitle').textContent = subtitleBits.join(' \u00b7 ');
     document.getElementById('part-image-modal-status').textContent = '';
+    var syncNoteEl = document.getElementById('part-image-modal-sync-note');
+    if (githubConnectionConfigured()){
+      syncNoteEl.style.color = 'var(--text-success)';
+      syncNoteEl.textContent = 'GitHub Connection is set up \u2014 photo uploads here will save permanently to your site (once an element ID is set).';
+    } else {
+      syncNoteEl.style.color = 'var(--text-danger)';
+      syncNoteEl.textContent = 'No GitHub Connection set up \u2014 photo uploads here will only be saved in this browser and can be lost. Set it up on the Official LEGO Collection tab to make them permanent.';
+    }
     document.getElementById('part-image-modal-file').value = '';
     document.getElementById('part-image-modal-elementid').value = r.elementId || '';
     var idStatusEl = document.getElementById('part-image-modal-elementid-status');
@@ -7709,6 +7748,36 @@
     return tryNext();
   }
 
+  function githubConnectionConfigured(){
+    return !!(ghSettings.repo && ghSettings.repo.indexOf('/') !== -1 && ghSettings.token);
+  }
+
+  function uploadImageToGithub(elementId, dataUrl){
+    if (!githubConnectionConfigured()) return Promise.reject(new Error('no-github'));
+    var branch = ghSettings.branch || 'main';
+    var commaIdx = dataUrl.indexOf(',');
+    var base64 = commaIdx !== -1 ? dataUrl.slice(commaIdx + 1) : dataUrl;
+    var path = 'images/' + encodeURIComponent(elementId) + '.jpg';
+    return putFileToGithub(ghSettings.repo, branch, path, ghSettings.token, base64, 'img-' + elementId, 'Add/update photo for element ' + elementId);
+  }
+
+  function attemptImageSaveToGithub(elementId, file, sizeSteps){
+    var i = 0;
+    function tryNext(){
+      if (i >= sizeSteps.length) return Promise.reject(new Error('too-large'));
+      var step = sizeSteps[i++];
+      return resizeImageForStorage(file, step[0], step[1]).then(function(dataUrl){
+        return uploadImageToGithub(elementId, dataUrl).then(function(){
+          return dataUrl;
+        }).catch(function(err){
+          if (err && err.message === 'no-github') throw err;
+          return tryNext();
+        });
+      });
+    }
+    return tryNext();
+  }
+
   document.getElementById('part-image-modal-file').addEventListener('change', function(e){
     var file = e.target.files && e.target.files[0];
     if (!file || !partImageManagerContext) return;
@@ -7720,11 +7789,35 @@
       statusEl.textContent = 'That doesn\u2019t look like an image file.';
       return;
     }
-    statusEl.style.color = 'var(--text-secondary)';
-    statusEl.textContent = 'Uploading\u2026';
     var oldPartKey = !ctx.elementId ? null : (cachedPartImgKeys.has(normKey(ctx.partNum)) ? normKey(ctx.partNum) : null);
+    var sizeSteps = [[400, 0.82], [260, 0.7], [150, 0.6]];
+
+    if (ctx.elementId && githubConnectionConfigured()){
+      statusEl.style.color = 'var(--text-secondary)';
+      statusEl.textContent = 'Uploading to your site\u2026';
+      attemptImageSaveToGithub(ctx.elementId, file, sizeSteps).then(function(dataUrl){
+        return storage.set(IMG_PREFIX + ctx.elementId, dataUrl, false);
+      }).then(function(){
+        cachedIds.add(ctx.elementId);
+        if (oldPartKey){
+          storage.delete(IMG_PART_PREFIX + oldPartKey, false).catch(function(){});
+          cachedPartImgKeys.delete(oldPartKey);
+        }
+        statusEl.style.color = 'var(--text-success)';
+        statusEl.textContent = 'Saved to your site as images/' + ctx.elementId + '.jpg \u2014 permanent and synced, same as your other photos.';
+        refreshPartImageModalPreview();
+        refreshAllThumbnails();
+      }).catch(function(err){
+        statusEl.style.color = 'var(--text-danger)';
+        statusEl.textContent = 'Couldn\u2019t upload to your site (' + (err && err.message ? err.message : 'unknown error') + ') \u2014 try again, or check your GitHub Connection settings on the Official LEGO Collection tab.';
+      });
+      return;
+    }
+
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Saving in this browser\u2026';
     var key = ctx.elementId ? (IMG_PREFIX + ctx.elementId) : (IMG_PART_PREFIX + normKey(ctx.partNum));
-    attemptImageSave(key, file, [[400, 0.82], [260, 0.7], [150, 0.6]]).then(function(res){
+    attemptImageSave(key, file, sizeSteps).then(function(res){
       if (!res){ throw new Error('save failed'); }
       if (ctx.elementId) cachedIds.add(ctx.elementId);
       else cachedPartImgKeys.add(normKey(ctx.partNum));
@@ -7733,7 +7826,9 @@
         cachedPartImgKeys.delete(oldPartKey);
       }
       statusEl.style.color = 'var(--text-success)';
-      statusEl.textContent = ctx.elementId ? ('Photo saved under element ID ' + ctx.elementId + '.') : 'Photo saved for this part.';
+      statusEl.textContent = ctx.elementId
+        ? ('Saved in this browser only for element ID ' + ctx.elementId + ' \u2014 set up GitHub Connection (Official LEGO Collection tab) to make photo uploads permanent and synced to your site instead.')
+        : 'Saved in this browser only for this part \u2014 clearing the image cache or switching devices will lose it.';
       refreshPartImageModalPreview();
       refreshAllThumbnails();
     }).catch(function(err){
@@ -7752,11 +7847,16 @@
     if (!confirm('Remove the uploaded photo for this part?')) return;
     var statusEl = document.getElementById('part-image-modal-status');
     var key = ctx.elementId ? (IMG_PREFIX + ctx.elementId) : (IMG_PART_PREFIX + normKey(ctx.partNum));
-    storage.delete(key, false).then(function(){
+    var githubDelete = (ctx.elementId && githubConnectionConfigured())
+      ? deleteFileFromGithub(ghSettings.repo, ghSettings.branch || 'main', 'images/' + encodeURIComponent(ctx.elementId) + '.jpg', ghSettings.token, 'img-' + ctx.elementId).catch(function(){ return null; })
+      : Promise.resolve(null);
+    Promise.all([storage.delete(key, false), githubDelete]).then(function(){
       if (ctx.elementId) cachedIds.delete(ctx.elementId);
       else cachedPartImgKeys.delete(normKey(ctx.partNum));
       statusEl.style.color = 'var(--text-secondary)';
-      statusEl.textContent = 'Removed.';
+      statusEl.textContent = (ctx.elementId && githubConnectionConfigured())
+        ? 'Removed from this browser and from your site.'
+        : 'Removed from this browser.';
       refreshPartImageModalPreview();
       refreshAllThumbnails();
     }).catch(function(){
