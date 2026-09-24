@@ -7401,7 +7401,8 @@
   }
 
   function checkOneImageExists(elementId){
-    return fetch(localImgUrl(elementId), { method: 'HEAD', cache: 'no-store' }).then(function(resp){
+    var url = localImgUrl(elementId) + '?_cb=' + Date.now();
+    return fetch(url, { method: 'HEAD', cache: 'no-store' }).then(function(resp){
       return resp.ok;
     }).catch(function(){ return false; });
   }
@@ -7560,18 +7561,30 @@
     img.title = r.desc || r.partNum;
     btn.appendChild(img);
 
-    var triedLocal = false;
-    img.addEventListener('error', function onError(){
-      if (!triedLocal){
-        triedLocal = true;
-        loadFromCacheOrLive(r.elementId, img, null);
-      } else {
-        btn.innerHTML = '<i class="ti ti-photo-off" aria-hidden="true"></i>';
-        btn.title = 'Add a photo for this part';
-      }
-    });
+    function tryLiveThenFallback(){
+      var triedLocal = false;
+      img.addEventListener('error', function onError(){
+        if (!triedLocal){
+          triedLocal = true;
+          loadFromCacheOrLive(r.elementId, img, null);
+        } else {
+          btn.innerHTML = '<i class="ti ti-photo-off" aria-hidden="true"></i>';
+          btn.title = 'Add a photo for this part';
+        }
+      });
+      img.src = localImgUrl(r.elementId);
+    }
 
-    img.src = localImgUrl(r.elementId);
+    if (cachedIds.has(r.elementId)){
+      // Known-good local copy (e.g. just uploaded) \u2014 use it directly rather than racing
+      // a live fetch that may not have caught up with a just-pushed GitHub Pages deploy yet.
+      storage.get(IMG_PREFIX + r.elementId, false).then(function(res){
+        if (res && res.value) img.src = res.value;
+        else tryLiveThenFallback();
+      }).catch(tryLiveThenFallback);
+    } else {
+      tryLiveThenFallback();
+    }
   }
 
   // --- Individual part image management window ---
@@ -7586,6 +7599,13 @@
     if (detailContext && detailContext.kind === 'moc') openMocDetail(detailContext.key);
     if (detailContext && detailContext.kind === 'set') openSetDetail(detailContext.key);
     if (state.tab === 'images') renderImagesTab();
+    var noPhotoCheckbox = document.getElementById('no-photo-only');
+    if (noPhotoCheckbox && noPhotoCheckbox.checked){
+      var noPhotoStatusEl = document.getElementById('no-photo-status');
+      var matchCount = state.rows.filter(rowHasNoPhoto).length;
+      noPhotoStatusEl.style.color = 'var(--text-secondary)';
+      noPhotoStatusEl.textContent = matchCount.toLocaleString() + ' of ' + state.rows.length.toLocaleString() + ' rows have no photo on this device.';
+    }
   }
 
   function refreshPartImageModalPreview(){
@@ -7799,6 +7819,7 @@
         return storage.set(IMG_PREFIX + ctx.elementId, dataUrl, false);
       }).then(function(){
         cachedIds.add(ctx.elementId);
+        delete noPhotoResolved[ctx.elementId];
         if (oldPartKey){
           storage.delete(IMG_PART_PREFIX + oldPartKey, false).catch(function(){});
           cachedPartImgKeys.delete(oldPartKey);
@@ -7819,7 +7840,7 @@
     var key = ctx.elementId ? (IMG_PREFIX + ctx.elementId) : (IMG_PART_PREFIX + normKey(ctx.partNum));
     attemptImageSave(key, file, sizeSteps).then(function(res){
       if (!res){ throw new Error('save failed'); }
-      if (ctx.elementId) cachedIds.add(ctx.elementId);
+      if (ctx.elementId){ cachedIds.add(ctx.elementId); delete noPhotoResolved[ctx.elementId]; }
       else cachedPartImgKeys.add(normKey(ctx.partNum));
       if (oldPartKey){
         storage.delete(IMG_PART_PREFIX + oldPartKey, false).catch(function(){});
@@ -7851,7 +7872,7 @@
       ? deleteFileFromGithub(ghSettings.repo, ghSettings.branch || 'main', 'images/' + encodeURIComponent(ctx.elementId) + '.jpg', ghSettings.token, 'img-' + ctx.elementId).catch(function(){ return null; })
       : Promise.resolve(null);
     Promise.all([storage.delete(key, false), githubDelete]).then(function(){
-      if (ctx.elementId) cachedIds.delete(ctx.elementId);
+      if (ctx.elementId){ cachedIds.delete(ctx.elementId); delete noPhotoResolved[ctx.elementId]; }
       else cachedPartImgKeys.delete(normKey(ctx.partNum));
       statusEl.style.color = 'var(--text-secondary)';
       statusEl.textContent = (ctx.elementId && githubConnectionConfigured())
