@@ -430,7 +430,8 @@
     <select id="priority-filter"><option value="">All priorities</option></select>
     <label class="checkbox-label"><input type="checkbox" id="missing-only" /> Missing only</label>
     <label class="checkbox-label"><input type="checkbox" id="incomplete-info-only" /> Incomplete info</label>
-    <label class="checkbox-label" title="Parts with no element ID, or an element ID that hasn&#39;t been cached or manually uploaded on this device"><input type="checkbox" id="no-photo-only" /> No photo</label>
+    <label class="checkbox-label" title="Parts with no element ID, or whose photo isn't on your site or cached in this browser"><input type="checkbox" id="no-photo-only" /> No photo</label>
+    <span id="no-photo-status" style="font-size:11px; color:var(--text-secondary);"></span>
     <label class="checkbox-label"><input type="checkbox" id="combine-parts-toggle" /> Combine matching parts across builds</label>
     <button id="manage-priorities-toggle" class="icon-btn" style="margin-left:auto;"><i class="ti ti-flag" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Priority labels</button>
     <button id="add-part-toggle" class="icon-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add part</button>
@@ -1510,10 +1511,48 @@
     return !r.partNum || !r.color || !r.desc || !r.elementId || !r.qty;
   }
 
+  var noPhotoResolved = {};
+
   function rowHasNoPhoto(r){
-    if (r.elementId) return !cachedIds.has(r.elementId);
+    if (r.elementId){
+      if (cachedIds.has(r.elementId)) return false;
+      if (noPhotoResolved.hasOwnProperty(r.elementId)) return noPhotoResolved[r.elementId];
+      return false;
+    }
     if (r.partNum) return !cachedPartImgKeys.has(normKey(r.partNum));
     return true;
+  }
+
+  function runNoPhotoCheck(callback){
+    var ids = Array.from(new Set(state.rows.filter(function(r){ return r.elementId && !cachedIds.has(r.elementId); }).map(function(r){ return r.elementId; })));
+    var unchecked = ids.filter(function(id){ return !noPhotoResolved.hasOwnProperty(id); });
+    var statusEl = document.getElementById('no-photo-status');
+    function showSummary(){
+      var matchCount = state.rows.filter(rowHasNoPhoto).length;
+      statusEl.style.color = 'var(--text-secondary)';
+      statusEl.textContent = matchCount.toLocaleString() + ' of ' + state.rows.length.toLocaleString() + ' rows have no photo on this device.';
+    }
+    if (!unchecked.length){ showSummary(); callback(); return; }
+    var total = unchecked.length, done = 0;
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Checking for photos\u2026 0 / ' + total;
+    var CONCURRENCY = 8;
+    var idx = 0;
+    function next(){
+      if (idx >= total){
+        if (done >= total){ showSummary(); callback(); }
+        return;
+      }
+      var id = unchecked[idx++];
+      checkOneImageExists(id).then(function(exists){
+        noPhotoResolved[id] = !exists;
+      }).then(function(){
+        done++;
+        statusEl.textContent = 'Checking for photos\u2026 ' + done + ' / ' + total;
+        next();
+      });
+    }
+    for (var i = 0; i < CONCURRENCY && i < total; i++) next();
   }
 
   function focusAdjacentOnHandInput(currentInput, direction){
@@ -6293,7 +6332,11 @@
     document.getElementById('fill-incomplete-row').style.display = this.checked ? 'flex' : 'none';
   });
   document.getElementById('fill-incomplete-btn').addEventListener('click', fillIncompleteMocInfo);
-  document.getElementById('no-photo-only').addEventListener('change', function(){ state.page = 1; renderParts(); });
+  document.getElementById('no-photo-only').addEventListener('change', function(){
+    state.page = 1;
+    if (this.checked) runNoPhotoCheck(renderParts);
+    else renderParts();
+  });
   document.getElementById('combine-parts-toggle').addEventListener('change', function(){ state.page = 1; renderParts(); });
   document.getElementById('prev-page').addEventListener('click', function(){ if (state.page>1){ state.page--; renderParts(); } });
   document.getElementById('next-page').addEventListener('click', function(){ state.page++; renderParts(); });
