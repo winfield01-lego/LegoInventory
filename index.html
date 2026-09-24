@@ -325,6 +325,7 @@
   <div class="tabs" id="main-tabs" style="border-bottom: none; margin-bottom: 0;">
     <button class="tab-btn active" data-maintab="overview"><span class="tab-dot" style="background:var(--lego-blue);"></span>Overview</button>
     <button class="tab-btn" data-maintab="moc-collection"><span class="tab-dot" style="background:var(--lego-yellow);"></span>MOC Collection</button>
+    <button class="tab-btn" data-maintab="shopping"><span class="tab-dot" style="background:var(--lego-orange);"></span>Shopping List</button>
     <button class="tab-btn" data-maintab="official-collection"><span class="tab-dot" style="background:var(--lego-purple);"></span>Official LEGO Collection</button>
     <button class="tab-btn" data-maintab="drawers"><span class="tab-dot" style="background:var(--lego-lime);"></span>Drawers</button>
     <button class="tab-btn" data-maintab="data-tools"><span class="tab-dot" style="background:var(--lego-azure);"></span>Data &amp; Tools</button>
@@ -337,9 +338,8 @@
 </div>
 
 <div class="tabs sub-tabs no-print" id="sub-tabs-moc-collection" style="display:none;">
-  <button class="tab-btn" data-tab="parts"><span class="tab-dot" style="background:var(--lego-yellow);"></span>MOC Parts</button>
-  <button class="tab-btn" data-tab="shopping"><span class="tab-dot" style="background:var(--lego-orange);"></span>Shopping List</button>
   <button class="tab-btn" data-tab="mocsets"><span class="tab-dot" style="background:var(--lego-teal);"></span>MOC Builds</button>
+  <button class="tab-btn" data-tab="parts"><span class="tab-dot" style="background:var(--lego-yellow);"></span>MOC Parts</button>
 </div>
 <div class="tabs sub-tabs no-print" id="sub-tabs-official-collection" style="display:none;">
   <button class="tab-btn" data-tab="sets"><span class="tab-dot" style="background:var(--lego-purple);"></span>Official Sets</button>
@@ -354,7 +354,7 @@
   <div id="grand-total-section" style="text-align:center; background: var(--surface-1); border: 2px solid var(--lego-blue); border-radius: var(--radius); padding: 1rem; margin-bottom: 1.5rem;">
     <div style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Total pieces across your whole collection</div>
     <div id="grand-total-value" style="font-size: 36px; font-weight: 800; color: var(--lego-black); line-height:1.2;">-</div>
-    <div style="font-size: 11px; color: var(--text-muted);">MOC pieces on hand + official set pieces</div>
+    <div style="font-size: 11px; color: var(--text-muted);" id="grand-total-caption">MOC pieces on hand + official set pieces + drawer pieces</div>
   </div>
 
   <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:1.5rem;">
@@ -365,6 +365,10 @@
     <div class="overview-group" style="flex:1; min-width:280px;">
       <p class="overview-group-title">Official Sets</p>
       <div class="metric-grid" id="sets-metrics"></div>
+    </div>
+    <div class="overview-group" style="flex:1; min-width:280px;">
+      <p class="overview-group-title">Drawers</p>
+      <div class="metric-grid" id="drawers-overview-metrics"></div>
     </div>
   </div>
   <div id="top-needed-section" style="margin-bottom: 1.5rem;">
@@ -429,6 +433,11 @@
     <button id="add-part-toggle" class="icon-btn"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add part</button>
   </div>
 
+  <div id="fill-incomplete-row" class="row" style="display:none; align-items:center; margin-bottom:12px;">
+    <button id="fill-incomplete-btn" class="lockable"><i class="ti ti-wand" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fill incomplete info</button>
+    <span id="fill-incomplete-status" style="font-size:13px; color:var(--text-secondary);">Checks parts you already have elsewhere (other builds, sets, and drawers) first, then the Rebrickable catalog for anything still missing.</span>
+  </div>
+
   <div id="priority-manage-panel" style="display:none; background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 12px;">
     <p style="margin: 0 0 8px; font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.02em;">Priority labels</p>
     <div id="priority-chip-list" style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom: 10px;"></div>
@@ -451,8 +460,11 @@
       <input type="number" id="ap-onhand" placeholder="On hand" min="0" style="width:100px;" />
       <select id="ap-priority" style="min-width:140px;"><option value="">No priority</option></select>
     </div>
+    <datalist id="ap-part-colors"></datalist>
+    <p id="ap-lookup-status" style="font-size:12px; color:var(--text-secondary); margin:0 0 8px;"></p>
     <div class="row">
       <button id="ap-submit" class="lockable"><i class="ti ti-check" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add to build</button>
+      <button id="ap-search-btn" class="icon-btn lockable"><i class="ti ti-search" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Search parts catalog</button>
       <button id="ap-cancel" class="icon-btn">Cancel</button>
       <span id="ap-status" style="font-size:13px; color:var(--text-secondary);"></span>
     </div>
@@ -662,6 +674,13 @@
       <input type="password" id="rebrickable-key-input" placeholder="Rebrickable API key" style="min-width:220px;" />
       <label class="checkbox-label"><input type="checkbox" id="set-use-proxy-toggle" /> Use public CORS proxy if direct fails</label>
     </div>
+    <div class="row" style="margin-bottom:8px;">
+      <button id="rb-clear-cache-btn" class="icon-btn"><i class="ti ti-trash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Clear saved catalog lookups</button>
+      <span id="rb-clear-cache-status" style="font-size:12px; color:var(--text-secondary);"></span>
+    </div>
+    <p style="color: var(--text-muted); font-size: 11px; margin: -4px 0 10px;">
+      Part/color lookups used by autofill and the parts catalog search are remembered on this device after the first time, so re-typing the same part later doesn't call Rebrickable again. This only lives in this browser \u2014 it isn't uploaded to your site. Clear it here if a part's catalog info looks out of date.
+    </p>
     <div class="row">
       <button id="set-fetch-all-btn" class="lockable"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch parts &amp; names for new sets</button>
       <span id="set-fetch-status" style="font-size:13px; color:var(--text-secondary);"></span>
@@ -811,8 +830,11 @@
           <input type="text" id="dp-elementid" placeholder="Element ID (optional)" style="min-width:140px;" />
           <input type="number" id="dp-qty" placeholder="Qty" min="1" value="1" style="width:90px;" />
           <button id="drawer-add-part-btn" class="lockable"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add part</button>
+          <button id="dp-search-btn" class="icon-btn lockable"><i class="ti ti-search" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Search parts catalog</button>
         </div>
-        <p style="color: var(--text-muted); font-size: 12px; margin: 8px 0 0;">If that part+color already exists in the chosen drawer, this adds to its quantity instead of creating a duplicate line. Fill in any of Part #, Color, Description, or Element ID and tab to the next field &mdash; if that part is already known elsewhere in the app (a build, a set, or another drawer), the rest fill in automatically.</p>
+        <datalist id="dp-part-colors"></datalist>
+        <p id="dp-lookup-status" style="font-size:12px; color:var(--text-secondary); margin:8px 0 0;"></p>
+        <p style="color: var(--text-muted); font-size: 12px; margin: 8px 0 0;">If that part+color already exists in the chosen drawer, this adds to its quantity instead of creating a duplicate line. Type a Part # and Color (or just an Element ID) and tab to the next field &mdash; the description and element ID fill in automatically, first from matching parts already in your collection, then from the full LEGO catalog on Rebrickable. Not sure of the part number? Use Search parts catalog to find it by description.</p>
         <span id="drawer-add-part-status" style="font-size:13px; color:var(--text-secondary);"></span>
       </div>
     </div>
@@ -1169,13 +1191,18 @@
     <div class="metric-grid" id="drawer-detail-metrics" style="margin-bottom:16px;"></div>
 
     <p style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary); margin:0 0 8px;">Add a part to this drawer</p>
+
     <div class="controls" style="margin-bottom:14px;">
       <input type="text" id="drawer-detail-add-partnum" class="lockable" placeholder="Part #" style="min-width:110px;" />
       <input type="text" id="drawer-detail-add-color" class="lockable" placeholder="Color" style="min-width:110px;" />
       <input type="text" id="drawer-detail-add-desc" class="lockable" placeholder="Description" style="min-width:160px;" />
+      <input type="text" id="drawer-detail-add-elementid" class="lockable" placeholder="Element ID" style="min-width:110px;" />
       <input type="number" id="drawer-detail-add-qty" class="lockable" placeholder="Qty" min="1" value="1" style="width:70px;" />
       <button id="drawer-detail-add-btn" class="lockable"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add to drawer</button>
+      <button id="drawer-detail-search-btn" class="icon-btn lockable"><i class="ti ti-search" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Search parts catalog</button>
     </div>
+    <datalist id="drawer-detail-part-colors"></datalist>
+    <p id="drawer-detail-lookup-status" style="font-size:12px; color:var(--text-secondary); margin:-8px 0 10px;"></p>
     <p id="drawer-detail-add-status" style="font-size:12px; color:var(--text-secondary); margin:-8px 0 14px;"></p>
 
     <div id="drawer-detail-assign-slot"></div>
@@ -1195,6 +1222,36 @@
         </thead>
         <tbody id="drawer-detail-parts-tbody"></tbody>
       </table>
+    </div>
+  </div>
+</div>
+
+<div id="part-search-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1100; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:var(--surface-2); border-radius:var(--radius); max-width:680px; width:100%; max-height:88vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
+    <button id="part-search-close" class="icon-btn" style="position:absolute; top:14px; right:14px;"><i class="ti ti-x" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Close</button>
+    <h2 style="margin:0 0 4px; font-size:20px; color:var(--lego-black); padding-right:90px;">Search the LEGO parts catalog</h2>
+    <p style="margin:0 0 12px; color:var(--text-secondary); font-size:12px;">Searches Rebrickable&rsquo;s full catalog of LEGO parts by description or part number. Choose a part, then a color, and the Part #, Color, Description and Element ID fill in on the form you came from.</p>
+    <div class="controls" style="margin-bottom:8px;">
+      <input type="text" id="part-search-input" placeholder="e.g. plate 1 x 2, slope 45 2 x 2, tile grille" style="flex:1; min-width:220px;" />
+      <button id="part-search-go"><i class="ti ti-search" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Search</button>
+    </div>
+    <p id="part-search-status" style="font-size:12px; color:var(--text-secondary); margin:0 0 8px;"></p>
+    <div id="part-search-results-view">
+      <div id="part-search-results"></div>
+      <button id="part-search-more" class="icon-btn" style="display:none; margin-top:8px;">Show more results</button>
+    </div>
+    <div id="part-search-colors-view" style="display:none;">
+      <button id="part-search-back" class="icon-btn" style="margin-bottom:10px;"><i class="ti ti-arrow-left" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Back to results</button>
+      <div id="part-search-colors-head" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;"></div>
+      <div class="row" style="align-items:center; margin-bottom:8px;">
+        <input type="text" id="part-search-color-filter" placeholder="Filter colors, e.g. gray" style="flex:1; min-width:160px;" />
+        <label class="checkbox-label" style="font-size:12px;"><input type="checkbox" id="part-search-select-all" /> Select all shown</label>
+      </div>
+      <p style="margin:0 0 8px; color:var(--text-muted); font-size:11px;">Tick the colors you have, then add them all at once at qty 1 each &mdash; you can adjust quantities afterward. Or use the single "Use" button on one color the way you always have.</p>
+      <div id="part-search-colors-list"></div>
+      <div id="part-search-multi-bar" style="display:none; position:sticky; bottom:0; background:var(--surface-2); border-top:2px solid var(--border); padding:10px 0 2px; margin-top:8px;">
+        <button id="part-search-add-selected" class="icon-btn lockable"><i class="ti ti-plus" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Add <span id="part-search-selected-count">0</span> selected</button>
+      </div>
     </div>
   </div>
 </div>
@@ -1466,8 +1523,11 @@
     var pct = totalNeed ? Math.round(100*totalHave/totalNeed) : 100;
     var totalSetPiecesNeeded = setParts.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
     var totalSetPiecesOnHand = setParts.reduce(function(sum, r){ return sum + setPartOnHand(r); }, 0);
-    var grandTotal = totalHave + totalSetPiecesOnHand;
+    var totalDrawerPieces = drawerParts.reduce(function(sum, r){ return sum + r.qty; }, 0);
+    var grandTotal = totalHave + totalSetPiecesOnHand + totalDrawerPieces;
     document.getElementById('grand-total-value').textContent = grandTotal.toLocaleString();
+    document.getElementById('grand-total-caption').textContent =
+      totalHave.toLocaleString() + ' MOC on hand + ' + totalSetPiecesOnHand.toLocaleString() + ' set pieces + ' + totalDrawerPieces.toLocaleString() + ' in drawers';
 
     var mocMg = document.getElementById('moc-metrics');
     mocMg.innerHTML = '';
@@ -1503,6 +1563,22 @@
       d.style.borderLeftColor = setsAccent[i % setsAccent.length];
       d.innerHTML = '<div class="label">'+m[0]+'</div><div class="value">'+m[1]+'</div>';
       setsMg.appendChild(d);
+    });
+
+    var drawersMg = document.getElementById('drawers-overview-metrics');
+    drawersMg.innerHTML = '';
+    var drawersMetrics = [
+      ['Drawers', drawers.length],
+      ['Part Lines', drawerParts.length],
+      ['Total Pieces', totalDrawerPieces.toLocaleString()]
+    ];
+    var drawersAccent = ['var(--lego-lime)','var(--lego-azure)','var(--lego-lime)'];
+    drawersMetrics.forEach(function(m, i){
+      var d = document.createElement('div');
+      d.className = 'metric';
+      d.style.borderLeftColor = drawersAccent[i % drawersAccent.length];
+      d.innerHTML = '<div class="label">'+m[0]+'</div><div class="value">'+m[1]+'</div>';
+      drawersMg.appendChild(d);
     });
 
     renderTopNeeded();
@@ -4479,6 +4555,9 @@
     document.getElementById('drawer-detail-add-desc').value = '';
     document.getElementById('drawer-detail-add-qty').value = '1';
     document.getElementById('drawer-detail-add-status').textContent = '';
+    document.getElementById('drawer-detail-add-elementid').value = '';
+    ['drawer-detail-add-partnum','drawer-detail-add-color','drawer-detail-add-desc','drawer-detail-add-elementid'].forEach(function(id){ document.getElementById(id).dataset.autofilled = ''; });
+    if (partForms.dd) partForms.dd.reset();
     refreshDrawerDetailMetrics(drawerId);
     renderDrawerDetailTable(drawerId);
     document.getElementById('drawer-detail-modal-overlay').style.display = 'flex';
@@ -4504,6 +4583,7 @@
     var partNum = document.getElementById('drawer-detail-add-partnum').value.trim();
     var color = document.getElementById('drawer-detail-add-color').value.trim();
     var desc = document.getElementById('drawer-detail-add-desc').value.trim();
+    var elementId = document.getElementById('drawer-detail-add-elementid').value.trim();
     var qty = parseInt(document.getElementById('drawer-detail-add-qty').value, 10);
     if (!partNum && !desc){
       statusEl.style.color = 'var(--text-danger)';
@@ -4520,10 +4600,13 @@
     });
     if (existing){
       existing.qty += qty;
+      if (!existing.elementId && elementId) existing.elementId = elementId;
     } else {
-      drawerParts.push({ drawerId: drawerDetailContext, partNum: partNum, color: color, desc: desc, qty: qty, elementId: '' });
+      drawerParts.push({ drawerId: drawerDetailContext, partNum: partNum, color: color, desc: desc, qty: qty, elementId: elementId });
     }
     saveDrawerParts();
+    document.getElementById('drawer-detail-add-elementid').value = '';
+    if (partForms.dd) partForms.dd.reset();
     document.getElementById('drawer-detail-add-partnum').value = '';
     document.getElementById('drawer-detail-add-color').value = '';
     document.getElementById('drawer-detail-add-desc').value = '';
@@ -4535,9 +4618,457 @@
     renderDrawerDetailTable(drawerDetailContext);
   });
 
+  // --- Rebrickable catalog lookups: add-part autofill + parts catalog search ---
+  var rbPartCache = {};
+  var rbColorsCache = {};
+  var rbPersistedParts = {};
+  var rbPersistedColors = {};
+  var RB_CATALOG_CACHE_KEY = 'rebrickable-catalog-cache-v1';
+  var rbCacheSaveTimer = null;
+  var partForms = {};
+  var RB_NO_KEY_MSG = 'Add your Rebrickable API key (Official LEGO Collection tab) to auto-fill descriptions and element IDs from the full LEGO catalog.';
+
+  function loadRbCatalogCache(){
+    return storage.get(RB_CATALOG_CACHE_KEY, false).then(function(res){
+      if (res && res.value){
+        try {
+          var parsed = JSON.parse(res.value);
+          rbPersistedParts = parsed.parts || {};
+          rbPersistedColors = parsed.colors || {};
+        } catch (e){}
+      }
+    }).catch(function(){});
+  }
+
+  function scheduleRbCacheSave(){
+    clearTimeout(rbCacheSaveTimer);
+    rbCacheSaveTimer = setTimeout(function(){
+      storage.set(RB_CATALOG_CACHE_KEY, JSON.stringify({ parts: rbPersistedParts, colors: rbPersistedColors }), false).catch(function(){});
+    }, 800);
+  }
+
+  function clearRbCatalogCache(){
+    rbPersistedParts = {};
+    rbPersistedColors = {};
+    rbPartCache = {};
+    rbColorsCache = {};
+    clearTimeout(rbCacheSaveTimer);
+    return storage.set(RB_CATALOG_CACHE_KEY, JSON.stringify({ parts: {}, colors: {} }), false);
+  }
+
+  function rbApiUrl(pathAndQuery){
+    return 'https://rebrickable.com/api/v3/lego/' + pathAndQuery + (pathAndQuery.indexOf('?') === -1 ? '?' : '&') + 'key=' + encodeURIComponent(rebrickableApiKey);
+  }
+
+  function rbFetchJson(url){
+    return fetchUrlMaybeProxied(url).then(function(resp){
+      if (resp.status === 404) return null;
+      if (resp.status === 429) throw new Error('Rebrickable is rate-limiting requests \u2014 wait a few seconds and try again.');
+      if (resp.status === 401 || resp.status === 403) throw new Error('Rebrickable rejected the API key \u2014 check it on the Official LEGO Collection tab.');
+      if (!resp.ok) throw new Error('Rebrickable returned HTTP ' + resp.status + '.');
+      return resp.json();
+    });
+  }
+
+  function rbGetPart(partNum){
+    var k = normKey(partNum);
+    if (rbPersistedParts.hasOwnProperty(k)) return Promise.resolve(rbPersistedParts[k]);
+    if (!rbPartCache[k]){
+      rbPartCache[k] = rbFetchJson(rbApiUrl('parts/' + encodeURIComponent(partNum) + '/')).then(function(d){
+        var result = d ? { partNum: d.part_num || partNum, name: d.name || '', img: d.part_img_url || '' } : null;
+        rbPersistedParts[k] = result;
+        scheduleRbCacheSave();
+        return result;
+      }).catch(function(err){ delete rbPartCache[k]; throw err; });
+    }
+    return rbPartCache[k];
+  }
+
+  function rbGetPartColors(partNum){
+    var k = normKey(partNum);
+    if (rbPersistedColors.hasOwnProperty(k)) return Promise.resolve(rbPersistedColors[k]);
+    if (!rbColorsCache[k]){
+      rbColorsCache[k] = rbFetchJson(rbApiUrl('parts/' + encodeURIComponent(partNum) + '/colors/?page_size=1000')).then(function(d){
+        var list = (d && d.results) || [];
+        var result = list.map(function(col){
+          return { color: col.color_name || '', elements: col.elements || [], img: col.part_img_url || '', numSets: col.num_sets || 0 };
+        }).sort(function(a, b){ return a.color.localeCompare(b.color); });
+        rbPersistedColors[k] = result;
+        scheduleRbCacheSave();
+        return result;
+      }).catch(function(err){ delete rbColorsCache[k]; throw err; });
+    }
+    return rbColorsCache[k];
+  }
+
+  function rbColorMatch(colors, colorName){
+    var want = normKey(colorName);
+    return colors.find(function(col){ return normKey(col.color) === want; }) || null;
+  }
+
+  function describeElements(els){
+    if (!els.length) return '';
+    return els[0] + (els.length > 1 ? ' (also ' + els.slice(1, 4).join(', ') + (els.length > 4 ? '\u2026' : '') + ')' : '');
+  }
+
+  function attachPartAutofill(key, cfg){
+    var partEl = document.getElementById(cfg.part);
+    var colorEl = document.getElementById(cfg.color);
+    var descEl = document.getElementById(cfg.desc);
+    var elEl = cfg.element ? document.getElementById(cfg.element) : null;
+    var statusEl = document.getElementById(cfg.status);
+    var listEl = document.getElementById(cfg.colorList);
+    var origList = colorEl.getAttribute('list');
+    var seq = 0;
+
+    [partEl, colorEl, descEl, elEl].forEach(function(el){
+      if (el) el.addEventListener('input', function(){ el.dataset.autofilled = ''; });
+    });
+
+    function setStatus(text, isErr){
+      statusEl.style.color = isErr ? 'var(--text-danger)' : 'var(--text-secondary)';
+      statusEl.textContent = text || '';
+    }
+    function setAuto(el, value){
+      if (!el || !value) return;
+      if (el.value.trim() && el.dataset.autofilled !== '1') return;
+      el.value = value;
+      el.dataset.autofilled = '1';
+    }
+    function clearAuto(el){
+      if (el && el.dataset.autofilled === '1'){ el.value = ''; el.dataset.autofilled = ''; }
+    }
+    function setColorList(colors){
+      if (!listEl) return;
+      if (colors && colors.length){
+        listEl.innerHTML = colors.map(function(col){ return '<option value="' + escapeHtml(col.color) + '"></option>'; }).join('');
+        colorEl.setAttribute('list', listEl.id);
+      } else if (origList){
+        colorEl.setAttribute('list', origList);
+      } else {
+        colorEl.removeAttribute('list');
+      }
+    }
+
+    function run(trigger){
+      var mySeq = ++seq;
+      if (trigger === 'part'){ clearAuto(descEl); clearAuto(elEl); }
+      if (trigger === 'color'){ clearAuto(elEl); }
+      var partVal = partEl.value.trim();
+      var colorVal = colorEl.value.trim();
+      var elVal = elEl ? elEl.value.trim() : '';
+      var idx = buildPartLookupIndex();
+
+      if (trigger === 'element'){
+        if (!elVal) return;
+        var byEl = idx.byElementId[normKey(elVal)];
+        if (byEl){
+          setAuto(partEl, byEl.partNum); setAuto(colorEl, byEl.color); setAuto(descEl, byEl.desc);
+          setStatus('Filled from a matching part already in your collection.');
+          return;
+        }
+        if (!rebrickableApiKey){ setStatus(RB_NO_KEY_MSG); return; }
+        setStatus('Looking up element ' + elVal + '\u2026');
+        fetchElementFromApi(elVal).then(function(info){
+          if (mySeq !== seq) return;
+          setAuto(partEl, info.partNum); setAuto(colorEl, info.color); setAuto(descEl, info.desc);
+          setStatus('Found element ' + elVal + ': ' + info.desc + ' in ' + info.color + '.');
+          if (info.partNum) rbGetPartColors(info.partNum).then(function(colors){ if (mySeq === seq) setColorList(colors); }).catch(function(){});
+        }).catch(function(){
+          if (mySeq !== seq) return;
+          setStatus('Couldn\u2019t find element ' + elVal + ' in the Rebrickable catalog (or Rebrickable couldn\u2019t be reached).', true);
+        });
+        return;
+      }
+
+      if (trigger === 'desc'){
+        var descVal = descEl.value.trim();
+        if (partVal || !descVal) return;
+        var byD = idx.byDescOnly[normKey(descVal)];
+        if (byD){ setAuto(partEl, byD.partNum); run('part'); }
+        else setStatus('Not sure of the part number? Use Search parts catalog to look it up by description.');
+        return;
+      }
+
+      if (!partVal){ setColorList(null); setStatus(''); return; }
+
+      var localFull = false, localDesc = false;
+      if (colorVal){
+        var byPC = idx.byPartColor[normKey(partVal) + '|' + normKey(colorVal)];
+        if (byPC){
+          setAuto(descEl, byPC.desc);
+          if (elEl) setAuto(elEl, byPC.elementId);
+          localDesc = !!byPC.desc;
+          localFull = localDesc && (!elEl || !!byPC.elementId);
+        }
+      }
+      if (!localDesc){
+        var byP = idx.byPartNumOnly[normKey(partVal)];
+        if (byP && byP.desc){ setAuto(descEl, byP.desc); localDesc = true; }
+      }
+      if (localFull) setStatus('Filled from a matching part already in your collection.');
+      if (!rebrickableApiKey){ if (!localFull) setStatus(RB_NO_KEY_MSG); return; }
+      if (!localFull) setStatus('Looking up ' + partVal + ' in the LEGO catalog\u2026');
+
+      Promise.all([rbGetPart(partVal), rbGetPartColors(partVal)]).then(function(res){
+        if (mySeq !== seq) return;
+        var part = res[0], colors = res[1] || [];
+        if (!part){
+          setColorList(null);
+          if (!localFull) setStatus('Part ' + partVal + ' isn\u2019t in the Rebrickable catalog \u2014 double-check the number, or use Search parts catalog.', true);
+          return;
+        }
+        setColorList(colors);
+        if (!localDesc) setAuto(descEl, part.name);
+        if (localFull) return;
+        if (!colorVal){
+          setStatus('Found: ' + part.name + '. Pick one of its ' + colors.length + ' catalog colors to fill the element ID.');
+          return;
+        }
+        var match = rbColorMatch(colors, colorVal);
+        if (!match){
+          setStatus('Found: ' + part.name + ', but the catalog has no \u201c' + colorVal + '\u201d version \u2014 pick a color from the list (catalog color names).', true);
+          return;
+        }
+        if (elEl && match.elements.length) setAuto(elEl, match.elements[0]);
+        setStatus('Found: ' + part.name + ' in ' + match.color +
+          (elEl ? (match.elements.length ? ' \u2014 element ' + describeElements(match.elements) : ' \u2014 no element ID on record for this color') : '') + '.');
+      }).catch(function(err){
+        if (mySeq !== seq) return;
+        if (!localFull) setStatus('Lookup failed: ' + (err && err.message ? err.message : 'couldn\u2019t reach Rebrickable.') + ' If this keeps happening, try the CORS proxy toggle on the Official LEGO Collection tab.', true);
+      });
+    }
+
+    partEl.addEventListener('change', function(){ run('part'); });
+    colorEl.addEventListener('change', function(){ run('color'); });
+    descEl.addEventListener('change', function(){ run('desc'); });
+    if (elEl) elEl.addEventListener('change', function(){ run('element'); });
+
+    partForms[key] = {
+      cfg: cfg,
+      reset: function(){ ++seq; setStatus(''); setColorList(null); },
+      fillFromCatalog: function(partNum, color, desc, elementId, colors){
+        ++seq;
+        [[partEl, partNum], [colorEl, color], [descEl, desc], [elEl, elementId]].forEach(function(pair){
+          if (pair[0]){ pair[0].value = pair[1] || ''; pair[0].dataset.autofilled = '1'; }
+        });
+        setColorList(colors);
+        setStatus('Filled from the LEGO catalog: ' + desc + ' in ' + color + (elementId ? ' \u2014 element ' + elementId : '') + '.');
+      }
+    };
+  }
+
+  var partSearchTargetKey = null;
+  var partSearchNextUrl = null;
+  var partSearchShown = 0;
+  var partSearchSelected = null;
+
+  function setPartSearchStatus(text, isErr){
+    var el = document.getElementById('part-search-status');
+    el.style.color = isErr ? 'var(--text-danger)' : 'var(--text-secondary)';
+    el.textContent = text || '';
+  }
+
+  function showPartSearchView(which){
+    document.getElementById('part-search-results-view').style.display = which === 'results' ? 'block' : 'none';
+    document.getElementById('part-search-colors-view').style.display = which === 'colors' ? 'block' : 'none';
+  }
+
+  function partThumbHtml(url){
+    return url
+      ? '<img src="' + escapeHtml(url) + '" loading="lazy" alt="" style="width:44px; height:44px; object-fit:contain; background:#fff; border-radius:6px; flex-shrink:0;" />'
+      : '<div style="width:44px; height:44px; background:var(--surface-1); border-radius:6px; flex-shrink:0;"></div>';
+  }
+
+  function openPartSearch(targetKey){
+    partSearchTargetKey = targetKey;
+    partSearchMultiSelected = {};
+    updatePartSearchMultiBar();
+    var cfg = partForms[targetKey] && partForms[targetKey].cfg;
+    var input = document.getElementById('part-search-input');
+    if (cfg){
+      var seed = document.getElementById(cfg.desc).value.trim() || document.getElementById(cfg.part).value.trim();
+      if (seed) input.value = seed;
+    }
+    showPartSearchView('results');
+    document.getElementById('part-search-overlay').style.display = 'flex';
+    setPartSearchStatus(rebrickableApiKey ? '' : RB_NO_KEY_MSG, !rebrickableApiKey);
+    input.focus();
+    input.select();
+  }
+
+  function closePartSearch(){
+    document.getElementById('part-search-overlay').style.display = 'none';
+  }
+
+  function renderPartSearchResults(data, append){
+    var list = document.getElementById('part-search-results');
+    if (!append){ list.innerHTML = ''; partSearchShown = 0; }
+    var results = (data && data.results) || [];
+    var total = (data && data.count) || 0;
+    if (!append && !results.length){
+      list.innerHTML = '<div class="empty-msg">No parts matched. Try fewer or different words, e.g. \u201cplate 1 x 2\u201d or \u201cslope 45\u201d.</div>';
+    }
+    results.forEach(function(p){
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex; align-items:center; gap:10px; padding:6px 0; border-bottom:1px solid var(--border);';
+      row.innerHTML = partThumbHtml(p.part_img_url) +
+        '<div style="flex:1; min-width:0;"><div style="font-weight:700; font-size:13px;">' + escapeHtml(p.part_num) + '</div>' +
+        '<div style="font-size:12px; color:var(--text-secondary);">' + escapeHtml(p.name) + '</div></div>';
+      var btn = document.createElement('button');
+      btn.className = 'icon-btn';
+      btn.style.flexShrink = '0';
+      btn.textContent = 'Choose';
+      btn.addEventListener('click', function(){ showPartColors({ partNum: p.part_num, name: p.name || '', img: p.part_img_url || '' }); });
+      row.appendChild(btn);
+      list.appendChild(row);
+    });
+    partSearchShown += results.length;
+    partSearchNextUrl = (data && data.next) || null;
+    document.getElementById('part-search-more').style.display = partSearchNextUrl ? 'inline-block' : 'none';
+    if (partSearchShown) setPartSearchStatus('Showing ' + partSearchShown + ' of ' + total + ' matching part' + (total === 1 ? '' : 's') + '. Choose one to see its colors and element IDs.');
+    else setPartSearchStatus('');
+  }
+
+  function runPartSearch(){
+    var q = document.getElementById('part-search-input').value.trim();
+    if (!q) return;
+    if (!rebrickableApiKey){ setPartSearchStatus(RB_NO_KEY_MSG, true); return; }
+    showPartSearchView('results');
+    setPartSearchStatus('Searching\u2026');
+    rbFetchJson(rbApiUrl('parts/?search=' + encodeURIComponent(q) + '&page_size=25')).then(function(data){
+      renderPartSearchResults(data, false);
+    }).catch(function(err){
+      setPartSearchStatus('Search failed: ' + (err && err.message ? err.message : 'couldn\u2019t reach Rebrickable.'), true);
+    });
+  }
+
+  function showPartColors(part){
+    partSearchSelected = part;
+    partSearchMultiSelected = {};
+    updatePartSearchMultiBar();
+    showPartSearchView('colors');
+    document.getElementById('part-search-color-filter').value = '';
+    document.getElementById('part-search-colors-head').innerHTML = partThumbHtml(part.img) +
+      '<div><div style="font-weight:700;">' + escapeHtml(part.partNum) + '</div><div style="font-size:12px; color:var(--text-secondary);">' + escapeHtml(part.name) + '</div></div>';
+    document.getElementById('part-search-colors-list').innerHTML = '';
+    setPartSearchStatus('Loading colors\u2026');
+    rbGetPartColors(part.partNum).then(function(colors){
+      if (partSearchSelected !== part) return;
+      part.colors = colors;
+      setPartSearchStatus(colors.length ? (colors.length + ' color' + (colors.length === 1 ? '' : 's') + ' in the catalog for this part.') : 'The catalog has no color records for this part.');
+      renderPartColors();
+    }).catch(function(err){
+      setPartSearchStatus('Couldn\u2019t load colors: ' + (err && err.message ? err.message : 'couldn\u2019t reach Rebrickable.'), true);
+    });
+  }
+
+  var partSearchMultiSelected = {};
+
+  function updatePartSearchMultiBar(){
+    var keys = Object.keys(partSearchMultiSelected);
+    document.getElementById('part-search-multi-bar').style.display = keys.length ? 'block' : 'none';
+    document.getElementById('part-search-selected-count').textContent = keys.length;
+  }
+
+  function renderPartColors(){
+    var part = partSearchSelected;
+    if (!part || !part.colors) return;
+    var filter = normKey(document.getElementById('part-search-color-filter').value);
+    var list = document.getElementById('part-search-colors-list');
+    list.innerHTML = '';
+    var shown = part.colors.filter(function(col){ return !filter || normKey(col.color).indexOf(filter) !== -1; });
+    shown.forEach(function(col){
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex; align-items:center; gap:10px; padding:6px 0; border-bottom:1px solid var(--border); flex-wrap:wrap;';
+      var check = document.createElement('input');
+      check.type = 'checkbox';
+      check.style.flexShrink = '0';
+      check.checked = !!partSearchMultiSelected[col.color];
+      check.addEventListener('change', function(){
+        if (check.checked) partSearchMultiSelected[col.color] = { partNum: part.partNum, color: col.color, desc: part.name, elementId: col.elements[0] || '' };
+        else delete partSearchMultiSelected[col.color];
+        updatePartSearchMultiBar();
+      });
+      row.appendChild(check);
+      row.insertAdjacentHTML('beforeend', partThumbHtml(col.img || part.img) +
+        '<div style="flex:1; min-width:140px;"><div style="font-weight:700; font-size:13px;">' + escapeHtml(col.color) + '</div>' +
+        '<div style="font-size:12px; color:var(--text-secondary);">' + (col.elements.length ? (col.elements.length + ' element ID' + (col.elements.length === 1 ? '' : 's')) : 'No element ID on record') +
+        ' &middot; in ' + col.numSets + ' set' + (col.numSets === 1 ? '' : 's') + '</div></div>');
+      var sel = null;
+      if (col.elements.length > 1){
+        sel = document.createElement('select');
+        sel.style.cssText = 'max-width:130px; flex-shrink:0;';
+        sel.innerHTML = col.elements.map(function(id){ return '<option value="' + escapeHtml(id) + '">' + escapeHtml(id) + '</option>'; }).join('');
+        sel.addEventListener('change', function(){
+          if (partSearchMultiSelected[col.color]) partSearchMultiSelected[col.color].elementId = sel.value;
+        });
+        row.appendChild(sel);
+      } else if (col.elements.length === 1){
+        var span = document.createElement('span');
+        span.style.cssText = 'font-size:12px; font-weight:700; flex-shrink:0;';
+        span.textContent = col.elements[0];
+        row.appendChild(span);
+      }
+      var useBtn = document.createElement('button');
+      useBtn.className = 'icon-btn';
+      useBtn.style.flexShrink = '0';
+      useBtn.textContent = 'Use';
+      useBtn.addEventListener('click', function(){
+        var elementId = sel ? sel.value : (col.elements[0] || '');
+        var target = partForms[partSearchTargetKey];
+        if (target) target.fillFromCatalog(part.partNum, col.color, part.name, elementId, part.colors);
+        closePartSearch();
+      });
+      row.appendChild(useBtn);
+      list.appendChild(row);
+    });
+    if (!list.children.length) list.innerHTML = '<div class="empty-msg">No colors match that filter.</div>';
+    document.getElementById('part-search-select-all').checked = shown.length > 0 && shown.every(function(col){ return !!partSearchMultiSelected[col.color]; });
+    updatePartSearchMultiBar();
+  }
+
+  document.getElementById('part-search-close').addEventListener('click', closePartSearch);
+  document.getElementById('part-search-go').addEventListener('click', runPartSearch);
+  document.getElementById('part-search-input').addEventListener('keydown', function(e){ if (e.key === 'Enter') runPartSearch(); });
+  document.getElementById('part-search-back').addEventListener('click', function(){ showPartSearchView('results'); setPartSearchStatus(partSearchShown ? ('Showing ' + partSearchShown + ' matching parts.') : ''); });
+  document.getElementById('part-search-color-filter').addEventListener('input', renderPartColors);
+  document.getElementById('part-search-select-all').addEventListener('change', function(){
+    var part = partSearchSelected;
+    if (!part || !part.colors) return;
+    var filter = normKey(document.getElementById('part-search-color-filter').value);
+    var shown = part.colors.filter(function(col){ return !filter || normKey(col.color).indexOf(filter) !== -1; });
+    var check = this.checked;
+    shown.forEach(function(col){
+      if (check) partSearchMultiSelected[col.color] = { partNum: part.partNum, color: col.color, desc: part.name, elementId: col.elements[0] || '' };
+      else delete partSearchMultiSelected[col.color];
+    });
+    renderPartColors();
+  });
+  document.getElementById('part-search-add-selected').addEventListener('click', function(){
+    var rows = Object.keys(partSearchMultiSelected).map(function(k){ return partSearchMultiSelected[k]; });
+    if (!rows.length) return;
+    var target = partForms[partSearchTargetKey];
+    if (!target || !target.addMultiple) return;
+    var result = target.addMultiple(rows);
+    setPartSearchStatus(result.message, !result.ok);
+    if (result.ok){
+      partSearchMultiSelected = {};
+      closePartSearch();
+    }
+  });
+  document.getElementById('part-search-more').addEventListener('click', function(){
+    if (!partSearchNextUrl) return;
+    setPartSearchStatus('Loading more\u2026');
+    rbFetchJson(partSearchNextUrl).then(function(data){ renderPartSearchResults(data, true); }).catch(function(err){
+      setPartSearchStatus('Couldn\u2019t load more: ' + (err && err.message ? err.message : 'couldn\u2019t reach Rebrickable.'), true);
+    });
+  });
+
   document.getElementById('drawer-add-btn').addEventListener('click', function(){
     var label = document.getElementById('drawer-label-input').value.trim();
     if (!label) return;
+
     if (drawers.some(function(d){ return d.label === label; })){
       alert('A drawer with that label already exists.');
       return;
@@ -4684,49 +5215,151 @@
     return { byPartColor: byPartColor, byElementId: byElementId, byPartNumOnly: byPartNumOnly, byDescOnly: byDescOnly };
   }
 
-  function tryAutofillAddPartForm(){
-    var partInput = document.getElementById('dp-partnum');
-    var colorInput = document.getElementById('dp-color');
-    var descInput = document.getElementById('dp-desc');
-    var elIdInput = document.getElementById('dp-elementid');
+  function fillIncompleteMocInfo(){
+    var statusEl = document.getElementById('fill-incomplete-status');
+    var btn = document.getElementById('fill-incomplete-btn');
+    var incompleteRows = state.rows.filter(rowIsIncomplete);
+    var noPartNum = incompleteRows.filter(function(r){ return !r.partNum || !r.partNum.trim(); }).length;
+    var needsLookup = incompleteRows.filter(function(r){
+      return r.partNum && r.partNum.trim() && (!r.color || !r.desc || !r.elementId);
+    });
 
-    var partVal = partInput.value.trim();
-    var colorVal = colorInput.value.trim();
-    var descVal = descInput.value.trim();
-    var elIdVal = elIdInput.value.trim();
+    if (!needsLookup.length){
+      statusEl.style.color = 'var(--text-secondary)';
+      if (!incompleteRows.length) statusEl.textContent = 'Nothing incomplete right now.';
+      else if (noPartNum === incompleteRows.length) statusEl.textContent = incompleteRows.length + ' incomplete row' + (incompleteRows.length===1?' has':'s have') + ' no part number \u2014 type one in first, then try again.';
+      else statusEl.textContent = 'Nothing left to look up \u2014 the remaining incomplete row' + (incompleteRows.length===1?' is':'s are') + ' only missing a quantity, which only you can fill in.';
+      return;
+    }
 
-    var idx = buildPartLookupIndex();
+    var idx0 = buildPartLookupIndex();
+    var withColorGroups = {};
+    var noColorGroups = {};
+    needsLookup.forEach(function(r){
+      if (r.color && r.color.trim()){
+        var k = normKey(r.partNum) + '|' + normKey(r.color);
+        if (!withColorGroups[k]) withColorGroups[k] = { partNum: r.partNum, color: r.color, rows: [] };
+        withColorGroups[k].rows.push(r);
+      } else {
+        var pk = normKey(r.partNum);
+        if (!noColorGroups[pk]) noColorGroups[pk] = { partNum: r.partNum, rows: [] };
+        noColorGroups[pk].rows.push(r);
+      }
+    });
 
-    if (elIdVal){
-      var byEl = idx.byElementId[normKey(elIdVal)];
-      if (byEl){
-        if (!partVal) partInput.value = byEl.partNum;
-        if (!colorVal) colorInput.value = byEl.color;
-        if (!descVal) descInput.value = byEl.desc;
+    var queue = Object.keys(withColorGroups).map(function(k){ return { group: withColorGroups[k], hasColor: true }; })
+      .concat(Object.keys(noColorGroups).map(function(k){ return { group: noColorGroups[k], hasColor: false }; }));
+    var total = queue.length;
+    var done = 0, rowsTouched = 0, errored = 0, apiSkipped = 0;
+
+    btn.disabled = true;
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Filling in ' + needsLookup.length + ' incomplete row' + (needsLookup.length===1?'':'s') + '\u2026 0 / ' + total;
+
+    function applyLocalFirst(group, hasColor){
+      if (hasColor){
+        var byPC = idx0.byPartColor[normKey(group.partNum) + '|' + normKey(group.color)];
+        if (!byPC) return false;
+        group.rows.forEach(function(r){
+          if (!r.desc && byPC.desc) r.desc = byPC.desc;
+          if (!r.elementId && byPC.elementId) r.elementId = byPC.elementId;
+        });
+        return group.rows.every(function(r){ return r.desc && r.elementId; });
+      }
+      var byP = idx0.byPartNumOnly[normKey(group.partNum)];
+      if (!byP || !byP.desc) return false;
+      group.rows.forEach(function(r){ if (!r.desc) r.desc = byP.desc; });
+      return true;
+    }
+
+    function next(){
+      if (done >= total){
+        btn.disabled = false;
+        saveState();
+        render();
+        var stillLeft = state.rows.filter(rowIsIncomplete).length;
+        statusEl.style.color = errored ? 'var(--text-danger)' : 'var(--text-success)';
+        statusEl.textContent = 'Updated ' + rowsTouched + ' row' + (rowsTouched===1?'':'s') + ' across ' + total + ' part/color combo' + (total===1?'':'s') + '.' +
+          (stillLeft ? (' ' + stillLeft + ' row' + (stillLeft===1?' is':'s are') + ' still incomplete.') : ' Nothing incomplete left!') +
+          (apiSkipped && !rebrickableApiKey ? ' Add a Rebrickable API key on the Official LEGO Collection tab to look up the rest automatically.' : '') +
+          (errored ? (' ' + errored + ' lookup' + (errored===1?'':'s') + ' failed \u2014 try again later.') : '');
         return;
       }
-    }
-    if (partVal && colorVal){
-      var byPC = idx.byPartColor[normKey(partVal) + '|' + normKey(colorVal)];
-      if (byPC){
-        if (!descVal) descInput.value = byPC.desc;
-        if (!elIdVal) elIdInput.value = byPC.elementId;
-        return;
+      var item = queue[done];
+      var group = item.group;
+      var before = group.rows.map(function(r){ return r.desc + '|' + r.elementId; });
+      var localDone = applyLocalFirst(group, item.hasColor);
+      var proceed;
+      if (localDone) proceed = Promise.resolve();
+      else if (!rebrickableApiKey){ apiSkipped++; proceed = Promise.resolve(); }
+      else if (item.hasColor){
+        proceed = Promise.all([rbGetPart(group.partNum), rbGetPartColors(group.partNum)]).then(function(res){
+          var part = res[0], colors = res[1] || [];
+          if (part) group.rows.forEach(function(r){ if (!r.desc) r.desc = part.name; });
+          var match = rbColorMatch(colors, group.color);
+          if (match && match.elements.length) group.rows.forEach(function(r){ if (!r.elementId) r.elementId = match.elements[0]; });
+        });
+      } else {
+        proceed = rbGetPart(group.partNum).then(function(part){
+          if (part) group.rows.forEach(function(r){ if (!r.desc) r.desc = part.name; });
+        });
       }
+      proceed.then(function(){
+        var changed = group.rows.some(function(r, i){ return (r.desc + '|' + r.elementId) !== before[i]; });
+        if (changed) rowsTouched += group.rows.length;
+      }).catch(function(){ errored++; }).then(function(){
+        done++;
+        statusEl.textContent = 'Filling in ' + needsLookup.length + ' incomplete row' + (needsLookup.length===1?'':'s') + '\u2026 ' + done + ' / ' + total;
+        next();
+      });
     }
-    if (partVal && !colorVal){
-      var byP = idx.byPartNumOnly[normKey(partVal)];
-      if (byP && !descVal) descInput.value = byP.desc;
-    }
-    if (descVal && !partVal){
-      var byD = idx.byDescOnly[normKey(descVal)];
-      if (byD) partInput.value = byD.partNum;
-    }
+    next();
   }
 
-  ['dp-partnum','dp-color','dp-desc','dp-elementid'].forEach(function(id){
-    document.getElementById(id).addEventListener('change', tryAutofillAddPartForm);
-  });
+  attachPartAutofill('ap', { part: 'ap-partnum', color: 'ap-color', desc: 'ap-desc', element: 'ap-elementid', status: 'ap-lookup-status', colorList: 'ap-part-colors' });
+  attachPartAutofill('dp', { part: 'dp-partnum', color: 'dp-color', desc: 'dp-desc', element: 'dp-elementid', status: 'dp-lookup-status', colorList: 'dp-part-colors' });
+  attachPartAutofill('dd', { part: 'drawer-detail-add-partnum', color: 'drawer-detail-add-color', desc: 'drawer-detail-add-desc', element: 'drawer-detail-add-elementid', status: 'drawer-detail-lookup-status', colorList: 'drawer-detail-part-colors' });
+
+  partForms.ap.addMultiple = function(rows){
+    var moc = document.getElementById('ap-moc').value.trim();
+    if (!moc) return { ok: false, message: 'Choose a build first (the Build field on the Add Part panel), then try again.' };
+    rows.forEach(function(r){
+      state.rows.push({ partNum: r.partNum, qty: 1, color: r.color, desc: r.desc, moc: moc, elementId: r.elementId || '', onHand: 0, built: false, priority: '' });
+    });
+    saveState();
+    render();
+    return { ok: true, message: 'Added ' + rows.length + ' color' + (rows.length===1?'':'s') + ' of ' + rows[0].partNum + ' to ' + moc + ' at qty 1 each \u2014 adjust quantities in the parts table.' };
+  };
+
+  partForms.dp.addMultiple = function(rows){
+    var drawerId = document.getElementById('dp-drawer-target').value;
+    if (!drawerId) return { ok: false, message: 'Choose a drawer first (the drawer dropdown on the Add Part panel), then try again.' };
+    rows.forEach(function(r){
+      var existing = drawerParts.find(function(p){ return p.drawerId === drawerId && p.partNum === r.partNum && p.color === r.color; });
+      if (existing){ existing.qty += 1; if (!existing.elementId && r.elementId) existing.elementId = r.elementId; }
+      else drawerParts.push({ drawerId: drawerId, partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId || '', qty: 1 });
+    });
+    saveDrawerParts();
+    renderDrawersTab();
+    return { ok: true, message: 'Added ' + rows.length + ' color' + (rows.length===1?'':'s') + ' of ' + rows[0].partNum + ' to that drawer at qty 1 each \u2014 adjust quantities in the table below.' };
+  };
+
+  partForms.dd.addMultiple = function(rows){
+    if (!drawerDetailContext) return { ok: false, message: 'No drawer is open.' };
+    rows.forEach(function(r){
+      var existing = drawerParts.find(function(p){ return p.drawerId === drawerDetailContext && p.partNum === r.partNum && p.color === r.color; });
+      if (existing){ existing.qty += 1; if (!existing.elementId && r.elementId) existing.elementId = r.elementId; }
+      else drawerParts.push({ drawerId: drawerDetailContext, partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId || '', qty: 1 });
+    });
+    saveDrawerParts();
+    renderDrawerCards();
+    refreshDrawerDetailMetrics(drawerDetailContext);
+    renderDrawerDetailTable(drawerDetailContext);
+    return { ok: true, message: 'Added ' + rows.length + ' color' + (rows.length===1?'':'s') + ' of ' + rows[0].partNum + ' at qty 1 each \u2014 adjust quantities in the table above.' };
+  };
+  document.getElementById('ap-search-btn').addEventListener('click', function(){ openPartSearch('ap'); });
+  document.getElementById('dp-search-btn').addEventListener('click', function(){ openPartSearch('dp'); });
+  document.getElementById('drawer-detail-search-btn').addEventListener('click', function(){ openPartSearch('dd'); });
 
   document.getElementById('drawer-add-part-btn').addEventListener('click', function(){
     var statusEl = document.getElementById('drawer-add-part-status');
@@ -4884,6 +5517,16 @@
     storage.set(USE_SET_PROXY_KEY, useSetProxy ? '1' : '0', false);
   });
   document.getElementById('set-fetch-all-btn').addEventListener('click', fetchAllSetsViaApi);
+  document.getElementById('rb-clear-cache-btn').addEventListener('click', function(){
+    var statusEl = document.getElementById('rb-clear-cache-status');
+    clearRbCatalogCache().then(function(){
+      statusEl.style.color = 'var(--text-secondary)';
+      statusEl.textContent = 'Cleared \u2014 the next lookups will fetch fresh from Rebrickable.';
+    }).catch(function(){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Couldn\u2019t clear the saved cache.';
+    });
+  });
   document.getElementById('fill-element-ids-btn').addEventListener('click', fillMissingElementIds);
 
   document.getElementById('mocbuild-search').addEventListener('input', renderMocBuildsList);
@@ -5524,18 +6167,20 @@
 
   var TAB_TO_GROUP = {
     overview: 'overview',
-    parts: 'moc-collection', shopping: 'moc-collection', mocsets: 'moc-collection',
+    parts: 'moc-collection', mocsets: 'moc-collection',
+    shopping: 'shopping',
     sets: 'official-collection', setparts: 'official-collection',
     drawers: 'drawers',
     import: 'data-tools', images: 'data-tools'
   };
   var GROUP_DEFAULT_LEAF = {
-    'moc-collection': 'parts',
+    'moc-collection': 'mocsets',
+    'shopping': 'shopping',
     'official-collection': 'sets',
     'drawers': 'drawers',
     'data-tools': 'import'
   };
-  var lastLeafForGroup = { 'moc-collection': 'parts', 'official-collection': 'sets', 'drawers': 'drawers', 'data-tools': 'import' };
+  var lastLeafForGroup = { 'moc-collection': 'mocsets', 'shopping': 'shopping', 'official-collection': 'sets', 'drawers': 'drawers', 'data-tools': 'import' };
 
   function switchTab(tab){
     state.tab = tab;
@@ -5607,7 +6252,12 @@
   document.getElementById('color-filter').addEventListener('change', function(){ state.page = 1; renderParts(); });
   document.getElementById('priority-filter').addEventListener('change', function(){ state.page = 1; renderParts(); });
   document.getElementById('missing-only').addEventListener('change', function(){ state.page = 1; renderParts(); });
-  document.getElementById('incomplete-info-only').addEventListener('change', function(){ state.page = 1; renderParts(); });
+  document.getElementById('incomplete-info-only').addEventListener('change', function(){
+    state.page = 1;
+    renderParts();
+    document.getElementById('fill-incomplete-row').style.display = this.checked ? 'flex' : 'none';
+  });
+  document.getElementById('fill-incomplete-btn').addEventListener('click', fillIncompleteMocInfo);
   document.getElementById('combine-parts-toggle').addEventListener('change', function(){ state.page = 1; renderParts(); });
   document.getElementById('prev-page').addEventListener('click', function(){ if (state.page>1){ state.page--; renderParts(); } });
   document.getElementById('next-page').addEventListener('click', function(){ state.page++; renderParts(); });
@@ -7542,7 +8192,7 @@
 
   function bootApp(){
     loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadTallyCounts(); }).then(function(){ return loadTallyDrawerAssignments(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(function(){ return loadSetPhotos(); }).then(function(){ return loadMocPhotos(); }).then(function(){ return loadMocLocations(); }).then(function(){ return loadMocBuilds(); }).then(function(){ return loadMocThemes(); }).then(function(){ return loadMocDescriptions(); }).then(function(){ return loadLocationLabels(); })
-    .then(function(){ return loadRebrickableKey(); }).then(function(){ return loadSetProxyPref(); }).then(function(){ return loadGithubSettings(); }).then(function(){ return loadGithubShaMap(); }).then(function(){ return loadDirtyFlag(); }).then(function(){ return loadViewLocked(); })
+    .then(function(){ return loadRebrickableKey(); }).then(function(){ return loadRbCatalogCache(); }).then(function(){ return loadSetProxyPref(); }).then(function(){ return loadGithubSettings(); }).then(function(){ return loadGithubShaMap(); }).then(function(){ return loadDirtyFlag(); }).then(function(){ return loadViewLocked(); })
     .then(function(){
       var repoConfigured = ghSettings.repo && ghSettings.repo.indexOf('/') !== -1 && ghSettings.token;
       if (!repoConfigured) return;
