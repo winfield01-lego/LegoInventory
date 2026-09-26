@@ -218,6 +218,7 @@
 #lego-inv-root .tally-controls-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
 #lego-inv-root .tally-drawer-select { flex: 1 1 130px; min-width: 0; height: 32px; font-size: 12px; }
 #lego-inv-root .shop-qty { font-weight: 800; min-width: 34px; }
+#lego-inv-root .shop-in-drawers { font-size: 11px; font-weight: 700; color: var(--lego-green); background: var(--surface-1); border: 1px solid var(--border); border-radius: 6px; padding: 2px 7px; white-space: nowrap; flex-shrink: 0; }
 #lego-inv-root .shop-desc { font-size: 13px; }
 #lego-inv-root .shop-partnum { color: var(--text-muted); font-size: 12px; }
 #lego-inv-root .shop-thumb { flex-shrink: 0; }
@@ -302,6 +303,7 @@
   #lego-inv-root .shop-desc { font-size: 11.5px; line-height: 1.35; }
   #lego-inv-root .shop-partnum { font-size: 10px; }
   #lego-inv-root .shop-qty { font-size: 11.5px; min-width: 26px; }
+  #lego-inv-root .shop-in-drawers { font-size: 10px; padding: 1px 5px; }
   #lego-inv-root .shop-item input[type=checkbox] { width: 13px; height: 13px; }
   #lego-inv-root .lego-subtitle { display: none; }
   #lego-inv-root .shop-thumb { width: 26px; height: 26px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -1459,6 +1461,7 @@
   var tallyCounts = {};
   var tallyDrawerAssignments = {};
   var tallyRowResolvers = {};
+  var shopDrawerStockDisplay = {};
   var lastShopListItems = [];
   var lastShopSections = [];
   var lastShopListMeta = { title: '', subtitle: '' };
@@ -8663,6 +8666,8 @@
 
   function buildShopItemRow(r, key, needCount, resolveInfo){
     if (resolveInfo) tallyRowResolvers[key] = resolveInfo;
+    var inDrawers = shopDrawerStockDisplay[r.partNum + '|' + r.color] || 0;
+    var inDrawersHtml = inDrawers > 0 ? '<span class="shop-in-drawers" title="Currently sitting in a drawer, across all your drawers">'+inDrawers.toLocaleString()+' in drawers</span>' : '';
     if (shopTallyMode){
       var count = tallyCounts[key] || 0;
       var item = document.createElement('div');
@@ -8675,6 +8680,7 @@
         '<div class="shop-item-tally-top">' +
           '<span class="part-thumb-wrap shop-thumb"></span>' +
           '<span class="shop-desc">'+escapeHtml(r.color)+' '+escapeHtml(r.desc)+' <span class="shop-partnum">#'+escapeHtml(r.partNum)+'</span></span>' +
+          inDrawersHtml +
         '</div>' +
         '<div class="tally-controls-row">' +
           '<select class="tally-drawer-select lockable" aria-label="Drawer for this part">'+drawerOptions+'</select>' +
@@ -8735,6 +8741,7 @@
       '<span class="part-thumb-wrap shop-thumb"></span>' +
       '<span class="shop-qty">'+needCount+'&times;</span>' +
       '<span class="shop-desc">'+escapeHtml(r.color)+' '+escapeHtml(r.desc)+' <span class="shop-partnum">#'+escapeHtml(r.partNum)+'</span></span>' +
+      inDrawersHtml +
       '<span class="shop-tally-box"><span class="tally-label">Found</span><span class="tally-blank"></span></span>';
     buildThumb(r, item.querySelector('.part-thumb-wrap'));
     var cb = item.querySelector('input[type=checkbox]');
@@ -8831,6 +8838,7 @@
       var key = p.partNum + '|' + p.color;
       drawerStockByPartColor[key] = (drawerStockByPartColor[key] || 0) + (p.qty || 0);
     });
+    shopDrawerStockDisplay = Object.assign({}, drawerStockByPartColor);
 
     var pool = [];
     names.forEach(function(moc){
