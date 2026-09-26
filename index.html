@@ -8636,7 +8636,7 @@
       case 'color': return obj.color || '';
       case 'qty': return String(obj._need);
       case 'build': return obj._buildLabel;
-      default: return obj.desc || '';
+      default: return (obj.desc || '') + '|' + (obj.partNum || '');
     }
   }
 
@@ -8646,7 +8646,7 @@
       case 'color': return obj.color || '(no color)';
       case 'qty': return obj._need + '\u00d7 needed';
       case 'build': return obj._buildLabel;
-      default: return obj.desc || '(no description)';
+      default: return (obj.desc || '(no description)') + ' (#' + (obj.partNum || '?') + ')';
     }
   }
 
