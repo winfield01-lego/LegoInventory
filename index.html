@@ -537,6 +537,7 @@
     <div style="flex:1; min-width:220px;">
       <label class="checkbox-label" style="margin-bottom:14px;"><input type="checkbox" id="shop-only-short" checked /> Only show parts still needed</label>
       <label class="checkbox-label" style="margin-bottom:14px;"><input type="checkbox" id="shop-combine-toggle" /> Combine matching parts across builds into one list</label>
+      <label class="checkbox-label" style="margin-bottom:14px;" title="When on, the number shown is what you still need after using up whatever's already sitting in a drawer. When off, the number shown is the full amount needed, with a separate badge noting how much is in a drawer."><input type="checkbox" id="shop-subtract-drawers-toggle" checked /> Subtract drawer stock from amount needed</label>
       <div class="row">
         <button id="shop-print-btn"><i class="ti ti-file-type-pdf" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Shopping list report (PDF)</button>
         <button id="shop-export-csv-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Export CSV</button>
@@ -8878,7 +8879,9 @@
     headerSlot.appendChild(printHeader);
 
     // Gather filtered rows across all selected builds with their per-row need count,
-    // net of anything already found and sitting in a drawer (not yet assigned to a build)
+    // net of anything already found and sitting in a drawer (not yet assigned to a build) \u2014
+    // unless the "subtract drawer stock" toggle is off, in which case drawer stock is shown but not subtracted.
+    var subtractDrawers = document.getElementById('shop-subtract-drawers-toggle').checked;
     var drawerStockByPartColor = {};
     drawerParts.forEach(function(p){
       var key = p.partNum + '|' + p.color;
@@ -8891,15 +8894,18 @@
       state.rows.filter(function(r){ return r.moc === moc; }).forEach(function(r){
         if (top20Keys && !top20Keys.has(r.partNum + '|' + r.color)) return;
         if (onlyShort && statusFor(r) !== 'short') return;
-        var needCount = onlyShort ? Math.max(r.qty - r.onHand, 0) : r.qty;
+        var rawNeed = onlyShort ? Math.max(r.qty - r.onHand, 0) : r.qty;
+        if (rawNeed <= 0) return;
+        var needCount = rawNeed;
         var pcKey = r.partNum + '|' + r.color;
-        var availableInDrawers = drawerStockByPartColor[pcKey] || 0;
-        if (availableInDrawers > 0){
-          var claimed = Math.min(availableInDrawers, needCount);
-          drawerStockByPartColor[pcKey] = availableInDrawers - claimed;
-          needCount -= claimed;
+        if (subtractDrawers){
+          var availableInDrawers = drawerStockByPartColor[pcKey] || 0;
+          if (availableInDrawers > 0){
+            var claimed = Math.min(availableInDrawers, needCount);
+            drawerStockByPartColor[pcKey] = availableInDrawers - claimed;
+            needCount -= claimed;
+          }
         }
-        if (needCount <= 0) return;
         if (!passesShopFilters(r, q, colorFilter, minQty, needCount, priorityFilter)) return;
         pool.push({ row: r, need: needCount });
       });
@@ -9106,6 +9112,7 @@
   document.getElementById('shop-tally-commit-btn').addEventListener('click', commitTallyToInventory);
   document.getElementById('shop-only-short').addEventListener('change', renderShoppingList);
   document.getElementById('shop-combine-toggle').addEventListener('change', renderShoppingList);
+  document.getElementById('shop-subtract-drawers-toggle').addEventListener('change', renderShoppingList);
   document.querySelectorAll('.shop-sort-select').forEach(function(sel){
     sel.addEventListener('change', renderShoppingList);
   });
