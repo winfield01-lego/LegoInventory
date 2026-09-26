@@ -1198,6 +1198,7 @@
     </div>
 
     <button id="detail-modal-mark-complete" class="icon-btn lockable" style="display:none; color: var(--lego-green); border-color: var(--lego-green); margin-bottom:14px;"><i class="ti ti-checkbox" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Mark Complete (set On Hand to Needed for every part)</button>
+    <button id="detail-modal-clear-quantities" class="icon-btn lockable" style="display:none; color: var(--text-danger); border-color: var(--text-danger); margin-bottom:14px; margin-left:8px;"><i class="ti ti-eraser" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Clear All Quantities (set On Hand to 0 for every part)</button>
 
     <p style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary); margin:0 0 8px;">Parts list</p>
     <div class="tbl-wrap" style="max-height:320px;">
@@ -3724,6 +3725,44 @@
     if (detailContext && detailContext.kind === 'set' && detailContext.key === setNum) openSetDetail(setNum);
   }
 
+  function clearBuildQuantities(name){
+    var rows = state.rows.filter(function(r){ return r.moc === name; });
+    if (!rows.length){
+      alert('"'+name+'" doesn\u2019t have any parts yet.');
+      return;
+    }
+    var alreadyZero = rows.every(function(r){ return (r.onHand || 0) <= 0; });
+    if (alreadyZero){
+      alert('"'+name+'" already has zero on hand for every part.');
+      return;
+    }
+    if (!confirm('Clear all quantities for "'+name+'"? This sets On Hand to 0 for all '+rows.length+' part line'+(rows.length===1?'':'s')+' in this build. This can\u2019t be undone.')) return;
+    rows.forEach(function(r){ r.onHand = 0; });
+    saveState();
+    render();
+    refreshMocBuildViews();
+    if (detailContext && detailContext.kind === 'moc' && detailContext.key === name) openMocDetail(name);
+  }
+
+  function clearSetQuantities(setNum){
+    var rows = setParts.filter(function(r){ return r.setNum === setNum; });
+    if (!rows.length){
+      alert('"'+setNum+'" doesn\u2019t have any parts yet.');
+      return;
+    }
+    var alreadyZero = rows.every(function(r){ return setPartOnHand(r) <= 0; });
+    if (alreadyZero){
+      alert('"'+setNum+'" already has zero on hand for every part.');
+      return;
+    }
+    if (!confirm('Clear all quantities for "'+setNum+'"? This sets On Hand to 0 for all '+rows.length+' part line'+(rows.length===1?'':'s')+' in this set. This can\u2019t be undone.')) return;
+    rows.forEach(function(r){ r.onHand = 0; });
+    saveSetParts();
+    render();
+    renderSetsTab();
+    if (detailContext && detailContext.kind === 'set' && detailContext.key === setNum) openSetDetail(setNum);
+  }
+
   function resizeImageFile(file, maxDim, quality){
     return new Promise(function(resolve, reject){
       var reader = new FileReader();
@@ -3924,6 +3963,7 @@
 
     var rows = setParts.filter(function(r){ return r.setNum === setNum; });
     document.getElementById('detail-modal-mark-complete').style.display = rows.length ? 'inline-block' : 'none';
+    document.getElementById('detail-modal-clear-quantities').style.display = rows.length ? 'inline-block' : 'none';
     refreshSetDetailMetrics(rows, setInfo);
 
     var tbody = document.getElementById('detail-modal-parts-tbody');
@@ -4021,6 +4061,7 @@
     document.getElementById('detail-modal-location').innerHTML = locationOptionsHtml(mocLocations[mocName] || '');
     document.getElementById('detail-modal-description').value = mocDescriptions[mocName] || '';
     document.getElementById('detail-modal-mark-complete').style.display = rows.length ? 'inline-block' : 'none';
+    document.getElementById('detail-modal-clear-quantities').style.display = rows.length ? 'inline-block' : 'none';
 
     refreshMocDetailMetrics(rows);
 
@@ -4141,6 +4182,11 @@
     if (!detailContext) return;
     if (detailContext.kind === 'moc') markBuildComplete(detailContext.key);
     else if (detailContext.kind === 'set') markSetComplete(detailContext.key);
+  });
+  document.getElementById('detail-modal-clear-quantities').addEventListener('click', function(){
+    if (!detailContext) return;
+    if (detailContext.kind === 'moc') clearBuildQuantities(detailContext.key);
+    else if (detailContext.kind === 'set') clearSetQuantities(detailContext.key);
   });
   document.getElementById('detail-modal-description').addEventListener('change', function(){
     if (!detailContext) return;
