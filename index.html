@@ -538,6 +538,7 @@
       <label class="checkbox-label" style="margin-bottom:14px;"><input type="checkbox" id="shop-only-short" checked /> Only show parts still needed</label>
       <label class="checkbox-label" style="margin-bottom:14px;"><input type="checkbox" id="shop-combine-toggle" /> Combine matching parts across builds into one list</label>
       <label class="checkbox-label" style="margin-bottom:14px;" title="When on, the number shown is what you still need after using up whatever's already sitting in a drawer. When off, the number shown is the full amount needed, with a separate badge noting how much is in a drawer."><input type="checkbox" id="shop-subtract-drawers-toggle" checked /> Subtract drawer stock from amount needed</label>
+      <label class="checkbox-label" style="margin-bottom:14px;" title="Only applies when 'Subtract drawer stock' above is on. When checked, a part you have full drawer coverage for (0 still needed) is left off the list and reports entirely, instead of showing with 0 needed."><input type="checkbox" id="shop-hide-fully-covered-toggle" /> Hide parts fully covered by drawer stock</label>
       <div class="row">
         <button id="shop-print-btn"><i class="ti ti-file-type-pdf" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Shopping list report (PDF)</button>
         <button id="shop-export-csv-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Export CSV</button>
@@ -759,6 +760,8 @@
     <input type="text" id="sp-search" placeholder="Search part #, description, color" />
     <select id="sp-set-filter"><option value="">All sets</option></select>
     <select id="sp-color-filter"><option value="">All colors</option></select>
+    <label class="checkbox-label" title="Parts with no element ID, or whose photo isn't on your site or cached in this browser"><input type="checkbox" id="sp-no-photo-only" /> No photo</label>
+    <span id="sp-no-photo-status" style="font-size:11px; color:var(--text-secondary);"></span>
     <label class="checkbox-label"><input type="checkbox" id="sp-combine-toggle" /> Combine matching parts across sets</label>
   </div>
   <div class="tbl-wrap">
@@ -984,6 +987,8 @@
     </div>
   </div>
 
+  <div class="collapse-section">
+    <button type="button" class="collapse-header" data-collapse-target="cs-sync-status"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Data Sync Status</span></button>
     <div class="collapse-body" id="cs-sync-status" style="display:none;">
       <p style="margin: 0 0 10px; color: var(--text-secondary);">
         Compares this browser's data against what's currently published on your site, without changing anything. Use this before "Save to site" or "Load from site" if you're not sure which one has your latest work &mdash; especially useful when you use this on more than one device.
@@ -1155,6 +1160,7 @@
   <div class="row" style="margin-top: 8px;">
     <button id="clear-cache-btn" class="icon-btn"><i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Clear all cached images</button>
   </div>
+</div>
 </div>
 
 <div id="location-manage-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1100; align-items:center; justify-content:center; padding:20px;">
@@ -1566,14 +1572,14 @@
     return true;
   }
 
-  function runNoPhotoCheck(callback){
-    var ids = Array.from(new Set(state.rows.filter(function(r){ return r.elementId && !cachedIds.has(r.elementId); }).map(function(r){ return r.elementId; })));
+  function runNoPhotoCheck(rows, statusElId, callback){
+    var ids = Array.from(new Set(rows.filter(function(r){ return r.elementId && !cachedIds.has(r.elementId); }).map(function(r){ return r.elementId; })));
     var unchecked = ids.filter(function(id){ return !noPhotoResolved.hasOwnProperty(id); });
-    var statusEl = document.getElementById('no-photo-status');
+    var statusEl = document.getElementById(statusElId);
     function showSummary(){
-      var matchCount = state.rows.filter(rowHasNoPhoto).length;
+      var matchCount = rows.filter(rowHasNoPhoto).length;
       statusEl.style.color = 'var(--text-secondary)';
-      statusEl.textContent = matchCount.toLocaleString() + ' of ' + state.rows.length.toLocaleString() + ' rows have no photo on this device.';
+      statusEl.textContent = matchCount.toLocaleString() + ' of ' + rows.length.toLocaleString() + ' rows have no photo on this device.';
     }
     if (!unchecked.length){ showSummary(); callback(); return; }
     var total = unchecked.length, done = 0;
@@ -3419,6 +3425,7 @@
     var q = (document.getElementById('sp-search').value || '').toLowerCase();
     var colorFilter = document.getElementById('sp-color-filter').value;
     var setFilter = document.getElementById('sp-set-filter').value;
+    var noPhotoOnly = document.getElementById('sp-no-photo-only').checked;
 
     var setSel = document.getElementById('sp-set-filter');
     var curSet = setSel.value;
@@ -3440,6 +3447,7 @@
     var rawRows = setParts.filter(function(r){
       if (setFilter && r.setNum !== setFilter) return false;
       if (colorFilter && r.color !== colorFilter) return false;
+      if (noPhotoOnly && !rowHasNoPhoto(r)) return false;
       if (q){
         var hay = (r.partNum+' '+r.desc+' '+r.color+' '+r.setNum+' '+setLabelFor(r.setNum)).toLowerCase();
         if (hay.indexOf(q) === -1) return false;
@@ -3550,6 +3558,11 @@
   document.getElementById('sp-search').addEventListener('input', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
   document.getElementById('sp-set-filter').addEventListener('change', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
   document.getElementById('sp-color-filter').addEventListener('change', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
+  document.getElementById('sp-no-photo-only').addEventListener('change', function(){
+    spState.page = 1;
+    if (this.checked) runNoPhotoCheck(setParts, 'sp-no-photo-status', renderSetPartsSummaryTab);
+    else renderSetPartsSummaryTab();
+  });
   document.getElementById('sp-combine-toggle').addEventListener('change', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
   document.getElementById('sp-prev-page').addEventListener('click', function(){ if (spState.page>1){ spState.page--; renderSetPartsSummaryTab(); } });
   document.getElementById('sp-next-page').addEventListener('click', function(){ spState.page++; renderSetPartsSummaryTab(); });
@@ -5937,15 +5950,15 @@
   }
 
   function exportShoppingList(){
-    var rows = getShoppingListRows();
+    var rows = lastShopListItems;
     if (!rows.length){
-      alert('Nothing to export \u2014 no short parts match the current filters.');
+      alert('Nothing to export \u2014 no parts currently match the shopping list filters.');
       return;
     }
-    var header = ['Build','Part Number','Element ID','Color','Description','Needed','On Hand','Still Needed'];
+    var header = ['Build','Part Number','Element ID','Color','Description','Still Needed'];
     var lines = [header.map(csvEscape).join(',')];
     rows.forEach(function(r){
-      lines.push([r.moc, r.partNum, r.elementId, r.color, r.desc, r.qty, r.onHand, r.qty - r.onHand].map(csvEscape).join(','));
+      lines.push([r.buildLabel || 'Combined', r.partNum, r.elementId, r.color, r.desc, r.need].map(csvEscape).join(','));
     });
     var csv = lines.join('\r\n');
     var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -5994,17 +6007,24 @@
 
   function exportBricklinkWantedList(){
     var statusEl = document.getElementById('shop-export-bricklink-status');
-    var rows = getShoppingListRows();
+    var rows = lastShopListItems;
     if (!rows.length){
       statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Nothing to export \u2014 no short parts match the current filters.';
+      statusEl.textContent = 'Nothing to export \u2014 no parts currently match the shopping list filters.';
       return;
     }
+    // Aggregate by part+color first, since the same part can appear under more than one build.
+    var aggregated = {};
+    rows.forEach(function(r){
+      if (!r.partNum || r.need <= 0) return;
+      var key = r.partNum + '|' + r.color;
+      if (!aggregated[key]) aggregated[key] = { partNum: r.partNum, color: r.color, need: 0 };
+      aggregated[key].need += r.need;
+    });
     var skippedColors = {};
     var itemsXml = [];
-    rows.forEach(function(r){
-      var need = r.qty - r.onHand;
-      if (need <= 0 || !r.partNum) return;
+    Object.keys(aggregated).forEach(function(key){
+      var r = aggregated[key];
       var colorId = BL_COLOR_IDS[r.color];
       if (colorId === undefined){
         skippedColors[r.color || '(no color)'] = (skippedColors[r.color || '(no color)'] || 0) + 1;
@@ -6015,7 +6035,7 @@
         '    <ITEMTYPE>P</ITEMTYPE>\n' +
         '    <ITEMID>' + xmlEscape(r.partNum) + '</ITEMID>\n' +
         '    <COLOR>' + colorId + '</COLOR>\n' +
-        '    <MINQTY>' + need + '</MINQTY>\n' +
+        '    <MINQTY>' + r.need + '</MINQTY>\n' +
         '    <CONDITION>N</CONDITION>\n' +
         '    <NOTIFY>N</NOTIFY>\n' +
         '  </ITEM>'
@@ -6026,7 +6046,7 @@
       statusEl.style.color = 'var(--text-danger)';
       statusEl.textContent = skippedNames.length
         ? ('Nothing exported \u2014 none of the colors here (' + skippedNames.join(', ') + ') matched a known BrickLink color.')
-        : 'Nothing to export \u2014 no short parts match the current filters.';
+        : 'Nothing to export \u2014 no parts currently match the shopping list filters.';
       return;
     }
     var xml = '<INVENTORY>\n' + itemsXml.join('\n') + '\n</INVENTORY>\n';
@@ -6615,7 +6635,7 @@
   document.getElementById('fill-incomplete-btn').addEventListener('click', fillIncompleteMocInfo);
   document.getElementById('no-photo-only').addEventListener('change', function(){
     state.page = 1;
-    if (this.checked) runNoPhotoCheck(renderParts);
+    if (this.checked) runNoPhotoCheck(state.rows, 'no-photo-status', renderParts);
     else renderParts();
   });
   document.getElementById('combine-parts-toggle').addEventListener('change', function(){ state.page = 1; renderParts(); });
@@ -8033,12 +8053,20 @@
     if (detailContext && detailContext.kind === 'moc') openMocDetail(detailContext.key);
     if (detailContext && detailContext.kind === 'set') openSetDetail(detailContext.key);
     if (state.tab === 'images') renderImagesTab();
+    if (state.tab === 'setparts') renderSetPartsSummaryTab();
     var noPhotoCheckbox = document.getElementById('no-photo-only');
     if (noPhotoCheckbox && noPhotoCheckbox.checked){
       var noPhotoStatusEl = document.getElementById('no-photo-status');
       var matchCount = state.rows.filter(rowHasNoPhoto).length;
       noPhotoStatusEl.style.color = 'var(--text-secondary)';
       noPhotoStatusEl.textContent = matchCount.toLocaleString() + ' of ' + state.rows.length.toLocaleString() + ' rows have no photo on this device.';
+    }
+    var spNoPhotoCheckbox = document.getElementById('sp-no-photo-only');
+    if (spNoPhotoCheckbox && spNoPhotoCheckbox.checked){
+      var spNoPhotoStatusEl = document.getElementById('sp-no-photo-status');
+      var spMatchCount = setParts.filter(rowHasNoPhoto).length;
+      spNoPhotoStatusEl.style.color = 'var(--text-secondary)';
+      spNoPhotoStatusEl.textContent = spMatchCount.toLocaleString() + ' of ' + setParts.length.toLocaleString() + ' rows have no photo on this device.';
     }
   }
 
@@ -8882,6 +8910,7 @@
     // net of anything already found and sitting in a drawer (not yet assigned to a build) \u2014
     // unless the "subtract drawer stock" toggle is off, in which case drawer stock is shown but not subtracted.
     var subtractDrawers = document.getElementById('shop-subtract-drawers-toggle').checked;
+    var hideFullyCovered = document.getElementById('shop-hide-fully-covered-toggle').checked;
     var drawerStockByPartColor = {};
     drawerParts.forEach(function(p){
       var key = p.partNum + '|' + p.color;
@@ -8905,6 +8934,7 @@
             drawerStockByPartColor[pcKey] = availableInDrawers - claimed;
             needCount -= claimed;
           }
+          if (hideFullyCovered && needCount <= 0) return;
         }
         if (!passesShopFilters(r, q, colorFilter, minQty, needCount, priorityFilter)) return;
         pool.push({ row: r, need: needCount });
@@ -9113,6 +9143,7 @@
   document.getElementById('shop-only-short').addEventListener('change', renderShoppingList);
   document.getElementById('shop-combine-toggle').addEventListener('change', renderShoppingList);
   document.getElementById('shop-subtract-drawers-toggle').addEventListener('change', renderShoppingList);
+  document.getElementById('shop-hide-fully-covered-toggle').addEventListener('change', renderShoppingList);
   document.querySelectorAll('.shop-sort-select').forEach(function(sel){
     sel.addEventListener('change', renderShoppingList);
   });
