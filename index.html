@@ -837,6 +837,14 @@
         </div>
       </div>
 
+      <div style="background: var(--surface-1); border: 2px solid var(--lego-blue); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 20px;">
+        <p style="margin: 0 0 8px; font-weight: 700; color: var(--lego-black);">Quick add: search for a part, enter how many you have of each color</p>
+        <p style="margin: 0 0 10px; color: var(--text-secondary); font-size: 13px;">
+          Search the full LEGO catalog, pick a part, then enter a quantity for as many colors as you have &mdash; pick one drawer and they all get added to it in one go.
+        </p>
+        <button id="quick-add-drawer-search-btn" class="lockable"><i class="ti ti-search" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Search parts to add to a drawer</button>
+      </div>
+
       <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 8px;">Your drawers</p>
       <div id="drawer-cards-list" style="margin-bottom: 20px;"></div>
 
@@ -1314,11 +1322,16 @@
     <div id="part-search-colors-view" style="display:none;">
       <button id="part-search-back" class="icon-btn" style="margin-bottom:10px;"><i class="ti ti-arrow-left" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Back to results</button>
       <div id="part-search-colors-head" style="display:flex; align-items:center; gap:10px; margin-bottom:10px;"></div>
+      <div id="part-search-quickdrawer-target-row" class="row" style="display:none; align-items:center; margin-bottom:10px; background:var(--surface-1); border:2px solid var(--border); border-radius:8px; padding:8px 10px;">
+        <label for="part-search-quickdrawer-target" style="font-size:12px; font-weight:700; flex-shrink:0;">Add to drawer:</label>
+        <select id="part-search-quickdrawer-target" style="flex:1; min-width:140px;"><option value="">Choose a drawer\u2026</option></select>
+      </div>
+      <p id="part-search-quickdrawer-hint" style="display:none; margin:-4px 0 10px; font-size:12px; color: var(--lego-green); font-weight:700;"></p>
       <div class="row" style="align-items:center; margin-bottom:8px;">
         <input type="text" id="part-search-color-filter" placeholder="Filter colors, e.g. gray" style="flex:1; min-width:160px;" />
         <label class="checkbox-label" style="font-size:12px;"><input type="checkbox" id="part-search-select-all" /> Select all shown</label>
       </div>
-      <p style="margin:0 0 8px; color:var(--text-muted); font-size:11px;">Tick the colors you have, then add them all at once at qty 1 each &mdash; you can adjust quantities afterward. Or use the single "Use" button on one color the way you always have.</p>
+      <p style="margin:0 0 8px; color:var(--text-muted); font-size:11px;">Tick the colors you have, set how many of each, then add them all at once &mdash; quantities default to 1 but can be edited right here. Or use the single "Use" button on one color the way you always have.</p>
       <div id="part-search-colors-list"></div>
       <div id="part-search-multi-bar" style="display:none; position:sticky; bottom:0; background:var(--surface-2); border-top:2px solid var(--border); padding:10px 0 2px; margin-top:8px;">
         <button id="part-search-add-selected" class="icon-btn lockable"><i class="ti ti-plus" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Add <span id="part-search-selected-count">0</span> selected</button>
@@ -5168,6 +5181,18 @@
       var seed = document.getElementById(cfg.desc).value.trim() || document.getElementById(cfg.part).value.trim();
       if (seed) input.value = seed;
     }
+    var quickdrawerRow = document.getElementById('part-search-quickdrawer-target-row');
+    var quickdrawerHint = document.getElementById('part-search-quickdrawer-hint');
+    if (targetKey === 'quickdrawer'){
+      quickdrawerRow.style.display = 'flex';
+      var sel = document.getElementById('part-search-quickdrawer-target');
+      var cur = sel.value;
+      sel.innerHTML = drawerOptGroupsHtml(cur, 'Choose a drawer\u2026', null);
+      quickdrawerHint.style.display = 'none';
+      quickdrawerHint.textContent = '';
+    } else {
+      quickdrawerRow.style.display = 'none';
+    }
     showPartSearchView('results');
     document.getElementById('part-search-overlay').style.display = 'flex';
     setPartSearchStatus(rebrickableApiKey ? '' : RB_NO_KEY_MSG, !rebrickableApiKey);
@@ -5221,6 +5246,19 @@
     });
   }
 
+  function suggestDrawersForPart(partNum){
+    var counts = {};
+    drawerParts.forEach(function(p){
+      if (normKey(p.partNum) === normKey(partNum)){
+        counts[p.drawerId] = (counts[p.drawerId] || 0) + 1;
+      }
+    });
+    var ids = Object.keys(counts).filter(function(id){ return drawers.some(function(d){ return d.id === id; }); });
+    if (!ids.length) return null;
+    ids.sort(function(a, b){ return counts[b] - counts[a]; });
+    return ids;
+  }
+
   function showPartColors(part){
     partSearchSelected = part;
     partSearchMultiSelected = {};
@@ -5230,6 +5268,26 @@
     document.getElementById('part-search-colors-head').innerHTML = partThumbHtml(part.img) +
       '<div><div style="font-weight:700;">' + escapeHtml(part.partNum) + '</div><div style="font-size:12px; color:var(--text-secondary);">' + escapeHtml(part.name) + '</div></div>';
     document.getElementById('part-search-colors-list').innerHTML = '';
+
+    var quickdrawerRow = document.getElementById('part-search-quickdrawer-target-row');
+    var hintEl = document.getElementById('part-search-quickdrawer-hint');
+    if (quickdrawerRow.style.display !== 'none'){
+      var suggestions = suggestDrawersForPart(part.partNum);
+      var sel = document.getElementById('part-search-quickdrawer-target');
+      if (suggestions){
+        sel.value = suggestions[0];
+        var labels = suggestions.map(function(id){ var d = drawers.find(function(x){ return x.id === id; }); return d ? d.label : id; });
+        hintEl.style.display = 'block';
+        hintEl.textContent = labels.length > 1
+          ? ('Already found in: ' + labels.join(', ') + ' \u2014 defaulted to ' + labels[0] + '.')
+          : ('Already found in ' + labels[0] + ' \u2014 selected automatically.');
+      } else {
+        sel.value = '';
+        hintEl.style.display = 'none';
+        hintEl.textContent = '';
+      }
+    }
+
     setPartSearchStatus('Loading colors\u2026');
     rbGetPartColors(part.partNum).then(function(colors){
       if (partSearchSelected !== part) return;
@@ -5263,12 +5321,30 @@
       check.type = 'checkbox';
       check.style.flexShrink = '0';
       check.checked = !!partSearchMultiSelected[col.color];
+      var qtyInput = document.createElement('input');
+      qtyInput.type = 'number';
+      qtyInput.min = '1';
+      qtyInput.value = (partSearchMultiSelected[col.color] && partSearchMultiSelected[col.color].qty) || 1;
+      qtyInput.title = 'How many of this color';
+      qtyInput.style.cssText = 'width:56px; flex-shrink:0;';
+      function currentSelection(){
+        return { partNum: part.partNum, color: col.color, desc: part.name, elementId: (sel ? sel.value : (col.elements[0] || '')), qty: parseInt(qtyInput.value, 10) || 1 };
+      }
       check.addEventListener('change', function(){
-        if (check.checked) partSearchMultiSelected[col.color] = { partNum: part.partNum, color: col.color, desc: part.name, elementId: col.elements[0] || '' };
+        if (check.checked) partSearchMultiSelected[col.color] = currentSelection();
         else delete partSearchMultiSelected[col.color];
         updatePartSearchMultiBar();
       });
+      qtyInput.addEventListener('input', function(){
+        var v = parseInt(qtyInput.value, 10);
+        if (isNaN(v) || v < 1) v = 1;
+        if (!check.checked) check.checked = true;
+        partSearchMultiSelected[col.color] = currentSelection();
+        qtyInput.value = v;
+        updatePartSearchMultiBar();
+      });
       row.appendChild(check);
+      row.appendChild(qtyInput);
       row.insertAdjacentHTML('beforeend', partThumbHtml(col.img || part.img) +
         '<div style="flex:1; min-width:140px;"><div style="font-weight:700; font-size:13px;">' + escapeHtml(col.color) + '</div>' +
         '<div style="font-size:12px; color:var(--text-secondary);">' + (col.elements.length ? (col.elements.length + ' element ID' + (col.elements.length === 1 ? '' : 's')) : 'No element ID on record') +
@@ -5295,7 +5371,7 @@
       useBtn.addEventListener('click', function(){
         var elementId = sel ? sel.value : (col.elements[0] || '');
         var target = partForms[partSearchTargetKey];
-        if (target) target.fillFromCatalog(part.partNum, col.color, part.name, elementId, part.colors);
+        if (target && target.fillFromCatalog) target.fillFromCatalog(part.partNum, col.color, part.name, elementId, part.colors);
         closePartSearch();
       });
       row.appendChild(useBtn);
@@ -5318,7 +5394,7 @@
     var shown = part.colors.filter(function(col){ return !filter || normKey(col.color).indexOf(filter) !== -1; });
     var check = this.checked;
     shown.forEach(function(col){
-      if (check) partSearchMultiSelected[col.color] = { partNum: part.partNum, color: col.color, desc: part.name, elementId: col.elements[0] || '' };
+      if (check) partSearchMultiSelected[col.color] = { partNum: part.partNum, color: col.color, desc: part.name, elementId: col.elements[0] || '', qty: (partSearchMultiSelected[col.color] && partSearchMultiSelected[col.color].qty) || 1 };
       else delete partSearchMultiSelected[col.color];
     });
     renderPartColors();
@@ -5602,42 +5678,74 @@
     var moc = document.getElementById('ap-moc').value.trim();
     if (!moc) return { ok: false, message: 'Choose a build first (the Build field on the Add Part panel), then try again.' };
     rows.forEach(function(r){
-      state.rows.push({ partNum: r.partNum, qty: 1, color: r.color, desc: r.desc, moc: moc, elementId: r.elementId || '', onHand: 0, built: false, priority: '' });
+      state.rows.push({ partNum: r.partNum, qty: r.qty || 1, color: r.color, desc: r.desc, moc: moc, elementId: r.elementId || '', onHand: 0, built: false, priority: '' });
     });
     saveState();
     render();
-    return { ok: true, message: 'Added ' + rows.length + ' color' + (rows.length===1?'':'s') + ' of ' + rows[0].partNum + ' to ' + moc + ' at qty 1 each \u2014 adjust quantities in the parts table.' };
+    return { ok: true, message: 'Added ' + rows.length + ' color' + (rows.length===1?'':'s') + ' of ' + rows[0].partNum + ' to ' + moc + ' with the quantities entered.' };
   };
 
   partForms.dp.addMultiple = function(rows){
     var drawerId = document.getElementById('dp-drawer-target').value;
     if (!drawerId) return { ok: false, message: 'Choose a drawer first (the drawer dropdown on the Add Part panel), then try again.' };
     rows.forEach(function(r){
+      var qty = r.qty || 1;
       var existing = drawerParts.find(function(p){ return p.drawerId === drawerId && p.partNum === r.partNum && p.color === r.color; });
-      if (existing){ existing.qty += 1; if (!existing.elementId && r.elementId) existing.elementId = r.elementId; }
-      else drawerParts.push({ drawerId: drawerId, partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId || '', qty: 1 });
+      if (existing){ existing.qty += qty; if (!existing.elementId && r.elementId) existing.elementId = r.elementId; }
+      else drawerParts.push({ drawerId: drawerId, partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId || '', qty: qty });
     });
     saveDrawerParts();
     renderDrawersTab();
-    return { ok: true, message: 'Added ' + rows.length + ' color' + (rows.length===1?'':'s') + ' of ' + rows[0].partNum + ' to that drawer at qty 1 each \u2014 adjust quantities in the table below.' };
+    return { ok: true, message: 'Added ' + rows.length + ' color' + (rows.length===1?'':'s') + ' of ' + rows[0].partNum + ' to that drawer with the quantities entered.' };
   };
 
   partForms.dd.addMultiple = function(rows){
     if (!drawerDetailContext) return { ok: false, message: 'No drawer is open.' };
     rows.forEach(function(r){
+      var qty = r.qty || 1;
       var existing = drawerParts.find(function(p){ return p.drawerId === drawerDetailContext && p.partNum === r.partNum && p.color === r.color; });
-      if (existing){ existing.qty += 1; if (!existing.elementId && r.elementId) existing.elementId = r.elementId; }
-      else drawerParts.push({ drawerId: drawerDetailContext, partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId || '', qty: 1 });
+      if (existing){ existing.qty += qty; if (!existing.elementId && r.elementId) existing.elementId = r.elementId; }
+      else drawerParts.push({ drawerId: drawerDetailContext, partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId || '', qty: qty });
     });
     saveDrawerParts();
     renderDrawerCards();
     refreshDrawerDetailMetrics(drawerDetailContext);
     renderDrawerDetailTable(drawerDetailContext);
-    return { ok: true, message: 'Added ' + rows.length + ' color' + (rows.length===1?'':'s') + ' of ' + rows[0].partNum + ' at qty 1 each \u2014 adjust quantities in the table above.' };
+    return { ok: true, message: 'Added ' + rows.length + ' color' + (rows.length===1?'':'s') + ' of ' + rows[0].partNum + ' with the quantities entered.' };
   };
+
+  partForms.quickdrawer = {
+    fillFromCatalog: function(partNum, color, desc, elementId){
+      var result = partForms.quickdrawer.addMultiple([{ partNum: partNum, color: color, desc: desc, elementId: elementId, qty: 1 }]);
+      setPartSearchStatus(result.message, !result.ok);
+    },
+    addMultiple: function(rows){
+      var drawerId = document.getElementById('part-search-quickdrawer-target').value;
+      if (!drawerId) return { ok: false, message: 'Choose a drawer above first, then try again.' };
+      var totalQty = 0;
+      rows.forEach(function(r){
+        var qty = r.qty || 1;
+        totalQty += qty;
+        var existing = drawerParts.find(function(p){ return p.drawerId === drawerId && p.partNum === r.partNum && p.color === r.color; });
+        if (existing){ existing.qty += qty; if (!existing.elementId && r.elementId) existing.elementId = r.elementId; }
+        else drawerParts.push({ drawerId: drawerId, partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId || '', qty: qty });
+      });
+      saveDrawerParts();
+      renderDrawersTab();
+      if (drawerDetailContext === drawerId){
+        renderDrawerCards();
+        refreshDrawerDetailMetrics(drawerDetailContext);
+        renderDrawerDetailTable(drawerDetailContext);
+      }
+      var drawerLabel = (drawers.find(function(d){ return d.id === drawerId; }) || {}).label || drawerId;
+      return { ok: true, message: 'Added ' + totalQty.toLocaleString() + ' piece' + (totalQty===1?'':'s') + ' across ' + rows.length + ' color' + (rows.length===1?'':'s') + ' of ' + rows[0].partNum + ' to drawer ' + drawerLabel + '.' };
+    }
+  };
+
   document.getElementById('ap-search-btn').addEventListener('click', function(){ openPartSearch('ap'); });
   document.getElementById('dp-search-btn').addEventListener('click', function(){ openPartSearch('dp'); });
   document.getElementById('drawer-detail-search-btn').addEventListener('click', function(){ openPartSearch('dd'); });
+  document.getElementById('quick-add-drawer-search-btn').addEventListener('click', function(){ openPartSearch('quickdrawer'); });
 
   document.getElementById('drawer-add-part-btn').addEventListener('click', function(){
     var statusEl = document.getElementById('drawer-add-part-status');
