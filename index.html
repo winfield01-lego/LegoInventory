@@ -5171,12 +5171,60 @@
       : '<div style="width:44px; height:44px; background:var(--surface-1); border-radius:6px; flex-shrink:0;"></div>';
   }
 
+  function distinctPartNumsInDrawer(drawerId){
+    var seen = {};
+    var out = [];
+    drawerParts.forEach(function(p){
+      if (p.drawerId !== drawerId || !p.partNum) return;
+      var k = normKey(p.partNum);
+      if (seen[k]) return;
+      seen[k] = true;
+      out.push(p.partNum);
+    });
+    return out;
+  }
+
+  function showSeededDrawerResults(partNums){
+    var list = document.getElementById('part-search-results');
+    list.innerHTML = '';
+    partSearchNextUrl = null;
+    document.getElementById('part-search-more').style.display = 'none';
+    setPartSearchStatus('Loading the part' + (partNums.length === 1 ? '' : 's') + ' already in this drawer\u2026');
+    Promise.all(partNums.map(function(pn){ return rbGetPart(pn).catch(function(){ return null; }); })).then(function(parts){
+      if (document.getElementById('part-search-input').dataset.seededFor !== partNums.join('|')) return;
+      list.innerHTML = '';
+      var found = [];
+      parts.forEach(function(p, i){ found.push(p || { partNum: partNums[i], name: '(not found in the catalog)', img: '' }); });
+      var header = document.createElement('div');
+      header.style.cssText = 'font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.03em; color:var(--text-secondary); margin:4px 0 6px;';
+      header.textContent = 'Already in this drawer';
+      list.appendChild(header);
+      found.forEach(function(p){
+        var row = document.createElement('div');
+        row.style.cssText = 'display:flex; align-items:center; gap:10px; padding:6px 0; border-bottom:1px solid var(--border);';
+        row.innerHTML = partThumbHtml(p.img) +
+          '<div style="flex:1; min-width:0;"><div style="font-weight:700; font-size:13px;">' + escapeHtml(p.partNum) + '</div>' +
+          '<div style="font-size:12px; color:var(--text-secondary);">' + escapeHtml(p.name) + '</div></div>';
+        var btn = document.createElement('button');
+        btn.className = 'icon-btn';
+        btn.style.flexShrink = '0';
+        btn.textContent = 'Choose';
+        btn.addEventListener('click', function(){ showPartColors({ partNum: p.partNum, name: p.name || '', img: p.img || '' }); });
+        row.appendChild(btn);
+        list.appendChild(row);
+      });
+      setPartSearchStatus(found.length + ' part' + (found.length === 1 ? '' : 's') + ' already in this drawer, shown above. Search above for anything else.');
+    });
+  }
+
   function openPartSearch(targetKey){
     partSearchTargetKey = targetKey;
     partSearchMultiSelected = {};
     updatePartSearchMultiBar();
     var cfg = partForms[targetKey] && partForms[targetKey].cfg;
     var input = document.getElementById('part-search-input');
+    input.value = '';
+    delete input.dataset.seededFor;
     if (cfg){
       var seed = document.getElementById(cfg.desc).value.trim() || document.getElementById(cfg.part).value.trim();
       if (seed) input.value = seed;
@@ -5195,7 +5243,18 @@
     }
     showPartSearchView('results');
     document.getElementById('part-search-overlay').style.display = 'flex';
-    setPartSearchStatus(rebrickableApiKey ? '' : RB_NO_KEY_MSG, !rebrickableApiKey);
+
+    var relevantDrawerId = targetKey === 'dd' ? drawerDetailContext
+      : targetKey === 'dp' ? (document.getElementById('dp-drawer-target').value || null)
+      : null;
+    var existingPartNums = relevantDrawerId ? distinctPartNumsInDrawer(relevantDrawerId) : [];
+    if (existingPartNums.length && !input.value){
+      input.value = existingPartNums[0];
+      input.dataset.seededFor = existingPartNums.join('|');
+      showSeededDrawerResults(existingPartNums);
+    } else {
+      setPartSearchStatus(rebrickableApiKey ? '' : RB_NO_KEY_MSG, !rebrickableApiKey);
+    }
     input.focus();
     input.select();
   }
@@ -5204,11 +5263,32 @@
     document.getElementById('part-search-overlay').style.display = 'none';
   }
 
+  function extractSizeQuery(q){
+    var m = q.match(/(\d+)\s*[x\u00d7]\s*(\d+)/i);
+    if (!m) return null;
+    return [m[1], m[2]];
+  }
+
+  function nameMatchesSize(name, size){
+    if (!size) return false;
+    var re = new RegExp('\\b' + size[0] + '\\s*x\\s*' + size[1] + '\\b', 'i');
+    var reRev = new RegExp('\\b' + size[1] + '\\s*x\\s*' + size[0] + '\\b', 'i');
+    return re.test(name) || reRev.test(name);
+  }
+
   function renderPartSearchResults(data, append){
     var list = document.getElementById('part-search-results');
     if (!append){ list.innerHTML = ''; partSearchShown = 0; }
     var results = (data && data.results) || [];
     var total = (data && data.count) || 0;
+    var sizeQuery = extractSizeQuery(document.getElementById('part-search-input').value.trim());
+    if (sizeQuery){
+      results = results.slice().sort(function(a, b){
+        var aMatch = nameMatchesSize(a.name || '', sizeQuery) ? 0 : 1;
+        var bMatch = nameMatchesSize(b.name || '', sizeQuery) ? 0 : 1;
+        return aMatch - bMatch;
+      });
+    }
     if (!append && !results.length){
       list.innerHTML = '<div class="empty-msg">No parts matched. Try fewer or different words, e.g. \u201cplate 1 x 2\u201d or \u201cslope 45\u201d.</div>';
     }
@@ -5239,7 +5319,7 @@
     if (!rebrickableApiKey){ setPartSearchStatus(RB_NO_KEY_MSG, true); return; }
     showPartSearchView('results');
     setPartSearchStatus('Searching\u2026');
-    rbFetchJson(rbApiUrl('parts/?search=' + encodeURIComponent(q) + '&page_size=25')).then(function(data){
+    rbFetchJson(rbApiUrl('parts/?search=' + encodeURIComponent(q) + '&page_size=50')).then(function(data){
       renderPartSearchResults(data, false);
     }).catch(function(err){
       setPartSearchStatus('Search failed: ' + (err && err.message ? err.message : 'couldn\u2019t reach Rebrickable.'), true);
