@@ -399,7 +399,18 @@
         <button id="top-report-landscape-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="Landscape layout with two columns of parts side by side"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 report (Landscape, 2-col)</button>
       </div>
     </div>
-    <div id="top-needed-list" style="display:none;"></div>
+    <div id="top-needed-list" style="display:none;">
+      <div class="row" style="align-items:center; gap:10px; margin-bottom:10px;">
+        <label for="top-needed-filter" style="font-size:12px; font-weight:700; flex-shrink:0;">Show:</label>
+        <select id="top-needed-filter">
+          <option value="all">All 20 parts</option>
+          <option value="uncovered">Still need to find</option>
+          <option value="covered">Fully covered by drawers</option>
+        </select>
+        <span id="top-needed-total-line" style="font-size:12px; color:var(--text-secondary); font-weight:700;"></span>
+      </div>
+      <div id="top-needed-items"></div>
+    </div>
   </div>
 
   <div id="almost-complete-section" style="margin-bottom: 1.5rem; display:none;">
@@ -2180,17 +2191,35 @@
     chevron.className = 'ti ' + (topNeededExpanded ? 'ti-chevron-down' : 'ti-chevron-right');
   }
 
+  function getTop20ItemsFiltered(){
+    var mode = document.getElementById('top-needed-filter').value;
+    var items = getTop20Items();
+    if (mode === 'uncovered') return items.filter(function(it){ return it.short > it.inDrawers; });
+    if (mode === 'covered') return items.filter(function(it){ return it.short <= it.inDrawers; });
+    return items;
+  }
+
   function renderTopNeeded(){
     var container = document.getElementById('top-needed-list');
+    var itemsEl = document.getElementById('top-needed-items');
     var section = document.getElementById('top-needed-section');
-    var items = getTop20Items();
+    var allItems = getTop20Items();
 
-    if (!items.length){
+    if (!allItems.length){
       section.style.display = 'none';
       return;
     }
     section.style.display = 'block';
-    container.innerHTML = '';
+    var items = getTop20ItemsFiltered();
+    var totalStillNeeded = items.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
+    document.getElementById('top-needed-total-line').textContent = 'Total still needed after drawers: ' + totalStillNeeded.toLocaleString() + ' piece' + (totalStillNeeded===1?'':'s');
+
+    itemsEl.innerHTML = '';
+    if (!items.length){
+      itemsEl.innerHTML = '<div class="empty-msg">Nothing matches this filter right now.</div>';
+      applyTopNeededCollapseState();
+      return;
+    }
     items.forEach(function(it, i){
       var row = document.createElement('div');
       row.className = 'top-needed-item';
@@ -2208,10 +2237,12 @@
         switchTab('parts');
         renderParts();
       });
-      container.appendChild(row);
+      itemsEl.appendChild(row);
     });
     applyTopNeededCollapseState();
   }
+
+  document.getElementById('top-needed-filter').addEventListener('change', renderTopNeeded);
 
   document.getElementById('top-needed-toggle-btn').addEventListener('click', function(){
     topNeededExpanded = !topNeededExpanded;
@@ -6301,16 +6332,19 @@
   }
 
   function exportTopNeededReport(){
-    var items = getTop20Items();
+    var items = getTop20ItemsFiltered();
     if (!items.length){
-      alert('Nothing to report \u2014 no parts are currently short.');
+      alert('Nothing to report \u2014 nothing matches the current filter.');
       return;
     }
+    var totalStillNeeded = items.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
     var header = ['Rank','Element ID','Color','Description','Short','In Drawers','Used In Builds'];
     var lines = [header.map(csvEscape).join(',')];
     items.forEach(function(it, i){
       lines.push([i+1, it.elementId, it.color, it.desc, it.short, it.inDrawers, Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
     });
+    lines.push('');
+    lines.push(['Total still needed after drawers', totalStillNeeded].map(csvEscape).join(','));
     var csv = lines.join('\r\n');
     var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     var url = URL.createObjectURL(blob);
@@ -6445,9 +6479,9 @@
   }
 
   function generateTop20PDF(){
-    var items = getTop20Items();
+    var items = getTop20ItemsFiltered();
     if (!items.length){
-      alert('Nothing to report \u2014 no parts are currently short.');
+      alert('Nothing to report \u2014 nothing matches the current filter.');
       return;
     }
     var btn = document.getElementById('top-report-pdf-btn');
@@ -6468,13 +6502,17 @@
       if (!doc) return;
       pdfHeader(doc, 'Top 20 Most Needed Parts',
         'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
+      var totalStillNeeded = items.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
+      doc.setFontSize(10);
+      doc.setTextColor(110, 110, 110);
+      doc.text('Total still needed after drawers: ' + totalStillNeeded.toLocaleString() + ' piece' + (totalStillNeeded===1?'':'s'), 40, 68);
 
       var body = items.map(function(it, i){
         return ['', String(i+1), it.color, truncateForPdf(it.desc, 42), it.short.toLocaleString(), it.inDrawers.toLocaleString()];
       });
       doc.autoTable({
-        startY: 70,
-        margin: { top: 70, right: 40, bottom: 30, left: 40 },
+        startY: 82,
+        margin: { top: 82, right: 40, bottom: 30, left: 40 },
         head: [['','#','Color','Description','Short','In Drwrs']],
         body: body,
         styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: 28, valign: 'middle' },
@@ -6508,11 +6546,11 @@
   }
 
   function generateTop20ByColorPDF(){
-    var items = getTop20Items().slice().sort(function(a,b){
+    var items = getTop20ItemsFiltered().slice().sort(function(a,b){
       return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.short - b.short);
     });
     if (!items.length){
-      alert('Nothing to report \u2014 no parts are currently short.');
+      alert('Nothing to report \u2014 nothing matches the current filter.');
       return;
     }
     var btn = document.getElementById('top-report-bycolor-pdf-btn');
@@ -6533,13 +6571,17 @@
       if (!doc) return;
       pdfHeader(doc, 'Top 20 Most Needed Parts \u2014 by Color',
         'Generated ' + new Date().toLocaleDateString() + ' \u00b7 sorted by color, then part, then quantity \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
+      var totalStillNeeded = items.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
+      doc.setFontSize(10);
+      doc.setTextColor(110, 110, 110);
+      doc.text('Total still needed after drawers: ' + totalStillNeeded.toLocaleString() + ' piece' + (totalStillNeeded===1?'':'s'), 40, 68);
 
       var body = items.map(function(it, i){
         return ['', String(i+1), it.color, truncateForPdf(it.desc, 42), it.short.toLocaleString(), it.inDrawers.toLocaleString()];
       });
       doc.autoTable({
-        startY: 70,
-        margin: { top: 70, right: 40, bottom: 30, left: 40 },
+        startY: 82,
+        margin: { top: 82, right: 40, bottom: 30, left: 40 },
         head: [['','#','Color','Description','Short','In Drwrs']],
         body: body,
         styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: 28, valign: 'middle' },
@@ -6573,9 +6615,9 @@
   }
 
   function generateTop20LandscapePDF(){
-    var items = getTop20Items();
+    var items = getTop20ItemsFiltered();
     if (!items.length){
-      alert('Nothing to report \u2014 no parts are currently short.');
+      alert('Nothing to report \u2014 nothing matches the current filter.');
       return;
     }
     var btn = document.getElementById('top-report-landscape-pdf-btn');
@@ -6595,6 +6637,10 @@
       var doc = new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' });
       pdfHeader(doc, 'Top 20 Most Needed Parts',
         'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
+      var totalStillNeeded = items.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
+      doc.setFontSize(10);
+      doc.setTextColor(110, 110, 110);
+      doc.text('Total still needed after drawers: ' + totalStillNeeded.toLocaleString() + ' piece' + (totalStillNeeded===1?'':'s'), 40, 68);
 
       var half = Math.ceil(items.length / 2);
       var leftItems = items.slice(0, half);
@@ -6614,7 +6660,7 @@
       }
 
       doc.autoTable({
-        startY: 70,
+        startY: 82,
         head: [['','#','Color','Description','Short','In Drwrs','','','#','Color','Description','Short','In Drwrs']],
         body: body,
         styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
@@ -6662,11 +6708,11 @@
   }
 
   function generateTop20ByColorLandscapePDF(){
-    var items = getTop20Items().slice().sort(function(a,b){
+    var items = getTop20ItemsFiltered().slice().sort(function(a,b){
       return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.short - b.short);
     });
     if (!items.length){
-      alert('Nothing to report \u2014 no parts are currently short.');
+      alert('Nothing to report \u2014 nothing matches the current filter.');
       return;
     }
     var btn = document.getElementById('top-report-bycolor-landscape-pdf-btn');
@@ -6686,6 +6732,10 @@
       var doc = new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' });
       pdfHeader(doc, 'Top 20 Most Needed Parts \u2014 by Color',
         'Generated ' + new Date().toLocaleDateString() + ' \u00b7 sorted by color, then part, then quantity \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
+      var totalStillNeeded = items.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
+      doc.setFontSize(10);
+      doc.setTextColor(110, 110, 110);
+      doc.text('Total still needed after drawers: ' + totalStillNeeded.toLocaleString() + ' piece' + (totalStillNeeded===1?'':'s'), 40, 68);
 
       var half = Math.ceil(items.length / 2);
       var leftItems = items.slice(0, half);
@@ -6705,7 +6755,7 @@
       }
 
       doc.autoTable({
-        startY: 70,
+        startY: 82,
         head: [['','#','Color','Description','Short','In Drwrs','','','#','Color','Description','Short','In Drwrs']],
         body: body,
         styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
