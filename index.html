@@ -218,7 +218,7 @@
 #lego-inv-root .tally-controls-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap; }
 #lego-inv-root .tally-drawer-select { flex: 1 1 130px; min-width: 0; height: 32px; font-size: 12px; }
 #lego-inv-root .shop-qty { font-weight: 800; min-width: 34px; }
-#lego-inv-root .shop-in-drawers { font-size: 11px; font-weight: 700; color: var(--lego-green); background: var(--surface-1); border: 1px solid var(--border); border-radius: 6px; padding: 2px 7px; white-space: nowrap; flex-shrink: 0; }
+#lego-inv-root .shop-in-drawers, #lego-inv-root .in-drawers-badge { font-size: 11px; font-weight: 700; color: var(--lego-green); background: var(--surface-1); border: 1px solid var(--border); border-radius: 6px; padding: 2px 7px; white-space: nowrap; flex-shrink: 0; }
 #lego-inv-root .shop-desc { font-size: 13px; }
 #lego-inv-root .shop-partnum { color: var(--text-muted); font-size: 12px; }
 #lego-inv-root .shop-thumb { flex-shrink: 0; }
@@ -303,7 +303,7 @@
   #lego-inv-root .shop-desc { font-size: 11.5px; line-height: 1.35; }
   #lego-inv-root .shop-partnum { font-size: 10px; }
   #lego-inv-root .shop-qty { font-size: 11.5px; min-width: 26px; }
-  #lego-inv-root .shop-in-drawers { font-size: 10px; padding: 1px 5px; }
+  #lego-inv-root .shop-in-drawers, #lego-inv-root .in-drawers-badge { font-size: 10px; padding: 1px 5px; }
   #lego-inv-root .shop-item input[type=checkbox] { width: 13px; height: 13px; }
   #lego-inv-root .lego-subtitle { display: none; }
   #lego-inv-root .shop-thumb { width: 26px; height: 26px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -2193,10 +2193,12 @@
     items.forEach(function(it, i){
       var row = document.createElement('div');
       row.className = 'top-needed-item';
+      var inDrawersHtml = it.inDrawers > 0 ? '<span class="in-drawers-badge">'+it.inDrawers.toLocaleString()+' in drawers</span>' : '';
       row.innerHTML =
         '<span class="top-needed-rank">'+(i+1)+'</span>' +
         '<span class="part-thumb-wrap"></span>' +
         '<span class="top-needed-desc">'+escapeHtml(it.color)+' '+escapeHtml(it.desc)+' <span class="part-meta">#'+escapeHtml(it.partNum)+'</span></span>' +
+        inDrawersHtml +
         '<span class="pill pill-short top-needed-short">Short '+it.short.toLocaleString()+'</span>';
       buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, row.querySelector('.part-thumb-wrap'));
       row.addEventListener('click', function(){
@@ -2231,11 +2233,12 @@
 
   function getAlmostCompleteItems(threshold){
     var items = [];
+    var drawerStock = buildDrawerStockMap();
     computeMocs().forEach(function(m){
       var missing = Math.max(m.need - m.have, 0);
       if (missing > 0 && missing <= threshold){
         var shortParts = state.rows.filter(function(r){ return r.moc === m.name && r.onHand < r.qty; })
-          .map(function(r){ return { partNum: r.partNum, color: r.color, desc: r.desc, short: r.qty - r.onHand, elementId: r.elementId }; })
+          .map(function(r){ return { partNum: r.partNum, color: r.color, desc: r.desc, short: r.qty - r.onHand, elementId: r.elementId, inDrawers: drawerStock[r.partNum + '|' + r.color] || 0 }; })
           .sort(function(a,b){ return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.short - b.short); });
         items.push({ type: 'moc', key: m.name, label: m.name, missing: missing, parts: shortParts });
       }
@@ -2248,7 +2251,7 @@
       var missing = needed - onHand;
       if (missing > 0 && missing <= threshold){
         var shortSetParts = rows.filter(function(r){ return setPartOnHand(r) < setPartNeeded(r); })
-          .map(function(r){ return { partNum: r.partNum, color: r.color, desc: r.desc, short: setPartNeeded(r) - setPartOnHand(r), elementId: r.elementId }; })
+          .map(function(r){ return { partNum: r.partNum, color: r.color, desc: r.desc, short: setPartNeeded(r) - setPartOnHand(r), elementId: r.elementId, inDrawers: drawerStock[r.partNum + '|' + r.color] || 0 }; })
           .sort(function(a,b){ return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.short - b.short); });
         items.push({ type: 'set', key: s.setNum, label: s.setNum + (s.name ? ' \u2014 ' + s.name : ''), missing: missing, parts: shortSetParts });
       }
@@ -2297,15 +2300,15 @@
       alert('Nothing to report \u2014 nothing is within ' + threshold + ' pieces of complete right now.');
       return;
     }
-    var header = ['Type','Build/Set','Total Missing','Part Num','Color','Description','Part Short Qty'];
+    var header = ['Type','Build/Set','Total Missing','Part Num','Color','Description','Part Short Qty','In Drawers'];
     var lines = [header.map(csvEscape).join(',')];
     items.forEach(function(it){
       var typeLabel = it.type === 'moc' ? 'MOC Build' : 'Official Set';
       if (!it.parts.length){
-        lines.push([typeLabel, it.label, it.missing, '', '', '', ''].map(csvEscape).join(','));
+        lines.push([typeLabel, it.label, it.missing, '', '', '', '', ''].map(csvEscape).join(','));
       } else {
         it.parts.forEach(function(p){
-          lines.push([typeLabel, it.label, it.missing, p.partNum, p.color, p.desc, p.short].map(csvEscape).join(','));
+          lines.push([typeLabel, it.label, it.missing, p.partNum, p.color, p.desc, p.short, p.inDrawers].map(csvEscape).join(','));
         });
       }
     });
@@ -2359,16 +2362,16 @@
         var typeLabel = it.type === 'moc' ? 'MOC Build' : 'Official Set';
         body.push([{
           content: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' piece' + (it.missing===1?'':'s') + ' total',
-          colSpan: 5,
+          colSpan: 6,
           styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] }
         }]);
         rowMeta.push(null);
         if (!it.parts.length){
-          body.push([{ content: 'No specific part shortages recorded.', colSpan: 5, styles: { fontStyle: 'italic', textColor: [130, 130, 130] } }]);
+          body.push([{ content: 'No specific part shortages recorded.', colSpan: 6, styles: { fontStyle: 'italic', textColor: [130, 130, 130] } }]);
           rowMeta.push(null);
         } else {
           it.parts.forEach(function(p){
-            body.push(['', p.partNum, p.color, p.desc, String(p.short)]);
+            body.push(['', p.partNum, p.color, p.desc, String(p.short), p.inDrawers.toLocaleString()]);
             rowMeta.push(p.elementId || null);
           });
         }
@@ -2376,11 +2379,11 @@
 
       doc.autoTable({
         startY: 70,
-        head: [['','#','Color','Description','Short']],
+        head: [['','#','Color','Description','Short','In Drawers']],
         body: body,
         styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
         headStyles: { fillColor: [0, 166, 94], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 46 }, 3: { cellWidth: 190 } },
+        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 46 }, 3: { cellWidth: 160 } },
         didDrawCell: function(data){
           if (data.section !== 'body' || data.column.index !== 0) return;
           var elementId = rowMeta[data.row.index];
@@ -5171,6 +5174,15 @@
       : '<div style="width:44px; height:44px; background:var(--surface-1); border-radius:6px; flex-shrink:0;"></div>';
   }
 
+  function buildDrawerStockMap(){
+    var map = {};
+    drawerParts.forEach(function(p){
+      var key = p.partNum + '|' + p.color;
+      map[key] = (map[key] || 0) + (p.qty || 0);
+    });
+    return map;
+  }
+
   function distinctPartNumsInDrawer(drawerId){
     var seen = {};
     var out = [];
@@ -6260,8 +6272,9 @@
   }
 
   function getTop20Items(){
+    var drawerStock = buildDrawerStockMap();
     return computeInventory()
-      .map(function(it){ it.short = Math.max(it.need - it.onHand, 0); return it; })
+      .map(function(it){ it.short = Math.max(it.need - it.onHand, 0); it.inDrawers = drawerStock[it.partNum + '|' + it.color] || 0; return it; })
       .filter(function(it){ return it.short > 0; })
       .sort(function(a,b){ return b.short - a.short; })
       .slice(0, 20);
@@ -6273,10 +6286,10 @@
       alert('Nothing to report \u2014 no parts are currently short.');
       return;
     }
-    var header = ['Rank','Element ID','Color','Description','Short','Used In Builds'];
+    var header = ['Rank','Element ID','Color','Description','Short','In Drawers','Used In Builds'];
     var lines = [header.map(csvEscape).join(',')];
     items.forEach(function(it, i){
-      lines.push([i+1, it.elementId, it.color, it.desc, it.short, Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
+      lines.push([i+1, it.elementId, it.color, it.desc, it.short, it.inDrawers, Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
     });
     var csv = lines.join('\r\n');
     var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
@@ -6437,15 +6450,15 @@
         'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
 
       var body = items.map(function(it, i){
-        return ['', String(i+1), it.color, it.desc, it.short.toLocaleString()];
+        return ['', String(i+1), it.color, it.desc, it.short.toLocaleString(), it.inDrawers.toLocaleString()];
       });
       doc.autoTable({
         startY: 70,
-        head: [['','#','Color','Description','Short']],
+        head: [['','#','Color','Description','Short','In Drawers']],
         body: body,
         styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
         headStyles: { fillColor: [0, 85, 191], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 20 }, 3: { cellWidth: 260 } },
+        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 20 }, 3: { cellWidth: 220 } },
         didDrawCell: function(data){
           if (data.section !== 'body' || data.column.index !== 0) return;
           var it = items[data.row.index];
@@ -6496,15 +6509,15 @@
         'Generated ' + new Date().toLocaleDateString() + ' \u00b7 sorted by color, then part, then quantity \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
 
       var body = items.map(function(it, i){
-        return ['', String(i+1), it.color, it.desc, it.short.toLocaleString()];
+        return ['', String(i+1), it.color, it.desc, it.short.toLocaleString(), it.inDrawers.toLocaleString()];
       });
       doc.autoTable({
         startY: 70,
-        head: [['','#','Color','Description','Short']],
+        head: [['','#','Color','Description','Short','In Drawers']],
         body: body,
         styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
         headStyles: { fillColor: [0, 85, 191], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 20 }, 3: { cellWidth: 260 } },
+        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 20 }, 3: { cellWidth: 220 } },
         didDrawCell: function(data){
           if (data.section !== 'body' || data.column.index !== 0) return;
           var it = items[data.row.index];
@@ -6561,26 +6574,26 @@
       for (var i = 0; i < rowCount; i++){
         var L = leftItems[i], R = rightItems[i];
         body.push([
-          '', L ? String(i + 1) : '', L ? L.color : '', L ? L.desc : '', L ? L.short.toLocaleString() : '',
+          '', L ? String(i + 1) : '', L ? L.color : '', L ? L.desc : '', L ? L.short.toLocaleString() : '', L ? L.inDrawers.toLocaleString() : '',
           '',
-          '', R ? String(half + i + 1) : '', R ? R.color : '', R ? R.desc : '', R ? R.short.toLocaleString() : ''
+          '', R ? String(half + i + 1) : '', R ? R.color : '', R ? R.desc : '', R ? R.short.toLocaleString() : '', R ? R.inDrawers.toLocaleString() : ''
         ]);
         rowElementIds.push([L ? L.elementId : null, R ? R.elementId : null]);
       }
 
       doc.autoTable({
         startY: 70,
-        head: [['','#','Color','Description','Short','','','#','Color','Description','Short']],
+        head: [['','#','Color','Description','Short','In Drwrs','','','#','Color','Description','Short','In Drwrs']],
         body: body,
         styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
         headStyles: { fillColor: [0, 85, 191], textColor: 255 },
         columnStyles: {
-          0: { cellWidth: 44 }, 1: { cellWidth: 20 }, 2: { cellWidth: 50 }, 3: { cellWidth: 197 }, 4: { cellWidth: 32 },
-          5: { cellWidth: 14 },
-          6: { cellWidth: 44 }, 7: { cellWidth: 20 }, 8: { cellWidth: 50 }, 9: { cellWidth: 197 }, 10: { cellWidth: 32 }
+          0: { cellWidth: 40 }, 1: { cellWidth: 18 }, 2: { cellWidth: 46 }, 3: { cellWidth: 155 }, 4: { cellWidth: 28 }, 5: { cellWidth: 40 },
+          6: { cellWidth: 14 },
+          7: { cellWidth: 40 }, 8: { cellWidth: 18 }, 9: { cellWidth: 46 }, 10: { cellWidth: 155 }, 11: { cellWidth: 28 }, 12: { cellWidth: 40 }
         },
         didParseCell: function(data){
-          if (data.column.index === 5){
+          if (data.column.index === 6){
             data.cell.styles.lineWidth = 0;
             data.cell.styles.fillColor = data.section === 'head' ? [0, 85, 191] : 255;
           }
@@ -6589,7 +6602,7 @@
           if (data.section !== 'body') return;
           var pair = rowElementIds[data.row.index];
           if (!pair) return;
-          var slot = data.column.index === 0 ? 0 : (data.column.index === 6 ? 1 : null);
+          var slot = data.column.index === 0 ? 0 : (data.column.index === 7 ? 1 : null);
           if (slot === null) return;
           var elementId = pair[slot];
           var dataUrl = elementId && imgMap[elementId];
@@ -6646,26 +6659,26 @@
       for (var i = 0; i < rowCount; i++){
         var L = leftItems[i], R = rightItems[i];
         body.push([
-          '', L ? String(i + 1) : '', L ? L.color : '', L ? L.desc : '', L ? L.short.toLocaleString() : '',
+          '', L ? String(i + 1) : '', L ? L.color : '', L ? L.desc : '', L ? L.short.toLocaleString() : '', L ? L.inDrawers.toLocaleString() : '',
           '',
-          '', R ? String(half + i + 1) : '', R ? R.color : '', R ? R.desc : '', R ? R.short.toLocaleString() : ''
+          '', R ? String(half + i + 1) : '', R ? R.color : '', R ? R.desc : '', R ? R.short.toLocaleString() : '', R ? R.inDrawers.toLocaleString() : ''
         ]);
         rowElementIds.push([L ? L.elementId : null, R ? R.elementId : null]);
       }
 
       doc.autoTable({
         startY: 70,
-        head: [['','#','Color','Description','Short','','','#','Color','Description','Short']],
+        head: [['','#','Color','Description','Short','In Drwrs','','','#','Color','Description','Short','In Drwrs']],
         body: body,
         styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
         headStyles: { fillColor: [0, 85, 191], textColor: 255 },
         columnStyles: {
-          0: { cellWidth: 44 }, 1: { cellWidth: 20 }, 2: { cellWidth: 50 }, 3: { cellWidth: 197 }, 4: { cellWidth: 32 },
-          5: { cellWidth: 14 },
-          6: { cellWidth: 44 }, 7: { cellWidth: 20 }, 8: { cellWidth: 50 }, 9: { cellWidth: 197 }, 10: { cellWidth: 32 }
+          0: { cellWidth: 40 }, 1: { cellWidth: 18 }, 2: { cellWidth: 46 }, 3: { cellWidth: 155 }, 4: { cellWidth: 28 }, 5: { cellWidth: 40 },
+          6: { cellWidth: 14 },
+          7: { cellWidth: 40 }, 8: { cellWidth: 18 }, 9: { cellWidth: 46 }, 10: { cellWidth: 155 }, 11: { cellWidth: 28 }, 12: { cellWidth: 40 }
         },
         didParseCell: function(data){
-          if (data.column.index === 5){
+          if (data.column.index === 6){
             data.cell.styles.lineWidth = 0;
             data.cell.styles.fillColor = data.section === 'head' ? [0, 85, 191] : 255;
           }
@@ -6674,7 +6687,7 @@
           if (data.section !== 'body') return;
           var pair = rowElementIds[data.row.index];
           if (!pair) return;
-          var slot = data.column.index === 0 ? 0 : (data.column.index === 6 ? 1 : null);
+          var slot = data.column.index === 0 ? 0 : (data.column.index === 7 ? 1 : null);
           if (slot === null) return;
           var elementId = pair[slot];
           var dataUrl = elementId && imgMap[elementId];
