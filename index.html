@@ -219,6 +219,7 @@
 #lego-inv-root .tally-drawer-select { flex: 1 1 130px; min-width: 0; height: 32px; font-size: 12px; }
 #lego-inv-root .shop-qty { font-weight: 800; min-width: 34px; }
 #lego-inv-root .shop-in-drawers, #lego-inv-root .in-drawers-badge { font-size: 11px; font-weight: 700; color: var(--lego-green); background: var(--surface-1); border: 1px solid var(--border); border-radius: 6px; padding: 2px 7px; white-space: nowrap; flex-shrink: 0; }
+#lego-inv-root .shop-in-drawers.insufficient, #lego-inv-root .in-drawers-badge.insufficient { text-decoration: line-through; color: var(--text-danger); border-color: var(--text-danger); }
 #lego-inv-root .shop-desc { font-size: 13px; }
 #lego-inv-root .shop-partnum { color: var(--text-muted); font-size: 12px; }
 #lego-inv-root .shop-thumb { flex-shrink: 0; }
@@ -2193,7 +2194,7 @@
     items.forEach(function(it, i){
       var row = document.createElement('div');
       row.className = 'top-needed-item';
-      var inDrawersHtml = it.inDrawers > 0 ? '<span class="in-drawers-badge">'+it.inDrawers.toLocaleString()+' in drawers</span>' : '';
+      var inDrawersHtml = it.inDrawers > 0 ? '<span class="in-drawers-badge'+(it.short > it.inDrawers ? ' insufficient' : '')+'" title="'+(it.short > it.inDrawers ? 'Not enough in drawers to fully cover what\u2019s needed' : 'Currently sitting in a drawer, across all your drawers')+'">'+it.inDrawers.toLocaleString()+' in drawers</span>' : '';
       row.innerHTML =
         '<span class="top-needed-rank">'+(i+1)+'</span>' +
         '<span class="part-thumb-wrap"></span>' +
@@ -2372,7 +2373,7 @@
         } else {
           it.parts.forEach(function(p){
             body.push(['', p.partNum, p.color, p.desc, String(p.short), p.inDrawers.toLocaleString()]);
-            rowMeta.push(p.elementId || null);
+            rowMeta.push(p);
           });
         }
       });
@@ -2385,9 +2386,15 @@
         headStyles: { fillColor: [0, 166, 94], textColor: 255 },
         columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 46 }, 3: { cellWidth: 160 } },
         didDrawCell: function(data){
-          if (data.section !== 'body' || data.column.index !== 0) return;
-          var elementId = rowMeta[data.row.index];
-          var dataUrl = elementId && imgMap[elementId];
+          if (data.section !== 'body') return;
+          var p = rowMeta[data.row.index];
+          if (!p) return;
+          if (data.column.index === 5){
+            strikeCellIfInsufficient(doc, data, p.short > p.inDrawers);
+            return;
+          }
+          if (data.column.index !== 0) return;
+          var dataUrl = p.elementId && imgMap[p.elementId];
           if (!dataUrl) return;
           try {
             var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
@@ -6049,6 +6056,19 @@
     return v;
   }
 
+  function truncateForPdf(s, maxLen){
+    s = String(s == null ? '' : s);
+    return s.length > maxLen ? s.slice(0, maxLen - 1).trim() + '\u2026' : s;
+  }
+
+  function strikeCellIfInsufficient(doc, data, insufficient){
+    if (!insufficient) return;
+    var y = data.cell.y + data.cell.height / 2;
+    doc.setDrawColor(200, 40, 40);
+    doc.setLineWidth(1);
+    doc.line(data.cell.x + 4, y, data.cell.x + data.cell.width - 4, y);
+  }
+
   function downloadCsvTemplate(filename, headers, rows){
     var lines = [headers.map(csvEscape).join(',')];
     rows.forEach(function(row){ lines.push(row.map(csvEscape).join(',')); });
@@ -6450,24 +6470,30 @@
         'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
 
       var body = items.map(function(it, i){
-        return ['', String(i+1), it.color, it.desc, it.short.toLocaleString(), it.inDrawers.toLocaleString()];
+        return ['', String(i+1), it.color, truncateForPdf(it.desc, 42), it.short.toLocaleString(), it.inDrawers.toLocaleString()];
       });
       doc.autoTable({
         startY: 70,
-        head: [['','#','Color','Description','Short','In Drawers']],
+        margin: { top: 70, right: 40, bottom: 30, left: 40 },
+        head: [['','#','Color','Description','Short','In Drwrs']],
         body: body,
-        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
+        styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: 28, valign: 'middle' },
         headStyles: { fillColor: [0, 85, 191], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 20 }, 3: { cellWidth: 220 } },
+        columnStyles: { 0: { cellWidth: 28 }, 1: { cellWidth: 18 }, 2: { cellWidth: 55 }, 3: { cellWidth: 260 }, 4: { cellWidth: 45 }, 5: { cellWidth: 55 } },
         didDrawCell: function(data){
-          if (data.section !== 'body' || data.column.index !== 0) return;
+          if (data.section !== 'body') return;
           var it = items[data.row.index];
           if (!it) return;
+          if (data.column.index === 5){
+            strikeCellIfInsufficient(doc, data, it.short > it.inDrawers);
+            return;
+          }
+          if (data.column.index !== 0) return;
           var dataUrl = it.elementId && imgMap[it.elementId];
           if (!dataUrl) return;
           try {
             var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
-            var pad = 3;
+            var pad = 2;
             var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
             doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
           } catch(e){ /* skip malformed image, leave cell blank */ }
@@ -6509,24 +6535,30 @@
         'Generated ' + new Date().toLocaleDateString() + ' \u00b7 sorted by color, then part, then quantity \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
 
       var body = items.map(function(it, i){
-        return ['', String(i+1), it.color, it.desc, it.short.toLocaleString(), it.inDrawers.toLocaleString()];
+        return ['', String(i+1), it.color, truncateForPdf(it.desc, 42), it.short.toLocaleString(), it.inDrawers.toLocaleString()];
       });
       doc.autoTable({
         startY: 70,
-        head: [['','#','Color','Description','Short','In Drawers']],
+        margin: { top: 70, right: 40, bottom: 30, left: 40 },
+        head: [['','#','Color','Description','Short','In Drwrs']],
         body: body,
-        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
+        styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: 28, valign: 'middle' },
         headStyles: { fillColor: [0, 85, 191], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 20 }, 3: { cellWidth: 220 } },
+        columnStyles: { 0: { cellWidth: 28 }, 1: { cellWidth: 18 }, 2: { cellWidth: 55 }, 3: { cellWidth: 260 }, 4: { cellWidth: 45 }, 5: { cellWidth: 55 } },
         didDrawCell: function(data){
-          if (data.section !== 'body' || data.column.index !== 0) return;
+          if (data.section !== 'body') return;
           var it = items[data.row.index];
           if (!it) return;
+          if (data.column.index === 5){
+            strikeCellIfInsufficient(doc, data, it.short > it.inDrawers);
+            return;
+          }
+          if (data.column.index !== 0) return;
           var dataUrl = it.elementId && imgMap[it.elementId];
           if (!dataUrl) return;
           try {
             var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
-            var pad = 3;
+            var pad = 2;
             var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
             doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
           } catch(e){ /* skip malformed image, leave cell blank */ }
@@ -6570,7 +6602,7 @@
       var rowCount = Math.max(leftItems.length, rightItems.length);
 
       var body = [];
-      var rowElementIds = [];
+      var rowItems = [];
       for (var i = 0; i < rowCount; i++){
         var L = leftItems[i], R = rightItems[i];
         body.push([
@@ -6578,7 +6610,7 @@
           '',
           '', R ? String(half + i + 1) : '', R ? R.color : '', R ? R.desc : '', R ? R.short.toLocaleString() : '', R ? R.inDrawers.toLocaleString() : ''
         ]);
-        rowElementIds.push([L ? L.elementId : null, R ? R.elementId : null]);
+        rowItems.push([L || null, R || null]);
       }
 
       doc.autoTable({
@@ -6600,11 +6632,17 @@
         },
         didDrawCell: function(data){
           if (data.section !== 'body') return;
-          var pair = rowElementIds[data.row.index];
+          var pair = rowItems[data.row.index];
           if (!pair) return;
+          if (data.column.index === 5 || data.column.index === 12){
+            var it5 = data.column.index === 5 ? pair[0] : pair[1];
+            if (it5) strikeCellIfInsufficient(doc, data, it5.short > it5.inDrawers);
+            return;
+          }
           var slot = data.column.index === 0 ? 0 : (data.column.index === 7 ? 1 : null);
           if (slot === null) return;
-          var elementId = pair[slot];
+          var it = pair[slot];
+          var elementId = it && it.elementId;
           var dataUrl = elementId && imgMap[elementId];
           if (!dataUrl) return;
           try {
@@ -6655,7 +6693,7 @@
       var rowCount = Math.max(leftItems.length, rightItems.length);
 
       var body = [];
-      var rowElementIds = [];
+      var rowItems = [];
       for (var i = 0; i < rowCount; i++){
         var L = leftItems[i], R = rightItems[i];
         body.push([
@@ -6663,7 +6701,7 @@
           '',
           '', R ? String(half + i + 1) : '', R ? R.color : '', R ? R.desc : '', R ? R.short.toLocaleString() : '', R ? R.inDrawers.toLocaleString() : ''
         ]);
-        rowElementIds.push([L ? L.elementId : null, R ? R.elementId : null]);
+        rowItems.push([L || null, R || null]);
       }
 
       doc.autoTable({
@@ -6685,11 +6723,17 @@
         },
         didDrawCell: function(data){
           if (data.section !== 'body') return;
-          var pair = rowElementIds[data.row.index];
+          var pair = rowItems[data.row.index];
           if (!pair) return;
+          if (data.column.index === 5 || data.column.index === 12){
+            var it5 = data.column.index === 5 ? pair[0] : pair[1];
+            if (it5) strikeCellIfInsufficient(doc, data, it5.short > it5.inDrawers);
+            return;
+          }
           var slot = data.column.index === 0 ? 0 : (data.column.index === 7 ? 1 : null);
           if (slot === null) return;
-          var elementId = pair[slot];
+          var it = pair[slot];
+          var elementId = it && it.elementId;
           var dataUrl = elementId && imgMap[elementId];
           if (!dataUrl) return;
           try {
@@ -8943,7 +8987,8 @@
   function buildShopItemRow(r, key, needCount, resolveInfo){
     if (resolveInfo) tallyRowResolvers[key] = resolveInfo;
     var inDrawers = shopDrawerStockDisplay[r.partNum + '|' + r.color] || 0;
-    var inDrawersHtml = inDrawers > 0 ? '<span class="shop-in-drawers" title="Currently sitting in a drawer, across all your drawers">'+inDrawers.toLocaleString()+' in drawers</span>' : '';
+    var inDrawersInsufficient = needCount > inDrawers;
+    var inDrawersHtml = inDrawers > 0 ? '<span class="shop-in-drawers'+(inDrawersInsufficient ? ' insufficient' : '')+'" title="'+(inDrawersInsufficient ? 'Not enough in drawers to fully cover what\u2019s needed' : 'Currently sitting in a drawer, across all your drawers')+'">'+inDrawers.toLocaleString()+' in drawers</span>' : '';
     if (shopTallyMode){
       var count = tallyCounts[key] || 0;
       var item = document.createElement('div');
