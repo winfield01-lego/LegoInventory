@@ -396,19 +396,12 @@
       </button>
       <label style="font-size:12px; color:var(--text-secondary); display:flex; align-items:center; gap:6px;">Show top <input type="number" id="top-needed-count" value="20" min="1" max="500" style="width:64px;" /> parts</label>
     </div>
-    <div class="row" style="gap:8px; flex-wrap:wrap; margin-bottom: 8px;">
-      <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); flex-shrink:0; align-self:center;">Detailed reports:</span>
-      <button id="top-report-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Report (CSV)</button>
-      <button id="top-report-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Report (PDF)</button>
-      <button id="top-report-bycolor-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="Same parts, sorted by color, then part, then quantity"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Report (by Color, PDF)</button>
-      <button id="top-report-bycolor-landscape-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="Landscape layout with two columns, sorted by color, then part, then quantity"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Report (by Color, Landscape, 2-col)</button>
-      <button id="top-report-landscape-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="Landscape layout with two columns of parts side by side"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Report (Landscape, 2-col)</button>
-    </div>
     <div class="row" style="gap:10px; align-items:center; margin-bottom: 8px; padding-top:8px; border-top: 1px solid var(--border); flex-wrap:wrap;">
       <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); flex-shrink:0;">Clean report:</span>
       <select id="clean-report-show" title="Which parts to include">
         <option value="uncovered">Still need to find (unassigned)</option>
         <option value="covered">Already in drawers</option>
+        <option value="all">All parts (needed, in drawers, remaining)</option>
       </select>
       <select id="clean-report-sort" title="Sort order">
         <option value="shortage">Sort by shortage</option>
@@ -416,15 +409,10 @@
       </select>
       <select id="clean-report-layout" title="Page layout">
         <option value="portrait">Portrait</option>
-        <option value="landscape">Landscape (2-col)</option>
+        <option value="landscape">Landscape</option>
       </select>
       <button id="clean-report-csv-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate CSV</button>
       <button id="clean-report-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate PDF</button>
-    </div>
-    <div class="row" style="gap:10px; align-items:center; margin-bottom: 8px;">
-      <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); flex-shrink:0;">Full list:</span>
-      <button id="top-full-list-csv-btn" class="icon-btn" style="padding: 3px 10px;" title="All needed parts with raw quantities, plus a separate column for what's in your drawers"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Full List (CSV)</button>
-      <button id="top-full-list-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="All needed parts with raw quantities, plus a separate column for what's in your drawers"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Full List (PDF)</button>
     </div>
     <div id="top-needed-list" style="display:none;">
       <div class="row" style="align-items:center; gap:10px; margin-bottom:10px;">
@@ -6552,34 +6540,6 @@
     return getAllShortItems().filter(function(it){ return it.short <= it.inDrawers; }).slice(0, getTopNCount());
   }
 
-  function exportTopNeededReport(){
-    var items = getTop20ItemsFiltered();
-    if (!items.length){
-      alert('Nothing to report \u2014 nothing matches the current filter.');
-      return;
-    }
-    var totalStillNeeded = items.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
-    var header = ['Rank','Element ID','Color','Description','Short','In Drawers','Used In Builds'];
-    var lines = [header.map(csvEscape).join(',')];
-    items.forEach(function(it, i){
-      lines.push([i+1, it.elementId, it.color, it.desc, it.short, it.inDrawers, Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
-    });
-    lines.push('');
-    lines.push(['Total still needed after drawers', totalStillNeeded].map(csvEscape).join(','));
-    var csv = lines.join('\r\n');
-    var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    var url = URL.createObjectURL(blob);
-    var a = document.createElement('a');
-    var d = new Date();
-    var stamp = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-    a.href = url;
-    a.download = 'lego-top-parts-most-needed-'+stamp+'.csv';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-    setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
-  }
-
   // "Clean" report 1: just the parts still worth going to find, one already-netted quantity, nothing else.
   function getStillNeededItems(){
     return getAllShortItems()
@@ -6605,7 +6565,7 @@
 
   function getCleanReportItems(){
     var show = document.getElementById('clean-report-show').value;
-    var items = show === 'covered' ? getCoveredItems() : getStillNeededItems();
+    var items = show === 'covered' ? getCoveredItems() : (show === 'all' ? getTop20Items() : getStillNeededItems());
     var sort = document.getElementById('clean-report-sort').value;
     if (sort === 'color'){
       items = items.slice().sort(function(a,b){ return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.short - b.short); });
@@ -6627,37 +6587,32 @@
     if (!items.length){
       alert(show === 'covered'
         ? 'Nothing to report \u2014 no parts are currently fully covered by drawers.'
-        : 'Nothing to report \u2014 your drawers already cover everything in the top ' + getTopNCount() + '.');
+        : (show === 'all' ? 'Nothing to report \u2014 no parts are currently short.' : 'Nothing to report \u2014 your drawers already cover everything in the top ' + getTopNCount() + '.'));
       return;
     }
-    var qtyLabel = show === 'covered' ? 'In Drawers' : 'Still Needed';
-    var qtyOf = function(it){ return show === 'covered' ? it.inDrawers : it.stillNeeded; };
-    var header = ['Rank','Element ID','Color','Description', qtyLabel, 'Used In Builds'];
-    var lines = [header.map(csvEscape).join(',')];
-    items.forEach(function(it, i){
-      lines.push([i+1, it.elementId, it.color, it.desc, qtyOf(it), Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
-    });
+    var lines;
+    if (show === 'all'){
+      var header = ['Rank','Element ID','Color','Description','Needed','In Drawers','Remaining','Used In Builds'];
+      lines = [header.map(csvEscape).join(',')];
+      items.forEach(function(it, i){
+        lines.push([i+1, it.elementId, it.color, it.desc, it.short, it.inDrawers, it.short - it.inDrawers, Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
+      });
+    } else {
+      var qtyLabel = show === 'covered' ? 'In Drawers' : 'Still Needed';
+      var qtyOf = function(it){ return show === 'covered' ? it.inDrawers : it.stillNeeded; };
+      var header2 = ['Rank','Element ID','Color','Description', qtyLabel, 'Used In Builds'];
+      lines = [header2.map(csvEscape).join(',')];
+      items.forEach(function(it, i){
+        lines.push([i+1, it.elementId, it.color, it.desc, qtyOf(it), Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
+      });
+    }
     var totals = getCleanReportTotals();
     lines.push('');
     lines.push(['Total needed (top ' + getTopNCount() + ')', totals.totalNeeded].map(csvEscape).join(','));
     lines.push(['Total in drawers', totals.totalInDrawers].map(csvEscape).join(','));
     lines.push(['Remaining needed', totals.remainingNeeded].map(csvEscape).join(','));
-    downloadCsv(lines, show === 'covered' ? 'lego-top-parts-in-drawers' : 'lego-top-parts-still-needed');
-  }
-
-  // "Clean" report 2: the full, unfiltered top 20 as needed in MOCs, raw quantities, plus what's in drawers.
-  function exportFullListReport(){
-    var items = getTop20Items();
-    if (!items.length){
-      alert('Nothing to report \u2014 no parts are currently short.');
-      return;
-    }
-    var header = ['Rank','Element ID','Color','Description','Needed','In Drawers','Used In Builds'];
-    var lines = [header.map(csvEscape).join(',')];
-    items.forEach(function(it, i){
-      lines.push([i+1, it.elementId, it.color, it.desc, it.short, it.inDrawers, Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
-    });
-    downloadCsv(lines, 'lego-top-parts-full-list');
+    var filenameBase = show === 'covered' ? 'lego-top-parts-in-drawers' : (show === 'all' ? 'lego-top-parts-full-breakdown' : 'lego-top-parts-still-needed');
+    downloadCsv(lines, filenameBase);
   }
 
   function getPdfDoc(){
@@ -6779,330 +6734,6 @@
     });
   }
 
-  function generateTop20PDF(){
-    var items = getTop20ItemsFiltered();
-    if (!items.length){
-      alert('Nothing to report \u2014 nothing matches the current filter.');
-      return;
-    }
-    var btn = document.getElementById('top-report-pdf-btn');
-    var prevBtnHtml = btn ? btn.innerHTML : null;
-    if (btn){
-      btn.disabled = true;
-      btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating\u2026';
-    }
-
-    var uniqueIds = Array.from(new Set(items.map(function(it){ return it.elementId; }).filter(Boolean)));
-    Promise.all(uniqueIds.map(function(id){
-      return fetchPartImageForPdf(id).then(function(dataUrl){ return [id, dataUrl]; });
-    })).then(function(pairs){
-      var imgMap = {};
-      pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
-
-      var doc = getPdfDoc();
-      if (!doc) return;
-      pdfHeader(doc, 'Top ' + getTopNCount() + ' Most Needed Parts',
-        'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
-      var totalStillNeeded = items.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
-      doc.setFontSize(10);
-      doc.setTextColor(110, 110, 110);
-      doc.text('Total still needed after drawers: ' + totalStillNeeded.toLocaleString() + ' piece' + (totalStillNeeded===1?'':'s'), 40, 68);
-
-      var body = items.map(function(it, i){
-        return ['', String(i+1), it.color, truncateForPdf(it.desc, 42), it.short.toLocaleString(), it.inDrawers.toLocaleString()];
-      });
-      doc.autoTable({
-        startY: 82,
-        margin: { top: 82, right: 40, bottom: 30, left: 40 },
-        head: [['','#','Color','Description','Short','In Drwrs']],
-        body: body,
-        styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: 28, valign: 'middle' },
-        headStyles: { fillColor: [0, 85, 191], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 28 }, 1: { cellWidth: 18 }, 2: { cellWidth: 55 }, 3: { cellWidth: 260 }, 4: { cellWidth: 45 }, 5: { cellWidth: 55 } },
-        didDrawCell: function(data){
-          if (data.section !== 'body') return;
-          var it = items[data.row.index];
-          if (!it) return;
-          if (data.column.index === 5){
-            strikeCellIfInsufficient(doc, data, it.short > it.inDrawers);
-            return;
-          }
-          if (data.column.index !== 0) return;
-          var dataUrl = it.elementId && imgMap[it.elementId];
-          if (!dataUrl) return;
-          try {
-            var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
-            var pad = 2;
-            var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
-            doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
-          } catch(e){ /* skip malformed image, leave cell blank */ }
-        }
-      });
-      doc.save('lego-top-parts-most-needed.pdf');
-    }).catch(function(err){
-      alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
-    }).then(function(){
-      if (btn){ btn.disabled = false; btn.innerHTML = prevBtnHtml; }
-    });
-  }
-
-  function generateTop20ByColorPDF(){
-    var items = getTop20ItemsFiltered().slice().sort(function(a,b){
-      return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.short - b.short);
-    });
-    if (!items.length){
-      alert('Nothing to report \u2014 nothing matches the current filter.');
-      return;
-    }
-    var btn = document.getElementById('top-report-bycolor-pdf-btn');
-    var prevBtnHtml = btn ? btn.innerHTML : null;
-    if (btn){
-      btn.disabled = true;
-      btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating\u2026';
-    }
-
-    var uniqueIds = Array.from(new Set(items.map(function(it){ return it.elementId; }).filter(Boolean)));
-    Promise.all(uniqueIds.map(function(id){
-      return fetchPartImageForPdf(id).then(function(dataUrl){ return [id, dataUrl]; });
-    })).then(function(pairs){
-      var imgMap = {};
-      pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
-
-      var doc = getPdfDoc();
-      if (!doc) return;
-      pdfHeader(doc, 'Top ' + getTopNCount() + ' Most Needed Parts \u2014 by Color',
-        'Generated ' + new Date().toLocaleDateString() + ' \u00b7 sorted by color, then part, then quantity \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
-      var totalStillNeeded = items.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
-      doc.setFontSize(10);
-      doc.setTextColor(110, 110, 110);
-      doc.text('Total still needed after drawers: ' + totalStillNeeded.toLocaleString() + ' piece' + (totalStillNeeded===1?'':'s'), 40, 68);
-
-      var body = items.map(function(it, i){
-        return ['', String(i+1), it.color, truncateForPdf(it.desc, 42), it.short.toLocaleString(), it.inDrawers.toLocaleString()];
-      });
-      doc.autoTable({
-        startY: 82,
-        margin: { top: 82, right: 40, bottom: 30, left: 40 },
-        head: [['','#','Color','Description','Short','In Drwrs']],
-        body: body,
-        styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: 28, valign: 'middle' },
-        headStyles: { fillColor: [0, 85, 191], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 28 }, 1: { cellWidth: 18 }, 2: { cellWidth: 55 }, 3: { cellWidth: 260 }, 4: { cellWidth: 45 }, 5: { cellWidth: 55 } },
-        didDrawCell: function(data){
-          if (data.section !== 'body') return;
-          var it = items[data.row.index];
-          if (!it) return;
-          if (data.column.index === 5){
-            strikeCellIfInsufficient(doc, data, it.short > it.inDrawers);
-            return;
-          }
-          if (data.column.index !== 0) return;
-          var dataUrl = it.elementId && imgMap[it.elementId];
-          if (!dataUrl) return;
-          try {
-            var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
-            var pad = 2;
-            var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
-            doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
-          } catch(e){ /* skip malformed image, leave cell blank */ }
-        }
-      });
-      doc.save('lego-top-parts-by-color.pdf');
-    }).catch(function(err){
-      alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
-    }).then(function(){
-      if (btn){ btn.disabled = false; btn.innerHTML = prevBtnHtml; }
-    });
-  }
-
-  function generateTop20LandscapePDF(){
-    var items = getTop20ItemsFiltered();
-    if (!items.length){
-      alert('Nothing to report \u2014 nothing matches the current filter.');
-      return;
-    }
-    var btn = document.getElementById('top-report-landscape-pdf-btn');
-    var prevBtnHtml = btn ? btn.innerHTML : null;
-    if (btn){
-      btn.disabled = true;
-      btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating\u2026';
-    }
-
-    var uniqueIds = Array.from(new Set(items.map(function(it){ return it.elementId; }).filter(Boolean)));
-    Promise.all(uniqueIds.map(function(id){
-      return fetchPartImageForPdf(id).then(function(dataUrl){ return [id, dataUrl]; });
-    })).then(function(pairs){
-      var imgMap = {};
-      pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
-
-      var doc = new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' });
-      pdfHeader(doc, 'Top ' + getTopNCount() + ' Most Needed Parts',
-        'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
-      var totalStillNeeded = items.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
-      doc.setFontSize(10);
-      doc.setTextColor(110, 110, 110);
-      doc.text('Total still needed after drawers: ' + totalStillNeeded.toLocaleString() + ' piece' + (totalStillNeeded===1?'':'s'), 40, 68);
-
-      var half = Math.ceil(items.length / 2);
-      var leftItems = items.slice(0, half);
-      var rightItems = items.slice(half);
-      var rowCount = Math.max(leftItems.length, rightItems.length);
-
-      var body = [];
-      var rowItems = [];
-      for (var i = 0; i < rowCount; i++){
-        var L = leftItems[i], R = rightItems[i];
-        body.push([
-          '', L ? String(i + 1) : '', L ? L.color : '', L ? L.desc : '', L ? L.short.toLocaleString() : '', L ? L.inDrawers.toLocaleString() : '',
-          '',
-          '', R ? String(half + i + 1) : '', R ? R.color : '', R ? R.desc : '', R ? R.short.toLocaleString() : '', R ? R.inDrawers.toLocaleString() : ''
-        ]);
-        rowItems.push([L || null, R || null]);
-      }
-
-      doc.autoTable({
-        startY: 82,
-        head: [['','#','Color','Description','Short','In Drwrs','','','#','Color','Description','Short','In Drwrs']],
-        body: body,
-        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
-        headStyles: { fillColor: [0, 85, 191], textColor: 255 },
-        columnStyles: {
-          0: { cellWidth: 40 }, 1: { cellWidth: 18 }, 2: { cellWidth: 46 }, 3: { cellWidth: 155 }, 4: { cellWidth: 28 }, 5: { cellWidth: 40 },
-          6: { cellWidth: 14 },
-          7: { cellWidth: 40 }, 8: { cellWidth: 18 }, 9: { cellWidth: 46 }, 10: { cellWidth: 155 }, 11: { cellWidth: 28 }, 12: { cellWidth: 40 }
-        },
-        didParseCell: function(data){
-          if (data.column.index === 6){
-            data.cell.styles.lineWidth = 0;
-            data.cell.styles.fillColor = data.section === 'head' ? [0, 85, 191] : 255;
-          }
-        },
-        didDrawCell: function(data){
-          if (data.section !== 'body') return;
-          var pair = rowItems[data.row.index];
-          if (!pair) return;
-          if (data.column.index === 5 || data.column.index === 12){
-            var it5 = data.column.index === 5 ? pair[0] : pair[1];
-            if (it5) strikeCellIfInsufficient(doc, data, it5.short > it5.inDrawers);
-            return;
-          }
-          var slot = data.column.index === 0 ? 0 : (data.column.index === 7 ? 1 : null);
-          if (slot === null) return;
-          var it = pair[slot];
-          var elementId = it && it.elementId;
-          var dataUrl = elementId && imgMap[elementId];
-          if (!dataUrl) return;
-          try {
-            var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
-            var pad = 3;
-            var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
-            doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
-          } catch(e){ /* skip malformed image, leave cell blank */ }
-        }
-      });
-      doc.save('lego-top-parts-landscape.pdf');
-    }).catch(function(err){
-      alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
-    }).then(function(){
-      if (btn){ btn.disabled = false; btn.innerHTML = prevBtnHtml; }
-    });
-  }
-
-  function generateTop20ByColorLandscapePDF(){
-    var items = getTop20ItemsFiltered().slice().sort(function(a,b){
-      return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.short - b.short);
-    });
-    if (!items.length){
-      alert('Nothing to report \u2014 nothing matches the current filter.');
-      return;
-    }
-    var btn = document.getElementById('top-report-bycolor-landscape-pdf-btn');
-    var prevBtnHtml = btn ? btn.innerHTML : null;
-    if (btn){
-      btn.disabled = true;
-      btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating\u2026';
-    }
-
-    var uniqueIds = Array.from(new Set(items.map(function(it){ return it.elementId; }).filter(Boolean)));
-    Promise.all(uniqueIds.map(function(id){
-      return fetchPartImageForPdf(id).then(function(dataUrl){ return [id, dataUrl]; });
-    })).then(function(pairs){
-      var imgMap = {};
-      pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
-
-      var doc = new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' });
-      pdfHeader(doc, 'Top ' + getTopNCount() + ' Most Needed Parts \u2014 by Color',
-        'Generated ' + new Date().toLocaleDateString() + ' \u00b7 sorted by color, then part, then quantity \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
-      var totalStillNeeded = items.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
-      doc.setFontSize(10);
-      doc.setTextColor(110, 110, 110);
-      doc.text('Total still needed after drawers: ' + totalStillNeeded.toLocaleString() + ' piece' + (totalStillNeeded===1?'':'s'), 40, 68);
-
-      var half = Math.ceil(items.length / 2);
-      var leftItems = items.slice(0, half);
-      var rightItems = items.slice(half);
-      var rowCount = Math.max(leftItems.length, rightItems.length);
-
-      var body = [];
-      var rowItems = [];
-      for (var i = 0; i < rowCount; i++){
-        var L = leftItems[i], R = rightItems[i];
-        body.push([
-          '', L ? String(i + 1) : '', L ? L.color : '', L ? L.desc : '', L ? L.short.toLocaleString() : '', L ? L.inDrawers.toLocaleString() : '',
-          '',
-          '', R ? String(half + i + 1) : '', R ? R.color : '', R ? R.desc : '', R ? R.short.toLocaleString() : '', R ? R.inDrawers.toLocaleString() : ''
-        ]);
-        rowItems.push([L || null, R || null]);
-      }
-
-      doc.autoTable({
-        startY: 82,
-        head: [['','#','Color','Description','Short','In Drwrs','','','#','Color','Description','Short','In Drwrs']],
-        body: body,
-        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
-        headStyles: { fillColor: [0, 85, 191], textColor: 255 },
-        columnStyles: {
-          0: { cellWidth: 40 }, 1: { cellWidth: 18 }, 2: { cellWidth: 46 }, 3: { cellWidth: 155 }, 4: { cellWidth: 28 }, 5: { cellWidth: 40 },
-          6: { cellWidth: 14 },
-          7: { cellWidth: 40 }, 8: { cellWidth: 18 }, 9: { cellWidth: 46 }, 10: { cellWidth: 155 }, 11: { cellWidth: 28 }, 12: { cellWidth: 40 }
-        },
-        didParseCell: function(data){
-          if (data.column.index === 6){
-            data.cell.styles.lineWidth = 0;
-            data.cell.styles.fillColor = data.section === 'head' ? [0, 85, 191] : 255;
-          }
-        },
-        didDrawCell: function(data){
-          if (data.section !== 'body') return;
-          var pair = rowItems[data.row.index];
-          if (!pair) return;
-          if (data.column.index === 5 || data.column.index === 12){
-            var it5 = data.column.index === 5 ? pair[0] : pair[1];
-            if (it5) strikeCellIfInsufficient(doc, data, it5.short > it5.inDrawers);
-            return;
-          }
-          var slot = data.column.index === 0 ? 0 : (data.column.index === 7 ? 1 : null);
-          if (slot === null) return;
-          var it = pair[slot];
-          var elementId = it && it.elementId;
-          var dataUrl = elementId && imgMap[elementId];
-          if (!dataUrl) return;
-          try {
-            var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
-            var pad = 3;
-            var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
-            doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
-          } catch(e){ /* skip malformed image, leave cell blank */ }
-        }
-      });
-      doc.save('lego-top-parts-by-color-landscape.pdf');
-    }).catch(function(err){
-      alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
-    }).then(function(){
-      if (btn){ btn.disabled = false; btn.innerHTML = prevBtnHtml; }
-    });
-  }
-
   // "Clean" report 1 (PDF): just the parts still worth going to find, one already-netted quantity.
   function generateCleanReportPDF(){
     var show = document.getElementById('clean-report-show').value;
@@ -7111,15 +6742,17 @@
     if (!items.length){
       alert(show === 'covered'
         ? 'Nothing to report \u2014 no parts are currently fully covered by drawers.'
-        : 'Nothing to report \u2014 your drawers already cover everything in the top 20.');
+        : (show === 'all' ? 'Nothing to report \u2014 no parts are currently short.' : 'Nothing to report \u2014 your drawers already cover everything in the top ' + getTopNCount() + '.'));
       return;
     }
     var qtyOf = function(it){ return show === 'covered' ? it.inDrawers : it.stillNeeded; };
     var qtyLabelShort = show === 'covered' ? 'In Drwrs' : 'Still Ndd';
     var qtyLabelFull = show === 'covered' ? 'In Drawers' : 'Still Needed';
-    var title = show === 'covered' ? ('Top ' + getTopNCount() + ' \u2014 Already in Drawers') : ('Top ' + getTopNCount() + ' \u2014 Still Needed');
-    var fillColor = show === 'covered' ? [0, 166, 94] : [0, 85, 191];
-    var filenameBase = show === 'covered' ? 'lego-top-parts-in-drawers' : 'lego-top-parts-still-needed';
+    var title = show === 'covered' ? ('Top ' + getTopNCount() + ' \u2014 Already in Drawers')
+      : show === 'all' ? ('Top ' + getTopNCount() + ' \u2014 Full Breakdown')
+      : ('Top ' + getTopNCount() + ' \u2014 Still Needed');
+    var fillColor = show === 'covered' ? [0, 166, 94] : show === 'all' ? [138, 18, 168] : [0, 85, 191];
+    var filenameBase = show === 'covered' ? 'lego-top-parts-in-drawers' : show === 'all' ? 'lego-top-parts-full-breakdown' : 'lego-top-parts-still-needed';
 
     var btn = document.getElementById('clean-report-pdf-btn');
     var prevBtnHtml = btn ? btn.innerHTML : null;
@@ -7136,6 +6769,49 @@
       pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
       var totals = getCleanReportTotals();
       var totalsLine = 'Needed: ' + totals.totalNeeded.toLocaleString() + '  \u00b7  In drawers: ' + totals.totalInDrawers.toLocaleString() + '  \u00b7  Remaining needed: ' + totals.remainingNeeded.toLocaleString();
+
+      if (show === 'all'){
+        // Three quantity columns (Needed, In Drawers, Remaining) are too dense for a 2-column split,
+        // so "landscape" here just means a wider single-column table with more room for Description.
+        var wide = layout === 'landscape';
+        var doc = wide ? new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' }) : getPdfDoc();
+        if (!doc) return;
+        pdfHeader(doc, title,
+          'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
+        doc.setFontSize(10);
+        doc.setTextColor(110, 110, 110);
+        doc.text(totalsLine, 40, 68);
+
+        var body = items.map(function(it, i){
+          return ['', String(i+1), it.color, truncateForPdf(it.desc, wide ? 70 : 40), it.short.toLocaleString(), it.inDrawers.toLocaleString(), (it.short - it.inDrawers).toLocaleString()];
+        });
+        doc.autoTable({
+          startY: 82,
+          margin: { top: 82, right: 40, bottom: 30, left: 40 },
+          head: [['','#','Color','Description','Needed','In Drawers','Remaining']],
+          body: body,
+          styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: 28, valign: 'middle' },
+          headStyles: { fillColor: fillColor, textColor: 255 },
+          columnStyles: wide
+            ? { 0: { cellWidth: 30 }, 1: { cellWidth: 20 }, 2: { cellWidth: 55 }, 3: { cellWidth: 400 }, 4: { cellWidth: 55 }, 5: { cellWidth: 65 }, 6: { cellWidth: 70 } }
+            : { 0: { cellWidth: 26 }, 1: { cellWidth: 16 }, 2: { cellWidth: 46 }, 3: { cellWidth: 220 }, 4: { cellWidth: 45 }, 5: { cellWidth: 52 }, 6: { cellWidth: 55 } },
+          didDrawCell: function(data){
+            if (data.section !== 'body' || data.column.index !== 0) return;
+            var it = items[data.row.index];
+            if (!it) return;
+            var dataUrl = it.elementId && imgMap[it.elementId];
+            if (!dataUrl) return;
+            try {
+              var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
+              var pad = 2;
+              var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
+              doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
+            } catch(e){ /* skip malformed image, leave cell blank */ }
+          }
+        });
+        doc.save(filenameBase + (wide ? '-landscape' : '') + '.pdf');
+        return;
+      }
 
       if (layout === 'landscape'){
         var doc = new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' });
@@ -7234,70 +6910,6 @@
         });
         doc2.save(filenameBase + '.pdf');
       }
-    }).catch(function(err){
-      alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
-    }).then(function(){
-      if (btn){ btn.disabled = false; btn.innerHTML = prevBtnHtml; }
-    });
-  }
-
-  // "Clean" report 2 (PDF): the full, unfiltered top 20 as needed in MOCs, raw quantities, plus what's in drawers.
-  function generateFullListPDF(){
-    var items = getTop20Items();
-    if (!items.length){
-      alert('Nothing to report \u2014 no parts are currently short.');
-      return;
-    }
-    var btn = document.getElementById('top-full-list-pdf-btn');
-    var prevBtnHtml = btn ? btn.innerHTML : null;
-    if (btn){
-      btn.disabled = true;
-      btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating\u2026';
-    }
-
-    var uniqueIds = Array.from(new Set(items.map(function(it){ return it.elementId; }).filter(Boolean)));
-    Promise.all(uniqueIds.map(function(id){
-      return fetchPartImageForPdf(id).then(function(dataUrl){ return [id, dataUrl]; });
-    })).then(function(pairs){
-      var imgMap = {};
-      pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
-
-      var doc = getPdfDoc();
-      if (!doc) return;
-      pdfHeader(doc, 'Top ' + getTopNCount() + ' Needed in MOCs \u2014 Full List',
-        'Generated ' + new Date().toLocaleDateString() + ' \u00b7 all ' + items.length + ' part' + (items.length===1?'':'s') + ', unfiltered, with drawer contents shown alongside');
-
-      var body = items.map(function(it, i){
-        return ['', String(i+1), it.color, truncateForPdf(it.desc, 42), it.short.toLocaleString(), it.inDrawers.toLocaleString()];
-      });
-      doc.autoTable({
-        startY: 70,
-        margin: { top: 70, right: 40, bottom: 30, left: 40 },
-        head: [['','#','Color','Description','Needed','In Drwrs']],
-        body: body,
-        styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: 28, valign: 'middle' },
-        headStyles: { fillColor: [0, 85, 191], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 28 }, 1: { cellWidth: 18 }, 2: { cellWidth: 55 }, 3: { cellWidth: 260 }, 4: { cellWidth: 45 }, 5: { cellWidth: 55 } },
-        didDrawCell: function(data){
-          if (data.section !== 'body') return;
-          var it = items[data.row.index];
-          if (!it) return;
-          if (data.column.index === 5){
-            strikeCellIfInsufficient(doc, data, it.short > it.inDrawers);
-            return;
-          }
-          if (data.column.index !== 0) return;
-          var dataUrl = it.elementId && imgMap[it.elementId];
-          if (!dataUrl) return;
-          try {
-            var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
-            var pad = 2;
-            var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
-            doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
-          } catch(e){ /* skip malformed image, leave cell blank */ }
-        }
-      });
-      doc.save('lego-top-parts-full-list.pdf');
     }).catch(function(err){
       alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
     }).then(function(){
@@ -7547,15 +7159,8 @@
   document.getElementById('export-btn').addEventListener('click', exportAllPartsCSV);
   document.getElementById('shop-export-csv-btn').addEventListener('click', exportShoppingList);
   document.getElementById('shop-export-bricklink-btn').addEventListener('click', exportBricklinkWantedList);
-  document.getElementById('top-report-btn').addEventListener('click', exportTopNeededReport);
-  document.getElementById('top-report-pdf-btn').addEventListener('click', generateTop20PDF);
-  document.getElementById('top-report-bycolor-pdf-btn').addEventListener('click', generateTop20ByColorPDF);
-  document.getElementById('top-report-bycolor-landscape-pdf-btn').addEventListener('click', generateTop20ByColorLandscapePDF);
-  document.getElementById('top-report-landscape-pdf-btn').addEventListener('click', generateTop20LandscapePDF);
   document.getElementById('clean-report-csv-btn').addEventListener('click', exportCleanReportCSV);
   document.getElementById('clean-report-pdf-btn').addEventListener('click', generateCleanReportPDF);
-  document.getElementById('top-full-list-csv-btn').addEventListener('click', exportFullListReport);
-  document.getElementById('top-full-list-pdf-btn').addEventListener('click', generateFullListPDF);
   document.querySelectorAll('#lego-inv-root th[data-sort]').forEach(function(th){
     th.addEventListener('click', function(){
       var col = th.dataset.sort;
