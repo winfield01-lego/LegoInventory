@@ -385,19 +385,24 @@
       <div class="metric-grid" id="drawers-overview-metrics"></div>
     </div>
   </div>
+  <p style="font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-primary); margin: 4px 0 10px; padding-top: 10px; border-top: 2px solid var(--border);">Quick Reports</p>
+
+  <p style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; color: var(--lego-blue); margin: 0 0 6px;">Most Needed Parts</p>
   <div id="top-needed-section" style="margin-bottom: 1.5rem;">
-    <div class="row" style="justify-content: space-between; margin-bottom: 8px;">
+    <div class="row" style="justify-content: space-between; margin-bottom: 8px; flex-wrap:wrap; gap:8px;">
       <button id="top-needed-toggle-btn" class="icon-btn" style="padding: 3px 10px; display:flex; align-items:center; gap:6px;">
         <i id="top-needed-chevron" class="ti ti-chevron-right" style="font-size:13px;" aria-hidden="true"></i>
-        <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Top 20 most needed parts</span>
+        <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Browse the list</span>
       </button>
-      <div class="row" style="gap:8px;">
-        <button id="top-report-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 report (CSV)</button>
-        <button id="top-report-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 report (PDF)</button>
-        <button id="top-report-bycolor-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="Same 20 parts, sorted by color, then part, then quantity"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 report (by Color, PDF)</button>
-        <button id="top-report-bycolor-landscape-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="Landscape layout with two columns, sorted by color, then part, then quantity"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 report (by Color, Landscape, 2-col)</button>
-        <button id="top-report-landscape-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="Landscape layout with two columns of parts side by side"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 report (Landscape, 2-col)</button>
-      </div>
+      <label style="font-size:12px; color:var(--text-secondary); display:flex; align-items:center; gap:6px;">Show top <input type="number" id="top-needed-count" value="20" min="1" max="500" style="width:64px;" /> parts</label>
+    </div>
+    <div class="row" style="gap:8px; flex-wrap:wrap; margin-bottom: 8px;">
+      <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); flex-shrink:0; align-self:center;">Detailed reports:</span>
+      <button id="top-report-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Report (CSV)</button>
+      <button id="top-report-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Report (PDF)</button>
+      <button id="top-report-bycolor-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="Same parts, sorted by color, then part, then quantity"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Report (by Color, PDF)</button>
+      <button id="top-report-bycolor-landscape-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="Landscape layout with two columns, sorted by color, then part, then quantity"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Report (by Color, Landscape, 2-col)</button>
+      <button id="top-report-landscape-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="Landscape layout with two columns of parts side by side"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Report (Landscape, 2-col)</button>
     </div>
     <div class="row" style="gap:10px; align-items:center; margin-bottom: 8px; padding-top:8px; border-top: 1px solid var(--border); flex-wrap:wrap;">
       <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); flex-shrink:0;">Clean report:</span>
@@ -418,14 +423,14 @@
     </div>
     <div class="row" style="gap:10px; align-items:center; margin-bottom: 8px;">
       <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); flex-shrink:0;">Full list:</span>
-      <button id="top-full-list-csv-btn" class="icon-btn" style="padding: 3px 10px;" title="All 20 needed parts with raw quantities, plus a separate column for what's in your drawers"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Full List (CSV)</button>
-      <button id="top-full-list-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="All 20 needed parts with raw quantities, plus a separate column for what's in your drawers"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Full List (PDF)</button>
+      <button id="top-full-list-csv-btn" class="icon-btn" style="padding: 3px 10px;" title="All needed parts with raw quantities, plus a separate column for what's in your drawers"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Full List (CSV)</button>
+      <button id="top-full-list-pdf-btn" class="icon-btn" style="padding: 3px 10px;" title="All needed parts with raw quantities, plus a separate column for what's in your drawers"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Full List (PDF)</button>
     </div>
     <div id="top-needed-list" style="display:none;">
       <div class="row" style="align-items:center; gap:10px; margin-bottom:10px;">
         <label for="top-needed-filter" style="font-size:12px; font-weight:700; flex-shrink:0;">Show:</label>
         <select id="top-needed-filter">
-          <option value="all">All 20 parts</option>
+          <option value="all">All parts</option>
           <option value="uncovered">Still need to find</option>
           <option value="covered">Fully covered by drawers</option>
         </select>
@@ -435,17 +440,23 @@
     </div>
   </div>
 
+  <p style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; color: var(--lego-green); margin: 0 0 6px;">Almost Complete</p>
   <div id="almost-complete-section" style="margin-bottom: 1.5rem; display:none;">
     <div class="row" style="justify-content: space-between; margin-bottom: 8px; flex-wrap:wrap; gap:8px;">
       <button id="almost-complete-toggle-btn" class="icon-btn" style="padding: 3px 10px; display:flex; align-items:center; gap:6px;">
         <i id="almost-complete-chevron" class="ti ti-chevron-right" style="font-size:13px;" aria-hidden="true"></i>
-        <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Almost complete</span>
+        <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Browse the list</span>
       </button>
-      <div class="row" style="gap:8px; align-items:center;">
-        <label style="font-size:12px; color:var(--text-secondary); display:flex; align-items:center; gap:6px;">Missing &le; <input type="number" id="almost-complete-threshold" value="25" min="1" style="width:64px;" /> pieces</label>
-        <button id="almost-complete-report-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Almost Complete report (CSV)</button>
-        <button id="almost-complete-report-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Almost Complete report (PDF)</button>
-      </div>
+      <label style="font-size:12px; color:var(--text-secondary); display:flex; align-items:center; gap:6px;">Missing &le; <input type="number" id="almost-complete-threshold" value="25" min="1" style="width:64px;" /> pieces</label>
+    </div>
+    <div class="row" style="gap:10px; align-items:center; margin-bottom: 8px; padding-top:8px; border-top: 1px solid var(--border); flex-wrap:wrap;">
+      <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); flex-shrink:0;">Clean report:</span>
+      <select id="almost-complete-layout" title="Page layout">
+        <option value="portrait">Portrait</option>
+        <option value="landscape">Landscape</option>
+      </select>
+      <button id="almost-complete-report-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate CSV</button>
+      <button id="almost-complete-report-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate PDF</button>
     </div>
     <div id="almost-complete-list" style="display:none;"></div>
   </div>
@@ -2231,7 +2242,7 @@
 
   function getTop20ItemsFiltered(){
     var mode = document.getElementById('top-needed-filter').value;
-    if (mode === 'uncovered') return getAllShortItems().filter(function(it){ return it.short > it.inDrawers; }).slice(0, 20);
+    if (mode === 'uncovered') return getAllShortItems().filter(function(it){ return it.short > it.inDrawers; }).slice(0, getTopNCount());
     if (mode === 'covered') return getCoveredItems();
     return getTop20Items();
   }
@@ -2248,8 +2259,11 @@
     }
     section.style.display = 'block';
     var items = getTop20ItemsFiltered();
-    var totalStillNeeded = items.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
-    document.getElementById('top-needed-total-line').textContent = 'Total still needed after drawers: ' + totalStillNeeded.toLocaleString() + ' piece' + (totalStillNeeded===1?'':'s');
+    var totalNeeded = allItems.reduce(function(sum, it){ return sum + it.short; }, 0);
+    var totalInDrawers = allItems.reduce(function(sum, it){ return sum + it.inDrawers; }, 0);
+    var remainingNeeded = allItems.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
+    document.getElementById('top-needed-total-line').textContent =
+      'Needed: ' + totalNeeded.toLocaleString() + '  \u00b7  In drawers: ' + totalInDrawers.toLocaleString() + '  \u00b7  Remaining needed: ' + remainingNeeded.toLocaleString();
 
     itemsEl.innerHTML = '';
     if (!items.length){
@@ -2280,6 +2294,7 @@
   }
 
   document.getElementById('top-needed-filter').addEventListener('change', renderTopNeeded);
+  document.getElementById('top-needed-count').addEventListener('input', renderTopNeeded);
 
   document.getElementById('top-needed-toggle-btn').addEventListener('click', function(){
     topNeededExpanded = !topNeededExpanded;
@@ -2403,6 +2418,7 @@
       alert('Nothing to report \u2014 nothing is within ' + threshold + ' pieces of complete right now.');
       return;
     }
+    var layout = document.getElementById('almost-complete-layout').value;
     var btn = document.getElementById('almost-complete-report-pdf-btn');
     var prevBtnHtml = btn ? btn.innerHTML : null;
     if (btn){
@@ -2420,7 +2436,7 @@
       var imgMap = {};
       pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
 
-      var doc = getPdfDoc();
+      var doc = layout === 'landscape' ? new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' }) : getPdfDoc();
       if (!doc) return;
       pdfHeader(doc, 'Almost Complete \u2014 Parts Needed',
         'Generated ' + new Date().toLocaleDateString() + ' \u00b7 missing ' + threshold + ' pieces or fewer \u00b7 ' + items.length + ' item' + (items.length===1?'':'s') + ' shown');
@@ -2452,7 +2468,7 @@
         body: body,
         styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
         headStyles: { fillColor: [0, 166, 94], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 46 }, 3: { cellWidth: 160 } },
+        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 46 }, 3: { cellWidth: layout === 'landscape' ? 360 : 160 } },
         didDrawCell: function(data){
           if (data.section !== 'body') return;
           var p = rowMeta[data.row.index];
@@ -6515,6 +6531,11 @@
     }
   }
 
+  function getTopNCount(){
+    var v = parseInt(document.getElementById('top-needed-count').value, 10);
+    return (isNaN(v) || v < 1) ? 20 : v;
+  }
+
   function getAllShortItems(){
     var drawerStock = buildDrawerStockMap();
     return computeInventory()
@@ -6524,11 +6545,11 @@
   }
 
   function getTop20Items(){
-    return getAllShortItems().slice(0, 20);
+    return getAllShortItems().slice(0, getTopNCount());
   }
 
   function getCoveredItems(){
-    return getAllShortItems().filter(function(it){ return it.short <= it.inDrawers; }).slice(0, 20);
+    return getAllShortItems().filter(function(it){ return it.short <= it.inDrawers; }).slice(0, getTopNCount());
   }
 
   function exportTopNeededReport(){
@@ -6552,7 +6573,7 @@
     var d = new Date();
     var stamp = d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
     a.href = url;
-    a.download = 'lego-top-20-most-needed-'+stamp+'.csv';
+    a.download = 'lego-top-parts-most-needed-'+stamp+'.csv';
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -6563,7 +6584,7 @@
   function getStillNeededItems(){
     return getAllShortItems()
       .filter(function(it){ return it.short > it.inDrawers; })
-      .slice(0, 20)
+      .slice(0, getTopNCount())
       .map(function(it){ return Object.assign({}, it, { stillNeeded: it.short - it.inDrawers }); });
   }
 
@@ -6592,13 +6613,21 @@
     return items;
   }
 
+  function getCleanReportTotals(){
+    var items = getTop20Items();
+    var totalNeeded = items.reduce(function(sum, it){ return sum + it.short; }, 0);
+    var totalInDrawers = items.reduce(function(sum, it){ return sum + it.inDrawers; }, 0);
+    var remainingNeeded = items.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
+    return { totalNeeded: totalNeeded, totalInDrawers: totalInDrawers, remainingNeeded: remainingNeeded };
+  }
+
   function exportCleanReportCSV(){
     var show = document.getElementById('clean-report-show').value;
     var items = getCleanReportItems();
     if (!items.length){
       alert(show === 'covered'
         ? 'Nothing to report \u2014 no parts are currently fully covered by drawers.'
-        : 'Nothing to report \u2014 your drawers already cover everything in the top 20.');
+        : 'Nothing to report \u2014 your drawers already cover everything in the top ' + getTopNCount() + '.');
       return;
     }
     var qtyLabel = show === 'covered' ? 'In Drawers' : 'Still Needed';
@@ -6608,10 +6637,12 @@
     items.forEach(function(it, i){
       lines.push([i+1, it.elementId, it.color, it.desc, qtyOf(it), Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
     });
-    var total = items.reduce(function(sum, it){ return sum + qtyOf(it); }, 0);
+    var totals = getCleanReportTotals();
     lines.push('');
-    lines.push([(show === 'covered' ? 'Total in drawers' : 'Total still needed'), total].map(csvEscape).join(','));
-    downloadCsv(lines, show === 'covered' ? 'lego-top-20-in-drawers' : 'lego-top-20-still-needed');
+    lines.push(['Total needed (top ' + getTopNCount() + ')', totals.totalNeeded].map(csvEscape).join(','));
+    lines.push(['Total in drawers', totals.totalInDrawers].map(csvEscape).join(','));
+    lines.push(['Remaining needed', totals.remainingNeeded].map(csvEscape).join(','));
+    downloadCsv(lines, show === 'covered' ? 'lego-top-parts-in-drawers' : 'lego-top-parts-still-needed');
   }
 
   // "Clean" report 2: the full, unfiltered top 20 as needed in MOCs, raw quantities, plus what's in drawers.
@@ -6626,7 +6657,7 @@
     items.forEach(function(it, i){
       lines.push([i+1, it.elementId, it.color, it.desc, it.short, it.inDrawers, Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
     });
-    downloadCsv(lines, 'lego-top-20-full-list');
+    downloadCsv(lines, 'lego-top-parts-full-list');
   }
 
   function getPdfDoc(){
@@ -6770,7 +6801,7 @@
 
       var doc = getPdfDoc();
       if (!doc) return;
-      pdfHeader(doc, 'Top 20 Most Needed Parts',
+      pdfHeader(doc, 'Top ' + getTopNCount() + ' Most Needed Parts',
         'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
       var totalStillNeeded = items.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
       doc.setFontSize(10);
@@ -6807,7 +6838,7 @@
           } catch(e){ /* skip malformed image, leave cell blank */ }
         }
       });
-      doc.save('lego-top-20-most-needed.pdf');
+      doc.save('lego-top-parts-most-needed.pdf');
     }).catch(function(err){
       alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
     }).then(function(){
@@ -6839,7 +6870,7 @@
 
       var doc = getPdfDoc();
       if (!doc) return;
-      pdfHeader(doc, 'Top 20 Most Needed Parts \u2014 by Color',
+      pdfHeader(doc, 'Top ' + getTopNCount() + ' Most Needed Parts \u2014 by Color',
         'Generated ' + new Date().toLocaleDateString() + ' \u00b7 sorted by color, then part, then quantity \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
       var totalStillNeeded = items.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
       doc.setFontSize(10);
@@ -6876,7 +6907,7 @@
           } catch(e){ /* skip malformed image, leave cell blank */ }
         }
       });
-      doc.save('lego-top-20-by-color.pdf');
+      doc.save('lego-top-parts-by-color.pdf');
     }).catch(function(err){
       alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
     }).then(function(){
@@ -6905,7 +6936,7 @@
       pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
 
       var doc = new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' });
-      pdfHeader(doc, 'Top 20 Most Needed Parts',
+      pdfHeader(doc, 'Top ' + getTopNCount() + ' Most Needed Parts',
         'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
       var totalStillNeeded = items.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
       doc.setFontSize(10);
@@ -6969,7 +7000,7 @@
           } catch(e){ /* skip malformed image, leave cell blank */ }
         }
       });
-      doc.save('lego-top-20-landscape.pdf');
+      doc.save('lego-top-parts-landscape.pdf');
     }).catch(function(err){
       alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
     }).then(function(){
@@ -7000,7 +7031,7 @@
       pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
 
       var doc = new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' });
-      pdfHeader(doc, 'Top 20 Most Needed Parts \u2014 by Color',
+      pdfHeader(doc, 'Top ' + getTopNCount() + ' Most Needed Parts \u2014 by Color',
         'Generated ' + new Date().toLocaleDateString() + ' \u00b7 sorted by color, then part, then quantity \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
       var totalStillNeeded = items.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
       doc.setFontSize(10);
@@ -7064,7 +7095,7 @@
           } catch(e){ /* skip malformed image, leave cell blank */ }
         }
       });
-      doc.save('lego-top-20-by-color-landscape.pdf');
+      doc.save('lego-top-parts-by-color-landscape.pdf');
     }).catch(function(err){
       alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
     }).then(function(){
@@ -7086,9 +7117,9 @@
     var qtyOf = function(it){ return show === 'covered' ? it.inDrawers : it.stillNeeded; };
     var qtyLabelShort = show === 'covered' ? 'In Drwrs' : 'Still Ndd';
     var qtyLabelFull = show === 'covered' ? 'In Drawers' : 'Still Needed';
-    var title = show === 'covered' ? 'Top 20 \u2014 Already in Drawers' : 'Top 20 \u2014 Still Needed';
+    var title = show === 'covered' ? ('Top ' + getTopNCount() + ' \u2014 Already in Drawers') : ('Top ' + getTopNCount() + ' \u2014 Still Needed');
     var fillColor = show === 'covered' ? [0, 166, 94] : [0, 85, 191];
-    var filenameBase = show === 'covered' ? 'lego-top-20-in-drawers' : 'lego-top-20-still-needed';
+    var filenameBase = show === 'covered' ? 'lego-top-parts-in-drawers' : 'lego-top-parts-still-needed';
 
     var btn = document.getElementById('clean-report-pdf-btn');
     var prevBtnHtml = btn ? btn.innerHTML : null;
@@ -7103,7 +7134,8 @@
     })).then(function(pairs){
       var imgMap = {};
       pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
-      var total = items.reduce(function(sum, it){ return sum + qtyOf(it); }, 0);
+      var totals = getCleanReportTotals();
+      var totalsLine = 'Needed: ' + totals.totalNeeded.toLocaleString() + '  \u00b7  In drawers: ' + totals.totalInDrawers.toLocaleString() + '  \u00b7  Remaining needed: ' + totals.remainingNeeded.toLocaleString();
 
       if (layout === 'landscape'){
         var doc = new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' });
@@ -7111,7 +7143,7 @@
           'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
         doc.setFontSize(10);
         doc.setTextColor(110, 110, 110);
-        doc.text('Total: ' + total.toLocaleString() + ' piece' + (total===1?'':'s'), 40, 68);
+        doc.text(totalsLine, 40, 68);
 
         var half = Math.ceil(items.length / 2);
         var leftItems = items.slice(0, half);
@@ -7173,7 +7205,7 @@
           'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' part' + (items.length===1?'':'s') + ' shown');
         doc2.setFontSize(10);
         doc2.setTextColor(110, 110, 110);
-        doc2.text('Total: ' + total.toLocaleString() + ' piece' + (total===1?'':'s'), 40, 68);
+        doc2.text(totalsLine, 40, 68);
 
         var body2 = items.map(function(it, i){
           return ['', String(i+1), it.color, truncateForPdf(it.desc, 48), qtyOf(it).toLocaleString()];
@@ -7232,7 +7264,7 @@
 
       var doc = getPdfDoc();
       if (!doc) return;
-      pdfHeader(doc, 'Top 20 Needed in MOCs \u2014 Full List',
+      pdfHeader(doc, 'Top ' + getTopNCount() + ' Needed in MOCs \u2014 Full List',
         'Generated ' + new Date().toLocaleDateString() + ' \u00b7 all ' + items.length + ' part' + (items.length===1?'':'s') + ', unfiltered, with drawer contents shown alongside');
 
       var body = items.map(function(it, i){
@@ -7265,7 +7297,7 @@
           } catch(e){ /* skip malformed image, leave cell blank */ }
         }
       });
-      doc.save('lego-top-20-full-list.pdf');
+      doc.save('lego-top-parts-full-list.pdf');
     }).catch(function(err){
       alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
     }).then(function(){
