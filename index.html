@@ -449,6 +449,21 @@
     <div id="almost-complete-list" style="display:none;"></div>
   </div>
 
+  <div id="almost-complete-drawer-ready-section" style="margin-bottom: 1.5rem; display:none;">
+    <div class="row" style="justify-content: space-between; margin-bottom: 8px; flex-wrap:wrap; gap:8px;">
+      <button id="almost-complete-drawer-ready-toggle-btn" class="icon-btn" style="padding: 3px 10px; display:flex; align-items:center; gap:6px;">
+        <i id="almost-complete-drawer-ready-chevron" class="ti ti-chevron-right" style="font-size:13px;" aria-hidden="true"></i>
+        <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Ready to complete from drawers</span>
+      </button>
+      <div class="row" style="gap:8px;">
+        <button id="almost-complete-drawer-ready-csv-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate CSV</button>
+        <button id="almost-complete-drawer-ready-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate PDF</button>
+      </div>
+    </div>
+    <p style="margin: 0 0 10px; color: var(--text-secondary); font-size: 13px;">Almost-complete builds and sets (using the same threshold above) where every missing part is fully covered by what's already sitting in a drawer \u2014 gather these and they're done.</p>
+    <div id="almost-complete-drawer-ready-list" style="display:none;"></div>
+  </div>
+
   <div id="drawer-helps-sets-section" style="margin-bottom: 1.5rem; display:none;">
     <div class="row" style="justify-content: space-between; margin-bottom: 8px; flex-wrap:wrap; gap:8px;">
       <button id="drawer-helps-sets-toggle-btn" class="icon-btn" style="padding: 3px 10px; display:flex; align-items:center; gap:6px;">
@@ -893,6 +908,17 @@
         <button id="quick-add-drawer-search-btn" class="lockable"><i class="ti ti-search" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Search parts to add to a drawer</button>
       </div>
 
+      <div style="background: var(--surface-1); border: 2px solid var(--lego-purple); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 20px;">
+        <p style="margin: 0 0 8px; font-weight: 700; color: var(--lego-black);">Inventory a bag: catalog several parts, then send them all to drawers at once</p>
+        <p style="margin: 0 0 10px; color: var(--text-secondary); font-size: 13px;">
+          Working through a whole bag of loose parts? Search and add each one to a list, then choose a drawer for anything that's new or split across more than one drawer &mdash; everything else is matched up for you automatically.
+        </p>
+        <div class="row" style="gap:8px;">
+          <button id="bag-inventory-open-btn" class="lockable"><i class="ti ti-package" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Inventory a bag</button>
+          <button id="bag-log-open-btn" class="icon-btn"><i class="ti ti-history" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> View bag log</button>
+        </div>
+      </div>
+
       <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 8px;">Your drawers</p>
       <div id="drawer-cards-list" style="margin-bottom: 20px;"></div>
 
@@ -1040,6 +1066,22 @@
         <span id="list-backups-status" style="font-size: 13px; color: var(--text-secondary);"></span>
       </div>
       <div id="backups-list"></div>
+    </div>
+  </div>
+
+  <div class="collapse-section">
+    <button type="button" class="collapse-header" data-collapse-target="cs-merge-parts"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Merge Part Numbers</span></button>
+    <div class="collapse-body" id="cs-merge-parts" style="display:none;">
+      <p style="margin: 0 0 10px; color: var(--text-secondary);">
+        If the same physical piece is cataloged under two different part numbers (an old mold number, a duplicate listing, etc.), combine them here. Every row using the old number &mdash; across MOC builds, official sets, and drawers &mdash; is switched to the new number, and any lines that become duplicates of each other (same build/set/drawer and color) are merged into one, with quantities added together.
+      </p>
+      <div class="row" style="margin-bottom: 10px; align-items:center;">
+        <input type="text" id="merge-parts-old" class="lockable" placeholder="Old part # (will be replaced)" style="max-width:220px;" />
+        <i class="ti ti-arrow-right" style="font-size:16px;" aria-hidden="true"></i>
+        <input type="text" id="merge-parts-new" class="lockable" placeholder="New part # (kept)" style="max-width:220px;" />
+        <button id="merge-parts-btn" class="icon-btn lockable" style="color: var(--text-danger); border-color: var(--text-danger);"><i class="ti ti-git-merge" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Merge</button>
+      </div>
+      <p id="merge-parts-status" style="margin: 0; font-size: 13px; color: var(--text-secondary);"></p>
     </div>
   </div>
 
@@ -1353,6 +1395,42 @@
   </div>
 </div>
 
+<div id="bag-inventory-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1050; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:var(--surface-2); border-radius:var(--radius); max-width:640px; width:100%; max-height:88vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
+    <button id="bag-inventory-close" class="icon-btn" style="position:absolute; top:14px; right:14px;"><i class="ti ti-x" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Close</button>
+    <h3 style="margin:0 0 6px; padding-right:80px;">Inventory a Bag</h3>
+    <p style="margin:0 0 12px; color:var(--text-secondary); font-size:13px;">
+      Search what's already sitting in your drawers, enter how many more you found, and add it to the list below. Can't find something here? It's probably new \u2014 search the full catalog for it separately, lower down.
+    </p>
+    <input type="text" id="bag-drawer-search-input" placeholder="Search your drawers by part #, description, or color\u2026" style="width:100%; margin-bottom:8px;" />
+    <div id="bag-drawer-search-results" style="max-height:220px; overflow-y:auto; margin-bottom:10px; border:1px solid var(--border); border-radius:8px; padding:4px; display:none;"></div>
+    <p id="bag-drawer-search-empty" style="display:none; margin:0 0 10px; color:var(--text-muted); font-size:12px;">No match in your drawers for that search.</p>
+    <button id="bag-inventory-add-part-btn" class="icon-btn" style="margin-bottom:14px;"><i class="ti ti-search" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Search the full catalog for something new</button>
+    <div id="bag-inventory-staging-list" style="margin-bottom:10px; border-top:2px solid var(--border); padding-top:10px;"></div>
+    <p id="bag-inventory-empty-msg" class="empty-msg" style="display:none;">Nothing added yet \u2014 search above to get started.</p>
+    <div class="row" style="align-items:center; gap:8px; margin-bottom:10px;">
+      <label for="bag-inventory-label" style="font-size:12px; font-weight:700; flex-shrink:0;">Label this bag:</label>
+      <input type="text" id="bag-inventory-label" placeholder="e.g. eBay lot #4471, garage sale bin" style="flex:1;" />
+    </div>
+    <div class="row" style="justify-content:space-between; align-items:center; padding-top:10px; border-top:2px solid var(--border);">
+      <button id="bag-inventory-clear-btn" class="icon-btn" style="color: var(--text-danger); border-color: var(--text-danger);"><i class="ti ti-trash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Clear all</button>
+      <button id="bag-inventory-commit-btn" class="lockable"><i class="ti ti-truck-delivery" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Move all to drawers</button>
+    </div>
+    <p id="bag-inventory-status" style="margin:8px 0 0; font-size:13px; color:var(--text-secondary);"></p>
+  </div>
+</div>
+
+<div id="bag-log-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1050; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:var(--surface-2); border-radius:var(--radius); max-width:680px; width:100%; max-height:88vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
+    <button id="bag-log-close" class="icon-btn" style="position:absolute; top:14px; right:14px;"><i class="ti ti-x" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Close</button>
+    <h3 style="margin:0 0 6px; padding-right:80px;">Bag Inventory Log</h3>
+    <p style="margin:0 0 12px; color:var(--text-secondary); font-size:13px;">Every batch moved to drawers through "Inventory a Bag," with the label you gave it. Search by label, part number, description, or color to find which bag a part came from.</p>
+    <input type="text" id="bag-log-search-input" placeholder="Search bag labels or parts\u2026" style="width:100%; margin-bottom:12px;" />
+    <div id="bag-log-entries"></div>
+    <p id="bag-log-empty-msg" class="empty-msg" style="display:none;">No bag submissions logged yet.</p>
+  </div>
+</div>
+
 <div id="part-search-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1100; align-items:center; justify-content:center; padding:20px;">
   <div style="background:var(--surface-2); border-radius:var(--radius); max-width:680px; width:100%; max-height:88vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
     <button id="part-search-close" class="icon-btn" style="position:absolute; top:14px; right:14px;"><i class="ti ti-x" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Close</button>
@@ -1560,6 +1638,8 @@
   var drawers = [];
   var drawerParts = [];
   var drawerPartsState = { page: 1, pageSize: 100, sortCol: 'drawerId', sortDir: 1 };
+  var BAG_LOG_KEY = 'bag-inventory-log-v1';
+  var bagInventoryLog = [];
   var detailModalSort = { col: 'desc', dir: 1 };
   var drawerDetailSort = { col: 'desc', dir: 1 };
   var priorityLabels = [];
@@ -1765,6 +1845,7 @@
 
     renderTopNeeded();
     renderAlmostComplete();
+    renderAlmostCompleteDrawerReady();
     renderDrawerHelpsSets();
     renderOverviewMocsList();
     renderOverviewSetsList();
@@ -2363,7 +2444,10 @@
     almostCompleteExpanded = !almostCompleteExpanded;
     applyAlmostCompleteCollapseState();
   });
-  document.getElementById('almost-complete-threshold').addEventListener('input', renderAlmostComplete);
+  document.getElementById('almost-complete-threshold').addEventListener('input', function(){
+    renderAlmostComplete();
+    renderAlmostCompleteDrawerReady();
+  });
 
   function exportAlmostCompleteReport(){
     var threshold = getAlmostCompleteThreshold();
@@ -2372,15 +2456,15 @@
       alert('Nothing to report \u2014 nothing is within ' + threshold + ' pieces of complete right now.');
       return;
     }
-    var header = ['Type','Build/Set','Total Missing','Part Num','Color','Description','Part Short Qty','In Drawers'];
+    var header = ['Type','Build/Set','Total Missing','Part Num','Color','Description','Part Short Qty'];
     var lines = [header.map(csvEscape).join(',')];
     items.forEach(function(it){
       var typeLabel = it.type === 'moc' ? 'MOC Build' : 'Official Set';
       if (!it.parts.length){
-        lines.push([typeLabel, it.label, it.missing, '', '', '', '', ''].map(csvEscape).join(','));
+        lines.push([typeLabel, it.label, it.missing, '', '', '', ''].map(csvEscape).join(','));
       } else {
         it.parts.forEach(function(p){
-          lines.push([typeLabel, it.label, it.missing, p.partNum, p.color, p.desc, p.short, p.inDrawers].map(csvEscape).join(','));
+          lines.push([typeLabel, it.label, it.missing, p.partNum, p.color, p.desc, p.short].map(csvEscape).join(','));
         });
       }
     });
@@ -2435,16 +2519,16 @@
         var typeLabel = it.type === 'moc' ? 'MOC Build' : 'Official Set';
         body.push([{
           content: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' piece' + (it.missing===1?'':'s') + ' total',
-          colSpan: 6,
+          colSpan: 5,
           styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] }
         }]);
         rowMeta.push(null);
         if (!it.parts.length){
-          body.push([{ content: 'No specific part shortages recorded.', colSpan: 6, styles: { fontStyle: 'italic', textColor: [130, 130, 130] } }]);
+          body.push([{ content: 'No specific part shortages recorded.', colSpan: 5, styles: { fontStyle: 'italic', textColor: [130, 130, 130] } }]);
           rowMeta.push(null);
         } else {
           it.parts.forEach(function(p){
-            body.push(['', p.partNum, p.color, p.desc, String(p.short), p.inDrawers.toLocaleString()]);
+            body.push(['', p.partNum, p.color, p.desc, String(p.short)]);
             rowMeta.push(p);
           });
         }
@@ -2452,20 +2536,15 @@
 
       doc.autoTable({
         startY: 70,
-        head: [['','#','Color','Description','Short','In Drawers']],
+        head: [['','#','Color','Description','Short']],
         body: body,
         styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
         headStyles: { fillColor: [0, 166, 94], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 46 }, 3: { cellWidth: layout === 'landscape' ? 360 : 160 } },
+        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 46 }, 3: { cellWidth: layout === 'landscape' ? 420 : 220 } },
         didDrawCell: function(data){
-          if (data.section !== 'body') return;
+          if (data.section !== 'body' || data.column.index !== 0) return;
           var p = rowMeta[data.row.index];
           if (!p) return;
-          if (data.column.index === 5){
-            strikeCellIfInsufficient(doc, data, p.short > p.inDrawers);
-            return;
-          }
-          if (data.column.index !== 0) return;
           var dataUrl = p.elementId && imgMap[p.elementId];
           if (!dataUrl) return;
           try {
@@ -2484,6 +2563,145 @@
     });
   }
   document.getElementById('almost-complete-report-pdf-btn').addEventListener('click', generateAlmostCompletePDF);
+
+  var almostCompleteDrawerReadyExpanded = false;
+
+  function applyAlmostCompleteDrawerReadyCollapseState(){
+    var container = document.getElementById('almost-complete-drawer-ready-list');
+    var chevron = document.getElementById('almost-complete-drawer-ready-chevron');
+    container.style.display = almostCompleteDrawerReadyExpanded ? 'block' : 'none';
+    chevron.className = 'ti ' + (almostCompleteDrawerReadyExpanded ? 'ti-chevron-down' : 'ti-chevron-right');
+  }
+
+  function getAlmostCompleteDrawerCoverableItems(){
+    var threshold = getAlmostCompleteThreshold();
+    return getAlmostCompleteItems(threshold).filter(function(it){
+      return it.parts.length > 0 && it.parts.every(function(p){ return p.inDrawers >= p.short; });
+    });
+  }
+
+  function renderAlmostCompleteDrawerReady(){
+    var items = getAlmostCompleteDrawerCoverableItems();
+    var section = document.getElementById('almost-complete-drawer-ready-section');
+    var container = document.getElementById('almost-complete-drawer-ready-list');
+
+    if (!items.length){
+      section.style.display = 'none';
+      return;
+    }
+    section.style.display = 'block';
+    container.innerHTML = '';
+    items.forEach(function(it){
+      var row = document.createElement('div');
+      row.className = 'top-needed-item';
+      row.innerHTML =
+        '<span class="pill '+(it.type==='moc'?'pill-ok':'pill-short')+'" style="flex-shrink:0; min-width:38px; text-align:center;">'+(it.type==='moc'?'MOC':'Set')+'</span>' +
+        '<span class="top-needed-desc">'+escapeHtml(it.label)+'</span>' +
+        '<span class="pill pill-ok top-needed-short">All '+it.missing.toLocaleString()+' in drawers</span>';
+      row.addEventListener('click', function(){
+        if (it.type === 'moc') openMocDetail(it.key); else openSetDetail(it.key);
+      });
+      container.appendChild(row);
+    });
+    applyAlmostCompleteDrawerReadyCollapseState();
+  }
+
+  document.getElementById('almost-complete-drawer-ready-toggle-btn').addEventListener('click', function(){
+    almostCompleteDrawerReadyExpanded = !almostCompleteDrawerReadyExpanded;
+    applyAlmostCompleteDrawerReadyCollapseState();
+  });
+
+  function exportAlmostCompleteDrawerReadyReport(){
+    var items = getAlmostCompleteDrawerCoverableItems();
+    if (!items.length){
+      alert('Nothing to report \u2014 no almost-complete build or set currently has every missing part covered by a drawer.');
+      return;
+    }
+    var header = ['Type','Build/Set','Total Missing','Part Num','Color','Description','Part Short Qty','In Drawers'];
+    var lines = [header.map(csvEscape).join(',')];
+    items.forEach(function(it){
+      var typeLabel = it.type === 'moc' ? 'MOC Build' : 'Official Set';
+      it.parts.forEach(function(p){
+        lines.push([typeLabel, it.label, it.missing, p.partNum, p.color, p.desc, p.short, p.inDrawers].map(csvEscape).join(','));
+      });
+    });
+    downloadCsv(lines, 'lego-almost-complete-drawer-ready');
+  }
+  document.getElementById('almost-complete-drawer-ready-csv-btn').addEventListener('click', exportAlmostCompleteDrawerReadyReport);
+
+  function generateAlmostCompleteDrawerReadyPDF(){
+    var items = getAlmostCompleteDrawerCoverableItems();
+    if (!items.length){
+      alert('Nothing to report \u2014 no almost-complete build or set currently has every missing part covered by a drawer.');
+      return;
+    }
+    var btn = document.getElementById('almost-complete-drawer-ready-pdf-btn');
+    var prevBtnHtml = btn ? btn.innerHTML : null;
+    if (btn){
+      btn.disabled = true;
+      btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating\u2026';
+    }
+
+    var allElementIds = [];
+    items.forEach(function(it){ it.parts.forEach(function(p){ if (p.elementId) allElementIds.push(p.elementId); }); });
+    var uniqueIds = Array.from(new Set(allElementIds));
+
+    Promise.all(uniqueIds.map(function(id){
+      return fetchPartImageForPdf(id).then(function(dataUrl){ return [id, dataUrl]; });
+    })).then(function(pairs){
+      var imgMap = {};
+      pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
+
+      var doc = getPdfDoc();
+      if (!doc) return;
+      pdfHeader(doc, 'Ready to Complete from Drawers',
+        'Generated ' + new Date().toLocaleDateString() + ' \u00b7 every missing part is covered by a drawer \u00b7 ' + items.length + ' item' + (items.length===1?'':'s') + ' shown');
+
+      var body = [];
+      var rowMeta = [];
+      items.forEach(function(it){
+        var typeLabel = it.type === 'moc' ? 'MOC Build' : 'Official Set';
+        body.push([{
+          content: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' piece' + (it.missing===1?'':'s') + ' total, all in drawers',
+          colSpan: 6,
+          styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] }
+        }]);
+        rowMeta.push(null);
+        it.parts.forEach(function(p){
+          body.push(['', p.partNum, p.color, p.desc, String(p.short), p.inDrawers.toLocaleString()]);
+          rowMeta.push(p);
+        });
+      });
+
+      doc.autoTable({
+        startY: 70,
+        head: [['','#','Color','Description','Short','In Drawers']],
+        body: body,
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
+        headStyles: { fillColor: [0, 166, 94], textColor: 255 },
+        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 46 }, 3: { cellWidth: 160 } },
+        didDrawCell: function(data){
+          if (data.section !== 'body' || data.column.index !== 0) return;
+          var p = rowMeta[data.row.index];
+          if (!p) return;
+          var dataUrl = p.elementId && imgMap[p.elementId];
+          if (!dataUrl) return;
+          try {
+            var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
+            var pad = 3;
+            var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
+            doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
+          } catch(e){ /* skip malformed image, leave cell blank */ }
+        }
+      });
+      doc.save('lego-almost-complete-drawer-ready.pdf');
+    }).catch(function(err){
+      alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
+    }).then(function(){
+      if (btn){ btn.disabled = false; btn.innerHTML = prevBtnHtml; }
+    });
+  }
+  document.getElementById('almost-complete-drawer-ready-pdf-btn').addEventListener('click', generateAlmostCompleteDrawerReadyPDF);
 
   var drawerHelpsSetsExpanded = false;
 
@@ -3843,6 +4061,15 @@
   function saveDrawers(){
     scheduleAutoPublish();
     return storage.set(DRAWERS_KEY, JSON.stringify(drawers), false);
+  }
+  function loadBagInventoryLog(){
+    return storage.get(BAG_LOG_KEY, false).then(function(res){
+      if (res && res.value){ try { bagInventoryLog = JSON.parse(res.value); } catch(e){ bagInventoryLog = []; } }
+    }).catch(function(){});
+  }
+  function saveBagInventoryLog(){
+    scheduleAutoPublish();
+    return storage.set(BAG_LOG_KEY, JSON.stringify(bagInventoryLog), false);
   }
   function loadDrawerParts(){
     return storage.get(DRAWER_PARTS_KEY, false).then(function(res){
@@ -5586,6 +5813,17 @@
     return ids;
   }
 
+  function drawersContainingPartColor(partNum, color){
+    var pk = normKey(partNum), ck = normKey(color);
+    var ids = [];
+    drawerParts.forEach(function(p){
+      if (normKey(p.partNum) === pk && normKey(p.color) === ck && drawers.some(function(d){ return d.id === p.drawerId; })){
+        if (ids.indexOf(p.drawerId) === -1) ids.push(p.drawerId);
+      }
+    });
+    return ids;
+  }
+
   function showPartColors(part){
     partSearchSelected = part;
     partSearchMultiSelected = {};
@@ -6068,6 +6306,321 @@
       return { ok: true, message: 'Added ' + totalQty.toLocaleString() + ' piece' + (totalQty===1?'':'s') + ' across ' + rows.length + ' color' + (rows.length===1?'':'s') + ' of ' + rows[0].partNum + ' to drawer ' + drawerLabel + '.' };
     }
   };
+
+  var bagStagingItems = [];
+
+  partForms.bag = {
+    fillFromCatalog: function(partNum, color, desc, elementId){
+      var result = partForms.bag.addMultiple([{ partNum: partNum, color: color, desc: desc, elementId: elementId, qty: 1 }]);
+      setPartSearchStatus(result.message, !result.ok);
+    },
+    addMultiple: function(rows){
+      var addedQty = 0;
+      rows.forEach(function(r){
+        var qty = r.qty || 1;
+        addedQty += qty;
+        var existing = bagStagingItems.find(function(it){ return normKey(it.partNum) === normKey(r.partNum) && normKey(it.color) === normKey(r.color); });
+        if (existing){
+          existing.qty += qty;
+          if (!existing.elementId && r.elementId) existing.elementId = r.elementId;
+        } else {
+          var matches = drawersContainingPartColor(r.partNum, r.color);
+          bagStagingItems.push({
+            partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId || '', qty: qty,
+            drawerId: matches.length === 1 ? matches[0] : '',
+            matchCount: matches.length
+          });
+        }
+      });
+      renderBagStagingList();
+      return { ok: true, message: 'Added ' + addedQty.toLocaleString() + ' piece' + (addedQty===1?'':'s') + ' across ' + rows.length + ' color' + (rows.length===1?'':'s') + ' of ' + rows[0].partNum + ' to the bag list below.' };
+    }
+  };
+
+  function renderBagStagingList(){
+    var list = document.getElementById('bag-inventory-staging-list');
+    var emptyMsg = document.getElementById('bag-inventory-empty-msg');
+    list.innerHTML = '';
+    if (!bagStagingItems.length){
+      emptyMsg.style.display = 'block';
+      return;
+    }
+    emptyMsg.style.display = 'none';
+    bagStagingItems.forEach(function(it, idx){
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex; align-items:center; gap:8px; padding:7px 0; border-bottom:1px solid var(--border); flex-wrap:wrap;';
+      row.innerHTML = '<span class="part-thumb-wrap"></span>' +
+        '<div style="flex:1; min-width:140px;"><div style="font-weight:700; font-size:13px;">'+escapeHtml(it.color)+' '+escapeHtml(it.desc)+'</div>' +
+        '<div style="font-size:12px; color:var(--text-secondary);">#'+escapeHtml(it.partNum)+'</div></div>';
+      buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, row.querySelector('.part-thumb-wrap'));
+      var qtyInput = document.createElement('input');
+      qtyInput.type = 'number';
+      qtyInput.min = '1';
+      qtyInput.value = it.qty;
+      qtyInput.style.cssText = 'width:56px; flex-shrink:0;';
+      qtyInput.addEventListener('change', function(){
+        var v = parseInt(qtyInput.value, 10);
+        if (isNaN(v) || v < 1) v = 1;
+        it.qty = v;
+        qtyInput.value = v;
+      });
+      row.appendChild(qtyInput);
+      var sel = document.createElement('select');
+      sel.style.cssText = 'flex-shrink:0; min-width:150px;';
+      sel.innerHTML = drawerOptGroupsHtml(it.drawerId, it.matchCount > 1 ? 'In ' + it.matchCount + ' drawers \u2014 choose one' : 'Choose a drawer\u2026', null);
+      sel.addEventListener('change', function(){ it.drawerId = sel.value; });
+      row.appendChild(sel);
+      var removeBtn = document.createElement('button');
+      removeBtn.className = 'icon-btn';
+      removeBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); flex-shrink:0;';
+      removeBtn.innerHTML = '<i class="ti ti-x" style="font-size:12px; vertical-align:-2px;" aria-hidden="true"></i>';
+      removeBtn.title = 'Remove from this list';
+      removeBtn.addEventListener('click', function(){
+        bagStagingItems.splice(idx, 1);
+        renderBagStagingList();
+      });
+      row.appendChild(removeBtn);
+      list.appendChild(row);
+    });
+  }
+
+  function getDistinctDrawerPartColors(){
+    var map = {};
+    var order = [];
+    drawerParts.forEach(function(p){
+      var key = normKey(p.partNum) + '|' + normKey(p.color);
+      if (!map[key]){
+        map[key] = { partNum: p.partNum, color: p.color, desc: p.desc, elementId: p.elementId || '', totalQty: 0, drawerIds: [] };
+        order.push(key);
+      }
+      var entry = map[key];
+      entry.totalQty += (p.qty || 0);
+      if (entry.drawerIds.indexOf(p.drawerId) === -1) entry.drawerIds.push(p.drawerId);
+      if (!entry.elementId && p.elementId) entry.elementId = p.elementId;
+      if (!entry.desc && p.desc) entry.desc = p.desc;
+    });
+    return order.map(function(k){ return map[k]; });
+  }
+
+  function renderBagDrawerSearchResults(){
+    var q = normKey(document.getElementById('bag-drawer-search-input').value);
+    var resultsEl = document.getElementById('bag-drawer-search-results');
+    var emptyEl = document.getElementById('bag-drawer-search-empty');
+    if (!q){
+      resultsEl.style.display = 'none';
+      resultsEl.innerHTML = '';
+      emptyEl.style.display = 'none';
+      return;
+    }
+    var matches = getDistinctDrawerPartColors().filter(function(it){
+      var hay = normKey(it.partNum) + ' ' + normKey(it.desc) + ' ' + normKey(it.color);
+      return hay.indexOf(q) !== -1;
+    }).slice(0, 30);
+    resultsEl.innerHTML = '';
+    if (!matches.length){
+      resultsEl.style.display = 'none';
+      emptyEl.style.display = 'block';
+      return;
+    }
+    emptyEl.style.display = 'none';
+    resultsEl.style.display = 'block';
+    matches.forEach(function(it){
+      var row = document.createElement('div');
+      row.style.cssText = 'display:flex; align-items:center; gap:8px; padding:6px 4px; border-bottom:1px solid var(--border); flex-wrap:wrap;';
+      row.innerHTML = '<span class="part-thumb-wrap"></span>' +
+        '<div style="flex:1; min-width:140px;"><div style="font-weight:700; font-size:13px;">'+escapeHtml(it.color)+' '+escapeHtml(it.desc)+'</div>' +
+        '<div style="font-size:12px; color:var(--text-secondary);">#'+escapeHtml(it.partNum)+' \u00b7 '+it.totalQty.toLocaleString()+' now in '+it.drawerIds.length+' drawer'+(it.drawerIds.length===1?'':'s')+'</div></div>';
+      buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, row.querySelector('.part-thumb-wrap'));
+      var qtyInput = document.createElement('input');
+      qtyInput.type = 'number';
+      qtyInput.min = '1';
+      qtyInput.placeholder = 'Qty';
+      qtyInput.style.cssText = 'width:60px; flex-shrink:0;';
+      row.appendChild(qtyInput);
+      var addBtn = document.createElement('button');
+      addBtn.className = 'icon-btn';
+      addBtn.style.flexShrink = '0';
+      addBtn.textContent = 'Add';
+      addBtn.addEventListener('click', function(){
+        var qty = parseInt(qtyInput.value, 10);
+        if (isNaN(qty) || qty < 1){
+          qtyInput.style.borderColor = 'var(--text-danger)';
+          qtyInput.focus();
+          return;
+        }
+        partForms.bag.addMultiple([{ partNum: it.partNum, color: it.color, desc: it.desc, elementId: it.elementId, qty: qty }]);
+        qtyInput.value = '';
+        qtyInput.style.borderColor = '';
+      });
+      row.appendChild(addBtn);
+      resultsEl.appendChild(row);
+    });
+  }
+
+  document.getElementById('bag-drawer-search-input').addEventListener('input', renderBagDrawerSearchResults);
+
+  function defaultBagLabel(){
+    var d = new Date();
+    return 'Bag \u2014 ' + d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+  }
+
+  function openBagInventory(){
+    document.getElementById('bag-inventory-overlay').style.display = 'flex';
+    document.getElementById('bag-inventory-status').textContent = '';
+    document.getElementById('bag-drawer-search-input').value = '';
+    document.getElementById('bag-drawer-search-results').style.display = 'none';
+    document.getElementById('bag-drawer-search-results').innerHTML = '';
+    document.getElementById('bag-drawer-search-empty').style.display = 'none';
+    var labelInput = document.getElementById('bag-inventory-label');
+    if (!labelInput.value.trim()) labelInput.value = defaultBagLabel();
+    renderBagStagingList();
+    document.getElementById('bag-drawer-search-input').focus();
+  }
+
+  document.getElementById('bag-inventory-open-btn').addEventListener('click', openBagInventory);
+  document.getElementById('bag-inventory-close').addEventListener('click', function(){
+    document.getElementById('bag-inventory-overlay').style.display = 'none';
+  });
+  document.getElementById('bag-inventory-add-part-btn').addEventListener('click', function(){ openPartSearch('bag'); });
+  document.getElementById('bag-inventory-clear-btn').addEventListener('click', function(){
+    if (!bagStagingItems.length) return;
+    if (!confirm('Clear all ' + bagStagingItems.length + ' item' + (bagStagingItems.length===1?'':'s') + ' from this bag\u2019s list? Nothing has been moved to any drawer yet, so this just empties the list.')) return;
+    bagStagingItems = [];
+    renderBagStagingList();
+    document.getElementById('bag-inventory-status').textContent = '';
+  });
+  document.getElementById('bag-inventory-commit-btn').addEventListener('click', function(){
+    var statusEl = document.getElementById('bag-inventory-status');
+    if (!bagStagingItems.length){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Nothing to move \u2014 search for a part above first.';
+      return;
+    }
+    var missing = bagStagingItems.filter(function(it){ return !it.drawerId; });
+    if (missing.length){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Choose a drawer for ' + missing.length + ' item' + (missing.length===1?'':'s') + ' still missing one before moving \u2014 highlighted above.';
+      renderBagStagingList();
+      missing.forEach(function(it){
+        var idx = bagStagingItems.indexOf(it);
+        var row = document.getElementById('bag-inventory-staging-list').children[idx];
+        if (row) row.style.background = 'rgba(217,41,29,0.08)';
+      });
+      return;
+    }
+    var totalQty = 0;
+    var drawerIdsUsed = {};
+    var logItems = bagStagingItems.map(function(it){
+      var d = drawers.find(function(dd){ return dd.id === it.drawerId; });
+      return { partNum: it.partNum, color: it.color, desc: it.desc, elementId: it.elementId || '', qty: it.qty, drawerId: it.drawerId, drawerLabel: d ? d.label : it.drawerId };
+    });
+    bagStagingItems.forEach(function(it){
+      var existing = drawerParts.find(function(p){ return p.drawerId === it.drawerId && normKey(p.partNum) === normKey(it.partNum) && normKey(p.color) === normKey(it.color); });
+      if (existing){ existing.qty += it.qty; if (!existing.elementId && it.elementId) existing.elementId = it.elementId; }
+      else drawerParts.push({ drawerId: it.drawerId, partNum: it.partNum, color: it.color, desc: it.desc, elementId: it.elementId || '', qty: it.qty });
+      totalQty += it.qty;
+      drawerIdsUsed[it.drawerId] = true;
+    });
+    saveDrawerParts();
+    renderDrawersTab();
+    Object.keys(drawerIdsUsed).forEach(function(id){
+      if (drawerDetailContext === id){
+        renderDrawerCards();
+        refreshDrawerDetailMetrics(id);
+        renderDrawerDetailTable(id);
+      }
+    });
+    var itemCount = bagStagingItems.length;
+    var drawerCount = Object.keys(drawerIdsUsed).length;
+    var label = document.getElementById('bag-inventory-label').value.trim() || defaultBagLabel();
+    bagInventoryLog.unshift({
+      id: 'bag_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 7),
+      label: label,
+      timestamp: new Date().toISOString(),
+      items: logItems
+    });
+    saveBagInventoryLog();
+    bagStagingItems = [];
+    renderBagStagingList();
+    document.getElementById('bag-inventory-label').value = defaultBagLabel();
+    statusEl.style.color = 'var(--text-success)';
+    statusEl.textContent = 'Moved ' + totalQty.toLocaleString() + ' piece' + (totalQty===1?'':'s') + ' across ' + itemCount.toLocaleString() + ' item' + (itemCount===1?'':'s') + ' to ' + drawerCount.toLocaleString() + ' drawer' + (drawerCount===1?'':'s') + ', logged as \u201c' + label + '\u201d.';
+  });
+
+  function openBagLog(){
+    document.getElementById('bag-log-overlay').style.display = 'flex';
+    document.getElementById('bag-log-search-input').value = '';
+    renderBagLog();
+    document.getElementById('bag-log-search-input').focus();
+  }
+
+  function renderBagLog(){
+    var q = normKey(document.getElementById('bag-log-search-input').value);
+    var container = document.getElementById('bag-log-entries');
+    var emptyMsg = document.getElementById('bag-log-empty-msg');
+    container.innerHTML = '';
+
+    if (!bagInventoryLog.length){
+      emptyMsg.style.display = 'block';
+      emptyMsg.textContent = 'No bag submissions logged yet.';
+      return;
+    }
+
+    var entries = bagInventoryLog;
+    if (q){
+      entries = bagInventoryLog.filter(function(entry){
+        if (normKey(entry.label).indexOf(q) !== -1) return true;
+        return entry.items.some(function(it){
+          var hay = normKey(it.partNum) + ' ' + normKey(it.desc) + ' ' + normKey(it.color);
+          return hay.indexOf(q) !== -1;
+        });
+      });
+    }
+
+    if (!entries.length){
+      emptyMsg.style.display = 'block';
+      emptyMsg.textContent = 'No logged bags match that search.';
+      return;
+    }
+    emptyMsg.style.display = 'none';
+
+    entries.forEach(function(entry){
+      var totalQty = entry.items.reduce(function(sum, it){ return sum + (it.qty || 0); }, 0);
+      var d = new Date(entry.timestamp);
+      var wrap = document.createElement('div');
+      wrap.style.cssText = 'border:1px solid var(--border); border-radius:8px; margin-bottom:8px; overflow:hidden;';
+      var header = document.createElement('button');
+      header.type = 'button';
+      header.className = 'collapse-header';
+      header.style.cssText = 'width:100%; text-align:left; display:flex; align-items:center; gap:8px; padding:10px 12px;';
+      header.innerHTML = '<i class="ti ti-chevron-right" aria-hidden="true"></i>' +
+        '<span style="flex:1;"><strong>'+escapeHtml(entry.label)+'</strong> <span style="color:var(--text-secondary); font-weight:400; font-size:12px;">&mdash; '+escapeHtml(d.toLocaleDateString())+' '+escapeHtml(d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }))+' &middot; '+entry.items.length.toLocaleString()+' part'+(entry.items.length===1?'':'s')+', '+totalQty.toLocaleString()+' piece'+(totalQty===1?'':'s')+'</span>';
+      var body = document.createElement('div');
+      body.style.cssText = 'display:none; padding:0 12px 10px;';
+      entry.items.forEach(function(it){
+        var row = document.createElement('div');
+        row.style.cssText = 'display:flex; align-items:center; gap:8px; padding:5px 0; border-top:1px solid var(--border); font-size:13px;';
+        row.innerHTML = '<span style="flex:1;">'+escapeHtml(it.color)+' '+escapeHtml(it.desc)+' <span class="part-meta">#'+escapeHtml(it.partNum)+'</span></span>' +
+          '<span style="font-weight:700; flex-shrink:0;">'+it.qty.toLocaleString()+'\u00d7</span>' +
+          '<span style="color:var(--text-secondary); flex-shrink:0; min-width:70px; text-align:right;">'+escapeHtml(it.drawerLabel || it.drawerId)+'</span>';
+        body.appendChild(row);
+      });
+      header.addEventListener('click', function(){
+        var isOpen = body.style.display !== 'none';
+        body.style.display = isOpen ? 'none' : 'block';
+        header.querySelector('i').className = 'ti ' + (isOpen ? 'ti-chevron-right' : 'ti-chevron-down');
+      });
+      wrap.appendChild(header);
+      wrap.appendChild(body);
+      container.appendChild(wrap);
+    });
+  }
+
+  document.getElementById('bag-log-open-btn').addEventListener('click', openBagLog);
+  document.getElementById('bag-log-close').addEventListener('click', function(){
+    document.getElementById('bag-log-overlay').style.display = 'none';
+  });
+  document.getElementById('bag-log-search-input').addEventListener('input', renderBagLog);
 
   document.getElementById('ap-search-btn').addEventListener('click', function(){ openPartSearch('ap'); });
   document.getElementById('dp-search-btn').addEventListener('click', function(){ openPartSearch('dp'); });
@@ -8518,6 +9071,79 @@
     }
   }
 
+  function mergeDuplicateRows(rows, keyFn, mergeFn){
+    var map = {};
+    var order = [];
+    rows.forEach(function(r){
+      var k = keyFn(r);
+      if (Object.prototype.hasOwnProperty.call(map, k)){
+        mergeFn(map[k], r);
+      } else {
+        map[k] = r;
+        order.push(k);
+      }
+    });
+    return order.map(function(k){ return map[k]; });
+  }
+
+  function mergePartNumbers(oldNum, newNum){
+    oldNum = (oldNum || '').trim();
+    newNum = (newNum || '').trim();
+    if (!oldNum || !newNum) return { ok: false, message: 'Enter both the old and new part numbers.' };
+    var oldKey = normKey(oldNum), newKey = normKey(newNum);
+    if (oldKey === newKey) return { ok: false, message: 'Those are the same part number \u2014 nothing to merge.' };
+
+    var mocMatches = state.rows.filter(function(r){ return normKey(r.partNum) === oldKey; }).length;
+    var setMatches = setParts.filter(function(r){ return normKey(r.partNum) === oldKey; }).length;
+    var drawerMatches = drawerParts.filter(function(r){ return normKey(r.partNum) === oldKey; }).length;
+    var total = mocMatches + setMatches + drawerMatches;
+    if (!total) return { ok: false, message: 'No rows found using part #' + oldNum + ' \u2014 nothing to merge.' };
+
+    if (!confirm('Merge part #' + oldNum + ' into #' + newNum + '? This will update ' + total.toLocaleString() + ' row' + (total===1?'':'s') + ' (' + mocMatches + ' MOC, ' + setMatches + ' set, ' + drawerMatches + ' drawer) and combine any that become duplicates. This can\u2019t be undone.')){
+      return { ok: false, message: null };
+    }
+
+    state.rows.forEach(function(r){ if (normKey(r.partNum) === oldKey) r.partNum = newNum; });
+    state.rows = mergeDuplicateRows(state.rows,
+      function(r){ return normKey(r.moc) + '|' + normKey(r.color) + '|' + normKey(r.partNum); },
+      function(kept, extra){
+        kept.qty = (kept.qty || 0) + (extra.qty || 0);
+        kept.onHand = (kept.onHand || 0) + (extra.onHand || 0);
+        if (!kept.elementId && extra.elementId) kept.elementId = extra.elementId;
+        if (!kept.desc && extra.desc) kept.desc = extra.desc;
+      });
+
+    setParts.forEach(function(r){ if (normKey(r.partNum) === oldKey) r.partNum = newNum; });
+    setParts = mergeDuplicateRows(setParts,
+      function(r){ return normKey(r.setNum) + '|' + normKey(r.color) + '|' + normKey(r.partNum); },
+      function(kept, extra){
+        kept.qtyPerSet = (kept.qtyPerSet || 0) + (extra.qtyPerSet || 0);
+        kept.onHand = (kept.onHand || 0) + (extra.onHand || 0);
+        if (!kept.elementId && extra.elementId) kept.elementId = extra.elementId;
+        if (!kept.desc && extra.desc) kept.desc = extra.desc;
+      });
+
+    drawerParts.forEach(function(r){ if (normKey(r.partNum) === oldKey) r.partNum = newNum; });
+    drawerParts = mergeDuplicateRows(drawerParts,
+      function(r){ return normKey(r.drawerId) + '|' + normKey(r.color) + '|' + normKey(r.partNum); },
+      function(kept, extra){
+        kept.qty = (kept.qty || 0) + (extra.qty || 0);
+        if (!kept.elementId && extra.elementId) kept.elementId = extra.elementId;
+        if (!kept.desc && extra.desc) kept.desc = extra.desc;
+      });
+
+    saveState();
+    saveSetParts();
+    saveDrawerParts();
+    render();
+    if (typeof renderSetsTab === 'function') renderSetsTab();
+    if (typeof renderSetPartsSummaryTab === 'function') renderSetPartsSummaryTab();
+    if (typeof renderDrawersTab === 'function') renderDrawersTab();
+    if (typeof renderShoppingList === 'function') renderShoppingList();
+
+    return { ok: true, message: 'Merged #' + oldNum + ' into #' + newNum + ' across ' + total.toLocaleString() + ' row' + (total===1?'':'s') + '.' };
+  }
+
   function updateElementIdForPartColor(partNum, color, newElementId, oldElementId){
     var pk = normKey(partNum), ck = normKey(color);
     var touched = { moc: false, set: false, drawer: false };
@@ -8836,6 +9462,20 @@
   document.getElementById('gen-script-btn').addEventListener('click', downloadImageScript);
   document.getElementById('img-upload').addEventListener('change', function(e){ handleImageUpload(e.target.files); });
   document.getElementById('clear-cache-btn').addEventListener('click', clearImageCache);
+  document.getElementById('merge-parts-btn').addEventListener('click', function(){
+    var oldInput = document.getElementById('merge-parts-old');
+    var newInput = document.getElementById('merge-parts-new');
+    var statusEl = document.getElementById('merge-parts-status');
+    var result = mergePartNumbers(oldInput.value, newInput.value);
+    if (result.message){
+      statusEl.style.color = result.ok ? 'var(--text-success)' : 'var(--text-danger)';
+      statusEl.textContent = result.message;
+    }
+    if (result.ok){
+      oldInput.value = '';
+      newInput.value = '';
+    }
+  });
   document.getElementById('use-proxy-toggle').addEventListener('change', function(e){
     useProxy = e.target.checked;
     attemptedCache.clear();
@@ -9575,7 +10215,7 @@
   });
 
   function bootApp(){
-    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadPartImgCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadTallyCounts(); }).then(function(){ return loadTallyDrawerAssignments(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(function(){ return loadSetPhotos(); }).then(function(){ return loadMocPhotos(); }).then(function(){ return loadMocLocations(); }).then(function(){ return loadMocBuilds(); }).then(function(){ return loadMocThemes(); }).then(function(){ return loadMocDescriptions(); }).then(function(){ return loadLocationLabels(); })
+    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadPartImgCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadTallyCounts(); }).then(function(){ return loadTallyDrawerAssignments(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(function(){ return loadBagInventoryLog(); }).then(function(){ return loadSetPhotos(); }).then(function(){ return loadMocPhotos(); }).then(function(){ return loadMocLocations(); }).then(function(){ return loadMocBuilds(); }).then(function(){ return loadMocThemes(); }).then(function(){ return loadMocDescriptions(); }).then(function(){ return loadLocationLabels(); })
     .then(function(){ return loadRebrickableKey(); }).then(function(){ return loadRbCatalogCache(); }).then(function(){ return loadSetProxyPref(); }).then(function(){ return loadGithubSettings(); }).then(function(){ return loadBackupPassword(); }).then(function(){ return loadGithubShaMap(); }).then(function(){ return loadDirtyFlag(); }).then(function(){ return loadViewLocked(); })
     .then(function(){
       var repoConfigured = ghSettings.repo && ghSettings.repo.indexOf('/') !== -1 && ghSettings.token;
