@@ -219,6 +219,7 @@
 #lego-inv-root .tally-drawer-select { flex: 1 1 130px; min-width: 0; height: 32px; font-size: 12px; }
 #lego-inv-root .shop-qty { font-weight: 800; min-width: 34px; }
 #lego-inv-root .shop-in-drawers, #lego-inv-root .in-drawers-badge { font-size: 11px; font-weight: 700; color: var(--lego-green); background: var(--surface-1); border: 1px solid var(--border); border-radius: 6px; padding: 2px 7px; white-space: nowrap; flex-shrink: 0; }
+#lego-inv-root .shop-still-needed { font-size: 11px; font-weight: 700; color: var(--lego-orange); background: var(--surface-1); border: 1px solid var(--border); border-radius: 6px; padding: 2px 7px; white-space: nowrap; flex-shrink: 0; }
 #lego-inv-root .shop-in-drawers.insufficient, #lego-inv-root .in-drawers-badge.insufficient { text-decoration: line-through; color: var(--text-danger); border-color: var(--text-danger); }
 #lego-inv-root .shop-desc { font-size: 13px; }
 #lego-inv-root .shop-partnum { color: var(--text-muted); font-size: 12px; }
@@ -305,6 +306,7 @@
   #lego-inv-root .shop-partnum { font-size: 10px; }
   #lego-inv-root .shop-qty { font-size: 11.5px; min-width: 26px; }
   #lego-inv-root .shop-in-drawers, #lego-inv-root .in-drawers-badge { font-size: 10px; padding: 1px 5px; }
+  #lego-inv-root .shop-still-needed { font-size: 10px; padding: 1px 5px; }
   #lego-inv-root .shop-item input[type=checkbox] { width: 13px; height: 13px; }
   #lego-inv-root .lego-subtitle { display: none; }
   #lego-inv-root .shop-thumb { width: 26px; height: 26px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
@@ -556,9 +558,10 @@
           <th style="width:12%" data-sort="moc" id="parts-build-header">Build</th>
           <th style="width:10%" data-sort="partNum">Part #</th>
           <th style="width:10%" data-sort="color">Color</th>
-          <th style="width:24%" data-sort="desc">Description</th>
+          <th style="width:16%" data-sort="desc">Description</th>
           <th style="width:7%" data-sort="qty">Need</th>
           <th style="width:8%" data-sort="onHand">On hand</th>
+          <th style="width:8%">In drawers</th>
           <th style="width:9%" data-sort="priority">Priority</th>
           <th style="width:8%" data-sort="status">Status</th>
           <th style="width:6%"></th>
@@ -2106,6 +2109,7 @@
     refreshDatalists();
     refreshPriorityPickers();
     var combineOn = document.getElementById('combine-parts-toggle').checked;
+    var drawerStock = buildDrawerStockMap();
     var buildHeader = document.getElementById('parts-build-header');
     buildHeader.textContent = combineOn ? 'Used In' : 'Build';
 
@@ -2136,6 +2140,9 @@
         var isOk = it.onHand >= it.need;
         var buildList = Array.from(it.builds).sort();
         var imgCell = '<td class="img-cell"><div class="part-thumb-wrap"></div></td>';
+        var inDrawersCell = isOk
+          ? '<td style="color:var(--text-muted);">&mdash;</td>'
+          : '<td class="wrap-cell">'+((drawerStock[it.partNum+'|'+it.color]||0)).toLocaleString()+'</td>';
         tr.innerHTML =
           imgCell +
           '<td><span class="used-in-count" title="'+escapeHtml(buildList.join(', '))+'">'+buildList.length+' build'+(buildList.length===1?'':'s')+'</span></td>'+
@@ -2144,6 +2151,7 @@
           '<td class="wrap-cell">'+escapeHtml(it.desc)+'</td>'+
           '<td class="wrap-cell">'+it.need.toLocaleString()+'</td>'+
           '<td class="onhand-cell"></td>'+
+          inDrawersCell +
           '<td style="color:var(--text-muted);">&mdash;</td>'+
           '<td><span class="pill '+(isOk?'pill-ok':'pill-short')+'">'+(isOk ? 'Have enough' : 'Short '+(it.need-it.onHand).toLocaleString())+'</span></td>'+
           '<td class="actions-cell"></td>';
@@ -2191,6 +2199,9 @@
       var tr = document.createElement('tr');
       var st = statusFor(r);
       var imgCell = '<td class="img-cell"><div class="part-thumb-wrap"></div></td>';
+      var inDrawersHtml = st === 'ok'
+        ? '<td class="in-drawers-cell" style="color:var(--text-muted);">&mdash;</td>'
+        : '<td class="in-drawers-cell wrap-cell">'+((drawerStock[r.partNum+'|'+r.color]||0)).toLocaleString()+'</td>';
       tr.innerHTML =
         imgCell +
         '<td title="'+escapeHtml(r.moc)+'">'+escapeHtml(r.moc)+'</td>'+
@@ -2199,6 +2210,7 @@
         '<td class="desc-cell"></td>'+
         '<td class="qty-cell"></td>'+
         '<td class="onhand-cell"></td>'+
+        inDrawersHtml +
         '<td class="priority-cell"></td>'+
         '<td><span class="pill '+(st==='ok'?'pill-ok':'pill-short')+'">'+(st==='ok' ? 'Have enough' : 'Short '+(r.qty-r.onHand))+'</span></td>'+
         '<td class="actions-cell"></td>';
@@ -2217,6 +2229,7 @@
           input.classList.toggle('field-missing', !r[field]);
           saveState();
           if (state.tab === 'parts') buildThumb(r, thumbWrap);
+          if (field === 'partNum' || field === 'color') refreshStatus();
         });
         tr.querySelector(cellClass).appendChild(input);
       }
@@ -2229,6 +2242,10 @@
         var st2 = statusFor(r);
         pill.className = 'pill ' + (st2==='ok' ? 'pill-ok' : 'pill-short');
         pill.textContent = st2==='ok' ? 'Have enough' : 'Short ' + (r.qty - r.onHand);
+        var cell = tr.querySelector('.in-drawers-cell');
+        cell.className = st2 === 'ok' ? 'in-drawers-cell' : 'in-drawers-cell wrap-cell';
+        cell.style.color = st2 === 'ok' ? 'var(--text-muted)' : '';
+        cell.textContent = st2 === 'ok' ? '\u2014' : ((drawerStock[r.partNum+'|'+r.color]||0)).toLocaleString();
       }
 
       var qtyInput = document.createElement('input');
@@ -4852,6 +4869,11 @@
     }
     drawerGroupsSorted().forEach(function(g){
       var isOpen = isDrawerGroupOpen(g.group);
+      var groupDrawerIds = {};
+      g.drawers.forEach(function(d){ groupDrawerIds[d.id] = true; });
+      var groupParts = drawerParts.filter(function(p){ return groupDrawerIds[p.drawerId]; });
+      var partLines = groupParts.length;
+      var totalPieces = groupParts.reduce(function(sum, p){ return sum + (p.qty || 0); }, 0);
       var headerRow = document.createElement('div');
       headerRow.style.cssText = 'display:flex; align-items:center; gap:6px; margin:10px 0 6px;';
 
@@ -4862,7 +4884,7 @@
       header.innerHTML =
         '<i class="ti '+(isOpen ? 'ti-chevron-down' : 'ti-chevron-right')+'" aria-hidden="true"></i>' +
         '<span>'+escapeHtml(g.group)+'</span>' +
-        '<span class="theme-group-count">('+g.drawers.length+')</span>';
+        '<span class="theme-group-count">('+g.drawers.length+' drawer'+(g.drawers.length===1?'':'s')+' &middot; '+partLines.toLocaleString()+' unique part line'+(partLines===1?'':'s')+' &middot; '+totalPieces.toLocaleString()+' piece'+(totalPieces===1?'':'s')+')</span>';
 
       var body = document.createElement('div');
       body.style.display = isOpen ? 'block' : 'none';
@@ -9810,11 +9832,14 @@
     });
   }
 
-  function buildShopItemRow(r, key, needCount, resolveInfo){
+  function buildShopItemRow(r, key, needCount, resolveInfo, rawNeedCount, netNeedCount){
     if (resolveInfo) tallyRowResolvers[key] = resolveInfo;
+    if (rawNeedCount === undefined) rawNeedCount = needCount;
+    if (netNeedCount === undefined) netNeedCount = needCount;
     var inDrawers = shopDrawerStockDisplay[r.partNum + '|' + r.color] || 0;
-    var inDrawersInsufficient = needCount > inDrawers;
+    var inDrawersInsufficient = rawNeedCount > inDrawers;
     var inDrawersHtml = inDrawers > 0 ? '<span class="shop-in-drawers'+(inDrawersInsufficient ? ' insufficient' : '')+'" title="'+(inDrawersInsufficient ? 'Not enough in drawers to fully cover what\u2019s needed' : 'Currently sitting in a drawer, across all your drawers')+'">'+inDrawers.toLocaleString()+' in drawers</span>' : '';
+    var stillNeededHtml = '<span class="shop-still-needed" title="Still needed once drawer stock is applied">'+netNeedCount.toLocaleString()+' still needed</span>';
     if (shopTallyMode){
       var count = tallyCounts[key] || 0;
       var item = document.createElement('div');
@@ -9827,7 +9852,9 @@
         '<div class="shop-item-tally-top">' +
           '<span class="part-thumb-wrap shop-thumb"></span>' +
           '<span class="shop-desc">'+escapeHtml(r.color)+' '+escapeHtml(r.desc)+' <span class="shop-partnum">#'+escapeHtml(r.partNum)+'</span></span>' +
+          '<span class="shop-qty" title="Originally needed">'+rawNeedCount.toLocaleString()+' needed</span>' +
           inDrawersHtml +
+          stillNeededHtml +
         '</div>' +
         '<div class="tally-controls-row">' +
           '<select class="tally-drawer-select lockable" aria-label="Drawer for this part">'+drawerOptions+'</select>' +
@@ -9886,9 +9913,10 @@
     item.className = 'shop-item' + (isChecked ? ' checked' : '');
     item.innerHTML = '<input type="checkbox" data-key="'+escapeHtml(key)+'" '+(isChecked?'checked':'')+' />' +
       '<span class="part-thumb-wrap shop-thumb"></span>' +
-      '<span class="shop-qty">'+needCount+'&times;</span>' +
+      '<span class="shop-qty" title="Originally needed">'+rawNeedCount.toLocaleString()+'&times;</span>' +
       '<span class="shop-desc">'+escapeHtml(r.color)+' '+escapeHtml(r.desc)+' <span class="shop-partnum">#'+escapeHtml(r.partNum)+'</span></span>' +
       inDrawersHtml +
+      stillNeededHtml +
       '<span class="shop-tally-box"><span class="tally-label">Found</span><span class="tally-blank"></span></span>';
     buildThumb(r, item.querySelector('.part-thumb-wrap'));
     var cb = item.querySelector('input[type=checkbox]');
@@ -10009,7 +10037,7 @@
           if (hideFullyCovered && needCount <= 0) return;
         }
         if (!passesShopFilters(r, q, colorFilter, minQty, needCount, priorityFilter)) return;
-        pool.push({ row: r, need: needCount });
+        pool.push({ row: r, need: needCount, rawNeed: rawNeed });
       });
     });
 
@@ -10027,26 +10055,47 @@
         textContent: 'Nothing matches your filters for the selected builds.'
       }));
       output.appendChild(frag);
-      summaryEl.innerHTML = statBlock(0, 0);
+      summaryEl.innerHTML = statBlock(0, 0, 0, 0);
       return;
     }
 
     var uniqueParts = new Set(pool.map(function(p){ return p.row.partNum + '|' + p.row.color; })).size;
-    var totalPieces = pool.reduce(function(sum, p){ return sum + p.need; }, 0);
-    summaryEl.innerHTML = statBlock(uniqueParts, totalPieces);
+    var totalPieces = pool.reduce(function(sum, p){ return sum + p.rawNeed; }, 0);
+
+    // Independently of the "subtract drawer stock" toggle above, work out what's still needed
+    // once drawer stock is applied, so the summary and every row always show both the raw and net picture.
+    var netDrawerPool = Object.assign({}, shopDrawerStockDisplay);
+    var netUniquePartsSet = {};
+    var netTotalPieces = 0;
+    pool.forEach(function(p){
+      var pcKey = p.row.partNum + '|' + p.row.color;
+      var avail = netDrawerPool[pcKey] || 0;
+      var claimed = Math.min(avail, p.rawNeed);
+      netDrawerPool[pcKey] = avail - claimed;
+      var remaining = p.rawNeed - claimed;
+      p.netNeed = remaining;
+      if (remaining > 0){
+        netUniquePartsSet[pcKey] = true;
+        netTotalPieces += remaining;
+      }
+    });
+    var netUniqueParts = Object.keys(netUniquePartsSet).length;
+    summaryEl.innerHTML = statBlock(uniqueParts, totalPieces, netUniqueParts, netTotalPieces);
 
     if (combine){
       var byKey = {};
       pool.forEach(function(p){
         var comboKey = p.row.partNum + '|' + p.row.color;
         if (!byKey[comboKey]){
-          byKey[comboKey] = { partNum: p.row.partNum, color: p.row.color, desc: p.row.desc, elementId: p.row.elementId, need: 0, builds: {} };
+          byKey[comboKey] = { partNum: p.row.partNum, color: p.row.color, desc: p.row.desc, elementId: p.row.elementId, need: 0, rawNeed: 0, netNeed: 0, builds: {} };
         }
         byKey[comboKey].need += p.need;
+        byKey[comboKey].rawNeed += p.rawNeed;
+        byKey[comboKey].netNeed += p.netNeed;
         byKey[comboKey].builds[p.row.moc] = true;
       });
       var comboItems = Object.keys(byKey).map(function(k){ return byKey[k]; });
-      comboItems.forEach(function(it){ it._need = it.need; it._buildLabel = Object.keys(it.builds).sort().join(', '); });
+      comboItems.forEach(function(it){ it._need = it.need; it._rawNeed = it.rawNeed; it._netNeed = it.netNeed; it._buildLabel = Object.keys(it.builds).sort().join(', '); });
       comboItems.sort(shopCompoundComparator(sortRules));
 
       var section = document.createElement('div');
@@ -10072,14 +10121,14 @@
         appendGroupedItems(list, displayComboItems, sortRules[0].field, false, function(it){
           var key = 'combo|' + it.partNum + '|' + it.color;
           var fakeRow = { partNum: it.partNum, color: it.color, desc: it.desc, elementId: it.elementId };
-          return buildShopItemRow(fakeRow, key, it.need, { mode: 'combo', partNum: it.partNum, color: it.color });
+          return buildShopItemRow(fakeRow, key, it.need, { mode: 'combo', partNum: it.partNum, color: it.color }, it.rawNeed, it.netNeed);
         });
       }
       section.appendChild(list);
       frag.appendChild(section);
     } else {
       names.forEach(function(moc){
-        var rows = pool.filter(function(p){ return p.row.moc === moc; }).map(function(p){ p.row._need = p.need; p.row._buildLabel = moc; return p.row; });
+        var rows = pool.filter(function(p){ return p.row.moc === moc; }).map(function(p){ p.row._need = p.need; p.row._rawNeed = p.rawNeed; p.row._netNeed = p.netNeed; p.row._buildLabel = moc; return p.row; });
         if (!rows.length) return;
         rows = rows.slice().sort(shopCompoundComparator(sortRules));
 
@@ -10105,7 +10154,7 @@
         } else {
           appendGroupedItems(list, displayRows, sortRules[0].field, sortRules[0].field === 'build', function(r){
             var key = itemKey(r);
-            return buildShopItemRow(r, key, r._need, { mode: 'single', partNum: r.partNum, color: r.color, moc: r.moc });
+            return buildShopItemRow(r, key, r._need, { mode: 'single', partNum: r.partNum, color: r.color, moc: r.moc }, r._rawNeed, r._netNeed);
           });
         }
         section.appendChild(list);
@@ -10117,9 +10166,11 @@
     updateShopTally();
   }
 
-  function statBlock(uniqueParts, totalPieces){
+  function statBlock(uniqueParts, totalPieces, netUniqueParts, netTotalPieces){
     return '<div><div class="stat-value">'+uniqueParts.toLocaleString()+'</div><div class="stat-label">Unique parts</div></div>' +
-      '<div><div class="stat-value">'+totalPieces.toLocaleString()+'</div><div class="stat-label">Total pieces needed</div></div>';
+      '<div><div class="stat-value">'+totalPieces.toLocaleString()+'</div><div class="stat-label">Total pieces needed</div></div>' +
+      '<div style="border-left:2px solid var(--border); padding-left:20px; margin-left:-2px;"><div class="stat-value" style="color:var(--lego-green);">'+netUniqueParts.toLocaleString()+'</div><div class="stat-label">Unique parts still needed<br/>after drawers</div></div>' +
+      '<div><div class="stat-value" style="color:var(--lego-green);">'+netTotalPieces.toLocaleString()+'</div><div class="stat-label">Pieces still needed<br/>after drawers</div></div>';
   }
 
   function loadChecklist(){
