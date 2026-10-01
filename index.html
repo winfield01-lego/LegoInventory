@@ -121,7 +121,8 @@
 #lego-inv-root .owned-set-card .set-edit-field input { width: 140px; height: 28px; padding: 3px 8px; font-size: 12px; border: 2px solid var(--border); border-radius: 8px; background: var(--surface-1); color: var(--text-primary); }
 #lego-inv-root .owned-set-card .set-edit-field input:focus { outline: none; border-color: var(--lego-blue); }
 #lego-inv-root .drawer-card { display: flex; align-items: center; gap: 12px; background: var(--surface-2); border: 2px solid var(--border); border-radius: 10px; padding: 8px 12px; margin-bottom: 6px; flex-wrap: wrap; }
-#lego-inv-root .theme-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--surface-2); border: 2px solid var(--border); border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; margin: 0 6px 6px 0; }
+#lego-inv-root .theme-chip { display: inline-flex; align-items: center; gap: 6px; background: var(--surface-2); border: 2px solid var(--border); border-radius: 20px; padding: 4px 12px; font-size: 12px; font-weight: 700; margin: 0 6px 6px 0; cursor: pointer; }
+#lego-inv-root .theme-chip:hover { border-color: var(--lego-blue); background: var(--surface-1); }
 #lego-inv-root .theme-group-header { display: flex; align-items: center; gap: 8px; width: 100%; background: var(--surface-1); border: 2px solid var(--border); border-radius: 10px; padding: 8px 12px; margin: 10px 0 6px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--lego-black); cursor: pointer; text-align: left; }
 #lego-inv-root .collapse-section { margin-bottom: 12px; }
 #lego-inv-root .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; align-items: start; }
@@ -495,6 +496,13 @@
     <div class="collapse-body" id="cs-overview-sets" style="display:none;">
       <input type="text" id="overview-sets-search" placeholder="Search sets" style="width: 100%; margin-bottom: 10px;" />
       <div id="overview-sets-list"></div>
+    </div>
+  </div>
+
+  <div style="margin-top: 2.5rem;">
+    <button type="button" class="collapse-header" data-collapse-target="cs-location-spotlight" style="font-size: 11px; font-weight: 600; text-transform: none; letter-spacing: normal; padding: 5px 10px; background: transparent; border: 1px solid var(--border); color: var(--text-muted); width: auto;"><i class="ti ti-chevron-right" aria-hidden="true" style="font-size:12px;"></i><span>At Zorah's House</span></button>
+    <div class="collapse-body" id="cs-location-spotlight" style="display:none; margin-top: 8px;">
+      <div id="location-spotlight-content"></div>
     </div>
   </div>
 </div>
@@ -1794,9 +1802,33 @@
     });
   }
 
+  var SPOTLIGHT_LOCATION_NAME = "Zorah's House";
+
+  function renderLocationSpotlight(){
+    var container = document.getElementById('location-spotlight-content');
+    if (!container) return;
+    var mocMatches = mocBuilds.filter(function(b){ return (mocLocations[b.name] || '') === SPOTLIGHT_LOCATION_NAME; }).map(function(b){ return b.name; }).sort();
+    var setMatches = ownedSets.filter(function(s){ return (s.location || '') === SPOTLIGHT_LOCATION_NAME; }).slice().sort(function(a,b){ return a.setNum.localeCompare(b.setNum, undefined, {numeric:true}); });
+    if (!mocMatches.length && !setMatches.length){
+      container.innerHTML = '<p class="empty-msg" style="margin:0;">Nothing is currently assigned to \u201c'+escapeHtml(SPOTLIGHT_LOCATION_NAME)+'\u201d.</p>';
+      return;
+    }
+    var html = '';
+    if (mocMatches.length){
+      html += '<p style="margin:0 0 4px; font-size:11px; font-weight:700; text-transform:uppercase; color:var(--text-secondary);">MOC Builds ('+mocMatches.length+')</p>';
+      html += '<ul style="margin:0 0 10px; padding-left:18px; font-size:13px;">' + mocMatches.map(function(n){ return '<li>'+escapeHtml(n)+'</li>'; }).join('') + '</ul>';
+    }
+    if (setMatches.length){
+      html += '<p style="margin:0 0 4px; font-size:11px; font-weight:700; text-transform:uppercase; color:var(--text-secondary);">Official Sets ('+setMatches.length+')</p>';
+      html += '<ul style="margin:0; padding-left:18px; font-size:13px;">' + setMatches.map(function(s){ return '<li>'+escapeHtml(s.setNum)+(s.name ? ' \u2014 '+escapeHtml(s.name) : '')+'</li>'; }).join('') + '</ul>';
+    }
+    container.innerHTML = html;
+  }
+
   function renderOverview(){
     ensureMocBuildsSynced();
     document.getElementById('build-location-input').innerHTML = locationOptionsHtml('');
+    renderLocationSpotlight();
     var mocs = computeMocs();
     var totalNeed = 0, totalHave = 0;
     state.rows.forEach(function(r){ totalNeed += r.qty; totalHave += Math.min(r.onHand,r.qty); });
@@ -3106,8 +3138,18 @@
     }
     var groups = mocBuildThemeGroupsSorted(mocs);
     container.innerHTML = groups.map(function(g){
-      return '<span class="theme-chip">'+escapeHtml(g.theme)+' <span class="theme-chip-count">'+g.mocs.length+'</span></span>';
+      return '<span class="theme-chip" data-theme-jump="'+escapeHtml(g.theme)+'">'+escapeHtml(g.theme)+' <span class="theme-chip-count">'+g.mocs.length+'</span></span>';
     }).join('');
+  }
+
+  function jumpToThemeGroup(theme, expandedSet, renderFn, containerId){
+    expandedSet.add(theme);
+    renderFn();
+    requestAnimationFrame(function(){
+      var headers = document.querySelectorAll('#' + containerId + ' .theme-group-header');
+      var match = Array.from(headers).find(function(h){ return h.dataset.themeAnchor === theme; });
+      if (match) match.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
   }
 
   function renderMocBuildsList(){
@@ -3132,6 +3174,7 @@
       var header = document.createElement('button');
       header.type = 'button';
       header.className = 'theme-group-header';
+      header.dataset.themeAnchor = g.theme;
       header.innerHTML =
         '<i class="ti '+(isOpen ? 'ti-chevron-down' : 'ti-chevron-right')+'" aria-hidden="true"></i>' +
         '<span>'+escapeHtml(g.theme)+'</span>' +
@@ -3426,7 +3469,7 @@
     }
     var groups = themeGroupsSorted();
     container.innerHTML = groups.map(function(g){
-      return '<span class="theme-chip">'+escapeHtml(g.theme)+' <span class="theme-chip-count">'+g.sets.length+'</span></span>';
+      return '<span class="theme-chip" data-theme-jump="'+escapeHtml(g.theme)+'">'+escapeHtml(g.theme)+' <span class="theme-chip-count">'+g.sets.length+'</span></span>';
     }).join('');
   }
 
@@ -3446,6 +3489,7 @@
       var header = document.createElement('button');
       header.type = 'button';
       header.className = 'theme-group-header';
+      header.dataset.themeAnchor = g.theme;
       header.innerHTML =
         '<i class="ti '+(isOpen ? 'ti-chevron-down' : 'ti-chevron-right')+'" aria-hidden="true"></i>' +
         '<span>'+escapeHtml(g.theme)+'</span>' +
@@ -6976,6 +7020,16 @@
     renderSetsTab();
   });
 
+  document.getElementById('mocbuild-theme-summary-list').addEventListener('click', function(e){
+    var chip = e.target.closest('[data-theme-jump]');
+    if (!chip) return;
+    jumpToThemeGroup(chip.dataset.themeJump, expandedMocBuildThemes, function(){ renderMocBuildsList(); }, 'moc-builds-list');
+  });
+  document.getElementById('theme-summary-list').addEventListener('click', function(e){
+    var chip = e.target.closest('[data-theme-jump]');
+    if (!chip) return;
+    jumpToThemeGroup(chip.dataset.themeJump, expandedThemes, function(){ renderOwnedSetsList(); }, 'owned-sets-list');
+  });
   document.getElementById('build-add-btn').addEventListener('click', function(){
     var name = document.getElementById('build-name-input').value.trim();
     var location = document.getElementById('build-location-input').value.trim();
