@@ -1419,6 +1419,10 @@
       <div id="bag-saved-list"></div>
     </div>
     <input type="text" id="bag-drawer-search-input" placeholder="Search your drawers by part #, description, or color&hellip;" style="width:100%; margin-bottom:8px;" />
+    <div class="row" style="gap:8px; margin-bottom:8px; flex-wrap:wrap;">
+      <select id="bag-drawer-filter-group" style="flex:1; min-width:140px;"><option value="">All drawer groups</option></select>
+      <select id="bag-drawer-filter-drawer" style="flex:1; min-width:140px;"><option value="">All drawers</option></select>
+    </div>
     <div id="bag-drawer-search-results" style="max-height:280px; overflow-y:auto; margin-bottom:10px; border:1px solid var(--border); border-radius:8px; padding:4px; display:none;"></div>
     <p id="bag-drawer-search-empty" style="display:none; margin:0 0 10px; color:var(--text-muted); font-size:12px;">No match in your drawers for that search.</p>
     <div class="row" style="align-items:center; gap:8px; margin-bottom:14px; flex-wrap:wrap; background:var(--surface-1); border:1px solid var(--border); border-radius:8px; padding:8px 10px;">
@@ -6512,9 +6516,9 @@
       var result = partForms.bag.addMultiple([{ partNum: partNum, color: color, desc: desc, elementId: elementId, qty: 1 }]);
       setPartSearchStatus(result.message, !result.ok);
     },
-    addMultiple: function(rows){
+    addMultiple: function(rows, forcedDrawerId){
       var addedQty = 0;
-      var preselect = document.getElementById('bag-catalog-preselect-drawer').value;
+      var preselect = forcedDrawerId || document.getElementById('bag-catalog-preselect-drawer').value;
       rows.forEach(function(r){
         var qty = r.qty || 1;
         addedQty += qty;
@@ -6603,10 +6607,18 @@
     });
   }
 
-  function getDistinctDrawerPartColors(){
+  function getDistinctDrawerPartColors(groupFilter, drawerFilter){
     var map = {};
     var order = [];
+    var drawerIndex = {};
+    drawers.forEach(function(d){ drawerIndex[d.id] = d; });
     drawerParts.forEach(function(p){
+      if (drawerFilter && p.drawerId !== drawerFilter) return;
+      if (groupFilter){
+        var d = drawerIndex[p.drawerId];
+        var g = d && d.group && d.group.trim() ? d.group.trim() : DRAWER_UNGROUPED_LABEL;
+        if (g !== groupFilter) return;
+      }
       var key = normKey(p.partNum) + '|' + normKey(p.color);
       if (!map[key]){
         map[key] = { partNum: p.partNum, color: p.color, desc: p.desc, elementId: p.elementId || '', totalQty: 0, drawerIds: [] };
@@ -6625,9 +6637,11 @@
 
   function renderBagDrawerSearchResults(){
     var q = normKey(document.getElementById('bag-drawer-search-input').value);
+    var groupFilter = document.getElementById('bag-drawer-filter-group').value;
+    var drawerFilter = document.getElementById('bag-drawer-filter-drawer').value;
     var resultsEl = document.getElementById('bag-drawer-search-results');
     var emptyEl = document.getElementById('bag-drawer-search-empty');
-    var all = getDistinctDrawerPartColors();
+    var all = getDistinctDrawerPartColors(groupFilter, drawerFilter);
     var matches = q ? all.filter(function(it){
       var hay = normKey(it.partNum) + ' ' + normKey(it.desc) + ' ' + normKey(it.color);
       return hay.indexOf(q) !== -1;
@@ -6636,7 +6650,8 @@
     if (!matches.length){
       resultsEl.style.display = 'none';
       emptyEl.style.display = 'block';
-      emptyEl.textContent = q ? 'No match in your drawers for that search.' : 'Nothing in any drawer yet.';
+      var scopeNote = drawerFilter ? ' in that drawer' : (groupFilter ? ' in that group' : '');
+      emptyEl.textContent = q ? ('No match' + scopeNote + ' for that search.') : ('Nothing' + scopeNote + ' yet.');
       return;
     }
     emptyEl.style.display = 'none';
@@ -6665,7 +6680,8 @@
           qtyInput.focus();
           return;
         }
-        partForms.bag.addMultiple([{ partNum: it.partNum, color: it.color, desc: it.desc, elementId: it.elementId, qty: qty }]);
+        var drawerFilterVal = document.getElementById('bag-drawer-filter-drawer').value;
+        partForms.bag.addMultiple([{ partNum: it.partNum, color: it.color, desc: it.desc, elementId: it.elementId, qty: qty }], drawerFilterVal || null);
         qtyInput.value = '';
         qtyInput.style.borderColor = '';
       });
@@ -6675,6 +6691,19 @@
   }
 
   document.getElementById('bag-drawer-search-input').addEventListener('input', renderBagDrawerSearchResults);
+  document.getElementById('bag-drawer-filter-group').addEventListener('change', function(){
+    var groupVal = this.value;
+    var drawerSel = document.getElementById('bag-drawer-filter-drawer');
+    var curDrawer = drawerSel.value;
+    if (curDrawer && groupVal){
+      var d = drawers.find(function(x){ return x.id === curDrawer; });
+      var dGroup = d && d.group && d.group.trim() ? d.group.trim() : DRAWER_UNGROUPED_LABEL;
+      if (dGroup !== groupVal) curDrawer = '';
+    }
+    drawerSel.innerHTML = drawerOptGroupsHtml(curDrawer, 'All drawers', groupVal);
+    renderBagDrawerSearchResults();
+  });
+  document.getElementById('bag-drawer-filter-drawer').addEventListener('change', renderBagDrawerSearchResults);
 
   function defaultBagLabel(){
     var d = new Date();
@@ -6749,10 +6778,20 @@
     renderBagSavedList();
   }
 
+  function populateBagDrawerFilters(){
+    var groupSel = document.getElementById('bag-drawer-filter-group');
+    var drawerSel = document.getElementById('bag-drawer-filter-drawer');
+    var groups = drawerGroupsSorted();
+    groupSel.innerHTML = '<option value="">All drawer groups</option>' + groups.map(function(g){ return '<option value="'+escapeHtml(g.group)+'">'+escapeHtml(g.group)+'</option>'; }).join('');
+    groupSel.value = '';
+    drawerSel.innerHTML = drawerOptGroupsHtml('', 'All drawers', '');
+  }
+
   function openBagInventory(){
     document.getElementById('bag-inventory-overlay').style.display = 'flex';
     document.getElementById('bag-inventory-status').textContent = '';
     document.getElementById('bag-drawer-search-input').value = '';
+    populateBagDrawerFilters();
     var labelInput = document.getElementById('bag-inventory-label');
     var statusEl = document.getElementById('bag-inventory-status');
     if (!bagStagingItems.length && bagSavedProgressList.length){
