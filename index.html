@@ -872,6 +872,28 @@
   <div class="collapse-section">
     <button type="button" class="collapse-header" data-collapse-target="cs-manage-drawers"><i class="ti ti-chevron-down" aria-hidden="true"></i><span>Manage Drawers &amp; Add Parts</span></button>
     <div class="collapse-body" id="cs-manage-drawers" style="display:block;">
+      <div style="background: var(--surface-1); border: 2px solid var(--lego-blue); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 20px;">
+        <p style="margin: 0 0 8px; font-weight: 700; color: var(--lego-black);">Quick add: search for a part, enter how many you have of each color</p>
+        <p style="margin: 0 0 10px; color: var(--text-secondary); font-size: 13px;">
+          Search the full LEGO catalog, pick a part, then enter a quantity for as many colors as you have &mdash; pick one drawer and they all get added to it in one go.
+        </p>
+        <button id="quick-add-drawer-search-btn" class="lockable"><i class="ti ti-search" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Search parts to add to a drawer</button>
+      </div>
+
+      <div style="background: var(--surface-1); border: 2px solid var(--lego-purple); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 20px;">
+        <p style="margin: 0 0 8px; font-weight: 700; color: var(--lego-black);">Inventory a bag: catalog several parts, then send them all to drawers at once</p>
+        <p style="margin: 0 0 10px; color: var(--text-secondary); font-size: 13px;">
+          Working through a whole bag of loose parts? Search and add each one to a list, then choose a drawer for anything that's new or split across more than one drawer &mdash; everything else is matched up for you automatically.
+        </p>
+        <div class="row" style="gap:8px;">
+          <button id="bag-inventory-open-btn" class="lockable"><i class="ti ti-package" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Inventory a bag</button>
+          <button id="bag-log-open-btn" class="icon-btn"><i class="ti ti-history" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> View bag log</button>
+        </div>
+      </div>
+
+      <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 8px;">Your drawers</p>
+      <div id="drawer-cards-list" style="margin-bottom: 20px;"></div>
+
       <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 16px;">
         <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Add a drawer</p>
         <div class="controls" style="margin-bottom: 0;">
@@ -911,28 +933,6 @@
           </div>
         </div>
       </div>
-
-      <div style="background: var(--surface-1); border: 2px solid var(--lego-blue); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 20px;">
-        <p style="margin: 0 0 8px; font-weight: 700; color: var(--lego-black);">Quick add: search for a part, enter how many you have of each color</p>
-        <p style="margin: 0 0 10px; color: var(--text-secondary); font-size: 13px;">
-          Search the full LEGO catalog, pick a part, then enter a quantity for as many colors as you have &mdash; pick one drawer and they all get added to it in one go.
-        </p>
-        <button id="quick-add-drawer-search-btn" class="lockable"><i class="ti ti-search" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Search parts to add to a drawer</button>
-      </div>
-
-      <div style="background: var(--surface-1); border: 2px solid var(--lego-purple); border-radius: var(--radius); padding: 14px 16px; margin-bottom: 20px;">
-        <p style="margin: 0 0 8px; font-weight: 700; color: var(--lego-black);">Inventory a bag: catalog several parts, then send them all to drawers at once</p>
-        <p style="margin: 0 0 10px; color: var(--text-secondary); font-size: 13px;">
-          Working through a whole bag of loose parts? Search and add each one to a list, then choose a drawer for anything that's new or split across more than one drawer &mdash; everything else is matched up for you automatically.
-        </p>
-        <div class="row" style="gap:8px;">
-          <button id="bag-inventory-open-btn" class="lockable"><i class="ti ti-package" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Inventory a bag</button>
-          <button id="bag-log-open-btn" class="icon-btn"><i class="ti ti-history" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> View bag log</button>
-        </div>
-      </div>
-
-      <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 8px;">Your drawers</p>
-      <div id="drawer-cards-list" style="margin-bottom: 20px;"></div>
 
       <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 10px 16px; margin-bottom: 20px; font-size: 13px; color: var(--text-secondary);">
         Want to bulk-import a drawer's parts from a CSV? See "Drawer Parts Upload" on the Import tab.
