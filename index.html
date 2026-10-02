@@ -460,12 +460,16 @@
         <i id="almost-complete-drawer-ready-chevron" class="ti ti-chevron-right" style="font-size:13px;" aria-hidden="true"></i>
         <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Ready to complete from drawers</span>
       </button>
-      <div class="row" style="gap:8px;">
-        <button id="almost-complete-drawer-ready-csv-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate CSV</button>
-        <button id="almost-complete-drawer-ready-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate PDF</button>
-      </div>
     </div>
     <p style="margin: 0 0 10px; color: var(--text-secondary); font-size: 13px;">Almost-complete builds and sets (using the same threshold above) where every missing part is fully covered by what's already sitting in a drawer &mdash; gather these and they're done.</p>
+    <div class="row" style="gap:10px; align-items:center; margin-bottom: 8px; padding-top:8px; border-top: 1px solid var(--border); flex-wrap:wrap;">
+      <select id="almost-complete-drawer-ready-layout" title="Page layout">
+        <option value="portrait">Portrait</option>
+        <option value="landscape">Landscape</option>
+      </select>
+      <button id="almost-complete-drawer-ready-csv-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate CSV</button>
+      <button id="almost-complete-drawer-ready-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate PDF</button>
+    </div>
     <div id="almost-complete-drawer-ready-list" style="display:none;"></div>
   </div>
 
@@ -475,12 +479,26 @@
         <i id="drawer-helps-sets-chevron" class="ti ti-chevron-right" style="font-size:13px;" aria-hidden="true"></i>
         <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Drawer parts that could help your official sets</span>
       </button>
-      <div class="row" style="gap:8px;">
-        <button id="drawer-helps-sets-csv-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Report (CSV)</button>
-        <button id="drawer-helps-sets-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Report (PDF)</button>
-      </div>
     </div>
     <p style="margin: 0 0 10px; color: var(--text-secondary); font-size: 13px;">For each official set you own, parts sitting in a drawer that the set is still short on &mdash; in case you'd rather use them there than buy new.</p>
+    <div class="row" style="gap:10px; align-items:center; margin-bottom: 8px; padding-top:8px; border-top: 1px solid var(--border); flex-wrap:wrap;">
+      <select id="drawer-helps-sets-filter" title="Which matches to include">
+        <option value="all">All matches</option>
+        <option value="full">Would fully cover the shortage</option>
+        <option value="partial">Would only partially cover</option>
+      </select>
+      <select id="drawer-helps-sets-sort" title="Sort order">
+        <option value="set">Sort by set</option>
+        <option value="helpby">Sort by how much it would help</option>
+        <option value="color">Sort by color</option>
+      </select>
+      <select id="drawer-helps-sets-layout" title="Page layout">
+        <option value="portrait">Portrait</option>
+        <option value="landscape">Landscape</option>
+      </select>
+      <button id="drawer-helps-sets-csv-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Report (CSV)</button>
+      <button id="drawer-helps-sets-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Report (PDF)</button>
+    </div>
     <div id="drawer-helps-sets-list" style="display:none;"></div>
   </div>
 
@@ -782,6 +800,17 @@
     <div class="row">
       <button id="fill-element-ids-btn" class="lockable"><i class="ti ti-barcode" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Look up missing element IDs</button>
       <span id="fill-element-ids-status" style="font-size:13px; color:var(--text-secondary);"></span>
+    </div>
+  </div>
+
+  <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
+    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Backfill missing photos</p>
+    <p style="color: var(--text-secondary); margin: 0 0 10px;">
+      For older part lines that still show no photo, this uses the same lookup the part search and Inventory a Bag use to find and save one &mdash; even for lines whose color doesn't exactly match Rebrickable's own naming, or where no element ID is known. It'll fill in a missing element ID along the way when one's available, then fetch and cache the photo itself (uploading it to your site if GitHub Connection is set up, otherwise saving it in this browser) so it shows up immediately rather than waiting on a live fetch. Only touches part lines that still show no photo right now &mdash; skips anything already showing one.
+    </p>
+    <div class="row">
+      <button id="backfill-photos-btn" class="lockable"><i class="ti ti-photo-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Backfill missing photos</button>
+      <span id="backfill-photos-status" style="font-size:13px; color:var(--text-secondary);"></span>
     </div>
   </div>
 
@@ -2601,54 +2630,130 @@
       var imgMap = {};
       pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
 
-      var doc = layout === 'landscape' ? new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' }) : getPdfDoc();
+      var landscape = layout === 'landscape';
+      var doc = landscape ? new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' }) : getPdfDoc();
       if (!doc) return;
       pdfHeader(doc, 'Almost Complete \u2014 Parts Needed',
         'Generated ' + new Date().toLocaleDateString() + ' \u00b7 missing ' + threshold + ' pieces or fewer \u00b7 ' + items.length + ' item' + (items.length===1?'':'s') + ' shown');
 
-      var body = [];
-      var rowMeta = [];
-      items.forEach(function(it){
-        var typeLabel = it.type === 'moc' ? 'MOC Build' : 'Official Set';
-        body.push([{
-          content: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' piece' + (it.missing===1?'':'s') + ' total',
-          colSpan: 5,
-          styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] }
-        }]);
-        rowMeta.push(null);
-        if (!it.parts.length){
-          body.push([{ content: 'No specific part shortages recorded.', colSpan: 5, styles: { fontStyle: 'italic', textColor: [130, 130, 130] } }]);
+      function imgFor(p){ return p && p.elementId && imgMap[p.elementId]; }
+      function drawImg(dataUrl, cell, mode){
+        if (!dataUrl) return;
+        try {
+          var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
+          var size = pdfThumbImageSize(mode);
+          var pad = (Math.min(cell.height, cell.width) - size) / 2;
+          doc.addImage(dataUrl, format, cell.x + pad, cell.y + pad, size, size);
+        } catch(e){ /* skip malformed image, leave cell blank */ }
+      }
+
+      if (!landscape){
+        var body = [];
+        var rowMeta = [];
+        items.forEach(function(it){
+          var typeLabel = it.type === 'moc' ? 'MOC Build' : 'Official Set';
+          body.push([{
+            content: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' piece' + (it.missing===1?'':'s') + ' total',
+            colSpan: 5,
+            styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] }
+          }]);
           rowMeta.push(null);
-        } else {
-          it.parts.forEach(function(p){
-            body.push(['', p.partNum, p.color, p.desc, String(p.short)]);
-            rowMeta.push(p);
-          });
-        }
+          if (!it.parts.length){
+            body.push([{ content: 'No specific part shortages recorded.', colSpan: 5, styles: { fontStyle: 'italic', textColor: [130, 130, 130] } }]);
+            rowMeta.push(null);
+          } else {
+            it.parts.forEach(function(p){
+              body.push(['', p.partNum, p.color, truncateForPdf(p.desc, 38), String(p.short)]);
+              rowMeta.push(p);
+            });
+          }
+        });
+
+        doc.autoTable({
+          startY: 70,
+          margin: { top: 70, right: 40, bottom: 30, left: 40 },
+          head: [['','Part #','Color','Description','Short']],
+          body: body,
+          styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: PDF_THUMB.single.rowHeight, valign: 'middle' },
+          headStyles: { fillColor: [0, 166, 94], textColor: 255 },
+          columnStyles: { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 55 }, 2: { cellWidth: 46 }, 3: { cellWidth: 255 }, 4: { cellWidth: 50 } },
+          didDrawCell: function(data){
+            if (data.section !== 'body' || data.column.index !== 0) return;
+            var p = rowMeta[data.row.index];
+            if (!p) return;
+            drawImg(imgFor(p), data.cell, 'single');
+          }
+        });
+        doc.save('lego-almost-complete-parts-needed.pdf');
+        return;
+      }
+
+      // Landscape: 2-column split, keeping each build/set's lines together in one column.
+      var groups = items.map(function(it){
+        var typeLabel = it.type === 'moc' ? 'MOC Build' : 'Official Set';
+        var rows = it.parts.length ? it.parts.slice() : [{ noShortage: true }];
+        return { header: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' pc' + (it.missing===1?'':'s'), rows: rows };
       });
+      var split = splitGroupsForTwoColumns(groups);
+
+      function flattenSide(side){
+        var rows = [];
+        side.forEach(function(g){
+          rows.push({ isHeader: true, label: g.header });
+          g.rows.forEach(function(p){ rows.push({ isHeader: false, p: p }); });
+        });
+        return rows;
+      }
+      var leftRows = flattenSide(split.left);
+      var rightRows = flattenSide(split.right);
+      var rowCount = Math.max(leftRows.length, rightRows.length);
+
+      function cellsFor(entry){
+        if (!entry) return ['', '', '', ''];
+        if (entry.isHeader) return [{ content: entry.label, colSpan: 4, styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] } }];
+        if (entry.p.noShortage) return [{ content: 'No specific part shortages recorded.', colSpan: 4, styles: { fontStyle: 'italic', textColor: [130, 130, 130] } }];
+        var p = entry.p;
+        return ['', p.partNum, p.color, truncateForPdf(p.desc, 22) + '  (' + p.short + ')'];
+      }
+
+      var body2 = [];
+      var meta2 = [];
+      for (var i = 0; i < rowCount; i++){
+        var L = leftRows[i], R = rightRows[i];
+        body2.push(cellsFor(L).concat(['']).concat(cellsFor(R)));
+        meta2.push([L && !L.isHeader && !L.p.noShortage ? L.p : null, R && !R.isHeader && !R.p.noShortage ? R.p : null]);
+      }
 
       doc.autoTable({
         startY: 70,
-        head: [['','#','Color','Description','Short']],
-        body: body,
-        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
+        margin: { top: 70, right: 40, bottom: 30, left: 40 },
+        head: [['','Part #','Color','Description','','','Part #','Color','Description']],
+        body: body2,
+        styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: PDF_THUMB.split.rowHeight, valign: 'middle' },
         headStyles: { fillColor: [0, 166, 94], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 46 }, 3: { cellWidth: layout === 'landscape' ? 420 : 220 } },
+        columnStyles: {
+          0: { cellWidth: PDF_THUMB.split.cellWidth }, 1: { cellWidth: 46 }, 2: { cellWidth: 40 }, 3: { cellWidth: 175 },
+          4: { cellWidth: 10 },
+          5: { cellWidth: PDF_THUMB.split.cellWidth }, 6: { cellWidth: 46 }, 7: { cellWidth: 40 }, 8: { cellWidth: 175 }
+        },
+        didParseCell: function(data){
+          if (data.column.index === 4){
+            data.cell.styles.lineWidth = 0;
+            data.cell.styles.fillColor = data.section === 'head' ? [0, 166, 94] : 255;
+          }
+        },
         didDrawCell: function(data){
-          if (data.section !== 'body' || data.column.index !== 0) return;
-          var p = rowMeta[data.row.index];
+          if (data.section !== 'body') return;
+          var pair = meta2[data.row.index];
+          if (!pair) return;
+          var slot = data.column.index === 0 ? 0 : (data.column.index === 5 ? 1 : null);
+          if (slot === null) return;
+          var p = pair[slot];
           if (!p) return;
-          var dataUrl = p.elementId && imgMap[p.elementId];
-          if (!dataUrl) return;
-          try {
-            var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
-            var pad = 3;
-            var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
-            doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
-          } catch(e){ /* skip malformed image, leave cell blank */ }
+          drawImg(imgFor(p), data.cell, 'split');
         }
       });
-      doc.save('lego-almost-complete-parts-needed.pdf');
+      doc.save('lego-almost-complete-parts-needed-landscape.pdf');
     }).catch(function(err){
       alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
     }).then(function(){
@@ -2728,6 +2833,7 @@
       alert('Nothing to report \u2014 no almost-complete build or set currently has every missing part covered by a drawer.');
       return;
     }
+    var landscape = document.getElementById('almost-complete-drawer-ready-layout').value === 'landscape';
     var btn = document.getElementById('almost-complete-drawer-ready-pdf-btn');
     var prevBtnHtml = btn ? btn.innerHTML : null;
     if (btn){
@@ -2745,49 +2851,122 @@
       var imgMap = {};
       pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
 
-      var doc = getPdfDoc();
+      var doc = landscape ? new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' }) : getPdfDoc();
       if (!doc) return;
       pdfHeader(doc, 'Ready to Complete from Drawers',
         'Generated ' + new Date().toLocaleDateString() + ' \u00b7 every missing part is covered by a drawer \u00b7 ' + items.length + ' item' + (items.length===1?'':'s') + ' shown');
 
-      var body = [];
-      var rowMeta = [];
-      items.forEach(function(it){
-        var typeLabel = it.type === 'moc' ? 'MOC Build' : 'Official Set';
-        body.push([{
-          content: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' piece' + (it.missing===1?'':'s') + ' total, all in drawers',
-          colSpan: 6,
-          styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] }
-        }]);
-        rowMeta.push(null);
-        it.parts.forEach(function(p){
-          body.push(['', p.partNum, p.color, p.desc, String(p.short), p.inDrawers.toLocaleString()]);
-          rowMeta.push(p);
+      function imgFor(p){ return p && p.elementId && imgMap[p.elementId]; }
+      function drawImg(dataUrl, cell, mode){
+        if (!dataUrl) return;
+        try {
+          var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
+          var size = pdfThumbImageSize(mode);
+          var pad = (Math.min(cell.height, cell.width) - size) / 2;
+          doc.addImage(dataUrl, format, cell.x + pad, cell.y + pad, size, size);
+        } catch(e){ /* skip malformed image, leave cell blank */ }
+      }
+
+      if (!landscape){
+        var body = [];
+        var rowMeta = [];
+        items.forEach(function(it){
+          var typeLabel = it.type === 'moc' ? 'MOC Build' : 'Official Set';
+          body.push([{
+            content: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' piece' + (it.missing===1?'':'s') + ' total, all in drawers',
+            colSpan: 6,
+            styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] }
+          }]);
+          rowMeta.push(null);
+          it.parts.forEach(function(p){
+            body.push(['', p.partNum, p.color, truncateForPdf(p.desc, 32), String(p.short), p.inDrawers.toLocaleString()]);
+            rowMeta.push(p);
+          });
         });
+
+        doc.autoTable({
+          startY: 70,
+          margin: { top: 70, right: 40, bottom: 30, left: 40 },
+          head: [['','Part #','Color','Description','Short','In Drawers']],
+          body: body,
+          styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: PDF_THUMB.single.rowHeight, valign: 'middle' },
+          headStyles: { fillColor: [0, 166, 94], textColor: 255 },
+          columnStyles: { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 55 }, 2: { cellWidth: 46 }, 3: { cellWidth: 200 }, 4: { cellWidth: 45 }, 5: { cellWidth: 60 } },
+          didDrawCell: function(data){
+            if (data.section !== 'body' || data.column.index !== 0) return;
+            var p = rowMeta[data.row.index];
+            if (!p) return;
+            drawImg(imgFor(p), data.cell, 'single');
+          }
+        });
+        doc.save('lego-almost-complete-drawer-ready.pdf');
+        return;
+      }
+
+      // Landscape: 2-column split, keeping each build/set's lines together in one column.
+      var groups = items.map(function(it){
+        var typeLabel = it.type === 'moc' ? 'MOC Build' : 'Official Set';
+        return { header: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' pc' + (it.missing===1?'':'s') + ', all in drawers', rows: it.parts };
       });
+      var split = splitGroupsForTwoColumns(groups);
+
+      function flattenSide(side){
+        var rows = [];
+        side.forEach(function(g){
+          rows.push({ isHeader: true, label: g.header });
+          g.rows.forEach(function(p){ rows.push({ isHeader: false, p: p }); });
+        });
+        return rows;
+      }
+      var leftRows = flattenSide(split.left);
+      var rightRows = flattenSide(split.right);
+      var rowCount = Math.max(leftRows.length, rightRows.length);
+
+      function cellsFor(entry){
+        if (!entry) return ['', '', '', '', ''];
+        if (entry.isHeader) return [{ content: entry.label, colSpan: 5, styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] } }];
+        var p = entry.p;
+        return ['', p.partNum, p.color, truncateForPdf(p.desc, 20), p.short + ' / ' + p.inDrawers.toLocaleString()];
+      }
+
+      var body2 = [];
+      var meta2 = [];
+      for (var i = 0; i < rowCount; i++){
+        var L = leftRows[i], R = rightRows[i];
+        body2.push(cellsFor(L).concat(['']).concat(cellsFor(R)));
+        meta2.push([L && !L.isHeader ? L.p : null, R && !R.isHeader ? R.p : null]);
+      }
 
       doc.autoTable({
         startY: 70,
-        head: [['','#','Color','Description','Short','In Drawers']],
-        body: body,
-        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
+        margin: { top: 70, right: 40, bottom: 30, left: 40 },
+        head: [['','Part #','Color','Description','Short/In','','','Part #','Color','Description','Short/In']],
+        body: body2,
+        styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: PDF_THUMB.split.rowHeight, valign: 'middle' },
         headStyles: { fillColor: [0, 166, 94], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 46 }, 3: { cellWidth: 160 } },
+        columnStyles: {
+          0: { cellWidth: PDF_THUMB.split.cellWidth }, 1: { cellWidth: 44 }, 2: { cellWidth: 38 }, 3: { cellWidth: 135 }, 4: { cellWidth: 50 },
+          5: { cellWidth: 10 },
+          6: { cellWidth: PDF_THUMB.split.cellWidth }, 7: { cellWidth: 44 }, 8: { cellWidth: 38 }, 9: { cellWidth: 135 }, 10: { cellWidth: 50 }
+        },
+        didParseCell: function(data){
+          if (data.column.index === 5){
+            data.cell.styles.lineWidth = 0;
+            data.cell.styles.fillColor = data.section === 'head' ? [0, 166, 94] : 255;
+          }
+        },
         didDrawCell: function(data){
-          if (data.section !== 'body' || data.column.index !== 0) return;
-          var p = rowMeta[data.row.index];
+          if (data.section !== 'body') return;
+          var pair = meta2[data.row.index];
+          if (!pair) return;
+          var slot = data.column.index === 0 ? 0 : (data.column.index === 6 ? 1 : null);
+          if (slot === null) return;
+          var p = pair[slot];
           if (!p) return;
-          var dataUrl = p.elementId && imgMap[p.elementId];
-          if (!dataUrl) return;
-          try {
-            var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
-            var pad = 3;
-            var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
-            doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
-          } catch(e){ /* skip malformed image, leave cell blank */ }
+          drawImg(imgFor(p), data.cell, 'split');
         }
       });
-      doc.save('lego-almost-complete-drawer-ready.pdf');
+      doc.save('lego-almost-complete-drawer-ready-landscape.pdf');
     }).catch(function(err){
       alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
     }).then(function(){
@@ -2805,7 +2984,7 @@
     chevron.className = 'ti ' + (drawerHelpsSetsExpanded ? 'ti-chevron-down' : 'ti-chevron-right');
   }
 
-  function getDrawerHelpsSetsItems(){
+  function getDrawerHelpsSetsItems(filter, sort){
     var drawerStock = buildDrawerStockMap();
     var items = [];
     ownedSets.forEach(function(s){
@@ -2819,28 +2998,54 @@
         items.push({
           setNum: s.setNum, setLabel: setLabel,
           partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId,
-          setNeeds: needed, inDrawers: avail, wouldHelpBy: Math.min(needed, avail)
+          setNeeds: needed, inDrawers: avail, wouldHelpBy: Math.min(needed, avail),
+          fullyCovers: avail >= needed
         });
       });
     });
-    items.sort(function(a,b){ return a.setLabel.localeCompare(b.setLabel) || b.wouldHelpBy - a.wouldHelpBy; });
+    if (filter === 'full') items = items.filter(function(it){ return it.fullyCovers; });
+    else if (filter === 'partial') items = items.filter(function(it){ return !it.fullyCovers; });
+    if (sort === 'helpby'){
+      items.sort(function(a,b){ return b.wouldHelpBy - a.wouldHelpBy || a.setLabel.localeCompare(b.setLabel); });
+    } else if (sort === 'color'){
+      items.sort(function(a,b){ return (a.color||'').localeCompare(b.color||'') || a.setLabel.localeCompare(b.setLabel); });
+    } else {
+      items.sort(function(a,b){ return a.setLabel.localeCompare(b.setLabel) || b.wouldHelpBy - a.wouldHelpBy; });
+    }
     return items;
   }
 
+  function getDrawerHelpsSetsControls(){
+    return {
+      filter: document.getElementById('drawer-helps-sets-filter').value,
+      sort: document.getElementById('drawer-helps-sets-sort').value,
+      layout: document.getElementById('drawer-helps-sets-layout').value
+    };
+  }
+
   function renderDrawerHelpsSets(){
-    var items = getDrawerHelpsSetsItems();
+    var controls = getDrawerHelpsSetsControls();
+    var items = getDrawerHelpsSetsItems(controls.filter, controls.sort);
     var section = document.getElementById('drawer-helps-sets-section');
     var container = document.getElementById('drawer-helps-sets-list');
 
-    if (!items.length){
+    if (!getDrawerHelpsSetsItems().length){
       section.style.display = 'none';
       return;
     }
     section.style.display = 'block';
     container.innerHTML = '';
+    if (!items.length){
+      container.appendChild(Object.assign(document.createElement('div'), {
+        className: 'empty-msg', textContent: 'Nothing matches that filter.'
+      }));
+      applyDrawerHelpsSetsCollapseState();
+      return;
+    }
+    var groupBySet = controls.sort === 'set';
     var currentSet = null;
     items.forEach(function(it){
-      if (it.setLabel !== currentSet){
+      if (groupBySet && it.setLabel !== currentSet){
         currentSet = it.setLabel;
         var header = document.createElement('div');
         header.className = 'shop-group-title';
@@ -2851,9 +3056,10 @@
       row.className = 'top-needed-item';
       row.innerHTML =
         '<span class="part-thumb-wrap"></span>' +
-        '<span class="top-needed-desc">'+escapeHtml(it.color)+' '+escapeHtml(it.desc)+' <span class="part-meta">#'+escapeHtml(it.partNum)+'</span></span>' +
-        '<span class="in-drawers-badge" title="Currently sitting in a drawer">'+it.inDrawers.toLocaleString()+' in drawers</span>' +
-        '<span class="pill pill-ok top-needed-short">Would cover '+it.wouldHelpBy.toLocaleString()+' of '+it.setNeeds.toLocaleString()+' needed</span>';
+        '<span class="top-needed-desc">'+escapeHtml(it.color)+' '+escapeHtml(it.desc)+(groupBySet ? '' : ' \u2014 '+escapeHtml(it.setLabel))+'</span>' +
+        '<span class="top-needed-partnum" title="Part number">#'+escapeHtml(it.partNum)+'</span>' +
+        '<span class="shop-in-drawers" title="Currently sitting in a drawer">'+it.inDrawers.toLocaleString()+' in drawers</span>' +
+        '<span class="pill '+(it.fullyCovers?'pill-ok':'pill-short')+' top-needed-short">Would cover '+it.wouldHelpBy.toLocaleString()+' of '+it.setNeeds.toLocaleString()+' needed</span>';
       buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, row.querySelector('.part-thumb-wrap'));
       row.addEventListener('click', function(){ openSetDetail(it.setNum); });
       container.appendChild(row);
@@ -2865,11 +3071,16 @@
     drawerHelpsSetsExpanded = !drawerHelpsSetsExpanded;
     applyDrawerHelpsSetsCollapseState();
   });
+  document.getElementById('drawer-helps-sets-filter').addEventListener('change', renderDrawerHelpsSets);
+  document.getElementById('drawer-helps-sets-sort').addEventListener('change', renderDrawerHelpsSets);
 
   function exportDrawerHelpsSetsReport(){
-    var items = getDrawerHelpsSetsItems();
+    var controls = getDrawerHelpsSetsControls();
+    var items = getDrawerHelpsSetsItems(controls.filter, controls.sort);
     if (!items.length){
-      alert('Nothing to report \u2014 no drawer parts currently match anything your official sets still need.');
+      alert(getDrawerHelpsSetsItems().length
+        ? 'Nothing to report \u2014 no matches for that filter.'
+        : 'Nothing to report \u2014 no drawer parts currently match anything your official sets still need.');
       return;
     }
     var header = ['Set','Part Number','Element ID','Color','Description','Set Still Needs','In Drawers','Would Cover'];
@@ -2881,11 +3092,16 @@
   }
 
   function generateDrawerHelpsSetsPDF(){
-    var items = getDrawerHelpsSetsItems();
+    var controls = getDrawerHelpsSetsControls();
+    var items = getDrawerHelpsSetsItems(controls.filter, controls.sort);
     if (!items.length){
-      alert('Nothing to report \u2014 no drawer parts currently match anything your official sets still need.');
+      alert(getDrawerHelpsSetsItems().length
+        ? 'Nothing to report \u2014 no matches for that filter.'
+        : 'Nothing to report \u2014 no drawer parts currently match anything your official sets still need.');
       return;
     }
+    var grouped = controls.sort === 'set';
+    var landscape = controls.layout === 'landscape';
     var btn = document.getElementById('drawer-helps-sets-pdf-btn');
     var prevBtnHtml = btn ? btn.innerHTML : null;
     if (btn){
@@ -2900,47 +3116,143 @@
       var imgMap = {};
       pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
 
-      var doc = getPdfDoc();
+      var doc = landscape ? new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' }) : getPdfDoc();
       if (!doc) return;
       pdfHeader(doc, 'Drawer Parts That Could Help Your Official Sets',
         'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' match' + (items.length===1?'':'es') + ' across your owned sets');
 
-      var body = [];
-      var rowMeta = [];
-      var currentSet = null;
-      items.forEach(function(it){
-        if (it.setLabel !== currentSet){
-          currentSet = it.setLabel;
-          body.push([{ content: it.setLabel, colSpan: 6, styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] } }]);
-          rowMeta.push(null);
+      function imgFor(it){ return it.elementId && imgMap[it.elementId]; }
+      function drawImg(targetDoc, dataUrl, cell, mode){
+        if (!dataUrl) return;
+        try {
+          var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
+          var size = pdfThumbImageSize(mode);
+          var pad = (Math.min(cell.height, cell.width) - size) / 2;
+          targetDoc.addImage(dataUrl, format, cell.x + pad, cell.y + pad, size, size);
+        } catch(e){ /* skip malformed image, leave cell blank */ }
+      }
+
+      if (!landscape){
+        // Portrait: single column. Grouped by set when sorted by set; otherwise a flat list with Set as a column.
+        var body, rowMeta, head, colStyles;
+        if (grouped){
+          body = []; rowMeta = [];
+          var currentSet = null;
+          items.forEach(function(it){
+            if (it.setLabel !== currentSet){
+              currentSet = it.setLabel;
+              body.push([{ content: it.setLabel, colSpan: 6, styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] } }]);
+              rowMeta.push(null);
+            }
+            body.push(['', it.partNum, it.color, truncateForPdf(it.desc, 36), it.setNeeds.toLocaleString(), it.inDrawers.toLocaleString()]);
+            rowMeta.push(it);
+          });
+          head = [['','Part #','Color','Description','Set Needs','In Drawers']];
+          colStyles = { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 55 }, 2: { cellWidth: 46 }, 3: { cellWidth: 185 }, 4: { cellWidth: 55 }, 5: { cellWidth: 60 } };
+        } else {
+          body = items.map(function(it){ return ['', it.partNum, it.color, truncateForPdf(it.desc, 32), truncateForPdf(it.setLabel, 28), it.setNeeds.toLocaleString(), it.inDrawers.toLocaleString()]; });
+          rowMeta = items;
+          head = [['','Part #','Color','Description','Set','Set Needs','In Drawers']];
+          colStyles = { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 50 }, 2: { cellWidth: 42 }, 3: { cellWidth: 140 }, 4: { cellWidth: 100 }, 5: { cellWidth: 48 }, 6: { cellWidth: 55 } };
         }
-        body.push(['', it.partNum, it.color, truncateForPdf(it.desc, 40), it.setNeeds.toLocaleString(), it.inDrawers.toLocaleString()]);
-        rowMeta.push(it);
-      });
+        doc.autoTable({
+          startY: 70,
+          margin: { top: 70, right: 40, bottom: 30, left: 40 },
+          head: head,
+          body: body,
+          styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: PDF_THUMB.single.rowHeight, valign: 'middle' },
+          headStyles: { fillColor: [138, 18, 168], textColor: 255 },
+          columnStyles: colStyles,
+          didDrawCell: function(data){
+            if (data.section !== 'body' || data.column.index !== 0) return;
+            var it = rowMeta[data.row.index];
+            if (!it) return;
+            drawImg(doc, imgFor(it), data.cell, 'single');
+          }
+        });
+        doc.save('lego-drawer-parts-for-sets.pdf');
+        return;
+      }
+
+      // Landscape: split into two columns. Grouped mode keeps each set's lines together;
+      // ungrouped mode is a simple flat half-split (no group boundaries to respect).
+      var leftGroups, rightGroups;
+      if (grouped){
+        var bySet = [];
+        var cur = null;
+        items.forEach(function(it){
+          if (!cur || cur.header !== it.setLabel){ cur = { header: it.setLabel, rows: [] }; bySet.push(cur); }
+          cur.rows.push(it);
+        });
+        var split = splitGroupsForTwoColumns(bySet);
+        leftGroups = split.left; rightGroups = split.right;
+      } else {
+        var half = Math.ceil(items.length / 2);
+        leftGroups = [{ header: null, rows: items.slice(0, half) }];
+        rightGroups = [{ header: null, rows: items.slice(half) }];
+      }
+
+      function flattenSide(groupsSide){
+        var rows = [];
+        groupsSide.forEach(function(g){
+          if (g.header) rows.push({ isHeader: true, label: g.header });
+          g.rows.forEach(function(it){ rows.push({ isHeader: false, it: it }); });
+        });
+        return rows;
+      }
+      var leftRows = flattenSide(leftGroups);
+      var rightRows = flattenSide(rightGroups);
+      var rowCount = Math.max(leftRows.length, rightRows.length);
+      var descLen = grouped ? 26 : 20;
+
+      function cellsFor(entry){
+        if (!entry) return ['', '', '', '', ''];
+        if (entry.isHeader) return [{ content: entry.label, colSpan: 5, styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] } }];
+        var it = entry.it;
+        var descText = truncateForPdf(it.desc, descLen) + (grouped ? '' : ' (' + truncateForPdf(it.setLabel, 16) + ')');
+        return ['', it.partNum, it.color, descText, it.inDrawers.toLocaleString() + '/' + it.setNeeds.toLocaleString()];
+      }
+
+      var body = [];
+      var meta = [];
+      for (var i = 0; i < rowCount; i++){
+        var L = leftRows[i], R = rightRows[i];
+        var Lcells = cellsFor(L);
+        var Rcells = cellsFor(R);
+        body.push(Lcells.concat(['']).concat(Rcells));
+        meta.push([L && !L.isHeader ? L.it : null, R && !R.isHeader ? R.it : null]);
+      }
 
       doc.autoTable({
         startY: 70,
         margin: { top: 70, right: 40, bottom: 30, left: 40 },
-        head: [['','#','Color','Description','Set Needs','In Drawers']],
+        head: [['','Part #','Color','Description','In/Needs','','','Part #','Color','Description','In/Needs']],
         body: body,
-        styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: 28, valign: 'middle' },
+        styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: PDF_THUMB.split.rowHeight, valign: 'middle' },
         headStyles: { fillColor: [138, 18, 168], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 28 }, 1: { cellWidth: 46 }, 3: { cellWidth: 220 } },
+        columnStyles: {
+          0: { cellWidth: PDF_THUMB.split.cellWidth }, 1: { cellWidth: 44 }, 2: { cellWidth: 38 }, 3: { cellWidth: 145 }, 4: { cellWidth: 45 },
+          5: { cellWidth: 10 },
+          6: { cellWidth: PDF_THUMB.split.cellWidth }, 7: { cellWidth: 44 }, 8: { cellWidth: 38 }, 9: { cellWidth: 145 }, 10: { cellWidth: 45 }
+        },
+        didParseCell: function(data){
+          if (data.column.index === 5){
+            data.cell.styles.lineWidth = 0;
+            data.cell.styles.fillColor = data.section === 'head' ? [138, 18, 168] : 255;
+          }
+        },
         didDrawCell: function(data){
-          if (data.section !== 'body' || data.column.index !== 0) return;
-          var it = rowMeta[data.row.index];
+          if (data.section !== 'body') return;
+          var pair = meta[data.row.index];
+          if (!pair) return;
+          var slot = data.column.index === 0 ? 0 : (data.column.index === 6 ? 1 : null);
+          if (slot === null) return;
+          var it = pair[slot];
           if (!it) return;
-          var dataUrl = it.elementId && imgMap[it.elementId];
-          if (!dataUrl) return;
-          try {
-            var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
-            var pad = 2;
-            var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
-            doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
-          } catch(e){ /* skip malformed image, leave cell blank */ }
+          drawImg(doc, imgFor(it), data.cell, 'split');
         }
       });
-      doc.save('lego-drawer-parts-for-sets.pdf');
+      doc.save('lego-drawer-parts-for-sets-landscape.pdf');
     }).catch(function(err){
       alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
     }).then(function(){
@@ -3317,6 +3629,127 @@
       }).then(function(){
         done++;
         statusEl.textContent = 'Looking up ' + total + ' part/color combo' + (total===1?'':'s') + '\u2026 ' + done + ' / ' + total;
+        next();
+      });
+    }
+    next();
+  }
+
+  function getMissingPhotoCombos(){
+    var sources = [state.rows, setParts, drawerParts];
+    var combos = {};
+    sources.forEach(function(list){
+      list.forEach(function(r){
+        if (!r.partNum) return;
+        if (!rowHasNoPhoto(r)) return;
+        var key = normKey(r.partNum) + '|' + normKey(r.color || '');
+        if (!combos[key]) combos[key] = { partNum: r.partNum, color: r.color || '', rows: [] };
+        combos[key].rows.push(r);
+      });
+    });
+    return combos;
+  }
+
+  function fetchImageBlobForBackfill(url){
+    return fetch(fetchableUrl(url), { mode: 'cors' }).then(function(resp){
+      if (!resp.ok) throw new Error('not found');
+      return resp.blob();
+    }).catch(function(){
+      return fetch(forceProxyImgUrl(url), { mode: 'cors' }).then(function(resp){
+        if (!resp.ok) throw new Error('not found');
+        return resp.blob();
+      });
+    });
+  }
+
+  function backfillPhotoForCombo(combo){
+    // Same lookup method the parts catalog search and Inventory a Bag use: a part+color image
+    // from Rebrickable, which doesn't require an element ID or an exact-matching color name.
+    var hasColor = !!combo.color;
+    var lookup = hasColor ? rbGetPartColors(combo.partNum) : Promise.resolve([]);
+    return lookup.then(function(colors){
+      var match = hasColor ? rbColorMatch(colors, combo.color) : null;
+      if (match && match.img){
+        var elementId = (match.elements && match.elements.length) ? match.elements[0] : '';
+        return { imgUrl: match.img, elementId: elementId };
+      }
+      // No color-specific match (or no image for it) -- fall back to the generic part photo.
+      return rbGetPart(combo.partNum).then(function(part){
+        return (part && part.img) ? { imgUrl: part.img, elementId: '' } : null;
+      });
+    }).then(function(result){
+      if (!result) return 'notfound';
+      return fetchImageBlobForBackfill(result.imgUrl).then(function(blob){
+        var sizeSteps = [[400, 0.82], [260, 0.7], [150, 0.6]];
+        if (result.elementId){
+          combo.rows.forEach(function(r){ if (!r.elementId) r.elementId = result.elementId; });
+          var elId = result.elementId;
+          var savePromise = githubConnectionConfigured()
+            ? attemptImageSaveToGithub(elId, blob, sizeSteps).then(function(dataUrl){
+                return storage.set(IMG_PREFIX + elId, dataUrl, false);
+              }).catch(function(err){
+                if (err && err.message === 'no-github') return attemptImageSave(IMG_PREFIX + elId, blob, sizeSteps);
+                throw err;
+              })
+            : attemptImageSave(IMG_PREFIX + elId, blob, sizeSteps);
+          return savePromise.then(function(){
+            cachedIds.add(elId);
+            delete noPhotoResolved[elId];
+            return 'found';
+          });
+        }
+        return attemptImageSave(IMG_PART_PREFIX + normKey(combo.partNum), blob, sizeSteps).then(function(){
+          cachedPartImgKeys.add(normKey(combo.partNum));
+          return 'found';
+        });
+      }).catch(function(){ return 'error'; });
+    });
+  }
+
+  function backfillMissingPhotos(){
+    var statusEl = document.getElementById('backfill-photos-status');
+    if (!rebrickableApiKey){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Add a Rebrickable API key on the Data & Tools tab first.';
+      return;
+    }
+    var combos = getMissingPhotoCombos();
+    var keys = Object.keys(combos);
+    if (!keys.length){
+      statusEl.style.color = 'var(--text-secondary)';
+      statusEl.textContent = 'Nothing to backfill \u2014 every part line already shows a photo.';
+      return;
+    }
+
+    var idx = 0, total = keys.length, done = 0, found = 0, notFound = 0, errored = 0;
+    var btn = document.getElementById('backfill-photos-btn');
+    btn.disabled = true;
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Backfilling photos for ' + total + ' part/color combo' + (total===1?'':'s') + '\u2026 0 / ' + total;
+
+    function next(){
+      if (idx >= total){
+        btn.disabled = false;
+        saveState();
+        saveSetParts();
+        saveDrawerParts();
+        refreshAllThumbnails();
+        statusEl.style.color = (notFound || errored) ? 'var(--text-danger)' : 'var(--text-success)';
+        statusEl.textContent = 'Backfilled ' + found + ' photo' + (found===1?'':'s') + ' for ' + total + ' combo' + (total===1?'':'s') + '.' +
+          (notFound ? (' ' + notFound + ' had no image available on Rebrickable.') : '') +
+          (errored ? (' ' + errored + ' lookup' + (errored===1?'':'s') + ' failed \u2014 try again later.') : '');
+        return;
+      }
+      var combo = combos[keys[idx++]];
+      backfillPhotoForCombo(combo).then(function(result){
+        if (result === 'found') found++;
+        else if (result === 'notfound') notFound++;
+        else errored++;
+      }).catch(function(){
+        errored++;
+      }).then(function(){
+        done++;
+        statusEl.textContent = 'Backfilling photos for ' + total + ' part/color combo' + (total===1?'':'s') + '\u2026 ' + done + ' / ' + total;
         next();
       });
     }
@@ -6760,24 +7193,65 @@
         resumeBtn.addEventListener('click', function(){ resumeBagProgressEntry(entry.id); });
         row.appendChild(resumeBtn);
       }
-      var delBtn = document.createElement('button');
-      delBtn.className = 'icon-btn';
-      delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); flex-shrink:0;';
-      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:12px; vertical-align:-2px;" aria-hidden="true"></i>';
-      delBtn.title = 'Delete this saved bag';
-      delBtn.addEventListener('click', function(){
-        if (!confirm('Delete the saved bag "'+(entry.label||'(untitled)')+'" ('+entry.items.length+' item'+(entry.items.length===1?'':'s')+')? This can\u2019t be undone.')) return;
-        var wasActive = entry.id === bagActiveProgressId;
-        deleteBagProgressEntry(entry.id).then(function(){
-          renderBagSavedList();
-          if (wasActive){
-            bagStagingItems = [];
-            renderBagStagingList();
-            document.getElementById('bag-inventory-status').textContent = '';
-          }
+
+      // A generous gap keeps Delete from sitting right next to Resume, so a mis-tap (especially
+      // on mobile) is less likely to land on it in the first place.
+      var spacer = document.createElement('div');
+      spacer.style.cssText = 'flex-basis:18px; flex-shrink:0;';
+      row.appendChild(spacer);
+
+      var actionWrap = document.createElement('div');
+      actionWrap.style.cssText = 'flex-shrink:0;';
+      row.appendChild(actionWrap);
+
+      var armTimer = null;
+      function renderNormal(){
+        clearTimeout(armTimer);
+        actionWrap.innerHTML = '';
+        var delBtn = document.createElement('button');
+        delBtn.className = 'icon-btn';
+        delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger);';
+        delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:12px; vertical-align:-2px;" aria-hidden="true"></i>';
+        delBtn.title = 'Delete this saved bag';
+        delBtn.addEventListener('click', renderArmed);
+        actionWrap.appendChild(delBtn);
+      }
+      function renderArmed(){
+        actionWrap.innerHTML = '';
+        var confirmWrap = document.createElement('div');
+        confirmWrap.style.cssText = 'display:flex; align-items:center; gap:6px; background:var(--surface-1); border:1px solid var(--text-danger); border-radius:8px; padding:4px 6px;';
+        var label = document.createElement('span');
+        label.textContent = 'Delete?';
+        label.style.cssText = 'font-size:12px; font-weight:700; color:var(--text-danger);';
+        var yesBtn = document.createElement('button');
+        yesBtn.className = 'icon-btn';
+        yesBtn.textContent = 'Yes, delete';
+        yesBtn.style.cssText = 'color:#fff; background:var(--text-danger); border-color:var(--text-danger);';
+        yesBtn.addEventListener('click', function(){
+          clearTimeout(armTimer);
+          var wasActive = entry.id === bagActiveProgressId;
+          deleteBagProgressEntry(entry.id).then(function(){
+            renderBagSavedList();
+            if (wasActive){
+              bagStagingItems = [];
+              renderBagStagingList();
+              document.getElementById('bag-inventory-status').textContent = '';
+            }
+          });
         });
-      });
-      row.appendChild(delBtn);
+        var cancelBtn = document.createElement('button');
+        cancelBtn.className = 'icon-btn';
+        cancelBtn.textContent = 'Cancel';
+        cancelBtn.addEventListener('click', renderNormal);
+        confirmWrap.appendChild(label);
+        confirmWrap.appendChild(yesBtn);
+        confirmWrap.appendChild(cancelBtn);
+        actionWrap.appendChild(confirmWrap);
+        // Auto-revert if the person doesn't follow through, so a row never gets stuck armed.
+        armTimer = setTimeout(renderNormal, 5000);
+      }
+      renderNormal();
+
       list.appendChild(row);
     });
   }
@@ -7071,11 +7545,11 @@
       doc.autoTable({
         startY: 70,
         margin: { top: 70, right: 40, bottom: 30, left: 40 },
-        head: [['','#','Color','Description','Qty','Drawer']],
+        head: [['','Part #','Color','Description','Qty','Drawer']],
         body: body,
-        styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: 28, valign: 'middle' },
+        styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: PDF_THUMB.single.rowHeight, valign: 'middle' },
         headStyles: { fillColor: [0, 85, 191], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 28 }, 1: { cellWidth: 46 }, 3: { cellWidth: 200 }, 4: { cellWidth: 45 }, 5: { cellWidth: 70 } },
+        columnStyles: { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 55 }, 2: { cellWidth: 46 }, 3: { cellWidth: 192 }, 4: { cellWidth: 45 }, 5: { cellWidth: 70 } },
         didDrawCell: function(data){
           if (data.section !== 'body' || data.column.index !== 0) return;
           var it = rowMeta[data.row.index];
@@ -7084,8 +7558,8 @@
           if (!dataUrl) return;
           try {
             var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
-            var pad = 2;
-            var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
+            var size = pdfThumbImageSize('single');
+            var pad = (Math.min(data.cell.height, data.cell.width) - size) / 2;
             doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
           } catch(e){ /* skip malformed image, leave cell blank */ }
         }
@@ -7287,6 +7761,7 @@
     });
   });
   document.getElementById('fill-element-ids-btn').addEventListener('click', fillMissingElementIds);
+  document.getElementById('backfill-photos-btn').addEventListener('click', backfillMissingPhotos);
 
   document.getElementById('mocbuild-search').addEventListener('input', renderMocBuildsList);
   document.getElementById('set-parts-search').addEventListener('input', function(){ setPartsState.page = 1; renderSetPartsTable(); });
@@ -7333,6 +7808,36 @@
   function truncateForPdf(s, maxLen){
     s = String(s == null ? '' : s);
     return s.length > maxLen ? s.slice(0, maxLen - 1).trim() + '\u2026' : s;
+  }
+
+  // Shared sizing so every quick-report PDF uses the same thumbnail size, whether single-column
+  // (portrait or wide landscape) or split two-column (landscape).
+  var PDF_THUMB = {
+    single: { cellWidth: 36, rowHeight: 32, pad: 3 },
+    split: { cellWidth: 32, rowHeight: 30, pad: 3 }
+  };
+  function pdfThumbImageSize(mode){
+    var s = PDF_THUMB[mode];
+    return Math.min(s.rowHeight, s.cellWidth) - s.pad * 2;
+  }
+
+  // Splits an array of { header, rows } groups into two columns for a 2-column PDF layout,
+  // keeping each group's header and all its rows together in one column (never split mid-group).
+  function splitGroupsForTwoColumns(groups){
+    var totalLines = groups.reduce(function(sum, g){ return sum + 1 + g.rows.length; }, 0);
+    var target = totalLines / 2;
+    var left = [], right = [];
+    var leftLines = 0;
+    groups.forEach(function(g){
+      if (right.length === 0 && leftLines < target){
+        left.push(g);
+        leftLines += 1 + g.rows.length;
+      } else {
+        right.push(g);
+      }
+    });
+    if (!left.length && right.length){ left = right; right = []; }
+    return { left: left, right: right };
   }
 
   function strikeCellIfInsufficient(doc, data, insufficient){
@@ -7638,18 +8143,18 @@
     }
     var lines;
     if (show === 'all'){
-      var header = ['Rank','Part #','Element ID','Color','Description','Needed','In Drawers','Remaining','Used In Builds'];
+      var header = ['Part #','Element ID','Color','Description','Needed','In Drawers','Remaining','Used In Builds'];
       lines = [header.map(csvEscape).join(',')];
-      items.forEach(function(it, i){
-        lines.push([i+1, it.partNum, it.elementId, it.color, it.desc, it.short, it.inDrawers, it.short - it.inDrawers, Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
+      items.forEach(function(it){
+        lines.push([it.partNum, it.elementId, it.color, it.desc, it.short, it.inDrawers, it.short - it.inDrawers, Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
       });
     } else {
       var qtyLabel = show === 'covered' ? 'In Drawers' : 'Still Needed';
       var qtyOf = function(it){ return show === 'covered' ? it.inDrawers : it.stillNeeded; };
-      var header2 = ['Rank','Part #','Element ID','Color','Description', qtyLabel, 'Used In Builds'];
+      var header2 = ['Part #','Element ID','Color','Description', qtyLabel, 'Used In Builds'];
       lines = [header2.map(csvEscape).join(',')];
-      items.forEach(function(it, i){
-        lines.push([i+1, it.partNum, it.elementId, it.color, it.desc, qtyOf(it), Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
+      items.forEach(function(it){
+        lines.push([it.partNum, it.elementId, it.color, it.desc, qtyOf(it), Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
       });
     }
     var totals = getCleanReportTotals();
@@ -7828,19 +8333,19 @@
         doc.setTextColor(110, 110, 110);
         doc.text(totalsLine, 40, 68);
 
-        var body = items.map(function(it, i){
-          return ['', String(i+1), it.partNum, it.color, truncateForPdf(it.desc, wide ? 60 : 32), it.short.toLocaleString(), it.inDrawers.toLocaleString(), (it.short - it.inDrawers).toLocaleString()];
+        var body = items.map(function(it){
+          return ['', it.partNum, it.color, truncateForPdf(it.desc, wide ? 65 : 36), it.short.toLocaleString(), it.inDrawers.toLocaleString(), (it.short - it.inDrawers).toLocaleString()];
         });
         doc.autoTable({
           startY: 82,
           margin: { top: 82, right: 40, bottom: 30, left: 40 },
-          head: [['','Rank','Part #','Color','Description','Needed','In Drawers','Remaining']],
+          head: [['','Part #','Color','Description','Needed','In Drawers','Remaining']],
           body: body,
-          styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: 28, valign: 'middle' },
+          styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: PDF_THUMB.single.rowHeight, valign: 'middle' },
           headStyles: { fillColor: fillColor, textColor: 255 },
           columnStyles: wide
-            ? { 0: { cellWidth: 30 }, 1: { cellWidth: 25 }, 2: { cellWidth: 60 }, 3: { cellWidth: 50 }, 4: { cellWidth: 330 }, 5: { cellWidth: 55 }, 6: { cellWidth: 65 }, 7: { cellWidth: 70 } }
-            : { 0: { cellWidth: 26 }, 1: { cellWidth: 22 }, 2: { cellWidth: 50 }, 3: { cellWidth: 40 }, 4: { cellWidth: 175 }, 5: { cellWidth: 42 }, 6: { cellWidth: 48 }, 7: { cellWidth: 50 } },
+            ? { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 60 }, 2: { cellWidth: 50 }, 3: { cellWidth: 349 }, 4: { cellWidth: 55 }, 5: { cellWidth: 65 }, 6: { cellWidth: 70 } }
+            : { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 50 }, 2: { cellWidth: 40 }, 3: { cellWidth: 187 }, 4: { cellWidth: 42 }, 5: { cellWidth: 48 }, 6: { cellWidth: 50 } },
           didDrawCell: function(data){
             if (data.section !== 'body' || data.column.index !== 0) return;
             var it = items[data.row.index];
@@ -7849,8 +8354,8 @@
             if (!dataUrl) return;
             try {
               var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
-              var pad = 2;
-              var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
+              var size = pdfThumbImageSize('single');
+              var pad = (Math.min(data.cell.height, data.cell.width) - size) / 2;
               doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
             } catch(e){ /* skip malformed image, leave cell blank */ }
           }
@@ -7877,26 +8382,27 @@
         for (var i = 0; i < rowCount; i++){
           var L = leftItems[i], R = rightItems[i];
           body.push([
-            '', L ? String(i + 1) : '', L ? L.partNum : '', L ? L.color : '', L ? L.desc : '', L ? qtyOf(L).toLocaleString() : '',
+            '', L ? L.partNum : '', L ? L.color : '', L ? L.desc : '', L ? qtyOf(L).toLocaleString() : '',
             '',
-            '', R ? String(half + i + 1) : '', R ? R.partNum : '', R ? R.color : '', R ? R.desc : '', R ? qtyOf(R).toLocaleString() : ''
+            '', R ? R.partNum : '', R ? R.color : '', R ? R.desc : '', R ? qtyOf(R).toLocaleString() : ''
           ]);
           rowItems.push([L || null, R || null]);
         }
 
         doc.autoTable({
           startY: 82,
-          head: [['','Rank','Part #','Color','Description',qtyLabelShort,'','','Rank','Part #','Color','Description',qtyLabelShort]],
+          margin: { top: 82, right: 40, bottom: 30, left: 40 },
+          head: [['','Part #','Color','Description',qtyLabelShort,'','','Part #','Color','Description',qtyLabelShort]],
           body: body,
-          styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
+          styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: PDF_THUMB.split.rowHeight, valign: 'middle' },
           headStyles: { fillColor: fillColor, textColor: 255 },
           columnStyles: {
-            0: { cellWidth: 35 }, 1: { cellWidth: 20 }, 2: { cellWidth: 42 }, 3: { cellWidth: 42 }, 4: { cellWidth: 150 }, 5: { cellWidth: 40 },
-            6: { cellWidth: 10 },
-            7: { cellWidth: 35 }, 8: { cellWidth: 20 }, 9: { cellWidth: 42 }, 10: { cellWidth: 42 }, 11: { cellWidth: 150 }, 12: { cellWidth: 40 }
+            0: { cellWidth: PDF_THUMB.split.cellWidth }, 1: { cellWidth: 42 }, 2: { cellWidth: 38 }, 3: { cellWidth: 150 }, 4: { cellWidth: 40 },
+            5: { cellWidth: 10 },
+            6: { cellWidth: PDF_THUMB.split.cellWidth }, 7: { cellWidth: 42 }, 8: { cellWidth: 38 }, 9: { cellWidth: 150 }, 10: { cellWidth: 40 }
           },
           didParseCell: function(data){
-            if (data.column.index === 6){
+            if (data.column.index === 5){
               data.cell.styles.lineWidth = 0;
               data.cell.styles.fillColor = data.section === 'head' ? fillColor : 255;
             }
@@ -7905,7 +8411,7 @@
             if (data.section !== 'body') return;
             var pair = rowItems[data.row.index];
             if (!pair) return;
-            var slot = data.column.index === 0 ? 0 : (data.column.index === 7 ? 1 : null);
+            var slot = data.column.index === 0 ? 0 : (data.column.index === 6 ? 1 : null);
             if (slot === null) return;
             var it = pair[slot];
             var elementId = it && it.elementId;
@@ -7913,8 +8419,8 @@
             if (!dataUrl) return;
             try {
               var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
-              var pad = 3;
-              var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
+              var size = pdfThumbImageSize('split');
+              var pad = (Math.min(data.cell.height, data.cell.width) - size) / 2;
               doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
             } catch(e){ /* skip malformed image, leave cell blank */ }
           }
@@ -7929,17 +8435,17 @@
         doc2.setTextColor(110, 110, 110);
         doc2.text(totalsLine, 40, 68);
 
-        var body2 = items.map(function(it, i){
-          return ['', String(i+1), it.partNum, it.color, truncateForPdf(it.desc, 38), qtyOf(it).toLocaleString()];
+        var body2 = items.map(function(it){
+          return ['', it.partNum, it.color, truncateForPdf(it.desc, 42), qtyOf(it).toLocaleString()];
         });
         doc2.autoTable({
           startY: 82,
           margin: { top: 82, right: 40, bottom: 30, left: 40 },
-          head: [['','Rank','Part #','Color','Description', qtyLabelFull]],
+          head: [['','Part #','Color','Description', qtyLabelFull]],
           body: body2,
-          styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: 28, valign: 'middle' },
+          styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: PDF_THUMB.single.rowHeight, valign: 'middle' },
           headStyles: { fillColor: fillColor, textColor: 255 },
-          columnStyles: { 0: { cellWidth: 28 }, 1: { cellWidth: 24 }, 2: { cellWidth: 55 }, 3: { cellWidth: 50 }, 4: { cellWidth: 230 }, 5: { cellWidth: 70 } },
+          columnStyles: { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 55 }, 2: { cellWidth: 50 }, 3: { cellWidth: 246 }, 4: { cellWidth: 70 } },
           didDrawCell: function(data){
             if (data.section !== 'body' || data.column.index !== 0) return;
             var it = items[data.row.index];
@@ -7948,8 +8454,8 @@
             if (!dataUrl) return;
             try {
               var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
-              var pad = 2;
-              var size = Math.min(data.cell.height, data.cell.width) - pad * 2;
+              var size = pdfThumbImageSize('single');
+              var pad = (Math.min(data.cell.height, data.cell.width) - size) / 2;
               doc2.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
             } catch(e){ /* skip malformed image, leave cell blank */ }
           }
