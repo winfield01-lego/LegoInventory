@@ -1447,7 +1447,10 @@
       <input type="text" id="bag-inventory-label" placeholder="e.g. eBay lot #4471, garage sale bin" style="flex:1;" />
     </div>
     <div class="row" style="justify-content:space-between; align-items:center; padding-top:10px; border-top:2px solid var(--border); flex-wrap:wrap; gap:8px;">
-      <button id="bag-inventory-clear-btn" class="icon-btn" style="color: var(--text-danger); border-color: var(--text-danger);"><i class="ti ti-trash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Clear all</button>
+      <div class="row" style="gap:8px;">
+        <button id="bag-inventory-clear-btn" class="icon-btn" style="color: var(--text-danger); border-color: var(--text-danger);"><i class="ti ti-trash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Clear all</button>
+        <button id="bag-inventory-new-btn" class="icon-btn" title="Save this bag's progress (if any) and start a brand-new one"><i class="ti ti-package-import" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> New Bag</button>
+      </div>
       <div class="row" style="gap:8px;">
         <button id="bag-inventory-save-progress-btn" class="icon-btn" title="Save this list so you can come back and finish it later"><i class="ti ti-device-floppy" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Save Progress</button>
         <button id="bag-inventory-commit-btn" class="lockable"><i class="ti ti-truck-delivery" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Move all to drawers</button>
@@ -6860,6 +6863,32 @@
       statusEl.textContent = 'Couldn\u2019t save progress \u2014 try again.';
     });
   });
+  document.getElementById('bag-inventory-new-btn').addEventListener('click', function(){
+    var statusEl = document.getElementById('bag-inventory-status');
+    if (!bagStagingItems.length){
+      bagActiveProgressId = null;
+      document.getElementById('bag-inventory-label').value = defaultBagLabel();
+      statusEl.style.color = 'var(--text-secondary)';
+      statusEl.textContent = 'Ready for a new bag.';
+      renderBagStagingList();
+      renderBagSavedList();
+      return;
+    }
+    var oldLabel = document.getElementById('bag-inventory-label').value.trim() || defaultBagLabel();
+    var oldCount = bagStagingItems.length;
+    saveBagProgressNow(oldLabel, bagStagingItems).then(function(){
+      bagStagingItems = [];
+      bagActiveProgressId = null;
+      document.getElementById('bag-inventory-label').value = defaultBagLabel();
+      renderBagStagingList();
+      renderBagSavedList();
+      statusEl.style.color = 'var(--text-success)';
+      statusEl.textContent = 'Saved \u201c' + oldLabel + '\u201d (' + oldCount + ' item' + (oldCount===1?'':'s') + ') and started a new bag.';
+    }).catch(function(){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'Couldn\u2019t save your current bag \u2014 try again before starting a new one.';
+    });
+  });
   document.getElementById('bag-inventory-commit-btn').addEventListener('click', function(){
     var statusEl = document.getElementById('bag-inventory-status');
     if (!bagStagingItems.length){
@@ -7609,18 +7638,18 @@
     }
     var lines;
     if (show === 'all'){
-      var header = ['Rank','Element ID','Color','Description','Needed','In Drawers','Remaining','Used In Builds'];
+      var header = ['Rank','Part #','Element ID','Color','Description','Needed','In Drawers','Remaining','Used In Builds'];
       lines = [header.map(csvEscape).join(',')];
       items.forEach(function(it, i){
-        lines.push([i+1, it.elementId, it.color, it.desc, it.short, it.inDrawers, it.short - it.inDrawers, Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
+        lines.push([i+1, it.partNum, it.elementId, it.color, it.desc, it.short, it.inDrawers, it.short - it.inDrawers, Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
       });
     } else {
       var qtyLabel = show === 'covered' ? 'In Drawers' : 'Still Needed';
       var qtyOf = function(it){ return show === 'covered' ? it.inDrawers : it.stillNeeded; };
-      var header2 = ['Rank','Element ID','Color','Description', qtyLabel, 'Used In Builds'];
+      var header2 = ['Rank','Part #','Element ID','Color','Description', qtyLabel, 'Used In Builds'];
       lines = [header2.map(csvEscape).join(',')];
       items.forEach(function(it, i){
-        lines.push([i+1, it.elementId, it.color, it.desc, qtyOf(it), Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
+        lines.push([i+1, it.partNum, it.elementId, it.color, it.desc, qtyOf(it), Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
       });
     }
     var totals = getCleanReportTotals();
@@ -7800,18 +7829,18 @@
         doc.text(totalsLine, 40, 68);
 
         var body = items.map(function(it, i){
-          return ['', String(i+1), it.color, truncateForPdf(it.desc, wide ? 70 : 40), it.short.toLocaleString(), it.inDrawers.toLocaleString(), (it.short - it.inDrawers).toLocaleString()];
+          return ['', String(i+1), it.partNum, it.color, truncateForPdf(it.desc, wide ? 60 : 32), it.short.toLocaleString(), it.inDrawers.toLocaleString(), (it.short - it.inDrawers).toLocaleString()];
         });
         doc.autoTable({
           startY: 82,
           margin: { top: 82, right: 40, bottom: 30, left: 40 },
-          head: [['','#','Color','Description','Needed','In Drawers','Remaining']],
+          head: [['','Rank','Part #','Color','Description','Needed','In Drawers','Remaining']],
           body: body,
           styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: 28, valign: 'middle' },
           headStyles: { fillColor: fillColor, textColor: 255 },
           columnStyles: wide
-            ? { 0: { cellWidth: 30 }, 1: { cellWidth: 20 }, 2: { cellWidth: 55 }, 3: { cellWidth: 400 }, 4: { cellWidth: 55 }, 5: { cellWidth: 65 }, 6: { cellWidth: 70 } }
-            : { 0: { cellWidth: 26 }, 1: { cellWidth: 16 }, 2: { cellWidth: 46 }, 3: { cellWidth: 220 }, 4: { cellWidth: 45 }, 5: { cellWidth: 52 }, 6: { cellWidth: 55 } },
+            ? { 0: { cellWidth: 30 }, 1: { cellWidth: 25 }, 2: { cellWidth: 60 }, 3: { cellWidth: 50 }, 4: { cellWidth: 330 }, 5: { cellWidth: 55 }, 6: { cellWidth: 65 }, 7: { cellWidth: 70 } }
+            : { 0: { cellWidth: 26 }, 1: { cellWidth: 22 }, 2: { cellWidth: 50 }, 3: { cellWidth: 40 }, 4: { cellWidth: 175 }, 5: { cellWidth: 42 }, 6: { cellWidth: 48 }, 7: { cellWidth: 50 } },
           didDrawCell: function(data){
             if (data.section !== 'body' || data.column.index !== 0) return;
             var it = items[data.row.index];
@@ -7848,26 +7877,26 @@
         for (var i = 0; i < rowCount; i++){
           var L = leftItems[i], R = rightItems[i];
           body.push([
-            '', L ? String(i + 1) : '', L ? L.color : '', L ? L.desc : '', L ? qtyOf(L).toLocaleString() : '',
+            '', L ? String(i + 1) : '', L ? L.partNum : '', L ? L.color : '', L ? L.desc : '', L ? qtyOf(L).toLocaleString() : '',
             '',
-            '', R ? String(half + i + 1) : '', R ? R.color : '', R ? R.desc : '', R ? qtyOf(R).toLocaleString() : ''
+            '', R ? String(half + i + 1) : '', R ? R.partNum : '', R ? R.color : '', R ? R.desc : '', R ? qtyOf(R).toLocaleString() : ''
           ]);
           rowItems.push([L || null, R || null]);
         }
 
         doc.autoTable({
           startY: 82,
-          head: [['','#','Color','Description',qtyLabelShort,'','','#','Color','Description',qtyLabelShort]],
+          head: [['','Rank','Part #','Color','Description',qtyLabelShort,'','','Rank','Part #','Color','Description',qtyLabelShort]],
           body: body,
           styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: 39, valign: 'middle' },
           headStyles: { fillColor: fillColor, textColor: 255 },
           columnStyles: {
-            0: { cellWidth: 40 }, 1: { cellWidth: 18 }, 2: { cellWidth: 50 }, 3: { cellWidth: 185 }, 4: { cellWidth: 45 },
-            5: { cellWidth: 14 },
-            6: { cellWidth: 40 }, 7: { cellWidth: 18 }, 8: { cellWidth: 50 }, 9: { cellWidth: 185 }, 10: { cellWidth: 45 }
+            0: { cellWidth: 35 }, 1: { cellWidth: 20 }, 2: { cellWidth: 42 }, 3: { cellWidth: 42 }, 4: { cellWidth: 150 }, 5: { cellWidth: 40 },
+            6: { cellWidth: 10 },
+            7: { cellWidth: 35 }, 8: { cellWidth: 20 }, 9: { cellWidth: 42 }, 10: { cellWidth: 42 }, 11: { cellWidth: 150 }, 12: { cellWidth: 40 }
           },
           didParseCell: function(data){
-            if (data.column.index === 5){
+            if (data.column.index === 6){
               data.cell.styles.lineWidth = 0;
               data.cell.styles.fillColor = data.section === 'head' ? fillColor : 255;
             }
@@ -7876,7 +7905,7 @@
             if (data.section !== 'body') return;
             var pair = rowItems[data.row.index];
             if (!pair) return;
-            var slot = data.column.index === 0 ? 0 : (data.column.index === 6 ? 1 : null);
+            var slot = data.column.index === 0 ? 0 : (data.column.index === 7 ? 1 : null);
             if (slot === null) return;
             var it = pair[slot];
             var elementId = it && it.elementId;
@@ -7901,16 +7930,16 @@
         doc2.text(totalsLine, 40, 68);
 
         var body2 = items.map(function(it, i){
-          return ['', String(i+1), it.color, truncateForPdf(it.desc, 48), qtyOf(it).toLocaleString()];
+          return ['', String(i+1), it.partNum, it.color, truncateForPdf(it.desc, 38), qtyOf(it).toLocaleString()];
         });
         doc2.autoTable({
           startY: 82,
           margin: { top: 82, right: 40, bottom: 30, left: 40 },
-          head: [['','#','Color','Description', qtyLabelFull]],
+          head: [['','Rank','Part #','Color','Description', qtyLabelFull]],
           body: body2,
           styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: 28, valign: 'middle' },
           headStyles: { fillColor: fillColor, textColor: 255 },
-          columnStyles: { 0: { cellWidth: 28 }, 1: { cellWidth: 18 }, 2: { cellWidth: 55 }, 3: { cellWidth: 300 }, 4: { cellWidth: 70 } },
+          columnStyles: { 0: { cellWidth: 28 }, 1: { cellWidth: 24 }, 2: { cellWidth: 55 }, 3: { cellWidth: 50 }, 4: { cellWidth: 230 }, 5: { cellWidth: 70 } },
           didDrawCell: function(data){
             if (data.section !== 'body' || data.column.index !== 0) return;
             var it = items[data.row.index];
