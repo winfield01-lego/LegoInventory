@@ -334723,7 +334723,7 @@
           "color": "Black",
           "desc": "Plate 1 x 1",
           "elementId": "302426",
-          "qty": 4,
+          "qty": 5,
           "drawerId": "D5",
           "matchCount": 0,
           "suggested": false
@@ -335247,9 +335247,79 @@
           "drawerId": "B1",
           "matchCount": 0,
           "suggested": false
+        },
+        {
+          "partNum": "95188",
+          "color": "Light Bluish Gray",
+          "desc": "Brick Round Corner 6 x 6 with 33° Slope and Facet Cutout",
+          "elementId": "4622336",
+          "qty": 1,
+          "drawerId": "E8",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "95188",
+          "color": "Black",
+          "desc": "Brick Round Corner 6 x 6 with 33° Slope and Facet Cutout",
+          "elementId": "6005932",
+          "qty": 1,
+          "drawerId": "E8",
+          "matchCount": 0,
+          "suggested": true
+        },
+        {
+          "partNum": "58846",
+          "color": "Light Bluish Gray",
+          "desc": "Brick Round Corner 10 x 10 with Slope 33° Edge, Axle Hole, Facet Cutout",
+          "elementId": "4532853",
+          "qty": 2,
+          "drawerId": "",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "61487",
+          "color": "White",
+          "desc": "Brick Curved 4 x 4 x 2 with Holes",
+          "elementId": "4519129",
+          "qty": 1,
+          "drawerId": "E9",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "11301",
+          "color": "Dark Bluish Gray",
+          "desc": "Brick Curved Inverted 2 x 8 x 2 Double",
+          "elementId": "6032175",
+          "qty": 3,
+          "drawerId": "E9",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "11301",
+          "color": "White",
+          "desc": "Brick Curved Inverted 2 x 8 x 2 Double",
+          "elementId": "6032307",
+          "qty": 1,
+          "drawerId": "E9",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "54091",
+          "color": "Dark Bluish Gray",
+          "desc": "Brick Curved Inverted 8 x 8 x 2 Double",
+          "elementId": "4519003",
+          "qty": 1,
+          "drawerId": "E9",
+          "matchCount": 0,
+          "suggested": false
         }
       ],
-      "savedAt": "2026-10-02T00:49:45.292Z"
+      "savedAt": "2026-10-02T01:02:22.977Z"
     }
   ]
 }
