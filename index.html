@@ -793,6 +793,17 @@
   </div>
 
   <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
+    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Mark all sets complete</p>
+    <p style="color: var(--text-secondary); margin: 0 0 10px;">
+      Newly imported or fetched set parts are already assumed complete by default &mdash; this is only for fixing sets imported before that was the case, where some part lines still show as short even though you haven't actually used or lost anything from them. Sets every part line, across every official set you own, to fully on hand. This can't be undone, so only use it if your sets genuinely aren't missing anything right now &mdash; mark individual parts short afterward as needed.
+    </p>
+    <div class="row">
+      <button id="mark-all-sets-complete-btn" class="lockable"><i class="ti ti-checks" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Mark all sets complete</button>
+      <span id="mark-all-sets-complete-status" style="font-size:13px; color:var(--text-secondary);"></span>
+    </div>
+  </div>
+
+  <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
     <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Fill in missing element IDs</p>
     <p style="color: var(--text-secondary); margin: 0 0 10px;">
       Scans every part line across MOC Builds, Official Sets, and Drawers for a part #/color combo with no element ID, and looks each one up on Rebrickable. Uses the Rebrickable API key set up on the Data &amp; Tools tab. One lookup per unique part #/color combo &mdash; the result is applied to every matching line everywhere it appears, so a part missing its ID in five different builds only costs one request.
@@ -4090,7 +4101,13 @@
 
   function importSetPartsFromRows(setNum, rows){
     setParts = setParts.filter(function(p){ return p.setNum !== setNum; });
-    rows.forEach(function(r){ r.setNum = setNum; setParts.push(r); });
+    rows.forEach(function(r){
+      r.setNum = setNum;
+      // Default a freshly-imported part line to fully on hand -- an official set is assumed complete
+      // until the person explicitly marks something as short or missing.
+      if (r.onHand === undefined || r.onHand === null) r.onHand = setPartNeeded(r);
+      setParts.push(r);
+    });
     touchSetLastEdited(setNum);
     saveSetParts();
   }
@@ -4842,6 +4859,33 @@
     render();
     renderSetsTab();
     if (detailContext && detailContext.kind === 'set' && detailContext.key === setNum) openSetDetail(setNum);
+  }
+
+  function markAllSetsComplete(){
+    var statusEl = document.getElementById('mark-all-sets-complete-status');
+    if (!setParts.length){
+      statusEl.style.color = 'var(--text-secondary)';
+      statusEl.textContent = 'No set parts on file yet \u2014 add or import a set first.';
+      return;
+    }
+    var shortRows = setParts.filter(function(r){ return setPartOnHand(r) < setPartNeeded(r); });
+    if (!shortRows.length){
+      statusEl.style.color = 'var(--text-secondary)';
+      statusEl.textContent = 'Every set is already marked complete \u2014 nothing to change.';
+      return;
+    }
+    var setCount = new Set(shortRows.map(function(r){ return r.setNum; })).size;
+    if (!confirm('Mark all official sets complete? This sets On Hand to the Needed quantity for ' + shortRows.length.toLocaleString() + ' part line' + (shortRows.length===1?'':'s') + ' across ' + setCount.toLocaleString() + ' set' + (setCount===1?'':'s') + ' currently showing as short. This can\u2019t be undone.')) return;
+    shortRows.forEach(function(r){ r.onHand = setPartNeeded(r); });
+    var touchedSets = {};
+    shortRows.forEach(function(r){ touchedSets[r.setNum] = true; });
+    Object.keys(touchedSets).forEach(function(setNum){ touchSetLastEdited(setNum); });
+    saveSetParts();
+    render();
+    renderSetsTab();
+    if (detailContext && detailContext.kind === 'set') openSetDetail(detailContext.key);
+    statusEl.style.color = 'var(--text-success)';
+    statusEl.textContent = 'Marked ' + shortRows.length.toLocaleString() + ' part line' + (shortRows.length===1?'':'s') + ' complete across ' + setCount.toLocaleString() + ' set' + (setCount===1?'':'s') + '.';
   }
 
   function clearBuildQuantities(name){
@@ -7750,6 +7794,7 @@
     storage.set(USE_SET_PROXY_KEY, useSetProxy ? '1' : '0', false);
   });
   document.getElementById('set-fetch-all-btn').addEventListener('click', fetchAllSetsViaApi);
+  document.getElementById('mark-all-sets-complete-btn').addEventListener('click', markAllSetsComplete);
   document.getElementById('rb-clear-cache-btn').addEventListener('click', function(){
     var statusEl = document.getElementById('rb-clear-cache-status');
     clearRbCatalogCache().then(function(){
@@ -10133,8 +10178,12 @@
     setParts = mergeDuplicateRows(setParts,
       function(r){ return normKey(r.setNum) + '|' + normKey(r.color) + '|' + normKey(r.partNum); },
       function(kept, extra){
+        // Read each row's effective on-hand (which defaults to "fully owned" when unset) before
+        // qtyPerSet changes underneath it, so a row that was implicitly complete stays counted as such.
+        var keptOnHand = setPartOnHand(kept);
+        var extraOnHand = setPartOnHand(extra);
         kept.qtyPerSet = (kept.qtyPerSet || 0) + (extra.qtyPerSet || 0);
-        kept.onHand = (kept.onHand || 0) + (extra.onHand || 0);
+        kept.onHand = keptOnHand + extraOnHand;
         if (!kept.elementId && extra.elementId) kept.elementId = extra.elementId;
         if (!kept.desc && extra.desc) kept.desc = extra.desc;
       });
