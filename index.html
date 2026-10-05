@@ -725,7 +725,10 @@
   <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 6px;">Builds by theme</p>
   <div id="mocbuild-theme-summary-list" style="margin-bottom: 16px;"></div>
 
-  <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 8px;">Your builds</p>
+  <div class="row" style="justify-content: space-between; align-items:center; margin: 0 0 8px; flex-wrap:wrap; gap:8px;">
+    <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0;">Your builds</p>
+    <button id="mocbuilds-list-csv-btn" class="icon-btn" style="padding: 3px 10px;" title="Download a CSV of every build: name, theme, location, progress, and more"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Builds list (CSV)</button>
+  </div>
   <input type="text" id="mocbuild-search" placeholder="Search builds" style="width:100%; margin-bottom: 10px;" />
   <div id="moc-builds-list" style="margin-bottom: 20px;"></div>
 
@@ -773,7 +776,10 @@
 
   <div class="row" style="justify-content: space-between; margin-bottom: 8px;">
     <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0;">Your sets</p>
-    <button id="sets-report-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Sets report (PDF)</button>
+    <div class="row" style="gap:8px;">
+      <button id="sets-list-csv-btn" class="icon-btn" style="padding: 3px 10px;" title="Download a CSV of every set you own: set number, name, quantity, and more"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Sets list (CSV)</button>
+      <button id="sets-report-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Sets report (PDF)</button>
+    </div>
   </div>
   <div id="owned-sets-list" style="margin-bottom: 20px;"></div>
 
@@ -784,7 +790,7 @@
   <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
     <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Option B (best-effort): fetch via Rebrickable API</p>
     <p style="color: var(--text-secondary); margin: 0 0 10px;">
-      Needs a free API key from <span style="font-family: var(--font-mono);">rebrickable.com/api</span>, set up on the Data &amp; Tools tab. Browsers sometimes block this kind of cross-site request (the same issue we ran into with LEGO's own images) &mdash; if it fails for you, the CSV upload on the Import tab always works. Alongside the parts, this also looks up each set's official name and theme by its set number and updates them here &mdash; including overwriting anything you'd typed in manually. Only fetches sets that don't already have parts on file, so it's fast to re-run after adding a new set &mdash; it won't re-download ones you already have.
+      Needs a free API key from <span style="font-family: var(--font-mono);">rebrickable.com/api</span>, set up on the Data &amp; Tools tab. Browsers sometimes block this kind of cross-site request (the same issue we ran into with LEGO's own images) &mdash; if it fails for you, the CSV upload on the Import tab always works. Alongside the parts, this also looks up each set's official name and theme by its set number and updates them here &mdash; including overwriting anything you'd typed in manually. Spare parts Rebrickable lists with a set are ignored. Only fetches sets that don't already have parts on file, so it's fast to re-run after adding a new set &mdash; it won't re-download ones you already have. To refresh a set that already has parts (for example, to drop spares from an earlier import), open its Summary card and use <strong>Re-fetch parts from Rebrickable</strong>.
     </p>
     <div class="row">
       <button id="set-fetch-all-btn" class="lockable"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch parts &amp; names for new sets</button>
@@ -921,7 +927,10 @@
         </div>
       </div>
 
-      <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 8px;">Your drawers</p>
+      <div class="row" style="justify-content: space-between; align-items:center; margin: 0 0 8px; flex-wrap:wrap; gap:8px;">
+        <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0;">Your drawers</p>
+        <button id="drawer-rearrange-open-btn" class="icon-btn lockable" style="padding: 3px 10px;" title="Move parts between drawers, combine drawers, or swap two drawers"><i class="ti ti-arrows-exchange" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Move / combine / swap drawers</button>
+      </div>
       <div id="drawer-cards-list" style="margin-bottom: 20px;"></div>
 
       <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 16px;">
@@ -1212,7 +1221,7 @@
     <button type="button" class="collapse-header" data-collapse-target="cs-set-upload"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Official Set Parts Upload</span></button>
     <div class="collapse-body" id="cs-set-upload" style="display:none;">
       <p style="color: var(--text-secondary); margin: 0 0 10px;">
-        On Rebrickable, open the set's page &rarr; "Parts" tab &rarr; download the CSV. No account or API key needed. Then pick which set it belongs to and upload it here. (You can also fetch a set's parts automatically via the Rebrickable API from the Official Sets tab.)
+        On Rebrickable, open the set's page &rarr; "Parts" tab &rarr; download the CSV. No account or API key needed. Then pick which set it belongs to and upload it here. Spare parts (the extras Rebrickable lists separately from the set's real parts) are left out automatically. (You can also fetch a set's parts automatically via the Rebrickable API from the Official Sets tab.)
       </p>
       <div class="controls" style="margin-bottom: 8px;">
         <select id="set-csv-target" class="lockable"><option value="">Which set is this for?</option></select>
@@ -1352,6 +1361,18 @@
       <textarea id="detail-modal-description" class="lockable" placeholder="Short description (optional)" style="width:100%; min-height:56px; font-size:13px; font-family:inherit; resize:vertical;"></textarea>
     </div>
 
+    <div style="margin:0 0 14px;">
+      <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap;">
+        <i class="ti ti-file-text" style="font-size:14px; color:var(--text-muted);" aria-hidden="true"></i>
+        <input type="text" id="detail-modal-instructions-url" class="lockable" placeholder="Instructions: paste a link (website, PDF, or iCloud share link)" style="flex:1; min-width:200px; font-size:13px;" />
+        <button type="button" id="detail-modal-instructions-open" class="icon-btn" style="display:none;" title="Open the instructions in a new tab"><i class="ti ti-external-link" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Open</button>
+        <button type="button" id="detail-modal-instructions-upload" class="icon-btn lockable" title="Upload a PDF of the instructions to your site"><i class="ti ti-upload" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Upload PDF</button>
+        <input type="file" id="detail-modal-instructions-file" class="lockable" accept="application/pdf,.pdf" style="display:none;" />
+        <button id="detail-modal-instructions-clear" class="icon-btn lockable" style="display:none;" title="Remove the instructions link"><i class="ti ti-x" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i></button>
+      </div>
+      <p id="detail-modal-instructions-status" style="font-size:11px; color:var(--text-secondary); margin:4px 0 0;"></p>
+    </div>
+
     <div style="display:flex; gap:16px; flex-wrap:wrap; margin-bottom:18px;">
       <div style="flex-shrink:0; width:160px;">
         <img id="detail-modal-photo" style="display:none; width:160px; height:160px; object-fit:cover; border-radius:8px; border:2px solid var(--border);" alt="" />
@@ -1366,6 +1387,8 @@
 
     <button id="detail-modal-mark-complete" class="icon-btn lockable" style="display:none; color: var(--lego-green); border-color: var(--lego-green); margin-bottom:14px;"><i class="ti ti-checkbox" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Mark Complete (set On Hand to Needed for every part)</button>
     <button id="detail-modal-clear-quantities" class="icon-btn lockable" style="display:none; color: var(--text-danger); border-color: var(--text-danger); margin-bottom:14px; margin-left:8px;"><i class="ti ti-eraser" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Clear All Quantities (set On Hand to 0 for every part)</button>
+    <button id="detail-modal-refetch-parts" class="icon-btn lockable" style="display:none; margin-bottom:14px; margin-left:8px;" title="Replace this set's parts list with the current one from Rebrickable (spare parts left out)"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Re-fetch parts from Rebrickable</button>
+    <p id="detail-modal-refetch-status" style="font-size:12px; color:var(--text-secondary); margin:-6px 0 12px;"></p>
 
     <p style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary); margin:0 0 8px;">Parts list</p>
     <div class="tbl-wrap" style="max-height:320px;">
@@ -1415,7 +1438,10 @@
 
     <div id="drawer-detail-assign-slot"></div>
 
-    <p style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary); margin:0 0 8px;">Parts in this drawer</p>
+    <div class="row" style="justify-content:space-between; align-items:center; margin:0 0 8px; flex-wrap:wrap; gap:8px;">
+      <p style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary); margin:0;">Parts in this drawer</p>
+      <button id="drawer-detail-move-btn" class="icon-btn lockable" style="padding:3px 10px;" title="Move some or all of this drawer's parts into another drawer"><i class="ti ti-arrows-exchange" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Move / combine parts</button>
+    </div>
     <div class="tbl-wrap" style="max-height:320px;">
       <table>
         <thead>
@@ -1453,6 +1479,56 @@
         <input type="file" id="part-image-modal-file" class="lockable" accept="image/*" style="display:none;" />
       </label>
       <button id="part-image-modal-remove-btn" class="icon-btn lockable" style="display:none; color: var(--text-danger); border-color: var(--text-danger);"><i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Remove uploaded photo</button>
+    </div>
+  </div>
+</div>
+
+<div id="drawer-move-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1060; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:var(--surface-2); border-radius:var(--radius); max-width:680px; width:100%; max-height:90vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
+    <button id="drawer-move-close" class="icon-btn" style="position:absolute; top:14px; right:14px;"><i class="ti ti-x" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Close</button>
+    <h3 style="margin:0 0 6px; padding-right:80px;">Move, combine, or swap drawers</h3>
+    <p style="margin:0 0 12px; color:var(--text-secondary); font-size:13px;">Move some or all of the parts from one or more drawers into another drawer (new or existing), or swap what two drawers hold. Parts that already exist in the destination are added to its existing quantity rather than duplicated.</p>
+    <div class="row" style="gap:6px; margin-bottom:14px;">
+      <button id="dm-tab-move" class="icon-btn">Move / combine</button>
+      <button id="dm-tab-swap" class="icon-btn">Swap two drawers</button>
+    </div>
+
+    <div id="dm-move-panel">
+      <p style="margin:0 0 4px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary);">Move from</p>
+      <div id="dm-sources"></div>
+      <button id="dm-add-source" class="icon-btn" style="margin:6px 0 14px;"><i class="ti ti-plus" style="font-size:12px; vertical-align:-2px;" aria-hidden="true"></i> Add another drawer to move from</button>
+
+      <p style="margin:0 0 4px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary);">Move to</p>
+      <select id="dm-target" style="width:100%; margin-bottom:6px;"></select>
+      <div id="dm-new-fields" style="display:none; gap:8px; flex-wrap:wrap; margin-bottom:6px;">
+        <input type="text" id="dm-new-label" placeholder="New drawer label, e.g. B12" style="flex:1; min-width:160px;" />
+        <input type="text" id="dm-new-group" placeholder="Group (optional)" style="flex:1; min-width:120px;" />
+      </div>
+
+      <div class="row" style="gap:8px; margin:12px 0 6px; flex-wrap:wrap;">
+        <input type="text" id="dm-filter" placeholder="Filter parts by number, color, or description&hellip;" style="flex:1; min-width:160px;" />
+        <button id="dm-select-all" class="icon-btn">Select all shown</button>
+        <button id="dm-select-none" class="icon-btn">Clear</button>
+      </div>
+      <div id="dm-parts-list" style="max-height:300px; overflow-y:auto; border:1px solid var(--border); border-radius:8px; padding:4px; margin-bottom:8px;"></div>
+      <p id="dm-summary" style="margin:0 0 8px; font-size:12px; color:var(--text-secondary);"></p>
+      <label class="checkbox-label" style="margin-bottom:10px;"><input type="checkbox" id="dm-delete-empty" /> Also remove a source drawer if this leaves it empty</label>
+      <div class="row"><button id="dm-move-btn" class="lockable"><i class="ti ti-arrows-exchange" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Move selected parts</button></div>
+      <p id="dm-status" style="margin:8px 0 0; font-size:13px; color:var(--text-secondary);"></p>
+    </div>
+
+    <div id="dm-swap-panel" style="display:none;">
+      <p style="margin:0 0 4px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary);">Swap the contents of</p>
+      <div class="row" style="gap:8px; flex-wrap:wrap; align-items:center;">
+        <select id="dm-swap-a" style="flex:1; min-width:140px;"></select>
+        <span style="font-weight:800;">&#8644;</span>
+        <select id="dm-swap-b" style="flex:1; min-width:140px;"></select>
+      </div>
+      <p id="dm-swap-preview" style="margin:8px 0; font-size:12px; color:var(--text-secondary);"></p>
+      <label class="checkbox-label" style="margin-bottom:6px;"><input type="checkbox" id="dm-swap-notes" /> Swap the notes along with the contents</label>
+      <p style="margin:0 0 10px; font-size:11px; color:var(--text-muted);">Each drawer keeps its own label and group (they describe where it sits); only what's inside moves. Tick the box above if your notes describe the contents rather than the location.</p>
+      <div class="row"><button id="dm-swap-btn" class="lockable"><i class="ti ti-arrows-exchange-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Swap contents</button></div>
+      <p id="dm-swap-status" style="margin:8px 0 0; font-size:13px; color:var(--text-secondary);"></p>
     </div>
   </div>
 </div>
@@ -1605,7 +1681,9 @@
   var MOC_LOCATIONS_KEY = 'moc-locations-v1';
   var MOC_BUILDS_KEY = 'moc-builds-v1';
   var MOC_DESCRIPTIONS_KEY = 'moc-descriptions-v1';
+  var MOC_INSTRUCTIONS_KEY = 'moc-instructions-v1';
   var mocDescriptions = {};
+  var mocInstructions = {};
   var mocBuilds = [];
   var setPhotos = {};
   var mocPhotos = {};
@@ -3291,7 +3369,8 @@
     color: ['color','colour','colorname'],
     desc: ['description','name','partname','part_name'],
     qty: ['quantity','qty','amount'],
-    elementId: ['elementid','element','elementnumber','legoelementid']
+    elementId: ['elementid','element','elementnumber','legoelementid'],
+    spare: ['isspare','spare','isspares']
   };
 
   function loadOwnedSets(){
@@ -4128,12 +4207,19 @@
       return;
     }
     var rows = [];
+    var spareSkipped = 0;
+    var inSpareSection = false;
     for (var i = 1; i < table.length; i++){
       var cols = table[i];
       if (!cols || !cols.length) continue;
+      // Some exports list spare parts under their own "Spare Parts" heading rather than a column.
+      var filledCells = cols.filter(function(cell){ return String(cell || '').trim(); });
+      if (filledCells.length === 1 && /spare/i.test(filledCells[0])){ inSpareSection = true; continue; }
       var partNum = (cols[map.partNum] || '').trim();
       var qty = parseInt(cols[map.qty], 10);
       if (!partNum || isNaN(qty)) continue;
+      var isSpare = inSpareSection || (map.spare !== undefined && /^(true|t|yes|y|1|x)$/i.test(String(cols[map.spare] || '').trim()));
+      if (isSpare){ spareSkipped++; continue; }
       rows.push({
         partNum: partNum,
         color: map.color !== undefined ? (cols[map.color] || '').trim() : '',
@@ -4144,12 +4230,13 @@
     }
     if (!rows.length){
       statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'No valid rows found in that CSV.';
+      statusEl.textContent = spareSkipped ? ('Only spare parts were found in that CSV (' + spareSkipped + ' line' + (spareSkipped===1?'':'s') + ') \u2014 spares are ignored, so nothing was imported.') : 'No valid rows found in that CSV.';
       return;
     }
     importSetPartsFromRows(setNum, rows);
     statusEl.style.color = 'var(--text-success)';
-    statusEl.textContent = 'Imported ' + rows.length + ' part line' + (rows.length===1?'':'s') + ' for ' + setNum + '.';
+    statusEl.textContent = 'Imported ' + rows.length + ' part line' + (rows.length===1?'':'s') + ' for ' + setNum + '.' +
+      (spareSkipped ? ' Ignored ' + spareSkipped + ' spare part line' + (spareSkipped===1?'':'s') + '.' : '');
     document.getElementById('set-csv-paste').value = '';
     document.getElementById('set-csv-file').value = '';
     renderSetsTab();
@@ -4168,7 +4255,13 @@
     }).then(function(data){
       var results = data.results || data;
       if (!Array.isArray(results)) throw new Error('Unexpected response shape');
-      return results.map(function(item){
+      // Rebrickable lists a set's spare parts alongside the real ones, flagged is_spare. Leave them out.
+      var spareCount = 0;
+      var kept = results.filter(function(item){
+        if (item.is_spare === true){ spareCount++; return false; }
+        return true;
+      });
+      var mapped = kept.map(function(item){
         return {
           partNum: (item.part && item.part.part_num) || item.part_num || '',
           color: (item.color && item.color.name) || '',
@@ -4177,6 +4270,8 @@
           qtyPerSet: item.quantity || 1
         };
       }).filter(function(r){ return r.partNum; });
+      mapped.spareSkipped = spareCount;
+      return mapped;
     });
   }
 
@@ -4227,10 +4322,10 @@
     var skipped = ownedSets.length - setsToFetch.length;
     if (!setsToFetch.length){
       statusEl.style.color = 'var(--text-success)';
-      statusEl.textContent = 'Every set already has parts on file \u2014 nothing new to fetch. Remove a set\u2019s parts (or the set itself) and re-add it if you want to refresh one.';
+      statusEl.textContent = 'Every set already has parts on file \u2014 nothing new to fetch. To refresh one that already has parts, open its Summary card and use Re-fetch parts from Rebrickable.';
       return;
     }
-    var ok = 0, failed = 0, total = setsToFetch.length, done = 0;
+    var ok = 0, failed = 0, total = setsToFetch.length, done = 0, spareTotal = 0;
     statusEl.style.color = 'var(--text-secondary)';
     statusEl.textContent = 'Fetching\u2026 0 / ' + total;
     var idx = 0;
@@ -4239,12 +4334,14 @@
         statusEl.style.color = ok ? 'var(--text-success)' : 'var(--text-danger)';
         statusEl.textContent = 'Fetched ' + ok + ' new set' + (ok===1?'':'s') + ' of ' + total + '.' +
           (skipped ? (' ' + skipped + ' already had parts on file and were skipped.') : '') +
+          (spareTotal ? (' Ignored ' + spareTotal.toLocaleString() + ' spare part line' + (spareTotal===1?'':'s') + '.') : '') +
           (failed ? (' ' + failed + ' failed \u2014 likely blocked by the browser; try the CSV import instead, or turn on the proxy toggle.') : '');
         renderSetsTab();
         return;
       }
       var s = setsToFetch[idx++];
       fetchSetPartsFromApi(s.setNum).then(function(rows){
+        spareTotal += rows.spareSkipped || 0;
         importSetPartsFromRows(s.setNum, rows);
         ok++;
         return fetchSetDetailsFromApi(s.setNum);
@@ -4730,6 +4827,15 @@
     scheduleAutoPublish();
     return storage.set(MOC_BUILDS_KEY, JSON.stringify(mocBuilds), false);
   }
+  function loadMocInstructions(){
+    return storage.get(MOC_INSTRUCTIONS_KEY, false).then(function(res){
+      if (res && res.value){ try { mocInstructions = JSON.parse(res.value) || {}; } catch(e){ mocInstructions = {}; } }
+    }).catch(function(){});
+  }
+  function saveMocInstructions(){
+    scheduleAutoPublish();
+    return storage.set(MOC_INSTRUCTIONS_KEY, JSON.stringify(mocInstructions), false);
+  }
   function loadMocDescriptions(){
     return storage.get(MOC_DESCRIPTIONS_KEY, false).then(function(res){
       if (res && res.value){ try { mocDescriptions = JSON.parse(res.value); } catch(e){ mocDescriptions = {}; } }
@@ -4777,6 +4883,194 @@
     });
     if (changed) saveMocBuilds();
   }
+  // ---- CSV exports of owned sets and MOC builds ----
+  function exportSetsListCSV(){
+    if (!ownedSets.length){
+      alert('No sets to export yet \u2014 add a set first.');
+      return;
+    }
+    var header = ['Set Number','Name','Theme','Qty Owned','Pieces Per Set','Total Pieces','Pieces On Hand','Pieces Missing','Location','Instructions','Last Edited'];
+    var lines = [header.map(csvEscape).join(',')];
+    ownedSets.slice().sort(function(a, b){
+      return String(a.setNum).localeCompare(String(b.setNum), undefined, { numeric: true });
+    }).forEach(function(s){
+      var rows = setParts.filter(function(r){ return r.setNum === s.setNum; });
+      var perSet = 0, total = 0, onHand = 0, missing = 0;
+      rows.forEach(function(r){
+        var needed = setPartNeeded(r), have = setPartOnHand(r);
+        perSet += (r.qtyPerSet || 0);
+        total += needed;
+        onHand += have;
+        missing += Math.max(needed - have, 0);
+      });
+      var hasParts = rows.length > 0;
+      lines.push([
+        s.setNum, s.name || '', s.theme || '', s.qty,
+        hasParts ? perSet : '', hasParts ? total : '', hasParts ? onHand : '', hasParts ? missing : '',
+        s.location || '', (s.instructions && s.instructions.url) || '',
+        s.lastEdited ? String(s.lastEdited).slice(0, 10) : ''
+      ].map(csvEscape).join(','));
+    });
+    downloadCsv(lines, 'lego-owned-sets');
+  }
+
+  function exportMocBuildsCSV(){
+    var mocs = computeMocs();
+    if (!mocs.length){
+      alert('No builds to export yet \u2014 add a build first.');
+      return;
+    }
+    var header = ['Build Name','Theme','Location','Description','Part Lines','Pieces Needed','Pieces On Hand','Pieces Missing','Percent Complete','Instructions','Last Edited'];
+    var lines = [header.map(csvEscape).join(',')];
+    mocs.slice().sort(function(a, b){ return a.name.localeCompare(b.name, undefined, { numeric: true }); }).forEach(function(m){
+      var instr = mocInstructions[m.name];
+      lines.push([
+        m.name, mocThemes[m.name] || '', mocLocations[m.name] || '', mocDescriptions[m.name] || '',
+        m.lines, m.need, m.have, Math.max(m.need - m.have, 0),
+        m.need ? Math.round(100 * m.have / m.need) : '',
+        (instr && instr.url) || '',
+        m.lastEdited ? String(m.lastEdited).slice(0, 10) : ''
+      ].map(csvEscape).join(','));
+    });
+    downloadCsv(lines, 'lego-moc-builds');
+  }
+
+  // ---- Instructions for a build or set: a link, or a PDF uploaded to the site ----
+  var INSTRUCTIONS_MAX_PDF_BYTES = 25 * 1024 * 1024;
+
+  function normalizeInstructionsUrl(raw){
+    var s = String(raw || '').trim();
+    if (!s) return '';
+    if (/^https?:\/\/\S+$/i.test(s)) return s;
+    if (/^[a-z0-9][a-z0-9.-]*\.[a-z]{2,}(\/\S*)?$/i.test(s)) return 'https://' + s;
+    return null;
+  }
+
+  function getInstructionsRecordFor(kind, key){
+    if (kind === 'set'){
+      var s = ownedSets.find(function(x){ return x.setNum === key; });
+      return (s && s.instructions && s.instructions.url) ? s.instructions : null;
+    }
+    var m = mocInstructions[key];
+    return (m && m.url) ? m : null;
+  }
+
+  function saveInstructionsFor(kind, key, rec){
+    if (kind === 'set'){
+      var s = ownedSets.find(function(x){ return x.setNum === key; });
+      if (!s) return;
+      if (rec) s.instructions = rec; else delete s.instructions;
+      touchSetLastEdited(key);
+      saveOwnedSets();
+    } else {
+      if (rec) mocInstructions[key] = rec; else delete mocInstructions[key];
+      touchMocLastEdited(key);
+      saveMocInstructions();
+    }
+  }
+
+  function instructionsStatusEl(){ return document.getElementById('detail-modal-instructions-status'); }
+
+  function refreshInstructionsUI(){
+    var input = document.getElementById('detail-modal-instructions-url');
+    var openEl = document.getElementById('detail-modal-instructions-open');
+    var clearEl = document.getElementById('detail-modal-instructions-clear');
+    var statusEl = instructionsStatusEl();
+    var rec = detailContext ? getInstructionsRecordFor(detailContext.kind, detailContext.key) : null;
+    input.value = rec ? rec.url : '';
+    openEl.style.display = rec ? 'inline-block' : 'none';
+    openEl.dataset.url = rec ? rec.url : '';
+    clearEl.style.display = rec ? 'inline-block' : 'none';
+    statusEl.style.color = 'var(--text-secondary)';
+    if (!rec) statusEl.textContent = 'Paste a link to the instructions, or upload the PDF to your site.';
+    else if (rec.type === 'pdf') statusEl.textContent = 'Uploaded PDF: ' + (rec.name || 'instructions.pdf') + (rec.size ? ' (' + (rec.size / 1048576).toFixed(1) + ' MB)' : '') + '.';
+    else statusEl.textContent = 'Link saved.';
+  }
+
+  function instructionsSlug(s){
+    return String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 40) || 'item';
+  }
+  function instructionsHash(s){
+    var h = 5381;
+    String(s).split('').forEach(function(ch){ h = ((h * 33) ^ ch.charCodeAt(0)) >>> 0; });
+    return h.toString(36).slice(0, 6);
+  }
+  function siteUrlForPath(path){
+    var parts = ghSettings.repo.split('/');
+    var owner = parts[0].toLowerCase(), name = parts[1];
+    var base = 'https://' + owner + '.github.io/';
+    if (name.toLowerCase() !== owner + '.github.io') base += name + '/';
+    return base + path;
+  }
+
+  function uploadInstructionsPdf(file){
+    var statusEl = instructionsStatusEl();
+    function fail(msg){ statusEl.style.color = 'var(--text-danger)'; statusEl.textContent = msg; }
+    if (!detailContext) return;
+    if (!/pdf/i.test(file.type) && !/\.pdf$/i.test(file.name)) return fail('That doesn\u2019t look like a PDF file.');
+    if (!githubConnectionConfigured()) return fail('Uploading a PDF saves it to your site, which needs GitHub Connection set up on the Data & Tools tab. You can paste a link instead \u2014 iCloud, Google Drive, Dropbox, or any web page all work.');
+    if (file.size > INSTRUCTIONS_MAX_PDF_BYTES) return fail('That PDF is ' + (file.size / 1048576).toFixed(1) + ' MB, which is too large to upload here (the limit is about 25 MB). Put it in iCloud or another drive and paste the share link instead.');
+    var ctx = { kind: detailContext.kind, key: detailContext.key };
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Uploading \u201c' + file.name + '\u201d to your site\u2026';
+    var reader = new FileReader();
+    reader.onerror = function(){ fail('Couldn\u2019t read that file.'); };
+    reader.onload = function(){
+      var dataUrl = String(reader.result || '');
+      var base64 = dataUrl.slice(dataUrl.indexOf(',') + 1);
+      var path = 'instructions/' + ctx.kind + '-' + instructionsSlug(ctx.key) + '-' + instructionsHash(ctx.key) + '.pdf';
+      putFileToGithub(ghSettings.repo, ghSettings.branch || 'main', path, ghSettings.token, base64, 'instr-' + path, 'Add/update instructions for ' + ctx.key).then(function(){
+        saveInstructionsFor(ctx.kind, ctx.key, { type: 'pdf', url: siteUrlForPath(path), name: file.name, path: path, size: file.size });
+        if (detailContext && detailContext.kind === ctx.kind && detailContext.key === ctx.key){
+          refreshInstructionsUI();
+          statusEl.textContent += ' It can take a minute or two for your site to publish it before the link opens.';
+        }
+        if (ctx.kind === 'set') renderSetsTab(); else renderMocBuildsTab();
+      }).catch(function(err){
+        fail('Upload failed: ' + (err && err.message ? err.message : 'unknown error') + '. You can paste a link instead.');
+      });
+    };
+    reader.readAsDataURL(file);
+  }
+
+  document.getElementById('detail-modal-instructions-url').addEventListener('change', function(){
+    if (!detailContext) return;
+    var statusEl = instructionsStatusEl();
+    var raw = this.value;
+    var url = normalizeInstructionsUrl(raw);
+    if (url === null){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = 'That doesn\u2019t look like a web link \u2014 it should start with https:// (an iCloud share link works too).';
+      return;
+    }
+    var existing = getInstructionsRecordFor(detailContext.kind, detailContext.key);
+    if (!url){
+      if (existing) saveInstructionsFor(detailContext.kind, detailContext.key, null);
+    } else if (!existing || existing.url !== url){
+      saveInstructionsFor(detailContext.kind, detailContext.key, { type: 'link', url: url });
+    }
+    refreshInstructionsUI();
+  });
+  document.getElementById('detail-modal-instructions-open').addEventListener('click', function(){
+    var url = this.dataset.url;
+    if (url) window.open(url, '_blank', 'noopener');
+  });
+  document.getElementById('detail-modal-instructions-upload').addEventListener('click', function(){
+    document.getElementById('detail-modal-instructions-file').click();
+  });
+  document.getElementById('detail-modal-instructions-clear').addEventListener('click', function(){
+    if (!detailContext) return;
+    saveInstructionsFor(detailContext.kind, detailContext.key, null);
+    refreshInstructionsUI();
+  });
+  document.getElementById('detail-modal-instructions-file').addEventListener('change', function(e){
+    var file = e.target.files && e.target.files[0];
+    e.target.value = '';
+    if (file) uploadInstructionsPdf(file);
+  });
+  document.getElementById('sets-list-csv-btn').addEventListener('click', exportSetsListCSV);
+  document.getElementById('mocbuilds-list-csv-btn').addEventListener('click', exportMocBuildsCSV);
+
   function renameMocBuild(oldName, newName){
     newName = newName.trim();
     if (!newName || newName === oldName) return false;
@@ -4791,12 +5085,14 @@
     if (mocPhotos[oldName] !== undefined){ mocPhotos[newName] = mocPhotos[oldName]; delete mocPhotos[oldName]; }
     if (mocThemes[oldName] !== undefined){ mocThemes[newName] = mocThemes[oldName]; delete mocThemes[oldName]; }
     if (mocDescriptions[oldName] !== undefined){ mocDescriptions[newName] = mocDescriptions[oldName]; delete mocDescriptions[oldName]; }
+    if (mocInstructions[oldName] !== undefined){ mocInstructions[newName] = mocInstructions[oldName]; delete mocInstructions[oldName]; }
     saveState();
     saveMocBuilds();
     saveMocLocations();
     saveMocPhotos();
     saveMocThemes();
     saveMocDescriptions();
+    saveMocInstructions();
     return true;
   }
   function deleteMocBuild(name){
@@ -4811,12 +5107,14 @@
     delete mocPhotos[name];
     delete mocThemes[name];
     delete mocDescriptions[name];
+    delete mocInstructions[name];
     saveState();
     saveMocBuilds();
     saveMocLocations();
     saveMocPhotos();
     saveMocThemes();
     saveMocDescriptions();
+    saveMocInstructions();
     renderOverview();
     renderMocBuildsTab();
   }
@@ -4860,6 +5158,90 @@
     renderSetsTab();
     if (detailContext && detailContext.kind === 'set' && detailContext.key === setNum) openSetDetail(setNum);
   }
+
+  function refetchSetParts(setNum){
+    var statusEl = document.getElementById('detail-modal-refetch-status');
+    var btn = document.getElementById('detail-modal-refetch-parts');
+    function fail(msg){ statusEl.style.color = 'var(--text-danger)'; statusEl.textContent = msg; }
+    var setInfo = ownedSets.find(function(s){ return s.setNum === setNum; });
+    if (!setInfo) return;
+    if (!rebrickableApiKey) return fail('Add your Rebrickable API key on the Data & Tools tab first.');
+    btn.disabled = true;
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Fetching the current parts list from Rebrickable\u2026';
+
+    fetchSetPartsFromApi(setNum).then(function(newRows){
+      btn.disabled = false;
+      var spareNote = newRows.spareSkipped ? ' (' + newRows.spareSkipped + ' spare line' + (newRows.spareSkipped === 1 ? '' : 's') + ' left out)' : '';
+      if (!newRows.length) return fail('Rebrickable returned no regular parts for ' + setNum + spareNote + ' \u2014 nothing was changed.');
+
+      var copies = setInfo.qty || 1;
+      var keyOf = function(r){ return normKey(r.partNum) + '|' + normKey(r.color); };
+      var oldRows = setParts.filter(function(r){ return r.setNum === setNum; });
+
+      // What you'd already recorded: how many of each part you were short, and any element IDs you'd filled in.
+      var shortfall = {}, elementIds = {}, oldQty = {}, oldKeys = {}, oldPieces = 0;
+      oldRows.forEach(function(r){
+        var k = keyOf(r);
+        oldKeys[k] = true;
+        oldQty[k] = (oldQty[k] || 0) + (r.qtyPerSet || 0);
+        oldPieces += setPartNeeded(r);
+        shortfall[k] = (shortfall[k] || 0) + Math.max(setPartNeeded(r) - setPartOnHand(r), 0);
+        if (r.elementId && !elementIds[k]) elementIds[k] = r.elementId;
+      });
+
+      var newQty = {}, newKeys = {}, newPieces = 0, keptShort = 0;
+      newRows.forEach(function(r){
+        var k = keyOf(r);
+        newKeys[k] = true;
+        newQty[k] = (newQty[k] || 0) + (r.qtyPerSet || 0);
+        var needed = (r.qtyPerSet || 0) * copies;
+        newPieces += needed;
+        // Carry the recorded shortfall over (never more than the part now needs); everything else counts as owned.
+        var cut = Math.min(shortfall[k] || 0, needed);
+        shortfall[k] = (shortfall[k] || 0) - cut;
+        r.onHand = needed - cut;
+        if (cut > 0) keptShort++;
+        if (!r.elementId && elementIds[k]) r.elementId = elementIds[k];
+      });
+
+      var dropped = Object.keys(oldKeys).filter(function(k){ return !newKeys[k]; }).length;
+      var added = Object.keys(newKeys).filter(function(k){ return !oldKeys[k]; }).length;
+      var qtyChanged = Object.keys(newKeys).filter(function(k){ return oldKeys[k] && oldQty[k] !== newQty[k]; }).length;
+      var duplicatesMerged = oldRows.length !== Object.keys(oldKeys).length;
+      if (!dropped && !added && !qtyChanged && !duplicatesMerged && oldRows.length === newRows.length){
+        statusEl.style.color = 'var(--text-success)';
+        statusEl.textContent = 'Already matches Rebrickable \u2014 nothing to change.' + spareNote;
+        return;
+      }
+
+      var msg = 'Re-fetch the parts list for ' + setNum + ' from Rebrickable?\n\n' +
+        'On file now: ' + oldRows.length.toLocaleString() + ' part line' + (oldRows.length === 1 ? '' : 's') + ' (' + oldPieces.toLocaleString() + ' pieces)\n' +
+        'From Rebrickable: ' + newRows.length.toLocaleString() + ' part line' + (newRows.length === 1 ? '' : 's') + ' (' + newPieces.toLocaleString() + ' pieces)' + (newRows.spareSkipped ? ', spare parts left out' : '') + '\n\n' +
+        dropped.toLocaleString() + ' part' + (dropped === 1 ? '' : 's') + ' will be removed, ' + added.toLocaleString() + ' added, ' + qtyChanged.toLocaleString() + ' with a different quantity.\n' +
+        (keptShort ? keptShort.toLocaleString() + ' part' + (keptShort === 1 ? '' : 's') + ' you\u2019d marked short keep their shortfall; everything else counts as owned.' : 'Every part will count as owned.') +
+        '\n\nThis replaces the set\u2019s current parts list.';
+      if (!confirm(msg)){
+        statusEl.style.color = 'var(--text-secondary)';
+        statusEl.textContent = 'Cancelled \u2014 nothing was changed.';
+        return;
+      }
+
+      importSetPartsFromRows(setNum, newRows);
+      render();
+      renderSetsTab();
+      openSetDetail(setNum);
+      var after = document.getElementById('detail-modal-refetch-status');
+      after.style.color = 'var(--text-success)';
+      after.textContent = 'Replaced with ' + newRows.length.toLocaleString() + ' part line' + (newRows.length === 1 ? '' : 's') + ' from Rebrickable (' + dropped.toLocaleString() + ' removed, ' + added.toLocaleString() + ' added).' + spareNote;
+    }).catch(function(err){
+      btn.disabled = false;
+      fail('Couldn\u2019t reach Rebrickable (' + (err && err.message ? err.message : 'unknown error') + ') \u2014 nothing was changed. If it keeps failing, turn on the proxy toggle on the Data & Tools tab.');
+    });
+  }
+  document.getElementById('detail-modal-refetch-parts').addEventListener('click', function(){
+    if (detailContext && detailContext.kind === 'set') refetchSetParts(detailContext.key);
+  });
 
   function markAllSetsComplete(){
     var statusEl = document.getElementById('mark-all-sets-complete-status');
@@ -5125,10 +5507,13 @@
     else { themeEl.style.display = 'none'; }
     document.getElementById('detail-modal-location').innerHTML = locationOptionsHtml(setInfo.location || '');
     document.getElementById('detail-modal-description').value = setInfo.description || '';
+    refreshInstructionsUI();
 
     var rows = setParts.filter(function(r){ return r.setNum === setNum; });
     document.getElementById('detail-modal-mark-complete').style.display = rows.length ? 'inline-block' : 'none';
     document.getElementById('detail-modal-clear-quantities').style.display = rows.length ? 'inline-block' : 'none';
+    document.getElementById('detail-modal-refetch-parts').style.display = 'inline-block';
+    document.getElementById('detail-modal-refetch-status').textContent = '';
     refreshSetDetailMetrics(rows, setInfo);
 
     var tbody = document.getElementById('detail-modal-parts-tbody');
@@ -5226,8 +5611,11 @@
     else { themeEl.style.display = 'none'; }
     document.getElementById('detail-modal-location').innerHTML = locationOptionsHtml(mocLocations[mocName] || '');
     document.getElementById('detail-modal-description').value = mocDescriptions[mocName] || '';
+    refreshInstructionsUI();
     document.getElementById('detail-modal-mark-complete').style.display = rows.length ? 'inline-block' : 'none';
     document.getElementById('detail-modal-clear-quantities').style.display = rows.length ? 'inline-block' : 'none';
+    document.getElementById('detail-modal-refetch-parts').style.display = 'none';
+    document.getElementById('detail-modal-refetch-status').textContent = '';
 
     refreshMocDetailMetrics(rows);
 
@@ -6019,6 +6407,395 @@
   }
 
   document.getElementById('drawer-detail-modal-close').addEventListener('click', closeDrawerDetailModal);
+
+  // ---- Move / combine / swap drawer contents ----
+  var dmState = { mode: 'move', sources: [''], target: '', selected: new Set() };
+
+  function dmDrawerLabel(id){
+    var d = drawers.find(function(x){ return x.id === id; });
+    return d ? d.label : id;
+  }
+  function dmSourceSet(){
+    var set = {};
+    dmState.sources.forEach(function(id){ if (id) set[id] = true; });
+    return set;
+  }
+  function dmEffectiveTarget(){ return dmState.target === '__new__' ? '' : dmState.target; }
+
+  function getDmRows(){
+    var srcSet = dmSourceSet();
+    var target = dmEffectiveTarget();
+    var q = normKey(document.getElementById('dm-filter').value);
+    var order = {};
+    dmState.sources.forEach(function(id, i){ if (id && order[id] === undefined) order[id] = i; });
+    return drawerParts.filter(function(p){
+      if (!srcSet[p.drawerId] || p.drawerId === target) return false;
+      if (!q) return true;
+      return (normKey(p.partNum) + ' ' + normKey(p.desc) + ' ' + normKey(p.color)).indexOf(q) !== -1;
+    }).sort(function(a, b){
+      return (order[a.drawerId] - order[b.drawerId]) || (a.desc || '').localeCompare(b.desc || '') || (a.color || '').localeCompare(b.color || '');
+    });
+  }
+
+  function dmPruneSelection(){
+    var srcSet = dmSourceSet();
+    var target = dmEffectiveTarget();
+    Array.from(dmState.selected).forEach(function(r){
+      if (!srcSet[r.drawerId] || r.drawerId === target || drawerParts.indexOf(r) === -1) dmState.selected.delete(r);
+    });
+  }
+
+  function dmUpdateSummary(){
+    var sel = Array.from(dmState.selected);
+    var pieces = sel.reduce(function(s, r){ return s + (r.qty || 0); }, 0);
+    var shown = new Set(getDmRows());
+    var hidden = sel.filter(function(r){ return !shown.has(r); }).length;
+    document.getElementById('dm-summary').textContent = sel.length
+      ? (sel.length + ' part line' + (sel.length === 1 ? '' : 's') + ' selected (' + pieces.toLocaleString() + ' pieces)' + (hidden ? ' \u2014 ' + hidden + ' hidden by your filter' : ''))
+      : 'No parts selected yet.';
+  }
+
+  function renderDmSources(){
+    var wrap = document.getElementById('dm-sources');
+    wrap.innerHTML = '';
+    dmState.sources.forEach(function(id, idx){
+      var row = document.createElement('div');
+      row.className = 'row';
+      row.style.cssText = 'gap:6px; margin-bottom:6px; align-items:center;';
+      var sel = document.createElement('select');
+      sel.style.cssText = 'flex:1; min-width:140px;';
+      sel.innerHTML = drawerOptGroupsHtml(id, 'Choose a drawer\u2026', null);
+      sel.addEventListener('change', function(){
+        dmState.sources[idx] = sel.value;
+        dmPruneSelection();
+        renderDmParts();
+      });
+      row.appendChild(sel);
+      if (dmState.sources.length > 1){
+        var rm = document.createElement('button');
+        rm.className = 'icon-btn';
+        rm.title = 'Take this drawer off the list';
+        rm.innerHTML = '<i class="ti ti-x" style="font-size:12px; vertical-align:-2px;" aria-hidden="true"></i>';
+        rm.addEventListener('click', function(){
+          dmState.sources.splice(idx, 1);
+          dmPruneSelection();
+          renderDmSources();
+          renderDmParts();
+        });
+        row.appendChild(rm);
+      }
+      wrap.appendChild(row);
+    });
+  }
+
+  function renderDmTarget(){
+    var sel = document.getElementById('dm-target');
+    var cur = dmState.target;
+    sel.innerHTML = drawerOptGroupsHtml(cur === '__new__' ? '' : cur, 'Choose a drawer\u2026', null) +
+      '<option value="__new__">+ New drawer\u2026</option>';
+    sel.value = cur || '';
+    document.getElementById('dm-new-fields').style.display = cur === '__new__' ? 'flex' : 'none';
+  }
+
+  function renderDmParts(){
+    var list = document.getElementById('dm-parts-list');
+    list.innerHTML = '';
+    var srcSet = dmSourceSet();
+    var srcCount = Object.keys(srcSet).length;
+    function emptyMsg(text){
+      var d = document.createElement('div');
+      d.className = 'empty-msg';
+      d.style.cssText = 'padding:10px; font-size:13px;';
+      d.textContent = text;
+      list.appendChild(d);
+      dmUpdateSummary();
+    }
+    if (!srcCount) return emptyMsg('Choose a drawer to move from.');
+    var rows = getDmRows();
+    if (!rows.length){
+      return emptyMsg(document.getElementById('dm-filter').value.trim() ? 'No parts match that filter.' : 'Nothing to move from the chosen drawer(s).');
+    }
+    var target = dmEffectiveTarget();
+    var targetQty = {};
+    if (target){
+      drawerParts.forEach(function(p){
+        if (p.drawerId !== target) return;
+        var k = normKey(p.partNum) + '|' + normKey(p.color);
+        targetQty[k] = (targetQty[k] || 0) + (p.qty || 0);
+      });
+    }
+    var multi = srcCount > 1;
+    rows.forEach(function(r){
+      var row = document.createElement('label');
+      row.style.cssText = 'display:flex; align-items:center; gap:8px; padding:6px 4px; border-bottom:1px solid var(--border); cursor:pointer;' + (dmState.selected.has(r) ? ' background:var(--surface-1);' : '');
+      var cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.checked = dmState.selected.has(r);
+      cb.style.flexShrink = '0';
+      cb.addEventListener('change', function(){
+        if (cb.checked) dmState.selected.add(r); else dmState.selected.delete(r);
+        row.style.background = cb.checked ? 'var(--surface-1)' : '';
+        dmUpdateSummary();
+      });
+      var thumb = document.createElement('span');
+      thumb.className = 'part-thumb-wrap';
+      var info = document.createElement('div');
+      info.style.cssText = 'flex:1; min-width:0; font-size:13px;';
+      var already = targetQty[normKey(r.partNum) + '|' + normKey(r.color)];
+      info.innerHTML = '<div style="font-weight:700;">' + escapeHtml(r.color || '') + ' ' + escapeHtml(r.desc || '') +
+        ' <span style="color:var(--text-muted); font-weight:400;">#' + escapeHtml(r.partNum || '') + '</span></div>' +
+        '<div class="dm-row-note" style="font-size:11px; color:var(--text-secondary);">' +
+        (multi ? 'From ' + escapeHtml(dmDrawerLabel(r.drawerId)) : '') +
+        (multi && already ? ' \u00b7 ' : '') +
+        (already ? '<span style="color:var(--lego-orange); font-weight:700;">Already in the destination (' + already.toLocaleString() + ') \u2014 will be combined</span>' : '') +
+        '</div>';
+      var qty = document.createElement('span');
+      qty.style.cssText = 'font-weight:800; flex-shrink:0; font-size:13px;';
+      qty.textContent = (r.qty || 0).toLocaleString() + ' pcs';
+      row.appendChild(cb);
+      row.appendChild(thumb);
+      row.appendChild(info);
+      row.appendChild(qty);
+      list.appendChild(row);
+      buildThumb(r, thumb);
+    });
+    dmUpdateSummary();
+  }
+
+  function moveDrawerPartLines(lines, targetId){
+    var result = { lines: 0, combined: 0, pieces: 0 };
+    lines.forEach(function(r){
+      if (r.drawerId === targetId) return;
+      var existing = drawerParts.find(function(p){
+        return p !== r && p.drawerId === targetId && normKey(p.partNum) === normKey(r.partNum) && normKey(p.color) === normKey(r.color);
+      });
+      result.lines++;
+      result.pieces += (r.qty || 0);
+      if (existing){
+        existing.qty = (existing.qty || 0) + (r.qty || 0);
+        if (!existing.elementId && r.elementId) existing.elementId = r.elementId;
+        if (!existing.desc && r.desc) existing.desc = r.desc;
+        drawerParts.splice(drawerParts.indexOf(r), 1);
+        result.combined++;
+      } else {
+        r.drawerId = targetId;
+      }
+    });
+    return result;
+  }
+
+  function refreshAfterDrawerRearrange(){
+    renderDrawersTab();
+    if (drawerDetailContext){
+      if (drawers.some(function(d){ return d.id === drawerDetailContext; })){
+        refreshDrawerDetailMetrics(drawerDetailContext);
+        renderDrawerDetailTable(drawerDetailContext);
+      } else {
+        closeDrawerDetailModal();
+      }
+    }
+  }
+
+  function doDrawerMove(){
+    var statusEl = document.getElementById('dm-status');
+    function fail(msg){ statusEl.style.color = 'var(--text-danger)'; statusEl.textContent = msg; }
+    var srcSet = dmSourceSet();
+    if (!Object.keys(srcSet).length) return fail('Choose a drawer to move from.');
+    if (!dmState.target) return fail('Choose where to move the parts to.');
+    var targetId = dmState.target;
+    var newDrawer = null;
+    if (targetId === '__new__'){
+      var label = document.getElementById('dm-new-label').value.trim();
+      if (!label) return fail('Enter a label for the new drawer.');
+      if (drawers.some(function(d){ return d.label === label || d.id === label; })){
+        return fail('A drawer called \u201c' + label + '\u201d already exists \u2014 pick it from the list instead.');
+      }
+      newDrawer = { id: label, label: label, notes: '', group: document.getElementById('dm-new-group').value.trim(), lastEdited: new Date().toISOString() };
+      targetId = label;
+    }
+    var lines = Array.from(dmState.selected).filter(function(r){
+      return drawerParts.indexOf(r) !== -1 && srcSet[r.drawerId] && r.drawerId !== targetId;
+    });
+    if (!lines.length) return fail('Select at least one part line to move.');
+
+    var lineSet = new Set(lines);
+    var movedFrom = {};
+    lines.forEach(function(r){ movedFrom[r.drawerId] = true; });
+    var fromIds = Object.keys(movedFrom);
+    var fromLabels = fromIds.map(dmDrawerLabel);
+    var targetLabel = newDrawer ? newDrawer.label : dmDrawerLabel(targetId);
+
+    // Which source drawers will be left with nothing in them?
+    var willEmpty = fromIds.filter(function(id){
+      return drawerParts.filter(function(p){ return p.drawerId === id; }).every(function(p){ return lineSet.has(p); });
+    });
+    var removeEmpty = document.getElementById('dm-delete-empty').checked && willEmpty.length > 0;
+    if (removeEmpty && !confirm('Moving these parts leaves ' + willEmpty.map(dmDrawerLabel).join(', ') + ' empty. Remove ' + (willEmpty.length === 1 ? 'that drawer' : 'those drawers') + ' after the move?')){
+      return fail('Cancelled \u2014 nothing was moved.');
+    }
+
+    if (newDrawer) drawers.push(newDrawer);
+    var result = moveDrawerPartLines(lines, targetId);
+    fromIds.forEach(function(id){ touchDrawerLastEdited(id); });
+    touchDrawerLastEdited(targetId);
+    var removed = [];
+    if (removeEmpty){
+      removed = willEmpty.slice();
+      drawers = drawers.filter(function(d){ return removed.indexOf(d.id) === -1; });
+    }
+    saveDrawers();
+    saveDrawerParts();
+
+    dmState.selected = new Set();
+    dmState.sources = dmState.sources.map(function(id){ return removed.indexOf(id) !== -1 ? '' : id; });
+    if (newDrawer){
+      dmState.target = targetId;
+      document.getElementById('dm-new-label').value = '';
+      document.getElementById('dm-new-group').value = '';
+    }
+    refreshAfterDrawerRearrange();
+    renderDrawerMoveModal();
+
+    statusEl.style.color = 'var(--text-success)';
+    statusEl.textContent = 'Moved ' + result.lines + ' part line' + (result.lines === 1 ? '' : 's') + ' (' + result.pieces.toLocaleString() + ' pieces) from ' +
+      fromLabels.join(', ') + ' to ' + targetLabel + '.' +
+      (result.combined ? ' ' + result.combined + ' combined with a line already there.' : '') +
+      (newDrawer ? ' Created drawer ' + newDrawer.label + '.' : '') +
+      (removed.length ? ' Removed emptied drawer' + (removed.length === 1 ? '' : 's') + ': ' + fromLabels.filter(function(l, i){ return removed.indexOf(fromIds[i]) !== -1; }).join(', ') + '.' : '');
+  }
+
+  function dmUpdateSwapPreview(){
+    var a = document.getElementById('dm-swap-a').value;
+    var b = document.getElementById('dm-swap-b').value;
+    var el = document.getElementById('dm-swap-preview');
+    if (!a || !b){ el.textContent = ''; return; }
+    if (a === b){ el.textContent = 'Pick two different drawers.'; return; }
+    function describe(id){
+      var rows = drawerParts.filter(function(p){ return p.drawerId === id; });
+      var pcs = rows.reduce(function(s, r){ return s + (r.qty || 0); }, 0);
+      return dmDrawerLabel(id) + ': ' + rows.length + ' line' + (rows.length === 1 ? '' : 's') + ' (' + pcs.toLocaleString() + ' pcs)';
+    }
+    el.textContent = describe(a) + '  \u21C4  ' + describe(b);
+  }
+
+  function renderDmSwap(){
+    ['dm-swap-a', 'dm-swap-b'].forEach(function(id){
+      var sel = document.getElementById(id);
+      var cur = sel.value;
+      sel.innerHTML = drawerOptGroupsHtml(cur, 'Choose a drawer\u2026', null);
+      sel.value = drawers.some(function(d){ return d.id === cur; }) ? cur : '';
+    });
+    dmUpdateSwapPreview();
+  }
+
+  function doDrawerSwap(){
+    var statusEl = document.getElementById('dm-swap-status');
+    function fail(msg){ statusEl.style.color = 'var(--text-danger)'; statusEl.textContent = msg; }
+    var a = document.getElementById('dm-swap-a').value;
+    var b = document.getElementById('dm-swap-b').value;
+    if (!a || !b) return fail('Choose both drawers.');
+    if (a === b) return fail('Pick two different drawers.');
+    var countA = drawerParts.filter(function(p){ return p.drawerId === a; }).length;
+    var countB = drawerParts.filter(function(p){ return p.drawerId === b; }).length;
+    if (!countA && !countB) return fail('Both drawers are empty \u2014 nothing to swap.');
+    var dA = drawers.find(function(d){ return d.id === a; });
+    var dB = drawers.find(function(d){ return d.id === b; });
+    drawerParts.forEach(function(p){
+      if (p.drawerId === a) p.drawerId = b;
+      else if (p.drawerId === b) p.drawerId = a;
+    });
+    var swapNotes = document.getElementById('dm-swap-notes').checked;
+    if (swapNotes && dA && dB){
+      var tmp = dA.notes; dA.notes = dB.notes; dB.notes = tmp;
+    }
+    touchDrawerLastEdited(a);
+    touchDrawerLastEdited(b);
+    saveDrawers();
+    saveDrawerParts();
+    refreshAfterDrawerRearrange();
+    renderDrawerMoveModal();
+    statusEl.style.color = 'var(--text-success)';
+    statusEl.textContent = 'Swapped the contents of ' + dmDrawerLabel(a) + ' (' + countA + ' line' + (countA === 1 ? '' : 's') + ') and ' + dmDrawerLabel(b) + ' (' + countB + ' line' + (countB === 1 ? '' : 's') + ')' + (swapNotes ? ', notes included' : '') + '.';
+  }
+
+  function setDmMode(mode){
+    dmState.mode = mode;
+    var isMove = mode === 'move';
+    document.getElementById('dm-move-panel').style.display = isMove ? 'block' : 'none';
+    document.getElementById('dm-swap-panel').style.display = isMove ? 'none' : 'block';
+    [['dm-tab-move', isMove], ['dm-tab-swap', !isMove]].forEach(function(pair){
+      var btn = document.getElementById(pair[0]);
+      btn.style.background = pair[1] ? 'var(--lego-blue)' : '';
+      btn.style.color = pair[1] ? '#fff' : '';
+      btn.style.borderColor = pair[1] ? 'var(--lego-blue)' : '';
+    });
+  }
+
+  function renderDrawerMoveModal(){
+    setDmMode(dmState.mode);
+    renderDmSources();
+    renderDmTarget();
+    renderDmParts();
+    renderDmSwap();
+  }
+
+  function openDrawerMoveModal(opts){
+    opts = opts || {};
+    dmState.mode = opts.mode || 'move';
+    dmState.sources = (opts.sources && opts.sources.length) ? opts.sources.slice() : [''];
+    dmState.target = '';
+    dmState.selected = new Set();
+    ['dm-filter', 'dm-new-label', 'dm-new-group'].forEach(function(id){ document.getElementById(id).value = ''; });
+    document.getElementById('dm-delete-empty').checked = false;
+    document.getElementById('dm-swap-notes').checked = false;
+    document.getElementById('dm-status').textContent = '';
+    document.getElementById('dm-swap-status').textContent = '';
+    document.getElementById('dm-swap-a').value = '';
+    document.getElementById('dm-swap-b').value = '';
+    renderDrawerMoveModal();
+    if (opts.sources && opts.sources.length === 1){
+      document.getElementById('dm-swap-a').value = opts.sources[0];
+      dmUpdateSwapPreview();
+    }
+    document.getElementById('drawer-move-overlay').style.display = 'flex';
+  }
+
+  document.getElementById('drawer-rearrange-open-btn').addEventListener('click', function(){ openDrawerMoveModal({}); });
+  document.getElementById('drawer-detail-move-btn').addEventListener('click', function(){
+    if (drawerDetailContext) openDrawerMoveModal({ sources: [drawerDetailContext] });
+  });
+  document.getElementById('drawer-move-close').addEventListener('click', function(){
+    document.getElementById('drawer-move-overlay').style.display = 'none';
+  });
+  document.getElementById('dm-tab-move').addEventListener('click', function(){ setDmMode('move'); });
+  document.getElementById('dm-tab-swap').addEventListener('click', function(){ setDmMode('swap'); });
+  document.getElementById('dm-add-source').addEventListener('click', function(){
+    dmState.sources.push('');
+    renderDmSources();
+  });
+  document.getElementById('dm-target').addEventListener('change', function(){
+    dmState.target = this.value;
+    if (dmState.target === '__new__' && !document.getElementById('dm-new-group').value.trim()){
+      var firstSrc = drawers.find(function(d){ return d.id === dmState.sources[0]; });
+      if (firstSrc && firstSrc.group) document.getElementById('dm-new-group').value = firstSrc.group;
+    }
+    dmPruneSelection();
+    renderDmTarget();
+    renderDmParts();
+  });
+  document.getElementById('dm-filter').addEventListener('input', renderDmParts);
+  document.getElementById('dm-select-all').addEventListener('click', function(){
+    getDmRows().forEach(function(r){ dmState.selected.add(r); });
+    renderDmParts();
+  });
+  document.getElementById('dm-select-none').addEventListener('click', function(){
+    dmState.selected = new Set();
+    renderDmParts();
+  });
+  document.getElementById('dm-move-btn').addEventListener('click', doDrawerMove);
+  document.getElementById('dm-swap-a').addEventListener('change', dmUpdateSwapPreview);
+  document.getElementById('dm-swap-b').addEventListener('change', dmUpdateSwapPreview);
+  document.getElementById('dm-swap-btn').addEventListener('click', doDrawerSwap);
 
   document.getElementById('drawer-detail-notes-input').addEventListener('change', function(){
     if (!drawerDetailContext) return;
@@ -9417,6 +10194,7 @@
     report.mocLocations = diffMap(mocLocations, remoteData.mocLocations, 'Location');
     report.mocThemes = diffMap(mocThemes, remoteData.mocThemes, 'Theme');
     report.mocDescriptions = diffMap(mocDescriptions, remoteData.mocDescriptions, 'Description');
+    report.mocInstructions = diffMap(mocInstructions, remoteData.mocInstructions, 'Instructions');
     report.bagInventoryLog = diffArrayByKey(
       bagInventoryLog, remoteData.bagInventoryLog || [],
       function(b){ return b.id; },
@@ -9447,7 +10225,7 @@
   var SECTION_LABELS = {
     rows: 'MOC Parts', ownedSets: 'Official Sets', setParts: 'Official Set Parts',
     drawers: 'Drawers', drawerParts: 'Drawer Parts', mocBuilds: 'MOC Builds',
-    mocLocations: 'Storage Locations', mocThemes: 'Build Themes', mocDescriptions: 'Descriptions',
+    mocLocations: 'Storage Locations', mocThemes: 'Build Themes', mocDescriptions: 'Descriptions', mocInstructions: 'Build Instructions',
     bagInventoryLog: 'Bag Inventory Log', bagSavedProgressList: 'Saved Bags In Progress'
   };
 
@@ -9555,6 +10333,7 @@
       mocThemes: mocThemes,
       locationLabels: locationLabels,
       mocDescriptions: mocDescriptions,
+      mocInstructions: mocInstructions,
       bagInventoryLog: bagInventoryLog,
       bagSavedProgressList: bagSavedProgressList
     };
@@ -9576,6 +10355,7 @@
     if (data.mocThemes && typeof data.mocThemes === 'object') mocThemes = data.mocThemes;
     if (Array.isArray(data.locationLabels)) locationLabels = data.locationLabels;
     if (data.mocDescriptions && typeof data.mocDescriptions === 'object') mocDescriptions = data.mocDescriptions;
+    if (data.mocInstructions && typeof data.mocInstructions === 'object') mocInstructions = data.mocInstructions;
     if (Array.isArray(data.bagInventoryLog)) bagInventoryLog = data.bagInventoryLog;
     if (Array.isArray(data.bagSavedProgressList)) bagSavedProgressList = data.bagSavedProgressList;
 
@@ -9592,6 +10372,7 @@
     saveMocLocations();
     saveMocBuilds();
     saveMocDescriptions();
+    saveMocInstructions();
     saveMocThemes();
     saveBagInventoryLog();
     saveBagProgressList();
@@ -11309,7 +12090,7 @@
   });
 
   function bootApp(){
-    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadPartImgCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadTallyCounts(); }).then(function(){ return loadTallyDrawerAssignments(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(function(){ return loadBagInventoryLog(); }).then(function(){ return loadBagProgressList(); }).then(function(){ return loadSetPhotos(); }).then(function(){ return loadMocPhotos(); }).then(function(){ return loadMocLocations(); }).then(function(){ return loadMocBuilds(); }).then(function(){ return loadMocThemes(); }).then(function(){ return loadMocDescriptions(); }).then(function(){ return loadLocationLabels(); })
+    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadPartImgCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadTallyCounts(); }).then(function(){ return loadTallyDrawerAssignments(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(function(){ return loadBagInventoryLog(); }).then(function(){ return loadBagProgressList(); }).then(function(){ return loadSetPhotos(); }).then(function(){ return loadMocPhotos(); }).then(function(){ return loadMocLocations(); }).then(function(){ return loadMocBuilds(); }).then(function(){ return loadMocThemes(); }).then(function(){ return loadMocDescriptions(); }).then(function(){ return loadMocInstructions(); }).then(function(){ return loadLocationLabels(); })
     .then(function(){ return loadRebrickableKey(); }).then(function(){ return loadRbCatalogCache(); }).then(function(){ return loadSetProxyPref(); }).then(function(){ return loadGithubSettings(); }).then(function(){ return loadBackupPassword(); }).then(function(){ return loadGithubShaMap(); }).then(function(){ return loadDirtyFlag(); }).then(function(){ return loadViewLocked(); })
     .then(function(){
       var repoConfigured = ghSettings.repo && ghSettings.repo.indexOf('/') !== -1 && ghSettings.token;
