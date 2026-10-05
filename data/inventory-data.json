@@ -325223,7 +325223,8 @@
       "id": "A8",
       "label": "A8",
       "notes": "2 x 10 Bricks",
-      "group": "A"
+      "group": "A",
+      "lastEdited": "2026-10-05T18:23:02.230Z"
     },
     {
       "id": "A9",
@@ -328861,7 +328862,7 @@
       "label": "U5",
       "notes": "2x8 and 2x10 Brick",
       "group": "U",
-      "lastEdited": "2026-10-05T16:44:47.990Z"
+      "lastEdited": "2026-10-05T18:23:02.230Z"
     },
     {
       "id": "U6",
@@ -329577,7 +329578,7 @@
       "elementId": "362228"
     },
     {
-      "drawerId": "A8",
+      "drawerId": "U5",
       "partNum": "3006",
       "color": "Black",
       "desc": "Brick 2 x 10",
@@ -329585,7 +329586,7 @@
       "qty": 5
     },
     {
-      "drawerId": "A8",
+      "drawerId": "U5",
       "partNum": "3006",
       "color": "Blue",
       "desc": "Brick 2 x 10",
@@ -329593,7 +329594,7 @@
       "qty": 2
     },
     {
-      "drawerId": "A8",
+      "drawerId": "U5",
       "partNum": "3006",
       "color": "Light Bluish Gray",
       "desc": "Brick 2 x 10",
@@ -329601,7 +329602,7 @@
       "qty": 1
     },
     {
-      "drawerId": "A8",
+      "drawerId": "U5",
       "partNum": "3006",
       "color": "Red",
       "desc": "Brick 2 x 10",
@@ -329609,7 +329610,7 @@
       "qty": 5
     },
     {
-      "drawerId": "A8",
+      "drawerId": "U5",
       "partNum": "3006",
       "color": "Tan",
       "desc": "Brick 2 x 10",
@@ -329617,7 +329618,7 @@
       "qty": 1
     },
     {
-      "drawerId": "A8",
+      "drawerId": "U5",
       "partNum": "3006",
       "color": "White",
       "desc": "Brick 2 x 10",
@@ -338194,6 +338195,7 @@
     "Zorah's House"
   ],
   "mocDescriptions": {},
+  "mocInstructions": {},
   "bagInventoryLog": [
     {
       "id": "bag_muqa6iol_cqj6h",
