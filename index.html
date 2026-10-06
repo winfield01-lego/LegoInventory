@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Lego Collection Inventory</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.47.0/iconfont/tabler-icons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.47.0/iconfont/tabler-icons.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.47.0/iconfont/tabler-icons.min.css"></noscript>
 <style>
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
@@ -22,8 +23,8 @@
 <body>
 <div class="page-wrap">
 <div id="lego-inv-root">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
 <h2 class="sr-only">Lego Collection Inventory: search, filter, and track parts on hand across MOC builds and official sets</h2>
 <style>
 #lego-inv-root {
@@ -262,6 +263,9 @@
   margin: 10mm 8mm;
 }
 .shop-tally-box { display: none; }
+#lego-inv-root [data-lock-disabled] { cursor: not-allowed; opacity: 0.5; }
+#lego-inv-root input[data-lock-disabled], #lego-inv-root select[data-lock-disabled], #lego-inv-root textarea[data-lock-disabled] { background: var(--surface-0, #eef2f5); }
+#lego-inv-root button[data-lock-disabled] { filter: grayscale(0.4); }
 @media print {
   #lego-inv-root .no-print { display: none !important; }
   #lego-inv-root #tab-overview, #lego-inv-root #tab-parts, #lego-inv-root #tab-import, #lego-inv-root #tab-images { display: none !important; }
@@ -471,6 +475,31 @@
       <button id="almost-complete-drawer-ready-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate PDF</button>
     </div>
     <div id="almost-complete-drawer-ready-list" style="display:none;"></div>
+  </div>
+
+  <div id="finishable-mocs-section" style="margin-bottom: 1.5rem; display:none;">
+    <div class="row" style="justify-content: space-between; margin-bottom: 8px; flex-wrap:wrap; gap:8px;">
+      <button id="finishable-mocs-toggle-btn" class="icon-btn" style="padding: 3px 10px; display:flex; align-items:center; gap:6px;">
+        <i id="finishable-mocs-chevron" class="ti ti-chevron-right" style="font-size:13px;" aria-hidden="true"></i>
+        <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">MOCs you can finish from your drawers</span>
+      </button>
+    </div>
+    <p style="margin: 0 0 10px; color: var(--text-secondary); font-size: 13px;">Builds where every part still missing is already sitting in a drawer &mdash; gather those and the build is done, whatever its size. Each build is checked against your drawers on its own, so where two of them need the same parts the list tells you which ones compete.</p>
+    <div class="row" style="gap:10px; align-items:center; margin-bottom: 8px; padding-top:8px; border-top: 1px solid var(--border); flex-wrap:wrap;">
+      <select id="finishable-mocs-sort" title="Sort order">
+        <option value="fewest">Fewest pieces to gather first</option>
+        <option value="complete">Most complete first</option>
+        <option value="name">Name</option>
+      </select>
+      <select id="finishable-mocs-layout" title="PDF page layout">
+        <option value="portrait">Portrait</option>
+        <option value="landscape">Landscape</option>
+      </select>
+      <button id="finishable-mocs-csv-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate CSV</button>
+      <button id="finishable-mocs-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate PDF</button>
+    </div>
+    <p id="finishable-mocs-summary" style="margin: 0 0 8px; font-size: 13px; color: var(--text-secondary);"></p>
+    <div id="finishable-mocs-list" style="display:none;"></div>
   </div>
 
   <div id="drawer-helps-sets-section" style="margin-bottom: 1.5rem; display:none;">
@@ -1289,7 +1318,7 @@
         LEGO's own site blocks the direct download this feature needs (a browser security rule called CORS), so plain automatic caching usually fails silently. Turning this on routes image requests through <strong>images.weserv.nl</strong>, a free public image proxy, which re-serves the image with permission attached so caching can work. This means that third-party service sees which LEGO part images you're requesting. Off by default; the manual upload below never uses any third party.
       </p>
       <div class="row" style="margin-bottom: 18px;">
-        <button id="cache-fetch-btn"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch and cache all now</button>
+        <button id="cache-fetch-btn" class="lockable"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch and cache all now</button>
         <span id="cache-fetch-status" style="font-size: 13px; color: var(--text-secondary);"></span>
       </div>
       <p style="color: var(--text-muted); font-size: 12px; margin: 0 0 20px;">
@@ -1327,7 +1356,7 @@
   </div>
 
   <div class="row" style="margin-top: 8px;">
-    <button id="clear-cache-btn" class="icon-btn"><i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Clear all cached images</button>
+    <button id="clear-cache-btn" class="icon-btn lockable"><i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Clear all cached images</button>
   </div>
 </div>
 </div>
@@ -1554,7 +1583,7 @@
     <div class="row" style="align-items:center; gap:8px; margin-bottom:14px; flex-wrap:wrap; background:var(--surface-1); border:1px solid var(--border); border-radius:8px; padding:8px 10px;">
       <label for="bag-catalog-preselect-drawer" style="font-size:12px; font-weight:700; flex-shrink:0;">New parts go to:</label>
       <select id="bag-catalog-preselect-drawer" style="flex:1; min-width:150px;"><option value="">Suggest automatically</option></select>
-      <button id="bag-inventory-add-part-btn" class="icon-btn" style="flex-shrink:0;"><i class="ti ti-search" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Search the full catalog for something new</button>
+      <button id="bag-inventory-add-part-btn" class="icon-btn lockable" style="flex-shrink:0;"><i class="ti ti-search" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Search the full catalog for something new</button>
     </div>
     <div id="bag-inventory-staging-list" style="margin-bottom:10px; border-top:2px solid var(--border); padding-top:10px;"></div>
     <p id="bag-inventory-empty-msg" class="empty-msg" style="display:none;">Nothing added yet &mdash; search above to get started.</p>
@@ -1564,11 +1593,11 @@
     </div>
     <div class="row" style="justify-content:space-between; align-items:center; padding-top:10px; border-top:2px solid var(--border); flex-wrap:wrap; gap:8px;">
       <div class="row" style="gap:8px;">
-        <button id="bag-inventory-clear-btn" class="icon-btn" style="color: var(--text-danger); border-color: var(--text-danger);"><i class="ti ti-trash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Clear all</button>
-        <button id="bag-inventory-new-btn" class="icon-btn" title="Save this bag's progress (if any) and start a brand-new one"><i class="ti ti-package-import" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> New Bag</button>
+        <button id="bag-inventory-clear-btn" class="icon-btn lockable" style="color: var(--text-danger); border-color: var(--text-danger);"><i class="ti ti-trash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Clear all</button>
+        <button id="bag-inventory-new-btn" class="icon-btn lockable" title="Save this bag's progress (if any) and start a brand-new one"><i class="ti ti-package-import" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> New Bag</button>
       </div>
       <div class="row" style="gap:8px;">
-        <button id="bag-inventory-save-progress-btn" class="icon-btn" title="Save this list so you can come back and finish it later"><i class="ti ti-device-floppy" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Save Progress</button>
+        <button id="bag-inventory-save-progress-btn" class="icon-btn lockable" title="Save this list so you can come back and finish it later"><i class="ti ti-device-floppy" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Save Progress</button>
         <button id="bag-inventory-commit-btn" class="lockable"><i class="ti ti-truck-delivery" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Move all to drawers</button>
       </div>
     </div>
@@ -1629,6 +1658,103 @@
 <script>
 (function(){
   var ROOT = document.getElementById('lego-inv-root');
+  // ---- Startup safety net: this runs first, so anything that goes wrong afterwards is reported, not silent ----
+  var appErrorsShown = {};
+  var appBannerEl = null;
+  var appBannerHasError = false;
+  var bootStage = 'starting up';
+  var bootDone = false;
+  var editsSinceBoot = 0;
+  var watchdogItem = null;
+
+  function removeAppBannerItem(item){
+    try {
+      if (item && item.parentNode) item.parentNode.removeChild(item);
+      if (appBannerEl && !appBannerEl.querySelector('.app-notice-item')) appBannerEl.style.display = 'none';
+    } catch(e){}
+  }
+
+  function showAppBanner(kind, title, text){
+    try {
+      var bar = appBannerEl;
+      if (!bar){
+        bar = appBannerEl = document.createElement('div');
+        bar.id = 'app-notice-banner';
+        bar.style.cssText = 'position:relative; margin:0 0 12px; padding:10px 12px; border-radius:10px; font-size:13px; line-height:1.45; border:2px solid #d98a1f; background:#fff4e0; color:#6b4306;';
+        var close = document.createElement('button');
+        close.className = 'icon-btn';
+        close.textContent = 'Dismiss';
+        close.style.cssText = 'position:absolute; top:8px; right:8px; padding:2px 8px;';
+        close.addEventListener('click', function(){
+          bar.style.display = 'none';
+          Array.prototype.slice.call(bar.querySelectorAll('.app-notice-item')).forEach(function(n){ n.parentNode.removeChild(n); });
+        });
+        bar.appendChild(close);
+        ROOT.insertBefore(bar, ROOT.firstChild);
+      }
+      bar.style.display = 'block';
+      if (kind === 'error'){ appBannerHasError = true; }
+      if (appBannerHasError){ bar.style.borderColor = '#d64545'; bar.style.background = '#fdecea'; bar.style.color = '#7a1a14'; }
+      var item = document.createElement('div');
+      item.className = 'app-notice-item';
+      item.style.cssText = 'padding-right:76px; margin-bottom:4px;';
+      var head = document.createElement('strong');
+      head.textContent = title;
+      item.appendChild(head);
+      item.appendChild(document.createElement('br'));
+      item.appendChild(document.createTextNode(text));
+      if (kind === 'error'){
+        item.appendChild(document.createElement('br'));
+        var foot = document.createElement('span');
+        foot.style.cssText = 'font-size:12px; opacity:0.85;';
+        foot.textContent = 'Your saved data hasn\u2019t been changed. If this keeps happening, a screenshot of this message will show exactly what went wrong.';
+        item.appendChild(foot);
+      }
+      bar.appendChild(item);
+      return item;
+    } catch(e){ /* never let the reporter itself cause trouble */ }
+    return null;
+  }
+
+  function reportAppError(where, err){
+    var msg = (err && err.message) ? err.message : String(err);
+    try { console.error('[' + where + ']', err); } catch(e){}
+    var key = where + ': ' + msg;
+    if (appErrorsShown[key]) return;
+    appErrorsShown[key] = true;
+    showAppBanner('error', 'Something didn\u2019t load correctly (' + where + ')', msg);
+  }
+
+  function safeRun(where, fn){
+    try { return fn(); } catch(e){ reportAppError(where, e); }
+  }
+
+  // Attach a handler to an element by id. A missing element is reported but can no longer abort the whole script.
+  function wireEl(id, eventName, handler, options){
+    var el = document.getElementById(id);
+    if (!el){ reportAppError('page setup', new Error('Missing page element #' + id)); return; }
+    el.addEventListener(eventName, handler, options);
+  }
+
+  function stepSafe(name, fn){
+    bootStage = 'loading ' + name.replace(/^load/, '');
+    return Promise.resolve().then(fn).catch(function(e){ reportAppError('loading ' + name.replace(/^load/, ''), e); });
+  }
+
+  window.addEventListener('error', function(ev){
+    var m = ev && ev.message ? String(ev.message) : '';
+    if (/ResizeObserver/.test(m)) return;
+    reportAppError('unexpected error', (ev && ev.error) || m);
+  });
+  window.addEventListener('unhandledrejection', function(ev){
+    reportAppError('unexpected error', ev && ev.reason);
+  });
+
+  // If startup ever stalls, say where instead of leaving a silent, empty page.
+  setTimeout(function(){
+    if (bootDone) return;
+    watchdogItem = showAppBanner('notice', 'The app is still starting up', 'It\u2019s waiting on: ' + bootStage + '. If this message stays, a screenshot of it will show what is stuck.');
+  }, 8000);
   var LS_PREFIX = 'legoinv:';
   function lsKey(key){ return LS_PREFIX + key; }
   var storage = {
@@ -1703,7 +1829,8 @@
   function loadViewLocked(){
     return storage.get(VIEW_LOCKED_KEY, false).then(function(res){
       viewLocked = !(res && res.value === '0');
-    }).catch(function(){});
+      viewLockLoaded = true;
+    }).catch(function(){ viewLockLoaded = true; });
   }
   function saveViewLocked(){
     return storage.set(VIEW_LOCKED_KEY, viewLocked ? '1' : '0', false);
@@ -1721,7 +1848,120 @@
         ? 'Currently LOCKED: editing is switched off and nothing can be changed or uploaded. Click to unlock.'
         : 'Currently UNLOCKED: edits are allowed and will auto-save to the site. Click to lock and prevent changes.';
     }
+    applyLockToTree(ROOT);
   }
+
+  // ---- Lock enforcement ----
+  // While locked, nothing that changes the collection can be done: adds, edits, deletes, imports, uploads,
+  // moves and shopping check-offs are all switched off. Browsing, searching, filtering, sorting, reports and
+  // exports, display toggles, connection settings and pulling from the site stay available.
+  var viewLockLoaded = false;
+  var lockWriteBypassUntil = 0;
+  var lockNoticeTimer = null;
+  var LOCK_EXEMPT_IDS = {};
+  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
+  var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input';
+  var LOCK_CONTROL_SELECTOR = 'input, select, textarea, button';
+
+  function lockControlApplies(el){
+    if (!el || el.id === 'view-lock-toggle-btn') return false;
+    var tag = el.tagName;
+    if (tag === 'BUTTON') return el.classList.contains('lockable') || el.classList.contains('row-delete-btn');
+    if (tag !== 'INPUT' && tag !== 'SELECT' && tag !== 'TEXTAREA') return false;
+    if (el.id && LOCK_EXEMPT_IDS[el.id]) return false;
+    if (el.matches(LOCK_EXEMPT_SELECTOR)) return false;
+    return true;
+  }
+
+  function applyLockToTree(root){
+    if (!root) return;
+    var nodes = [];
+    if (root.nodeType === 1 && root.matches && root.matches(LOCK_CONTROL_SELECTOR)) nodes.push(root);
+    if (root.querySelectorAll) nodes = nodes.concat(Array.prototype.slice.call(root.querySelectorAll(LOCK_CONTROL_SELECTOR)));
+    nodes.forEach(function(el){
+      if (viewLocked){
+        if (!el.disabled && lockControlApplies(el)){
+          el.disabled = true;
+          el.setAttribute('data-lock-disabled', '1');
+          if (!el.title){ el.title = 'Locked \u2014 unlock to make changes'; el.setAttribute('data-lock-title', '1'); }
+        }
+      } else if (el.hasAttribute('data-lock-disabled')){
+        el.disabled = false;
+        el.removeAttribute('data-lock-disabled');
+        if (el.hasAttribute('data-lock-title')){ el.removeAttribute('title'); el.removeAttribute('data-lock-title'); }
+      }
+    });
+  }
+
+  function notifyLocked(){
+    var statusEl = document.getElementById('save-status');
+    if (!statusEl) return;
+    var msg = 'Locked \u2014 view only. Unlock to make changes.';
+    statusEl.style.color = 'var(--text-danger)';
+    statusEl.textContent = msg;
+    clearTimeout(lockNoticeTimer);
+    lockNoticeTimer = setTimeout(function(){
+      if (statusEl.textContent === msg){ statusEl.textContent = ''; statusEl.style.color = 'var(--text-muted)'; }
+    }, 3500);
+  }
+
+  // Controls added later (re-rendered tables, cards, modals) are locked as they appear.
+  try {
+    new MutationObserver(function(mutations){
+      if (!viewLocked) return;
+      mutations.forEach(function(m){
+        Array.prototype.forEach.call(m.addedNodes, function(n){ if (n.nodeType === 1) applyLockToTree(n); });
+      });
+    }).observe(ROOT, { childList: true, subtree: true });
+  } catch(e){ reportAppError('lock setup', e); }
+
+  // Second line of defence: even if some control ends up enabled, its clicks and edits are swallowed before
+  // any handler can run.
+  function lockBlocked(target){
+    if (!viewLocked || !target || !target.closest) return false;
+    var el = target.closest('input, select, textarea, button, label');
+    if (!el) return false;
+    if (el.tagName === 'LABEL'){ el = el.control; if (!el) return false; }
+    return lockControlApplies(el);
+  }
+  ['click', 'change', 'input', 'keydown', 'paste', 'drop'].forEach(function(type){
+    document.addEventListener(type, function(e){
+      if (!lockBlocked(e.target)) return;
+      if (type === 'keydown' && !(e.key === 'Enter' || e.key === 'Backspace' || e.key === 'Delete' || (e.key && e.key.length === 1))) return;
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      notifyLocked();
+    }, true);
+  });
+
+  // Last line of defence: refuse to save collection data while locked, whatever triggered the save.
+  var lockGuardedKeys = null;
+  function isLockGuardedKey(key){
+    if (!lockGuardedKeys){
+      lockGuardedKeys = {};
+      [STORAGE_KEY, SETS_KEY, SET_PARTS_KEY, DRAWERS_KEY, DRAWER_PARTS_KEY, MOC_BUILDS_KEY, MOC_THEMES_KEY,
+       MOC_LOCATIONS_KEY, MOC_DESCRIPTIONS_KEY, MOC_INSTRUCTIONS_KEY, SET_PHOTOS_KEY, MOC_PHOTOS_KEY,
+       CHECKLIST_KEY, TALLY_COUNTS_KEY, TALLY_DRAWER_KEY, PRIORITY_LABELS_KEY, LOCATION_LABELS_KEY,
+       BAG_LOG_KEY, BAG_PROGRESS_KEY].forEach(function(k){ if (k) lockGuardedKeys[k] = true; });
+    }
+    key = String(key);
+    return !!lockGuardedKeys[key] || key.indexOf(IMG_PREFIX) === 0 || key.indexOf(IMG_PART_PREFIX) === 0;
+  }
+  (function installLockStorageGuard(){
+    try {
+      var backend = (typeof storage !== 'undefined' && storage) ? storage : window.storage;
+      if (!backend || typeof backend.set !== 'function' || backend.__lockGuarded) return;
+      var originalSet = backend.set.bind(backend);
+      backend.set = function(key, value, shared){
+        if (viewLocked && viewLockLoaded && Date.now() >= lockWriteBypassUntil && isLockGuardedKey(key)){
+          try { console.warn('Locked \u2014 blocked a save to', key); } catch(e){}
+          return Promise.resolve(null);
+        }
+        return originalSet(key, value, shared);
+      };
+      backend.__lockGuarded = true;
+    } catch(e){}
+  })();
 
   var ghSettings = { repo: '', branch: '', token: '' };
   var BACKUP_PASSWORD_KEY = 'backup-restore-password-v1';
@@ -1745,6 +1985,7 @@
     if (suppressAutoPublish) return;
     if (viewLocked) return;
     localDirty = true;
+    editsSinceBoot++;
     saveDirtyFlag();
     var statusEl = document.getElementById('all-data-sync-status');
     if (statusEl){
@@ -1835,7 +2076,7 @@
     saveTimer = setTimeout(function(){
       var payload = JSON.stringify(state.rows.map(objToRow));
       storage.set(STORAGE_KEY, payload, false).then(function(res){
-        setSaveStatus(res ? 'Saved' : 'Save failed');
+        setSaveStatus(res ? 'Saved' : (viewLocked ? 'Locked \u2014 not saved' : 'Save failed'));
       }).catch(function(){ setSaveStatus('Save failed'); });
     }, 400);
   }
@@ -1964,9 +2205,9 @@
   }
 
   function renderOverview(){
-    ensureMocBuildsSynced();
+    safeRun('build list sync', ensureMocBuildsSynced);
     document.getElementById('build-location-input').innerHTML = locationOptionsHtml('');
-    renderLocationSpotlight();
+    safeRun('location spotlight', renderLocationSpotlight);
     var mocs = computeMocs();
     var totalNeed = 0, totalHave = 0;
     state.rows.forEach(function(r){ totalNeed += r.qty; totalHave += Math.min(r.onHand,r.qty); });
@@ -2032,12 +2273,13 @@
       drawersMg.appendChild(d);
     });
 
-    renderTopNeeded();
-    renderAlmostComplete();
-    renderAlmostCompleteDrawerReady();
-    renderDrawerHelpsSets();
-    renderOverviewMocsList();
-    renderOverviewSetsList();
+    safeRun('Most Needed Parts', renderTopNeeded);
+    safeRun('Almost Complete', renderAlmostComplete);
+    safeRun('Ready to Complete from Drawers', renderAlmostCompleteDrawerReady);
+    safeRun('Drawer Parts That Could Help Your Sets', renderDrawerHelpsSets);
+    safeRun('MOCs you can finish from your drawers', renderFinishableMocs);
+    safeRun('MOC builds list', renderOverviewMocsList);
+    safeRun('Official sets list', renderOverviewSetsList);
   }
 
   function escapeHtml(s){
@@ -2573,10 +2815,10 @@
     applyTopNeededCollapseState();
   }
 
-  document.getElementById('top-needed-filter').addEventListener('change', renderTopNeeded);
-  document.getElementById('top-needed-count').addEventListener('input', renderTopNeeded);
+  wireEl('top-needed-filter', 'change', renderTopNeeded);
+  wireEl('top-needed-count', 'input', renderTopNeeded);
 
-  document.getElementById('top-needed-toggle-btn').addEventListener('click', function(){
+  wireEl('top-needed-toggle-btn', 'click', function(){
     topNeededExpanded = !topNeededExpanded;
     applyTopNeededCollapseState();
   });
@@ -2651,11 +2893,11 @@
     applyAlmostCompleteCollapseState();
   }
 
-  document.getElementById('almost-complete-toggle-btn').addEventListener('click', function(){
+  wireEl('almost-complete-toggle-btn', 'click', function(){
     almostCompleteExpanded = !almostCompleteExpanded;
     applyAlmostCompleteCollapseState();
   });
-  document.getElementById('almost-complete-threshold').addEventListener('input', function(){
+  wireEl('almost-complete-threshold', 'input', function(){
     renderAlmostComplete();
     renderAlmostCompleteDrawerReady();
   });
@@ -2692,7 +2934,7 @@
     document.body.removeChild(a);
     setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
   }
-  document.getElementById('almost-complete-report-btn').addEventListener('click', exportAlmostCompleteReport);
+  wireEl('almost-complete-report-btn', 'click', exportAlmostCompleteReport);
 
   function generateAlmostCompletePDF(){
     var threshold = getAlmostCompleteThreshold();
@@ -2849,7 +3091,7 @@
       if (btn){ btn.disabled = false; btn.innerHTML = prevBtnHtml; }
     });
   }
-  document.getElementById('almost-complete-report-pdf-btn').addEventListener('click', generateAlmostCompletePDF);
+  wireEl('almost-complete-report-pdf-btn', 'click', generateAlmostCompletePDF);
 
   var almostCompleteDrawerReadyExpanded = false;
 
@@ -2893,7 +3135,7 @@
     applyAlmostCompleteDrawerReadyCollapseState();
   }
 
-  document.getElementById('almost-complete-drawer-ready-toggle-btn').addEventListener('click', function(){
+  wireEl('almost-complete-drawer-ready-toggle-btn', 'click', function(){
     almostCompleteDrawerReadyExpanded = !almostCompleteDrawerReadyExpanded;
     applyAlmostCompleteDrawerReadyCollapseState();
   });
@@ -2914,7 +3156,7 @@
     });
     downloadCsv(lines, 'lego-almost-complete-drawer-ready');
   }
-  document.getElementById('almost-complete-drawer-ready-csv-btn').addEventListener('click', exportAlmostCompleteDrawerReadyReport);
+  wireEl('almost-complete-drawer-ready-csv-btn', 'click', exportAlmostCompleteDrawerReadyReport);
 
   function generateAlmostCompleteDrawerReadyPDF(){
     var items = getAlmostCompleteDrawerCoverableItems();
@@ -3062,7 +3304,7 @@
       if (btn){ btn.disabled = false; btn.innerHTML = prevBtnHtml; }
     });
   }
-  document.getElementById('almost-complete-drawer-ready-pdf-btn').addEventListener('click', generateAlmostCompleteDrawerReadyPDF);
+  wireEl('almost-complete-drawer-ready-pdf-btn', 'click', generateAlmostCompleteDrawerReadyPDF);
 
   var drawerHelpsSetsExpanded = false;
 
@@ -3112,6 +3354,318 @@
     };
   }
 
+  // ---- MOCs that can be finished from what's in the drawers ----
+  var finishableMocsExpanded = false;
+  var finishableOpenNames = {};
+
+  function applyFinishableMocsCollapseState(){
+    document.getElementById('finishable-mocs-list').style.display = finishableMocsExpanded ? 'block' : 'none';
+    document.getElementById('finishable-mocs-chevron').className = 'ti ' + (finishableMocsExpanded ? 'ti-chevron-down' : 'ti-chevron-right');
+  }
+
+  // Where each part+color is sitting: [{label, qty}, ...], biggest stash first.
+  function buildDrawerLocationMap(){
+    var labelFor = {};
+    drawers.forEach(function(d){ labelFor[d.id] = d.label; });
+    var map = {};
+    drawerParts.forEach(function(p){
+      if (!(p.qty > 0)) return;
+      var key = p.partNum + '|' + p.color;
+      var list = map[key] = map[key] || [];
+      var label = labelFor[p.drawerId] || p.drawerId;
+      var existing = list.find(function(w){ return w.label === label; });
+      if (existing) existing.qty += p.qty; else list.push({ label: label, qty: p.qty });
+    });
+    Object.keys(map).forEach(function(k){
+      map[k].sort(function(a, b){ return (b.qty - a.qty) || a.label.localeCompare(b.label, undefined, { numeric: true }); });
+    });
+    return map;
+  }
+
+  function finishableWhereText(p, sep, qtyFmt){
+    return p.where.map(function(w){ return qtyFmt(w); }).join(sep);
+  }
+
+  function getFinishableMocs(){
+    var stock = buildDrawerStockMap();
+    var where = buildDrawerLocationMap();
+    var rowsByMoc = {};
+    state.rows.forEach(function(r){ (rowsByMoc[r.moc] = rowsByMoc[r.moc] || []).push(r); });
+    var items = [], alreadyComplete = 0, notFinishable = 0;
+
+    computeMocs().forEach(function(m){
+      var rows = rowsByMoc[m.name] || [];
+      if (!rows.length) return;                         // a build with no parts has nothing to finish
+      var shortByKey = {}, order = [];
+      rows.forEach(function(r){
+        var short = (r.qty || 0) - (r.onHand || 0);
+        if (short <= 0) return;
+        var key = r.partNum + '|' + r.color;
+        if (!shortByKey[key]){
+          shortByKey[key] = { key: key, partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId, short: 0 };
+          order.push(key);
+        }
+        shortByKey[key].short += short;
+        if (!shortByKey[key].elementId && r.elementId) shortByKey[key].elementId = r.elementId;
+      });
+      if (!order.length){ alreadyComplete++; return; }
+      var parts = order.map(function(k){
+        var p = shortByKey[k];
+        p.inDrawers = stock[k] || 0;
+        p.where = where[k] || [];
+        return p;
+      });
+      if (!parts.every(function(p){ return p.inDrawers >= p.short; })){ notFinishable++; return; }
+      parts.sort(function(a, b){ return (a.color || '').localeCompare(b.color || '') || (a.desc || '').localeCompare(b.desc || ''); });
+      items.push({
+        name: m.name, need: m.need, have: m.have,
+        pieces: parts.reduce(function(s, p){ return s + p.short; }, 0),
+        theme: mocThemes[m.name] || '', location: mocLocations[m.name] || '',
+        parts: parts, competesWith: [], conflictParts: 0
+      });
+    });
+
+    // Drawer stock can only be used once. Walk the builds smallest-first, reserving stock as we go;
+    // a build whose parts were already claimed by an earlier one is flagged with who it competes with.
+    var remaining = {}, claimedBy = {};
+    items.slice().sort(function(a, b){ return (a.pieces - b.pieces) || a.name.localeCompare(b.name, undefined, { numeric: true }); }).forEach(function(it){
+      var failing = it.parts.filter(function(p){
+        var left = (p.key in remaining) ? remaining[p.key] : p.inDrawers;
+        return left < p.short;
+      });
+      if (failing.length){
+        var names = {};
+        failing.forEach(function(p){ (claimedBy[p.key] || []).forEach(function(n){ names[n] = true; }); });
+        it.conflictParts = failing.length;
+        it.competesWith = Object.keys(names);
+      } else {
+        it.parts.forEach(function(p){
+          var left = (p.key in remaining) ? remaining[p.key] : p.inDrawers;
+          remaining[p.key] = left - p.short;
+          (claimedBy[p.key] = claimedBy[p.key] || []).push(it.name);
+        });
+      }
+    });
+    return { items: items, alreadyComplete: alreadyComplete, notFinishable: notFinishable };
+  }
+
+  function sortFinishableMocs(items, mode){
+    var list = items.slice();
+    var byName = function(a, b){ return a.name.localeCompare(b.name, undefined, { numeric: true }); };
+    if (mode === 'name') return list.sort(byName);
+    if (mode === 'complete'){
+      return list.sort(function(a, b){
+        var pa = a.need ? a.have / a.need : 0, pb = b.need ? b.have / b.need : 0;
+        return (pb - pa) || byName(a, b);
+      });
+    }
+    return list.sort(function(a, b){ return (a.pieces - b.pieces) || byName(a, b); });
+  }
+
+  function currentFinishableItems(){
+    return sortFinishableMocs(getFinishableMocs().items, document.getElementById('finishable-mocs-sort').value);
+  }
+
+  function renderFinishableMocs(){
+    var section = document.getElementById('finishable-mocs-section');
+    var list = document.getElementById('finishable-mocs-list');
+    var summary = document.getElementById('finishable-mocs-summary');
+    var data = getFinishableMocs();
+    if (!data.items.length && !data.alreadyComplete && !data.notFinishable){
+      section.style.display = 'none';
+      return;
+    }
+    section.style.display = 'block';
+
+    var together = data.items.filter(function(it){ return !it.conflictParts; }).length;
+    var conflicting = data.items.length - together;
+    var bits = [];
+    if (data.items.length){
+      bits.push('<strong>' + data.items.length + '</strong> build' + (data.items.length === 1 ? '' : 's') + ' can be finished from what\u2019s in your drawers.');
+      if (conflicting) bits.push('Smallest first, ' + together + ' of them can be finished together; the other ' + conflicting + (conflicting === 1 ? ' needs' : ' need') + ' parts one of those would use.');
+    } else {
+      bits.push('No build can be finished from what\u2019s in your drawers right now.');
+    }
+    if (data.notFinishable) bits.push(data.notFinishable + ' other build' + (data.notFinishable === 1 ? ' still needs' : 's still need') + ' parts that aren\u2019t in your drawers.');
+    if (data.alreadyComplete) bits.push(data.alreadyComplete + ' ' + (data.alreadyComplete === 1 ? 'is' : 'are') + ' already complete.');
+    summary.innerHTML = bits.join(' ');
+
+    list.innerHTML = '';
+    sortFinishableMocs(data.items, document.getElementById('finishable-mocs-sort').value).forEach(function(it){
+      var card = document.createElement('div');
+      card.style.cssText = 'margin-bottom:8px;';
+      var open = !!finishableOpenNames[it.name];
+
+      var head = document.createElement('div');
+      head.className = 'top-needed-item';
+      head.style.cssText = 'cursor:pointer; margin-bottom:0; flex-wrap:wrap;';
+      var sub = [it.theme, it.location].filter(Boolean).join(' \u00b7 ');
+      head.innerHTML =
+        '<i class="ti ' + (open ? 'ti-chevron-down' : 'ti-chevron-right') + '" style="font-size:14px; flex-shrink:0;" aria-hidden="true"></i>' +
+        '<span class="top-needed-desc" style="flex:1 1 130px; min-width:130px;">' + escapeHtml(it.name) + (sub ? ' <span style="font-size:11px; font-weight:400; color:var(--text-muted);">' + escapeHtml(sub) + '</span>' : '') + '</span>' +
+        (it.conflictParts ? '<span class="pill pill-short" style="flex-shrink:0;" title="Finishable on its own, but ' + escapeHtml(it.competesWith.join(', ')) + ' would use parts it needs">Competes with ' + it.competesWith.length + '</span>' : '') +
+        '<span class="pill pill-ok" style="flex-shrink:0;">Gather ' + it.pieces.toLocaleString() + ' pc' + (it.pieces === 1 ? '' : 's') + '</span>';
+      var openBtn = document.createElement('button');
+      openBtn.className = 'icon-btn';
+      openBtn.style.cssText = 'padding:2px 8px; flex-shrink:0;';
+      openBtn.textContent = 'Open';
+      openBtn.title = 'Open this build\u2019s summary';
+      openBtn.addEventListener('click', function(e){ e.stopPropagation(); openMocDetail(it.name); });
+      head.appendChild(openBtn);
+
+      var detail = document.createElement('div');
+      detail.style.cssText = 'display:' + (open ? 'block' : 'none') + '; padding:6px 0 0 14px;';
+      var built = false;
+      function buildDetail(){
+        if (built) return;
+        built = true;
+        if (it.conflictParts){
+          var note = document.createElement('p');
+          note.style.cssText = 'margin:0 0 6px; font-size:12px; color:var(--lego-orange); font-weight:700;';
+          note.textContent = 'Finishable on its own, but ' + it.competesWith.join(', ') + ' (smaller) would use some of the same parts \u2014 ' + it.conflictParts + ' part line' + (it.conflictParts === 1 ? '' : 's') + ' here would come up short if you finished ' + (it.competesWith.length === 1 ? 'that one' : 'those') + ' first.';
+          detail.appendChild(note);
+        }
+        it.parts.forEach(function(p){
+          var row = document.createElement('div');
+          row.className = 'top-needed-item';
+          row.style.cursor = 'default';
+          row.innerHTML =
+            '<span class="part-thumb-wrap"></span>' +
+            '<span class="top-needed-partnum">#' + escapeHtml(p.partNum) + '</span>' +
+            '<span class="top-needed-desc">' + escapeHtml((p.color ? p.color + ' ' : '') + (p.desc || '')) + '</span>' +
+            '<span class="shop-qty" style="flex-shrink:0;">need ' + p.short.toLocaleString() + '</span>' +
+            '<span class="shop-in-drawers" style="flex-shrink:0;">' + escapeHtml(finishableWhereText(p, ', ', function(w){ return w.label + ' \u00d7' + w.qty.toLocaleString(); })) + '</span>';
+          detail.appendChild(row);
+          buildThumb({ elementId: p.elementId, partNum: p.partNum, desc: p.desc }, row.querySelector('.part-thumb-wrap'));
+        });
+      }
+      if (open) buildDetail();
+      head.addEventListener('click', function(){
+        var nowOpen = detail.style.display === 'none';
+        detail.style.display = nowOpen ? 'block' : 'none';
+        head.querySelector('i').className = 'ti ' + (nowOpen ? 'ti-chevron-down' : 'ti-chevron-right');
+        if (nowOpen){ finishableOpenNames[it.name] = true; buildDetail(); } else { delete finishableOpenNames[it.name]; }
+      });
+
+      card.appendChild(head);
+      card.appendChild(detail);
+      list.appendChild(card);
+    });
+    if (!data.items.length){
+      list.innerHTML = '<p class="empty-msg" style="margin:0;">Nothing to show yet \u2014 as parts land in drawers, builds that become finishable will appear here.</p>';
+    }
+    applyFinishableMocsCollapseState();
+  }
+
+  wireEl('finishable-mocs-toggle-btn', 'click', function(){
+    finishableMocsExpanded = !finishableMocsExpanded;
+    applyFinishableMocsCollapseState();
+  });
+  wireEl('finishable-mocs-sort', 'change', renderFinishableMocs);
+
+  function exportFinishableMocsCSV(){
+    var items = currentFinishableItems();
+    if (!items.length){
+      alert('Nothing to report \u2014 no build can currently be finished from what\u2019s in your drawers.');
+      return;
+    }
+    var header = ['Build','Theme','Location','Pieces To Gather','Part Lines','Part Num','Color','Description','Needed','In Drawers','Where','Competes With'];
+    var lines = [header.map(csvEscape).join(',')];
+    items.forEach(function(it){
+      it.parts.forEach(function(p){
+        lines.push([
+          it.name, it.theme, it.location, it.pieces, it.parts.length,
+          p.partNum, p.color, p.desc, p.short, p.inDrawers,
+          finishableWhereText(p, '; ', function(w){ return w.label + ' (' + w.qty + ')'; }),
+          it.competesWith.join('; ')
+        ].map(csvEscape).join(','));
+      });
+    });
+    downloadCsv(lines, 'lego-mocs-finishable-from-drawers');
+  }
+  wireEl('finishable-mocs-csv-btn', 'click', exportFinishableMocsCSV);
+
+  function generateFinishableMocsPDF(){
+    var items = currentFinishableItems();
+    if (!items.length){
+      alert('Nothing to report \u2014 no build can currently be finished from what\u2019s in your drawers.');
+      return;
+    }
+    var landscape = document.getElementById('finishable-mocs-layout').value === 'landscape';
+    var btn = document.getElementById('finishable-mocs-pdf-btn');
+    var prevBtnHtml = btn ? btn.innerHTML : null;
+    if (btn){
+      btn.disabled = true;
+      btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating\u2026';
+    }
+
+    var allElementIds = [];
+    items.forEach(function(it){ it.parts.forEach(function(p){ if (p.elementId) allElementIds.push(p.elementId); }); });
+    var uniqueIds = Array.from(new Set(allElementIds));
+
+    Promise.all(uniqueIds.map(function(id){
+      return fetchPartImageForPdf(id).then(function(dataUrl){ return [id, dataUrl]; });
+    })).then(function(pairs){
+      var imgMap = {};
+      pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
+
+      var doc = getPdfDoc();
+      if (!doc) return;
+      if (landscape) doc = new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' });
+      var totalPieces = items.reduce(function(s, it){ return s + it.pieces; }, 0);
+      pdfHeader(doc, 'MOCs You Can Finish From Your Drawers',
+        'Generated ' + new Date().toLocaleDateString() + ' \u00b7 every missing part is in a drawer \u00b7 ' + items.length + ' build' + (items.length === 1 ? '' : 's') + ' \u00b7 ' + totalPieces.toLocaleString() + ' pieces to gather in total');
+
+      var body = [];
+      var rowMeta = [];
+      items.forEach(function(it){
+        var sub = [it.theme, it.location].filter(Boolean).join(' \u00b7 ');
+        body.push([{
+          content: it.name + '  \u2014  gather ' + it.pieces.toLocaleString() + ' piece' + (it.pieces === 1 ? '' : 's') + ' (' + it.parts.length + ' part line' + (it.parts.length === 1 ? '' : 's') + ')' +
+            (sub ? '  \u00b7  ' + sub : '') +
+            (it.conflictParts ? '  \u00b7  competes with: ' + it.competesWith.join(', ') : ''),
+          colSpan: 6,
+          styles: { fontStyle: 'bold', fillColor: it.conflictParts ? [253, 240, 226] : [235, 241, 246], textColor: [20, 32, 43] }
+        }]);
+        rowMeta.push(null);
+        it.parts.forEach(function(p){
+          body.push(['', p.partNum, p.color, truncateForPdf(p.desc, landscape ? 48 : 30), String(p.short),
+            finishableWhereText(p, ', ', function(w){ return w.label + ' \u00d7' + w.qty; })]);
+          rowMeta.push(p);
+        });
+      });
+
+      var widths = landscape ? { desc: 250, where: 281 } : { desc: 150, where: 207 };
+      doc.autoTable({
+        startY: 70,
+        margin: { top: 70, right: 40, bottom: 30, left: 40 },
+        head: [['', 'Part #', 'Color', 'Description', 'Need', 'In drawer(s)']],
+        body: body,
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: PDF_THUMB.single.rowHeight, valign: 'middle' },
+        headStyles: { fillColor: [0, 166, 94], textColor: 255 },
+        columnStyles: { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 55 }, 2: { cellWidth: 50 }, 3: { cellWidth: widths.desc }, 4: { cellWidth: 38 }, 5: { cellWidth: widths.where } },
+        didDrawCell: function(data){
+          if (data.section !== 'body' || data.column.index !== 0) return;
+          var p = rowMeta[data.row.index];
+          var dataUrl = p && p.elementId && imgMap[p.elementId];
+          if (!dataUrl) return;
+          try {
+            var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
+            var size = pdfThumbImageSize('single');
+            var pad = (Math.min(data.cell.height, data.cell.width) - size) / 2;
+            doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
+          } catch(e){ /* skip a malformed image and leave the cell blank */ }
+        }
+      });
+      doc.save('lego-mocs-finishable-from-drawers.pdf');
+    }).catch(function(err){
+      alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
+    }).then(function(){
+      if (btn){ btn.disabled = false; btn.innerHTML = prevBtnHtml; }
+    });
+  }
+  wireEl('finishable-mocs-pdf-btn', 'click', generateFinishableMocsPDF);
+
   function renderDrawerHelpsSets(){
     var controls = getDrawerHelpsSetsControls();
     var items = getDrawerHelpsSetsItems(controls.filter, controls.sort);
@@ -3156,12 +3710,12 @@
     applyDrawerHelpsSetsCollapseState();
   }
 
-  document.getElementById('drawer-helps-sets-toggle-btn').addEventListener('click', function(){
+  wireEl('drawer-helps-sets-toggle-btn', 'click', function(){
     drawerHelpsSetsExpanded = !drawerHelpsSetsExpanded;
     applyDrawerHelpsSetsCollapseState();
   });
-  document.getElementById('drawer-helps-sets-filter').addEventListener('change', renderDrawerHelpsSets);
-  document.getElementById('drawer-helps-sets-sort').addEventListener('change', renderDrawerHelpsSets);
+  wireEl('drawer-helps-sets-filter', 'change', renderDrawerHelpsSets);
+  wireEl('drawer-helps-sets-sort', 'change', renderDrawerHelpsSets);
 
   function exportDrawerHelpsSetsReport(){
     var controls = getDrawerHelpsSetsControls();
@@ -3349,8 +3903,8 @@
     });
   }
 
-  document.getElementById('drawer-helps-sets-csv-btn').addEventListener('click', exportDrawerHelpsSetsReport);
-  document.getElementById('drawer-helps-sets-pdf-btn').addEventListener('click', generateDrawerHelpsSetsPDF);
+  wireEl('drawer-helps-sets-csv-btn', 'click', exportDrawerHelpsSetsReport);
+  wireEl('drawer-helps-sets-pdf-btn', 'click', generateDrawerHelpsSetsPDF);
 
 
   function setOnHandForPart(partNum, color, value){
@@ -4689,17 +5243,17 @@
     document.getElementById('sp-next-page').disabled = spState.page >= totalPages;
   }
 
-  document.getElementById('sp-search').addEventListener('input', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
-  document.getElementById('sp-set-filter').addEventListener('change', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
-  document.getElementById('sp-color-filter').addEventListener('change', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
-  document.getElementById('sp-no-photo-only').addEventListener('change', function(){
+  wireEl('sp-search', 'input', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
+  wireEl('sp-set-filter', 'change', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
+  wireEl('sp-color-filter', 'change', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
+  wireEl('sp-no-photo-only', 'change', function(){
     spState.page = 1;
     if (this.checked) runNoPhotoCheck(setParts, 'sp-no-photo-status', renderSetPartsSummaryTab);
     else renderSetPartsSummaryTab();
   });
-  document.getElementById('sp-combine-toggle').addEventListener('change', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
-  document.getElementById('sp-prev-page').addEventListener('click', function(){ if (spState.page>1){ spState.page--; renderSetPartsSummaryTab(); } });
-  document.getElementById('sp-next-page').addEventListener('click', function(){ spState.page++; renderSetPartsSummaryTab(); });
+  wireEl('sp-combine-toggle', 'change', function(){ spState.page = 1; renderSetPartsSummaryTab(); });
+  wireEl('sp-prev-page', 'click', function(){ if (spState.page>1){ spState.page--; renderSetPartsSummaryTab(); } });
+  wireEl('sp-next-page', 'click', function(){ spState.page++; renderSetPartsSummaryTab(); });
   document.querySelectorAll('#lego-inv-root th[data-sp-sort]').forEach(function(th){
     th.addEventListener('click', function(){
       var col = th.dataset.spSort;
@@ -5033,7 +5587,7 @@
     reader.readAsDataURL(file);
   }
 
-  document.getElementById('detail-modal-instructions-url').addEventListener('change', function(){
+  wireEl('detail-modal-instructions-url', 'change', function(){
     if (!detailContext) return;
     var statusEl = instructionsStatusEl();
     var raw = this.value;
@@ -5051,25 +5605,25 @@
     }
     refreshInstructionsUI();
   });
-  document.getElementById('detail-modal-instructions-open').addEventListener('click', function(){
+  wireEl('detail-modal-instructions-open', 'click', function(){
     var url = this.dataset.url;
     if (url) window.open(url, '_blank', 'noopener');
   });
-  document.getElementById('detail-modal-instructions-upload').addEventListener('click', function(){
+  wireEl('detail-modal-instructions-upload', 'click', function(){
     document.getElementById('detail-modal-instructions-file').click();
   });
-  document.getElementById('detail-modal-instructions-clear').addEventListener('click', function(){
+  wireEl('detail-modal-instructions-clear', 'click', function(){
     if (!detailContext) return;
     saveInstructionsFor(detailContext.kind, detailContext.key, null);
     refreshInstructionsUI();
   });
-  document.getElementById('detail-modal-instructions-file').addEventListener('change', function(e){
+  wireEl('detail-modal-instructions-file', 'change', function(e){
     var file = e.target.files && e.target.files[0];
     e.target.value = '';
     if (file) uploadInstructionsPdf(file);
   });
-  document.getElementById('sets-list-csv-btn').addEventListener('click', exportSetsListCSV);
-  document.getElementById('mocbuilds-list-csv-btn').addEventListener('click', exportMocBuildsCSV);
+  wireEl('sets-list-csv-btn', 'click', exportSetsListCSV);
+  wireEl('mocbuilds-list-csv-btn', 'click', exportMocBuildsCSV);
 
   function renameMocBuild(oldName, newName){
     newName = newName.trim();
@@ -5239,7 +5793,7 @@
       fail('Couldn\u2019t reach Rebrickable (' + (err && err.message ? err.message : 'unknown error') + ') \u2014 nothing was changed. If it keeps failing, turn on the proxy toggle on the Data & Tools tab.');
     });
   }
-  document.getElementById('detail-modal-refetch-parts').addEventListener('click', function(){
+  wireEl('detail-modal-refetch-parts', 'click', function(){
     if (detailContext && detailContext.kind === 'set') refetchSetParts(detailContext.key);
   });
 
@@ -5720,8 +6274,8 @@
     document.getElementById('detail-modal-overlay').style.display = 'flex';
   }
 
-  document.getElementById('detail-modal-close').addEventListener('click', closeDetailModal);
-  document.getElementById('detail-modal-location').addEventListener('change', function(){
+  wireEl('detail-modal-close', 'click', closeDetailModal);
+  wireEl('detail-modal-location', 'change', function(){
     if (!detailContext) return;
     var val = document.getElementById('detail-modal-location').value.trim();
     if (detailContext.kind === 'set'){
@@ -5734,18 +6288,18 @@
       renderMocBuildsTab();
     }
   });
-  document.getElementById('detail-modal-manage-locations').addEventListener('click', openLocationManager);
-  document.getElementById('detail-modal-mark-complete').addEventListener('click', function(){
+  wireEl('detail-modal-manage-locations', 'click', openLocationManager);
+  wireEl('detail-modal-mark-complete', 'click', function(){
     if (!detailContext) return;
     if (detailContext.kind === 'moc') markBuildComplete(detailContext.key);
     else if (detailContext.kind === 'set') markSetComplete(detailContext.key);
   });
-  document.getElementById('detail-modal-clear-quantities').addEventListener('click', function(){
+  wireEl('detail-modal-clear-quantities', 'click', function(){
     if (!detailContext) return;
     if (detailContext.kind === 'moc') clearBuildQuantities(detailContext.key);
     else if (detailContext.kind === 'set') clearSetQuantities(detailContext.key);
   });
-  document.getElementById('detail-modal-description').addEventListener('change', function(){
+  wireEl('detail-modal-description', 'change', function(){
     if (!detailContext) return;
     var val = document.getElementById('detail-modal-description').value.trim();
     if (detailContext.kind === 'set'){
@@ -5757,7 +6311,7 @@
       saveMocDescriptions();
     }
   });
-  document.getElementById('detail-modal-overlay').addEventListener('click', function(e){
+  wireEl('detail-modal-overlay', 'click', function(e){
     if (e.target.id === 'detail-modal-overlay') closeDetailModal();
   });
   function savePhotoMapFor(kind){
@@ -5765,7 +6319,7 @@
     return saveMocPhotos();
   }
 
-  document.getElementById('detail-modal-photo-input').addEventListener('change', function(e){
+  wireEl('detail-modal-photo-input', 'change', function(e){
     var file = e.target.files[0];
     e.target.value = '';
     if (!file || !detailContext) return;
@@ -5778,14 +6332,14 @@
       alert('Could not read that image. Try a different file.');
     });
   });
-  document.getElementById('detail-modal-photo-remove').addEventListener('click', function(){
+  wireEl('detail-modal-photo-remove', 'click', function(){
     if (!detailContext) return;
     var photoMap = photoMapFor(detailContext.kind);
     delete photoMap[detailContext.key];
     savePhotoMapFor(detailContext.kind);
     renderDetailPhoto();
   });
-  document.getElementById('detail-modal-photo-push').addEventListener('click', pushPhotoToGithub);
+  wireEl('detail-modal-photo-push', 'click', pushPhotoToGithub);
 
   var DRAWER_UNGROUPED_LABEL = '(Ungrouped)';
 
@@ -6211,15 +6765,15 @@
     restoreAssignPanelHome();
   }
 
-  document.getElementById('assign-cancel-btn').addEventListener('click', closeAssignPanel);
+  wireEl('assign-cancel-btn', 'click', closeAssignPanel);
 
-  document.getElementById('assign-target-type').addEventListener('change', function(){
+  wireEl('assign-target-type', 'change', function(){
     var isSet = this.value === 'set';
     document.getElementById('assign-moc-input').style.display = isSet ? 'none' : 'inline-block';
     document.getElementById('assign-set-input').style.display = isSet ? 'inline-block' : 'none';
   });
 
-  document.getElementById('assign-confirm-btn').addEventListener('click', function(){
+  wireEl('assign-confirm-btn', 'click', function(){
     var statusEl = document.getElementById('assign-status');
     if (!assignContext){ closeAssignPanel(); return; }
     var targetType = document.getElementById('assign-target-type').value;
@@ -6406,7 +6960,7 @@
     drawerDetailContext = null;
   }
 
-  document.getElementById('drawer-detail-modal-close').addEventListener('click', closeDrawerDetailModal);
+  wireEl('drawer-detail-modal-close', 'click', closeDrawerDetailModal);
 
   // ---- Move / combine / swap drawer contents ----
   var dmState = { mode: 'move', sources: [''], target: '', selected: new Set() };
@@ -6473,7 +7027,7 @@
       row.appendChild(sel);
       if (dmState.sources.length > 1){
         var rm = document.createElement('button');
-        rm.className = 'icon-btn';
+        rm.className = 'icon-btn lockable';
         rm.title = 'Take this drawer off the list';
         rm.innerHTML = '<i class="ti ti-x" style="font-size:12px; vertical-align:-2px;" aria-hidden="true"></i>';
         rm.addEventListener('click', function(){
@@ -6760,20 +7314,20 @@
     document.getElementById('drawer-move-overlay').style.display = 'flex';
   }
 
-  document.getElementById('drawer-rearrange-open-btn').addEventListener('click', function(){ openDrawerMoveModal({}); });
-  document.getElementById('drawer-detail-move-btn').addEventListener('click', function(){
+  wireEl('drawer-rearrange-open-btn', 'click', function(){ openDrawerMoveModal({}); });
+  wireEl('drawer-detail-move-btn', 'click', function(){
     if (drawerDetailContext) openDrawerMoveModal({ sources: [drawerDetailContext] });
   });
-  document.getElementById('drawer-move-close').addEventListener('click', function(){
+  wireEl('drawer-move-close', 'click', function(){
     document.getElementById('drawer-move-overlay').style.display = 'none';
   });
-  document.getElementById('dm-tab-move').addEventListener('click', function(){ setDmMode('move'); });
-  document.getElementById('dm-tab-swap').addEventListener('click', function(){ setDmMode('swap'); });
-  document.getElementById('dm-add-source').addEventListener('click', function(){
+  wireEl('dm-tab-move', 'click', function(){ setDmMode('move'); });
+  wireEl('dm-tab-swap', 'click', function(){ setDmMode('swap'); });
+  wireEl('dm-add-source', 'click', function(){
     dmState.sources.push('');
     renderDmSources();
   });
-  document.getElementById('dm-target').addEventListener('change', function(){
+  wireEl('dm-target', 'change', function(){
     dmState.target = this.value;
     if (dmState.target === '__new__' && !document.getElementById('dm-new-group').value.trim()){
       var firstSrc = drawers.find(function(d){ return d.id === dmState.sources[0]; });
@@ -6783,27 +7337,27 @@
     renderDmTarget();
     renderDmParts();
   });
-  document.getElementById('dm-filter').addEventListener('input', renderDmParts);
-  document.getElementById('dm-select-all').addEventListener('click', function(){
+  wireEl('dm-filter', 'input', renderDmParts);
+  wireEl('dm-select-all', 'click', function(){
     getDmRows().forEach(function(r){ dmState.selected.add(r); });
     renderDmParts();
   });
-  document.getElementById('dm-select-none').addEventListener('click', function(){
+  wireEl('dm-select-none', 'click', function(){
     dmState.selected = new Set();
     renderDmParts();
   });
-  document.getElementById('dm-move-btn').addEventListener('click', doDrawerMove);
-  document.getElementById('dm-swap-a').addEventListener('change', dmUpdateSwapPreview);
-  document.getElementById('dm-swap-b').addEventListener('change', dmUpdateSwapPreview);
-  document.getElementById('dm-swap-btn').addEventListener('click', doDrawerSwap);
+  wireEl('dm-move-btn', 'click', doDrawerMove);
+  wireEl('dm-swap-a', 'change', dmUpdateSwapPreview);
+  wireEl('dm-swap-b', 'change', dmUpdateSwapPreview);
+  wireEl('dm-swap-btn', 'click', doDrawerSwap);
 
-  document.getElementById('drawer-detail-notes-input').addEventListener('change', function(){
+  wireEl('drawer-detail-notes-input', 'change', function(){
     if (!drawerDetailContext) return;
     var d = drawers.find(function(x){ return x.id === drawerDetailContext; });
     if (d){ d.notes = this.value.trim(); touchDrawerLastEdited(d.id); saveDrawers(); }
   });
 
-  document.getElementById('drawer-detail-add-btn').addEventListener('click', function(){
+  wireEl('drawer-detail-add-btn', 'click', function(){
     if (!drawerDetailContext) return;
     var statusEl = document.getElementById('drawer-detail-add-status');
     var partNum = document.getElementById('drawer-detail-add-partnum').value.trim();
@@ -7418,12 +7972,12 @@
     updatePartSearchMultiBar();
   }
 
-  document.getElementById('part-search-close').addEventListener('click', closePartSearch);
-  document.getElementById('part-search-go').addEventListener('click', runPartSearch);
-  document.getElementById('part-search-input').addEventListener('keydown', function(e){ if (e.key === 'Enter') runPartSearch(); });
-  document.getElementById('part-search-back').addEventListener('click', function(){ showPartSearchView('results'); setPartSearchStatus(partSearchShown ? ('Showing ' + partSearchShown + ' matching parts.') : ''); });
-  document.getElementById('part-search-color-filter').addEventListener('input', renderPartColors);
-  document.getElementById('part-search-select-all').addEventListener('change', function(){
+  wireEl('part-search-close', 'click', closePartSearch);
+  wireEl('part-search-go', 'click', runPartSearch);
+  wireEl('part-search-input', 'keydown', function(e){ if (e.key === 'Enter') runPartSearch(); });
+  wireEl('part-search-back', 'click', function(){ showPartSearchView('results'); setPartSearchStatus(partSearchShown ? ('Showing ' + partSearchShown + ' matching parts.') : ''); });
+  wireEl('part-search-color-filter', 'input', renderPartColors);
+  wireEl('part-search-select-all', 'change', function(){
     var part = partSearchSelected;
     if (!part || !part.colors) return;
     var filter = normKey(document.getElementById('part-search-color-filter').value);
@@ -7435,7 +7989,7 @@
     });
     renderPartColors();
   });
-  document.getElementById('part-search-add-selected').addEventListener('click', function(){
+  wireEl('part-search-add-selected', 'click', function(){
     var rows = Object.keys(partSearchMultiSelected).map(function(k){ return partSearchMultiSelected[k]; });
     if (!rows.length) return;
     var target = partForms[partSearchTargetKey];
@@ -7447,7 +8001,7 @@
       closePartSearch();
     }
   });
-  document.getElementById('part-search-more').addEventListener('click', function(){
+  wireEl('part-search-more', 'click', function(){
     if (!partSearchNextUrl) return;
     setPartSearchStatus('Loading more\u2026');
     rbFetchJson(partSearchNextUrl).then(function(data){ renderPartSearchResults(data, true); }).catch(function(err){
@@ -7455,7 +8009,7 @@
     });
   });
 
-  document.getElementById('drawer-add-btn').addEventListener('click', function(){
+  wireEl('drawer-add-btn', 'click', function(){
     var label = document.getElementById('drawer-label-input').value.trim();
     if (!label) return;
 
@@ -7473,7 +8027,7 @@
     renderDrawersTab();
   });
 
-  document.getElementById('drawer-bulk-add-toggle').addEventListener('click', function(){
+  wireEl('drawer-bulk-add-toggle', 'click', function(){
     var panel = document.getElementById('drawer-bulk-add-panel');
     var icon = this.querySelector('i');
     var isOpen = panel.style.display !== 'none';
@@ -7481,7 +8035,7 @@
     icon.className = 'ti ' + (isOpen ? 'ti-chevron-right' : 'ti-chevron-down');
   });
 
-  document.getElementById('drawer-bulk-group-toggle').addEventListener('click', function(){
+  wireEl('drawer-bulk-group-toggle', 'click', function(){
     var panel = document.getElementById('drawer-bulk-group-panel');
     var icon = this.querySelector('i');
     var isOpen = panel.style.display !== 'none';
@@ -7489,7 +8043,7 @@
     icon.className = 'ti ' + (isOpen ? 'ti-chevron-right' : 'ti-chevron-down');
   });
 
-  document.getElementById('drawer-bulk-group-btn').addEventListener('click', function(){
+  wireEl('drawer-bulk-group-btn', 'click', function(){
     var prefix = document.getElementById('drawer-bulk-group-prefix').value.trim();
     var groupName = document.getElementById('drawer-bulk-group-name').value.trim();
     var statusEl = document.getElementById('drawer-bulk-group-status');
@@ -7516,7 +8070,7 @@
     statusEl.textContent = 'Set group "' + groupName + '" for ' + matches.length + ' drawer' + (matches.length===1?'':'s') + '.';
   });
 
-  document.getElementById('drawer-bulk-add-btn').addEventListener('click', function(){
+  wireEl('drawer-bulk-add-btn', 'click', function(){
     var textarea = document.getElementById('drawer-bulk-add-textarea');
     var statusEl = document.getElementById('drawer-bulk-add-status');
     var group = document.getElementById('drawer-bulk-add-group').value.trim();
@@ -7550,7 +8104,7 @@
     statusEl.textContent = msg;
   });
 
-  document.getElementById('drawer-csv-import-btn').addEventListener('click', function(){
+  wireEl('drawer-csv-import-btn', 'click', function(){
     var drawerId = document.getElementById('drawer-csv-target').value;
     var statusEl = document.getElementById('drawer-csv-status');
     if (!drawerId){
@@ -7963,8 +8517,8 @@
     });
   }
 
-  document.getElementById('bag-drawer-search-input').addEventListener('input', renderBagDrawerSearchResults);
-  document.getElementById('bag-drawer-filter-group').addEventListener('change', function(){
+  wireEl('bag-drawer-search-input', 'input', renderBagDrawerSearchResults);
+  wireEl('bag-drawer-filter-group', 'change', function(){
     var groupVal = this.value;
     var drawerSel = document.getElementById('bag-drawer-filter-drawer');
     var curDrawer = drawerSel.value;
@@ -7976,7 +8530,7 @@
     drawerSel.innerHTML = drawerOptGroupsHtml(curDrawer, 'All drawers', groupVal);
     renderBagDrawerSearchResults();
   });
-  document.getElementById('bag-drawer-filter-drawer').addEventListener('change', renderBagDrawerSearchResults);
+  wireEl('bag-drawer-filter-drawer', 'change', renderBagDrawerSearchResults);
 
   function defaultBagLabel(){
     var d = new Date();
@@ -8008,7 +8562,7 @@
         '<div style="font-size:12px; color:var(--text-secondary);">'+entry.items.length+' item'+(entry.items.length===1?'':'s')+(dateStr ? ' &middot; saved '+dateStr : '')+'</div></div>';
       if (!isActive){
         var resumeBtn = document.createElement('button');
-        resumeBtn.className = 'icon-btn';
+        resumeBtn.className = 'icon-btn lockable';
         resumeBtn.style.flexShrink = '0';
         resumeBtn.textContent = 'Resume';
         resumeBtn.addEventListener('click', function(){ resumeBagProgressEntry(entry.id); });
@@ -8030,7 +8584,7 @@
         clearTimeout(armTimer);
         actionWrap.innerHTML = '';
         var delBtn = document.createElement('button');
-        delBtn.className = 'icon-btn';
+        delBtn.className = 'icon-btn lockable';
         delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger);';
         delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:12px; vertical-align:-2px;" aria-hidden="true"></i>';
         delBtn.title = 'Delete this saved bag';
@@ -8045,7 +8599,7 @@
         label.textContent = 'Delete?';
         label.style.cssText = 'font-size:12px; font-weight:700; color:var(--text-danger);';
         var yesBtn = document.createElement('button');
-        yesBtn.className = 'icon-btn';
+        yesBtn.className = 'icon-btn lockable';
         yesBtn.textContent = 'Yes, delete';
         yesBtn.style.cssText = 'color:#fff; background:var(--text-danger); border-color:var(--text-danger);';
         yesBtn.addEventListener('click', function(){
@@ -8128,12 +8682,12 @@
     document.getElementById('bag-drawer-search-input').focus();
   }
 
-  document.getElementById('bag-inventory-open-btn').addEventListener('click', openBagInventory);
-  document.getElementById('bag-inventory-close').addEventListener('click', function(){
+  wireEl('bag-inventory-open-btn', 'click', openBagInventory);
+  wireEl('bag-inventory-close', 'click', function(){
     document.getElementById('bag-inventory-overlay').style.display = 'none';
   });
-  document.getElementById('bag-inventory-add-part-btn').addEventListener('click', function(){ openPartSearch('bag'); });
-  document.getElementById('bag-inventory-clear-btn').addEventListener('click', function(){
+  wireEl('bag-inventory-add-part-btn', 'click', function(){ openPartSearch('bag'); });
+  wireEl('bag-inventory-clear-btn', 'click', function(){
     if (!bagStagingItems.length) return;
     if (!confirm('Clear all ' + bagStagingItems.length + ' item' + (bagStagingItems.length===1?'':'s') + ' from this bag\u2019s list? Nothing has been moved to any drawer yet, so this just empties the list.')) return;
     bagStagingItems = [];
@@ -8141,7 +8695,7 @@
     document.getElementById('bag-inventory-status').textContent = '';
     clearActiveBagProgress().then(renderBagSavedList);
   });
-  document.getElementById('bag-inventory-save-progress-btn').addEventListener('click', function(){
+  wireEl('bag-inventory-save-progress-btn', 'click', function(){
     var statusEl = document.getElementById('bag-inventory-status');
     if (!bagStagingItems.length){
       statusEl.style.color = 'var(--text-danger)';
@@ -8158,7 +8712,7 @@
       statusEl.textContent = 'Couldn\u2019t save progress \u2014 try again.';
     });
   });
-  document.getElementById('bag-inventory-new-btn').addEventListener('click', function(){
+  wireEl('bag-inventory-new-btn', 'click', function(){
     var statusEl = document.getElementById('bag-inventory-status');
     if (!bagStagingItems.length){
       bagActiveProgressId = null;
@@ -8184,7 +8738,7 @@
       statusEl.textContent = 'Couldn\u2019t save your current bag \u2014 try again before starting a new one.';
     });
   });
-  document.getElementById('bag-inventory-commit-btn').addEventListener('click', function(){
+  wireEl('bag-inventory-commit-btn', 'click', function(){
     var statusEl = document.getElementById('bag-inventory-status');
     if (!bagStagingItems.length){
       statusEl.style.color = 'var(--text-danger)';
@@ -8393,19 +8947,19 @@
     });
   }
 
-  document.getElementById('bag-log-open-btn').addEventListener('click', openBagLog);
-  document.getElementById('bag-log-close').addEventListener('click', function(){
+  wireEl('bag-log-open-btn', 'click', openBagLog);
+  wireEl('bag-log-close', 'click', function(){
     document.getElementById('bag-log-overlay').style.display = 'none';
   });
-  document.getElementById('bag-log-search-input').addEventListener('input', renderBagLog);
-  document.getElementById('bag-log-export-pdf-btn').addEventListener('click', generateBagLogPDF);
+  wireEl('bag-log-search-input', 'input', renderBagLog);
+  wireEl('bag-log-export-pdf-btn', 'click', generateBagLogPDF);
 
-  document.getElementById('ap-search-btn').addEventListener('click', function(){ openPartSearch('ap'); });
-  document.getElementById('dp-search-btn').addEventListener('click', function(){ openPartSearch('dp'); });
-  document.getElementById('drawer-detail-search-btn').addEventListener('click', function(){ openPartSearch('dd'); });
-  document.getElementById('quick-add-drawer-search-btn').addEventListener('click', function(){ openPartSearch('quickdrawer'); });
+  wireEl('ap-search-btn', 'click', function(){ openPartSearch('ap'); });
+  wireEl('dp-search-btn', 'click', function(){ openPartSearch('dp'); });
+  wireEl('drawer-detail-search-btn', 'click', function(){ openPartSearch('dd'); });
+  wireEl('quick-add-drawer-search-btn', 'click', function(){ openPartSearch('quickdrawer'); });
 
-  document.getElementById('drawer-add-part-btn').addEventListener('click', function(){
+  wireEl('drawer-add-part-btn', 'click', function(){
     var statusEl = document.getElementById('drawer-add-part-status');
     var drawerId = document.getElementById('dp-drawer-target').value;
     var partNum = document.getElementById('dp-partnum').value.trim();
@@ -8442,12 +8996,12 @@
     renderDrawersTab();
   });
 
-  document.getElementById('drawer-parts-search').addEventListener('input', function(){ drawerPartsState.page = 1; renderDrawerPartsTable(); });
-  document.getElementById('drawer-parts-group-filter').addEventListener('change', function(){ drawerPartsState.page = 1; renderDrawerPartsTable(); });
-  document.getElementById('drawer-parts-drawer-filter').addEventListener('change', function(){ drawerPartsState.page = 1; renderDrawerPartsTable(); });
-  document.getElementById('drawer-parts-color-filter').addEventListener('change', function(){ drawerPartsState.page = 1; renderDrawerPartsTable(); });
-  document.getElementById('drawer-parts-prev-page').addEventListener('click', function(){ if (drawerPartsState.page>1){ drawerPartsState.page--; renderDrawerPartsTable(); } });
-  document.getElementById('drawer-parts-next-page').addEventListener('click', function(){ drawerPartsState.page++; renderDrawerPartsTable(); });
+  wireEl('drawer-parts-search', 'input', function(){ drawerPartsState.page = 1; renderDrawerPartsTable(); });
+  wireEl('drawer-parts-group-filter', 'change', function(){ drawerPartsState.page = 1; renderDrawerPartsTable(); });
+  wireEl('drawer-parts-drawer-filter', 'change', function(){ drawerPartsState.page = 1; renderDrawerPartsTable(); });
+  wireEl('drawer-parts-color-filter', 'change', function(){ drawerPartsState.page = 1; renderDrawerPartsTable(); });
+  wireEl('drawer-parts-prev-page', 'click', function(){ if (drawerPartsState.page>1){ drawerPartsState.page--; renderDrawerPartsTable(); } });
+  wireEl('drawer-parts-next-page', 'click', function(){ drawerPartsState.page++; renderDrawerPartsTable(); });
   document.querySelectorAll('#lego-inv-root th[data-dp-sort]').forEach(function(th){
     th.addEventListener('click', function(){
       var col = th.dataset.dpSort;
@@ -8456,7 +9010,7 @@
     });
   });
 
-  document.getElementById('set-add-btn').addEventListener('click', function(){
+  wireEl('set-add-btn', 'click', function(){
     var raw = document.getElementById('set-num-input').value;
     var setNum = normalizedSetNum(raw);
     if (!setNum){ return; }
@@ -8480,17 +9034,17 @@
     renderSetsTab();
   });
 
-  document.getElementById('mocbuild-theme-summary-list').addEventListener('click', function(e){
+  wireEl('mocbuild-theme-summary-list', 'click', function(e){
     var chip = e.target.closest('[data-theme-jump]');
     if (!chip) return;
     jumpToThemeGroup(chip.dataset.themeJump, expandedMocBuildThemes, function(){ renderMocBuildsList(); }, 'moc-builds-list');
   });
-  document.getElementById('theme-summary-list').addEventListener('click', function(e){
+  wireEl('theme-summary-list', 'click', function(e){
     var chip = e.target.closest('[data-theme-jump]');
     if (!chip) return;
     jumpToThemeGroup(chip.dataset.themeJump, expandedThemes, function(){ renderOwnedSetsList(); }, 'owned-sets-list');
   });
-  document.getElementById('build-add-btn').addEventListener('click', function(){
+  wireEl('build-add-btn', 'click', function(){
     var name = document.getElementById('build-name-input').value.trim();
     var location = document.getElementById('build-location-input').value.trim();
     var theme = document.getElementById('mocbuild-theme-input').value.trim();
@@ -8510,9 +9064,9 @@
     document.getElementById('mocbuild-theme-input').value = '';
     renderMocBuildsTab();
   });
-  document.getElementById('manage-locations-toggle-mocsets').addEventListener('click', openLocationManager);
+  wireEl('manage-locations-toggle-mocsets', 'click', openLocationManager);
 
-  document.getElementById('set-csv-import-btn').addEventListener('click', function(){
+  wireEl('set-csv-import-btn', 'click', function(){
     var setNum = document.getElementById('set-csv-target').value;
     var statusEl = document.getElementById('set-csv-status');
     if (!setNum){
@@ -8537,7 +9091,7 @@
     }
   });
 
-  document.getElementById('mocbuild-csv-import-btn').addEventListener('click', function(){
+  wireEl('mocbuild-csv-import-btn', 'click', function(){
     var buildName = document.getElementById('mocbuild-csv-target').value;
     var statusEl = document.getElementById('mocbuild-csv-status');
     if (!buildName){
@@ -8562,17 +9116,17 @@
     }
   });
 
-  document.getElementById('rebrickable-key-input').addEventListener('change', function(e){
+  wireEl('rebrickable-key-input', 'change', function(e){
     rebrickableApiKey = e.target.value.trim();
     storage.set(REBRICKABLE_KEY_STORAGE, rebrickableApiKey, false);
   });
-  document.getElementById('set-use-proxy-toggle').addEventListener('change', function(e){
+  wireEl('set-use-proxy-toggle', 'change', function(e){
     useSetProxy = e.target.checked;
     storage.set(USE_SET_PROXY_KEY, useSetProxy ? '1' : '0', false);
   });
-  document.getElementById('set-fetch-all-btn').addEventListener('click', fetchAllSetsViaApi);
-  document.getElementById('mark-all-sets-complete-btn').addEventListener('click', markAllSetsComplete);
-  document.getElementById('rb-clear-cache-btn').addEventListener('click', function(){
+  wireEl('set-fetch-all-btn', 'click', fetchAllSetsViaApi);
+  wireEl('mark-all-sets-complete-btn', 'click', markAllSetsComplete);
+  wireEl('rb-clear-cache-btn', 'click', function(){
     var statusEl = document.getElementById('rb-clear-cache-status');
     clearRbCatalogCache().then(function(){
       statusEl.style.color = 'var(--text-secondary)';
@@ -8582,16 +9136,16 @@
       statusEl.textContent = 'Couldn\u2019t clear the saved cache.';
     });
   });
-  document.getElementById('fill-element-ids-btn').addEventListener('click', fillMissingElementIds);
-  document.getElementById('backfill-photos-btn').addEventListener('click', backfillMissingPhotos);
+  wireEl('fill-element-ids-btn', 'click', fillMissingElementIds);
+  wireEl('backfill-photos-btn', 'click', backfillMissingPhotos);
 
-  document.getElementById('mocbuild-search').addEventListener('input', renderMocBuildsList);
-  document.getElementById('set-parts-search').addEventListener('input', function(){ setPartsState.page = 1; renderSetPartsTable(); });
-  document.getElementById('set-parts-set-filter').addEventListener('change', function(){ setPartsState.page = 1; renderSetPartsTable(); });
-  document.getElementById('set-parts-color-filter').addEventListener('change', function(){ setPartsState.page = 1; renderSetPartsTable(); });
-  document.getElementById('set-parts-combine-toggle').addEventListener('change', function(){ setPartsState.page = 1; renderSetPartsTable(); });
-  document.getElementById('set-parts-prev-page').addEventListener('click', function(){ if (setPartsState.page>1){ setPartsState.page--; renderSetPartsTable(); } });
-  document.getElementById('set-parts-next-page').addEventListener('click', function(){ setPartsState.page++; renderSetPartsTable(); });
+  wireEl('mocbuild-search', 'input', renderMocBuildsList);
+  wireEl('set-parts-search', 'input', function(){ setPartsState.page = 1; renderSetPartsTable(); });
+  wireEl('set-parts-set-filter', 'change', function(){ setPartsState.page = 1; renderSetPartsTable(); });
+  wireEl('set-parts-color-filter', 'change', function(){ setPartsState.page = 1; renderSetPartsTable(); });
+  wireEl('set-parts-combine-toggle', 'change', function(){ setPartsState.page = 1; renderSetPartsTable(); });
+  wireEl('set-parts-prev-page', 'click', function(){ if (setPartsState.page>1){ setPartsState.page--; renderSetPartsTable(); } });
+  wireEl('set-parts-next-page', 'click', function(){ setPartsState.page++; renderSetPartsTable(); });
   document.querySelectorAll('#lego-inv-root th[data-set-sort]').forEach(function(th){
     th.addEventListener('click', function(){
       var col = th.dataset.setSort;
@@ -8685,7 +9239,7 @@
     setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
   }
 
-  document.getElementById('import-template-btn').addEventListener('click', function(){
+  wireEl('import-template-btn', 'click', function(){
     downloadCsvTemplate('lego-inventory-import-template.csv',
       ['Part Num','Quantity','Color','Description','MOC Name','elementId','Amount on Hand','Built?','Priority'],
       [
@@ -8694,7 +9248,7 @@
       ]);
   });
 
-  document.getElementById('owned-template-btn').addEventListener('click', function(){
+  wireEl('owned-template-btn', 'click', function(){
     downloadCsvTemplate('lego-owned-inventory-template.csv',
       ['Part Num','Quantity','Color'],
       [
@@ -8703,7 +9257,7 @@
       ]);
   });
 
-  document.getElementById('set-csv-template-btn').addEventListener('click', function(){
+  wireEl('set-csv-template-btn', 'click', function(){
     downloadCsvTemplate('lego-set-parts-template.csv',
       ['Part Num','Quantity','Color','Description','elementId'],
       [
@@ -8712,7 +9266,7 @@
       ]);
   });
 
-  document.getElementById('mocbuild-csv-template-btn').addEventListener('click', function(){
+  wireEl('mocbuild-csv-template-btn', 'click', function(){
     downloadCsvTemplate('lego-build-parts-template.csv',
       ['Part Num','Quantity','Color','Description','elementId'],
       [
@@ -8721,7 +9275,7 @@
       ]);
   });
 
-  document.getElementById('drawer-csv-template-btn').addEventListener('click', function(){
+  wireEl('drawer-csv-template-btn', 'click', function(){
     downloadCsvTemplate('lego-drawer-parts-template.csv',
       ['Part Num','Quantity','Color','Description','elementId'],
       [
@@ -9322,7 +9876,7 @@
     doc.save('lego-official-sets-report.pdf');
   }
 
-  document.getElementById('sets-report-btn').addEventListener('click', generateSetsPDF);
+  wireEl('sets-report-btn', 'click', generateSetsPDF);
 
   var TAB_TO_GROUP = {
     overview: 'overview',
@@ -9385,8 +9939,8 @@
   }
 
   function render(){
-    renderOverview();
-    renderParts();
+    safeRun('Overview', renderOverview);
+    safeRun('MOC parts table', renderParts);
   }
 
   document.querySelectorAll('#main-tabs .tab-btn').forEach(function(b){
@@ -9404,38 +9958,38 @@
       header.querySelector('i').className = 'ti ' + (isOpen ? 'ti-chevron-right' : 'ti-chevron-down');
     });
   });
-  document.getElementById('overview-mocs-search').addEventListener('input', renderOverviewMocsList);
-  document.getElementById('overview-sets-search').addEventListener('input', renderOverviewSetsList);
-  document.getElementById('part-search').addEventListener('input', function(){ state.page = 1; renderParts(); });
-  document.getElementById('moc-filter').addEventListener('change', function(){ state.page = 1; renderParts(); });
-  document.getElementById('color-filter').addEventListener('change', function(){ state.page = 1; renderParts(); });
-  document.getElementById('priority-filter').addEventListener('change', function(){ state.page = 1; renderParts(); });
-  document.getElementById('missing-only').addEventListener('change', function(){ state.page = 1; renderParts(); });
-  document.getElementById('incomplete-info-only').addEventListener('change', function(){
+  wireEl('overview-mocs-search', 'input', renderOverviewMocsList);
+  wireEl('overview-sets-search', 'input', renderOverviewSetsList);
+  wireEl('part-search', 'input', function(){ state.page = 1; renderParts(); });
+  wireEl('moc-filter', 'change', function(){ state.page = 1; renderParts(); });
+  wireEl('color-filter', 'change', function(){ state.page = 1; renderParts(); });
+  wireEl('priority-filter', 'change', function(){ state.page = 1; renderParts(); });
+  wireEl('missing-only', 'change', function(){ state.page = 1; renderParts(); });
+  wireEl('incomplete-info-only', 'change', function(){
     state.page = 1;
     renderParts();
     document.getElementById('fill-incomplete-row').style.display = this.checked ? 'flex' : 'none';
   });
-  document.getElementById('fill-incomplete-btn').addEventListener('click', fillIncompleteMocInfo);
-  document.getElementById('no-photo-only').addEventListener('change', function(){
+  wireEl('fill-incomplete-btn', 'click', fillIncompleteMocInfo);
+  wireEl('no-photo-only', 'change', function(){
     state.page = 1;
     if (this.checked) runNoPhotoCheck(state.rows, 'no-photo-status', renderParts);
     else renderParts();
   });
-  document.getElementById('combine-parts-toggle').addEventListener('change', function(){ state.page = 1; renderParts(); });
-  document.getElementById('prev-page').addEventListener('click', function(){ if (state.page>1){ state.page--; renderParts(); } });
-  document.getElementById('next-page').addEventListener('click', function(){ state.page++; renderParts(); });
+  wireEl('combine-parts-toggle', 'change', function(){ state.page = 1; renderParts(); });
+  wireEl('prev-page', 'click', function(){ if (state.page>1){ state.page--; renderParts(); } });
+  wireEl('next-page', 'click', function(){ state.page++; renderParts(); });
 
-  document.getElementById('add-part-toggle').addEventListener('click', function(){
+  wireEl('add-part-toggle', 'click', function(){
     var panel = document.getElementById('add-part-panel');
     panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
   });
-  document.getElementById('manage-priorities-toggle').addEventListener('click', function(){
+  wireEl('manage-priorities-toggle', 'click', function(){
     var panel = document.getElementById('priority-manage-panel');
     panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
     if (panel.style.display === 'block') renderPriorityManagePanel();
   });
-  document.getElementById('add-priority-btn').addEventListener('click', function(){
+  wireEl('add-priority-btn', 'click', function(){
     var input = document.getElementById('new-priority-input');
     var statusEl = document.getElementById('priority-status');
     var ok = addPriorityLabel(input.value);
@@ -9451,15 +10005,15 @@
       statusEl.textContent = input.value.trim() ? 'That label already exists.' : 'Type a label first.';
     }
   });
-  document.getElementById('new-priority-input').addEventListener('keydown', function(e){
+  wireEl('new-priority-input', 'keydown', function(e){
     if (e.key === 'Enter'){ e.preventDefault(); document.getElementById('add-priority-btn').click(); }
   });
-  document.getElementById('location-manage-close').addEventListener('click', closeLocationManager);
-  document.getElementById('manage-locations-toggle-sets').addEventListener('click', openLocationManager);
-  document.getElementById('location-manage-overlay').addEventListener('click', function(e){
+  wireEl('location-manage-close', 'click', closeLocationManager);
+  wireEl('manage-locations-toggle-sets', 'click', openLocationManager);
+  wireEl('location-manage-overlay', 'click', function(e){
     if (e.target.id === 'location-manage-overlay') closeLocationManager();
   });
-  document.getElementById('add-location-btn').addEventListener('click', function(){
+  wireEl('add-location-btn', 'click', function(){
     var input = document.getElementById('new-location-input');
     var statusEl = document.getElementById('location-manage-status');
     var ok = addLocationLabel(input.value);
@@ -9476,14 +10030,14 @@
       statusEl.textContent = input.value.trim() ? 'That location already exists.' : 'Type a location first.';
     }
   });
-  document.getElementById('new-location-input').addEventListener('keydown', function(e){
+  wireEl('new-location-input', 'keydown', function(e){
     if (e.key === 'Enter'){ e.preventDefault(); document.getElementById('add-location-btn').click(); }
   });
-  document.getElementById('ap-cancel').addEventListener('click', function(){
+  wireEl('ap-cancel', 'click', function(){
     document.getElementById('add-part-panel').style.display = 'none';
     document.getElementById('ap-status').textContent = '';
   });
-  document.getElementById('ap-submit').addEventListener('click', function(){
+  wireEl('ap-submit', 'click', function(){
     var statusEl = document.getElementById('ap-status');
     var moc = document.getElementById('ap-moc').value.trim();
     var partNum = document.getElementById('ap-partnum').value.trim();
@@ -9512,7 +10066,7 @@
     });
   });
 
-  document.getElementById('view-lock-toggle-btn').addEventListener('click', function(){
+  wireEl('view-lock-toggle-btn', 'click', function(){
     viewLocked = !viewLocked;
     saveViewLocked();
     applyViewLockState();
@@ -9530,11 +10084,11 @@
       }
     }, 4000);
   });
-  document.getElementById('export-btn').addEventListener('click', exportAllPartsCSV);
-  document.getElementById('shop-export-csv-btn').addEventListener('click', exportShoppingList);
-  document.getElementById('shop-export-bricklink-btn').addEventListener('click', exportBricklinkWantedList);
-  document.getElementById('clean-report-csv-btn').addEventListener('click', exportCleanReportCSV);
-  document.getElementById('clean-report-pdf-btn').addEventListener('click', generateCleanReportPDF);
+  wireEl('export-btn', 'click', exportAllPartsCSV);
+  wireEl('shop-export-csv-btn', 'click', exportShoppingList);
+  wireEl('shop-export-bricklink-btn', 'click', exportBricklinkWantedList);
+  wireEl('clean-report-csv-btn', 'click', exportCleanReportCSV);
+  wireEl('clean-report-pdf-btn', 'click', generateCleanReportPDF);
   document.querySelectorAll('#lego-inv-root th[data-sort]').forEach(function(th){
     th.addEventListener('click', function(){
       var col = th.dataset.sort;
@@ -9657,7 +10211,7 @@
     document.getElementById('import-file').value = '';
   }
 
-  document.getElementById('import-btn').addEventListener('click', function(){
+  wireEl('import-btn', 'click', function(){
     var fileInput = document.getElementById('import-file');
     var resultEl = document.getElementById('import-result');
     if (fileInput.files && fileInput.files[0]){
@@ -9740,7 +10294,7 @@
     document.getElementById('owned-file').value = '';
   }
 
-  document.getElementById('owned-btn').addEventListener('click', function(){
+  wireEl('owned-btn', 'click', function(){
     var fileInput = document.getElementById('owned-file');
     var resultEl = document.getElementById('owned-result');
     if (fileInput.files && fileInput.files[0]){
@@ -10341,6 +10895,7 @@
 
   function applyFullDataPayload(data){
     if (!data || typeof data !== 'object') throw new Error('Unexpected file format.');
+    lockWriteBypassUntil = Date.now() + 5000;
     if (Array.isArray(data.rows)) state.rows = data.rows.map(rowToObj);
     if (Array.isArray(data.checkedItems)) checkedItems = new Set(data.checkedItems);
     if (data.tallyCounts && typeof data.tallyCounts === 'object') tallyCounts = data.tallyCounts;
@@ -10359,6 +10914,7 @@
     if (Array.isArray(data.bagInventoryLog)) bagInventoryLog = data.bagInventoryLog;
     if (Array.isArray(data.bagSavedProgressList)) bagSavedProgressList = data.bagSavedProgressList;
 
+    tidyLoadedData();
     suppressAutoPublish = true;
     saveState();
     saveChecklist();
@@ -10421,17 +10977,18 @@
     });
   }
 
-  function loadAllDataFromGithub(silent){
+  function loadAllDataFromGithub(silent, canApply){
     var statusEl = document.getElementById('all-data-sync-status');
     if (!silent){
       if (!confirm('Replace ALL data in this browser \u2014 builds, parts, priorities, shopping checkmarks, sets, and drawers \u2014 with the version saved on your site? This cannot be undone.')) return Promise.resolve(false);
       statusEl.style.color = 'var(--text-secondary)';
       statusEl.textContent = 'Loading\u2026';
     }
-    return fetch(ALL_DATA_PATH, { cache: 'no-store' }).then(function(resp){
+    return fetchWithTimeout(ALL_DATA_PATH, { cache: 'no-store' }, 25000).then(function(resp){
       if (!resp.ok) throw new Error('Not found on your site yet.');
       return resp.json();
     }).then(function(data){
+      if (canApply && !canApply()) return 'skipped';
       applyFullDataPayload(data);
 
       if (!silent){
@@ -10440,6 +10997,7 @@
       }
       return true;
     }).catch(function(err){
+      lastSitePullError = (err && err.message) ? err.message : 'unknown error';
       if (!silent){
         statusEl.style.color = 'var(--text-danger)';
         statusEl.textContent = 'Could not load: ' + (err && err.message ? err.message : 'unknown error');
@@ -10569,11 +11127,11 @@
     });
   }
 
-  document.getElementById('save-all-data-github-btn').addEventListener('click', function(){ saveAllDataToGithub(false); });
-  document.getElementById('load-all-data-github-btn').addEventListener('click', function(){ loadAllDataFromGithub(false); });
-  document.getElementById('create-backup-btn').addEventListener('click', createBackupNow);
-  document.getElementById('list-backups-btn').addEventListener('click', listGithubBackups);
-  document.getElementById('backup-password-save-btn').addEventListener('click', function(){
+  wireEl('save-all-data-github-btn', 'click', function(){ saveAllDataToGithub(false); });
+  wireEl('load-all-data-github-btn', 'click', function(){ loadAllDataFromGithub(false); });
+  wireEl('create-backup-btn', 'click', createBackupNow);
+  wireEl('list-backups-btn', 'click', listGithubBackups);
+  wireEl('backup-password-save-btn', 'click', function(){
     backupPassword = document.getElementById('backup-password-input').value;
     var statusEl = document.getElementById('backup-password-status');
     storage.set(BACKUP_PASSWORD_KEY, backupPassword, false).then(function(){
@@ -10584,20 +11142,20 @@
       statusEl.textContent = 'Couldn\u2019t save the password \u2014 try again.';
     });
   });
-  document.getElementById('check-diff-btn').addEventListener('click', function(){ runDiffCheck(false); });
-  document.getElementById('diff-load-from-site-btn').addEventListener('click', function(){
+  wireEl('check-diff-btn', 'click', function(){ runDiffCheck(false); });
+  wireEl('diff-load-from-site-btn', 'click', function(){
     loadAllDataFromGithub(false).then(function(){
       document.getElementById('diff-results').style.display = 'none';
       document.getElementById('sync-warning-banner').style.display = 'none';
     });
   });
-  document.getElementById('diff-publish-to-site-btn').addEventListener('click', function(){
+  wireEl('diff-publish-to-site-btn', 'click', function(){
     if (!confirm('Overwrite the version on your site with this browser\u2019s data? This replaces everything currently published, including anything only on the site.')) return;
     saveAllDataToGithub(false);
     document.getElementById('diff-results').style.display = 'none';
     document.getElementById('sync-warning-banner').style.display = 'none';
   });
-  document.getElementById('sync-banner-review-btn').addEventListener('click', function(){
+  wireEl('sync-banner-review-btn', 'click', function(){
     switchMainTab('data-tools');
     switchTab('import');
     var body = document.getElementById('cs-sync-status');
@@ -10609,7 +11167,7 @@
       renderDiffResults(lastDiffReport);
     }
   });
-  document.getElementById('sync-banner-dismiss-btn').addEventListener('click', function(){
+  wireEl('sync-banner-dismiss-btn', 'click', function(){
     document.getElementById('sync-warning-banner').style.display = 'none';
   });
 
@@ -10727,8 +11285,8 @@
     for (var i = 0; i < CONCURRENCY && i < total; i++) next();
   }
 
-  document.getElementById('check-missing-images-btn').addEventListener('click', checkForMissingImages);
-  document.getElementById('export-missing-images-btn').addEventListener('click', function(){
+  wireEl('check-missing-images-btn', 'click', checkForMissingImages);
+  wireEl('export-missing-images-btn', 'click', function(){
     if (!missingImageIds.length){
       alert('Nothing to export \u2014 click "Check for missing images" first.');
       return;
@@ -11060,7 +11618,7 @@
     refreshPartImageModalPreview();
   }
 
-  document.getElementById('part-image-modal-elementid').addEventListener('change', syncElementIdFromField);
+  wireEl('part-image-modal-elementid', 'change', syncElementIdFromField);
 
   function openPartImageManager(r){
     partImageManagerContext = { elementId: r.elementId || '', partNum: r.partNum || '', color: r.color || '', desc: r.desc || '' };
@@ -11093,7 +11651,7 @@
     partImageManagerContext = null;
   }
 
-  document.getElementById('part-image-modal-close').addEventListener('click', closePartImageManager);
+  wireEl('part-image-modal-close', 'click', closePartImageManager);
 
   function attemptImageSave(key, file, sizeSteps){
     var i = 0;
@@ -11139,7 +11697,7 @@
     return tryNext();
   }
 
-  document.getElementById('part-image-modal-file').addEventListener('change', function(e){
+  wireEl('part-image-modal-file', 'change', function(e){
     var file = e.target.files && e.target.files[0];
     if (!file || !partImageManagerContext) return;
     syncElementIdFromField();
@@ -11203,7 +11761,7 @@
     });
   });
 
-  document.getElementById('part-image-modal-remove-btn').addEventListener('click', function(){
+  wireEl('part-image-modal-remove-btn', 'click', function(){
     var ctx = partImageManagerContext;
     if (!ctx) return;
     if (!confirm('Remove the uploaded photo for this part?')) return;
@@ -11304,11 +11862,11 @@
     });
   }
 
-  document.getElementById('cache-fetch-btn').addEventListener('click', cacheAllNow);
-  document.getElementById('gen-script-btn').addEventListener('click', downloadImageScript);
-  document.getElementById('img-upload').addEventListener('change', function(e){ handleImageUpload(e.target.files); });
-  document.getElementById('clear-cache-btn').addEventListener('click', clearImageCache);
-  document.getElementById('merge-parts-btn').addEventListener('click', function(){
+  wireEl('cache-fetch-btn', 'click', cacheAllNow);
+  wireEl('gen-script-btn', 'click', downloadImageScript);
+  wireEl('img-upload', 'change', function(e){ handleImageUpload(e.target.files); });
+  wireEl('clear-cache-btn', 'click', clearImageCache);
+  wireEl('merge-parts-btn', 'click', function(){
     var oldInput = document.getElementById('merge-parts-old');
     var newInput = document.getElementById('merge-parts-new');
     var statusEl = document.getElementById('merge-parts-status');
@@ -11322,7 +11880,7 @@
       newInput.value = '';
     }
   });
-  document.getElementById('use-proxy-toggle').addEventListener('change', function(e){
+  wireEl('use-proxy-toggle', 'change', function(e){
     useProxy = e.target.checked;
     attemptedCache.clear();
     storage.set(USE_PROXY_KEY, useProxy ? '1' : '0', false);
@@ -12008,21 +12566,21 @@
     return storage.set(TALLY_DRAWER_KEY, JSON.stringify(tallyDrawerAssignments), false);
   }
 
-  document.getElementById('shop-select-all').addEventListener('click', function(){
+  wireEl('shop-select-all', 'click', function(){
     mocSummaries().forEach(function(m){ shopSelected.add(m.name); });
     shopTop20Only = false;
     shopAlmostCompleteOnly = false;
     populateShopMocList();
     renderShoppingList();
   });
-  document.getElementById('shop-select-none').addEventListener('click', function(){
+  wireEl('shop-select-none', 'click', function(){
     shopSelected.clear();
     shopTop20Only = false;
     shopAlmostCompleteOnly = false;
     populateShopMocList();
     renderShoppingList();
   });
-  document.getElementById('shop-top20-btn').addEventListener('click', function(){
+  wireEl('shop-top20-btn', 'click', function(){
     shopTop20Only = !shopTop20Only;
     shopAlmostCompleteOnly = false;
     if (shopTop20Only){
@@ -12031,24 +12589,24 @@
     }
     renderShoppingList();
   });
-  document.getElementById('shop-almost-complete-btn').addEventListener('click', function(){
+  wireEl('shop-almost-complete-btn', 'click', function(){
     shopAlmostCompleteOnly = !shopAlmostCompleteOnly;
     shopTop20Only = false;
     renderShoppingList();
   });
-  document.getElementById('shop-almost-complete-threshold').addEventListener('input', function(){
+  wireEl('shop-almost-complete-threshold', 'input', function(){
     if (shopAlmostCompleteOnly) renderShoppingList();
   });
-  document.getElementById('shop-tally-mode-btn').addEventListener('click', function(){
+  wireEl('shop-tally-mode-btn', 'click', function(){
     shopTallyMode = !shopTallyMode;
     renderShoppingList();
   });
-  document.getElementById('shop-tally-show-completed').addEventListener('change', renderShoppingList);
-  document.getElementById('shop-tally-drawer-group-filter').addEventListener('change', function(){
+  wireEl('shop-tally-show-completed', 'change', renderShoppingList);
+  wireEl('shop-tally-drawer-group-filter', 'change', function(){
     shopTallyDrawerGroupFilter = this.value;
     renderShoppingList();
   });
-  document.getElementById('shop-tally-reset-btn').addEventListener('click', function(){
+  wireEl('shop-tally-reset-btn', 'click', function(){
     var seen = {};
     var keys = [];
     lastShopSections.forEach(function(sec){
@@ -12062,20 +12620,20 @@
     saveTallyCounts();
     renderShoppingList();
   });
-  document.getElementById('shop-tally-commit-btn').addEventListener('click', commitTallyToInventory);
-  document.getElementById('shop-only-short').addEventListener('change', renderShoppingList);
-  document.getElementById('shop-combine-toggle').addEventListener('change', renderShoppingList);
-  document.getElementById('shop-subtract-drawers-toggle').addEventListener('change', renderShoppingList);
-  document.getElementById('shop-hide-fully-covered-toggle').addEventListener('change', renderShoppingList);
+  wireEl('shop-tally-commit-btn', 'click', commitTallyToInventory);
+  wireEl('shop-only-short', 'change', renderShoppingList);
+  wireEl('shop-combine-toggle', 'change', renderShoppingList);
+  wireEl('shop-subtract-drawers-toggle', 'change', renderShoppingList);
+  wireEl('shop-hide-fully-covered-toggle', 'change', renderShoppingList);
   document.querySelectorAll('.shop-sort-select').forEach(function(sel){
     sel.addEventListener('change', renderShoppingList);
   });
-  document.getElementById('shop-search').addEventListener('input', renderShoppingList);
-  document.getElementById('shop-color-filter').addEventListener('change', renderShoppingList);
-  document.getElementById('shop-priority-filter').addEventListener('change', renderShoppingList);
-  document.getElementById('shop-min-qty').addEventListener('input', renderShoppingList);
-  document.getElementById('shop-print-btn').addEventListener('click', generateShoppingListPDF);
-  document.getElementById('shop-clear-checks-btn').addEventListener('click', function(){
+  wireEl('shop-search', 'input', renderShoppingList);
+  wireEl('shop-color-filter', 'change', renderShoppingList);
+  wireEl('shop-priority-filter', 'change', renderShoppingList);
+  wireEl('shop-min-qty', 'input', renderShoppingList);
+  wireEl('shop-print-btn', 'click', generateShoppingListPDF);
+  wireEl('shop-clear-checks-btn', 'click', function(){
     var output = document.getElementById('shopping-list-output');
     var boxes = output.querySelectorAll('.shop-item input[type=checkbox]');
     if (!boxes.length) return;
@@ -12089,23 +12647,143 @@
     updateShopTally();
   });
 
+  var lastSitePullError = '';
+
+  function fetchWithTimeout(url, options, ms){
+    return Promise.race([
+      fetch(url, options),
+      new Promise(function(resolve, reject){ setTimeout(function(){ reject(new Error('Timed out after ' + Math.round(ms / 1000) + ' seconds.')); }, ms); })
+    ]);
+  }
+
+  // Repair records whose values have the wrong type (a blank or numeric colour, a missing drawer id, a
+  // quantity stored as text...). Valid data is left exactly as it is.
+  function tidyStr(v){ return typeof v === 'string' ? v : ((typeof v === 'number' && isFinite(v)) ? String(v) : ''); }
+  function tidyNum(v, fallback){
+    if (typeof v === 'number' && isFinite(v)) return v;
+    var n = typeof v === 'string' ? parseFloat(v) : NaN;
+    return isFinite(n) ? n : fallback;
+  }
+  function fixStr(o, key, required){
+    var v = o[key];
+    if (typeof v === 'string') return;
+    if (v === undefined && !required) return;
+    o[key] = tidyStr(v);
+  }
+  function fixNum(o, key, fallback, required, floor){
+    var v = o[key];
+    if (typeof v === 'number' && isFinite(v) && v >= floor) return;
+    if (v === undefined && !required) return;
+    o[key] = Math.max(floor, tidyNum(v, fallback));
+  }
+  function objectsOnly(list){
+    return Array.isArray(list) ? list.filter(function(x){ return x && typeof x === 'object' && !Array.isArray(x); }) : [];
+  }
+  function plainObj(v){ return (v && typeof v === 'object' && !Array.isArray(v)) ? v : {}; }
+  function stringMap(m){
+    m = plainObj(m);
+    Object.keys(m).forEach(function(k){
+      if (typeof m[k] !== 'string'){ var t = tidyStr(m[k]); if (t) m[k] = t; else delete m[k]; }
+    });
+    return m;
+  }
+
+  function tidyLoadedData(){
+    state.rows = objectsOnly(state.rows);
+    state.rows.forEach(function(r){
+      ['partNum', 'color', 'desc', 'moc'].forEach(function(k){ fixStr(r, k, true); });
+      ['elementId', 'priority'].forEach(function(k){ fixStr(r, k, false); });
+      fixNum(r, 'qty', 0, true, 0);
+      fixNum(r, 'onHand', 0, true, 0);
+    });
+    ownedSets = objectsOnly(ownedSets);
+    ownedSets.forEach(function(s){
+      fixStr(s, 'setNum', true);
+      ['name', 'theme', 'location', 'description'].forEach(function(k){ fixStr(s, k, false); });
+      fixNum(s, 'qty', 1, true, 1);
+    });
+    setParts = objectsOnly(setParts);
+    setParts.forEach(function(r){
+      ['setNum', 'partNum', 'color', 'desc'].forEach(function(k){ fixStr(r, k, true); });
+      fixStr(r, 'elementId', false);
+      fixNum(r, 'qtyPerSet', 0, true, 0);
+      if (r.onHand !== undefined && r.onHand !== null) fixNum(r, 'onHand', 0, true, 0);
+    });
+    drawers = objectsOnly(drawers);
+    drawers.forEach(function(d){
+      fixStr(d, 'id', true);
+      fixStr(d, 'label', true);
+      if (!d.label) d.label = d.id;
+      ['group', 'notes'].forEach(function(k){ fixStr(d, k, false); });
+    });
+    drawerParts = objectsOnly(drawerParts);
+    drawerParts.forEach(function(p){
+      ['drawerId', 'partNum', 'color', 'desc'].forEach(function(k){ fixStr(p, k, true); });
+      fixStr(p, 'elementId', false);
+      fixNum(p, 'qty', 0, true, 0);
+    });
+    mocBuilds = objectsOnly(mocBuilds);
+    mocBuilds.forEach(function(b){ fixStr(b, 'name', true); });
+    mocThemes = stringMap(mocThemes);
+    mocLocations = stringMap(mocLocations);
+    mocDescriptions = stringMap(mocDescriptions);
+    mocInstructions = plainObj(mocInstructions);
+    Object.keys(mocInstructions).forEach(function(k){ if (!mocInstructions[k] || typeof mocInstructions[k] !== 'object') delete mocInstructions[k]; });
+    tallyCounts = plainObj(tallyCounts);
+    tallyDrawerAssignments = plainObj(tallyDrawerAssignments);
+    priorityLabels = (Array.isArray(priorityLabels) ? priorityLabels : []).map(tidyStr).filter(Boolean);
+    locationLabels = (Array.isArray(locationLabels) ? locationLabels : []).map(tidyStr).filter(Boolean);
+    bagInventoryLog = objectsOnly(bagInventoryLog);
+    bagInventoryLog.forEach(function(e){ e.items = objectsOnly(e.items); });
+    bagSavedProgressList = objectsOnly(bagSavedProgressList);
+    bagSavedProgressList.forEach(function(e){ e.items = objectsOnly(e.items); });
+  }
+
   function bootApp(){
-    loadState().then(function(){ return loadImageCacheIndex(); }).then(function(){ return loadPartImgCacheIndex(); }).then(function(){ return loadChecklist(); }).then(function(){ return loadTallyCounts(); }).then(function(){ return loadTallyDrawerAssignments(); }).then(function(){ return loadProxyPreference(); }).then(function(){ return loadPriorityLabels(); }).then(function(){ return loadOwnedSets(); }).then(function(){ return loadSetParts(); }).then(function(){ return loadDrawers(); }).then(function(){ return loadDrawerParts(); }).then(function(){ return loadBagInventoryLog(); }).then(function(){ return loadBagProgressList(); }).then(function(){ return loadSetPhotos(); }).then(function(){ return loadMocPhotos(); }).then(function(){ return loadMocLocations(); }).then(function(){ return loadMocBuilds(); }).then(function(){ return loadMocThemes(); }).then(function(){ return loadMocDescriptions(); }).then(function(){ return loadMocInstructions(); }).then(function(){ return loadLocationLabels(); })
-    .then(function(){ return loadRebrickableKey(); }).then(function(){ return loadRbCatalogCache(); }).then(function(){ return loadSetProxyPref(); }).then(function(){ return loadGithubSettings(); }).then(function(){ return loadBackupPassword(); }).then(function(){ return loadGithubShaMap(); }).then(function(){ return loadDirtyFlag(); }).then(function(){ return loadViewLocked(); })
+    safeRun('lock state', applyViewLockState);
+    bootStage = 'loading your saved data';
+    stepSafe('loadState', loadState).then(function(){ return stepSafe('loadImageCacheIndex', loadImageCacheIndex); }).then(function(){ return stepSafe('loadPartImgCacheIndex', loadPartImgCacheIndex); }).then(function(){ return stepSafe('loadChecklist', loadChecklist); }).then(function(){ return stepSafe('loadTallyCounts', loadTallyCounts); }).then(function(){ return stepSafe('loadTallyDrawerAssignments', loadTallyDrawerAssignments); }).then(function(){ return stepSafe('loadProxyPreference', loadProxyPreference); }).then(function(){ return stepSafe('loadPriorityLabels', loadPriorityLabels); }).then(function(){ return stepSafe('loadOwnedSets', loadOwnedSets); }).then(function(){ return stepSafe('loadSetParts', loadSetParts); }).then(function(){ return stepSafe('loadDrawers', loadDrawers); }).then(function(){ return stepSafe('loadDrawerParts', loadDrawerParts); }).then(function(){ return stepSafe('loadBagInventoryLog', loadBagInventoryLog); }).then(function(){ return stepSafe('loadBagProgressList', loadBagProgressList); }).then(function(){ return stepSafe('loadSetPhotos', loadSetPhotos); }).then(function(){ return stepSafe('loadMocPhotos', loadMocPhotos); }).then(function(){ return stepSafe('loadMocLocations', loadMocLocations); }).then(function(){ return stepSafe('loadMocBuilds', loadMocBuilds); }).then(function(){ return stepSafe('loadMocThemes', loadMocThemes); }).then(function(){ return stepSafe('loadMocDescriptions', loadMocDescriptions); }).then(function(){ return stepSafe('loadMocInstructions', loadMocInstructions); }).then(function(){ return stepSafe('loadLocationLabels', loadLocationLabels); })
+    .then(function(){ return stepSafe('loadRebrickableKey', loadRebrickableKey); }).then(function(){ return stepSafe('loadRbCatalogCache', loadRbCatalogCache); }).then(function(){ return stepSafe('loadSetProxyPref', loadSetProxyPref); }).then(function(){ return stepSafe('loadGithubSettings', loadGithubSettings); }).then(function(){ return stepSafe('loadBackupPassword', loadBackupPassword); }).then(function(){ return stepSafe('loadGithubShaMap', loadGithubShaMap); }).then(function(){ return stepSafe('loadDirtyFlag', loadDirtyFlag); }).then(function(){ return stepSafe('loadViewLocked', loadViewLocked); })
     .then(function(){
+      // Draw what's saved on this device straight away -- never make the first draw wait on the network.
+      bootStage = 'drawing your data';
+      var dirtyAtBoot = localDirty;          // genuine changes waiting to upload, recorded BEFORE drawing
+      suppressAutoPublish = true;            // drawing the first screen must never count as an edit or trigger an upload
+      try {
+        safeRun('tidying records', tidyLoadedData);
+        safeRun('lock state', applyViewLockState);
+        safeRun('first draw', render);
+      } finally { suppressAutoPublish = false; }
+      bootDone = true;
+      removeAppBannerItem(watchdogItem);
+
       var repoConfigured = ghSettings.repo && ghSettings.repo.indexOf('/') !== -1 && ghSettings.token;
       if (!repoConfigured) return;
 
-      var flush = localDirty ? saveAllDataToGithub(true) : Promise.resolve(true);
+      // Then look for newer data on the site in the background.
+      bootStage = 'checking your site for newer data';
+      var checkingItem = null;
+      var checkingTimer = setTimeout(function(){
+        checkingItem = showAppBanner('notice', 'Checking your site for the latest data\u2026', 'You\u2019re seeing what\u2019s saved on this device. This updates by itself when the site\u2019s version arrives.');
+      }, 1500);
+      function doneChecking(){ clearTimeout(checkingTimer); removeAppBannerItem(checkingItem); }
+
+      var flush = dirtyAtBoot ? saveAllDataToGithub(true) : Promise.resolve(true);
       return flush.then(function(flushed){
-        if (localDirty && !flushed) return; // couldn't publish pending changes yet (e.g. offline) - don't overwrite them with the older site version
-        return loadAllDataFromGithub(true);
+        if (dirtyAtBoot && !flushed){ // couldn't publish pending changes yet (e.g. offline) - don't overwrite them with the older site version
+          doneChecking();
+          showAppBanner('notice', 'Showing this device\u2019s data', 'This device has changes that haven\u2019t been uploaded yet, and your site couldn\u2019t be reached \u2014 so the version on your site wasn\u2019t loaded. What you see is what\u2019s saved on this device.');
+          return;
+        }
+        var editsAtStart = editsSinceBoot;
+        return loadAllDataFromGithub(true, function(){ return editsSinceBoot === editsAtStart; }).then(function(result){
+          doneChecking();
+          if (result === false) showAppBanner('notice', 'Showing this device\u2019s data', 'Couldn\u2019t load the latest data from your site (' + (lastSitePullError || 'unknown reason') + '). What you see is what\u2019s saved on this device.');
+          else if (result === 'skipped') showAppBanner('notice', 'Showing this device\u2019s data', 'You made changes while your site\u2019s data was still loading, so the site\u2019s version wasn\u2019t applied \u2014 your changes are kept and are being saved to your site.');
+        });
       });
     })
-    .then(function(){
-      applyViewLockState();
-      render();
-    });
+    .catch(function(e){ reportAppError('syncing with your site', e); });
   }
 
   bootApp();
