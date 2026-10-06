@@ -484,7 +484,7 @@
         <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">MOCs you can finish from your drawers</span>
       </button>
     </div>
-    <p style="margin: 0 0 10px; color: var(--text-secondary); font-size: 13px;">Builds where every part still missing is already sitting in a drawer &mdash; gather those and the build is done, whatever its size. Each build is checked against your drawers on its own, so where two of them need the same parts the list tells you which ones compete.</p>
+    <p style="margin: 0 0 10px; color: var(--text-secondary); font-size: 13px;">Builds where every part still missing is already sitting in a drawer &mdash; gather those and the build is done, whatever its size. Each build is checked against your drawers on its own, so where two of them need the same parts the list tells you which ones compete. A part counts as the same part when its part number and colour match, ignoring capital letters, spaces and hyphens ("Trans Red" and "Trans-Red" are treated alike).</p>
     <div class="row" style="gap:10px; align-items:center; margin-bottom: 8px; padding-top:8px; border-top: 1px solid var(--border); flex-wrap:wrap;">
       <select id="finishable-mocs-sort" title="Sort order">
         <option value="fewest">Fewest pieces to gather first</option>
@@ -2567,7 +2567,7 @@
         var imgCell = '<td class="img-cell"><div class="part-thumb-wrap"></div></td>';
         var inDrawersCell = isOk
           ? '<td style="color:var(--text-muted);">&mdash;</td>'
-          : '<td class="wrap-cell">'+((drawerStock[it.partNum+'|'+it.color]||0)).toLocaleString()+'</td>';
+          : '<td class="wrap-cell">'+((drawerStock[stockKeyOf(it.partNum, it.color)]||0)).toLocaleString()+'</td>';
         tr.innerHTML =
           imgCell +
           '<td><span class="used-in-count" title="'+escapeHtml(buildList.join(', '))+'">'+buildList.length+' build'+(buildList.length===1?'':'s')+'</span></td>'+
@@ -2626,7 +2626,7 @@
       var imgCell = '<td class="img-cell"><div class="part-thumb-wrap"></div></td>';
       var inDrawersHtml = st === 'ok'
         ? '<td class="in-drawers-cell" style="color:var(--text-muted);">&mdash;</td>'
-        : '<td class="in-drawers-cell wrap-cell">'+((drawerStock[r.partNum+'|'+r.color]||0)).toLocaleString()+'</td>';
+        : '<td class="in-drawers-cell wrap-cell">'+((drawerStock[stockKeyOf(r.partNum, r.color)]||0)).toLocaleString()+'</td>';
       tr.innerHTML =
         imgCell +
         '<td title="'+escapeHtml(r.moc)+'">'+escapeHtml(r.moc)+'</td>'+
@@ -2671,7 +2671,7 @@
         var cell = tr.querySelector('.in-drawers-cell');
         cell.className = st2 === 'ok' ? 'in-drawers-cell' : 'in-drawers-cell wrap-cell';
         cell.style.color = st2 === 'ok' ? 'var(--text-muted)' : '';
-        cell.textContent = st2 === 'ok' ? '\u2014' : ((drawerStock[r.partNum+'|'+r.color]||0)).toLocaleString();
+        cell.textContent = st2 === 'ok' ? '\u2014' : ((drawerStock[stockKeyOf(r.partNum, r.color)]||0)).toLocaleString();
       }
 
       var qtyInput = document.createElement('input');
@@ -2844,7 +2844,7 @@
       var missing = Math.max(m.need - m.have, 0);
       if (missing > 0 && missing <= threshold){
         var shortParts = state.rows.filter(function(r){ return r.moc === m.name && r.onHand < r.qty; })
-          .map(function(r){ return { partNum: r.partNum, color: r.color, desc: r.desc, short: r.qty - r.onHand, elementId: r.elementId, inDrawers: drawerStock[r.partNum + '|' + r.color] || 0 }; })
+          .map(function(r){ return { partNum: r.partNum, color: r.color, desc: r.desc, short: r.qty - r.onHand, elementId: r.elementId, inDrawers: drawerStock[stockKeyOf(r.partNum, r.color)] || 0 }; })
           .sort(function(a,b){ return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.short - b.short); });
         items.push({ type: 'moc', key: m.name, label: m.name, missing: missing, parts: shortParts });
       }
@@ -2857,7 +2857,7 @@
       var missing = needed - onHand;
       if (missing > 0 && missing <= threshold){
         var shortSetParts = rows.filter(function(r){ return setPartOnHand(r) < setPartNeeded(r); })
-          .map(function(r){ return { partNum: r.partNum, color: r.color, desc: r.desc, short: setPartNeeded(r) - setPartOnHand(r), elementId: r.elementId, inDrawers: drawerStock[r.partNum + '|' + r.color] || 0 }; })
+          .map(function(r){ return { partNum: r.partNum, color: r.color, desc: r.desc, short: setPartNeeded(r) - setPartOnHand(r), elementId: r.elementId, inDrawers: drawerStock[stockKeyOf(r.partNum, r.color)] || 0 }; })
           .sort(function(a,b){ return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.short - b.short); });
         items.push({ type: 'set', key: s.setNum, label: s.setNum + (s.name ? ' \u2014 ' + s.name : ''), missing: missing, parts: shortSetParts });
       }
@@ -3324,7 +3324,7 @@
       rows.forEach(function(r){
         var needed = setPartNeeded(r) - setPartOnHand(r);
         if (needed <= 0) return;
-        var avail = drawerStock[r.partNum + '|' + r.color] || 0;
+        var avail = drawerStock[stockKeyOf(r.partNum, r.color)] || 0;
         if (avail <= 0) return;
         items.push({
           setNum: s.setNum, setLabel: setLabel,
@@ -3370,7 +3370,7 @@
     var map = {};
     drawerParts.forEach(function(p){
       if (!(p.qty > 0)) return;
-      var key = p.partNum + '|' + p.color;
+      var key = stockKeyOf(p.partNum, p.color);
       var list = map[key] = map[key] || [];
       var label = labelFor[p.drawerId] || p.drawerId;
       var existing = list.find(function(w){ return w.label === label; });
@@ -3400,7 +3400,7 @@
       rows.forEach(function(r){
         var short = (r.qty || 0) - (r.onHand || 0);
         if (short <= 0) return;
-        var key = r.partNum + '|' + r.color;
+        var key = stockKeyOf(r.partNum, r.color);
         if (!shortByKey[key]){
           shortByKey[key] = { key: key, partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId, short: 0 };
           order.push(key);
@@ -7661,10 +7661,20 @@
       : '<div style="width:44px; height:44px; background:var(--surface-1); border-radius:6px; flex-shrink:0;"></div>';
   }
 
+  // One rule for deciding that a drawer part and a build's part are "the same part": the same part number and
+  // the same colour, ignoring capitalisation, stray spaces, hyphens and the grey/gray spelling
+  // (so "Trans Red", "Trans-Red" and "trans red" all match). Different colours stay different.
+  function normColorKey(c){
+    return String(c === null || c === undefined ? '' : c).toLowerCase().replace(/[-_]+/g, ' ').replace(/\bgrey\b/g, 'gray').replace(/\s+/g, ' ').trim();
+  }
+  function stockKeyOf(partNum, color){
+    return String(partNum === null || partNum === undefined ? '' : partNum).trim().toLowerCase() + '|' + normColorKey(color);
+  }
+
   function buildDrawerStockMap(){
     var map = {};
     drawerParts.forEach(function(p){
-      var key = p.partNum + '|' + p.color;
+      var key = stockKeyOf(p.partNum, p.color);
       map[key] = (map[key] || 0) + (p.qty || 0);
     });
     return map;
@@ -9454,7 +9464,7 @@
   function getAllShortItems(){
     var drawerStock = buildDrawerStockMap();
     return computeInventory()
-      .map(function(it){ it.short = Math.max(it.need - it.onHand, 0); it.inDrawers = drawerStock[it.partNum + '|' + it.color] || 0; return it; })
+      .map(function(it){ it.short = Math.max(it.need - it.onHand, 0); it.inDrawers = drawerStock[stockKeyOf(it.partNum, it.color)] || 0; return it; })
       .filter(function(it){ return it.short > 0; })
       .sort(function(a,b){ return b.short - a.short; });
   }
@@ -12194,7 +12204,7 @@
     if (resolveInfo) tallyRowResolvers[key] = resolveInfo;
     if (rawNeedCount === undefined) rawNeedCount = needCount;
     if (netNeedCount === undefined) netNeedCount = needCount;
-    var inDrawers = shopDrawerStockDisplay[r.partNum + '|' + r.color] || 0;
+    var inDrawers = shopDrawerStockDisplay[stockKeyOf(r.partNum, r.color)] || 0;
     var inDrawersInsufficient = rawNeedCount > inDrawers;
     var inDrawersHtml = inDrawers > 0 ? '<span class="shop-in-drawers'+(inDrawersInsufficient ? ' insufficient' : '')+'" title="'+(inDrawersInsufficient ? 'Not enough in drawers to fully cover what\u2019s needed' : 'Currently sitting in a drawer, across all your drawers')+'">'+inDrawers.toLocaleString()+' in drawers</span>' : '';
     var stillNeededHtml = '<span class="shop-still-needed" title="Still needed once drawer stock is applied">'+netNeedCount.toLocaleString()+' still needed</span>';
@@ -12371,7 +12381,7 @@
     var hideFullyCovered = document.getElementById('shop-hide-fully-covered-toggle').checked;
     var drawerStockByPartColor = {};
     drawerParts.forEach(function(p){
-      var key = p.partNum + '|' + p.color;
+      var key = stockKeyOf(p.partNum, p.color);
       drawerStockByPartColor[key] = (drawerStockByPartColor[key] || 0) + (p.qty || 0);
     });
     shopDrawerStockDisplay = Object.assign({}, drawerStockByPartColor);
@@ -12384,7 +12394,7 @@
         var rawNeed = onlyShort ? Math.max(r.qty - r.onHand, 0) : r.qty;
         if (rawNeed <= 0) return;
         var needCount = rawNeed;
-        var pcKey = r.partNum + '|' + r.color;
+        var pcKey = stockKeyOf(r.partNum, r.color);
         if (subtractDrawers){
           var availableInDrawers = drawerStockByPartColor[pcKey] || 0;
           if (availableInDrawers > 0){
@@ -12426,7 +12436,7 @@
     var netUniquePartsSet = {};
     var netTotalPieces = 0;
     pool.forEach(function(p){
-      var pcKey = p.row.partNum + '|' + p.row.color;
+      var pcKey = stockKeyOf(p.row.partNum, p.row.color);
       var avail = netDrawerPool[pcKey] || 0;
       var claimed = Math.min(avail, p.rawNeed);
       netDrawerPool[pcKey] = avail - claimed;
