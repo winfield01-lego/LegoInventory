@@ -481,15 +481,26 @@
     <div class="row" style="justify-content: space-between; margin-bottom: 8px; flex-wrap:wrap; gap:8px;">
       <button id="finishable-mocs-toggle-btn" class="icon-btn" style="padding: 3px 10px; display:flex; align-items:center; gap:6px;">
         <i id="finishable-mocs-chevron" class="ti ti-chevron-right" style="font-size:13px;" aria-hidden="true"></i>
-        <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">MOCs you can finish from your drawers</span>
+        <span id="finishable-mocs-title" style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">MOCs you can finish from your drawers</span>
       </button>
     </div>
-    <p style="margin: 0 0 10px; color: var(--text-secondary); font-size: 13px;">Builds where every part still missing is already sitting in a drawer &mdash; gather those and the build is done, whatever its size. Each build is checked against your drawers on its own, so where two of them need the same parts the list tells you which ones compete. A part counts as the same part when its part number and colour match, ignoring capital letters, spaces and hyphens ("Trans Red" and "Trans-Red" are treated alike).</p>
+    <p id="finishable-mocs-intro" style="margin: 0 0 10px; color: var(--text-secondary); font-size: 13px;">Builds where every part still missing is already sitting in a drawer &mdash; gather those and the build is done, whatever its size. Each build is checked against your drawers on its own, so where two of them need the same parts the list tells you which ones compete. A part counts as the same part when its part number and colour match, ignoring capital letters, spaces and hyphens ("Trans Red" and "Trans-Red" are treated alike).</p>
     <div class="row" style="gap:10px; align-items:center; margin-bottom: 8px; padding-top:8px; border-top: 1px solid var(--border); flex-wrap:wrap;">
+      <select id="finishable-mocs-view" title="What to list">
+        <option value="finishable">Builds I can finish now</option>
+        <option value="priority">All builds, closest to furthest</option>
+      </select>
       <select id="finishable-mocs-sort" title="Sort order">
         <option value="fewest">Fewest pieces to gather first</option>
         <option value="complete">Most complete first</option>
         <option value="name">Name</option>
+      </select>
+      <select id="finishable-mocs-limit" title="How many builds to list" style="display:none;">
+        <option value="0">Show all builds</option>
+        <option value="3">Closest 3</option>
+        <option value="5">Closest 5</option>
+        <option value="10">Closest 10</option>
+        <option value="25">Closest 25</option>
       </select>
       <select id="finishable-mocs-layout" title="PDF page layout">
         <option value="portrait">Portrait</option>
@@ -497,6 +508,11 @@
       </select>
       <button id="finishable-mocs-csv-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate CSV</button>
       <button id="finishable-mocs-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate PDF</button>
+    </div>
+    <div class="row" style="gap:10px; align-items:center; margin-bottom: 8px; flex-wrap:wrap;">
+      <label class="checkbox-label" id="finishable-mocs-reserve-wrap" style="display:none;"><input type="checkbox" id="finishable-mocs-reserve" checked /> Reserve drawer parts from the top down, so no part is counted for two builds</label>
+      <button id="finishable-mocs-expand-all" class="icon-btn" style="padding: 3px 10px;">Expand all</button>
+      <button id="finishable-mocs-collapse-all" class="icon-btn" style="padding: 3px 10px;">Collapse all</button>
     </div>
     <p id="finishable-mocs-summary" style="margin: 0 0 8px; font-size: 13px; color: var(--text-secondary);"></p>
     <div id="finishable-mocs-list" style="display:none;"></div>
@@ -1859,7 +1875,7 @@
   var lockWriteBypassUntil = 0;
   var lockNoticeTimer = null;
   var LOCK_EXEMPT_IDS = {};
-  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
+  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
   var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input';
   var LOCK_CONTROL_SELECTOR = 'input, select, textarea, button';
 
@@ -3466,7 +3482,7 @@
     return sortFinishableMocs(getFinishableMocs().items, document.getElementById('finishable-mocs-sort').value);
   }
 
-  function renderFinishableMocs(){
+  function renderFinishableMocsClassic(){
     var section = document.getElementById('finishable-mocs-section');
     var list = document.getElementById('finishable-mocs-list');
     var summary = document.getElementById('finishable-mocs-summary');
@@ -3563,7 +3579,412 @@
   });
   wireEl('finishable-mocs-sort', 'change', renderFinishableMocs);
 
+  // ---- MOCs ranked by how close your drawers get them to done ----
+  var priorityOpenNames = {};
+
+  var FINISHABLE_SORT_OPTIONS = {
+    finishable: [['fewest', 'Fewest pieces to gather first'], ['complete', 'Most complete first'], ['name', 'Name']],
+    priority: [['closest', 'Closest to done first (fewest pieces still needed)'], ['percent', 'Highest % complete first (counting drawers)'], ['lines', 'Fewest part lines still needed'], ['covered', 'Most pieces your drawers can supply'], ['name', 'Name']]
+  };
+  var PRIORITY_INTRO_HTML = 'Every build that still has parts to find, ranked by how close your drawers get it to done. Each build shows which of its missing parts your drawers already cover (and where they are) and which are still needed, so you can decide which build to put your parts toward next. A part counts as the same part when its part number and colour match, ignoring capital letters, spaces and hyphens ("Trans Red" and "Trans-Red" are treated alike).';
+
+  function finishableView(){
+    var el = document.getElementById('finishable-mocs-view');
+    return el ? el.value : 'finishable';
+  }
+  function priorityReserve(){ return document.getElementById('finishable-mocs-reserve').checked; }
+  function priorityLimit(){
+    var n = parseInt(document.getElementById('finishable-mocs-limit').value, 10);
+    return n > 0 ? n : 0;
+  }
+
+  function syncFinishableControls(){
+    var view = finishableView();
+    var isPriority = view === 'priority';
+    var sortSel = document.getElementById('finishable-mocs-sort');
+    if (sortSel.dataset.view !== view){
+      var opts = FINISHABLE_SORT_OPTIONS[view];
+      sortSel.innerHTML = opts.map(function(o){ return '<option value="' + o[0] + '">' + o[1] + '</option>'; }).join('');
+      sortSel.value = opts[0][0];
+      sortSel.dataset.view = view;
+    }
+    document.getElementById('finishable-mocs-limit').style.display = isPriority ? '' : 'none';
+    document.getElementById('finishable-mocs-reserve-wrap').style.display = isPriority ? 'flex' : 'none';
+    var intro = document.getElementById('finishable-mocs-intro');
+    if (intro.dataset.classic === undefined) intro.dataset.classic = intro.innerHTML;
+    intro.innerHTML = isPriority ? PRIORITY_INTRO_HTML : intro.dataset.classic;
+    document.getElementById('finishable-mocs-title').textContent = isPriority ? 'MOCs ranked by how close your drawers get them' : 'MOCs you can finish from your drawers';
+  }
+
+  // Every build that still has parts to find, with what your drawers cover and what is still needed.
+  // reserve = true: drawer stock is claimed from the top of the list down, so a part is never counted for two builds.
+  function getMocPriorityData(sortMode, reserve){
+    var stock0 = buildDrawerStockMap();
+    var where = buildDrawerLocationMap();
+    var rowsByMoc = {};
+    state.rows.forEach(function(r){ (rowsByMoc[r.moc] = rowsByMoc[r.moc] || []).push(r); });
+    var builds = [], alreadyComplete = 0;
+
+    computeMocs().forEach(function(m){
+      var rows = rowsByMoc[m.name] || [];
+      if (!rows.length) return;
+      var byKey = {}, order = [];
+      rows.forEach(function(r){
+        var short = (r.qty || 0) - (r.onHand || 0);
+        if (short <= 0) return;
+        var key = stockKeyOf(r.partNum, r.color);
+        var ln = byKey[key];
+        if (!ln){
+          ln = byKey[key] = { key: key, partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId, short: 0 };
+          order.push(key);
+        }
+        ln.short += short;
+        if (!ln.elementId && r.elementId) ln.elementId = r.elementId;
+      });
+      if (!order.length){ alreadyComplete++; return; }
+      var lines = order.map(function(k){ return byKey[k]; });
+      builds.push({
+        name: m.name, need: m.need, have: m.have, theme: mocThemes[m.name] || '', location: mocLocations[m.name] || '',
+        lines: lines, shortTotal: lines.reduce(function(s, l){ return s + l.short; }, 0)
+      });
+    });
+
+    function evaluate(b, stock){
+      var covered = 0, remaining = 0, stillLines = 0;
+      b.lines.forEach(function(l){
+        var take = Math.min(stock[l.key] || 0, l.short);
+        covered += take;
+        remaining += l.short - take;
+        if (l.short - take > 0) stillLines++;
+      });
+      return { covered: covered, remaining: remaining, stillLines: stillLines, pct: b.need ? (b.have + covered) / b.need : 1 };
+    }
+    function finalize(b, stock){
+      var covered = 0, remaining = 0;
+      var lines = b.lines.map(function(l){
+        var take = Math.min(stock[l.key] || 0, l.short);
+        covered += take;
+        remaining += l.short - take;
+        return { key: l.key, partNum: l.partNum, color: l.color, desc: l.desc, elementId: l.elementId, short: l.short, covered: take, left: l.short - take, where: where[l.key] || [] };
+      });
+      var byColor = function(a, c){ return (a.color || '').localeCompare(c.color || '') || (a.desc || '').localeCompare(c.desc || ''); };
+      lines.sort(function(a, c){ return ((a.left > 0 ? 1 : 0) + (a.covered > 0 ? 0 : 1)) - ((c.left > 0 ? 1 : 0) + (c.covered > 0 ? 0 : 1)) || byColor(a, c); });
+      var coveredParts = lines.filter(function(l){ return l.covered > 0; }).sort(byColor);
+      var neededParts = lines.filter(function(l){ return l.left > 0; }).sort(byColor);
+      return {
+        name: b.name, theme: b.theme, location: b.location, need: b.need, have: b.have, shortTotal: b.shortTotal,
+        covered: covered, remaining: remaining, pct: b.need ? (b.have + covered) / b.need : 1,
+        lines: lines, coveredParts: coveredParts, neededParts: neededParts
+      };
+    }
+    function claim(b, stock){
+      var changed = [];
+      b.lines.forEach(function(l){
+        var take = Math.min(stock[l.key] || 0, l.short);
+        if (take > 0){ stock[l.key] = (stock[l.key] || 0) - take; changed.push(l.key); }
+      });
+      return changed;
+    }
+
+    var byName = function(a, c){ return a.name.localeCompare(c.name, undefined, { numeric: true }); };
+    var work = Object.assign({}, stock0);
+    var ordered = [];
+    var n = builds.length;
+
+    if (reserve && sortMode === 'closest'){
+      // After each build takes its parts, re-rank the rest against what is left, so each next build really is the closest now.
+      var evals = builds.map(function(b){ return evaluate(b, work); });
+      var idx = {};
+      builds.forEach(function(b, i){ b.lines.forEach(function(l){ (idx[l.key] = idx[l.key] || []).push(i); }); });
+      var used = builds.map(function(){ return false; });
+      for (var step = 0; step < n; step++){
+        var best = -1;
+        for (var i = 0; i < n; i++){
+          if (used[i]) continue;
+          if (best === -1){ best = i; continue; }
+          var a = evals[i], c = evals[best];
+          if (a.remaining < c.remaining || (a.remaining === c.remaining && (a.pct > c.pct || (a.pct === c.pct && byName(builds[i], builds[best]) < 0)))) best = i;
+        }
+        used[best] = true;
+        ordered.push(finalize(builds[best], work));
+        claim(builds[best], work).forEach(function(k){
+          (idx[k] || []).forEach(function(j){ if (!used[j]) evals[j] = evaluate(builds[j], work); });
+        });
+      }
+    } else {
+      var indep = builds.map(function(b){ return { b: b, ev: evaluate(b, stock0) }; });
+      indep.sort(function(x, y){
+        if (sortMode === 'name') return byName(x.b, y.b);
+        var a = x.ev, c = y.ev, r;
+        if (sortMode === 'percent') r = (c.pct - a.pct) || (a.remaining - c.remaining);
+        else if (sortMode === 'lines') r = (a.stillLines - c.stillLines) || (a.remaining - c.remaining);
+        else if (sortMode === 'covered') r = (c.covered - a.covered) || (a.remaining - c.remaining);
+        else r = (a.remaining - c.remaining) || (c.pct - a.pct);
+        return r || byName(x.b, y.b);
+      });
+      indep.forEach(function(x){
+        ordered.push(finalize(x.b, reserve ? work : stock0));
+        if (reserve) claim(x.b, work);
+      });
+    }
+    ordered.forEach(function(it, i){ it.rank = i + 1; });
+    return { items: ordered, alreadyComplete: alreadyComplete };
+  }
+
+  function currentPriorityItems(){
+    var data = getMocPriorityData(document.getElementById('finishable-mocs-sort').value, priorityReserve());
+    var lim = priorityLimit();
+    return { data: data, items: lim ? data.items.slice(0, lim) : data.items, total: data.items.length };
+  }
+
+  function priorityWhereText(l, sep, fmt){ return l.where.map(fmt).join(sep); }
+
+  function renderMocPriorityList(){
+    var section = document.getElementById('finishable-mocs-section');
+    var list = document.getElementById('finishable-mocs-list');
+    var summary = document.getElementById('finishable-mocs-summary');
+    var cur = currentPriorityItems();
+    var data = cur.data, items = cur.items;
+    if (!data.items.length && !data.alreadyComplete){
+      section.style.display = 'none';
+      return;
+    }
+    section.style.display = 'block';
+
+    var ready = data.items.filter(function(it){ return it.remaining === 0; }).length;
+    var firstNotReady = data.items.filter(function(it){ return it.remaining > 0; })[0];
+    var bits = [];
+    if (data.items.length){
+      bits.push('<strong>' + data.items.length + '</strong> build' + (data.items.length === 1 ? ' still has' : 's still have') + ' parts to find.');
+      bits.push(ready ? ready + ' can be finished right now from your drawers.' : 'None can be finished from your drawers yet.');
+      if (firstNotReady) bits.push('The closest to done is <strong>' + escapeHtml(firstNotReady.name) + '</strong>, needing ' + firstNotReady.remaining.toLocaleString() + ' more piece' + (firstNotReady.remaining === 1 ? '' : 's') + '.');
+      if (cur.items.length < cur.total) bits.push('Showing the closest ' + cur.items.length + ' of ' + cur.total + '.');
+    } else {
+      bits.push('Every build is already complete.');
+    }
+    if (data.alreadyComplete && data.items.length) bits.push(data.alreadyComplete + ' ' + (data.alreadyComplete === 1 ? 'build is' : 'builds are') + ' already complete.');
+    bits.push(priorityReserve() ? 'Drawer parts are reserved from the top down: each build only counts parts the builds above it haven\u2019t already claimed.' : 'Each build is shown as if it had first claim on your drawers, so builds can overlap.');
+    summary.innerHTML = bits.join(' ');
+
+    list.innerHTML = '';
+    items.forEach(function(it){
+      var card = document.createElement('div');
+      card.style.cssText = 'margin-bottom:8px;';
+      var open = !!priorityOpenNames[it.name];
+
+      var head = document.createElement('div');
+      head.className = 'top-needed-item';
+      head.style.cssText = 'cursor:pointer; margin-bottom:0; flex-wrap:wrap;';
+      var sub = [it.theme, it.location].filter(Boolean).join(' \u00b7 ');
+      var pct = Math.min(100, Math.round(it.pct * 100));
+      head.innerHTML =
+        '<i class="ti ' + (open ? 'ti-chevron-down' : 'ti-chevron-right') + '" style="font-size:14px; flex-shrink:0;" aria-hidden="true"></i>' +
+        '<span class="top-needed-desc" style="flex:1 1 130px; min-width:130px;"><span style="color:var(--text-muted); font-weight:700;">#' + it.rank + '</span> ' + escapeHtml(it.name) + (sub ? ' <span style="font-size:11px; font-weight:400; color:var(--text-muted);">' + escapeHtml(sub) + '</span>' : '') + '</span>' +
+        (it.remaining === 0
+          ? '<span class="pill pill-ok" style="flex-shrink:0;">Ready to build</span>'
+          : '<span class="pill pill-short" style="flex-shrink:0;">Needs ' + it.remaining.toLocaleString() + ' more pc' + (it.remaining === 1 ? '' : 's') + '</span>') +
+        '<span class="pill" style="flex-shrink:0; background:var(--surface-1); border:1px solid var(--border);">' + pct + '% done with drawers</span>';
+      var openBtn = document.createElement('button');
+      openBtn.className = 'icon-btn';
+      openBtn.style.cssText = 'padding:2px 8px; flex-shrink:0;';
+      openBtn.textContent = 'Open';
+      openBtn.title = 'Open this build\u2019s summary';
+      openBtn.addEventListener('click', function(e){ e.stopPropagation(); openMocDetail(it.name); });
+      head.appendChild(openBtn);
+
+      var detail = document.createElement('div');
+      detail.style.cssText = 'display:' + (open ? 'block' : 'none') + '; padding:6px 0 0 14px;';
+      var built = false;
+      function buildDetail(){
+        if (built) return;
+        built = true;
+        var stats = document.createElement('p');
+        stats.style.cssText = 'margin:0 0 6px; font-size:12px; color:var(--text-secondary);';
+        stats.textContent = 'On hand ' + it.have.toLocaleString() + ' of ' + it.need.toLocaleString() + ' pieces \u00b7 your drawers can supply ' + it.covered.toLocaleString() + ' \u00b7 still needed after drawers: ' + it.remaining.toLocaleString() + ' piece' + (it.remaining === 1 ? '' : 's') + ' across ' + it.neededParts.length + ' part line' + (it.neededParts.length === 1 ? '' : 's') + '.';
+        detail.appendChild(stats);
+        function section(title, color, parts, rowHtml){
+          if (!parts.length) return;
+          var h = document.createElement('p');
+          h.style.cssText = 'margin:8px 0 4px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.02em; color:' + color + ';';
+          h.textContent = title;
+          detail.appendChild(h);
+          parts.forEach(function(l){
+            var row = document.createElement('div');
+            row.className = 'top-needed-item';
+            row.style.cssText = 'cursor:default; flex-wrap:wrap;';
+            row.innerHTML = '<span class="part-thumb-wrap"></span><span class="top-needed-partnum">#' + escapeHtml(l.partNum) + '</span>' +
+              '<span class="top-needed-desc" style="flex:1 1 120px; min-width:120px;">' + escapeHtml((l.color ? l.color + ' ' : '') + (l.desc || '')) + '</span>' + rowHtml(l);
+            detail.appendChild(row);
+            buildThumb({ elementId: l.elementId, partNum: l.partNum, desc: l.desc }, row.querySelector('.part-thumb-wrap'));
+          });
+        }
+        section('Covered by your drawers \u2014 ' + it.covered.toLocaleString() + ' piece' + (it.covered === 1 ? '' : 's') + ', ' + it.coveredParts.length + ' part line' + (it.coveredParts.length === 1 ? '' : 's'), 'var(--text-success)', it.coveredParts, function(l){
+          return '<span class="shop-qty" style="flex-shrink:0;">use ' + l.covered.toLocaleString() + (l.covered < l.short ? ' of ' + l.short.toLocaleString() : '') + '</span>' +
+            '<span class="shop-in-drawers" style="flex-shrink:0;">' + escapeHtml(priorityWhereText(l, ', ', function(w){ return w.label + ' \u00d7' + w.qty.toLocaleString(); })) + '</span>';
+        });
+        section('Still needed \u2014 ' + it.remaining.toLocaleString() + ' piece' + (it.remaining === 1 ? '' : 's') + ', ' + it.neededParts.length + ' part line' + (it.neededParts.length === 1 ? '' : 's'), 'var(--lego-orange)', it.neededParts, function(l){
+          return '<span class="shop-still-needed" style="flex-shrink:0;">' + l.left.toLocaleString() + ' still needed</span>' +
+            (l.covered > 0 ? '<span class="shop-qty" style="flex-shrink:0;" title="Short ' + l.short + ', of which your drawers cover ' + l.covered + '">' + l.covered.toLocaleString() + ' of ' + l.short.toLocaleString() + ' from drawers</span>' : '');
+        });
+        if (!it.coveredParts.length && !it.neededParts.length){
+          var none = document.createElement('p');
+          none.className = 'empty-msg';
+          none.textContent = 'Nothing missing.';
+          detail.appendChild(none);
+        }
+      }
+      if (open) buildDetail();
+      head.addEventListener('click', function(){
+        var nowOpen = detail.style.display === 'none';
+        detail.style.display = nowOpen ? 'block' : 'none';
+        head.querySelector('i').className = 'ti ' + (nowOpen ? 'ti-chevron-down' : 'ti-chevron-right');
+        if (nowOpen){ priorityOpenNames[it.name] = true; buildDetail(); } else { delete priorityOpenNames[it.name]; }
+      });
+
+      card.appendChild(head);
+      card.appendChild(detail);
+      list.appendChild(card);
+    });
+    if (!items.length){
+      list.innerHTML = '<p class="empty-msg" style="margin:0;">Nothing to show \u2014 every build is already complete.</p>';
+    }
+    applyFinishableMocsCollapseState();
+  }
+
+  function priorityStatusText(it){
+    return it.remaining === 0 ? 'Ready to build' : 'Needs ' + it.remaining + ' more piece' + (it.remaining === 1 ? '' : 's');
+  }
+
+  function exportMocPriorityCSV(){
+    var cur = currentPriorityItems();
+    if (!cur.items.length){
+      alert('Nothing to report \u2014 every build is already complete.');
+      return;
+    }
+    var header = ['Rank','Build','Theme','Location','Status','Pieces Still Needed (Build)','Percent Complete With Drawers','Part Num','Color','Description','Short','From Drawers','Still Needed','Where In Drawers'];
+    var lines = [header.map(csvEscape).join(',')];
+    cur.items.forEach(function(it){
+      it.lines.forEach(function(l){
+        lines.push([
+          it.rank, it.name, it.theme, it.location, priorityStatusText(it), it.remaining, Math.min(100, Math.round(it.pct * 100)),
+          l.partNum, l.color, l.desc, l.short, l.covered, l.left,
+          priorityWhereText(l, '; ', function(w){ return w.label + ' (' + w.qty + ')'; })
+        ].map(csvEscape).join(','));
+      });
+    });
+    downloadCsv(lines, 'lego-mocs-closest-to-complete');
+  }
+
+  function generateMocPriorityPDF(){
+    var cur = currentPriorityItems();
+    var items = cur.items;
+    if (!items.length){
+      alert('Nothing to report \u2014 every build is already complete.');
+      return;
+    }
+    var landscape = document.getElementById('finishable-mocs-layout').value === 'landscape';
+    var btn = document.getElementById('finishable-mocs-pdf-btn');
+    var prevBtnHtml = btn ? btn.innerHTML : null;
+    if (btn){
+      btn.disabled = true;
+      btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating\u2026';
+    }
+    var allElementIds = [];
+    items.forEach(function(it){ it.lines.forEach(function(l){ if (l.elementId) allElementIds.push(l.elementId); }); });
+    var uniqueIds = Array.from(new Set(allElementIds));
+
+    Promise.all(uniqueIds.map(function(id){
+      return fetchPartImageForPdf(id).then(function(dataUrl){ return [id, dataUrl]; });
+    })).then(function(pairs){
+      var imgMap = {};
+      pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
+
+      var doc = getPdfDoc();
+      if (!doc) return;
+      if (landscape) doc = new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' });
+      var readyCount = items.filter(function(it){ return it.remaining === 0; }).length;
+      pdfHeader(doc, 'MOCs Ranked By How Close Your Drawers Get Them',
+        'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + items.length + ' build' + (items.length === 1 ? '' : 's') + ' \u00b7 ' + readyCount + ' ready to build \u00b7 ' + (priorityReserve() ? 'drawer parts reserved from the top down' : 'each build counted on its own'));
+
+      var body = [];
+      var rowMeta = [];
+      items.forEach(function(it){
+        var sub = [it.theme, it.location].filter(Boolean).join(' \u00b7 ');
+        body.push([{
+          content: '#' + it.rank + '  ' + it.name + '  \u2014  ' +
+            (it.remaining === 0 ? 'ready to build (' + it.covered.toLocaleString() + ' pieces from drawers)' : 'needs ' + it.remaining.toLocaleString() + ' more piece' + (it.remaining === 1 ? '' : 's') + ' (' + it.neededParts.length + ' part line' + (it.neededParts.length === 1 ? '' : 's') + ') \u00b7 drawers cover ' + it.covered.toLocaleString()) +
+            '  \u00b7  ' + Math.min(100, Math.round(it.pct * 100)) + '% done with drawers' + (sub ? '  \u00b7  ' + sub : ''),
+          colSpan: 7,
+          styles: { fontStyle: 'bold', fillColor: it.remaining === 0 ? [226, 244, 234] : [235, 241, 246], textColor: [20, 32, 43] }
+        }]);
+        rowMeta.push(null);
+        it.lines.forEach(function(l){
+          body.push(['', l.partNum, l.color, truncateForPdf(l.desc, landscape ? 40 : 22), String(l.short),
+            l.covered > 0 ? l.covered + ' (' + priorityWhereText(l, ', ', function(w){ return w.label + ' \u00d7' + w.qty; }) + ')' : '\u2014',
+            l.left > 0 ? String(l.left) : '\u2014']);
+          rowMeta.push(l);
+        });
+      });
+
+      var widths = landscape ? { desc: 220, where: 220 } : { desc: 120, where: 150 };
+      doc.autoTable({
+        startY: 70,
+        margin: { top: 70, right: 40, bottom: 30, left: 40 },
+        head: [['', 'Part #', 'Color', 'Description', 'Short', 'From drawers', 'Still needed']],
+        body: body,
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: PDF_THUMB.single.rowHeight, valign: 'middle' },
+        headStyles: { fillColor: [0, 166, 94], textColor: 255 },
+        columnStyles: { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 55 }, 2: { cellWidth: 50 }, 3: { cellWidth: widths.desc }, 4: { cellWidth: 34 }, 5: { cellWidth: widths.where }, 6: { cellWidth: 46 } },
+        didDrawCell: function(data){
+          if (data.section !== 'body' || data.column.index !== 0) return;
+          var l = rowMeta[data.row.index];
+          var dataUrl = l && l.elementId && imgMap[l.elementId];
+          if (!dataUrl) return;
+          try {
+            var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
+            var size = pdfThumbImageSize('single');
+            var pad = (Math.min(data.cell.height, data.cell.width) - size) / 2;
+            doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
+          } catch(e){ /* skip a malformed image and leave the cell blank */ }
+        }
+      });
+      doc.save('lego-mocs-closest-to-complete.pdf');
+    }).catch(function(err){
+      alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
+    }).then(function(){
+      if (btn){ btn.disabled = false; btn.innerHTML = prevBtnHtml; }
+    });
+  }
+
+  // The same buttons serve both views.
+  function renderFinishableMocs(){
+    syncFinishableControls();
+    if (finishableView() === 'priority') renderMocPriorityList(); else renderFinishableMocsClassic();
+  }
   function exportFinishableMocsCSV(){
+    if (finishableView() === 'priority') exportMocPriorityCSV(); else exportFinishableMocsCSVClassic();
+  }
+  function generateFinishableMocsPDF(){
+    if (finishableView() === 'priority') generateMocPriorityPDF(); else generateFinishableMocsPDFClassic();
+  }
+  wireEl('finishable-mocs-view', 'change', renderFinishableMocs);
+  wireEl('finishable-mocs-limit', 'change', renderFinishableMocs);
+  wireEl('finishable-mocs-reserve', 'change', renderFinishableMocs);
+  wireEl('finishable-mocs-expand-all', 'click', function(){
+    var priority = finishableView() === 'priority';
+    var names = priority ? currentPriorityItems().items.map(function(it){ return it.name; }) : currentFinishableItems().map(function(it){ return it.name; });
+    var openObj = priority ? priorityOpenNames : finishableOpenNames;
+    names.forEach(function(n){ openObj[n] = true; });
+    finishableMocsExpanded = true;
+    renderFinishableMocs();
+  });
+  wireEl('finishable-mocs-collapse-all', 'click', function(){
+    var openObj = finishableView() === 'priority' ? priorityOpenNames : finishableOpenNames;
+    Object.keys(openObj).forEach(function(k){ delete openObj[k]; });
+    renderFinishableMocs();
+  });
+
+  function exportFinishableMocsCSVClassic(){
     var items = currentFinishableItems();
     if (!items.length){
       alert('Nothing to report \u2014 no build can currently be finished from what\u2019s in your drawers.');
@@ -3585,7 +4006,7 @@
   }
   wireEl('finishable-mocs-csv-btn', 'click', exportFinishableMocsCSV);
 
-  function generateFinishableMocsPDF(){
+  function generateFinishableMocsPDFClassic(){
     var items = currentFinishableItems();
     if (!items.length){
       alert('Nothing to report \u2014 no build can currently be finished from what\u2019s in your drawers.');
