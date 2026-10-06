@@ -835,11 +835,22 @@
   <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
     <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Option B (best-effort): fetch via Rebrickable API</p>
     <p style="color: var(--text-secondary); margin: 0 0 10px;">
-      Needs a free API key from <span style="font-family: var(--font-mono);">rebrickable.com/api</span>, set up on the Data &amp; Tools tab. Browsers sometimes block this kind of cross-site request (the same issue we ran into with LEGO's own images) &mdash; if it fails for you, the CSV upload on the Import tab always works. Alongside the parts, this also looks up each set's official name and theme by its set number and updates them here &mdash; including overwriting anything you'd typed in manually. Spare parts Rebrickable lists with a set are ignored. Only fetches sets that don't already have parts on file, so it's fast to re-run after adding a new set &mdash; it won't re-download ones you already have. To refresh a set that already has parts (for example, to drop spares from an earlier import), open its Summary card and use <strong>Re-fetch parts from Rebrickable</strong>.
+      Needs a free API key from <span style="font-family: var(--font-mono);">rebrickable.com/api</span>, set up on the Data &amp; Tools tab. Browsers sometimes block this kind of cross-site request (the same issue we ran into with LEGO's own images) &mdash; if it fails for you, the CSV upload on the Import tab always works. Alongside the parts, this also looks up each set's official name and theme by its set number and updates them here &mdash; including overwriting anything you'd typed in manually. Spare parts Rebrickable lists with a set are ignored. Only fetches sets that don't already have parts on file, so it's fast to re-run after adding a new set &mdash; it won't re-download ones you already have. To refresh a set that already has parts (for example, to drop spares from an earlier import), open its Summary card and use <strong>Re-fetch parts from Rebrickable</strong>. When GitHub Connection is set up, each new set's photo is saved to your site at the same time.
     </p>
     <div class="row">
       <button id="set-fetch-all-btn" class="lockable"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch parts &amp; names for new sets</button>
       <span id="set-fetch-status" style="font-size:13px; color:var(--text-secondary);"></span>
+    </div>
+  </div>
+
+  <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
+    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Set photos</p>
+    <p style="color: var(--text-secondary); margin: 0 0 10px;">
+      Pulls each set's main photo from Rebrickable and saves it to your GitHub site (the <span style="font-family: var(--font-mono);">set-photos/</span> folder), so it shows in the set's Summary card on every device. Only sets with no photo yet are filled in &mdash; a photo you uploaded yourself is never replaced, including one already on your site from another device. Needs your Rebrickable API key and GitHub Connection (Data &amp; Tools tab). One Rebrickable lookup and one small upload per set; new sets fetched with &ldquo;Fetch parts &amp; names&rdquo; get their photo automatically. A new photo can take a minute or two to appear after it's saved.
+    </p>
+    <div class="row">
+      <button id="set-photos-fetch-btn" class="lockable"><i class="ti ti-photo-down" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch set photos</button>
+      <span id="set-photos-status" style="font-size:13px; color:var(--text-secondary);"></span>
     </div>
   </div>
 
@@ -5272,12 +5283,100 @@
     }).then(function(data){
       if (data.theme_id !== undefined && data.theme_id !== null){
         return fetchThemeName(data.theme_id).then(function(themeName){
-          return { name: data.name || '', theme: themeName };
+          return { name: data.name || '', theme: themeName, imgUrl: data.set_img_url || '' };
         });
       }
-      return { name: data.name || '', theme: '' };
+      return { name: data.name || '', theme: '', imgUrl: data.set_img_url || '' };
     }).catch(function(){ return null; });
   }
+
+  // ---- Primary photos for official sets: pulled from Rebrickable, saved to your GitHub site ----
+  // They go straight to the site (set-photos/<set number>.jpg), which is where a set's Summary card looks first, and
+  // are deliberately NOT also copied into the browser: dozens of photos would crowd out your collection data.
+  function githubFileExists(path){
+    var url = 'https://api.github.com/repos/' + ghSettings.repo + '/contents/' + path + '?ref=' + encodeURIComponent(ghSettings.branch || 'main');
+    return fetch(url, { headers: githubApiHeaders(ghSettings.token) }).then(function(resp){
+      if (resp.status === 200) return true;
+      if (resp.status === 404) return false;
+      throw new Error('GitHub answered ' + resp.status + ' when checking for an existing photo');
+    });
+  }
+
+  function fetchSetImageUrl(setNum){
+    var url = 'https://rebrickable.com/api/v3/lego/sets/' + encodeURIComponent(setNum) + '/?key=' + encodeURIComponent(rebrickableApiKey);
+    return fetchUrlMaybeProxied(url).then(function(resp){
+      if (!resp.ok) throw new Error('Rebrickable answered ' + resp.status);
+      return resp.json();
+    }).then(function(data){ return (data && data.set_img_url) || ''; });
+  }
+
+  // Resolves 'saved' | 'had' (a photo already exists, so nothing was touched) | 'noimage'; rejects on a real failure.
+  function importSetPhoto(setNum, imgUrl){
+    if (!imgUrl) return Promise.resolve('noimage');
+    if (setPhotos[setNum]) return Promise.resolve('had');
+    var path = photoSitePath('set', setNum);
+    return githubFileExists(path).then(function(exists){
+      if (exists) return 'had';
+      return fetchImageBlobForBackfill(imgUrl).then(function(blob){
+        return resizeImageFile(blob, 640, 0.82);
+      }).then(function(dataUrl){
+        function push(){
+          return putFileToGithub(ghSettings.repo, ghSettings.branch || 'main', path, ghSettings.token, dataUrlToBase64(dataUrl), 'set-photo:' + setNum, 'Add photo for ' + setNum + ' (from Rebrickable)');
+        }
+        // one patient retry: another upload to the same repo a moment earlier can make GitHub refuse this one
+        return push().catch(function(){ return new Promise(function(r){ setTimeout(r, 1500); }).then(push); });
+      }).then(function(){ return 'saved'; });
+    });
+  }
+
+  function fillMissingSetPhotos(){
+    var statusEl = document.getElementById('set-photos-status');
+    var btn = document.getElementById('set-photos-fetch-btn');
+    function fail(msg){ statusEl.style.color = 'var(--text-danger)'; statusEl.textContent = msg; }
+    if (!rebrickableApiKey) return fail('Enter your Rebrickable API key first (Data & Tools tab).');
+    if (!githubConnectionConfigured()) return fail('Photos are saved to your GitHub site \u2014 set up GitHub Connection on the Data & Tools tab first.');
+    if (!ownedSets.length) return fail('Add a set first.');
+    var todo = ownedSets.filter(function(s){ return !setPhotos[s.setNum]; });
+    if (!todo.length){
+      statusEl.style.color = 'var(--text-success)';
+      statusEl.textContent = 'Every set already has a photo.';
+      return;
+    }
+    var counts = { saved: 0, had: 0, noimage: 0, failed: 0 };
+    var lastError = '', idx = 0, done = 0, total = todo.length;
+    btn.disabled = true;
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Fetching photos\u2026 0 / ' + total;
+
+    function finish(){
+      btn.disabled = false;
+      var bits = [];
+      bits.push('Saved ' + counts.saved + ' photo' + (counts.saved === 1 ? '' : 's') + ' to your site' + (counts.saved ? ' (they can take a minute or two to appear)' : '') + '.');
+      if (counts.had) bits.push(counts.had + ' already had a photo and ' + (counts.had === 1 ? 'was' : 'were') + ' left alone.');
+      if (counts.noimage) bits.push(counts.noimage + ' ha' + (counts.noimage === 1 ? 's' : 've') + ' no photo on Rebrickable.');
+      if (counts.failed) bits.push(counts.failed + ' failed (' + (lastError || 'unknown error') + ') \u2014 run it again to retry those.');
+      statusEl.style.color = counts.failed ? 'var(--text-danger)' : 'var(--text-success)';
+      statusEl.textContent = bits.join(' ');
+    }
+    function next(){
+      if (idx >= total) return finish();
+      var s = todo[idx++];
+      fetchSetImageUrl(s.setNum).then(function(url){
+        return importSetPhoto(s.setNum, url);
+      }).then(function(result){
+        counts[result]++;
+      }).catch(function(err){
+        counts.failed++;
+        lastError = (err && err.message) ? err.message : 'unknown error';
+      }).then(function(){
+        done++;
+        statusEl.textContent = 'Fetching photos\u2026 ' + done + ' / ' + total;
+        next();
+      });
+    }
+    next();
+  }
+  wireEl('set-photos-fetch-btn', 'click', fillMissingSetPhotos);
 
   function fetchAllSetsViaApi(){
     var statusEl = document.getElementById('set-fetch-status');
@@ -5300,7 +5399,7 @@
       statusEl.textContent = 'Every set already has parts on file \u2014 nothing new to fetch. To refresh one that already has parts, open its Summary card and use Re-fetch parts from Rebrickable.';
       return;
     }
-    var ok = 0, failed = 0, total = setsToFetch.length, done = 0, spareTotal = 0;
+    var ok = 0, failed = 0, total = setsToFetch.length, done = 0, spareTotal = 0, photoCounts = {};
     statusEl.style.color = 'var(--text-secondary)';
     statusEl.textContent = 'Fetching\u2026 0 / ' + total;
     var idx = 0;
@@ -5310,6 +5409,8 @@
         statusEl.textContent = 'Fetched ' + ok + ' new set' + (ok===1?'':'s') + ' of ' + total + '.' +
           (skipped ? (' ' + skipped + ' already had parts on file and were skipped.') : '') +
           (spareTotal ? (' Ignored ' + spareTotal.toLocaleString() + ' spare part line' + (spareTotal===1?'':'s') + '.') : '') +
+          (photoCounts.saved ? (' Saved ' + photoCounts.saved + ' set photo' + (photoCounts.saved===1?'':'s') + ' to your site.') : '') +
+          (photoCounts.failed ? (' ' + photoCounts.failed + ' set photo' + (photoCounts.failed===1?'':'s') + ' couldn\u2019t be saved \u2014 use Fetch set photos to retry.') : '') +
           (failed ? (' ' + failed + ' failed \u2014 likely blocked by the browser; try the CSV import instead, or turn on the proxy toggle.') : '');
         renderSetsTab();
         return;
@@ -5325,6 +5426,13 @@
           if (details.name) s.name = details.name;
           if (details.theme) s.theme = details.theme;
           saveOwnedSets();
+        }
+        if (details && details.imgUrl && githubConnectionConfigured()){
+          return importSetPhoto(s.setNum, details.imgUrl).then(function(result){
+            photoCounts[result] = (photoCounts[result] || 0) + 1;
+          }).catch(function(){
+            photoCounts.failed = (photoCounts.failed || 0) + 1;
+          });
         }
       }).catch(function(){
         failed++;
