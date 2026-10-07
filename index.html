@@ -1953,11 +1953,7 @@
   var lockWriteBypassUntil = 0;
   var lockNoticeTimer = null;
   var LOCK_EXEMPT_IDS = {};
-<<<<<<< HEAD
   'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
-=======
-  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
->>>>>>> 6aa464f4ba97049127fd702a0e041b1898595f0b
   var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input';
   var LOCK_CONTROL_SELECTOR = 'input, select, textarea, button';
 
@@ -4794,6 +4790,18 @@
   // Checks every part line (builds, sets and drawers), tries several lookups for each part, saves each photo under the
   // line's own element ID, never counts a failed save as a success, and says exactly why anything is still missing.
   var backfillReport = null, backfillCancel = false;
+  // Photos saved in the browser (no GitHub Connection) share a few megabytes with your collection, so a run keeps about
+  // a million characters free for your data and stops, saying so, rather than using it all up.
+  var backfillLocalRoom = null, BACKFILL_PHOTO_ESTIMATE = 60000;
+  var BACKFILL_PROTECT_MSG = 'stopped to protect your collection data \u2014 this browser\u2019s storage is nearly full. Connect GitHub so photos go to your site instead';
+  function backfillEstimateLocalRoom(){
+    try {
+      var used = 0;
+      for (var i = 0; i < localStorage.length; i++){ var k = localStorage.key(i); used += k.length + (localStorage.getItem(k) || '').length; }
+      return Math.max(0, 4000000 - used);
+    } catch (e){ return null; }
+  }
+  function backfillNoRoom(){ return backfillLocalRoom !== null && backfillLocalRoom < BACKFILL_PHOTO_ESTIMATE; }
 
   function getMissingPhotoCombos(){
     var sources = [['Build', state.rows], ['Set', setParts], ['Drawer', drawerParts]];
@@ -4915,12 +4923,15 @@
         return rbSleep(2000).then(push);
       }).then(function(){ return rbSleep(350); });
     }
+    if (backfillNoRoom()) return Promise.reject(new Error(BACKFILL_PROTECT_MSG));
     return attemptImageSave(IMG_PREFIX + id, blob, sizeSteps).then(function(saved){
-      if (!saved) throw new Error('this browser\u2019s storage is full');
+      if (!saved){ backfillLocalRoom = 0; throw new Error('this browser\u2019s storage is full'); }
+      if (backfillLocalRoom !== null) backfillLocalRoom -= (saved.value || '').length;
     });
   }
 
   function backfillPhotoForCombo(combo){
+    if (!githubConnectionConfigured() && backfillNoRoom()) return Promise.resolve({ status: 'save', detail: BACKFILL_PROTECT_MSG });
     return backfillResolve(combo).then(function(res){
       if (res.fail) return { status: res.fail };
       return fetchImageBlobForBackfill(res.imgUrl).then(function(blob){ return { blob: blob }; }, function(){ return { dlFail: true }; }).then(function(d){
@@ -4946,8 +4957,10 @@
         });
         if (partLevel){
           chain = chain.then(function(){
+            if (backfillNoRoom()) throw new Error(BACKFILL_PROTECT_MSG);
             return attemptImageSave(IMG_PART_PREFIX + normKey(combo.partNum), d.blob, sizeSteps).then(function(saved){
-              if (!saved) throw new Error('this browser\u2019s storage is full');
+              if (!saved){ backfillLocalRoom = 0; throw new Error('this browser\u2019s storage is full'); }
+              if (backfillLocalRoom !== null) backfillLocalRoom -= (saved.value || '').length;
               cachedPartImgKeys.add(normKey(combo.partNum));
             });
           });
@@ -5011,6 +5024,7 @@
       }
       var report = backfillReport = { total: keys.length, found: 0, approx: 0, fails: [] };
       var idx = 0, done = 0, lastDetail = {};
+      backfillLocalRoom = backfillEstimateLocalRoom();
       rbPaceMs = 450;
       rbRetry429 = true;
       stopBtn.style.display = '';
@@ -8867,15 +8881,30 @@
           var parsed = JSON.parse(res.value);
           rbPersistedParts = parsed.parts || {};
           rbPersistedColors = parsed.colors || {};
+          if (res.value.length > RB_CACHE_MAX_CHARS) scheduleRbCacheSave();
         } catch (e){}
       }
     }).catch(function(){});
   }
 
+  var RB_CACHE_MAX_CHARS = 900000;
+  // The lookup cache is disposable, so it must never grow into the room your collection needs: keep it to a fixed size.
+  function rbTrimmedCachePayload(){
+    var total = 40, sizes = {};
+    Object.keys(rbPersistedParts).forEach(function(k){ total += JSON.stringify(rbPersistedParts[k]).length + k.length + 6; });
+    var colorKeys = Object.keys(rbPersistedColors);
+    colorKeys.forEach(function(k){ sizes[k] = JSON.stringify(rbPersistedColors[k]).length + k.length + 6; total += sizes[k]; });
+    while (total > RB_CACHE_MAX_CHARS && colorKeys.length){
+      var drop = colorKeys.pop();
+      total -= sizes[drop];
+      delete rbPersistedColors[drop];
+    }
+    return JSON.stringify({ parts: rbPersistedParts, colors: rbPersistedColors });
+  }
   function scheduleRbCacheSave(){
     clearTimeout(rbCacheSaveTimer);
     rbCacheSaveTimer = setTimeout(function(){
-      storage.set(RB_CATALOG_CACHE_KEY, JSON.stringify({ parts: rbPersistedParts, colors: rbPersistedColors }), false).catch(function(){});
+      storage.set(RB_CATALOG_CACHE_KEY, rbTrimmedCachePayload(), false).catch(function(){});
     }, 800);
   }
 
