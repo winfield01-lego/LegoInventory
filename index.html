@@ -2230,27 +2230,59 @@
 
   var noPhotoResolved = {};
 
-  function rowHasNoPhoto(r){
-    if (r.elementId){
-      if (cachedIds.has(r.elementId)) return false;
-      if (noPhotoResolved.hasOwnProperty(r.elementId)) return noPhotoResolved[r.elementId];
-      return false;
+
+
+  // Photos for lines that have no element ID are kept per part number. They live on your site too (images/parts/), so they
+  // don't depend on this browser's limited storage; partSiteKnown remembers what the site was found to have.
+  var partSiteKnown = {};
+  function localPartImgUrl(pk){
+    return LOCAL_IMG_DIR + 'parts/' + encodeURIComponent(pk) + '.jpg';
+  }
+  function checkOnePartImageExists(pk){
+    var url = localPartImgUrl(pk) + '?_cb=' + Date.now();
+    return fetch(url, { method: 'HEAD', cache: 'no-store' }).then(function(resp){
+      return resp.ok;
+    }).catch(function(){ return false; });
+  }
+  function uploadPartImageToGithub(pk, dataUrl){
+    if (!githubConnectionConfigured()) return Promise.reject(new Error('no-github'));
+    var branch = ghSettings.branch || 'main';
+    var commaIdx = dataUrl.indexOf(',');
+    var base64 = commaIdx !== -1 ? dataUrl.slice(commaIdx + 1) : dataUrl;
+    var path = 'images/parts/' + encodeURIComponent(pk) + '.jpg';
+    return putFileToGithub(ghSettings.repo, branch, path, ghSettings.token, base64, 'imgpart-' + pk, 'Add/update photo for part ' + pk);
+  }
+  function attemptPartImageSaveToGithub(pk, file, sizeSteps){
+    var i = 0;
+    function tryNext(){
+      if (i >= sizeSteps.length) return Promise.reject(new Error('too-large'));
+      var step = sizeSteps[i++];
+      return resizeImageForStorage(file, step[0], step[1]).then(function(dataUrl){
+        return uploadPartImageToGithub(pk, dataUrl).then(function(){
+          return dataUrl;
+        }).catch(function(err){
+          if (err && err.message === 'no-github') throw err;
+          return tryNext();
+        });
+      });
     }
-    if (r.partNum) return !cachedPartImgKeys.has(normKey(r.partNum));
-    return true;
+    return tryNext();
   }
 
   function runNoPhotoCheck(rows, statusElId, callback){
     var ids = Array.from(new Set(rows.filter(function(r){ return r.elementId && !cachedIds.has(r.elementId); }).map(function(r){ return r.elementId; })));
-    var unchecked = ids.filter(function(id){ return !noPhotoResolved.hasOwnProperty(id); });
+    var pks = Array.from(new Set(rows.filter(function(r){ return !r.elementId && r.partNum && !cachedPartImgKeys.has(normKey(r.partNum)); }).map(function(r){ return normKey(r.partNum); })));
+    var tasks = [];
+    ids.forEach(function(id){ if (!noPhotoResolved.hasOwnProperty(id)) tasks.push({ part: false, key: id }); });
+    pks.forEach(function(pk){ if (!partSiteKnown.hasOwnProperty(pk)) tasks.push({ part: true, key: pk }); });
     var statusEl = document.getElementById(statusElId);
     function showSummary(){
       var matchCount = rows.filter(rowHasNoPhoto).length;
       statusEl.style.color = 'var(--text-secondary)';
       statusEl.textContent = matchCount.toLocaleString() + ' of ' + rows.length.toLocaleString() + ' rows have no photo on this device.';
     }
-    if (!unchecked.length){ showSummary(); callback(); return; }
-    var total = unchecked.length, done = 0;
+    if (!tasks.length){ showSummary(); callback(); return; }
+    var total = tasks.length, done = 0;
     statusEl.style.color = 'var(--text-secondary)';
     statusEl.textContent = 'Checking for photos\u2026 0 / ' + total;
     var CONCURRENCY = 8;
@@ -2260,16 +2292,32 @@
         if (done >= total){ showSummary(); callback(); }
         return;
       }
-      var id = unchecked[idx++];
-      checkOneImageExists(id).then(function(exists){
-        noPhotoResolved[id] = !exists;
-      }).then(function(){
+      var t = tasks[idx++];
+      (t.part
+        ? checkOnePartImageExists(t.key).then(function(exists){ partSiteKnown[t.key] = exists; })
+        : checkOneImageExists(t.key).then(function(exists){ noPhotoResolved[t.key] = !exists; })
+      ).then(function(){
         done++;
         statusEl.textContent = 'Checking for photos\u2026 ' + done + ' / ' + total;
         next();
       });
     }
     for (var i = 0; i < CONCURRENCY && i < total; i++) next();
+  }
+
+  function rowHasNoPhoto(r){
+    if (r.elementId){
+      if (cachedIds.has(r.elementId)) return false;
+      if (noPhotoResolved.hasOwnProperty(r.elementId)) return noPhotoResolved[r.elementId];
+      return false;
+    }
+    if (r.partNum){
+      var pk = normKey(r.partNum);
+      if (cachedPartImgKeys.has(pk)) return false;
+      if (partSiteKnown.hasOwnProperty(pk)) return !partSiteKnown[pk];
+      return true;
+    }
+    return true;
   }
 
   function focusAdjacentOnHandInput(currentInput, direction){
@@ -4822,12 +4870,30 @@
   // a million characters free for your data and stops, saying so, rather than using it all up.
   var backfillLocalRoom = null, BACKFILL_PHOTO_ESTIMATE = 60000;
   var BACKFILL_PROTECT_MSG = 'stopped to protect your collection data \u2014 this browser\u2019s storage is nearly full. Connect GitHub so photos go to your site instead';
-  function backfillEstimateLocalRoom(){
+  var BACKFILL_RESERVE = 1000000;
+  // How much more this browser will really accept. We try writing a temporary block and halve the size until it fits
+  // (up to 3 million characters), instead of guessing at a limit that differs from browser to browser.
+  function backfillMeasureFreeChars(){
     try {
-      var used = 0;
-      for (var i = 0; i < localStorage.length; i++){ var k = localStorage.key(i); used += k.length + (localStorage.getItem(k) || '').length; }
-      return Math.max(0, 4000000 - used);
+      var key = 'legoinv:__space_probe__';
+      try { localStorage.removeItem(key); } catch (e0){}
+      var fits = function(n){
+        try { localStorage.setItem(key, new Array(n + 1).join('x')); localStorage.removeItem(key); return true; }
+        catch (e1){ try { localStorage.removeItem(key); } catch (e2){} return false; }
+      };
+      var lo = 0, hi = 3000000;
+      if (fits(hi)) return hi;
+      while (hi - lo > 40000){
+        var mid = Math.floor((lo + hi) / 2);
+        if (fits(mid)) lo = mid; else hi = mid;
+      }
+      return lo;
     } catch (e){ return null; }
+  }
+  // characters a run may add in the browser while keeping about a million free for your collection (null = can't tell)
+  function backfillEstimateLocalRoom(){
+    var free = backfillMeasureFreeChars();
+    return free === null ? null : Math.max(0, free - BACKFILL_RESERVE);
   }
   function backfillNoRoom(){ return backfillLocalRoom !== null && backfillLocalRoom < BACKFILL_PHOTO_ESTIMATE; }
 
@@ -4964,6 +5030,14 @@
     });
   }
 
+  function backfillSavePartPhoto(pk, blob, sizeSteps){
+    var push = function(){ return attemptPartImageSaveToGithub(pk, blob, sizeSteps); };
+    return push().catch(function(err){
+      if (err && err.message === 'no-github') throw err;
+      return rbSleep(2000).then(push);
+    }).then(function(){ partSiteKnown[pk] = true; return rbSleep(350); });
+  }
+
   function backfillPhotoForCombo(combo){
     if (!githubConnectionConfigured() && backfillNoRoom()) return Promise.resolve({ status: 'save', detail: BACKFILL_PROTECT_MSG });
     return backfillResolve(combo).then(function(res){
@@ -4991,16 +5065,20 @@
         });
         if (partLevel){
           chain = chain.then(function(){
+            var pk = normKey(combo.partNum);
+            if (githubConnectionConfigured()) return backfillSavePartPhoto(pk, d.blob, sizeSteps);
             if (backfillNoRoom()) throw new Error(BACKFILL_PROTECT_MSG);
-            return attemptImageSave(IMG_PART_PREFIX + normKey(combo.partNum), d.blob, sizeSteps).then(function(saved){
+            return attemptImageSave(IMG_PART_PREFIX + pk, d.blob, sizeSteps).then(function(saved){
               if (!saved){ backfillLocalRoom = 0; throw new Error('this browser\u2019s storage is full'); }
               if (backfillLocalRoom !== null) backfillLocalRoom -= (saved.value || '').length;
-              cachedPartImgKeys.add(normKey(combo.partNum));
+              cachedPartImgKeys.add(pk);
             });
           });
         }
-        return chain.then(function(){ return { status: 'found', approx: !!res.approx }; }).catch(function(err){
-          return { status: 'save', detail: (err && err.message) ? err.message : 'unknown error' };
+        return chain.then(function(){ return { status: 'found', approx: !!res.approx, dest: githubConnectionConfigured() ? 'site' : 'browser' }; }).catch(function(err){
+          var why = (err && err.message) ? err.message : 'unknown error';
+          if (why === 'too-large') why = 'GitHub wouldn\u2019t accept the upload \u2014 check that your token is allowed to write to this repository (Contents: Read and write)';
+          return { status: 'save', detail: why };
         });
       });
     });
@@ -5032,6 +5110,14 @@
       statusEl.style.color = 'var(--text-danger)';
       statusEl.textContent = 'Add a Rebrickable API key on the Data & Tools tab first.';
       return;
+    }
+    if (!githubConnectionConfigured()){
+      var room0 = backfillEstimateLocalRoom();
+      if (room0 !== null && room0 < BACKFILL_PHOTO_ESTIMATE){
+        statusEl.style.color = 'var(--text-danger)';
+        statusEl.textContent = 'Photos can\u2019t be saved right now: GitHub Connection isn\u2019t set up in this browser and its storage is nearly full. Connect GitHub on the Data & Tools tab so photos go to your site, then run this again.';
+        return;
+      }
     }
     backfillCancel = false;
     backfillReport = null;
@@ -5155,7 +5241,7 @@
     ctx.rows.forEach(function(r){ snap.set(r, sig(r)); });
     photoRows.forEach(function(r){ if (!snap.has(r)) snap.set(r, sig(r)); });
 
-    var stats = { parts: 0, partNums: 0, colors: 0, desc: 0, elements: 0, notFound: [], photos: 0, approx: 0, noimage: 0, download: 0, save: 0, saveWhy: '', failed: 0 };
+    var stats = { parts: 0, partNums: 0, colors: 0, desc: 0, elements: 0, notFound: [], photos: 0, toSite: 0, toBrowser: 0, approx: 0, noimage: 0, download: 0, save: 0, saveWhy: '', failed: 0 };
     var reported = {};
     function usesOf(rows){
       var c = {};
@@ -5185,6 +5271,9 @@
       return owners;
     }
 
+    var localRoom = fix.photo && photoRows.length && !githubConnectionConfigured() ? backfillEstimateLocalRoom() : null;
+    var photosBlocked = localRoom !== null && localRoom < BACKFILL_PHOTO_ESTIMATE;
+
     rbPaceMs = 450;
     rbRetry429 = true;
     if (stopBtn) stopBtn.style.display = '';
@@ -5207,16 +5296,22 @@
       if (stats.colors) added.push(plural(stats.colors, 'colour'));
       if (stats.desc) added.push(plural(stats.desc, 'description'));
       if (stats.elements) added.push(plural(stats.elements, 'element ID'));
-      if (stats.photos) added.push(plural(stats.photos, 'photo'));
+      if (stats.photos) added.push(plural(stats.photos, 'photo') + (stats.toSite ? ' (' + stats.toSite + ' to your site' + (stats.toBrowser ? ', ' + stats.toBrowser + ' in this browser' : '') + ')' : ''));
       var bits = [(stopped ? 'Lookup stopped. ' : '') + 'Rebrickable lookup' + (stats.parts ? ' of ' + plural(stats.parts, 'part') : '') + ': ' +
-        (added.length ? 'added ' + added.join(', ') + '.' : 'nothing needed adding \u2014 every line already had what was asked for.')];
+        (added.length ? 'added ' + added.join(', ') + '.' : (stats.photosBlocked ? 'no descriptions, element IDs or part details were missing.' : 'nothing needed adding \u2014 every line already had what was asked for.'))];
       if (stats.approx) bits.push(stats.approx + (stats.approx === 1 ? ' photo is a close match' : ' photos are close matches') + ' (the plain part\u2019s photo for a lettered or printed variant).');
       if (stats.notFound.length) bits.push('Not found on Rebrickable: ' + stats.notFound.slice(0, 6).join(', ') + (stats.notFound.length > 6 ? ' and ' + (stats.notFound.length - 6) + ' more' : '') + '.');
       if (stats.noimage) bits.push(plural(stats.noimage, 'part') + (stats.noimage === 1 ? ' has' : ' have') + ' no photo on Rebrickable.');
       if (stats.download) bits.push(plural(stats.download, 'photo download') + ' failed.');
-      if (stats.save) bits.push(plural(stats.save, 'photo') + ' couldn\u2019t be saved (' + (stats.saveWhy || 'unknown error') + ').');
+      if (stats.photosBlocked) bits.push('Photos weren\u2019t attempted: GitHub Connection isn\u2019t set up in this browser and its storage is nearly full. Connect GitHub on the Data & Tools tab so photos go to your site, then run this again.');
+      if (stats.save){
+        if (stats.saveWhy === BACKFILL_PROTECT_MSG) bits.push(plural(stats.save, 'photo') + (githubConnectionConfigured()
+          ? ' couldn\u2019t be saved: those parts have no element ID, so their photos can only be kept in this browser, and its storage is nearly full.'
+          : ' couldn\u2019t be saved: GitHub Connection isn\u2019t set up in this browser and its storage is nearly full. Connect GitHub on the Data & Tools tab so photos go to your site, then run this again.'));
+        else bits.push(plural(stats.save, 'photo') + ' couldn\u2019t be saved (' + (stats.saveWhy || 'unknown error') + ').');
+      }
       if (stats.failed) bits.push(plural(stats.failed, 'lookup') + ' failed \u2014 ' + (ctx.retryHint || 'run it again to retry.'));
-      var problems = stats.notFound.length || stats.noimage || stats.download || stats.save || stats.failed;
+      var problems = stats.notFound.length || stats.noimage || stats.download || stats.save || stats.failed || stats.photosBlocked;
       say(bits.join(' '), problems ? 'var(--text-danger)' : 'var(--text-success)');
     }
 
@@ -5300,18 +5395,19 @@
     function phaseB(){
       if (importLookupCancel) return finish(true);
       if (!fix.photo || !photoRows.length) return finish(false);
+      if (photosBlocked){ stats.photosBlocked = true; return finish(false); }
       persist();
       runNoPhotoCheck(photoRows, statusEl.id, function(){
         var combos = getMissingPhotoCombos(photoRows), keys = Object.keys(combos);
         if (!keys.length) return finish(false);
-        backfillLocalRoom = backfillEstimateLocalRoom();
+        backfillLocalRoom = localRoom;
         var bi = 0, bdone = 0;
         function nextPhoto(){
           if (importLookupCancel) return finish(true);
           if (bi >= keys.length) return finish(false);
           var combo = combos[keys[bi++]];
           backfillPhotoForCombo(combo).then(function(r){
-            if (r.status === 'found'){ stats.photos++; if (r.approx) stats.approx++; return; }
+            if (r.status === 'found'){ stats.photos++; if (r.approx) stats.approx++; if (r.dest === 'site') stats.toSite++; else stats.toBrowser++; return; }
             var el = (combo.rows.find(function(x){ return x.elementId; }) || {}).elementId || '';
             var uses = Object.keys(combo.uses).map(function(k){ return k + ' \u00d7' + combo.uses[k]; }).join(', ');
             if (r.status === 'noimage') stats.noimage++;
@@ -5394,6 +5490,14 @@
     };
   }
 
+  function fillPhotoNote(){
+    if (githubConnectionConfigured()) return ' Photos will be saved to your site.';
+    var room = backfillEstimateLocalRoom();
+    if (room === null) return ' GitHub Connection isn\u2019t set up in this browser, so photos would be saved here.';
+    if (room < BACKFILL_PHOTO_ESTIMATE) return ' ' + 'GitHub Connection isn\u2019t set up in this browser and its storage is nearly full. Connect GitHub on the Data & Tools tab so photos can go to your site.'.replace('Connect GitHub', 'Photos can\u2019t be saved yet \u2014 connect GitHub');
+    return ' GitHub Connection isn\u2019t set up in this browser, so photos would be saved here, which has room for about ' + Math.floor(room / 50000) + ' more. Connect GitHub (Data & Tools tab) to save them all to your site.';
+  }
+
   function fillCheck(){
     var statusEl = document.getElementById('fill-status');
     var fix = fillOptions(), sc = fillCollect(fillScopeValue());
@@ -5424,7 +5528,7 @@
     statusEl.style.color = 'var(--text-secondary)';
     if (!lines.length){ statusEl.textContent = 'There are no part lines in that scope.'; return; }
     var nParts = Object.keys(parts).length;
-    statusEl.textContent = lines.join(' ') + (totalGaps ? ' Filling these in means looking up about ' + nParts.toLocaleString() + ' different part' + (nParts === 1 ? '' : 's') + ' on Rebrickable.' : '') + (fix.photo ? ' Photos are checked when you run it.' : '');
+    statusEl.textContent = lines.join(' ') + (totalGaps ? ' Filling these in means looking up about ' + nParts.toLocaleString() + ' different part' + (nParts === 1 ? '' : 's') + ' on Rebrickable.' : '') + (fix.photo ? fillPhotoNote() : '');
   }
 
   function fillRun(){
@@ -13257,22 +13361,32 @@
     if (!r.elementId){
       var pk = normKey(r.partNum);
       var btn0 = makeManageBtn();
-      if (cachedPartImgKeys.has(pk)){
-        btn0.title = 'Click to change this part\u2019s photo';
-        storage.get(IMG_PART_PREFIX + pk, false).then(function(res){
-          if (res && res.value){
-            var img = document.createElement('img');
-            img.loading = 'lazy';
-            img.alt = r.desc || r.partNum;
-            img.src = res.value;
-            btn0.appendChild(img);
-          } else {
-            btn0.innerHTML = '<i class="ti ti-photo-off" aria-hidden="true"></i>';
-          }
-        }).catch(function(){ btn0.innerHTML = '<i class="ti ti-photo-off" aria-hidden="true"></i>'; });
-      } else {
-        btn0.title = 'Add a photo for this part';
+      function noPhotoIcon(){
         btn0.innerHTML = '<i class="ti ti-photo-off" aria-hidden="true"></i>';
+        btn0.title = 'Add a photo for this part';
+      }
+      function showImg(src){
+        var img = document.createElement('img');
+        img.loading = 'lazy';
+        img.alt = r.desc || r.partNum;
+        btn0.title = 'Click to change this part\u2019s photo';
+        btn0.appendChild(img);
+        return img;
+      }
+      // not in this browser: look for the copy on your site (only when the page is served from one)
+      function fromSite(){
+        if (partSiteKnown[pk] === false || !/^https?:/.test(location.protocol)){ noPhotoIcon(); return; }
+        var img = showImg();
+        img.addEventListener('error', function(){ btn0.innerHTML = ''; noPhotoIcon(); });
+        img.src = localPartImgUrl(pk);
+      }
+      if (cachedPartImgKeys.has(pk)){
+        storage.get(IMG_PART_PREFIX + pk, false).then(function(res){
+          if (res && res.value) showImg().src = res.value;
+          else fromSite();
+        }).catch(fromSite);
+      } else {
+        fromSite();
       }
       return;
     }
