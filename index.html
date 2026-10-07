@@ -1161,6 +1161,30 @@
   </div>
 
   <div class="collapse-section">
+    <button type="button" id="fill-details-header" class="collapse-header" data-collapse-target="cs-fill-details"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Fill In Missing Part Details</span></button>
+    <div class="collapse-body" id="cs-fill-details" style="display:none;">
+      <p style="margin: 0 0 10px; color: var(--text-secondary);">
+        Goes back over lists you've already imported &mdash; builds, official sets and drawers &mdash; and fills in what Rebrickable knows but your lines are missing: <strong>descriptions</strong>, <strong>element IDs</strong>, <strong>photos</strong>, and the <strong>part number and colour</strong> for lines that only have an element ID. It only fills blanks, so anything already on a line is left exactly as it was, and it saves as it goes. Use <strong>Check what's missing</strong> first to see how much there is. Needs the Rebrickable API key above; photos go to your site if GitHub Connection is set up, otherwise into this browser (stopping before it uses up the room your collection needs). Requests are paced, so a big collection takes a while &mdash; <strong>Stop</strong> any time and run it again later; it picks up where the blanks are.
+      </p>
+      <div class="controls" style="margin-bottom: 8px;">
+        <select id="fill-scope" title="Which lists to look at"><option value="all">Everything: builds, official sets and drawers</option></select>
+      </div>
+      <div class="row" style="flex-wrap: wrap; gap: 14px; margin-bottom: 10px;">
+        <label class="checkbox-label"><input type="checkbox" id="fill-desc" checked /> Descriptions</label>
+        <label class="checkbox-label"><input type="checkbox" id="fill-element" checked /> Element IDs</label>
+        <label class="checkbox-label"><input type="checkbox" id="fill-ids" checked /> Part numbers &amp; colours (from element IDs)</label>
+        <label class="checkbox-label"><input type="checkbox" id="fill-photo" checked /> Photos</label>
+      </div>
+      <div class="row" style="flex-wrap: wrap; gap: 8px; align-items: center;">
+        <button id="fill-check-btn" class="icon-btn"><i class="ti ti-search" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Check what's missing</button>
+        <button id="fill-run-btn" class="lockable"><i class="ti ti-wand" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fill in missing details</button>
+        <button id="fill-stop-btn" class="icon-btn" style="display:none;">Stop</button>
+        <button id="fill-report-btn" class="icon-btn" style="display:none;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Still incomplete (CSV)</button>
+      </div>
+      <p id="fill-status" style="margin: 8px 0 0; font-size: 13px; color: var(--text-secondary);"></p>
+    </div>
+  </div>
+  <div class="collapse-section">
     <button type="button" class="collapse-header" data-collapse-target="cs-publish"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Publish Whole Collection to Site</span></button>
     <div class="collapse-body" id="cs-publish" style="display:none;">
       <p style="margin: 0 0 8px; color: var(--text-secondary);">
@@ -1957,7 +1981,7 @@
   var lockWriteBypassUntil = 0;
   var lockNoticeTimer = null;
   var LOCK_EXEMPT_IDS = {};
-  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
+  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
   var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input';
   var LOCK_CONTROL_SELECTOR = 'input, select, textarea, button';
 
@@ -4863,7 +4887,10 @@
   }
   // 4) the same part under another numbering system (BrickLink, LDraw); each hit is verified, because the API
   //    silently ignores a filter it doesn't understand
+  var backfillExternalCache = {};
   function backfillFindByExternalId(partNum){
+    var ck = normKey(partNum);
+    if (backfillExternalCache.hasOwnProperty(ck)) return Promise.resolve(backfillExternalCache[ck]);
     var systems = [['bricklink_id', 'BrickLink'], ['ldraw_id', 'LDraw']], i = 0;
     function next(){
       if (i >= systems.length) return Promise.resolve(null);
@@ -4876,7 +4903,8 @@
         return hit ? hit.part_num : next();
       });
     }
-    return next();
+    // remember the answer (including "no match") so repeat runs don't ask again; a failed request isn't remembered
+    return next().then(function(found){ backfillExternalCache[ck] = found; return found; });
   }
   // 5) last resort, flagged as a close match: the plain part behind a lettered or printed variant (3001a -> 3001)
   function backfillBaseNumbers(partNum){
@@ -5108,29 +5136,55 @@
     lookupImportedParts(newRows, statusEl, stopId);
   }
 
-  function lookupImportedParts(newRows, statusEl, stopId){
-    var base = statusEl.textContent, baseColor = statusEl.style.color;
-    var stopBtn = document.getElementById(stopId);
-    function say(extra, color){ statusEl.style.color = color || baseColor; statusEl.textContent = base + (extra ? ' ' + extra : ''); }
-    if (!rebrickableApiKey){
-      say('To fill in descriptions, element IDs and photos automatically, add a Rebrickable API key on the Data & Tools tab.', 'var(--text-secondary)');
-      return;
-    }
-    if (importLookupRunning){
-      say('A part lookup is already running \u2014 upload again once it finishes.', 'var(--text-secondary)');
-      return;
-    }
+  // ---- Filling in missing part details from Rebrickable ----
+  // One engine, used by the MOC uploads (for the lines just imported) and by the "Fill In Missing Part Details" tool
+  // (for lists you imported earlier). It only ever fills blanks; anything already on a line is left exactly as it was.
+  var fillReportList = [];
+
+  function runPartDetailFill(ctx){
+    var statusEl = ctx.statusEl, stopBtn = document.getElementById(ctx.stopId);
+    var base = ctx.base || '', baseColor = ctx.baseColor || '';
+    var fix = ctx.fix, photoRows = ctx.photoRows || [], report = ctx.report || null;
+    var srcOf = ctx.srcOf || function(){ return 'Build'; };
+    function say(extra, color){ statusEl.style.color = color || baseColor; statusEl.textContent = base + (base && extra ? ' ' : '') + extra; }
     importLookupRunning = true;
     importLookupCancel = false;
 
-    var byPart = {}, order = [];
-    newRows.forEach(function(r){
-      if (!r.partNum) return;
-      var k = normKey(r.partNum);
-      if (!byPart[k]){ byPart[k] = { partNum: r.partNum, rows: [] }; order.push(k); }
-      byPart[k].rows.push(r);
-    });
-    var stats = { parts: order.length, desc: 0, elements: 0, notFound: [], photos: 0, approx: 0, noimage: 0, download: 0, save: 0, saveWhy: '', failed: 0 };
+    function sig(r){ return [r.partNum, r.color, r.desc, r.elementId].join('|'); }
+    var snap = new Map();
+    ctx.rows.forEach(function(r){ snap.set(r, sig(r)); });
+    photoRows.forEach(function(r){ if (!snap.has(r)) snap.set(r, sig(r)); });
+
+    var stats = { parts: 0, partNums: 0, colors: 0, desc: 0, elements: 0, notFound: [], photos: 0, approx: 0, noimage: 0, download: 0, save: 0, saveWhy: '', failed: 0 };
+    var reported = {};
+    function usesOf(rows){
+      var c = {};
+      rows.forEach(function(r){ var s = srcOf(r); c[s] = (c[s] || 0) + 1; });
+      return Object.keys(c).map(function(k){ return k + ' \u00d7' + c[k]; }).join(', ');
+    }
+    function note(partNum, color, elementId, uses, status, detail){
+      if (!report) return;
+      var k = (status === 'notfound' ? normKey(partNum) : normKey(partNum) + '|' + normColorKey(color)) + '|' + normKey(elementId) + '|' + status;   // not-found is a fact about the part number, so report it once
+      if (reported[k]) return;
+      reported[k] = true;
+      report.push({ partNum: partNum || '', color: color || '', elementId: elementId || '', uses: uses, status: status, detail: detail || '' });
+    }
+
+    // saves whichever of builds / sets / drawers actually changed, and says who owns the changes
+    function persist(){
+      var kinds = {}, owners = { moc: {}, set: {}, drawer: {} };
+      snap.forEach(function(sg, r){
+        if (sig(r) === sg) return;
+        if (r.moc !== undefined){ kinds.build = true; if (r.moc) owners.moc[r.moc] = true; }
+        else if (r.setNum !== undefined){ kinds.set = true; owners.set[r.setNum] = true; }
+        else if (r.drawerId !== undefined){ kinds.drawer = true; owners.drawer[r.drawerId] = true; }
+      });
+      if (kinds.build) saveState();
+      if (kinds.set) saveSetParts();
+      if (kinds.drawer) saveDrawerParts();
+      return owners;
+    }
+
     rbPaceMs = 450;
     rbRetry429 = true;
     if (stopBtn) stopBtn.style.display = '';
@@ -5140,40 +5194,77 @@
       rbRetry429 = false;
       importLookupRunning = false;
       if (stopBtn) stopBtn.style.display = 'none';
-      saveState();
-      var mocNames = {};
-      newRows.forEach(function(r){ if (r.moc) mocNames[r.moc] = true; });
-      Object.keys(mocNames).forEach(function(n){ touchMocLastEdited(n); });
+      var owners = persist();
+      Object.keys(owners.moc).forEach(function(n){ touchMocLastEdited(n); });
+      Object.keys(owners.set).forEach(function(n){ touchSetLastEdited(n); });
+      Object.keys(owners.drawer).forEach(function(n){ touchDrawerLastEdited(n); });
       refreshAllThumbnails();
-      renderOverview();
-      renderMocBuildsTab();
-      if (state.tab === 'parts') renderParts();
+      if (ctx.onFinish) ctx.onFinish(stopped, report);
 
       var plural = function(n, w){ return n + ' ' + w + (n === 1 ? '' : 's'); };
       var added = [];
+      if (stats.partNums) added.push(plural(stats.partNums, 'part number'));
+      if (stats.colors) added.push(plural(stats.colors, 'colour'));
       if (stats.desc) added.push(plural(stats.desc, 'description'));
       if (stats.elements) added.push(plural(stats.elements, 'element ID'));
       if (stats.photos) added.push(plural(stats.photos, 'photo'));
-      var bits = [(stopped ? 'Lookup stopped. ' : '') + 'Rebrickable lookup of ' + plural(stats.parts, 'part') + ': ' +
-        (added.length ? 'added ' + added.join(', ') + '.' : 'nothing needed adding \u2014 every line already had its description, element ID and photo.')];
+      var bits = [(stopped ? 'Lookup stopped. ' : '') + 'Rebrickable lookup' + (stats.parts ? ' of ' + plural(stats.parts, 'part') : '') + ': ' +
+        (added.length ? 'added ' + added.join(', ') + '.' : 'nothing needed adding \u2014 every line already had what was asked for.')];
       if (stats.approx) bits.push(stats.approx + (stats.approx === 1 ? ' photo is a close match' : ' photos are close matches') + ' (the plain part\u2019s photo for a lettered or printed variant).');
       if (stats.notFound.length) bits.push('Not found on Rebrickable: ' + stats.notFound.slice(0, 6).join(', ') + (stats.notFound.length > 6 ? ' and ' + (stats.notFound.length - 6) + ' more' : '') + '.');
       if (stats.noimage) bits.push(plural(stats.noimage, 'part') + (stats.noimage === 1 ? ' has' : ' have') + ' no photo on Rebrickable.');
       if (stats.download) bits.push(plural(stats.download, 'photo download') + ' failed.');
       if (stats.save) bits.push(plural(stats.save, 'photo') + ' couldn\u2019t be saved (' + (stats.saveWhy || 'unknown error') + ').');
-      if (stats.failed) bits.push(plural(stats.failed, 'lookup') + ' failed \u2014 the rows are imported; use the photo backfill on the Official Sets tab to retry.');
+      if (stats.failed) bits.push(plural(stats.failed, 'lookup') + ' failed \u2014 ' + (ctx.retryHint || 'run it again to retry.'));
       var problems = stats.notFound.length || stats.noimage || stats.download || stats.save || stats.failed;
       say(bits.join(' '), problems ? 'var(--text-danger)' : 'var(--text-success)');
     }
 
-    // 1) descriptions and element IDs
-    var ai = 0;
+    // 0) lines with an element ID but no part number or colour: the element tells us both
+    var byElem = {}, elemIds = [];
+    if (fix.ids){
+      ctx.rows.forEach(function(r){
+        if (!r.elementId || (r.partNum && r.color)) return;
+        var k = normKey(r.elementId);
+        if (!byElem[k]){ byElem[k] = []; elemIds.push(r.elementId); }
+        byElem[k].push(r);
+      });
+    }
+    var ei = 0;
+    function phase0(){
+      if (importLookupCancel || ei >= elemIds.length) return phaseA();
+      var id = elemIds[ei++], rows = byElem[normKey(id)];
+      rbFetchJson(rbApiUrl('elements/' + encodeURIComponent(id) + '/')).then(function(d){
+        if (!d){ stats.notFound.push('element ' + id); note('', '', id, usesOf(rows), 'notfound', 'Rebrickable doesn\u2019t know this element ID'); return; }
+        var pn = d.part && d.part.part_num, cn = d.color && d.color.name, nm = d.part && d.part.name;
+        rows.forEach(function(r){
+          if (!r.partNum && pn){ r.partNum = pn; stats.partNums++; }
+          if (!r.color && cn){ r.color = cn; stats.colors++; }
+          if (fix.desc && !r.desc && nm){ r.desc = nm; stats.desc++; }
+        });
+      }).catch(function(){ stats.failed++; }).then(function(){
+        say('Looking up element IDs on Rebrickable\u2026 ' + ei + ' / ' + elemIds.length, 'var(--text-secondary)');
+        phase0();
+      });
+    }
+
+    // 1) descriptions and element IDs, one lookup per distinct part
+    var byPart = {}, order = [], ai = 0;
     function phaseA(){
+      if (!order.length && ai === 0){
+        ctx.rows.forEach(function(r){
+          if (!r.partNum) return;
+          var k = normKey(r.partNum);
+          if (!byPart[k]){ byPart[k] = { partNum: r.partNum, rows: [] }; order.push(k); }
+          byPart[k].rows.push(r);
+        });
+        stats.parts = order.length;
+      }
       if (importLookupCancel || ai >= order.length) return phaseB();
       var g = byPart[order[ai++]];
-      var needDesc = g.rows.some(function(r){ return !r.desc; });
-      var needEl = g.rows.some(function(r){ return !r.elementId && r.color; });
-      if (!needDesc && !needEl){ say('Looking up parts on Rebrickable\u2026 ' + ai + ' / ' + order.length, 'var(--text-secondary)'); return phaseA(); }
+      var needDesc = fix.desc && g.rows.some(function(r){ return !r.desc; });
+      var needEl = fix.element && g.rows.some(function(r){ return !r.elementId && r.color; });
+      if (!needDesc && !needEl){ if (ai % 25 === 0) say('Looking up parts on Rebrickable\u2026 ' + ai + ' / ' + order.length, 'var(--text-secondary)'); return phaseA(); }
       rbGetPart(g.partNum).then(function(part){
         if (part) return { pn: g.partNum, part: part };
         // not listed under that number: look for the same part under its BrickLink or LDraw number
@@ -5182,7 +5273,11 @@
           return rbGetPart(alt).then(function(p2){ return p2 ? { pn: alt, part: p2 } : null; });
         });
       }).then(function(found){
-        if (!found){ stats.notFound.push(g.partNum); return; }
+        if (!found){
+          stats.notFound.push(g.partNum);
+          note(g.partNum, '', '', usesOf(g.rows), 'notfound', '');
+          return;
+        }
         if (needDesc && found.part.name) g.rows.forEach(function(r){ if (!r.desc){ r.desc = found.part.name; stats.desc++; } });
         if (!needEl) return;
         return rbGetPartColors(found.pn).then(function(colors){
@@ -5192,18 +5287,22 @@
             if (m && m.elements && m.elements.length){ r.elementId = String(m.elements[0]); stats.elements++; }
           });
         });
-      }).catch(function(){ stats.failed++; }).then(function(){
+      }).catch(function(err){
+        stats.failed++;
+        note(g.partNum, '', '', usesOf(g.rows), 'lookup', (err && err.message) ? err.message : '');
+      }).then(function(){
         say('Looking up parts on Rebrickable\u2026 ' + ai + ' / ' + order.length, 'var(--text-secondary)');
         phaseA();
       });
     }
 
-    // 2) photos, for just these new lines, using the same lookups as the photo backfill
+    // 2) photos, using the same lookups as the photo backfill
     function phaseB(){
       if (importLookupCancel) return finish(true);
-      saveState();
-      runNoPhotoCheck(newRows, statusEl.id, function(){
-        var combos = getMissingPhotoCombos(newRows), keys = Object.keys(combos);
+      if (!fix.photo || !photoRows.length) return finish(false);
+      persist();
+      runNoPhotoCheck(photoRows, statusEl.id, function(){
+        var combos = getMissingPhotoCombos(photoRows), keys = Object.keys(combos);
         if (!keys.length) return finish(false);
         backfillLocalRoom = backfillEstimateLocalRoom();
         var bi = 0, bdone = 0;
@@ -5212,11 +5311,17 @@
           if (bi >= keys.length) return finish(false);
           var combo = combos[keys[bi++]];
           backfillPhotoForCombo(combo).then(function(r){
-            if (r.status === 'found'){ stats.photos++; if (r.approx) stats.approx++; }
-            else if (r.status === 'noimage') stats.noimage++;
+            if (r.status === 'found'){ stats.photos++; if (r.approx) stats.approx++; return; }
+            var el = (combo.rows.find(function(x){ return x.elementId; }) || {}).elementId || '';
+            var uses = Object.keys(combo.uses).map(function(k){ return k + ' \u00d7' + combo.uses[k]; }).join(', ');
+            if (r.status === 'noimage') stats.noimage++;
             else if (r.status === 'download') stats.download++;
             else if (r.status === 'save'){ stats.save++; if (r.detail) stats.saveWhy = r.detail; }
-          }).catch(function(){ stats.failed++; }).then(function(){
+            note(combo.partNum, combo.color, el, uses, r.status, r.detail);
+          }).catch(function(err){
+            stats.failed++;
+            note(combo.partNum, combo.color, '', '', 'lookup', (err && err.message) ? err.message : '');
+          }).then(function(){
             bdone++;
             say('Looking up photos\u2026 ' + bdone + ' / ' + keys.length, 'var(--text-secondary)');
             nextPhoto();
@@ -5227,9 +5332,149 @@
       });
     }
 
-    say('Looking up parts on Rebrickable\u2026 0 / ' + order.length, 'var(--text-secondary)');
-    phaseA();
+    say(elemIds.length ? 'Looking up element IDs on Rebrickable\u2026 0 / ' + elemIds.length : 'Looking up parts on Rebrickable\u2026', 'var(--text-secondary)');
+    phase0();
   }
+
+  // the lookup that follows a MOC upload: just the lines that were imported, descriptions + element IDs + photos
+  function lookupImportedParts(newRows, statusEl, stopId){
+    var base = statusEl.textContent, baseColor = statusEl.style.color;
+    if (!rebrickableApiKey){
+      statusEl.style.color = 'var(--text-secondary)';
+      statusEl.textContent = base + ' To fill in descriptions, element IDs and photos automatically, add a Rebrickable API key on the Data & Tools tab.';
+      return;
+    }
+    if (importLookupRunning){
+      statusEl.style.color = 'var(--text-secondary)';
+      statusEl.textContent = base + ' A part lookup is already running \u2014 upload again once it finishes.';
+      return;
+    }
+    runPartDetailFill({
+      rows: newRows, photoRows: newRows, fix: { desc: true, element: true, ids: false, photo: true },
+      statusEl: statusEl, stopId: stopId, base: base, baseColor: baseColor,
+      retryHint: 'the rows are imported; use Fill In Missing Part Details on the Data & Tools tab to retry.',
+      onFinish: function(){ renderOverview(); renderMocBuildsTab(); if (state.tab === 'parts') renderParts(); }
+    });
+  }
+
+  // ---- the "Fill In Missing Part Details" tool: goes back over lists you imported earlier ----
+  function fillBox(id){ var b = document.getElementById(id); return !!(b && b.checked); }
+  function fillOptions(){ return { desc: fillBox('fill-desc'), element: fillBox('fill-element'), ids: fillBox('fill-ids'), photo: fillBox('fill-photo') }; }
+  function fillScopeValue(){ var s = document.getElementById('fill-scope'); return (s && s.value) || 'all'; }
+
+  function populateFillScope(){
+    var sel = document.getElementById('fill-scope');
+    if (!sel) return;
+    var prev = sel.value || 'all';
+    var html = '<option value="all">Everything: builds, official sets and drawers</option><option value="builds">All builds</option><option value="sets">All official sets</option><option value="drawers">All drawers</option>';
+    if (mocBuilds.length) html += '<optgroup label="One build">' + mocBuilds.map(function(b){ return '<option value="build:' + escapeHtml(b.name) + '">' + escapeHtml(b.name) + '</option>'; }).join('') + '</optgroup>';
+    if (ownedSets.length) html += '<optgroup label="One official set">' + ownedSets.map(function(s){ return '<option value="set:' + escapeHtml(s.setNum) + '">' + escapeHtml(s.setNum + (s.name ? ' \u2014 ' + s.name : '')) + '</option>'; }).join('') + '</optgroup>';
+    sel.innerHTML = html;
+    var has = Array.prototype.some.call(sel.options, function(o){ return o.value === prev; });
+    sel.value = has ? prev : 'all';
+  }
+
+  function fillCollect(scope){
+    var rows = [], src = new Map();
+    function add(list, label, filter){ list.forEach(function(r){ if (filter && !filter(r)) return; rows.push(r); src.set(r, label); }); }
+    if (scope === 'all' || scope === 'builds') add(state.rows, 'Build');
+    else if (scope.indexOf('build:') === 0){ var bn = scope.slice(6); add(state.rows, 'Build', function(r){ return r.moc === bn; }); }
+    if (scope === 'all' || scope === 'sets') add(setParts, 'Set');
+    else if (scope.indexOf('set:') === 0){ var sn = scope.slice(4); add(setParts, 'Set', function(r){ return r.setNum === sn; }); }
+    if (scope === 'all' || scope === 'drawers') add(drawerParts, 'Drawer');
+    return { rows: rows, src: src };
+  }
+
+  function rowGaps(r, fix){
+    return {
+      part: fix.ids && !r.partNum && !!r.elementId,
+      color: fix.ids && !r.color && !!r.elementId,
+      desc: fix.desc && !r.desc && (!!r.partNum || !!r.elementId),
+      element: fix.element && !r.elementId && !!r.partNum && !!r.color
+    };
+  }
+
+  function fillCheck(){
+    var statusEl = document.getElementById('fill-status');
+    var fix = fillOptions(), sc = fillCollect(fillScopeValue());
+    var labels = { Build: 'Builds', Set: 'Official sets', Drawer: 'Drawers' };
+    var by = { Build: [], Set: [], Drawer: [] };
+    sc.rows.forEach(function(r){ by[sc.src.get(r)].push(r); });
+    var lines = [], parts = {}, totalGaps = 0;
+    Object.keys(labels).forEach(function(k){
+      var rows = by[k];
+      if (!rows.length) return;
+      var c = { desc: 0, element: 0, part: 0, color: 0 }, any = 0;
+      rows.forEach(function(r){
+        var g = rowGaps(r, fix);
+        if (g.desc) c.desc++;
+        if (g.element) c.element++;
+        if (g.part) c.part++;
+        if (g.color) c.color++;
+        if (g.desc || g.element || g.part || g.color){ any++; if (r.partNum) parts[normKey(r.partNum)] = true; }
+      });
+      totalGaps += any;
+      var bits = [];
+      if (c.desc) bits.push(c.desc.toLocaleString() + ' without a description');
+      if (c.element) bits.push(c.element.toLocaleString() + ' without an element ID');
+      if (c.part) bits.push(c.part.toLocaleString() + ' with no part number');
+      if (c.color) bits.push(c.color.toLocaleString() + ' with no colour');
+      lines.push(labels[k] + ': ' + rows.length.toLocaleString() + ' line' + (rows.length === 1 ? '' : 's') + ' \u2014 ' + (bits.length ? bits.join(', ') : 'nothing missing') + '.');
+    });
+    statusEl.style.color = 'var(--text-secondary)';
+    if (!lines.length){ statusEl.textContent = 'There are no part lines in that scope.'; return; }
+    var nParts = Object.keys(parts).length;
+    statusEl.textContent = lines.join(' ') + (totalGaps ? ' Filling these in means looking up about ' + nParts.toLocaleString() + ' different part' + (nParts === 1 ? '' : 's') + ' on Rebrickable.' : '') + (fix.photo ? ' Photos are checked when you run it.' : '');
+  }
+
+  function fillRun(){
+    var statusEl = document.getElementById('fill-status'), runBtn = document.getElementById('fill-run-btn'), repBtn = document.getElementById('fill-report-btn');
+    function fail(msg){ statusEl.style.color = 'var(--text-danger)'; statusEl.textContent = msg; }
+    if (!rebrickableApiKey) return fail('Add a Rebrickable API key first (Rebrickable Connection, above).');
+    if (importLookupRunning) return fail('A part lookup is already running \u2014 wait for it to finish.');
+    var fix = fillOptions();
+    if (!fix.desc && !fix.element && !fix.ids && !fix.photo) return fail('Tick at least one thing to fill in.');
+    var sc = fillCollect(fillScopeValue());
+    if (!sc.rows.length) return fail('There are no part lines in that scope.');
+    var fieldRows = sc.rows.filter(function(r){ var g = rowGaps(r, fix); return g.part || g.color || g.desc || g.element; });
+    fillReportList = [];
+    repBtn.style.display = 'none';
+    runBtn.disabled = true;
+    runPartDetailFill({
+      rows: fieldRows, photoRows: fix.photo ? sc.rows : [], fix: fix,
+      statusEl: statusEl, stopId: 'fill-stop-btn', base: '', report: fillReportList,
+      srcOf: function(r){ return sc.src.get(r) || 'Build'; },
+      onFinish: function(stopped, report){
+        runBtn.disabled = false;
+        if (report && report.length) repBtn.style.display = '';
+        render();
+        renderMocBuildsTab();
+        renderSetsTab();
+        renderDrawersTab();
+      }
+    });
+  }
+
+  var FILL_WHY = {
+    notfound: 'Rebrickable doesn\u2019t list this part (or element) \u2014 check the number',
+    noimage: 'Rebrickable lists the part but has no photo of it',
+    download: 'The photo couldn\u2019t be downloaded',
+    save: 'The photo was found but couldn\u2019t be saved',
+    lookup: 'The Rebrickable lookup failed'
+  };
+  function exportFillReportCSV(){
+    if (!fillReportList.length){ alert('Nothing to export \u2014 the last run left nothing incomplete.'); return; }
+    var lines = [['Part Num','Color','Element ID','Used In','Why Still Incomplete','Detail'].map(csvEscape).join(',')];
+    fillReportList.forEach(function(f){
+      lines.push([f.partNum, f.color, f.elementId, f.uses, FILL_WHY[f.status] || f.status, f.detail].map(csvEscape).join(','));
+    });
+    downloadCsv(lines, 'lego-parts-still-incomplete');
+  }
+  wireEl('fill-details-header', 'click', populateFillScope);
+  wireEl('fill-check-btn', 'click', fillCheck);
+  wireEl('fill-run-btn', 'click', fillRun);
+  wireEl('fill-stop-btn', 'click', function(){ importLookupCancel = true; });
+  wireEl('fill-report-btn', 'click', exportFillReportCSV);
   wireEl('mocbuild-csv-lookup-stop-btn', 'click', function(){ importLookupCancel = true; });
   wireEl('import-lookup-stop-btn', 'click', function(){ importLookupCancel = true; });
 
@@ -5390,6 +5635,7 @@
   function renderMocBuildsTab(){
     renderMocBuildsList();
     populateMocBuildCsvTarget();
+    populateFillScope();
   }
 
   function themeGroupsSorted(){
@@ -6029,6 +6275,7 @@
     renderOwnedSetsList();
     populateSetCsvTarget();
     renderSetPartsTable();
+    populateFillScope();
   }
 
   function setPartNeeded(r){
