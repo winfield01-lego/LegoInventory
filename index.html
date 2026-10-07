@@ -774,7 +774,9 @@
     <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0;">Your builds</p>
     <button id="mocbuilds-list-csv-btn" class="icon-btn" style="padding: 3px 10px;" title="Download a CSV of every build: name, theme, location, progress, and more"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Builds list (CSV)</button>
   </div>
-  <input type="text" id="mocbuild-search" placeholder="Search builds" style="width:100%; margin-bottom: 10px;" />
+  <input type="text" id="mocbuild-search" placeholder="Search builds" style="width:100%; margin-bottom: 8px;" />
+  <label class="checkbox-label" style="margin: 0 0 8px;"><input type="checkbox" id="mocbuild-only-missing" /> Show only builds still missing pieces</label>
+  <p id="mocbuild-only-missing-note" style="display:none; margin: 0 0 10px; font-size: 12px; color: var(--text-secondary);"></p>
   <div id="moc-builds-list" style="margin-bottom: 20px;"></div>
 
   <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
@@ -826,6 +828,8 @@
       <button id="sets-report-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Sets report (PDF)</button>
     </div>
   </div>
+  <label class="checkbox-label" style="margin: 0 0 8px;"><input type="checkbox" id="sets-only-missing" /> Show only sets still missing pieces</label>
+  <p id="sets-only-missing-note" style="display:none; margin: 0 0 10px; font-size: 12px; color: var(--text-secondary);"></p>
   <div id="owned-sets-list" style="margin-bottom: 20px;"></div>
 
   <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 10px 16px; margin-bottom: 20px; font-size: 13px; color: var(--text-secondary);">
@@ -879,10 +883,12 @@
   <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
     <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Backfill missing photos</p>
     <p style="color: var(--text-secondary); margin: 0 0 10px;">
-      For older part lines that still show no photo, this uses the same lookup the part search and Inventory a Bag use to find and save one &mdash; even for lines whose color doesn't exactly match Rebrickable's own naming, or where no element ID is known. It'll fill in a missing element ID along the way when one's available, then fetch and cache the photo itself (uploading it to your site if GitHub Connection is set up, otherwise saving it in this browser) so it shows up immediately rather than waiting on a live fetch. Only touches part lines that still show no photo right now &mdash; skips anything already showing one.
+      Finds part lines with no photo &mdash; in your builds, your sets and your drawers &mdash; and fills them in from Rebrickable. It first checks every line (not just the ones you've already looked at), then looks each part up by part number and color, then by element ID, then by its BrickLink or LDraw number, and as a last resort a close variant of the part number (those are counted as &ldquo;close matches&rdquo;). Each photo is saved under the line's own element ID &mdash; uploaded to your site if GitHub Connection is set up (nothing is copied into the browser then, so it can't crowd out your data), otherwise saved in this browser. It paces its requests, retries when Rebrickable asks it to slow down, and when it finishes it tells you exactly why anything is still missing, with a CSV of those parts. Safe to run again: it skips anything that now has a photo.
     </p>
-    <div class="row">
+    <div class="row" style="flex-wrap:wrap; gap:8px; align-items:center;">
       <button id="backfill-photos-btn" class="lockable"><i class="ti ti-photo-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Backfill missing photos</button>
+      <button id="backfill-photos-stop-btn" class="icon-btn" style="display:none;">Stop</button>
+      <button id="backfill-photos-report-btn" class="icon-btn" style="display:none;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Parts still without photos (CSV)</button>
       <span id="backfill-photos-status" style="font-size:13px; color:var(--text-secondary);"></span>
     </div>
   </div>
@@ -980,6 +986,7 @@
         <div class="row" style="gap:8px;">
           <button id="bag-inventory-open-btn" class="lockable"><i class="ti ti-package" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Inventory a bag</button>
           <button id="bag-log-open-btn" class="icon-btn"><i class="ti ti-history" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> View bag log</button>
+          <button id="pull-log-open-btn" class="icon-btn"><i class="ti ti-arrow-big-down-lines" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> View pull log</button>
         </div>
       </div>
 
@@ -1446,7 +1453,47 @@
     <button id="detail-modal-refetch-parts" class="icon-btn lockable" style="display:none; margin-bottom:14px; margin-left:8px;" title="Replace this set's parts list with the current one from Rebrickable (spare parts left out)"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Re-fetch parts from Rebrickable</button>
     <p id="detail-modal-refetch-status" style="font-size:12px; color:var(--text-secondary); margin:-6px 0 12px;"></p>
 
-    <p style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary); margin:0 0 8px;">Parts list</p>
+    <div id="missing-report-panel" style="border:1px solid var(--border); border-radius:10px; padding:8px 10px; margin:0 0 14px; background:var(--surface-1);">
+      <div class="row" style="justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
+        <button id="missing-report-toggle" class="icon-btn" style="padding:3px 10px; display:flex; align-items:center; gap:6px;" title="Show or hide the list of missing pieces">
+          <i id="missing-report-chevron" class="ti ti-chevron-right" style="font-size:13px;" aria-hidden="true"></i>
+          <span style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary);">Missing pieces report</span>
+        </button>
+        <div class="row" style="gap:8px;">
+          <button id="missing-report-csv-btn" class="icon-btn" style="padding:3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> CSV</button>
+          <button id="missing-report-pdf-btn" class="icon-btn" style="padding:3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> PDF</button>
+        </div>
+      </div>
+      <p id="missing-report-summary" style="margin:6px 0 0; font-size:13px; color:var(--text-secondary);"></p>
+      <div class="row" style="gap:8px; align-items:center; margin-top:8px; flex-wrap:wrap;">
+        <button id="pull-from-drawers-btn" class="icon-btn lockable" title="Take the missing pieces out of your drawers and add them to this window's On Hand counts"><i class="ti ti-arrow-big-down-lines" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Pull missing pieces from drawers</button>
+        <button id="pull-log-for-this-btn" class="icon-btn" title="See, and tick off, the pulls made for this build or set"><i class="ti ti-history" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Pull log</button>
+      </div>
+      <p id="pull-status" style="margin:6px 0 0; font-size:12px; color:var(--text-secondary);"></p>
+      <div id="missing-report-body" style="display:none; margin-top:8px;">
+        <div class="row" style="gap:8px; flex-wrap:wrap; margin-bottom:8px;">
+          <select id="missing-report-show" title="Which missing parts to list">
+            <option value="all">All missing parts</option>
+            <option value="still">Only what my drawers can&rsquo;t cover</option>
+          </select>
+          <select id="missing-report-sort" title="Sort order">
+            <option value="color">Sort by color</option>
+            <option value="most">Most missing first</option>
+            <option value="part">Sort by part number</option>
+          </select>
+          <select id="missing-report-layout" title="PDF page layout">
+            <option value="portrait">PDF: portrait</option>
+            <option value="landscape">PDF: landscape</option>
+          </select>
+        </div>
+        <div id="missing-report-list" style="max-height:280px; overflow-y:auto;"></div>
+      </div>
+    </div>
+    <div class="row" style="justify-content:space-between; align-items:center; gap:8px; margin:0 0 8px; flex-wrap:wrap;">
+      <p style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary); margin:0;">Parts list</p>
+      <label class="checkbox-label"><input type="checkbox" id="detail-only-missing" /> Show only missing pieces</label>
+    </div>
+    <p id="detail-only-missing-note" style="display:none; margin:-2px 0 6px; font-size:12px; color:var(--text-secondary);"></p>
     <div class="tbl-wrap" style="max-height:320px;">
       <table>
         <thead>
@@ -1646,6 +1693,26 @@
   </div>
 </div>
 
+<div id="pull-log-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1055; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:var(--surface-2); border-radius:var(--radius); max-width:720px; width:100%; max-height:90vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
+    <button id="pull-log-close" class="icon-btn" style="position:absolute; top:14px; right:14px;"><i class="ti ti-x" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Close</button>
+    <h3 style="margin:0 0 6px; padding-right:80px;">Pull Log</h3>
+    <p style="margin:0 0 12px; color:var(--text-secondary); font-size:13px;">Every time you pull missing pieces out of your drawers into a build or set, it's logged here with the drawer each part came from. Tick each line as you physically take it, so you can see at a glance what's still left to grab. Made a mistake? Undo puts the pieces back in their drawers.</p>
+    <div class="row" style="gap:8px; margin-bottom:8px; flex-wrap:wrap; align-items:center;">
+      <input type="text" id="pull-log-search-input" placeholder="Search builds, sets, parts or drawers&hellip;" style="flex:1; min-width:160px;" />
+      <select id="pull-log-layout" title="PDF page layout">
+        <option value="portrait">PDF: portrait</option>
+        <option value="landscape">PDF: landscape</option>
+      </select>
+      <button id="pull-log-export-csv-btn" class="icon-btn" style="flex-shrink:0;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> CSV</button>
+      <button id="pull-log-export-pdf-btn" class="icon-btn" style="flex-shrink:0;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> PDF</button>
+    </div>
+    <label class="checkbox-label" style="margin-bottom:8px;"><input type="checkbox" id="pull-log-open-only" /> Only pulls with parts still to grab</label>
+    <p id="pull-log-focus" style="display:none; margin:0 0 8px; font-size:13px;"><span id="pull-log-focus-text"></span> <button id="pull-log-focus-clear" class="icon-btn" style="padding:2px 8px;">Show all pulls</button></p>
+    <div id="pull-log-entries"></div>
+    <p id="pull-log-empty-msg" class="empty-msg" style="display:none;">No pulls logged yet.</p>
+  </div>
+</div>
 <div id="part-search-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1100; align-items:center; justify-content:center; padding:20px;">
   <div style="background:var(--surface-2); border-radius:var(--radius); max-width:680px; width:100%; max-height:88vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
     <button id="part-search-close" class="icon-btn" style="position:absolute; top:14px; right:14px;"><i class="ti ti-x" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Close</button>
@@ -1886,7 +1953,7 @@
   var lockWriteBypassUntil = 0;
   var lockNoticeTimer = null;
   var LOCK_EXEMPT_IDS = {};
-  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
+  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
   var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input';
   var LOCK_CONTROL_SELECTOR = 'input, select, textarea, button';
 
@@ -1969,7 +2036,7 @@
       [STORAGE_KEY, SETS_KEY, SET_PARTS_KEY, DRAWERS_KEY, DRAWER_PARTS_KEY, MOC_BUILDS_KEY, MOC_THEMES_KEY,
        MOC_LOCATIONS_KEY, MOC_DESCRIPTIONS_KEY, MOC_INSTRUCTIONS_KEY, SET_PHOTOS_KEY, MOC_PHOTOS_KEY,
        CHECKLIST_KEY, TALLY_COUNTS_KEY, TALLY_DRAWER_KEY, PRIORITY_LABELS_KEY, LOCATION_LABELS_KEY,
-       BAG_LOG_KEY, BAG_PROGRESS_KEY].forEach(function(k){ if (k) lockGuardedKeys[k] = true; });
+       BAG_LOG_KEY, BAG_PROGRESS_KEY, PULL_LOG_KEY].forEach(function(k){ if (k) lockGuardedKeys[k] = true; });
     }
     key = String(key);
     return !!lockGuardedKeys[key] || key.indexOf(IMG_PREFIX) === 0 || key.indexOf(IMG_PART_PREFIX) === 0;
@@ -4568,15 +4635,21 @@
     if (!container) return;
     ensureMocBuildsSynced();
     var q = (document.getElementById('mocbuild-search').value || '').toLowerCase();
-    var mocs = computeMocs().filter(function(m){
+    var onlyMissing = document.getElementById('mocbuild-only-missing').checked;
+    var allMocs = computeMocs();
+    var mocs = allMocs.filter(function(m){
+      if (onlyMissing && !(m.need > m.have)) return false;
       if (!q) return true;
       var hay = (m.name+' '+(mocThemes[m.name]||'')).toLowerCase();
       return hay.indexOf(q) !== -1;
     });
+    updateMissingFilterNote('mocbuild-only-missing-note', 'mocbuild-only-missing', mocs.length, allMocs.length, 'build', allMocs.filter(function(m){ return !m.need; }).length);
     container.innerHTML = '';
     if (!mocs.length){
       renderMocBuildThemeSummary([]);
-      container.innerHTML = '<div class="empty-msg">No builds match your search.</div>';
+      container.innerHTML = '<div class="empty-msg">' + (onlyMissing && !q
+        ? (allMocs.some(function(m){ return m.need > 0; }) ? 'Every build is complete — nothing is missing.' : 'None of your builds have parts yet.')
+        : 'No builds match your search.') + '</div>';
       return;
     }
     renderMocBuildThemeSummary(mocs);
@@ -4711,16 +4784,24 @@
     next();
   }
 
+
+
+  // ---- Backfill missing photos ----
+  // Checks every part line (builds, sets and drawers), tries several lookups for each part, saves each photo under the
+  // line's own element ID, never counts a failed save as a success, and says exactly why anything is still missing.
+  var backfillReport = null, backfillCancel = false;
+
   function getMissingPhotoCombos(){
-    var sources = [state.rows, setParts, drawerParts];
+    var sources = [['Build', state.rows], ['Set', setParts], ['Drawer', drawerParts]];
     var combos = {};
-    sources.forEach(function(list){
-      list.forEach(function(r){
+    sources.forEach(function(src){
+      src[1].forEach(function(r){
         if (!r.partNum) return;
         if (!rowHasNoPhoto(r)) return;
-        var key = normKey(r.partNum) + '|' + normKey(r.color || '');
-        if (!combos[key]) combos[key] = { partNum: r.partNum, color: r.color || '', rows: [] };
-        combos[key].rows.push(r);
+        var key = normKey(r.partNum) + '|' + normColorKey(r.color || '');
+        var combo = combos[key] || (combos[key] = { partNum: r.partNum, color: r.color || '', rows: [], uses: {} });
+        combo.rows.push(r);
+        combo.uses[src[0]] = (combo.uses[src[0]] || 0) + 1;
       });
     });
     return combos;
@@ -4738,99 +4819,259 @@
     });
   }
 
-  function backfillPhotoForCombo(combo){
-    // Same lookup method the parts catalog search and Inventory a Bag use: a part+color image
-    // from Rebrickable, which doesn't require an element ID or an exact-matching color name.
-    var hasColor = !!combo.color;
-    var lookup = hasColor ? rbGetPartColors(combo.partNum) : Promise.resolve([]);
-    return lookup.then(function(colors){
-      var match = hasColor ? rbColorMatch(colors, combo.color) : null;
-      if (match && match.img){
-        var elementId = (match.elements && match.elements.length) ? match.elements[0] : '';
-        return { imgUrl: match.img, elementId: elementId };
-      }
-      // No color-specific match (or no image for it) -- fall back to the generic part photo.
-      return rbGetPart(combo.partNum).then(function(part){
-        return (part && part.img) ? { imgUrl: part.img, elementId: '' } : null;
+  // 1) the part in this colour
+  function backfillByPartColor(partNum, color){
+    return (color ? rbGetPartColors(partNum) : Promise.resolve([])).then(function(colors){
+      var m = color ? rbColorMatch(colors, color) : null;
+      if (m && m.img) return { imgUrl: m.img, elementId: (m.elements && m.elements.length) ? m.elements[0] : '', via: 'color' };
+      return null;
+    });
+  }
+  // 2) the exact element, when the line has an element ID
+  function backfillByElement(combo){
+    var row = combo.rows.find(function(r){ return r.elementId; });
+    if (!row) return Promise.resolve(null);
+    return rbFetchJson(rbApiUrl('elements/' + encodeURIComponent(row.elementId) + '/')).then(function(d){
+      var url = d && (d.element_img_url || d.part_img_url);
+      return url ? { imgUrl: url, elementId: row.elementId, via: 'element' } : null;
+    });
+  }
+  // 3) the part's general photo
+  function backfillGeneric(partNum){
+    return rbGetPart(partNum).then(function(part){
+      if (!part) return { known: false };
+      return part.img ? { known: true, result: { imgUrl: part.img, elementId: '', via: 'part' } } : { known: true };
+    });
+  }
+  // 4) the same part under another numbering system (BrickLink, LDraw); each hit is verified, because the API
+  //    silently ignores a filter it doesn't understand
+  function backfillFindByExternalId(partNum){
+    var systems = [['bricklink_id', 'BrickLink'], ['ldraw_id', 'LDraw']], i = 0;
+    function next(){
+      if (i >= systems.length) return Promise.resolve(null);
+      var s = systems[i++];
+      return rbFetchJson(rbApiUrl('parts/?' + s[0] + '=' + encodeURIComponent(partNum) + '&inc_part_details=1&page_size=5')).then(function(d){
+        var hit = ((d && d.results) || []).find(function(p){
+          var ids = p.external_ids && p.external_ids[s[1]];
+          return Array.isArray(ids) && ids.map(String).indexOf(String(partNum)) !== -1;
+        });
+        return hit ? hit.part_num : next();
       });
-    }).then(function(result){
-      if (!result) return 'notfound';
-      return fetchImageBlobForBackfill(result.imgUrl).then(function(blob){
+    }
+    return next();
+  }
+  // 5) last resort, flagged as a close match: the plain part behind a lettered or printed variant (3001a -> 3001)
+  function backfillBaseNumbers(partNum){
+    var p = String(partNum).trim(), out = [], m;
+    if ((m = p.match(/^(\d+)[a-z]$/i))) out.push(m[1]);
+    if ((m = p.match(/^(\d+[a-z]?)(?:pb|pr|px)\d+/i))) out.push(m[1]);
+    return out.filter(function(x, i){ return x !== p && out.indexOf(x) === i; });
+  }
+  function backfillTryBases(combo){
+    var bases = backfillBaseNumbers(combo.partNum), i = 0;
+    function next(){
+      if (i >= bases.length) return Promise.resolve({ fail: 'notfound' });
+      var b = bases[i++];
+      return backfillByPartColor(b, combo.color).then(function(cr){
+        if (cr){ cr.approx = true; return cr; }
+        return backfillGeneric(b).then(function(g){
+          if (g.result){ g.result.approx = true; return g.result; }
+          return next();
+        });
+      });
+    }
+    return next();
+  }
+
+  function backfillResolve(combo){
+    return backfillByPartColor(combo.partNum, combo.color).then(function(r){
+      return r || backfillByElement(combo);
+    }).then(function(r){
+      if (r) return r;
+      return backfillGeneric(combo.partNum).then(function(g){
+        if (g.result) return g.result;
+        if (g.known) return { fail: 'noimage' };
+        return backfillFindByExternalId(combo.partNum).then(function(alt){
+          if (!alt || alt === combo.partNum) return backfillTryBases(combo);
+          return backfillByPartColor(alt, combo.color).then(function(cr){
+            return cr || backfillGeneric(alt).then(function(g2){ return g2.result || { fail: 'noimage' }; });
+          });
+        });
+      });
+    });
+  }
+
+  // Photos go straight to your site when GitHub Connection is set up (and are not also copied into the browser, where
+  // hundreds of them would crowd out your collection data); otherwise they are saved in this browser.
+  function backfillSaveElementPhoto(id, blob, sizeSteps){
+    if (githubConnectionConfigured()){
+      var push = function(){ return attemptImageSaveToGithub(id, blob, sizeSteps); };
+      return push().catch(function(err){
+        if (err && err.message === 'no-github') throw err;
+        return rbSleep(2000).then(push);
+      }).then(function(){ return rbSleep(350); });
+    }
+    return attemptImageSave(IMG_PREFIX + id, blob, sizeSteps).then(function(saved){
+      if (!saved) throw new Error('this browser\u2019s storage is full');
+    });
+  }
+
+  function backfillPhotoForCombo(combo){
+    return backfillResolve(combo).then(function(res){
+      if (res.fail) return { status: res.fail };
+      return fetchImageBlobForBackfill(res.imgUrl).then(function(blob){ return { blob: blob }; }, function(){ return { dlFail: true }; }).then(function(d){
+        if (d.dlFail) return { status: 'download' };
         var sizeSteps = [[400, 0.82], [260, 0.7], [150, 0.6]];
-        if (result.elementId){
-          combo.rows.forEach(function(r){ if (!r.elementId) r.elementId = result.elementId; });
-          var elId = result.elementId;
-          var savePromise = githubConnectionConfigured()
-            ? attemptImageSaveToGithub(elId, blob, sizeSteps).then(function(dataUrl){
-                return storage.set(IMG_PREFIX + elId, dataUrl, false);
-              }).catch(function(err){
-                if (err && err.message === 'no-github') return attemptImageSave(IMG_PREFIX + elId, blob, sizeSteps);
-                throw err;
-              })
-            : attemptImageSave(IMG_PREFIX + elId, blob, sizeSteps);
-          return savePromise.then(function(){
-            cachedIds.add(elId);
-            delete noPhotoResolved[elId];
-            return 'found';
+        var ids = Array.from(new Set(combo.rows.map(function(r){ return r.elementId; }).filter(Boolean)));
+        var bare = combo.rows.filter(function(r){ return !r.elementId; });
+        var partLevel = false;
+        if (bare.length){
+          if (res.elementId){
+            bare.forEach(function(r){ r.elementId = res.elementId; });
+            if (ids.indexOf(res.elementId) === -1) ids.push(res.elementId);
+          } else {
+            partLevel = true;
+          }
+        }
+        var chain = Promise.resolve();
+        ids.forEach(function(id){
+          chain = chain.then(function(){ return backfillSaveElementPhoto(id, d.blob, sizeSteps); }).then(function(){
+            cachedIds.add(id);
+            delete noPhotoResolved[id];
+          });
+        });
+        if (partLevel){
+          chain = chain.then(function(){
+            return attemptImageSave(IMG_PART_PREFIX + normKey(combo.partNum), d.blob, sizeSteps).then(function(saved){
+              if (!saved) throw new Error('this browser\u2019s storage is full');
+              cachedPartImgKeys.add(normKey(combo.partNum));
+            });
           });
         }
-        return attemptImageSave(IMG_PART_PREFIX + normKey(combo.partNum), blob, sizeSteps).then(function(){
-          cachedPartImgKeys.add(normKey(combo.partNum));
-          return 'found';
+        return chain.then(function(){ return { status: 'found', approx: !!res.approx }; }).catch(function(err){
+          return { status: 'save', detail: (err && err.message) ? err.message : 'unknown error' };
         });
-      }).catch(function(){ return 'error'; });
+      });
     });
+  }
+
+  var BACKFILL_WHY = {
+    notfound: 'Rebrickable doesn\u2019t list this part number (or any close variant of it)',
+    noimage: 'Rebrickable lists the part but has no photo of it',
+    download: 'The photo couldn\u2019t be downloaded',
+    save: 'The photo was found but couldn\u2019t be saved',
+    lookup: 'The Rebrickable lookup failed'
+  };
+
+  function exportBackfillReportCSV(){
+    if (!backfillReport || !backfillReport.fails.length){ alert('Nothing to export \u2014 the last backfill left no parts without photos.'); return; }
+    var lines = [['Part Num','Color','Element ID','Used In','Why No Photo','Detail'].map(csvEscape).join(',')];
+    backfillReport.fails.forEach(function(f){
+      lines.push([f.partNum, f.color, f.elementId, f.uses, BACKFILL_WHY[f.status] || f.status, f.detail || ''].map(csvEscape).join(','));
+    });
+    downloadCsv(lines, 'lego-parts-without-photos');
   }
 
   function backfillMissingPhotos(){
     var statusEl = document.getElementById('backfill-photos-status');
+    var btn = document.getElementById('backfill-photos-btn');
+    var stopBtn = document.getElementById('backfill-photos-stop-btn');
+    var reportBtn = document.getElementById('backfill-photos-report-btn');
     if (!rebrickableApiKey){
       statusEl.style.color = 'var(--text-danger)';
       statusEl.textContent = 'Add a Rebrickable API key on the Data & Tools tab first.';
       return;
     }
-    var combos = getMissingPhotoCombos();
-    var keys = Object.keys(combos);
-    if (!keys.length){
-      statusEl.style.color = 'var(--text-secondary)';
-      statusEl.textContent = 'Nothing to backfill \u2014 every part line already shows a photo.';
-      return;
-    }
-
-    var idx = 0, total = keys.length, done = 0, found = 0, notFound = 0, errored = 0;
-    var btn = document.getElementById('backfill-photos-btn');
+    backfillCancel = false;
+    backfillReport = null;
+    reportBtn.style.display = 'none';
     btn.disabled = true;
-    statusEl.style.color = 'var(--text-secondary)';
-    statusEl.textContent = 'Backfilling photos for ' + total + ' part/color combo' + (total===1?'':'s') + '\u2026 0 / ' + total;
 
-    function next(){
-      if (idx >= total){
+    // Rows that have an element ID are only known to lack a photo once that photo has been checked for, so check them all first.
+    runNoPhotoCheck(state.rows.concat(setParts, drawerParts), 'backfill-photos-status', function(){
+      try { runBackfill(); } catch (e){
+        btn.disabled = false;
+        statusEl.style.color = 'var(--text-danger)';
+        statusEl.textContent = 'Something went wrong starting the backfill: ' + (e && e.message ? e.message : e);
+      }
+    });
+
+    function runBackfill(){
+      var combos = getMissingPhotoCombos();
+      var keys = Object.keys(combos);
+      if (!keys.length){
+        btn.disabled = false;
+        statusEl.style.color = 'var(--text-success)';
+        statusEl.textContent = 'Nothing to backfill \u2014 every part line already has a photo.';
+        return;
+      }
+      var report = backfillReport = { total: keys.length, found: 0, approx: 0, fails: [] };
+      var idx = 0, done = 0, lastDetail = {};
+      rbPaceMs = 450;
+      rbRetry429 = true;
+      stopBtn.style.display = '';
+
+      function progress(){
+        statusEl.style.color = 'var(--text-secondary)';
+        statusEl.textContent = 'Backfilling photos for ' + report.total + ' part/color combo' + (report.total === 1 ? '' : 's') + '\u2026 ' + done + ' / ' + report.total;
+      }
+      function finish(stopped){
+        rbPaceMs = 0;
+        rbRetry429 = false;
+        stopBtn.style.display = 'none';
         btn.disabled = false;
         saveState();
         saveSetParts();
         saveDrawerParts();
         refreshAllThumbnails();
-        statusEl.style.color = (notFound || errored) ? 'var(--text-danger)' : 'var(--text-success)';
-        statusEl.textContent = 'Backfilled ' + found + ' photo' + (found===1?'':'s') + ' for ' + total + ' combo' + (total===1?'':'s') + '.' +
-          (notFound ? (' ' + notFound + ' had no image available on Rebrickable.') : '') +
-          (errored ? (' ' + errored + ' lookup' + (errored===1?'':'s') + ' failed \u2014 try again later.') : '');
-        return;
+        var by = { notfound: 0, noimage: 0, download: 0, save: 0, lookup: 0 };
+        report.fails.forEach(function(f){ by[f.status] = (by[f.status] || 0) + 1; });
+        var plural = function(n, w){ return n + ' ' + w + (n === 1 ? '' : 's'); };
+        var bits = [(stopped ? 'Stopped after ' + done + ' of ' + report.total + '. ' : '') + 'Saved ' + plural(report.found, 'photo') + ' for ' + plural(done, 'part/color combo') + '.'];
+        if (report.approx) bits.push(report.approx + ' of those ' + (report.approx === 1 ? 'is a close match' : 'are close matches') + ' (the plain part\u2019s photo for a lettered or printed variant).');
+        if (by.notfound) bits.push(plural(by.notfound, 'part') + (by.notfound === 1 ? ' isn\u2019t' : ' aren\u2019t') + ' on Rebrickable under that number.');
+        if (by.noimage) bits.push(plural(by.noimage, 'part') + ' ' + (by.noimage === 1 ? 'has' : 'have') + ' no photo on Rebrickable.');
+        if (by.download) bits.push(plural(by.download, 'photo download') + ' failed.');
+        if (by.save) bits.push(plural(by.save, 'photo') + ' couldn\u2019t be saved (' + (lastDetail.save || 'unknown error') + ').');
+        if (by.lookup) bits.push(plural(by.lookup, 'lookup') + ' failed (' + (lastDetail.lookup || 'unknown error') + ') \u2014 run it again to retry those.');
+        statusEl.style.color = report.fails.length ? 'var(--text-danger)' : 'var(--text-success)';
+        statusEl.textContent = bits.join(' ');
+        if (report.fails.length) reportBtn.style.display = '';
       }
-      var combo = combos[keys[idx++]];
-      backfillPhotoForCombo(combo).then(function(result){
-        if (result === 'found') found++;
-        else if (result === 'notfound') notFound++;
-        else errored++;
-      }).catch(function(){
-        errored++;
-      }).then(function(){
-        done++;
-        statusEl.textContent = 'Backfilling photos for ' + total + ' part/color combo' + (total===1?'':'s') + '\u2026 ' + done + ' / ' + total;
-        next();
-      });
+      function note(combo, status, detail){
+        report.fails.push({
+          partNum: combo.partNum, color: combo.color,
+          elementId: (combo.rows.find(function(r){ return r.elementId; }) || {}).elementId || '',
+          uses: Object.keys(combo.uses).map(function(k){ return k + ' \u00d7' + combo.uses[k]; }).join(', '),
+          status: status, detail: detail || ''
+        });
+        if (detail) lastDetail[status] = detail;
+      }
+      function next(){
+        if (backfillCancel) return finish(true);
+        if (idx >= keys.length) return finish(false);
+        var combo = combos[keys[idx++]];
+        backfillPhotoForCombo(combo).then(function(r){
+          if (r.status === 'found'){ report.found++; if (r.approx) report.approx++; }
+          else note(combo, r.status, r.detail);
+        }).catch(function(err){
+          note(combo, 'lookup', (err && err.message) ? err.message : 'unknown error');
+        }).then(function(){
+          done++;
+          progress();
+          next();
+        });
+      }
+      progress();
+      next();
     }
-    next();
   }
+  wireEl('backfill-photos-stop-btn', 'click', function(){ backfillCancel = true; });
+  wireEl('backfill-photos-report-btn', 'click', exportBackfillReportCSV);
+
+
+
+
 
   function importBuildPartsCSVText(buildName, text){
     var statusEl = document.getElementById('mocbuild-csv-status');
@@ -4973,6 +5214,17 @@
   }
 
 
+  // "Show only ... still missing pieces" on the build and set lists
+  function updateMissingFilterNote(noteId, boxId, shown, total, noun, noParts){
+    var note = document.getElementById(noteId);
+    if (!document.getElementById(boxId).checked){ note.style.display = 'none'; return; }
+    note.style.display = 'block';
+    note.textContent = 'Showing ' + shown + ' of ' + total + ' ' + noun + (total === 1 ? '' : 's') + ' \u2014 the ones still missing pieces.' +
+      (noParts ? ' ' + noParts + ' with no parts yet ' + (noParts === 1 ? 'isn\u2019t' : 'aren\u2019t') + ' counted.' : '');
+  }
+  wireEl('mocbuild-only-missing', 'change', function(){ renderMocBuildsList(); });
+  wireEl('sets-only-missing', 'change', function(){ renderOwnedSetsList(); });
+
   function renderMocBuildsTab(){
     renderMocBuildsList();
     populateMocBuildCsvTarget();
@@ -5012,11 +5264,29 @@
     var container = document.getElementById('owned-sets-list');
     container.innerHTML = '';
     renderThemeSummary();
+    var onlyMissing = document.getElementById('sets-only-missing').checked;
+    var missingSets = {}, hasParts = {};
+    setParts.forEach(function(r){
+      hasParts[r.setNum] = true;
+      if (setPartOnHand(r) < setPartNeeded(r)) missingSets[r.setNum] = true;
+    });
+    var groups = themeGroupsSorted();
+    if (onlyMissing){
+      groups = groups.map(function(g){
+        return { theme: g.theme, sets: g.sets.filter(function(s){ return missingSets[s.setNum]; }) };
+      }).filter(function(g){ return g.sets.length; });
+    }
+    var shownSets = groups.reduce(function(n, g){ return n + g.sets.length; }, 0);
+    updateMissingFilterNote('sets-only-missing-note', 'sets-only-missing', shownSets, ownedSets.length, 'set', ownedSets.filter(function(s){ return !hasParts[s.setNum]; }).length);
     if (!ownedSets.length){
       container.innerHTML = '<div class="empty-msg">No sets added yet.</div>';
       return;
     }
-    themeGroupsSorted().forEach(function(g){
+    if (onlyMissing && !groups.length){
+      container.innerHTML = '<div class="empty-msg">' + (ownedSets.some(function(s){ return hasParts[s.setNum]; }) ? 'Every set with a parts list is complete — nothing is missing.' : 'None of your sets have a parts list yet.') + '</div>';
+      return;
+    }
+    groups.forEach(function(g){
       var isOpen = expandedThemes.has(g.theme);
       var header = document.createElement('button');
       header.type = 'button';
@@ -5810,6 +6080,439 @@
     scheduleAutoPublish();
     return storage.set(DRAWERS_KEY, JSON.stringify(drawers), false);
   }
+  // ---- Pulling missing pieces out of the drawers, and the Pull Log ----
+  var PULL_LOG_KEY = 'pull-log-v1';
+  var pullLog = [];
+  function loadPullLog(){
+    return storage.get(PULL_LOG_KEY, false).then(function(res){
+      if (res && res.value){ try { pullLog = JSON.parse(res.value); } catch(e){ pullLog = []; } }
+    }).catch(function(){});
+  }
+  function savePullLog(){
+    scheduleAutoPublish();
+    return storage.set(PULL_LOG_KEY, JSON.stringify(pullLog), false);
+  }
+
+  function pullDrawerLabel(id){
+    var d = drawers.find(function(x){ return x.id === id; });
+    return d ? d.label : id;
+  }
+  var pullNatural = function(a, b){ return String(a).localeCompare(String(b), undefined, { numeric: true }); };
+
+  // What a pull would do: for every missing part line, which drawer lines to take from (biggest stash first).
+  function planDrawerPull(kind, key){
+    var rep = getMissingReport(kind, key);
+    if (!rep) return null;
+    var plan = { rep: rep, allocations: [], pieces: 0, lines: 0, drawers: {}, stillLines: [] };
+    rep.lines.forEach(function(l){
+      if (l.still > 0) plan.stillLines.push({ partNum: l.partNum, color: l.color, desc: l.desc, elementId: l.elementId || '', qty: l.still });
+      if (l.covered <= 0) return;
+      var rows = drawerParts.filter(function(p){ return p.qty > 0 && stockKeyOf(p.partNum, p.color) === l.key; });
+      rows.sort(function(a, b){ return (b.qty - a.qty) || pullNatural(pullDrawerLabel(a.drawerId), pullDrawerLabel(b.drawerId)); });
+      var left = l.covered, any = false;
+      rows.forEach(function(p){
+        if (left <= 0) return;
+        var take = Math.min(p.qty, left);
+        left -= take; any = true;
+        plan.allocations.push({ line: l, row: p, qty: take });
+        plan.pieces += take;
+        plan.drawers[p.drawerId] = true;
+      });
+      if (any) plan.lines++;
+    });
+    return plan;
+  }
+
+  function pullMissingFromDrawers(){
+    if (!detailContext) return;
+    var kind = detailContext.kind, key = detailContext.key;
+    var statusEl = document.getElementById('pull-status');
+    function say(msg, color){ statusEl.style.color = color || 'var(--text-secondary)'; statusEl.textContent = msg; }
+    var plan = planDrawerPull(kind, key);
+    if (!plan) return;
+    if (plan.rep.missing === 0) return say('Nothing is missing, so there is nothing to pull.');
+    if (!plan.pieces) return say('None of the missing parts are in your drawers, so there is nothing to pull.');
+    var drawerCount = Object.keys(plan.drawers).length;
+    var stillPieces = plan.stillLines.reduce(function(s, l){ return s + l.qty; }, 0);
+    var pcs = function(n){ return n.toLocaleString() + ' piece' + (n === 1 ? '' : 's'); };
+    if (!confirm('Pull ' + pcs(plan.pieces) + ' (' + plan.lines + ' part line' + (plan.lines === 1 ? '' : 's') + ') out of ' + drawerCount + ' drawer' + (drawerCount === 1 ? '' : 's') + ' and add them to \u201c' + plan.rep.name + '\u201d?\n\n' +
+      'This lowers those drawer quantities and raises On Hand here by the same amount. A Pull Log entry is saved so you can tick off each part as you physically take it \u2014 and undo the pull if you need to.' +
+      (stillPieces ? '\n\n' + stillPieces.toLocaleString() + ' more piece' + (stillPieces === 1 ? ' is' : 's are') + ' missing and not in your drawers.' : ''))) return;
+
+    var touchedDrawers = {};
+    plan.allocations.forEach(function(a){ a.row.qty -= a.qty; touchedDrawers[a.row.drawerId] = true; });
+    var depleted = plan.allocations.filter(function(a){ return a.row.qty <= 0; }).map(function(a){ return a.row; });
+    drawerParts = drawerParts.filter(function(p){ return depleted.indexOf(p) === -1; });
+
+    plan.rep.lines.forEach(function(l){
+      var add = l.covered;
+      if (add <= 0) return;
+      var targets = kind === 'set'
+        ? setParts.filter(function(r){ return r.setNum === key && stockKeyOf(r.partNum, r.color) === l.key; })
+        : state.rows.filter(function(r){ return r.moc === key && stockKeyOf(r.partNum, r.color) === l.key; });
+      targets.forEach(function(r){
+        if (add <= 0) return;
+        var short = kind === 'set' ? setPartNeeded(r) - setPartOnHand(r) : (r.qty || 0) - (r.onHand || 0);
+        if (short <= 0) return;
+        var give = Math.min(short, add);
+        if (kind === 'set') r.onHand = setPartOnHand(r) + give; else r.onHand = (r.onHand || 0) + give;
+        add -= give;
+      });
+    });
+
+    pullLog.unshift({
+      id: 'pull_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 6),
+      timestamp: new Date().toISOString(), kind: kind, key: key, name: plan.rep.name,
+      lines: plan.allocations.map(function(a){
+        return { partNum: a.line.partNum, color: a.line.color, desc: a.line.desc, elementId: a.line.elementId || '', qty: a.qty, drawerId: a.row.drawerId, drawerLabel: pullDrawerLabel(a.row.drawerId), done: false };
+      }),
+      stillNeeded: plan.stillLines, undone: false
+    });
+    savePullLog();
+    Object.keys(touchedDrawers).forEach(function(id){ touchDrawerLastEdited(id); });
+    saveDrawerParts();
+    if (kind === 'set'){ touchSetLastEdited(key); saveSetParts(); render(); renderSetsTab(); }
+    else { touchMocLastEdited(key); saveState(); render(); refreshMocBuildViews(); }
+    renderDrawersTab();
+    if (kind === 'set') openSetDetail(key); else openMocDetail(key);
+    var after = document.getElementById('pull-status');
+    after.style.color = 'var(--text-success)';
+    after.textContent = 'Pulled ' + pcs(plan.pieces) + ' from ' + drawerCount + ' drawer' + (drawerCount === 1 ? '' : 's') + ' into ' + plan.rep.name + '.' + (stillPieces ? ' ' + pcs(stillPieces) + ' still needed.' : '') + ' Open the Pull log to tick off each part as you take it.';
+  }
+
+  function undoPull(id){
+    var entry = pullLog.find(function(e){ return e.id === id; });
+    if (!entry || entry.undone) return;
+    var total = entry.lines.reduce(function(s, l){ return s + (l.qty || 0); }, 0);
+    if (!confirm('Undo this pull of ' + total.toLocaleString() + ' piece' + (total === 1 ? '' : 's') + ' for \u201c' + entry.name + '\u201d?\n\nThe pieces go back into the drawers they came from and the same amount comes off On Hand. The entry stays in the log, marked as undone.')) return;
+    var restoredByKey = {}, restored = 0, skipped = 0, touched = {};
+    entry.lines.forEach(function(ln){
+      if (!drawers.some(function(d){ return d.id === ln.drawerId; })){ skipped += ln.qty || 0; return; }
+      var k = stockKeyOf(ln.partNum, ln.color);
+      var row = drawerParts.find(function(p){ return p.drawerId === ln.drawerId && stockKeyOf(p.partNum, p.color) === k; });
+      if (row) row.qty += ln.qty; else drawerParts.push({ drawerId: ln.drawerId, partNum: ln.partNum, color: ln.color, desc: ln.desc, qty: ln.qty, elementId: ln.elementId || '' });
+      restoredByKey[k] = (restoredByKey[k] || 0) + ln.qty;
+      restored += ln.qty;
+      touched[ln.drawerId] = true;
+    });
+    var rows = entry.kind === 'set'
+      ? setParts.filter(function(r){ return r.setNum === entry.key; })
+      : state.rows.filter(function(r){ return r.moc === entry.key; });
+    var targetExists = entry.kind === 'set' ? ownedSets.some(function(s){ return s.setNum === entry.key; }) : rows.length > 0;
+    Object.keys(restoredByKey).forEach(function(k){
+      var sub = restoredByKey[k];
+      rows.filter(function(r){ return stockKeyOf(r.partNum, r.color) === k; }).forEach(function(r){
+        if (sub <= 0) return;
+        var have = entry.kind === 'set' ? setPartOnHand(r) : (r.onHand || 0);
+        var take = Math.min(have, sub);
+        if (take <= 0) return;
+        if (entry.kind === 'set') r.onHand = have - take; else r.onHand = have - take;
+        sub -= take;
+      });
+    });
+    entry.undone = true;
+    entry.undoneAt = new Date().toISOString();
+    savePullLog();
+    Object.keys(touched).forEach(function(d){ touchDrawerLastEdited(d); });
+    saveDrawerParts();
+    if (targetExists){
+      if (entry.kind === 'set'){ touchSetLastEdited(entry.key); saveSetParts(); render(); renderSetsTab(); }
+      else { touchMocLastEdited(entry.key); saveState(); render(); refreshMocBuildViews(); }
+    }
+    renderDrawersTab();
+    if (detailContext && detailContext.kind === entry.kind && detailContext.key === entry.key){
+      if (entry.kind === 'set') openSetDetail(entry.key); else openMocDetail(entry.key);
+    }
+    renderPullLog();
+    if (skipped) alert(skipped + ' piece' + (skipped === 1 ? '' : 's') + ' couldn\u2019t go back because the drawer ' + (skipped === 1 ? 'they' : 'those pieces') + ' came from no longer exists. The other ' + restored + ' were restored.');
+  }
+
+  // ---- the log viewer ----
+  var pullLogFocus = null;
+  var pullLogOpen = {};
+
+  function pullTotals(e){
+    var pieces = e.lines.reduce(function(s, l){ return s + (l.qty || 0); }, 0);
+    var done = e.lines.filter(function(l){ return l.done; }).length;
+    return { lines: e.lines.length, pieces: pieces, done: done };
+  }
+
+  function getFilteredPullLog(){
+    var q = normKey(document.getElementById('pull-log-search-input').value);
+    var openOnly = document.getElementById('pull-log-open-only').checked;
+    return pullLog.filter(function(e){
+      if (pullLogFocus && (e.kind !== pullLogFocus.kind || e.key !== pullLogFocus.key)) return false;
+      if (openOnly){
+        var t = pullTotals(e);
+        if (e.undone || t.done >= t.lines) return false;
+      }
+      if (!q) return true;
+      if (normKey(e.name).indexOf(q) !== -1) return true;
+      return e.lines.some(function(l){
+        return (normKey(l.partNum) + ' ' + normKey(l.desc) + ' ' + normKey(l.color) + ' ' + normKey(l.drawerLabel)).indexOf(q) !== -1;
+      });
+    });
+  }
+
+  function renderPullLog(){
+    var container = document.getElementById('pull-log-entries');
+    var emptyMsg = document.getElementById('pull-log-empty-msg');
+    var focusEl = document.getElementById('pull-log-focus');
+    container.innerHTML = '';
+    if (pullLogFocus){
+      focusEl.style.display = 'block';
+      document.getElementById('pull-log-focus-text').textContent = 'Showing pulls for ' + pullLogFocus.name + '.';
+    } else {
+      focusEl.style.display = 'none';
+    }
+    if (!pullLog.length){ emptyMsg.style.display = 'block'; emptyMsg.textContent = 'No pulls logged yet.'; return; }
+    var entries = getFilteredPullLog();
+    if (!entries.length){ emptyMsg.style.display = 'block'; emptyMsg.textContent = 'No pulls match that.'; return; }
+    emptyMsg.style.display = 'none';
+
+    entries.forEach(function(entry){
+      var t = pullTotals(entry);
+      var d = new Date(entry.timestamp);
+      var open = !!pullLogOpen[entry.id];
+      var wrap = document.createElement('div');
+      wrap.style.cssText = 'border:1px solid var(--border); border-radius:8px; margin-bottom:8px; overflow:hidden;' + (entry.undone ? ' opacity:0.7;' : '');
+      var header = document.createElement('button');
+      header.type = 'button';
+      header.className = 'collapse-header';
+      header.style.cssText = 'width:100%; text-align:left; display:flex; align-items:center; gap:8px; padding:10px 12px; flex-wrap:wrap;';
+      var status = entry.undone ? '<span class="pill" style="background:var(--surface-1); border:1px solid var(--border);">Undone</span>'
+        : (t.lines && t.done === t.lines ? '<span class="pill pill-ok">All pulled \u2713</span>' : '<span class="pill pill-short">' + (t.lines - t.done) + ' to grab</span>');
+      header.innerHTML = '<i class="ti ' + (open ? 'ti-chevron-down' : 'ti-chevron-right') + '" aria-hidden="true"></i>' +
+        '<span style="flex:1 1 160px; min-width:160px;"><strong>' + escapeHtml(entry.name) + '</strong> <span style="color:var(--text-secondary); font-weight:400; font-size:12px;">\u2014 ' + escapeHtml(d.toLocaleDateString()) + ' ' + escapeHtml(d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })) + ' \u00b7 ' + t.lines + ' line' + (t.lines === 1 ? '' : 's') + ', ' + t.pieces.toLocaleString() + ' piece' + (t.pieces === 1 ? '' : 's') + '</span></span>' + status;
+      var body = document.createElement('div');
+      body.style.cssText = 'display:' + (open ? 'block' : 'none') + '; padding:0 12px 10px;';
+      var built = false;
+      function buildBody(){
+        if (built) return;
+        built = true;
+        var groups = {};
+        entry.lines.forEach(function(l){ var g = l.drawerLabel || l.drawerId; (groups[g] = groups[g] || []).push(l); });
+        Object.keys(groups).sort(pullNatural).forEach(function(label){
+          var pcs = groups[label].reduce(function(s, l){ return s + (l.qty || 0); }, 0);
+          var h = document.createElement('p');
+          h.style.cssText = 'margin:8px 0 4px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary);';
+          h.textContent = 'Drawer ' + label + ' \u2014 ' + pcs.toLocaleString() + ' piece' + (pcs === 1 ? '' : 's');
+          body.appendChild(h);
+          groups[label].forEach(function(l){
+            var row = document.createElement('label');
+            row.className = 'top-needed-item';
+            row.style.cssText = 'cursor:pointer; flex-wrap:wrap;' + (l.done ? ' opacity:0.6;' : '');
+            var cb = document.createElement('input');
+            cb.type = 'checkbox';
+            cb.checked = !!l.done;
+            cb.style.flexShrink = '0';
+            cb.addEventListener('change', function(){ l.done = cb.checked; savePullLog(); renderPullLog(); });
+            row.appendChild(cb);
+            var thumb = document.createElement('span');
+            thumb.className = 'part-thumb-wrap';
+            row.appendChild(thumb);
+            var rest = document.createElement('span');
+            rest.style.cssText = 'display:contents;';
+            rest.innerHTML = '<span class="top-needed-partnum">#' + escapeHtml(l.partNum) + '</span>' +
+              '<span class="top-needed-desc" style="flex:1 1 120px; min-width:120px;' + (l.done ? ' text-decoration:line-through;' : '') + '">' + escapeHtml((l.color ? l.color + ' ' : '') + (l.desc || '')) + '</span>' +
+              '<span class="shop-qty" style="flex-shrink:0;">\u00d7' + (l.qty || 0).toLocaleString() + '</span>';
+            row.appendChild(rest);
+            body.appendChild(row);
+            buildThumb({ elementId: l.elementId, partNum: l.partNum, desc: l.desc }, thumb);
+          });
+        });
+        if ((entry.stillNeeded || []).length){
+          var sh = document.createElement('p');
+          sh.style.cssText = 'margin:10px 0 4px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.02em; color:var(--lego-orange);';
+          var stillPcs = entry.stillNeeded.reduce(function(s, l){ return s + (l.qty || 0); }, 0);
+          sh.textContent = 'Still needed \u2014 not in your drawers \u2014 ' + stillPcs.toLocaleString() + ' piece' + (stillPcs === 1 ? '' : 's');
+          body.appendChild(sh);
+          entry.stillNeeded.forEach(function(l){
+            var row = document.createElement('div');
+            row.className = 'top-needed-item';
+            row.style.cssText = 'cursor:default; flex-wrap:wrap;';
+            row.innerHTML = '<span class="part-thumb-wrap"></span><span class="top-needed-partnum">#' + escapeHtml(l.partNum) + '</span>' +
+              '<span class="top-needed-desc" style="flex:1 1 120px; min-width:120px;">' + escapeHtml((l.color ? l.color + ' ' : '') + (l.desc || '')) + '</span>' +
+              '<span class="shop-still-needed" style="flex-shrink:0;">' + (l.qty || 0).toLocaleString() + ' still needed</span>';
+            body.appendChild(row);
+            buildThumb({ elementId: l.elementId, partNum: l.partNum, desc: l.desc }, row.querySelector('.part-thumb-wrap'));
+          });
+        }
+        var actions = document.createElement('div');
+        actions.className = 'row';
+        actions.style.cssText = 'gap:8px; margin-top:10px; flex-wrap:wrap;';
+        function addBtn(label, cls, handler, title){
+          var b = document.createElement('button');
+          b.className = 'icon-btn' + (cls ? ' ' + cls : '');
+          b.textContent = label;
+          if (title) b.title = title;
+          b.addEventListener('click', handler);
+          actions.appendChild(b);
+          return b;
+        }
+        if (entry.undone){
+          var note = document.createElement('span');
+          note.style.cssText = 'font-size:12px; color:var(--text-secondary); align-self:center;';
+          note.textContent = 'Undone ' + (entry.undoneAt ? new Date(entry.undoneAt).toLocaleString() : '') + ' \u2014 the pieces went back to their drawers.';
+          actions.appendChild(note);
+        } else {
+          addBtn('Tick all', 'lockable', function(){ entry.lines.forEach(function(l){ l.done = true; }); savePullLog(); renderPullLog(); });
+          addBtn('Clear ticks', 'lockable', function(){ entry.lines.forEach(function(l){ l.done = false; }); savePullLog(); renderPullLog(); });
+        }
+        addBtn('PDF', '', function(){ generatePullLogPDF([entry], 'Pull List \u2014 ' + entry.name, (slugify(entry.name) || 'pull') + '-pull-list'); }, 'A printable pick list for this pull, grouped by drawer');
+        if (!entry.undone){
+          var u = addBtn('Undo this pull', 'lockable', function(){ undoPull(entry.id); }, 'Put these pieces back in their drawers and take them off On Hand');
+          u.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger);';
+        }
+        body.appendChild(actions);
+      }
+      if (open) buildBody();
+      header.addEventListener('click', function(){
+        var nowOpen = body.style.display === 'none';
+        body.style.display = nowOpen ? 'block' : 'none';
+        header.querySelector('i').className = 'ti ' + (nowOpen ? 'ti-chevron-down' : 'ti-chevron-right');
+        if (nowOpen){ pullLogOpen[entry.id] = true; buildBody(); } else { delete pullLogOpen[entry.id]; }
+      });
+      wrap.appendChild(header);
+      wrap.appendChild(body);
+      container.appendChild(wrap);
+    });
+  }
+
+  function openPullLog(focus){
+    pullLogFocus = focus ? { kind: focus.kind, key: focus.key, name: focus.name } : null;
+    document.getElementById('pull-log-search-input').value = '';
+    document.getElementById('pull-log-open-only').checked = false;
+    document.getElementById('pull-log-overlay').style.display = 'flex';
+    renderPullLog();
+  }
+
+  function exportPullLogCSV(){
+    var entries = getFilteredPullLog();
+    if (!entries.length){ alert('Nothing to export \u2014 ' + (pullLog.length ? 'no pulls match that.' : 'no pulls have been logged yet.')); return; }
+    var header = ['Date','Build / Set','Type','Part Num','Color','Description','Qty','Drawer','Pulled','Status'];
+    var lines = [header.map(csvEscape).join(',')];
+    entries.forEach(function(e){
+      var d = new Date(e.timestamp);
+      e.lines.forEach(function(l){
+        lines.push([d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }), e.name, e.kind === 'set' ? 'Official set' : 'Build',
+          l.partNum, l.color, l.desc, l.qty, l.drawerLabel || l.drawerId, l.done ? 'Yes' : 'No', e.undone ? 'Undone' : 'Active'].map(csvEscape).join(','));
+      });
+    });
+    downloadCsv(lines, 'lego-pull-log');
+  }
+
+  // A printable pick list: each pull's parts grouped by drawer, a check box to tick on paper, then what's still needed.
+  function generatePullLogPDF(entries, title, fileSlug){
+    if (!entries.length){ alert('Nothing to export \u2014 ' + (pullLog.length ? 'no pulls match that.' : 'no pulls have been logged yet.')); return; }
+    var landscape = document.getElementById('pull-log-layout').value === 'landscape';
+    var ids = [];
+    entries.forEach(function(e){ e.lines.concat(e.stillNeeded || []).forEach(function(l){ if (l.elementId) ids.push(l.elementId); }); });
+    var uniqueIds = Array.from(new Set(ids));
+    Promise.all(uniqueIds.map(function(id){
+      return fetchPartImageForPdf(id).then(function(dataUrl){ return [id, dataUrl]; });
+    })).then(function(pairs){
+      var imgMap = {};
+      pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
+      var doc = getPdfDoc();
+      if (!doc) return;
+      if (landscape) doc = new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' });
+      var totalPieces = 0, totalStill = 0;
+      entries.forEach(function(e){ totalPieces += pullTotals(e).pieces; (e.stillNeeded || []).forEach(function(l){ totalStill += l.qty || 0; }); });
+      var one = entries.length === 1 ? entries[0] : null;
+      var drawerSet = {};
+      if (one) one.lines.forEach(function(l){ drawerSet[l.drawerId] = true; });
+      pdfHeader(doc, title,
+        'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + entries.length + ' pull' + (entries.length === 1 ? '' : 's') + ' \u00b7 ' + totalPieces.toLocaleString() + ' piece' + (totalPieces === 1 ? '' : 's') +
+        (one ? ' from ' + Object.keys(drawerSet).length + ' drawer' + (Object.keys(drawerSet).length === 1 ? '' : 's') : '') +
+        ' \u00b7 ' + totalStill.toLocaleString() + ' still needed' + (one && one.undone ? ' \u00b7 UNDONE' : ''));
+
+      var body = [], meta = [];
+      var cols = 7;
+      entries.forEach(function(e){
+        var t = pullTotals(e), d = new Date(e.timestamp);
+        body.push([{ content: e.name + '  \u2014  ' + d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' }) + '  \u2014  ' + t.lines + ' line' + (t.lines === 1 ? '' : 's') + ', ' + t.pieces.toLocaleString() + ' piece' + (t.pieces === 1 ? '' : 's') + (e.undone ? '  \u2014  UNDONE' : '  \u2014  ' + t.done + ' of ' + t.lines + ' ticked'),
+          colSpan: cols, styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] } }]);
+        meta.push(null);
+        var groups = {};
+        e.lines.forEach(function(l){ var g = l.drawerLabel || l.drawerId; (groups[g] = groups[g] || []).push(l); });
+        Object.keys(groups).sort(pullNatural).forEach(function(label){
+          var pcs = groups[label].reduce(function(s, l){ return s + (l.qty || 0); }, 0);
+          body.push([{ content: 'Drawer ' + label + '  \u00b7  ' + pcs.toLocaleString() + ' piece' + (pcs === 1 ? '' : 's'), colSpan: cols, styles: { fontStyle: 'bold', fillColor: [246, 248, 250], textColor: [60, 72, 83] } }]);
+          meta.push(null);
+          groups[label].forEach(function(l){
+            body.push(['', '', l.partNum, l.color, truncateForPdf(l.desc, landscape ? 46 : 26), String(l.qty), label]);
+            meta.push({ type: 'line', line: l });
+          });
+        });
+        if ((e.stillNeeded || []).length){
+          body.push([{ content: 'Still needed \u2014 not in your drawers', colSpan: cols, styles: { fontStyle: 'bold', fillColor: [253, 240, 226], textColor: [20, 32, 43] } }]);
+          meta.push(null);
+          e.stillNeeded.forEach(function(l){
+            body.push(['', '', l.partNum, l.color, truncateForPdf(l.desc, landscape ? 46 : 26), String(l.qty), '\u2014']);
+            meta.push({ type: 'still', line: l });
+          });
+        }
+      });
+
+      var descW = landscape ? 300 : 150;
+      doc.autoTable({
+        startY: 70,
+        margin: { top: 70, right: 40, bottom: 30, left: 40 },
+        head: [['Pulled', '', 'Part #', 'Color', 'Description', 'Qty', 'Drawer']],
+        body: body,
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: PDF_THUMB.single.rowHeight, valign: 'middle' },
+        headStyles: { fillColor: [0, 166, 94], textColor: 255 },
+        columnStyles: { 0: { cellWidth: 38 }, 1: { cellWidth: PDF_THUMB.single.cellWidth }, 2: { cellWidth: 52 }, 3: { cellWidth: 56 }, 4: { cellWidth: descW }, 5: { cellWidth: 32 }, 6: { cellWidth: 60 } },
+        didDrawCell: function(data){
+          if (data.section !== 'body') return;
+          var m = meta[data.row.index];
+          if (!m) return;
+          if (data.column.index === 0 && m.type === 'line'){
+            var s = 10, x = data.cell.x + (data.cell.width - s) / 2, y = data.cell.y + (data.cell.height - s) / 2;
+            doc.setDrawColor(40, 40, 40);
+            doc.setLineWidth(0.8);
+            doc.rect(x, y, s, s);
+            if (m.line.done){ doc.line(x + 2, y + 5, x + 4.5, y + 8); doc.line(x + 4.5, y + 8, x + 8.5, y + 2); }
+            return;
+          }
+          if (data.column.index === 1){
+            var dataUrl = m.line.elementId && imgMap[m.line.elementId];
+            if (!dataUrl) return;
+            try {
+              var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
+              var size = pdfThumbImageSize('single');
+              var pad = (Math.min(data.cell.height, data.cell.width) - size) / 2;
+              doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
+            } catch(err){ /* skip a malformed image and leave the cell blank */ }
+          }
+        }
+      });
+      doc.save('lego-' + fileSlug + '.pdf');
+    }).catch(function(err){
+      alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
+    });
+  }
+
+  wireEl('pull-from-drawers-btn', 'click', pullMissingFromDrawers);
+  wireEl('pull-log-for-this-btn', 'click', function(){
+    if (!detailContext) return;
+    var rep = getMissingReport(detailContext.kind, detailContext.key);
+    openPullLog({ kind: detailContext.kind, key: detailContext.key, name: rep ? rep.name : detailContext.key });
+  });
+  wireEl('pull-log-open-btn', 'click', function(){ openPullLog(null); });
+  wireEl('pull-log-close', 'click', function(){ document.getElementById('pull-log-overlay').style.display = 'none'; });
+  wireEl('pull-log-overlay', 'click', function(e){ if (e.target.id === 'pull-log-overlay') document.getElementById('pull-log-overlay').style.display = 'none'; });
+  wireEl('pull-log-search-input', 'input', renderPullLog);
+  wireEl('pull-log-open-only', 'change', renderPullLog);
+  wireEl('pull-log-focus-clear', 'click', function(){ pullLogFocus = null; renderPullLog(); });
+  wireEl('pull-log-export-csv-btn', 'click', exportPullLogCSV);
+  wireEl('pull-log-export-pdf-btn', 'click', function(){
+    var entries = getFilteredPullLog();
+    var one = pullLogFocus ? pullLogFocus.name : null;
+    generatePullLogPDF(entries, one ? 'Pull Log \u2014 ' + one : 'Pull Log', one ? (slugify(one) || 'pull') + '-pull-log' : 'pull-log');
+  });
+
   function loadBagInventoryLog(){
     return storage.get(BAG_LOG_KEY, false).then(function(res){
       if (res && res.value){ try { bagInventoryLog = JSON.parse(res.value); } catch(e){ bagInventoryLog = []; } }
@@ -6579,6 +7282,217 @@
     });
   });
 
+  // ---- Missing pieces report, inside the Summary window (builds and official sets) ----
+  var missingPanelOpen = false;
+
+  // Every part line still short, with how much of the shortfall your drawers cover. Works on one build or one set.
+  function getMissingReport(kind, key){
+    var lines = [], byKey = {}, totalNeeded = 0, totalHave = 0, name = key, subtitleBits = [], copies = 1;
+    function add(partNum, color, desc, elementId, needed, onHand){
+      totalNeeded += needed;
+      totalHave += Math.min(onHand, needed);
+      if (needed - onHand <= 0) return;
+      var k = stockKeyOf(partNum, color);
+      var l = byKey[k];
+      if (!l){ l = byKey[k] = { key: k, partNum: partNum, color: color, desc: desc, elementId: elementId, needed: 0, have: 0, missing: 0 }; lines.push(l); }
+      l.needed += needed;
+      l.have += onHand;
+      l.missing += needed - onHand;
+      if (!l.elementId && elementId) l.elementId = elementId;
+    }
+    if (kind === 'set'){
+      var setInfo = ownedSets.find(function(s){ return s.setNum === key; });
+      if (!setInfo) return null;
+      copies = setInfo.qty || 1;
+      name = key + (setInfo.name ? ' \u2014 ' + setInfo.name : '');
+      if (copies > 1) subtitleBits.push(copies + ' copies owned');
+      setParts.forEach(function(r){
+        if (r.setNum === key) add(r.partNum, r.color, r.desc, r.elementId, setPartNeeded(r), setPartOnHand(r));
+      });
+    } else {
+      state.rows.forEach(function(r){
+        if (r.moc === key) add(r.partNum, r.color, r.desc, r.elementId, r.qty || 0, r.onHand || 0);
+      });
+    }
+    var stock = buildDrawerStockMap();
+    var where = buildDrawerLocationMap();
+    var missing = 0, covered = 0, still = 0;
+    lines.forEach(function(l){
+      l.inDrawers = stock[l.key] || 0;
+      l.covered = Math.min(l.inDrawers, l.missing);
+      l.still = l.missing - l.covered;
+      l.where = where[l.key] || [];
+      missing += l.missing; covered += l.covered; still += l.still;
+    });
+    return { kind: kind, key: key, name: name, subtitleBits: subtitleBits, lines: lines, totalNeeded: totalNeeded, totalHave: totalHave, missing: missing, covered: covered, still: still };
+  }
+
+  function currentMissingReport(){
+    if (!detailContext) return null;
+    var rep = getMissingReport(detailContext.kind, detailContext.key);
+    if (!rep) return null;
+    var showStill = document.getElementById('missing-report-show').value === 'still';
+    var sortMode = document.getElementById('missing-report-sort').value;
+    var view = rep.lines.filter(function(l){ return !showStill || l.still > 0; });
+    var byColor = function(a, b){ return (a.color || '').localeCompare(b.color || '') || (a.desc || '').localeCompare(b.desc || '') || String(a.partNum).localeCompare(String(b.partNum), undefined, { numeric: true }); };
+    view.sort(function(a, b){
+      if (sortMode === 'most') return (b.missing - a.missing) || byColor(a, b);
+      if (sortMode === 'part') return String(a.partNum).localeCompare(String(b.partNum), undefined, { numeric: true }) || byColor(a, b);
+      return byColor(a, b);
+    });
+    rep.view = view;
+    rep.showStill = showStill;
+    return rep;
+  }
+
+  function missingWhereText(l, sep, fmt){ return l.where.map(fmt).join(sep); }
+
+  function refreshMissingPanel(){
+    var summary = document.getElementById('missing-report-summary');
+    var list = document.getElementById('missing-report-list');
+    var rep = currentMissingReport();
+    if (!rep){ summary.textContent = ''; list.innerHTML = ''; return; }
+    var pcs = function(n){ return n.toLocaleString() + ' piece' + (n === 1 ? '' : 's'); };
+    summary.textContent = rep.missing === 0
+      ? 'Nothing missing \u2014 all ' + rep.totalNeeded.toLocaleString() + ' pieces are on hand.'
+      : rep.lines.length + ' part line' + (rep.lines.length === 1 ? '' : 's') + ' \u00b7 ' + pcs(rep.missing) + ' missing \u00b7 your drawers cover ' + rep.covered.toLocaleString() + ' \u00b7 ' + rep.still.toLocaleString() + ' still needed after drawers.';
+    document.getElementById('missing-report-body').style.display = missingPanelOpen ? 'block' : 'none';
+    document.getElementById('missing-report-chevron').className = 'ti ' + (missingPanelOpen ? 'ti-chevron-down' : 'ti-chevron-right');
+    list.innerHTML = '';
+    if (!missingPanelOpen) return;
+    if (!rep.view.length){
+      list.innerHTML = '<p class="empty-msg" style="margin:0;">' + (rep.missing === 0 ? 'Nothing missing.' : 'Your drawers cover everything that\u2019s missing.') + '</p>';
+      return;
+    }
+    rep.view.forEach(function(l){
+      var row = document.createElement('div');
+      row.className = 'top-needed-item';
+      row.style.cssText = 'cursor:default; flex-wrap:wrap;';
+      row.innerHTML = '<span class="part-thumb-wrap"></span><span class="top-needed-partnum">#' + escapeHtml(l.partNum) + '</span>' +
+        '<span class="top-needed-desc" style="flex:1 1 120px; min-width:120px;">' + escapeHtml((l.color ? l.color + ' ' : '') + (l.desc || '')) + '</span>' +
+        '<span class="shop-qty" style="flex-shrink:0;">missing ' + l.missing.toLocaleString() + '</span>' +
+        (l.inDrawers > 0
+          ? '<span class="shop-in-drawers" style="flex-shrink:0;" title="In your drawers">' + (l.still === 0 ? 'all in drawers' : l.covered.toLocaleString() + ' in drawers') + ': ' + escapeHtml(missingWhereText(l, ', ', function(w){ return w.label + ' \u00d7' + w.qty.toLocaleString(); })) + '</span>'
+          : '') +
+        (l.still > 0 ? '<span class="shop-still-needed" style="flex-shrink:0;">' + l.still.toLocaleString() + ' still needed</span>' : '');
+      list.appendChild(row);
+      buildThumb({ elementId: l.elementId, partNum: l.partNum, desc: l.desc }, row.querySelector('.part-thumb-wrap'));
+    });
+  }
+
+  function missingReportSlug(rep){ return slugify(rep.kind === 'set' ? 'set-' + rep.key : rep.key) || 'report'; }
+
+  function exportMissingReportCSV(){
+    var rep = currentMissingReport();
+    if (!rep) return;
+    if (!rep.view.length){
+      alert('Nothing to report \u2014 ' + rep.name + (rep.missing === 0 ? ' has no missing pieces.' : ' has nothing your drawers can\u2019t cover.'));
+      return;
+    }
+    var header = ['Build / Set','Part Num','Element ID','Color','Description','Needed','On Hand','Missing','In Drawers','Covered By Drawers','Still Needed After Drawers','Where In Drawers'];
+    var lines = [header.map(csvEscape).join(',')];
+    rep.view.forEach(function(l){
+      lines.push([rep.name, l.partNum, l.elementId || '', l.color, l.desc, l.needed, l.have, l.missing, l.inDrawers, l.covered, l.still,
+        missingWhereText(l, '; ', function(w){ return w.label + ' (' + w.qty + ')'; })].map(csvEscape).join(','));
+    });
+    downloadCsv(lines, 'lego-missing-pieces-' + missingReportSlug(rep));
+  }
+
+  function generateMissingReportPDF(){
+    var rep = currentMissingReport();
+    if (!rep) return;
+    if (!rep.view.length){
+      alert('Nothing to report \u2014 ' + rep.name + (rep.missing === 0 ? ' has no missing pieces.' : ' has nothing your drawers can\u2019t cover.'));
+      return;
+    }
+    var landscape = document.getElementById('missing-report-layout').value === 'landscape';
+    var btn = document.getElementById('missing-report-pdf-btn');
+    var prevBtnHtml = btn ? btn.innerHTML : null;
+    if (btn){
+      btn.disabled = true;
+      btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating\u2026';
+    }
+    var uniqueIds = Array.from(new Set(rep.view.filter(function(l){ return l.elementId; }).map(function(l){ return l.elementId; })));
+    Promise.all(uniqueIds.map(function(id){
+      return fetchPartImageForPdf(id).then(function(dataUrl){ return [id, dataUrl]; });
+    })).then(function(pairs){
+      var imgMap = {};
+      pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
+      var doc = getPdfDoc();
+      if (!doc) return;
+      if (landscape) doc = new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' });
+      var shownMissing = rep.view.reduce(function(s, l){ return s + l.missing; }, 0);
+      pdfHeader(doc, 'Missing Pieces \u2014 ' + rep.name,
+        'Generated ' + new Date().toLocaleDateString() + (rep.subtitleBits.length ? ' \u00b7 ' + rep.subtitleBits.join(' \u00b7 ') : '') +
+        ' \u00b7 ' + rep.view.length + ' part line' + (rep.view.length === 1 ? '' : 's') + ' \u00b7 ' + shownMissing.toLocaleString() + ' piece' + (shownMissing === 1 ? '' : 's') + ' missing' +
+        ' \u00b7 drawers cover ' + rep.covered.toLocaleString() + ' \u00b7 ' + rep.still.toLocaleString() + ' still needed' + (rep.showStill ? ' (only parts your drawers can\u2019t fully cover are listed)' : ''));
+      var body = rep.view.map(function(l){
+        return ['', l.partNum, l.color, truncateForPdf(l.desc, landscape ? 44 : 22), String(l.needed), String(l.have), String(l.missing),
+          l.inDrawers > 0 ? l.inDrawers + ' (' + missingWhereText(l, ', ', function(w){ return w.label + ' \u00d7' + w.qty; }) + ')' : '\u2014',
+          l.still > 0 ? String(l.still) : '\u2014'];
+      });
+      var widths = landscape ? { desc: 230, where: 200 } : { desc: 120, where: 120 };
+      doc.autoTable({
+        startY: 70,
+        margin: { top: 70, right: 40, bottom: 30, left: 40 },
+        head: [['', 'Part #', 'Color', 'Description', 'Need', 'Have', 'Missing', 'In drawers', 'Still needed']],
+        body: body,
+        styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: PDF_THUMB.single.rowHeight, valign: 'middle' },
+        headStyles: { fillColor: [0, 166, 94], textColor: 255 },
+        columnStyles: { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 50 }, 2: { cellWidth: 50 }, 3: { cellWidth: widths.desc }, 4: { cellWidth: 28 }, 5: { cellWidth: 28 }, 6: { cellWidth: 36 }, 7: { cellWidth: widths.where }, 8: { cellWidth: 44 } },
+        didDrawCell: function(data){
+          if (data.section !== 'body' || data.column.index !== 0) return;
+          var l = rep.view[data.row.index];
+          var dataUrl = l && l.elementId && imgMap[l.elementId];
+          if (!dataUrl) return;
+          try {
+            var format = /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG';
+            var size = pdfThumbImageSize('single');
+            var pad = (Math.min(data.cell.height, data.cell.width) - size) / 2;
+            doc.addImage(dataUrl, format, data.cell.x + pad, data.cell.y + pad, size, size);
+          } catch(e){ /* skip a malformed image and leave the cell blank */ }
+        }
+      });
+      doc.save('lego-missing-pieces-' + missingReportSlug(rep) + '.pdf');
+    }).catch(function(err){
+      alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
+    }).then(function(){
+      if (btn){ btn.disabled = false; btn.innerHTML = prevBtnHtml; }
+    });
+  }
+
+  wireEl('missing-report-toggle', 'click', function(){ missingPanelOpen = !missingPanelOpen; refreshMissingPanel(); });
+  wireEl('missing-report-show', 'change', refreshMissingPanel);
+  wireEl('missing-report-sort', 'change', refreshMissingPanel);
+  wireEl('missing-report-csv-btn', 'click', exportMissingReportCSV);
+  wireEl('missing-report-pdf-btn', 'click', generateMissingReportPDF);
+  // any edit made inside the window's parts list (on-hand, quantity, part number, colour) updates the report
+  wireEl('detail-modal-parts-tbody', 'change', function(){ safeRun('missing pieces report', refreshMissingPanel); });
+
+  // "Show only missing pieces": hides the parts list rows that are already complete (the totals above still count everything)
+  function detailRowsToShow(rows, kind){
+    var box = document.getElementById('detail-only-missing');
+    var note = document.getElementById('detail-only-missing-note');
+    if (!box.checked || !rows.length){ note.style.display = 'none'; return rows; }
+    var shown = rows.filter(function(r){
+      return kind === 'set' ? setPartOnHand(r) < setPartNeeded(r) : (r.qty || 0) > (r.onHand || 0);
+    });
+    note.style.display = 'block';
+    note.textContent = shown.length
+      ? 'Showing ' + shown.length + ' of ' + rows.length + ' part line' + (rows.length === 1 ? '' : 's') + ' \u2014 the ones still missing pieces. A line you finish stays visible until the list is redrawn.'
+      : 'Nothing missing \u2014 every part line is on hand.';
+    if (!shown.length && rows.length){
+      var tr = document.createElement('tr');
+      tr.innerHTML = '<td colspan="6" class="empty-msg" style="text-align:center; padding:14px;">Nothing missing \u2014 every part is on hand.</td>';
+      document.getElementById('detail-modal-parts-tbody').appendChild(tr);
+    }
+    return shown;
+  }
+  wireEl('detail-only-missing', 'change', function(){
+    if (!detailContext) return;
+    if (detailContext.kind === 'set') openSetDetail(detailContext.key); else openMocDetail(detailContext.key);
+  });
+
   function openSetDetail(setNum){
     var setInfo = ownedSets.find(function(s){ return s.setNum === setNum; });
     if (!setInfo) return;
@@ -6601,7 +7515,7 @@
 
     var tbody = document.getElementById('detail-modal-parts-tbody');
     tbody.innerHTML = '';
-    genericSortRows(rows, detailModalSort.col, detailModalSort.dir, function(r, col){
+    genericSortRows(detailRowsToShow(rows, 'set'), detailModalSort.col, detailModalSort.dir, function(r, col){
       if (col === 'onHand') return setPartOnHand(r);
       return r[col];
     }).forEach(function(r){
@@ -6668,6 +7582,8 @@
 
     updateSortHeaders('#detail-modal', 'data-detail-sort', detailModalSort);
     renderDetailPhoto();
+    document.getElementById('pull-status').textContent = '';
+    safeRun('missing pieces report', refreshMissingPanel);
     document.getElementById('detail-modal-overlay').style.display = 'flex';
   }
 
@@ -6704,7 +7620,7 @@
 
     var tbody = document.getElementById('detail-modal-parts-tbody');
     tbody.innerHTML = '';
-    genericSortRows(rows, detailModalSort.col, detailModalSort.dir, function(r, col){
+    genericSortRows(detailRowsToShow(rows, 'moc'), detailModalSort.col, detailModalSort.dir, function(r, col){
       if (col === 'onHand') return r.onHand;
       return r[col];
     }).forEach(function(r){
@@ -6800,6 +7716,8 @@
 
     updateSortHeaders('#detail-modal', 'data-detail-sort', detailModalSort);
     renderDetailPhoto();
+    document.getElementById('pull-status').textContent = '';
+    safeRun('missing pieces report', refreshMissingPanel);
     document.getElementById('detail-modal-overlay').style.display = 'flex';
   }
 
@@ -7970,14 +8888,33 @@
     return 'https://rebrickable.com/api/v3/lego/' + pathAndQuery + (pathAndQuery.indexOf('?') === -1 ? '?' : '&') + 'key=' + encodeURIComponent(rebrickableApiKey);
   }
 
+  var rbPaceMs = 0, rbRetry429 = false, rbLastCallAt = 0;
+  function rbSleep(ms){ return new Promise(function(resolve){ setTimeout(resolve, ms); }); }
+  // Only a genuine "not found" (404) comes back as null. While a long job (the photo backfill) is running it spaces its
+  // requests out and, when Rebrickable asks it to slow down (429), waits and tries again instead of giving up.
   function rbFetchJson(url){
-    return fetchUrlMaybeProxied(url).then(function(resp){
-      if (resp.status === 404) return null;
-      if (resp.status === 429) throw new Error('Rebrickable is rate-limiting requests \u2014 wait a few seconds and try again.');
-      if (resp.status === 401 || resp.status === 403) throw new Error('Rebrickable rejected the API key \u2014 check it on the Data & Tools tab.');
-      if (!resp.ok) throw new Error('Rebrickable returned HTTP ' + resp.status + '.');
-      return resp.json();
-    });
+    var attempt = 0;
+    function go(){
+      var wait = rbPaceMs ? Math.max(0, rbLastCallAt + rbPaceMs - Date.now()) : 0;
+      return rbSleep(wait).then(function(){
+        rbLastCallAt = Date.now();
+        return fetchUrlMaybeProxied(url);
+      }).then(function(resp){
+        if (resp.status === 404) return null;
+        if (resp.status === 429){
+          if (rbRetry429 && attempt < 4){
+            attempt++;
+            var ra = parseFloat(resp.headers && resp.headers.get ? resp.headers.get('Retry-After') : '');
+            return rbSleep(Math.min(isFinite(ra) && ra > 0 ? ra * 1000 : Math.pow(2, attempt) * 1000, 20000)).then(go);
+          }
+          throw new Error('Rebrickable is rate-limiting requests \u2014 wait a few seconds and try again.');
+        }
+        if (resp.status === 401 || resp.status === 403) throw new Error('Rebrickable rejected the API key \u2014 check it on the Data & Tools tab.');
+        if (!resp.ok) throw new Error('Rebrickable returned HTTP ' + resp.status + '.');
+        return resp.json();
+      });
+    }
+    return go();
   }
 
   function rbGetPart(partNum){
@@ -8012,8 +8949,8 @@
   }
 
   function rbColorMatch(colors, colorName){
-    var want = normKey(colorName);
-    return colors.find(function(col){ return normKey(col.color) === want; }) || null;
+    var want = normColorKey(colorName);
+    return colors.find(function(col){ return normColorKey(col.color) === want; }) || null;
   }
 
   function describeElements(els){
@@ -11293,6 +12230,11 @@
       function(b){ return b.id; },
       function(b){ return b.label; }
     );
+    report.pullLog = diffArrayByKey(
+      pullLog, remoteData.pullLog || [],
+      function(p){ return p.id; },
+      function(p){ return p.name; }
+    );
     report.bagSavedProgressList = diffArrayByKey(
       bagSavedProgressList, remoteData.bagSavedProgressList || [],
       function(b){ return b.id; },
@@ -11319,7 +12261,7 @@
     rows: 'MOC Parts', ownedSets: 'Official Sets', setParts: 'Official Set Parts',
     drawers: 'Drawers', drawerParts: 'Drawer Parts', mocBuilds: 'MOC Builds',
     mocLocations: 'Storage Locations', mocThemes: 'Build Themes', mocDescriptions: 'Descriptions', mocInstructions: 'Build Instructions',
-    bagInventoryLog: 'Bag Inventory Log', bagSavedProgressList: 'Saved Bags In Progress'
+    bagInventoryLog: 'Bag Inventory Log', pullLog: 'Pull Log', bagSavedProgressList: 'Saved Bags In Progress'
   };
 
   function renderDiffResults(report){
@@ -11428,6 +12370,7 @@
       mocDescriptions: mocDescriptions,
       mocInstructions: mocInstructions,
       bagInventoryLog: bagInventoryLog,
+      pullLog: pullLog,
       bagSavedProgressList: bagSavedProgressList
     };
   }
@@ -11451,6 +12394,7 @@
     if (data.mocDescriptions && typeof data.mocDescriptions === 'object') mocDescriptions = data.mocDescriptions;
     if (data.mocInstructions && typeof data.mocInstructions === 'object') mocInstructions = data.mocInstructions;
     if (Array.isArray(data.bagInventoryLog)) bagInventoryLog = data.bagInventoryLog;
+    if (Array.isArray(data.pullLog)) pullLog = data.pullLog;
     if (Array.isArray(data.bagSavedProgressList)) bagSavedProgressList = data.bagSavedProgressList;
 
     tidyLoadedData();
@@ -11470,6 +12414,7 @@
     saveMocInstructions();
     saveMocThemes();
     saveBagInventoryLog();
+    savePullLog();
     saveBagProgressList();
     suppressAutoPublish = false;
     localDirty = false;
@@ -13274,6 +14219,8 @@
     locationLabels = (Array.isArray(locationLabels) ? locationLabels : []).map(tidyStr).filter(Boolean);
     bagInventoryLog = objectsOnly(bagInventoryLog);
     bagInventoryLog.forEach(function(e){ e.items = objectsOnly(e.items); });
+    pullLog = objectsOnly(pullLog);
+    pullLog.forEach(function(e){ e.lines = objectsOnly(e.lines); e.stillNeeded = objectsOnly(e.stillNeeded); });
     bagSavedProgressList = objectsOnly(bagSavedProgressList);
     bagSavedProgressList.forEach(function(e){ e.items = objectsOnly(e.items); });
   }
@@ -13281,7 +14228,7 @@
   function bootApp(){
     safeRun('lock state', applyViewLockState);
     bootStage = 'loading your saved data';
-    stepSafe('loadState', loadState).then(function(){ return stepSafe('loadImageCacheIndex', loadImageCacheIndex); }).then(function(){ return stepSafe('loadPartImgCacheIndex', loadPartImgCacheIndex); }).then(function(){ return stepSafe('loadChecklist', loadChecklist); }).then(function(){ return stepSafe('loadTallyCounts', loadTallyCounts); }).then(function(){ return stepSafe('loadTallyDrawerAssignments', loadTallyDrawerAssignments); }).then(function(){ return stepSafe('loadProxyPreference', loadProxyPreference); }).then(function(){ return stepSafe('loadPriorityLabels', loadPriorityLabels); }).then(function(){ return stepSafe('loadOwnedSets', loadOwnedSets); }).then(function(){ return stepSafe('loadSetParts', loadSetParts); }).then(function(){ return stepSafe('loadDrawers', loadDrawers); }).then(function(){ return stepSafe('loadDrawerParts', loadDrawerParts); }).then(function(){ return stepSafe('loadBagInventoryLog', loadBagInventoryLog); }).then(function(){ return stepSafe('loadBagProgressList', loadBagProgressList); }).then(function(){ return stepSafe('loadSetPhotos', loadSetPhotos); }).then(function(){ return stepSafe('loadMocPhotos', loadMocPhotos); }).then(function(){ return stepSafe('loadMocLocations', loadMocLocations); }).then(function(){ return stepSafe('loadMocBuilds', loadMocBuilds); }).then(function(){ return stepSafe('loadMocThemes', loadMocThemes); }).then(function(){ return stepSafe('loadMocDescriptions', loadMocDescriptions); }).then(function(){ return stepSafe('loadMocInstructions', loadMocInstructions); }).then(function(){ return stepSafe('loadLocationLabels', loadLocationLabels); })
+    stepSafe('loadState', loadState).then(function(){ return stepSafe('loadImageCacheIndex', loadImageCacheIndex); }).then(function(){ return stepSafe('loadPartImgCacheIndex', loadPartImgCacheIndex); }).then(function(){ return stepSafe('loadChecklist', loadChecklist); }).then(function(){ return stepSafe('loadTallyCounts', loadTallyCounts); }).then(function(){ return stepSafe('loadTallyDrawerAssignments', loadTallyDrawerAssignments); }).then(function(){ return stepSafe('loadProxyPreference', loadProxyPreference); }).then(function(){ return stepSafe('loadPriorityLabels', loadPriorityLabels); }).then(function(){ return stepSafe('loadOwnedSets', loadOwnedSets); }).then(function(){ return stepSafe('loadSetParts', loadSetParts); }).then(function(){ return stepSafe('loadDrawers', loadDrawers); }).then(function(){ return stepSafe('loadDrawerParts', loadDrawerParts); }).then(function(){ return stepSafe('loadBagInventoryLog', loadBagInventoryLog); }).then(function(){ return stepSafe('loadPullLog', loadPullLog); }).then(function(){ return stepSafe('loadBagProgressList', loadBagProgressList); }).then(function(){ return stepSafe('loadSetPhotos', loadSetPhotos); }).then(function(){ return stepSafe('loadMocPhotos', loadMocPhotos); }).then(function(){ return stepSafe('loadMocLocations', loadMocLocations); }).then(function(){ return stepSafe('loadMocBuilds', loadMocBuilds); }).then(function(){ return stepSafe('loadMocThemes', loadMocThemes); }).then(function(){ return stepSafe('loadMocDescriptions', loadMocDescriptions); }).then(function(){ return stepSafe('loadMocInstructions', loadMocInstructions); }).then(function(){ return stepSafe('loadLocationLabels', loadLocationLabels); })
     .then(function(){ return stepSafe('loadRebrickableKey', loadRebrickableKey); }).then(function(){ return stepSafe('loadRbCatalogCache', loadRbCatalogCache); }).then(function(){ return stepSafe('loadSetProxyPref', loadSetProxyPref); }).then(function(){ return stepSafe('loadGithubSettings', loadGithubSettings); }).then(function(){ return stepSafe('loadBackupPassword', loadBackupPassword); }).then(function(){ return stepSafe('loadGithubShaMap', loadGithubShaMap); }).then(function(){ return stepSafe('loadDirtyFlag', loadDirtyFlag); }).then(function(){ return stepSafe('loadViewLocked', loadViewLocked); })
     .then(function(){
       // Draw what's saved on this device straight away -- never make the first draw wait on the network.
