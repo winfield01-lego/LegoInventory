@@ -782,7 +782,7 @@
   <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
     <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Upload parts for a build</p>
     <p style="color: var(--text-secondary); margin: 0 0 10px;">
-      Works with a full CSV (Part Num, Quantity, Color, Description, elementId) or with Rebrickable's own parts-list export, which only includes <strong>Element ID</strong> and <strong>Quantity</strong> &mdash; if Part Num is missing, each element ID is first looked up against parts already known elsewhere in the app (other builds, sets, or drawers), then against the Rebrickable API for anything still unmatched (uses the same API key entered on the Data &amp; Tools tab). Anything that still can't be matched is imported with those fields left blank, so you can search for and fill them in afterward using "Incomplete info" on the MOC Parts tab.
+      Works with a full CSV (Part Num, Quantity, Color, Description, elementId) or with Rebrickable's own parts-list export, which only includes <strong>Element ID</strong> and <strong>Quantity</strong> &mdash; if Part Num is missing, each element ID is first looked up against parts already known elsewhere in the app (other builds, sets, or drawers), then against the Rebrickable API for anything still unmatched (uses the same API key entered on the Data &amp; Tools tab). Anything that still can't be matched is imported with those fields left blank, so you can search for and fill them in afterward using "Incomplete info" on the MOC Parts tab. Leave <strong>Look up each part on Rebrickable</strong> ticked and every new line also gets its blank description and element ID filled in and a photo saved (to your site if GitHub Connection is set up) &mdash; values in your CSV are never overwritten, and the import is saved first, so a slow or failed lookup never loses rows.
     </p>
     <div class="controls" style="margin-bottom: 8px;">
       <select id="mocbuild-csv-target" class="lockable"><option value="">Which build is this for?</option></select>
@@ -790,8 +790,10 @@
       <button id="mocbuild-csv-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
     </div>
     <textarea id="mocbuild-csv-paste" class="lockable" placeholder="Or paste CSV text here" style="width:100%; min-height:100px; font-family: var(--font-mono); font-size: 12px;"></textarea>
+    <label class="checkbox-label" style="margin-top: 8px;"><input type="checkbox" id="mocbuild-csv-lookup" class="lockable" checked /> Look up each part on Rebrickable to fill in missing descriptions, element IDs and photos</label>
     <div class="row" style="margin-top: 8px;">
       <button id="mocbuild-csv-import-btn" class="lockable"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts for this build</button>
+      <button id="mocbuild-csv-lookup-stop-btn" class="icon-btn" style="display:none;">Stop lookup</button>
       <span id="mocbuild-csv-status" style="font-size:13px; color:var(--text-secondary);"></span>
     </div>
   </div>
@@ -1243,14 +1245,16 @@
   <div class="collapse-section">
     <button type="button" class="collapse-header" data-collapse-target="cs-moc-upload"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>MOC Inventory Upload</span></button>
     <div class="collapse-body" id="cs-moc-upload" style="display:none;">
-      <p style="color: var(--text-secondary); margin: 0 0 12px;">Import a parts list CSV (e.g. exported from Google Sheets or Rebrickable). New rows are added alongside your existing inventory &mdash; nothing gets overwritten.</p>
+      <p style="color: var(--text-secondary); margin: 0 0 12px;">Import a parts list CSV (e.g. exported from Google Sheets or Rebrickable). New rows are added alongside your existing inventory &mdash; nothing gets overwritten. With the lookup box ticked, blank descriptions and element IDs are filled in from Rebrickable and photos are saved for the new rows.</p>
       <div class="row" style="margin-bottom: 10px;">
         <input type="file" id="import-file" class="lockable" accept=".csv,text/csv" />
         <button id="import-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
       </div>
       <textarea id="import-paste" class="lockable" placeholder="Or paste CSV text here" style="width:100%; min-height:140px; font-family: var(--font-mono); font-size: 12px;"></textarea>
+      <label class="checkbox-label" style="margin-top: 10px;"><input type="checkbox" id="import-lookup" class="lockable" checked /> Look up each part on Rebrickable to fill in missing descriptions, element IDs and photos</label>
       <div class="row" style="margin-top: 10px;">
         <button id="import-btn" class="lockable"><i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts</button>
+        <button id="import-lookup-stop-btn" class="icon-btn" style="display:none;">Stop lookup</button>
         <span id="import-result" style="font-size: 13px; color: var(--text-secondary);"></span>
       </div>
       <p style="color: var(--text-muted); font-size: 12px; margin-top: 14px;">
@@ -4803,12 +4807,14 @@
   }
   function backfillNoRoom(){ return backfillLocalRoom !== null && backfillLocalRoom < BACKFILL_PHOTO_ESTIMATE; }
 
-  function getMissingPhotoCombos(){
+  function getMissingPhotoCombos(onlyRows){
+    var only = onlyRows ? new Set(onlyRows) : null;
     var sources = [['Build', state.rows], ['Set', setParts], ['Drawer', drawerParts]];
     var combos = {};
     sources.forEach(function(src){
       src[1].forEach(function(r){
         if (!r.partNum) return;
+        if (only && !only.has(r)) return;
         if (!rowHasNoPhoto(r)) return;
         var key = normKey(r.partNum) + '|' + normColorKey(r.color || '');
         var combo = combos[key] || (combos[key] = { partNum: r.partNum, color: r.color || '', rows: [], uses: {} });
@@ -5091,6 +5097,142 @@
 
 
 
+  // ---- Part lookup for MOC uploads: fills in blank descriptions, element IDs and photos from Rebrickable ----
+  // Runs after the import has been saved, so a slow or failed lookup can never lose rows. Only blanks are filled:
+  // anything your CSV already contains is left exactly as it was.
+  var importLookupCancel = false, importLookupRunning = false;
+
+  function maybeLookupImported(newRows, statusEl, boxId, stopId){
+    var box = document.getElementById(boxId);
+    if (!box || !box.checked || !newRows.length) return;
+    lookupImportedParts(newRows, statusEl, stopId);
+  }
+
+  function lookupImportedParts(newRows, statusEl, stopId){
+    var base = statusEl.textContent, baseColor = statusEl.style.color;
+    var stopBtn = document.getElementById(stopId);
+    function say(extra, color){ statusEl.style.color = color || baseColor; statusEl.textContent = base + (extra ? ' ' + extra : ''); }
+    if (!rebrickableApiKey){
+      say('To fill in descriptions, element IDs and photos automatically, add a Rebrickable API key on the Data & Tools tab.', 'var(--text-secondary)');
+      return;
+    }
+    if (importLookupRunning){
+      say('A part lookup is already running \u2014 upload again once it finishes.', 'var(--text-secondary)');
+      return;
+    }
+    importLookupRunning = true;
+    importLookupCancel = false;
+
+    var byPart = {}, order = [];
+    newRows.forEach(function(r){
+      if (!r.partNum) return;
+      var k = normKey(r.partNum);
+      if (!byPart[k]){ byPart[k] = { partNum: r.partNum, rows: [] }; order.push(k); }
+      byPart[k].rows.push(r);
+    });
+    var stats = { parts: order.length, desc: 0, elements: 0, notFound: [], photos: 0, approx: 0, noimage: 0, download: 0, save: 0, saveWhy: '', failed: 0 };
+    rbPaceMs = 450;
+    rbRetry429 = true;
+    if (stopBtn) stopBtn.style.display = '';
+
+    function finish(stopped){
+      rbPaceMs = 0;
+      rbRetry429 = false;
+      importLookupRunning = false;
+      if (stopBtn) stopBtn.style.display = 'none';
+      saveState();
+      var mocNames = {};
+      newRows.forEach(function(r){ if (r.moc) mocNames[r.moc] = true; });
+      Object.keys(mocNames).forEach(function(n){ touchMocLastEdited(n); });
+      refreshAllThumbnails();
+      renderOverview();
+      renderMocBuildsTab();
+      if (state.tab === 'parts') renderParts();
+
+      var plural = function(n, w){ return n + ' ' + w + (n === 1 ? '' : 's'); };
+      var added = [];
+      if (stats.desc) added.push(plural(stats.desc, 'description'));
+      if (stats.elements) added.push(plural(stats.elements, 'element ID'));
+      if (stats.photos) added.push(plural(stats.photos, 'photo'));
+      var bits = [(stopped ? 'Lookup stopped. ' : '') + 'Rebrickable lookup of ' + plural(stats.parts, 'part') + ': ' +
+        (added.length ? 'added ' + added.join(', ') + '.' : 'nothing needed adding \u2014 every line already had its description, element ID and photo.')];
+      if (stats.approx) bits.push(stats.approx + (stats.approx === 1 ? ' photo is a close match' : ' photos are close matches') + ' (the plain part\u2019s photo for a lettered or printed variant).');
+      if (stats.notFound.length) bits.push('Not found on Rebrickable: ' + stats.notFound.slice(0, 6).join(', ') + (stats.notFound.length > 6 ? ' and ' + (stats.notFound.length - 6) + ' more' : '') + '.');
+      if (stats.noimage) bits.push(plural(stats.noimage, 'part') + (stats.noimage === 1 ? ' has' : ' have') + ' no photo on Rebrickable.');
+      if (stats.download) bits.push(plural(stats.download, 'photo download') + ' failed.');
+      if (stats.save) bits.push(plural(stats.save, 'photo') + ' couldn\u2019t be saved (' + (stats.saveWhy || 'unknown error') + ').');
+      if (stats.failed) bits.push(plural(stats.failed, 'lookup') + ' failed \u2014 the rows are imported; use the photo backfill on the Official Sets tab to retry.');
+      var problems = stats.notFound.length || stats.noimage || stats.download || stats.save || stats.failed;
+      say(bits.join(' '), problems ? 'var(--text-danger)' : 'var(--text-success)');
+    }
+
+    // 1) descriptions and element IDs
+    var ai = 0;
+    function phaseA(){
+      if (importLookupCancel || ai >= order.length) return phaseB();
+      var g = byPart[order[ai++]];
+      var needDesc = g.rows.some(function(r){ return !r.desc; });
+      var needEl = g.rows.some(function(r){ return !r.elementId && r.color; });
+      if (!needDesc && !needEl){ say('Looking up parts on Rebrickable\u2026 ' + ai + ' / ' + order.length, 'var(--text-secondary)'); return phaseA(); }
+      rbGetPart(g.partNum).then(function(part){
+        if (part) return { pn: g.partNum, part: part };
+        // not listed under that number: look for the same part under its BrickLink or LDraw number
+        return backfillFindByExternalId(g.partNum).then(function(alt){
+          if (!alt || alt === g.partNum) return null;
+          return rbGetPart(alt).then(function(p2){ return p2 ? { pn: alt, part: p2 } : null; });
+        });
+      }).then(function(found){
+        if (!found){ stats.notFound.push(g.partNum); return; }
+        if (needDesc && found.part.name) g.rows.forEach(function(r){ if (!r.desc){ r.desc = found.part.name; stats.desc++; } });
+        if (!needEl) return;
+        return rbGetPartColors(found.pn).then(function(colors){
+          g.rows.forEach(function(r){
+            if (r.elementId || !r.color) return;
+            var m = rbColorMatch(colors, r.color);
+            if (m && m.elements && m.elements.length){ r.elementId = String(m.elements[0]); stats.elements++; }
+          });
+        });
+      }).catch(function(){ stats.failed++; }).then(function(){
+        say('Looking up parts on Rebrickable\u2026 ' + ai + ' / ' + order.length, 'var(--text-secondary)');
+        phaseA();
+      });
+    }
+
+    // 2) photos, for just these new lines, using the same lookups as the photo backfill
+    function phaseB(){
+      if (importLookupCancel) return finish(true);
+      saveState();
+      runNoPhotoCheck(newRows, statusEl.id, function(){
+        var combos = getMissingPhotoCombos(newRows), keys = Object.keys(combos);
+        if (!keys.length) return finish(false);
+        backfillLocalRoom = backfillEstimateLocalRoom();
+        var bi = 0, bdone = 0;
+        function nextPhoto(){
+          if (importLookupCancel) return finish(true);
+          if (bi >= keys.length) return finish(false);
+          var combo = combos[keys[bi++]];
+          backfillPhotoForCombo(combo).then(function(r){
+            if (r.status === 'found'){ stats.photos++; if (r.approx) stats.approx++; }
+            else if (r.status === 'noimage') stats.noimage++;
+            else if (r.status === 'download') stats.download++;
+            else if (r.status === 'save'){ stats.save++; if (r.detail) stats.saveWhy = r.detail; }
+          }).catch(function(){ stats.failed++; }).then(function(){
+            bdone++;
+            say('Looking up photos\u2026 ' + bdone + ' / ' + keys.length, 'var(--text-secondary)');
+            nextPhoto();
+          });
+        }
+        say('Looking up photos\u2026 0 / ' + keys.length, 'var(--text-secondary)');
+        nextPhoto();
+      });
+    }
+
+    say('Looking up parts on Rebrickable\u2026 0 / ' + order.length, 'var(--text-secondary)');
+    phaseA();
+  }
+  wireEl('mocbuild-csv-lookup-stop-btn', 'click', function(){ importLookupCancel = true; });
+  wireEl('import-lookup-stop-btn', 'click', function(){ importLookupCancel = true; });
+
   function importBuildPartsCSVText(buildName, text){
     var statusEl = document.getElementById('mocbuild-csv-status');
     var table = parseCSV(text);
@@ -5144,6 +5286,7 @@
     }
 
     function finalize(apiResults){
+      var startIdx = state.rows.length;
       var localResolved = 0, apiResolved = 0, unresolved = 0, added = 0;
       pending.forEach(function(p){
         if (p.resolvedLocally){
@@ -5193,6 +5336,7 @@
       renderOverview();
       renderMocBuildsTab();
       if (state.tab === 'parts') renderParts();
+      maybeLookupImported(state.rows.slice(startIdx), statusEl, 'mocbuild-csv-lookup', 'mocbuild-csv-lookup-stop-btn');
     }
 
     var needsApi = pending.filter(function(p){ return !p.partNum && p.elementId; });
@@ -11680,6 +11824,7 @@
       resultEl.textContent = 'Missing required columns \u2014 need at least Part Num, Quantity, and MOC Name.';
       return;
     }
+    var startIdx = state.rows.length;
     var added = 0, skipped = 0, mocsSeen = {};
     for (var r = 1; r < table.length; r++){
       var cols = table[r];
@@ -11718,6 +11863,7 @@
     resultEl.textContent = 'Added ' + added + ' part' + (added===1?'':'s') + ' across ' + Object.keys(mocsSeen).length + ' build' + (Object.keys(mocsSeen).length===1?'':'s') + (skipped ? (' (skipped ' + skipped + ' incomplete row' + (skipped===1?'':'s') + ')') : '') + '.';
     document.getElementById('import-paste').value = '';
     document.getElementById('import-file').value = '';
+    maybeLookupImported(state.rows.slice(startIdx), resultEl, 'import-lookup', 'import-lookup-stop-btn');
   }
 
   wireEl('import-btn', 'click', function(){
