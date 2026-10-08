@@ -1128,12 +1128,14 @@
         One repo, branch, and token used by everything below that talks to GitHub &mdash; publishing your collection, and (if you use it) the download script's auto-commit step. Saved in this browser so you don't have to retype it, but each browser needs it entered once.
       </p>
       <div class="controls" style="margin-bottom: 8px;">
-        <input type="text" id="gh-repo-input" placeholder="owner/repo, e.g. yourname/lego-inventory" style="min-width:220px;" />
-        <input type="text" id="gh-branch-input" placeholder="Branch (default: main)" style="min-width:140px;" />
+        <input type="text" id="gh-repo-input" placeholder="owner/repo, e.g. yourname/lego-inventory" style="min-width:220px;" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" />
+        <input type="text" id="gh-branch-input" placeholder="Branch (default: main)" style="min-width:140px;" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" />
       </div>
       <div class="controls" style="margin-bottom: 8px;">
-        <input type="password" id="gh-token-input" placeholder="GitHub personal access token" style="min-width:260px;" />
+        <input type="password" id="gh-token-input" placeholder="GitHub personal access token" style="min-width:260px;" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" />
+        <button type="button" id="gh-test-btn" class="icon-btn"><i class="ti ti-plug-connected" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Test connection</button>
       </div>
+      <p id="gh-test-status" style="margin: 0 0 8px; font-size: 13px; color: var(--text-secondary);"></p>
       <p style="margin: 0; color: var(--text-muted); font-size: 12px;">
         Use a <strong>fine-grained</strong> token (github.com &rarr; Settings &rarr; Developer settings &rarr; Personal access tokens &rarr; Fine-grained tokens) scoped to <strong>only this one repository</strong>, with just "Contents: Read and write" permission &mdash; not a classic token with full account access. It's saved only in this browser and never sent anywhere except directly to GitHub; you can revoke it anytime from that same settings page.
       </p>
@@ -1174,6 +1176,10 @@
         <label class="checkbox-label"><input type="checkbox" id="fill-element" checked /> Element IDs</label>
         <label class="checkbox-label"><input type="checkbox" id="fill-ids" checked /> Part numbers &amp; colours (from element IDs)</label>
         <label class="checkbox-label"><input type="checkbox" id="fill-photo" checked /> Photos</label>
+      </div>
+      <div style="margin-bottom: 10px;">
+        <label class="checkbox-label"><input type="checkbox" id="fill-refetch" /> <strong>Refetch everything</strong> &mdash; replace what's already there with Rebrickable's current version (not just blanks)</label>
+        <p style="margin: 4px 0 0 24px; font-size: 12px; color: var(--text-muted);">Descriptions are replaced with Rebrickable's name for the part. An element ID is replaced only if it isn't one Rebrickable lists for that part and colour. Photos are downloaded again and overwrite the ones you have, including any you uploaded yourself. Part numbers and colours are never changed, only filled in when blank. It ignores the saved Rebrickable lookups so the data is fresh, which takes longer.</p>
       </div>
       <div class="row" style="flex-wrap: wrap; gap: 8px; align-items: center;">
         <button id="fill-check-btn" class="icon-btn"><i class="ti ti-search" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Check what's missing</button>
@@ -3775,6 +3781,26 @@
   function getMocPriorityData(sortMode, reserve){
     var stock0 = buildDrawerStockMap();
     var where = buildDrawerLocationMap();
+    // For explaining why a line isn't covered: which colours of each part number the drawers do hold.
+    var colorsByPart = {};
+    drawerParts.forEach(function(p){
+      if (!p || !p.partNum || !(p.qty > 0)) return;
+      var pk = String(p.partNum).trim().toLowerCase();
+      var byC = colorsByPart[pk] = colorsByPart[pk] || {};
+      var ck = normColorKey(p.color);
+      if (!byC[ck]) byC[ck] = { color: p.color || '(no colour)', qty: 0 };
+      byC[ck].qty += p.qty;
+    });
+    function whyLeft(l, avail){
+      var have = stock0[l.key] || 0;
+      if (have > 0 && avail < have) return { kind: 'claimed', text: 'Drawers hold ' + have.toLocaleString() + ', but builds ranked above already claimed ' + (have - avail).toLocaleString() + '.' };
+      if (have > 0) return { kind: 'short', text: 'Drawers only hold ' + have.toLocaleString() + '.' };
+      var byC = colorsByPart[String(l.partNum).trim().toLowerCase()] || {};
+      var ck = normColorKey(l.color);
+      var others = Object.keys(byC).filter(function(k){ return k !== ck; }).map(function(k){ return byC[k].color + ' \u00d7' + byC[k].qty.toLocaleString(); });
+      if (others.length) return { kind: 'colour', text: 'Not in your drawers in this colour. Drawers have this part in: ' + others.slice(0, 4).join(', ') + (others.length > 4 ? ', \u2026' : '') + '.' };
+      return { kind: 'none', text: 'No drawer holds this part.' };
+    }
     var rowsByMoc = {};
     state.rows.forEach(function(r){ (rowsByMoc[r.moc] = rowsByMoc[r.moc] || []).push(r); });
     var builds = [], alreadyComplete = 0;
@@ -3819,7 +3845,7 @@
         var take = Math.min(stock[l.key] || 0, l.short);
         covered += take;
         remaining += l.short - take;
-        return { key: l.key, partNum: l.partNum, color: l.color, desc: l.desc, elementId: l.elementId, short: l.short, covered: take, left: l.short - take, where: where[l.key] || [] };
+        return { key: l.key, partNum: l.partNum, color: l.color, desc: l.desc, elementId: l.elementId, short: l.short, covered: take, left: l.short - take, where: where[l.key] || [], why: (l.short - take > 0) ? whyLeft(l, stock[l.key] || 0) : null };
       });
       var byColor = function(a, c){ return (a.color || '').localeCompare(c.color || '') || (a.desc || '').localeCompare(c.desc || ''); };
       lines.sort(function(a, c){ return ((a.left > 0 ? 1 : 0) + (a.covered > 0 ? 0 : 1)) - ((c.left > 0 ? 1 : 0) + (c.covered > 0 ? 0 : 1)) || byColor(a, c); });
@@ -3954,6 +3980,13 @@
         built = true;
         var stats = document.createElement('p');
         stats.style.cssText = 'margin:0 0 6px; font-size:12px; color:var(--text-secondary);';
+        var whyCount = { claimed: 0, short: 0, colour: 0, none: 0 };
+        it.neededParts.forEach(function(l){ if (l.why) whyCount[l.why.kind]++; });
+        var whyBits = [];
+        if (whyCount.claimed) whyBits.push(whyCount.claimed + ' line' + (whyCount.claimed === 1 ? '' : 's') + ' in drawers but claimed by builds ranked above');
+        if (whyCount.short) whyBits.push(whyCount.short + ' where drawers hold fewer than needed');
+        if (whyCount.colour) whyBits.push(whyCount.colour + ' in drawers only in another colour');
+        if (whyCount.none) whyBits.push(whyCount.none + ' not in any drawer');
         stats.textContent = 'On hand ' + it.have.toLocaleString() + ' of ' + it.need.toLocaleString() + ' pieces \u00b7 your drawers can supply ' + it.covered.toLocaleString() + ' \u00b7 still needed after drawers: ' + it.remaining.toLocaleString() + ' piece' + (it.remaining === 1 ? '' : 's') + ' across ' + it.neededParts.length + ' part line' + (it.neededParts.length === 1 ? '' : 's') + '.';
         detail.appendChild(stats);
         function section(title, color, parts, rowHtml){
@@ -3978,8 +4011,15 @@
         });
         section('Still needed \u2014 ' + it.remaining.toLocaleString() + ' piece' + (it.remaining === 1 ? '' : 's') + ', ' + it.neededParts.length + ' part line' + (it.neededParts.length === 1 ? '' : 's'), 'var(--lego-orange)', it.neededParts, function(l){
           return '<span class="shop-still-needed" style="flex-shrink:0;">' + l.left.toLocaleString() + ' still needed</span>' +
+            (l.why ? '<span style="flex-basis:100%; font-size:11px; color:var(--text-muted); padding-left:2px;">' + escapeHtml(l.why.text) + '</span>' : '') +
             (l.covered > 0 ? '<span class="shop-qty" style="flex-shrink:0;" title="Short ' + l.short + ', of which your drawers cover ' + l.covered + '">' + l.covered.toLocaleString() + ' of ' + l.short.toLocaleString() + ' from drawers</span>' : '');
         });
+        if (whyBits.length){
+          var whyP = document.createElement('p');
+          whyP.style.cssText = 'margin:0 0 6px; font-size:12px; color:var(--text-secondary);';
+          whyP.textContent = 'Why the rest isn\u2019t covered: ' + whyBits.join('; ') + '.';
+          detail.insertBefore(whyP, stats.nextSibling);
+        }
         if (!it.coveredParts.length && !it.neededParts.length){
           var none = document.createElement('p');
           none.className = 'empty-msg';
@@ -4327,7 +4367,7 @@
       btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating\u2026';
     }
 
-    var uniqueIds = Array.from(new Set(items.map(function(it){ return it.elementId; }).filter(Boolean)));
+    var uniqueIds = Array.from(new Set(items.map(function(it){ return it && it.elementId; }).filter(Boolean)));
     Promise.all(uniqueIds.map(function(id){
       return fetchPartImageForPdf(id).then(function(dataUrl){ return [id, dataUrl]; });
     })).then(function(pairs){
@@ -4897,7 +4937,7 @@
   }
   function backfillNoRoom(){ return backfillLocalRoom !== null && backfillLocalRoom < BACKFILL_PHOTO_ESTIMATE; }
 
-  function getMissingPhotoCombos(onlyRows){
+  function getMissingPhotoCombos(onlyRows, force){
     var only = onlyRows ? new Set(onlyRows) : null;
     var sources = [['Build', state.rows], ['Set', setParts], ['Drawer', drawerParts]];
     var combos = {};
@@ -4905,7 +4945,7 @@
       src[1].forEach(function(r){
         if (!r.partNum) return;
         if (only && !only.has(r)) return;
-        if (!rowHasNoPhoto(r)) return;
+        if (!force && !rowHasNoPhoto(r)) return;
         var key = normKey(r.partNum) + '|' + normColorKey(r.color || '');
         var combo = combos[key] || (combos[key] = { partNum: r.partNum, color: r.color || '', rows: [], uses: {} });
         combo.rows.push(r);
@@ -5274,6 +5314,11 @@
     var localRoom = fix.photo && photoRows.length && !githubConnectionConfigured() ? backfillEstimateLocalRoom() : null;
     var photosBlocked = localRoom !== null && localRoom < BACKFILL_PHOTO_ESTIMATE;
 
+    if (fix.refetch){
+      // forget what was looked up before, so every answer comes from Rebrickable now
+      rbPersistedParts = {}; rbPartCache = {}; rbPersistedColors = {}; rbColorsCache = {};
+      scheduleRbCacheSave();
+    }
     rbPaceMs = 450;
     rbRetry429 = true;
     if (stopBtn) stopBtn.style.display = '';
@@ -5292,13 +5337,14 @@
 
       var plural = function(n, w){ return n + ' ' + w + (n === 1 ? '' : 's'); };
       var added = [];
+      var verb = fix.refetch ? 'updated' : 'added';
       if (stats.partNums) added.push(plural(stats.partNums, 'part number'));
       if (stats.colors) added.push(plural(stats.colors, 'colour'));
       if (stats.desc) added.push(plural(stats.desc, 'description'));
       if (stats.elements) added.push(plural(stats.elements, 'element ID'));
       if (stats.photos) added.push(plural(stats.photos, 'photo') + (stats.toSite ? ' (' + stats.toSite + ' to your site' + (stats.toBrowser ? ', ' + stats.toBrowser + ' in this browser' : '') + ')' : ''));
       var bits = [(stopped ? 'Lookup stopped. ' : '') + 'Rebrickable lookup' + (stats.parts ? ' of ' + plural(stats.parts, 'part') : '') + ': ' +
-        (added.length ? 'added ' + added.join(', ') + '.' : (stats.photosBlocked ? 'no descriptions, element IDs or part details were missing.' : 'nothing needed adding \u2014 every line already had what was asked for.'))];
+        (added.length ? verb + ' ' + added.join(', ') + '.' : (stats.photosBlocked ? 'no descriptions, element IDs or part details were missing.' : (fix.refetch ? 'everything already matched Rebrickable.' : 'nothing needed adding \u2014 every line already had what was asked for.')))];
       if (stats.approx) bits.push(stats.approx + (stats.approx === 1 ? ' photo is a close match' : ' photos are close matches') + ' (the plain part\u2019s photo for a lettered or printed variant).');
       if (stats.notFound.length) bits.push('Not found on Rebrickable: ' + stats.notFound.slice(0, 6).join(', ') + (stats.notFound.length > 6 ? ' and ' + (stats.notFound.length - 6) + ' more' : '') + '.');
       if (stats.noimage) bits.push(plural(stats.noimage, 'part') + (stats.noimage === 1 ? ' has' : ' have') + ' no photo on Rebrickable.');
@@ -5357,8 +5403,8 @@
       }
       if (importLookupCancel || ai >= order.length) return phaseB();
       var g = byPart[order[ai++]];
-      var needDesc = fix.desc && g.rows.some(function(r){ return !r.desc; });
-      var needEl = fix.element && g.rows.some(function(r){ return !r.elementId && r.color; });
+      var needDesc = fix.desc && (fix.refetch || g.rows.some(function(r){ return !r.desc; }));
+      var needEl = fix.element && (fix.refetch ? g.rows.some(function(r){ return !!r.color; }) : g.rows.some(function(r){ return !r.elementId && r.color; }));
       if (!needDesc && !needEl){ if (ai % 25 === 0) say('Looking up parts on Rebrickable\u2026 ' + ai + ' / ' + order.length, 'var(--text-secondary)'); return phaseA(); }
       rbGetPart(g.partNum).then(function(part){
         if (part) return { pn: g.partNum, part: part };
@@ -5373,13 +5419,17 @@
           note(g.partNum, '', '', usesOf(g.rows), 'notfound', '');
           return;
         }
-        if (needDesc && found.part.name) g.rows.forEach(function(r){ if (!r.desc){ r.desc = found.part.name; stats.desc++; } });
+        if (needDesc && found.part.name) g.rows.forEach(function(r){ if ((fix.refetch || !r.desc) && r.desc !== found.part.name){ r.desc = found.part.name; stats.desc++; } });
         if (!needEl) return;
         return rbGetPartColors(found.pn).then(function(colors){
           g.rows.forEach(function(r){
-            if (r.elementId || !r.color) return;
+            if (!r.color || (r.elementId && !fix.refetch)) return;
             var m = rbColorMatch(colors, r.color);
-            if (m && m.elements && m.elements.length){ r.elementId = String(m.elements[0]); stats.elements++; }
+            if (m && m.elements && m.elements.length){
+              var listed = m.elements.map(String);
+              if (r.elementId && listed.indexOf(String(r.elementId)) !== -1) return;   // already one Rebrickable lists: keep it
+              r.elementId = listed[0]; stats.elements++;
+            }
           });
         });
       }).catch(function(err){
@@ -5397,8 +5447,9 @@
       if (!fix.photo || !photoRows.length) return finish(false);
       if (photosBlocked){ stats.photosBlocked = true; return finish(false); }
       persist();
-      runNoPhotoCheck(photoRows, statusEl.id, function(){
-        var combos = getMissingPhotoCombos(photoRows), keys = Object.keys(combos);
+      var startPhotos = function(cb){ if (fix.refetch) cb(); else runNoPhotoCheck(photoRows, statusEl.id, cb); };
+      startPhotos(function(){
+        var combos = getMissingPhotoCombos(photoRows, fix.refetch), keys = Object.keys(combos);
         if (!keys.length) return finish(false);
         backfillLocalRoom = localRoom;
         var bi = 0, bdone = 0;
@@ -5455,7 +5506,7 @@
 
   // ---- the "Fill In Missing Part Details" tool: goes back over lists you imported earlier ----
   function fillBox(id){ var b = document.getElementById(id); return !!(b && b.checked); }
-  function fillOptions(){ return { desc: fillBox('fill-desc'), element: fillBox('fill-element'), ids: fillBox('fill-ids'), photo: fillBox('fill-photo') }; }
+  function fillOptions(){ return { desc: fillBox('fill-desc'), element: fillBox('fill-element'), ids: fillBox('fill-ids'), photo: fillBox('fill-photo'), refetch: fillBox('fill-refetch') }; }
   function fillScopeValue(){ var s = document.getElementById('fill-scope'); return (s && s.value) || 'all'; }
 
   function populateFillScope(){
@@ -5485,8 +5536,8 @@
     return {
       part: fix.ids && !r.partNum && !!r.elementId,
       color: fix.ids && !r.color && !!r.elementId,
-      desc: fix.desc && !r.desc && (!!r.partNum || !!r.elementId),
-      element: fix.element && !r.elementId && !!r.partNum && !!r.color
+      desc: fix.desc && (fix.refetch ? !!r.partNum : (!r.desc && (!!r.partNum || !!r.elementId))),
+      element: fix.element && !!r.partNum && !!r.color && (fix.refetch || !r.elementId)
     };
   }
 
@@ -5528,6 +5579,13 @@
     statusEl.style.color = 'var(--text-secondary)';
     if (!lines.length){ statusEl.textContent = 'There are no part lines in that scope.'; return; }
     var nParts = Object.keys(parts).length;
+    if (fix.refetch){
+      var all = {}, nLines = 0;
+      sc.rows.forEach(function(r){ nLines++; if (r.partNum) all[normKey(r.partNum)] = true; });
+      var nAll = Object.keys(all).length, mins = Math.max(1, Math.round(nAll * 3 * 0.45 / 60) + (fix.photo ? Math.round(nAll * 0.4 / 60) : 0));
+      statusEl.textContent = 'Refetch everything: ' + nLines.toLocaleString() + ' lines, ' + nAll.toLocaleString() + ' different parts to look up again on Rebrickable \u2014 roughly ' + mins + ' minute' + (mins === 1 ? '' : 's') + ' or more.' + (fix.photo ? fillPhotoNote() : '');
+      return;
+    }
     statusEl.textContent = lines.join(' ') + (totalGaps ? ' Filling these in means looking up about ' + nParts.toLocaleString() + ' different part' + (nParts === 1 ? '' : 's') + ' on Rebrickable.' : '') + (fix.photo ? fillPhotoNote() : '');
   }
 
@@ -5541,6 +5599,11 @@
     var sc = fillCollect(fillScopeValue());
     if (!sc.rows.length) return fail('There are no part lines in that scope.');
     var fieldRows = sc.rows.filter(function(r){ var g = rowGaps(r, fix); return g.part || g.color || g.desc || g.element; });
+    if (fix.refetch){
+      var what = [fix.desc && 'descriptions', fix.element && 'element IDs', fix.photo && 'photos (including any you uploaded yourself)'].filter(Boolean).join(', ').replace(/, ([^,]*)$/, ' and $1');
+      if (!what) return fail('Refetch replaces descriptions, element IDs or photos \u2014 tick at least one of those.');
+      if (!confirm('Refetch everything will replace the ' + what + ' on ' + sc.rows.length.toLocaleString() + ' lines with what Rebrickable has now. Anything you typed or uploaded for those will be overwritten. Continue?')) return;
+    }
     fillReportList = [];
     repBtn.style.display = 'none';
     runBtn.disabled = true;
@@ -11602,7 +11665,7 @@
   }
 
   function generateShoppingListPDF(){
-    var items = lastShopListItems;
+    var items = lastShopListItems.filter(Boolean);
     if (!items.length){
       alert('Nothing to report \u2014 pick one or more builds and make sure your filters leave at least one part.');
       return;
@@ -11614,7 +11677,7 @@
       btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating\u2026';
     }
 
-    var uniqueIds = Array.from(new Set(items.map(function(it){ return it.elementId; }).filter(Boolean)));
+    var uniqueIds = Array.from(new Set(items.map(function(it){ return it && it.elementId; }).filter(Boolean)));
     Promise.all(uniqueIds.map(function(id){
       return fetchPartImageForPdf(id).then(function(dataUrl){ return [id, dataUrl]; });
     })).then(function(pairs){
@@ -11692,7 +11755,7 @@
       btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating\u2026';
     }
 
-    var uniqueIds = Array.from(new Set(items.map(function(it){ return it.elementId; }).filter(Boolean)));
+    var uniqueIds = Array.from(new Set(items.map(function(it){ return it && it.elementId; }).filter(Boolean)));
     Promise.all(uniqueIds.map(function(id){
       return fetchPartImageForPdf(id).then(function(dataUrl){ return [id, dataUrl]; });
     })).then(function(pairs){
@@ -12581,14 +12644,58 @@
     }).catch(function(){});
   }
 
+  // Pasting on a phone can drag along things you can't see: a line break, a non-breaking or zero-width space, quote marks,
+  // a leading "Bearer ", or a whole github.com URL in the repo box. Clean all of that out so a good key isn't rejected.
+  function cleanGithubToken(t){
+    return String(t || '').replace(/^\s*(bearer|token)\s+/i, '').replace(/[\s\u00A0\u200B-\u200D\u2060\uFEFF]+/g, '').replace(/^["'\u2018\u2019\u201C\u201D`]+|["'\u2018\u2019\u201C\u201D`]+$/g, '');
+  }
+  function cleanGithubRepo(r){
+    return String(r || '').replace(/[\s\u00A0\u200B-\u200D\u2060\uFEFF]+/g, '').replace(/^https?:\/\//i, '').replace(/^(www\.)?github\.com\//i, '').replace(/\.git$/i, '').replace(/\/+$/, '');
+  }
   function saveGithubSettings(){
+    var repoEl = document.getElementById('gh-repo-input'), tokEl = document.getElementById('gh-token-input'), brEl = document.getElementById('gh-branch-input');
     ghSettings = {
-      repo: document.getElementById('gh-repo-input').value.trim(),
-      branch: document.getElementById('gh-branch-input').value.trim(),
-      token: document.getElementById('gh-token-input').value.trim()
+      repo: cleanGithubRepo(repoEl.value),
+      branch: brEl.value.replace(/[\s\u00A0\u200B-\u200D\uFEFF]+/g, ''),
+      token: cleanGithubToken(tokEl.value)
     };
+    if (repoEl.value !== ghSettings.repo) repoEl.value = ghSettings.repo;
+    if (brEl.value !== ghSettings.branch) brEl.value = ghSettings.branch;
+    if (tokEl.value !== ghSettings.token) tokEl.value = ghSettings.token;
     return storage.set(GH_SETTINGS_KEY, JSON.stringify(ghSettings), false);
   }
+
+  // Says exactly what is wrong with the connection, instead of a generic failure.
+  function testGithubConnection(){
+    var statusEl = document.getElementById('gh-test-status'), btn = document.getElementById('gh-test-btn');
+    function show(msg, ok){ statusEl.style.color = ok ? 'var(--text-success)' : 'var(--text-danger)'; statusEl.textContent = msg; }
+    saveGithubSettings();
+    var repo = ghSettings.repo, token = ghSettings.token, branch = ghSettings.branch || 'main';
+    if (!repo || repo.indexOf('/') === -1) return show('Enter the repository as owner/repo, for example yourname/lego-inventory.', false);
+    if (!token) return show('Paste your GitHub token first.', false);
+    var tokenNote = /^(github_pat_|gh[pousr]_)/.test(token) ? '' : ' (That doesn\u2019t look like a GitHub token \u2014 they start with github_pat_ or ghp_. Check you copied the token itself, not its name.)';
+    btn.disabled = true;
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Testing\u2026';
+    fetch('https://api.github.com/repos/' + repo, { headers: githubApiHeaders(token), cache: 'no-store' }).then(function(resp){
+      var expires = resp.headers.get('github-authentication-token-expiration');
+      if (resp.status === 401) return show('GitHub rejected the token (401). It has most likely expired or been revoked \u2014 fine-grained tokens expire after the period you chose when you made them. Make a new one at github.com \u2192 Settings \u2192 Developer settings \u2192 Fine-grained tokens, then paste it here.' + tokenNote, false);
+      if (resp.status === 404) return show('GitHub says it can\u2019t find ' + repo + ' with this token (404). Either the name is spelled differently, or the token wasn\u2019t given access to that repository.' + tokenNote, false);
+      if (resp.status === 403) return show('GitHub refused the request (403). The token may lack permission, or GitHub is rate-limiting this connection \u2014 wait a few minutes and test again.', false);
+      if (!resp.ok) return show('GitHub answered ' + resp.status + '.', false);
+      return resp.json().then(function(info){
+        var canPush = info && info.permissions ? !!info.permissions.push : null;
+        if (canPush === false) return show('Connected to ' + repo + ', but this token can only read it. Give it \u201cContents: Read and write\u201d permission so photos and data can be saved.', false);
+        return fetch('https://api.github.com/repos/' + repo + '/branches/' + encodeURIComponent(branch), { headers: githubApiHeaders(token), cache: 'no-store' }).then(function(br){
+          if (br.status === 404) return show('Connected to ' + repo + ', but there is no branch called \u201c' + branch + '\u201d. Fix the Branch box (or leave it empty for main).', false);
+          show('Connected to ' + repo + ' \u2014 token accepted' + (canPush ? ' and allowed to save' : '') + '.' + (expires ? ' It expires ' + expires + '.' : ''), true);
+        });
+      });
+    }).catch(function(err){
+      show('Couldn\u2019t reach GitHub at all (' + ((err && err.message) || 'network error') + '). That points to the phone\u2019s connection rather than the token \u2014 try switching between Wi-Fi and mobile data, turn off any VPN or content blocker for this site, and test again.', false);
+    }).then(function(){ btn.disabled = false; });
+  }
+  wireEl('gh-test-btn', 'click', testGithubConnection);
 
   function loadGithubShaMap(){
     return storage.get(GH_SHA_MAP_KEY, false).then(function(res){
@@ -13185,8 +13292,12 @@
     document.getElementById('sync-warning-banner').style.display = 'none';
   });
 
+  // Saved as you type or paste (not only when the box loses focus), so switching apps to copy the token can't lose it.
   ['gh-repo-input','gh-branch-input','gh-token-input'].forEach(function(id){
-    document.getElementById(id).addEventListener('change', saveGithubSettings);
+    var el = document.getElementById(id), t = null;
+    el.addEventListener('change', saveGithubSettings);
+    el.addEventListener('blur', saveGithubSettings);
+    el.addEventListener('input', function(){ clearTimeout(t); t = setTimeout(saveGithubSettings, 700); });
   });
 
   function tryCacheImage(elementId, url){
