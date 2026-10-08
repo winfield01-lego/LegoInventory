@@ -1486,6 +1486,7 @@
     <button id="detail-modal-clear-quantities" class="icon-btn lockable" style="display:none; color: var(--text-danger); border-color: var(--text-danger); margin-bottom:14px; margin-left:8px;"><i class="ti ti-eraser" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Clear All Quantities (set On Hand to 0 for every part)</button>
     <button id="detail-modal-refetch-parts" class="icon-btn lockable" style="display:none; margin-bottom:14px; margin-left:8px;" title="Replace this set's parts list with the current one from Rebrickable (spare parts left out)"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Re-fetch parts from Rebrickable</button>
     <p id="detail-modal-refetch-status" style="font-size:12px; color:var(--text-secondary); margin:-6px 0 12px;"></p>
+    <button id="detail-modal-refetch-stop" class="icon-btn" style="display:none; margin:-4px 0 12px;">Stop</button>
 
     <div id="missing-report-panel" style="border:1px solid var(--border); border-radius:10px; padding:8px 10px; margin:0 0 14px; background:var(--surface-1);">
       <div class="row" style="justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
@@ -4657,7 +4658,7 @@
       '<span class="set-edit-field"><input type="text" class="mocbuild-name-edit" placeholder="Build name" value="'+escapeHtml(m.name)+'" /></span>' +
       '<span class="set-edit-field"><input type="text" class="mocbuild-theme-edit" placeholder="Theme" value="'+escapeHtml(mocThemes[m.name] || '')+'" /></span>' +
       '<span class="set-edit-field"><select class="mocbuild-location-edit">'+locationOptionsHtml(mocLocations[m.name] || '')+'</select></span>' +
-      '<span class="set-meta">'+m.lines+' part line'+(m.lines===1?'':'s')+' &middot; '+m.have.toLocaleString()+' / '+m.need.toLocaleString()+' pcs</span>' +
+      '<span class="set-meta">'+m.lines+' part line'+(m.lines===1?'':'s')+' &middot; '+m.have.toLocaleString()+' / '+m.need.toLocaleString()+' pcs'+(m.need - m.have > 0 ? ' <span class="pill pill-short" style="margin-left:4px;">Missing '+(m.need - m.have).toLocaleString()+'</span>' : '')+'</span>' +
       '<span class="set-meta last-edited-meta">'+escapeHtml(formatLastEdited(m.lastEdited))+'</span>';
     var nameInput = card.querySelector('.mocbuild-name-edit');
     var themeInput = card.querySelector('.mocbuild-theme-edit');
@@ -7601,9 +7602,52 @@
       fail('Couldn\u2019t reach Rebrickable (' + (err && err.message ? err.message : 'unknown error') + ') \u2014 nothing was changed. If it keeps failing, turn on the proxy toggle on the Data & Tools tab.');
     });
   }
+  // One button in both windows. For a set it replaces the parts list with Rebrickable's; for a build (which has no
+  // Rebrickable list of its own) it refreshes the details of every line: descriptions, element IDs and photos.
+  function setRefetchButton(kind){
+    var btn = document.getElementById('detail-modal-refetch-parts');
+    if (!kind){ btn.style.display = 'none'; return; }
+    btn.style.display = 'inline-block';
+    if (kind === 'set'){
+      btn.title = 'Replace this set\u2019s parts list with the current one from Rebrickable (spare parts left out)';
+      btn.innerHTML = '<i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Re-fetch parts from Rebrickable';
+    } else {
+      btn.title = 'Replace the descriptions, element IDs and photos on this build\u2019s lines with the current ones from Rebrickable';
+      btn.innerHTML = '<i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Re-fetch part details from Rebrickable';
+    }
+  }
+
+  function refetchBuildDetails(name){
+    var statusEl = document.getElementById('detail-modal-refetch-status'), btn = document.getElementById('detail-modal-refetch-parts');
+    var stopBtn = document.getElementById('detail-modal-refetch-stop');
+    function fail(msg){ statusEl.style.color = 'var(--text-danger)'; statusEl.textContent = msg; }
+    if (!rebrickableApiKey) return fail('Add a Rebrickable API key first (Rebrickable Connection, on the Data & Tools tab).');
+    if (importLookupRunning) return fail('A part lookup is already running \u2014 wait for it to finish.');
+    var rows = state.rows.filter(function(r){ return r.moc === name; });
+    if (!rows.length) return fail('This build has no parts yet.');
+    if (!confirm('Re-fetch from Rebrickable will replace the descriptions, element IDs and photos on ' + rows.length.toLocaleString() + ' part line' + (rows.length === 1 ? '' : 's') + ' of \u201c' + name + '\u201d with what Rebrickable has now. Anything you typed or uploaded for those will be overwritten (part numbers and colours stay as they are). Continue?')) return;
+    btn.disabled = true;
+    stopBtn.style.display = '';
+    runPartDetailFill({
+      rows: rows, photoRows: rows, fix: { desc: true, element: true, ids: true, photo: true, refetch: true },
+      statusEl: statusEl, stopId: 'detail-modal-refetch-stop', base: '', report: [],
+      srcOf: function(){ return 'Build'; },
+      onFinish: function(){
+        btn.disabled = false;
+        stopBtn.style.display = 'none';
+        render();
+        refreshMocBuildViews();
+        if (detailContext && detailContext.kind === 'moc' && detailContext.key === name) openMocDetail(name);   // redraw the rows with the new details
+      }
+    });
+  }
+
   wireEl('detail-modal-refetch-parts', 'click', function(){
-    if (detailContext && detailContext.kind === 'set') refetchSetParts(detailContext.key);
+    if (!detailContext) return;
+    if (detailContext.kind === 'set') refetchSetParts(detailContext.key);
+    else if (detailContext.kind === 'moc') refetchBuildDetails(detailContext.key);
   });
+  wireEl('detail-modal-refetch-stop', 'click', function(){ importLookupCancel = true; });
 
   function markAllSetsComplete(){
     var statusEl = document.getElementById('mark-all-sets-complete-status');
@@ -7787,6 +7831,12 @@
     return d;
   }
 
+  // The same "Missing pieces" figure in the build window and the set window
+  function buildMissingMetric(missing){
+    var color = missing > 0 ? 'var(--text-danger)' : 'var(--text-success)';
+    return buildDetailMetric('Missing pieces', '<span style="color:' + color + ';">' + missing.toLocaleString() + '</span>');
+  }
+
   function buildQtyOwnedMetric(setInfo, rows){
     var d = document.createElement('div');
     d.className = 'metric';
@@ -7819,6 +7869,10 @@
     metricsEl.appendChild(buildQtyOwnedMetric(setInfo, rows));
     metricsEl.appendChild(buildDetailMetric('Unique parts', rows.length));
     metricsEl.appendChild(buildDetailMetric('Pieces on hand', pieceOnHand.toLocaleString() + ' / ' + pieceNeeded.toLocaleString()));
+    var setMissing = rows.reduce(function(sum, r){ return sum + Math.max(0, setPartNeeded(r) - setPartOnHand(r)); }, 0);
+    var setHave = rows.reduce(function(sum, r){ return sum + Math.min(setPartOnHand(r), setPartNeeded(r)); }, 0);
+    metricsEl.appendChild(buildMissingMetric(setMissing));
+    metricsEl.appendChild(buildDetailMetric('Complete', (pieceNeeded ? Math.round(100 * setHave / pieceNeeded) : 100) + '%'));
   }
 
   function genericSortRows(rows, col, dir, valueFn){
@@ -8085,7 +8139,7 @@
     var rows = setParts.filter(function(r){ return r.setNum === setNum; });
     document.getElementById('detail-modal-mark-complete').style.display = rows.length ? 'inline-block' : 'none';
     document.getElementById('detail-modal-clear-quantities').style.display = rows.length ? 'inline-block' : 'none';
-    document.getElementById('detail-modal-refetch-parts').style.display = 'inline-block';
+    setRefetchButton('set');
     document.getElementById('detail-modal-refetch-status').textContent = '';
     refreshSetDetailMetrics(rows, setInfo);
 
@@ -8170,8 +8224,8 @@
     var metricsEl = document.getElementById('detail-modal-metrics');
     metricsEl.innerHTML = '';
     metricsEl.appendChild(buildDetailMetric('Unique parts', rows.length));
-    metricsEl.appendChild(buildDetailMetric('Pieces needed', need.toLocaleString()));
-    metricsEl.appendChild(buildDetailMetric('Pieces on hand', have.toLocaleString()));
+    metricsEl.appendChild(buildDetailMetric('Pieces on hand', have.toLocaleString() + ' / ' + need.toLocaleString()));
+    metricsEl.appendChild(buildMissingMetric(need - have));
     metricsEl.appendChild(buildDetailMetric('Complete', pct + '%'));
   }
 
@@ -8189,7 +8243,7 @@
     refreshInstructionsUI();
     document.getElementById('detail-modal-mark-complete').style.display = rows.length ? 'inline-block' : 'none';
     document.getElementById('detail-modal-clear-quantities').style.display = rows.length ? 'inline-block' : 'none';
-    document.getElementById('detail-modal-refetch-parts').style.display = 'none';
+    setRefetchButton(rows.length ? 'moc' : '');
     document.getElementById('detail-modal-refetch-status').textContent = '';
 
     refreshMocDetailMetrics(rows);
@@ -8269,9 +8323,21 @@
         render();
         refreshMocBuildViews();
       });
+      var mocShortPill = document.createElement('span');
+      mocShortPill.className = 'pill pill-short';
+      mocShortPill.style.cssText = 'margin-left:6px; display:none;';
+      function refreshMocShortPill(){
+        var short = (r.qty || 0) - (r.onHand || 0);
+        if (short > 0){ mocShortPill.style.display = 'inline-block'; mocShortPill.textContent = 'Missing ' + short.toLocaleString(); }
+        else { mocShortPill.style.display = 'none'; }
+      }
+      onHandInput.addEventListener('change', refreshMocShortPill);
+      qtyInput.addEventListener('change', refreshMocShortPill);
       qtyOnHandCell.appendChild(onHandInput);
       qtyOnHandCell.appendChild(document.createTextNode(' / '));
       qtyOnHandCell.appendChild(qtyInput);
+      qtyOnHandCell.appendChild(mocShortPill);
+      refreshMocShortPill();
 
       var delBtn = document.createElement('button');
       delBtn.className = 'icon-btn lockable';
