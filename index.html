@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Lego Collection Inventory</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.47.0/iconfont/tabler-icons.min.css" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tabler-icons/2.47.0/iconfont/tabler-icons.min.css"></noscript>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css" media="print" onload="this.media='all'">
+<noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css"></noscript>
 <style>
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
@@ -88,6 +88,7 @@
 #lego-inv-root .overview-group .metric-grid { margin-bottom: 12px; }
 #lego-inv-root .overview-group-title { margin: 0 0 10px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); font-weight: 700; }
 #lego-inv-root .metric { background: var(--surface-1); border: 2px solid var(--border); border-left: 5px solid var(--lego-blue); border-radius: var(--radius); padding: 0.75rem 1rem; }
+#lego-inv-root #moc-metrics .metric, #lego-inv-root #sets-metrics .metric { display: flex; flex-direction: column; justify-content: space-between; gap: 2px; }
 #lego-inv-root .metric .label { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.02em; }
 #lego-inv-root .metric .value { font-size: 22px; font-weight: 800; margin-top: 2px; color: var(--lego-black); }
 #lego-inv-root .controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
@@ -194,6 +195,35 @@
 #lego-inv-root .shop-items .shop-group-title:first-child { margin-top: 0; }
 #lego-inv-root .row-delete-btn { background: none; border: none; color: var(--text-muted); cursor: pointer; padding: 4px; border-radius: 6px; }
 #lego-inv-root td.actions-cell { white-space: nowrap; overflow: visible; }
+#lego-inv-root #detail-modal table { min-width: 600px; }
+#lego-inv-root #detail-modal td.onhand-qty-cell { white-space: normal; overflow: visible; text-overflow: clip; }
+#lego-inv-root #detail-modal td.onhand-qty-cell .qty-group { white-space: nowrap; }
+#lego-inv-root #detail-modal td.onhand-qty-cell input[type=number] { width: 56px !important; max-width: 56px !important; padding: 2px 4px; }
+#lego-inv-root #detail-modal .field-edit-input { min-width: 0; }
+@media (max-width: 640px) {
+  /* Phones: each part line becomes a small card so the numbers and the Missing tag are always on screen */
+  #lego-inv-root #detail-modal table { min-width: 0; }
+  #lego-inv-root #detail-modal thead tr { display: flex; flex-wrap: wrap; gap: 2px 10px; padding: 4px 6px; }
+  #lego-inv-root #detail-modal thead th { display: block; width: auto !important; border: none; padding: 2px 0; }
+  #lego-inv-root #detail-modal thead th:nth-child(1), #lego-inv-root #detail-modal thead th:nth-child(6) { display: none; }
+  #lego-inv-root #detail-modal tbody, #lego-inv-root #detail-modal tbody tr { display: block; }
+  #lego-inv-root #detail-modal tbody tr { display: grid; grid-template-columns: 52px minmax(0, 1fr) minmax(0, 1fr) 34px; grid-template-areas: "img part color del" "img desc desc desc" "qty qty qty qty"; gap: 4px 6px; padding: 8px 6px; border-bottom: 1px solid var(--border); align-items: center; }
+  #lego-inv-root #detail-modal tbody td { display: block; padding: 0; border: none; min-width: 0; }
+  #lego-inv-root #detail-modal tbody td:nth-child(1) { grid-area: img; align-self: start; }
+  #lego-inv-root #detail-modal tbody td:nth-child(2) { grid-area: part; }
+  #lego-inv-root #detail-modal tbody td:nth-child(3) { grid-area: color; }
+  #lego-inv-root #detail-modal tbody td:nth-child(4) { grid-area: desc; }
+  #lego-inv-root #detail-modal tbody td:nth-child(5) { grid-area: qty; }
+  #lego-inv-root #detail-modal tbody td:nth-child(6) { grid-area: del; justify-self: end; }
+  #lego-inv-root #detail-modal tbody td[colspan] { grid-column: 1 / -1; grid-row: auto; }
+}
+#lego-inv-root #detail-modal td.onhand-qty-cell .pill-short { margin: 3px 0 0 4px; white-space: nowrap; }
+#lego-inv-root #detail-modal td.actions-cell { padding-left: 2px; padding-right: 4px; text-align: center; }
+#lego-inv-root .close-x-btn { width: 32px; height: 32px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
+#lego-inv-root .icon-btn > svg { flex-shrink: 0; }
+#lego-inv-root .icon-btn:has(> svg:only-child) { display: inline-flex; align-items: center; justify-content: center; }
+#lego-inv-root .icon-del-btn { width: 30px; height: 30px; padding: 0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-danger); border-color: var(--text-danger); }
+#lego-inv-root .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 #lego-inv-root .actions-cell-inner { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
 #lego-inv-root .row-delete-btn:hover { color: var(--lego-red); background: var(--bg-danger); }
 #lego-inv-root .row-delete-btn.danger { color: var(--text-danger); }
@@ -341,7 +371,7 @@
   <i class="ti ti-alert-triangle" style="font-size:18px; color:var(--text-danger); flex-shrink:0;" aria-hidden="true"></i>
   <span style="flex:1; min-width:200px; font-size:13px; color:var(--text-danger);">This browser's data doesn't match what's published on your site &mdash; you may be looking at an older or newer version than another device.</span>
   <button id="sync-banner-review-btn" class="icon-btn" style="flex-shrink:0;">Review differences</button>
-  <button id="sync-banner-dismiss-btn" class="icon-btn" style="flex-shrink:0;" title="Dismiss until next visit"><i class="ti ti-x" style="font-size:14px;" aria-hidden="true"></i></button>
+  <button id="sync-banner-dismiss-btn" class="icon-btn" style="flex-shrink:0;" title="Dismiss until next visit" aria-label="Remove"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
 </div>
 
 <div class="row no-print top-action-bar" style="justify-content: space-between; margin-bottom: 1rem;">
@@ -646,8 +676,8 @@
   <div id="empty-msg" class="empty-msg" style="display:none;">No parts match your filters.</div>
   <div class="pager">
     <span id="page-info"></span>
-    <button id="prev-page" class="icon-btn"><i class="ti ti-chevron-left" style="font-size:14px;" aria-hidden="true"></i></button>
-    <button id="next-page" class="icon-btn"><i class="ti ti-chevron-right" style="font-size:14px;" aria-hidden="true"></i></button>
+    <button id="prev-page" class="icon-btn" aria-label="Previous page"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="m15 6-6 6 6 6"/></svg></button>
+    <button id="next-page" class="icon-btn" aria-label="Next page"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="m9 6 6 6-6 6"/></svg></button>
   </div>
 </div>
 
@@ -941,8 +971,8 @@
   <div id="set-parts-empty-msg" class="empty-msg" style="display:none;">No set parts yet &mdash; add a set and import its parts above.</div>
   <div class="pager">
     <span id="set-parts-page-info"></span>
-    <button id="set-parts-prev-page" class="icon-btn"><i class="ti ti-chevron-left" style="font-size:14px;" aria-hidden="true"></i></button>
-    <button id="set-parts-next-page" class="icon-btn"><i class="ti ti-chevron-right" style="font-size:14px;" aria-hidden="true"></i></button>
+    <button id="set-parts-prev-page" class="icon-btn" aria-label="Previous page"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="m15 6-6 6 6 6"/></svg></button>
+    <button id="set-parts-next-page" class="icon-btn" aria-label="Next page"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="m9 6 6 6-6 6"/></svg></button>
   </div>
 </div>
 
@@ -978,8 +1008,8 @@
   <div id="sp-empty-msg" class="empty-msg" style="display:none;">No set parts yet &mdash; import parts for a set on the Sets tab.</div>
   <div class="pager">
     <span id="sp-page-info"></span>
-    <button id="sp-prev-page" class="icon-btn"><i class="ti ti-chevron-left" style="font-size:14px;" aria-hidden="true"></i></button>
-    <button id="sp-next-page" class="icon-btn"><i class="ti ti-chevron-right" style="font-size:14px;" aria-hidden="true"></i></button>
+    <button id="sp-prev-page" class="icon-btn" aria-label="Previous page"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="m15 6-6 6 6 6"/></svg></button>
+    <button id="sp-next-page" class="icon-btn" aria-label="Next page"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="m9 6 6 6-6 6"/></svg></button>
   </div>
 </div>
 
@@ -1131,8 +1161,8 @@
       <div id="drawer-parts-empty-msg" class="empty-msg" style="display:none;">No drawer parts yet &mdash; add a drawer and import or enter its contents in "Manage Drawers &amp; Add Parts" above.</div>
       <div class="pager">
         <span id="drawer-parts-page-info"></span>
-        <button id="drawer-parts-prev-page" class="icon-btn"><i class="ti ti-chevron-left" style="font-size:14px;" aria-hidden="true"></i></button>
-        <button id="drawer-parts-next-page" class="icon-btn"><i class="ti ti-chevron-right" style="font-size:14px;" aria-hidden="true"></i></button>
+        <button id="drawer-parts-prev-page" class="icon-btn" aria-label="Previous page"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="m15 6-6 6 6 6"/></svg></button>
+        <button id="drawer-parts-next-page" class="icon-btn" aria-label="Next page"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="m9 6 6 6-6 6"/></svg></button>
       </div>
     </div>
   </div>
@@ -1462,7 +1492,7 @@
 
 <div id="location-manage-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1100; align-items:center; justify-content:center; padding:20px;">
   <div style="background:var(--surface-2); border-radius:var(--radius); max-width:420px; width:100%; padding:20px; position:relative; border:2px solid var(--border);">
-    <button id="location-manage-close" class="icon-btn" style="position:absolute; top:14px; right:14px;"><i class="ti ti-x" style="font-size:16px;" aria-hidden="true"></i></button>
+    <button id="location-manage-close" class="icon-btn close-x-btn" style="position:absolute; top:14px; right:14px;" aria-label="Close" title="Close (Esc)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
     <p style="margin:0 0 8px; font-size:12px; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.02em;">Storage locations</p>
     <div id="location-chip-list" style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px;"></div>
     <div class="row">
@@ -1476,7 +1506,7 @@
 
 <div id="pml-modal-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1000; align-items:center; justify-content:center; padding:20px;">
   <div id="pml-modal" style="background:var(--surface-2); border-radius:var(--radius); max-width:820px; width:100%; max-height:88vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
-    <button id="pml-close" class="icon-btn" style="position:absolute; top:14px; right:14px;"><i class="ti ti-x" style="font-size:16px;" aria-hidden="true"></i></button>
+    <button id="pml-close" class="icon-btn close-x-btn" style="position:absolute; top:14px; right:14px;" aria-label="Close" title="Close (Esc)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
     <h2 style="margin:0 0 4px; font-size:20px; color:var(--lego-black); padding-right:36px;">Parts Master List</h2>
     <p style="margin:0 0 10px; color:var(--text-secondary); font-size:13px;">Every distinct part and colour in your builds, official sets and drawers. <strong>Refetch</strong> pulls just that part from Rebrickable again and updates every line that uses it &mdash; a few seconds each. Hover or long-press a description to see where the part is used.</p>
     <div class="row" style="flex-wrap:wrap; gap:8px; margin-bottom:8px;">
@@ -1509,13 +1539,13 @@
 
 <div id="detail-modal-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1000; align-items:center; justify-content:center; padding:20px;">
   <div id="detail-modal" style="background:var(--surface-2); border-radius:var(--radius); max-width:720px; width:100%; max-height:88vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
-    <button id="detail-modal-close" class="icon-btn" style="position:absolute; top:14px; right:14px;"><i class="ti ti-x" style="font-size:16px;" aria-hidden="true"></i></button>
+    <button id="detail-modal-close" class="icon-btn close-x-btn" style="position:absolute; top:14px; right:14px;" aria-label="Close" title="Close (Esc)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
     <h2 id="detail-modal-title" style="margin:0 0 2px; font-size:20px; color:var(--lego-black); padding-right:36px;"></h2>
     <p id="detail-modal-theme" style="margin:0 0 6px; color:var(--text-secondary); font-size:13px;"></p>
     <div style="margin:0 0 14px; display:flex; align-items:center; gap:8px;">
       <i class="ti ti-map-pin" style="font-size:14px; color:var(--text-muted);" aria-hidden="true"></i>
       <select id="detail-modal-location" class="lockable" style="flex:1; min-width:180px; font-size:13px;"></select>
-      <button id="detail-modal-manage-locations" class="icon-btn" title="Manage locations"><i class="ti ti-settings" style="font-size:13px;" aria-hidden="true"></i></button>
+      <button id="detail-modal-manage-locations" class="icon-btn" title="Manage locations" aria-label="Manage locations"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
     </div>
 
     <div style="margin:0 0 14px;">
@@ -1529,7 +1559,7 @@
         <button type="button" id="detail-modal-instructions-open" class="icon-btn" style="display:none;" title="Open the instructions in a new tab"><i class="ti ti-external-link" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Open</button>
         <button type="button" id="detail-modal-instructions-upload" class="icon-btn lockable" title="Upload a PDF of the instructions to your site"><i class="ti ti-upload" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Upload PDF</button>
         <input type="file" id="detail-modal-instructions-file" class="lockable" accept="application/pdf,.pdf" style="display:none;" />
-        <button id="detail-modal-instructions-clear" class="icon-btn lockable" style="display:none;" title="Remove the instructions link"><i class="ti ti-x" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i></button>
+        <button id="detail-modal-instructions-clear" class="icon-btn lockable" style="display:none;" title="Remove the instructions link" aria-label="Remove"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
       </div>
       <p id="detail-modal-instructions-status" style="font-size:11px; color:var(--text-secondary); margin:4px 0 0;"></p>
     </div>
@@ -1597,12 +1627,12 @@
       <table>
         <thead>
           <tr>
-            <th style="width:8%">Image</th>
-            <th style="width:11%" class="sortable-th" data-detail-sort="partNum">Part # <span class="sort-arrow"></span></th>
-            <th style="width:11%" class="sortable-th" data-detail-sort="color">Color <span class="sort-arrow"></span></th>
-            <th style="width:24%" class="sortable-th" data-detail-sort="desc">Description <span class="sort-arrow"></span></th>
-            <th style="width:26%" class="sortable-th" data-detail-sort="onHand">On Hand / Qty <span class="sort-arrow"></span></th>
-            <th style="width:20%"></th>
+            <th style="width:10%">Image</th>
+            <th style="width:13%" class="sortable-th" data-detail-sort="partNum">Part # <span class="sort-arrow"></span></th>
+            <th style="width:13%" class="sortable-th" data-detail-sort="color">Color <span class="sort-arrow"></span></th>
+            <th style="width:25%" class="sortable-th" data-detail-sort="desc">Description <span class="sort-arrow"></span></th>
+            <th style="width:31%" class="sortable-th" data-detail-sort="onHand">On Hand / Qty <span class="sort-arrow"></span></th>
+            <th style="width:8%"><span class="sr-only">Delete</span></th>
           </tr>
         </thead>
         <tbody id="detail-modal-parts-tbody"></tbody>
@@ -1613,7 +1643,7 @@
 
 <div id="drawer-detail-modal-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1000; align-items:center; justify-content:center; padding:20px;">
   <div id="drawer-detail-modal" style="background:var(--surface-2); border-radius:var(--radius); max-width:760px; width:100%; max-height:88vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
-    <button id="drawer-detail-modal-close" class="icon-btn" style="position:absolute; top:14px; right:14px;"><i class="ti ti-x" style="font-size:16px;" aria-hidden="true"></i></button>
+    <button id="drawer-detail-modal-close" class="icon-btn close-x-btn" style="position:absolute; top:14px; right:14px;" aria-label="Close" title="Close (Esc)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
     <h2 id="drawer-detail-modal-title" style="margin:0 0 2px; font-size:20px; color:var(--lego-black); padding-right:36px;"></h2>
     <p id="drawer-detail-modal-group" style="margin:0 0 10px; color:var(--text-secondary); font-size:13px;"></p>
 
@@ -2468,7 +2498,7 @@
     mocMg.innerHTML = '';
     var mocMetrics = [
       ['Builds', mocs.length],
-      ['Missing Pieces', mocMissing.toLocaleString()],
+      ['Pieces Needed to Complete Desired Builds', mocMissing.toLocaleString()],
       ['Pieces On Hand', totalHave.toLocaleString()],
       ['Overall Complete', pct + '%']
     ];
@@ -2665,7 +2695,7 @@
       delBtn.className = 'row-delete-btn danger';
       delBtn.style.padding = '2px';
       delBtn.title = 'Remove location';
-      delBtn.innerHTML = '<i class="ti ti-x" style="font-size:13px;" aria-hidden="true"></i>';
+      delBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="M18 6 6 18M6 6l12 12"/></svg>';
       delBtn.addEventListener('click', function(){
         removeLocationLabel(label);
         renderLocationChipList();
@@ -2745,7 +2775,7 @@
       delBtn.className = 'row-delete-btn danger';
       delBtn.style.padding = '2px';
       delBtn.title = 'Remove label';
-      delBtn.innerHTML = '<i class="ti ti-x" style="font-size:13px;" aria-hidden="true"></i>';
+      delBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="M18 6 6 18M6 6l12 12"/></svg>';
       delBtn.addEventListener('click', function(){
         removePriorityLabel(label);
         renderPriorityManagePanel();
@@ -2965,7 +2995,7 @@
       var delBtn = document.createElement('button');
       delBtn.className = 'row-delete-btn danger';
       delBtn.title = 'Remove this part line';
-      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>';
+      delBtn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg>';
       delBtn.addEventListener('click', function(){ deleteRow(r); });
       tr.querySelector('.actions-cell').appendChild(delBtn);
 
@@ -6671,7 +6701,7 @@
       var delBtn = document.createElement('button');
       delBtn.className = 'row-delete-btn danger';
       delBtn.title = 'Remove this part line';
-      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:15px;" aria-hidden="true"></i>';
+      delBtn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg>';
       delBtn.addEventListener('click', function(){
         var idx = setParts.indexOf(r);
         if (idx !== -1){ setParts.splice(idx, 1); saveSetParts(); renderSetsTab(); }
@@ -8412,7 +8442,7 @@
         '<td class="wrap-cell">'+escapeHtml(r.partNum)+'</td>'+
         '<td class="wrap-cell">'+escapeHtml(r.color)+'</td>'+
         '<td class="wrap-cell">'+escapeHtml(r.desc)+'</td>'+
-        '<td class="onhand-qty-cell" style="white-space:nowrap;"></td>'+
+        '<td class="onhand-qty-cell"></td>'+
         '<td class="actions-cell"></td>';
       buildThumb({ elementId: r.elementId, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
 
@@ -8445,16 +8475,19 @@
         render();
         renderSetsTab();
       });
-      qtyOnHandCell.appendChild(onHandInput);
-      qtyOnHandCell.appendChild(document.createTextNode(' / ' + needed.toLocaleString()));
+      var setQtyGroup = document.createElement('span');
+      setQtyGroup.className = 'qty-group';
+      setQtyGroup.appendChild(onHandInput);
+      setQtyGroup.appendChild(document.createTextNode(' / ' + needed.toLocaleString()));
+      qtyOnHandCell.appendChild(setQtyGroup);
       qtyOnHandCell.appendChild(shortPill);
       refreshShortPill();
 
       var delBtn = document.createElement('button');
-      delBtn.className = 'icon-btn lockable';
-      delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); white-space:nowrap; flex-shrink:0;';
+      delBtn.className = 'icon-btn lockable icon-del-btn';
+      delBtn.setAttribute('aria-label', 'Delete this part line');
       delBtn.title = 'Remove this part line';
-      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Delete';
+      delBtn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg>';
       delBtn.addEventListener('click', function(){
         if (!confirm('Remove this part line from ' + setInfo.setNum + '? This can\'t be undone.')) return;
         var idx = setParts.indexOf(r);
@@ -8517,7 +8550,7 @@
         '<td class="partnum-cell"></td>'+
         '<td class="color-cell"></td>'+
         '<td class="desc-cell"></td>'+
-        '<td class="onhand-qty-cell" style="white-space:nowrap;"></td>'+
+        '<td class="onhand-qty-cell"></td>'+
         '<td class="actions-cell"></td>';
       var thumbWrap = tr.querySelector('.part-thumb-wrap');
       buildThumb(r, thumbWrap);
@@ -8590,17 +8623,20 @@
       }
       onHandInput.addEventListener('change', refreshMocShortPill);
       qtyInput.addEventListener('change', refreshMocShortPill);
-      qtyOnHandCell.appendChild(onHandInput);
-      qtyOnHandCell.appendChild(document.createTextNode(' / '));
-      qtyOnHandCell.appendChild(qtyInput);
+      var mocQtyGroup = document.createElement('span');
+      mocQtyGroup.className = 'qty-group';
+      mocQtyGroup.appendChild(onHandInput);
+      mocQtyGroup.appendChild(document.createTextNode(' / '));
+      mocQtyGroup.appendChild(qtyInput);
+      qtyOnHandCell.appendChild(mocQtyGroup);
       qtyOnHandCell.appendChild(mocShortPill);
       refreshMocShortPill();
 
       var delBtn = document.createElement('button');
-      delBtn.className = 'icon-btn lockable';
-      delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); white-space:nowrap; flex-shrink:0;';
+      delBtn.className = 'icon-btn lockable icon-del-btn';
+      delBtn.setAttribute('aria-label', 'Delete this part line');
       delBtn.title = 'Remove this part line';
-      delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Delete';
+      delBtn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg>';
       delBtn.addEventListener('click', function(){
         if (!confirm('Remove this part line from ' + mocName + '? This can\'t be undone.')) return;
         var idx = state.rows.indexOf(r);
@@ -9394,7 +9430,7 @@
         var rm = document.createElement('button');
         rm.className = 'icon-btn lockable';
         rm.title = 'Take this drawer off the list';
-        rm.innerHTML = '<i class="ti ti-x" style="font-size:12px; vertical-align:-2px;" aria-hidden="true"></i>';
+        rm.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="M18 6 6 18M6 6l12 12"/></svg>';
         rm.addEventListener('click', function(){
           dmState.sources.splice(idx, 1);
           dmPruneSelection();
@@ -9879,6 +9915,118 @@
       }).catch(function(err){ delete rbColorsCache[k]; throw err; });
     }
     return rbColorsCache[k];
+  }
+
+  // ---- Colour numbers -> colour names. Rebrickable's and BrickLink's parts-list exports give colours as ID numbers,
+  // but everything else here (drawer matching, reports, photos, element IDs) works with colour names, so any line whose
+  // colour is a bare number is converted automatically, using Rebrickable's colour list.
+  var RB_COLORS_KEY = 'rebrickable-colors-v1';
+  var RB_COLORS_MAX_AGE = 30 * 86400000;
+  var rbColorTable = null;   // { at, rb: { id: name }, bl: { BrickLink id: name } }
+  function rbLoadColorTable(){
+    if (rbColorTable && Date.now() - rbColorTable.at < RB_COLORS_MAX_AGE) return Promise.resolve(rbColorTable);
+    return storage.get(RB_COLORS_KEY, false).then(function(res){
+      try {
+        var saved = res && res.value ? JSON.parse(res.value) : null;
+        if (saved && saved.rb && Date.now() - saved.at < RB_COLORS_MAX_AGE){ rbColorTable = saved; return saved; }
+      } catch(e){}
+      if (!rebrickableApiKey) return null;
+      return rbFetchJson(rbApiUrl('colors/?page_size=1000')).then(function(d){
+        var list = (d && d.results) || [];
+        if (!list.length) return null;
+        var t = { at: Date.now(), rb: {}, bl: {} };
+        list.forEach(function(c){
+          t.rb[String(c.id)] = c.name;
+          var bl = c.external_ids && c.external_ids.BrickLink && c.external_ids.BrickLink.ext_ids;
+          (bl || []).forEach(function(id){ if (!(String(id) in t.bl)) t.bl[String(id)] = c.name; });
+        });
+        rbColorTable = t;
+        storage.set(RB_COLORS_KEY, JSON.stringify(t), false);
+        return t;
+      });
+    }).catch(function(){ return null; });
+  }
+  function isColorNumber(c){ return /^\s*-?\d+\s*$/.test(String(c === null || c === undefined ? '' : c)); }
+  var colorFixTimer = null, colorFixRunning = false, colorFixNoKeyShown = false;
+  var colorFixTried = (typeof WeakSet === 'function') ? new WeakSet() : { has: function(){ return false; }, add: function(){} };
+  function scheduleColorNumberFix(){
+    clearTimeout(colorFixTimer);
+    colorFixTimer = setTimeout(function(){ safeRun('converting colour numbers', fixColorNumbers); }, 1500);
+  }
+  function fixColorNumbers(){
+    if (colorFixRunning) return;
+    var groups = {}, total = 0;
+    [['Build', state.rows, function(r){ return 'b|' + r.moc; }],
+     ['Set', setParts, function(r){ return 's|' + r.setNum; }],
+     ['Drawer', drawerParts, function(r){ return 'd|' + r.drawerId; }]].forEach(function(src){
+      src[1].forEach(function(r){
+        if (!r || !isColorNumber(r.color) || colorFixTried.has(r)) return;
+        var k = src[2](r);
+        (groups[k] = groups[k] || { kind: src[0], rows: [] }).rows.push(r);
+        total++;
+      });
+    });
+    if (!total) return;
+    if (!rebrickableApiKey){
+      if (!colorFixNoKeyShown){
+        colorFixNoKeyShown = true;
+        showAppBanner('notice', 'Some colours are numbers', total.toLocaleString() + ' part line' + (total === 1 ? ' has' : 's have') + ' a colour number (from a Rebrickable or BrickLink parts-list export) instead of a colour name. Add your Rebrickable API key on the Data & Tools tab and they’ll be converted to names automatically.');
+      }
+      return;
+    }
+    colorFixRunning = true;
+    var keys = Object.keys(groups);
+    rbLoadColorTable().then(function(t){
+      if (!t) return;
+      // Per build / set / drawer, decide whether its numbers are Rebrickable or BrickLink colour IDs. A line with an
+      // element ID settles it (Rebrickable says which colour that element is); without one, Rebrickable's numbering is assumed.
+      return keys.reduce(function(chain, k){
+        return chain.then(function(){
+          var g = groups[k], votes = { rb: 0, bl: 0 };
+          var sample = g.rows.filter(function(r){ return r.elementId; }).slice(0, 2);
+          return sample.reduce(function(c2, r){
+            return c2.then(function(){
+              return rbFetchJson(rbApiUrl('elements/' + encodeURIComponent(r.elementId) + '/')).then(function(d){
+                var name = d && d.color && d.color.name, n = String(r.color).trim();
+                if (!name) return;
+                if (t.rb[n] === name) votes.rb++;
+                if (t.bl[n] === name) votes.bl++;
+              }).catch(function(){});
+            });
+          }, Promise.resolve()).then(function(){ g.system = votes.bl > votes.rb ? 'bl' : 'rb'; });
+        });
+      }, Promise.resolve()).then(function(){
+        var changed = { Build: 0, Set: 0, Drawer: 0 }, unknown = 0, systems = {}, owners = {};
+        keys.forEach(function(k){
+          var g = groups[k], map = t[g.system];
+          g.rows.forEach(function(r){
+            colorFixTried.add(r);
+            if (!isColorNumber(r.color)) return;   // edited by hand in the meantime
+            var name = map[String(r.color).trim()];
+            if (name){ r.color = name; changed[g.kind]++; systems[g.system] = true; owners[k] = true; } else unknown++;
+          });
+        });
+        var n = changed.Build + changed.Set + changed.Drawer;
+        if (!n){
+          if (unknown) showAppBanner('notice', 'Some colours are numbers', unknown.toLocaleString() + ' part line' + (unknown === 1 ? ' has a colour number that doesn’t' : 's have colour numbers that don’t') + ' match any Rebrickable or BrickLink colour, so ' + (unknown === 1 ? 'it was' : 'they were') + ' left as ' + (unknown === 1 ? 'it is' : 'they are') + '.');
+          return;
+        }
+        if (changed.Build) saveState();
+        if (changed.Set) saveSetParts();
+        if (changed.Drawer) saveDrawerParts();
+        render();
+        safeRun('redraw', renderMocBuildsTab);
+        safeRun('redraw', renderSetsTab);
+        safeRun('redraw', renderDrawersTab);
+        if (detailContext){ if (detailContext.kind === 'set') openSetDetail(detailContext.key); else openMocDetail(detailContext.key); }
+        var where = Object.keys(owners).map(function(k){ return k.indexOf('d|') === 0 ? pullDrawerLabel(k.slice(2)) : k.slice(2); }).filter(Boolean);
+        showAppBanner('notice', 'Colour numbers converted to names',
+          n.toLocaleString() + ' part line' + (n === 1 ? '' : 's') + ' had ' + (systems.bl ? (systems.rb ? 'Rebrickable and BrickLink' : 'BrickLink') : 'Rebrickable') +
+          ' colour numbers (as in a parts-list export) instead of names' + (where.length && where.length <= 4 ? ' (' + where.join(', ') + ')' : '') +
+          '. They now show the colour name, so they match your drawers, reports and photos.' +
+          (unknown ? ' ' + unknown.toLocaleString() + ' number' + (unknown === 1 ? '' : 's') + ' didn’t match any colour and ' + (unknown === 1 ? 'was' : 'were') + ' left as ' + (unknown === 1 ? 'it is' : 'they are') + '.' : ''));
+      });
+    }).catch(function(){}).then(function(){ colorFixRunning = false; });
   }
 
   function rbColorMatch(colors, colorName){
@@ -10832,7 +10980,7 @@
       var removeBtn = document.createElement('button');
       removeBtn.className = 'icon-btn';
       removeBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); flex-shrink:0;';
-      removeBtn.innerHTML = '<i class="ti ti-x" style="font-size:12px; vertical-align:-2px;" aria-hidden="true"></i>';
+      removeBtn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="M18 6 6 18M6 6l12 12"/></svg>';
       removeBtn.title = 'Remove from this list';
       removeBtn.addEventListener('click', function(){
         bagStagingItems.splice(idx, 1);
@@ -10995,7 +11143,7 @@
         var delBtn = document.createElement('button');
         delBtn.className = 'icon-btn lockable';
         delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger);';
-        delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:12px; vertical-align:-2px;" aria-hidden="true"></i>';
+        delBtn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="M4 7h16M10 11v6M14 11v6M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2l1-12M9 7V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3"/></svg>';
         delBtn.title = 'Delete this saved bag';
         delBtn.addEventListener('click', renderArmed);
         actionWrap.appendChild(delBtn);
@@ -12515,6 +12663,7 @@
   }
 
   function render(){
+    scheduleColorNumberFix();
     safeRun('Overview', renderOverview);
     safeRun('MOC parts table', renderParts);
   }
