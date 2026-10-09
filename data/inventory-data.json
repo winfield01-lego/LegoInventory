@@ -104363,6 +104363,28 @@
       0,
       "",
       1791565188323
+    ],
+    [
+      "98313",
+      2,
+      "Flat Silver",
+      "Arm Mechanical with Clip [Thick Support]",
+      "Space Laboratory",
+      "6008483",
+      2,
+      0,
+      ""
+    ],
+    [
+      "28621pr0895",
+      1,
+      "White",
+      "Minifig Head Skeleton, Black Skull Face Print",
+      "Space Laboratory",
+      "6630910",
+      1,
+      0,
+      ""
     ]
   ],
   "checkedItems": [
@@ -109829,17 +109851,6 @@
       },
       "imgUrl": "https://cdn.rebrickable.com/media/sets/fig-012342/107339.jpg",
       "lastEdited": "2026-10-09T18:33:23.584Z"
-    },
-    {
-      "setNum": "fig-moc-space-laboratory",
-      "kind": "fig",
-      "mocGroup": "Space Laboratory",
-      "name": "Minifigure parts from Space Laboratory",
-      "theme": "Parts from MOC builds",
-      "qty": 1,
-      "manualQty": 1,
-      "figSources": {},
-      "lastEdited": "2026-10-09T18:33:54.146Z"
     },
     {
       "setNum": "fig-moc-blacktron-galaxy-explorer",
@@ -441456,28 +441467,6 @@
       "onHand": 1
     },
     {
-      "setNum": "fig-moc-space-laboratory",
-      "partNum": "98313",
-      "color": "Flat Silver",
-      "desc": "Arm Mechanical with Clip [Thick Support]",
-      "elementId": "6008483",
-      "qtyPerSet": 2,
-      "onHand": 2,
-      "rbAt": 0,
-      "fromMoc": "Space Laboratory"
-    },
-    {
-      "setNum": "fig-moc-space-laboratory",
-      "partNum": "28621pr0895",
-      "color": "White",
-      "desc": "Minifig Head Skeleton, Black Skull Face Print",
-      "elementId": "6630910",
-      "qtyPerSet": 1,
-      "onHand": 1,
-      "rbAt": 0,
-      "fromMoc": "Space Laboratory"
-    },
-    {
       "setNum": "fig-moc-blacktron-galaxy-explorer",
       "partNum": "2446",
       "color": "Black",
@@ -452508,7 +452497,11 @@
     },
     {
       "name": "Space Laboratory",
-      "lastEdited": "2026-10-09T18:33:54.145Z"
+      "lastEdited": "2026-10-09T18:52:25.498Z",
+      "notFigParts": [
+        "98313|flat silver",
+        "28621pr0895|white"
+      ]
     },
     {
       "name": "Space Habitat Greenhouse",
