@@ -224,7 +224,9 @@
 #lego-inv-root .icon-btn:has(> svg:only-child) { display: inline-flex; align-items: center; justify-content: center; }
 @media (max-width: 640px) { #lego-inv-root .sub-tabs { flex-wrap: wrap; overflow-x: visible; } }
 #lego-inv-root .top-action-bar { flex-wrap: wrap; row-gap: 8px; }
-#lego-inv-root .fig-set-heading { margin: 10px 0 4px 4px; font-size: 12px; font-weight: 700; color: var(--text-secondary); border-left: 3px solid var(--lego-red); padding-left: 8px; }
+#lego-inv-root .fig-set-heading { display: flex; align-items: center; gap: 6px; width: calc(100% - 8px); margin: 6px 0 4px 8px; padding: 6px 10px; font-size: 12px; font-weight: 700; color: var(--text-secondary); text-align: left; background: var(--surface-1); border: 1px solid var(--border); border-left: 3px solid var(--lego-red); border-radius: 8px; cursor: pointer; text-transform: none; letter-spacing: 0; }
+#lego-inv-root .fig-set-heading i { font-size: 13px; flex-shrink: 0; }
+#lego-inv-root .fig-set-body { margin-left: 8px; }
 #lego-inv-root .fig-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
 #lego-inv-root .fig-result { display: flex; flex-direction: column; gap: 4px; border: 2px solid var(--border); border-radius: var(--radius); padding: 8px; background: var(--surface-2); }
 #lego-inv-root .fig-result-img { height: 110px; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 6px; overflow: hidden; }
@@ -12328,7 +12330,7 @@
       ['Complete', t.pct + '%']
     ], ['var(--lego-yellow)', 'var(--lego-blue)', 'var(--lego-purple)', 'var(--lego-green)', 'var(--lego-brown)', 'var(--lego-red)', 'var(--lego-yellow)']);
   }
-  var expandedFigThemes = new Set(), figThemesTouched = false;
+  var expandedFigThemes = new Set(), expandedFigSets = new Set();
   function buildFigCard(f){
     var rows = setParts.filter(function(p){ return p.setNum === f.setNum; });
     var need = rows.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
@@ -12415,7 +12417,7 @@
     var groups = {};
     shown.forEach(function(f){ var t = (f.theme && f.theme.trim()) ? f.theme.trim() : '(No theme)'; (groups[t] = groups[t] || []).push(f); });
     var names = Object.keys(groups).sort(function(a, b){ if (a === '(No theme)') return 1; if (b === '(No theme)') return -1; return a.localeCompare(b); });
-    var openAll = q || onlyMissing || (!figThemesTouched && shown.length <= 40);
+    var openAll = !!(q || onlyMissing);   // everything starts closed; a filter opens whatever matches
     names.forEach(function(theme){
       var list = groups[theme].slice().sort(function(a, b){ return (a.name || a.setNum).localeCompare(b.name || b.setNum); });
       var isOpen = openAll || expandedFigThemes.has(theme);
@@ -12436,19 +12438,36 @@
       });
       setOrder.sort(function(a, b){ return (a === '~hand') - (b === '~hand') || a.localeCompare(b, undefined, { numeric: true }); });
       setOrder.forEach(function(k){
-        if (k){
+        if (!k){ bySet[k].forEach(function(f){ body.appendChild(buildFigCard(f)); }); return; }
+        {
           var set = k === '~hand' ? null : ownedSets.find(function(x){ return x.setNum === k && !isFigEntry(x); });
           // how many figures this set itself supplies (or, for the hand-added heading, how many you added)
           var figsHere = bySet[k].reduce(function(n, f){ return n + (k === '~hand' ? (f.manualQty || 0) : (f.figSources[k] || 0) * ((set && set.qty) || 1)); }, 0);
-          var sh = document.createElement('p');
+          var setKey = theme + '|' + k, setOpen = openAll || expandedFigSets.has(setKey);
+          var sh = document.createElement('button');
+          sh.type = 'button';
           sh.className = 'fig-set-heading';
-          sh.textContent = (k === '~hand' ? 'Added by hand' : k + (set && set.name ? ' ' + set.name : '')) + ' \u00b7 ' + figsHere + ' figure' + (figsHere === 1 ? '' : 's');
+          sh.setAttribute('aria-expanded', setOpen ? 'true' : 'false');
+          sh.innerHTML = '<i class="ti ' + (setOpen ? 'ti-chevron-down' : 'ti-chevron-right') + '" aria-hidden="true"></i><span>' +
+            escapeHtml((k === '~hand' ? 'Added by hand' : k + (set && set.name ? ' ' + set.name : '')) + ' \u00b7 ' + figsHere + ' figure' + (figsHere === 1 ? '' : 's')) + '</span>';
+          var setBody = document.createElement('div');
+          setBody.className = 'fig-set-body';
+          setBody.style.display = setOpen ? 'block' : 'none';
+          var built = false;
+          var fill = function(cards, box){ return function(){ if (built) return; built = true; cards.forEach(function(f){ box.appendChild(buildFigCard(f)); }); }; }(bySet[k], setBody);
+          if (setOpen) fill();   // cards are only drawn when their group is opened, so a big collection opens quickly
+          sh.addEventListener('click', function(){
+            var now = setBody.style.display === 'none';
+            if (now){ expandedFigSets.add(setKey); fill(); } else expandedFigSets.delete(setKey);
+            setBody.style.display = now ? 'block' : 'none';
+            sh.setAttribute('aria-expanded', now ? 'true' : 'false');
+            sh.querySelector('i').className = 'ti ' + (now ? 'ti-chevron-down' : 'ti-chevron-right');
+          });
           body.appendChild(sh);
+          body.appendChild(setBody);
         }
-        bySet[k].forEach(function(f){ body.appendChild(buildFigCard(f)); });
       });
       header.addEventListener('click', function(){
-        figThemesTouched = true;
         var now = body.style.display === 'none';
         if (now) expandedFigThemes.add(theme); else expandedFigThemes.delete(theme);
         body.style.display = now ? 'block' : 'none';
