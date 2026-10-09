@@ -8621,6 +8621,25 @@
   }
 
   wireEl('detail-modal-close', 'click', closeDetailModal);
+
+  // Escape closes the window on top (the summary windows and every other pop-up), the same as pressing its X.
+  document.addEventListener('keydown', function(e){
+    if (e.key !== 'Escape' && e.key !== 'Esc') return;
+    var open = Array.prototype.filter.call(document.querySelectorAll('[id$="-overlay"]'), function(o){
+      return !!o.style.display && o.style.display !== 'none';
+    });
+    if (!open.length) return;
+    var top = open.reduce(function(best, o){
+      var z = parseInt(getComputedStyle(o).zIndex, 10) || 0, bz = best ? (parseInt(getComputedStyle(best).zIndex, 10) || 0) : -1;
+      return z >= bz ? o : best;   // ties go to the later one in the page
+    }, null);
+    // finish any edit in progress first, so a number typed into the window is saved before it closes
+    var ae = document.activeElement;
+    if (ae && top.contains(ae) && /^(INPUT|TEXTAREA|SELECT)$/.test(ae.tagName)) ae.blur();
+    var closeBtn = top.querySelector('[id$="-close"]');
+    if (closeBtn) closeBtn.click(); else top.style.display = 'none';
+    e.preventDefault();
+  });
   wireEl('detail-modal-location', 'change', function(){
     if (!detailContext) return;
     var val = document.getElementById('detail-modal-location').value.trim();
