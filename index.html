@@ -88,7 +88,7 @@
 #lego-inv-root .overview-group .metric-grid { margin-bottom: 12px; }
 #lego-inv-root .overview-group-title { margin: 0 0 10px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); font-weight: 700; }
 #lego-inv-root .metric { background: var(--surface-1); border: 2px solid var(--border); border-left: 5px solid var(--lego-blue); border-radius: var(--radius); padding: 0.75rem 1rem; }
-#lego-inv-root #moc-metrics .metric, #lego-inv-root #sets-metrics .metric { display: flex; flex-direction: column; justify-content: space-between; gap: 2px; }
+#lego-inv-root #moc-metrics .metric, #lego-inv-root #sets-metrics .metric, #lego-inv-root #figs-overview-metrics .metric, #lego-inv-root #figs-metrics .metric { display: flex; flex-direction: column; justify-content: space-between; gap: 2px; }
 #lego-inv-root .metric .label { font-size: 12px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.02em; }
 #lego-inv-root .metric .value { font-size: 22px; font-weight: 800; margin-top: 2px; color: var(--lego-black); }
 #lego-inv-root .controls { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
@@ -222,6 +222,15 @@
 #lego-inv-root .close-x-btn { width: 32px; height: 32px; padding: 0; display: inline-flex; align-items: center; justify-content: center; }
 #lego-inv-root .icon-btn > svg { flex-shrink: 0; }
 #lego-inv-root .icon-btn:has(> svg:only-child) { display: inline-flex; align-items: center; justify-content: center; }
+@media (max-width: 640px) { #lego-inv-root .sub-tabs { flex-wrap: wrap; overflow-x: visible; } }
+#lego-inv-root .fig-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+#lego-inv-root .fig-result { display: flex; flex-direction: column; gap: 4px; border: 2px solid var(--border); border-radius: var(--radius); padding: 8px; background: var(--surface-2); }
+#lego-inv-root .fig-result-img { height: 110px; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 6px; overflow: hidden; }
+#lego-inv-root .fig-result-img img { max-width: 100%; max-height: 110px; object-fit: contain; }
+#lego-inv-root .fig-result-name { font-size: 13px; font-weight: 700; line-height: 1.25; }
+#lego-inv-root .fig-result-meta { font-size: 11px; color: var(--text-muted); }
+#lego-inv-root .fig-result button { margin-top: auto; }
+#lego-inv-root .fig-card .fig-thumb { width: 48px; height: 48px; object-fit: contain; background: #fff; border-radius: 6px; border: 1px solid var(--border); flex-shrink: 0; }
 #lego-inv-root .icon-del-btn { width: 30px; height: 30px; padding: 0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-danger); border-color: var(--text-danger); }
 #lego-inv-root .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 #lego-inv-root .actions-cell-inner { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
@@ -397,6 +406,7 @@
 <div class="tabs sub-tabs no-print" id="sub-tabs-official-collection" style="display:none;">
   <button class="tab-btn" data-tab="sets" style="--tab-color: var(--lego-purple); --tab-text-color: #FFFFFF;">Official Sets</button>
   <button class="tab-btn" data-tab="setparts" style="--tab-color: var(--lego-brown); --tab-text-color: #FFFFFF;">Official Set Parts</button>
+  <button class="tab-btn" data-tab="minifigs" style="--tab-color: var(--lego-yellow); --tab-text-color: var(--lego-black);">Minifigures</button>
 </div>
 <div class="tabs sub-tabs no-print" id="sub-tabs-data-tools" style="display:none;">
   <button class="tab-btn" data-tab="import" style="--tab-color: var(--lego-blue); --tab-text-color: #FFFFFF;">Import</button>
@@ -418,6 +428,10 @@
     <div class="overview-group" style="flex:1; min-width:280px;">
       <p class="overview-group-title">Official Sets</p>
       <div class="metric-grid" id="sets-metrics"></div>
+    </div>
+    <div class="overview-group" style="flex:1; min-width:280px;">
+      <p class="overview-group-title">Minifigures</p>
+      <div class="metric-grid" id="figs-overview-metrics"></div>
     </div>
     <div class="overview-group" style="flex:1; min-width:280px;">
       <p class="overview-group-title">Drawers</p>
@@ -974,6 +988,70 @@
     <button id="set-parts-prev-page" class="icon-btn" aria-label="Previous page"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="m15 6-6 6 6 6"/></svg></button>
     <button id="set-parts-next-page" class="icon-btn" aria-label="Next page"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="m9 6 6 6-6 6"/></svg></button>
   </div>
+</div>
+
+<div id="tab-minifigs" style="display:none;">
+  <p style="color: var(--text-secondary); margin: 0 0 10px;">
+    Your minifigures &mdash; added automatically from your official sets, or looked up on Rebrickable by name or theme. Each figure has its own summary, photo, parts list and missing-pieces tracking, just like a set. A figure's parts list is what Rebrickable counts as part of that figure: head, torso, legs, headgear, and any accessories Rebrickable lists with it.
+  </p>
+  <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 6px;">Statistics</p>
+  <div class="metric-grid" id="figs-metrics" style="margin-bottom: 16px;"></div>
+
+  <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 16px;">
+    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Look up minifigures on Rebrickable</p>
+    <div class="row" style="flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
+      <input type="text" id="fig-search-input" placeholder="Name, e.g. Darth Vader, or fig-001234" style="flex:1; min-width:200px;" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" />
+      <select id="fig-theme-select" title="Limit to a theme" style="max-width:260px;"><option value="">Any theme</option></select>
+      <button id="fig-search-btn" class="icon-btn"><i class="ti ti-search" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Search</button>
+    </div>
+    <p id="fig-search-status" style="margin: 0 0 8px; font-size: 13px; color: var(--text-secondary);"></p>
+    <div id="fig-search-results" class="fig-grid"></div>
+    <button id="fig-search-more" class="icon-btn" style="display:none; margin-top:8px;">Show more</button>
+  </div>
+
+  <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 16px;">
+    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Minifigures from your sets</p>
+    <p style="color: var(--text-secondary); margin: 0 0 10px;">Whenever you import a set's parts list, its minifigures are added here automatically (with their parts) and counted for every copy of the set you own. Use this to check the sets you added before. Rebrickable leaves minifigure parts out of a set's own parts list, so nothing is counted twice.</p>
+    <div class="row" style="flex-wrap: wrap; gap: 8px; align-items: center;">
+      <button id="fig-scan-btn" class="lockable"><i class="ti ti-users" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Find minifigures in my sets</button>
+      <label class="checkbox-label"><input type="checkbox" id="fig-scan-all" /> Check them all again</label>
+      <button id="fig-scan-stop" class="icon-btn" style="display:none;">Stop</button>
+    </div>
+    <p id="fig-scan-status" style="margin: 8px 0 0; font-size: 13px; color: var(--text-secondary);"></p>
+  </div>
+
+  <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 16px;">
+    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Minifigure parts in your MOC builds</p>
+    <p style="color: var(--text-secondary); margin: 0 0 10px;">Finds the lines in your MOC builds that Rebrickable files as minifigure parts. Heads, torsos, legs and headwear are ticked; minifigure accessories (weapons, tools and the like) start unticked, since MOCs often use them as building details. Nothing moves until you press Move. Each build's lines go into their own group below, with a <strong>Move back</strong> button.</p>
+    <div class="row" style="flex-wrap: wrap; gap: 8px; align-items: center;">
+      <button id="mfp-scan-btn" class="icon-btn"><i class="ti ti-search" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Find minifigure parts in my MOC builds</button>
+      <button id="mfp-move-btn" class="lockable" style="display:none;"></button>
+      <button id="mfp-stop" class="icon-btn" style="display:none;">Stop</button>
+    </div>
+    <p id="mfp-status" style="margin: 8px 0 0; font-size: 13px; color: var(--text-secondary);"></p>
+    <div id="mfp-results" style="max-height: 420px; overflow-y: auto;"></div>
+  </div>
+
+  <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 16px;">
+    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Photos and parts lists</p>
+    <div class="row" style="flex-wrap: wrap; gap: 8px; align-items: center;">
+      <button id="fig-photos-btn" class="lockable"><i class="ti ti-photo-down" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Save minifigure photos to my site</button>
+      <button id="fig-refetch-btn" class="lockable"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Re-fetch parts lists</button>
+      <span style="font-size:13px; color:var(--text-secondary);">skipping ones fetched in the last</span>
+      <select id="fig-refetch-skip"><option value="60" selected>2 months</option><option value="30">1 month</option><option value="180">6 months</option><option value="0">nothing &mdash; do them all</option></select>
+      <button id="fig-tools-stop" class="icon-btn" style="display:none;">Stop</button>
+    </div>
+    <p id="fig-tools-status" style="margin: 8px 0 0; font-size: 13px; color: var(--text-secondary);"></p>
+  </div>
+
+  <div class="row" style="justify-content: space-between; margin-bottom: 8px; flex-wrap: wrap; gap: 8px;">
+    <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0;">Your minifigures</p>
+    <div class="row" style="gap: 10px; flex-wrap: wrap;">
+      <input type="text" id="figs-search" placeholder="Filter your minifigures" style="min-width:180px;" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" />
+      <label class="checkbox-label"><input type="checkbox" id="figs-only-missing" /> Show only missing pieces</label>
+    </div>
+  </div>
+  <div id="figs-list"></div>
 </div>
 
 <div id="tab-setparts" style="display:none;">
@@ -2082,7 +2160,7 @@
   var lockWriteBypassUntil = 0;
   var lockNoticeTimer = null;
   var LOCK_EXEMPT_IDS = {};
-  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
+  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
   var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input';
   var LOCK_CONTROL_SELECTOR = 'input, select, textarea, button';
 
@@ -2486,13 +2564,17 @@
     state.rows.forEach(function(r){ totalNeed += r.qty; totalHave += Math.min(r.onHand,r.qty); });
     var mocMissing = Math.max(totalNeed - totalHave, 0);
     var pct = totalNeed ? Math.round(100*totalHave/totalNeed) : 100;
-    var totalSetPiecesNeeded = setParts.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
-    var totalSetPiecesOnHand = setParts.reduce(function(sum, r){ return sum + setPartOnHand(r); }, 0);
+    var setOnlyParts = setParts.filter(function(r){ return !isFigNum(r.setNum); });
+    var figOnlyParts = setParts.filter(function(r){ return isFigNum(r.setNum); });
+    var totalSetPiecesNeeded = setOnlyParts.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
+    var totalSetPiecesOnHand = setOnlyParts.reduce(function(sum, r){ return sum + setPartOnHand(r); }, 0);
+    var totalFigPiecesNeeded = figOnlyParts.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
+    var totalFigPiecesOnHand = figOnlyParts.reduce(function(sum, r){ return sum + Math.min(setPartOnHand(r), setPartNeeded(r)); }, 0);
     var totalDrawerPieces = drawerParts.reduce(function(sum, r){ return sum + r.qty; }, 0);
-    var grandTotal = totalHave + totalSetPiecesOnHand + totalDrawerPieces;
+    var grandTotal = totalHave + totalSetPiecesOnHand + totalFigPiecesOnHand + totalDrawerPieces;
     document.getElementById('grand-total-value').textContent = grandTotal.toLocaleString();
     document.getElementById('grand-total-caption').textContent =
-      totalHave.toLocaleString() + ' MOC on hand + ' + totalSetPiecesOnHand.toLocaleString() + ' set pieces + ' + totalDrawerPieces.toLocaleString() + ' in drawers';
+      totalHave.toLocaleString() + ' MOC on hand + ' + totalSetPiecesOnHand.toLocaleString() + ' set pieces + ' + (totalFigPiecesOnHand ? totalFigPiecesOnHand.toLocaleString() + ' minifigure pieces + ' : '') + totalDrawerPieces.toLocaleString() + ' in drawers';
 
     var mocMg = document.getElementById('moc-metrics');
     mocMg.innerHTML = '';
@@ -2511,12 +2593,23 @@
       mocMg.appendChild(d);
     });
 
+    safeRun('minifigure statistics', function(){
+      var ft = figTotals();
+      fillMetricGrid(document.getElementById('figs-overview-metrics'), [
+        ['Minifigures', ft.total.toLocaleString()],
+        ['Missing Pieces', ft.missing.toLocaleString()],
+        ['Pieces On Hand', ft.onHand.toLocaleString()],
+        ['Overall Complete', ft.pct + '%']
+      ], ['var(--lego-yellow)', 'var(--lego-red)', 'var(--lego-green)', 'var(--lego-yellow)']);
+    });
     var setsMg = document.getElementById('sets-metrics');
     setsMg.innerHTML = '';
-    var setsMissing = totalSetPiecesNeeded - totalSetPiecesOnHand;
-    var setsPct = totalSetPiecesNeeded ? Math.round(100*totalSetPiecesOnHand/totalSetPiecesNeeded) : 100;
+    // a part line can't count for more than it needs (e.g. after lowering a set's quantity), so cap before working out what's missing
+    var setsHaveCapped = setOnlyParts.reduce(function(sum, r){ return sum + Math.min(setPartOnHand(r), setPartNeeded(r)); }, 0);
+    var setsMissing = Math.max(totalSetPiecesNeeded - setsHaveCapped, 0);
+    var setsPct = totalSetPiecesNeeded ? Math.round(100*setsHaveCapped/totalSetPiecesNeeded) : 100;
     var setsMetrics = [
-      ['Official Sets', ownedSets.length],
+      ['Official Sets', realSets().length],
       ['Missing Pieces', setsMissing.toLocaleString()],
       ['Pieces On Hand', totalSetPiecesOnHand.toLocaleString()],
       ['Overall Complete', setsPct + '%']
@@ -2611,7 +2704,7 @@
     var mocs = Array.from(new Set(state.rows.map(function(r){ return r.moc; }).filter(Boolean))).sort();
     document.getElementById('color-options').innerHTML = colors.map(function(c){ return '<option value="'+escapeHtml(c)+'"></option>'; }).join('');
     document.getElementById('moc-options').innerHTML = mocs.map(function(m){ return '<option value="'+escapeHtml(m)+'"></option>'; }).join('');
-    document.getElementById('set-options').innerHTML = ownedSets.map(function(s){ return '<option value="'+escapeHtml(s.setNum)+'"></option>'; }).join('');
+    document.getElementById('set-options').innerHTML = realSets().map(function(s){ return '<option value="'+escapeHtml(s.setNum)+'"></option>'; }).join('');
   }
 
   function loadPriorityLabels(){
@@ -4714,6 +4807,7 @@
       qtyInput.value = v;
       touchSetLastEdited(s.setNum);
       saveOwnedSets();
+      syncFigQuantities();
       refreshSetViews();
       renderSetPartsTable();
       render();
@@ -4734,6 +4828,7 @@
       setParts = setParts.filter(function(p){ return p.setNum !== s.setNum; });
       saveOwnedSets();
       saveSetParts();
+      syncFigQuantities();   // its minifigures go too, unless another set or you added them
       renderSetsTab();
       renderOverviewSetsList();
     });
@@ -5622,7 +5717,7 @@
     var prev = sel.value || 'all';
     var html = '<option value="all">Everything: builds, official sets and drawers</option><option value="builds">All builds</option><option value="sets">All official sets</option><option value="drawers">All drawers</option>';
     if (mocBuilds.length) html += '<optgroup label="One build">' + mocBuilds.map(function(b){ return '<option value="build:' + escapeHtml(b.name) + '">' + escapeHtml(b.name) + '</option>'; }).join('') + '</optgroup>';
-    if (ownedSets.length) html += '<optgroup label="One official set">' + ownedSets.map(function(s){ return '<option value="set:' + escapeHtml(s.setNum) + '">' + escapeHtml(s.setNum + (s.name ? ' \u2014 ' + s.name : '')) + '</option>'; }).join('') + '</optgroup>';
+    if (realSets().length) html += '<optgroup label="One official set">' + realSets().map(function(s){ return '<option value="set:' + escapeHtml(s.setNum) + '">' + escapeHtml(s.setNum + (s.name ? ' \u2014 ' + s.name : '')) + '</option>'; }).join('') + '</optgroup>';
     sel.innerHTML = html;
     var has = Array.prototype.some.call(sel.options, function(o){ return o.value === prev; });
     sel.value = has ? prev : 'all';
@@ -6083,7 +6178,7 @@
 
   function themeGroupsSorted(){
     var groups = {};
-    ownedSets.forEach(function(s){
+    realSets().forEach(function(s){
       var theme = (s.theme && s.theme.trim()) ? s.theme.trim() : '(No theme)';
       if (!groups[theme]) groups[theme] = [];
       groups[theme].push(s);
@@ -6118,6 +6213,7 @@
     var onlyMissing = document.getElementById('sets-only-missing').checked;
     var missingSets = {}, hasParts = {};
     setParts.forEach(function(r){
+      if (isFigNum(r.setNum)) return;
       hasParts[r.setNum] = true;
       if (setPartOnHand(r) < setPartNeeded(r)) missingSets[r.setNum] = true;
     });
@@ -6128,13 +6224,13 @@
       }).filter(function(g){ return g.sets.length; });
     }
     var shownSets = groups.reduce(function(n, g){ return n + g.sets.length; }, 0);
-    updateMissingFilterNote('sets-only-missing-note', 'sets-only-missing', shownSets, ownedSets.length, 'set', ownedSets.filter(function(s){ return !hasParts[s.setNum]; }).length);
-    if (!ownedSets.length){
+    updateMissingFilterNote('sets-only-missing-note', 'sets-only-missing', shownSets, realSets().length, 'set', realSets().filter(function(s){ return !hasParts[s.setNum]; }).length);
+    if (!realSets().length){
       container.innerHTML = '<div class="empty-msg">No sets added yet.</div>';
       return;
     }
     if (onlyMissing && !groups.length){
-      container.innerHTML = '<div class="empty-msg">' + (ownedSets.some(function(s){ return hasParts[s.setNum]; }) ? 'Every set with a parts list is complete — nothing is missing.' : 'None of your sets have a parts list yet.') + '</div>';
+      container.innerHTML = '<div class="empty-msg">' + (realSets().some(function(s){ return hasParts[s.setNum]; }) ? 'Every set with a parts list is complete — nothing is missing.' : 'None of your sets have a parts list yet.') + '</div>';
       return;
     }
     groups.forEach(function(g){
@@ -6171,11 +6267,11 @@
     if (!listEl) return;
     var q = (document.getElementById('overview-sets-search').value || '').toLowerCase();
     listEl.innerHTML = '';
-    if (!ownedSets.length){
+    if (!realSets().length){
       listEl.innerHTML = '<div class="empty-msg">No sets added yet \u2014 add one on the Official Sets tab.</div>';
       return;
     }
-    var filtered = ownedSets.filter(function(s){
+    var filtered = realSets().filter(function(s){
       if (!q) return true;
       var hay = (s.setNum+' '+(s.name||'')+' '+(s.theme||'')).toLowerCase();
       return hay.indexOf(q) !== -1;
@@ -6275,13 +6371,14 @@
   function refreshSetViews(){
     renderOwnedSetsList();
     renderOverviewSetsList();
+    if (figTabVisible()) safeRun('minifigures', renderMinifigsTab);
   }
 
   function populateSetCsvTarget(){
     var sel = document.getElementById('set-csv-target');
     var cur = sel.value;
     sel.innerHTML = '<option value="">Which set is this for?</option>' +
-      ownedSets.map(function(s){ return '<option value="'+escapeHtml(s.setNum)+'">'+escapeHtml(s.setNum)+(s.name?' \u2014 '+escapeHtml(s.name):'')+'</option>'; }).join('');
+      realSets().map(function(s){ return '<option value="'+escapeHtml(s.setNum)+'">'+escapeHtml(s.setNum)+(s.name?' \u2014 '+escapeHtml(s.name):'')+'</option>'; }).join('');
     sel.value = cur;
   }
 
@@ -6296,6 +6393,7 @@
     });
     touchSetLastEdited(setNum);
     saveSetParts();
+    if (!isFigNum(setNum)) queueFigScan([setNum]);   // its minifigures (and their parts) are added in the background
   }
 
   function importSetCSVText(setNum, text){
@@ -6355,7 +6453,7 @@
   }
 
   function fetchSetPartsFromApi(setNum){
-    var url = 'https://rebrickable.com/api/v3/lego/sets/' + encodeURIComponent(setNum) + '/parts/?page_size=1000&key=' + encodeURIComponent(rebrickableApiKey);
+    var url = 'https://rebrickable.com/api/v3/lego/' + (isFigNum(setNum) ? 'minifigs/' : 'sets/') + encodeURIComponent(setNum) + '/parts/?page_size=1000&key=' + encodeURIComponent(rebrickableApiKey);
     return fetchUrlMaybeProxied(url).then(function(resp){
       if (!resp.ok) throw new Error('HTTP ' + resp.status);
       return resp.json();
@@ -6457,8 +6555,8 @@
     function fail(msg){ statusEl.style.color = 'var(--text-danger)'; statusEl.textContent = msg; }
     if (!rebrickableApiKey) return fail('Enter your Rebrickable API key first (Data & Tools tab).');
     if (!githubConnectionConfigured()) return fail('Photos are saved to your GitHub site \u2014 set up GitHub Connection on the Data & Tools tab first.');
-    if (!ownedSets.length) return fail('Add a set first.');
-    var todo = ownedSets.filter(function(s){ return !setPhotos[s.setNum]; });
+    if (!realSets().length) return fail('Add a set first.');
+    var todo = realSets().filter(function(s){ return !setPhotos[s.setNum]; });
     if (!todo.length){
       statusEl.style.color = 'var(--text-success)';
       statusEl.textContent = 'Every set already has a photo.';
@@ -6507,15 +6605,15 @@
       statusEl.textContent = 'Enter your Rebrickable API key first.';
       return;
     }
-    if (!ownedSets.length){
+    if (!realSets().length){
       statusEl.style.color = 'var(--text-danger)';
       statusEl.textContent = 'Add a set first.';
       return;
     }
-    var setsToFetch = ownedSets.filter(function(s){
+    var setsToFetch = realSets().filter(function(s){
       return !setParts.some(function(p){ return p.setNum === s.setNum; });
     });
-    var skipped = ownedSets.length - setsToFetch.length;
+    var skipped = realSets().length - setsToFetch.length;
     if (!setsToFetch.length){
       statusEl.style.color = 'var(--text-success)';
       statusEl.textContent = 'Every set already has parts on file \u2014 nothing new to fetch. To refresh one that already has parts, open its Summary card and use Re-fetch parts from Rebrickable.';
@@ -6573,6 +6671,7 @@
     var setFilter = document.getElementById('set-parts-set-filter').value;
     var colorFilter = document.getElementById('set-parts-color-filter').value;
     return setParts.filter(function(r){
+      if (isFigNum(r.setNum)) return false;
       if (setFilter && r.setNum !== setFilter) return false;
       if (colorFilter && r.color !== colorFilter) return false;
       if (q){
@@ -6602,7 +6701,7 @@
   function renderSetPartsTable(){
     var setSel = document.getElementById('set-parts-set-filter');
     var curSet = setSel.value;
-    setSel.innerHTML = '<option value="">All sets</option>' + ownedSets.map(function(s){ return '<option value="'+escapeHtml(s.setNum)+'">'+escapeHtml(s.setNum)+'</option>'; }).join('');
+    setSel.innerHTML = '<option value="">All sets</option>' + realSets().map(function(s){ return '<option value="'+escapeHtml(s.setNum)+'">'+escapeHtml(s.setNum)+'</option>'; }).join('');
     setSel.value = curSet;
 
     var colorSel = document.getElementById('set-parts-color-filter');
@@ -6723,6 +6822,14 @@
     populateSetRefetchScope();
   }
 
+  // ---- Minifigures live alongside sets: an entry in ownedSets with kind 'fig' and its Rebrickable fig number
+  // (fig-001234) as its set number, its parts in setParts. So the summary window, parts list, re-fetch, missing-pieces
+  // report, drawer pulls and photos all work for figures; the Official Sets views leave them out.
+  function isFigNum(n){ return /^fig-/i.test(String(n === null || n === undefined ? '' : n).trim()); }
+  function isFigEntry(s){ return !!s && (s.kind === 'fig' || isFigNum(s.setNum)); }
+  function realSets(){ return ownedSets.filter(function(s){ return !isFigEntry(s); }); }
+  function ownedFigs(){ return ownedSets.filter(isFigEntry); }
+
   function setPartNeeded(r){
     var setInfo = ownedSets.find(function(s){ return s.setNum === r.setNum; });
     return r.qtyPerSet * (setInfo ? setInfo.qty : 1);
@@ -6769,7 +6876,7 @@
 
     var setSel = document.getElementById('sp-set-filter');
     var curSet = setSel.value;
-    var sortedSets = ownedSets.slice().sort(function(a,b){
+    var sortedSets = realSets().slice().sort(function(a,b){
       return setLabelFor(a.setNum).localeCompare(setLabelFor(b.setNum), undefined, {numeric:true});
     });
     setSel.innerHTML = '<option value="">All sets</option>' + sortedSets.map(function(s){
@@ -6785,6 +6892,7 @@
     colorSel.value = curColor;
 
     var rawRows = setParts.filter(function(r){
+      if (isFigNum(r.setNum)) return false;
       if (setFilter && r.setNum !== setFilter) return false;
       if (colorFilter && r.color !== colorFilter) return false;
       if (noPhotoOnly && !rowHasNoPhoto(r)) return false;
@@ -7525,13 +7633,13 @@
   }
   // ---- CSV exports of owned sets and MOC builds ----
   function exportSetsListCSV(){
-    if (!ownedSets.length){
+    if (!realSets().length){
       alert('No sets to export yet \u2014 add a set first.');
       return;
     }
     var header = ['Set Number','Name','Theme','Qty Owned','Pieces Per Set','Total Pieces','Pieces On Hand','Pieces Missing','Location','Instructions','Last Edited'];
     var lines = [header.map(csvEscape).join(',')];
-    ownedSets.slice().sort(function(a, b){
+    realSets().slice().sort(function(a, b){
       return String(a.setNum).localeCompare(String(b.setNum), undefined, { numeric: true });
     }).forEach(function(s){
       var rows = setParts.filter(function(r){ return r.setNum === s.setNum; });
@@ -7943,7 +8051,7 @@
       statusEl.textContent = 'No set parts on file yet \u2014 add or import a set first.';
       return;
     }
-    var shortRows = setParts.filter(function(r){ return setPartOnHand(r) < setPartNeeded(r); });
+    var shortRows = setParts.filter(function(r){ return !isFigNum(r.setNum) && setPartOnHand(r) < setPartNeeded(r); });
     if (!shortRows.length){
       statusEl.style.color = 'var(--text-secondary)';
       statusEl.textContent = 'Every set is already marked complete \u2014 nothing to change.';
@@ -8059,6 +8167,11 @@
         img.src = localDataUrl;
         img.style.display = 'block';
         placeholder.style.display = 'none';
+      } else if (ctx.kind === 'set' && (ownedSets.find(function(x){ return x.setNum === ctx.key; }) || {}).imgUrl){
+        img.onerror = function(){ img.onerror = null; img.style.display = 'none'; placeholder.style.display = 'flex'; };
+        img.src = ownedSets.find(function(x){ return x.setNum === ctx.key; }).imgUrl;   // a minifigure's photo, straight from Rebrickable
+        img.style.display = 'block';
+        placeholder.style.display = 'none';
       } else {
         img.style.display = 'none';
         placeholder.style.display = 'flex';
@@ -8137,8 +8250,18 @@
     input.addEventListener('change', function(){
       var v = parseInt(input.value, 10);
       if (isNaN(v) || v < 1) v = 1;
+      if (isFigEntry(setInfo)){
+        var got = setFigQty(setInfo, v);
+        input.value = got;
+        if (got !== v) alert('Your sets include ' + figFromSetsQty(setInfo) + ' of this figure, so it can\u2019t go below that here. Change the set\u2019s quantity instead.');
+        safeRun('minifigures', renderMinifigsTab);
+        render();
+        refreshSetDetailMetrics(rows, setInfo);
+        return;
+      }
       setInfo.qty = v;
       saveOwnedSets();
+      syncFigQuantities();
       refreshSetViews();
       renderSetPartsTable();
       render();
@@ -8153,7 +8276,7 @@
     var pieceOnHand = rows.reduce(function(sum, r){ return sum + setPartOnHand(r); }, 0);
     var metricsEl = document.getElementById('detail-modal-metrics');
     metricsEl.innerHTML = '';
-    metricsEl.appendChild(buildQtyOwnedMetric(setInfo, rows));
+    if (!setInfo.mocGroup) metricsEl.appendChild(buildQtyOwnedMetric(setInfo, rows));
     metricsEl.appendChild(buildDetailMetric('Unique parts', rows.length));
     metricsEl.appendChild(buildDetailMetric('Pieces on hand', pieceOnHand.toLocaleString() + ' / ' + pieceNeeded.toLocaleString()));
     var setMissing = rows.reduce(function(sum, r){ return sum + Math.max(0, setPartNeeded(r) - setPartOnHand(r)); }, 0);
@@ -8419,6 +8542,7 @@
     var themeEl = document.getElementById('detail-modal-theme');
     if (setInfo.theme){ themeEl.textContent = 'Theme: ' + setInfo.theme; themeEl.style.display = 'block'; }
     else { themeEl.style.display = 'none'; }
+    if (isFigEntry(setInfo)){ themeEl.textContent = (setInfo.theme ? 'Theme: ' + setInfo.theme + ' \u00b7 ' : 'Minifigure \u00b7 ') + figSourcesText(setInfo); themeEl.style.display = 'block'; }
     document.getElementById('detail-modal-location').innerHTML = locationOptionsHtml(setInfo.location || '');
     document.getElementById('detail-modal-description').value = setInfo.description || '';
     refreshInstructionsUI();
@@ -8426,7 +8550,7 @@
     var rows = setParts.filter(function(r){ return r.setNum === setNum; });
     document.getElementById('detail-modal-mark-complete').style.display = rows.length ? 'inline-block' : 'none';
     document.getElementById('detail-modal-clear-quantities').style.display = rows.length ? 'inline-block' : 'none';
-    setRefetchButton('set');
+    setRefetchButton(setInfo.mocGroup ? '' : 'set');   // a group of lines moved from a MOC has no Rebrickable list to re-fetch
     document.getElementById('detail-modal-refetch-status').textContent = '';
     refreshSetDetailMetrics(rows, setInfo);
 
@@ -11692,14 +11816,14 @@
     if (!sel) return;
     var prev = sel.value || 'all';
     var themes = {};
-    ownedSets.forEach(function(s){ if (s.theme && s.theme.trim()) themes[s.theme.trim()] = true; });
+    realSets().forEach(function(s){ if (s.theme && s.theme.trim()) themes[s.theme.trim()] = true; });
     sel.innerHTML = '<option value="all">All official sets</option><option value="missing">Sets with missing pieces</option><option value="noparts">Sets with no parts list yet</option>' +
       Object.keys(themes).sort().map(function(t){ return '<option value="theme:' + escapeHtml(t) + '">Theme: ' + escapeHtml(t) + '</option>'; }).join('');
     sel.value = Array.prototype.some.call(sel.options, function(o){ return o.value === prev; }) ? prev : 'all';
   }
   function setRefetchTargets(){
     var scope = document.getElementById('set-refetch-scope').value || 'all';
-    return ownedSets.filter(function(s){
+    return realSets().filter(function(s){
       if (scope === 'all') return true;
       var rows = setParts.filter(function(r){ return r.setNum === s.setNum; });
       if (scope === 'missing') return rows.some(function(r){ return setPartOnHand(r) < setPartNeeded(r); });
@@ -11850,6 +11974,723 @@
   wireEl('set-refetch-apply-btn', 'click', applySetRefetch);
   wireEl('set-refetch-stop-btn', 'click', function(){ setRefetch.cancel = true; });
   wireEl('set-refetch-scope', 'focus', populateSetRefetchScope);
+
+  // ===================== Minifigures =====================
+  // A figure's quantity = figures you added by hand + (figures per set x copies) for every owned set it comes in.
+  function figFromSetsQty(f){
+    var q = 0;
+    Object.keys(f.figSources || {}).forEach(function(sn){
+      var s = ownedSets.find(function(x){ return x.setNum === sn && !isFigEntry(x); });
+      if (s) q += (f.figSources[sn] || 0) * (s.qty || 1);
+    });
+    return q;
+  }
+  function syncFigQuantities(){
+    var changed = false, removed = {};
+    ownedFigs().forEach(function(f){
+      if (f.kind !== 'fig'){ f.kind = 'fig'; changed = true; }
+      if (!f.figSources){ f.figSources = {}; changed = true; }
+      if (f.manualQty === undefined || f.manualQty === null){ f.manualQty = Object.keys(f.figSources).length ? 0 : (f.qty || 1); changed = true; }
+      Object.keys(f.figSources).forEach(function(sn){
+        if (!ownedSets.some(function(x){ return x.setNum === sn && !isFigEntry(x); })){ delete f.figSources[sn]; changed = true; }
+      });
+      if (!f.theme){   // borrow the theme of the set it comes in (a set's theme can arrive just after its figures)
+        var src = Object.keys(f.figSources).map(function(sn){ return ownedSets.find(function(x){ return x.setNum === sn; }); }).find(function(s){ return s && s.theme; });
+        if (src){ f.theme = src.theme; changed = true; }
+      }
+      if (f.mocGroup){ if (f.qty !== 1){ f.qty = 1; changed = true; } return; }
+      var q = (f.manualQty || 0) + figFromSetsQty(f);
+      if (q <= 0){ removed[f.setNum] = true; return; }
+      if (q !== f.qty){
+        var oldQ = f.qty || 0;
+        setParts.forEach(function(r){
+          if (r.setNum !== f.setNum || r.onHand === undefined || r.onHand === null) return;
+          // figures that arrive with another set count as complete, like the set itself; fewer figures can't have more parts on hand
+          if (q > oldQ) r.onHand += (r.qtyPerSet || 0) * (q - oldQ);
+          else r.onHand = Math.min(r.onHand, (r.qtyPerSet || 0) * q);
+        });
+        f.qty = q;
+        changed = true;
+      }
+    });
+    if (Object.keys(removed).length){
+      ownedSets = ownedSets.filter(function(s){ return !(isFigEntry(s) && removed[s.setNum]); });
+      setParts = setParts.filter(function(r){ return !removed[r.setNum]; });
+      changed = true;
+    }
+    if (changed){ saveOwnedSets(); saveSetParts(); }
+    return changed;
+  }
+  // Set a figure's total by hand: anything above what your sets supply counts as added by hand.
+  function setFigQty(f, v){
+    var fromSets = figFromSetsQty(f);
+    v = Math.max(isNaN(v) ? 1 : v, 1, fromSets);
+    f.manualQty = v - fromSets;
+    f.qty = v;
+    touchSetLastEdited(f.setNum);
+    saveOwnedSets();
+    return v;
+  }
+  function figSourcesText(f){
+    if (f.mocGroup) return 'Moved here from your MOC build ' + f.mocGroup;
+    var src = f.figSources || {};
+    var keys = Object.keys(src);
+    var bits = keys.map(function(sn){ return sn + (src[sn] > 1 ? ' (×' + src[sn] + ')' : ''); });
+    var t = keys.length ? 'Comes in your set' + (keys.length === 1 ? '' : 's') + ' ' + bits.join(', ') : '';
+    if (f.manualQty) t += (t ? ' · ' : '') + f.manualQty + ' added by hand';
+    return t || 'Added by hand';
+  }
+
+  function fetchSetMinifigs(setNum){
+    var url = 'https://rebrickable.com/api/v3/lego/sets/' + encodeURIComponent(setNum) + '/minifigs/?page_size=1000&key=' + encodeURIComponent(rebrickableApiKey);
+    return fetchUrlMaybeProxied(url).then(function(resp){
+      if (resp.status === 404) return { results: [] };
+      if (!resp.ok) throw new Error('HTTP ' + resp.status);
+      return resp.json();
+    }).then(function(d){ return (d && d.results) || []; });
+  }
+  function loadFigParts(figNum){
+    return fetchSetPartsFromApi(figNum).then(function(rows){
+      if (rows.length) importSetPartsFromRows(figNum, rows);
+      return rows.length;
+    });
+  }
+  // Adds (or updates) the figures Rebrickable lists for one of your sets, then fetches the parts of any new ones.
+  function addFigsFromSet(setNum, stats){
+    var set = ownedSets.find(function(x){ return x.setNum === setNum && !isFigEntry(x); });
+    if (!set) return Promise.resolve(0);
+    return fetchSetMinifigs(setNum).then(function(list){
+      var fresh = [];
+      ownedFigs().forEach(function(f){ if (f.figSources && f.figSources[setNum]) delete f.figSources[setNum]; });
+      list.forEach(function(m){
+        var num = m.set_num;
+        if (!num) return;
+        var f = ownedSets.find(function(x){ return x.setNum === num; });
+        if (!f){
+          f = { setNum: num, kind: 'fig', name: m.set_name || '', theme: set.theme || '', qty: 0, manualQty: 0, figSources: {}, imgUrl: m.set_img_url || '', lastEdited: new Date().toISOString() };
+          ownedSets.push(f);
+          fresh.push(f);
+          if (stats) stats.added.push(f.name || num);
+        }
+        f.kind = 'fig';
+        f.figSources = f.figSources || {};
+        if (f.manualQty === undefined || f.manualQty === null) f.manualQty = 0;
+        if (!f.imgUrl && m.set_img_url) f.imgUrl = m.set_img_url;
+        if (!f.name && m.set_name) f.name = m.set_name;
+        if (!f.theme && set.theme) f.theme = set.theme;
+        f.figSources[setNum] = m.quantity || 1;
+      });
+      set.figsCheckedAt = Date.now();
+      syncFigQuantities();
+      saveOwnedSets();
+      return fresh.reduce(function(chain, f){
+        return chain.then(function(){ return rbSleep(1100); }).then(function(){ return loadFigParts(f.setNum); }).catch(function(err){
+          if (stats){ stats.failed++; stats.lastError = (err && err.message) || 'unknown error'; }
+        });
+      }, Promise.resolve()).then(function(){ return fresh.length; });
+    });
+  }
+
+  // Background queue: sets whose parts were just imported are checked for figures, one at a time.
+  var figScan = { queue: [], running: false, cancel: false, stats: null };
+  function figStatus(msg, color){
+    var el = document.getElementById('fig-scan-status');
+    if (el){ el.style.color = color || 'var(--text-secondary)'; el.textContent = msg; }
+  }
+  function figTabVisible(){ var t = document.getElementById('tab-minifigs'); return !!(t && t.style.display !== 'none'); }
+  function queueFigScan(setNums){
+    if (!rebrickableApiKey) return;
+    setNums.forEach(function(sn){ if (sn && !isFigNum(sn) && figScan.queue.indexOf(sn) === -1) figScan.queue.push(sn); });
+    if (!figScan.running && figScan.queue.length) runFigScan();
+  }
+  function runFigScan(){
+    figScan.running = true; figScan.cancel = false;
+    figScan.stats = { added: [], checked: 0, failed: 0, lastError: '' };
+    var stopBtn = document.getElementById('fig-scan-stop');
+    if (stopBtn) stopBtn.style.display = '';
+    function done(stopped){
+      figScan.running = false;
+      if (stopped) figScan.queue = [];
+      if (stopBtn) stopBtn.style.display = 'none';
+      syncFigQuantities();
+      safeRun('redraw', render);
+      if (figTabVisible()) safeRun('minifigures', renderMinifigsTab);
+      var st = figScan.stats, n = st.added.length;
+      var msg = (stopped ? 'Stopped. ' : '') + 'Checked ' + st.checked + ' set' + (st.checked === 1 ? '' : 's') + ' for minifigures' +
+        (n ? ': added ' + n + ' new minifigure' + (n === 1 ? '' : 's') + ' (' + st.added.slice(0, 6).join(', ') + (n > 6 ? ' and ' + (n - 6) + ' more' : '') + ').' : ' — nothing new to add.') +
+        (st.failed ? ' ' + st.failed + ' lookup' + (st.failed === 1 ? '' : 's') + ' failed (' + st.lastError + ') — run it again to retry.' : '');
+      figStatus(msg, st.failed ? 'var(--text-danger)' : (n ? 'var(--text-success)' : 'var(--text-secondary)'));
+      if (n && !figTabVisible()) showAppBanner('notice', 'Minifigures added from your sets', msg + ' See the Minifigures tab under Official LEGO Collection.');
+    }
+    function next(){
+      if (figScan.cancel) return done(true);
+      if (!figScan.queue.length) return done(false);
+      var sn = figScan.queue.shift();
+      figStatus('Looking for minifigures in ' + sn + '…' + (figScan.queue.length ? ' (' + figScan.queue.length + ' more to check)' : ''));
+      addFigsFromSet(sn, figScan.stats).then(function(){ figScan.stats.checked++; }, function(err){
+        figScan.stats.failed++; figScan.stats.lastError = (err && err.message) || 'unknown error';
+      }).then(function(){
+        if (figTabVisible()) safeRun('minifigures', renderMinifigsTab);
+        return rbSleep(1100);
+      }).then(next);
+    }
+    next();
+  }
+  function scanSetsForFigs(){
+    if (!rebrickableApiKey){ figStatus('Add your Rebrickable API key on the Data & Tools tab first.', 'var(--text-danger)'); return; }
+    if (figScan.running){ figStatus('Already checking your sets…'); return; }
+    var again = document.getElementById('fig-scan-all').checked;
+    var sets = realSets().filter(function(s){ return again || !s.figsCheckedAt; }).map(function(s){ return s.setNum; });
+    if (!sets.length){ figStatus(realSets().length ? 'Every set has already been checked. Tick “Check them all again” to look again.' : 'Add an official set first.'); return; }
+    queueFigScan(sets);
+  }
+
+  // ---- Lookup on Rebrickable: by name, fig number, or theme ----
+  var figThemes = null;
+  var RB_THEMES_KEY = 'rebrickable-themes-v1';
+  function loadFigThemes(){
+    if (figThemes) return Promise.resolve(figThemes);
+    return storage.get(RB_THEMES_KEY, false).then(function(res){
+      try {
+        var t = res && res.value ? JSON.parse(res.value) : null;
+        if (t && t.map && Date.now() - t.at < 30 * 86400000){ figThemes = t.map; return figThemes; }
+      } catch(e){}
+      if (!rebrickableApiKey) return null;
+      return rbFetchJson(rbApiUrl('themes/?page_size=1000')).then(function(d){
+        var map = {};
+        ((d && d.results) || []).forEach(function(t){ map[t.id] = { name: t.name, parent: t.parent_id || null }; });
+        if (!Object.keys(map).length) return null;
+        figThemes = map;
+        storage.set(RB_THEMES_KEY, JSON.stringify({ at: Date.now(), map: map }), false);
+        return map;
+      });
+    }).catch(function(){ return null; });
+  }
+  function figThemePath(id){
+    var parts = [], guard = 0;
+    while (id && figThemes && figThemes[id] && guard++ < 6){ parts.unshift(figThemes[id].name); id = figThemes[id].parent; }
+    return parts.join(' › ');
+  }
+  function populateFigThemeSelect(){
+    var sel = document.getElementById('fig-theme-select');
+    if (!sel || sel.dataset.loaded) return;
+    loadFigThemes().then(function(map){
+      if (!map || sel.dataset.loaded) return;
+      var cur = sel.value;
+      var opts = Object.keys(map).map(function(id){ return { id: id, label: figThemePath(id) }; }).sort(function(a, b){ return a.label.localeCompare(b.label); });
+      sel.innerHTML = '<option value="">Any theme</option>' + opts.map(function(o){ return '<option value="' + o.id + '">' + escapeHtml(o.label) + '</option>'; }).join('');
+      sel.value = cur;
+      sel.dataset.loaded = '1';
+    });
+  }
+  // A figure looked up by name has no theme of its own on Rebrickable, so borrow the theme of the first set it comes in.
+  function figThemeFromSets(f){
+    return loadFigThemes().then(function(){
+      return rbFetchJson(rbApiUrl('minifigs/' + encodeURIComponent(f.setNum) + '/sets/?page_size=5'));
+    }).then(function(d){
+      var first = d && d.results && d.results[0];
+      if (!first) return;
+      return rbFetchJson(rbApiUrl('sets/' + encodeURIComponent(first.set_num) + '/')).then(function(sd){
+        if (sd && sd.theme_id && figThemes && figThemes[sd.theme_id] && !f.theme){ f.theme = figThemes[sd.theme_id].name; saveOwnedSets(); }
+      });
+    }).catch(function(){});
+  }
+  function figSearchStatus(msg, color){ var el = document.getElementById('fig-search-status'); el.style.color = color || 'var(--text-secondary)'; el.textContent = msg; }
+  var figSearchNext = null, figSearchTheme = '';
+  function figSearch(more){
+    if (!rebrickableApiKey) return figSearchStatus('Add your Rebrickable API key on the Data & Tools tab first.', 'var(--text-danger)');
+    var box = document.getElementById('fig-search-results'), moreBtn = document.getElementById('fig-search-more');
+    var q = (document.getElementById('fig-search-input').value || '').trim();
+    var theme = document.getElementById('fig-theme-select').value;
+    var url;
+    if (more){
+      if (!figSearchNext) return;
+      url = figSearchNext;
+    } else {
+      if (!q && !theme) return figSearchStatus('Type a name (or a fig number like fig-001234), or pick a theme.', 'var(--text-danger)');
+      box.innerHTML = '';
+      figSearchTheme = theme;
+      url = isFigNum(q) ? rbApiUrl('minifigs/' + encodeURIComponent(q.toLowerCase()) + '/')
+        : rbApiUrl('minifigs/?page_size=24&ordering=name' + (q ? '&search=' + encodeURIComponent(q) : '') + (theme ? '&in_theme_id=' + encodeURIComponent(theme) : ''));
+    }
+    moreBtn.style.display = 'none';
+    figSearchStatus('Searching Rebrickable…');
+    rbFetchJson(url).then(function(d){
+      var list = !d ? [] : (Array.isArray(d.results) ? d.results : (d.set_num ? [d] : []));
+      figSearchNext = (d && d.next) || null;
+      list.forEach(function(m){ box.appendChild(figResultCard(m)); });
+      var total = d && typeof d.count === 'number' ? d.count : list.length;
+      var shown = box.children.length;
+      figSearchStatus(total ? (total.toLocaleString() + ' minifigure' + (total === 1 ? '' : 's') + ' found' + (shown < total ? ' — showing ' + shown : '') + '.') : 'No minifigures found. Try fewer words, or a different spelling.');
+      moreBtn.style.display = figSearchNext ? '' : 'none';
+    }).catch(function(err){
+      figSearchStatus('Couldn’t reach Rebrickable (' + ((err && err.message) || 'unknown error') + ').', 'var(--text-danger)');
+    });
+  }
+  function figResultCard(m){
+    var card = document.createElement('div');
+    card.className = 'fig-result';
+    card.innerHTML = '<div class="fig-result-img">' + (m.set_img_url ? '<img loading="lazy" alt="" src="' + escapeHtml(m.set_img_url) + '" />' : '') + '</div>' +
+      '<div class="fig-result-name">' + escapeHtml(m.name || m.set_num) + '</div>' +
+      '<div class="fig-result-meta">' + escapeHtml(m.set_num) + (m.num_parts ? ' · ' + m.num_parts + ' part' + (m.num_parts === 1 ? '' : 's') : '') + '</div>';
+    var btn = document.createElement('button');
+    btn.className = 'icon-btn lockable';
+    btn.disabled = !!viewLocked;
+    function label(){
+      var have = ownedSets.find(function(x){ return x.setNum === m.set_num; });
+      btn.textContent = have ? 'Add another (you have ' + have.qty + ')' : 'Add to my minifigures';
+    }
+    label();
+    btn.addEventListener('click', function(){
+      btn.disabled = true;
+      addFigManually(m, figSearchTheme).then(function(){ label(); btn.disabled = !!viewLocked; });
+    });
+    card.appendChild(btn);
+    return card;
+  }
+  function addFigManually(m, themeId){
+    var f = ownedSets.find(function(x){ return x.setNum === m.set_num; });
+    var isNew = !f;
+    if (!f){
+      f = { setNum: m.set_num, kind: 'fig', name: m.name || '', theme: (themeId && figThemes && figThemes[themeId]) ? figThemes[themeId].name : '',
+            qty: 0, manualQty: 0, figSources: {}, imgUrl: m.set_img_url || '', lastEdited: new Date().toISOString() };
+      ownedSets.push(f);
+    }
+    f.manualQty = (f.manualQty || 0) + 1;
+    syncFigQuantities();
+    touchSetLastEdited(f.setNum);
+    saveOwnedSets();
+    safeRun('minifigures', renderMinifigsTab);
+    render();
+    if (!isNew){ figSearchStatus('Added another ' + (f.name || f.setNum) + ' — you now have ' + f.qty + '.', 'var(--text-success)'); return Promise.resolve(f); }
+    figSearchStatus('Added ' + (f.name || f.setNum) + ' — fetching its parts list…');
+    var chain = f.theme ? Promise.resolve() : figThemeFromSets(f);
+    return chain.then(function(){ return loadFigParts(f.setNum); }).then(function(n){
+      figSearchStatus('Added ' + (f.name || f.setNum) + ' with ' + n + ' part line' + (n === 1 ? '' : 's') + '.', 'var(--text-success)');
+    }).catch(function(err){
+      figSearchStatus('Added ' + (f.name || f.setNum) + ', but its parts list couldn’t be fetched (' + ((err && err.message) || 'unknown error') + ') — use Re-fetch in its Summary.', 'var(--text-danger)');
+    }).then(function(){
+      safeRun('minifigures', renderMinifigsTab);
+      render();
+      return f;
+    });
+  }
+
+  // ---- The tab: statistics and your figures, grouped by theme ----
+  function figThumbInto(img, f){
+    var tries = [];
+    if (setPhotos[f.setNum]) tries.push(setPhotos[f.setNum]);
+    if (f.sitePhoto) tries.push(photoSitePath('set', f.setNum));
+    if (f.imgUrl) tries.push(f.imgUrl);
+    if (!f.sitePhoto) tries.push(photoSitePath('set', f.setNum));
+    var i = 0;
+    img.onerror = function(){ if (i < tries.length) img.src = tries[i++]; else { img.onerror = null; img.style.visibility = 'hidden'; } };
+    img.src = tries[i++];
+  }
+  function figTotals(){
+    var figs = ownedFigs(), t = { unique: 0, total: 0, fromSets: 0, byHand: 0, need: 0, onHand: 0 };
+    figs.forEach(function(f){ if (f.mocGroup) return; t.unique++; t.total += f.qty || 0; t.fromSets += figFromSetsQty(f); t.byHand += f.manualQty || 0; });
+    setParts.forEach(function(r){
+      if (!isFigNum(r.setNum)) return;
+      var need = setPartNeeded(r);
+      t.need += need;
+      t.onHand += Math.min(setPartOnHand(r), need);
+    });
+    t.missing = Math.max(t.need - t.onHand, 0);
+    t.pct = t.need ? Math.round(100 * t.onHand / t.need) : 100;
+    return t;
+  }
+  function fillMetricGrid(el, metrics, accents){
+    if (!el) return;
+    el.innerHTML = '';
+    metrics.forEach(function(m, i){
+      var d = document.createElement('div');
+      d.className = 'metric';
+      d.style.borderLeftColor = accents[i % accents.length];
+      d.innerHTML = '<div class="label">' + m[0] + '</div><div class="value">' + m[1] + '</div>';
+      el.appendChild(d);
+    });
+  }
+  function renderFigStats(){
+    var t = figTotals();
+    fillMetricGrid(document.getElementById('figs-metrics'), [
+      ['Minifigures', t.total.toLocaleString()],
+      ['Different figures', t.unique.toLocaleString()],
+      ['From your sets', t.fromSets.toLocaleString()],
+      ['Added by hand', t.byHand.toLocaleString()],
+      ['Pieces on hand', t.onHand.toLocaleString() + ' / ' + t.need.toLocaleString()],
+      ['Missing pieces', t.missing.toLocaleString()],
+      ['Complete', t.pct + '%']
+    ], ['var(--lego-yellow)', 'var(--lego-blue)', 'var(--lego-purple)', 'var(--lego-green)', 'var(--lego-brown)', 'var(--lego-red)', 'var(--lego-yellow)']);
+  }
+  var expandedFigThemes = new Set(), figThemesTouched = false;
+  function buildFigCard(f){
+    var rows = setParts.filter(function(p){ return p.setNum === f.setNum; });
+    var need = rows.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
+    var have = rows.reduce(function(sum, r){ return sum + Math.min(setPartOnHand(r), setPartNeeded(r)); }, 0);
+    var short = need - have;
+    var card = document.createElement('div');
+    card.className = 'owned-set-card fig-card';
+    card.innerHTML =
+      '<img class="fig-thumb" alt="" />' +
+      '<span class="set-num">' + escapeHtml(f.setNum) + '</span>' +
+      '<span class="set-edit-field"><input type="text" class="set-name-edit" placeholder="Name" value="' + escapeHtml(f.name || '') + '" /></span>' +
+      '<span class="set-edit-field"><input type="text" class="set-theme-edit" placeholder="Theme" value="' + escapeHtml(f.theme || '') + '" /></span>' +
+      '<span class="set-edit-field"><select class="set-location-edit">' + locationOptionsHtml(f.location || '') + '</select></span>' +
+      (f.mocGroup ? '' : '<span class="set-edit-field" style="display:inline-flex; align-items:center; gap:4px; white-space:nowrap;">Qty: <input type="number" min="1" class="set-qty-edit lockable" value="' + (f.qty || 1) + '" style="width:56px;" /></span>') +
+      '<span class="set-meta">' + rows.length + ' part line' + (rows.length === 1 ? '' : 's') + ' &middot; ' + have.toLocaleString() + ' / ' + need.toLocaleString() + ' pcs' + (short > 0 ? ' <span class="pill pill-short" style="margin-left:4px;">Missing ' + short.toLocaleString() + '</span>' : '') + (!rows.length ? ' <span class="pill" style="margin-left:4px; background:var(--surface-1); border:1px solid var(--border);">No parts list yet</span>' : '') + '</span>' +
+      '<span class="set-meta">' + escapeHtml(figSourcesText(f)) + '</span>' +
+      '<span class="set-meta last-edited-meta">' + escapeHtml(formatLastEdited(f.lastEdited)) + '</span>';
+    figThumbInto(card.querySelector('.fig-thumb'), f);
+    var nameInput = card.querySelector('.set-name-edit'), themeInput = card.querySelector('.set-theme-edit');
+    var locationInput = card.querySelector('.set-location-edit'), qtyInput = card.querySelector('.set-qty-edit');
+    nameInput.addEventListener('change', function(){ f.name = nameInput.value.trim(); touchSetLastEdited(f.setNum); saveOwnedSets(); });
+    themeInput.addEventListener('change', function(){ f.theme = themeInput.value.trim(); touchSetLastEdited(f.setNum); saveOwnedSets(); renderMinifigsTab(); });
+    locationInput.addEventListener('change', function(){ f.location = locationInput.value.trim(); touchSetLastEdited(f.setNum); saveOwnedSets(); });
+    if (qtyInput) qtyInput.addEventListener('change', function(){
+      var v = setFigQty(f, parseInt(qtyInput.value, 10));
+      if (v !== parseInt(qtyInput.value, 10)) alert('Your sets include ' + figFromSetsQty(f) + ' of this figure, so it can’t go below that here. Change the set’s quantity instead.');
+      renderMinifigsTab();
+      render();
+    });
+    if (f.mocGroup){
+      var backBtn = document.createElement('button');
+      backBtn.className = 'icon-btn lockable';
+      backBtn.title = 'Put these lines back into the MOC build';
+      backBtn.innerHTML = '<i class="ti ti-arrow-back-up" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Move back to build';
+      backBtn.addEventListener('click', function(){ moveFigGroupBackToMoc(f); });
+      card.appendChild(backBtn);
+    }
+    var viewBtn = document.createElement('button');
+    viewBtn.className = 'icon-btn';
+    viewBtn.title = 'View summary, parts list and photo';
+    viewBtn.innerHTML = '<i class="ti ti-eye" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Summary';
+    viewBtn.addEventListener('click', function(){ openSetDetail(f.setNum); });
+    var delBtn = document.createElement('button');
+    delBtn.className = 'icon-btn lockable';
+    delBtn.style.cssText = 'color: var(--text-danger); border-color: var(--text-danger); flex-shrink:0;';
+    delBtn.title = 'Remove this minifigure';
+    delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Delete';
+    delBtn.addEventListener('click', function(){
+      var fromSets = figFromSetsQty(f);
+      if (!confirm('Remove ' + f.setNum + (f.name ? ' (' + f.name + ')' : '') + ' and its parts list?' + (fromSets ? '\n\nIt comes with your sets, so it will be added back if you check your sets for minifigures again.' : ''))) return;
+      ownedSets = ownedSets.filter(function(x){ return x !== f; });
+      setParts = setParts.filter(function(p){ return p.setNum !== f.setNum; });
+      saveOwnedSets();
+      saveSetParts();
+      renderMinifigsTab();
+      render();
+    });
+    card.appendChild(viewBtn);
+    card.appendChild(delBtn);
+    return card;
+  }
+  function renderFigList(){
+    var container = document.getElementById('figs-list');
+    if (!container) return;
+    container.innerHTML = '';
+    var figs = ownedFigs();
+    if (!figs.length){
+      container.innerHTML = '<div class="empty-msg">No minifigures yet — look some up above, or use “Find minifigures in my sets”.</div>';
+      return;
+    }
+    var q = (document.getElementById('figs-search').value || '').trim().toLowerCase();
+    var onlyMissing = document.getElementById('figs-only-missing').checked;
+    var missing = {};
+    setParts.forEach(function(r){ if (isFigNum(r.setNum) && setPartOnHand(r) < setPartNeeded(r)) missing[r.setNum] = true; });
+    var shown = figs.filter(function(f){
+      if (onlyMissing && !missing[f.setNum]) return false;
+      if (q && (f.setNum + ' ' + (f.name || '') + ' ' + (f.theme || '') + ' ' + Object.keys(f.figSources || {}).join(' ')).toLowerCase().indexOf(q) === -1) return false;
+      return true;
+    });
+    if (!shown.length){
+      container.innerHTML = '<div class="empty-msg">' + (onlyMissing ? 'No minifigures are missing pieces' + (q ? ' that match your filter' : '') + '.' : 'No minifigures match your filter.') + '</div>';
+      return;
+    }
+    var groups = {};
+    shown.forEach(function(f){ var t = (f.theme && f.theme.trim()) ? f.theme.trim() : '(No theme)'; (groups[t] = groups[t] || []).push(f); });
+    var names = Object.keys(groups).sort(function(a, b){ if (a === '(No theme)') return 1; if (b === '(No theme)') return -1; return a.localeCompare(b); });
+    var openAll = q || onlyMissing || (!figThemesTouched && shown.length <= 40);
+    names.forEach(function(theme){
+      var list = groups[theme].slice().sort(function(a, b){ return (a.name || a.setNum).localeCompare(b.name || b.setNum); });
+      var isOpen = openAll || expandedFigThemes.has(theme);
+      var header = document.createElement('button');
+      header.type = 'button';
+      header.className = 'theme-group-header';
+      header.innerHTML = '<i class="ti ' + (isOpen ? 'ti-chevron-down' : 'ti-chevron-right') + '" aria-hidden="true"></i><span>' + escapeHtml(theme) + '</span><span class="theme-group-count">(' + list.reduce(function(n, f){ return n + (f.mocGroup ? 1 : (f.qty || 0)); }, 0) + ')</span>';
+      var body = document.createElement('div');
+      body.className = 'theme-group-body';
+      body.style.display = isOpen ? 'block' : 'none';
+      list.forEach(function(f){ body.appendChild(buildFigCard(f)); });
+      header.addEventListener('click', function(){
+        figThemesTouched = true;
+        var now = body.style.display === 'none';
+        if (now) expandedFigThemes.add(theme); else expandedFigThemes.delete(theme);
+        body.style.display = now ? 'block' : 'none';
+        header.querySelector('i').className = 'ti ' + (now ? 'ti-chevron-down' : 'ti-chevron-right');
+      });
+      container.appendChild(header);
+      container.appendChild(body);
+    });
+  }
+  function renderMinifigsTab(){
+    syncFigQuantities();
+    renderFigStats();
+    renderFigList();
+  }
+
+  // ---- Bulk tools: save photos to your site, re-fetch parts lists ----
+  var figTools = { running: false, cancel: false };
+  function figToolsStatus(msg, color){ var el = document.getElementById('fig-tools-status'); el.style.color = color || 'var(--text-secondary)'; el.textContent = msg; }
+  function saveFigPhotosToSite(){
+    if (figTools.running) return;
+    if (!githubConnectionConfigured()) return figToolsStatus('Your minifigures already show Rebrickable’s photos. To keep your own copies on your site (so they still show if Rebrickable changes), set up GitHub Connection on the Data & Tools tab, then press this again.', 'var(--text-danger)');
+    var todo = ownedFigs().filter(function(f){ return !f.mocGroup && f.imgUrl && !f.sitePhoto && !setPhotos[f.setNum]; });
+    if (!todo.length) return figToolsStatus('Every minifigure with a Rebrickable photo already has it saved to your site.', 'var(--text-success)');
+    figTools.running = true; figTools.cancel = false;
+    document.getElementById('fig-tools-stop').style.display = '';
+    var i = 0, saved = 0, had = 0, failed = 0, lastErr = '';
+    function next(){
+      if (figTools.cancel || i >= todo.length){
+        figTools.running = false;
+        document.getElementById('fig-tools-stop').style.display = 'none';
+        saveOwnedSets();
+        renderMinifigsTab();
+        return figToolsStatus((figTools.cancel ? 'Stopped. ' : '') + 'Saved ' + saved + ' photo' + (saved === 1 ? '' : 's') + ' to your site' + (had ? ', ' + had + ' were already there' : '') + '.' + (failed ? ' ' + failed + ' failed (' + lastErr + ').' : ''), failed ? 'var(--text-danger)' : 'var(--text-success)');
+      }
+      var f = todo[i++];
+      figToolsStatus('Saving photos to your site… ' + i + ' / ' + todo.length);
+      importSetPhoto(f.setNum, f.imgUrl).then(function(res){
+        if (res === 'saved'){ saved++; f.sitePhoto = true; }
+        else if (res === 'had'){ had++; f.sitePhoto = true; }
+      }).catch(function(err){ failed++; lastErr = (err && err.message) || 'unknown error'; }).then(function(){ return rbSleep(400); }).then(next);
+    }
+    next();
+  }
+  function refetchAllFigParts(){
+    if (figTools.running) return;
+    if (!rebrickableApiKey) return figToolsStatus('Add your Rebrickable API key on the Data & Tools tab first.', 'var(--text-danger)');
+    var sel = document.getElementById('fig-refetch-skip');
+    var days = parseInt(sel.value, 10) || 0, cutoff = days ? Date.now() - days * 86400000 : 0;
+    var figs = ownedFigs().filter(function(f){ return !f.mocGroup; });
+    var todo = figs.filter(function(f){
+      var rows = setParts.filter(function(r){ return r.setNum === f.setNum; });
+      return !(cutoff && rows.length && rows.every(function(r){ return r.rbAt && r.rbAt > cutoff; }));
+    });
+    if (!figs.length) return figToolsStatus('No minifigures yet.');
+    if (!todo.length) return figToolsStatus('Every minifigure’s parts list was fetched in the last ' + sel.options[sel.selectedIndex].text + ' — nothing to do.', 'var(--text-success)');
+    if (!confirm('Re-fetch the parts lists of ' + todo.length + ' minifigure' + (todo.length === 1 ? '' : 's') + ' from Rebrickable?' + (figs.length > todo.length ? ' (' + (figs.length - todo.length) + ' fetched recently are skipped.)' : '') + '\n\nParts you’d marked short keep their shortfall; everything else counts as owned. Roughly ' + Math.max(1, Math.round(todo.length * 1.2 / 60)) + ' minute' + (Math.round(todo.length * 1.2 / 60) > 1 ? 's' : '') + '.')) return;
+    figTools.running = true; figTools.cancel = false;
+    document.getElementById('fig-tools-stop').style.display = '';
+    var i = 0, changed = 0, same = 0, failed = 0, lastErr = '', stamped = false;
+    function next(){
+      if (figTools.cancel || i >= todo.length){
+        figTools.running = false;
+        document.getElementById('fig-tools-stop').style.display = 'none';
+        if (stamped) saveSetParts();
+        render();
+        renderMinifigsTab();
+        return figToolsStatus((figTools.cancel ? 'Stopped. ' : '') + 'Checked ' + (changed + same + failed) + ' minifigure' + (changed + same + failed === 1 ? '' : 's') + ': ' + changed + ' parts list' + (changed === 1 ? '' : 's') + ' updated, ' + same + ' already matched Rebrickable.' + (failed ? ' ' + failed + ' failed (' + lastErr + ').' : ''), failed ? 'var(--text-danger)' : 'var(--text-success)');
+      }
+      var f = todo[i++];
+      figToolsStatus('Re-fetching parts lists… ' + i + ' / ' + todo.length + ' (' + (f.name || f.setNum) + ')');
+      fetchSetPartsFromApi(f.setNum).then(function(rows){
+        if (!rows.length){ same++; return; }
+        var plan = planSetRefetch(f.setNum, rows);
+        if (plan.unchanged){ plan.oldRows.forEach(function(r){ r.rbAt = Date.now(); }); stamped = true; same++; }
+        else { importSetPartsFromRows(f.setNum, plan.newRows); changed++; }
+      }).catch(function(err){ failed++; lastErr = (err && err.message) || 'unknown error'; }).then(function(){ return rbSleep(1100); }).then(next);
+    }
+    next();
+  }
+
+  wireEl('fig-search-btn', 'click', function(){ figSearch(false); });
+  wireEl('fig-search-input', 'keydown', function(e){ if (e.key === 'Enter') figSearch(false); });
+  wireEl('fig-search-more', 'click', function(){ figSearch(true); });
+  wireEl('fig-theme-select', 'focus', populateFigThemeSelect);
+  wireEl('fig-theme-select', 'pointerdown', populateFigThemeSelect);
+  wireEl('fig-scan-btn', 'click', scanSetsForFigs);
+  wireEl('fig-scan-stop', 'click', function(){ figScan.cancel = true; });
+  wireEl('fig-photos-btn', 'click', saveFigPhotosToSite);
+  wireEl('fig-refetch-btn', 'click', refetchAllFigParts);
+  wireEl('fig-tools-stop', 'click', function(){ figTools.cancel = true; });
+  var figsFilterTimer = null;
+  wireEl('figs-search', 'input', function(){ clearTimeout(figsFilterTimer); figsFilterTimer = setTimeout(renderFigList, 200); });
+  wireEl('figs-only-missing', 'change', renderFigList);
+
+  // ---- Minifigure parts that ended up in MOC builds: find them by Rebrickable part category, review, move them into
+  // a "Minifigure parts from <build>" group on the Minifigures tab (and back again if you change your mind).
+  var RB_PART_CATS_KEY = 'rebrickable-part-cats-v1';
+  var rbPartCats = null;   // { at, names: { catId: name }, byPart: { partKey: catId|0 } }
+  function loadPartCatCache(){
+    if (rbPartCats) return Promise.resolve(rbPartCats);
+    return storage.get(RB_PART_CATS_KEY, false).then(function(res){
+      try { var t = res && res.value ? JSON.parse(res.value) : null; if (t && t.byPart) rbPartCats = t; } catch(e){}
+      if (!rbPartCats || Date.now() - rbPartCats.at > 90 * 86400000) rbPartCats = { at: Date.now(), names: (rbPartCats && rbPartCats.names) || {}, byPart: (rbPartCats && rbPartCats.byPart) || {} };
+      return rbPartCats;
+    }).catch(function(){ rbPartCats = { at: Date.now(), names: {}, byPart: {} }; return rbPartCats; });
+  }
+  function savePartCatCache(){ try { storage.set(RB_PART_CATS_KEY, JSON.stringify(rbPartCats), false); } catch(e){} }
+  // 'core' = heads, torsos, legs, headwear (ticked by default); 'acc' = other minifigure categories, like weapons and tools
+  function figPartKind(catName){
+    if (!catName || !/^(minifig|minidoll)/i.test(catName)) return '';
+    return /(heads?|upper body|lower body|headwear|hair)$/i.test(catName.trim()) || /^minifigs?$/i.test(catName.trim()) ? 'core' : 'acc';
+  }
+  function lookupPartCategories(partNums, progress){
+    return loadPartCatCache().then(function(cache){
+      var chain = Object.keys(cache.names).length ? Promise.resolve() : rbFetchJson(rbApiUrl('part_categories/?page_size=1000')).then(function(d){
+        ((d && d.results) || []).forEach(function(c){ cache.names[c.id] = c.name; });
+      });
+      var todo = partNums.filter(function(pn){ return !cache.byPart.hasOwnProperty(normKey(pn)); });
+      var batches = [];
+      for (var i = 0; i < todo.length; i += 80) batches.push(todo.slice(i, i + 80));
+      batches.forEach(function(batch, bi){
+        chain = chain.then(function(){
+          if (mfpScan.cancel) return;
+          if (progress) progress(bi + 1, batches.length);
+          return rbFetchJson(rbApiUrl('parts/?page_size=1000&part_nums=' + batch.map(encodeURIComponent).join(','))).then(function(d){
+            var found = {};
+            ((d && d.results) || []).forEach(function(p){ found[normKey(p.part_num)] = p.part_cat_id || 0; });
+            batch.forEach(function(pn){ cache.byPart[normKey(pn)] = found.hasOwnProperty(normKey(pn)) ? found[normKey(pn)] : 0; });
+          });
+        });
+      });
+      return chain.then(function(){ savePartCatCache(); return cache; });
+    });
+  }
+  function mocFigGroupKey(build){ return 'fig-moc-' + slugify(build); }
+  var mfpScan = { running: false, cancel: false, found: [] };
+  function mfpStatus(msg, color){ var el = document.getElementById('mfp-status'); el.style.color = color || 'var(--text-secondary)'; el.textContent = msg; }
+  function scanMocsForFigParts(){
+    if (mfpScan.running) return;
+    if (!rebrickableApiKey) return mfpStatus('Add your Rebrickable API key on the Data & Tools tab first.', 'var(--text-danger)');
+    var rows = state.rows.filter(function(r){ return r.partNum; });
+    if (!rows.length) return mfpStatus('No MOC part lines yet.');
+    var parts = {};
+    rows.forEach(function(r){ parts[normKey(r.partNum)] = r.partNum; });
+    var list = Object.keys(parts).map(function(k){ return parts[k]; });
+    mfpScan.running = true; mfpScan.cancel = false;
+    document.getElementById('mfp-stop').style.display = '';
+    document.getElementById('mfp-results').innerHTML = '';
+    document.getElementById('mfp-move-btn').style.display = 'none';
+    mfpStatus('Checking ' + list.length.toLocaleString() + ' different parts against Rebrickable’s categories…');
+    lookupPartCategories(list, function(i, n){ mfpStatus('Checking part categories on Rebrickable… ' + i + ' / ' + n); }).then(function(cache){
+      var found = [], unknown = 0;
+      rows.forEach(function(r){
+        var cat = cache.byPart[normKey(r.partNum)];
+        if (!cat){ unknown++; return; }
+        var name = cache.names[cat] || '', kind = figPartKind(name);
+        if (kind) found.push({ row: r, cat: name, kind: kind, pick: kind === 'core' });
+      });
+      mfpScan.found = found;
+      renderMfpResults();
+      var core = found.filter(function(x){ return x.kind === 'core'; }).length;
+      mfpStatus(found.length
+        ? (mfpScan.cancel ? 'Stopped early — showing what was checked. ' : '') + 'Found ' + found.length + ' minifigure part line' + (found.length === 1 ? '' : 's') + ' in your MOC builds: ' + core + ' figure part' + (core === 1 ? '' : 's') + ' (ticked) and ' + (found.length - core) + ' accessor' + (found.length - core === 1 ? 'y' : 'ies') + ' (unticked, since MOCs often use them as building details). Nothing has moved yet.' + (unknown ? ' ' + unknown + ' line' + (unknown === 1 ? '' : 's') + ' couldn’t be checked (part number not found on Rebrickable).' : '')
+        : 'No minifigure parts found in your MOC builds.' + (unknown ? ' (' + unknown + ' line' + (unknown === 1 ? '' : 's') + ' couldn’t be checked.)' : ''),
+        found.length ? 'var(--text-secondary)' : 'var(--text-success)');
+    }).catch(function(err){
+      mfpStatus('Couldn’t reach Rebrickable (' + ((err && err.message) || 'unknown error') + ').', 'var(--text-danger)');
+    }).then(function(){
+      mfpScan.running = false;
+      document.getElementById('mfp-stop').style.display = 'none';
+    });
+  }
+  function updateMfpMoveBtn(){
+    var btn = document.getElementById('mfp-move-btn');
+    var n = mfpScan.found.filter(function(x){ return x.pick; }).length;
+    btn.style.display = mfpScan.found.length ? '' : 'none';
+    btn.disabled = !n || !!viewLocked;
+    btn.innerHTML = '<i class="ti ti-arrow-right" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Move ' + n + ' line' + (n === 1 ? '' : 's') + ' to Minifigures';
+  }
+  function renderMfpResults(){
+    var box = document.getElementById('mfp-results');
+    box.innerHTML = '';
+    if (!mfpScan.found.length){ updateMfpMoveBtn(); return; }
+    var bar = document.createElement('div');
+    bar.className = 'row';
+    bar.style.cssText = 'flex-wrap:wrap; gap:6px; margin:6px 0;';
+    [['Tick figure parts', function(x){ return x.kind === 'core'; }], ['Tick everything', function(){ return true; }], ['Untick everything', function(){ return false; }]].forEach(function(b){
+      var btn = document.createElement('button');
+      btn.className = 'icon-btn';
+      btn.style.cssText = 'padding:2px 8px;';
+      btn.textContent = b[0];
+      btn.addEventListener('click', function(){ mfpScan.found.forEach(function(x){ x.pick = b[1](x); }); renderMfpResults(); });
+      bar.appendChild(btn);
+    });
+    box.appendChild(bar);
+    var byBuild = {};
+    mfpScan.found.forEach(function(x){ (byBuild[x.row.moc] = byBuild[x.row.moc] || []).push(x); });
+    Object.keys(byBuild).sort().forEach(function(build){
+      var h = document.createElement('p');
+      h.style.cssText = 'margin:10px 0 4px; font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary);';
+      h.textContent = build + ' (' + byBuild[build].length + ')';
+      box.appendChild(h);
+      byBuild[build].sort(function(a, b){ return (a.kind === b.kind ? 0 : (a.kind === 'core' ? -1 : 1)) || a.cat.localeCompare(b.cat); }).forEach(function(x){
+        var r = x.row;
+        var line = document.createElement('label');
+        line.className = 'checkbox-label';
+        line.style.cssText = 'display:flex; align-items:center; gap:8px; margin:2px 0; font-size:13px; flex-wrap:nowrap;';
+        line.innerHTML = '<input type="checkbox" class="mfp-pick" ' + (x.pick ? 'checked' : '') + ' /><span class="part-thumb-wrap"></span>' +
+          '<span style="flex:1 1 auto; min-width:0;"><strong>#' + escapeHtml(r.partNum) + '</strong> ' + escapeHtml((r.color ? r.color + ' ' : '') + (r.desc || '')) + ' <span style="color:var(--text-muted);">×' + (r.qty || 0) + ' · ' + escapeHtml(x.cat) + '</span></span>';
+        line.querySelector('input').addEventListener('change', function(e){ x.pick = e.target.checked; updateMfpMoveBtn(); });
+        buildThumb({ elementId: r.elementId, partNum: r.partNum, desc: r.desc }, line.querySelector('.part-thumb-wrap'));
+        box.appendChild(line);
+      });
+    });
+    updateMfpMoveBtn();
+  }
+  function moveMfpToFigs(){
+    var picked = mfpScan.found.filter(function(x){ return x.pick && state.rows.indexOf(x.row) !== -1; });
+    if (!picked.length) return;
+    var builds = {};
+    picked.forEach(function(x){ (builds[x.row.moc] = builds[x.row.moc] || []).push(x.row); });
+    var names = Object.keys(builds);
+    if (!confirm('Move ' + picked.length + ' minifigure part line' + (picked.length === 1 ? '' : 's') + ' out of ' + names.length + ' MOC build' + (names.length === 1 ? '' : 's') + ' (' + names.slice(0, 4).join(', ') + (names.length > 4 ? '…' : '') + ') into the Minifigures tab?\n\nThey stop counting toward those builds. Each build gets its own group with a “Move back” button if you change your mind.')) return;
+    names.forEach(function(build){
+      var key = mocFigGroupKey(build);
+      var g = ownedSets.find(function(s){ return s.setNum === key; });
+      if (!g){
+        g = { setNum: key, kind: 'fig', mocGroup: build, name: 'Minifigure parts from ' + build, theme: 'Parts from MOC builds', qty: 1, manualQty: 1, figSources: {}, lastEdited: new Date().toISOString() };
+        ownedSets.push(g);
+      }
+      builds[build].forEach(function(r){
+        setParts.push({ setNum: key, partNum: r.partNum, color: r.color, desc: r.desc, elementId: r.elementId, qtyPerSet: r.qty || 0, onHand: Math.min(r.onHand || 0, r.qty || 0), rbAt: r.rbAt || 0, fromMoc: build });
+        var i = state.rows.indexOf(r);
+        if (i !== -1) state.rows.splice(i, 1);
+      });
+      touchMocLastEdited(build);
+      touchSetLastEdited(key);
+    });
+    saveState();
+    saveOwnedSets();
+    saveSetParts();
+    mfpScan.found = mfpScan.found.filter(function(x){ return state.rows.indexOf(x.row) !== -1; });
+    renderMfpResults();
+    render();
+    safeRun('redraw', refreshMocBuildViews);
+    renderMinifigsTab();
+    mfpStatus('Moved ' + picked.length + ' line' + (picked.length === 1 ? '' : 's') + ' into ' + names.length + ' group' + (names.length === 1 ? '' : 's') + ' under “Parts from MOC builds” below.', 'var(--text-success)');
+  }
+  function moveFigGroupBackToMoc(g){
+    var rows = setParts.filter(function(r){ return r.setNum === g.setNum; });
+    if (!confirm('Move the ' + rows.length + ' part line' + (rows.length === 1 ? '' : 's') + ' in this group back into the MOC build “' + g.mocGroup + '”?')) return;
+    rows.forEach(function(r){
+      state.rows.push({ partNum: r.partNum, qty: r.qtyPerSet || 0, color: r.color, desc: r.desc, moc: g.mocGroup, elementId: r.elementId, onHand: Math.min(r.onHand || 0, r.qtyPerSet || 0), built: false, priority: '', rbAt: r.rbAt || 0 });
+    });
+    setParts = setParts.filter(function(r){ return r.setNum !== g.setNum; });
+    ownedSets = ownedSets.filter(function(s){ return s !== g; });
+    touchMocLastEdited(g.mocGroup);
+    saveState();
+    saveOwnedSets();
+    saveSetParts();
+    render();
+    safeRun('redraw', refreshMocBuildViews);
+    renderMinifigsTab();
+  }
+  wireEl('mfp-scan-btn', 'click', scanMocsForFigParts);
+  wireEl('mfp-stop', 'click', function(){ mfpScan.cancel = true; });
+  wireEl('mfp-move-btn', 'click', moveMfpToFigs);
   wireEl('rb-clear-cache-btn', 'click', function(){
     var statusEl = document.getElementById('rb-clear-cache-status');
     clearRbCatalogCache().then(function(){
@@ -12025,7 +12866,7 @@
       var ownedQty = setInfo ? setInfo.qty : 1;
       var label = r.setNum + (setInfo && setInfo.name ? ' - ' + setInfo.name : '');
       var totalQty = r.qtyPerSet * ownedQty;
-      lines.push(['Official Set', label, r.partNum, r.color, r.desc, r.elementId, totalQty, '', ''].map(csvEscape).join(','));
+      lines.push([isFigNum(r.setNum) ? 'Minifigure' : 'Official Set', label, r.partNum, r.color, r.desc, r.elementId, totalQty, '', ''].map(csvEscape).join(','));
     });
 
     drawerParts.forEach(function(r){
@@ -12570,7 +13411,7 @@
   }
 
   function generateSetsPDF(){
-    if (!ownedSets.length){
+    if (!realSets().length){
       alert('No sets to report \u2014 add a set first.');
       return;
     }
@@ -12578,7 +13419,7 @@
     if (!doc) return;
 
     var totalPiecesAll = 0;
-    var sorted = ownedSets.slice().sort(function(a,b){ return a.setNum.localeCompare(b.setNum, undefined, {numeric:true}); });
+    var sorted = realSets().slice().sort(function(a,b){ return a.setNum.localeCompare(b.setNum, undefined, {numeric:true}); });
     var body = sorted.map(function(s){
       var rows = setParts.filter(function(p){ return p.setNum === s.setNum; });
       var pieceTotal = rows.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
@@ -12587,7 +13428,7 @@
     });
 
     pdfHeader(doc, 'Official Sets Report',
-      'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + ownedSets.length + ' set' + (ownedSets.length===1?'':'s') + ' \u00b7 ' + totalPiecesAll.toLocaleString() + ' total pieces');
+      'Generated ' + new Date().toLocaleDateString() + ' \u00b7 ' + realSets().length + ' set' + (realSets().length===1?'':'s') + ' \u00b7 ' + totalPiecesAll.toLocaleString() + ' total pieces');
 
     doc.autoTable({
       startY: 70,
@@ -12606,7 +13447,7 @@
     overview: 'overview',
     parts: 'moc-collection', mocsets: 'moc-collection',
     shopping: 'shopping',
-    sets: 'official-collection', setparts: 'official-collection',
+    sets: 'official-collection', setparts: 'official-collection', minifigs: 'official-collection',
     drawers: 'drawers',
     import: 'data-tools', images: 'data-tools'
   };
@@ -12639,6 +13480,7 @@
     document.getElementById('tab-mocsets').style.display = tab === 'mocsets' ? 'block' : 'none';
     document.getElementById('tab-sets').style.display = tab === 'sets' ? 'block' : 'none';
     document.getElementById('tab-setparts').style.display = tab === 'setparts' ? 'block' : 'none';
+    document.getElementById('tab-minifigs').style.display = tab === 'minifigs' ? 'block' : 'none';
     document.getElementById('tab-drawers').style.display = tab === 'drawers' ? 'block' : 'none';
     document.getElementById('tab-import').style.display = tab === 'import' ? 'block' : 'none';
     document.getElementById('tab-images').style.display = tab === 'images' ? 'block' : 'none';
@@ -12647,6 +13489,7 @@
     if (tab === 'mocsets') renderMocBuildsTab();
     if (tab === 'sets') renderSetsTab();
     if (tab === 'setparts') renderSetPartsSummaryTab();
+    if (tab === 'minifigs') safeRun('minifigures', renderMinifigsTab);
     if (tab === 'drawers') renderDrawersTab();
     if (tab === 'import'){ populateSetCsvTarget(); populateDrawerDropdowns(); }
   }
