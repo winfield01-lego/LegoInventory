@@ -235,6 +235,8 @@
 #lego-inv-root .fig-result-meta { font-size: 11px; color: var(--text-muted); }
 #lego-inv-root .fig-result button { margin-top: auto; }
 #lego-inv-root .fig-card .fig-thumb { width: 48px; height: 48px; object-fit: contain; background: #fff; border-radius: 6px; border: 1px solid var(--border); flex-shrink: 0; }
+#lego-inv-root .row-actions-stack { display: inline-flex; flex-direction: column; gap: 4px; align-items: center; }
+#lego-inv-root .icon-back-btn { width: 30px; height: 30px; padding: 0; display: inline-flex; align-items: center; justify-content: center; color: var(--lego-blue); border-color: var(--lego-blue); }
 #lego-inv-root .icon-del-btn { width: 30px; height: 30px; padding: 0; display: inline-flex; align-items: center; justify-content: center; color: var(--text-danger); border-color: var(--text-danger); }
 #lego-inv-root .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 #lego-inv-root .actions-cell-inner { display: flex; flex-wrap: wrap; gap: 4px; align-items: center; }
@@ -8624,6 +8626,19 @@
         renderSetsTab();
         openSetDetail(setNum);
       });
+      if (setInfo.mocGroup){
+        var backBtn = document.createElement('button');
+        backBtn.className = 'icon-btn lockable icon-back-btn';
+        backBtn.setAttribute('aria-label', 'Move this line back into ' + setInfo.mocGroup);
+        backBtn.title = 'Not a minifigure part — move it back into ' + setInfo.mocGroup;
+        backBtn.innerHTML = '<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="M9 14 4 9l5-5"/><path d="M4 9h10.5a5.5 5.5 0 0 1 0 11H11"/></svg>';
+        backBtn.addEventListener('click', function(){ moveFigPartBackToMoc(r, setInfo); });
+        var acts = document.createElement('div');
+        acts.className = 'row-actions-stack';
+        acts.appendChild(backBtn);
+        acts.appendChild(delBtn);
+        tr.querySelector('.actions-cell').appendChild(acts);
+      } else
       tr.querySelector('.actions-cell').appendChild(delBtn);
       tbody.appendChild(tr);
     });
@@ -12619,8 +12634,11 @@
     document.getElementById('mfp-move-btn').style.display = 'none';
     mfpStatus('Checking ' + list.length.toLocaleString() + ' different parts against Rebrickable’s categories…');
     lookupPartCategories(list, function(i, n){ mfpStatus('Checking part categories on Rebrickable… ' + i + ' / ' + n); }).then(function(cache){
-      var found = [], unknown = 0;
+      var found = [], unknown = 0, keptByYou = 0;
+      var notFig = {};
+      mocBuilds.forEach(function(b){ (b.notFigParts || []).forEach(function(k){ notFig[b.name + '\u0000' + k] = true; }); });
       rows.forEach(function(r){
+        if (notFig[r.moc + '\u0000' + figPartRememberKey(r)]){ keptByYou++; return; }
         var cat = cache.byPart[normKey(r.partNum)];
         if (!cat){ unknown++; return; }
         var name = cache.names[cat] || '', kind = figPartKind(name);
@@ -12630,8 +12648,8 @@
       renderMfpResults();
       var core = found.filter(function(x){ return x.kind === 'core'; }).length;
       mfpStatus(found.length
-        ? (mfpScan.cancel ? 'Stopped early — showing what was checked. ' : '') + 'Found ' + found.length + ' minifigure part line' + (found.length === 1 ? '' : 's') + ' in your MOC builds: ' + core + ' figure part' + (core === 1 ? '' : 's') + ' (ticked) and ' + (found.length - core) + ' accessor' + (found.length - core === 1 ? 'y' : 'ies') + ' (unticked, since MOCs often use them as building details). Nothing has moved yet.' + (unknown ? ' ' + unknown + ' line' + (unknown === 1 ? '' : 's') + ' couldn’t be checked (part number not found on Rebrickable).' : '')
-        : 'No minifigure parts found in your MOC builds.' + (unknown ? ' (' + unknown + ' line' + (unknown === 1 ? '' : 's') + ' couldn’t be checked.)' : ''),
+        ? (mfpScan.cancel ? 'Stopped early — showing what was checked. ' : '') + 'Found ' + found.length + ' minifigure part line' + (found.length === 1 ? '' : 's') + ' in your MOC builds: ' + core + ' figure part' + (core === 1 ? '' : 's') + ' (ticked) and ' + (found.length - core) + ' accessor' + (found.length - core === 1 ? 'y' : 'ies') + ' (unticked, since MOCs often use them as building details). Nothing has moved yet.' + (unknown ? ' ' + unknown + ' line' + (unknown === 1 ? '' : 's') + ' couldn’t be checked (part number not found on Rebrickable).' : '') + (keptByYou ? ' ' + keptByYou + ' line' + (keptByYou === 1 ? '' : 's') + ' you moved back to ' + (keptByYou === 1 ? 'its build was' : 'their builds were') + ' left out.' : '')
+        : 'No minifigure parts found in your MOC builds.' + (keptByYou ? ' (' + keptByYou + ' line' + (keptByYou === 1 ? '' : 's') + ' you moved back to ' + (keptByYou === 1 ? 'its build was' : 'their builds were') + ' left out.)' : '') + (unknown ? ' (' + unknown + ' line' + (unknown === 1 ? '' : 's') + ' couldn’t be checked.)' : ''),
         found.length ? 'var(--text-secondary)' : 'var(--text-success)');
     }).catch(function(err){
       mfpStatus('Couldn’t reach Rebrickable (' + ((err && err.message) || 'unknown error') + ').', 'var(--text-danger)');
@@ -12715,6 +12733,34 @@
     safeRun('redraw', refreshMocBuildViews);
     renderMinifigsTab();
     mfpStatus('Moved ' + picked.length + ' line' + (picked.length === 1 ? '' : 's') + ' into ' + names.length + ' group' + (names.length === 1 ? '' : 's') + ' under “Parts from MOC builds” below.', 'var(--text-success)');
+  }
+  function figPartRememberKey(r){ return normKey(r.partNum) + '|' + normColorKey(r.color || ''); }
+  function moveFigPartBackToMoc(r, g){
+    var build = g.mocGroup;
+    state.rows.push({ partNum: r.partNum, qty: r.qtyPerSet || 0, color: r.color, desc: r.desc, moc: build, elementId: r.elementId, onHand: Math.min(r.onHand || 0, r.qtyPerSet || 0), built: false, priority: '', rbAt: r.rbAt || 0 });
+    var i = setParts.indexOf(r);
+    if (i !== -1) setParts.splice(i, 1);
+    // remember it: a later "Find minifigure parts" scan won't suggest this part (in this colour) for this build again
+    touchMocLastEdited(build);
+    var b = mocBuilds.find(function(x){ return x.name === build; });
+    if (b){
+      b.notFigParts = b.notFigParts || [];
+      var k = figPartRememberKey(r);
+      if (b.notFigParts.indexOf(k) === -1) b.notFigParts.push(k);
+      saveMocBuilds();
+    }
+    var left = setParts.some(function(p){ return p.setNum === g.setNum; });
+    if (!left) ownedSets = ownedSets.filter(function(s){ return s !== g; });
+    else touchSetLastEdited(g.setNum);
+    saveState();
+    saveOwnedSets();
+    saveSetParts();
+    render();
+    safeRun('redraw', refreshMocBuildViews);
+    safeRun('minifigures', renderMinifigsTab);
+    if (left) openSetDetail(g.setNum); else closeDetailModal();
+    var st = left ? document.getElementById('detail-modal-refetch-status') : null;
+    if (st){ st.style.color = 'var(--text-success)'; st.textContent = 'Moved ' + (r.partNum || 'the line') + (r.color ? ' ' + r.color : '') + ' back into ' + build + '. It won’t be suggested as a minifigure part for that build again.'; }
   }
   function moveFigGroupBackToMoc(g){
     var rows = setParts.filter(function(r){ return r.setNum === g.setNum; });
