@@ -1163,6 +1163,14 @@
   </div>
 
   <div class="collapse-section">
+    <button type="button" class="collapse-header" data-collapse-target="cs-pml"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Parts Master List</span></button>
+    <div class="collapse-body" id="cs-pml" style="display:none;">
+      <p style="margin: 0 0 10px; color: var(--text-secondary);">Look up any part across your whole collection and refetch its details, element ID and photo from Rebrickable one part at a time &mdash; much quicker than a full refetch when only a few parts need it. Filters pick out parts with no photo, no description, no element ID, or not pulled recently.</p>
+      <button id="pml-open-btn" class="icon-btn"><i class="ti ti-list-search" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Open Parts Master List</button>
+    </div>
+  </div>
+
+  <div class="collapse-section">
     <button type="button" id="fill-details-header" class="collapse-header" data-collapse-target="cs-fill-details"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Fill In Missing Part Details</span></button>
     <div class="collapse-body" id="cs-fill-details" style="display:none;">
       <p style="margin: 0 0 10px; color: var(--text-secondary);">
@@ -1179,12 +1187,16 @@
       </div>
       <div style="margin-bottom: 10px;">
         <label class="checkbox-label"><input type="checkbox" id="fill-refetch" /> <strong>Refetch everything</strong> &mdash; replace what's already there with Rebrickable's current version (not just blanks)</label>
-        <p style="margin: 4px 0 0 24px; font-size: 12px; color: var(--text-muted);">Descriptions are replaced with Rebrickable's name for the part. An element ID is replaced only if it isn't one Rebrickable lists for that part and colour. Photos are downloaded again and overwrite the ones you have, including any you uploaded yourself. Part numbers and colours are never changed, only filled in when blank. It ignores the saved Rebrickable lookups so the data is fresh, which takes longer.</p>
+        <div style="margin: 6px 0 0 24px; font-size: 13px; color: var(--text-secondary);">Skip lines already pulled from Rebrickable in the last
+          <select id="fill-refetch-skip" title="Lines pulled recently are left alone"><option value="60" selected>2 months</option><option value="30">1 month</option><option value="180">6 months</option><option value="0">nothing &mdash; pull them all again</option></select>
+        </div>
+        <p style="margin: 4px 0 0 24px; font-size: 12px; color: var(--text-muted);">Descriptions are replaced with Rebrickable's name for the part. An element ID is replaced only if it isn't one Rebrickable lists for that part and colour. Photos are downloaded again and overwrite the ones you have, including any you uploaded yourself. Part numbers and colours are never changed, only filled in when blank. It ignores the saved Rebrickable lookups so the data is fresh, which takes longer. Every line it pulls is tagged with the date, so the next refetch only touches lines that were never pulled or were pulled longer ago than the period above.</p>
       </div>
       <div class="row" style="flex-wrap: wrap; gap: 8px; align-items: center;">
         <button id="fill-check-btn" class="icon-btn"><i class="ti ti-search" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Check what's missing</button>
         <button id="fill-run-btn" class="lockable"><i class="ti ti-wand" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fill in missing details</button>
         <button id="fill-stop-btn" class="icon-btn" style="display:none;">Stop</button>
+        <button id="pml-open-btn-2" class="icon-btn" title="Refetch individual parts instead of everything"><i class="ti ti-list-search" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Pick individual parts&hellip;</button>
         <button id="fill-report-btn" class="icon-btn" style="display:none;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Still incomplete (CSV)</button>
       </div>
       <p id="fill-status" style="margin: 8px 0 0; font-size: 13px; color: var(--text-secondary);"></p>
@@ -1440,6 +1452,39 @@
     </div>
     <p id="location-manage-status" style="font-size:13px; color:var(--text-secondary); margin:8px 0 0;"></p>
     <p style="color: var(--text-muted); font-size: 12px; margin: 10px 0 0;">These show up as the pick-list options for build and set storage locations. Removing one here won't change anything already set to it &mdash; it just stops offering that option for new picks.</p>
+  </div>
+</div>
+
+<div id="pml-modal-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1000; align-items:center; justify-content:center; padding:20px;">
+  <div id="pml-modal" style="background:var(--surface-2); border-radius:var(--radius); max-width:820px; width:100%; max-height:88vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
+    <button id="pml-close" class="icon-btn" style="position:absolute; top:14px; right:14px;"><i class="ti ti-x" style="font-size:16px;" aria-hidden="true"></i></button>
+    <h2 style="margin:0 0 4px; font-size:20px; color:var(--lego-black); padding-right:36px;">Parts Master List</h2>
+    <p style="margin:0 0 10px; color:var(--text-secondary); font-size:13px;">Every distinct part and colour in your builds, official sets and drawers. <strong>Refetch</strong> pulls just that part from Rebrickable again and updates every line that uses it &mdash; a few seconds each. Hover or long-press a description to see where the part is used.</p>
+    <div class="row" style="flex-wrap:wrap; gap:8px; margin-bottom:8px;">
+      <input type="text" id="pml-search" placeholder="Search part #, colour, description, element ID or build" style="flex:1; min-width:200px;" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" />
+      <select id="pml-filter" title="Which parts to list">
+        <option value="all">All parts</option>
+        <option value="nophoto">No photo on this device</option>
+        <option value="nodesc">No description</option>
+        <option value="noelement">No element ID</option>
+        <option value="never">Never pulled from Rebrickable</option>
+        <option value="stale">Not pulled in the last 2 months</option>
+      </select>
+    </div>
+    <div class="row" style="flex-wrap:wrap; gap:14px; margin-bottom:8px; font-size:13px; align-items:center;">
+      <span style="color:var(--text-secondary);">Refetch replaces:</span>
+      <label class="checkbox-label"><input type="checkbox" id="pml-desc" checked /> Descriptions</label>
+      <label class="checkbox-label"><input type="checkbox" id="pml-element" checked /> Element IDs</label>
+      <label class="checkbox-label"><input type="checkbox" id="pml-photo" checked /> Photos</label>
+    </div>
+    <div class="row" style="flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:6px;">
+      <span id="pml-summary" style="font-size:13px; color:var(--text-secondary); flex:1 1 200px;"></span>
+      <button id="pml-refetch-shown-btn" class="icon-btn lockable" style="padding:3px 10px;"></button>
+      <button id="pml-stop-btn" class="icon-btn" style="display:none; padding:3px 10px;">Stop</button>
+    </div>
+    <p id="pml-status" style="margin:0 0 8px; font-size:12px; color:var(--text-secondary);"></p>
+    <div id="pml-list"></div>
+    <button id="pml-more-btn" class="icon-btn" style="display:none; margin-top:8px;"></button>
   </div>
 </div>
 
@@ -1988,7 +2033,7 @@
   var lockWriteBypassUntil = 0;
   var lockNoticeTimer = null;
   var LOCK_EXEMPT_IDS = {};
-  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
+  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-desc pml-element pml-photo'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
   var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input';
   var LOCK_CONTROL_SELECTOR = 'input, select, textarea, button';
 
@@ -2179,10 +2224,12 @@
   var priorityLabels = [];
 
   function rowToObj(arr){
-    return { partNum: arr[0], qty: arr[1], color: arr[2], desc: arr[3], moc: arr[4], elementId: arr[5], onHand: arr[6], built: !!arr[7], priority: arr[8] };
+    return { partNum: arr[0], qty: arr[1], color: arr[2], desc: arr[3], moc: arr[4], elementId: arr[5], onHand: arr[6], built: !!arr[7], priority: arr[8], rbAt: arr[9] || 0 };
   }
   function objToRow(o){
-    return [o.partNum, o.qty, o.color, o.desc, o.moc, o.elementId, o.onHand, o.built?1:0, o.priority];
+    var a = [o.partNum, o.qty, o.color, o.desc, o.moc, o.elementId, o.onHand, o.built?1:0, o.priority];
+    if (o.rbAt) a.push(o.rbAt);   // when this line was last pulled from Rebrickable (only written once it has been)
+    return a;
   }
 
   function seedData(){
@@ -5281,6 +5328,10 @@
     var snap = new Map();
     ctx.rows.forEach(function(r){ snap.set(r, sig(r)); });
     photoRows.forEach(function(r){ if (!snap.has(r)) snap.set(r, sig(r)); });
+    // The "pulled from Rebrickable" tag: the time a line's details were last looked up successfully. Saved with the line.
+    var nowMs = Date.now(), tagSnap = new Map();
+    snap.forEach(function(sg, r){ tagSnap.set(r, r.rbAt || 0); });
+    function tag(rows){ rows.forEach(function(r){ r.rbAt = nowMs; }); }
 
     var stats = { parts: 0, partNums: 0, colors: 0, desc: 0, elements: 0, notFound: [], photos: 0, toSite: 0, toBrowser: 0, approx: 0, noimage: 0, download: 0, save: 0, saveWhy: '', failed: 0 };
     var reported = {};
@@ -5301,10 +5352,11 @@
     function persist(){
       var kinds = {}, owners = { moc: {}, set: {}, drawer: {} };
       snap.forEach(function(sg, r){
-        if (sig(r) === sg) return;
-        if (r.moc !== undefined){ kinds.build = true; if (r.moc) owners.moc[r.moc] = true; }
-        else if (r.setNum !== undefined){ kinds.set = true; owners.set[r.setNum] = true; }
-        else if (r.drawerId !== undefined){ kinds.drawer = true; owners.drawer[r.drawerId] = true; }
+        var content = sig(r) !== sg, tagged = (r.rbAt || 0) !== tagSnap.get(r);
+        if (!content && !tagged) return;   // a line that only gained the tag is saved, but isn't counted as edited
+        if (r.moc !== undefined){ kinds.build = true; if (content && r.moc) owners.moc[r.moc] = true; }
+        else if (r.setNum !== undefined){ kinds.set = true; if (content) owners.set[r.setNum] = true; }
+        else if (r.drawerId !== undefined){ kinds.drawer = true; if (content) owners.drawer[r.drawerId] = true; }
       });
       if (kinds.build) saveState();
       if (kinds.set) saveSetParts();
@@ -5317,7 +5369,9 @@
 
     if (fix.refetch){
       // forget what was looked up before, so every answer comes from Rebrickable now
-      rbPersistedParts = {}; rbPartCache = {}; rbPersistedColors = {}; rbColorsCache = {};
+      var refetchKeys = {};
+      ctx.rows.concat(photoRows).forEach(function(r){ if (r.partNum) refetchKeys[normKey(r.partNum)] = true; });
+      Object.keys(refetchKeys).forEach(function(k){ delete rbPersistedParts[k]; delete rbPartCache[k]; delete rbPersistedColors[k]; delete rbColorsCache[k]; });
       scheduleRbCacheSave();
     }
     rbPaceMs = 450;
@@ -5346,6 +5400,7 @@
       if (stats.photos) added.push(plural(stats.photos, 'photo') + (stats.toSite ? ' (' + stats.toSite + ' to your site' + (stats.toBrowser ? ', ' + stats.toBrowser + ' in this browser' : '') + ')' : ''));
       var bits = [(stopped ? 'Lookup stopped. ' : '') + 'Rebrickable lookup' + (stats.parts ? ' of ' + plural(stats.parts, 'part') : '') + ': ' +
         (added.length ? verb + ' ' + added.join(', ') + '.' : (stats.photosBlocked ? 'no descriptions, element IDs or part details were missing.' : (fix.refetch ? 'everything already matched Rebrickable.' : 'nothing needed adding \u2014 every line already had what was asked for.')))];
+      if (ctx.finishNote) bits.push(ctx.finishNote);
       if (stats.approx) bits.push(stats.approx + (stats.approx === 1 ? ' photo is a close match' : ' photos are close matches') + ' (the plain part\u2019s photo for a lettered or printed variant).');
       if (stats.notFound.length) bits.push('Not found on Rebrickable: ' + stats.notFound.slice(0, 6).join(', ') + (stats.notFound.length > 6 ? ' and ' + (stats.notFound.length - 6) + ' more' : '') + '.');
       if (stats.noimage) bits.push(plural(stats.noimage, 'part') + (stats.noimage === 1 ? ' has' : ' have') + ' no photo on Rebrickable.');
@@ -5378,6 +5433,7 @@
       var id = elemIds[ei++], rows = byElem[normKey(id)];
       rbFetchJson(rbApiUrl('elements/' + encodeURIComponent(id) + '/')).then(function(d){
         if (!d){ stats.notFound.push('element ' + id); note('', '', id, usesOf(rows), 'notfound', 'Rebrickable doesn\u2019t know this element ID'); return; }
+        tag(rows);
         var pn = d.part && d.part.part_num, cn = d.color && d.color.name, nm = d.part && d.part.name;
         rows.forEach(function(r){
           if (!r.partNum && pn){ r.partNum = pn; stats.partNums++; }
@@ -5420,6 +5476,7 @@
           note(g.partNum, '', '', usesOf(g.rows), 'notfound', '');
           return;
         }
+        tag(g.rows);
         if (needDesc && found.part.name) g.rows.forEach(function(r){ if ((fix.refetch || !r.desc) && r.desc !== found.part.name){ r.desc = found.part.name; stats.desc++; } });
         if (!needEl) return;
         return rbGetPartColors(found.pn).then(function(colors){
@@ -5459,7 +5516,7 @@
           if (bi >= keys.length) return finish(false);
           var combo = combos[keys[bi++]];
           backfillPhotoForCombo(combo).then(function(r){
-            if (r.status === 'found'){ stats.photos++; if (r.approx) stats.approx++; if (r.dest === 'site') stats.toSite++; else stats.toBrowser++; return; }
+            if (r.status === 'found'){ tag(combo.rows); stats.photos++; if (r.approx) stats.approx++; if (r.dest === 'site') stats.toSite++; else stats.toBrowser++; return; }
             var el = (combo.rows.find(function(x){ return x.elementId; }) || {}).elementId || '';
             var uses = Object.keys(combo.uses).map(function(k){ return k + ' \u00d7' + combo.uses[k]; }).join(', ');
             if (r.status === 'noimage') stats.noimage++;
@@ -5542,6 +5599,14 @@
     };
   }
 
+  // Lines pulled from Rebrickable within the chosen period are left alone by "Refetch everything"
+  function fillSkipInfo(){
+    var sel = document.getElementById('fill-refetch-skip');
+    var days = sel ? (parseInt(sel.value, 10) || 0) : 0;
+    return { days: days, label: days > 0 ? 'the last ' + sel.options[sel.selectedIndex].text : '', cutoff: days > 0 ? Date.now() - days * 86400000 : 0 };
+  }
+  function fillIsFresh(r, info){ return !!(info.cutoff && r.rbAt && r.rbAt > info.cutoff); }
+
   function fillPhotoNote(){
     if (githubConnectionConfigured()) return ' Photos will be saved to your site.';
     var room = backfillEstimateLocalRoom();
@@ -5581,10 +5646,10 @@
     if (!lines.length){ statusEl.textContent = 'There are no part lines in that scope.'; return; }
     var nParts = Object.keys(parts).length;
     if (fix.refetch){
-      var all = {}, nLines = 0;
-      sc.rows.forEach(function(r){ nLines++; if (r.partNum) all[normKey(r.partNum)] = true; });
+      var all = {}, nLines = 0, nSkip = 0, skipInfo = fillSkipInfo();
+      sc.rows.forEach(function(r){ if (fillIsFresh(r, skipInfo)){ nSkip++; return; } nLines++; if (r.partNum) all[normKey(r.partNum)] = true; });
       var nAll = Object.keys(all).length, mins = Math.max(1, Math.round(nAll * 3 * 0.45 / 60) + (fix.photo ? Math.round(nAll * 0.4 / 60) : 0));
-      statusEl.textContent = 'Refetch everything: ' + nLines.toLocaleString() + ' lines, ' + nAll.toLocaleString() + ' different parts to look up again on Rebrickable \u2014 roughly ' + mins + ' minute' + (mins === 1 ? '' : 's') + ' or more.' + (fix.photo ? fillPhotoNote() : '');
+      statusEl.textContent = (nSkip ? nSkip.toLocaleString() + ' line' + (nSkip === 1 ? '' : 's') + ' pulled from Rebrickable in ' + skipInfo.label + ' will be skipped. ' : '') + 'Refetch everything: ' + nLines.toLocaleString() + ' lines, ' + nAll.toLocaleString() + ' different parts to look up again on Rebrickable \u2014 roughly ' + mins + ' minute' + (mins === 1 ? '' : 's') + ' or more.' + (fix.photo ? fillPhotoNote() : '');
       return;
     }
     statusEl.textContent = lines.join(' ') + (totalGaps ? ' Filling these in means looking up about ' + nParts.toLocaleString() + ' different part' + (nParts === 1 ? '' : 's') + ' on Rebrickable.' : '') + (fix.photo ? fillPhotoNote() : '');
@@ -5599,18 +5664,29 @@
     if (!fix.desc && !fix.element && !fix.ids && !fix.photo) return fail('Tick at least one thing to fill in.');
     var sc = fillCollect(fillScopeValue());
     if (!sc.rows.length) return fail('There are no part lines in that scope.');
-    var fieldRows = sc.rows.filter(function(r){ var g = rowGaps(r, fix); return g.part || g.color || g.desc || g.element; });
+    var rowsIn = sc.rows, skipped = 0, skipInfo = fillSkipInfo();
+    if (fix.refetch && skipInfo.cutoff){
+      rowsIn = sc.rows.filter(function(r){ return !fillIsFresh(r, skipInfo); });
+      skipped = sc.rows.length - rowsIn.length;
+      if (!rowsIn.length){
+        statusEl.style.color = 'var(--text-success)';
+        statusEl.textContent = 'Nothing to refetch \u2014 every line in that scope was pulled from Rebrickable in ' + skipInfo.label + '. Choose \u201cnothing\u201d in the skip box to pull them all again.';
+        return;
+      }
+    }
+    var fieldRows = rowsIn.filter(function(r){ var g = rowGaps(r, fix); return g.part || g.color || g.desc || g.element; });
     if (fix.refetch){
       var what = [fix.desc && 'descriptions', fix.element && 'element IDs', fix.photo && 'photos (including any you uploaded yourself)'].filter(Boolean).join(', ').replace(/, ([^,]*)$/, ' and $1');
       if (!what) return fail('Refetch replaces descriptions, element IDs or photos \u2014 tick at least one of those.');
-      if (!confirm('Refetch everything will replace the ' + what + ' on ' + sc.rows.length.toLocaleString() + ' lines with what Rebrickable has now. Anything you typed or uploaded for those will be overwritten. Continue?')) return;
+      if (!confirm('Refetch everything will replace the ' + what + ' on ' + rowsIn.length.toLocaleString() + ' lines with what Rebrickable has now' + (skipped ? ' (skipping ' + skipped.toLocaleString() + ' pulled in ' + skipInfo.label + ')' : '') + '. Anything you typed or uploaded for those will be overwritten. Continue?')) return;
     }
     fillReportList = [];
     repBtn.style.display = 'none';
     runBtn.disabled = true;
     runPartDetailFill({
-      rows: fieldRows, photoRows: fix.photo ? sc.rows : [], fix: fix,
+      rows: fieldRows, photoRows: fix.photo ? rowsIn : [], fix: fix,
       statusEl: statusEl, stopId: 'fill-stop-btn', base: '', report: fillReportList,
+      finishNote: skipped ? skipped.toLocaleString() + ' line' + (skipped === 1 ? '' : 's') + ' pulled from Rebrickable in ' + skipInfo.label + ' ' + (skipped === 1 ? 'was' : 'were') + ' skipped.' : '',
       srcOf: function(r){ return sc.src.get(r) || 'Build'; },
       onFinish: function(stopped, report){
         runBtn.disabled = false;
@@ -5643,6 +5719,156 @@
   wireEl('fill-run-btn', 'click', fillRun);
   wireEl('fill-stop-btn', 'click', function(){ importLookupCancel = true; });
   wireEl('fill-report-btn', 'click', exportFillReportCSV);
+
+  // ---- Parts Master List: every distinct part + colour across builds, sets and drawers, each refetchable on its own ----
+  var pmlState = { items: [], shown: 100, busy: false };
+  function pmlKey(r){ return r.partNum ? normKey(r.partNum) + '|' + normColorKey(r.color || '') : 'el|' + normKey(r.elementId || ''); }
+  function pmlSrcOf(r){ return r.moc !== undefined ? 'Build' : (r.setNum !== undefined ? 'Set' : 'Drawer'); }
+  function pmlSummarize(it){
+    var first = function(f){ var r = it.rows.find(function(x){ return x[f]; }); return r ? r[f] : ''; };
+    it.partNum = first('partNum'); it.color = first('color'); it.desc = first('desc'); it.elementId = first('elementId');
+    var never = it.rows.some(function(r){ return !r.rbAt; });
+    it.pulledAt = never ? 0 : Math.min.apply(null, it.rows.map(function(r){ return r.rbAt; }));   // the oldest line decides
+    it.noPhoto = it.rows.some(function(r){ return (r.partNum || r.elementId) && rowHasNoPhoto(r); });
+    return it;
+  }
+  function pmlCollect(){
+    var map = {}, order = [];
+    [['Build', state.rows], ['Set', setParts], ['Drawer', drawerParts]].forEach(function(src){
+      src[1].forEach(function(r){
+        if (!r || (!r.partNum && !r.elementId)) return;
+        var k = pmlKey(r), it = map[k];
+        if (!it){ it = map[k] = { key: k, rows: [], uses: {}, owners: {} }; order.push(k); }
+        it.rows.push(r);
+        it.uses[src[0]] = (it.uses[src[0]] || 0) + 1;
+        var owner = src[0] === 'Build' ? r.moc : (src[0] === 'Set' ? r.setNum : pullDrawerLabel(r.drawerId));
+        if (owner) it.owners[src[0] + ': ' + owner] = true;
+      });
+    });
+    return order.map(function(k){ return pmlSummarize(map[k]); }).sort(function(a, b){
+      return String(a.partNum || '~' + a.elementId).localeCompare(String(b.partNum || '~' + b.elementId), undefined, { numeric: true }) || String(a.color).localeCompare(String(b.color));
+    });
+  }
+  function pmlFiltered(){
+    var q = (document.getElementById('pml-search').value || '').trim().toLowerCase();
+    var f = document.getElementById('pml-filter').value;
+    var cutoff = Date.now() - 60 * 86400000;
+    return pmlState.items.filter(function(it){
+      if (f === 'nophoto' && !it.noPhoto) return false;
+      if (f === 'nodesc' && it.desc) return false;
+      if (f === 'noelement' && it.elementId) return false;
+      if (f === 'never' && it.pulledAt) return false;
+      if (f === 'stale' && it.pulledAt && it.pulledAt > cutoff) return false;
+      if (q){
+        var hay = [it.partNum, it.color, it.desc, it.elementId].concat(Object.keys(it.owners)).join(' ').toLowerCase();
+        if (hay.indexOf(q) === -1) return false;
+      }
+      return true;
+    });
+  }
+  function pmlAgo(ms){
+    if (!ms) return 'never pulled from Rebrickable';
+    var d = Math.floor((Date.now() - ms) / 86400000);
+    return 'pulled ' + (d < 1 ? 'today' : d === 1 ? 'yesterday' : d < 60 ? d + ' days ago' : Math.round(d / 30) + ' months ago');
+  }
+  function pmlOptions(){
+    var box = function(id){ var b = document.getElementById(id); return !!(b && b.checked); };
+    return { desc: box('pml-desc'), element: box('pml-element'), ids: true, photo: box('pml-photo'), refetch: true };
+  }
+  function pmlSetBusy(on){
+    pmlState.busy = on;
+    document.querySelectorAll('#pml-modal .pml-refetch-btn, #pml-refetch-shown-btn').forEach(function(b){ b.disabled = on || !!viewLocked; });
+    document.getElementById('pml-stop-btn').style.display = on ? '' : 'none';
+  }
+  function pmlFillRow(row, it){
+    var status = row._pmlStatus || (row._pmlStatus = document.createElement('span'));
+    status.style.cssText = 'flex-basis:100%; font-size:11px; color:var(--text-secondary); padding-left:2px;';
+    row.className = 'top-needed-item';
+    row.style.cssText = 'cursor:default; flex-wrap:wrap; align-items:center;';
+    var uses = Object.keys(it.uses).map(function(k){ return k + ' ×' + it.uses[k]; }).join(', ');
+    row.innerHTML = '<span class="part-thumb-wrap"></span>' +
+      '<span class="top-needed-partnum">' + (it.partNum ? '#' + escapeHtml(it.partNum) : '(no part #)') + '</span>' +
+      '<span class="top-needed-desc" style="flex:1 1 180px; min-width:150px; white-space:normal; overflow:visible; text-overflow:clip;">' + escapeHtml((it.color ? it.color + ' ' : '') + (it.desc || '(no description)')) +
+        '<span style="display:block; font-size:11px; font-weight:400; color:var(--text-muted); white-space:normal;">' +
+        escapeHtml((it.elementId ? 'Element ' + it.elementId : 'No element ID') + ' · ' + uses + ' · ' + pmlAgo(it.pulledAt) + (it.noPhoto ? ' · no photo' : '')) +
+        '</span></span>';
+    row.querySelector('.top-needed-desc').title = Object.keys(it.owners).sort().join('\n');
+    var btn = document.createElement('button');
+    btn.className = 'icon-btn lockable pml-refetch-btn';
+    btn.style.cssText = 'padding:3px 10px; flex-shrink:0;';
+    btn.title = 'Pull this part’s details from Rebrickable again, for every line that uses it';
+    btn.innerHTML = '<i class="ti ti-refresh" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Refetch';
+    btn.disabled = pmlState.busy || !!viewLocked;
+    btn.addEventListener('click', function(){
+      pmlRefetch([it], status, function(){ pmlSummarize(it); pmlFillRow(row, it); });
+    });
+    row.appendChild(btn);
+    row.appendChild(status);
+    buildThumb({ elementId: it.elementId, partNum: it.partNum, desc: it.desc }, row.querySelector('.part-thumb-wrap'));
+  }
+  function pmlRender(){
+    var list = document.getElementById('pml-list');
+    var items = pmlFiltered();
+    pmlState.filtered = items;
+    var lines = items.reduce(function(n, it){ return n + it.rows.length; }, 0);
+    document.getElementById('pml-summary').textContent = items.length.toLocaleString() + ' of ' + pmlState.items.length.toLocaleString() + ' part' + (pmlState.items.length === 1 ? '' : 's') + ' shown (' + lines.toLocaleString() + ' line' + (lines === 1 ? '' : 's') + ').';
+    var allBtn = document.getElementById('pml-refetch-shown-btn');
+    allBtn.innerHTML = '<i class="ti ti-refresh" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Refetch the ' + items.length.toLocaleString() + ' shown';
+    allBtn.disabled = pmlState.busy || !!viewLocked || !items.length;
+    list.innerHTML = '';
+    if (!items.length){ list.innerHTML = '<div class="empty-msg">' + (pmlState.items.length ? 'No parts match.' : 'No parts yet.') + '</div>'; }
+    items.slice(0, pmlState.shown).forEach(function(it){ var row = document.createElement('div'); pmlFillRow(row, it); list.appendChild(row); });
+    var more = document.getElementById('pml-more-btn');
+    more.style.display = items.length > pmlState.shown ? '' : 'none';
+    more.textContent = 'Show more (' + (items.length - pmlState.shown).toLocaleString() + ' left)';
+  }
+  function pmlRefetch(items, statusEl, done){
+    function fail(m){ statusEl.style.color = 'var(--text-danger)'; statusEl.textContent = m; }
+    if (!rebrickableApiKey) return fail('Add a Rebrickable API key first (Rebrickable Connection, on the Data & Tools tab).');
+    if (importLookupRunning) return fail('A Rebrickable lookup is already running — wait for it to finish, or Stop it.');
+    var fix = pmlOptions();
+    if (!fix.desc && !fix.element && !fix.photo) return fail('Tick at least one of Descriptions, Element IDs or Photos.');
+    var rows = [];
+    items.forEach(function(it){ rows.push.apply(rows, it.rows); });
+    pmlSetBusy(true);
+    runPartDetailFill({
+      rows: rows, photoRows: fix.photo ? rows : [], fix: fix,
+      statusEl: statusEl, stopId: 'pml-stop-btn', base: '', report: [],
+      srcOf: pmlSrcOf,
+      onFinish: function(){
+        pmlSetBusy(false);
+        render();
+        renderMocBuildsTab();
+        renderSetsTab();
+        renderDrawersTab();
+        if (done) done();
+      }
+    });
+  }
+  function openPartsMasterList(){
+    pmlState.items = pmlCollect();
+    pmlState.shown = 100;
+    document.getElementById('pml-status').textContent = '';
+    pmlRender();
+    document.getElementById('pml-modal-overlay').style.display = 'flex';
+  }
+  var pmlSearchTimer = null;
+  wireEl('pml-open-btn', 'click', openPartsMasterList);
+  wireEl('pml-open-btn-2', 'click', openPartsMasterList);
+  wireEl('pml-close', 'click', function(){ document.getElementById('pml-modal-overlay').style.display = 'none'; });
+  wireEl('pml-search', 'input', function(){ clearTimeout(pmlSearchTimer); pmlSearchTimer = setTimeout(function(){ pmlState.shown = 100; pmlRender(); }, 200); });
+  wireEl('pml-filter', 'change', function(){ pmlState.shown = 100; pmlRender(); });
+  wireEl('pml-more-btn', 'click', function(){ pmlState.shown += 100; pmlRender(); });
+  wireEl('pml-stop-btn', 'click', function(){ importLookupCancel = true; });
+  wireEl('pml-refetch-shown-btn', 'click', function(){
+    var items = (pmlState.filtered || []).slice();
+    var statusEl = document.getElementById('pml-status');
+    if (!items.length) return;
+    var lines = items.reduce(function(n, it){ return n + it.rows.length; }, 0);
+    var mins = Math.max(1, Math.round(items.length * 3 / 60));
+    if (!confirm('Refetch ' + items.length.toLocaleString() + ' part' + (items.length === 1 ? '' : 's') + ' (' + lines.toLocaleString() + ' line' + (lines === 1 ? '' : 's') + ') from Rebrickable? Their descriptions, element IDs and photos (whichever are ticked) are replaced with Rebrickable’s current ones. Roughly ' + mins + ' minute' + (mins === 1 ? '' : 's') + '.')) return;
+    pmlRefetch(items, statusEl, function(){ pmlState.items = pmlCollect(); pmlRender(); });
+  });
   wireEl('mocbuild-csv-lookup-stop-btn', 'click', function(){ importLookupCancel = true; });
   wireEl('import-lookup-stop-btn', 'click', function(){ importLookupCancel = true; });
 
@@ -6099,7 +6325,8 @@
           color: (item.color && item.color.name) || '',
           desc: (item.part && item.part.name) || '',
           elementId: item.element_id || (item.part && item.part.element_id) || '',
-          qtyPerSet: item.quantity || 1
+          qtyPerSet: item.quantity || 1,
+          rbAt: Date.now()
         };
       }).filter(function(r){ return r.partNum; });
       mapped.spareSkipped = spareCount;
