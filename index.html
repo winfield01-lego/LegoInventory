@@ -223,6 +223,7 @@
 #lego-inv-root .icon-btn > svg { flex-shrink: 0; }
 #lego-inv-root .icon-btn:has(> svg:only-child) { display: inline-flex; align-items: center; justify-content: center; }
 @media (max-width: 640px) { #lego-inv-root .sub-tabs { flex-wrap: wrap; overflow-x: visible; } }
+#lego-inv-root .top-action-bar { flex-wrap: wrap; row-gap: 8px; }
 #lego-inv-root .fig-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
 #lego-inv-root .fig-result { display: flex; flex-direction: column; gap: 4px; border: 2px solid var(--border); border-radius: var(--radius); padding: 8px; background: var(--surface-2); }
 #lego-inv-root .fig-result-img { height: 110px; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 6px; overflow: hidden; }
@@ -389,6 +390,7 @@
     <button class="tab-btn" data-maintab="moc-collection" style="--tab-color: var(--lego-yellow); --tab-text-color: var(--lego-black);">MOC Collection</button>
     <button class="tab-btn" data-maintab="shopping" style="--tab-color: var(--lego-orange); --tab-text-color: var(--lego-black);">Shopping List</button>
     <button class="tab-btn" data-maintab="official-collection" style="--tab-color: var(--lego-purple); --tab-text-color: #FFFFFF;">Official LEGO Collection</button>
+    <button class="tab-btn" data-maintab="minifigs" style="--tab-color: var(--lego-red); --tab-text-color: #FFFFFF;">Minifigures</button>
     <button class="tab-btn" data-maintab="drawers" style="--tab-color: var(--lego-lime); --tab-text-color: var(--lego-black);">Drawers</button>
     <button class="tab-btn" data-maintab="data-tools" style="--tab-color: var(--lego-azure); --tab-text-color: var(--lego-black);">Data &amp; Tools</button>
   </div>
@@ -406,7 +408,6 @@
 <div class="tabs sub-tabs no-print" id="sub-tabs-official-collection" style="display:none;">
   <button class="tab-btn" data-tab="sets" style="--tab-color: var(--lego-purple); --tab-text-color: #FFFFFF;">Official Sets</button>
   <button class="tab-btn" data-tab="setparts" style="--tab-color: var(--lego-brown); --tab-text-color: #FFFFFF;">Official Set Parts</button>
-  <button class="tab-btn" data-tab="minifigs" style="--tab-color: var(--lego-yellow); --tab-text-color: var(--lego-black);">Minifigures</button>
 </div>
 <div class="tabs sub-tabs no-print" id="sub-tabs-data-tools" style="display:none;">
   <button class="tab-btn" data-tab="import" style="--tab-color: var(--lego-blue); --tab-text-color: #FFFFFF;">Import</button>
@@ -12120,7 +12121,7 @@
         (n ? ': added ' + n + ' new minifigure' + (n === 1 ? '' : 's') + ' (' + st.added.slice(0, 6).join(', ') + (n > 6 ? ' and ' + (n - 6) + ' more' : '') + ').' : ' — nothing new to add.') +
         (st.failed ? ' ' + st.failed + ' lookup' + (st.failed === 1 ? '' : 's') + ' failed (' + st.lastError + ') — run it again to retry.' : '');
       figStatus(msg, st.failed ? 'var(--text-danger)' : (n ? 'var(--text-success)' : 'var(--text-secondary)'));
-      if (n && !figTabVisible()) showAppBanner('notice', 'Minifigures added from your sets', msg + ' See the Minifigures tab under Official LEGO Collection.');
+      if (n && !figTabVisible()) showAppBanner('notice', 'Minifigures added from your sets', msg + ' See the Minifigures tab.');
     }
     function next(){
       if (figScan.cancel) return done(true);
@@ -13447,7 +13448,8 @@
     overview: 'overview',
     parts: 'moc-collection', mocsets: 'moc-collection',
     shopping: 'shopping',
-    sets: 'official-collection', setparts: 'official-collection', minifigs: 'official-collection',
+    sets: 'official-collection', setparts: 'official-collection',
+    minifigs: 'minifigs',
     drawers: 'drawers',
     import: 'data-tools', images: 'data-tools'
   };
@@ -13455,10 +13457,11 @@
     'moc-collection': 'mocsets',
     'shopping': 'shopping',
     'official-collection': 'sets',
+    'minifigs': 'minifigs',
     'drawers': 'drawers',
     'data-tools': 'import'
   };
-  var lastLeafForGroup = { 'moc-collection': 'mocsets', 'shopping': 'shopping', 'official-collection': 'sets', 'drawers': 'drawers', 'data-tools': 'import' };
+  var lastLeafForGroup = { 'moc-collection': 'mocsets', 'shopping': 'shopping', 'official-collection': 'sets', 'minifigs': 'minifigs', 'drawers': 'drawers', 'data-tools': 'import' };
 
   function switchTab(tab){
     state.tab = tab;
