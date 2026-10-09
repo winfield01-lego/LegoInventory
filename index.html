@@ -12036,7 +12036,10 @@
     if (f.mocGroup) return 'Moved here from your MOC build ' + f.mocGroup;
     var src = f.figSources || {};
     var keys = Object.keys(src);
-    var bits = keys.map(function(sn){ return sn + (src[sn] > 1 ? ' (×' + src[sn] + ')' : ''); });
+    var bits = keys.map(function(sn){
+      var set = ownedSets.find(function(x){ return x.setNum === sn && !isFigEntry(x); });
+      return sn + (set && set.name ? ' ' + set.name : '') + (src[sn] > 1 ? ' (×' + src[sn] + ')' : '');
+    });
     var t = keys.length ? 'Comes in your set' + (keys.length === 1 ? '' : 's') + ' ' + bits.join(', ') : '';
     if (f.manualQty) t += (t ? ' · ' : '') + f.manualQty + ' added by hand';
     return t || 'Added by hand';
