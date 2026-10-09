@@ -105650,21 +105650,24 @@
       "qty": 1,
       "name": "Blizzard Baron",
       "theme": "Ice Planet 2002",
-      "lastEdited": "2026-10-09T15:01:24.632Z"
+      "lastEdited": "2026-10-09T15:01:24.632Z",
+      "figsCheckedAt": 1791570735269
     },
     {
       "setNum": "6850-1",
       "qty": 1,
       "name": "Auxiliary Patroller",
       "theme": "Futuron",
-      "lastEdited": "2026-10-09T15:01:19.441Z"
+      "lastEdited": "2026-10-09T15:01:19.441Z",
+      "figsCheckedAt": 1791570738785
     },
     {
       "setNum": "10300-1",
       "qty": 1,
       "name": "Back to the Future Time Machine",
       "theme": "Icons",
-      "lastEdited": "2026-10-09T15:02:25.022Z"
+      "lastEdited": "2026-10-09T15:02:25.022Z",
+      "figsCheckedAt": 1791570742019
     },
     {
       "setNum": "40768-1",
@@ -109728,6 +109731,58 @@
       },
       "imgUrl": "https://cdn.rebrickable.com/media/sets/fig-000065/63412.jpg",
       "lastEdited": "2026-10-09T18:32:10.295Z"
+    },
+    {
+      "setNum": "fig-000113",
+      "kind": "fig",
+      "name": "Ice Planet - White Hair",
+      "theme": "Ice Planet 2002",
+      "qty": 1,
+      "manualQty": 0,
+      "figSources": {
+        "6879-1": 1
+      },
+      "imgUrl": "https://cdn.rebrickable.com/media/sets/fig-000113/138846.jpg",
+      "lastEdited": "2026-10-09T18:32:17.089Z"
+    },
+    {
+      "setNum": "fig-000088",
+      "kind": "fig",
+      "name": "Futuron Spaceman, Yellow with Airtanks and Dark Blue Visor",
+      "theme": "Futuron",
+      "qty": 1,
+      "manualQty": 0,
+      "figSources": {
+        "6850-1": 1
+      },
+      "imgUrl": "https://cdn.rebrickable.com/media/sets/fig-000088/147252.jpg",
+      "lastEdited": "2026-10-09T18:32:20.341Z"
+    },
+    {
+      "setNum": "fig-012414",
+      "kind": "fig",
+      "name": "Doc Brown - Yellow Suit",
+      "theme": "Icons",
+      "qty": 1,
+      "manualQty": 0,
+      "figSources": {
+        "10300-1": 1
+      },
+      "imgUrl": "https://cdn.rebrickable.com/media/sets/fig-012414/100434.jpg",
+      "lastEdited": "2026-10-09T18:32:24.557Z"
+    },
+    {
+      "setNum": "fig-012413",
+      "kind": "fig",
+      "name": "Marty McFly, Printed Legs",
+      "theme": "Icons",
+      "qty": 1,
+      "manualQty": 0,
+      "figSources": {
+        "10300-1": 1
+      },
+      "imgUrl": "https://cdn.rebrickable.com/media/sets/fig-012413/100435.jpg",
+      "lastEdited": "2026-10-09T18:32:22.019Z"
     }
   ],
   "setParts": [
@@ -440157,6 +440212,166 @@
       "qtyPerSet": 1,
       "rbAt": 1791570730294,
       "setNum": "fig-000065",
+      "onHand": 1
+    },
+    {
+      "partNum": "973c27h28pr0062",
+      "color": "Black",
+      "desc": "Torso Space Suit, Ice Planet Silver Print, White Arms, Blue Hands",
+      "elementId": "",
+      "qtyPerSet": 1,
+      "rbAt": 1791570737088,
+      "setNum": "fig-000113",
+      "onHand": 1
+    },
+    {
+      "partNum": "970c03",
+      "color": "Blue",
+      "desc": "Hips and Black Legs",
+      "elementId": "75238",
+      "qtyPerSet": 1,
+      "rbAt": 1791570737088,
+      "setNum": "fig-000113",
+      "onHand": 1
+    },
+    {
+      "partNum": "6119",
+      "color": "Trans-Neon Orange",
+      "desc": "Headwear Accessory Visor with Antenna (Ice Planet)",
+      "elementId": "611947",
+      "qtyPerSet": 1,
+      "rbAt": 1791570737088,
+      "setNum": "fig-000113",
+      "onHand": 1
+    },
+    {
+      "partNum": "2446",
+      "color": "White",
+      "desc": "Helmet, Standard",
+      "elementId": "6138832",
+      "qtyPerSet": 1,
+      "rbAt": 1791570737088,
+      "setNum": "fig-000113",
+      "onHand": 1
+    },
+    {
+      "partNum": "3838",
+      "color": "White",
+      "desc": "Minifig Neckwear Airtanks",
+      "elementId": "6020473",
+      "qtyPerSet": 1,
+      "rbAt": 1791570737088,
+      "setNum": "fig-000113",
+      "onHand": 1
+    },
+    {
+      "partNum": "3626bpr0024",
+      "color": "Yellow",
+      "desc": "Minifig Head, White Messy Hair with Bangs Print",
+      "elementId": "",
+      "qtyPerSet": 1,
+      "rbAt": 1791570737088,
+      "setNum": "fig-000113",
+      "onHand": 1
+    },
+    {
+      "partNum": "2447",
+      "color": "Trans-Dark Blue",
+      "desc": "Headwear Accessory Visor For Standard Helmet",
+      "elementId": "6431592",
+      "qtyPerSet": 1,
+      "rbAt": 1791570740340,
+      "setNum": "fig-000088",
+      "onHand": 1
+    },
+    {
+      "partNum": "973c01h01pr0006",
+      "color": "White",
+      "desc": "Torso, Classic Space Logo, Futuron Yellow Print, Yellow Arms and Hands",
+      "elementId": "",
+      "qtyPerSet": 1,
+      "rbAt": 1791570740340,
+      "setNum": "fig-000088",
+      "onHand": 1
+    },
+    {
+      "partNum": "2446",
+      "color": "Yellow",
+      "desc": "Helmet, Standard",
+      "elementId": "6478983",
+      "qtyPerSet": 1,
+      "rbAt": 1791570740340,
+      "setNum": "fig-000088",
+      "onHand": 1
+    },
+    {
+      "partNum": "970c01",
+      "color": "Yellow",
+      "desc": "Hips and Yellow Legs",
+      "elementId": "75169",
+      "qtyPerSet": 1,
+      "rbAt": 1791570740340,
+      "setNum": "fig-000088",
+      "onHand": 1
+    },
+    {
+      "partNum": "3626apr0001",
+      "color": "Yellow",
+      "desc": "Minifig Head Standard Grin Print [Solid Stud]",
+      "elementId": "",
+      "qtyPerSet": 1,
+      "rbAt": 1791570740340,
+      "setNum": "fig-000088",
+      "onHand": 1
+    },
+    {
+      "partNum": "3838",
+      "color": "Yellow",
+      "desc": "Minifig Neckwear Airtanks",
+      "elementId": "4631564",
+      "qtyPerSet": 1,
+      "rbAt": 1791570740340,
+      "setNum": "fig-000088",
+      "onHand": 1
+    },
+    {
+      "partNum": "3626cpr3685",
+      "color": "Light Nougat",
+      "desc": "Minifig Head Doc Brown, Light Bluish Gray and White Eyebrows, Smile with Goggles / Open Mouth Scared Print",
+      "elementId": "6376744",
+      "qtyPerSet": 1,
+      "rbAt": 1791570744556,
+      "setNum": "fig-012414",
+      "onHand": 1
+    },
+    {
+      "partNum": "21269",
+      "color": "White",
+      "desc": "Hair Swept Back with Widow's Peak Chin-Length and Bushy in Back",
+      "elementId": "6334236",
+      "qtyPerSet": 1,
+      "rbAt": 1791570744556,
+      "setNum": "fig-012414",
+      "onHand": 1
+    },
+    {
+      "partNum": "970c01pr2267",
+      "color": "Yellow",
+      "desc": "Hips and Yellow Legs with Bright Light Yellow Straps, Green Knees, Dark Red Belt and Shoes Print",
+      "elementId": "6376746",
+      "qtyPerSet": 1,
+      "rbAt": 1791570744556,
+      "setNum": "fig-012414",
+      "onHand": 1
+    },
+    {
+      "partNum": "973c01h02pr6013",
+      "color": "Yellow",
+      "desc": "Torso, Jacket, Open over Red Hawaiian Shirt and Tie Print, Yellow Arms, Light Nougat Hands",
+      "elementId": "6393294",
+      "qtyPerSet": 1,
+      "rbAt": 1791570744556,
+      "setNum": "fig-012414",
       "onHand": 1
     }
   ],
