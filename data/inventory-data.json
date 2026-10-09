@@ -104339,6 +104339,30 @@
       0,
       "",
       1791564965007
+    ],
+    [
+      "30377",
+      2,
+      "Blue",
+      "Arm Mechanical with 2 Clips [Battle Droid]",
+      "Classic Space Train - Mobile Lab",
+      "",
+      0,
+      0,
+      "",
+      1791565188323
+    ],
+    [
+      "3626b",
+      4,
+      "Black",
+      "Minifig Head [Plain] [Blocked Open Stud]",
+      "Classic Space Train - Mobile Lab",
+      "",
+      0,
+      0,
+      "",
+      1791565188323
     ]
   ],
   "checkedItems": [
@@ -109848,7 +109872,7 @@
       "qty": 1,
       "manualQty": 1,
       "figSources": {},
-      "lastEdited": "2026-10-09T18:33:54.150Z"
+      "lastEdited": "2026-10-09T18:52:14.219Z"
     },
     {
       "setNum": "fig-moc-fondor-haulcraft",
@@ -441532,28 +441556,6 @@
     },
     {
       "setNum": "fig-moc-classic-space-train-mobile-lab",
-      "partNum": "3626b",
-      "color": "Black",
-      "desc": "Minifig Head [Plain] [Blocked Open Stud]",
-      "elementId": "",
-      "qtyPerSet": 4,
-      "onHand": 0,
-      "rbAt": 1791565188323,
-      "fromMoc": "Classic Space Train - Mobile Lab"
-    },
-    {
-      "setNum": "fig-moc-classic-space-train-mobile-lab",
-      "partNum": "30377",
-      "color": "Blue",
-      "desc": "Arm Mechanical with 2 Clips [Battle Droid]",
-      "elementId": "",
-      "qtyPerSet": 2,
-      "onHand": 0,
-      "rbAt": 1791565188323,
-      "fromMoc": "Classic Space Train - Mobile Lab"
-    },
-    {
-      "setNum": "fig-moc-classic-space-train-mobile-lab",
       "partNum": "16599",
       "color": "Blue",
       "desc": "Helmet Classic, with Simulated Broken / Cracked Chin Strap (80's Style)",
@@ -452707,7 +452709,11 @@
     },
     {
       "name": "Classic Space Train - Mobile Lab",
-      "lastEdited": "2026-10-09T18:33:54.150Z"
+      "lastEdited": "2026-10-09T18:52:14.218Z",
+      "notFigParts": [
+        "30377|blue",
+        "3626b|black"
+      ]
     },
     {
       "name": "Classic Space Train - Carrier Car",
