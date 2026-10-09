@@ -1042,6 +1042,7 @@
   <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 16px;">
     <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Photos and parts lists</p>
     <div class="row" style="flex-wrap: wrap; gap: 8px; align-items: center;">
+      <button id="fig-hand-fetch-btn" class="lockable"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch parts, names &amp; photos for figures added by hand</button>
       <button id="fig-photos-btn" class="lockable"><i class="ti ti-photo-down" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Save minifigure photos to my site</button>
       <button id="fig-refetch-btn" class="lockable"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Re-fetch parts lists</button>
       <span style="font-size:13px; color:var(--text-secondary);">skipping ones fetched in the last</span>
@@ -1464,7 +1465,7 @@
     <button type="button" class="collapse-header" data-collapse-target="cs-set-upload"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Official Set Parts Upload</span></button>
     <div class="collapse-body" id="cs-set-upload" style="display:none;">
       <p style="color: var(--text-secondary); margin: 0 0 10px;">
-        On Rebrickable, open the set's page &rarr; "Parts" tab &rarr; download the CSV. No account or API key needed. Then pick which set it belongs to and upload it here. Spare parts (the extras Rebrickable lists separately from the set's real parts) are left out automatically. (You can also fetch a set's parts automatically via the Rebrickable API from the Official Sets tab.)
+        On Rebrickable, open the set's page &rarr; "Parts" tab &rarr; download the CSV. No account or API key needed. Then pick which set it belongs to and upload it here. Minifigures work the same way: open the minifigure's page on Rebrickable, download its parts CSV, and pick the minifigure from the list. Spare parts (the extras Rebrickable lists separately from the set's real parts) are left out automatically. (You can also fetch a set's parts automatically via the Rebrickable API from the Official Sets tab.)
       </p>
       <div class="controls" style="margin-bottom: 8px;">
         <select id="set-csv-target" class="lockable"><option value="">Which set is this for?</option></select>
@@ -6384,8 +6385,10 @@
   function populateSetCsvTarget(){
     var sel = document.getElementById('set-csv-target');
     var cur = sel.value;
-    sel.innerHTML = '<option value="">Which set is this for?</option>' +
-      realSets().map(function(s){ return '<option value="'+escapeHtml(s.setNum)+'">'+escapeHtml(s.setNum)+(s.name?' \u2014 '+escapeHtml(s.name):'')+'</option>'; }).join('');
+    var figOpts = ownedFigs().filter(function(f){ return !f.mocGroup; }).sort(function(a, b){ return (a.name || a.setNum).localeCompare(b.name || b.setNum); });
+    sel.innerHTML = '<option value="">Which set or minifigure is this for?</option>' +
+      '<optgroup label="Official sets">' + realSets().map(function(s){ return '<option value="'+escapeHtml(s.setNum)+'">'+escapeHtml(s.setNum)+(s.name?' \u2014 '+escapeHtml(s.name):'')+'</option>'; }).join('') + '</optgroup>' +
+      (figOpts.length ? '<optgroup label="Minifigures">' + figOpts.map(function(f){ return '<option value="'+escapeHtml(f.setNum)+'">'+escapeHtml(f.setNum)+(f.name?' \u2014 '+escapeHtml(f.name):'')+'</option>'; }).join('') + '</optgroup>' : '');
     sel.value = cur;
   }
 
@@ -12618,6 +12621,44 @@
     next();
   }
 
+  // Hand-added figures that are missing their name, photo, theme or parts list (e.g. the lookup was interrupted): fill them in
+  function fetchHandFigDetails(){
+    if (figTools.running) return;
+    if (!rebrickableApiKey) return figToolsStatus('Add your Rebrickable API key on the Data & Tools tab first.', 'var(--text-danger)');
+    var hand = ownedFigs().filter(function(f){ return !f.mocGroup && (f.manualQty || 0) > 0; });
+    var todo = hand.filter(function(f){ return !f.name || !f.imgUrl || !f.theme || !setParts.some(function(r){ return r.setNum === f.setNum; }); });
+    if (!hand.length) return figToolsStatus('You haven’t added any minifigures by hand yet — look some up above.');
+    if (!todo.length) return figToolsStatus('Every minifigure you added by hand already has its name, photo, theme and parts list.', 'var(--text-success)');
+    figTools.running = true; figTools.cancel = false;
+    document.getElementById('fig-tools-stop').style.display = '';
+    var i = 0, filled = 0, parts = 0, notFound = [], failed = 0, lastErr = '';
+    function next(){
+      if (figTools.cancel || i >= todo.length){
+        figTools.running = false;
+        document.getElementById('fig-tools-stop').style.display = 'none';
+        saveOwnedSets();
+        render();
+        renderMinifigsTab();
+        return figToolsStatus((figTools.cancel ? 'Stopped. ' : '') + 'Checked ' + i + ' minifigure' + (i === 1 ? '' : 's') + ' added by hand: filled in details for ' + filled + ', fetched ' + parts + ' parts list' + (parts === 1 ? '' : 's') + '.' +
+          (notFound.length ? ' Rebrickable doesn’t know ' + notFound.join(', ') + ' — check the fig number, or import its parts from a CSV on the Data & Tools tab.' : '') +
+          (failed ? ' ' + failed + ' lookup' + (failed === 1 ? '' : 's') + ' failed (' + lastErr + ') — run it again to retry.' : ''), (notFound.length || failed) ? 'var(--text-danger)' : 'var(--text-success)');
+      }
+      var f = todo[i++];
+      figToolsStatus('Fetching from Rebrickable… ' + i + ' / ' + todo.length + ' (' + (f.name || f.setNum) + ')');
+      rbFetchJson(rbApiUrl('minifigs/' + encodeURIComponent(f.setNum) + '/')).then(function(d){
+        if (!d){ notFound.push(f.setNum); return; }
+        var changed = false;
+        if (!f.name && d.name){ f.name = d.name; changed = true; }
+        if (!f.imgUrl && d.set_img_url){ f.imgUrl = d.set_img_url; changed = true; }
+        var chain = Promise.resolve();
+        if (!f.theme) chain = chain.then(function(){ return figThemeFromSets(f); }).then(function(){ if (f.theme) changed = true; });
+        if (!setParts.some(function(r){ return r.setNum === f.setNum; })) chain = chain.then(function(){ return rbSleep(600); }).then(function(){ return loadFigParts(f.setNum); }).then(function(n){ if (n){ parts++; changed = true; } });
+        return chain.then(function(){ if (changed){ filled++; touchSetLastEdited(f.setNum); } });
+      }).catch(function(err){ failed++; lastErr = (err && err.message) || 'unknown error'; }).then(function(){ return rbSleep(800); }).then(next);
+    }
+    next();
+  }
+  wireEl('fig-hand-fetch-btn', 'click', fetchHandFigDetails);
   wireEl('fig-search-btn', 'click', function(){ figSearch(false); });
   wireEl('fig-search-input', 'keydown', function(e){ if (e.key === 'Enter') figSearch(false); });
   wireEl('fig-search-more', 'click', function(){ figSearch(true); });
