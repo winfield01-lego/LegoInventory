@@ -234,6 +234,7 @@
 #lego-inv-root .fig-result-name { font-size: 13px; font-weight: 700; line-height: 1.25; }
 #lego-inv-root .fig-result-meta { font-size: 11px; color: var(--text-muted); }
 #lego-inv-root .fig-result button { margin-top: auto; }
+#lego-inv-root .fig-add-all { grid-column: 1 / -1; justify-self: start; }
 #lego-inv-root .fig-card .fig-thumb { width: 48px; height: 48px; object-fit: contain; background: #fff; border-radius: 6px; border: 1px solid var(--border); flex-shrink: 0; }
 #lego-inv-root .row-actions-stack { display: inline-flex; flex-direction: column; gap: 4px; align-items: center; }
 #lego-inv-root .icon-back-btn { width: 30px; height: 30px; padding: 0; display: inline-flex; align-items: center; justify-content: center; color: var(--lego-blue); border-color: var(--lego-blue); }
@@ -998,7 +999,7 @@
 
 <div id="tab-minifigs" style="display:none;">
   <p style="color: var(--text-secondary); margin: 0 0 10px;">
-    Your minifigures &mdash; added automatically from your official sets, or looked up on Rebrickable by name or theme. Each figure has its own summary, photo, parts list and missing-pieces tracking, just like a set. A figure's parts list is what Rebrickable counts as part of that figure: head, torso, legs, headgear, and any accessories Rebrickable lists with it.
+    Your minifigures &mdash; added automatically from your official sets, or looked up on Rebrickable by name, set number or theme. Each figure has its own summary, photo, parts list and missing-pieces tracking, just like a set. A figure's parts list is what Rebrickable counts as part of that figure: head, torso, legs, headgear, and any accessories Rebrickable lists with it.
   </p>
   <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 6px;">Statistics</p>
   <div class="metric-grid" id="figs-metrics" style="margin-bottom: 16px;"></div>
@@ -1006,7 +1007,7 @@
   <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 16px;">
     <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Look up minifigures on Rebrickable</p>
     <div class="row" style="flex-wrap: wrap; gap: 8px; margin-bottom: 8px;">
-      <input type="text" id="fig-search-input" placeholder="Name, e.g. Darth Vader, or fig-001234" style="flex:1; min-width:200px;" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" />
+      <input type="text" id="fig-search-input" placeholder="Name (Darth Vader), set number (75192) or fig-001234" style="flex:1; min-width:200px;" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" />
       <select id="fig-theme-select" title="Limit to a theme" style="max-width:260px;"><option value="">Any theme</option></select>
       <button id="fig-search-btn" class="icon-btn"><i class="ti ti-search" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Search</button>
     </div>
@@ -12225,6 +12226,7 @@
     var q = (document.getElementById('fig-search-input').value || '').trim();
     var theme = document.getElementById('fig-theme-select').value;
     var url;
+    if (!more && /^\d{3,7}(-\d+)?$/.test(q)) return figSearchBySet(normalizedSetNum(q));   // a set number: the figures that come in it
     if (more){
       if (!figSearchNext) return;
       url = figSearchNext;
@@ -12249,12 +12251,64 @@
       figSearchStatus('Couldn’t reach Rebrickable (' + ((err && err.message) || 'unknown error') + ').', 'var(--text-danger)');
     });
   }
+  // Look up a set's minifigures by its number, with how many of each come in it
+  function figSearchBySet(sn){
+    var box = document.getElementById('fig-search-results');
+    box.innerHTML = '';
+    document.getElementById('fig-search-more').style.display = 'none';
+    figSearchNext = null;
+    figSearchTheme = '';
+    figSearchStatus('Looking up the minifigures in set ' + sn + '…');
+    Promise.all([
+      fetchSetMinifigs(sn),
+      rbFetchJson(rbApiUrl('sets/' + encodeURIComponent(sn) + '/')).catch(function(){ return null; }),
+      loadFigThemes()
+    ]).then(function(res){
+      var list = res[0] || [], set = res[1];
+      var label = sn + (set && set.name ? ' ' + set.name : '');
+      if (!set && !list.length) return figSearchStatus('Rebrickable doesn’t know set ' + sn + ' — check the number (for example 75192 or 75192-1).', 'var(--text-danger)');
+      if (!list.length) return figSearchStatus('Set ' + label + ' has no minifigures on Rebrickable.');
+      if (set && set.theme_id) figSearchTheme = String(set.theme_id);
+      var total = list.reduce(function(n, m){ return n + (m.quantity || 1); }, 0);
+      var owned = realSets().some(function(x){ return x.setNum === sn; });
+      figSearchStatus('Set ' + label + ' has ' + list.length + ' different minifigure' + (list.length === 1 ? '' : 's') + (total !== list.length ? ' (' + total + ' in all)' : '') + '.' +
+        (owned ? ' You own this set, so these are already counted on this tab through the set.' : ''), 'var(--text-success)');
+      var cards = list.map(function(m){ return { set_num: m.set_num, name: m.set_name, set_img_url: m.set_img_url, num_parts: m.num_parts, inSetQty: m.quantity || 1 }; });
+      if (!owned){
+        var allBtn = document.createElement('button');
+        allBtn.className = 'icon-btn lockable fig-add-all';
+        allBtn.disabled = !!viewLocked;
+        allBtn.textContent = 'Add all ' + total + ' figure' + (total === 1 ? '' : 's') + ' from this set';
+        allBtn.addEventListener('click', function(){
+          allBtn.disabled = true;
+          cards.reduce(function(chain, m){
+            return chain.then(function(){ return addFigManually(m, figSearchTheme); }).then(function(f){
+              if (f && m.inSetQty > 1){ f.manualQty = (f.manualQty || 0) + m.inSetQty - 1; syncFigQuantities(); saveOwnedSets(); }
+              return rbSleep(600);
+            });
+          }, Promise.resolve()).then(function(){
+            safeRun('minifigures', renderMinifigsTab);
+            render();
+            figSearchBySetRefreshLabels(box);
+            figSearchStatus('Added ' + total + ' figure' + (total === 1 ? '' : 's') + ' from set ' + label + '.', 'var(--text-success)');
+          });
+        });
+        box.appendChild(allBtn);
+      }
+      cards.forEach(function(m){ box.appendChild(figResultCard(m)); });
+    }).catch(function(err){
+      figSearchStatus('Couldn’t reach Rebrickable (' + ((err && err.message) || 'unknown error') + ').', 'var(--text-danger)');
+    });
+  }
+  function figSearchBySetRefreshLabels(box){
+    Array.prototype.forEach.call(box.querySelectorAll('.fig-result'), function(c){ if (c._relabel) c._relabel(); });
+  }
   function figResultCard(m){
     var card = document.createElement('div');
     card.className = 'fig-result';
     card.innerHTML = '<div class="fig-result-img">' + (m.set_img_url ? '<img loading="lazy" alt="" src="' + escapeHtml(m.set_img_url) + '" />' : '') + '</div>' +
       '<div class="fig-result-name">' + escapeHtml(m.name || m.set_num) + '</div>' +
-      '<div class="fig-result-meta">' + escapeHtml(m.set_num) + (m.num_parts ? ' · ' + m.num_parts + ' part' + (m.num_parts === 1 ? '' : 's') : '') + '</div>';
+      '<div class="fig-result-meta">' + escapeHtml(m.set_num) + (m.num_parts ? ' · ' + m.num_parts + ' part' + (m.num_parts === 1 ? '' : 's') : '') + (m.inSetQty > 1 ? ' · ×' + m.inSetQty + ' in this set' : '') + '</div>';
     var btn = document.createElement('button');
     btn.className = 'icon-btn lockable';
     btn.disabled = !!viewLocked;
@@ -12263,6 +12317,7 @@
       btn.textContent = have ? 'Add another (you have ' + have.qty + ')' : 'Add to my minifigures';
     }
     label();
+    card._relabel = label;
     btn.addEventListener('click', function(){
       btn.disabled = true;
       addFigManually(m, figSearchTheme).then(function(){ label(); btn.disabled = !!viewLocked; });
