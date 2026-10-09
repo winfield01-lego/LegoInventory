@@ -2954,7 +2954,7 @@
           '<td style="color:var(--text-muted);">&mdash;</td>'+
           '<td><span class="pill '+(isOk?'pill-ok':'pill-short')+'">'+(isOk ? 'Have enough' : 'Short '+(it.need-it.onHand).toLocaleString())+'</span></td>'+
           '<td class="actions-cell"></td>';
-        buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
+        buildThumb({ elementId: it.elementId, imgUrl: it.imgUrl, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
 
         var onHandInput = document.createElement('input');
         onHandInput.type = 'number';
@@ -3177,7 +3177,7 @@
         '<span class="shop-qty" title="Total needed">'+it.short.toLocaleString()+' needed</span>' +
         inDrawersHtml +
         '<span class="shop-still-needed" title="Still needed once drawer stock is applied">'+remaining.toLocaleString()+' remaining</span>';
-      buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, row.querySelector('.part-thumb-wrap'));
+      buildThumb({ elementId: it.elementId, imgUrl: it.imgUrl, desc: it.desc, partNum: it.partNum }, row.querySelector('.part-thumb-wrap'));
       row.addEventListener('click', function(){
         document.getElementById('part-search').value = it.partNum;
         state.page = 1;
@@ -3910,7 +3910,7 @@
             '<span class="shop-qty" style="flex-shrink:0;">need ' + p.short.toLocaleString() + '</span>' +
             '<span class="shop-in-drawers" style="flex-shrink:0;">' + escapeHtml(finishableWhereText(p, ', ', function(w){ return w.label + ' \u00d7' + w.qty.toLocaleString(); })) + '</span>';
           detail.appendChild(row);
-          buildThumb({ elementId: p.elementId, partNum: p.partNum, desc: p.desc }, row.querySelector('.part-thumb-wrap'));
+          buildThumb({ elementId: p.elementId, imgUrl: p.imgUrl, partNum: p.partNum, desc: p.desc }, row.querySelector('.part-thumb-wrap'));
         });
       }
       if (open) buildDetail();
@@ -4200,7 +4200,7 @@
             row.innerHTML = '<span class="part-thumb-wrap"></span><span class="top-needed-partnum">#' + escapeHtml(l.partNum) + '</span>' +
               '<span class="top-needed-desc" style="flex:1 1 120px; min-width:120px;">' + escapeHtml((l.color ? l.color + ' ' : '') + (l.desc || '')) + '</span>' + rowHtml(l);
             detail.appendChild(row);
-            buildThumb({ elementId: l.elementId, partNum: l.partNum, desc: l.desc }, row.querySelector('.part-thumb-wrap'));
+            buildThumb({ elementId: l.elementId, imgUrl: l.imgUrl, partNum: l.partNum, desc: l.desc }, row.querySelector('.part-thumb-wrap'));
           });
         }
         section('Covered by your drawers \u2014 ' + it.covered.toLocaleString() + ' piece' + (it.covered === 1 ? '' : 's') + ', ' + it.coveredParts.length + ' part line' + (it.coveredParts.length === 1 ? '' : 's'), 'var(--text-success)', it.coveredParts, function(l){
@@ -4516,7 +4516,7 @@
         '<span class="top-needed-partnum" title="Part number">#'+escapeHtml(it.partNum)+'</span>' +
         '<span class="shop-in-drawers" title="Currently sitting in a drawer">'+it.inDrawers.toLocaleString()+' in drawers</span>' +
         '<span class="pill '+(it.fullyCovers?'pill-ok':'pill-short')+' top-needed-short">Would cover '+it.wouldHelpBy.toLocaleString()+' of '+it.setNeeds.toLocaleString()+' needed</span>';
-      buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, row.querySelector('.part-thumb-wrap'));
+      buildThumb({ elementId: it.elementId, imgUrl: it.imgUrl, desc: it.desc, partNum: it.partNum }, row.querySelector('.part-thumb-wrap'));
       row.addEventListener('click', function(){ openSetDetail(it.setNum); });
       container.appendChild(row);
     });
@@ -5878,7 +5878,7 @@
   function pmlSrcOf(r){ return r.moc !== undefined ? 'Build' : (r.setNum !== undefined ? 'Set' : 'Drawer'); }
   function pmlSummarize(it){
     var first = function(f){ var r = it.rows.find(function(x){ return x[f]; }); return r ? r[f] : ''; };
-    it.partNum = first('partNum'); it.color = first('color'); it.desc = first('desc'); it.elementId = first('elementId');
+    it.partNum = first('partNum'); it.color = first('color'); it.desc = first('desc'); it.elementId = first('elementId'); it.imgUrl = first('imgUrl');
     var never = it.rows.some(function(r){ return !r.rbAt; });
     it.pulledAt = never ? 0 : Math.min.apply(null, it.rows.map(function(r){ return r.rbAt; }));   // the oldest line decides
     it.noPhoto = it.rows.some(function(r){ return (r.partNum || r.elementId) && rowHasNoPhoto(r); });
@@ -5956,7 +5956,7 @@
     });
     row.appendChild(btn);
     row.appendChild(status);
-    buildThumb({ elementId: it.elementId, partNum: it.partNum, desc: it.desc }, row.querySelector('.part-thumb-wrap'));
+    buildThumb({ elementId: it.elementId, imgUrl: it.imgUrl, partNum: it.partNum, desc: it.desc }, row.querySelector('.part-thumb-wrap'));
   }
   function pmlRender(){
     var list = document.getElementById('pml-list');
@@ -6483,6 +6483,7 @@
           desc: (item.part && item.part.name) || '',
           elementId: item.element_id || (item.part && item.part.element_id) || '',
           qtyPerSet: item.quantity || 1,
+          imgUrl: (item.part && item.part.part_img_url) || '',
           rbAt: Date.now()
         };
       }).filter(function(r){ return r.partNum; });
@@ -6759,7 +6760,7 @@
           '<td class="wrap-cell">'+it.totalOnHand.toLocaleString()+' / '+it.totalQty.toLocaleString()+'</td>' +
           '<td><span class="pill '+(short>0?'pill-short':'pill-ok')+'">'+(short>0 ? 'Missing '+short.toLocaleString() : 'Complete')+'</span></td>' +
           '<td></td>';
-        buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
+        buildThumb({ elementId: it.elementId, imgUrl: it.imgUrl, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
         tbody.appendChild(tr);
       });
       document.getElementById('set-parts-page-info').textContent = rows.length ? ('Showing '+(start+1)+'-'+Math.min(start+pageRows.length, rows.length)+' of '+rows.length+' unique parts') : '';
@@ -6780,7 +6781,7 @@
         '<td class="onhand-cell"></td>' +
         '<td class="status-cell"></td>' +
         '<td class="actions-cell"></td>';
-      buildThumb({ elementId: r.elementId, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
+      buildThumb({ elementId: r.elementId, imgUrl: r.imgUrl, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
 
       function refreshSetPartStatus(){
         var short = r._totalQty - r._onHand;
@@ -6963,7 +6964,7 @@
           '<td style="color:var(--text-muted);">&mdash;</td>' +
           '<td class="wrap-cell">'+it.totalOnHand.toLocaleString()+' / '+it.totalQty.toLocaleString()+'</td>' +
           '<td><span class="pill '+(short>0?'pill-short':'pill-ok')+'">'+(short>0 ? 'Missing '+short.toLocaleString() : 'Complete')+'</span></td>';
-        buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
+        buildThumb({ elementId: it.elementId, imgUrl: it.imgUrl, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
         tbody.appendChild(tr);
       });
       document.getElementById('sp-page-info').textContent = items.length ? ('Showing '+(start+1)+'-'+Math.min(start+pageItems.length, items.length)+' of '+items.length+' unique parts') : '';
@@ -6979,7 +6980,7 @@
           '<td class="wrap-cell">'+it.qtyPerSet+'</td>' +
           '<td class="onhand-cell"></td>' +
           '<td class="status-cell"></td>';
-        buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
+        buildThumb({ elementId: it.elementId, imgUrl: it.imgUrl, desc: it.desc, partNum: it.partNum }, tr.querySelector('.part-thumb-wrap'));
 
         function refreshSpStatus(){
           var short = it.totalQty - it.onHand;
@@ -7290,7 +7291,7 @@
               '<span class="shop-qty" style="flex-shrink:0;">\u00d7' + (l.qty || 0).toLocaleString() + '</span>';
             row.appendChild(rest);
             body.appendChild(row);
-            buildThumb({ elementId: l.elementId, partNum: l.partNum, desc: l.desc }, thumb);
+            buildThumb({ elementId: l.elementId, imgUrl: l.imgUrl, partNum: l.partNum, desc: l.desc }, thumb);
           });
         });
         if ((entry.stillNeeded || []).length){
@@ -7307,7 +7308,7 @@
               '<span class="top-needed-desc" style="flex:1 1 120px; min-width:120px;">' + escapeHtml((l.color ? l.color + ' ' : '') + (l.desc || '')) + '</span>' +
               '<span class="shop-still-needed" style="flex-shrink:0;">' + (l.qty || 0).toLocaleString() + ' still needed</span>';
             body.appendChild(row);
-            buildThumb({ elementId: l.elementId, partNum: l.partNum, desc: l.desc }, row.querySelector('.part-thumb-wrap'));
+            buildThumb({ elementId: l.elementId, imgUrl: l.imgUrl, partNum: l.partNum, desc: l.desc }, row.querySelector('.part-thumb-wrap'));
           });
         }
         var actions = document.createElement('div');
@@ -7959,6 +7960,17 @@
       unchanged: !dropped && !added && !qtyChanged && !duplicatesMerged && oldRows.length === newRows.length };
   }
 
+  // Copies Rebrickable's part pictures onto lines that don't have one yet (matched by part number + colour). Returns how many.
+  function copyRemoteImgs(oldRows, newRows){
+    var byKey = {}, n = 0;
+    newRows.forEach(function(r){ if (r.imgUrl) byKey[normKey(r.partNum) + '|' + normColorKey(r.color || '')] = r.imgUrl; });
+    oldRows.forEach(function(r){
+      var u = byKey[normKey(r.partNum) + '|' + normColorKey(r.color || '')];
+      if (u && r.imgUrl !== u){ if (!r.imgUrl) n++; r.imgUrl = u; }
+    });
+    return n;
+  }
+
   function refetchSetParts(setNum){
     var statusEl = document.getElementById('detail-modal-refetch-status');
     var btn = document.getElementById('detail-modal-refetch-parts');
@@ -7978,8 +7990,13 @@
       var plan = planSetRefetch(setNum, newRows);
       var oldRows = plan.oldRows, oldPieces = plan.oldPieces, newPieces = plan.newPieces, dropped = plan.dropped, added = plan.added, qtyChanged = plan.qtyChanged, keptShort = plan.keptShort;
       if (plan.unchanged){
+        var pics = copyRemoteImgs(plan.oldRows, newRows);
+        plan.oldRows.forEach(function(r){ r.rbAt = Date.now(); });
+        saveSetParts();
+        if (pics){ openSetDetail(setNum); statusEl = document.getElementById('detail-modal-refetch-status'); }
         statusEl.style.color = 'var(--text-success)';
-        statusEl.textContent = 'Already matches Rebrickable \u2014 nothing to change.' + spareNote;
+        statusEl.textContent = 'Parts list already matches Rebrickable' + (pics ? ' \u2014 added ' + pics + ' missing part picture' + (pics === 1 ? '' : 's') + '.' : ' \u2014 nothing to change.') + spareNote;
+        if (pics && figTabVisible()) safeRun('minifigures', renderMinifigsTab);
         return;
       }
 
@@ -8426,7 +8443,7 @@
           : '') +
         (l.still > 0 ? '<span class="shop-still-needed" style="flex-shrink:0;">' + l.still.toLocaleString() + ' still needed</span>' : '');
       list.appendChild(row);
-      buildThumb({ elementId: l.elementId, partNum: l.partNum, desc: l.desc }, row.querySelector('.part-thumb-wrap'));
+      buildThumb({ elementId: l.elementId, imgUrl: l.imgUrl, partNum: l.partNum, desc: l.desc }, row.querySelector('.part-thumb-wrap'));
     });
   }
 
@@ -8578,7 +8595,7 @@
         '<td class="wrap-cell">'+escapeHtml(r.desc)+'</td>'+
         '<td class="onhand-qty-cell"></td>'+
         '<td class="actions-cell"></td>';
-      buildThumb({ elementId: r.elementId, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
+      buildThumb({ elementId: r.elementId, imgUrl: r.imgUrl, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
 
       var needed = setPartNeeded(r);
       var qtyOnHandCell = tr.querySelector('.onhand-qty-cell');
@@ -9212,7 +9229,7 @@
         '<td class="wrap-cell">'+escapeHtml(r.desc)+'</td>' +
         '<td class="qty-cell"></td>' +
         '<td class="actions-cell"><div class="actions-cell-inner"></div></td>';
-      buildThumb({ elementId: r.elementId, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
+      buildThumb({ elementId: r.elementId, imgUrl: r.imgUrl, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
 
       var qtyInput = document.createElement('input');
       qtyInput.type = 'number';
@@ -9430,7 +9447,7 @@
         '<td class="wrap-cell">'+escapeHtml(r.desc)+'</td>' +
         '<td class="qty-cell"></td>' +
         '<td class="actions-cell"><div class="actions-cell-inner"></div></td>';
-      buildThumb({ elementId: r.elementId, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
+      buildThumb({ elementId: r.elementId, imgUrl: r.imgUrl, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
 
       var qtyInput = document.createElement('input');
       qtyInput.type = 'number';
@@ -11101,7 +11118,7 @@
       row.innerHTML = '<span class="part-thumb-wrap"></span>' +
         '<div style="flex:1; min-width:140px;"><div style="font-weight:700; font-size:13px;">'+escapeHtml(it.color)+' '+escapeHtml(it.desc)+'</div>' +
         '<div style="font-size:12px; color:var(--text-secondary);">#'+escapeHtml(it.partNum)+'</div></div>';
-      buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, row.querySelector('.part-thumb-wrap'));
+      buildThumb({ elementId: it.elementId, imgUrl: it.imgUrl, desc: it.desc, partNum: it.partNum }, row.querySelector('.part-thumb-wrap'));
       var qtyInput = document.createElement('input');
       qtyInput.type = 'number';
       qtyInput.min = '1';
@@ -11193,7 +11210,7 @@
       row.innerHTML = '<span class="part-thumb-wrap"></span>' +
         '<div style="flex:1; min-width:140px;"><div style="font-weight:700; font-size:13px;">'+escapeHtml(it.color)+' '+escapeHtml(it.desc)+'</div>' +
         '<div style="font-size:12px; color:var(--text-secondary);">#'+escapeHtml(it.partNum)+' \u00b7 '+it.totalQty.toLocaleString()+' now in '+it.drawerIds.length+' drawer'+(it.drawerIds.length===1?'':'s')+'</div></div>';
-      buildThumb({ elementId: it.elementId, desc: it.desc, partNum: it.partNum }, row.querySelector('.part-thumb-wrap'));
+      buildThumb({ elementId: it.elementId, imgUrl: it.imgUrl, desc: it.desc, partNum: it.partNum }, row.querySelector('.part-thumb-wrap'));
       var qtyInput = document.createElement('input');
       qtyInput.type = 'number';
       qtyInput.min = '1';
@@ -11957,6 +11974,7 @@
         var raw = newRows.map(function(r){ return Object.assign({}, r); });
         var plan = planSetRefetch(s.setNum, newRows);
         if (plan.unchanged){
+          copyRemoteImgs(oldRows, raw);
           oldRows.forEach(function(r){ r.rbAt = Date.now(); });   // confirmed current: tag it so the next check can skip it
           stamped = true;
           setRefetch.results.push({ setNum: s.setNum, name: s.name, kind: 'same' });
@@ -12592,6 +12610,7 @@
     var figs = ownedFigs().filter(function(f){ return !f.mocGroup; });
     var todo = figs.filter(function(f){
       var rows = setParts.filter(function(r){ return r.setNum === f.setNum; });
+      if (rows.some(function(r){ return !r.imgUrl; })) return true;   // missing part pictures: always worth a visit
       return !(cutoff && rows.length && rows.every(function(r){ return r.rbAt && r.rbAt > cutoff; }));
     });
     if (!figs.length) return figToolsStatus('No minifigures yet.');
@@ -12599,7 +12618,7 @@
     if (!confirm('Re-fetch the parts lists of ' + todo.length + ' minifigure' + (todo.length === 1 ? '' : 's') + ' from Rebrickable?' + (figs.length > todo.length ? ' (' + (figs.length - todo.length) + ' fetched recently are skipped.)' : '') + '\n\nParts you’d marked short keep their shortfall; everything else counts as owned. Roughly ' + Math.max(1, Math.round(todo.length * 1.2 / 60)) + ' minute' + (Math.round(todo.length * 1.2 / 60) > 1 ? 's' : '') + '.')) return;
     figTools.running = true; figTools.cancel = false;
     document.getElementById('fig-tools-stop').style.display = '';
-    var i = 0, changed = 0, same = 0, failed = 0, lastErr = '', stamped = false;
+    var i = 0, changed = 0, same = 0, failed = 0, lastErr = '', stamped = false, pics = 0;
     function next(){
       if (figTools.cancel || i >= todo.length){
         figTools.running = false;
@@ -12607,15 +12626,15 @@
         if (stamped) saveSetParts();
         render();
         renderMinifigsTab();
-        return figToolsStatus((figTools.cancel ? 'Stopped. ' : '') + 'Checked ' + (changed + same + failed) + ' minifigure' + (changed + same + failed === 1 ? '' : 's') + ': ' + changed + ' parts list' + (changed === 1 ? '' : 's') + ' updated, ' + same + ' already matched Rebrickable.' + (failed ? ' ' + failed + ' failed (' + lastErr + ').' : ''), failed ? 'var(--text-danger)' : 'var(--text-success)');
+        return figToolsStatus((figTools.cancel ? 'Stopped. ' : '') + 'Checked ' + (changed + same + failed) + ' minifigure' + (changed + same + failed === 1 ? '' : 's') + ': ' + changed + ' parts list' + (changed === 1 ? '' : 's') + ' updated, ' + same + ' already matched Rebrickable' + (pics ? ' (' + pics + ' part picture' + (pics === 1 ? '' : 's') + ' added)' : '') + '.' + (failed ? ' ' + failed + ' failed (' + lastErr + ').' : ''), failed ? 'var(--text-danger)' : 'var(--text-success)');
       }
       var f = todo[i++];
       figToolsStatus('Re-fetching parts lists… ' + i + ' / ' + todo.length + ' (' + (f.name || f.setNum) + ')');
       fetchSetPartsFromApi(f.setNum).then(function(rows){
         if (!rows.length){ same++; return; }
         var plan = planSetRefetch(f.setNum, rows);
-        if (plan.unchanged){ plan.oldRows.forEach(function(r){ r.rbAt = Date.now(); }); stamped = true; same++; }
-        else { importSetPartsFromRows(f.setNum, plan.newRows); changed++; }
+        if (plan.unchanged){ pics += copyRemoteImgs(plan.oldRows, rows); plan.oldRows.forEach(function(r){ r.rbAt = Date.now(); }); stamped = true; same++; }
+        else { pics += plan.newRows.filter(function(r){ return r.imgUrl; }).length; importSetPartsFromRows(f.setNum, plan.newRows); changed++; }
       }).catch(function(err){ failed++; lastErr = (err && err.message) || 'unknown error'; }).then(function(){ return rbSleep(1100); }).then(next);
     }
     next();
@@ -12792,7 +12811,7 @@
         line.innerHTML = '<input type="checkbox" class="mfp-pick" ' + (x.pick ? 'checked' : '') + ' /><span class="part-thumb-wrap"></span>' +
           '<span style="flex:1 1 auto; min-width:0;"><strong>#' + escapeHtml(r.partNum) + '</strong> ' + escapeHtml((r.color ? r.color + ' ' : '') + (r.desc || '')) + ' <span style="color:var(--text-muted);">×' + (r.qty || 0) + ' · ' + escapeHtml(x.cat) + '</span></span>';
         line.querySelector('input').addEventListener('change', function(e){ x.pick = e.target.checked; updateMfpMoveBtn(); });
-        buildThumb({ elementId: r.elementId, partNum: r.partNum, desc: r.desc }, line.querySelector('.part-thumb-wrap'));
+        buildThumb({ elementId: r.elementId, imgUrl: r.imgUrl, partNum: r.partNum, desc: r.desc }, line.querySelector('.part-thumb-wrap'));
         box.appendChild(line);
       });
     });
@@ -15162,6 +15181,14 @@
       var pk = normKey(r.partNum);
       var btn0 = makeManageBtn();
       function noPhotoIcon(){
+        if (r.imgUrl && !btn0._triedRemote){   // Rebrickable's picture of this part, when the part list came from Rebrickable
+          btn0._triedRemote = true;
+          btn0.innerHTML = '';
+          var rimg = showImg();
+          rimg.addEventListener('error', function(){ btn0.innerHTML = ''; noPhotoIcon(); });
+          rimg.src = r.imgUrl;
+          return;
+        }
         btn0.innerHTML = '<i class="ti ti-photo-off" aria-hidden="true"></i>';
         btn0.title = 'Add a photo for this part';
       }
@@ -15205,6 +15232,9 @@
         if (!triedLocal){
           triedLocal = true;
           loadFromCacheOrLive(r.elementId, img, null);
+        } else if (r.imgUrl && !img._triedRemote){
+          img._triedRemote = true;
+          img.src = r.imgUrl;
         } else {
           btn.innerHTML = '<i class="ti ti-photo-off" aria-hidden="true"></i>';
           btn.title = 'Add a photo for this part';
