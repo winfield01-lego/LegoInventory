@@ -224,6 +224,7 @@
 #lego-inv-root .icon-btn:has(> svg:only-child) { display: inline-flex; align-items: center; justify-content: center; }
 @media (max-width: 640px) { #lego-inv-root .sub-tabs { flex-wrap: wrap; overflow-x: visible; } }
 #lego-inv-root .top-action-bar { flex-wrap: wrap; row-gap: 8px; }
+#lego-inv-root .fig-set-heading { margin: 10px 0 4px 4px; font-size: 12px; font-weight: 700; color: var(--text-secondary); border-left: 3px solid var(--lego-red); padding-left: 8px; }
 #lego-inv-root .fig-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
 #lego-inv-root .fig-result { display: flex; flex-direction: column; gap: 4px; border: 2px solid var(--border); border-radius: var(--radius); padding: 8px; background: var(--surface-2); }
 #lego-inv-root .fig-result-img { height: 110px; display: flex; align-items: center; justify-content: center; background: #fff; border-radius: 6px; overflow: hidden; }
@@ -12425,7 +12426,27 @@
       var body = document.createElement('div');
       body.className = 'theme-group-body';
       body.style.display = isOpen ? 'block' : 'none';
-      list.forEach(function(f){ body.appendChild(buildFigCard(f)); });
+      // within the theme, one small heading per set the figures come in (a figure in several of your sets sits under the first)
+      var bySet = {}, setOrder = [];
+      list.forEach(function(f){
+        var srcs = f.mocGroup ? [] : Object.keys(f.figSources || {}).filter(function(sn){ return ownedSets.some(function(x){ return x.setNum === sn && !isFigEntry(x); }); }).sort(function(a, b){ return a.localeCompare(b, undefined, { numeric: true }); });
+        var k = f.mocGroup ? '' : (srcs[0] || '~hand');
+        if (!bySet[k]){ bySet[k] = []; setOrder.push(k); }
+        bySet[k].push(f);
+      });
+      setOrder.sort(function(a, b){ return (a === '~hand') - (b === '~hand') || a.localeCompare(b, undefined, { numeric: true }); });
+      setOrder.forEach(function(k){
+        if (k){
+          var set = k === '~hand' ? null : ownedSets.find(function(x){ return x.setNum === k && !isFigEntry(x); });
+          // how many figures this set itself supplies (or, for the hand-added heading, how many you added)
+          var figsHere = bySet[k].reduce(function(n, f){ return n + (k === '~hand' ? (f.manualQty || 0) : (f.figSources[k] || 0) * ((set && set.qty) || 1)); }, 0);
+          var sh = document.createElement('p');
+          sh.className = 'fig-set-heading';
+          sh.textContent = (k === '~hand' ? 'Added by hand' : k + (set && set.name ? ' ' + set.name : '')) + ' \u00b7 ' + figsHere + ' figure' + (figsHere === 1 ? '' : 's');
+          body.appendChild(sh);
+        }
+        bySet[k].forEach(function(f){ body.appendChild(buildFigCard(f)); });
+      });
       header.addEventListener('click', function(){
         figThemesTouched = true;
         var now = body.style.display === 'none';
