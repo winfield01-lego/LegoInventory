@@ -403,6 +403,7 @@
   <div class="row">
     <button id="view-lock-toggle-btn" class="icon-btn"></button>
     <span id="save-status" style="font-size: 12px; color: var(--text-muted);"></span>
+    <button id="collapse-all-btn" class="icon-btn" type="button" style="display:none;"><i class="ti ti-chevrons-up" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Collapse all</button>
     <button id="export-btn" class="icon-btn" title="Exports every part across your MOC builds, official sets, and drawers into one CSV"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Export CSV</button>
   </div>
 </div>
@@ -2168,7 +2169,7 @@
   var lockWriteBypassUntil = 0;
   var lockNoticeTimer = null;
   var LOCK_EXEMPT_IDS = {};
-  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
+  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
   var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input';
   var LOCK_CONTROL_SELECTOR = 'input, select, textarea, button';
 
@@ -2296,6 +2297,7 @@
     localDirty = true;
     editsSinceBoot++;
     saveDirtyFlag();
+    if (vbStatus !== 'saving') setVbStatus(siteRepoReady() ? 'unsaved' : 'local');
     var statusEl = document.getElementById('all-data-sync-status');
     if (statusEl){
       statusEl.style.color = 'var(--text-secondary)';
@@ -2585,7 +2587,7 @@
     var mocMetrics = [
       ['Builds', mocs.length],
       ['Pieces Needed to Complete Desired Builds', mocMissing.toLocaleString()],
-      ['Pieces On Hand', totalHave.toLocaleString()],
+      ['Pieces Dedicated to Sets', totalHave.toLocaleString()],
       ['Overall Complete', pct + '%']
     ];
     var mocAccent = ['var(--lego-blue)','var(--lego-yellow)','var(--lego-green)','var(--lego-blue)'];
@@ -2615,7 +2617,7 @@
     var setsMetrics = [
       ['Official Sets', realSets().length],
       ['Missing Pieces', setsMissing.toLocaleString()],
-      ['Pieces On Hand', totalSetPiecesOnHand.toLocaleString()],
+      ['Pieces Dedicated to Sets', totalSetPiecesOnHand.toLocaleString()],
       ['Overall Complete', setsPct + '%']
     ];
     var setsAccent = ['var(--lego-purple)','var(--lego-red)','var(--lego-brown)','var(--lego-purple)'];
@@ -13707,6 +13709,7 @@
     if (tab === 'minifigs') safeRun('minifigures', renderMinifigsTab);
     if (tab === 'drawers') renderDrawersTab();
     if (tab === 'import'){ populateSetCsvTarget(); populateDrawerDropdowns(); }
+    scheduleCollapseAllUpdate();
   }
 
   function switchMainTab(mainTabId){
@@ -13741,6 +13744,49 @@
       header.querySelector('i').className = 'ti ' + (isOpen ? 'ti-chevron-right' : 'ti-chevron-down');
     });
   });
+  // ---- Collapse all: closes every expandable area on the page you're looking at ----
+  var COLLAPSIBLE_TAB_IDS = ['overview', 'parts', 'shopping', 'mocsets', 'sets', 'setparts', 'minifigs', 'drawers', 'import', 'images'];
+  function currentTabPanel(){
+    for (var i = 0; i < COLLAPSIBLE_TAB_IDS.length; i++){
+      var el = document.getElementById('tab-' + COLLAPSIBLE_TAB_IDS[i]);
+      if (el && el.style.display !== 'none') return el;
+    }
+    return null;
+  }
+  function caShown(el){ return !!(el && el.getClientRects().length); }
+  function caToggles(panel, which){
+    return Array.prototype.filter.call(panel.querySelectorAll('i.' + which), function(i){ return caShown(i) && !!i.closest('button'); });
+  }
+  function collapseAllOnPage(){
+    var panel = currentTabPanel();
+    if (!panel) return;
+    var skip = [], stuck = 0, guard = 0;
+    while (guard++ < 1500){
+      var open = caToggles(panel, 'ti-chevron-down').filter(function(i){ return skip.indexOf(i.closest('button')) === -1; });
+      if (!open.length) break;
+      // innermost / last first, so nested groups close before the group around them
+      var btn = open[open.length - 1].closest('button');
+      var before = open.length;
+      try { btn.click(); } catch(e){}
+      var after = caToggles(panel, 'ti-chevron-down').filter(function(i){ return skip.indexOf(i.closest('button')) === -1; }).length;
+      if (after >= before){ skip.push(btn); if (++stuck > 25) break; }
+    }
+    updateCollapseAllBtn();
+  }
+  function updateCollapseAllBtn(){
+    var btn = document.getElementById('collapse-all-btn');
+    if (!btn) return;
+    var panel = currentTabPanel();
+    var any = panel ? caToggles(panel, 'ti-chevron-down').length + caToggles(panel, 'ti-chevron-right').length : 0;
+    var openCount = panel ? caToggles(panel, 'ti-chevron-down').length : 0;
+    btn.style.display = any ? '' : 'none';
+    btn.style.opacity = openCount ? '1' : '0.55';
+    btn.title = openCount ? 'Close every expanded section on this page' : 'Everything on this page is already collapsed';
+  }
+  var caUpdateTimer = null;
+  function scheduleCollapseAllUpdate(){ clearTimeout(caUpdateTimer); caUpdateTimer = setTimeout(function(){ safeRun('collapse all button', updateCollapseAllBtn); }, 60); }
+  wireEl('collapse-all-btn', 'click', function(){ safeRun('collapse all', collapseAllOnPage); });
+  if (ROOT) ROOT.addEventListener('click', function(e){ if (!e.target.closest || !e.target.closest('#collapse-all-btn')) scheduleCollapseAllUpdate(); });
   wireEl('overview-mocs-search', 'input', renderOverviewMocsList);
   wireEl('overview-sets-search', 'input', renderOverviewSetsList);
   wireEl('part-search', 'input', function(){ state.page = 1; renderParts(); });
@@ -14797,6 +14843,7 @@
   var syncMeta = { deleted: {}, stamps: {} };
   var lastMergeSummary = null;
   function loadSyncState(){
+    loadSiteInfo();
     return Promise.all([storage.get(SYNC_BASE_KEY, false), storage.get(SYNC_META_KEY, false), storage.get(SYNC_BASE_HASHES_KEY, false)]).then(function(res){
       syncBaseSha = (res[0] && res[0].value) || '';
       try { var h = res[2] && res[2].value ? JSON.parse(res[2].value) : null; syncBaseHashes = (h && h.sha && h.sha === syncBaseSha) ? h.hashes : null; } catch(e){ syncBaseHashes = null; }
@@ -14854,6 +14901,9 @@
   function siteRepoReady(){ return !!(ghSettings.repo && ghSettings.repo.indexOf('/') !== -1 && ghSettings.token); }
   // Resolves { data, sha }; data is null when nothing has been published yet.
   function fetchSiteData(){
+    return fetchSiteDataRaw().then(function(s){ if (s && s.data) noteSiteInfo(s.data); return s; });
+  }
+  function fetchSiteDataRaw(){
     if (!siteRepoReady()){
       return fetchWithTimeout(ALL_DATA_PATH + '?_=' + Date.now(), { cache: 'no-store' }, 25000).then(function(resp){
         if (resp.status === 404) return { data: null, sha: '' };
@@ -15048,9 +15098,11 @@
     function tryPut(sha){
       var startEdits = editsSinceBoot;
       var payload = buildFullDataPayload();
+      payload.syncMeta = Object.assign({}, payload.syncMeta || {}, { savedAt: new Date().toISOString(), appVersion: APP_VERSION });
       return putSiteData(payload, sha).then(function(res){
         if (res.ok){
           saveSyncBase(res.sha, payload);
+          noteSiteInfo(payload);
           if (editsSinceBoot === startEdits){ localDirty = false; saveDirtyFlag(); }
           return true;
         }
@@ -15102,10 +15154,156 @@
     });
   }
 
+  // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
+  var APP_VERSION = '2026.10.10.3';          // bump with every change to this page
+  var APP_BUILT = '2026-10-10';
+  var SITE_INFO_KEY = 'site-saved-info-v1';
+  var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
+  var siteInfo = { savedAt: '', appVersion: '', guessed: false };
+  function loadSiteInfo(){
+    return storage.get(SITE_INFO_KEY, false).then(function(res){
+      try { var v = res && res.value ? JSON.parse(res.value) : null; if (v && typeof v === 'object') siteInfo = { savedAt: v.savedAt || '', appVersion: v.appVersion || '', guessed: !!v.guessed }; } catch(e){}
+      renderVersionBadge();
+    }).catch(function(){});
+  }
+  function saveSiteInfo(){ try { storage.set(SITE_INFO_KEY, JSON.stringify(siteInfo), false); } catch(e){} }
+  function noteSiteInfo(data){
+    vbCheckedAt = Date.now();
+    var m = data && data.syncMeta;
+    if (m && m.savedAt){
+      siteInfo = { savedAt: m.savedAt, appVersion: m.appVersion || '', guessed: false };
+      saveSiteInfo();
+    } else if (data && siteRepoReady() && !vbCommitLookup){
+      // saved before the badge existed: ask GitHub when the data file was last committed
+      vbCommitLookup = true;
+      var url = 'https://api.github.com/repos/' + ghSettings.repo + '/commits?per_page=1&path=' + encodeURIComponent(ALL_DATA_PATH) + '&sha=' + encodeURIComponent(ghSettings.branch || 'main');
+      fetchWithTimeout(url, { headers: githubApiHeaders(ghSettings.token), cache: 'no-store' }, 15000).then(function(r){ return r.ok ? r.json() : null; }).then(function(list){
+        var c = list && list[0] && list[0].commit;
+        var d = c && ((c.committer && c.committer.date) || (c.author && c.author.date));
+        if (d && !(siteInfo.savedAt && !siteInfo.guessed && Date.parse(siteInfo.savedAt) >= Date.parse(d))){ siteInfo = { savedAt: d, appVersion: '', guessed: true }; saveSiteInfo(); renderVersionBadge(); }
+      }).catch(function(){});
+    }
+    renderVersionBadge();
+  }
+  function setVbStatus(s, err){
+    vbStatus = s;
+    vbError = err || '';
+    if (s === 'synced') vbCheckedAt = Date.now();
+    renderVersionBadge();
+  }
+  function cmpVersion(a, b){
+    var x = String(a || '').split('.'), y = String(b || '').split('.');
+    for (var i = 0; i < Math.max(x.length, y.length); i++){
+      var d = (parseInt(x[i], 10) || 0) - (parseInt(y[i], 10) || 0);
+      if (d) return d > 0 ? 1 : -1;
+    }
+    return 0;
+  }
+  function vbWhen(iso, withYearAlways){
+    var t = Date.parse(iso || '');
+    if (isNaN(t)) return '';
+    var d = new Date(t), now = new Date();
+    var time = d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' });
+    var day0 = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+    if (!withYearAlways){
+      if (t >= day0) return 'today ' + time;
+      if (t >= day0 - 86400000) return 'yesterday ' + time;
+    }
+    var opts = { month: 'short', day: 'numeric' };
+    if (withYearAlways || d.getFullYear() !== now.getFullYear()) opts.year = 'numeric';
+    return d.toLocaleDateString([], opts) + (withYearAlways ? ', ' : ' ') + time;
+  }
+  function vbShortVersion(v){ var p = String(v).split('.'); return p.length >= 3 ? p.slice(1).join('.') : v; }
+  var VB_STATES = {
+    starting: ['#91A3B0', 'Starting up', 'Checking your site for the latest data…'],
+    synced:   ['#1E9E5A', 'In sync', 'Everything on this device is saved to your site.'],
+    unsaved:  ['#E8A317', 'Unsaved changes', 'You have changes that will be saved to your site in a few seconds.'],
+    saving:   ['#E8A317', 'Saving…', 'Saving your changes to your site now.'],
+    error:    ['#D0342C', 'Not saved', 'The last save to your site didn’t go through. Your changes are kept on this device and will be combined with your site’s version the next time it can be reached.'],
+    offline:  ['#D0342C', 'Can’t reach site', 'Couldn’t check your site for newer data. You’re seeing what’s saved on this device.'],
+    notyet:   ['#91A3B0', 'Nothing on site yet', 'Your site doesn’t have a saved copy of your data yet.'],
+    local:    ['#91A3B0', 'This browser only', 'GitHub isn’t connected here, so your data is saved in this browser only.']
+  };
+  function renderVersionBadge(){
+    if (!ROOT) return;
+    var wrap = document.getElementById('version-badge');
+    if (!wrap){
+      var css = document.createElement('style');
+      css.textContent =
+        '#lego-inv-root #version-badge{position:fixed;right:calc(10px + env(safe-area-inset-right,0px));bottom:calc(10px + env(safe-area-inset-bottom,0px));z-index:900;display:flex;flex-direction:column;align-items:flex-end;gap:6px;font-family:inherit;max-width:calc(100vw - 20px);}' +
+        '#lego-inv-root #version-badge-btn{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:999px;border:1px solid var(--border);background:var(--surface-2);color:var(--text-secondary);font-size:11px;line-height:1.3;cursor:pointer;box-shadow:0 1px 4px rgba(20,32,43,.15);opacity:.92;white-space:nowrap;font-family:inherit;text-transform:none;letter-spacing:normal;font-weight:500;}' +
+        '#lego-inv-root #version-badge-btn:hover{opacity:1;}' +
+        '#lego-inv-root #version-badge .vb-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;}' +
+        '#lego-inv-root #version-badge .vb-panel{width:290px;max-width:calc(100vw - 20px);background:var(--surface-2);border:2px solid var(--lego-black);border-radius:var(--radius);padding:12px 14px;font-size:12.5px;color:var(--text-primary);box-shadow:0 6px 20px rgba(20,32,43,.25);}' +
+        '#lego-inv-root #version-badge .vb-row{display:flex;justify-content:space-between;gap:10px;padding:4px 0;border-bottom:1px solid var(--surface-1);}' +
+        '#lego-inv-root #version-badge .vb-row span:first-child{color:var(--text-secondary);}' +
+        '#lego-inv-root #version-badge .vb-row span:last-child{text-align:right;font-weight:600;}' +
+        '#lego-inv-root #version-badge .vb-note{margin:8px 0 0;font-size:12px;color:var(--text-secondary);line-height:1.4;}' +
+        '#lego-inv-root #version-badge .vb-actions{display:flex;gap:6px;margin-top:10px;flex-wrap:wrap;}' +
+        '#lego-inv-root #version-badge .vb-actions button{font-size:12px;padding:5px 10px;}' +
+        '#lego-inv-root #version-badge-close{padding:2px !important;}' +
+        '@media print{#lego-inv-root #version-badge{display:none !important;}}';
+      document.head.appendChild(css);
+      wrap = document.createElement('div');
+      wrap.id = 'version-badge';
+      wrap.className = 'no-print';
+      ROOT.appendChild(wrap);
+      wrap.addEventListener('click', function(e){
+        e.vbInside = true;
+        var b = e.target.closest && e.target.closest('button');
+        if (!b) return;
+        if (b.id === 'version-badge-btn'){ vbOpen = !vbOpen; renderVersionBadge(); }
+        else if (b.id === 'version-badge-save'){ setVbStatus('saving'); saveAllDataToGithub(false); }
+        else if (b.id === 'version-badge-reload'){ location.reload(); }
+        else if (b.id === 'version-badge-close'){ vbOpen = false; renderVersionBadge(); }
+      });
+      document.addEventListener('click', function(e){
+        if (vbOpen && !e.vbInside && !wrap.contains(e.target)){ vbOpen = false; renderVersionBadge(); }
+      });
+      document.addEventListener('keydown', function(e){
+        if (vbOpen && (e.key === 'Escape' || e.key === 'Esc')){ vbOpen = false; renderVersionBadge(); }
+      });
+    }
+    var st = VB_STATES[vbStatus] || VB_STATES.starting;
+    var newer = siteInfo.appVersion && cmpVersion(siteInfo.appVersion, APP_VERSION) > 0;
+    var dot = newer ? '#D0342C' : st[0];
+    var saved = siteInfo.savedAt ? vbWhen(siteInfo.savedAt) : '';
+    var label = 'v' + vbShortVersion(APP_VERSION) + ' · ' +
+      (newer ? 'Newer version — refresh' :
+       vbStatus === 'local' ? 'This browser only' :
+       vbStatus === 'saving' ? 'Saving…' :
+       saved ? 'Saved ' + saved : st[1]);
+    var h = '';
+    if (vbOpen){
+      var rows = [
+        ['App version', 'v' + APP_VERSION],
+        ['Page updated', new Date(APP_BUILT + 'T12:00:00').toLocaleDateString([], { month: 'short', day: 'numeric', year: 'numeric' })],
+        ['Data last saved to site', siteInfo.savedAt ? vbWhen(siteInfo.savedAt, true) + (siteInfo.guessed ? '*' : '') : (vbStatus === 'local' ? '—' : 'Not known yet')],
+        ['Saved by app version', siteInfo.appVersion ? 'v' + siteInfo.appVersion : '—'],
+        ['This device', '<span style="display:inline-flex;align-items:center;gap:5px;"><span class="vb-dot" style="background:' + st[0] + '"></span>' + escapeHtml(st[1]) + '</span>'],
+        ['Last checked', vbCheckedAt ? vbWhen(new Date(vbCheckedAt).toISOString()) : '—']
+      ];
+      h += '<div class="vb-panel" role="dialog" aria-label="Version and sync details">';
+      h += '<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;"><strong style="font-size:13px;">Version &amp; sync</strong>' +
+        '<button type="button" id="version-badge-close" aria-label="Close" title="Close" style="border:none;background:none;padding:2px;cursor:pointer;color:var(--text-secondary);line-height:0;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 2l10 10M12 2L2 12"/></svg></button></div>';
+      rows.forEach(function(r, i){ h += '<div class="vb-row"><span>' + r[0] + '</span><span>' + (i === 4 ? r[1] : escapeHtml(r[1])) + '</span></div>'; });
+      if (newer) h += '<p class="vb-note" style="color:var(--text-danger);">Your site was last saved by a newer version of this app (v' + escapeHtml(siteInfo.appVersion) + '). This page is out of date — refresh it to get the latest version before making changes.</p>';
+      h += '<p class="vb-note">' + escapeHtml(st[2]) + (vbError ? ' (' + escapeHtml(vbError) + ')' : '') + '</p>';
+      if (siteInfo.guessed) h += '<p class="vb-note" style="font-size:11px;">* From GitHub’s file history; exact times are recorded from the next save on.</p>';
+      h += '<div class="vb-actions">';
+      if (siteRepoReady() && vbStatus !== 'saving') h += '<button type="button" id="version-badge-save" class="btn">Save to site now</button>';
+      h += '<button type="button" id="version-badge-reload" class="btn">Refresh page</button>';
+      h += '</div></div>';
+    }
+    h += '<button type="button" id="version-badge-btn" aria-expanded="' + (vbOpen ? 'true' : 'false') + '" title="Version and sync details"><span class="vb-dot" style="background:' + dot + '"></span><span>' + escapeHtml(label) + '</span></button>';
+    wrap.innerHTML = h;
+  }
+
   function saveAllDataToGithub(silent, opts){
     opts = opts || {};
     var statusEl = document.getElementById('all-data-sync-status');
     if (!siteRepoReady()){
+      setVbStatus('local');
       if (!silent && statusEl){
         statusEl.style.color = 'var(--text-danger)';
         statusEl.textContent = 'Set up your repo and token in GitHub Connection above first.';
@@ -15118,13 +15316,16 @@
       statusEl.textContent = 'Saving to site…';
     }
     lastMergeSummary = null;
+    setVbStatus('saving');
     publishInFlight = publishToSite(!!opts.force).then(function(){
+      setVbStatus(localDirty ? 'unsaved' : 'synced');
       if (statusEl){
         statusEl.style.color = 'var(--text-success)';
         statusEl.textContent = 'All changes saved to your site' + (lastMergeSummary ? ' — combined with changes made on another device.' : '.');
       }
       return true;
     }).catch(function(err){
+      setVbStatus('error', err && err.message ? err.message : '');
       if (statusEl){
         statusEl.style.color = 'var(--text-danger)';
         statusEl.textContent = 'Could not save: ' + (err && err.message ? err.message : 'unknown error') + '. Your changes are kept on this device and will be combined with your site’s version next time.';
@@ -16948,6 +17149,7 @@
       removeAppBannerItem(watchdogItem);
 
       var repoConfigured = ghSettings.repo && ghSettings.repo.indexOf('/') !== -1 && ghSettings.token;
+      safeRun('version badge', function(){ setVbStatus(repoConfigured ? 'starting' : 'local'); });
       if (!repoConfigured) return;
 
       // Then look for newer data on the site in the background.
@@ -16961,9 +17163,12 @@
       var editsAtStart = editsSinceBoot;
       return syncOnOpen(dirtyAtBoot, editsAtStart).then(function(result){
         doneChecking();
+        if (result === 'loaded') setVbStatus(localDirty ? 'unsaved' : 'synced');
+        else if (result === 'none') setVbStatus('notyet');
         if (result === 'local') showAppBanner('notice', 'Showing this device’s data', 'This device has changes that couldn’t be saved to your site just now. They’re kept here and will be combined with your site’s version (not written over it) the next time it can be reached.');
       }).catch(function(err){
         doneChecking();
+        setVbStatus('offline', (err && err.message) || '');
         showAppBanner('notice', 'Showing this device’s data', 'Couldn’t load the latest data from your site (' + ((err && err.message) || 'unknown reason') + '). What you see is what’s saved on this device; nothing on your site was changed.');
       });
     })
