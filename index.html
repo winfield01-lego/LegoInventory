@@ -397,6 +397,26 @@
 #lego-inv-root input[type=checkbox], #lego-inv-root input[type=radio] { accent-color: var(--bt-neon); }
 #lego-inv-root a { color: var(--bt-neon); }
 #lego-inv-root ::placeholder { color: var(--text-muted); }
+
+/* ---- Blacktron II parts: a row of real parts from 6887 Allied Avenger in the header, the canopy on empty screens ---- */
+#lego-inv-root .bt-parts { margin-left: auto; display: flex; gap: 6px; align-items: center; flex-shrink: 0; }
+#lego-inv-root .bt-part { width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; padding: 4px; background: #E9ECE6; border: 2px solid var(--border); border-radius: 8px; transition: border-color .15s, transform .15s; }
+#lego-inv-root .bt-part:hover, #lego-inv-root .bt-part:focus-visible { border-color: var(--bt-neon); transform: translateY(-2px); outline: none; }
+#lego-inv-root .bt-part img { max-width: 100%; max-height: 100%; object-fit: contain; display: block; }
+#lego-inv-root .empty-msg::before { content: ""; display: block; width: 72px; height: 56px; margin: 0 auto 10px; background: url("https://cdn.rebrickable.com/media/parts/ldraw/42/2418b.png") center / contain no-repeat; opacity: 0.85; filter: drop-shadow(0 0 10px rgba(200,240,60,0.35)); }
+@media (max-width: 900px) { #lego-inv-root .bt-part:nth-child(n+5) { display: none; } }
+@media (max-width: 640px) {
+  #lego-inv-root .lego-header { flex-wrap: wrap; }
+  #lego-inv-root .bt-parts { margin-left: 0; width: 100%; gap: 5px; }
+  #lego-inv-root .lego-title-block { flex: 1 1 0; min-width: 0; }
+  #lego-inv-root .bt-part { width: 36px; height: 36px; padding: 3px; }
+  #lego-inv-root .bt-part:nth-child(n+5) { display: flex; }
+}
+@media (prefers-reduced-motion: reduce) { #lego-inv-root .bt-part { transition: none; } #lego-inv-root .bt-part:hover { transform: none; } }
+@media print { #lego-inv-root .empty-msg::before { display: none; } }
+#lego-inv-root .shop-pick-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 6px 0 6px; padding-top: 6px; border-top: 1px solid var(--border); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-secondary); }
+#lego-inv-root .shop-pick-head:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+#lego-inv-root .shop-set-tag { display: inline-block; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; padding: 0 5px; border-radius: 4px; border: 1px solid var(--bt-neon, var(--lego-blue)); color: var(--bt-neon, var(--lego-blue)); vertical-align: 1px; }
 #lego-inv-root input[type=file]::file-selector-button { background: var(--surface-2); color: var(--text-primary); border: 2px solid var(--border); border-radius: 14px; padding: 4px 10px; font-weight: 700; cursor: pointer; }
 @media print {
   /* printing stays black on white */
@@ -410,10 +430,11 @@
     <div class="studs"><span class="stud"></span><span class="stud"></span></div>
     <div class="body"></div>
   </div>
-  <div>
+  <div class="lego-title-block">
     <h1 class="lego-title">Winfield’s Awesome Lego Collection, est. 1988</h1>
     <p class="lego-subtitle">Track what you have, what's short, and what to order next</p>
   </div>
+  <div class="bt-parts no-print" aria-label="Parts from 6887 Allied Avenger (Blacktron II)"><a class="bt-part" href="https://rebrickable.com/parts/2418b/" target="_blank" rel="noopener" title="Trans-Neon Green Windscreen 6 x 6 Octagonal Canopy (2418b) — from 6887 Allied Avenger, Blacktron II, 1991"><img src="https://cdn.rebrickable.com/media/parts/ldraw/42/2418b.png" alt="Trans-Neon Green Windscreen 6 x 6 Octagonal Canopy" loading="lazy" onerror="this.parentNode.style.display='none'" /></a><a class="bt-part" href="https://rebrickable.com/parts/4475/" target="_blank" rel="noopener" title="Black Wedge, Plate 8 x 8 with 4 x 4 Cutout (4475) — from 6887 Allied Avenger, Blacktron II, 1991"><img src="https://cdn.rebrickable.com/media/parts/ldraw/0/4475.png" alt="Black Wedge, Plate 8 x 8 with 4 x 4 Cutout" loading="lazy" onerror="this.parentNode.style.display='none'" /></a><a class="bt-part" href="https://rebrickable.com/parts/2466/" target="_blank" rel="noopener" title="Trans-Neon Green Panel 3 x 2 x 6 (2466) — from 6887 Allied Avenger, Blacktron II, 1991"><img src="https://cdn.rebrickable.com/media/parts/ldraw/42/2466.png" alt="Trans-Neon Green Panel 3 x 2 x 6" loading="lazy" onerror="this.parentNode.style.display='none'" /></a><a class="bt-part" href="https://rebrickable.com/parts/4591/" target="_blank" rel="noopener" title="White Brick Round 2 x 2 x 2 with Fins (4591) — from 6887 Allied Avenger, Blacktron II, 1991"><img src="https://cdn.rebrickable.com/media/parts/elements/4602950.jpg" alt="White Brick Round 2 x 2 x 2 with Fins" loading="lazy" onerror="this.parentNode.style.display='none'" /></a><a class="bt-part" href="https://rebrickable.com/parts/3479/" target="_blank" rel="noopener" title="Black Tail 4 x 2 x 2 (3479) — from 6887 Allied Avenger, Blacktron II, 1991"><img src="https://cdn.rebrickable.com/media/parts/ldraw/0/3479.png" alt="Black Tail 4 x 2 x 2" loading="lazy" onerror="this.parentNode.style.display='none'" /></a><a class="bt-part" href="https://rebrickable.com/parts/2569/" target="_blank" rel="noopener" title="Trans-Neon Green Antenna 8H Whip (2569) — from 6887 Allied Avenger, Blacktron II, 1991"><img src="https://cdn.rebrickable.com/media/parts/elements/6265159.jpg" alt="Trans-Neon Green Antenna 8H Whip" loading="lazy" onerror="this.parentNode.style.display='none'" /></a></div>
 </div>
 
 <div id="sync-warning-banner" class="no-print" style="display:none; background: var(--bg-danger); border: 2px solid var(--text-danger); border-radius: var(--radius); padding: 10px 14px; margin-bottom: 14px; align-items:center; gap:10px; flex-wrap:wrap;">
@@ -744,7 +765,7 @@
   <div class="row no-print" style="justify-content: space-between; align-items:flex-start; flex-wrap:wrap; gap:16px; margin-bottom: 16px;">
     <div style="flex:1; min-width:220px;">
       <div class="row" style="margin-bottom:8px; flex-wrap:wrap; row-gap:8px;">
-        <strong style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color: var(--text-secondary);">Select builds</strong>
+        <strong style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color: var(--text-secondary);">Select builds or sets</strong>
         <button id="shop-select-all" class="icon-btn" style="margin-left:auto; padding:3px 8px;">Select all</button>
         <button id="shop-select-none" class="icon-btn" style="padding:3px 8px;">Clear</button>
         <button id="shop-top20-btn" class="icon-btn" style="padding:3px 8px;" title="Selects all builds and shows only the 20 parts you're shortest on"><i class="ti ti-flame" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Top 20 Most Needed</button>
@@ -832,7 +853,7 @@
 
   <div id="shop-print-header-slot"></div>
   <div id="shopping-list-output">
-    <div class="empty-msg">Pick one or more builds above to generate a list.</div>
+    <div class="empty-msg">Pick one or more builds or sets above to generate a list.</div>
   </div>
 </div>
 
@@ -15520,7 +15541,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.10.9';          // bump with every change to this page
+  var APP_VERSION = '2026.10.10.11';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
@@ -16675,10 +16696,49 @@
     return Object.keys(map).sort().map(function(k){ return map[k]; });
   }
 
+  // ---- Official sets on the shopping list: a set still missing pieces can be picked like a build.
+  // Its missing lines become shopping rows labelled "Set 60198-1 Cargo Train", so checkmarks, tallies, drawers,
+  // combining and every export work the same as for builds.
+  function shopSetLabel(s){ return 'Set ' + s.setNum + (s.name ? ' ' + s.name : ''); }
+  function shopSetsWithShortages(){
+    return realSets().filter(function(s){
+      return setParts.some(function(r){ return r.setNum === s.setNum && setPartOnHand(r) < setPartNeeded(r); });
+    }).sort(function(a, b){ return String(a.setNum).localeCompare(String(b.setNum), undefined, { numeric: true }); });
+  }
+  function shopRowsForSet(s){
+    var label = shopSetLabel(s);
+    return setParts.filter(function(r){ return r.setNum === s.setNum; }).map(function(r){
+      var need = setPartNeeded(r);
+      return { partNum: r.partNum, qty: need, color: r.color, desc: r.desc, moc: label, elementId: r.elementId,
+               onHand: Math.min(setPartOnHand(r), need), built: false, priority: '', _setNum: s.setNum };
+    });
+  }
+  var shopSetRowCache = null;
+  // every row the shopping list can draw from: your builds' lines plus the lines of the sets you picked
+  function shopAllRows(){
+    var extra = [];
+    realSets().forEach(function(s){ if (shopSelected.has(shopSetLabel(s))) extra = extra.concat(shopRowsForSet(s)); });
+    shopSetRowCache = extra;
+    return extra.length ? state.rows.concat(extra) : state.rows;
+  }
+  function shopRowsFor(name){
+    if (name.indexOf('Set ') === 0){
+      var s = realSets().find(function(x){ return shopSetLabel(x) === name; });
+      if (s) return shopRowsForSet(s);
+    }
+    return state.rows.filter(function(r){ return r.moc === name; });
+  }
+
   function populateShopMocList(){
     var container = document.getElementById('shop-moc-checks');
     var summaries = mocSummaries();
     container.innerHTML = '';
+    if (summaries.length && shopSetsWithShortages().length){
+      var bh = document.createElement('div');
+      bh.className = 'shop-pick-head';
+      bh.innerHTML = '<span>MOC builds</span>';
+      container.appendChild(bh);
+    }
     summaries.forEach(function(m){
       var row = document.createElement('label');
       row.className = 'checkbox-label';
@@ -16689,6 +16749,38 @@
         ' <span style="color:var(--text-muted); font-size:12px;">('+m.have.toLocaleString()+'/'+m.need.toLocaleString()+')</span>';
       container.appendChild(row);
     });
+    var sets = shopSetsWithShortages();
+    realSets().forEach(function(s){ if (shopSelected.has(shopSetLabel(s)) && sets.indexOf(s) === -1) sets.push(s); });   // keep a picked set visible so it can be unticked
+    if (sets.length){
+      var setBox = document.createDocumentFragment();
+      var head = document.createElement('div');
+      head.className = 'shop-pick-head';
+      head.innerHTML = '<span>Official sets missing pieces</span><button type="button" class="icon-btn" id="shop-select-all-sets" style="padding:2px 8px; font-size:11px;">Select all sets</button>';
+      setBox.appendChild(head);
+      sets.forEach(function(s){
+        var rows = setParts.filter(function(r){ return r.setNum === s.setNum; });
+        var need = rows.reduce(function(n, r){ return n + setPartNeeded(r); }, 0);
+        var have = rows.reduce(function(n, r){ return n + Math.min(setPartOnHand(r), setPartNeeded(r)); }, 0);
+        var label = shopSetLabel(s);
+        var row = document.createElement('label');
+        row.className = 'checkbox-label';
+        row.style.display = 'block';
+        row.style.marginBottom = '5px';
+        row.innerHTML = '<input type="checkbox" data-moc="'+escapeHtml(label)+'" '+(shopSelected.has(label) ? 'checked' : '')+' /> ' +
+          '<span class="shop-set-tag">Set</span> ' + escapeHtml(s.setNum) + (s.name ? ' ' + escapeHtml(s.name) : '') +
+          ' <span style="color:var(--text-muted); font-size:12px;">('+have.toLocaleString()+'/'+need.toLocaleString()+')</span>';
+        setBox.appendChild(row);
+      });
+      container.insertBefore(setBox, container.firstChild);   // the short list of sets goes above the builds
+      var allSetsBtn = container.querySelector('#shop-select-all-sets');
+      allSetsBtn.addEventListener('click', function(){
+        shopSetsWithShortages().forEach(function(s){ shopSelected.add(shopSetLabel(s)); });
+        shopTop20Only = false;
+        shopAlmostCompleteOnly = false;
+        populateShopMocList();
+        renderShoppingList();
+      });
+    }
     container.querySelectorAll('input[type=checkbox]').forEach(function(cb){
       cb.addEventListener('change', function(){
         var name = cb.dataset.moc;
@@ -16745,10 +16837,11 @@
   function resolveRowsForTallyKey(key){
     var info = tallyRowResolvers[key];
     if (!info) return [];
+    var pool = shopAllRows();
     if (info.mode === 'single'){
-      return state.rows.filter(function(r){ return r.partNum === info.partNum && r.color === info.color && r.moc === info.moc; });
+      return pool.filter(function(r){ return r.partNum === info.partNum && r.color === info.color && r.moc === info.moc; });
     }
-    return state.rows.filter(function(r){ return r.partNum === info.partNum && r.color === info.color; });
+    return pool.filter(function(r){ return r.partNum === info.partNum && r.color === info.color; });
   }
 
   function addFoundQtyToDrawer(drawerId, partNum, color, desc, elementId, qty){
@@ -16811,7 +16904,7 @@
     var sel = document.getElementById('shop-color-filter');
     var cur = sel.value;
     var colors = Array.from(new Set(
-      state.rows.filter(function(r){ return shopSelected.has(r.moc); }).map(function(r){ return r.color; }).filter(Boolean)
+      shopAllRows().filter(function(r){ return shopSelected.has(r.moc); }).map(function(r){ return r.color; }).filter(Boolean)
     )).sort();
     sel.innerHTML = '<option value="">All colors</option>' + colors.map(function(c){ return '<option value="'+escapeHtml(c)+'">'+escapeHtml(c)+'</option>'; }).join('');
     sel.value = cur;
@@ -16821,7 +16914,7 @@
     var sel = document.getElementById('shop-priority-filter');
     var cur = sel.value;
     var priorities = Array.from(new Set(
-      state.rows.filter(function(r){ return shopSelected.has(r.moc); }).map(function(r){ return r.priority; }).filter(Boolean)
+      shopAllRows().filter(function(r){ return shopSelected.has(r.moc); }).map(function(r){ return r.priority; }).filter(Boolean)
     )).sort();
     sel.innerHTML = '<option value="">All priorities</option><option value="__none__">(none set)</option>' +
       priorities.map(function(p){ return '<option value="'+escapeHtml(p)+'">'+escapeHtml(p)+'</option>'; }).join('');
@@ -17096,7 +17189,7 @@
     var headerSlot = document.getElementById('shop-print-header-slot');
     headerSlot.innerHTML = '';
     if (!shopSelected.size){
-      output.innerHTML = '<div class="empty-msg">'+(shopAlmostCompleteOnly ? 'Nothing to show \u2014 no builds are currently within that many pieces of complete.' : 'Pick one or more builds above to generate a list.')+'</div>';
+      output.innerHTML = '<div class="empty-msg">'+(shopAlmostCompleteOnly ? 'Nothing to show \u2014 no builds are currently within that many pieces of complete.' : 'Pick one or more builds or sets above to generate a list.')+'</div>';
       return;
     }
     if (top20Keys && !top20Keys.size){
@@ -17109,7 +17202,7 @@
     var printHeader = document.createElement('div');
     printHeader.className = 'shop-print-header';
     var listTitle = shopTop20Only ? 'Top 20 most needed parts' : (shopAlmostCompleteOnly ? 'Almost complete \u2014 parts needed' : 'Shopping list');
-    var namesSubtitle = names.length === 1 ? escapeHtml(names[0]) : (names.length + ' builds selected');
+    var namesSubtitle = names.length === 1 ? escapeHtml(names[0]) : (names.length + (names.some(function(n){ return n.indexOf('Set ') === 0; }) ? ' builds and sets selected' : ' builds selected'));
     lastShopListMeta = { title: listTitle, subtitle: namesSubtitle };
     printHeader.innerHTML = '<h2 style="margin:0 0 4px; font-size:18px; text-transform:uppercase; letter-spacing:0.02em;">'+listTitle+'</h2>' +
       '<div style="font-size:12px; color:var(--text-secondary); margin-bottom:16px;">'+namesSubtitle+' &middot; generated '+new Date().toLocaleDateString()+'</div>';
@@ -17129,7 +17222,7 @@
 
     var pool = [];
     names.forEach(function(moc){
-      state.rows.filter(function(r){ return r.moc === moc; }).forEach(function(r){
+      shopRowsFor(moc).forEach(function(r){
         if (top20Keys && !top20Keys.has(r.partNum + '|' + r.color)) return;
         if (onlyShort && statusFor(r) !== 'short') return;
         var rawNeed = onlyShort ? Math.max(r.qty - r.onHand, 0) : r.qty;
