@@ -834,13 +834,14 @@
   <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
     <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Upload parts for a build</p>
     <p style="color: var(--text-secondary); margin: 0 0 10px;">
-      Works with a full CSV (Part Num, Quantity, Color, Description, elementId) or with Rebrickable's own parts-list export, which only includes <strong>Element ID</strong> and <strong>Quantity</strong> &mdash; if Part Num is missing, each element ID is first looked up against parts already known elsewhere in the app (other builds, sets, or drawers), then against the Rebrickable API for anything still unmatched (uses the same API key entered on the Data &amp; Tools tab). Anything that still can't be matched is imported with those fields left blank, so you can search for and fill them in afterward using "Incomplete info" on the MOC Parts tab. Leave <strong>Look up each part on Rebrickable</strong> ticked and every new line also gets its blank description and element ID filled in and a photo saved (to your site if GitHub Connection is set up) &mdash; values in your CSV are never overwritten, and the import is saved first, so a slow or failed lookup never loses rows.
+      Works with a full CSV (Part Num, Quantity, Color, Description, elementId) or with Rebrickable's own parts-list export, which only includes <strong>Element ID</strong> and <strong>Quantity</strong>. You can choose <strong>several CSV files at once</strong> (one per build) &mdash; each is matched to a build by its file name, or starts a new build, and you can change the match before importing &mdash; if Part Num is missing, each element ID is first looked up against parts already known elsewhere in the app (other builds, sets, or drawers), then against the Rebrickable API for anything still unmatched (uses the same API key entered on the Data &amp; Tools tab). Anything that still can't be matched is imported with those fields left blank, so you can search for and fill them in afterward using "Incomplete info" on the MOC Parts tab. Leave <strong>Look up each part on Rebrickable</strong> ticked and every new line also gets its blank description and element ID filled in and a photo saved (to your site if GitHub Connection is set up) &mdash; values in your CSV are never overwritten, and the import is saved first, so a slow or failed lookup never loses rows.
     </p>
     <div class="controls" style="margin-bottom: 8px;">
       <select id="mocbuild-csv-target" class="lockable"><option value="">Which build is this for?</option></select>
-      <input type="file" id="mocbuild-csv-file" class="lockable" accept=".csv,text/csv" />
+      <input type="file" id="mocbuild-csv-file" class="lockable" accept=".csv,text/csv" multiple title="Choose one CSV, or several at once (one per build)" />
       <button id="mocbuild-csv-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
     </div>
+    <div id="mocbuild-csv-multi" style="display:none; margin-bottom:8px; background: var(--surface-1); border:1px solid var(--border); border-radius:8px; padding:8px 10px;"></div>
     <textarea id="mocbuild-csv-paste" class="lockable" placeholder="Or paste CSV text here" style="width:100%; min-height:100px; font-family: var(--font-mono); font-size: 12px;"></textarea>
     <label class="checkbox-label" style="margin-top: 8px;"><input type="checkbox" id="mocbuild-csv-lookup" class="lockable" checked /> Look up each part on Rebrickable to fill in missing descriptions, element IDs and photos</label>
     <div class="row" style="margin-top: 8px;">
@@ -848,6 +849,7 @@
       <button id="mocbuild-csv-lookup-stop-btn" class="icon-btn" style="display:none;">Stop lookup</button>
       <span id="mocbuild-csv-status" style="font-size:13px; color:var(--text-secondary);"></span>
     </div>
+    <div id="mocbuild-csv-multi-results" style="display:none; margin-top:8px;"></div>
   </div>
 </div>
 
@@ -1423,9 +1425,9 @@
   <div class="collapse-section">
     <button type="button" class="collapse-header" data-collapse-target="cs-moc-upload"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>MOC Inventory Upload</span></button>
     <div class="collapse-body" id="cs-moc-upload" style="display:none;">
-      <p style="color: var(--text-secondary); margin: 0 0 12px;">Import a parts list CSV (e.g. exported from Google Sheets or Rebrickable). New rows are added alongside your existing inventory &mdash; nothing gets overwritten. With the lookup box ticked, blank descriptions and element IDs are filled in from Rebrickable and photos are saved for the new rows.</p>
+      <p style="color: var(--text-secondary); margin: 0 0 12px;">Import a parts list CSV (e.g. exported from Google Sheets or Rebrickable) &mdash; or choose several files at once and they’re all imported together. New rows are added alongside your existing inventory &mdash; nothing gets overwritten. With the lookup box ticked, blank descriptions and element IDs are filled in from Rebrickable and photos are saved for the new rows.</p>
       <div class="row" style="margin-bottom: 10px;">
-        <input type="file" id="import-file" class="lockable" accept=".csv,text/csv" />
+        <input type="file" id="import-file" class="lockable" accept=".csv,text/csv" multiple title="Choose one CSV, or several at once" />
         <button id="import-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
       </div>
       <textarea id="import-paste" class="lockable" placeholder="Or paste CSV text here" style="width:100%; min-height:140px; font-family: var(--font-mono); font-size: 12px;"></textarea>
@@ -6023,19 +6025,22 @@
   wireEl('mocbuild-csv-lookup-stop-btn', 'click', function(){ importLookupCancel = true; });
   wireEl('import-lookup-stop-btn', 'click', function(){ importLookupCancel = true; });
 
-  function importBuildPartsCSVText(buildName, text){
+  function importBuildPartsCSVText(buildName, text, batch){
     var statusEl = document.getElementById('mocbuild-csv-status');
+    function fail(msg){
+      statusEl.style.color = 'var(--text-danger)';
+      statusEl.textContent = (batch && batch.prefix || '') + msg;
+      if (batch) batch.done({ ok: false, msg: msg });
+    }
     var table = parseCSV(text);
     if (table.length < 2){
-      statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Could not find any data rows in that CSV.';
+      fail('Could not find any data rows in that CSV.');
       return;
     }
     var headers = table[0];
     var map = mapHeaders(headers, HEADER_ALIASES);
     if (map.qty === undefined || (map.partNum === undefined && map.elementId === undefined)){
-      statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Need at least a Quantity column, plus either a Part Num column or an Element ID column.';
+      fail('Need at least a Quantity column, plus either a Part Num column or an Element ID column.');
       return;
     }
 
@@ -6070,8 +6075,7 @@
     }
 
     if (!pending.length){
-      statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'No usable rows found in that CSV.';
+      fail('No usable rows found in that CSV.');
       return;
     }
 
@@ -6099,8 +6103,7 @@
       });
 
       if (!added){
-        statusEl.style.color = 'var(--text-danger)';
-        statusEl.textContent = 'No usable rows found in that CSV.';
+        fail('No usable rows found in that CSV.');
         return;
       }
 
@@ -6120,6 +6123,7 @@
         (localResolved ? (' ' + localResolved + ' matched from your existing inventory.') : '') +
         (apiResolved ? (' ' + apiResolved + ' matched via Rebrickable.') : '') +
         unresolvedMsg;
+      if (batch){ batch.done({ ok: true, added: added, msg: statusEl.textContent }); return; }
 
       document.getElementById('mocbuild-csv-paste').value = '';
       document.getElementById('mocbuild-csv-file').value = '';
@@ -6146,7 +6150,7 @@
     var apiResults = {};
     var idx = 0, total = uniqueApiIds.length, done = 0;
     statusEl.style.color = 'var(--text-secondary)';
-    statusEl.textContent = 'Looking up ' + total + ' element ID' + (total===1?'':'s') + ' on Rebrickable\u2026 0 / ' + total;
+    statusEl.textContent = (batch && batch.prefix || '') + 'Looking up ' + total + ' element ID' + (total===1?'':'s') + ' on Rebrickable\u2026 0 / ' + total;
     function next(){
       if (idx >= total){
         finalize(apiResults);
@@ -6158,7 +6162,7 @@
       }).catch(function(){
       }).then(function(){
         done++;
-        statusEl.textContent = 'Looking up element IDs on Rebrickable\u2026 ' + done + ' / ' + total;
+        statusEl.textContent = (batch && batch.prefix || '') + 'Looking up element IDs on Rebrickable\u2026 ' + done + ' / ' + total;
         next();
       });
     }
@@ -11819,7 +11823,130 @@
     }
   });
 
+  // ---- Several build CSVs at once: each file is matched to a build (or starts a new one), then imported in turn ----
+  function mbcCleanName(fileName){
+    return String(fileName || '').replace(/\.[^.]+$/, '').replace(/^rebrickable[_\- ]*(parts[_\- ]*)?/i, '').replace(/[_]+/g, ' ').replace(/\s+/g, ' ').trim() || 'New build';
+  }
+  function mbcNorm(s){ return String(s || '').toLowerCase().replace(/[^a-z0-9]+/g, ''); }
+  function mbcGuessBuild(fileName, names){
+    var f = mbcNorm(mbcCleanName(fileName));
+    if (!f) return '';
+    var exact = names.find(function(n){ return mbcNorm(n) === f; });
+    if (exact) return exact;
+    // the longest build name found inside the file name (e.g. "Castle MOC parts.csv" -> "Castle MOC")
+    var inside = names.filter(function(n){ var k = mbcNorm(n); return k.length >= 4 && f.indexOf(k) !== -1; }).sort(function(a, b){ return b.length - a.length; });
+    return inside[0] || '';
+  }
+  function mbcBuildNames(){
+    return Array.from(new Set(state.rows.map(function(r){ return r.moc; }).concat(mocBuilds.map(function(b){ return b.name; })))).filter(Boolean).sort();
+  }
+  function renderMocBuildCsvMulti(){
+    var input = document.getElementById('mocbuild-csv-file');
+    var box = document.getElementById('mocbuild-csv-multi');
+    var single = document.getElementById('mocbuild-csv-target');
+    var btn = document.getElementById('mocbuild-csv-import-btn');
+    var files = input && input.files ? Array.prototype.slice.call(input.files) : [];
+    if (files.length < 2){
+      box.style.display = 'none';
+      box.innerHTML = '';
+      single.style.display = '';
+      btn.innerHTML = '<i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts for this build';
+      return;
+    }
+    single.style.display = 'none';
+    btn.innerHTML = '<i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import all ' + files.length + ' files';
+    var names = mbcBuildNames();
+    var h = '<p style="margin:0 0 6px; font-size:12px; color:var(--text-secondary);">' + files.length + ' files chosen. Pick the build each one is for, or keep <strong>New build</strong> to start a new one with the name shown. Each file is added alongside anything already in that build.</p>';
+    h += '<div class="mbc-list">';
+    files.forEach(function(f, i){
+      var guess = mbcGuessBuild(f.name, names);
+      h += '<div class="mbc-row" data-i="' + i + '" style="display:flex; flex-wrap:wrap; gap:6px; align-items:center; padding:6px 0; border-top:1px solid var(--border);">' +
+        '<span style="flex:1 1 180px; min-width:0; font-size:12.5px; overflow:hidden; text-overflow:ellipsis; white-space:nowrap;" title="' + escapeHtml(f.name) + '"><i class="ti ti-file-text" aria-hidden="true" style="font-size:13px; vertical-align:-2px;"></i> ' + escapeHtml(f.name) + '</span>' +
+        '<select class="mbc-target lockable" style="flex:1 1 170px; min-width:0;">' +
+          '<option value="__new__"' + (guess ? '' : ' selected') + '>New build…</option>' +
+          names.map(function(n){ return '<option value="' + escapeHtml(n) + '"' + (n === guess ? ' selected' : '') + '>' + escapeHtml(n) + '</option>'; }).join('') +
+        '</select>' +
+        '<input type="text" class="mbc-new-name lockable" placeholder="New build name" value="' + escapeHtml(mbcCleanName(f.name)) + '" style="flex:1 1 170px; min-width:0;' + (guess ? ' display:none;' : '') + '" />' +
+        '</div>';
+    });
+    h += '</div>';
+    box.innerHTML = h;
+    box.style.display = 'block';
+    box.querySelectorAll('.mbc-target').forEach(function(sel){
+      sel.addEventListener('change', function(){
+        sel.parentNode.querySelector('.mbc-new-name').style.display = sel.value === '__new__' ? '' : 'none';
+      });
+    });
+  }
+  wireEl('mocbuild-csv-file', 'change', function(){ safeRun('choosing files', renderMocBuildCsvMulti); });
+
+  function readFileText(file){
+    return new Promise(function(resolve, reject){
+      var reader = new FileReader();
+      reader.onload = function(e){ resolve(e.target.result); };
+      reader.onerror = function(){ reject(new Error('Could not read ' + file.name)); };
+      reader.readAsText(file);
+    });
+  }
+  function importManyBuildCsvs(){
+    var input = document.getElementById('mocbuild-csv-file');
+    var statusEl = document.getElementById('mocbuild-csv-status');
+    var files = Array.prototype.slice.call(input.files || []);
+    var jobs = [], problem = '';
+    document.querySelectorAll('#mocbuild-csv-multi .mbc-row').forEach(function(row){
+      var f = files[parseInt(row.dataset.i, 10)];
+      var sel = row.querySelector('.mbc-target').value;
+      var name = sel === '__new__' ? row.querySelector('.mbc-new-name').value.trim() : sel;
+      if (!name && !problem) problem = 'Give a build name for ' + f.name + '.';
+      jobs.push({ file: f, build: name });
+    });
+    if (problem){ statusEl.style.color = 'var(--text-danger)'; statusEl.textContent = problem; return; }
+    var resultsEl = document.getElementById('mocbuild-csv-multi-results');
+    var startIdx = state.rows.length;
+    var results = [];
+    var btn = document.getElementById('mocbuild-csv-import-btn');
+    btn.disabled = true;
+    resultsEl.style.display = 'none';
+    var chain = Promise.resolve();
+    jobs.forEach(function(job, i){
+      chain = chain.then(function(){
+        statusEl.style.color = 'var(--text-secondary)';
+        statusEl.textContent = 'File ' + (i + 1) + ' of ' + jobs.length + ': ' + job.file.name + '…';
+        return readFileText(job.file).then(function(text){
+          return new Promise(function(resolve){
+            importBuildPartsCSVText(job.build, text, { done: function(res){ resolve(res); }, prefix: 'File ' + (i + 1) + ' of ' + jobs.length + ' (' + job.build + '): ' });
+          });
+        }).catch(function(err){ return { ok: false, msg: (err && err.message) || 'Could not read that file.' }; }).then(function(res){
+          results.push({ file: job.file.name, build: job.build, ok: res.ok, added: res.added || 0, msg: res.msg || '' });
+        });
+      });
+    });
+    chain.then(function(){
+      btn.disabled = false;
+      var good = results.filter(function(r){ return r.ok; });
+      var lines = good.reduce(function(n, r){ return n + r.added; }, 0);
+      var builds = Array.from(new Set(good.map(function(r){ return r.build; })));
+      statusEl.style.color = good.length === results.length ? 'var(--text-success)' : 'var(--text-danger)';
+      statusEl.textContent = 'Imported ' + good.length + ' of ' + results.length + ' file' + (results.length === 1 ? '' : 's') + ': ' + lines.toLocaleString() + ' part line' + (lines === 1 ? '' : 's') + ' across ' + builds.length + ' build' + (builds.length === 1 ? '' : 's') + '.';
+      resultsEl.innerHTML = results.map(function(r){
+        return '<div style="padding:4px 0; border-top:1px solid var(--border); font-size:12.5px;">' +
+          '<span style="color:' + (r.ok ? 'var(--text-success)' : 'var(--text-danger)') + '; font-weight:700;">' + (r.ok ? '✓' : '✗') + '</span> ' +
+          '<strong>' + escapeHtml(r.file) + '</strong> → ' + escapeHtml(r.build) + ' <span style="color:var(--text-secondary);">— ' + escapeHtml(r.msg) + '</span></div>';
+      }).join('');
+      resultsEl.style.display = 'block';
+      input.value = '';
+      renderMocBuildCsvMulti();
+      populateMocBuildCsvTarget();
+      renderOverview();
+      renderMocBuildsTab();
+      if (state.tab === 'parts') renderParts();
+      if (good.length) maybeLookupImported(state.rows.slice(startIdx), statusEl, 'mocbuild-csv-lookup', 'mocbuild-csv-lookup-stop-btn');
+    });
+  }
+
   wireEl('mocbuild-csv-import-btn', 'click', function(){
+    var multiFiles = document.getElementById('mocbuild-csv-file').files;
+    if (multiFiles && multiFiles.length > 1){ importManyBuildCsvs(); return; }
     var buildName = document.getElementById('mocbuild-csv-target').value;
     var statusEl = document.getElementById('mocbuild-csv-status');
     if (!buildName){
@@ -13986,22 +14113,44 @@
   }
 
   function importCSVText(text){
+    importCSVTexts([{ name: '', text: text }]);
+  }
+  // One or more MOC inventory CSVs (each row names its own build). Bad files are reported and skipped; the rest go in together.
+  function importCSVTexts(list){
     var resultEl = document.getElementById('import-result');
-    var table = parseCSV(text);
-    if (table.length < 2){
+    var startIdx = state.rows.length;
+    var added = 0, skipped = 0, mocsSeen = {}, problems = [];
+    list.forEach(function(item){
+      var label = item.name ? item.name + ': ' : '';
+      var r = parseMocInventoryCSV(item.text);
+      if (r.error){ problems.push(label + r.error); return; }
+      r.rows.forEach(function(row){ state.rows.push(row); mocsSeen[row.moc] = true; });
+      added += r.rows.length;
+      skipped += r.skipped;
+    });
+    var probText = problems.length ? ' ' + (list.length > 1 ? 'Skipped ' + problems.length + ' file' + (problems.length === 1 ? '' : 's') + ' — ' : '') + problems.join(' ') : '';
+    if (!added){
       resultEl.style.color = 'var(--text-danger)';
-      resultEl.textContent = 'Could not find any data rows in that CSV.';
+      resultEl.textContent = (problems.length ? problems.join(' ') : 'No valid rows found. Check that Part Num, Quantity, and MOC Name are filled in.');
       return;
     }
+    Object.keys(mocsSeen).forEach(function(n){ touchMocLastEdited(n); });
+    saveState();
+    render();
+    var nB = Object.keys(mocsSeen).length, nF = list.length - problems.length;
+    resultEl.style.color = problems.length ? 'var(--text-danger)' : 'var(--text-success)';
+    resultEl.textContent = 'Added ' + added + ' part' + (added===1?'':'s') + ' across ' + nB + ' build' + (nB===1?'':'s') + (list.length > 1 ? ' from ' + nF + ' file' + (nF===1?'':'s') : '') + (skipped ? (' (skipped ' + skipped + ' incomplete row' + (skipped===1?'':'s') + ')') : '') + '.' + probText;
+    document.getElementById('import-paste').value = '';
+    document.getElementById('import-file').value = '';
+    maybeLookupImported(state.rows.slice(startIdx), resultEl, 'import-lookup', 'import-lookup-stop-btn');
+  }
+  function parseMocInventoryCSV(text){
+    var table = parseCSV(text);
+    if (table.length < 2) return { error: 'Could not find any data rows in that CSV.' };
     var headers = table[0];
     var map = mapHeaders(headers);
-    if (map.partNum === undefined || map.qty === undefined || map.moc === undefined){
-      resultEl.style.color = 'var(--text-danger)';
-      resultEl.textContent = 'Missing required columns \u2014 need at least Part Num, Quantity, and MOC Name.';
-      return;
-    }
-    var startIdx = state.rows.length;
-    var added = 0, skipped = 0, mocsSeen = {};
+    if (map.partNum === undefined || map.qty === undefined || map.moc === undefined) return { error: 'Missing required columns \u2014 need at least Part Num, Quantity, and MOC Name.' };
+    var rows = [], skipped = 0;
     for (var r = 1; r < table.length; r++){
       var cols = table[r];
       if (!cols || !cols.length) continue;
@@ -14014,7 +14163,7 @@
       var onHand = parseInt(onHandRaw, 10);
       if (isNaN(onHand)) onHand = 0;
       var builtRaw = map.built !== undefined ? (cols[map.built]||'').trim().toLowerCase() : '';
-      state.rows.push({
+      rows.push({
         partNum: partNum,
         qty: qty,
         color: map.color !== undefined ? (cols[map.color]||'').trim() : '',
@@ -14025,27 +14174,22 @@
         built: builtRaw === 'y' || builtRaw === 'yes' || builtRaw === 'true',
         priority: map.priority !== undefined ? (cols[map.priority]||'').trim() : ''
       });
-      mocsSeen[moc] = true;
-      added++;
     }
-    if (!added){
-      resultEl.style.color = 'var(--text-danger)';
-      resultEl.textContent = 'No valid rows found. Check that Part Num, Quantity, and MOC Name are filled in.';
-      return;
-    }
-    Object.keys(mocsSeen).forEach(function(n){ touchMocLastEdited(n); });
-    saveState();
-    render();
-    resultEl.style.color = 'var(--text-success)';
-    resultEl.textContent = 'Added ' + added + ' part' + (added===1?'':'s') + ' across ' + Object.keys(mocsSeen).length + ' build' + (Object.keys(mocsSeen).length===1?'':'s') + (skipped ? (' (skipped ' + skipped + ' incomplete row' + (skipped===1?'':'s') + ')') : '') + '.';
-    document.getElementById('import-paste').value = '';
-    document.getElementById('import-file').value = '';
-    maybeLookupImported(state.rows.slice(startIdx), resultEl, 'import-lookup', 'import-lookup-stop-btn');
+    if (!rows.length) return { error: 'No valid rows found. Check that Part Num, Quantity, and MOC Name are filled in.' };
+    return { rows: rows, skipped: skipped };
   }
 
   wireEl('import-btn', 'click', function(){
     var fileInput = document.getElementById('import-file');
     var resultEl = document.getElementById('import-result');
+    if (fileInput.files && fileInput.files.length > 1){
+      var fl = Array.prototype.slice.call(fileInput.files);
+      resultEl.style.color = 'var(--text-secondary)';
+      resultEl.textContent = 'Reading ' + fl.length + ' files\u2026';
+      Promise.all(fl.map(function(f){ return readFileText(f).then(function(t){ return { name: f.name, text: t }; }, function(){ return { name: f.name, text: '' }; }); }))
+        .then(function(list){ importCSVTexts(list); });
+      return;
+    }
     if (fileInput.files && fileInput.files[0]){
       var reader = new FileReader();
       reader.onload = function(e){ importCSVText(e.target.result); };
@@ -15155,7 +15299,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.10.3';          // bump with every change to this page
+  var APP_VERSION = '2026.10.10.4';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
