@@ -2302,11 +2302,7 @@
       statusEl.textContent = 'Unsaved changes \u2014 saving to site shortly\u2026';
     }
     clearTimeout(autoPublishTimer);
-    autoPublishTimer = setTimeout(function(){
-      saveAllDataToGithub(true).then(function(ok){
-        if (ok){ localDirty = false; saveDirtyFlag(); }
-      });
-    }, AUTO_PUBLISH_DELAY_MS);
+    autoPublishTimer = setTimeout(function(){ saveAllDataToGithub(true); }, AUTO_PUBLISH_DELAY_MS);
   }
   var ghShaMap = {};
   var attemptedCache = new Set();
@@ -4832,6 +4828,7 @@
     delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Delete set';
     delBtn.addEventListener('click', function(){
       if (!confirm('Remove set '+s.setNum+' and its imported parts?')) return;
+      noteDeleted('set', s.setNum);
       ownedSets = ownedSets.filter(function(x){ return x.setNum !== s.setNum; });
       setParts = setParts.filter(function(p){ return p.setNum !== s.setNum; });
       saveOwnedSets();
@@ -7062,6 +7059,7 @@
     }).catch(function(){});
   }
   function savePullLog(){
+    noteSectionEdited('pull');
     scheduleAutoPublish();
     return storage.set(PULL_LOG_KEY, JSON.stringify(pullLog), false);
   }
@@ -7492,6 +7490,7 @@
     }).catch(function(){});
   }
   function saveBagInventoryLog(){
+    noteSectionEdited('bags');
     scheduleAutoPublish();
     return storage.set(BAG_LOG_KEY, JSON.stringify(bagInventoryLog), false);
   }
@@ -7514,6 +7513,7 @@
     }).catch(function(){});
   }
   function saveBagProgressList(){
+    noteSectionEdited('bags');
     scheduleAutoPublish();
     return storage.set(BAG_PROGRESS_KEY, JSON.stringify(bagSavedProgressList), false);
   }
@@ -7837,8 +7837,10 @@
       alert('A build named "' + newName + '" already exists.');
       return false;
     }
+    noteDeleted('build', oldName);   // a rename moves the build: the old name is gone everywhere
     state.rows.forEach(function(r){ if (r.moc === oldName) r.moc = newName; });
     var buildRec = mocBuilds.find(function(b){ return b.name === oldName; });
+    if (!buildRec){ buildRec = { name: oldName }; mocBuilds.push(buildRec); }
     if (buildRec){ buildRec.name = newName; buildRec.lastEdited = new Date().toISOString(); }
     if (mocLocations[oldName] !== undefined){ mocLocations[newName] = mocLocations[oldName]; delete mocLocations[oldName]; }
     if (mocPhotos[oldName] !== undefined){ mocPhotos[newName] = mocPhotos[oldName]; delete mocPhotos[oldName]; }
@@ -7860,6 +7862,7 @@
       ? 'Remove build "'+name+'" and its '+lineCount+' part line'+(lineCount===1?'':'s')+'? This cannot be undone.'
       : 'Remove build "'+name+'"?';
     if (!confirm(msg)) return;
+    noteDeleted('build', name);
     state.rows = state.rows.filter(function(r){ return r.moc !== name; });
     mocBuilds = mocBuilds.filter(function(b){ return b.name !== name; });
     delete mocLocations[name];
@@ -9000,6 +9003,7 @@
     delBtn.innerHTML = '<i class="ti ti-trash" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Delete drawer';
     delBtn.addEventListener('click', function(){
       if (!confirm('Remove drawer "'+d.label+'" and its '+rows.length+' part line'+(rows.length===1?'':'s')+'?')) return;
+      noteDeleted('drawer', d.id);
       drawers = drawers.filter(function(x){ return x.id !== d.id; });
       drawerParts = drawerParts.filter(function(p){ return p.drawerId !== d.id; });
       saveDrawers();
@@ -9760,6 +9764,7 @@
     var removed = [];
     if (removeEmpty){
       removed = willEmpty.slice();
+      removed.forEach(function(id){ noteDeleted('drawer', id); });
       drawers = drawers.filter(function(d){ return removed.indexOf(d.id) === -1; });
     }
     saveDrawers();
@@ -12055,6 +12060,7 @@
       }
     });
     if (Object.keys(removed).length){
+      Object.keys(removed).forEach(function(k){ noteDeleted('set', k); });
       ownedSets = ownedSets.filter(function(s){ return !(isFigEntry(s) && removed[s.setNum]); });
       setParts = setParts.filter(function(r){ return !removed[r.setNum]; });
       changed = true;
@@ -12472,6 +12478,7 @@
     delBtn.addEventListener('click', function(){
       var fromSets = figFromSetsQty(f);
       if (!confirm('Remove ' + f.setNum + (f.name ? ' (' + f.name + ')' : '') + ' and its parts list?' + (fromSets ? '\n\nIt comes with your sets, so it will be added back if you check your sets for minifigures again.' : ''))) return;
+      noteDeleted('set', f.setNum);
       ownedSets = ownedSets.filter(function(x){ return x !== f; });
       setParts = setParts.filter(function(p){ return p.setNum !== f.setNum; });
       saveOwnedSets();
@@ -12865,7 +12872,7 @@
       saveMocBuilds();
     }
     var left = setParts.some(function(p){ return p.setNum === g.setNum; });
-    if (!left) ownedSets = ownedSets.filter(function(s){ return s !== g; });
+    if (!left){ noteDeleted('set', g.setNum); ownedSets = ownedSets.filter(function(s){ return s !== g; }); }
     else touchSetLastEdited(g.setNum);
     saveState();
     saveOwnedSets();
@@ -12884,6 +12891,7 @@
       state.rows.push({ partNum: r.partNum, qty: r.qtyPerSet || 0, color: r.color, desc: r.desc, moc: g.mocGroup, elementId: r.elementId, onHand: Math.min(r.onHand || 0, r.qtyPerSet || 0), built: false, priority: '', rbAt: r.rbAt || 0 });
     });
     setParts = setParts.filter(function(r){ return r.setNum !== g.setNum; });
+    noteDeleted('set', g.setNum);
     ownedSets = ownedSets.filter(function(s){ return s !== g; });
     touchMocLastEdited(g.mocGroup);
     saveState();
@@ -13979,6 +13987,7 @@
       resultEl.textContent = 'No valid rows found. Check that Part Num, Quantity, and MOC Name are filled in.';
       return;
     }
+    Object.keys(mocsSeen).forEach(function(n){ touchMocLastEdited(n); });
     saveState();
     render();
     resultEl.style.color = 'var(--text-success)';
@@ -14593,9 +14602,9 @@
   }
 
   function fetchPublishedSnapshot(){
-    return fetch(ALL_DATA_PATH, { cache: 'no-store' }).then(function(resp){
-      if (!resp.ok) throw new Error('Nothing published to your site yet.');
-      return resp.json();
+    return fetchSiteData().then(function(site){
+      if (!site.data) throw new Error('Nothing published to your site yet.');
+      return site.data;
     }).then(function(data){
       if (!data || typeof data !== 'object') throw new Error('Unexpected file format.');
       return data;
@@ -14716,12 +14725,14 @@
       mocInstructions: mocInstructions,
       bagInventoryLog: bagInventoryLog,
       pullLog: pullLog,
-      bagSavedProgressList: bagSavedProgressList
+      bagSavedProgressList: bagSavedProgressList,
+      syncMeta: syncMeta
     };
   }
 
-  function applyFullDataPayload(data){
+  function applyFullDataPayload(data, keepDirty){
     if (!data || typeof data !== 'object') throw new Error('Unexpected file format.');
+    if (data.syncMeta && typeof data.syncMeta === 'object'){ syncMeta = { deleted: data.syncMeta.deleted || {}, stamps: data.syncMeta.stamps || {} }; saveSyncMeta(); }
     lockWriteBypassUntil = Date.now() + 5000;
     if (Array.isArray(data.rows)) state.rows = data.rows.map(rowToObj);
     if (Array.isArray(data.checkedItems)) checkedItems = new Set(data.checkedItems);
@@ -14762,10 +14773,10 @@
     savePullLog();
     saveBagProgressList();
     suppressAutoPublish = false;
-    localDirty = false;
-    saveDirtyFlag();
+    if (!keepDirty){ localDirty = false; saveDirtyFlag(); }
 
     render();
+    if (typeof figTabVisible === 'function' && figTabVisible()) safeRun('minifigures', renderMinifigsTab);
     if (state.tab === 'sets') renderSetsTab();
     if (state.tab === 'setparts') renderSetPartsSummaryTab();
     if (state.tab === 'drawers') renderDrawersTab();
@@ -14773,37 +14784,358 @@
     if (state.tab === 'mocsets') renderMocBuildsTab();
   }
 
-  function saveAllDataToGithub(silent){
-    var statusEl = document.getElementById('all-data-sync-status');
-    var repo = ghSettings.repo;
+  // ===================== Safe syncing between devices =====================
+  // Each browser remembers which version (GitHub "sha") of data/inventory-data.json its data is based on. Saving sends
+  // that version along; if the file changed since (another computer saved), GitHub refuses, and instead of overwriting,
+  // the two copies are merged: each set / minifigure, build and drawer keeps whichever side was edited more recently,
+  // and deletions are carried across. Reading uses GitHub's API, which is always current (GitHub Pages can lag minutes).
+  var SYNC_BASE_KEY = 'site-data-base-sha-v1';
+  var SYNC_META_KEY = 'sync-meta-v1';
+  var SYNC_BASE_HASHES_KEY = 'site-data-base-hashes-v1';
+  var syncBaseSha = '';
+  var syncBaseHashes = null;   // fingerprint of every set, build, drawer and section as of syncBaseSha
+  var syncMeta = { deleted: {}, stamps: {} };
+  var lastMergeSummary = null;
+  function loadSyncState(){
+    return Promise.all([storage.get(SYNC_BASE_KEY, false), storage.get(SYNC_META_KEY, false), storage.get(SYNC_BASE_HASHES_KEY, false)]).then(function(res){
+      syncBaseSha = (res[0] && res[0].value) || '';
+      try { var h = res[2] && res[2].value ? JSON.parse(res[2].value) : null; syncBaseHashes = (h && h.sha && h.sha === syncBaseSha) ? h.hashes : null; } catch(e){ syncBaseHashes = null; }
+      try { var m = res[1] && res[1].value ? JSON.parse(res[1].value) : null; if (m && typeof m === 'object') syncMeta = { deleted: m.deleted || {}, stamps: m.stamps || {} }; } catch(e){}
+    }).catch(function(){});
+  }
+  function saveSyncBase(sha, payload){
+    syncBaseSha = sha || '';
+    syncBaseHashes = payload ? syncFingerprints(payload) : null;
+    try {
+      storage.set(SYNC_BASE_KEY, syncBaseSha, false);
+      storage.set(SYNC_BASE_HASHES_KEY, JSON.stringify({ sha: syncBaseSha, hashes: syncBaseHashes }), false);
+    } catch(e){}
+  }
+  function syncEmpty(x){ return x === undefined || x === null || x === '' || x === false || x === 0 && false || (Array.isArray(x) && !x.length) || (typeof x === 'object' && !Array.isArray(x) && x && !Object.keys(x).length); }
+  function stableStringify(v){
+    if (v === null || typeof v !== 'object') return JSON.stringify(v === undefined ? null : v);
+    if (Array.isArray(v)) return '[' + v.map(stableStringify).join(',') + ']';
+    return '{' + Object.keys(v).sort().filter(function(k){ return k.charAt(0) !== '_' && !syncEmpty(v[k]); }).map(function(k){ return JSON.stringify(k) + ':' + stableStringify(v[k]); }).join(',') + '}';
+  }
+  function fnv(str){ var h = 0x811c9dc5; for (var i = 0; i < str.length; i++){ h ^= str.charCodeAt(i); h = Math.imul(h, 0x01000193); } return (h >>> 0).toString(36) + ':' + str.length; }
+  // One bundle per set/minifigure, build and drawer, plus the shopping marks, keyed like 'set:75192-1'
+  function syncBundles(p){
+    var out = {};
+    function add(k, part, v){ (out[k] = out[k] || [[], [], [], []])[part].push(v); }
+    (p.ownedSets || []).forEach(function(x){ add('set:' + x.setNum, 0, x); });
+    (p.setParts || []).forEach(function(x){ add('set:' + x.setNum, 1, x); });
+    (p.rows || []).forEach(function(x){ add('build:' + x[4], 0, x); });
+    (p.mocBuilds || []).forEach(function(x){ add('build:' + x.name, 1, x); });
+    ['mocThemes', 'mocLocations', 'mocDescriptions', 'mocInstructions'].forEach(function(m, i){
+      Object.keys(p[m] || {}).forEach(function(k){ add('build:' + k, 2, [m, p[m][k]]); });
+    });
+    (p.drawers || []).forEach(function(x){ add('drawer:' + x.id, 0, x); });
+    (p.drawerParts || []).forEach(function(x){ add('drawer:' + x.drawerId, 1, x); });
+    out['sec:shopping'] = [p.checkedItems || [], p.tallyCounts || {}, p.tallyDrawerAssignments || {}];
+    return out;
+  }
+  function syncFingerprints(p){
+    var b = syncBundles(p), h = {};
+    Object.keys(b).forEach(function(k){ h[k] = fnv(stableStringify(b[k])); });
+    return h;
+  }
+  function saveSyncMeta(){ try { storage.set(SYNC_META_KEY, JSON.stringify(syncMeta), false); } catch(e){} }
+  function noteDeleted(kind, key){
+    if (!key) return;
+    syncMeta.deleted[kind + ':' + key] = new Date().toISOString();
+    saveSyncMeta();
+  }
+  function noteSectionEdited(name){
+    if (suppressAutoPublish) return;   // loading data isn't an edit
+    syncMeta.stamps[name] = new Date().toISOString();
+    saveSyncMeta();
+  }
+
+  function siteRepoReady(){ return !!(ghSettings.repo && ghSettings.repo.indexOf('/') !== -1 && ghSettings.token); }
+  // Resolves { data, sha }; data is null when nothing has been published yet.
+  function fetchSiteData(){
+    if (!siteRepoReady()){
+      return fetchWithTimeout(ALL_DATA_PATH + '?_=' + Date.now(), { cache: 'no-store' }, 25000).then(function(resp){
+        if (resp.status === 404) return { data: null, sha: '' };
+        if (!resp.ok) throw new Error('Not found on your site yet.');
+        return resp.json().then(function(d){ return { data: d, sha: '' }; });
+      });
+    }
     var branch = ghSettings.branch || 'main';
-    var token = ghSettings.token;
-    if (!repo || repo.indexOf('/') === -1 || !token){
+    var url = 'https://api.github.com/repos/' + ghSettings.repo + '/contents/' + ALL_DATA_PATH + '?ref=' + encodeURIComponent(branch);
+    return fetchWithTimeout(url + '&_=' + Date.now(), { headers: githubApiHeaders(ghSettings.token), cache: 'no-store' }, 25000).then(function(resp){
+      if (resp.status === 404) return { data: null, sha: '' };
+      if (!resp.ok) return resp.json().catch(function(){ return {}; }).then(function(e){ throw new Error((e && e.message) || ('GitHub answered ' + resp.status)); });
+      return resp.json().then(function(info){
+        var sha = info.sha || '';
+        if (info.content && info.encoding === 'base64') return { data: JSON.parse(base64ToUtf8(info.content)), sha: sha };
+        // files over 1 MB come without their content here: ask for the raw text
+        var h = githubApiHeaders(ghSettings.token);
+        h.Accept = 'application/vnd.github.raw';
+        return fetchWithTimeout(url + '&_=' + Date.now(), { headers: h, cache: 'no-store' }, 30000).then(function(r){
+          if (!r.ok) throw new Error('GitHub answered ' + r.status);
+          return r.text();
+        }).then(function(t){ return { data: JSON.parse(t), sha: sha }; });
+      });
+    });
+  }
+  // PUT with the version we're based on. Never throws for a version mismatch: returns { ok, status, sha, message }.
+  function putSiteData(payload, sha){
+    var url = 'https://api.github.com/repos/' + ghSettings.repo + '/contents/' + ALL_DATA_PATH;
+    var body = { message: 'Update inventory data', content: utf8ToBase64(JSON.stringify(payload, null, 2)), branch: ghSettings.branch || 'main' };
+    if (sha) body.sha = sha;
+    var h = githubApiHeaders(ghSettings.token);
+    h['Content-Type'] = 'application/json';
+    return fetch(url, { method: 'PUT', headers: h, body: JSON.stringify(body) }).then(function(resp){
+      return resp.json().catch(function(){ return {}; }).then(function(j){
+        return { ok: resp.ok, status: resp.status, sha: (j && j.content && j.content.sha) || '', message: (j && j.message) || ('GitHub answered ' + resp.status) };
+      });
+    });
+  }
+
+  function syncTime(x){ var t = Date.parse((x && x.lastEdited) || ''); return isNaN(t) ? 0 : t; }
+  function mergeSyncPayloads(local, remote, base){
+    var summary = { fromSite: [], fromHere: [] };
+    var out = {};
+    var fpL = base ? syncFingerprints(local) : null, fpR = base ? syncFingerprints(remote) : null;
+    var dL = (local.syncMeta && local.syncMeta.deleted) || {}, dR = (remote.syncMeta && remote.syncMeta.deleted) || {};
+    function tomb(d, kind, key){ var v = d[kind + ':' + key]; var t = v ? Date.parse(v) : 0; return isNaN(t) ? 0 : t; }
+    function same(a, b){ return stableStringify(a) === stableStringify(b); }
+    // decide one entity: 'l' (this device), 'r' (site) or '' (deleted on one side after the other side last edited it)
+    function choose(kind, key, l, r){
+      if (base){
+        var k = kind + ':' + key, bh = base[k], lh = l ? fpL[k] : null, rh = r ? fpR[k] : null;
+        if (l && r){
+          if (lh === rh) return 'r';
+          if (lh === bh) return 'r';          // only the site changed it
+          if (rh === bh) return 'l';          // only this device changed it
+          return l.t > r.t ? 'l' : 'r';       // both changed it: the later edit wins
+        }
+        if (l){ if (bh === undefined) return 'l'; return lh === bh ? '' : 'l'; }   // new here / deleted on the site (unless changed here since)
+        if (r){ if (bh === undefined) return 'r'; return rh === bh ? '' : 'r'; }   // new on the site / deleted here (unless changed on the site since)
+        return '';
+      }
+      if (l && r){
+        if (same(l.bundle, r.bundle)) return 'r';
+        return l.t > r.t ? 'l' : 'r';
+      }
+      if (l) return tomb(dR, kind, key) > l.t ? '' : 'l';   // the site deleted it after this device last changed it
+      if (r) return tomb(dL, kind, key) > r.t ? '' : 'r';   // this device deleted it after the site's copy was last changed
+      return '';
+    }
+    function note(side, label, l, r){
+      if (side === 'l' && r && !same(l.bundle, r.bundle)) summary.fromHere.push(label);
+      else if (side === 'l' && !r) summary.fromHere.push(label);
+      else if (side === 'r' && l && !same(l.bundle, r.bundle)) summary.fromSite.push(label);
+      else if (side === 'r' && !l) summary.fromSite.push(label);
+    }
+    function groupBy(arr, keyFn){ var m = {}; (arr || []).forEach(function(x){ var k = keyFn(x); (m[k] = m[k] || []).push(x); }); return m; }
+
+    // --- official sets and minifigures (an entry in ownedSets plus its lines in setParts)
+    var sL = groupBy(local.ownedSets, function(s){ return s.setNum; }), sR = groupBy(remote.ownedSets, function(s){ return s.setNum; });
+    var pL = groupBy(local.setParts, function(p){ return p.setNum; }), pR = groupBy(remote.setParts, function(p){ return p.setNum; });
+    out.ownedSets = []; out.setParts = [];
+    var setKeys = {};
+    [sL, sR, pL, pR].forEach(function(m){ Object.keys(m).forEach(function(k){ setKeys[k] = true; }); });
+    Object.keys(setKeys).forEach(function(k){
+      var l = (sL[k] || pL[k]) ? { t: syncTime(sL[k] && sL[k][0]), bundle: [sL[k] || [], pL[k] || []] } : null;
+      var r = (sR[k] || pR[k]) ? { t: syncTime(sR[k] && sR[k][0]), bundle: [sR[k] || [], pR[k] || []] } : null;
+      var side = choose('set', k, l, r);
+      if (!side) return;
+      var b = side === 'l' ? l.bundle : r.bundle;
+      out.ownedSets = out.ownedSets.concat(b[0]);
+      out.setParts = out.setParts.concat(b[1]);
+      var e = b[0][0];
+      note(side, (isFigNum(k) ? 'minifigure ' : 'set ') + k + (e && e.name ? ' ' + e.name : ''), l, r);
+    });
+
+    // --- MOC builds (its part lines, its build record, theme, location, description, instructions)
+    var rowsL = groupBy(local.rows, function(r){ return r[4]; }), rowsR = groupBy(remote.rows, function(r){ return r[4]; });
+    var bL = groupBy(local.mocBuilds, function(b){ return b.name; }), bR = groupBy(remote.mocBuilds, function(b){ return b.name; });
+    var maps = ['mocThemes', 'mocLocations', 'mocDescriptions', 'mocInstructions'];
+    out.rows = []; out.mocBuilds = [];
+    maps.forEach(function(m){ out[m] = {}; });
+    var buildKeys = {};
+    [rowsL, rowsR, bL, bR].forEach(function(m){ Object.keys(m).forEach(function(k){ buildKeys[k] = true; }); });
+    maps.forEach(function(m){ Object.keys(local[m] || {}).concat(Object.keys(remote[m] || {})).forEach(function(k){ buildKeys[k] = true; }); });
+    function buildBundle(src, rowsBy, bBy, k){
+      var has = rowsBy[k] || bBy[k] || maps.some(function(m){ return src[m] && src[m][k] !== undefined; });
+      if (!has) return null;
+      return { t: syncTime(bBy[k] && bBy[k][0]), bundle: [rowsBy[k] || [], bBy[k] || [], maps.map(function(m){ return src[m] ? src[m][k] : undefined; })] };
+    }
+    Object.keys(buildKeys).forEach(function(k){
+      var l = buildBundle(local, rowsL, bL, k), r = buildBundle(remote, rowsR, bR, k);
+      var side = choose('build', k, l, r);
+      if (!side) return;
+      var b = side === 'l' ? l.bundle : r.bundle;
+      out.rows = out.rows.concat(b[0]);
+      out.mocBuilds = out.mocBuilds.concat(b[1]);
+      maps.forEach(function(m, i){ if (b[2][i] !== undefined) out[m][k] = b[2][i]; });
+      if (b[0].length || b[1].length) note(side, 'build ' + k, l, r);
+    });
+
+    // --- drawers (the drawer and its part lines)
+    var dwL = groupBy(local.drawers, function(d){ return d.id; }), dwR = groupBy(remote.drawers, function(d){ return d.id; });
+    var dpL = groupBy(local.drawerParts, function(p){ return p.drawerId; }), dpR = groupBy(remote.drawerParts, function(p){ return p.drawerId; });
+    out.drawers = []; out.drawerParts = [];
+    var drawerKeys = {};
+    [dwL, dwR, dpL, dpR].forEach(function(m){ Object.keys(m).forEach(function(k){ drawerKeys[k] = true; }); });
+    Object.keys(drawerKeys).forEach(function(k){
+      var l = (dwL[k] || dpL[k]) ? { t: syncTime(dwL[k] && dwL[k][0]), bundle: [dwL[k] || [], dpL[k] || []] } : null;
+      var r = (dwR[k] || dpR[k]) ? { t: syncTime(dwR[k] && dwR[k][0]), bundle: [dwR[k] || [], dpR[k] || []] } : null;
+      var side = choose('drawer', k, l, r);
+      if (!side) return;
+      var b = side === 'l' ? l.bundle : r.bundle;
+      out.drawers = out.drawers.concat(b[0]);
+      out.drawerParts = out.drawerParts.concat(b[1]);
+      note(side, 'drawer ' + ((b[0][0] && b[0][0].label) || k), l, r);
+    });
+
+    // --- shopping checkmarks and tallies: the side that changed them last
+    var stL = (local.syncMeta && local.syncMeta.stamps) || {}, stR = (remote.syncMeta && remote.syncMeta.stamps) || {};
+    function newer(name){ return (Date.parse(stL[name] || '') || 0) > (Date.parse(stR[name] || '') || 0) ? local : remote; }
+    var shop = newer('shopping');
+    if (base){ var sbh = base['sec:shopping']; if (fpL['sec:shopping'] !== sbh && fpR['sec:shopping'] === sbh) shop = local; else if (fpR['sec:shopping'] !== sbh && fpL['sec:shopping'] === sbh) shop = remote; }
+    out.checkedItems = shop.checkedItems || [];
+    out.tallyCounts = shop.tallyCounts || {};
+    out.tallyDrawerAssignments = shop.tallyDrawerAssignments || {};
+    // --- logs: entries from both devices, newest first (an entry on both sides comes from whoever changed that log last)
+    function unionLog(name, stamp){
+      var prefer = newer(stamp), other = prefer === local ? remote : local;
+      var seen = {}, res = [];
+      (prefer[name] || []).concat(other[name] || []).forEach(function(e){ if (!e || seen[e.id]) return; seen[e.id] = true; res.push(e); });
+      res.sort(function(a, b){ return String(b.timestamp || '').localeCompare(String(a.timestamp || '')); });
+      return res;
+    }
+    out.pullLog = unionLog('pullLog', 'pull');
+    out.bagInventoryLog = unionLog('bagInventoryLog', 'bags');
+    out.bagSavedProgressList = unionLog('bagSavedProgressList', 'bags');
+    // --- label lists: everything either side has
+    function unionList(a, b){ var res = (a || []).slice(); (b || []).forEach(function(x){ if (res.indexOf(x) === -1) res.push(x); }); return res; }
+    out.priorityLabels = unionList(remote.priorityLabels, local.priorityLabels);
+    out.locationLabels = unionList(remote.locationLabels, local.locationLabels);
+
+    // --- bookkeeping: keep deletions for 180 days (dropping any for things that exist again); newest stamps
+    var cutoff = Date.now() - 180 * 86400000, deleted = {};
+    var present = {};
+    out.ownedSets.forEach(function(s){ present['set:' + s.setNum] = true; });
+    out.mocBuilds.forEach(function(b){ present['build:' + b.name] = true; });
+    out.rows.forEach(function(r){ present['build:' + r[4]] = true; });
+    out.drawers.forEach(function(d){ present['drawer:' + d.id] = true; });
+    [dL, dR].forEach(function(d){ Object.keys(d).forEach(function(k){
+      var t = Date.parse(d[k]) || 0;
+      if (t < cutoff || present[k]) return;
+      if (!deleted[k] || t > Date.parse(deleted[k])) deleted[k] = d[k];
+    }); });
+    var stamps = {};
+    [stR, stL].forEach(function(s){ Object.keys(s).forEach(function(k){ if (!stamps[k] || (Date.parse(s[k]) || 0) > (Date.parse(stamps[k]) || 0)) stamps[k] = s[k]; }); });
+    out.syncMeta = { deleted: deleted, stamps: stamps };
+    return { payload: out, summary: summary };
+  }
+
+  function describeMerge(summary){
+    var bits = [];
+    function list(a){ return a.slice(0, 4).join(', ') + (a.length > 4 ? ' and ' + (a.length - 4) + ' more' : ''); }
+    if (summary.fromSite.length) bits.push('kept the newer versions from your site of ' + list(summary.fromSite));
+    if (summary.fromHere.length) bits.push('kept this device’s newer versions of ' + list(summary.fromHere));
+    return bits.join('; ');
+  }
+
+  // Saving: never overwrite a newer copy on the site. force = deliberately replace the site's copy with this one.
+  var publishInFlight = null, publishAgain = false;
+  function publishToSite(force){
+    var attempts = 0;
+    function tryPut(sha){
+      var startEdits = editsSinceBoot;
+      var payload = buildFullDataPayload();
+      return putSiteData(payload, sha).then(function(res){
+        if (res.ok){
+          saveSyncBase(res.sha, payload);
+          if (editsSinceBoot === startEdits){ localDirty = false; saveDirtyFlag(); }
+          return true;
+        }
+        if ((res.status === 409 || res.status === 422) && attempts++ < 4){
+          return fetchSiteData().then(function(site){
+            if (!force && site.data){ mergeIntoThisDevice(site.data); saveSyncBase(site.sha, site.data); }
+            return tryPut(site.sha || undefined);
+          });
+        }
+        throw new Error(res.message);
+      });
+    }
+    if (force || !syncBaseSha){
+      // don't know (or don't care) which version the site is on: look first
+      return fetchSiteData().then(function(site){
+        if (!force && site.data && site.sha !== syncBaseSha){ mergeIntoThisDevice(site.data); saveSyncBase(site.sha, site.data); }
+        return tryPut(site.sha || undefined);
+      });
+    }
+    return tryPut(syncBaseSha);
+  }
+  function mergeIntoThisDevice(siteData){
+    var m = mergeSyncPayloads(buildFullDataPayload(), siteData, syncBaseHashes);
+    applyFullDataPayload(m.payload, true);
+    if (m.summary.fromSite.length || m.summary.fromHere.length){
+      lastMergeSummary = m.summary;
+      showAppBanner('notice', 'Combined changes from another device', 'Your site had changes made on another computer or browser since this one last synced, so the two were combined instead of one replacing the other: ' + describeMerge(m.summary) + '.');
+    }
+  }
+  // On opening: bring this browser up to date with the site, merging if this browser has changes the site doesn't.
+  function syncOnOpen(dirtyAtBoot, editsAtStart){
+    return fetchSiteData().then(function(site){
+      if (!site.data){
+        if (dirtyAtBoot || localDirty) return saveAllDataToGithub(true).then(function(ok){ return ok ? 'published' : 'local'; });
+        return 'none';
+      }
+      var changedHere = dirtyAtBoot || localDirty || editsSinceBoot !== editsAtStart;
+      if (!changedHere){
+        applyFullDataPayload(site.data);
+        saveSyncBase(site.sha, buildFullDataPayload());   // fingerprints of exactly what this browser now holds
+        return 'loaded';
+      }
+      if (site.sha && site.sha === syncBaseSha) return saveAllDataToGithub(true).then(function(ok){ return ok ? 'published' : 'local'; });   // the site hasn't moved: this device is simply ahead
+      mergeIntoThisDevice(site.data);
+      saveSyncBase(site.sha, site.data);
+      localDirty = true;
+      saveDirtyFlag();
+      return saveAllDataToGithub(true).then(function(ok){ return ok ? 'merged' : 'local'; });
+    });
+  }
+
+  function saveAllDataToGithub(silent, opts){
+    opts = opts || {};
+    var statusEl = document.getElementById('all-data-sync-status');
+    if (!siteRepoReady()){
       if (!silent && statusEl){
         statusEl.style.color = 'var(--text-danger)';
         statusEl.textContent = 'Set up your repo and token in GitHub Connection above first.';
       }
       return Promise.resolve(false);
     }
-    var payload = JSON.stringify(buildFullDataPayload(), null, 2);
-    var base64 = utf8ToBase64(payload);
+    if (publishInFlight){ publishAgain = true; return publishInFlight; }
     if (statusEl){
       statusEl.style.color = 'var(--text-secondary)';
-      statusEl.textContent = 'Saving to site\u2026';
+      statusEl.textContent = 'Saving to site…';
     }
-    return putFileToGithub(repo, branch, ALL_DATA_PATH, token, base64, 'inventory-data', 'Update inventory data').then(function(){
+    lastMergeSummary = null;
+    publishInFlight = publishToSite(!!opts.force).then(function(){
       if (statusEl){
         statusEl.style.color = 'var(--text-success)';
-        statusEl.textContent = 'All changes saved to your site.';
+        statusEl.textContent = 'All changes saved to your site' + (lastMergeSummary ? ' — combined with changes made on another device.' : '.');
       }
       return true;
     }).catch(function(err){
       if (statusEl){
         statusEl.style.color = 'var(--text-danger)';
-        statusEl.textContent = 'Could not save: ' + (err && err.message ? err.message : 'unknown error');
+        statusEl.textContent = 'Could not save: ' + (err && err.message ? err.message : 'unknown error') + '. Your changes are kept on this device and will be combined with your site’s version next time.';
       }
       return false;
+    }).then(function(ok){
+      publishInFlight = null;
+      if (publishAgain){ publishAgain = false; if (localDirty) setTimeout(function(){ saveAllDataToGithub(true); }, 400); }
+      return ok;
     });
+    return publishInFlight;
   }
 
   function loadAllDataFromGithub(silent, canApply){
@@ -14813,12 +15145,11 @@
       statusEl.style.color = 'var(--text-secondary)';
       statusEl.textContent = 'Loading\u2026';
     }
-    return fetchWithTimeout(ALL_DATA_PATH, { cache: 'no-store' }, 25000).then(function(resp){
-      if (!resp.ok) throw new Error('Not found on your site yet.');
-      return resp.json();
-    }).then(function(data){
+    return fetchSiteData().then(function(site){
+      if (!site.data) throw new Error('Not found on your site yet.');
       if (canApply && !canApply()) return 'skipped';
-      applyFullDataPayload(data);
+      applyFullDataPayload(site.data);
+      saveSyncBase(site.sha, buildFullDataPayload());
 
       if (!silent){
         statusEl.style.color = 'var(--text-success)';
@@ -14941,7 +15272,7 @@
       return JSON.parse(base64ToUtf8(fileInfo.content));
     }).then(function(data){
       applyFullDataPayload(data);
-      return saveAllDataToGithub(true);
+      return saveAllDataToGithub(true, { force: true });   // restoring a backup replaces the site's copy on purpose
     }).then(function(published){
       if (published){
         statusEl.style.color = 'var(--text-success)';
@@ -14980,7 +15311,7 @@
   });
   wireEl('diff-publish-to-site-btn', 'click', function(){
     if (!confirm('Overwrite the version on your site with this browser\u2019s data? This replaces everything currently published, including anything only on the site.')) return;
-    saveAllDataToGithub(false);
+    saveAllDataToGithub(false, { force: true });
     document.getElementById('diff-results').style.display = 'none';
     document.getElementById('sync-warning-banner').style.display = 'none';
   });
@@ -16394,6 +16725,7 @@
   }
 
   function saveChecklist(){
+    noteSectionEdited('shopping');
     scheduleAutoPublish();
     return storage.set(CHECKLIST_KEY, JSON.stringify(Array.from(checkedItems)), false);
   }
@@ -16405,6 +16737,7 @@
   }
 
   function saveTallyCounts(){
+    noteSectionEdited('shopping');
     scheduleAutoPublish();
     return storage.set(TALLY_COUNTS_KEY, JSON.stringify(tallyCounts), false);
   }
@@ -16416,6 +16749,7 @@
   }
 
   function saveTallyDrawerAssignments(){
+    noteSectionEdited('shopping');
     scheduleAutoPublish();
     return storage.set(TALLY_DRAWER_KEY, JSON.stringify(tallyDrawerAssignments), false);
   }
@@ -16599,7 +16933,7 @@
     safeRun('lock state', applyViewLockState);
     bootStage = 'loading your saved data';
     stepSafe('loadState', loadState).then(function(){ return stepSafe('loadImageCacheIndex', loadImageCacheIndex); }).then(function(){ return stepSafe('loadPartImgCacheIndex', loadPartImgCacheIndex); }).then(function(){ return stepSafe('loadChecklist', loadChecklist); }).then(function(){ return stepSafe('loadTallyCounts', loadTallyCounts); }).then(function(){ return stepSafe('loadTallyDrawerAssignments', loadTallyDrawerAssignments); }).then(function(){ return stepSafe('loadProxyPreference', loadProxyPreference); }).then(function(){ return stepSafe('loadPriorityLabels', loadPriorityLabels); }).then(function(){ return stepSafe('loadOwnedSets', loadOwnedSets); }).then(function(){ return stepSafe('loadSetParts', loadSetParts); }).then(function(){ return stepSafe('loadDrawers', loadDrawers); }).then(function(){ return stepSafe('loadDrawerParts', loadDrawerParts); }).then(function(){ return stepSafe('loadBagInventoryLog', loadBagInventoryLog); }).then(function(){ return stepSafe('loadPullLog', loadPullLog); }).then(function(){ return stepSafe('loadBagProgressList', loadBagProgressList); }).then(function(){ return stepSafe('loadSetPhotos', loadSetPhotos); }).then(function(){ return stepSafe('loadMocPhotos', loadMocPhotos); }).then(function(){ return stepSafe('loadMocLocations', loadMocLocations); }).then(function(){ return stepSafe('loadMocBuilds', loadMocBuilds); }).then(function(){ return stepSafe('loadMocThemes', loadMocThemes); }).then(function(){ return stepSafe('loadMocDescriptions', loadMocDescriptions); }).then(function(){ return stepSafe('loadMocInstructions', loadMocInstructions); }).then(function(){ return stepSafe('loadLocationLabels', loadLocationLabels); })
-    .then(function(){ return stepSafe('loadRebrickableKey', loadRebrickableKey); }).then(function(){ return stepSafe('loadRbCatalogCache', loadRbCatalogCache); }).then(function(){ return stepSafe('loadSetProxyPref', loadSetProxyPref); }).then(function(){ return stepSafe('loadGithubSettings', loadGithubSettings); }).then(function(){ return stepSafe('loadBackupPassword', loadBackupPassword); }).then(function(){ return stepSafe('loadGithubShaMap', loadGithubShaMap); }).then(function(){ return stepSafe('loadDirtyFlag', loadDirtyFlag); }).then(function(){ return stepSafe('loadViewLocked', loadViewLocked); })
+    .then(function(){ return stepSafe('loadRebrickableKey', loadRebrickableKey); }).then(function(){ return stepSafe('loadRbCatalogCache', loadRbCatalogCache); }).then(function(){ return stepSafe('loadSetProxyPref', loadSetProxyPref); }).then(function(){ return stepSafe('loadGithubSettings', loadGithubSettings); }).then(function(){ return stepSafe('loadBackupPassword', loadBackupPassword); }).then(function(){ return stepSafe('loadGithubShaMap', loadGithubShaMap); }).then(function(){ return stepSafe('loadDirtyFlag', loadDirtyFlag); }).then(function(){ return stepSafe('loadSyncState', loadSyncState); }).then(function(){ return stepSafe('loadViewLocked', loadViewLocked); })
     .then(function(){
       // Draw what's saved on this device straight away -- never make the first draw wait on the network.
       bootStage = 'drawing your data';
@@ -16624,19 +16958,13 @@
       }, 1500);
       function doneChecking(){ clearTimeout(checkingTimer); removeAppBannerItem(checkingItem); }
 
-      var flush = dirtyAtBoot ? saveAllDataToGithub(true) : Promise.resolve(true);
-      return flush.then(function(flushed){
-        if (dirtyAtBoot && !flushed){ // couldn't publish pending changes yet (e.g. offline) - don't overwrite them with the older site version
-          doneChecking();
-          showAppBanner('notice', 'Showing this device\u2019s data', 'This device has changes that haven\u2019t been uploaded yet, and your site couldn\u2019t be reached \u2014 so the version on your site wasn\u2019t loaded. What you see is what\u2019s saved on this device.');
-          return;
-        }
-        var editsAtStart = editsSinceBoot;
-        return loadAllDataFromGithub(true, function(){ return editsSinceBoot === editsAtStart; }).then(function(result){
-          doneChecking();
-          if (result === false) showAppBanner('notice', 'Showing this device\u2019s data', 'Couldn\u2019t load the latest data from your site (' + (lastSitePullError || 'unknown reason') + '). What you see is what\u2019s saved on this device.');
-          else if (result === 'skipped') showAppBanner('notice', 'Showing this device\u2019s data', 'You made changes while your site\u2019s data was still loading, so the site\u2019s version wasn\u2019t applied \u2014 your changes are kept and are being saved to your site.');
-        });
+      var editsAtStart = editsSinceBoot;
+      return syncOnOpen(dirtyAtBoot, editsAtStart).then(function(result){
+        doneChecking();
+        if (result === 'local') showAppBanner('notice', 'Showing this device’s data', 'This device has changes that couldn’t be saved to your site just now. They’re kept here and will be combined with your site’s version (not written over it) the next time it can be reached.');
+      }).catch(function(err){
+        doneChecking();
+        showAppBanner('notice', 'Showing this device’s data', 'Couldn’t load the latest data from your site (' + ((err && err.message) || 'unknown reason') + '). What you see is what’s saved on this device; nothing on your site was changed.');
       });
     })
     .catch(function(e){ reportAppError('syncing with your site', e); });
