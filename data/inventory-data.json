@@ -119354,14 +119354,15 @@
       "kind": "fig",
       "name": "M:Tron",
       "theme": "M:Tron",
-      "qty": 7,
+      "qty": 8,
       "manualQty": 0,
       "figSources": {
         "6896-1": 1,
         "6877-1": 1,
         "6923-1": 1,
         "6811-1": 1,
-        "6989-1": 3
+        "6989-1": 3,
+        "6833-1": 1
       },
       "imgUrl": "https://cdn.rebrickable.com/media/sets/fig-000065/63412.jpg",
       "lastEdited": "2026-10-10T18:03:47.830Z"
@@ -120099,9 +120100,10 @@
     {
       "setNum": "6833-1",
       "qty": 1,
-      "name": "",
-      "theme": "",
-      "lastEdited": "2026-10-10T23:01:49.039Z"
+      "name": "Beacon Tracer",
+      "theme": "M:Tron",
+      "lastEdited": "2026-10-10T23:07:05.301Z",
+      "figsCheckedAt": 1791673625809
     },
     {
       "setNum": "fig-000027",
@@ -469436,7 +469438,7 @@
       "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/4106307.jpg",
       "rbAt": 1791655427829,
       "setNum": "fig-000065",
-      "onHand": 7
+      "onHand": 8
     },
     {
       "partNum": "970c27",
@@ -469447,7 +469449,7 @@
       "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/74326.jpg",
       "rbAt": 1791655427829,
       "setNum": "fig-000065",
-      "onHand": 7
+      "onHand": 8
     },
     {
       "partNum": "3838",
@@ -469458,7 +469460,7 @@
       "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/383826.jpg",
       "rbAt": 1791655427829,
       "setNum": "fig-000065",
-      "onHand": 7
+      "onHand": 8
     },
     {
       "partNum": "973c27h03pr0068",
@@ -469469,7 +469471,7 @@
       "imgUrl": "https://cdn.rebrickable.com/media/parts/ldraw/4/76382p68.png",
       "rbAt": 1791655427829,
       "setNum": "fig-000065",
-      "onHand": 7
+      "onHand": 8
     },
     {
       "partNum": "2447",
@@ -469480,7 +469482,7 @@
       "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/244749.jpg",
       "rbAt": 1791655427829,
       "setNum": "fig-000065",
-      "onHand": 7
+      "onHand": 8
     },
     {
       "partNum": "3626apr0001",
@@ -469491,7 +469493,7 @@
       "imgUrl": "https://cdn.rebrickable.com/media/parts/ldraw/14/3626ap01.png",
       "rbAt": 1791655427829,
       "setNum": "fig-000065",
-      "onHand": 7
+      "onHand": 8
     },
     {
       "partNum": "973c27h28pr0062",
@@ -480772,6 +480774,226 @@
       "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/6419092.jpg",
       "rbAt": 1791673362024,
       "setNum": "fig-017303",
+      "onHand": 1
+    },
+    {
+      "partNum": "3039pr0010",
+      "color": "Black",
+      "desc": "Brick Sloped 45° 2 x 2 with Yellow Grill Print",
+      "elementId": "",
+      "qtyPerSet": 1,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/ldraw/0/3039p10.png",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 1
+    },
+    {
+      "partNum": "3962b",
+      "color": "Black",
+      "desc": "Equipment Radio [Extended Handle, Compact Speaker Grille]",
+      "elementId": "396226",
+      "qtyPerSet": 1,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/396226.jpg",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 1
+    },
+    {
+      "partNum": "3938",
+      "color": "Black",
+      "desc": "Hinge Brick 1 x 2 Top Plate Thin",
+      "elementId": "393826",
+      "qtyPerSet": 2,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/393826.jpg",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 2
+    },
+    {
+      "partNum": "4590",
+      "color": "Black",
+      "desc": "Plate Special 1 x 4 Offset with Bar Holes",
+      "elementId": "6002559",
+      "qtyPerSet": 1,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/459026.jpg",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 1
+    },
+    {
+      "partNum": "4600",
+      "color": "Black",
+      "desc": "Plate Special 2 x 2 with Wheel Holders",
+      "elementId": "460026",
+      "qtyPerSet": 2,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/460026.jpg",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 2
+    },
+    {
+      "partNum": "2412a",
+      "color": "Black",
+      "desc": "Tile Special 1 x 2 Grille without Bottom Groove",
+      "elementId": "",
+      "qtyPerSet": 1,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/ldraw/0/2412a.png",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 1
+    },
+    {
+      "partNum": "4288",
+      "color": "Black",
+      "desc": "Wheel Balloon with Axle hole",
+      "elementId": "428876",
+      "qtyPerSet": 4,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/ldraw/0/4288.png",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 4
+    },
+    {
+      "partNum": "4624",
+      "color": "Light Gray",
+      "desc": "Wheel 8 x 6",
+      "elementId": "462402",
+      "qtyPerSet": 4,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/462402.jpg",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 4
+    },
+    {
+      "partNum": "4732",
+      "color": "Red",
+      "desc": "Bracket 8 x 2 x 1 1/3",
+      "elementId": "473221",
+      "qtyPerSet": 1,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/ldraw/4/4732.png",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 1
+    },
+    {
+      "partNum": "3937",
+      "color": "Red",
+      "desc": "Hinge Brick 1 x 2 Base",
+      "elementId": "393721",
+      "qtyPerSet": 2,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/393721.jpg",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 2
+    },
+    {
+      "partNum": "3023",
+      "color": "Red",
+      "desc": "Plate 1 x 2",
+      "elementId": "302321",
+      "qtyPerSet": 1,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/302321.jpg",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 1
+    },
+    {
+      "partNum": "2420",
+      "color": "Red",
+      "desc": "Plate 2 x 2 Corner",
+      "elementId": "242071",
+      "qtyPerSet": 1,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/242021.jpg",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 1
+    },
+    {
+      "partNum": "4081b",
+      "color": "Red",
+      "desc": "Plate Special 1 x 1 with Clip Light, Bar Hole [Thick Ring]",
+      "elementId": "6281994",
+      "qtyPerSet": 2,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/408121.jpg",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 2
+    },
+    {
+      "partNum": "4085c",
+      "color": "Red",
+      "desc": "Plate Special 1 x 1 with Clip Vertical [Thick U Clip]",
+      "elementId": "408521",
+      "qtyPerSet": 1,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/408521.jpg",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 1
+    },
+    {
+      "partNum": "3839b",
+      "color": "Red",
+      "desc": "Plate Special 1 x 2 with Handles [Flat Ends / Low Attachment]",
+      "elementId": "4286611",
+      "qtyPerSet": 1,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/383921.jpg",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 1
+    },
+    {
+      "partNum": "2569",
+      "color": "Trans-Neon Green",
+      "desc": "Antenna 8H Whip",
+      "elementId": "6265159",
+      "qtyPerSet": 1,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/6265159.jpg",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 1
+    },
+    {
+      "partNum": "4589",
+      "color": "Trans-Neon Green",
+      "desc": "Cone 1 x 1 [No Top Groove]",
+      "elementId": "618849",
+      "qtyPerSet": 4,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/618849.jpg",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 4
+    },
+    {
+      "partNum": "4740",
+      "color": "Trans-Neon Green",
+      "desc": "Dish 2 x 2 Inverted [Radar]",
+      "elementId": "6245297",
+      "qtyPerSet": 2,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/elements/3006349.jpg",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 2
+    },
+    {
+      "partNum": "2466pr0002",
+      "color": "Trans-Neon Green",
+      "desc": "Panel 3 x 2 x 6 with MTron Logo Print",
+      "elementId": "",
+      "qtyPerSet": 1,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/ldraw/42/2466p68.png",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
+      "onHand": 1
+    },
+    {
+      "partNum": "3069bpr0048",
+      "color": "White",
+      "desc": "Tile 1 x 2 with Red and Yellow Control Panel Print (Original)",
+      "elementId": "81515",
+      "qtyPerSet": 1,
+      "imgUrl": "https://cdn.rebrickable.com/media/parts/ldraw/15/3069bp68.png",
+      "rbAt": 1791673625298,
+      "setNum": "6833-1",
       "onHand": 1
     }
   ],
@@ -492833,7 +493055,7 @@
       "build:Lego House": "2026-10-10T18:15:18.952Z"
     },
     "stamps": {},
-    "savedAt": "2026-10-10T23:05:55.958Z",
+    "savedAt": "2026-10-10T23:07:10.271Z",
     "appVersion": "2026.10.10.9"
   }
 }
