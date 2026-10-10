@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Lego Collection Inventory</title>
+<title>Winfield’s Awesome Lego Collection, est. 1988</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css" media="print" onload="this.media='all'">
 <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css"></noscript>
 <style>
   * { box-sizing: border-box; }
   html { -webkit-text-size-adjust: 100%; }
-  body { margin: 0; padding: 24px 16px; background: #C7D4DE; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
+  body { margin: 0; padding: 24px 16px; background: #030404; font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; }
   .page-wrap { max-width: 920px; margin: 0 auto; }
   @media (max-width: 640px) {
     body { padding: 10px 8px; }
@@ -25,36 +25,44 @@
 <div id="lego-inv-root">
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.25/jspdf.plugin.autotable.min.js"></script>
-<h2 class="sr-only">Lego Collection Inventory: search, filter, and track parts on hand across MOC builds and official sets</h2>
+<h2 class="sr-only">Winfield’s Awesome Lego Collection, est. 1988: search, filter, and track parts on hand across MOC builds and official sets</h2>
 <style>
 #lego-inv-root {
-  --lego-red: #D9291D;
-  --lego-red-dark: #A81D14;
-  --lego-yellow: #F2CD37;
-  --lego-yellow-dark: #C9A415;
-  --lego-blue: #0055BF;
-  --lego-blue-dark: #003D8A;
-  --lego-green: #00A65E;
-  --lego-orange: #FF8200;
-  --lego-azure: #009BC7;
-  --lego-purple: #8A12A8;
-  --lego-brown: #6C4E31;
-  --lego-lime: #7DB812;
-  --lego-teal: #2C9C93;
-  --lego-black: #14202B;
-  --surface-2: #FFFFFF;
-  --surface-1: #EBF1F6;
-  --surface-0: #DDE6EE;
-  --text-primary: #14202B;
-  --text-secondary: #52697C;
-  --text-muted: #91A3B0;
-  --border: #C9D8E3;
-  --border-strong: var(--lego-blue);
+  /* Blacktron II (1991): black and white hulls, trans-neon green canopies, old light gray trim */
+  --bt-black: #0A0B0B;
+  --bt-white: #F2F3EF;
+  --bt-neon: #C8F03C;
+  --bt-neon-dark: #A3C82A;
+  --bt-gray: #9CA29E;
+  --on-accent: #0A0B0B;
+  --lego-red: #FF5A4E;
+  --lego-red-dark: #D8443A;
+  --lego-yellow: var(--bt-neon);
+  --lego-yellow-dark: var(--bt-neon-dark);
+  --lego-blue: var(--bt-neon);
+  --lego-blue-dark: var(--bt-neon-dark);
+  --lego-green: var(--bt-neon);
+  --lego-orange: #FFB14A;
+  --lego-azure: var(--bt-gray);
+  --lego-purple: var(--bt-gray);
+  --lego-brown: var(--bt-gray);
+  --lego-lime: var(--bt-neon);
+  --lego-teal: var(--bt-gray);
+  --lego-black: var(--bt-white);
+  --surface-2: #1C1F1E;
+  --surface-1: #151817;
+  --surface-0: #0A0B0B;
+  --text-primary: #F2F3EF;
+  --text-secondary: #B3BAB5;
+  --text-muted: #7F8783;
+  --border: #343A37;
+  --border-strong: var(--bt-neon);
   --radius: 10px;
-  --bg-success: #E1F4E9;
-  --text-success: #0E7A46;
-  --bg-danger: #FCE6E3;
-  --text-danger: #B3241A;
+  --bg-success: rgba(200,240,60,0.13);
+  --text-success: #C8F03C;
+  --bg-danger: rgba(255,90,78,0.15);
+  --text-danger: #FF7B71;
+  color-scheme: dark;
   font-size: 14px;
   font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
   background: var(--surface-0);
@@ -369,6 +377,31 @@
   #lego-inv-root .shop-tally-box .tally-blank { width: 38px; height: 18px; border: 1px solid #999; border-radius: 3px; }
 }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; }
+
+/* ---- Blacktron II theme: tabs, buttons, header brick ---- */
+#lego-inv-root #main-tabs .tab-btn, #lego-inv-root .sub-tabs .tab-btn { --tab-color: var(--surface-2) !important; --tab-text-color: var(--text-primary) !important; border-color: var(--border); }
+#lego-inv-root #main-tabs .tab-btn.active, #lego-inv-root .sub-tabs .tab-btn.active { --tab-color: var(--bt-neon) !important; --tab-text-color: var(--on-accent) !important; border-color: var(--bt-neon); box-shadow: 0 0 12px rgba(200,240,60,0.35); }
+#lego-inv-root #main-tabs .tab-btn:hover:not(.active), #lego-inv-root .sub-tabs .tab-btn:hover:not(.active) { filter: none; border-color: var(--bt-neon); }
+#lego-inv-root .tabs { border-bottom-color: var(--border); }
+#lego-inv-root button { background: var(--surface-2); color: var(--text-primary); border: 2px solid var(--border); padding: 6px 12px; }
+#lego-inv-root button:hover:not(:disabled) { border-color: var(--bt-neon); }
+#lego-inv-root button:disabled { opacity: 0.5; }
+#lego-inv-root button#import-btn, #lego-inv-root button#export-btn, #lego-inv-root button#cache-fetch-btn { color: var(--on-accent); }
+#lego-inv-root button#import-btn:hover, #lego-inv-root button#export-btn:hover, #lego-inv-root button#cache-fetch-btn:hover { color: var(--on-accent); }
+#lego-inv-root .row-delete-btn, #lego-inv-root .thumb-manage-btn { background: none; border: none; }
+#lego-inv-root .lego-brick .stud { background: var(--bt-neon); border-color: var(--bt-neon-dark); }
+#lego-inv-root .lego-brick .body { background: var(--bt-black); border-color: var(--bt-white); }
+#lego-inv-root .lego-title { color: var(--bt-white); }
+#lego-inv-root .metric { border-left-color: var(--bt-neon); }
+#lego-inv-root input[type=number], #lego-inv-root input[type=search], #lego-inv-root input[type=password], #lego-inv-root input[type=url], #lego-inv-root input[type=email], #lego-inv-root input:not([type]) { background: var(--surface-2); color: var(--text-primary); border: 2px solid var(--border); border-radius: 8px; }
+#lego-inv-root input[type=checkbox], #lego-inv-root input[type=radio] { accent-color: var(--bt-neon); }
+#lego-inv-root a { color: var(--bt-neon); }
+#lego-inv-root ::placeholder { color: var(--text-muted); }
+#lego-inv-root input[type=file]::file-selector-button { background: var(--surface-2); color: var(--text-primary); border: 2px solid var(--border); border-radius: 14px; padding: 4px 10px; font-weight: 700; cursor: pointer; }
+@media print {
+  /* printing stays black on white */
+  #lego-inv-root { --surface-2: #FFFFFF; --surface-1: #F2F2F2; --surface-0: #FFFFFF; --text-primary: #111; --text-secondary: #444; --text-muted: #777; --border: #CCC; --lego-black: #111; --bg-success: #E8F5E9; --text-success: #2E7D32; --bg-danger: #FDECEA; --text-danger: #B3241A; --lego-green: #2E7D32; --lego-blue: #111; color-scheme: light; }
+}
 </style>
 
 <div id="app-main-content">
@@ -378,7 +411,7 @@
     <div class="body"></div>
   </div>
   <div>
-    <h1 class="lego-title">Lego Collection Inventory</h1>
+    <h1 class="lego-title">Winfield’s Awesome Lego Collection, est. 1988</h1>
     <p class="lego-subtitle">Track what you have, what's short, and what to order next</p>
   </div>
 </div>
@@ -834,10 +867,13 @@
   <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
     <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Upload parts for a build</p>
     <p style="color: var(--text-secondary); margin: 0 0 10px;">
-      Works with a full CSV (Part Num, Quantity, Color, Description, elementId) or with Rebrickable's own parts-list export, which only includes <strong>Element ID</strong> and <strong>Quantity</strong>. You can choose <strong>several CSV files at once</strong> (one per build) &mdash; each is matched to a build by its file name, or starts a new build, and you can change the match before importing &mdash; if Part Num is missing, each element ID is first looked up against parts already known elsewhere in the app (other builds, sets, or drawers), then against the Rebrickable API for anything still unmatched (uses the same API key entered on the Data &amp; Tools tab). Anything that still can't be matched is imported with those fields left blank, so you can search for and fill them in afterward using "Incomplete info" on the MOC Parts tab. Leave <strong>Look up each part on Rebrickable</strong> ticked and every new line also gets its blank description and element ID filled in and a photo saved (to your site if GitHub Connection is set up) &mdash; values in your CSV are never overwritten, and the import is saved first, so a slow or failed lookup never loses rows.
+      Works with a full CSV (Part Num, Quantity, Color, Description, elementId) or with Rebrickable's own parts-list export, which only includes <strong>Element ID</strong> and <strong>Quantity</strong>. Pick <strong>+ New build</strong> in the dropdown to start a new build from the CSV (name it and, if you like, give it a theme). You can choose <strong>several CSV files at once</strong> (one per build) &mdash; each is matched to a build by its file name, or starts a new build, and you can change the match before importing &mdash; if Part Num is missing, each element ID is first looked up against parts already known elsewhere in the app (other builds, sets, or drawers), then against the Rebrickable API for anything still unmatched (uses the same API key entered on the Data &amp; Tools tab). Anything that still can't be matched is imported with those fields left blank, so you can search for and fill them in afterward using "Incomplete info" on the MOC Parts tab. Leave <strong>Look up each part on Rebrickable</strong> ticked and every new line also gets its blank description and element ID filled in and a photo saved (to your site if GitHub Connection is set up) &mdash; values in your CSV are never overwritten, and the import is saved first, so a slow or failed lookup never loses rows.
     </p>
     <div class="controls" style="margin-bottom: 8px;">
       <select id="mocbuild-csv-target" class="lockable"><option value="">Which build is this for?</option></select>
+      <input type="text" id="mocbuild-csv-new-name" class="lockable" placeholder="New build name" style="display:none;" />
+      <input type="text" id="mocbuild-csv-new-theme" class="lockable" list="mocbuild-theme-options" placeholder="Theme (optional)" style="display:none;" />
+      <datalist id="mocbuild-theme-options"></datalist>
       <input type="file" id="mocbuild-csv-file" class="lockable" accept=".csv,text/csv" multiple title="Choose one CSV, or several at once (one per build)" />
       <button id="mocbuild-csv-template-btn" class="icon-btn"><i class="ti ti-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Download CSV template</button>
     </div>
@@ -1992,7 +2028,7 @@
       if (!bar){
         bar = appBannerEl = document.createElement('div');
         bar.id = 'app-notice-banner';
-        bar.style.cssText = 'position:relative; margin:0 0 12px; padding:10px 12px; border-radius:10px; font-size:13px; line-height:1.45; border:2px solid #d98a1f; background:#fff4e0; color:#6b4306;';
+        bar.style.cssText = 'position:relative; margin:0 0 12px; padding:10px 12px; border-radius:10px; font-size:13px; line-height:1.45; border:2px solid #FFB14A; background:#2A2112; color:#FFE2B8;';
         var close = document.createElement('button');
         close.className = 'icon-btn';
         close.textContent = 'Dismiss';
@@ -2006,7 +2042,7 @@
       }
       bar.style.display = 'block';
       if (kind === 'error'){ appBannerHasError = true; }
-      if (appBannerHasError){ bar.style.borderColor = '#d64545'; bar.style.background = '#fdecea'; bar.style.color = '#7a1a14'; }
+      if (appBannerHasError){ bar.style.borderColor = '#FF5A4E'; bar.style.background = '#2E1513'; bar.style.color = '#FFD2CE'; }
       var item = document.createElement('div');
       item.className = 'app-notice-item';
       item.style.cssText = 'padding-right:76px; margin-bottom:4px;';
@@ -5100,8 +5136,31 @@
     if (!sel) return;
     var cur = sel.value;
     var names = Array.from(new Set(state.rows.map(function(r){ return r.moc; }).concat(mocBuilds.map(function(b){ return b.name; })))).filter(Boolean).sort();
-    sel.innerHTML = '<option value="">Which build is this for?</option>' + names.map(function(n){ return '<option value="'+escapeHtml(n)+'">'+escapeHtml(n)+'</option>'; }).join('');
+    sel.innerHTML = '<option value="">Which build is this for?</option><option value="__new__">+ New build\u2026</option>' + names.map(function(n){ return '<option value="'+escapeHtml(n)+'">'+escapeHtml(n)+'</option>'; }).join('');
     sel.value = cur;
+    if (sel.value !== cur) sel.value = '';
+    var dl = document.getElementById('mocbuild-theme-options');
+    if (dl){
+      var themes = Array.from(new Set(Object.keys(mocThemes).map(function(k){ return mocThemes[k]; }).filter(Boolean))).sort();
+      dl.innerHTML = themes.map(function(t){ return '<option value="' + escapeHtml(t) + '"></option>'; }).join('');
+    }
+    showNewBuildFields();
+  }
+  function showNewBuildFields(){
+    var sel = document.getElementById('mocbuild-csv-target');
+    var isNew = sel && sel.value === '__new__' && sel.style.display !== 'none';
+    ['mocbuild-csv-new-name', 'mocbuild-csv-new-theme'].forEach(function(id){ var el = document.getElementById(id); if (el) el.style.display = isNew ? '' : 'none'; });
+  }
+  // Find a build by name, ignoring case and spacing differences
+  function existingBuildNamed(name){
+    var k = String(name || '').trim().toLowerCase().replace(/\s+/g, ' ');
+    return mbcBuildNames().find(function(n){ return n.toLowerCase().replace(/\s+/g, ' ') === k; }) || '';
+  }
+  function setNewBuildTheme(name, theme){
+    theme = String(theme || '').trim();
+    if (!theme || !name) return;
+    mocThemes[name] = theme;
+    saveMocThemes();
   }
 
   function fetchElementFromApi(elementId){
@@ -6126,7 +6185,7 @@
     function fail(msg){
       statusEl.style.color = 'var(--text-danger)';
       statusEl.textContent = (batch && batch.prefix || '') + msg;
-      if (batch) batch.done({ ok: false, msg: msg });
+      if (batch && batch.done) batch.done({ ok: false, msg: msg });
     }
     var table = parseCSV(text);
     if (table.length < 2){
@@ -6209,6 +6268,7 @@
         mocBuilds.push({ name: buildName });
         saveMocBuilds();
       }
+      if (batch && batch.afterSave) batch.afterSave();
 
       var unresolvedMsg = '';
       if (unresolved){
@@ -6219,7 +6279,7 @@
         (localResolved ? (' ' + localResolved + ' matched from your existing inventory.') : '') +
         (apiResolved ? (' ' + apiResolved + ' matched via Rebrickable.') : '') +
         unresolvedMsg;
-      if (batch){ batch.done({ ok: true, added: added, msg: statusEl.textContent }); return; }
+      if (batch && batch.done){ batch.done({ ok: true, added: added, msg: statusEl.textContent }); return; }
 
       document.getElementById('mocbuild-csv-paste').value = '';
       document.getElementById('mocbuild-csv-file').value = '';
@@ -9952,7 +10012,7 @@
     [['dm-tab-move', isMove], ['dm-tab-swap', !isMove]].forEach(function(pair){
       var btn = document.getElementById(pair[0]);
       btn.style.background = pair[1] ? 'var(--lego-blue)' : '';
-      btn.style.color = pair[1] ? '#fff' : '';
+      btn.style.color = pair[1] ? 'var(--on-accent)' : '';
       btn.style.borderColor = pair[1] ? 'var(--lego-blue)' : '';
     });
   }
@@ -11429,7 +11489,7 @@
         var yesBtn = document.createElement('button');
         yesBtn.className = 'icon-btn lockable';
         yesBtn.textContent = 'Yes, delete';
-        yesBtn.style.cssText = 'color:#fff; background:var(--text-danger); border-color:var(--text-danger);';
+        yesBtn.style.cssText = 'color:var(--on-accent); background:var(--text-danger); border-color:var(--text-danger);';
         yesBtn.addEventListener('click', function(){
           clearTimeout(armTimer);
           var wasActive = entry.id === bagActiveProgressId;
@@ -11581,7 +11641,7 @@
       missing.forEach(function(it){
         var idx = bagStagingItems.indexOf(it);
         var row = document.getElementById('bag-inventory-staging-list').children[idx];
-        if (row) row.style.background = 'rgba(217,41,29,0.08)';
+        if (row) row.style.background = 'var(--bg-danger)';
       });
       return;
     }
@@ -11946,10 +12006,12 @@
       box.style.display = 'none';
       box.innerHTML = '';
       single.style.display = '';
+      showNewBuildFields();
       btn.innerHTML = '<i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import parts for this build';
       return;
     }
     single.style.display = 'none';
+    showNewBuildFields();
     btn.innerHTML = '<i class="ti ti-upload" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Import all ' + files.length + ' files';
     var names = mbcBuildNames();
     var h = '<p style="margin:0 0 6px; font-size:12px; color:var(--text-secondary);">' + files.length + ' files chosen. Pick the build each one is for, or keep <strong>New build</strong> to start a new one with the name shown. Each file is added alongside anything already in that build.</p>';
@@ -11963,6 +12025,7 @@
           names.map(function(n){ return '<option value="' + escapeHtml(n) + '"' + (n === guess ? ' selected' : '') + '>' + escapeHtml(n) + '</option>'; }).join('') +
         '</select>' +
         '<input type="text" class="mbc-new-name lockable" placeholder="New build name" value="' + escapeHtml(mbcCleanName(f.name)) + '" style="flex:1 1 170px; min-width:0;' + (guess ? ' display:none;' : '') + '" />' +
+        '<input type="text" class="mbc-new-theme lockable" list="mocbuild-theme-options" placeholder="Theme (optional)" style="flex:1 1 130px; min-width:0;' + (guess ? ' display:none;' : '') + '" />' +
         '</div>';
     });
     h += '</div>';
@@ -11971,10 +12034,30 @@
     box.querySelectorAll('.mbc-target').forEach(function(sel){
       sel.addEventListener('change', function(){
         sel.parentNode.querySelector('.mbc-new-name').style.display = sel.value === '__new__' ? '' : 'none';
+        sel.parentNode.querySelector('.mbc-new-theme').style.display = sel.value === '__new__' ? '' : 'none';
       });
     });
   }
-  wireEl('mocbuild-csv-file', 'change', function(){ safeRun('choosing files', renderMocBuildCsvMulti); });
+  wireEl('mocbuild-csv-file', 'change', function(){
+    safeRun('choosing files', renderMocBuildCsvMulti);
+    // one file chosen and no build picked yet: match it to a build by file name, or offer a new build named after the file
+    var input = document.getElementById('mocbuild-csv-file'), sel = document.getElementById('mocbuild-csv-target');
+    if (input.files && input.files.length === 1 && !sel.value){
+      var guess = mbcGuessBuild(input.files[0].name, mbcBuildNames());
+      sel.value = guess || '__new__';
+      if (!guess) document.getElementById('mocbuild-csv-new-name').value = mbcCleanName(input.files[0].name);
+    } else if (input.files && input.files.length === 1 && sel.value === '__new__' && !document.getElementById('mocbuild-csv-new-name').value.trim()){
+      document.getElementById('mocbuild-csv-new-name').value = mbcCleanName(input.files[0].name);
+    }
+    showNewBuildFields();
+  });
+  wireEl('mocbuild-csv-target', 'change', function(){
+    var input = document.getElementById('mocbuild-csv-file'), nameEl = document.getElementById('mocbuild-csv-new-name');
+    var isNew = document.getElementById('mocbuild-csv-target').value === '__new__';
+    if (isNew && !nameEl.value.trim() && input.files && input.files[0]) nameEl.value = mbcCleanName(input.files[0].name);
+    showNewBuildFields();
+    if (isNew) nameEl.focus();
+  });
 
   function readFileText(file){
     return new Promise(function(resolve, reject){
@@ -11992,9 +12075,11 @@
     document.querySelectorAll('#mocbuild-csv-multi .mbc-row').forEach(function(row){
       var f = files[parseInt(row.dataset.i, 10)];
       var sel = row.querySelector('.mbc-target').value;
-      var name = sel === '__new__' ? row.querySelector('.mbc-new-name').value.trim() : sel;
+      var isNew = sel === '__new__';
+      var name = isNew ? row.querySelector('.mbc-new-name').value.trim() : sel;
       if (!name && !problem) problem = 'Give a build name for ' + f.name + '.';
-      jobs.push({ file: f, build: name });
+      if (isNew && name && existingBuildNamed(name)) name = existingBuildNamed(name);   // same name as a build you have: add to it
+      jobs.push({ file: f, build: name, theme: isNew ? row.querySelector('.mbc-new-theme').value : '' });
     });
     if (problem){ statusEl.style.color = 'var(--text-danger)'; statusEl.textContent = problem; return; }
     var resultsEl = document.getElementById('mocbuild-csv-multi-results');
@@ -12010,7 +12095,7 @@
         statusEl.textContent = 'File ' + (i + 1) + ' of ' + jobs.length + ': ' + job.file.name + '…';
         return readFileText(job.file).then(function(text){
           return new Promise(function(resolve){
-            importBuildPartsCSVText(job.build, text, { done: function(res){ resolve(res); }, prefix: 'File ' + (i + 1) + ' of ' + jobs.length + ' (' + job.build + '): ' });
+            importBuildPartsCSVText(job.build, text, { afterSave: function(){ if (!mocThemes[job.build]) setNewBuildTheme(job.build, job.theme); }, done: function(res){ resolve(res); }, prefix: 'File ' + (i + 1) + ' of ' + jobs.length + ' (' + job.build + '): ' });
           });
         }).catch(function(err){ return { ok: false, msg: (err && err.message) || 'Could not read that file.' }; }).then(function(res){
           results.push({ file: job.file.name, build: job.build, ok: res.ok, added: res.added || 0, msg: res.msg || '' });
@@ -12047,13 +12132,40 @@
     var statusEl = document.getElementById('mocbuild-csv-status');
     if (!buildName){
       statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Choose a build from the dropdown first.';
+      statusEl.textContent = 'Choose a build from the dropdown first, or pick \u201c+ New build\u201d to start one.';
       return;
+    }
+    var hooks;
+    if (buildName === '__new__'){
+      var newName = document.getElementById('mocbuild-csv-new-name').value.trim().replace(/\s+/g, ' ');
+      if (!newName){
+        statusEl.style.color = 'var(--text-danger)';
+        statusEl.textContent = 'Give the new build a name first.';
+        document.getElementById('mocbuild-csv-new-name').focus();
+        return;
+      }
+      var already = existingBuildNamed(newName);
+      if (already){
+        statusEl.style.color = 'var(--text-danger)';
+        statusEl.textContent = 'You already have a build called \u201c' + already + '\u201d. Pick it from the dropdown to add these parts to it, or give the new build a different name.';
+        return;
+      }
+      var newTheme = document.getElementById('mocbuild-csv-new-theme').value;
+      buildName = newName;
+      hooks = { afterSave: function(){
+        setNewBuildTheme(newName, newTheme);
+        // the new build is now in the list: select it and clear the new-build fields
+        populateMocBuildCsvTarget();
+        document.getElementById('mocbuild-csv-target').value = newName;
+        document.getElementById('mocbuild-csv-new-name').value = '';
+        document.getElementById('mocbuild-csv-new-theme').value = '';
+        showNewBuildFields();
+      } };
     }
     var fileInput = document.getElementById('mocbuild-csv-file');
     if (fileInput.files && fileInput.files[0]){
       var reader = new FileReader();
-      reader.onload = function(e){ importBuildPartsCSVText(buildName, e.target.result); };
+      reader.onload = function(e){ importBuildPartsCSVText(buildName, e.target.result, hooks); };
       reader.onerror = function(){ statusEl.style.color = 'var(--text-danger)'; statusEl.textContent = 'Could not read that file.'; };
       reader.readAsText(fileInput.files[0]);
     } else {
@@ -12063,7 +12175,7 @@
         statusEl.textContent = 'Choose a file or paste CSV text first.';
         return;
       }
-      importBuildPartsCSVText(buildName, text);
+      importBuildPartsCSVText(buildName, text, hooks);
     }
   });
 
@@ -15408,7 +15520,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.10.6';          // bump with every change to this page
+  var APP_VERSION = '2026.10.10.9';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
@@ -16942,15 +17054,15 @@
 
     var top20Btn = document.getElementById('shop-top20-btn');
     top20Btn.style.background = shopTop20Only ? 'var(--lego-blue)' : '';
-    top20Btn.style.color = shopTop20Only ? '#fff' : '';
+    top20Btn.style.color = shopTop20Only ? 'var(--on-accent)' : '';
     top20Btn.style.borderColor = shopTop20Only ? 'var(--lego-blue)' : '';
     var almostBtn = document.getElementById('shop-almost-complete-btn');
     almostBtn.style.background = shopAlmostCompleteOnly ? 'var(--lego-green)' : '';
-    almostBtn.style.color = shopAlmostCompleteOnly ? '#fff' : '';
+    almostBtn.style.color = shopAlmostCompleteOnly ? 'var(--on-accent)' : '';
     almostBtn.style.borderColor = shopAlmostCompleteOnly ? 'var(--lego-green)' : '';
     var tallyModeBtn = document.getElementById('shop-tally-mode-btn');
     tallyModeBtn.style.background = shopTallyMode ? 'var(--lego-green)' : '';
-    tallyModeBtn.style.color = shopTallyMode ? '#fff' : '';
+    tallyModeBtn.style.color = shopTallyMode ? 'var(--on-accent)' : '';
     tallyModeBtn.style.borderColor = shopTallyMode ? 'var(--lego-green)' : '';
     document.getElementById('shop-tally-reset-btn').style.display = shopTallyMode ? 'inline-block' : 'none';
     document.getElementById('shop-tally-commit-btn').style.display = shopTallyMode ? 'inline-block' : 'none';
