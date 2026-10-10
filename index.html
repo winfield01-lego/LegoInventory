@@ -2069,44 +2069,78 @@
   }, 8000);
   var LS_PREFIX = 'legoinv:';
   function lsKey(key){ return LS_PREFIX + key; }
+  // Saved data lives in the browser's built-in database (IndexedDB), which holds far more than the ~5 MB of
+  // localStorage that a large collection outgrows. Anything still in localStorage from before is read from there
+  // until it's next saved, then moved across. If the database can't be opened, localStorage is used as before.
+  var idbPromise = null;
+  function openIdb(){
+    if (idbPromise) return idbPromise;
+    idbPromise = new Promise(function(resolve){
+      var done = false;
+      function finish(db){ if (!done){ done = true; resolve(db); } }
+      try {
+        if (!window.indexedDB){ finish(null); return; }
+        var req = indexedDB.open('legoinv', 1);
+        req.onupgradeneeded = function(){ try { req.result.createObjectStore('kv'); } catch(e){} };
+        req.onsuccess = function(){ finish(req.result); };
+        req.onerror = function(){ finish(null); };
+        req.onblocked = function(){ finish(null); };
+        setTimeout(function(){ finish(null); }, 5000);
+      } catch(e){ finish(null); }
+    });
+    return idbPromise;
+  }
+  function idbRun(mode, fn){
+    return openIdb().then(function(db){
+      if (!db) throw new Error('no database');
+      return new Promise(function(resolve, reject){
+        var tx = db.transaction('kv', mode), out;
+        var r = fn(tx.objectStore('kv'));
+        if (r) r.onsuccess = function(){ out = r.result; };
+        tx.oncomplete = function(){ resolve(out); };
+        tx.onerror = tx.onabort = function(){ reject(tx.error || new Error('database write failed')); };
+      });
+    });
+  }
+  function lsGet(key){ try { return localStorage.getItem(lsKey(key)); } catch(e){ return null; } }
   var storage = {
     get: function(key, shared){
-      return new Promise(function(resolve){
-        try {
-          var v = localStorage.getItem(lsKey(key));
-          if (v === null){ resolve(null); return; }
-          resolve({ key: key, value: v, shared: !!shared });
-        } catch (e){ resolve(null); }
+      return idbRun('readonly', function(st){ return st.get(lsKey(key)); }).then(function(v){
+        if (v === undefined || v === null) v = lsGet(key);
+        return v === null || v === undefined ? null : { key: key, value: v, shared: !!shared };
+      }).catch(function(){
+        var v = lsGet(key);
+        return v === null ? null : { key: key, value: v, shared: !!shared };
       });
     },
     set: function(key, value, shared){
-      return new Promise(function(resolve){
-        try {
-          localStorage.setItem(lsKey(key), value);
-          resolve({ key: key, value: value, shared: !!shared });
-        } catch (e){ resolve(null); }
+      return idbRun('readwrite', function(st){ return st.put(value, lsKey(key)); }).then(function(){
+        try { localStorage.removeItem(lsKey(key)); } catch(e){}   // free the old, smaller store
+        return { key: key, value: value, shared: !!shared };
+      }).catch(function(){
+        try { localStorage.setItem(lsKey(key), value); return { key: key, value: value, shared: !!shared }; }
+        catch (e){ return null; }
       });
     },
     delete: function(key, shared){
-      return new Promise(function(resolve){
-        try {
-          var existed = localStorage.getItem(lsKey(key)) !== null;
-          localStorage.removeItem(lsKey(key));
-          resolve({ key: key, deleted: existed, shared: !!shared });
-        } catch (e){ resolve(null); }
+      var existed = lsGet(key) !== null;
+      try { localStorage.removeItem(lsKey(key)); } catch(e){}
+      return idbRun('readwrite', function(st){ return st.delete(lsKey(key)); }).catch(function(){}).then(function(){
+        return { key: key, deleted: existed, shared: !!shared };
       });
     },
     list: function(prefix, shared){
-      return new Promise(function(resolve){
-        try {
-          var keys = [];
-          var full = LS_PREFIX + (prefix || '');
-          for (var i = 0; i < localStorage.length; i++){
-            var k = localStorage.key(i);
-            if (k && k.indexOf(full) === 0) keys.push(k.slice(LS_PREFIX.length));
-          }
-          resolve({ keys: keys, prefix: prefix, shared: !!shared });
-        } catch (e){ resolve(null); }
+      var full = LS_PREFIX + (prefix || '');
+      var keys = {};
+      try {
+        for (var i = 0; i < localStorage.length; i++){
+          var k = localStorage.key(i);
+          if (k && k.indexOf(full) === 0) keys[k.slice(LS_PREFIX.length)] = true;
+        }
+      } catch(e){}
+      return idbRun('readonly', function(st){ return st.getAllKeys(); }).catch(function(){ return []; }).then(function(all){
+        (all || []).forEach(function(k){ k = String(k); if (k.indexOf(full) === 0) keys[k.slice(LS_PREFIX.length)] = true; });
+        return { keys: Object.keys(keys), prefix: prefix, shared: !!shared };
       });
     }
   };
@@ -2259,6 +2293,68 @@
     key = String(key);
     return !!lockGuardedKeys[key] || key.indexOf(IMG_PREFIX) === 0 || key.indexOf(IMG_PART_PREFIX) === 0;
   }
+
+  // ---- Save health: which collection data this browser failed to save, so an out-of-date copy is never trusted ----
+  var STORAGE_HEALTH_KEY = 'storage-health-v1';
+  var storageHealth = null, storageHealthLoaded = false, storageFailShown = false;
+  function dataKindOfKey(key){
+    if (key === SETS_KEY || key === SET_PARTS_KEY) return 'set';
+    if (key === STORAGE_KEY || key === MOC_BUILDS_KEY || key === MOC_THEMES_KEY || key === MOC_LOCATIONS_KEY || key === MOC_DESCRIPTIONS_KEY || key === MOC_INSTRUCTIONS_KEY) return 'build';
+    if (key === DRAWERS_KEY || key === DRAWER_PARTS_KEY) return 'drawer';
+    return '';
+  }
+  // the kinds of data whose copy in this browser may be out of date (until the site's copy has been loaded again)
+  function distrustedKinds(){ return (storageHealth && storageHealth.distrust) || {}; }
+  function hasDistrust(){ return Object.keys(distrustedKinds()).length > 0; }
+  function loadStorageHealth(){
+    var backend = (typeof storage !== 'undefined' && storage) ? storage : window.storage;
+    return backend.get(STORAGE_HEALTH_KEY, false).then(function(res){
+      var h = null;
+      try { h = res && res.value ? JSON.parse(res.value) : null; } catch(e){ h = null; }
+      // No record = saved by an older version of this page, which couldn't tell when set parts failed to save
+      storageHealth = h && typeof h === 'object' ? h : { distrust: { set: true }, failed: {} };
+      storageHealth.distrust = storageHealth.distrust || {};
+      storageHealth.failed = storageHealth.failed || {};
+      storageHealthLoaded = true;
+    }).catch(function(){ storageHealth = { distrust: { set: true }, failed: {} }; storageHealthLoaded = true; });
+  }
+  var writeStorageHealth = function(){};
+  function clearDistrust(){
+    if (!storageHealth || !hasDistrust()) return;
+    // only once everything that failed has since saved properly
+    if (Object.keys(storageHealth.failed).length) return;
+    storageHealth.distrust = {};
+    writeStorageHealth();
+  }
+  (function installStorageHealthWatch(){
+    try {
+      var backend = (typeof storage !== 'undefined' && storage) ? storage : window.storage;
+      if (!backend || typeof backend.set !== 'function' || backend.__healthWatched) return;
+      var originalSet = backend.set.bind(backend);
+      writeStorageHealth = function(){ if (storageHealth) originalSet(STORAGE_HEALTH_KEY, JSON.stringify(storageHealth), false); };
+      backend.set = function(key, value, shared){
+        return originalSet(key, value, shared).then(function(res){
+          var kind = dataKindOfKey(key);
+          if (kind && storageHealthLoaded && storageHealth){
+            if (res){
+              if (storageHealth.failed[key]){ delete storageHealth.failed[key]; writeStorageHealth(); }
+            } else {
+              var changed = !storageHealth.failed[key] || !storageHealth.distrust[kind];
+              storageHealth.failed[key] = new Date().toISOString();
+              storageHealth.distrust[kind] = true;
+              if (changed) writeStorageHealth();
+              if (!storageFailShown){
+                storageFailShown = true;
+                showAppBanner('notice', 'This browser couldn’t save part of your data', 'Its storage is full, so the latest ' + (kind === 'set' ? 'official set' : kind === 'build' ? 'MOC build' : 'drawer') + ' data isn’t kept in this browser. Changes still go to your site, and next time this browser opens it will use your site’s copy of that data instead of its own.');
+              }
+            }
+          }
+          return res;
+        });
+      };
+      backend.__healthWatched = true;
+    } catch(e){}
+  })();
   (function installLockStorageGuard(){
     try {
       var backend = (typeof storage !== 'undefined' && storage) ? storage : window.storage;
@@ -2575,7 +2671,7 @@
     var setOnlyParts = setParts.filter(function(r){ return !isFigNum(r.setNum); });
     var figOnlyParts = setParts.filter(function(r){ return isFigNum(r.setNum); });
     var totalSetPiecesNeeded = setOnlyParts.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
-    var totalSetPiecesOnHand = setOnlyParts.reduce(function(sum, r){ return sum + setPartOnHand(r); }, 0);
+    var totalSetPiecesOnHand = setOnlyParts.reduce(function(sum, r){ return sum + Math.min(setPartOnHand(r), setPartNeeded(r)); }, 0);
     var totalFigPiecesNeeded = figOnlyParts.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
     var totalFigPiecesOnHand = figOnlyParts.reduce(function(sum, r){ return sum + Math.min(setPartOnHand(r), setPartNeeded(r)); }, 0);
     var totalDrawerPieces = drawerParts.reduce(function(sum, r){ return sum + r.qty; }, 0);
@@ -3227,7 +3323,7 @@
       var rows = setParts.filter(function(r){ return r.setNum === s.setNum; });
       if (!rows.length) return;
       var needed = rows.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
-      var onHand = rows.reduce(function(sum, r){ return sum + setPartOnHand(r); }, 0);
+      var onHand = rows.reduce(function(sum, r){ return sum + Math.min(setPartOnHand(r), setPartNeeded(r)); }, 0);
       var missing = needed - onHand;
       if (missing > 0 && missing <= threshold){
         var shortSetParts = rows.filter(function(r){ return setPartOnHand(r) < setPartNeeded(r); })
@@ -4789,7 +4885,7 @@
   function buildSetCard(s){
     var rows = setParts.filter(function(p){ return p.setNum === s.setNum; });
     var neededTotal = rows.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
-    var onHandTotal = rows.reduce(function(sum, r){ return sum + setPartOnHand(r); }, 0);
+    var onHandTotal = rows.reduce(function(sum, r){ return sum + Math.min(setPartOnHand(r), setPartNeeded(r)); }, 0);   // extras of one part can't cover another
     var short = neededTotal - onHandTotal;
     var card = document.createElement('div');
     card.className = 'owned-set-card';
@@ -8309,7 +8405,7 @@
 
   function refreshSetDetailMetrics(rows, setInfo){
     var pieceNeeded = rows.reduce(function(sum, r){ return sum + setPartNeeded(r); }, 0);
-    var pieceOnHand = rows.reduce(function(sum, r){ return sum + setPartOnHand(r); }, 0);
+    var pieceOnHand = rows.reduce(function(sum, r){ return sum + Math.min(setPartOnHand(r), setPartNeeded(r)); }, 0);
     var metricsEl = document.getElementById('detail-modal-metrics');
     metricsEl.innerHTML = '';
     if (!setInfo.mocGroup) metricsEl.appendChild(buildQtyOwnedMetric(setInfo, rows));
@@ -15088,7 +15184,8 @@
   }
 
   function syncTime(x){ var t = Date.parse((x && x.lastEdited) || ''); return isNaN(t) ? 0 : t; }
-  function mergeSyncPayloads(local, remote, base){
+  function mergeSyncPayloads(local, remote, base, distrust){
+    distrust = distrust || {};
     var summary = { fromSite: [], fromHere: [] };
     var out = {};
     var fpL = base ? syncFingerprints(local) : null, fpR = base ? syncFingerprints(remote) : null;
@@ -15097,6 +15194,7 @@
     function same(a, b){ return stableStringify(a) === stableStringify(b); }
     // decide one entity: 'l' (this device), 'r' (site) or '' (deleted on one side after the other side last edited it)
     function choose(kind, key, l, r){
+      if (distrust[kind] && r) return 'r';   // this browser's copy may be out of date: the site's wins
       if (base){
         var k = kind + ':' + key, bh = base[k], lh = l ? fpL[k] : null, rh = r ? fpR[k] : null;
         if (l && r){
@@ -15268,9 +15366,16 @@
     }
     return tryPut(syncBaseSha);
   }
-  function mergeIntoThisDevice(siteData){
-    var m = mergeSyncPayloads(buildFullDataPayload(), siteData, syncBaseHashes);
+  function mergeIntoThisDevice(siteData, distrust){
+    var m = mergeSyncPayloads(buildFullDataPayload(), siteData, syncBaseHashes, distrust);
     applyFullDataPayload(m.payload, true);
+    if (distrust && Object.keys(distrust).length){
+      // what came from the site only because this browser's own copy couldn't be trusted isn't "another device's change"
+      var kindOfLabel = function(t){ return /^(set|minifigure) /.test(t) ? 'set' : /^build /.test(t) ? 'build' : /^drawer /.test(t) ? 'drawer' : ''; };
+      m.summary.fromSite = m.summary.fromSite.filter(function(t){ return !distrust[kindOfLabel(t)]; });
+      var what = Object.keys(distrust).map(function(k){ return k === 'set' ? 'official sets and minifigures' : k === 'build' ? 'MOC builds' : 'drawers'; }).join(' and ');
+      showAppBanner('notice', 'Loaded your ' + what + ' from your site', 'This browser\u2019s own saved copy of your ' + what + ' may have been out of date (an earlier version of this page couldn\u2019t fit it all in the browser\u2019s storage), so your site\u2019s copy was used and nothing was overwritten. This browser now keeps a full copy.');
+    }
     if (m.summary.fromSite.length || m.summary.fromHere.length){
       lastMergeSummary = m.summary;
       showAppBanner('notice', 'Combined changes from another device', 'Your site had changes made on another computer or browser since this one last synced, so the two were combined instead of one replacing the other: ' + describeMerge(m.summary) + '.');
@@ -15284,13 +15389,17 @@
         return 'none';
       }
       var changedHere = dirtyAtBoot || localDirty || editsSinceBoot !== editsAtStart;
+      var distrust = distrustedKinds();
       if (!changedHere){
         applyFullDataPayload(site.data);
         saveSyncBase(site.sha, buildFullDataPayload());   // fingerprints of exactly what this browser now holds
+        clearDistrust();
         return 'loaded';
       }
-      if (site.sha && site.sha === syncBaseSha) return saveAllDataToGithub(true).then(function(ok){ return ok ? 'published' : 'local'; });   // the site hasn't moved: this device is simply ahead
-      mergeIntoThisDevice(site.data);
+      // the site hasn't moved: this device is simply ahead (unless part of what it holds failed to save last time)
+      if (site.sha && site.sha === syncBaseSha && !hasDistrust()) return saveAllDataToGithub(true).then(function(ok){ return ok ? 'published' : 'local'; });
+      mergeIntoThisDevice(site.data, distrust);
+      clearDistrust();
       saveSyncBase(site.sha, site.data);
       localDirty = true;
       saveDirtyFlag();
@@ -15299,7 +15408,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.10.4';          // bump with every change to this page
+  var APP_VERSION = '2026.10.10.6';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
@@ -17278,7 +17387,7 @@
     safeRun('lock state', applyViewLockState);
     bootStage = 'loading your saved data';
     stepSafe('loadState', loadState).then(function(){ return stepSafe('loadImageCacheIndex', loadImageCacheIndex); }).then(function(){ return stepSafe('loadPartImgCacheIndex', loadPartImgCacheIndex); }).then(function(){ return stepSafe('loadChecklist', loadChecklist); }).then(function(){ return stepSafe('loadTallyCounts', loadTallyCounts); }).then(function(){ return stepSafe('loadTallyDrawerAssignments', loadTallyDrawerAssignments); }).then(function(){ return stepSafe('loadProxyPreference', loadProxyPreference); }).then(function(){ return stepSafe('loadPriorityLabels', loadPriorityLabels); }).then(function(){ return stepSafe('loadOwnedSets', loadOwnedSets); }).then(function(){ return stepSafe('loadSetParts', loadSetParts); }).then(function(){ return stepSafe('loadDrawers', loadDrawers); }).then(function(){ return stepSafe('loadDrawerParts', loadDrawerParts); }).then(function(){ return stepSafe('loadBagInventoryLog', loadBagInventoryLog); }).then(function(){ return stepSafe('loadPullLog', loadPullLog); }).then(function(){ return stepSafe('loadBagProgressList', loadBagProgressList); }).then(function(){ return stepSafe('loadSetPhotos', loadSetPhotos); }).then(function(){ return stepSafe('loadMocPhotos', loadMocPhotos); }).then(function(){ return stepSafe('loadMocLocations', loadMocLocations); }).then(function(){ return stepSafe('loadMocBuilds', loadMocBuilds); }).then(function(){ return stepSafe('loadMocThemes', loadMocThemes); }).then(function(){ return stepSafe('loadMocDescriptions', loadMocDescriptions); }).then(function(){ return stepSafe('loadMocInstructions', loadMocInstructions); }).then(function(){ return stepSafe('loadLocationLabels', loadLocationLabels); })
-    .then(function(){ return stepSafe('loadRebrickableKey', loadRebrickableKey); }).then(function(){ return stepSafe('loadRbCatalogCache', loadRbCatalogCache); }).then(function(){ return stepSafe('loadSetProxyPref', loadSetProxyPref); }).then(function(){ return stepSafe('loadGithubSettings', loadGithubSettings); }).then(function(){ return stepSafe('loadBackupPassword', loadBackupPassword); }).then(function(){ return stepSafe('loadGithubShaMap', loadGithubShaMap); }).then(function(){ return stepSafe('loadDirtyFlag', loadDirtyFlag); }).then(function(){ return stepSafe('loadSyncState', loadSyncState); }).then(function(){ return stepSafe('loadViewLocked', loadViewLocked); })
+    .then(function(){ return stepSafe('loadRebrickableKey', loadRebrickableKey); }).then(function(){ return stepSafe('loadRbCatalogCache', loadRbCatalogCache); }).then(function(){ return stepSafe('loadSetProxyPref', loadSetProxyPref); }).then(function(){ return stepSafe('loadGithubSettings', loadGithubSettings); }).then(function(){ return stepSafe('loadBackupPassword', loadBackupPassword); }).then(function(){ return stepSafe('loadGithubShaMap', loadGithubShaMap); }).then(function(){ return stepSafe('loadDirtyFlag', loadDirtyFlag); }).then(function(){ return stepSafe('loadSyncState', loadSyncState); }).then(function(){ return stepSafe('loadStorageHealth', loadStorageHealth); }).then(function(){ return stepSafe('loadViewLocked', loadViewLocked); })
     .then(function(){
       // Draw what's saved on this device straight away -- never make the first draw wait on the network.
       bootStage = 'drawing your data';
