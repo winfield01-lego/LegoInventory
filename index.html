@@ -414,6 +414,7 @@
 }
 @media (prefers-reduced-motion: reduce) { #lego-inv-root .bt-part { transition: none; } #lego-inv-root .bt-part:hover { transform: none; } }
 @media print { #lego-inv-root .empty-msg::before { display: none; } }
+#lego-inv-root .owned-set-card .set-year { font-size: 11px; font-weight: 700; color: var(--bt-neon, var(--lego-blue)); border: 1px solid var(--border); border-radius: 6px; padding: 1px 6px; margin-left: -6px; font-variant-numeric: tabular-nums; }
 #lego-inv-root .shop-pick-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 6px 0 6px; padding-top: 6px; border-top: 1px solid var(--border); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-secondary); }
 #lego-inv-root .shop-pick-head:first-child { border-top: none; padding-top: 0; margin-top: 0; }
 #lego-inv-root .shop-set-tag { display: inline-block; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; padding: 0 5px; border-radius: 4px; border: 1px solid var(--bt-neon, var(--lego-blue)); color: var(--bt-neon, var(--lego-blue)); vertical-align: 1px; }
@@ -931,7 +932,10 @@
     Want your sets (and everything else) saved to your actual site instead of just this browser? See "Publish your whole collection" on the Import tab.
   </div>
 
-  <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 6px;">Sets by theme</p>
+  <div class="row" style="justify-content: space-between; flex-wrap: wrap; gap: 8px; margin: 0 0 6px;">
+    <p id="sets-group-heading" style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0;">Sets by theme</p>
+    <label style="font-size:12px; color:var(--text-secondary); display:flex; align-items:center; gap:6px;">Group by <select id="sets-group-by"><option value="theme">Theme</option><option value="year">Release year</option><option value="decade">Decade</option></select></label>
+  </div>
   <div id="theme-summary-list" style="margin-bottom: 20px;"></div>
 
   <div class="row" style="justify-content: space-between; margin-bottom: 8px;">
@@ -968,6 +972,17 @@
     <div class="row">
       <button id="set-photos-fetch-btn" class="lockable"><i class="ti ti-photo-down" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch set photos</button>
       <span id="set-photos-status" style="font-size:13px; color:var(--text-secondary);"></span>
+    </div>
+  </div>
+
+  <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
+    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Release years</p>
+    <p style="color: var(--text-secondary); margin: 0 0 10px;">
+      Looks up the year each set came out on Rebrickable and adds it to sets that don't have one yet, so you can group your sets by release year or decade and see the year on each card. Needs your Rebrickable API key. New sets fetched with &ldquo;Fetch parts &amp; names&rdquo; get their year automatically.
+    </p>
+    <div class="row">
+      <button id="set-years-fetch-btn" class="lockable"><i class="ti ti-calendar" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fill in release years</button>
+      <span id="set-years-status" style="font-size:13px; color:var(--text-secondary);"></span>
     </div>
   </div>
 
@@ -2262,7 +2277,7 @@
   var lockWriteBypassUntil = 0;
   var lockNoticeTimer = null;
   var LOCK_EXEMPT_IDS = {};
-  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
+  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing sets-group-by collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
   var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input';
   var LOCK_CONTROL_SELECTOR = 'input, select, textarea, button';
 
@@ -4947,7 +4962,7 @@
     var card = document.createElement('div');
     card.className = 'owned-set-card';
     card.innerHTML =
-      '<span class="set-num">'+escapeHtml(s.setNum)+'</span>' +
+      '<span class="set-num">'+escapeHtml(s.setNum)+'</span>' + (setYearOf(s) ? '<span class="set-year" title="Released">' + setYearOf(s) + '</span>' : '') +
       '<span class="set-edit-field"><input type="text" class="set-name-edit" placeholder="Name" value="'+escapeHtml(s.name || '')+'" /></span>' +
       '<span class="set-edit-field"><input type="text" class="set-theme-edit" placeholder="Theme" value="'+escapeHtml(s.theme || '')+'" /></span>' +
       '<span class="set-edit-field"><select class="set-location-edit">'+locationOptionsHtml(s.location || '')+'</select></span>' +
@@ -6364,19 +6379,31 @@
     populateFillScope();
   }
 
+  var setsGroupMode = (function(){ try { return localStorage.getItem('legoinv:sets-group-by') || 'theme'; } catch(e){ return 'theme'; } })();
+  var YEAR_UNKNOWN = '(Year not known)';
   function themeGroupsSorted(){
     var groups = {};
+    var mode = setsGroupMode;
     realSets().forEach(function(s){
-      var theme = (s.theme && s.theme.trim()) ? s.theme.trim() : '(No theme)';
-      if (!groups[theme]) groups[theme] = [];
-      groups[theme].push(s);
+      var key;
+      if (mode === 'year' || mode === 'decade'){
+        var y = setYearOf(s);
+        key = !y ? YEAR_UNKNOWN : (mode === 'year' ? String(y) : (Math.floor(y / 10) * 10) + 's');
+      } else key = (s.theme && s.theme.trim()) ? s.theme.trim() : '(No theme)';
+      if (!groups[key]) groups[key] = [];
+      groups[key].push(s);
     });
     var names = Object.keys(groups).sort(function(a,b){
-      if (a === '(No theme)') return 1;
-      if (b === '(No theme)') return -1;
-      return a.localeCompare(b);
+      if (a === '(No theme)' || a === YEAR_UNKNOWN) return 1;
+      if (b === '(No theme)' || b === YEAR_UNKNOWN) return -1;
+      return mode === 'theme' ? a.localeCompare(b) : (parseInt(a, 10) - parseInt(b, 10));   // oldest first
     });
-    return names.map(function(theme){ return { theme: theme, sets: groups[theme] }; });
+    return names.map(function(key){
+      var list = groups[key];
+      // inside a year or decade, oldest first; inside a theme, oldest first where years are known
+      list = list.slice().sort(function(x, y){ var a = setYearOf(x) || 9999, b = setYearOf(y) || 9999; return a - b || String(x.setNum).localeCompare(String(y.setNum), undefined, { numeric: true }); });
+      return { theme: key, sets: list };
+    });
   }
 
   function renderThemeSummary(){
@@ -6386,6 +6413,10 @@
       return;
     }
     var groups = themeGroupsSorted();
+    var gh = document.getElementById('sets-group-heading');
+    if (gh) gh.textContent = setsGroupMode === 'year' ? 'Sets by release year' : (setsGroupMode === 'decade' ? 'Sets by decade' : 'Sets by theme');
+    var gsel = document.getElementById('sets-group-by');
+    if (gsel && gsel.value !== setsGroupMode) gsel.value = setsGroupMode;
     container.innerHTML = groups.map(function(g){
       return '<span class="theme-chip" data-theme-jump="'+escapeHtml(g.theme)+'">'+escapeHtml(g.theme)+' <span class="theme-chip-count">'+g.sets.length+'</span></span>';
     }).join('');
@@ -6686,18 +6717,19 @@
     }).catch(function(){ return ''; });
   }
 
-  function fetchSetDetailsFromApi(setNum){
+  function fetchSetDetailsFromApi(setNum, skipTheme){
     var url = 'https://rebrickable.com/api/v3/lego/sets/' + encodeURIComponent(setNum) + '/?key=' + encodeURIComponent(rebrickableApiKey);
     return fetchUrlMaybeProxied(url).then(function(resp){
       if (!resp.ok) throw new Error('HTTP ' + resp.status);
       return resp.json();
     }).then(function(data){
-      if (data.theme_id !== undefined && data.theme_id !== null){
+      var year = parseInt(data.year, 10) || 0;
+      if (!skipTheme && data.theme_id !== undefined && data.theme_id !== null){
         return fetchThemeName(data.theme_id).then(function(themeName){
-          return { name: data.name || '', theme: themeName, imgUrl: data.set_img_url || '' };
+          return { name: data.name || '', theme: themeName, imgUrl: data.set_img_url || '', year: year };
         });
       }
-      return { name: data.name || '', theme: '', imgUrl: data.set_img_url || '' };
+      return { name: data.name || '', theme: '', imgUrl: data.set_img_url || '', year: year };
     }).catch(function(){ return null; });
   }
 
@@ -6787,6 +6819,48 @@
     }
     next();
   }
+  // ---- Release years: Rebrickable's set lookup includes the year each set came out ----
+  function setYearOf(s){ var y = s && parseInt(s.year, 10); return y && y > 1940 ? y : 0; }
+  function fillSetYears(){
+    var statusEl = document.getElementById('set-years-status');
+    var btn = document.getElementById('set-years-fetch-btn');
+    function fail(msg){ statusEl.style.color = 'var(--text-danger)'; statusEl.textContent = msg; }
+    if (!rebrickableApiKey) return fail('Enter your Rebrickable API key first (Data & Tools tab).');
+    var todo = realSets().filter(function(s){ return !setYearOf(s); });
+    if (!todo.length){ statusEl.style.color = 'var(--text-success)'; statusEl.textContent = 'Every set already has its release year.'; return; }
+    var idx = 0, found = 0, missing = 0, failed = 0;
+    btn.disabled = true;
+    statusEl.style.color = 'var(--text-secondary)';
+    statusEl.textContent = 'Looking up release years… 0 / ' + todo.length;
+    function next(){
+      if (idx >= todo.length){
+        btn.disabled = false;
+        if (found) saveOwnedSets();
+        statusEl.style.color = failed ? 'var(--text-danger)' : 'var(--text-success)';
+        statusEl.textContent = 'Added the release year to ' + found + ' set' + (found === 1 ? '' : 's') + '.' +
+          (missing ? ' ' + missing + ' had no year on Rebrickable.' : '') +
+          (failed ? ' ' + failed + ' couldn’t be looked up — try again in a minute (Rebrickable limits how fast it answers).' : '');
+        renderSetsTab();
+        return;
+      }
+      var s = todo[idx++];
+      fetchSetDetailsFromApi(s.setNum, true).then(function(details){
+        if (!details){ failed++; return; }
+        if (details.year){ s.year = details.year; found++; } else missing++;
+      }).catch(function(){ failed++; }).then(function(){
+        statusEl.textContent = 'Looking up release years… ' + idx + ' / ' + todo.length;
+        if (found && found % 10 === 0) saveOwnedSets();
+        setTimeout(next, 350);   // stay well under Rebrickable's request limit
+      });
+    }
+    next();
+  }
+  wireEl('set-years-fetch-btn', 'click', fillSetYears);
+  wireEl('sets-group-by', 'change', function(){
+    setsGroupMode = this.value || 'theme';
+    try { localStorage.setItem('legoinv:sets-group-by', setsGroupMode); } catch(e){}
+    renderSetsTab();
+  });
   wireEl('set-photos-fetch-btn', 'click', fillMissingSetPhotos);
 
   function fetchAllSetsViaApi(){
@@ -6836,6 +6910,7 @@
         if (details){
           if (details.name) s.name = details.name;
           if (details.theme) s.theme = details.theme;
+          if (details.year) s.year = details.year;
           saveOwnedSets();
         }
         if (details && details.imgUrl && githubConnectionConfigured()){
@@ -7831,7 +7906,7 @@
       alert('No sets to export yet \u2014 add a set first.');
       return;
     }
-    var header = ['Set Number','Name','Theme','Qty Owned','Pieces Per Set','Total Pieces','Pieces On Hand','Pieces Missing','Location','Instructions','Last Edited'];
+    var header = ['Set Number','Name','Theme','Year','Qty Owned','Pieces Per Set','Total Pieces','Pieces On Hand','Pieces Missing','Location','Instructions','Last Edited'];
     var lines = [header.map(csvEscape).join(',')];
     realSets().slice().sort(function(a, b){
       return String(a.setNum).localeCompare(String(b.setNum), undefined, { numeric: true });
@@ -7847,7 +7922,7 @@
       });
       var hasParts = rows.length > 0;
       lines.push([
-        s.setNum, s.name || '', s.theme || '', s.qty,
+        s.setNum, s.name || '', s.theme || '', setYearOf(s) || '', s.qty,
         hasParts ? perSet : '', hasParts ? total : '', hasParts ? onHand : '', hasParts ? missing : '',
         s.location || '', (s.instructions && s.instructions.url) || '',
         s.lastEdited ? String(s.lastEdited).slice(0, 10) : ''
@@ -8751,7 +8826,7 @@
     if (!setInfo) return;
     detailContext = { kind: 'set', key: setNum };
 
-    document.getElementById('detail-modal-title').textContent = setInfo.setNum + (setInfo.name ? ' \u2014 ' + setInfo.name : '');
+    document.getElementById('detail-modal-title').textContent = setInfo.setNum + (setInfo.name ? ' \u2014 ' + setInfo.name : '') + (setYearOf(setInfo) ? ' (' + setYearOf(setInfo) + ')' : '');
     var themeEl = document.getElementById('detail-modal-theme');
     if (setInfo.theme){ themeEl.textContent = 'Theme: ' + setInfo.theme; themeEl.style.display = 'block'; }
     else { themeEl.style.display = 'none'; }
@@ -12442,7 +12517,7 @@
     var keys = Object.keys(src);
     var bits = keys.map(function(sn){
       var set = ownedSets.find(function(x){ return x.setNum === sn && !isFigEntry(x); });
-      return sn + (set && set.name ? ' ' + set.name : '') + (src[sn] > 1 ? ' (×' + src[sn] + ')' : '');
+      return sn + (set && set.name ? ' ' + set.name : '') + (setYearOf(set) ? ' (' + setYearOf(set) + ')' : '') + (src[sn] > 1 ? ' (×' + src[sn] + ')' : '');
     });
     var t = keys.length ? 'Comes in your set' + (keys.length === 1 ? '' : 's') + ' ' + bits.join(', ') : '';
     if (f.manualQty) t += (t ? ' · ' : '') + f.manualQty + ' added by hand';
@@ -15541,7 +15616,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.10.11';          // bump with every change to this page
+  var APP_VERSION = '2026.10.11.1';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
