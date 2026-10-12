@@ -35,6 +35,10 @@
   --bt-neon-dark: #A3C82A;
   --bt-gray: #9CA29E;
   --on-accent: #0A0B0B;
+<<<<<<< Updated upstream
+=======
+  --accent-text: var(--bt-neon);
+>>>>>>> Stashed changes
   --lego-red: #FF5A4E;
   --lego-red-dark: #D8443A;
   --lego-yellow: var(--bt-neon);
@@ -414,10 +418,30 @@
 }
 @media (prefers-reduced-motion: reduce) { #lego-inv-root .bt-part { transition: none; } #lego-inv-root .bt-part:hover { transform: none; } }
 @media print { #lego-inv-root .empty-msg::before { display: none; } }
+<<<<<<< Updated upstream
 #lego-inv-root .owned-set-card .set-year { font-size: 11px; font-weight: 700; color: var(--bt-neon, var(--lego-blue)); border: 1px solid var(--border); border-radius: 6px; padding: 1px 6px; margin-left: -6px; font-variant-numeric: tabular-nums; }
 #lego-inv-root .shop-pick-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 6px 0 6px; padding-top: 6px; border-top: 1px solid var(--border); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-secondary); }
 #lego-inv-root .shop-pick-head:first-child { border-top: none; padding-top: 0; margin-top: 0; }
 #lego-inv-root .shop-set-tag { display: inline-block; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; padding: 0 5px; border-radius: 4px; border: 1px solid var(--bt-neon, var(--lego-blue)); color: var(--bt-neon, var(--lego-blue)); vertical-align: 1px; }
+=======
+#lego-inv-root .owned-set-card .set-year { font-size: 11px; font-weight: 700; color: var(--accent-text); border: 1px solid var(--border); border-radius: 6px; padding: 1px 6px; margin-left: -6px; font-variant-numeric: tabular-nums; }
+#lego-inv-root .sets-tools-section { border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 16px; }
+#lego-inv-root .sets-tools-title { margin: 0 0 8px; font-size: 13px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; color: var(--lego-black); }
+#lego-inv-root .sets-historic { margin-bottom: 20px; }
+#lego-inv-root .collapse-header .collapse-sub { margin-left: auto; font-size: 11px; font-weight: 400; text-transform: none; letter-spacing: normal; color: var(--text-secondary); }
+#lego-inv-root .historic-tool { border-top: 1px solid var(--border); padding-top: 12px; margin-top: 12px; }
+#lego-inv-root .historic-tool-title { margin: 0 0 6px; font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-primary); }
+@media (max-width: 640px) { #lego-inv-root .collapse-header .collapse-sub { display: none; } }
+#lego-inv-root #tab-parts table { min-width: 860px; }
+#lego-inv-root #parts-tbody .qty-input, #lego-inv-root #parts-tbody .onhand-input { width: 100%; max-width: 72px; padding: 2px 4px; text-align: center; -moz-appearance: textfield; appearance: textfield; font-variant-numeric: tabular-nums; }
+#lego-inv-root #parts-tbody .qty-input::-webkit-inner-spin-button, #lego-inv-root #parts-tbody .qty-input::-webkit-outer-spin-button, #lego-inv-root #parts-tbody .onhand-input::-webkit-inner-spin-button, #lego-inv-root #parts-tbody .onhand-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+#lego-inv-root #parts-tbody td.qty-cell, #lego-inv-root #parts-tbody td.onhand-cell { padding-left: 4px; padding-right: 4px; }
+#lego-inv-root #parts-tbody td:nth-child(10) { overflow: visible; text-overflow: clip; }
+#lego-inv-root #parts-tbody .pill { white-space: nowrap; }
+#lego-inv-root .shop-pick-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 6px 0 6px; padding-top: 6px; border-top: 1px solid var(--border); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-secondary); }
+#lego-inv-root .shop-pick-head:first-child { border-top: none; padding-top: 0; margin-top: 0; }
+#lego-inv-root .shop-set-tag { display: inline-block; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; padding: 0 5px; border-radius: 4px; border: 1px solid var(--accent-text); color: var(--accent-text); vertical-align: 1px; }
+>>>>>>> Stashed changes
 #lego-inv-root input[type=file]::file-selector-button { background: var(--surface-2); color: var(--text-primary); border: 2px solid var(--border); border-radius: 14px; padding: 4px 10px; font-weight: 700; cursor: pointer; }
 @media print {
   /* printing stays black on white */
@@ -735,15 +759,15 @@
       <thead>
         <tr>
           <th style="width:6%">Image</th>
-          <th style="width:12%" data-sort="moc" id="parts-build-header">Build</th>
-          <th style="width:10%" data-sort="partNum">Part #</th>
+          <th style="width:10%" data-sort="moc" id="parts-build-header">Build</th>
+          <th style="width:9%" data-sort="partNum">Part #</th>
           <th style="width:10%" data-sort="color">Color</th>
-          <th style="width:16%" data-sort="desc">Description</th>
-          <th style="width:7%" data-sort="qty">Need</th>
+          <th style="width:13%" data-sort="desc">Description</th>
+          <th style="width:8%" data-sort="qty">Need</th>
           <th style="width:8%" data-sort="onHand">On hand</th>
-          <th style="width:8%">In drawers</th>
-          <th style="width:9%" data-sort="priority">Priority</th>
-          <th style="width:8%" data-sort="status">Status</th>
+          <th style="width:8%" data-sort="inDrawers" title="Sort by how many are in your drawers (lines you already have enough of go last)">In drawers</th>
+          <th style="width:8%" data-sort="priority">Priority</th>
+          <th style="width:14%" data-sort="status" title="Sort by how many are short">Status</th>
           <th style="width:6%"></th>
         </tr>
       </thead>
@@ -934,7 +958,14 @@
 
   <div class="row" style="justify-content: space-between; flex-wrap: wrap; gap: 8px; margin: 0 0 6px;">
     <p id="sets-group-heading" style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0;">Sets by theme</p>
+<<<<<<< Updated upstream
     <label style="font-size:12px; color:var(--text-secondary); display:flex; align-items:center; gap:6px;">Group by <select id="sets-group-by"><option value="theme">Theme</option><option value="year">Release year</option><option value="decade">Decade</option></select></label>
+=======
+    <div class="row" style="gap:12px; flex-wrap:wrap;">
+    <label style="font-size:12px; color:var(--text-secondary); display:flex; align-items:center; gap:6px;">Group by <select id="sets-group-by"><option value="theme">Theme</option><option value="year">Release year</option><option value="decade">Decade</option></select></label>
+    <label style="font-size:12px; color:var(--text-secondary); display:flex; align-items:center; gap:6px;">Sort by <select id="sets-sort-by"><option value="year-asc">Year (oldest first)</option><option value="year-desc">Year (newest first)</option><option value="num">Set number</option><option value="name">Name</option></select></label>
+    </div>
+>>>>>>> Stashed changes
   </div>
   <div id="theme-summary-list" style="margin-bottom: 20px;"></div>
 
@@ -953,17 +984,18 @@
     Want to bulk-import a set's parts from a CSV? See "Official Set Parts Upload" on the Import tab.
   </div>
 
-  <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
-    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Option B (best-effort): fetch via Rebrickable API</p>
+  <div class="sets-tools-section">
+    <p class="sets-tools-title">Fetch Parts and Names for New Sets</p>
     <p style="color: var(--text-secondary); margin: 0 0 10px;">
-      Needs a free API key from <span style="font-family: var(--font-mono);">rebrickable.com/api</span>, set up on the Data &amp; Tools tab. Browsers sometimes block this kind of cross-site request (the same issue we ran into with LEGO's own images) &mdash; if it fails for you, the CSV upload on the Import tab always works. Alongside the parts, this also looks up each set's official name and theme by its set number and updates them here &mdash; including overwriting anything you'd typed in manually. Spare parts Rebrickable lists with a set are ignored. Only fetches sets that don't already have parts on file, so it's fast to re-run after adding a new set &mdash; it won't re-download ones you already have. To refresh a set that already has parts (for example, to drop spares from an earlier import), open its Summary card and use <strong>Re-fetch parts from Rebrickable</strong>. When GitHub Connection is set up, each new set's photo is saved to your site at the same time.
+      Needs a free API key from <span style="font-family: var(--font-mono);">rebrickable.com/api</span>, set up on the Data &amp; Tools tab. Browsers sometimes block this kind of cross-site request (the same issue we ran into with LEGO's own images) &mdash; if it fails for you, the CSV upload on the Import tab always works. Alongside the parts, this also looks up each set's official name and theme by its set number and updates them here &mdash; including overwriting anything you'd typed in manually. Spare parts Rebrickable lists with a set are ignored. Only fetches sets that don't already have parts on file, so it's fast to re-run after adding a new set &mdash; it won't re-download ones you already have. To refresh a set that already has parts (for example, to drop spares from an earlier import), open its Summary card and use <strong>Re-fetch parts from Rebrickable</strong>. Each new set's release year is filled in at the same time, and when GitHub Connection is set up its photo is saved to your site too. For sets you added before that, use <strong>Fix historic data</strong> below.
     </p>
     <div class="row">
-      <button id="set-fetch-all-btn" class="lockable"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch parts &amp; names for new sets</button>
+      <button id="set-fetch-all-btn" class="lockable"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch parts and names for new sets</button>
       <span id="set-fetch-status" style="font-size:13px; color:var(--text-secondary);"></span>
     </div>
   </div>
 
+<<<<<<< Updated upstream
   <div style="border-top: 2px solid var(--border); padding-top: 16px; margin-bottom: 20px;">
     <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Set photos</p>
     <p style="color: var(--text-secondary); margin: 0 0 10px;">
@@ -1037,6 +1069,72 @@
       <button id="backfill-photos-stop-btn" class="icon-btn" style="display:none;">Stop</button>
       <button id="backfill-photos-report-btn" class="icon-btn" style="display:none;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Parts still without photos (CSV)</button>
       <span id="backfill-photos-status" style="font-size:13px; color:var(--text-secondary);"></span>
+=======
+  <div class="collapse-section sets-historic">
+    <button type="button" class="collapse-header" data-collapse-target="cs-sets-historic"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Fix Historic Data</span><span class="collapse-sub">Repair tools for sets added earlier</span></button>
+    <div class="collapse-body" id="cs-sets-historic" style="display:none;">
+      <p style="color: var(--text-secondary); margin: 0 0 4px;">These fill in or correct data for sets you added before a feature existed. New sets fetched above get all of this automatically.</p>
+      <div class="historic-tool">
+        <h4 class="historic-tool-title">Fetch set photos and release years</h4>
+        <p style="color: var(--text-secondary); margin: 0 0 10px;">
+          For sets added before these were automatic: looks each set up once on Rebrickable and fills in whatever it's missing &mdash; its release year, and its main photo (saved to your GitHub site's <span style="font-family: var(--font-mono);">set-photos/</span> folder so it shows in the set's Summary on every device). A photo you uploaded yourself is never replaced. Needs your Rebrickable API key; photos also need GitHub Connection (Data &amp; Tools tab) and are skipped without it. Safe to run again &mdash; sets that already have both are skipped.
+        </p>
+            <div class="row">
+          <button id="set-photos-years-btn" class="lockable"><i class="ti ti-photo-down" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Fetch set photos and release years</button>
+          <span id="set-photos-years-status" style="font-size:13px; color:var(--text-secondary);"></span>
+        </div>
+      </div>
+      <div class="historic-tool">
+        <h4 class="historic-tool-title">Fill in missing element IDs</h4>
+        <p style="color: var(--text-secondary); margin: 0 0 10px;">
+          Scans every part line across MOC Builds, Official Sets, and Drawers for a part #/color combo with no element ID, and looks each one up on Rebrickable. Uses the Rebrickable API key set up on the Data &amp; Tools tab. One lookup per unique part #/color combo &mdash; the result is applied to every matching line everywhere it appears, so a part missing its ID in five different builds only costs one request.
+        </p>
+            <div class="row">
+          <button id="fill-element-ids-btn" class="lockable"><i class="ti ti-barcode" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Look up missing element IDs</button>
+          <span id="fill-element-ids-status" style="font-size:13px; color:var(--text-secondary);"></span>
+        </div>
+      </div>
+      <div class="historic-tool">
+        <h4 class="historic-tool-title">Backfill missing photos</h4>
+        <p style="color: var(--text-secondary); margin: 0 0 10px;">
+          Finds part lines with no photo &mdash; in your builds, your sets and your drawers &mdash; and fills them in from Rebrickable. It first checks every line (not just the ones you've already looked at), then looks each part up by part number and color, then by element ID, then by its BrickLink or LDraw number, and as a last resort a close variant of the part number (those are counted as &ldquo;close matches&rdquo;). Each photo is saved under the line's own element ID &mdash; uploaded to your site if GitHub Connection is set up (nothing is copied into the browser then, so it can't crowd out your data), otherwise saved in this browser. It paces its requests, retries when Rebrickable asks it to slow down, and when it finishes it tells you exactly why anything is still missing, with a CSV of those parts. Safe to run again: it skips anything that now has a photo.
+        </p>
+            <div class="row" style="flex-wrap:wrap; gap:8px; align-items:center;">
+          <button id="backfill-photos-btn" class="lockable"><i class="ti ti-photo-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Backfill missing photos</button>
+          <button id="backfill-photos-stop-btn" class="icon-btn" style="display:none;">Stop</button>
+          <button id="backfill-photos-report-btn" class="icon-btn" style="display:none;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Parts still without photos (CSV)</button>
+          <span id="backfill-photos-status" style="font-size:13px; color:var(--text-secondary);"></span>
+        </div>
+      </div>
+      <div class="historic-tool">
+        <h4 class="historic-tool-title">Re-fetch parts lists from Rebrickable</h4>
+        <p style="color: var(--text-secondary); margin: 0 0 10px;">
+          Checks each set's parts list against Rebrickable's current one, the same as the <strong>Re-fetch parts</strong> button in a set's Summary, but for many sets at once. <strong>Check</strong> only looks &mdash; it lists which sets would change and how. Then <strong>Apply</strong> replaces the lists of the sets you leave ticked. Parts you'd marked short keep their shortfall; everything else counts as owned; spare parts are left out. Sets checked recently are skipped, so a repeat run only does the rest.
+        </p>
+            <div class="row" style="flex-wrap: wrap; gap: 8px; margin-bottom: 8px; align-items:center;">
+          <select id="set-refetch-scope" title="Which sets to check"><option value="all">All official sets</option></select>
+          <span style="font-size:13px; color:var(--text-secondary);">Skip sets checked in the last</span>
+          <select id="set-refetch-skip" title="Sets whose parts list was fetched recently are left alone"><option value="60" selected>2 months</option><option value="30">1 month</option><option value="180">6 months</option><option value="0">nothing &mdash; check them all</option></select>
+        </div>
+        <div class="row" style="flex-wrap: wrap; gap: 8px; align-items:center;">
+          <button id="set-refetch-check-btn" class="icon-btn"><i class="ti ti-cloud-search" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Check sets against Rebrickable</button>
+          <button id="set-refetch-apply-btn" class="lockable" style="display:none;"></button>
+          <button id="set-refetch-stop-btn" class="icon-btn" style="display:none;">Stop</button>
+        </div>
+        <p id="set-refetch-status" style="margin: 8px 0 0; font-size: 13px; color: var(--text-secondary);"></p>
+        <div id="set-refetch-results"></div>
+      </div>
+      <div class="historic-tool">
+        <h4 class="historic-tool-title">Mark all sets complete</h4>
+        <p style="color: var(--text-secondary); margin: 0 0 10px;">
+          Newly imported or fetched set parts are already assumed complete by default &mdash; this is only for fixing sets imported before that was the case, where some part lines still show as short even though you haven't actually used or lost anything from them. Sets every part line, across every official set you own, to fully on hand. This can't be undone, so only use it if your sets genuinely aren't missing anything right now &mdash; mark individual parts short afterward as needed.
+        </p>
+            <div class="row">
+          <button id="mark-all-sets-complete-btn" class="lockable"><i class="ti ti-checks" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Mark all sets complete</button>
+          <span id="mark-all-sets-complete-status" style="font-size:13px; color:var(--text-secondary);"></span>
+        </div>
+      </div>
+>>>>>>> Stashed changes
     </div>
   </div>
 
@@ -2277,7 +2375,11 @@
   var lockWriteBypassUntil = 0;
   var lockNoticeTimer = null;
   var LOCK_EXEMPT_IDS = {};
+<<<<<<< Updated upstream
   'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing sets-group-by collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
+=======
+  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing sets-group-by sets-sort-by collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
+>>>>>>> Stashed changes
   var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input';
   var LOCK_CONTROL_SELECTOR = 'input, select, textarea, button';
 
@@ -2866,9 +2968,14 @@
       }
       return true;
     });
+    var sortStock = state.sortCol === 'inDrawers' ? buildDrawerStockMap() : null;
+    function sortValue(r){
+      if (state.sortCol === 'status') return Math.max((r.qty || 0) - (r.onHand || 0), 0);
+      if (state.sortCol === 'inDrawers') return statusFor(r) === 'ok' ? -1 : (sortStock[stockKeyOf(r.partNum, r.color)] || 0);
+      return r[state.sortCol];
+    }
     rows.sort(function(a,b){
-      var av = a[state.sortCol], bv = b[state.sortCol];
-      if (state.sortCol === 'status'){ av = statusFor(a); bv = statusFor(b); }
+      var av = sortValue(a), bv = sortValue(b);
       if (typeof av === 'number' && typeof bv === 'number') return (av-bv)*state.sortDir;
       return String(av).localeCompare(String(bv)) * state.sortDir;
     });
@@ -3086,8 +3193,12 @@
       rows.forEach(function(it){ it._sortVal = it.onHand >= it.need ? 1 : 0; });
       rows.sort(function(a,b){
         var col = state.sortCol === 'moc' ? 'partNum' : (state.sortCol === 'qty' ? 'need' : state.sortCol);
-        var av = col === 'status' ? (a.onHand >= a.need ? 1 : 0) : (a[col] || '');
-        var bv = col === 'status' ? (b.onHand >= b.need ? 1 : 0) : (b[col] || '');
+        function cv(it){
+          if (col === 'status') return Math.max(it.need - it.onHand, 0);
+          if (col === 'inDrawers') return it.onHand >= it.need ? -1 : (drawerStock[stockKeyOf(it.partNum, it.color)] || 0);
+          return it[col] || '';
+        }
+        var av = cv(a), bv = cv(b);
         if (typeof av === 'number' && typeof bv === 'number') return (av-bv)*state.sortDir;
         return String(av).localeCompare(String(bv), undefined, {numeric:true}) * state.sortDir;
       });
@@ -3179,7 +3290,7 @@
         '<td class="onhand-cell"></td>'+
         inDrawersHtml +
         '<td class="priority-cell"></td>'+
-        '<td><span class="pill '+(st==='ok'?'pill-ok':'pill-short')+'">'+(st==='ok' ? 'Have enough' : 'Short '+(r.qty-r.onHand))+'</span></td>'+
+        '<td><span class="pill '+(st==='ok'?'pill-ok':'pill-short')+'">'+(st==='ok' ? 'Have enough' : 'Short '+(r.qty-r.onHand).toLocaleString())+'</span></td>'+
         '<td class="actions-cell"></td>';
       var thumbWrap = tr.querySelector('.part-thumb-wrap');
       buildThumb(r, thumbWrap);
@@ -3209,7 +3320,7 @@
         var pill = tr.querySelector('.pill');
         var st2 = statusFor(r);
         pill.className = 'pill ' + (st2==='ok' ? 'pill-ok' : 'pill-short');
-        pill.textContent = st2==='ok' ? 'Have enough' : 'Short ' + (r.qty - r.onHand);
+        pill.textContent = st2==='ok' ? 'Have enough' : 'Short ' + (r.qty - r.onHand).toLocaleString();
         var cell = tr.querySelector('.in-drawers-cell');
         cell.className = st2 === 'ok' ? 'in-drawers-cell' : 'in-drawers-cell wrap-cell';
         cell.style.color = st2 === 'ok' ? 'var(--text-muted)' : '';
@@ -6381,6 +6492,18 @@
 
   var setsGroupMode = (function(){ try { return localStorage.getItem('legoinv:sets-group-by') || 'theme'; } catch(e){ return 'theme'; } })();
   var YEAR_UNKNOWN = '(Year not known)';
+<<<<<<< Updated upstream
+=======
+  var setsSortMode = (function(){ try { return localStorage.getItem('legoinv:sets-sort-by') || 'year-asc'; } catch(e){ return 'year-asc'; } })();
+  function compareSetsForList(x, y){
+    var byNum = String(x.setNum).localeCompare(String(y.setNum), undefined, { numeric: true });
+    if (setsSortMode === 'num') return byNum;
+    if (setsSortMode === 'name') return String(x.name || '').localeCompare(String(y.name || ''), undefined, { sensitivity: 'base' }) || byNum;
+    var a = setYearOf(x), b = setYearOf(y);
+    if (!a !== !b) return a ? -1 : 1;   // sets without a year go last either way
+    return (setsSortMode === 'year-desc' ? b - a : a - b) || byNum;
+  }
+>>>>>>> Stashed changes
   function themeGroupsSorted(){
     var groups = {};
     var mode = setsGroupMode;
@@ -6396,12 +6519,21 @@
     var names = Object.keys(groups).sort(function(a,b){
       if (a === '(No theme)' || a === YEAR_UNKNOWN) return 1;
       if (b === '(No theme)' || b === YEAR_UNKNOWN) return -1;
+<<<<<<< Updated upstream
       return mode === 'theme' ? a.localeCompare(b) : (parseInt(a, 10) - parseInt(b, 10));   // oldest first
     });
     return names.map(function(key){
       var list = groups[key];
       // inside a year or decade, oldest first; inside a theme, oldest first where years are known
       list = list.slice().sort(function(x, y){ var a = setYearOf(x) || 9999, b = setYearOf(y) || 9999; return a - b || String(x.setNum).localeCompare(String(y.setNum), undefined, { numeric: true }); });
+=======
+      if (mode === 'theme') return a.localeCompare(b);
+      return setsSortMode === 'year-desc' ? (parseInt(b, 10) - parseInt(a, 10)) : (parseInt(a, 10) - parseInt(b, 10));
+    });
+    return names.map(function(key){
+      var list = groups[key];
+      list = list.slice().sort(compareSetsForList);
+>>>>>>> Stashed changes
       return { theme: key, sets: list };
     });
   }
@@ -6417,6 +6549,11 @@
     if (gh) gh.textContent = setsGroupMode === 'year' ? 'Sets by release year' : (setsGroupMode === 'decade' ? 'Sets by decade' : 'Sets by theme');
     var gsel = document.getElementById('sets-group-by');
     if (gsel && gsel.value !== setsGroupMode) gsel.value = setsGroupMode;
+<<<<<<< Updated upstream
+=======
+    var ssel = document.getElementById('sets-sort-by');
+    if (ssel && ssel.value !== setsSortMode) ssel.value = setsSortMode;
+>>>>>>> Stashed changes
     container.innerHTML = groups.map(function(g){
       return '<span class="theme-chip" data-theme-jump="'+escapeHtml(g.theme)+'">'+escapeHtml(g.theme)+' <span class="theme-chip-count">'+g.sets.length+'</span></span>';
     }).join('');
@@ -6772,53 +6909,70 @@
     });
   }
 
-  function fillMissingSetPhotos(){
-    var statusEl = document.getElementById('set-photos-status');
-    var btn = document.getElementById('set-photos-fetch-btn');
+  // ---- Release years: Rebrickable's set lookup includes the year each set came out ----
+  function setYearOf(s){ var y = s && parseInt(s.year, 10); return y && y > 1940 ? y : 0; }
+  wireEl('sets-group-by', 'change', function(){
+    setsGroupMode = this.value || 'theme';
+    try { localStorage.setItem('legoinv:sets-group-by', setsGroupMode); } catch(e){}
+    renderSetsTab();
+  });
+  wireEl('sets-sort-by', 'change', function(){
+    setsSortMode = this.value || 'year-asc';
+    try { localStorage.setItem('legoinv:sets-sort-by', setsSortMode); } catch(e){}
+    renderSetsTab();
+  });
+  // ---- Fix historic data: one pass per set fills in its photo (saved to your site) and its release year ----
+  function fillSetPhotosAndYears(){
+    var statusEl = document.getElementById('set-photos-years-status');
+    var btn = document.getElementById('set-photos-years-btn');
     function fail(msg){ statusEl.style.color = 'var(--text-danger)'; statusEl.textContent = msg; }
     if (!rebrickableApiKey) return fail('Enter your Rebrickable API key first (Data & Tools tab).');
-    if (!githubConnectionConfigured()) return fail('Photos are saved to your GitHub site \u2014 set up GitHub Connection on the Data & Tools tab first.');
     if (!realSets().length) return fail('Add a set first.');
-    var todo = realSets().filter(function(s){ return !setPhotos[s.setNum]; });
+    var photosOn = githubConnectionConfigured();
+    var todo = realSets().filter(function(s){ return !setYearOf(s) || (photosOn && !setPhotos[s.setNum]); });
     if (!todo.length){
       statusEl.style.color = 'var(--text-success)';
-      statusEl.textContent = 'Every set already has a photo.';
+      statusEl.textContent = 'Every set already has its release year' + (photosOn ? ' and a photo.' : '. (Set up GitHub Connection to also save set photos.)');
       return;
     }
-    var counts = { saved: 0, had: 0, noimage: 0, failed: 0 };
-    var lastError = '', idx = 0, done = 0, total = todo.length;
+    var c = { years: 0, noYear: 0, saved: 0, had: 0, noimage: 0, photoFailed: 0, lookupFailed: 0 }, lastError = '', idx = 0;
     btn.disabled = true;
     statusEl.style.color = 'var(--text-secondary)';
-    statusEl.textContent = 'Fetching photos\u2026 0 / ' + total;
-
+    statusEl.textContent = 'Checking sets… 0 / ' + todo.length;
     function finish(){
       btn.disabled = false;
-      var bits = [];
-      bits.push('Saved ' + counts.saved + ' photo' + (counts.saved === 1 ? '' : 's') + ' to your site' + (counts.saved ? ' (they can take a minute or two to appear)' : '') + '.');
-      if (counts.had) bits.push(counts.had + ' already had a photo and ' + (counts.had === 1 ? 'was' : 'were') + ' left alone.');
-      if (counts.noimage) bits.push(counts.noimage + ' ha' + (counts.noimage === 1 ? 's' : 've') + ' no photo on Rebrickable.');
-      if (counts.failed) bits.push(counts.failed + ' failed (' + (lastError || 'unknown error') + ') \u2014 run it again to retry those.');
-      statusEl.style.color = counts.failed ? 'var(--text-danger)' : 'var(--text-success)';
+      if (c.years) saveOwnedSets();
+      var bits = ['Added the release year to ' + c.years + ' set' + (c.years === 1 ? '' : 's') + '.'];
+      if (photosOn) bits.push('Saved ' + c.saved + ' set photo' + (c.saved === 1 ? '' : 's') + ' to your site' + (c.saved ? ' (they can take a minute or two to appear)' : '') + '.');
+      else bits.push('Photos skipped — set up GitHub Connection on the Data & Tools tab to save them to your site.');
+      if (c.had) bits.push(c.had + ' already had a photo.');
+      if (c.noYear) bits.push(c.noYear + ' had no year on Rebrickable.');
+      if (c.noimage) bits.push(c.noimage + ' had no photo on Rebrickable.');
+      if (c.lookupFailed || c.photoFailed) bits.push((c.lookupFailed + c.photoFailed) + ' failed' + (lastError ? ' (' + lastError + ')' : '') + ' — run it again to retry those.');
+      statusEl.style.color = (c.lookupFailed || c.photoFailed) ? 'var(--text-danger)' : 'var(--text-success)';
       statusEl.textContent = bits.join(' ');
+      renderSetsTab();
     }
     function next(){
-      if (idx >= total) return finish();
+      if (idx >= todo.length) return finish();
       var s = todo[idx++];
-      fetchSetImageUrl(s.setNum).then(function(url){
-        return importSetPhoto(s.setNum, url);
-      }).then(function(result){
-        counts[result]++;
-      }).catch(function(err){
-        counts.failed++;
-        lastError = (err && err.message) ? err.message : 'unknown error';
-      }).then(function(){
-        done++;
-        statusEl.textContent = 'Fetching photos\u2026 ' + done + ' / ' + total;
-        next();
+      var wantYear = !setYearOf(s), wantPhoto = photosOn && !setPhotos[s.setNum];
+      fetchSetDetailsFromApi(s.setNum, true).then(function(details){
+        if (!details){ c.lookupFailed++; return; }
+        if (wantYear){ if (details.year){ s.year = details.year; c.years++; } else c.noYear++; }
+        if (wantPhoto){
+          return importSetPhoto(s.setNum, details.imgUrl).then(function(result){ c[result] = (c[result] || 0) + 1; })
+            .catch(function(err){ c.photoFailed++; lastError = (err && err.message) || 'unknown error'; });
+        }
+      }).catch(function(){ c.lookupFailed++; }).then(function(){
+        statusEl.textContent = 'Checking sets… ' + idx + ' / ' + todo.length;
+        if (c.years && c.years % 10 === 0) saveOwnedSets();
+        setTimeout(next, 350);   // stay well under Rebrickable's request limit
       });
     }
     next();
   }
+<<<<<<< Updated upstream
   // ---- Release years: Rebrickable's set lookup includes the year each set came out ----
   function setYearOf(s){ var y = s && parseInt(s.year, 10); return y && y > 1940 ? y : 0; }
   function fillSetYears(){
@@ -6862,6 +7016,9 @@
     renderSetsTab();
   });
   wireEl('set-photos-fetch-btn', 'click', fillMissingSetPhotos);
+=======
+  wireEl('set-photos-years-btn', 'click', fillSetPhotosAndYears);
+>>>>>>> Stashed changes
 
   function fetchAllSetsViaApi(){
     var statusEl = document.getElementById('set-fetch-status');
@@ -11994,6 +12151,56 @@
     });
   });
 
+  // ---- Adding a set you already have: confirm it's a second copy, then count that copy's parts as on hand ----
+  function confirmDuplicateSet(existing, addQty, onYes){
+    var old = document.getElementById('dup-set-overlay');
+    if (old) old.remove();
+    var rows = setParts.filter(function(r){ return r.setNum === existing.setNum; });
+    var perCopy = rows.reduce(function(n, r){ return n + (r.qtyPerSet || 0); }, 0);
+    var figCount = ownedFigs().reduce(function(n, f){ return n + ((f.figSources || {})[existing.setNum] || 0); }, 0);
+    var cur = existing.qty || 1, next = cur + addQty;
+    var ov = document.createElement('div');
+    ov.id = 'dup-set-overlay';
+    ov.className = 'no-print';
+    ov.style.cssText = 'position:fixed; inset:0; background:rgba(0,0,0,0.65); z-index:1200; display:flex; align-items:center; justify-content:center; padding:20px;';
+    ov.innerHTML =
+      '<div role="dialog" aria-modal="true" aria-labelledby="dup-set-title" style="background:var(--surface-2); border:2px solid var(--border-strong); border-radius:var(--radius); max-width:460px; width:100%; padding:20px; position:relative;">' +
+        '<button type="button" id="dup-set-close" class="icon-btn close-x-btn" aria-label="Close" title="Close" style="position:absolute; top:12px; right:12px;"><svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 2l10 10M12 2L2 12"/></svg></button>' +
+        '<h2 id="dup-set-title" style="margin:0 0 10px; font-size:18px; padding-right:40px; color:var(--lego-black);">You already have this set</h2>' +
+        '<p style="margin:0 0 10px; line-height:1.5;"><strong>' + escapeHtml(existing.setNum + (existing.name ? ' ' + existing.name : '')) + '</strong> is already on your list with <strong>' + cur + '</strong> cop' + (cur === 1 ? 'y' : 'ies') + '.</p>' +
+        '<p style="margin:0 0 10px; line-height:1.5;">Add ' + (addQty === 1 ? 'another copy' : addQty + ' more copies') + '? You’ll own <strong>' + next + '</strong>, and ' +
+          (rows.length ? 'the on-hand count for each of its ' + rows.length.toLocaleString() + ' part lines goes up by ' + (addQty === 1 ? 'one full copy' : addQty + ' full copies') + ' (+' + (perCopy * addQty).toLocaleString() + ' pieces)' : 'its parts will be counted for ' + next + ' copies once you add its parts list') +
+          (figCount ? ', along with ' + (figCount * addQty) + ' more minifigure' + (figCount * addQty === 1 ? '' : 's') : '') + '.</p>' +
+        '<p style="margin:0 0 16px; font-size:12px; color:var(--text-secondary); line-height:1.45;">If the new copy is missing pieces, lower those parts’ on-hand counts in its Summary afterwards.</p>' +
+        '<div style="display:flex; gap:8px; justify-content:flex-end; flex-wrap:wrap;">' +
+          '<button type="button" id="dup-set-cancel" class="icon-btn">Cancel</button>' +
+          '<button type="button" id="dup-set-yes" class="lockable" style="background:var(--lego-blue); color:var(--on-accent); border-color:var(--lego-blue);">Add ' + (addQty === 1 ? 'second copy' : addQty + ' copies') + '</button>' +
+        '</div>' +
+      '</div>';
+    (ROOT || document.body).appendChild(ov);
+    function close(){ ov.remove(); }
+    ov.querySelector('#dup-set-close').addEventListener('click', close);
+    ov.querySelector('#dup-set-cancel').addEventListener('click', close);
+    ov.addEventListener('click', function(e){ if (e.target === ov) close(); });
+    ov.querySelector('#dup-set-yes').addEventListener('click', function(){ close(); onYes(); });
+    ov.querySelector('#dup-set-yes').focus();
+  }
+  function addCopiesOfSet(existing, addQty){
+    var oldQty = existing.qty || 1;
+    // what's on hand now (a line with no count yet counts as complete), plus the new copies' parts
+    setParts.forEach(function(r){
+      if (r.setNum !== existing.setNum) return;
+      var have = (r.onHand !== undefined && r.onHand !== null) ? r.onHand : (r.qtyPerSet || 0) * oldQty;
+      r.onHand = have + (r.qtyPerSet || 0) * addQty;
+    });
+    existing.qty = oldQty + addQty;
+    touchSetLastEdited(existing.setNum);
+    saveOwnedSets();
+    saveSetParts();
+    syncFigQuantities();   // its minifigures (and their parts) follow the set's new quantity
+    return existing.qty;
+  }
+
   wireEl('set-add-btn', 'click', function(){
     var raw = document.getElementById('set-num-input').value;
     var setNum = normalizedSetNum(raw);
@@ -12002,19 +12209,29 @@
     if (isNaN(qty) || qty < 1) qty = 1;
     var name = document.getElementById('set-name-input').value.trim();
     var theme = document.getElementById('set-theme-input').value.trim();
-    var existing = ownedSets.find(function(s){ return s.setNum === setNum; });
-    if (existing){
-      existing.qty = qty;
-      if (name) existing.name = name;
-      if (theme) existing.theme = theme;
-    } else {
-      ownedSets.push({ setNum: setNum, qty: qty, name: name, theme: theme, lastEdited: new Date().toISOString() });
+    function clearForm(){
+      document.getElementById('set-num-input').value = '';
+      document.getElementById('set-qty-input').value = '1';
+      document.getElementById('set-name-input').value = '';
+      document.getElementById('set-theme-input').value = '';
     }
+    var existing = ownedSets.find(function(s){ return s.setNum === setNum && !isFigEntry(s); });
+    if (existing){
+      confirmDuplicateSet(existing, qty, function(){
+        if (name && !existing.name) existing.name = name;
+        if (theme && !existing.theme) existing.theme = theme;
+        var total = addCopiesOfSet(existing, qty);
+        clearForm();
+        expandedThemes.add(themeGroupsSorted().filter(function(g){ return g.sets.indexOf(existing) !== -1; }).map(function(g){ return g.theme; })[0]);
+        renderSetsTab();
+        render();
+        showAppBanner('notice', 'Added another ' + existing.setNum + (existing.name ? ' ' + existing.name : ''), 'You now own ' + total + ' copies, and the new cop' + (qty === 1 ? 'y\u2019s' : 'ies\u2019') + ' parts are counted as on hand.');
+      });
+      return;
+    }
+    ownedSets.push({ setNum: setNum, qty: qty, name: name, theme: theme, lastEdited: new Date().toISOString() });
     saveOwnedSets();
-    document.getElementById('set-num-input').value = '';
-    document.getElementById('set-qty-input').value = '1';
-    document.getElementById('set-name-input').value = '';
-    document.getElementById('set-theme-input').value = '';
+    clearForm();
     renderSetsTab();
   });
 
@@ -14352,7 +14569,8 @@
   document.querySelectorAll('#lego-inv-root th[data-sort]').forEach(function(th){
     th.addEventListener('click', function(){
       var col = th.dataset.sort;
-      if (state.sortCol === col) state.sortDir *= -1; else { state.sortCol = col; state.sortDir = 1; }
+      // Status and In drawers start with the most short / most in drawers; click again to reverse
+      if (state.sortCol === col) state.sortDir *= -1; else { state.sortCol = col; state.sortDir = (col === 'status' || col === 'inDrawers') ? -1 : 1; }
       renderParts();
     });
   });
@@ -15616,7 +15834,11 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
+<<<<<<< Updated upstream
   var APP_VERSION = '2026.10.11.1';          // bump with every change to this page
+=======
+  var APP_VERSION = '2026.10.12.5';          // bump with every change to this page
+>>>>>>> Stashed changes
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
