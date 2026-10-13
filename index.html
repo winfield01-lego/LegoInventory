@@ -11358,10 +11358,10 @@
     var catName = (ctx.names && ctx.names[p.part_cat_id]) || '';
     var score = 0, why = [];
     if (ctx.owned[normKey(p.part_num)]){ score -= 100; why.push('owned'); }
-    if (catName && CAT_LOW_RE.test(catName)) score += 60;
+    if (catName && CAT_LOW_RE.test(catName)) score += 200;
     else if (catName && CAT_CORE_RE.test(catName.trim())) score += 0;
     else score += 20;
-    if (p.print_of || isPrintedPartNum(p.part_num) || /printed|pattern|sticker/i.test(catName + ' ' + (p.name || ''))) score += 40;
+    if (p.print_of || isPrintedPartNum(p.part_num) || /printed|pattern|sticker|\bprint\b/i.test(catName + ' ' + (p.name || ''))) score += 250;
     if (ctx.size && nameMatchesSize(p.name || '', ctx.size)) score -= 30;
     score += Math.min(String(p.name || '').length, 120) / 12;   // plainer names first
     if (/[a-z]$/i.test(String(p.part_num)) && !/^\d+$/.test(String(p.part_num))) score += 4;   // lettered mould variants after the main number
@@ -11373,40 +11373,138 @@
   }
 
   var partSearchCtx = null;
+  // ---- How well a catalog part matches what was typed ----
+  // "tile 1 x 6": the size must appear in the name as 1 x 6 (or 6 x 1, or 1 x 6 x n), and every other word must start a
+  // word in the name. "3069b": a part number, matched from its start. Anything else is a looser match, kept out of the
+  // main list (one tap shows them).
+  function normPartName(s){ return String(s || '').toLowerCase().replace(/×/g, 'x').replace(/(\d)\s*x\s*(?=\d)/g, '$1 x ').replace(/[^a-z0-9.\/ ]+/g, ' ').replace(/\s+/g, ' ').trim(); }
+  function parseCatalogQuery(q){
+    var n = normPartName(q);
+    var info = { raw: q, norm: n, dims: null, words: [], partNum: '' };
+    if (/^[a-z0-9\-]+$/i.test(String(q).trim()) && /\d/.test(q) && !/\s/.test(String(q).trim())){ info.partNum = normKey(q); return info; }
+    var m = n.match(/\b(\d+(?:\/\d+)?) x (\d+(?:\/\d+)?)(?: x (\d+(?:\/\d+)?))?\b/);
+    var rest = n;
+    if (m){ info.dims = [m[1], m[2]].concat(m[3] ? [m[3]] : []); rest = (n.slice(0, m.index) + ' ' + n.slice(m.index + m[0].length)).trim(); }
+    info.words = rest.split(' ').filter(function(w){ return w && w !== 'x'; });
+    return info;
+  }
+  // the name's sizes ("6 x 6 x 1", "1 x 6") as groups; a 1 x 6 search matches a group that starts 1 x 6 or 6 x 1
+  // ("Brick 1 x 6 x 5" yes, "Wedge 6 x 6 x 1" no)
+  function nameHasDims(nameNorm, dims){
+    if (!dims) return true;
+    var groups = nameNorm.match(/\d+(?:\/\d+)?(?: x \d+(?:\/\d+)?)+/g) || [];
+    return groups.some(function(g){
+      var d = g.split(' x ');
+      if (dims.length === 3) return d[0] === dims[0] && d[1] === dims[1] && d[2] === dims[2];
+      return (d[0] === dims[0] && d[1] === dims[1]) || (d[0] === dims[1] && d[1] === dims[0]);
+    });
+  }
+  function nameHasWords(nameNorm, words){
+    var nw = nameNorm.split(' ');
+    return words.every(function(w){
+      return nw.some(function(x){ return x.indexOf(w) === 0 || (w.length > 3 && w.indexOf(x) === 0 && x.length >= 3); });   // tile/tiles, brick/bricks
+    });
+  }
+  function catalogMatch(p, info){
+    if (info.partNum) return normKey(p.part_num).indexOf(info.partNum) === 0;
+    var nn = normPartName(p.name);
+    return nameHasDims(nn, info.dims) && nameHasWords(nn, info.words);
+  }
+  // how closely the name follows what was typed (lower is closer)
+  function nameCloseness(p, info){
+    if (info.partNum) return normKey(p.part_num) === info.partNum ? -400 : 0;
+    var nn = normPartName(p.name);
+    if (nn === info.norm) return -500;                          // exactly "tile 1 x 6"
+    if (nn.indexOf(info.norm) === 0) return -300;               // "tile 1 x 6 with ..."
+    if (info.words.length && nn.indexOf(info.words[0]) === 0) return -120;   // starts with the kind of part typed
+    return 0;
+  }
+  // parts in your collection that match, even if Rebrickable's search didn't return them
+  function ownedCatalogMatches(info){
+    var out = [];
+    Object.keys(partCatalog || {}).forEach(function(k){
+      var c = partCatalog[k];
+      if (!c || !c.p) return;
+      out.push({ part_num: c.p, name: c.d || '', part_cat_id: null, part_img_url: catImg(c), _local: true });
+    });
+    var seen = {};
+    return out.filter(function(p){
+      var pk = normKey(p.part_num);
+      if (seen[pk] || !p.name) return false;
+      if (!catalogMatch(p, info)) return false;
+      seen[pk] = true;
+      return true;
+    });
+  }
+  function partSearchRow(p, ctx, catName){
+    var row = document.createElement('div');
+    row.style.cssText = 'display:flex; align-items:center; gap:10px; padding:6px 0; border-bottom:1px solid var(--border);';
+    row.innerHTML = partThumbHtml(p.part_img_url) +
+      '<div style="flex:1; min-width:0;"><div style="font-weight:700; font-size:13px;">' + escapeHtml(p.part_num) + '</div>' +
+      '<div style="font-size:12px; color:var(--text-secondary);">' + escapeHtml(p.name) + '</div>' +
+      '<div style="font-size:11px; color:var(--text-muted);">' + (ctx.owned[normKey(p.part_num)] ? '<span class="tier-chip tier-short" style="margin-right:6px;">In your collection</span>' : '') + escapeHtml(catName || '') + '</div></div>';
+    var btn = document.createElement('button');
+    btn.className = 'icon-btn';
+    btn.style.flexShrink = '0';
+    btn.textContent = 'Choose';
+    btn.addEventListener('click', function(){ showPartColors({ partNum: p.part_num, name: p.name || '', img: p.part_img_url || '' }); });
+    row.appendChild(btn);
+    return row;
+  }
   function renderPartSearchResults(data, append){
     var list = document.getElementById('part-search-results');
     if (!append){ list.innerHTML = ''; partSearchShown = 0; }
-    var results = (data && data.results) || [];
-    var total = (data && data.count) || 0;
-    var sizeQuery = extractSizeQuery(document.getElementById('part-search-input').value.trim());
+    var info = parseCatalogQuery(document.getElementById('part-search-input').value.trim());
     var ctx = partSearchCtx || { names: {}, owned: ownedPartNumSet() };
-    ctx.size = sizeQuery;
-    var ranked = rankCatalogResults(results, ctx);
-    results = ranked.map(function(x){ return x.p; });
-    var catOf = {};
-    ranked.forEach(function(x){ catOf[x.p.part_num] = x.cat; });
-    if (!append && !results.length){
-      list.innerHTML = '<div class="empty-msg">No parts matched. Try fewer or different words, e.g. \u201cplate 1 x 2\u201d or \u201cslope 45\u201d.</div>';
+    ctx.size = info.dims ? info.dims.slice(0, 2) : null;
+    var results = ((data && data.results) || []).slice();
+    // add matching parts from your own collection that the catalog search missed
+    var have = {};
+    results.forEach(function(p){ have[normKey(p.part_num)] = true; });
+    if (!append) ownedCatalogMatches(info).forEach(function(p){ if (!have[normKey(p.part_num)]){ have[normKey(p.part_num)] = true; results.push(p); } });
+    var matched = [], loose = [];
+    results.forEach(function(p){ (catalogMatch(p, info) ? matched : loose).push(p); });
+    function rank(arr){
+      return arr.map(function(p, i){
+        var r = scoreCatalogResult(p, ctx);
+        var s = r.score + nameCloseness(p, info) + i * 0.001;
+        if (ctx.owned[normKey(p.part_num)]) s -= 1000;   // your parts always first
+        return { p: p, s: s, cat: r.catName };
+      }).sort(function(a, b){ return a.s - b.s; });
     }
-    results.forEach(function(p){
-      var row = document.createElement('div');
-      row.style.cssText = 'display:flex; align-items:center; gap:10px; padding:6px 0; border-bottom:1px solid var(--border);';
-      row.innerHTML = partThumbHtml(p.part_img_url) +
-        '<div style="flex:1; min-width:0;"><div style="font-weight:700; font-size:13px;">' + escapeHtml(p.part_num) + '</div>' +
-        '<div style="font-size:12px; color:var(--text-secondary);">' + escapeHtml(p.name) + '</div>' +
-        '<div style="font-size:11px; color:var(--text-muted);">' + (ctx.owned[normKey(p.part_num)] ? '<span class="tier-chip tier-short" style="margin-right:6px;">In your collection</span>' : '') + escapeHtml(catOf[p.part_num] || '') + '</div></div>';
-      var btn = document.createElement('button');
-      btn.className = 'icon-btn';
-      btn.style.flexShrink = '0';
-      btn.textContent = 'Choose';
-      btn.addEventListener('click', function(){ showPartColors({ partNum: p.part_num, name: p.name || '', img: p.part_img_url || '' }); });
-      row.appendChild(btn);
-      list.appendChild(row);
-    });
-    partSearchShown += results.length;
+    var rm = rank(matched), rl = rank(loose);
+    if (!append && !rm.length && !rl.length){
+      list.innerHTML = '<div class="empty-msg">No parts matched. Try fewer or different words, e.g. “plate 1 x 2” or “slope 45”.</div>';
+    }
+    rm.forEach(function(x){ list.appendChild(partSearchRow(x.p, ctx, x.cat)); });
+    if (!append && !rm.length && rl.length){
+      var none = document.createElement('div');
+      none.className = 'empty-msg';
+      none.textContent = 'Nothing in the catalog matches “' + info.raw + '” exactly.';
+      list.appendChild(none);
+    }
+    if (rl.length){
+      var more = document.createElement('button');
+      more.type = 'button';
+      more.className = 'icon-btn';
+      more.style.cssText = 'margin:8px 0; padding:3px 10px;';
+      more.textContent = 'Show ' + rl.length + ' looser match' + (rl.length === 1 ? '' : 'es');
+      more.title = 'Parts Rebrickable returned that don’t have the size or every word you typed';
+      more.addEventListener('click', function(){
+        var head = document.createElement('div');
+        head.style.cssText = 'font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:0.03em; color:var(--text-secondary); margin:10px 0 4px;';
+        head.textContent = 'Looser matches';
+        more.replaceWith(head);
+        var frag = document.createDocumentFragment();
+        rl.forEach(function(x){ frag.appendChild(partSearchRow(x.p, ctx, x.cat)); });
+        head.after(frag);
+      });
+      list.appendChild(more);
+    }
+    partSearchShown += rm.length;
     partSearchNextUrl = (data && data.next) || null;
     document.getElementById('part-search-more').style.display = partSearchNextUrl ? 'inline-block' : 'none';
-    if (partSearchShown) setPartSearchStatus('Showing ' + partSearchShown + ' of ' + total + ' matching part' + (total === 1 ? '' : 's') + '. Choose one to see its colors and element IDs.');
+    if (partSearchShown) setPartSearchStatus(partSearchShown + ' part' + (partSearchShown === 1 ? '' : 's') + ' match “' + info.raw + '”' + (rl.length ? ' (' + rl.length + ' looser match' + (rl.length === 1 ? '' : 'es') + ' hidden)' : '') + '. Choose one to see its colors and element IDs.');
     else setPartSearchStatus('');
   }
 
@@ -11415,16 +11513,16 @@
     if (!q) return;
     if (!rebrickableApiKey){ setPartSearchStatus(RB_NO_KEY_MSG, true); return; }
     showPartSearchView('results');
-    setPartSearchStatus('Searching\u2026');
-    // a bigger first page, so the everyday part is in the batch being sorted
+    setPartSearchStatus('Searching…');
+    // a big first page (Rebrickable's own order is loose), so the plain part is in the batch that gets filtered and sorted
     Promise.all([
-      rbFetchJson(rbApiUrl('parts/?search=' + encodeURIComponent(q) + '&page_size=200&inc_part_details=1')),
+      rbFetchJson(rbApiUrl('parts/?search=' + encodeURIComponent(q) + '&page_size=1000')),
       ensurePartCatNames()
     ]).then(function(res){
       partSearchCtx = { names: (res[1] && res[1].names) || {}, owned: ownedPartNumSet() };
       renderPartSearchResults(res[0], false);
     }).catch(function(err){
-      setPartSearchStatus('Search failed: ' + (err && err.message ? err.message : 'couldn\u2019t reach Rebrickable.'), true);
+      setPartSearchStatus('Search failed: ' + (err && err.message ? err.message : 'couldn’t reach Rebrickable.'), true);
     });
   }
 
@@ -16416,7 +16514,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.13.14';          // bump with every change to this page
+  var APP_VERSION = '2026.10.13.15';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
