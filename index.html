@@ -451,16 +451,26 @@
 #lego-inv-root .tn-main .top-needed-partnum { align-self: flex-start; }
 #lego-inv-root .tn-main .top-needed-desc { white-space: normal; overflow: visible; line-height: 1.3; }
 #lego-inv-root .tn-nums { grid-area: nums; display: flex; gap: 6px; }
+@media (max-width: 360px){ #lego-inv-root .tn-has-bags .tn-nums { grid-template-columns: repeat(2, 1fr) !important; } }
 #lego-inv-root .tn-num { display: flex; flex-direction: column; align-items: center; min-width: 64px; padding: 3px 8px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface-1); }
 #lego-inv-root .tn-num b { font-size: 15px; font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1.2; }
 #lego-inv-root .tn-num span { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-muted); white-space: nowrap; }
 #lego-inv-root .tn-num.tn-drawers b { color: var(--lego-green); }
 #lego-inv-root .tn-num.tn-missing b { color: var(--lego-orange); }
 #lego-inv-root .tn-num.tn-missing.tn-zero b { color: var(--text-muted); }
+#lego-inv-root .tn-num.tn-bags { border-style: dashed; border-color: var(--bt-gray, #9CA29E); }
+#lego-inv-root .tn-num.tn-bags b { color: var(--text-primary); }
+#lego-inv-root .tn-num.tn-bags.tn-zero b { color: var(--text-muted); }
+#lego-inv-root .tn-bag-note i { font-size: 12px; vertical-align: -1px; }
+@media (max-width: 640px){ #lego-inv-root .ac-has-bags { flex-wrap: wrap; row-gap: 6px; } #lego-inv-root .ac-has-bags .top-needed-desc { flex: 1 1 calc(100% - 70px); white-space: normal; overflow: visible; } #lego-inv-root .ac-has-bags .ac-first-pill { margin-left: auto; } }
+#lego-inv-root .ac-bag-pill { border: 1px dashed var(--bt-gray, #9CA29E); background: transparent; color: var(--text-primary); }
 @media (max-width: 640px) {
   #lego-inv-root .tn-card { grid-template-columns: 20px 52px minmax(0, 1fr); grid-template-areas: "rank thumb main" "nums nums nums"; gap: 8px 10px; padding: 10px; }
   #lego-inv-root .tn-card .part-thumb-wrap { width: 52px; height: 52px; }
   #lego-inv-root .tn-nums { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; border-top: 1px solid var(--border); padding-top: 8px; }
+  #lego-inv-root .tn-has-bags .tn-nums { grid-template-columns: repeat(4, 1fr); gap: 4px; }
+  #lego-inv-root .tn-has-bags .tn-num { padding: 3px 2px; }
+  #lego-inv-root .tn-has-bags .tn-num span { font-size: 9px; letter-spacing: 0.01em; }
   #lego-inv-root .tn-num { min-width: 0; }
 }
 /* part photos sit on a light tile, so black and transparent parts show up on the dark page */
@@ -653,10 +663,10 @@
     <div class="row" style="justify-content: space-between; margin-bottom: 8px; flex-wrap:wrap; gap:8px;">
       <button id="almost-complete-drawer-ready-toggle-btn" class="icon-btn" style="padding: 3px 10px; display:flex; align-items:center; gap:6px;">
         <i id="almost-complete-drawer-ready-chevron" class="ti ti-chevron-right" style="font-size:13px;" aria-hidden="true"></i>
-        <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Ready to complete from drawers</span>
+        <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Ready to complete from drawers &amp; bags</span>
       </button>
     </div>
-    <p style="margin: 0 0 10px; color: var(--text-secondary); font-size: 13px;">Almost-complete builds and sets (using the same threshold above; minifigures have their own report on the Minifigures tab) where every missing part is fully covered by what's already sitting in a drawer &mdash; gather these and they're done.</p>
+    <p style="margin: 0 0 10px; color: var(--text-secondary); font-size: 13px;">Almost-complete builds and sets (using the same threshold above; minifigures have their own report on the Minifigures tab) where every missing part is fully covered by what's already sitting in a drawer or in a bag you&rsquo;re partway through inventorying &mdash; gather these and they're done.</p>
     <div class="row" style="gap:10px; align-items:center; margin-bottom: 8px; padding-top:8px; border-top: 1px solid var(--border); flex-wrap:wrap;">
       <select id="almost-complete-drawer-ready-layout" title="Page layout">
         <option value="portrait">Portrait</option>
@@ -2948,7 +2958,7 @@
     var rows = [
       ['short', 'Short-term'], ['sets', 'Official sets'], ['long', 'Long-term'], ['unranked', 'Unranked'], ['completed', 'Completed'], ['all', 'All builds']
     ];
-    box.innerHTML = '<table class="moc-tier-table"><thead><tr><th>Priority</th><th title="Builds, or sets missing pieces">Builds</th><th>Missing</th><th title="Still to find after your drawer stock is shared out, Short-term builds first">After drawers</th><th>Done</th></tr></thead><tbody>' +
+    box.innerHTML = '<table class="moc-tier-table"><thead><tr><th>Priority</th><th title="Builds, or sets missing pieces">Builds</th><th>Missing</th><th title="Still to find after your drawers and unfinished bags are shared out, Short-term builds first">To find</th><th>Done</th></tr></thead><tbody>' +
       rows.map(function(r){
         var t = stats[r[0]];
         var chip = r[0] === 'all' ? '' : '<span class="tier-chip ' + (r[0] === 'short' || r[0] === 'sets' ? 'tier-short' : r[0] === 'long' ? 'tier-long' : r[0] === 'completed' ? 'tier-done' : 'tier-none') + '">' + r[1] + '</span>';
@@ -3578,7 +3588,7 @@
 
   function getTop20ItemsFiltered(){
     var mode = document.getElementById('top-needed-filter').value;
-    if (mode === 'uncovered') return getAllShortItems().filter(function(it){ return it.short > it.inDrawers; }).sort(byStillMissing).slice(0, getTopNCount());
+    if (mode === 'uncovered') return getAllShortItems().filter(function(it){ return stillMissingOf(it) > 0; }).sort(byStillMissing).slice(0, getTopNCount());
     if (mode === 'covered') return getCoveredItems();
     return getTop20Items();
   }
@@ -3641,9 +3651,11 @@
     if (byColor) items = items.slice().sort(function(a,b){ return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.rank - b.rank); });
     var totalNeeded = allItems.reduce(function(sum, it){ return sum + it.short; }, 0);
     var totalInDrawers = allItems.reduce(function(sum, it){ return sum + it.inDrawers; }, 0);
-    var remainingNeeded = allItems.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
+    var totalInBags = allItems.reduce(function(sum, it){ return sum + (it.inBags || 0); }, 0);
+    var remainingNeeded = allItems.reduce(function(sum, it){ return sum + stillMissingOf(it); }, 0);
+    var anyBags = Object.keys(buildBagStockMap()).length > 0;
     document.getElementById('top-needed-total-line').textContent = topNeededTierLabel(tierSel) + ':  ' +
-      'Needed: ' + totalNeeded.toLocaleString() + '  \u00b7  In drawers' + (tierSel === 'all' || tierSel === 'short' ? '' : ' (left after higher priorities)') + ': ' + totalInDrawers.toLocaleString() + '  \u00b7  Remaining needed: ' + remainingNeeded.toLocaleString();
+      'Needed: ' + totalNeeded.toLocaleString() + '  \u00b7  In drawers' + (tierSel === 'all' || tierSel === 'short' ? '' : ' (left after higher priorities)') + ': ' + totalInDrawers.toLocaleString() + (anyBags ? '  \u00b7  In bags: ' + totalInBags.toLocaleString() : '') + '  \u00b7  Remaining needed: ' + remainingNeeded.toLocaleString();
 
     itemsEl.innerHTML = '';
     if (!items.length){
@@ -3654,19 +3666,22 @@
     items.forEach(function(it, i){
       var row = document.createElement('div');
       row.className = 'top-needed-item tn-card';
-      var remaining = Math.max(it.short - it.inDrawers, 0);
+      var remaining = stillMissingOf(it);
+      if (anyBags) row.classList.add('tn-has-bags');
       row.innerHTML =
         '<span class="top-needed-rank" title="'+(byColor ? 'Its rank among your most needed parts (this list is sorted by colour)' : 'Rank in this list')+'">'+(byColor ? '#' : '')+it.rank+'</span>' +
         '<span class="part-thumb-wrap"></span>' +
         '<span class="tn-main"><span class="top-needed-partnum" title="Part number">#'+escapeHtml(it.partNum)+'</span>' +
           '<span class="top-needed-desc">'+escapeHtml(it.color)+' '+escapeHtml(it.desc)+'</span>' +
           (it.setShort && it.mocShort ? '<span class="tn-held">Includes ' + it.setShort.toLocaleString() + ' for official sets</span>' : it.setShort ? '<span class="tn-held">For official sets</span>' : '') +
-          (it.heldForHigher ? '<span class="tn-held">' + it.heldForHigher.toLocaleString() + ' more in your drawers ' + (it.heldForHigher === 1 ? 'is' : 'are') + ' kept for official sets and higher-priority builds</span>' : '') +
+          (it.inBags ? '<span class="tn-held tn-bag-note"><i class="ti ti-shopping-bag" aria-hidden="true"></i> ' + it.inBags.toLocaleString() + ' waiting in ' + escapeHtml(bagNamesText(it.bagNames)) + '</span>' : '') +
+          ((it.heldForHigher || it.heldBagsForHigher) ? '<span class="tn-held">' + [it.heldForHigher ? it.heldForHigher.toLocaleString() + ' more in your drawers' : '', it.heldBagsForHigher ? it.heldBagsForHigher.toLocaleString() + ' more in bags' : ''].filter(Boolean).join(' and ') + ' kept for official sets and higher-priority builds</span>' : '') +
           '</span>' +
         '<span class="tn-nums">' +
           '<span class="tn-num" title="Pieces your builds still need"><b>'+it.short.toLocaleString()+'</b><span>Needed</span></span>' +
           '<span class="tn-num tn-drawers" title="'+(tierSel === 'all' ? 'On hand in your drawers, across all of them' : (tierSel === 'short' ? 'Drawer stock for your official sets and Short-term builds' : 'Drawer stock available to these builds after official sets and higher-priority builds take what they need') + ' (' + it.drawerTotal.toLocaleString() + ' in your drawers in all)')+'"><b>'+it.inDrawers.toLocaleString()+'</b><span>In drawers</span></span>' +
-          '<span class="tn-num tn-missing'+(remaining ? '' : ' tn-zero')+'" title="Still missing once your drawer stock is used"><b>'+remaining.toLocaleString()+'</b><span>Still missing</span></span>' +
+          (anyBags ? '<span class="tn-num tn-bags'+(it.inBags ? '' : ' tn-zero')+'" title="'+escapeHtml(it.inBags ? 'Waiting in bags you haven\u2019t moved to drawers yet: ' + bagNamesText(it.bagNames) : 'None in your unfinished bags')+'"><b>'+(it.inBags || 0).toLocaleString()+'</b><span>In bags</span></span>' : '') +
+          '<span class="tn-num tn-missing'+(remaining ? '' : ' tn-zero')+'" title="Still missing once your drawers and unfinished bags are counted"><b>'+remaining.toLocaleString()+'</b><span>Still missing</span></span>' +
         '</span>';
       buildThumb({ elementId: it.elementId, imgUrl: it.imgUrl || knownPartImg(it.partNum, it.color, it.elementId), desc: it.desc, partNum: it.partNum }, row.querySelector('.part-thumb-wrap'), { eager: true });
       row.addEventListener('click', function(){
@@ -3709,13 +3724,16 @@
     var items = [];
     var figsOnly = which === 'figs';
     var drawerStock = buildDrawerStockMap();
+    var bagStock = buildBagStockMap();
+    function withBags(p){ var b = bagStock[stockKeyOf(p.partNum, p.color)]; p.inBags = b ? b.qty : 0; p.bagNames = b ? b.bags : {}; p.bagCover = Math.min(p.inBags, Math.max(p.short - p.inDrawers, 0)); return p; }
+    function bagTotals(it){ it.inBags = it.parts.reduce(function(n, p){ return n + Math.min(p.inBags, p.short); }, 0); it.stillMissing = it.parts.reduce(function(n, p){ return n + Math.max(p.short - p.inBags, 0); }, 0); return it; }
     if (!figsOnly) computeMocs().forEach(function(m){
       var missing = Math.max(m.need - m.have, 0);
       if (missing > 0 && missing <= threshold){
         var shortParts = state.rows.filter(function(r){ return r.moc === m.name && r.onHand < r.qty; })
-          .map(function(r){ return { partNum: r.partNum, color: r.color, desc: r.desc, short: r.qty - r.onHand, elementId: r.elementId, inDrawers: drawerStock[stockKeyOf(r.partNum, r.color)] || 0 }; })
+          .map(function(r){ return withBags({ partNum: r.partNum, color: r.color, desc: r.desc, short: r.qty - r.onHand, elementId: r.elementId, inDrawers: drawerStock[stockKeyOf(r.partNum, r.color)] || 0 }); })
           .sort(function(a,b){ return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.short - b.short); });
-        items.push({ type: 'moc', key: m.name, label: m.name, missing: missing, parts: shortParts });
+        items.push(bagTotals({ type: 'moc', key: m.name, label: m.name, missing: missing, parts: shortParts }));
       }
     });
     var partsBySet = {};
@@ -3730,9 +3748,9 @@
       var missing = needed - onHand;
       if (missing > 0 && missing <= threshold){
         var shortSetParts = rows.filter(function(r){ return setPartOnHand(r) < setPartNeeded(r); })
-          .map(function(r){ return { partNum: r.partNum, color: r.color, desc: r.desc, short: setPartNeeded(r) - setPartOnHand(r), elementId: r.elementId, inDrawers: drawerStock[stockKeyOf(r.partNum, r.color)] || 0 }; })
+          .map(function(r){ return withBags({ partNum: r.partNum, color: r.color, desc: r.desc, short: setPartNeeded(r) - setPartOnHand(r), elementId: r.elementId, inDrawers: drawerStock[stockKeyOf(r.partNum, r.color)] || 0 }); })
           .sort(function(a,b){ return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.short - b.short); });
-        items.push({ type: figsOnly ? 'fig' : 'set', key: s.setNum, label: (figsOnly ? (s.name || s.setNum) + ' (' + s.setNum + ')' : s.setNum + (s.name ? ' \u2014 ' + s.name : '')), missing: missing, parts: shortSetParts });
+        items.push(bagTotals({ type: figsOnly ? 'fig' : 'set', key: s.setNum, label: (figsOnly ? (s.name || s.setNum) + ' (' + s.setNum + ')' : s.setNum + (s.name ? ' \u2014 ' + s.name : '')), missing: missing, parts: shortSetParts }));
       }
     });
     items.sort(function(a,b){ return a.missing - b.missing; });
@@ -3753,10 +3771,11 @@
     container.innerHTML = '';
     items.forEach(function(it){
       var row = document.createElement('div');
-      row.className = 'top-needed-item';
+      row.className = 'top-needed-item' + (it.inBags ? ' ac-has-bags' : '');
       row.innerHTML =
         '<span class="pill '+(it.type==='moc'?'pill-ok':'pill-short')+'" style="flex-shrink:0; min-width:38px; text-align:center;">'+(it.type==='moc'?'MOC':'Set')+'</span>' +
         '<span class="top-needed-desc">'+escapeHtml(it.label)+'</span>' +
+        (it.inBags ? '<span class="pill ac-bag-pill top-needed-short ac-first-pill" title="Waiting in bags you haven\u2019t moved to drawers yet">'+it.inBags.toLocaleString()+' in bags</span>' : '') +
         '<span class="pill pill-short top-needed-short">Missing '+it.missing.toLocaleString()+'</span>';
       row.addEventListener('click', function(){
         if (it.type === 'moc') openMocDetail(it.key); else openSetDetail(it.key);
@@ -3783,15 +3802,15 @@
       alert('Nothing to report \u2014 nothing is within ' + threshold + ' pieces of complete right now.');
       return;
     }
-    var header = ['Type', opts ? 'Minifigure' : 'Build/Set','Total Missing','Part Num','Color','Description','Part Short Qty'];
+    var header = ['Type', opts ? 'Minifigure' : 'Build/Set','Total Missing','In Unfinished Bags','Part Num','Color','Description','Part Short Qty','In Bags'];
     var lines = [header.map(csvEscape).join(',')];
     items.forEach(function(it){
       var typeLabel = (it.type === 'moc' ? 'MOC Build' : it.type === 'fig' ? 'Minifigure' : 'Official Set');
       if (!it.parts.length){
-        lines.push([typeLabel, it.label, it.missing, '', '', '', ''].map(csvEscape).join(','));
+        lines.push([typeLabel, it.label, it.missing, it.inBags || 0, '', '', '', '', ''].map(csvEscape).join(','));
       } else {
         it.parts.forEach(function(p){
-          lines.push([typeLabel, it.label, it.missing, p.partNum, p.color, p.desc, p.short].map(csvEscape).join(','));
+          lines.push([typeLabel, it.label, it.missing, it.inBags || 0, p.partNum, p.color, p.desc, p.short, p.inBags ? Math.min(p.inBags, p.short) + ' (' + bagNamesText(p.bagNames) + ')' : ''].map(csvEscape).join(','));
         });
       }
     });
@@ -3859,7 +3878,7 @@
         items.forEach(function(it){
           var typeLabel = (it.type === 'moc' ? 'MOC Build' : it.type === 'fig' ? 'Minifigure' : 'Official Set');
           body.push([{
-            content: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' piece' + (it.missing===1?'':'s') + ' total',
+            content: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' piece' + (it.missing===1?'':'s') + ' total' + (it.inBags ? ' (' + it.inBags.toLocaleString() + ' in unfinished bags)' : ''),
             colSpan: 5,
             styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] }
           }]);
@@ -3869,7 +3888,7 @@
             rowMeta.push(null);
           } else {
             it.parts.forEach(function(p){
-              body.push(['', p.partNum, p.color, truncateForPdf(p.desc, 38), String(p.short)]);
+              body.push(['', p.partNum, p.color, truncateForPdf(p.desc, p.inBags ? 30 : 38) + (p.inBags ? ' [' + Math.min(p.inBags, p.short) + ' in bag]' : ''), String(p.short)]);
               rowMeta.push(p);
             });
           }
@@ -3898,7 +3917,7 @@
       var groups = items.map(function(it){
         var typeLabel = (it.type === 'moc' ? 'MOC Build' : it.type === 'fig' ? 'Minifigure' : 'Official Set');
         var rows = it.parts.length ? it.parts.slice() : [{ noShortage: true }];
-        return { header: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' pc' + (it.missing===1?'':'s'), rows: rows };
+        return { header: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' pc' + (it.missing===1?'':'s') + (it.inBags ? ' (' + it.inBags + ' in bags)' : ''), rows: rows };
       });
       var split = splitGroupsForTwoColumns(groups);
 
@@ -3919,7 +3938,7 @@
         if (entry.isHeader) return [{ content: entry.label, colSpan: 4, styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] } }];
         if (entry.p.noShortage) return [{ content: 'No specific part shortages recorded.', colSpan: 4, styles: { fontStyle: 'italic', textColor: [130, 130, 130] } }];
         var p = entry.p;
-        return ['', p.partNum, p.color, truncateForPdf(p.desc, 22) + '  (' + p.short + ')'];
+        return ['', p.partNum, p.color, truncateForPdf(p.desc, 22) + '  (' + p.short + (p.inBags ? ', ' + Math.min(p.inBags, p.short) + ' in bag' : '') + ')'];
       }
 
       var body2 = [];
@@ -3976,14 +3995,14 @@
   function getFigsAlmostItems(){
     var items = getAlmostCompleteItems(getFigsAlmostThreshold(), 'figs');
     var only = document.getElementById('figs-almost-drawer-only');
-    if (only && only.checked) items = items.filter(function(it){ return it.parts.length && it.parts.every(function(p){ return p.inDrawers >= p.short; }); });
+    if (only && only.checked) items = items.filter(function(it){ return it.parts.length && it.parts.every(function(p){ return p.inDrawers + p.inBags >= p.short; }); });
     return items;
   }
   function renderFigsAlmostComplete(){
     var list = document.getElementById('figs-almost-list');
     if (!list) return;
     var items = getFigsAlmostItems();
-    var ready = items.filter(function(it){ return it.parts.length && it.parts.every(function(p){ return p.inDrawers >= p.short; }); }).length;
+    var ready = items.filter(function(it){ return it.parts.length && it.parts.every(function(p){ return p.inDrawers + p.inBags >= p.short; }); }).length;
     document.getElementById('figs-almost-count').textContent = '(' + items.length + ')';
     document.getElementById('figs-almost-note').textContent = items.length
       ? items.length + ' minifigure' + (items.length === 1 ? ' is' : 's are') + ' within ' + getFigsAlmostThreshold() + ' piece' + (getFigsAlmostThreshold() === 1 ? '' : 's') + ' of complete' + (ready ? ' — your drawers can finish ' + ready + ' of them.' : '.')
@@ -3992,7 +4011,7 @@
     items.forEach(function(it){
       var row = document.createElement('div');
       row.className = 'top-needed-item';
-      var canFinish = it.parts.length && it.parts.every(function(p){ return p.inDrawers >= p.short; });
+      var canFinish = it.parts.length && it.parts.every(function(p){ return p.inDrawers + p.inBags >= p.short; });
       row.innerHTML =
         '<span class="pill pill-ok" style="flex-shrink:0; min-width:38px; text-align:center;">Fig</span>' +
         '<span class="top-needed-desc">' + escapeHtml(it.label) + '</span>' +
@@ -4028,7 +4047,7 @@
   function getAlmostCompleteDrawerCoverableItems(){
     var threshold = getAlmostCompleteThreshold();
     return getAlmostCompleteItems(threshold).filter(function(it){
-      return it.parts.length > 0 && it.parts.every(function(p){ return p.inDrawers >= p.short; });
+      return it.parts.length > 0 && it.parts.every(function(p){ return p.inDrawers + p.inBags >= p.short; });
     });
   }
 
@@ -4049,7 +4068,7 @@
       row.innerHTML =
         '<span class="pill '+(it.type==='moc'?'pill-ok':'pill-short')+'" style="flex-shrink:0; min-width:38px; text-align:center;">'+(it.type==='moc'?'MOC':'Set')+'</span>' +
         '<span class="top-needed-desc">'+escapeHtml(it.label)+'</span>' +
-        '<span class="pill pill-ok top-needed-short">All '+it.missing.toLocaleString()+' in drawers</span>';
+        '<span class="pill pill-ok top-needed-short">All '+it.missing.toLocaleString()+(it.inBags ? ' in drawers &amp; bags' : ' in drawers')+'</span>';
       row.addEventListener('click', function(){
         if (it.type === 'moc') openMocDetail(it.key); else openSetDetail(it.key);
       });
@@ -4127,13 +4146,13 @@
         items.forEach(function(it){
           var typeLabel = (it.type === 'moc' ? 'MOC Build' : it.type === 'fig' ? 'Minifigure' : 'Official Set');
           body.push([{
-            content: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' piece' + (it.missing===1?'':'s') + ' total, all in drawers',
+            content: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' piece' + (it.missing===1?'':'s') + ' total, all in drawers' + (it.inBags ? ' and bags' : ''),
             colSpan: 6,
             styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] }
           }]);
           rowMeta.push(null);
           it.parts.forEach(function(p){
-            body.push(['', p.partNum, p.color, truncateForPdf(p.desc, 32), String(p.short), p.inDrawers.toLocaleString()]);
+            body.push(['', p.partNum, p.color, truncateForPdf(p.desc, 32), String(p.short), p.inDrawers.toLocaleString() + (p.inBags ? ' + ' + p.inBags + ' bag' : '')]);
             rowMeta.push(p);
           });
         });
@@ -4141,7 +4160,7 @@
         doc.autoTable({
           startY: 70,
           margin: { top: 70, right: 40, bottom: 30, left: 40 },
-          head: [['','Part #','Color','Description','Short','In Drawers']],
+          head: [['','Part #','Color','Description','Short','Drawers + Bags']],
           body: body,
           styles: { fontSize: 9, cellPadding: 4, overflow: 'linebreak', minCellHeight: PDF_THUMB.single.rowHeight, valign: 'middle' },
           headStyles: { fillColor: [0, 166, 94], textColor: 255 },
@@ -4160,7 +4179,7 @@
       // Landscape: 2-column split, keeping each build/set's lines together in one column.
       var groups = items.map(function(it){
         var typeLabel = (it.type === 'moc' ? 'MOC Build' : it.type === 'fig' ? 'Minifigure' : 'Official Set');
-        return { header: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' pc' + (it.missing===1?'':'s') + ', all in drawers', rows: it.parts };
+        return { header: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' pc' + (it.missing===1?'':'s') + ', all in drawers' + (it.inBags ? ' & bags' : ''), rows: it.parts };
       });
       var split = splitGroupsForTwoColumns(groups);
 
@@ -4180,7 +4199,7 @@
         if (!entry) return ['', '', '', '', ''];
         if (entry.isHeader) return [{ content: entry.label, colSpan: 5, styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] } }];
         var p = entry.p;
-        return ['', p.partNum, p.color, truncateForPdf(p.desc, 20), p.short + ' / ' + p.inDrawers.toLocaleString()];
+        return ['', p.partNum, p.color, truncateForPdf(p.desc, 20), p.short + ' / ' + p.inDrawers.toLocaleString() + (p.inBags ? '+' + p.inBags + 'b' : '')];
       }
 
       var body2 = [];
@@ -8343,6 +8362,7 @@
   }
   function saveBagProgressList(){
     noteSectionEdited('bags');
+    if (typeof renderOverview === 'function' && state && state.tab === 'overview') setTimeout(function(){ safeRun('overview after bag change', renderOverview); }, 0);
     scheduleAutoPublish();
     return storage.set(BAG_PROGRESS_KEY, JSON.stringify(bagSavedProgressList), false);
   }
@@ -11215,6 +11235,40 @@
   function stockKeyOf(partNum, color){
     return String(partNum === null || partNum === undefined ? '' : partNum).trim().toLowerCase() + '|' + normColorKey(color);
   }
+
+
+  // ---- Parts sitting in bags you're partway through ("Inventory a Bag", not yet moved to drawers) ----
+  // They count as parts you have, alongside drawer stock, but are shown separately so you know they're still in a bag.
+  function bagsInProgress(){
+    var out = [];
+    (bagSavedProgressList || []).forEach(function(p){
+      var items = (p.id === bagActiveProgressId && bagStagingItems && bagStagingItems.length) ? bagStagingItems : (p.items || []);
+      out.push({ label: p.label || 'Unnamed bag', items: items });
+    });
+    if (!bagActiveProgressId && bagStagingItems && bagStagingItems.length) out.push({ label: 'Current bag (not saved yet)', items: bagStagingItems });
+    return out;
+  }
+  // { partKey: { qty, bags: { label: qty } } }
+  function buildBagStockMap(){
+    var m = {};
+    bagsInProgress().forEach(function(b){
+      b.items.forEach(function(i){
+        if (!i || !i.partNum) return;
+        var q = parseInt(i.qty, 10) || 0;
+        if (q <= 0) return;
+        var k = stockKeyOf(i.partNum, i.color);
+        var e = m[k] || (m[k] = { qty: 0, bags: {} });
+        e.qty += q;
+        e.bags[b.label] = (e.bags[b.label] || 0) + q;
+      });
+    });
+    return m;
+  }
+  function bagNamesText(bags){
+    return Object.keys(bags || {}).map(function(l){ return l + ' (' + bags[l] + ')'; }).join(', ');
+  }
+  // what's still to find once drawers and bags are counted
+  function stillMissingOf(it){ return Math.max((it.short || 0) - (it.inDrawers || 0) - (it.inBags || 0), 0); }
 
   function buildDrawerStockMap(){
     var map = {};
@@ -14454,6 +14508,7 @@
   function getAllShortItems(tierSel){
     if (tierSel === undefined) tierSel = topNeededTier();
     var drawerStock = buildDrawerStockMap();
+    var bagStock = buildBagStockMap();
     var want = TIER_SEL_RANK[tierSel] || 0;   // 0 = everything
     var ranks = buildTierRankMap();
     var map = {};
@@ -14493,34 +14548,47 @@
       var setA = Math.min(left, e.setShort); left -= setA;
       var s = [0,0,0,0,0], a = [0,0,0,0,0];
       for (var t = 1; t <= 3; t++){ s[t] = Math.max(e.need[t] - e.onHand[t], 0); a[t] = Math.min(left, s[t]); left -= a[t]; }
-      var it = { partNum: e.partNum, color: e.color, desc: e.desc || '', elementId: e.elementId, imgUrl: e.imgUrl, drawerTotal: total, heldForHigher: 0, setShort: 0, mocShort: 0, setRemaining: 0, mocRemaining: 0 };
+      // then parts waiting in unfinished bags, in the same order, for whatever drawers didn't cover
+      var bag = bagStock[k] || { qty: 0, bags: {} }, bagLeft = bag.qty;
+      var setB = Math.min(bagLeft, e.setShort - setA); bagLeft -= setB;
+      var bb = [0,0,0,0,0];
+      for (var t2 = 1; t2 <= 3; t2++){ bb[t2] = Math.min(bagLeft, s[t2] - a[t2]); bagLeft -= bb[t2]; }
+      var it = { partNum: e.partNum, color: e.color, desc: e.desc || '', elementId: e.elementId, imgUrl: e.imgUrl, drawerTotal: total, heldForHigher: 0, setShort: 0, mocShort: 0, setRemaining: 0, mocRemaining: 0,
+                 inBags: 0, bagTotal: bag.qty, bagNames: bag.bags, heldBagsForHigher: 0 };
       var builds = new Set();
       if (!want){
         var N = 0, O = 0;
         for (var u = 1; u <= 4; u++){ N += e.need[u]; O += e.onHand[u]; e.buildsBy[u].forEach(function(b){ builds.add(b); }); }
         var mocShort = Math.max(N - O, 0);
         var setAll = Math.min(total, e.setShort);
+        var mocAll = Math.min(total - setAll, mocShort);
+        var bLeft = bag.qty, setBag = Math.min(bLeft, e.setShort - setAll); bLeft -= setBag;
+        var mocBag = Math.min(bLeft, mocShort - mocAll);
         it.setShort = e.setShort; it.mocShort = mocShort;
-        it.setRemaining = e.setShort - setAll;
-        it.mocRemaining = Math.max(mocShort - (total - setAll), 0);
+        it.setRemaining = e.setShort - setAll - setBag;
+        it.mocRemaining = mocShort - mocAll - mocBag;
         it.short = e.setShort + mocShort;
         it.inDrawers = total;
+        it.inBags = Math.min(bag.qty, Math.max(it.short - total, 0));
         it.need = N; it.onHand = O;
         e.sets.forEach(function(x){ builds.add(x); });
       } else if (want === 1){
         it.setShort = e.setShort; it.mocShort = s[1];
-        it.setRemaining = e.setShort - setA; it.mocRemaining = s[1] - a[1];
+        it.setRemaining = e.setShort - setA - setB; it.mocRemaining = s[1] - a[1] - bb[1];
         it.short = e.setShort + s[1];
         it.inDrawers = setA + a[1];
+        it.inBags = setB + bb[1];
         it.need = e.need[1]; it.onHand = e.onHand[1];
         e.buildsBy[1].forEach(function(b){ builds.add(b); });
         e.sets.forEach(function(x){ builds.add(x); });
       } else if (want <= 3){
-        it.mocShort = s[want]; it.mocRemaining = s[want] - a[want];
+        it.mocShort = s[want]; it.mocRemaining = s[want] - a[want] - bb[want];
         it.short = s[want];
         it.inDrawers = a[want];
-        var held = setA; for (var h = 1; h < want; h++) held += a[h];
+        it.inBags = bb[want];
+        var held = setA, heldB = setB; for (var h = 1; h < want; h++){ held += a[h]; heldB += bb[h]; }
         it.heldForHigher = held;
+        it.heldBagsForHigher = heldB;
         it.need = e.need[want]; it.onHand = e.onHand[want];
         e.buildsBy[want].forEach(function(b){ builds.add(b); });
       } else {
@@ -14537,18 +14605,18 @@
   }
 
   function getCoveredItems(){
-    return getAllShortItems().filter(function(it){ return it.short <= it.inDrawers; }).slice(0, getTopNCount());
+    return getAllShortItems().filter(function(it){ return stillMissingOf(it) === 0; }).slice(0, getTopNCount());
   }
 
   // "Clean" report 1: just the parts still worth going to find, one already-netted quantity, nothing else.
   // ranked by what's still missing once drawer stock is used (then by what's needed)
-  function byStillMissing(a, b){ return (Math.max(b.short - b.inDrawers, 0) - Math.max(a.short - a.inDrawers, 0)) || (b.short - a.short); }
+  function byStillMissing(a, b){ return (stillMissingOf(b) - stillMissingOf(a)) || (b.short - a.short); }
   function getStillNeededItems(){
     return getAllShortItems()
-      .filter(function(it){ return it.short > it.inDrawers; })
+      .filter(function(it){ return stillMissingOf(it) > 0; })
       .sort(byStillMissing)
       .slice(0, getTopNCount())
-      .map(function(it){ return Object.assign({}, it, { stillNeeded: it.short - it.inDrawers }); });
+      .map(function(it){ return Object.assign({}, it, { stillNeeded: stillMissingOf(it) }); });
   }
 
   function downloadCsv(lines, filenamePrefix){
@@ -14581,8 +14649,9 @@
     var items = getTop20Items();
     var totalNeeded = items.reduce(function(sum, it){ return sum + it.short; }, 0);
     var totalInDrawers = items.reduce(function(sum, it){ return sum + it.inDrawers; }, 0);
-    var remainingNeeded = items.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
-    return { totalNeeded: totalNeeded, totalInDrawers: totalInDrawers, remainingNeeded: remainingNeeded };
+    var totalInBags = items.reduce(function(sum, it){ return sum + (it.inBags || 0); }, 0);
+    var remainingNeeded = items.reduce(function(sum, it){ return sum + stillMissingOf(it); }, 0);
+    return { totalNeeded: totalNeeded, totalInDrawers: totalInDrawers, totalInBags: totalInBags, remainingNeeded: remainingNeeded };
   }
 
   function exportCleanReportCSV(){
@@ -14596,18 +14665,18 @@
     }
     var lines;
     if (show === 'all'){
-      var header = ['Rank','Part #','Element ID','Color','Description','Needed','In Drawers','Remaining','Used In Builds'];
+      var header = ['Rank','Part #','Element ID','Color','Description','Needed','In Drawers','In Bags','Remaining','Used In Builds'];
       lines = [header.map(csvEscape).join(',')];
       items.forEach(function(it){
-        lines.push([it.rank, it.partNum, it.elementId, it.color, it.desc, it.short, it.inDrawers, it.short - it.inDrawers, Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
+        lines.push([it.rank, it.partNum, it.elementId, it.color, it.desc, it.short, it.inDrawers, it.inBags || 0, stillMissingOf(it), Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
       });
     } else {
       var qtyLabel = show === 'covered' ? 'In Drawers' : 'Still Needed';
       var qtyOf = function(it){ return show === 'covered' ? it.inDrawers : it.stillNeeded; };
-      var header2 = ['Rank','Part #','Element ID','Color','Description', qtyLabel, 'Used In Builds'];
+      var header2 = ['Rank','Part #','Element ID','Color','Description', qtyLabel, 'In Bags', 'Used In Builds'];
       lines = [header2.map(csvEscape).join(',')];
       items.forEach(function(it){
-        lines.push([it.rank, it.partNum, it.elementId, it.color, it.desc, qtyOf(it), Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
+        lines.push([it.rank, it.partNum, it.elementId, it.color, it.desc, qtyOf(it), it.inBags ? it.inBags + ' (' + bagNamesText(it.bagNames) + ')' : '', Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
       });
     }
     var totals = getCleanReportTotals();
@@ -14615,6 +14684,7 @@
     lines.push(['Builds', topNeededTierLabel()].map(csvEscape).join(','));
     lines.push(['Total needed (top ' + getTopNCount() + ')', totals.totalNeeded].map(csvEscape).join(','));
     lines.push(['Total in drawers', totals.totalInDrawers].map(csvEscape).join(','));
+    lines.push(['Total in unfinished bags', totals.totalInBags].map(csvEscape).join(','));
     lines.push(['Remaining needed', totals.remainingNeeded].map(csvEscape).join(','));
     var filenameBase = show === 'covered' ? 'lego-top-parts-in-drawers' : (show === 'all' ? 'lego-top-parts-full-breakdown' : 'lego-top-parts-still-needed');
     downloadCsv(lines, filenameBase);
@@ -14773,7 +14843,8 @@
       var imgMap = {};
       pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
       var totals = getCleanReportTotals();
-      var totalsLine = 'Needed: ' + totals.totalNeeded.toLocaleString() + '  \u00b7  In drawers: ' + totals.totalInDrawers.toLocaleString() + '  \u00b7  Remaining needed: ' + totals.remainingNeeded.toLocaleString();
+      var totalsLine = 'Needed: ' + totals.totalNeeded.toLocaleString() + '  \u00b7  In drawers: ' + totals.totalInDrawers.toLocaleString() + (totals.totalInBags ? '  \u00b7  In bags: ' + totals.totalInBags.toLocaleString() : '') + '  \u00b7  Remaining needed: ' + totals.remainingNeeded.toLocaleString();
+      var bagNote = function(it){ return it.inBags ? ' [' + it.inBags + ' in bag]' : ''; };
 
       if (show === 'all'){
         // Three quantity columns (Needed, In Drawers, Remaining) are too dense for a 2-column split,
@@ -14788,18 +14859,18 @@
         doc.text(totalsLine, 40, 68);
 
         var body = items.map(function(it){
-          return ['', '#' + it.rank, it.partNum, it.color, truncateForPdf(it.desc, wide ? 60 : 30), it.short.toLocaleString(), it.inDrawers.toLocaleString(), (it.short - it.inDrawers).toLocaleString()];
+          return ['', '#' + it.rank, it.partNum, it.color, truncateForPdf(it.desc, wide ? 54 : 24), it.short.toLocaleString(), it.inDrawers.toLocaleString(), (it.inBags || 0).toLocaleString(), stillMissingOf(it).toLocaleString()];
         });
         doc.autoTable({
           startY: 82,
           margin: { top: 82, right: 40, bottom: 30, left: 40 },
-          head: [['','Rank','Part #','Color','Description','Needed','In Drawers','Remaining']],
+          head: [['','Rank','Part #','Color','Description','Needed','Drawers','Bags','Remaining']],
           body: body,
           styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: PDF_THUMB.single.rowHeight, valign: 'middle' },
           headStyles: { fillColor: fillColor, textColor: 255 },
           columnStyles: wide
-            ? { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 32 }, 2: { cellWidth: 60 }, 3: { cellWidth: 50 }, 4: { cellWidth: 317 }, 5: { cellWidth: 55 }, 6: { cellWidth: 65 }, 7: { cellWidth: 70 } }
-            : { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 30 }, 2: { cellWidth: 50 }, 3: { cellWidth: 40 }, 4: { cellWidth: 157 }, 5: { cellWidth: 42 }, 6: { cellWidth: 48 }, 7: { cellWidth: 50 } },
+            ? { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 32 }, 2: { cellWidth: 60 }, 3: { cellWidth: 50 }, 4: { cellWidth: 277 }, 5: { cellWidth: 50 }, 6: { cellWidth: 50 }, 7: { cellWidth: 45 }, 8: { cellWidth: 55 } }
+            : { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 30 }, 2: { cellWidth: 50 }, 3: { cellWidth: 40 }, 4: { cellWidth: 127 }, 5: { cellWidth: 42 }, 6: { cellWidth: 42 }, 7: { cellWidth: 36 }, 8: { cellWidth: 50 } },
           didDrawCell: function(data){
             if (data.section !== 'body' || data.column.index !== 0) return;
             var it = items[data.row.index];
@@ -14836,9 +14907,9 @@
         for (var i = 0; i < rowCount; i++){
           var L = leftItems[i], R = rightItems[i];
           body.push([
-            '', L ? '#' + L.rank : '', L ? L.partNum : '', L ? L.color : '', L ? L.desc : '', L ? qtyOf(L).toLocaleString() : '',
+            '', L ? '#' + L.rank : '', L ? L.partNum : '', L ? L.color : '', L ? L.desc + bagNote(L) : '', L ? qtyOf(L).toLocaleString() : '',
             '',
-            '', R ? '#' + R.rank : '', R ? R.partNum : '', R ? R.color : '', R ? R.desc : '', R ? qtyOf(R).toLocaleString() : ''
+            '', R ? '#' + R.rank : '', R ? R.partNum : '', R ? R.color : '', R ? R.desc + bagNote(R) : '', R ? qtyOf(R).toLocaleString() : ''
           ]);
           rowItems.push([L || null, R || null]);
         }
@@ -14890,7 +14961,7 @@
         doc2.text(totalsLine, 40, 68);
 
         var body2 = items.map(function(it){
-          return ['', '#' + it.rank, it.partNum, it.color, truncateForPdf(it.desc, 38), qtyOf(it).toLocaleString()];
+          return ['', '#' + it.rank, it.partNum, it.color, truncateForPdf(it.desc, it.inBags ? 30 : 38) + bagNote(it), qtyOf(it).toLocaleString()];
         });
         doc2.autoTable({
           startY: 82,
@@ -16514,7 +16585,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.13.15';          // bump with every change to this page
+  var APP_VERSION = '2026.10.13.16';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
