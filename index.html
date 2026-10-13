@@ -11330,19 +11330,61 @@
     return re.test(name) || reRev.test(name);
   }
 
+
+  // ---- Catalog search: everyday parts first. Rebrickable has no "how common" ranking in search, so results are
+  // ordered by: parts already in your collection, then plain parts in core categories (bricks, plates, tiles,
+  // slopes, Technic basics...), exact size matches and plainer names; printed/patterned versions, minifigure items,
+  // stickers, Duplo and non-LEGO items go last. Within the same score, Rebrickable's own order is kept.
+  var CAT_CORE_RE = /^(bricks?( curved| round and cones| sloped| special| wedged)?|plates?( special| angled| round curved and dishes| round and dishes)?|tiles?( round and curved| special)?|hinges, arms and turntables|bars, ladders and fences|technic (pins|axles|beams|beams special|bricks|bushes|connectors|gears)|wheels and tyres|windows and doors|panels|baseplates)$/i;
+  var CAT_LOW_RE = /sticker|non-lego|duplo|quatro|primo|minifig|minidoll|large buildable|clikits|belville|scala|znap|fabuland|bionicle|hero factory|modulex|homemaker|cloth|string|power functions|electronics|light & sound|power ?up|mindstorms|wedo|dots|forma|tools|keychain|magnet|other$/i;
+  function ensurePartCatNames(){
+    return loadPartCatCache().then(function(cache){
+      if (Object.keys(cache.names).length) return cache;
+      return rbFetchJson(rbApiUrl('part_categories/?page_size=1000')).then(function(d){
+        ((d && d.results) || []).forEach(function(c){ cache.names[c.id] = c.name; });
+        savePartCatCache();
+        return cache;
+      }).catch(function(){ return cache; });
+    }).catch(function(){ return { names: {}, byPart: {} }; });
+  }
+  function ownedPartNumSet(){
+    var s = {};
+    Object.keys(partCatalog || {}).forEach(function(k){ s[k.split('|')[0]] = true; });
+    [state.rows, setParts, drawerParts].forEach(function(list){ list.forEach(function(r){ if (r && r.partNum) s[normKey(r.partNum)] = true; }); });
+    return s;
+  }
+  function isPrintedPartNum(pn){ return /(pr|pb|px|pat|pt|ps)\d/i.test(String(pn || '')) || /^(\d+)[a-z]?(c\d{2}|stk)/i.test(String(pn || '')); }
+  function scoreCatalogResult(p, ctx){
+    var catName = (ctx.names && ctx.names[p.part_cat_id]) || '';
+    var score = 0, why = [];
+    if (ctx.owned[normKey(p.part_num)]){ score -= 100; why.push('owned'); }
+    if (catName && CAT_LOW_RE.test(catName)) score += 60;
+    else if (catName && CAT_CORE_RE.test(catName.trim())) score += 0;
+    else score += 20;
+    if (p.print_of || isPrintedPartNum(p.part_num) || /printed|pattern|sticker/i.test(catName + ' ' + (p.name || ''))) score += 40;
+    if (ctx.size && nameMatchesSize(p.name || '', ctx.size)) score -= 30;
+    score += Math.min(String(p.name || '').length, 120) / 12;   // plainer names first
+    if (/[a-z]$/i.test(String(p.part_num)) && !/^\d+$/.test(String(p.part_num))) score += 4;   // lettered mould variants after the main number
+    return { score: score, catName: catName };
+  }
+  function rankCatalogResults(results, ctx){
+    return results.map(function(p, i){ var r = scoreCatalogResult(p, ctx); return { p: p, s: r.score + i * 0.01, cat: r.catName }; })
+      .sort(function(a, b){ return a.s - b.s; });
+  }
+
+  var partSearchCtx = null;
   function renderPartSearchResults(data, append){
     var list = document.getElementById('part-search-results');
     if (!append){ list.innerHTML = ''; partSearchShown = 0; }
     var results = (data && data.results) || [];
     var total = (data && data.count) || 0;
     var sizeQuery = extractSizeQuery(document.getElementById('part-search-input').value.trim());
-    if (sizeQuery){
-      results = results.slice().sort(function(a, b){
-        var aMatch = nameMatchesSize(a.name || '', sizeQuery) ? 0 : 1;
-        var bMatch = nameMatchesSize(b.name || '', sizeQuery) ? 0 : 1;
-        return aMatch - bMatch;
-      });
-    }
+    var ctx = partSearchCtx || { names: {}, owned: ownedPartNumSet() };
+    ctx.size = sizeQuery;
+    var ranked = rankCatalogResults(results, ctx);
+    results = ranked.map(function(x){ return x.p; });
+    var catOf = {};
+    ranked.forEach(function(x){ catOf[x.p.part_num] = x.cat; });
     if (!append && !results.length){
       list.innerHTML = '<div class="empty-msg">No parts matched. Try fewer or different words, e.g. \u201cplate 1 x 2\u201d or \u201cslope 45\u201d.</div>';
     }
@@ -11351,7 +11393,8 @@
       row.style.cssText = 'display:flex; align-items:center; gap:10px; padding:6px 0; border-bottom:1px solid var(--border);';
       row.innerHTML = partThumbHtml(p.part_img_url) +
         '<div style="flex:1; min-width:0;"><div style="font-weight:700; font-size:13px;">' + escapeHtml(p.part_num) + '</div>' +
-        '<div style="font-size:12px; color:var(--text-secondary);">' + escapeHtml(p.name) + '</div></div>';
+        '<div style="font-size:12px; color:var(--text-secondary);">' + escapeHtml(p.name) + '</div>' +
+        '<div style="font-size:11px; color:var(--text-muted);">' + (ctx.owned[normKey(p.part_num)] ? '<span class="tier-chip tier-short" style="margin-right:6px;">In your collection</span>' : '') + escapeHtml(catOf[p.part_num] || '') + '</div></div>';
       var btn = document.createElement('button');
       btn.className = 'icon-btn';
       btn.style.flexShrink = '0';
@@ -11373,8 +11416,13 @@
     if (!rebrickableApiKey){ setPartSearchStatus(RB_NO_KEY_MSG, true); return; }
     showPartSearchView('results');
     setPartSearchStatus('Searching\u2026');
-    rbFetchJson(rbApiUrl('parts/?search=' + encodeURIComponent(q) + '&page_size=50')).then(function(data){
-      renderPartSearchResults(data, false);
+    // a bigger first page, so the everyday part is in the batch being sorted
+    Promise.all([
+      rbFetchJson(rbApiUrl('parts/?search=' + encodeURIComponent(q) + '&page_size=200&inc_part_details=1')),
+      ensurePartCatNames()
+    ]).then(function(res){
+      partSearchCtx = { names: (res[1] && res[1].names) || {}, owned: ownedPartNumSet() };
+      renderPartSearchResults(res[0], false);
     }).catch(function(err){
       setPartSearchStatus('Search failed: ' + (err && err.message ? err.message : 'couldn\u2019t reach Rebrickable.'), true);
     });
@@ -16368,7 +16416,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.13.13';          // bump with every change to this page
+  var APP_VERSION = '2026.10.13.14';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
