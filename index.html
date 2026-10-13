@@ -429,6 +429,13 @@
 #lego-inv-root #parts-tbody td.qty-cell, #lego-inv-root #parts-tbody td.onhand-cell { padding-left: 4px; padding-right: 4px; }
 #lego-inv-root #parts-tbody td:nth-child(10) { overflow: visible; text-overflow: clip; }
 #lego-inv-root #parts-tbody .pill { white-space: nowrap; }
+#lego-inv-root thead th { z-index: 3; }   /* sticky headings stay above dimmed (locked) inputs while scrolling */
+#lego-inv-root .build-link { background: none !important; border: none !important; padding: 0 !important; margin: 0; font: inherit; font-size: 13px; font-weight: 500; text-transform: none; letter-spacing: normal; color: var(--accent-text, var(--lego-blue)); text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); text-underline-offset: 2px; cursor: pointer; border-radius: 0; max-width: 100%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; display: inline-block; vertical-align: middle; text-align: left; }
+#lego-inv-root .build-link:hover, #lego-inv-root .build-link:focus-visible { text-decoration-color: currentColor; outline: none; }
+#lego-inv-root .used-in-cell { overflow: visible; white-space: normal; }
+#lego-inv-root .used-in-list { display: flex; flex-direction: column; gap: 4px; margin-top: 4px; }
+#lego-inv-root .used-in-list[hidden] { display: none; }
+#lego-inv-root .used-in-list .build-link { font-size: 12px; }
 #lego-inv-root .shop-pick-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin: 6px 0 6px; padding-top: 6px; border-top: 1px solid var(--border); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-secondary); }
 #lego-inv-root .shop-pick-head:first-child { border-top: none; padding-top: 0; margin-top: 0; }
 #lego-inv-root .shop-set-tag { display: inline-block; font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; padding: 0 5px; border-radius: 4px; border: 1px solid var(--accent-text); color: var(--accent-text); vertical-align: 1px; }
@@ -3132,7 +3139,9 @@
           : '<td class="wrap-cell">'+((drawerStock[stockKeyOf(it.partNum, it.color)]||0)).toLocaleString()+'</td>';
         tr.innerHTML =
           imgCell +
-          '<td><span class="used-in-count" title="'+escapeHtml(buildList.join(', '))+'">'+buildList.length+' build'+(buildList.length===1?'':'s')+'</span></td>'+
+          '<td class="used-in-cell">' + (buildList.length === 1
+            ? '<button type="button" class="build-link" data-moc="'+escapeHtml(buildList[0])+'" title="Open the summary for '+escapeHtml(buildList[0])+'">'+escapeHtml(buildList[0])+'</button>'
+            : '<button type="button" class="build-link used-in-toggle" title="'+escapeHtml(buildList.join(', '))+'">'+buildList.length+' builds</button><div class="used-in-list" hidden>' + buildList.map(function(b){ return '<button type="button" class="build-link" data-moc="'+escapeHtml(b)+'">'+escapeHtml(b)+'</button>'; }).join('') + '</div>') + '</td>'+
           '<td class="wrap-cell">'+escapeHtml(it.partNum)+'</td>'+
           '<td class="wrap-cell">'+escapeHtml(it.color)+'</td>'+
           '<td class="wrap-cell">'+escapeHtml(it.desc)+'</td>'+
@@ -3191,7 +3200,7 @@
         : '<td class="in-drawers-cell wrap-cell">'+((drawerStock[stockKeyOf(r.partNum, r.color)]||0)).toLocaleString()+'</td>';
       tr.innerHTML =
         imgCell +
-        '<td title="'+escapeHtml(r.moc)+'">'+escapeHtml(r.moc)+'</td>'+
+        '<td title="Open the summary for '+escapeHtml(r.moc)+'"><button type="button" class="build-link" data-moc="'+escapeHtml(r.moc)+'">'+escapeHtml(r.moc)+'</button></td>'+
         '<td class="partnum-cell"></td>'+
         '<td class="color-cell"></td>'+
         '<td class="desc-cell"></td>'+
@@ -14414,6 +14423,17 @@
   wireEl('shop-export-bricklink-btn', 'click', exportBricklinkWantedList);
   wireEl('clean-report-csv-btn', 'click', exportCleanReportCSV);
   wireEl('clean-report-pdf-btn', 'click', generateCleanReportPDF);
+  wireEl('parts-tbody', 'click', function(e){
+    var btn = e.target.closest && e.target.closest('.build-link');
+    if (!btn) return;
+    e.preventDefault();
+    if (btn.classList.contains('used-in-toggle')){
+      var list = btn.parentNode.querySelector('.used-in-list');
+      if (list) list.hidden = !list.hidden;
+      return;
+    }
+    if (btn.dataset.moc) openMocDetail(btn.dataset.moc);
+  });
   document.querySelectorAll('#lego-inv-root th[data-sort]').forEach(function(th){
     th.addEventListener('click', function(){
       var col = th.dataset.sort;
@@ -15682,7 +15702,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.12.6';          // bump with every change to this page
+  var APP_VERSION = '2026.10.12.7';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
