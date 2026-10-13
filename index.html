@@ -3636,6 +3636,9 @@
     hint.style.display = 'none';
     section.style.display = 'block';
     var items = getTop20ItemsFiltered();
+    items.forEach(function(it, i){ it.rank = i + 1; });
+    var byColor = (document.getElementById('clean-report-sort') || {}).value === 'color';
+    if (byColor) items = items.slice().sort(function(a,b){ return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.rank - b.rank); });
     var totalNeeded = allItems.reduce(function(sum, it){ return sum + it.short; }, 0);
     var totalInDrawers = allItems.reduce(function(sum, it){ return sum + it.inDrawers; }, 0);
     var remainingNeeded = allItems.reduce(function(sum, it){ return sum + Math.max(it.short - it.inDrawers, 0); }, 0);
@@ -3653,7 +3656,7 @@
       row.className = 'top-needed-item tn-card';
       var remaining = Math.max(it.short - it.inDrawers, 0);
       row.innerHTML =
-        '<span class="top-needed-rank" title="Rank in this list">'+(i+1)+'</span>' +
+        '<span class="top-needed-rank" title="'+(byColor ? 'Its rank among your most needed parts (this list is sorted by colour)' : 'Rank in this list')+'">'+(byColor ? '#' : '')+it.rank+'</span>' +
         '<span class="part-thumb-wrap"></span>' +
         '<span class="tn-main"><span class="top-needed-partnum" title="Part number">#'+escapeHtml(it.partNum)+'</span>' +
           '<span class="top-needed-desc">'+escapeHtml(it.color)+' '+escapeHtml(it.desc)+'</span>' +
@@ -3679,6 +3682,7 @@
 
   wireEl('top-needed-filter', 'change', renderTopNeeded);
   wireEl('top-needed-tier', 'change', renderTopNeeded);
+  wireEl('clean-report-sort', 'change', renderTopNeeded);
   wireEl('top-needed-count', 'input', renderTopNeeded);
 
   wireEl('top-needed-toggle-btn', 'click', function(){
@@ -14419,9 +14423,10 @@
   function getCleanReportItems(){
     var show = document.getElementById('clean-report-show').value;
     var items = show === 'covered' ? getCoveredItems() : (show === 'all' ? getTop20Items() : getStillNeededItems());
+    items.forEach(function(it, i){ it.rank = i + 1; });   // its place in the most-needed order, kept if re-sorted below
     var sort = document.getElementById('clean-report-sort').value;
     if (sort === 'color'){
-      items = items.slice().sort(function(a,b){ return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.short - b.short); });
+      items = items.slice().sort(function(a,b){ return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.rank - b.rank); });
     }
     return items;
   }
@@ -14445,18 +14450,18 @@
     }
     var lines;
     if (show === 'all'){
-      var header = ['Part #','Element ID','Color','Description','Needed','In Drawers','Remaining','Used In Builds'];
+      var header = ['Rank','Part #','Element ID','Color','Description','Needed','In Drawers','Remaining','Used In Builds'];
       lines = [header.map(csvEscape).join(',')];
       items.forEach(function(it){
-        lines.push([it.partNum, it.elementId, it.color, it.desc, it.short, it.inDrawers, it.short - it.inDrawers, Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
+        lines.push([it.rank, it.partNum, it.elementId, it.color, it.desc, it.short, it.inDrawers, it.short - it.inDrawers, Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
       });
     } else {
       var qtyLabel = show === 'covered' ? 'In Drawers' : 'Still Needed';
       var qtyOf = function(it){ return show === 'covered' ? it.inDrawers : it.stillNeeded; };
-      var header2 = ['Part #','Element ID','Color','Description', qtyLabel, 'Used In Builds'];
+      var header2 = ['Rank','Part #','Element ID','Color','Description', qtyLabel, 'Used In Builds'];
       lines = [header2.map(csvEscape).join(',')];
       items.forEach(function(it){
-        lines.push([it.partNum, it.elementId, it.color, it.desc, qtyOf(it), Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
+        lines.push([it.rank, it.partNum, it.elementId, it.color, it.desc, qtyOf(it), Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
       });
     }
     var totals = getCleanReportTotals();
@@ -14637,18 +14642,18 @@
         doc.text(totalsLine, 40, 68);
 
         var body = items.map(function(it){
-          return ['', it.partNum, it.color, truncateForPdf(it.desc, wide ? 65 : 36), it.short.toLocaleString(), it.inDrawers.toLocaleString(), (it.short - it.inDrawers).toLocaleString()];
+          return ['', '#' + it.rank, it.partNum, it.color, truncateForPdf(it.desc, wide ? 60 : 30), it.short.toLocaleString(), it.inDrawers.toLocaleString(), (it.short - it.inDrawers).toLocaleString()];
         });
         doc.autoTable({
           startY: 82,
           margin: { top: 82, right: 40, bottom: 30, left: 40 },
-          head: [['','Part #','Color','Description','Needed','In Drawers','Remaining']],
+          head: [['','Rank','Part #','Color','Description','Needed','In Drawers','Remaining']],
           body: body,
           styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: PDF_THUMB.single.rowHeight, valign: 'middle' },
           headStyles: { fillColor: fillColor, textColor: 255 },
           columnStyles: wide
-            ? { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 60 }, 2: { cellWidth: 50 }, 3: { cellWidth: 349 }, 4: { cellWidth: 55 }, 5: { cellWidth: 65 }, 6: { cellWidth: 70 } }
-            : { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 50 }, 2: { cellWidth: 40 }, 3: { cellWidth: 187 }, 4: { cellWidth: 42 }, 5: { cellWidth: 48 }, 6: { cellWidth: 50 } },
+            ? { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 32 }, 2: { cellWidth: 60 }, 3: { cellWidth: 50 }, 4: { cellWidth: 317 }, 5: { cellWidth: 55 }, 6: { cellWidth: 65 }, 7: { cellWidth: 70 } }
+            : { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 30 }, 2: { cellWidth: 50 }, 3: { cellWidth: 40 }, 4: { cellWidth: 157 }, 5: { cellWidth: 42 }, 6: { cellWidth: 48 }, 7: { cellWidth: 50 } },
           didDrawCell: function(data){
             if (data.section !== 'body' || data.column.index !== 0) return;
             var it = items[data.row.index];
@@ -14685,9 +14690,9 @@
         for (var i = 0; i < rowCount; i++){
           var L = leftItems[i], R = rightItems[i];
           body.push([
-            '', L ? L.partNum : '', L ? L.color : '', L ? L.desc : '', L ? qtyOf(L).toLocaleString() : '',
+            '', L ? '#' + L.rank : '', L ? L.partNum : '', L ? L.color : '', L ? L.desc : '', L ? qtyOf(L).toLocaleString() : '',
             '',
-            '', R ? R.partNum : '', R ? R.color : '', R ? R.desc : '', R ? qtyOf(R).toLocaleString() : ''
+            '', R ? '#' + R.rank : '', R ? R.partNum : '', R ? R.color : '', R ? R.desc : '', R ? qtyOf(R).toLocaleString() : ''
           ]);
           rowItems.push([L || null, R || null]);
         }
@@ -14695,17 +14700,17 @@
         doc.autoTable({
           startY: 82,
           margin: { top: 82, right: 40, bottom: 30, left: 40 },
-          head: [['','Part #','Color','Description',qtyLabelShort,'','','Part #','Color','Description',qtyLabelShort]],
+          head: [['','Rank','Part #','Color','Description',qtyLabelShort,'','','Rank','Part #','Color','Description',qtyLabelShort]],
           body: body,
           styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: PDF_THUMB.split.rowHeight, valign: 'middle' },
           headStyles: { fillColor: fillColor, textColor: 255 },
           columnStyles: {
-            0: { cellWidth: PDF_THUMB.split.cellWidth }, 1: { cellWidth: 42 }, 2: { cellWidth: 38 }, 3: { cellWidth: 150 }, 4: { cellWidth: 40 },
-            5: { cellWidth: 10 },
-            6: { cellWidth: PDF_THUMB.split.cellWidth }, 7: { cellWidth: 42 }, 8: { cellWidth: 38 }, 9: { cellWidth: 150 }, 10: { cellWidth: 40 }
+            0: { cellWidth: PDF_THUMB.split.cellWidth }, 1: { cellWidth: 26 }, 2: { cellWidth: 42 }, 3: { cellWidth: 38 }, 4: { cellWidth: 124 }, 5: { cellWidth: 40 },
+            6: { cellWidth: 10 },
+            7: { cellWidth: PDF_THUMB.split.cellWidth }, 8: { cellWidth: 26 }, 9: { cellWidth: 42 }, 10: { cellWidth: 38 }, 11: { cellWidth: 124 }, 12: { cellWidth: 40 }
           },
           didParseCell: function(data){
-            if (data.column.index === 5){
+            if (data.column.index === 6){
               data.cell.styles.lineWidth = 0;
               data.cell.styles.fillColor = data.section === 'head' ? fillColor : 255;
             }
@@ -14714,7 +14719,7 @@
             if (data.section !== 'body') return;
             var pair = rowItems[data.row.index];
             if (!pair) return;
-            var slot = data.column.index === 0 ? 0 : (data.column.index === 6 ? 1 : null);
+            var slot = data.column.index === 0 ? 0 : (data.column.index === 7 ? 1 : null);
             if (slot === null) return;
             var it = pair[slot];
             var elementId = it && it.elementId;
@@ -14739,16 +14744,16 @@
         doc2.text(totalsLine, 40, 68);
 
         var body2 = items.map(function(it){
-          return ['', it.partNum, it.color, truncateForPdf(it.desc, 42), qtyOf(it).toLocaleString()];
+          return ['', '#' + it.rank, it.partNum, it.color, truncateForPdf(it.desc, 38), qtyOf(it).toLocaleString()];
         });
         doc2.autoTable({
           startY: 82,
           margin: { top: 82, right: 40, bottom: 30, left: 40 },
-          head: [['','Part #','Color','Description', qtyLabelFull]],
+          head: [['','Rank','Part #','Color','Description', qtyLabelFull]],
           body: body2,
           styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: PDF_THUMB.single.rowHeight, valign: 'middle' },
           headStyles: { fillColor: fillColor, textColor: 255 },
-          columnStyles: { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 55 }, 2: { cellWidth: 50 }, 3: { cellWidth: 246 }, 4: { cellWidth: 70 } },
+          columnStyles: { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 34 }, 2: { cellWidth: 55 }, 3: { cellWidth: 50 }, 4: { cellWidth: 212 }, 5: { cellWidth: 70 } },
           didDrawCell: function(data){
             if (data.section !== 'body' || data.column.index !== 0) return;
             var it = items[data.row.index];
@@ -16363,7 +16368,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.13.12';          // bump with every change to this page
+  var APP_VERSION = '2026.10.13.13';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
