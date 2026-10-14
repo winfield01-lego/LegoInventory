@@ -458,6 +458,18 @@
 #lego-inv-root .tn-num.tn-drawers b { color: var(--lego-green); }
 #lego-inv-root .tn-num.tn-missing b { color: var(--lego-orange); }
 #lego-inv-root .tn-num.tn-missing.tn-zero b { color: var(--text-muted); }
+#lego-inv-root .kind-chip { display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; padding: 1px 6px; border-radius: 999px; line-height: 1.5; white-space: nowrap; vertical-align: middle; }
+#lego-inv-root .kind-chip.kind-simple { color: var(--bt-neon, #C8F03C); border: 1px solid var(--bt-neon, #C8F03C); }
+#lego-inv-root .kind-chip.kind-complex { color: var(--text-secondary); border: 1px dashed var(--bt-gray, #9CA29E); }
+#lego-inv-root button.kind-chip { background: transparent !important; cursor: pointer; padding: 1px 6px !important; min-height: 0; height: auto; box-shadow: none; }
+#lego-inv-root .tn-tags { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+#lego-inv-root #bag-inventory-add-part-btn { white-space: normal; flex-shrink: 1 !important; max-width: 100%; text-align: center; }
+#lego-inv-root #bag-staging-stats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; margin: 0 0 10px; }
+#lego-inv-root .bag-stat { border: 1px solid var(--border); border-radius: 8px; background: var(--surface-1); padding: 5px 4px; text-align: center; display: flex; flex-direction: column; justify-content: center; min-width: 0; }
+#lego-inv-root .bag-stat b { font-size: 16px; font-weight: 800; font-variant-numeric: tabular-nums; line-height: 1.2; color: var(--text-primary); }
+#lego-inv-root .bag-stat span { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.03em; color: var(--text-muted); line-height: 1.2; }
+#lego-inv-root .bag-stat-good b { color: var(--lego-green); }
+#lego-inv-root .bag-stat-warn b { color: var(--lego-orange); }
 #lego-inv-root .tn-num.tn-bags { border-style: dashed; border-color: var(--bt-gray, #9CA29E); }
 #lego-inv-root .tn-num.tn-bags b { color: var(--text-primary); }
 #lego-inv-root .tn-num.tn-bags.tn-zero b { color: var(--text-muted); }
@@ -630,7 +642,12 @@
         <select id="top-needed-filter">
           <option value="all">All parts</option>
           <option value="uncovered">Still need to find</option>
-          <option value="covered">Fully covered by drawers</option>
+          <option value="covered">Fully covered by drawers or bags</option>
+        </select>
+        <select id="top-needed-kind" title="Simple parts are plain plates, tiles, slopes and bricks">
+          <option value="">Simple &amp; complex</option>
+          <option value="simple">Simple parts only</option>
+          <option value="complex">Complex parts only</option>
         </select>
         <span id="top-needed-total-line" style="font-size:12px; color:var(--text-secondary); font-weight:700;"></span>
       </div>
@@ -1825,6 +1842,8 @@
         <option value="noelement">No element ID</option>
         <option value="never">Never pulled from Rebrickable</option>
         <option value="stale">Not pulled in the last 2 months</option>
+        <option value="simple">Simple parts</option>
+        <option value="complex">Complex parts</option>
       </select>
       <select id="pml-sort" title="Order">
         <option value="part">Sort by part number</option>
@@ -2100,6 +2119,7 @@
       <select id="bag-catalog-preselect-drawer" style="flex:1; min-width:150px;"><option value="">Suggest automatically</option></select>
       <button id="bag-inventory-add-part-btn" class="icon-btn lockable" style="flex-shrink:0;"><i class="ti ti-search" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Search the full catalog for something new</button>
     </div>
+    <div id="bag-staging-stats" style="display:none;"></div>
     <div id="bag-inventory-staging-list" style="margin-bottom:10px; border-top:2px solid var(--border); padding-top:10px;"></div>
     <p id="bag-inventory-empty-msg" class="empty-msg" style="display:none;">Nothing added yet &mdash; search above to get started.</p>
     <div class="row" style="align-items:center; gap:8px; margin-bottom:10px;">
@@ -2431,7 +2451,7 @@
   var lockWriteBypassUntil = 0;
   var lockNoticeTimer = null;
   var LOCK_EXEMPT_IDS = {};
-  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-sort pml-open-btn-3 pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing slim-refresh-btn device-name-input auto-photos-toggle auto-photos-run auto-photos-stop figs-almost-toggle-btn figs-almost-threshold figs-almost-drawer-only figs-almost-layout figs-almost-csv-btn figs-almost-pdf-btn moc-tier-toggle top-needed-tier tier-filter mocbuild-group-by sets-group-by sets-sort-by collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
+  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-sort pml-open-btn-3 pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing top-needed-kind pml-sort slim-refresh-btn device-name-input auto-photos-toggle auto-photos-run auto-photos-stop figs-almost-toggle-btn figs-almost-threshold figs-almost-drawer-only figs-almost-layout figs-almost-csv-btn figs-almost-pdf-btn moc-tier-toggle top-needed-tier tier-filter mocbuild-group-by sets-group-by sets-sort-by collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
   var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input';
   var LOCK_CONTROL_SELECTOR = 'input, select, textarea, button';
 
@@ -3588,7 +3608,7 @@
 
   function getTop20ItemsFiltered(){
     var mode = document.getElementById('top-needed-filter').value;
-    if (mode === 'uncovered') return getAllShortItems().filter(function(it){ return stillMissingOf(it) > 0; }).sort(byStillMissing).slice(0, getTopNCount());
+    if (mode === 'uncovered') return getShortItemsForReport().filter(function(it){ return stillMissingOf(it) > 0; }).sort(byStillMissing).slice(0, getTopNCount());
     if (mode === 'covered') return getCoveredItems();
     return getTop20Items();
   }
@@ -3671,7 +3691,7 @@
       row.innerHTML =
         '<span class="top-needed-rank" title="'+(byColor ? 'Its rank among your most needed parts (this list is sorted by colour)' : 'Rank in this list')+'">'+(byColor ? '#' : '')+it.rank+'</span>' +
         '<span class="part-thumb-wrap"></span>' +
-        '<span class="tn-main"><span class="top-needed-partnum" title="Part number">#'+escapeHtml(it.partNum)+'</span>' +
+        '<span class="tn-main"><span class="tn-tags"><span class="top-needed-partnum" title="Part number">#'+escapeHtml(it.partNum)+'</span>' + kindChipHtml(it.partNum, it.desc) + '</span>' +
           '<span class="top-needed-desc">'+escapeHtml(it.color)+' '+escapeHtml(it.desc)+'</span>' +
           (it.setShort && it.mocShort ? '<span class="tn-held">Includes ' + it.setShort.toLocaleString() + ' for official sets</span>' : it.setShort ? '<span class="tn-held">For official sets</span>' : '') +
           (it.inBags ? '<span class="tn-held tn-bag-note"><i class="ti ti-shopping-bag" aria-hidden="true"></i> ' + it.inBags.toLocaleString() + ' waiting in ' + escapeHtml(bagNamesText(it.bagNames)) + '</span>' : '') +
@@ -3697,6 +3717,7 @@
 
   wireEl('top-needed-filter', 'change', renderTopNeeded);
   wireEl('top-needed-tier', 'change', renderTopNeeded);
+  wireEl('top-needed-kind', 'change', renderTopNeeded);
   wireEl('clean-report-sort', 'change', renderTopNeeded);
   wireEl('top-needed-count', 'input', renderTopNeeded);
 
@@ -6679,6 +6700,7 @@
       if (f === 'noelement' && it.elementId) return false;
       if (f === 'never' && it.pulledAt) return false;
       if (f === 'stale' && it.pulledAt && it.pulledAt > cutoff) return false;
+      if ((f === 'simple' || f === 'complex') && partKindOf(it.partNum, it.desc).kind !== f) return false;
       if (q){
         var hay = [it.partNum, it.color, it.desc, it.elementId].concat(Object.keys(it.owners)).join(' ').toLowerCase();
         if (hay.indexOf(q) === -1) return false;
@@ -6716,6 +6738,19 @@
         escapeHtml((it.elementId ? 'Element ' + it.elementId : 'No element ID') + (it.cat && it.cat.ea && it.cat.ea.length ? ' (also ' + it.cat.ea.join(', ') + ')' : '') + ' · ' + uses + ' · ' + pmlAgo(it.pulledAt) + (it.noPhoto ? ' · no photo' : '')) +
         '</span></span>';
     row.querySelector('.top-needed-desc').title = Object.keys(it.owners).sort().join('\n');
+    if (it.partNum){
+      var pk0 = partKindOf(it.partNum, it.desc);
+      var kb = document.createElement('button');
+      kb.type = 'button';
+      kb.className = 'kind-chip kind-' + pk0.kind;
+      kb.textContent = (pk0.kind === 'simple' ? 'Simple' : 'Complex') + (pk0.manual ? ' \u2713' : '');
+      kb.title = pk0.manual ? 'You set this part as ' + pk0.kind + '. Tap to go back to the automatic choice.' : 'Worked out from the name. Tap to mark it ' + (pk0.kind === 'simple' ? 'complex' : 'simple') + ' instead.';
+      kb.addEventListener('click', function(){
+        if (pk0.manual) setPartKind(it.partNum, ''); else setPartKind(it.partNum, pk0.kind === 'simple' ? 'complex' : 'simple');
+        pmlFillRow(row, it);
+      });
+      row.querySelector('.top-needed-partnum').after(kb);
+    }
     var tot = document.createElement('span');
     tot.className = 'pml-total';
     tot.title = 'Pieces you have: ' + it.totals.Drawer.toLocaleString() + ' in drawers, ' + it.totals.Build.toLocaleString() + ' in MOC builds, ' + it.totals.Set.toLocaleString() + ' in official sets' + (it.totals.Fig ? ', ' + it.totals.Fig.toLocaleString() + ' in minifigures' : '');
@@ -11237,6 +11272,62 @@
   }
 
 
+  // ---- Simple or complex parts ----
+  // Simple: plain plates, tiles, slopes (and plain bricks and curved slopes) with nothing on their sides: the name is
+  // just the kind of part, its size, and words like Round, Inverted, Double, Corner, No Studs, with Groove.
+  // Anything printed, or with clips, bars, holes, studs on the side and so on, is complex. You can change any part.
+  var PART_KINDS_KEY = 'part-kinds-v1';
+  var partKinds = {};   // { partKey: { k: 's' | 'c', at: ms } } — your own choices, which win over the automatic one
+  var KIND_OK_WORDS = { round: 1, inverted: 1, curved: 1, sloped: 1, double: 1, triple: 1, corner: 1, x: 1, no: 1, studs: 1, stud: 1, 'with': 1, without: 1, groove: 1, bottom: 1, tube: 1, tubes: 1, solid: 1, hollow: 1, open: 1, and: 1 };
+  function autoPartKind(name, partNum){
+    var n = String(name || '').toLowerCase();
+    if (!n) return 'complex';
+    if (/print|pattern|sticker|decorated|marbled|glitter|chrome|metallic/.test(n) || /(pr|pb|px|pat|pt)\d/i.test(String(partNum || ''))) return 'complex';
+    n = n.replace(/\[[^\]]*\]|\([^)]*\)/g, ' ').replace(/\u00d7/g, 'x').replace(/[,\/\-]/g, ' ').replace(/\s+/g, ' ').trim();
+    var w = n.split(' ');
+    if (!/^(plate|tile|brick|slope)$/.test(w[0])) return 'complex';
+    if (!/\d+ x \d+/.test(n)) return 'complex';
+    for (var i = 1; i < w.length; i++){
+      if (KIND_OK_WORDS[w[i]]) continue;
+      if (/^\d+(\.\d+)?\u00b0?$/.test(w[i])) continue;
+      return 'complex';
+    }
+    return 'simple';
+  }
+  function partKindOf(partNum, name){
+    var o = partKinds[normKey(partNum)];
+    if (o && (o.k === 's' || o.k === 'c')) return { kind: o.k === 's' ? 'simple' : 'complex', manual: true };
+    return { kind: autoPartKind(name, partNum), manual: false };
+  }
+  function kindChipHtml(partNum, name){
+    var k = partKindOf(partNum, name);
+    return '<span class="kind-chip kind-' + k.kind + '" title="' + (k.kind === 'simple' ? 'Simple part: a plain plate, tile, slope or brick' : 'Complex part: special shape, side features or a print') + (k.manual ? ' (set by you)' : '') + '">' + (k.kind === 'simple' ? 'Simple' : 'Complex') + '</span>';
+  }
+  function setPartKind(partNum, kind){   // kind: 'simple' | 'complex' | '' (back to automatic)
+    var pk = normKey(partNum);
+    if (kind) partKinds[pk] = { k: kind === 'simple' ? 's' : 'c', at: Date.now() };
+    else partKinds[pk] = { k: '', at: Date.now() };   // a cleared choice is kept (with its time) so it syncs
+    storage.set(PART_KINDS_KEY, JSON.stringify(partKinds), false);
+    scheduleAutoPublish();
+  }
+  function loadPartKinds(){
+    return storage.get(PART_KINDS_KEY, false).then(function(res){
+      if (res && res.value){ try { partKinds = JSON.parse(res.value) || {}; } catch(e){ partKinds = {}; } }
+    }).catch(function(){});
+  }
+  function mergePartKinds(a, b){
+    var out = {};
+    [a || {}, b || {}].forEach(function(src){ Object.keys(src).forEach(function(k){ var x = src[k]; if (x && (!out[k] || (x.at || 0) > (out[k].at || 0))) out[k] = x; }); });
+    return out;
+  }
+  function topNeededKind(){ var el = document.getElementById('top-needed-kind'); return el ? el.value : ''; }
+  function filterByKind(list){
+    var want = topNeededKind();
+    if (!want) return list;
+    return list.filter(function(it){ return partKindOf(it.partNum, it.desc).kind === want; });
+  }
+  function getShortItemsForReport(){ return filterByKind(getAllShortItems()); }
+
   // ---- Parts sitting in bags you're partway through ("Inventory a Bag", not yet moved to drawers) ----
   // They count as parts you have, alongside drawer stock, but are shown separately so you know they're still in a bag.
   function bagsInProgress(){
@@ -12137,10 +12228,60 @@
     }
   };
 
+
+  // ---- Statistics for a bag: part lines, pieces, different parts and colours, drawers, and how much of it you need ----
+  function bagStats(items){
+    var st = { lines: 0, pieces: 0, parts: {}, colors: {}, noDrawer: 0, newLines: 0, simple: 0, complex: 0, useful: 0 };
+    var stock = buildDrawerStockMap();
+    var need = {};   // what your builds and sets still need beyond your drawers
+    safeRun('bag statistics', function(){
+      getAllShortItems('all').forEach(function(it){ var n = Math.max(it.short - it.drawerTotal, 0); if (n) need[stockKeyOf(it.partNum, it.color)] = n; });
+    });
+    (items || []).forEach(function(i){
+      if (!i || !i.partNum) return;
+      var q = parseInt(i.qty, 10) || 0;
+      var k = stockKeyOf(i.partNum, i.color);
+      st.lines++;
+      st.pieces += q;
+      st.parts[normKey(i.partNum)] = true;
+      if (i.color) st.colors[normColorKey(i.color)] = true;
+      if (!i.drawerId) st.noDrawer++;
+      if (!stock[k]) st.newLines++;
+      if (partKindOf(i.partNum, i.desc).kind === 'simple') st.simple += q; else st.complex += q;
+      if (need[k]){ var u = Math.min(q, need[k]); st.useful += u; need[k] -= u; }
+    });
+    st.partCount = Object.keys(st.parts).length;
+    st.colorCount = Object.keys(st.colors).length;
+    return st;
+  }
+  function bagStatsLine(items){
+    var st = bagStats(items);
+    return st.lines + ' part line' + (st.lines === 1 ? '' : 's') + ' · ' + st.pieces.toLocaleString() + ' piece' + (st.pieces === 1 ? '' : 's') +
+      (st.useful ? ' · ' + st.useful.toLocaleString() + ' needed by your builds' : '');
+  }
+  function renderBagStats(){
+    var box = document.getElementById('bag-staging-stats');
+    if (!box) return;
+    if (!bagStagingItems.length){ box.style.display = 'none'; return; }
+    var st = bagStats(bagStagingItems);
+    function cell(v, label, title, cls){ return '<div class="bag-stat' + (cls ? ' ' + cls : '') + '" title="' + escapeHtml(title) + '"><b>' + v.toLocaleString() + '</b><span>' + label + '</span></div>'; }
+    box.innerHTML =
+      cell(st.lines, 'Part lines', 'Separate lines in this bag (one per part and colour)') +
+      cell(st.pieces, 'Pieces', 'Total pieces in this bag') +
+      cell(st.partCount, 'Different parts', 'Different part numbers, ignoring colour') +
+      cell(st.colorCount, 'Colours', 'Different colours') +
+      cell(st.useful, 'Needed by builds', 'Pieces your builds and official sets still need beyond what your drawers hold', 'bag-stat-good') +
+      cell(st.newLines, 'New to drawers', 'Lines for a part and colour none of your drawers has yet') +
+      cell(st.noDrawer, 'Need a drawer', 'Lines with no drawer chosen yet', st.noDrawer ? 'bag-stat-warn' : '') +
+      cell(st.simple, 'Simple pcs', 'Pieces that are plain plates, tiles, slopes or bricks');
+    box.style.display = '';
+  }
+
   function renderBagStagingList(){
     var list = document.getElementById('bag-inventory-staging-list');
     var emptyMsg = document.getElementById('bag-inventory-empty-msg');
     list.innerHTML = '';
+    safeRun('bag statistics', renderBagStats);
     if (!bagStagingItems.length){
       emptyMsg.style.display = 'block';
       return;
@@ -12163,13 +12304,14 @@
         if (isNaN(v) || v < 1) v = 1;
         it.qty = v;
         qtyInput.value = v;
+        safeRun('bag statistics', renderBagStats);
       });
       row.appendChild(qtyInput);
       var sel = document.createElement('select');
       sel.style.cssText = 'flex-shrink:0; min-width:150px;';
       sel.title = it.suggested ? 'Suggested because this same part is already in this drawer, just in a different color \u2014 change it if that\u2019s wrong.' : '';
       sel.innerHTML = drawerOptGroupsHtml(it.drawerId, it.matchCount > 1 ? 'In ' + it.matchCount + ' drawers \u2014 choose one' : 'Choose a drawer\u2026', null);
-      sel.addEventListener('change', function(){ it.drawerId = sel.value; it.suggested = false; suggestedNote.style.display = 'none'; });
+      sel.addEventListener('change', function(){ it.drawerId = sel.value; it.suggested = false; suggestedNote.style.display = 'none'; safeRun('bag statistics', renderBagStats); });
       row.appendChild(sel);
       var suggestedNote = document.createElement('span');
       suggestedNote.textContent = 'suggested (diff. color)';
@@ -12314,7 +12456,7 @@
       var d = entry.savedAt ? new Date(entry.savedAt) : null;
       var dateStr = d ? (d.toLocaleDateString() + ' ' + d.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit' })) : '';
       row.innerHTML = '<div style="flex:1; min-width:140px;"><div style="font-weight:700; font-size:13px;">'+escapeHtml(entry.label || '(untitled)')+(isActive ? ' <span style="font-size:11px; font-weight:700; color:var(--lego-blue);">&middot; currently editing</span>' : '')+'</div>' +
-        '<div style="font-size:12px; color:var(--text-secondary);">'+entry.items.length+' item'+(entry.items.length===1?'':'s')+(dateStr ? ' &middot; saved '+dateStr : '')+'</div></div>';
+        '<div style="font-size:12px; color:var(--text-secondary);">'+escapeHtml(bagStatsLine(isActive && bagStagingItems.length ? bagStagingItems : entry.items))+(dateStr ? ' &middot; saved '+dateStr : '')+'</div></div>';
       if (!isActive){
         var resumeBtn = document.createElement('button');
         resumeBtn.className = 'icon-btn lockable';
@@ -14601,18 +14743,18 @@
   }
 
   function getTop20Items(){
-    return getAllShortItems().slice(0, getTopNCount());
+    return getShortItemsForReport().slice(0, getTopNCount());
   }
 
   function getCoveredItems(){
-    return getAllShortItems().filter(function(it){ return stillMissingOf(it) === 0; }).slice(0, getTopNCount());
+    return getShortItemsForReport().filter(function(it){ return stillMissingOf(it) === 0; }).slice(0, getTopNCount());
   }
 
   // "Clean" report 1: just the parts still worth going to find, one already-netted quantity, nothing else.
   // ranked by what's still missing once drawer stock is used (then by what's needed)
   function byStillMissing(a, b){ return (stillMissingOf(b) - stillMissingOf(a)) || (b.short - a.short); }
   function getStillNeededItems(){
-    return getAllShortItems()
+    return getShortItemsForReport()
       .filter(function(it){ return stillMissingOf(it) > 0; })
       .sort(byStillMissing)
       .slice(0, getTopNCount())
@@ -14665,18 +14807,18 @@
     }
     var lines;
     if (show === 'all'){
-      var header = ['Rank','Part #','Element ID','Color','Description','Needed','In Drawers','In Bags','Remaining','Used In Builds'];
+      var header = ['Rank','Part #','Element ID','Color','Description','Kind','Needed','In Drawers','In Bags','Remaining','Used In Builds'];
       lines = [header.map(csvEscape).join(',')];
       items.forEach(function(it){
-        lines.push([it.rank, it.partNum, it.elementId, it.color, it.desc, it.short, it.inDrawers, it.inBags || 0, stillMissingOf(it), Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
+        lines.push([it.rank, it.partNum, it.elementId, it.color, it.desc, partKindOf(it.partNum, it.desc).kind, it.short, it.inDrawers, it.inBags || 0, stillMissingOf(it), Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
       });
     } else {
       var qtyLabel = show === 'covered' ? 'In Drawers' : 'Still Needed';
       var qtyOf = function(it){ return show === 'covered' ? it.inDrawers : it.stillNeeded; };
-      var header2 = ['Rank','Part #','Element ID','Color','Description', qtyLabel, 'In Bags', 'Used In Builds'];
+      var header2 = ['Rank','Part #','Element ID','Color','Description','Kind', qtyLabel, 'In Bags', 'Used In Builds'];
       lines = [header2.map(csvEscape).join(',')];
       items.forEach(function(it){
-        lines.push([it.rank, it.partNum, it.elementId, it.color, it.desc, qtyOf(it), it.inBags ? it.inBags + ' (' + bagNamesText(it.bagNames) + ')' : '', Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
+        lines.push([it.rank, it.partNum, it.elementId, it.color, it.desc, partKindOf(it.partNum, it.desc).kind, qtyOf(it), it.inBags ? it.inBags + ' (' + bagNamesText(it.bagNames) + ')' : '', Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
       });
     }
     var totals = getCleanReportTotals();
@@ -14825,7 +14967,7 @@
     var qtyLabelFull = show === 'covered' ? 'In Drawers' : 'Still Needed';
     var title = (show === 'covered' ? ('Top ' + getTopNCount() + ' \u2014 Already in Drawers')
       : show === 'all' ? ('Top ' + getTopNCount() + ' \u2014 Full Breakdown')
-      : ('Top ' + getTopNCount() + ' \u2014 Still Needed')) + ' (' + topNeededTierLabel() + ')';
+      : ('Top ' + getTopNCount() + ' \u2014 Still Needed')) + ' (' + topNeededTierLabel() + (topNeededKind() ? ', ' + topNeededKind() + ' parts' : '') + ')';
     var fillColor = show === 'covered' ? [0, 166, 94] : show === 'all' ? [138, 18, 168] : [0, 85, 191];
     var filenameBase = show === 'covered' ? 'lego-top-parts-in-drawers' : show === 'all' ? 'lego-top-parts-full-breakdown' : 'lego-top-parts-still-needed';
 
@@ -16173,6 +16315,7 @@
       pullLog: pullLog,
       bagSavedProgressList: bagSavedProgressList,
       partCatalog: partCatalog,
+      partKinds: partKinds,
       dataFormat: dataFormat,
       devices: siteDevices,
       syncMeta: syncMeta
@@ -16203,6 +16346,7 @@
     if (Array.isArray(data.bagSavedProgressList)) bagSavedProgressList = data.bagSavedProgressList;
     if (data.partCatalog && typeof data.partCatalog === 'object' && !Array.isArray(data.partCatalog)){ partCatalog = data.partCatalog; catSeen = new WeakMap(); }
     adoptDataFormat(data.dataFormat);
+    if (data.partKinds && typeof data.partKinds === 'object'){ partKinds = data.partKinds; storage.set(PART_KINDS_KEY, JSON.stringify(partKinds), false); }
     if (data.devices && typeof data.devices === 'object') siteDevices = mergeDevices(siteDevices, data.devices);
     hydrateLinesFromCatalog();
 
@@ -16478,6 +16622,7 @@
     // --- master parts catalog: per part and colour, the most recently updated record
     out.partCatalog = mergePartCatalogs(local.partCatalog, remote.partCatalog);
     out.devices = mergeDevices(local.devices, remote.devices);
+    out.partKinds = mergePartKinds(local.partKinds, remote.partKinds);
     out.dataFormat = ((local.dataFormat && local.dataFormat.at) || 0) > ((remote.dataFormat && remote.dataFormat.at) || 0) ? local.dataFormat : (remote.dataFormat || local.dataFormat);
 
     // --- bookkeeping: keep deletions for 180 days (dropping any for things that exist again); newest stamps
@@ -16585,7 +16730,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.13.16';          // bump with every change to this page
+  var APP_VERSION = '2026.10.13.18';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
@@ -18694,7 +18839,7 @@
   function bootApp(){
     safeRun('lock state', applyViewLockState);
     bootStage = 'loading your saved data';
-    stepSafe('loadState', loadState).then(function(){ return stepSafe('loadImageCacheIndex', loadImageCacheIndex); }).then(function(){ return stepSafe('loadPartImgCacheIndex', loadPartImgCacheIndex); }).then(function(){ return stepSafe('loadChecklist', loadChecklist); }).then(function(){ return stepSafe('loadTallyCounts', loadTallyCounts); }).then(function(){ return stepSafe('loadTallyDrawerAssignments', loadTallyDrawerAssignments); }).then(function(){ return stepSafe('loadProxyPreference', loadProxyPreference); }).then(function(){ return stepSafe('loadPriorityLabels', loadPriorityLabels); }).then(function(){ return stepSafe('loadOwnedSets', loadOwnedSets); }).then(function(){ return stepSafe('loadSetParts', loadSetParts); }).then(function(){ return stepSafe('loadDrawers', loadDrawers); }).then(function(){ return stepSafe('loadDrawerParts', loadDrawerParts); }).then(function(){ return stepSafe('loadBagInventoryLog', loadBagInventoryLog); }).then(function(){ return stepSafe('loadPullLog', loadPullLog); }).then(function(){ return stepSafe('loadBagProgressList', loadBagProgressList); }).then(function(){ return stepSafe('loadSetPhotos', loadSetPhotos); }).then(function(){ return stepSafe('loadMocPhotos', loadMocPhotos); }).then(function(){ return stepSafe('loadMocLocations', loadMocLocations); }).then(function(){ return stepSafe('loadMocBuilds', loadMocBuilds); }).then(function(){ return stepSafe('loadMocThemes', loadMocThemes); }).then(function(){ return stepSafe('loadMocDescriptions', loadMocDescriptions); }).then(function(){ return stepSafe('loadMocInstructions', loadMocInstructions); }).then(function(){ return stepSafe('loadLocationLabels', loadLocationLabels); }).then(function(){ return stepSafe('loadPartCatalog', loadPartCatalog); }).then(function(){ return stepSafe('loadDataFormat', loadDataFormat); })
+    stepSafe('loadState', loadState).then(function(){ return stepSafe('loadImageCacheIndex', loadImageCacheIndex); }).then(function(){ return stepSafe('loadPartImgCacheIndex', loadPartImgCacheIndex); }).then(function(){ return stepSafe('loadChecklist', loadChecklist); }).then(function(){ return stepSafe('loadTallyCounts', loadTallyCounts); }).then(function(){ return stepSafe('loadTallyDrawerAssignments', loadTallyDrawerAssignments); }).then(function(){ return stepSafe('loadProxyPreference', loadProxyPreference); }).then(function(){ return stepSafe('loadPriorityLabels', loadPriorityLabels); }).then(function(){ return stepSafe('loadOwnedSets', loadOwnedSets); }).then(function(){ return stepSafe('loadSetParts', loadSetParts); }).then(function(){ return stepSafe('loadDrawers', loadDrawers); }).then(function(){ return stepSafe('loadDrawerParts', loadDrawerParts); }).then(function(){ return stepSafe('loadBagInventoryLog', loadBagInventoryLog); }).then(function(){ return stepSafe('loadPullLog', loadPullLog); }).then(function(){ return stepSafe('loadBagProgressList', loadBagProgressList); }).then(function(){ return stepSafe('loadSetPhotos', loadSetPhotos); }).then(function(){ return stepSafe('loadMocPhotos', loadMocPhotos); }).then(function(){ return stepSafe('loadMocLocations', loadMocLocations); }).then(function(){ return stepSafe('loadMocBuilds', loadMocBuilds); }).then(function(){ return stepSafe('loadMocThemes', loadMocThemes); }).then(function(){ return stepSafe('loadMocDescriptions', loadMocDescriptions); }).then(function(){ return stepSafe('loadMocInstructions', loadMocInstructions); }).then(function(){ return stepSafe('loadLocationLabels', loadLocationLabels); }).then(function(){ return stepSafe('loadPartCatalog', loadPartCatalog); }).then(function(){ return stepSafe('loadDataFormat', loadDataFormat); }).then(function(){ return stepSafe('loadPartKinds', loadPartKinds); })
     .then(function(){ return stepSafe('loadRebrickableKey', loadRebrickableKey); }).then(function(){ return stepSafe('loadRbCatalogCache', loadRbCatalogCache); }).then(function(){ return stepSafe('loadSetProxyPref', loadSetProxyPref); }).then(function(){ return stepSafe('loadGithubSettings', loadGithubSettings); }).then(function(){ return stepSafe('loadBackupPassword', loadBackupPassword); }).then(function(){ return stepSafe('loadGithubShaMap', loadGithubShaMap); }).then(function(){ return stepSafe('loadDirtyFlag', loadDirtyFlag); }).then(function(){ return stepSafe('loadSyncState', loadSyncState); }).then(function(){ return stepSafe('loadStorageHealth', loadStorageHealth); }).then(function(){ return stepSafe('loadViewLocked', loadViewLocked); })
     .then(function(){
       // Draw what's saved on this device straight away -- never make the first draw wait on the network.
