@@ -1855,7 +1855,7 @@
         <option value="total">Sort by total pieces</option>
         <option value="drawers">Sort by pieces in drawers</option>
       </select>
-      <label class="checkbox-label" style="margin:0;" title="Leave out every minifigure's parts: parts only found in minifigures disappear, and totals don't count minifigure pieces"><input type="checkbox" id="pml-no-figs" /> Exclude minifigures</label>
+      <label class="checkbox-label" style="margin:0;" title="Leave out minifigures and minifigure parts (heads, torsos, legs, arms, hands, hair and headgear) wherever they are: in figures, builds, sets or drawers"><input type="checkbox" id="pml-no-figs" /> Exclude minifigures</label>
     </div>
     <div class="row" style="flex-wrap:wrap; gap:14px; margin-bottom:8px; font-size:13px; align-items:center;">
       <span style="color:var(--text-secondary);">Refetch replaces:</span>
@@ -6617,6 +6617,16 @@
     var s = setBy[r.setNum];
     return (r.qtyPerSet || 0) * (s ? (s.qty || 0) : 1);
   }
+  // a minifigure body part (head, torso, legs, hips, arms, hands, hair and headgear), wherever it's used:
+  // by its Rebrickable category when known, else by its name or the well-known part numbers
+  var FIG_PART_NAME_RE = /^(minifig|minidoll|torso\b|hips\b|legs?\b|hair\b|helmet\b|hat\b|headwear|headgear|head\b|cap\b|hood\b|cape\b|neckwear|arm (left|right)\b|hand\b)/i;
+  var FIG_PART_NUM_RE = /^(3626|28621|973|970|3815|3816|3817|3818|3819|3820|981|982|983|16360|76382|24080)(?![0-9])/i;
+  function isMinifigPart(r){
+    if (!r) return false;
+    var cat = rbPartCats && rbPartCats.byPart ? rbPartCats.byPart[normKey(r.partNum || '')] : null;
+    if (cat && rbPartCats.names && rbPartCats.names[cat]) return figPartKind(rbPartCats.names[cat]) === 'core';
+    return FIG_PART_NAME_RE.test(String(r.desc || '').trim()) || FIG_PART_NUM_RE.test(String(r.partNum || '').trim());
+  }
   function pmlNoFigs(){ var b = document.getElementById('pml-no-figs'); return !!(b && b.checked); }
   function pmlCollect(){
     var map = {}, order = [];
@@ -6627,7 +6637,7 @@
       src[1].forEach(function(r){
         if (!r || (!r.partNum && !r.elementId)) return;
         var kind = src[0] === 'Set' && isFigEntry(setBy[r.setNum] || { setNum: r.setNum }) ? 'Fig' : src[0];
-        if (kind === 'Fig' && noFigs) return;   // "Exclude minifigures" is ticked
+        if (noFigs && (kind === 'Fig' || isMinifigPart(r))) return;   // "Exclude minifigures" is ticked: figures and their body parts
         var k = pmlKey(r), it = map[k];
         if (!it){ it = map[k] = { key: k, rows: [], uses: {}, owners: {}, totals: { Build: 0, Set: 0, Fig: 0, Drawer: 0, all: 0 }, needed: 0, entries: [] }; order.push(k); }
         it.rows.push(r);
@@ -16752,7 +16762,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.13.20';          // bump with every change to this page
+  var APP_VERSION = '2026.10.13.21';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
