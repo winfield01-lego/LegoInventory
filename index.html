@@ -113,6 +113,11 @@
 #lego-inv-root .slim-table { width: 100%; min-width: 0 !important; table-layout: auto; }
 #lego-inv-root .slim-table th, #lego-inv-root .slim-table td { text-align: left !important; white-space: normal; font-weight: 500; position: static; cursor: default; }
 #lego-inv-root .moc-tier-note { font-size: 11px; color: var(--text-secondary); margin: 6px 0 0; line-height: 1.35; }
+#lego-inv-root .pml-src-link { background: none !important; border: none !important; padding: 0 !important; margin: 0; font: inherit; font-size: inherit; text-transform: none; letter-spacing: normal; color: var(--accent-text, var(--lego-blue)); text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 40%, transparent); text-underline-offset: 2px; cursor: pointer; display: inline; min-height: 0; height: auto; box-shadow: none; }
+#lego-inv-root .pml-used-in { margin-top: 8px; padding-top: 8px; border-top: 1px solid var(--border); font-size: 12px; color: var(--text-secondary); line-height: 1.6; }
+#lego-inv-root .pml-used-in .pml-src-link { margin-right: 10px; white-space: nowrap; }
+#lego-inv-root .pml-color-edit { flex-basis: 100%; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin: 6px 0 2px; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px; background: var(--surface-1); font-size: 12px; }
+#lego-inv-root .pml-color-edit input { flex: 1 1 160px; min-width: 0; }
 #lego-inv-root .pml-total { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; min-width: 58px; padding: 3px 8px; border: 2px solid var(--border); border-radius: 8px; background: var(--surface-1); flex-shrink: 0; line-height: 1.1; }
 #lego-inv-root .pml-total b { font-size: 15px; font-weight: 800; color: var(--accent-text, var(--lego-blue)); font-variant-numeric: tabular-nums; }
 #lego-inv-root .pml-total span { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--text-secondary); }
@@ -6711,8 +6716,100 @@
     }).join('');
     var stillShort = Math.max(it.needed - t.Build - t.Set - t.Fig, 0);
     return head + (rows || '<p class="pml-need-note">None on hand anywhere yet.</p>') +
-      (stillShort ? '<p class="pml-need-note">Your builds and sets still need ' + stillShort.toLocaleString() + ' more of this part (' + Math.min(stillShort, t.Drawer).toLocaleString() + ' of them could come from your drawers).</p>' : '');
+      (stillShort ? '<p class="pml-need-note">Your builds and sets still need ' + stillShort.toLocaleString() + ' more of this part (' + Math.min(stillShort, t.Drawer).toLocaleString() + ' of them could come from your drawers).</p>' : '') +
+      pmlUsedInHtml(it);
   }
+
+  // ---- Parts Master List: jump to where a part is used, and change its colour everywhere at once ----
+  function pmlOpenSource(kind, id){
+    if (kind === 'build') openMocDetail(id);
+    else if (kind === 'set' || kind === 'fig') openSetDetail(id);
+    else if (kind === 'drawer') openDrawerDetail(id);
+    pmlState.refreshOnReturn = true;
+  }
+  function pmlUsedInHtml(it){
+    var seen = {}, links = [];
+    it.entries.forEach(function(e){
+      var r = e.r, kind, id, label;
+      if (e.kind === 'Build'){ kind = 'build'; id = r.moc; label = r.moc; }
+      else if (e.kind === 'Drawer'){ kind = 'drawer'; id = r.drawerId; label = 'Drawer ' + pullDrawerLabel(r.drawerId); }
+      else { var s = ownedSets.find(function(x){ return x.setNum === r.setNum; }) || {}; kind = e.kind === 'Fig' ? 'fig' : 'set'; id = r.setNum; label = e.kind === 'Fig' ? (s.name || r.setNum) : (r.setNum + (s.name ? ' ' + s.name : '')); }
+      var k = kind + ':' + id;
+      if (!id || seen[k]) return;
+      seen[k] = true;
+      links.push({ kind: kind, id: id, label: label, order: { build: 1, set: 2, fig: 3, drawer: 4 }[kind] });
+    });
+    links.sort(function(a, b){ return (a.order - b.order) || String(a.label).localeCompare(String(b.label), undefined, { numeric: true }); });
+    if (!links.length) return '';
+    return '<div class="pml-used-in"><strong>Open where it’s used:</strong> ' + links.map(function(l){
+      var icon = l.kind === 'build' ? 'ti-hammer' : l.kind === 'drawer' ? 'ti-box' : l.kind === 'fig' ? 'ti-user' : 'ti-package';
+      return '<button type="button" class="pml-src-link" data-src-kind="' + l.kind + '" data-src-id="' + escapeHtml(l.id) + '"><i class="ti ' + icon + '" aria-hidden="true"></i> ' + escapeHtml(l.label) + '</button>';
+    }).join('') + '</div>';
+  }
+  function pmlColorOptionsHtml(){
+    var all = {};
+    [state.rows, setParts, drawerParts].forEach(function(list){ list.forEach(function(r){ if (r && r.color) all[r.color] = true; }); });
+    return Object.keys(all).sort().map(function(c){ return '<option value="' + escapeHtml(c) + '"></option>'; }).join('');
+  }
+  // change the colour on every line of this part + colour, in builds, sets, minifigures and drawers
+  function pmlChangeColor(it, newColor, statusEl){
+    newColor = String(newColor || '').trim();
+    if (!newColor || normColorKey(newColor) === normColorKey(it.color)){ statusEl.textContent = 'Pick a different colour first.'; return false; }
+    var n = { build: 0, set: 0, drawer: 0 };
+    it.rows.forEach(function(r){ if (r.moc !== undefined) n.build++; else if (r.setNum !== undefined) n.set++; else n.drawer++; });
+    var parts = [];
+    if (n.build) parts.push(n.build + ' in MOC builds');
+    if (n.set) parts.push(n.set + ' in sets or minifigures');
+    if (n.drawer) parts.push(n.drawer + ' in drawers');
+    if (!confirm('Change ' + it.partNum + ' from ' + (it.color || '(no colour)') + ' to ' + newColor + ' on ' + it.rows.length + ' line' + (it.rows.length === 1 ? '' : 's') + ' (' + parts.join(', ') + ')?\n\nTheir element IDs and photos are cleared, since those belong to the old colour; the master list fills them in for the new colour if it knows them, or use Refetch.')) return false;
+    var touched = { build: {}, set: {}, drawer: {} };
+    var drawerRemoved = [];
+    it.rows.forEach(function(r){
+      if (r.drawerId !== undefined && r.moc === undefined && r.setNum === undefined){
+        // a drawer that already has this part in the new colour: add to that line instead of making a second one
+        var same = drawerParts.find(function(p){ return p !== r && p.drawerId === r.drawerId && normKey(p.partNum) === normKey(r.partNum) && normColorKey(p.color) === normColorKey(newColor); });
+        touched.drawer[r.drawerId] = true;
+        if (same){ same.qty = (same.qty || 0) + (r.qty || 0); drawerRemoved.push(r); return; }
+      } else if (r.moc !== undefined) touched.build[r.moc] = true;
+      else if (r.setNum !== undefined) touched.set[r.setNum] = true;
+      r.color = newColor;
+      r.elementId = '';
+      if (r.imgUrl !== undefined) r.imgUrl = '';
+    });
+    if (drawerRemoved.length) drawerParts = drawerParts.filter(function(p){ return drawerRemoved.indexOf(p) === -1; });
+    Object.keys(touched.build).forEach(touchMocLastEdited);
+    Object.keys(touched.set).forEach(touchSetLastEdited);
+    Object.keys(touched.drawer).forEach(touchDrawerLastEdited);
+    if (Object.keys(touched.build).length) saveState();
+    if (Object.keys(touched.set).length) saveSetParts();
+    if (Object.keys(touched.drawer).length) saveDrawerParts();
+    safeRun('master list after colour change', function(){ reconcilePartCatalog(catalogShouldPersist()); });
+    render();
+    pmlState.items = pmlCollect();
+    pmlRender();
+    document.getElementById('pml-status').textContent = 'Changed ' + it.partNum + ' to ' + newColor + ' on ' + it.rows.length + ' line' + (it.rows.length === 1 ? '' : 's') + '.';
+    return true;
+  }
+  (function wirePmlSourceLinks(){
+    var list = document.getElementById('pml-list');
+    if (list) list.addEventListener('click', function(e){
+      var b = e.target.closest && e.target.closest('.pml-src-link');
+      if (!b) return;
+      e.preventDefault();
+      pmlOpenSource(b.getAttribute('data-src-kind'), b.getAttribute('data-src-id'));
+    });
+    // coming back from a build, set or drawer you edited: show the list as it is now
+    ['detail-modal-close', 'drawer-detail-modal-close'].forEach(function(id){
+      var c = document.getElementById(id);
+      if (c) c.addEventListener('click', function(){
+        if (!pmlState.refreshOnReturn) return;
+        pmlState.refreshOnReturn = false;
+        var ov = document.getElementById('pml-modal-overlay');
+        if (ov && ov.style.display === 'flex'){ pmlState.items = pmlCollect(); pmlRender(); }
+      });
+    });
+  })();
+
   function pmlFiltered(){
     var q = (document.getElementById('pml-search').value || '').trim().toLowerCase();
     var f = document.getElementById('pml-filter').value;
@@ -6792,6 +6889,33 @@
       pmlFillRow(row, it);
     });
     row.appendChild(whereBtn);
+    var colorBtn = document.createElement('button');
+    colorBtn.type = 'button';
+    colorBtn.className = 'icon-btn lockable pml-where-btn';
+    colorBtn.title = 'Change this part\u2019s colour on every line that uses it, or open the build, set or drawer to change just one';
+    colorBtn.innerHTML = '<i class="ti ti-palette" aria-hidden="true"></i> Colour';
+    colorBtn.disabled = !!viewLocked;
+    colorBtn.addEventListener('click', function(){
+      var open = row.querySelector('.pml-color-edit');
+      if (open){ open.remove(); return; }
+      var ed = document.createElement('div');
+      ed.className = 'pml-color-edit';
+      ed.innerHTML = '<span>Change <strong>' + escapeHtml(it.color || '(no colour)') + '</strong> to</span>' +
+        '<input type="text" list="pml-color-options" placeholder="New colour" autocapitalize="off" autocorrect="off" spellcheck="false" />' +
+        '<button type="button" class="icon-btn" data-act="save">Change all ' + it.rows.length + '</button>' +
+        '<button type="button" class="icon-btn" data-act="cancel">Cancel</button>' +
+        '<span class="pml-color-status" style="flex-basis:100%; color:var(--text-secondary);">Changes every line of this part in this colour. To change just one build, set or drawer, use the links under Where.</span>';
+      var dl = document.getElementById('pml-color-options');
+      if (!dl){ dl = document.createElement('datalist'); dl.id = 'pml-color-options'; document.getElementById('pml-modal').appendChild(dl); }
+      dl.innerHTML = pmlColorOptionsHtml();
+      ed.querySelector('[data-act="cancel"]').addEventListener('click', function(){ ed.remove(); });
+      ed.querySelector('[data-act="save"]').addEventListener('click', function(){ pmlChangeColor(it, ed.querySelector('input').value, ed.querySelector('.pml-color-status')); });
+      ed.querySelector('input').addEventListener('keydown', function(e){ if (e.key === 'Enter') pmlChangeColor(it, ed.querySelector('input').value, ed.querySelector('.pml-color-status')); });
+      var whereBox = row.querySelector('.pml-where');
+      if (whereBox) row.insertBefore(ed, whereBox); else row.appendChild(ed);
+      ed.querySelector('input').focus();
+    });
+    row.appendChild(colorBtn);
     var btn = document.createElement('button');
     btn.className = 'icon-btn lockable pml-refetch-btn';
     btn.style.cssText = 'padding:3px 10px; flex-shrink:0;';
@@ -16762,7 +16886,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.13.21';          // bump with every change to this page
+  var APP_VERSION = '2026.10.13.22';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
