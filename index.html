@@ -463,6 +463,9 @@
 #lego-inv-root .tn-num.tn-drawers b { color: var(--lego-green); }
 #lego-inv-root .tn-num.tn-missing b { color: var(--lego-orange); }
 #lego-inv-root .tn-num.tn-missing.tn-zero b { color: var(--text-muted); }
+#lego-inv-root .count-chip { display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; padding: 1px 6px; border-radius: 4px; line-height: 1.5; white-space: nowrap; vertical-align: middle; }
+#lego-inv-root .count-chip.count-none { background: var(--surface-1); color: var(--text-primary); border: 1px solid var(--text-secondary); }
+#lego-inv-root .count-chip.count-uncounted { background: transparent; color: var(--lego-orange, #F2A33A); border: 1px dashed var(--lego-orange, #F2A33A); }
 #lego-inv-root .kind-chip { display: inline-block; font-size: 9px; font-weight: 800; letter-spacing: 0.05em; text-transform: uppercase; padding: 1px 6px; border-radius: 999px; line-height: 1.5; white-space: nowrap; vertical-align: middle; }
 #lego-inv-root .kind-chip.kind-simple { color: var(--bt-neon, #C8F03C); border: 1px solid var(--bt-neon, #C8F03C); }
 #lego-inv-root .kind-chip.kind-complex { color: var(--text-secondary); border: 1px dashed var(--bt-gray, #9CA29E); }
@@ -629,6 +632,8 @@
         <option value="uncovered">Still need to find (unassigned)</option>
         <option value="covered">Already in drawers</option>
         <option value="all">All parts (needed, in drawers, remaining)</option>
+        <option value="uncounted">Not counted yet (check unsorted parts)</option>
+        <option value="nonecolor">Counted, none in this colour (to buy)</option>
       </select>
       <select id="clean-report-sort" title="Sort order">
         <option value="shortage">Sort by shortage</option>
@@ -653,6 +658,8 @@
           <option value="all">All parts</option>
           <option value="uncovered">Still need to find</option>
           <option value="covered">Fully covered by drawers or bags</option>
+          <option value="uncounted">Not counted yet (check unsorted parts)</option>
+          <option value="nonecolor">Counted, none in this colour (to buy)</option>
         </select>
         <select id="top-needed-kind" title="Simple parts are plain plates, tiles, slopes and bricks">
           <option value="">Simple &amp; complex</option>
@@ -3621,6 +3628,7 @@
     var mode = document.getElementById('top-needed-filter').value;
     if (mode === 'uncovered') return getShortItemsForReport().filter(function(it){ return stillMissingOf(it) > 0; }).sort(byStillMissing).slice(0, getTopNCount());
     if (mode === 'covered') return getCoveredItems();
+    if (mode === 'uncounted' || mode === 'nonecolor'){ var want = mode === 'uncounted' ? 'uncounted' : 'none'; return getShortItemsForReport().filter(function(it){ return stillMissingOf(it) > 0 && itemCountFlag(it) === want; }).sort(byStillMissing).slice(0, getTopNCount()); }
     return getTop20Items();
   }
 
@@ -3702,7 +3710,7 @@
       row.innerHTML =
         '<span class="top-needed-rank" title="'+(byColor ? 'Its rank among your most needed parts (this list is sorted by colour)' : 'Rank in this list')+'">'+(byColor ? '#' : '')+it.rank+'</span>' +
         '<span class="part-thumb-wrap"></span>' +
-        '<span class="tn-main"><span class="tn-tags"><span class="top-needed-partnum" title="Part number">#'+escapeHtml(it.partNum)+'</span>' + kindChipHtml(it.partNum, it.desc) + '</span>' +
+        '<span class="tn-main"><span class="tn-tags"><span class="top-needed-partnum" title="Part number">#'+escapeHtml(it.partNum)+'</span>' + kindChipHtml(it.partNum, it.desc) + countFlagChip(itemCountFlag(it)) + '</span>' +
           '<span class="top-needed-desc">'+escapeHtml(it.color)+' '+escapeHtml(it.desc)+'</span>' +
           (it.setShort && it.mocShort ? '<span class="tn-held">Includes ' + it.setShort.toLocaleString() + ' for official sets</span>' : it.setShort ? '<span class="tn-held">For official sets</span>' : '') +
           (it.inBags ? '<span class="tn-held tn-bag-note"><i class="ti ti-shopping-bag" aria-hidden="true"></i> ' + it.inBags.toLocaleString() + ' waiting in ' + escapeHtml(bagNamesText(it.bagNames)) + '</span>' : '') +
@@ -3763,7 +3771,7 @@
     var figsOnly = which === 'figs';
     var drawerStock = buildDrawerStockMap();
     var bagStock = buildBagStockMap();
-    function withBags(p){ var b = bagStock[stockKeyOf(p.partNum, p.color)]; p.inBags = b ? b.qty : 0; p.bagNames = b ? b.bags : {}; p.bagCover = Math.min(p.inBags, Math.max(p.short - p.inDrawers, 0)); return p; }
+    function withBags(p){ var b = bagStock[stockKeyOf(p.partNum, p.color)]; p.inBags = b ? b.qty : 0; p.bagNames = b ? b.bags : {}; p.bagCover = Math.min(p.inBags, Math.max(p.short - p.inDrawers, 0)); p.countFlag = countFlagOf(p.partNum, p.inDrawers, p.inBags); return p; }
     function bagTotals(it){ it.inBags = it.parts.reduce(function(n, p){ return n + Math.min(p.inBags, p.short); }, 0); it.stillMissing = it.parts.reduce(function(n, p){ return n + Math.max(p.short - p.inBags, 0); }, 0); return it; }
     if (!figsOnly) computeMocs().forEach(function(m){
       var missing = Math.max(m.need - m.have, 0);
@@ -3840,15 +3848,15 @@
       alert('Nothing to report \u2014 nothing is within ' + threshold + ' pieces of complete right now.');
       return;
     }
-    var header = ['Type', opts ? 'Minifigure' : 'Build/Set','Total Missing','In Unfinished Bags','Part Num','Color','Description','Part Short Qty','In Bags'];
+    var header = ['Type', opts ? 'Minifigure' : 'Build/Set','Total Missing','In Unfinished Bags','Part Num','Color','Description','Part Short Qty','In Bags','Drawer Status'];
     var lines = [header.map(csvEscape).join(',')];
     items.forEach(function(it){
       var typeLabel = (it.type === 'moc' ? 'MOC Build' : it.type === 'fig' ? 'Minifigure' : 'Official Set');
       if (!it.parts.length){
-        lines.push([typeLabel, it.label, it.missing, it.inBags || 0, '', '', '', '', ''].map(csvEscape).join(','));
+        lines.push([typeLabel, it.label, it.missing, it.inBags || 0, '', '', '', '', '', ''].map(csvEscape).join(','));
       } else {
         it.parts.forEach(function(p){
-          lines.push([typeLabel, it.label, it.missing, it.inBags || 0, p.partNum, p.color, p.desc, p.short, p.inBags ? Math.min(p.inBags, p.short) + ' (' + bagNamesText(p.bagNames) + ')' : ''].map(csvEscape).join(','));
+          lines.push([typeLabel, it.label, it.missing, it.inBags || 0, p.partNum, p.color, p.desc, p.short, p.inBags ? Math.min(p.inBags, p.short) + ' (' + bagNamesText(p.bagNames) + ')' : '', countFlagText(p.countFlag) || 'In drawers or bags'].map(csvEscape).join(','));
         });
       }
     });
@@ -3926,7 +3934,7 @@
             rowMeta.push(null);
           } else {
             it.parts.forEach(function(p){
-              body.push(['', p.partNum, p.color, truncateForPdf(p.desc, p.inBags ? 30 : 38) + (p.inBags ? ' [' + Math.min(p.inBags, p.short) + ' in bag]' : ''), String(p.short)]);
+              body.push(['', p.partNum, p.color, truncateForPdf(p.desc, (p.inBags || p.countFlag) ? 28 : 38) + (p.inBags ? ' [' + Math.min(p.inBags, p.short) + ' in bag]' : '') + countFlagNote(p.countFlag), String(p.short)]);
               rowMeta.push(p);
             });
           }
@@ -3976,7 +3984,7 @@
         if (entry.isHeader) return [{ content: entry.label, colSpan: 4, styles: { fontStyle: 'bold', fillColor: [235, 241, 246], textColor: [20, 32, 43] } }];
         if (entry.p.noShortage) return [{ content: 'No specific part shortages recorded.', colSpan: 4, styles: { fontStyle: 'italic', textColor: [130, 130, 130] } }];
         var p = entry.p;
-        return ['', p.partNum, p.color, truncateForPdf(p.desc, 22) + '  (' + p.short + (p.inBags ? ', ' + Math.min(p.inBags, p.short) + ' in bag' : '') + ')'];
+        return ['', p.partNum, p.color, truncateForPdf(p.desc, 22) + '  (' + p.short + (p.inBags ? ', ' + Math.min(p.inBags, p.short) + ' in bag' : '') + ')' + countFlagNote(p.countFlag)];
       }
 
       var body2 = [];
@@ -11426,6 +11434,34 @@
   }
 
 
+  // ---- Has this part been counted yet? ----
+  // You haven't inventoried everything, so "none in your drawers" means two different things:
+  //  * counted: the part (in some colour) is already in your drawers or an unfinished bag, so you've sorted this part
+  //    and simply have none in this colour (go buy it);
+  //  * not counted yet: the part isn't in any drawer or bag in any colour, so you may well have some in unsorted bins.
+  var countedCache = { at: 0, set: null };
+  function countedPartNums(){
+    if (countedCache.set && Date.now() - countedCache.at < 1500) return countedCache.set;
+    var s = {};
+    drawerParts.forEach(function(p){ if (p && p.partNum && (p.qty || 0) > 0) s[normKey(p.partNum)] = true; });
+    bagsInProgress().forEach(function(b){ b.items.forEach(function(i){ if (i && i.partNum) s[normKey(i.partNum)] = true; }); });
+    countedCache = { at: Date.now(), set: s };
+    return s;
+  }
+  // '' when some of this colour is in drawers or bags; 'none' = counted, none in this colour; 'uncounted' = not counted yet
+  function countFlagOf(partNum, drawerQty, bagQty){
+    if ((drawerQty || 0) > 0 || (bagQty || 0) > 0) return '';
+    return countedPartNums()[normKey(partNum)] ? 'none' : 'uncounted';
+  }
+  function itemCountFlag(it){ return countFlagOf(it.partNum, it.drawerTotal !== undefined ? it.drawerTotal : it.inDrawers, it.bagTotal !== undefined ? it.bagTotal : it.inBags); }
+  function countFlagChip(flag){
+    if (flag === 'none') return '<span class="count-chip count-none" title="You have this part in other colours in your drawers, so it has been counted: there just aren’t any in this colour">None in this colour</span>';
+    if (flag === 'uncounted') return '<span class="count-chip count-uncounted" title="This part isn’t in any drawer or bag in any colour yet, so it hasn’t been counted: check your unsorted parts before buying">Not counted yet</span>';
+    return '';
+  }
+  function countFlagText(flag){ return flag === 'none' ? 'Counted - none in this colour' : flag === 'uncounted' ? 'Not counted yet' : ''; }
+  function countFlagNote(flag){ return flag === 'none' ? ' [none in colour]' : flag === 'uncounted' ? ' [not counted]' : ''; }
+
   // ---- Simple or complex parts ----
   // Simple: plain plates, tiles, slopes (and plain bricks and curved slopes) with nothing on their sides: the name is
   // just the kind of part, its size, and words like Round, Inverted, Double, Corner, No Studs, with Groove.
@@ -14933,6 +14969,7 @@
   function getCleanReportItems(){
     var show = document.getElementById('clean-report-show').value;
     var items = show === 'covered' ? getCoveredItems() : (show === 'all' ? getTop20Items() : getStillNeededItems());
+    if (show === 'uncounted' || show === 'nonecolor'){ var wantFlag = show === 'uncounted' ? 'uncounted' : 'none'; items = getShortItemsForReport().filter(function(it){ return stillMissingOf(it) > 0 && itemCountFlag(it) === wantFlag; }).sort(byStillMissing).slice(0, getTopNCount()).map(function(it){ return Object.assign({}, it, { stillNeeded: stillMissingOf(it) }); }); }
     items.forEach(function(it, i){ it.rank = i + 1; });   // its place in the most-needed order, kept if re-sorted below
     var sort = document.getElementById('clean-report-sort').value;
     if (sort === 'color'){
@@ -14961,18 +14998,18 @@
     }
     var lines;
     if (show === 'all'){
-      var header = ['Rank','Part #','Element ID','Color','Description','Kind','Needed','In Drawers','In Bags','Remaining','Used In Builds'];
+      var header = ['Rank','Part #','Element ID','Color','Description','Kind','Drawer Status','Needed','In Drawers','In Bags','Remaining','Used In Builds'];
       lines = [header.map(csvEscape).join(',')];
       items.forEach(function(it){
-        lines.push([it.rank, it.partNum, it.elementId, it.color, it.desc, partKindOf(it.partNum, it.desc).kind, it.short, it.inDrawers, it.inBags || 0, stillMissingOf(it), Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
+        lines.push([it.rank, it.partNum, it.elementId, it.color, it.desc, partKindOf(it.partNum, it.desc).kind, countFlagText(itemCountFlag(it)) || 'In drawers or bags', it.short, it.inDrawers, it.inBags || 0, stillMissingOf(it), Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
       });
     } else {
       var qtyLabel = show === 'covered' ? 'In Drawers' : 'Still Needed';
       var qtyOf = function(it){ return show === 'covered' ? it.inDrawers : it.stillNeeded; };
-      var header2 = ['Rank','Part #','Element ID','Color','Description','Kind', qtyLabel, 'In Bags', 'Used In Builds'];
+      var header2 = ['Rank','Part #','Element ID','Color','Description','Kind','Drawer Status', qtyLabel, 'In Bags', 'Used In Builds'];
       lines = [header2.map(csvEscape).join(',')];
       items.forEach(function(it){
-        lines.push([it.rank, it.partNum, it.elementId, it.color, it.desc, partKindOf(it.partNum, it.desc).kind, qtyOf(it), it.inBags ? it.inBags + ' (' + bagNamesText(it.bagNames) + ')' : '', Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
+        lines.push([it.rank, it.partNum, it.elementId, it.color, it.desc, partKindOf(it.partNum, it.desc).kind, countFlagText(itemCountFlag(it)) || 'In drawers or bags', qtyOf(it), it.inBags ? it.inBags + ' (' + bagNamesText(it.bagNames) + ')' : '', Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
       });
     }
     var totals = getCleanReportTotals();
@@ -15122,6 +15159,8 @@
     var qtyLabelFull = show === 'covered' ? 'In Drawers' : 'Still Needed';
     var title = (show === 'covered' ? ('Top ' + getTopNCount() + ' \u2014 Already in Drawers')
       : show === 'all' ? ('Top ' + getTopNCount() + ' \u2014 Full Breakdown')
+      : show === 'uncounted' ? ('Top ' + getTopNCount() + ' \u2014 Not Counted Yet')
+      : show === 'nonecolor' ? ('Top ' + getTopNCount() + ' \u2014 None in This Colour')
       : ('Top ' + getTopNCount() + ' \u2014 Still Needed')) + ' (' + topNeededTierLabel() + (topNeededKind() ? ', ' + topNeededKind() + ' parts' : '') + ')';
     var fillColor = show === 'covered' ? [0, 166, 94] : show === 'all' ? [138, 18, 168] : [0, 85, 191];
     var filenameBase = show === 'covered' ? 'lego-top-parts-in-drawers' : show === 'all' ? 'lego-top-parts-full-breakdown' : 'lego-top-parts-still-needed';
@@ -15142,7 +15181,8 @@
       pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
       var totals = getCleanReportTotals();
       var totalsLine = 'Needed: ' + totals.totalNeeded.toLocaleString() + '  \u00b7  In drawers: ' + totals.totalInDrawers.toLocaleString() + (totals.totalInBags ? '  \u00b7  In bags: ' + totals.totalInBags.toLocaleString() : '') + '  \u00b7  Remaining needed: ' + totals.remainingNeeded.toLocaleString();
-      var bagNote = function(it){ return it.inBags ? ' [' + it.inBags + ' in bag]' : ''; };
+      var flagKey = items.some(function(it){ return itemCountFlag(it); }) ? '[not counted] = this part isn\u2019t in any drawer yet  \u00b7  [none in colour] = counted, none in this colour' : '';
+      var bagNote = function(it){ return (it.inBags ? ' [' + it.inBags + ' in bag]' : '') + countFlagNote(itemCountFlag(it)); };
 
       if (show === 'all'){
         // Three quantity columns (Needed, In Drawers, Remaining) are too dense for a 2-column split,
@@ -15155,9 +15195,10 @@
         doc.setFontSize(10);
         doc.setTextColor(110, 110, 110);
         doc.text(totalsLine, 40, 68);
+        if (flagKey){ doc.setFontSize(7.5); doc.text(flagKey, 40, 78); doc.setFontSize(10); }
 
         var body = items.map(function(it){
-          return ['', '#' + it.rank, it.partNum, it.color, truncateForPdf(it.desc, wide ? 54 : 24), it.short.toLocaleString(), it.inDrawers.toLocaleString(), (it.inBags || 0).toLocaleString(), stillMissingOf(it).toLocaleString()];
+          return ['', '#' + it.rank, it.partNum, it.color, truncateForPdf(it.desc, wide ? 54 : 24) + countFlagNote(itemCountFlag(it)), it.short.toLocaleString(), it.inDrawers.toLocaleString(), (it.inBags || 0).toLocaleString(), stillMissingOf(it).toLocaleString()];
         });
         doc.autoTable({
           startY: 82,
@@ -15194,6 +15235,7 @@
         doc.setFontSize(10);
         doc.setTextColor(110, 110, 110);
         doc.text(totalsLine, 40, 68);
+        if (flagKey){ doc.setFontSize(7.5); doc.text(flagKey, 40, 78); doc.setFontSize(10); }
 
         var half = Math.ceil(items.length / 2);
         var leftItems = items.slice(0, half);
@@ -15257,9 +15299,10 @@
         doc2.setFontSize(10);
         doc2.setTextColor(110, 110, 110);
         doc2.text(totalsLine, 40, 68);
+        if (flagKey){ doc2.setFontSize(7.5); doc2.text(flagKey, 40, 78); doc2.setFontSize(10); }
 
         var body2 = items.map(function(it){
-          return ['', '#' + it.rank, it.partNum, it.color, truncateForPdf(it.desc, it.inBags ? 30 : 38) + bagNote(it), qtyOf(it).toLocaleString()];
+          return ['', '#' + it.rank, it.partNum, it.color, truncateForPdf(it.desc, (it.inBags || itemCountFlag(it)) ? 28 : 38) + bagNote(it), qtyOf(it).toLocaleString()];
         });
         doc2.autoTable({
           startY: 82,
@@ -16886,7 +16929,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.13.22';          // bump with every change to this page
+  var APP_VERSION = '2026.10.14.1';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
