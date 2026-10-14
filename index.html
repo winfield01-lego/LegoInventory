@@ -632,8 +632,8 @@
         <option value="uncovered">Still need to find (unassigned)</option>
         <option value="covered">Already in drawers</option>
         <option value="all">All parts (needed, in drawers, remaining)</option>
-        <option value="uncounted">Not counted yet (check unsorted parts)</option>
-        <option value="nonecolor">Counted, none in this colour (to buy)</option>
+        <option value="uncounted">None of this part in any colour</option>
+        <option value="nonecolor">None in this colour (have other colours)</option>
       </select>
       <select id="clean-report-sort" title="Sort order">
         <option value="shortage">Sort by shortage</option>
@@ -658,8 +658,8 @@
           <option value="all">All parts</option>
           <option value="uncovered">Still need to find</option>
           <option value="covered">Fully covered by drawers or bags</option>
-          <option value="uncounted">Not counted yet (check unsorted parts)</option>
-          <option value="nonecolor">Counted, none in this colour (to buy)</option>
+          <option value="uncounted">None of this part in any colour</option>
+          <option value="nonecolor">None in this colour (have other colours)</option>
         </select>
         <select id="top-needed-kind" title="Simple parts are plain plates, tiles, slopes and bricks">
           <option value="">Simple &amp; complex</option>
@@ -11456,11 +11456,11 @@
   function itemCountFlag(it){ return countFlagOf(it.partNum, it.drawerTotal !== undefined ? it.drawerTotal : it.inDrawers, it.bagTotal !== undefined ? it.bagTotal : it.inBags); }
   function countFlagChip(flag){
     if (flag === 'none') return '<span class="count-chip count-none" title="You have this part in other colours in your drawers, so it has been counted: there just aren’t any in this colour">None in this colour</span>';
-    if (flag === 'uncounted') return '<span class="count-chip count-uncounted" title="This part isn’t in any drawer or bag in any colour yet, so it hasn’t been counted: check your unsorted parts before buying">Not counted yet</span>';
+    if (flag === 'uncounted') return '<span class="count-chip count-uncounted" title="No part like this in any drawer or bag, in any colour. Either you don’t have any, or it’s still in unsorted parts: worth a look before buying">None of this part</span>';
     return '';
   }
-  function countFlagText(flag){ return flag === 'none' ? 'Counted - none in this colour' : flag === 'uncounted' ? 'Not counted yet' : ''; }
-  function countFlagNote(flag){ return flag === 'none' ? ' [none in colour]' : flag === 'uncounted' ? ' [not counted]' : ''; }
+  function countFlagText(flag){ return flag === 'none' ? 'None in this colour (have other colours)' : flag === 'uncounted' ? 'None of this part (any colour)' : ''; }
+  function countFlagNote(flag){ return flag === 'none' ? ' [none in colour]' : flag === 'uncounted' ? ' [none of part]' : ''; }
 
   // ---- Simple or complex parts ----
   // Simple: plain plates, tiles, slopes (and plain bricks and curved slopes) with nothing on their sides: the name is
@@ -15159,7 +15159,7 @@
     var qtyLabelFull = show === 'covered' ? 'In Drawers' : 'Still Needed';
     var title = (show === 'covered' ? ('Top ' + getTopNCount() + ' \u2014 Already in Drawers')
       : show === 'all' ? ('Top ' + getTopNCount() + ' \u2014 Full Breakdown')
-      : show === 'uncounted' ? ('Top ' + getTopNCount() + ' \u2014 Not Counted Yet')
+      : show === 'uncounted' ? ('Top ' + getTopNCount() + ' \u2014 None of This Part')
       : show === 'nonecolor' ? ('Top ' + getTopNCount() + ' \u2014 None in This Colour')
       : ('Top ' + getTopNCount() + ' \u2014 Still Needed')) + ' (' + topNeededTierLabel() + (topNeededKind() ? ', ' + topNeededKind() + ' parts' : '') + ')';
     var fillColor = show === 'covered' ? [0, 166, 94] : show === 'all' ? [138, 18, 168] : [0, 85, 191];
@@ -15181,7 +15181,7 @@
       pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
       var totals = getCleanReportTotals();
       var totalsLine = 'Needed: ' + totals.totalNeeded.toLocaleString() + '  \u00b7  In drawers: ' + totals.totalInDrawers.toLocaleString() + (totals.totalInBags ? '  \u00b7  In bags: ' + totals.totalInBags.toLocaleString() : '') + '  \u00b7  Remaining needed: ' + totals.remainingNeeded.toLocaleString();
-      var flagKey = items.some(function(it){ return itemCountFlag(it); }) ? '[not counted] = this part isn\u2019t in any drawer yet  \u00b7  [none in colour] = counted, none in this colour' : '';
+      var flagKey = items.some(function(it){ return itemCountFlag(it); }) ? '[none of part] = no part like this in any colour in your drawers or bags  \u00b7  [none in colour] = you have this part, just not in this colour' : '';
       var bagNote = function(it){ return (it.inBags ? ' [' + it.inBags + ' in bag]' : '') + countFlagNote(itemCountFlag(it)); };
 
       if (show === 'all'){
@@ -16929,7 +16929,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.14.1';          // bump with every change to this page
+  var APP_VERSION = '2026.10.14.2';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
