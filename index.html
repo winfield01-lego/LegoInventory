@@ -467,6 +467,22 @@
 #lego-inv-root .tn-card .top-needed-partnum, #lego-inv-root .tn-card .count-chip { cursor: pointer; }
 #lego-inv-root .shop-in-drawers.shop-none-drawers { opacity: 0.75; }
 #lego-inv-root .shop-in-drawers.shop-in-bags { border-style: dashed; color: var(--text-primary); }
+#lego-inv-root #pml-photo-check { border: 1px solid var(--border); border-radius: 8px; padding: 8px 10px; margin: 0 0 10px; background: var(--surface-1); }
+#lego-inv-root .pc-head { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; font-size: 13px; }
+#lego-inv-root .pc-item { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding: 8px 0; border-top: 1px solid var(--border); margin-top: 8px; font-size: 12px; }
+#lego-inv-root .pc-imgs { display: flex; gap: 6px; flex-shrink: 0; }
+#lego-inv-root .pc-fig { margin: 0; text-align: center; font-size: 10px; color: var(--text-muted); }
+#lego-inv-root .pc-fig img { width: 64px; height: 64px; object-fit: contain; background: #fff; border-radius: 6px; display: block; }
+#lego-inv-root .pc-text { flex: 1 1 220px; min-width: 0; color: var(--text-secondary); }
+#lego-inv-root .pc-text strong { color: var(--text-primary); }
+#lego-inv-root .pc-acts { display: flex; gap: 6px; flex-wrap: wrap; }
+#lego-inv-root .pc-status { flex-basis: 100%; font-size: 11px; }
+#lego-inv-root .pc-status:empty { display: none; }
+#lego-inv-root .um-sum { margin: 8px 0; padding-left: 18px; font-size: 13px; color: var(--text-secondary); }
+#lego-inv-root .um-sum li { margin: 2px 0; }
+#lego-inv-root .um-details { font-size: 12px; color: var(--text-secondary); }
+#lego-inv-root .um-details ul { margin: 2px 0 8px; padding-left: 18px; max-height: 260px; overflow: auto; }
+#lego-inv-root .um-details p { margin: 6px 0 2px; color: var(--text-primary); }
 #lego-inv-root .shop-item .shop-partnum { cursor: pointer; text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); text-underline-offset: 2px; }
 #lego-inv-root .shop-item .count-chip, #lego-inv-root .shop-item .kind-chip { flex-shrink: 0; cursor: pointer; }
 #lego-inv-root .count-chip.count-none { background: var(--surface-1); color: var(--text-primary); border: 1px solid var(--text-secondary); }
@@ -1658,6 +1674,18 @@
         <button id="merge-parts-btn" class="icon-btn lockable" style="color: var(--text-danger); border-color: var(--text-danger);"><i class="ti ti-git-merge" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Merge</button>
       </div>
       <p id="merge-parts-status" style="margin: 0; font-size: 13px; color: var(--text-secondary);"></p>
+      <p style="margin: 14px 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); border-top: 2px solid var(--border); padding-top: 14px;">Undo a merge</p>
+      <p style="margin: 0 0 10px; color: var(--text-secondary);">
+        Merged two parts that aren&rsquo;t really the same? Enter them the same way round. Your site keeps every saved version of your data, so this finds the last one from before the merge and puts each line back as it was: lines that were the old part go back to it, and lines that were combined are split again. Changes you&rsquo;ve made since are kept. Uses the GitHub Connection above.
+      </p>
+      <div class="row" style="margin-bottom: 10px; align-items:center;">
+        <input type="text" id="unmerge-parts-old" class="lockable" placeholder="Part # that was merged away" style="max-width:220px;" />
+        <i class="ti ti-arrow-right" style="font-size:16px;" aria-hidden="true"></i>
+        <input type="text" id="unmerge-parts-new" class="lockable" placeholder="Part # it was merged into" style="max-width:220px;" />
+        <button id="unmerge-parts-btn" class="icon-btn lockable"><i class="ti ti-arrow-back-up" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Find the merge</button>
+      </div>
+      <p id="unmerge-parts-status" style="margin: 0; font-size: 13px; color: var(--text-secondary);"></p>
+      <div id="unmerge-parts-plan"></div>
     </div>
   </div>
 
@@ -1886,9 +1914,11 @@
     <div class="row" style="flex-wrap:wrap; gap:8px; align-items:center; margin-bottom:6px;">
       <span id="pml-summary" style="font-size:13px; color:var(--text-secondary); flex:1 1 200px;"></span>
       <button id="pml-refetch-shown-btn" class="icon-btn lockable" style="padding:3px 10px;"></button>
+      <button id="pml-check-photos-btn" class="icon-btn" style="padding:3px 10px;" title="Check that each photo and element ID shown really is this part, against Rebrickable"><i class="ti ti-photo-check" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Check photos</button>
       <button id="pml-stop-btn" class="icon-btn" style="display:none; padding:3px 10px;">Stop</button>
     </div>
     <p id="pml-status" style="margin:0 0 8px; font-size:12px; color:var(--text-secondary);"></p>
+    <div id="pml-photo-check" style="display:none;"></div>
     <div id="pml-list"></div>
     <button id="pml-more-btn" class="icon-btn" style="display:none; margin-top:8px;"></button>
   </div>
@@ -6965,6 +6995,8 @@
     var allBtn = document.getElementById('pml-refetch-shown-btn');
     allBtn.innerHTML = '<i class="ti ti-refresh" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Refetch the ' + items.length.toLocaleString() + ' shown';
     allBtn.disabled = pmlState.busy || !!viewLocked || !items.length;
+    var pcBtn = document.getElementById('pml-check-photos-btn');
+    if (pcBtn){ pcBtn.innerHTML = '<i class="ti ti-photo-check" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Check photos of the ' + items.length.toLocaleString() + ' shown'; pcBtn.disabled = !items.length; }
     list.innerHTML = '';
     if (!items.length){ list.innerHTML = '<div class="empty-msg">' + (pmlState.items.length ? 'No parts match.' : 'No parts yet.') + '</div>'; }
     items.slice(0, pmlState.shown).forEach(function(it){ var row = document.createElement('div'); pmlFillRow(row, it); list.appendChild(row); });
@@ -7016,6 +7048,352 @@
       if (rows.length) rows[0].closest('.top-needed-item').scrollIntoView({ block: 'center' });
     }, 50);
   }
+
+  // ---- Photo check: is each saved photo really this part? For every part and colour shown in the master list it
+  // checks, against Rebrickable: that each element ID belongs to this part (and colour), that no line links to a
+  // Rebrickable picture of some other element, and that the photo saved on your site (or in this browser) looks like
+  // Rebrickable's picture of the same part. Anything that doesn't is listed side by side, to fix or keep.
+  var PC_SIZE = 32, PC_MATCH = 0.93, PC_OK_KEY = 'legoinv:photo-check-ok-v1';
+  var pcState = { running: false, cancel: false, problems: [], checked: 0, total: 0, seen: {}, msg: '' };
+  var pcOk = null;
+  function pcOkMap(){ if (!pcOk){ try { pcOk = JSON.parse(localStorage.getItem(PC_OK_KEY) || '{}') || {}; } catch(e){ pcOk = {}; } } return pcOk; }
+  function pcSaveOk(){ try { localStorage.setItem(PC_OK_KEY, JSON.stringify(pcOkMap())); } catch(e){} }
+  // a small grey-scale outline of the picture: white background trimmed off, scaled to fit, so size and framing don't matter
+  function pcSigFromBlob(blob){
+    if (!blob || typeof createImageBitmap !== 'function') return Promise.resolve(null);
+    return createImageBitmap(blob).then(function(bmp){
+      var W = bmp.width, H = bmp.height;
+      var c = document.createElement('canvas'); c.width = W; c.height = H;
+      var x = c.getContext('2d'); x.fillStyle = '#fff'; x.fillRect(0, 0, W, H); x.drawImage(bmp, 0, 0);
+      if (bmp.close) bmp.close();
+      var d = x.getImageData(0, 0, W, H).data, x0 = W, y0 = H, x1 = -1, y1 = -1;
+      for (var y = 0; y < H; y++) for (var X = 0; X < W; X++){
+        var k = (y * W + X) * 4;
+        if (d[k] < 240 || d[k + 1] < 240 || d[k + 2] < 240){ if (X < x0) x0 = X; if (X > x1) x1 = X; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+      }
+      if (x1 < 0) return null;
+      var bw = x1 - x0 + 1, bh = y1 - y0 + 1, s = Math.max(bw, bh), S = PC_SIZE;
+      var c2 = document.createElement('canvas'); c2.width = S; c2.height = S;
+      var x2 = c2.getContext('2d'); x2.fillStyle = '#fff'; x2.fillRect(0, 0, S, S);
+      x2.drawImage(c, x0, y0, bw, bh, (S - bw * S / s) / 2, (S - bh * S / s) / 2, bw * S / s, bh * S / s);
+      var e = x2.getImageData(0, 0, S, S).data, g = [];
+      for (var i = 0; i < e.length; i += 4) g.push(0.3 * e[i] + 0.59 * e[i + 1] + 0.11 * e[i + 2]);
+      return g;
+    }).catch(function(){ return null; });
+  }
+  function pcCorr(a, b){
+    var n = a.length, ma = 0, mb = 0, i;
+    for (i = 0; i < n; i++){ ma += a[i]; mb += b[i]; }
+    ma /= n; mb /= n;
+    var num = 0, da = 0, db = 0;
+    for (i = 0; i < n; i++){ num += (a[i] - ma) * (b[i] - mb); da += (a[i] - ma) * (a[i] - ma); db += (b[i] - mb) * (b[i] - mb); }
+    return da && db ? num / Math.sqrt(da * db) : 0;
+  }
+  // the copy the app actually shows: this browser's own copy first, else the one on your site
+  function pcCurrentPhoto(isPart, key){
+    var fromSite = function(){
+      if (!/^https?:/.test(location.protocol)) return Promise.resolve(null);
+      var url = isPart ? localPartImgUrl(key) : localImgUrl(key);
+      return fetch(url + '?_pc=' + Date.now(), { cache: 'no-store' }).then(function(r){
+        return r.ok ? r.blob().then(function(b){ return /^image\//.test(b.type || 'image/') ? { blob: b, where: 'site', path: url } : null; }) : null;
+      }).catch(function(){ return null; });
+    };
+    var cached = isPart ? cachedPartImgKeys.has(key) : cachedIds.has(key);
+    if (!cached) return fromSite();
+    return storage.get((isPart ? IMG_PART_PREFIX : IMG_PREFIX) + key, false).then(function(res){
+      if (!res || !res.value) return fromSite();
+      return fetch(res.value).then(function(r){ return r.blob(); }).then(function(b){ return { blob: b, where: 'browser', path: '' }; });
+    }).catch(fromSite);
+  }
+  function pcCheckPhoto(it, isPart, key, refUrls, newId){
+    var okKey = (isPart ? 'p:' : 'e:') + key;
+    if (pcState.seen[okKey]) return Promise.resolve(null);
+    pcState.seen[okKey] = true;
+    return pcCurrentPhoto(isPart, key).then(function(cur){
+      if (!cur) return null;
+      return pcSigFromBlob(cur.blob).then(function(cs){
+        if (!cs) return null;
+        var best = -1, bestRef = null, i = 0;
+        function next(){
+          if (i >= refUrls.length || best >= PC_MATCH) return Promise.resolve();
+          var u = refUrls[i++];
+          return fetchImageBlobForBackfill(u).then(function(b){
+            return pcSigFromBlob(b).then(function(rs){
+              if (!rs) return;
+              var c = pcCorr(cs, rs);
+              if (c > best){ best = c; bestRef = { url: u, blob: b }; }
+            });
+          }, function(){}).then(next);
+        }
+        return next().then(function(){
+          if (!bestRef || best >= PC_MATCH) return null;
+          if (pcOkMap()[okKey] === cur.blob.size) return null;   // you said this one is right
+          return { type: 'photo', it: it, isPart: isPart, key: key, okKey: okKey, cur: cur, ref: bestRef, score: best, newId: newId || '' };
+        });
+      });
+    });
+  }
+  var pcElCache = {};
+  function pcElementInfo(id){
+    if (pcElCache.hasOwnProperty(id)) return Promise.resolve(pcElCache[id]);
+    return rbFetchJson(rbApiUrl('elements/' + encodeURIComponent(id) + '/')).then(function(d){
+      var info = d && d.part ? { partNum: d.part.part_num || '', color: (d.color && d.color.name) || '' } : null;
+      pcElCache[id] = info;
+      return info;
+    }).catch(function(){ return null; });
+  }
+  function pcCheckItem(it){
+    var partNum = it.partNum;
+    if (!partNum) return Promise.resolve([]);
+    var probs = [], chain0;
+    return rbGetPartColors(partNum).then(function(colors){
+      colors = colors || [];
+      var col = it.color ? rbColorMatch(colors, it.color) : null;
+      var allEls = {};
+      colors.forEach(function(c){ (c.elements || []).forEach(function(e){ allEls[String(e)] = c.color; }); });
+      var colEls = col && col.elements ? col.elements.map(String) : [];
+      var ids = {};
+      it.rows.forEach(function(r){ if (r.elementId) ids[String(r.elementId).trim()] = true; });
+      // an element ID (or a linked picture) the part's colour list doesn't have is only reported once Rebrickable's
+      // own record of that element says it's another part or colour: the colour list can be missing newer elements
+      var badIds = {}, badImgs = {}, suspects = {};
+      Object.keys(ids).forEach(function(id){
+        if (allEls[id] && (!colEls.length || colEls.indexOf(id) !== -1)) return;
+        suspects[id] = true;
+      });
+      var chk = function(u){ var m = /\/parts\/elements\/(\d+)\.jpg/.exec(u || ''); if (m && !allEls[m[1]] && !ids[m[1]]){ suspects[m[1]] = true; badImgs[u] = m[1]; } };
+      it.rows.forEach(function(r){ chk(r.imgUrl); });
+      if (it.cat) chk(it.cat.i);
+      var dropImgs = function(id){ Object.keys(badImgs).forEach(function(u){ if (badImgs[u] === id) delete badImgs[u]; }); };
+      var verify = Promise.resolve();
+      Object.keys(suspects).forEach(function(id){
+        verify = verify.then(function(){ return pcElementInfo(id); }).then(function(info){
+          if (!info){ dropImgs(id); return; }
+          var samePart = normKey(info.partNum) === normKey(partNum);
+          var sameColour = !it.color || normColorKey(info.color) === normColorKey(it.color);
+          if (samePart && sameColour){ dropImgs(id); return; }
+          if (ids[id]){
+            badIds[id] = true;
+            var n = it.rows.filter(function(r){ return String(r.elementId || '').trim() === id; }).length;
+            probs.push({ type: 'element', it: it, id: id, newId: colEls[0] || '', isPart: info.partNum, isColour: info.color, samePart: samePart, lines: n });
+          }
+        });
+      });
+      chain0 = verify.then(function(){
+        Object.keys(badImgs).forEach(function(u){
+          var n = it.rows.filter(function(r){ return r.imgUrl === u; }).length;
+          probs.push({ type: 'imgurl', it: it, url: u, id: badImgs[u], newUrl: colEls[0] ? rbElementImg(colEls[0]) : '', lines: n });
+        });
+      });
+      var chain = chain0;
+      Object.keys(ids).forEach(function(id){
+        if (badIds[id]) return;
+        chain = chain.then(function(){
+          return pcCheckPhoto(it, false, id, [rbElementImg(id), col && col.img].filter(Boolean)).then(function(p){ if (p) probs.push(p); });
+        });
+      });
+      if (it.rows.some(function(r){ return !r.elementId; })){
+        chain = chain.then(function(){
+          return rbGetPart(partNum).catch(function(){ return null; }).then(function(gp){
+            return pcCheckPhoto(it, true, normKey(partNum), [col && col.img, gp && gp.img].filter(Boolean), colEls[0]);
+          }).then(function(p){ if (p) probs.push(p); });
+        });
+      }
+      return chain.then(function(){ return probs; });
+    });
+  }
+  function pcBox(){ return document.getElementById('pml-photo-check'); }
+  function pcSay(msg, color){
+    pcState.msg = msg;
+    var el = document.getElementById('pml-photo-check-status');
+    if (el){ el.textContent = msg; el.style.color = color || 'var(--text-secondary)'; }
+  }
+  function pcRun(){
+    if (pcState.running) return;
+    var box = pcBox();
+    if (!box) return;
+    box.style.display = '';
+    if (!rebrickableApiKey){
+      box.innerHTML = '<p id="pml-photo-check-status" style="margin:0; color:var(--text-danger);">Add a Rebrickable API key first (Rebrickable Connection, on the Data &amp; Tools tab).</p>';
+      return;
+    }
+    var items = (pmlState.filtered || pmlFiltered()).filter(function(it){ return it.partNum; });
+    pcState = { running: true, cancel: false, problems: [], checked: 0, total: items.length, seen: {}, msg: '' };
+    pcRender();
+    rbPaceMs = 450; rbRetry429 = true;
+    var i = 0;
+    function finish(){
+      pcState.running = false;
+      rbPaceMs = 0; rbRetry429 = false;
+      var n = pcState.problems.length;
+      pcRender();
+      pcSay((pcState.cancel ? 'Stopped after ' + pcState.checked.toLocaleString() + ' of ' + pcState.total.toLocaleString() + '. ' : 'Checked ' + pcState.total.toLocaleString() + ' part' + (pcState.total === 1 ? '' : 's') + '. ') +
+        (n ? n + ' thing' + (n === 1 ? '' : 's') + ' to look at below.' : 'Every photo and element ID matches Rebrickable.'), n ? 'var(--text-primary)' : 'var(--text-success)');
+    }
+    function step(){
+      if (pcState.cancel || i >= items.length) return finish();
+      var it = items[i++];
+      pcSay('Checking ' + i.toLocaleString() + ' of ' + items.length.toLocaleString() + ': ' + it.partNum + ' ' + (it.color || '') + '…' + (pcState.problems.length ? ' (' + pcState.problems.length + ' found so far)' : ''));
+      pcCheckItem(it).then(function(probs){
+        pcState.checked++;
+        if (probs.length){ pcState.problems.push.apply(pcState.problems, probs); pcRender(); }
+      }, function(){ pcState.checked++; }).then(step);
+    }
+    step();
+  }
+  function pcBlobUrl(p, which){
+    var k = '_u' + which;
+    if (!p[k]) p[k] = URL.createObjectURL(which === 'cur' ? p.cur.blob : p.ref.blob);
+    return p[k];
+  }
+  function pcThumb(src, label){
+    return '<figure class="pc-fig"><img src="' + escapeHtml(src) + '" alt="" loading="lazy" /><figcaption>' + escapeHtml(label) + '</figcaption></figure>';
+  }
+  function pcProblemHtml(p){
+    var it = p.it, name = '#' + it.partNum + ' ' + (it.color || '(no colour)');
+    if (p.type === 'photo'){
+      var where = p.cur.where === 'browser' ? 'saved in this browser' : 'saved on your site (' + p.cur.path + ')';
+      return '<div class="pc-imgs">' + pcThumb(pcBlobUrl(p, 'cur'), 'Your photo') + pcThumb(pcBlobUrl(p, 'ref'), 'Rebrickable') + '</div>' +
+        '<div class="pc-text"><strong>' + escapeHtml(name) + '</strong> ' + escapeHtml(it.desc || '') + '<br>' +
+        escapeHtml('The photo ' + where + (p.isPart ? ', used for every colour of this part without an element ID,' : ' for element ' + p.key) + ' doesn’t look like Rebrickable’s picture (' + Math.max(0, Math.round(p.score * 100)) + '% alike).') + '</div>' +
+        '<div class="pc-acts"><button type="button" class="icon-btn lockable" data-pc="fix">Use Rebrickable’s photo</button><button type="button" class="icon-btn" data-pc="ok">Mine is right</button></div>';
+    }
+    if (p.type === 'element'){
+      var what = p.samePart ? ('is this part in ' + (p.isColour || 'another colour') + ', not ' + (it.color || 'this colour')) : ('is part ' + p.isPart + (p.isColour ? ' in ' + p.isColour : '') + ' on Rebrickable, not ' + it.partNum);
+      return '<div class="pc-imgs">' + pcThumb(rbElementImg(p.id), 'Element ' + p.id) + (p.newId ? pcThumb(rbElementImg(p.newId), 'Element ' + p.newId) : '') + '</div>' +
+        '<div class="pc-text"><strong>' + escapeHtml(name) + '</strong> ' + escapeHtml(it.desc || '') + '<br>' +
+        escapeHtml('Element ID ' + p.id + ' (on ' + p.lines + ' line' + (p.lines === 1 ? '' : 's') + ') ' + what + '. ' + (p.newId ? 'Rebrickable lists ' + p.newId + ' for this part and colour.' : 'Rebrickable has no element ID for this part and colour, so it would be cleared.')) + '</div>' +
+        '<div class="pc-acts"><button type="button" class="icon-btn lockable" data-pc="fix">' + (p.newId ? 'Change to ' + escapeHtml(p.newId) : 'Clear it') + '</button></div>';
+    }
+    return '<div class="pc-imgs">' + pcThumb(p.url, 'Linked picture') + (p.newUrl ? pcThumb(p.newUrl, 'This part') : '') + '</div>' +
+      '<div class="pc-text"><strong>' + escapeHtml(name) + '</strong> ' + escapeHtml(it.desc || '') + '<br>' +
+      escapeHtml(p.lines + (p.lines === 1 ? ' line links' : ' lines link') + ' to Rebrickable’s picture of element ' + p.id + ', which isn’t this part. This link is also where new photos get copied from.') + '</div>' +
+      '<div class="pc-acts"><button type="button" class="icon-btn lockable" data-pc="fix">' + (p.newUrl ? 'Use this part’s picture' : 'Remove the link') + '</button></div>';
+  }
+  function pcRender(){
+    var box = pcBox();
+    if (!box) return;
+    var probs = pcState.problems.filter(function(p){ return !p.done; });
+    var fixable = probs.length;
+    box.innerHTML =
+      '<div class="pc-head"><strong>Photo check</strong><span id="pml-photo-check-status" style="flex:1 1 200px;"></span>' +
+        (pcState.running ? '<button type="button" class="icon-btn" id="pml-photo-check-stop">Stop</button>' : '') +
+        (!pcState.running && fixable > 1 ? '<button type="button" class="icon-btn lockable" id="pml-photo-check-fixall">Fix all ' + fixable + '</button>' : '') +
+        (!pcState.running ? '<button type="button" class="icon-btn" id="pml-photo-check-close">Close</button>' : '') +
+      '</div>';
+    pcSay(pcState.msg);
+    probs.forEach(function(p){
+      var row = document.createElement('div');
+      row.className = 'pc-item';
+      row.innerHTML = pcProblemHtml(p) + '<div class="pc-status"></div>';
+      row.addEventListener('click', function(e){
+        var b = e.target.closest && e.target.closest('[data-pc]');
+        if (!b) return;
+        var st = row.querySelector('.pc-status');
+        if (b.getAttribute('data-pc') === 'ok'){
+          pcOkMap()[p.okKey] = p.cur.blob.size; pcSaveOk();
+          p.done = true; row.remove(); return;
+        }
+        b.disabled = true;
+        st.style.color = 'var(--text-secondary)'; st.textContent = 'Fixing…';
+        pcFix(p).then(function(){
+          pcAfterFix();
+          row.remove();
+        }, function(err){
+          b.disabled = false;
+          st.style.color = 'var(--text-danger)'; st.textContent = 'Couldn’t fix it: ' + ((err && err.message) || 'unknown error');
+        });
+      });
+      box.appendChild(row);
+    });
+    if (viewLocked) applyLockToTree(box);
+    var stop = document.getElementById('pml-photo-check-stop');
+    if (stop) stop.addEventListener('click', function(){ pcState.cancel = true; pcSay('Stopping…'); });
+    var close = document.getElementById('pml-photo-check-close');
+    if (close) close.addEventListener('click', function(){ box.style.display = 'none'; box.innerHTML = ''; });
+    var all = document.getElementById('pml-photo-check-fixall');
+    if (all) all.addEventListener('click', function(){
+      all.disabled = true;
+      var list = pcState.problems.filter(function(p){ return !p.done; }), done = 0, failed = 0, i = 0;
+      function next(){
+        if (i >= list.length){
+          pcAfterFix();
+          pcRender();
+          pcSay('Fixed ' + done + (failed ? ', ' + failed + ' couldn’t be fixed (they’re still listed)' : '') + '.', failed ? 'var(--text-danger)' : 'var(--text-success)');
+          return;
+        }
+        var p = list[i++];
+        pcSay('Fixing ' + i + ' of ' + list.length + '…');
+        pcFix(p).then(function(){ done++; }, function(){ failed++; }).then(next);
+      }
+      next();
+    });
+  }
+  function pcSaveRows(rows){
+    var touched = { build: {}, set: {}, drawer: {} };
+    rows.forEach(function(r){
+      if (r.moc !== undefined) touched.build[r.moc] = true;
+      else if (r.setNum !== undefined) touched.set[r.setNum] = true;
+      else if (r.drawerId !== undefined) touched.drawer[r.drawerId] = true;
+    });
+    Object.keys(touched.build).forEach(touchMocLastEdited);
+    Object.keys(touched.set).forEach(touchSetLastEdited);
+    Object.keys(touched.drawer).forEach(touchDrawerLastEdited);
+    if (Object.keys(touched.build).length) saveState();
+    if (Object.keys(touched.set).length) saveSetParts();
+    if (Object.keys(touched.drawer).length) saveDrawerParts();
+  }
+  function pcFix(p){
+    if (viewLocked) return Promise.reject(new Error('the app is locked; unlock it to make changes'));
+    if (p.type === 'photo'){
+      var sizeSteps = [[400, 0.82], [260, 0.7], [150, 0.6]];
+      var key = (p.isPart ? IMG_PART_PREFIX : IMG_PREFIX) + p.key;
+      var save = githubConnectionConfigured()
+        ? (p.isPart ? attemptPartImageSaveToGithub(p.key, p.ref.blob, sizeSteps) : attemptImageSaveToGithub(p.key, p.ref.blob, sizeSteps)).then(function(dataUrl){
+            return storage.set(key, dataUrl, false);   // shown straight away, before your site has caught up
+          })
+        : attemptImageSave(key, p.ref.blob, sizeSteps).then(function(res){ if (!res) throw new Error('this browser’s storage is full'); });
+      return save.then(function(){
+        if (p.isPart){ cachedPartImgKeys.add(p.key); partSiteKnown[p.key] = true; }
+        else { cachedIds.add(p.key); delete noPhotoResolved[p.key]; }
+        p.done = true;
+      });
+    }
+    var it = p.it, c = it.rows.length ? catEntry(it.rows[0]) : null, rows;
+    if (p.type === 'element'){
+      rows = it.rows.filter(function(r){ return String(r.elementId || '').trim() === p.id; });
+      rows.forEach(function(r){
+        r.elementId = p.newId;
+        if (r.imgUrl && /\/parts\/elements\//.test(r.imgUrl)) r.imgUrl = p.newId ? rbElementImg(p.newId) : '';
+      });
+      if (c){
+        if (c.e === p.id) c.e = p.newId || '';
+        if (c.ea) c.ea = c.ea.filter(function(e){ return e !== p.id && e !== c.e; });
+        c.u = Date.now();
+      }
+    } else {
+      rows = it.rows.filter(function(r){ return r.imgUrl === p.url; });
+      rows.forEach(function(r){ r.imgUrl = p.newUrl; });
+      if (c && c.i === p.url){ c.i = ''; c.u = Date.now(); }
+    }
+    if (c) savePartCatalog();
+    pcSaveRows(rows);
+    p.done = true;
+    return Promise.resolve();
+  }
+  var pcAfterTimer = null;
+  function pcAfterFix(){
+    clearTimeout(pcAfterTimer);
+    pcAfterTimer = setTimeout(function(){
+      safeRun('updating after the photo check', function(){
+        reconcilePartCatalog(catalogShouldPersist());
+        refreshAllThumbnails();
+        pmlState.items = pmlCollect();
+        pmlRender();
+      });
+    }, 150);
+  }
+  wireEl('pml-check-photos-btn', 'click', function(){ safeRun('checking photos', pcRun); });
   var pmlSearchTimer = null;
   wireEl('pml-open-btn', 'click', openPartsMasterList);
   wireEl('pml-open-btn-2', 'click', openPartsMasterList);
@@ -16986,7 +17364,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.14.5';          // bump with every change to this page
+  var APP_VERSION = '2026.10.14.7';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
@@ -17759,7 +18137,15 @@
     var total = mocMatches + setMatches + drawerMatches;
     if (!total) return { ok: false, message: 'No rows found using part #' + oldNum + ' \u2014 nothing to merge.' };
 
-    if (!confirm('Merge part #' + oldNum + ' into #' + newNum + '? This will update ' + total.toLocaleString() + ' row' + (total===1?'':'s') + ' (' + mocMatches + ' MOC, ' + setMatches + ' set, ' + drawerMatches + ' drawer) and combine any that become duplicates. This can\u2019t be undone.')){
+    var nameOf = function(key){
+      var hit = null;
+      [state.rows, setParts, drawerParts].some(function(list){ hit = list.find(function(r){ return normKey(r.partNum) === key && r.desc; }); return !!hit; });
+      return hit ? hit.desc : '';
+    };
+    var oldName = nameOf(oldKey), newName = nameOf(newKey);
+    var namesDiffer = oldName && newName && normPartName(oldName) !== normPartName(newName);
+    if (namesDiffer && !confirm('Careful: these look like different pieces.\n\n#' + oldNum + ': ' + oldName + '\n#' + newNum + ': ' + newName + '\n\nMerging makes every #' + oldNum + ' line count as #' + newNum + '. Only go on if they really are the same piece.')) return { ok: false, message: null };
+    if (!confirm('Merge part #' + oldNum + (oldName ? ' (' + oldName + ')' : '') + ' into #' + newNum + (newName ? ' (' + newName + ')' : '') + '? This will update ' + total.toLocaleString() + ' row' + (total===1?'':'s') + ' (' + mocMatches + ' MOC, ' + setMatches + ' set, ' + drawerMatches + ' drawer) and combine any that become duplicates. This can\u2019t be undone.')){
       return { ok: false, message: null };
     }
 
@@ -18126,6 +18512,263 @@
   wireEl('gen-script-btn', 'click', downloadImageScript);
   wireEl('img-upload', 'change', function(e){ handleImageUpload(e.target.files); });
   wireEl('clear-cache-btn', 'click', clearImageCache);
+
+  // ---- Undo a part-number merge, from the saved versions of the data file in your site's history
+  function ghRawFile(path, ref){
+    return fetch('https://api.github.com/repos/' + ghSettings.repo + '/contents/' + path + '?ref=' + encodeURIComponent(ref), {
+      headers: { 'Authorization': 'Bearer ' + ghSettings.token, 'Accept': 'application/vnd.github.raw', 'X-GitHub-Api-Version': '2022-11-28' },
+      cache: 'no-store'
+    }).then(function(resp){
+      if (!resp.ok) throw new Error('GitHub said ' + resp.status + ' for the version from ' + ref.slice(0, 7));
+      return resp.json();
+    });
+  }
+  function umLines(data){
+    return {
+      build: (data.rows || []).map(function(r){ return Array.isArray(r) ? rowToObj(r) : r; }),
+      set: data.setParts || [],
+      drawer: data.drawerParts || []
+    };
+  }
+  function umPlaceKey(kind, r){
+    return kind + ':' + normKey(kind === 'build' ? r.moc : kind === 'set' ? r.setNum : r.drawerId) + '|' + normColorKey(r.color || '');
+  }
+  function umCount(data, key){
+    var L = umLines(data), n = 0;
+    ['build', 'set', 'drawer'].forEach(function(k){ L[k].forEach(function(r){ if (r && normKey(r.partNum) === key) n++; }); });
+    return n;
+  }
+  var umState = null;
+  function umFind(oldNum, newNum, statusEl, planEl){
+    oldNum = String(oldNum || '').trim(); newNum = String(newNum || '').trim();
+    function say(m, bad){ statusEl.style.color = bad ? 'var(--text-danger)' : 'var(--text-secondary)'; statusEl.textContent = m; }
+    planEl.innerHTML = '';
+    umState = null;
+    if (!oldNum || !newNum) return say('Enter both part numbers.', true);
+    if (normKey(oldNum) === normKey(newNum)) return say('Those are the same part number.', true);
+    if (!githubConnectionConfigured()) return say('Set up the GitHub Connection above first: the earlier versions are read from your site.', true);
+    var oldKey = normKey(oldNum), newKey = normKey(newNum);
+    var commits = [], cache = {};
+    function version(i){
+      var sha = commits[i].sha;
+      if (!cache[sha]) cache[sha] = ghRawFile(ALL_DATA_PATH, sha);
+      return cache[sha];
+    }
+    say('Reading your site’s saved versions…');
+    function page(p){
+      return ghApi('/commits?path=' + encodeURIComponent(ALL_DATA_PATH) + '&per_page=100&page=' + p).then(function(list){
+        commits = commits.concat(list || []);
+        if (list && list.length === 100 && p < 5) return page(p + 1);
+      });
+    }
+    page(1).then(function(){
+      if (commits.length < 2) throw new Error('your site doesn’t have earlier versions of its data file to go back to.');
+      return version(0).then(function(cur){
+        var curN = umCount(cur, oldKey);
+        // find the newest version that still had more of the old part than now: the merge came just after it
+        var lo = 0, hi = commits.length - 1, steps = 0;
+        return version(hi).then(function(oldest){
+          if (umCount(oldest, oldKey) <= curN) throw new Error('none of the last ' + commits.length + ' saved versions has more #' + oldNum + ' lines than now, so there’s no merge to undo in them.');
+          function step(){
+            if (hi - lo <= 1) return hi;
+            var mid = (lo + hi) >> 1;
+            steps++;
+            say('Looking through your saved versions… (' + steps + ')');
+            return version(mid).then(function(d){ if (umCount(d, oldKey) > curN) hi = mid; else lo = mid; return step(); });
+          }
+          return step();
+        });
+      });
+    }).then(function(b){
+      return version(b).then(function(before){
+        umState = { oldNum: oldNum, newNum: newNum, oldKey: oldKey, newKey: newKey, before: before, beforeAt: commits[b].commit.author.date, mergedAt: commits[b - 1].commit.author.date };
+        umState.plan = umPlan(umState);
+        umShowPlan(statusEl, planEl);
+      });
+    }).catch(function(err){ say('Couldn’t undo it: ' + ((err && err.message) || 'unknown error'), true); });
+  }
+  function umPlan(st){
+    var B = umLines(st.before), bcat = st.before.partCatalog || {};
+    var preOld = {}, preNew = {}, oldEls = {};
+    ['build', 'set', 'drawer'].forEach(function(kind){
+      B[kind].forEach(function(r){
+        if (!r) return;
+        var pk = normKey(r.partNum);
+        if (pk !== st.oldKey && pk !== st.newKey) return;
+        var k = umPlaceKey(kind, r), c = bcat[pk + '|' + normColorKey(r.color || '')] || {};
+        var info = { r: r, desc: r.desc || c.d || '', elementId: r.elementId || c.e || '', imgUrl: r.imgUrl || '' };
+        if (pk === st.oldKey){ preOld[k] = info; if (info.elementId) oldEls[String(info.elementId)] = true; }
+        else preNew[k] = info;
+      });
+    });
+    Object.keys(bcat).forEach(function(k){
+      if (k.indexOf(st.oldKey + '|') !== 0) return;
+      if (bcat[k].e) oldEls[bcat[k].e] = true;
+      (bcat[k].ea || []).forEach(function(e){ oldEls[e] = true; });
+    });
+    var moves = [], splits = [], unsure = [];
+    [['build', state.rows], ['set', setParts], ['drawer', drawerParts]].forEach(function(src){
+      src[1].forEach(function(r){
+        if (normKey(r.partNum) !== st.newKey) return;
+        var k = umPlaceKey(src[0], r), o = preOld[k];
+        if (o && !preNew[k]) moves.push({ kind: src[0], r: r, o: o });
+        else if (o) splits.push({ kind: src[0], r: r, o: o });
+        else if (!preNew[k]){
+          // added since that version: its own element ID (as saved, not filled in from the master list) decides
+          var own = String(r.elementId || '').trim();
+          var cat = catEntry(r);
+          if (own && oldEls[own]) moves.push({ kind: src[0], r: r, o: null });
+          else unsure.push({ kind: src[0], r: r });
+        }
+      });
+    });
+    return { moves: moves, splits: splits, unsure: unsure, oldEls: oldEls, preNew: preNew };
+  }
+  function umWhere(x){
+    var r = x.r;
+    return (x.kind === 'build' ? r.moc : x.kind === 'set' ? (r.setNum || '') : ('drawer ' + ((drawers.find(function(d){ return d.id === r.drawerId; }) || {}).label || r.drawerId))) + ', ' + (r.color || '(no colour)');
+  }
+  function umShowPlan(statusEl, planEl){
+    var st = umState, p = st.plan;
+    var when = function(iso){ try { return new Date(iso).toLocaleString([], { month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' }); } catch(e){ return iso; } };
+    var total = p.moves.length + p.splits.length;
+    statusEl.style.color = 'var(--text-primary)';
+    statusEl.innerHTML = 'Found it: the merge was saved at <strong>' + escapeHtml(when(st.mergedAt)) + '</strong>, and the version from ' + escapeHtml(when(st.beforeAt)) + ' is from just before it.';
+    if (!total){ planEl.innerHTML = '<p style="margin:6px 0; color:var(--text-secondary);">No lines need to change.</p>'; return; }
+    var list = function(arr, fmt){ return arr.slice(0, 400).map(function(x){ return '<li>' + escapeHtml(fmt(x)) + '</li>'; }).join('') + (arr.length > 400 ? '<li>…and ' + (arr.length - 400) + ' more</li>' : ''); };
+    var qOf = function(x){ return x.kind === 'set' ? x.r.qtyPerSet : x.r.qty; };
+    var oqOf = function(x){ return x.kind === 'set' ? x.o.r.qtyPerSet : x.o.r.qty; };
+    planEl.innerHTML =
+      '<ul class="um-sum">' +
+        '<li><strong>' + p.moves.length + '</strong> line' + (p.moves.length === 1 ? '' : 's') + ' go back to #' + escapeHtml(st.oldNum) + ' whole.</li>' +
+        '<li><strong>' + p.splits.length + '</strong> line' + (p.splits.length === 1 ? '' : 's') + ' had both parts added together and are split again.</li>' +
+        (p.unsure.length ? '<li><strong>' + p.unsure.length + '</strong> #' + escapeHtml(st.newNum) + ' line' + (p.unsure.length === 1 ? ' was' : 's were') + ' added after the merge with nothing to say which part ' + (p.unsure.length === 1 ? 'it is, so it stays' : 'they are, so they stay') + ' #' + escapeHtml(st.newNum) + '.</li>' : '') +
+        '<li>#' + escapeHtml(st.newNum) + '&rsquo;s master record (description, element IDs, photos) goes back to how it was before the merge.</li>' +
+      '</ul>' +
+      '<details class="um-details"><summary>See every line</summary>' +
+        (p.moves.length ? '<p>Back to #' + escapeHtml(st.oldNum) + ':</p><ul>' + list(p.moves, function(x){ return umWhere(x) + ' (' + qOf(x) + ')'; }) + '</ul>' : '') +
+        (p.splits.length ? '<p>Split:</p><ul>' + list(p.splits, function(x){ return umWhere(x) + ': ' + qOf(x) + ' becomes ' + oqOf(x) + ' × #' + st.oldNum + ' + ' + Math.max(0, qOf(x) - oqOf(x)) + ' × #' + st.newNum; }) + '</ul>' : '') +
+        (p.unsure.length ? '<p>Staying #' + escapeHtml(st.newNum) + ' (added after the merge):</p><ul>' + list(p.unsure, umWhere) + '</ul>' : '') +
+      '</details>' +
+      '<div class="row" style="margin-top:8px;"><button type="button" id="unmerge-apply-btn" class="icon-btn lockable" style="color:var(--text-danger); border-color:var(--text-danger);">Undo it: fix ' + total + ' line' + (total === 1 ? '' : 's') + '</button></div>';
+    var btn = document.getElementById('unmerge-apply-btn');
+    if (viewLocked) applyLockToTree(planEl);
+    btn.addEventListener('click', function(){
+      if (viewLocked) return;
+      if (!confirm('Put ' + total + ' line' + (total === 1 ? '' : 's') + ' back to #' + st.oldNum + ' as they were before the merge?')) return;
+      var res = umApply();
+      planEl.innerHTML = '';
+      statusEl.style.color = 'var(--text-success)';
+      statusEl.textContent = 'Done: ' + res.moved + ' line' + (res.moved === 1 ? '' : 's') + ' back to #' + st.oldNum + ', ' + res.split + ' split' + (res.unsure ? ', ' + res.unsure + ' left as #' + st.newNum : '') + '. Saving to your site now.';
+    });
+  }
+  function umApply(){
+    var st = umState, p = st.plan, bcat = st.before.partCatalog || {}, now = Date.now();
+    var touched = { build: {}, set: {}, drawer: {} };
+    function touch(kind, r){ touched[kind][kind === 'build' ? r.moc : kind === 'set' ? r.setNum : r.drawerId] = true; }
+    function asOld(r, o){
+      r.partNum = st.oldNum;
+      var c = bcat[st.oldKey + '|' + normColorKey(r.color || '')] || {};
+      r.desc = (o && o.desc) || c.d || '';
+      r.elementId = (o && o.elementId) || r.elementId || c.e || '';
+      if (r.imgUrl !== undefined || (o && o.imgUrl)) r.imgUrl = (o && o.imgUrl) || '';
+    }
+    p.moves.forEach(function(x){ asOld(x.r, x.o); touch(x.kind, x.r); });
+    p.splits.forEach(function(x){
+      var r = x.r, o = x.o.r;
+      var piece = JSON.parse(JSON.stringify(r));
+      asOld(piece, x.o);
+      if (x.kind === 'set'){
+        piece.qtyPerSet = o.qtyPerSet || 0;
+        piece.onHand = (o.onHand === undefined) ? null : o.onHand;
+        r.qtyPerSet = Math.max(0, (r.qtyPerSet || 0) - (o.qtyPerSet || 0));
+        if (r.onHand !== undefined && r.onHand !== null && o.onHand !== undefined && o.onHand !== null) r.onHand = Math.max(0, r.onHand - o.onHand);
+        delete piece._totalQty; delete piece._onHand;
+        setParts.splice(setParts.indexOf(r) + 1, 0, piece);
+      } else if (x.kind === 'build'){
+        piece.qty = o.qty || 0;
+        piece.onHand = Math.min(o.onHand || 0, piece.qty);
+        r.qty = Math.max(0, (r.qty || 0) - (o.qty || 0));
+        r.onHand = Math.max(0, Math.min((r.onHand || 0) - (o.onHand || 0), r.qty));
+        state.rows.splice(state.rows.indexOf(r) + 1, 0, piece);
+      } else {
+        piece.qty = o.qty || 0;
+        r.qty = Math.max(0, (r.qty || 0) - (o.qty || 0));
+        drawerParts.splice(drawerParts.indexOf(r) + 1, 0, piece);
+      }
+      touch(x.kind, r);
+    });
+    // lines whose share came to nothing are dropped
+    state.rows = state.rows.filter(function(r){ return !(normKey(r.partNum) === st.newKey && (r.qty || 0) <= 0 && p.splits.some(function(x){ return x.r === r; })); });
+    setParts = setParts.filter(function(r){ return !(normKey(r.partNum) === st.newKey && (r.qtyPerSet || 0) <= 0 && p.splits.some(function(x){ return x.r === r; })); });
+    drawerParts = drawerParts.filter(function(r){ return !(normKey(r.partNum) === st.newKey && (r.qty || 0) <= 0 && p.splits.some(function(x){ return x.r === r; })); });
+    // the merged-into part's own lines get back the details they had before (the master list may have overwritten them)
+    var stillNew = {};
+    [['build', state.rows], ['set', setParts], ['drawer', drawerParts]].forEach(function(src){
+      src[1].forEach(function(r){
+        if (normKey(r.partNum) !== st.newKey) return;
+        var pre = p.preNew[umPlaceKey(src[0], r)];
+        if (pre){
+          if (pre.desc) r.desc = pre.desc;
+          if (pre.elementId && (!r.elementId || p.oldEls[String(r.elementId)])) r.elementId = pre.elementId;
+        }
+        var ck = catKeyOf(r);
+        if (!stillNew[ck] || (pre && !stillNew[ck].pre)) stillNew[ck] = { r: r, pre: !!pre };
+      });
+    });
+    // the master records: the merged-into part as it was before, and the merged-away part's if it's gone
+    Object.keys(partCatalog).forEach(function(k){
+      if (k.indexOf(st.newKey + '|') !== 0) return;
+      if (bcat[k]){ partCatalog[k] = JSON.parse(JSON.stringify(bcat[k])); partCatalog[k].u = now; }
+      else if (!stillNew[k]) delete partCatalog[k];
+      else {
+        var c = partCatalog[k];
+        if (c.e && p.oldEls[c.e]) c.e = '';
+        if (c.ea) c.ea = c.ea.filter(function(e){ return !p.oldEls[e]; });
+        if (c.i && /elements\/(\d+)\.jpg/.test(c.i) && p.oldEls[/elements\/(\d+)\.jpg/.exec(c.i)[1]]) c.i = '';
+        var mine = stillNew[k].r;
+        if (mine.desc) c.d = mine.desc;
+        else if (c.d && p.moves.concat(p.splits).some(function(x){ return x.o && x.o.desc === c.d; })) c.d = '';
+        if (mine.elementId && !p.oldEls[String(mine.elementId)]) c.e = String(mine.elementId).trim();
+        if (c.ea) c.ea = c.ea.filter(function(e){ return e !== c.e; });
+        c.u = now;
+      }
+    });
+    Object.keys(bcat).forEach(function(k){
+      if (k.indexOf(st.oldKey + '|') === 0 && !partCatalog[k]){ partCatalog[k] = JSON.parse(JSON.stringify(bcat[k])); partCatalog[k].u = now; }
+    });
+    // genuine merged-into lines that were given the merged-away part's details by the master list get them back
+    [state.rows, setParts, drawerParts].forEach(function(list){
+      list.forEach(function(r){
+        if (normKey(r.partNum) !== st.newKey) return;
+        var c = catEntry(r);
+        if (r.elementId && p.oldEls[String(r.elementId)]) r.elementId = (c && c.e) || '';
+        if (c && c.d) r.desc = c.d;
+        if (r.imgUrl && /elements\/(\d+)\.jpg/.test(r.imgUrl) && p.oldEls[/elements\/(\d+)\.jpg/.exec(r.imgUrl)[1]]) r.imgUrl = c ? catImg(c) : '';
+      });
+    });
+    catSeen = new WeakMap();
+    Object.keys(touched.build).forEach(touchMocLastEdited);
+    Object.keys(touched.set).forEach(touchSetLastEdited);
+    Object.keys(touched.drawer).forEach(touchDrawerLastEdited);
+    savePartCatalog();
+    saveState(); saveSetParts(); saveDrawerParts();
+    safeRun('master list after undoing a merge', function(){ reconcilePartCatalog(catalogShouldPersist()); });
+    render();
+    if (typeof renderSetsTab === 'function') renderSetsTab();
+    if (typeof renderSetPartsSummaryTab === 'function') renderSetPartsSummaryTab();
+    if (typeof renderDrawersTab === 'function') renderDrawersTab();
+    if (typeof renderShoppingList === 'function') renderShoppingList();
+    var res = { moved: p.moves.length, split: p.splits.length, unsure: p.unsure.length };
+    umState = null;
+    return res;
+  }
+  wireEl('unmerge-parts-btn', 'click', function(){
+    safeRun('finding a merge to undo', function(){
+      umFind(document.getElementById('unmerge-parts-old').value, document.getElementById('unmerge-parts-new').value,
+        document.getElementById('unmerge-parts-status'), document.getElementById('unmerge-parts-plan'));
+    });
+  });
   wireEl('merge-parts-btn', 'click', function(){
     var oldInput = document.getElementById('merge-parts-old');
     var newInput = document.getElementById('merge-parts-new');
@@ -19556,8 +20199,8 @@
   }
   function fetchPhotoForGroup(g){
     var tries = [];
-    if (g.src) tries.push(g.src);
     if (g.elementId) tries.push('https://cdn.rebrickable.com/media/parts/elements/' + encodeURIComponent(g.elementId) + '.jpg');
+    if (g.src && tries.indexOf(g.src) === -1) tries.push(g.src);
     var i = 0;
     function next(){
       if (i < tries.length){
