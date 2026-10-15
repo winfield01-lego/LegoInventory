@@ -6866,6 +6866,7 @@
     var sortEl = document.getElementById('pml-sort');
     var sort = sortEl ? sortEl.value : 'part';
     var cutoff = Date.now() - 60 * 86400000;
+    var qList = q.indexOf(',') !== -1 ? q.split(',').map(function(t){ return t.trim(); }).filter(Boolean) : null;
     var out = pmlState.items.filter(function(it){
       if (f === 'nophoto' && !it.noPhoto) return false;
       if (f === 'nodesc' && it.desc) return false;
@@ -6873,7 +6874,11 @@
       if (f === 'never' && it.pulledAt) return false;
       if (f === 'stale' && it.pulledAt && it.pulledAt > cutoff) return false;
       if ((f === 'simple' || f === 'complex') && partKindOf(it.partNum, it.desc).kind !== f) return false;
-      if (q){
+      if (qList){
+        // a list ("3068b, 2419, 241923"): parts or element IDs matching any of them exactly
+        var pk = String(it.partNum || '').toLowerCase(), ek = String(it.elementId || '').toLowerCase();
+        if (!qList.some(function(t){ return t === pk || t === ek || it.rows.some(function(r){ return String(r.elementId || '').trim().toLowerCase() === t; }); })) return false;
+      } else if (q){
         var hay = [it.partNum, it.color, it.desc, it.elementId].concat(Object.keys(it.owners)).join(' ').toLowerCase();
         if (hay.indexOf(q) === -1) return false;
       }
@@ -7076,11 +7081,22 @@
       var c2 = document.createElement('canvas'); c2.width = S; c2.height = S;
       var x2 = c2.getContext('2d'); x2.fillStyle = '#fff'; x2.fillRect(0, 0, S, S);
       x2.drawImage(c, x0, y0, bw, bh, (S - bw * S / s) / 2, (S - bh * S / s) / 2, bw * S / s, bh * S / s);
-      var e = x2.getImageData(0, 0, S, S).data, g = [];
-      for (var i = 0; i < e.length; i += 4) g.push(0.3 * e[i] + 0.59 * e[i + 1] + 0.11 * e[i + 2]);
+      var e = x2.getImageData(0, 0, S, S).data, g = [], cr = 0, cg = 0, cb = 0, cn = 0;
+      for (var i = 0; i < e.length; i += 4){
+        var v = 0.3 * e[i] + 0.59 * e[i + 1] + 0.11 * e[i + 2];
+        g.push(v);
+        if (v < 235){ cr += e[i]; cg += e[i + 1]; cb += e[i + 2]; cn++; }
+      }
+      g.rgb = cn ? [cr / cn, cg / cn, cb / cn] : [255, 255, 255];
       return g;
     }).catch(function(){ return null; });
   }
+  // how far apart the two pictures' part colours are (0 = the same; Tan vs Dark Tan is about 100)
+  function pcColourGap(a, b){
+    if (!a.rgb || !b.rgb) return 0;
+    return Math.sqrt(Math.pow(a.rgb[0] - b.rgb[0], 2) + Math.pow(a.rgb[1] - b.rgb[1], 2) + Math.pow(a.rgb[2] - b.rgb[2], 2));
+  }
+  var PC_COLOUR_GAP = 30;
   function pcCorr(a, b){
     var n = a.length, ma = 0, mb = 0, i;
     for (i = 0; i < n; i++){ ma += a[i]; mb += b[i]; }
@@ -7105,30 +7121,45 @@
       return fetch(res.value).then(function(r){ return r.blob(); }).then(function(b){ return { blob: b, where: 'browser', path: '' }; });
     }).catch(fromSite);
   }
+  // photos that already matched are remembered for a month, so a long check can be stopped and picked up again
+  var PC_PASSED_KEY = 'legoinv:photo-check-passed-v1', PC_PASSED_MS = 30 * 86400000, pcPassed = null;
+  function pcPassedMap(){ if (!pcPassed){ try { pcPassed = JSON.parse(localStorage.getItem(PC_PASSED_KEY) || '{}') || {}; } catch(e){ pcPassed = {}; } } return pcPassed; }
+  function pcSavePassed(){ try { localStorage.setItem(PC_PASSED_KEY, JSON.stringify(pcPassedMap())); } catch(e){} }
   function pcCheckPhoto(it, isPart, key, refUrls, newId){
     var okKey = (isPart ? 'p:' : 'e:') + key;
     if (pcState.seen[okKey]) return Promise.resolve(null);
     pcState.seen[okKey] = true;
+    var passedAt = pcPassedMap()[okKey];
+    if (passedAt && Date.now() - passedAt < PC_PASSED_MS){ pcState.skipped = (pcState.skipped || 0) + 1; return Promise.resolve(null); }
     return pcCurrentPhoto(isPart, key).then(function(cur){
       if (!cur) return null;
       return pcSigFromBlob(cur.blob).then(function(cs){
         if (!cs) return null;
-        var best = -1, bestRef = null, i = 0;
+        var best = -1, bestRef = null, bestGap = 0, bestScore = -9, i = 0;
+        var good = function(){ return best >= PC_MATCH && (isPart || bestGap <= PC_COLOUR_GAP); };
         function next(){
-          if (i >= refUrls.length || best >= PC_MATCH) return Promise.resolve();
+          if (i >= refUrls.length || good()) return Promise.resolve();
           var u = refUrls[i++];
           return fetchImageBlobForBackfill(u).then(function(b){
             return pcSigFromBlob(b).then(function(rs){
               if (!rs) return;
-              var c = pcCorr(cs, rs);
-              if (c > best){ best = c; bestRef = { url: u, blob: b }; }
+              var c = pcCorr(cs, rs), gap = pcColourGap(cs, rs);
+              // a reference that matches in shape and colour beats one that only matches in shape
+              var score = c - (isPart ? 0 : Math.max(0, gap - PC_COLOUR_GAP) / 200);
+              if (score > bestScore){ bestScore = score; best = c; bestGap = gap; bestRef = { url: u, blob: b }; }
             });
           }, function(){}).then(next);
         }
         return next().then(function(){
-          if (!bestRef || best >= PC_MATCH) return null;
+          if (!bestRef){
+            // Rebrickable's picture didn't load (none exists, or it's refusing for a while): try again on a later check
+            if (refUrls.length){ pcState.unchecked = (pcState.unchecked || 0) + 1; pcState.fails = (pcState.fails || 0) + 1; }
+            return null;
+          }
+          pcState.fails = 0;
+          if (good()){ pcPassedMap()[okKey] = Date.now(); return null; }
           if (pcOkMap()[okKey] === cur.blob.size) return null;   // you said this one is right
-          return { type: 'photo', it: it, isPart: isPart, key: key, okKey: okKey, cur: cur, ref: bestRef, score: best, newId: newId || '' };
+          return { type: 'photo', it: it, isPart: isPart, key: key, okKey: okKey, cur: cur, ref: bestRef, score: best, colourOff: !isPart && best >= PC_MATCH && bestGap > PC_COLOUR_GAP, newId: newId || '' };
         });
       });
     });
@@ -7218,7 +7249,7 @@
       return;
     }
     var items = (pmlState.filtered || pmlFiltered()).filter(function(it){ return it.partNum; });
-    pcState = { running: true, cancel: false, problems: [], checked: 0, total: items.length, seen: {}, msg: '' };
+    pcState = { running: true, cancel: false, problems: [], checked: 0, total: items.length, seen: {}, msg: '', skipped: 0, unchecked: 0, fails: 0 };
     pcRender();
     rbPaceMs = 450; rbRetry429 = true;
     var i = 0;
@@ -7226,21 +7257,37 @@
       pcState.running = false;
       rbPaceMs = 0; rbRetry429 = false;
       var n = pcState.problems.length;
+      pcSavePassed();
+      clearTimeout(pcRenderTimer);
       pcRender();
+      var later = pcState.unchecked ? ' ' + pcState.unchecked.toLocaleString() + ' photo' + (pcState.unchecked === 1 ? '' : 's') + ' couldn\u2019t be compared because Rebrickable\u2019s picture didn\u2019t load; check again later to finish ' + (pcState.unchecked === 1 ? 'it' : 'them') + ' (photos that already matched are skipped).' : '';
       pcSay((pcState.cancel ? 'Stopped after ' + pcState.checked.toLocaleString() + ' of ' + pcState.total.toLocaleString() + '. ' : 'Checked ' + pcState.total.toLocaleString() + ' part' + (pcState.total === 1 ? '' : 's') + '. ') +
-        (n ? n + ' thing' + (n === 1 ? '' : 's') + ' to look at below.' : 'Every photo and element ID matches Rebrickable.'), n ? 'var(--text-primary)' : 'var(--text-success)');
+        (n ? n + ' thing' + (n === 1 ? '' : 's') + ' to look at below.' : (pcState.unchecked ? 'Nothing wrong found so far.' : 'Every photo and element ID matches Rebrickable.')) + later, n ? 'var(--text-primary)' : (pcState.unchecked ? 'var(--text-secondary)' : 'var(--text-success)'));
     }
     function step(){
       if (pcState.cancel || i >= items.length) return finish();
+      // Rebrickable's pictures stopped loading several times running: it's asking us to slow down, so wait a little
+      if (pcState.fails >= 3){
+        var wait = Math.min(120, 10 * pcState.fails);
+        pcSay('Rebrickable\u2019s pictures aren\u2019t loading right now, so waiting ' + wait + ' seconds before carrying on\u2026 (' + i.toLocaleString() + ' of ' + items.length.toLocaleString() + ' checked)');
+        pcState.fails = Math.min(pcState.fails, 11) - 1;
+        return setTimeout(step, wait * 1000);
+      }
       var it = items[i++];
+      if (i % 50 === 0) pcSavePassed();
       pcSay('Checking ' + i.toLocaleString() + ' of ' + items.length.toLocaleString() + ': ' + it.partNum + ' ' + (it.color || '') + '…' + (pcState.problems.length ? ' (' + pcState.problems.length + ' found so far)' : ''));
       pcCheckItem(it).then(function(probs){
         pcState.checked++;
-        if (probs.length){ pcState.problems.push.apply(pcState.problems, probs); pcRender(); }
+        if (probs.length){
+          pcState.problems.push.apply(pcState.problems, probs);
+          // the list is drawn at most every few seconds, so a long check stays quick
+          if (!pcRenderTimer) pcRenderTimer = setTimeout(function(){ pcRenderTimer = null; if (pcState.running) pcRender(); }, 3000);
+        }
       }, function(){ pcState.checked++; }).then(step);
     }
     step();
   }
+  var pcRenderTimer = null;
   function pcBlobUrl(p, which){
     var k = '_u' + which;
     if (!p[k]) p[k] = URL.createObjectURL(which === 'cur' ? p.cur.blob : p.ref.blob);
@@ -7255,7 +7302,7 @@
       var where = p.cur.where === 'browser' ? 'saved in this browser' : 'saved on your site (' + p.cur.path + ')';
       return '<div class="pc-imgs">' + pcThumb(pcBlobUrl(p, 'cur'), 'Your photo') + pcThumb(pcBlobUrl(p, 'ref'), 'Rebrickable') + '</div>' +
         '<div class="pc-text"><strong>' + escapeHtml(name) + '</strong> ' + escapeHtml(it.desc || '') + '<br>' +
-        escapeHtml('The photo ' + where + (p.isPart ? ', used for every colour of this part without an element ID,' : ' for element ' + p.key) + ' doesn’t look like Rebrickable’s picture (' + Math.max(0, Math.round(p.score * 100)) + '% alike).') + '</div>' +
+        escapeHtml('The photo ' + where + (p.isPart ? ', used for every colour of this part without an element ID,' : ' for element ' + p.key) + (p.colourOff ? ' is the right shape but a different colour from Rebrickable’s picture.' : ' doesn’t look like Rebrickable’s picture (' + Math.max(0, Math.round(p.score * 100)) + '% alike).')) + '</div>' +
         '<div class="pc-acts"><button type="button" class="icon-btn lockable" data-pc="fix">Use Rebrickable’s photo</button><button type="button" class="icon-btn" data-pc="ok">Mine is right</button></div>';
     }
     if (p.type === 'element'){
@@ -7314,19 +7361,63 @@
     var all = document.getElementById('pml-photo-check-fixall');
     if (all) all.addEventListener('click', function(){
       all.disabled = true;
-      var list = pcState.problems.filter(function(p){ return !p.done; }), done = 0, failed = 0, i = 0;
+      var todo = pcState.problems.filter(function(p){ return !p.done; }), done = 0, failed = 0, i = 0;
+      if (viewLocked){ pcSay('Unlock the app to make changes.', 'var(--text-danger)'); todo.length = 0; }
+      // photos go to your site 30 to a commit (like the automatic photo saver), everything else one by one
+      var batchPhotos = githubConnectionConfigured();
+      var photos = batchPhotos ? todo.filter(function(p){ return p.type === 'photo'; }) : [];
+      var list = todo.filter(function(p){ return photos.indexOf(p) === -1; });
+      var total = todo.length;
+      function report(){
+        pcAfterFix();
+        pcRender();
+        pcSay('Fixed ' + done + (failed ? ', ' + failed + ' couldn’t be fixed (they’re still listed)' : '') + '.', failed ? 'var(--text-danger)' : 'var(--text-success)');
+      }
+      function nextPhotos(){
+        if (!photos.length) return Promise.resolve();
+        var chunk = photos.splice(0, 30), items = [];
+        pcSay('Fixing photos: ' + done + ' of ' + total + ' done…');
+        return chunk.reduce(function(pr, p){
+          return pr.then(function(){
+            return resizeImageForStorage(p.ref.blob, 400, 0.82).then(function(dataUrl){
+              return ghApi('/git/blobs', 'POST', { content: dataUrl.slice(dataUrl.indexOf(',') + 1), encoding: 'base64' }).then(function(b){
+                items.push({ path: p.isPart ? 'images/parts/' + p.key + '.jpg' : 'images/' + p.key + '.jpg', sha: b.sha, p: p, dataUrl: dataUrl });
+              });
+            }).catch(function(){ failed++; });
+          });
+        }, Promise.resolve()).then(function(){
+          if (!items.length) return;
+          return commitImageBatch(items).then(function(){
+            return Promise.all(items.map(function(x){
+              var p = x.p;
+              return storage.set((p.isPart ? IMG_PART_PREFIX : IMG_PREFIX) + p.key, x.dataUrl, false).catch(function(){}).then(function(){
+                if (p.isPart){ cachedPartImgKeys.add(p.key); partSiteKnown[p.key] = true; }
+                else { cachedIds.add(p.key); delete noPhotoResolved[p.key]; }
+                pcPassedMap()[p.okKey] = Date.now();
+                p.done = true; done++;
+              });
+            }));
+          }, function(){ failed += items.length; });
+        }).then(function(){ pcSavePassed(); return nextPhotos(); });
+      }
       function next(){
-        if (i >= list.length){
-          pcAfterFix();
-          pcRender();
-          pcSay('Fixed ' + done + (failed ? ', ' + failed + ' couldn’t be fixed (they’re still listed)' : '') + '.', failed ? 'var(--text-danger)' : 'var(--text-success)');
-          return;
-        }
+        if (i >= list.length) return report();
         var p = list[i++];
-        pcSay('Fixing ' + i + ' of ' + list.length + '…');
+        pcSay('Fixing ' + (done + failed + 1) + ' of ' + total + '…');
         pcFix(p).then(function(){ done++; }, function(){ failed++; }).then(next);
       }
-      next();
+      // element IDs and links first (they change which photo a line uses), then the photos
+      var photoList = photos;
+      photos = [];
+      (function runList(){
+        if (i < list.length){
+          var p = list[i++];
+          pcSay('Fixing ' + (done + failed + 1) + ' of ' + total + '…');
+          return pcFix(p).then(function(){ done++; }, function(){ failed++; }).then(runList);
+        }
+        photos = photoList;
+        return nextPhotos().then(report, report);
+      })();
     });
   }
   function pcSaveRows(rows){
@@ -7356,6 +7447,7 @@
       return save.then(function(){
         if (p.isPart){ cachedPartImgKeys.add(p.key); partSiteKnown[p.key] = true; }
         else { cachedIds.add(p.key); delete noPhotoResolved[p.key]; }
+        pcPassedMap()[p.okKey] = Date.now(); pcSavePassed();
         p.done = true;
       });
     }
@@ -17364,7 +17456,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.14.7';          // bump with every change to this page
+  var APP_VERSION = '2026.10.14.8';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
