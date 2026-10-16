@@ -483,6 +483,26 @@
 #lego-inv-root .um-details { font-size: 12px; color: var(--text-secondary); }
 #lego-inv-root .um-details ul { margin: 2px 0 8px; padding-left: 18px; max-height: 260px; overflow: auto; }
 #lego-inv-root .um-details p { margin: 6px 0 2px; color: var(--text-primary); }
+#lego-inv-root .sm-panel { border:1px solid var(--border); border-radius:10px; padding:8px 10px; margin:0 0 16px; background:var(--surface-1); }
+#lego-inv-root .sm-set { border-top:1px solid var(--border); padding:6px 0; }
+#lego-inv-root .sm-set > summary { list-style:none; cursor:pointer; display:flex; flex-wrap:wrap; gap:4px 10px; align-items:center; font-size:13px; }
+#lego-inv-root .sm-set > summary::-webkit-details-marker { display:none; }
+#lego-inv-root .sm-set > summary .sm-chev { transition:transform .15s; font-size:13px; color:var(--text-muted); }
+#lego-inv-root .sm-set[open] > summary .sm-chev { transform:rotate(90deg); }
+#lego-inv-root .sm-name { font-weight:700; flex:1 1 180px; min-width:0; }
+#lego-inv-root .sm-name small { font-weight:400; color:var(--text-muted); }
+#lego-inv-root .sm-stats { display:flex; gap:6px; flex-wrap:wrap; align-items:center; font-size:12px; color:var(--text-secondary); }
+#lego-inv-root .sm-bar { width:60px; height:6px; border-radius:3px; background:var(--border); overflow:hidden; display:inline-block; vertical-align:middle; }
+#lego-inv-root .sm-bar > span { display:block; height:100%; background:var(--lego-green, #4caf50); }
+#lego-inv-root .sm-parts { margin:6px 0 2px 18px; }
+#lego-inv-root .sm-part { display:flex; flex-wrap:wrap; gap:2px 8px; align-items:center; padding:3px 0; font-size:12px; border-bottom:1px dashed var(--border); }
+#lego-inv-root .sm-part:last-child { border-bottom:none; }
+#lego-inv-root .sm-qty { font-weight:800; min-width:28px; }
+#lego-inv-root .sm-desc { flex:1 1 200px; min-width:0; color:var(--text-primary); }
+#lego-inv-root .sm-desc .sm-pn { color:var(--text-muted); cursor:pointer; text-decoration:underline; text-decoration-color:color-mix(in srgb, currentColor 35%, transparent); text-underline-offset:2px; }
+#lego-inv-root .sm-have { font-size:11px; color:var(--text-secondary); }
+#lego-inv-root .sm-have.ok { color:var(--text-success); font-weight:700; }
+#lego-inv-root .sm-chip-drawers { font-size:9px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; padding:1px 6px; border-radius:4px; border:1px solid var(--text-success); color:var(--text-success); white-space:nowrap; }
 #lego-inv-root .shop-item .shop-partnum { cursor: pointer; text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); text-underline-offset: 2px; }
 #lego-inv-root .shop-item .count-chip, #lego-inv-root .shop-item .kind-chip { flex-shrink: 0; cursor: pointer; }
 #lego-inv-root .count-chip.count-none { background: var(--surface-1); color: var(--text-primary); border: 1px solid var(--text-secondary); }
@@ -1099,6 +1119,33 @@
     </div>
   </div>
   <div id="theme-summary-list" style="margin-bottom: 20px;"></div>
+
+  <div id="sets-missing-panel" class="sm-panel">
+    <div class="row" style="justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
+      <button id="sets-missing-toggle" class="icon-btn" style="padding:3px 10px; display:flex; align-items:center; gap:6px;" title="Show or hide every set that's missing pieces">
+        <i id="sets-missing-chevron" class="ti ti-chevron-right" style="font-size:13px;" aria-hidden="true"></i>
+        <span style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary);">Sets missing pieces</span>
+      </button>
+      <div class="row" style="gap:8px;">
+        <button id="sets-missing-csv-btn" class="icon-btn" style="padding:3px 10px;" title="Every missing piece of every set, one line each"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> CSV</button>
+        <button id="sets-missing-pdf-btn" class="icon-btn" style="padding:3px 10px;" title="A summary of the sets, then each set's missing pieces"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> PDF</button>
+      </div>
+    </div>
+    <p id="sets-missing-summary" style="margin:6px 0 0; font-size:13px; color:var(--text-secondary);"></p>
+    <div id="sets-missing-body" style="display:none; margin-top:8px;">
+      <div class="row" style="gap:8px; flex-wrap:wrap; margin-bottom:8px; align-items:center;">
+        <label style="font-size:12px; color:var(--text-secondary);">Sort
+          <select id="sets-missing-sort">
+            <option value="missing">Most pieces missing</option>
+            <option value="closest">Closest to complete</option>
+            <option value="drawers">Most findable in drawers</option>
+            <option value="set">Set number</option>
+          </select>
+        </label>
+      </div>
+      <div id="sets-missing-list"></div>
+    </div>
+  </div>
 
   <div class="row" style="justify-content: space-between; margin-bottom: 8px;">
     <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0;">Your sets</p>
@@ -2507,7 +2554,7 @@
   var lockWriteBypassUntil = 0;
   var lockNoticeTimer = null;
   var LOCK_EXEMPT_IDS = {};
-  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-sort pml-open-btn-3 pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing shop-kind-filter shop-status-filter pml-open-btn-4 pml-no-figs top-needed-kind clean-report-kind pml-sort slim-refresh-btn device-name-input auto-photos-toggle auto-photos-run auto-photos-stop figs-almost-toggle-btn figs-almost-threshold figs-almost-drawer-only figs-almost-layout figs-almost-csv-btn figs-almost-pdf-btn moc-tier-toggle top-needed-tier tier-filter mocbuild-group-by sets-group-by sets-sort-by collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
+  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-sort pml-open-btn-3 pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing shop-kind-filter shop-status-filter pml-open-btn-4 pml-no-figs top-needed-kind clean-report-kind pml-sort slim-refresh-btn device-name-input auto-photos-toggle auto-photos-run auto-photos-stop figs-almost-toggle-btn figs-almost-threshold figs-almost-drawer-only figs-almost-layout figs-almost-csv-btn figs-almost-pdf-btn moc-tier-toggle top-needed-tier tier-filter mocbuild-group-by sets-group-by sets-sort-by sets-missing-sort collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
   var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input';
   var LOCK_CONTROL_SELECTOR = 'input, select, textarea, button';
 
@@ -8365,6 +8412,7 @@
 
   function renderSetsTab(){
     renderOwnedSetsList();
+    if (typeof renderSetsMissingReport === 'function') safeRun('sets missing pieces', renderSetsMissingReport);
     populateSetCsvTarget();
     renderSetPartsTable();
     populateFillScope();
@@ -15895,6 +15943,160 @@
 
   wireEl('sets-report-btn', 'click', generateSetsPDF);
 
+  // ---- Sets missing pieces: every official set that isn't complete, how much is missing, and what ----
+  // Drawer and bag counts say how many of each missing piece you have loose right now (the same pieces can help
+  // more than one set, so "can finish from drawers" is a hint, not a promise).
+  var smOpen = false;
+  function setsMissingData(){
+    var drawerStock = buildDrawerStockMap(), bagStock = buildBagStockMap();
+    var bySet = {};
+    setParts.forEach(function(r){ (bySet[r.setNum] = bySet[r.setNum] || []).push(r); });
+    var out = [];
+    realSets().forEach(function(s){
+      var rows = bySet[s.setNum] || [];
+      if (!rows.length) return;
+      var need = 0, have = 0, lines = [];
+      rows.forEach(function(r){
+        var n = setPartNeeded(r), h = Math.min(setPartOnHand(r), n);
+        need += n; have += h;
+        if (h >= n) return;
+        var key = stockKeyOf(r.partNum, r.color);
+        var inDrawers = drawerStock[key] || 0, inBags = bagStock[key] ? bagStock[key].qty : 0;
+        lines.push({ r: r, partNum: r.partNum, color: r.color || '', desc: r.desc || '', elementId: r.elementId || '', need: n, have: h, missing: n - h,
+          inDrawers: inDrawers, inBags: inBags, flag: countFlagOf(r.partNum, inDrawers, inBags) });
+      });
+      if (!lines.length) return;
+      var missing = need - have;
+      var findable = lines.reduce(function(t, l){ return t + Math.min(l.missing, l.inDrawers + l.inBags); }, 0);
+      lines.sort(function(a, b){ return (b.missing - a.missing) || String(a.color).localeCompare(b.color) || String(a.partNum).localeCompare(b.partNum, undefined, { numeric: true }); });
+      out.push({ s: s, need: need, have: have, missing: missing, pct: need ? Math.floor(have / need * 100) : 100, lines: lines, findable: findable,
+        drawersCover: lines.every(function(l){ return l.inDrawers >= l.missing; }) });
+    });
+    var sort = (document.getElementById('sets-missing-sort') || {}).value || 'missing';
+    var bySetNum = function(a, b){ return String(a.s.setNum).localeCompare(String(b.s.setNum), undefined, { numeric: true }); };
+    out.sort(sort === 'closest' ? function(a, b){ return (b.have / b.need - a.have / a.need) || (a.missing - b.missing) || bySetNum(a, b); }
+      : sort === 'drawers' ? function(a, b){ return (b.findable - a.findable) || (b.findable / b.missing - a.findable / a.missing) || bySetNum(a, b); }
+      : sort === 'set' ? bySetNum
+      : function(a, b){ return (b.missing - a.missing) || bySetNum(a, b); });
+    return out;
+  }
+  function smSetLabel(s){ return s.setNum + (s.name ? ' ' + s.name : ''); }
+  function renderSetsMissingReport(){
+    var sumEl = document.getElementById('sets-missing-summary');
+    if (!sumEl) return;
+    var data = setsMissingData();
+    var pieces = data.reduce(function(t, d){ return t + d.missing; }, 0);
+    var lines = data.reduce(function(t, d){ return t + d.lines.length; }, 0);
+    var findable = data.reduce(function(t, d){ return t + d.findable; }, 0);
+    var total = realSets().filter(function(s){ return setParts.some(function(r){ return r.setNum === s.setNum; }); }).length;
+    sumEl.textContent = data.length
+      ? data.length + ' of ' + total + ' set' + (total === 1 ? '' : 's') + ' ' + (data.length === 1 ? 'is' : 'are') + ' missing pieces: ' + pieces.toLocaleString() + ' piece' + (pieces === 1 ? '' : 's') + ' across ' + lines.toLocaleString() + ' part line' + (lines === 1 ? '' : 's') + (findable ? ', and ' + findable.toLocaleString() + ' of them ' + (findable === 1 ? 'is' : 'are') + ' in your drawers or bags right now.' : '.')
+      : (total ? 'Every set is complete.' : 'No sets with parts lists yet.');
+    var list = document.getElementById('sets-missing-list');
+    if (!smOpen || !list) return;
+    var openNow = {};
+    list.querySelectorAll('details[open]').forEach(function(d){ openNow[d.getAttribute('data-set')] = true; });
+    list.innerHTML = '';
+    if (!data.length){ list.innerHTML = '<div class="empty-msg">Nothing missing.</div>'; return; }
+    data.forEach(function(d){
+      var s = d.s;
+      var det = document.createElement('details');
+      det.className = 'sm-set';
+      det.setAttribute('data-set', s.setNum);
+      if (openNow[s.setNum]) det.open = true;
+      det.innerHTML =
+        '<summary><i class="ti ti-chevron-right sm-chev" aria-hidden="true"></i>' +
+          '<span class="sm-name">' + escapeHtml(s.setNum) + ' ' + escapeHtml(s.name || '') + (s.theme ? ' <small>' + escapeHtml(s.theme) + '</small>' : '') + '</span>' +
+          '<span class="sm-stats">' +
+            '<span><strong>' + d.missing.toLocaleString() + '</strong> missing (' + d.lines.length + ' line' + (d.lines.length === 1 ? '' : 's') + ')</span>' +
+            '<span class="sm-bar" title="' + d.pct + '% complete"><span style="width:' + d.pct + '%"></span></span><span>' + d.pct + '%</span>' +
+            (d.drawersCover ? '<span class="sm-chip-drawers" title="Every missing piece is in your drawers right now (some may be wanted by other sets or builds too)">Can finish from drawers</span>'
+              : d.findable ? '<span title="Missing pieces you have loose in drawers or bags">' + d.findable.toLocaleString() + ' in drawers/bags</span>' : '') +
+            '<button type="button" class="icon-btn sm-open" style="padding:1px 8px;">Open set</button>' +
+          '</span>' +
+        '</summary><div class="sm-parts"></div>';
+      det.querySelector('.sm-open').addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); openSetDetail(s.setNum); });
+      var fill = function(){
+        var box = det.querySelector('.sm-parts');
+        if (box.childNodes.length) return;
+        box.innerHTML = d.lines.map(function(l, i){
+          var haveTxt = l.inDrawers || l.inBags
+            ? '<span class="sm-have' + (l.inDrawers >= l.missing ? ' ok' : '') + '">' + (l.inDrawers ? l.inDrawers.toLocaleString() + ' in drawers' : '') + (l.inDrawers && l.inBags ? ', ' : '') + (l.inBags ? l.inBags.toLocaleString() + ' in bags' : '') + '</span>'
+            : countFlagChip(l.flag, { partNum: l.partNum, color: l.color });
+          return '<div class="sm-part" data-i="' + i + '"><span class="sm-qty">' + l.missing + '×</span>' +
+            '<span class="sm-desc">' + escapeHtml(l.color) + ' ' + escapeHtml(l.desc) + ' <span class="sm-pn">#' + escapeHtml(l.partNum) + '</span>' + (l.have ? ' <span class="sm-have">(have ' + l.have + ' of ' + l.need + ')</span>' : '') + '</span>' +
+            haveTxt + kindChipHtml(l.partNum, l.desc) + '</div>';
+        }).join('');
+        box.addEventListener('click', function(e){
+          var row = e.target.closest && e.target.closest('.sm-part');
+          if (!row || !(e.target.closest('.sm-pn, .count-chip'))) return;
+          var l = d.lines[+row.getAttribute('data-i')];
+          openPartsMasterListFor(l.partNum, l.color);
+        });
+      };
+      if (det.open) fill();
+      det.addEventListener('toggle', function(){ if (det.open) fill(); });
+      list.appendChild(det);
+    });
+  }
+  function setsMissingCsv(){
+    var data = setsMissingData();
+    if (!data.length){ alert('No sets are missing pieces.'); return; }
+    var lines = [['Set Number', 'Set Name', 'Theme', 'Set % Complete', 'Set Pieces Missing', 'Part Number', 'Element ID', 'Color', 'Description', 'Kind', 'Needed', 'On Hand', 'Missing', 'In Drawers', 'In Bags', 'Drawer Status'].map(csvEscape).join(',')];
+    data.forEach(function(d){
+      d.lines.forEach(function(l){
+        lines.push([d.s.setNum, d.s.name || '', d.s.theme || '', d.pct + '%', d.missing, l.partNum, l.elementId, l.color, l.desc, partKindOf(l.partNum, l.desc).kind,
+          l.need, l.have, l.missing, l.inDrawers, l.inBags, countFlagText(l.flag)].map(csvEscape).join(','));
+      });
+    });
+    downloadCsv(lines, 'lego-sets-missing-pieces');
+  }
+  function setsMissingPdf(){
+    var data = setsMissingData();
+    if (!data.length){ alert('No sets are missing pieces.'); return; }
+    var doc = getPdfDoc();
+    if (!doc) return;
+    var pieces = data.reduce(function(t, d){ return t + d.missing; }, 0);
+    pdfHeader(doc, 'Sets Missing Pieces',
+      'Generated ' + new Date().toLocaleDateString() + ' · ' + data.length + ' set' + (data.length === 1 ? '' : 's') + ' · ' + pieces.toLocaleString() + ' piece' + (pieces === 1 ? '' : 's') + ' missing');
+    var purple = [138, 18, 168];
+    doc.autoTable({
+      startY: 70,
+      head: [['Set #', 'Name', 'Theme', 'Complete', 'Missing', 'Lines', 'In drawers/bags']],
+      body: data.map(function(d){ return [d.s.setNum, truncateForPdf(d.s.name || '', 40), truncateForPdf(d.s.theme || '', 22), d.pct + '%', d.missing.toLocaleString(), String(d.lines.length), d.drawersCover ? 'All (' + d.findable + ')' : String(d.findable)]; }),
+      styles: { fontSize: 8.5, cellPadding: 3, overflow: 'linebreak' },
+      headStyles: { fillColor: purple, textColor: 255 },
+      columnStyles: { 1: { cellWidth: 170 } }
+    });
+    data.forEach(function(d){
+      var y = doc.lastAutoTable.finalY + 22;
+      if (y > doc.internal.pageSize.getHeight() - 90){ doc.addPage(); y = 50; }
+      doc.setFontSize(11); doc.setTextColor(30, 30, 30);
+      doc.text(truncateForPdf(smSetLabel(d.s), 70), 40, y);
+      doc.setFontSize(8.5); doc.setTextColor(110, 110, 110);
+      doc.text(d.pct + '% complete · ' + d.missing.toLocaleString() + ' missing' + (d.findable ? ' · ' + d.findable.toLocaleString() + ' in drawers/bags' : ''), 40, y + 12);
+      doc.autoTable({
+        startY: y + 18,
+        margin: { top: 50, right: 40, bottom: 30, left: 40 },
+        head: [['Missing', 'Part #', 'Color', 'Description', 'Drawers', 'Bags']],
+        body: d.lines.map(function(l){ return [String(l.missing), l.partNum, l.color, truncateForPdf(l.desc, 48) + countFlagNote(l.flag), l.inDrawers ? String(l.inDrawers) : '', l.inBags ? String(l.inBags) : '']; }),
+        styles: { fontSize: 8, cellPadding: 2.5, overflow: 'linebreak' },
+        headStyles: { fillColor: [90, 90, 90], textColor: 255 },
+        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 60 }, 2: { cellWidth: 80 }, 4: { cellWidth: 46 }, 5: { cellWidth: 36 } }
+      });
+    });
+    doc.save('lego-sets-missing-pieces.pdf');
+  }
+  wireEl('sets-missing-toggle', 'click', function(){
+    smOpen = !smOpen;
+    document.getElementById('sets-missing-body').style.display = smOpen ? '' : 'none';
+    document.getElementById('sets-missing-chevron').className = 'ti ' + (smOpen ? 'ti-chevron-down' : 'ti-chevron-right');
+    renderSetsMissingReport();
+  });
+  wireEl('sets-missing-sort', 'change', renderSetsMissingReport);
+  wireEl('sets-missing-csv-btn', 'click', setsMissingCsv);
+  wireEl('sets-missing-pdf-btn', 'click', setsMissingPdf);
+
   var TAB_TO_GROUP = {
     overview: 'overview',
     parts: 'moc-collection', mocsets: 'moc-collection',
@@ -17456,7 +17658,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.14.8';          // bump with every change to this page
+  var APP_VERSION = '2026.10.15.1';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
