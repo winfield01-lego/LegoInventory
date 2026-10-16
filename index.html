@@ -1169,9 +1169,9 @@
           <option value="simple">Simple parts only</option>
           <option value="complex">Complex parts only</option>
         </select>
-        <select id="srpt-layout" title="Page layout">
-          <option value="portrait">Portrait</option>
-          <option value="landscape">Landscape</option>
+        <select id="srpt-layout" title="PDF layout">
+          <option value="portrait">Portrait: one ranked list</option>
+          <option value="landscape">Landscape: grouped by set</option>
         </select>
         <button id="srpt-csv-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate CSV</button>
         <button id="srpt-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate PDF</button>
@@ -15790,9 +15790,104 @@
   }
 
   // "Clean" report 1 (PDF): just the parts still worth going to find, one already-netted quantity.
+
+  // Sets report, landscape: each set's name, then every part it's missing, then the next set. The same filters as
+  // the list (which parts, simple/complex) apply; the "top N" limit doesn't, so each set's list is complete.
+  function generateSetsByGroupPdf(){
+    var show = rEl('clean-report-show').value;
+    var byColor = rEl('clean-report-sort').value === 'color';
+    var kind = topNeededKind();
+    var ranked = getShortItemsForReport().slice().sort(show === 'all' ? function(a, b){ return b.short - a.short; } : byStillMissing);
+    var keep = {};
+    ranked.forEach(function(it, i){
+      var miss = stillMissingOf(it), flag = itemCountFlag(it);
+      var ok = show === 'all' ? true : show === 'covered' ? miss === 0 : show === 'uncounted' ? (miss > 0 && flag === 'uncounted') : show === 'nonecolor' ? (miss > 0 && flag === 'none') : miss > 0;
+      if (ok) keep[stockKeyOf(it.partNum, it.color)] = { it: it, rank: i + 1 };
+    });
+    var chosen = rptCtx.sets;
+    var sets = realSets().filter(function(s){ return chosen.has(s.setNum); })
+      .sort(function(a, b){ return String(a.setNum).localeCompare(String(b.setNum), undefined, { numeric: true }); });
+    var groups = [];
+    sets.forEach(function(s){
+      var lines = [];
+      setParts.forEach(function(r){
+        if (r.setNum !== s.setNum) return;
+        var need = setPartNeeded(r), miss = need - Math.min(setPartOnHand(r), need);
+        if (miss <= 0) return;
+        var k = keep[stockKeyOf(r.partNum, r.color)];
+        if (!k) return;
+        lines.push({ partNum: r.partNum, color: r.color || '', desc: r.desc || k.it.desc || '', elementId: r.elementId || k.it.elementId || '', miss: miss, it: k.it, rank: k.rank });
+      });
+      if (!lines.length) return;
+      lines.sort(byColor
+        ? function(a, b){ return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.rank - b.rank); }
+        : function(a, b){ return (b.miss - a.miss) || (a.rank - b.rank); });
+      groups.push({ s: s, lines: lines, miss: lines.reduce(function(t, l){ return t + l.miss; }, 0) });
+    });
+    if (!groups.length){ alert('Nothing to report — none of the sets you picked have parts that match these choices.'); return; }
+    var showLabel = { uncovered: 'Still Needed', covered: 'Already in Drawers', all: 'Full Breakdown', uncounted: 'None of This Part', nonecolor: 'None in This Colour' }[show] || 'Still Needed';
+    var title = 'Sets Missing Pieces — ' + showLabel + ', by Set' + (kind ? ' (' + kind + ' parts)' : '');
+    var pieces = groups.reduce(function(t, g){ return t + g.miss; }, 0);
+    var filenameBase = 'lego-sets-parts-by-set-' + show + (kind ? '-' + kind + '-parts' : '');
+    var btn = rEl('clean-report-pdf-btn');
+    var prevBtnHtml = btn ? btn.innerHTML : null;
+    if (btn){ btn.disabled = true; btn.innerHTML = '<i class="ti ti-loader-2" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Generating…'; }
+    var ids = {};
+    groups.forEach(function(g){ g.lines.forEach(function(l){ if (l.elementId) ids[l.elementId] = true; }); });
+    Promise.all(Object.keys(ids).map(function(id){ return fetchPartImageForPdf(id).then(function(u){ return [id, u]; }); })).then(function(pairs){
+      var imgMap = {};
+      pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
+      var doc = new jspdf.jsPDF({ unit: 'pt', format: 'letter', orientation: 'landscape' });
+      var pageH = doc.internal.pageSize.getHeight();
+      pdfHeader(doc, title, 'Generated ' + new Date().toLocaleDateString() + ' · ' + groups.length + ' set' + (groups.length === 1 ? '' : 's') + ' · ' + pieces.toLocaleString() + ' piece' + (pieces === 1 ? '' : 's'));
+      doc.setFontSize(7.5); doc.setTextColor(110, 110, 110);
+      doc.text('Rank = the part’s place in the combined list for these sets.  Drawers and Bags = all you have loose (other sets may want the same pieces).  [none of part] / [none in colour] = none in any drawer or bag.', 40, 70);
+      var y = 88;
+      groups.forEach(function(g){
+        if (y > pageH - 110){ doc.addPage(); y = 44; }
+        doc.setFillColor(0, 85, 191);
+        doc.rect(40, y - 12, doc.internal.pageSize.getWidth() - 80, 18, 'F');
+        doc.setFontSize(11); doc.setTextColor(255, 255, 255);
+        doc.text(truncateForPdf(g.s.setNum + '  ' + (g.s.name || ''), 70) + (g.s.theme ? '   ·  ' + truncateForPdf(g.s.theme, 30) : ''), 46, y + 1);
+        doc.setFontSize(9);
+        var right = g.miss.toLocaleString() + ' piece' + (g.miss === 1 ? '' : 's') + ' · ' + g.lines.length + ' part' + (g.lines.length === 1 ? '' : 's');
+        doc.text(right, doc.internal.pageSize.getWidth() - 46 - doc.getTextWidth(right), y + 1);
+        doc.autoTable({
+          startY: y + 8,
+          margin: { top: 40, right: 40, bottom: 30, left: 40 },
+          head: [['', 'Rank', 'Part #', 'Color', 'Description', 'This set needs', 'Drawers', 'Bags']],
+          body: g.lines.map(function(l){ return ['', '#' + l.rank, l.partNum, l.color, truncateForPdf(l.desc, 70) + countFlagNote(itemCountFlag(l.it)), l.miss.toLocaleString(), (l.it.drawerTotal || 0).toLocaleString(), (l.it.bagTotal || 0).toLocaleString()]; }),
+          styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: PDF_THUMB.single.rowHeight, valign: 'middle' },
+          headStyles: { fillColor: [90, 90, 90], textColor: 255, minCellHeight: 0 },
+          columnStyles: { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 40 }, 2: { cellWidth: 70 }, 3: { cellWidth: 90 }, 5: { cellWidth: 70, halign: 'right' }, 6: { cellWidth: 52, halign: 'right' }, 7: { cellWidth: 44, halign: 'right' } },
+          didDrawCell: function(data){
+            if (data.section !== 'body' || data.column.index !== 0) return;
+            var l = g.lines[data.row.index];
+            var dataUrl = l && l.elementId && imgMap[l.elementId];
+            if (!dataUrl) return;
+            try {
+              var size = pdfThumbImageSize('single');
+              var pad = (Math.min(data.cell.height, data.cell.width) - size) / 2;
+              doc.addImage(dataUrl, /^data:image\/png/i.test(dataUrl) ? 'PNG' : 'JPEG', data.cell.x + pad, data.cell.y + pad, size, size);
+            } catch(e){}
+          }
+        });
+        y = doc.lastAutoTable.finalY + 30;
+      });
+      doc.save(filenameBase + '.pdf');
+    }).catch(function(err){
+      alert('Could not generate the PDF: ' + (err && err.message ? err.message : 'unknown error'));
+    }).then(function(){
+      if (btn){ btn.disabled = false; btn.innerHTML = prevBtnHtml; }
+    });
+  }
   function generateCleanReportPDF(){
     var show = rEl('clean-report-show').value;
     var layout = rEl('clean-report-layout').value;
+    if (rptCtx && rptCtx.sets && layout === 'landscape'){
+      if (typeof jspdf === 'undefined' || !jspdf.jsPDF){ alert('The PDF library hasn\u2019t finished loading yet \u2014 please wait a moment and try again.'); return; }
+      return generateSetsByGroupPdf();
+    }
     var items = getCleanReportItems();
     if (!items.length){
       alert(show === 'covered'
@@ -17675,7 +17770,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.15.2';          // bump with every change to this page
+  var APP_VERSION = '2026.10.16.1';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
