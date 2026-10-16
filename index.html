@@ -483,6 +483,16 @@
 #lego-inv-root .um-details { font-size: 12px; color: var(--text-secondary); }
 #lego-inv-root .um-details ul { margin: 2px 0 8px; padding-left: 18px; max-height: 260px; overflow: auto; }
 #lego-inv-root .um-details p { margin: 6px 0 2px; color: var(--text-primary); }
+#lego-inv-root .srpt-pick > summary { list-style:none; cursor:pointer; font-size:13px; color:var(--text-secondary); padding:4px 0; }
+#lego-inv-root .srpt-pick > summary::-webkit-details-marker { display:none; }
+#lego-inv-root .srpt-pick-chev { transition: transform .15s; display:inline-block; font-size:13px; }
+#lego-inv-root .srpt-pick[open] .srpt-pick-chev { transform: rotate(90deg); }
+#lego-inv-root #srpt-sets { max-height: 320px; overflow-y: auto; border-top:1px solid var(--border); }
+#lego-inv-root .srpt-set { display:flex; align-items:center; gap:8px; padding:5px 0; border-bottom:1px dashed var(--border); font-size:13px; }
+#lego-inv-root .srpt-set label { display:flex; align-items:center; gap:8px; flex:1; min-width:0; cursor:pointer; }
+#lego-inv-root .srpt-set .srpt-set-name { flex:1; min-width:0; }
+#lego-inv-root .srpt-set .srpt-set-name small { color:var(--text-muted); }
+#lego-inv-root .srpt-set .srpt-set-stats { font-size:12px; color:var(--text-secondary); white-space:nowrap; display:flex; align-items:center; gap:6px; }
 #lego-inv-root .sm-panel { border:1px solid var(--border); border-radius:10px; padding:8px 10px; margin:0 0 16px; background:var(--surface-1); }
 #lego-inv-root .sm-set { border-top:1px solid var(--border); padding:6px 0; }
 #lego-inv-root .sm-set > summary { list-style:none; cursor:pointer; display:flex; flex-wrap:wrap; gap:4px 10px; align-items:center; font-size:13px; }
@@ -1121,29 +1131,70 @@
   <div id="theme-summary-list" style="margin-bottom: 20px;"></div>
 
   <div id="sets-missing-panel" class="sm-panel">
-    <div class="row" style="justify-content:space-between; align-items:center; gap:8px; flex-wrap:wrap;">
-      <button id="sets-missing-toggle" class="icon-btn" style="padding:3px 10px; display:flex; align-items:center; gap:6px;" title="Show or hide every set that's missing pieces">
-        <i id="sets-missing-chevron" class="ti ti-chevron-right" style="font-size:13px;" aria-hidden="true"></i>
-        <span style="font-size:12px; text-transform:uppercase; letter-spacing:0.02em; color:var(--text-secondary);">Sets missing pieces</span>
-      </button>
-      <div class="row" style="gap:8px;">
-        <button id="sets-missing-csv-btn" class="icon-btn" style="padding:3px 10px;" title="Every missing piece of every set, one line each"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> CSV</button>
-        <button id="sets-missing-pdf-btn" class="icon-btn" style="padding:3px 10px;" title="A summary of the sets, then each set's missing pieces"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> PDF</button>
+    <p style="font-size: 12px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.03em; color: var(--lego-blue); margin: 0 0 4px;">Sets missing pieces</p>
+    <p id="sets-missing-summary" style="margin:0 0 8px; font-size:13px; color:var(--text-secondary);"></p>
+    <details id="srpt-pick" class="srpt-pick">
+      <summary><i class="ti ti-chevron-right srpt-pick-chev" aria-hidden="true"></i> Sets in this report: <strong id="srpt-pick-count"></strong></summary>
+      <div class="row" style="gap:8px; flex-wrap:wrap; align-items:center; margin:8px 0 6px;">
+        <input type="text" id="srpt-pick-search" placeholder="Filter sets" style="flex:1; min-width:150px;" autocapitalize="off" autocorrect="off" spellcheck="false" />
+        <button type="button" id="srpt-pick-all" class="icon-btn" style="padding:3px 10px;">All</button>
+        <button type="button" id="srpt-pick-none" class="icon-btn" style="padding:3px 10px;">None</button>
       </div>
-    </div>
-    <p id="sets-missing-summary" style="margin:6px 0 0; font-size:13px; color:var(--text-secondary);"></p>
-    <div id="sets-missing-body" style="display:none; margin-top:8px;">
-      <div class="row" style="gap:8px; flex-wrap:wrap; margin-bottom:8px; align-items:center;">
-        <label style="font-size:12px; color:var(--text-secondary);">Sort
-          <select id="sets-missing-sort">
-            <option value="missing">Most pieces missing</option>
-            <option value="closest">Closest to complete</option>
-            <option value="drawers">Most findable in drawers</option>
-            <option value="set">Set number</option>
+      <div id="srpt-sets"></div>
+    </details>
+    <div id="srpt-section">
+      <div class="row" style="justify-content: space-between; margin: 8px 0; flex-wrap:wrap; gap:8px;">
+        <button id="srpt-toggle-btn" class="icon-btn" style="padding: 3px 10px; display:flex; align-items:center; gap:6px;">
+          <i id="srpt-chevron" class="ti ti-chevron-right" style="font-size:13px;" aria-hidden="true"></i>
+          <span style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Browse the list</span>
+        </button>
+        <label style="font-size:12px; color:var(--text-secondary);">Show top <input type="number" id="srpt-count" value="100" min="1" max="5000" style="width:70px;" /> parts</label>
+      </div>
+      <p id="srpt-hint" class="top-needed-tier-hint" style="display:none;"></p>
+      <div class="row" style="gap:10px; align-items:center; margin-bottom: 8px; padding-top:8px; border-top: 1px solid var(--border); flex-wrap:wrap;">
+        <span style="font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); flex-shrink:0;">Clean report:</span>
+        <select id="srpt-show" title="Which parts to include">
+          <option value="uncovered">Still need to find (unassigned)</option>
+          <option value="covered">Already in drawers</option>
+          <option value="all">All parts (needed, in drawers, remaining)</option>
+          <option value="uncounted">None of this part in any colour</option>
+          <option value="nonecolor">None in this colour (have other colours)</option>
+        </select>
+        <select id="srpt-sort" title="Sort order">
+          <option value="shortage">Sort by shortage</option>
+          <option value="color">Sort by color</option>
+        </select>
+        <select id="srpt-kind" title="Simple parts are plain plates, tiles, slopes and bricks">
+          <option value="">Simple &amp; complex</option>
+          <option value="simple">Simple parts only</option>
+          <option value="complex">Complex parts only</option>
+        </select>
+        <select id="srpt-layout" title="Page layout">
+          <option value="portrait">Portrait</option>
+          <option value="landscape">Landscape</option>
+        </select>
+        <button id="srpt-csv-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate CSV</button>
+        <button id="srpt-pdf-btn" class="icon-btn" style="padding: 3px 10px;"><i class="ti ti-file-type-pdf" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Generate PDF</button>
+      </div>
+      <div id="srpt-list" style="display:none;">
+        <div class="row" style="align-items:center; gap:10px; margin-bottom:10px; flex-wrap:wrap;">
+          <label for="srpt-filter" style="font-size:12px; font-weight:700; flex-shrink:0;">Show:</label>
+          <select id="srpt-filter">
+            <option value="all">All parts</option>
+            <option value="uncovered">Still need to find</option>
+            <option value="covered">Fully covered by drawers or bags</option>
+            <option value="uncounted">None of this part in any colour</option>
+            <option value="nonecolor">None in this colour (have other colours)</option>
           </select>
-        </label>
+          <select id="srpt-kind-list" title="Simple parts are plain plates, tiles, slopes and bricks">
+            <option value="">Simple &amp; complex</option>
+            <option value="simple">Simple parts only</option>
+            <option value="complex">Complex parts only</option>
+          </select>
+          <span id="srpt-total-line" style="font-size:12px; color:var(--text-secondary); font-weight:700;"></span>
+        </div>
+        <div id="srpt-items"></div>
       </div>
-      <div id="sets-missing-list"></div>
     </div>
   </div>
 
@@ -2554,8 +2605,8 @@
   var lockWriteBypassUntil = 0;
   var lockNoticeTimer = null;
   var LOCK_EXEMPT_IDS = {};
-  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-sort pml-open-btn-3 pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing shop-kind-filter shop-status-filter pml-open-btn-4 pml-no-figs top-needed-kind clean-report-kind pml-sort slim-refresh-btn device-name-input auto-photos-toggle auto-photos-run auto-photos-stop figs-almost-toggle-btn figs-almost-threshold figs-almost-drawer-only figs-almost-layout figs-almost-csv-btn figs-almost-pdf-btn moc-tier-toggle top-needed-tier tier-filter mocbuild-group-by sets-group-by sets-sort-by sets-missing-sort collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
-  var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input';
+  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-sort pml-open-btn-3 pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing shop-kind-filter shop-status-filter pml-open-btn-4 pml-no-figs top-needed-kind clean-report-kind pml-sort slim-refresh-btn device-name-input auto-photos-toggle auto-photos-run auto-photos-stop figs-almost-toggle-btn figs-almost-threshold figs-almost-drawer-only figs-almost-layout figs-almost-csv-btn figs-almost-pdf-btn moc-tier-toggle top-needed-tier tier-filter mocbuild-group-by sets-group-by sets-sort-by srpt-count srpt-filter srpt-kind srpt-kind-list srpt-show srpt-sort srpt-layout srpt-pick-search collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
+  var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input, #srpt-sets input';
   var LOCK_CONTROL_SELECTOR = 'input, select, textarea, button';
 
   function lockControlApplies(el){
@@ -3703,16 +3754,20 @@
   }
 
   var topNeededExpanded = false;
+  // which report the Most Needed functions are drawing: null = the overview's; the Sets tab sets it for its own
+  var rptCtx = null;
+  function rEl(id){ return document.getElementById(rptCtx && rptCtx.ids[id] ? rptCtx.ids[id] : id); }
 
   function applyTopNeededCollapseState(){
-    var container = document.getElementById('top-needed-list');
-    var chevron = document.getElementById('top-needed-chevron');
-    container.style.display = topNeededExpanded ? 'block' : 'none';
-    chevron.className = 'ti ' + (topNeededExpanded ? 'ti-chevron-down' : 'ti-chevron-right');
+    var container = rEl('top-needed-list');
+    var chevron = rEl('top-needed-chevron');
+    var open = rptCtx ? rptCtx.expanded : topNeededExpanded;
+    container.style.display = open ? 'block' : 'none';
+    chevron.className = 'ti ' + (open ? 'ti-chevron-down' : 'ti-chevron-right');
   }
 
   function getTop20ItemsFiltered(){
-    var mode = document.getElementById('top-needed-filter').value;
+    var mode = rEl('top-needed-filter').value;
     if (mode === 'uncovered') return getShortItemsForReport().filter(function(it){ return stillMissingOf(it) > 0; }).sort(byStillMissing).slice(0, getTopNCount());
     if (mode === 'covered') return getCoveredItems();
     if (mode === 'uncounted' || mode === 'nonecolor'){ var want = mode === 'uncounted' ? 'uncounted' : 'none'; return getShortItemsForReport().filter(function(it){ return stillMissingOf(it) > 0 && itemCountFlag(it) === want; }).sort(byStillMissing).slice(0, getTopNCount()); }
@@ -3736,13 +3791,13 @@
   }
 
   function renderTopNeeded(){
-    var container = document.getElementById('top-needed-list');
-    var itemsEl = document.getElementById('top-needed-items');
-    var section = document.getElementById('top-needed-section');
+    var container = rEl('top-needed-list');
+    var itemsEl = rEl('top-needed-items');
+    var section = rEl('top-needed-section');
     var allItems = getTop20Items();
     var tierSel = topNeededTier();
-    var hint = document.getElementById('top-needed-tier-hint');
-    var tierSelEl = document.getElementById('top-needed-tier');
+    var hint = rEl('top-needed-tier-hint');
+    var tierSelEl = rEl('top-needed-tier');
     if (tierSelEl){
       var counts = tierCounts();
       var all = counts.short + counts.long + counts[''] + counts.completed;
@@ -3753,6 +3808,15 @@
       });
     }
 
+    if (!allItems.length && rptCtx){
+      section.style.display = 'block';
+      hint.style.display = '';
+      hint.textContent = rptCtx.sets.size ? 'The sets you picked aren\u2019t missing anything.' : 'Pick at least one set above.';
+      itemsEl.innerHTML = '';
+      rEl('top-needed-total-line').textContent = '';
+      applyTopNeededCollapseState();
+      return;
+    }
     if (!allItems.length){
       if (tierSel === 'all' || !getAllShortItems('all').length){
         section.style.display = 'none';
@@ -3765,7 +3829,7 @@
         ? 'No builds are marked <strong>' + escapeHtml(tierSel === 'short' ? 'Short-term' : tierSel === 'long' ? 'Long-term' : 'Unranked') + '</strong> yet. Set each build\u2019s Priority on the MOC Builds tab, or pick another priority above.'
         : 'Your ' + escapeHtml(topNeededTierLabel(tierSel).toLowerCase()) + ' aren\u2019t short of anything. Pick another priority above.';
       itemsEl.innerHTML = '';
-      document.getElementById('top-needed-total-line').textContent = '';
+      rEl('top-needed-total-line').textContent = '';
       applyTopNeededCollapseState();
       return;
     }
@@ -3773,14 +3837,14 @@
     section.style.display = 'block';
     var items = getTop20ItemsFiltered();
     items.forEach(function(it, i){ it.rank = i + 1; });
-    var byColor = (document.getElementById('clean-report-sort') || {}).value === 'color';
+    var byColor = (rEl('clean-report-sort') || {}).value === 'color';
     if (byColor) items = items.slice().sort(function(a,b){ return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.rank - b.rank); });
     var totalNeeded = allItems.reduce(function(sum, it){ return sum + it.short; }, 0);
     var totalInDrawers = allItems.reduce(function(sum, it){ return sum + it.inDrawers; }, 0);
     var totalInBags = allItems.reduce(function(sum, it){ return sum + (it.inBags || 0); }, 0);
     var remainingNeeded = allItems.reduce(function(sum, it){ return sum + stillMissingOf(it); }, 0);
     var anyBags = Object.keys(buildBagStockMap()).length > 0;
-    document.getElementById('top-needed-total-line').textContent = topNeededTierLabel(tierSel) + ':  ' +
+    rEl('top-needed-total-line').textContent = topNeededTierLabel(tierSel) + ':  ' +
       'Needed: ' + totalNeeded.toLocaleString() + '  \u00b7  In drawers' + (tierSel === 'all' || tierSel === 'short' ? '' : ' (left after higher priorities)') + ': ' + totalInDrawers.toLocaleString() + (anyBags ? '  \u00b7  In bags: ' + totalInBags.toLocaleString() : '') + '  \u00b7  Remaining needed: ' + remainingNeeded.toLocaleString();
 
     itemsEl.innerHTML = '';
@@ -3799,7 +3863,8 @@
         '<span class="part-thumb-wrap"></span>' +
         '<span class="tn-main"><span class="tn-tags"><span class="top-needed-partnum" title="Part number">#'+escapeHtml(it.partNum)+'</span>' + kindChipHtml(it.partNum, it.desc) + countFlagChip(itemCountFlag(it), it) + '</span>' +
           '<span class="top-needed-desc">'+escapeHtml(it.color)+' '+escapeHtml(it.desc)+'</span>' +
-          (it.setShort && it.mocShort ? '<span class="tn-held">Includes ' + it.setShort.toLocaleString() + ' for official sets</span>' : it.setShort ? '<span class="tn-held">For official sets</span>' : '') +
+          (rptCtx ? '<span class="tn-held">For ' + escapeHtml(Array.from(it.builds).sort().slice(0, 3).join(', ') + (it.builds.size > 3 ? ' and ' + (it.builds.size - 3) + ' more' : '')) + '</span>'
+            : it.setShort && it.mocShort ? '<span class="tn-held">Includes ' + it.setShort.toLocaleString() + ' for official sets</span>' : it.setShort ? '<span class="tn-held">For official sets</span>' : '') +
           (itemCountFlag(it) === 'none' ? '<span class="tn-held">You have it in: ' + escapeHtml(otherColoursText(it.partNum, it.color, 3)) + '</span>' : '') +
           (it.inBags ? '<span class="tn-held tn-bag-note"><i class="ti ti-shopping-bag" aria-hidden="true"></i> ' + it.inBags.toLocaleString() + ' waiting in ' + escapeHtml(bagNamesText(it.bagNames)) + '</span>' : '') +
           ((it.heldForHigher || it.heldBagsForHigher) ? '<span class="tn-held">' + [it.heldForHigher ? it.heldForHigher.toLocaleString() + ' more in your drawers' : '', it.heldBagsForHigher ? it.heldBagsForHigher.toLocaleString() + ' more in bags' : ''].filter(Boolean).join(' and ') + ' kept for official sets and higher-priority builds</span>' : '') +
@@ -3811,8 +3876,9 @@
           '<span class="tn-num tn-missing'+(remaining ? '' : ' tn-zero')+'" title="Still missing once your drawers and unfinished bags are counted"><b>'+remaining.toLocaleString()+'</b><span>Still missing</span></span>' +
         '</span>';
       buildThumb({ elementId: it.elementId, imgUrl: it.imgUrl || knownPartImg(it.partNum, it.color, it.elementId), desc: it.desc, partNum: it.partNum }, row.querySelector('.part-thumb-wrap'), { eager: true });
+      var inSets = !!rptCtx;
       row.addEventListener('click', function(e){
-        if (e.target.closest && e.target.closest('.top-needed-partnum, .count-chip')){ openPartsMasterListFor(it.partNum, it.color); return; }
+        if (inSets || (e.target.closest && e.target.closest('.top-needed-partnum, .count-chip'))){ openPartsMasterListFor(it.partNum, it.color); return; }
         document.getElementById('part-search').value = it.partNum;
         state.page = 1;
         switchTab('parts');
@@ -3826,7 +3892,7 @@
   wireEl('top-needed-filter', 'change', renderTopNeeded);
   wireEl('top-needed-tier', 'change', renderTopNeeded);
   function syncKindPickers(from){
-    var a = document.getElementById('top-needed-kind'), b = document.getElementById('clean-report-kind');
+    var a = rEl('top-needed-kind'), b = rEl('clean-report-kind');
     if (a && b){ if (from === b) a.value = b.value; else b.value = a.value; }
     renderTopNeeded();
   }
@@ -12070,7 +12136,7 @@
     [a || {}, b || {}].forEach(function(src){ Object.keys(src).forEach(function(k){ var x = src[k]; if (x && (!out[k] || (x.at || 0) > (out[k].at || 0))) out[k] = x; }); });
     return out;
   }
-  function topNeededKind(){ var el = document.getElementById('top-needed-kind'); return el ? el.value : ''; }
+  function topNeededKind(){ var el = rEl('top-needed-kind'); return el ? el.value : ''; }
   function filterByKind(list){
     var want = topNeededKind();
     if (!want) return list;
@@ -15390,22 +15456,25 @@
   }
 
   function getTopNCount(){
-    var v = parseInt(document.getElementById('top-needed-count').value, 10);
+    var v = parseInt(rEl('top-needed-count').value, 10);
     return (isNaN(v) || v < 1) ? 20 : v;
   }
 
   var TIER_SEL_RANK = { short: 1, long: 2, unranked: 3, completed: 4 };
   function topNeededTier(){
-    var el = document.getElementById('top-needed-tier');
+    var el = rEl('top-needed-tier');
     return el && TIER_SEL_RANK[el.value] ? el.value : 'all';
   }
   function topNeededTierLabel(sel){
+    if (rptCtx && rptCtx.sets) return rptCtx.sets.size + ' official set' + (rptCtx.sets.size === 1 ? '' : 's');
     sel = sel || topNeededTier();
     return sel === 'short' ? 'Short-term builds + official sets' : sel === 'long' ? 'Long-term builds' : sel === 'unranked' ? 'Unranked builds' : 'All builds + official sets';
   }
   // Parts your builds are short of. With a priority picked, only that tier's builds count, and drawer stock is
   // handed out tier by tier: Short-term builds get first claim, whatever is left goes to Long-term, then Unranked.
   function getAllShortItems(tierSel){
+    var onlySets = rptCtx && rptCtx.sets;
+    if (onlySets) tierSel = 'all';
     if (tierSel === undefined) tierSel = topNeededTier();
     var drawerStock = buildDrawerStockMap();
     var bagStock = buildBagStockMap();
@@ -15419,7 +15488,7 @@
       if (!e.elementId && src.elementId) e.elementId = src.elementId;
       return e;
     }
-    state.rows.forEach(function(r){
+    if (!onlySets) state.rows.forEach(function(r){
       var e = entry(stockKeyOf(r.partNum, r.color), r);
       var t = ranks[r.moc] || 3;
       e.need[t] += r.qty || 0;
@@ -15432,6 +15501,7 @@
     setParts.forEach(function(r){
       var s = realSetBy[r.setNum];
       if (!s) return;
+      if (onlySets && !onlySets.has(s.setNum)) return;
       var nd = (r.qtyPerSet || 0) * (s.qty || 0);   // same as setPartNeeded / setPartOnHand, without a lookup per line
       var oh = (r.onHand !== undefined && r.onHand !== null) ? r.onHand : nd;
       var sh = Math.max(nd - oh, 0);
@@ -15535,11 +15605,11 @@
   }
 
   function getCleanReportItems(){
-    var show = document.getElementById('clean-report-show').value;
+    var show = rEl('clean-report-show').value;
     var items = show === 'covered' ? getCoveredItems() : (show === 'all' ? getTop20Items() : getStillNeededItems());
     if (show === 'uncounted' || show === 'nonecolor'){ var wantFlag = show === 'uncounted' ? 'uncounted' : 'none'; items = getShortItemsForReport().filter(function(it){ return stillMissingOf(it) > 0 && itemCountFlag(it) === wantFlag; }).sort(byStillMissing).slice(0, getTopNCount()).map(function(it){ return Object.assign({}, it, { stillNeeded: stillMissingOf(it) }); }); }
     items.forEach(function(it, i){ it.rank = i + 1; });   // its place in the most-needed order, kept if re-sorted below
-    var sort = document.getElementById('clean-report-sort').value;
+    var sort = rEl('clean-report-sort').value;
     if (sort === 'color'){
       items = items.slice().sort(function(a,b){ return a.color.localeCompare(b.color) || a.desc.localeCompare(b.desc) || (a.rank - b.rank); });
     }
@@ -15556,7 +15626,7 @@
   }
 
   function exportCleanReportCSV(){
-    var show = document.getElementById('clean-report-show').value;
+    var show = rEl('clean-report-show').value;
     var items = getCleanReportItems();
     if (!items.length){
       alert(show === 'covered'
@@ -15566,7 +15636,7 @@
     }
     var lines;
     if (show === 'all'){
-      var header = ['Rank','Part #','Element ID','Color','Description','Kind','Drawer Status','Needed','In Drawers','In Bags','Remaining','Used In Builds'];
+      var header = ['Rank','Part #','Element ID','Color','Description','Kind','Drawer Status','Needed','In Drawers','In Bags','Remaining', rptCtx ? 'Sets' : 'Used In Builds'];
       lines = [header.map(csvEscape).join(',')];
       items.forEach(function(it){
         lines.push([it.rank, it.partNum, it.elementId, it.color, it.desc, partKindOf(it.partNum, it.desc).kind, countFlagText(itemCountFlag(it)) || 'In drawers or bags', it.short, it.inDrawers, it.inBags || 0, stillMissingOf(it), Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
@@ -15574,7 +15644,7 @@
     } else {
       var qtyLabel = show === 'covered' ? 'In Drawers' : 'Still Needed';
       var qtyOf = function(it){ return show === 'covered' ? it.inDrawers : it.stillNeeded; };
-      var header2 = ['Rank','Part #','Element ID','Color','Description','Kind','Drawer Status', qtyLabel, 'In Bags', 'Used In Builds'];
+      var header2 = ['Rank','Part #','Element ID','Color','Description','Kind','Drawer Status', qtyLabel, 'In Bags', rptCtx ? 'Sets' : 'Used In Builds'];
       lines = [header2.map(csvEscape).join(',')];
       items.forEach(function(it){
         lines.push([it.rank, it.partNum, it.elementId, it.color, it.desc, partKindOf(it.partNum, it.desc).kind, countFlagText(itemCountFlag(it)) || 'In drawers or bags', qtyOf(it), it.inBags ? it.inBags + ' (' + bagNamesText(it.bagNames) + ')' : '', Array.from(it.builds).sort().join('; ')].map(csvEscape).join(','));
@@ -15582,13 +15652,14 @@
     }
     var totals = getCleanReportTotals();
     lines.push('');
-    lines.push(['Builds', topNeededTierLabel()].map(csvEscape).join(','));
+    lines.push([rptCtx ? 'Sets' : 'Builds', rptCtx ? Array.from(rptCtx.sets).sort(function(a, b){ return a.localeCompare(b, undefined, { numeric: true }); }).join('; ') : topNeededTierLabel()].map(csvEscape).join(','));
     lines.push(['Total needed (top ' + getTopNCount() + ')', totals.totalNeeded].map(csvEscape).join(','));
     lines.push(['Total in drawers', totals.totalInDrawers].map(csvEscape).join(','));
     lines.push(['Total in unfinished bags', totals.totalInBags].map(csvEscape).join(','));
     lines.push(['Remaining needed', totals.remainingNeeded].map(csvEscape).join(','));
     var filenameBase = show === 'covered' ? 'lego-top-parts-in-drawers' : (show === 'all' ? 'lego-top-parts-full-breakdown' : 'lego-top-parts-still-needed');
     if (topNeededKind()) filenameBase += '-' + topNeededKind() + '-parts';
+    if (rptCtx) filenameBase = filenameBase.replace('lego-top-parts', 'lego-sets-parts');
     downloadCsv(lines, filenameBase);
   }
 
@@ -15720,8 +15791,8 @@
 
   // "Clean" report 1 (PDF): just the parts still worth going to find, one already-netted quantity.
   function generateCleanReportPDF(){
-    var show = document.getElementById('clean-report-show').value;
-    var layout = document.getElementById('clean-report-layout').value;
+    var show = rEl('clean-report-show').value;
+    var layout = rEl('clean-report-layout').value;
     var items = getCleanReportItems();
     if (!items.length){
       alert(show === 'covered'
@@ -15740,8 +15811,10 @@
     var fillColor = show === 'covered' ? [0, 166, 94] : show === 'all' ? [138, 18, 168] : [0, 85, 191];
     var filenameBase = show === 'covered' ? 'lego-top-parts-in-drawers' : show === 'all' ? 'lego-top-parts-full-breakdown' : 'lego-top-parts-still-needed';
     if (topNeededKind()) filenameBase += '-' + topNeededKind() + '-parts';
+    if (rptCtx) filenameBase = filenameBase.replace('lego-top-parts', 'lego-sets-parts');
+    var totalsEarly = getCleanReportTotals();
 
-    var btn = document.getElementById('clean-report-pdf-btn');
+    var btn = rEl('clean-report-pdf-btn');
     var prevBtnHtml = btn ? btn.innerHTML : null;
     if (btn){
       btn.disabled = true;
@@ -15754,7 +15827,7 @@
     })).then(function(pairs){
       var imgMap = {};
       pairs.forEach(function(p){ if (p[1]) imgMap[p[0]] = p[1]; });
-      var totals = getCleanReportTotals();
+      var totals = totalsEarly;
       var totalsLine = 'Needed: ' + totals.totalNeeded.toLocaleString() + '  \u00b7  In drawers: ' + totals.totalInDrawers.toLocaleString() + (totals.totalInBags ? '  \u00b7  In bags: ' + totals.totalInBags.toLocaleString() : '') + '  \u00b7  Remaining needed: ' + totals.remainingNeeded.toLocaleString();
       var flagKey = items.some(function(it){ return itemCountFlag(it); }) ? '[none of part] = no part like this in any colour in your drawers or bags  \u00b7  [none in colour] = you have this part, just not in this colour' : '';
       var bagNote = function(it){ return (it.inBags ? ' [' + it.inBags + ' in bag]' : '') + countFlagNote(itemCountFlag(it)); };
@@ -15943,159 +16016,103 @@
 
   wireEl('sets-report-btn', 'click', generateSetsPDF);
 
-  // ---- Sets missing pieces: every official set that isn't complete, how much is missing, and what ----
-  // Drawer and bag counts say how many of each missing piece you have loose right now (the same pieces can help
-  // more than one set, so "can finish from drawers" is a hint, not a promise).
-  var smOpen = false;
+
+  // ---- Sets missing pieces: the Most Needed Parts report, run over only the official sets you pick ----
+  // The same functions draw the list and make the CSV and PDF; rptCtx points them at this panel's controls and
+  // tells getAllShortItems to count just the chosen sets (so all your drawer and bag stock goes to them).
+  var SRPT_IDS = {
+    'top-needed-count': 'srpt-count', 'top-needed-filter': 'srpt-filter', 'top-needed-kind': 'srpt-kind-list', 'clean-report-kind': 'srpt-kind',
+    'top-needed-list': 'srpt-list', 'top-needed-items': 'srpt-items', 'top-needed-section': 'srpt-section', 'top-needed-tier-hint': 'srpt-hint',
+    'top-needed-total-line': 'srpt-total-line', 'top-needed-chevron': 'srpt-chevron', 'top-needed-tier': 'srpt-no-tier',
+    'clean-report-show': 'srpt-show', 'clean-report-sort': 'srpt-sort', 'clean-report-layout': 'srpt-layout', 'clean-report-pdf-btn': 'srpt-pdf-btn'
+  };
+  var SRPT_EXCLUDED_KEY = 'legoinv:sets-report-excluded';
+  var srptExpanded = false;
+  function srptExcluded(){ try { return JSON.parse(localStorage.getItem(SRPT_EXCLUDED_KEY) || '[]') || []; } catch(e){ return []; } }
+  function srptSaveExcluded(list){ try { localStorage.setItem(SRPT_EXCLUDED_KEY, JSON.stringify(list)); } catch(e){} }
+  // every official set that isn't complete: how much it's missing (sets you add later are included automatically)
   function setsMissingData(){
-    var drawerStock = buildDrawerStockMap(), bagStock = buildBagStockMap();
     var bySet = {};
     setParts.forEach(function(r){ (bySet[r.setNum] = bySet[r.setNum] || []).push(r); });
     var out = [];
     realSets().forEach(function(s){
       var rows = bySet[s.setNum] || [];
-      if (!rows.length) return;
-      var need = 0, have = 0, lines = [];
+      var need = 0, have = 0, lines = 0;
       rows.forEach(function(r){
         var n = setPartNeeded(r), h = Math.min(setPartOnHand(r), n);
         need += n; have += h;
-        if (h >= n) return;
-        var key = stockKeyOf(r.partNum, r.color);
-        var inDrawers = drawerStock[key] || 0, inBags = bagStock[key] ? bagStock[key].qty : 0;
-        lines.push({ r: r, partNum: r.partNum, color: r.color || '', desc: r.desc || '', elementId: r.elementId || '', need: n, have: h, missing: n - h,
-          inDrawers: inDrawers, inBags: inBags, flag: countFlagOf(r.partNum, inDrawers, inBags) });
+        if (h < n) lines++;
       });
-      if (!lines.length) return;
-      var missing = need - have;
-      var findable = lines.reduce(function(t, l){ return t + Math.min(l.missing, l.inDrawers + l.inBags); }, 0);
-      lines.sort(function(a, b){ return (b.missing - a.missing) || String(a.color).localeCompare(b.color) || String(a.partNum).localeCompare(b.partNum, undefined, { numeric: true }); });
-      out.push({ s: s, need: need, have: have, missing: missing, pct: need ? Math.floor(have / need * 100) : 100, lines: lines, findable: findable,
-        drawersCover: lines.every(function(l){ return l.inDrawers >= l.missing; }) });
+      if (need > have) out.push({ s: s, need: need, have: have, missing: need - have, lines: lines, pct: Math.floor(have / need * 100) });
     });
-    var sort = (document.getElementById('sets-missing-sort') || {}).value || 'missing';
-    var bySetNum = function(a, b){ return String(a.s.setNum).localeCompare(String(b.s.setNum), undefined, { numeric: true }); };
-    out.sort(sort === 'closest' ? function(a, b){ return (b.have / b.need - a.have / a.need) || (a.missing - b.missing) || bySetNum(a, b); }
-      : sort === 'drawers' ? function(a, b){ return (b.findable - a.findable) || (b.findable / b.missing - a.findable / a.missing) || bySetNum(a, b); }
-      : sort === 'set' ? bySetNum
-      : function(a, b){ return (b.missing - a.missing) || bySetNum(a, b); });
-    return out;
+    return out.sort(function(a, b){ return String(a.s.setNum).localeCompare(String(b.s.setNum), undefined, { numeric: true }); });
   }
-  function smSetLabel(s){ return s.setNum + (s.name ? ' ' + s.name : ''); }
+  function srptSelected(data){
+    var ex = srptExcluded(), sel = new Set();
+    (data || setsMissingData()).forEach(function(d){ if (ex.indexOf(d.s.setNum) === -1) sel.add(d.s.setNum); });
+    return sel;
+  }
+  function withSetsReport(fn, data){
+    var prev = rptCtx;
+    rptCtx = { ids: SRPT_IDS, sets: srptSelected(data), expanded: srptExpanded };
+    try { return fn(); } finally { rptCtx = prev; }
+  }
+  function srptRenderPicker(data){
+    var box = document.getElementById('srpt-sets');
+    if (!box) return;
+    var sel = srptSelected(data);
+    var q = (document.getElementById('srpt-pick-search').value || '').trim().toLowerCase();
+    document.getElementById('srpt-pick-count').textContent = sel.size === data.length ? 'all ' + data.length : sel.size + ' of ' + data.length;
+    box.innerHTML = '';
+    data.forEach(function(d){
+      var s = d.s;
+      if (q && (s.setNum + ' ' + (s.name || '') + ' ' + (s.theme || '')).toLowerCase().indexOf(q) === -1) return;
+      var row = document.createElement('div');
+      row.className = 'srpt-set';
+      row.innerHTML = '<label><input type="checkbox"' + (sel.has(s.setNum) ? ' checked' : '') + ' />' +
+          '<span class="srpt-set-name">' + escapeHtml(s.setNum) + ' ' + escapeHtml(s.name || '') + (s.theme ? ' <small>' + escapeHtml(s.theme) + '</small>' : '') + '</span></label>' +
+        '<span class="srpt-set-stats"><span><strong>' + d.missing.toLocaleString() + '</strong> missing</span><span>' + d.pct + '%</span>' +
+          '<button type="button" class="icon-btn" style="padding:1px 8px;" title="Open this set">Open</button></span>';
+      row.querySelector('input').addEventListener('change', function(e){
+        var ex = srptExcluded().filter(function(n){ return n !== s.setNum; });
+        if (!e.target.checked) ex.push(s.setNum);
+        srptSaveExcluded(ex);
+        renderSetsMissingReport();
+      });
+      row.querySelector('button').addEventListener('click', function(){ openSetDetail(s.setNum); });
+      box.appendChild(row);
+    });
+    if (!box.childNodes.length) box.innerHTML = '<div class="empty-msg">' + (data.length ? 'No sets match.' : 'Every set is complete.') + '</div>';
+  }
   function renderSetsMissingReport(){
     var sumEl = document.getElementById('sets-missing-summary');
     if (!sumEl) return;
     var data = setsMissingData();
     var pieces = data.reduce(function(t, d){ return t + d.missing; }, 0);
-    var lines = data.reduce(function(t, d){ return t + d.lines.length; }, 0);
-    var findable = data.reduce(function(t, d){ return t + d.findable; }, 0);
     var total = realSets().filter(function(s){ return setParts.some(function(r){ return r.setNum === s.setNum; }); }).length;
     sumEl.textContent = data.length
-      ? data.length + ' of ' + total + ' set' + (total === 1 ? '' : 's') + ' ' + (data.length === 1 ? 'is' : 'are') + ' missing pieces: ' + pieces.toLocaleString() + ' piece' + (pieces === 1 ? '' : 's') + ' across ' + lines.toLocaleString() + ' part line' + (lines === 1 ? '' : 's') + (findable ? ', and ' + findable.toLocaleString() + ' of them ' + (findable === 1 ? 'is' : 'are') + ' in your drawers or bags right now.' : '.')
+      ? data.length + ' of ' + total + ' set' + (total === 1 ? '' : 's') + ' ' + (data.length === 1 ? 'is' : 'are') + ' missing pieces (' + pieces.toLocaleString() + ' in all). Pick which to include, then browse or download the parts they need, ranked the same way as Most Needed Parts.'
       : (total ? 'Every set is complete.' : 'No sets with parts lists yet.');
-    var list = document.getElementById('sets-missing-list');
-    if (!smOpen || !list) return;
-    var openNow = {};
-    list.querySelectorAll('details[open]').forEach(function(d){ openNow[d.getAttribute('data-set')] = true; });
-    list.innerHTML = '';
-    if (!data.length){ list.innerHTML = '<div class="empty-msg">Nothing missing.</div>'; return; }
-    data.forEach(function(d){
-      var s = d.s;
-      var det = document.createElement('details');
-      det.className = 'sm-set';
-      det.setAttribute('data-set', s.setNum);
-      if (openNow[s.setNum]) det.open = true;
-      det.innerHTML =
-        '<summary><i class="ti ti-chevron-right sm-chev" aria-hidden="true"></i>' +
-          '<span class="sm-name">' + escapeHtml(s.setNum) + ' ' + escapeHtml(s.name || '') + (s.theme ? ' <small>' + escapeHtml(s.theme) + '</small>' : '') + '</span>' +
-          '<span class="sm-stats">' +
-            '<span><strong>' + d.missing.toLocaleString() + '</strong> missing (' + d.lines.length + ' line' + (d.lines.length === 1 ? '' : 's') + ')</span>' +
-            '<span class="sm-bar" title="' + d.pct + '% complete"><span style="width:' + d.pct + '%"></span></span><span>' + d.pct + '%</span>' +
-            (d.drawersCover ? '<span class="sm-chip-drawers" title="Every missing piece is in your drawers right now (some may be wanted by other sets or builds too)">Can finish from drawers</span>'
-              : d.findable ? '<span title="Missing pieces you have loose in drawers or bags">' + d.findable.toLocaleString() + ' in drawers/bags</span>' : '') +
-            '<button type="button" class="icon-btn sm-open" style="padding:1px 8px;">Open set</button>' +
-          '</span>' +
-        '</summary><div class="sm-parts"></div>';
-      det.querySelector('.sm-open').addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); openSetDetail(s.setNum); });
-      var fill = function(){
-        var box = det.querySelector('.sm-parts');
-        if (box.childNodes.length) return;
-        box.innerHTML = d.lines.map(function(l, i){
-          var haveTxt = l.inDrawers || l.inBags
-            ? '<span class="sm-have' + (l.inDrawers >= l.missing ? ' ok' : '') + '">' + (l.inDrawers ? l.inDrawers.toLocaleString() + ' in drawers' : '') + (l.inDrawers && l.inBags ? ', ' : '') + (l.inBags ? l.inBags.toLocaleString() + ' in bags' : '') + '</span>'
-            : countFlagChip(l.flag, { partNum: l.partNum, color: l.color });
-          return '<div class="sm-part" data-i="' + i + '"><span class="sm-qty">' + l.missing + '×</span>' +
-            '<span class="sm-desc">' + escapeHtml(l.color) + ' ' + escapeHtml(l.desc) + ' <span class="sm-pn">#' + escapeHtml(l.partNum) + '</span>' + (l.have ? ' <span class="sm-have">(have ' + l.have + ' of ' + l.need + ')</span>' : '') + '</span>' +
-            haveTxt + kindChipHtml(l.partNum, l.desc) + '</div>';
-        }).join('');
-        box.addEventListener('click', function(e){
-          var row = e.target.closest && e.target.closest('.sm-part');
-          if (!row || !(e.target.closest('.sm-pn, .count-chip'))) return;
-          var l = d.lines[+row.getAttribute('data-i')];
-          openPartsMasterListFor(l.partNum, l.color);
-        });
-      };
-      if (det.open) fill();
-      det.addEventListener('toggle', function(){ if (det.open) fill(); });
-      list.appendChild(det);
-    });
+    document.getElementById('sets-missing-panel').classList.toggle('srpt-empty', !data.length);
+    srptRenderPicker(data);
+    withSetsReport(renderTopNeeded, data);
   }
-  function setsMissingCsv(){
-    var data = setsMissingData();
-    if (!data.length){ alert('No sets are missing pieces.'); return; }
-    var lines = [['Set Number', 'Set Name', 'Theme', 'Set % Complete', 'Set Pieces Missing', 'Part Number', 'Element ID', 'Color', 'Description', 'Kind', 'Needed', 'On Hand', 'Missing', 'In Drawers', 'In Bags', 'Drawer Status'].map(csvEscape).join(',')];
-    data.forEach(function(d){
-      d.lines.forEach(function(l){
-        lines.push([d.s.setNum, d.s.name || '', d.s.theme || '', d.pct + '%', d.missing, l.partNum, l.elementId, l.color, l.desc, partKindOf(l.partNum, l.desc).kind,
-          l.need, l.have, l.missing, l.inDrawers, l.inBags, countFlagText(l.flag)].map(csvEscape).join(','));
-      });
-    });
-    downloadCsv(lines, 'lego-sets-missing-pieces');
-  }
-  function setsMissingPdf(){
-    var data = setsMissingData();
-    if (!data.length){ alert('No sets are missing pieces.'); return; }
-    var doc = getPdfDoc();
-    if (!doc) return;
-    var pieces = data.reduce(function(t, d){ return t + d.missing; }, 0);
-    pdfHeader(doc, 'Sets Missing Pieces',
-      'Generated ' + new Date().toLocaleDateString() + ' · ' + data.length + ' set' + (data.length === 1 ? '' : 's') + ' · ' + pieces.toLocaleString() + ' piece' + (pieces === 1 ? '' : 's') + ' missing');
-    var purple = [138, 18, 168];
-    doc.autoTable({
-      startY: 70,
-      head: [['Set #', 'Name', 'Theme', 'Complete', 'Missing', 'Lines', 'In drawers/bags']],
-      body: data.map(function(d){ return [d.s.setNum, truncateForPdf(d.s.name || '', 40), truncateForPdf(d.s.theme || '', 22), d.pct + '%', d.missing.toLocaleString(), String(d.lines.length), d.drawersCover ? 'All (' + d.findable + ')' : String(d.findable)]; }),
-      styles: { fontSize: 8.5, cellPadding: 3, overflow: 'linebreak' },
-      headStyles: { fillColor: purple, textColor: 255 },
-      columnStyles: { 1: { cellWidth: 170 } }
-    });
-    data.forEach(function(d){
-      var y = doc.lastAutoTable.finalY + 22;
-      if (y > doc.internal.pageSize.getHeight() - 90){ doc.addPage(); y = 50; }
-      doc.setFontSize(11); doc.setTextColor(30, 30, 30);
-      doc.text(truncateForPdf(smSetLabel(d.s), 70), 40, y);
-      doc.setFontSize(8.5); doc.setTextColor(110, 110, 110);
-      doc.text(d.pct + '% complete · ' + d.missing.toLocaleString() + ' missing' + (d.findable ? ' · ' + d.findable.toLocaleString() + ' in drawers/bags' : ''), 40, y + 12);
-      doc.autoTable({
-        startY: y + 18,
-        margin: { top: 50, right: 40, bottom: 30, left: 40 },
-        head: [['Missing', 'Part #', 'Color', 'Description', 'Drawers', 'Bags']],
-        body: d.lines.map(function(l){ return [String(l.missing), l.partNum, l.color, truncateForPdf(l.desc, 48) + countFlagNote(l.flag), l.inDrawers ? String(l.inDrawers) : '', l.inBags ? String(l.inBags) : '']; }),
-        styles: { fontSize: 8, cellPadding: 2.5, overflow: 'linebreak' },
-        headStyles: { fillColor: [90, 90, 90], textColor: 255 },
-        columnStyles: { 0: { cellWidth: 44 }, 1: { cellWidth: 60 }, 2: { cellWidth: 80 }, 4: { cellWidth: 46 }, 5: { cellWidth: 36 } }
-      });
-    });
-    doc.save('lego-sets-missing-pieces.pdf');
-  }
-  wireEl('sets-missing-toggle', 'click', function(){
-    smOpen = !smOpen;
-    document.getElementById('sets-missing-body').style.display = smOpen ? '' : 'none';
-    document.getElementById('sets-missing-chevron').className = 'ti ' + (smOpen ? 'ti-chevron-down' : 'ti-chevron-right');
+  function srptSyncKind(from){
+    var a = document.getElementById('srpt-kind-list'), b = document.getElementById('srpt-kind');
+    if (a && b){ if (from === b) a.value = b.value; else b.value = a.value; }
     renderSetsMissingReport();
-  });
-  wireEl('sets-missing-sort', 'change', renderSetsMissingReport);
-  wireEl('sets-missing-csv-btn', 'click', setsMissingCsv);
-  wireEl('sets-missing-pdf-btn', 'click', setsMissingPdf);
+  }
+  wireEl('srpt-pick-search', 'input', function(){ srptRenderPicker(setsMissingData()); });
+  wireEl('srpt-pick-all', 'click', function(){ srptSaveExcluded([]); renderSetsMissingReport(); });
+  wireEl('srpt-pick-none', 'click', function(){ srptSaveExcluded(setsMissingData().map(function(d){ return d.s.setNum; })); renderSetsMissingReport(); });
+  wireEl('srpt-toggle-btn', 'click', function(){ srptExpanded = !srptExpanded; withSetsReport(applyTopNeededCollapseState); });
+  wireEl('srpt-filter', 'change', renderSetsMissingReport);
+  wireEl('srpt-sort', 'change', renderSetsMissingReport);
+  wireEl('srpt-count', 'input', renderSetsMissingReport);
+  wireEl('srpt-kind', 'change', function(e){ srptSyncKind(e.target); });
+  wireEl('srpt-kind-list', 'change', function(e){ srptSyncKind(e.target); });
+  wireEl('srpt-csv-btn', 'click', function(){ withSetsReport(exportCleanReportCSV); });
+  wireEl('srpt-pdf-btn', 'click', function(){ withSetsReport(generateCleanReportPDF); });
 
   var TAB_TO_GROUP = {
     overview: 'overview',
@@ -17658,7 +17675,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.15.1';          // bump with every change to this page
+  var APP_VERSION = '2026.10.15.2';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
