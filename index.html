@@ -4016,7 +4016,7 @@
         });
       }
     });
-    var csv = lines.join('\r\n');
+    var csv = reportSettingsCsvLines(lines).join('\r\n');
     var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     var url = URL.createObjectURL(blob);
     var a = document.createElement('a');
@@ -15345,7 +15345,7 @@
     rows.forEach(function(r){
       lines.push([r.buildLabel || 'Combined', r.partNum, r.elementId, r.color, r.desc, r.kind || '', r.need, r.inDrawers || 0, r.inBags || 0, countFlagText(r.flag) || 'In drawers or bags'].map(csvEscape).join(','));
     });
-    var csv = lines.join('\r\n');
+    var csv = reportSettingsCsvLines(lines).join('\r\n');
     var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     var url = URL.createObjectURL(blob);
     var a = document.createElement('a');
@@ -15591,7 +15591,7 @@
   }
 
   function downloadCsv(lines, filenamePrefix){
-    var csv = lines.join('\r\n');
+    var csv = reportSettingsCsvLines(lines).join('\r\n');
     var blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
     var url = URL.createObjectURL(blob);
     var a = document.createElement('a');
@@ -15710,7 +15710,72 @@
     });
   }
 
+
+  // ---- Report settings label: every PDF and CSV says which filters and sort it was made with ----
+  // Each report button lists the controls that shape it. Tapping the button notes their current values; the PDF
+  // prints them in small type above its title, and the CSV adds them as its last lines.
+  var reportSettingsNote = '';
+  function rsSel(id, label){ return function(){ var el = document.getElementById(id); if (!el || !el.options || el.selectedIndex < 0 || rsHidden(el)) return ''; return (label ? label + ': ' : '') + el.options[el.selectedIndex].textContent.trim(); }; }
+  function rsChk(id, label){ return function(){ var el = document.getElementById(id); if (!el || rsHidden(el)) return ''; return label + ': ' + (el.checked ? 'Yes' : 'No'); }; }
+  function rsNum(id, label, suffix){ return function(){ var el = document.getElementById(id); if (!el || rsHidden(el) || el.value === '') return ''; return label + ' ' + el.value + (suffix || ''); }; }
+  function rsTxt(id, label){ return function(){ var el = document.getElementById(id); var v = el ? String(el.value || '').trim() : ''; return v && !rsHidden(el) ? label + ': “' + v + '”' : ''; }; }
+  // a control that's switched off for the current view (hidden in place) doesn't count
+  function rsHidden(el){ var l = el.closest && el.closest('label'); return el.style.display === 'none' || (l && l.style.display === 'none'); }
+  var RS_CLEAN = [rsSel('top-needed-tier', 'Builds'), rsNum('top-needed-count', 'Top', ' parts'), rsSel('clean-report-show', 'Show'), rsSel('clean-report-sort', ''), rsSel('clean-report-kind', 'Parts')];
+  var RS_SETS = [function(){ var n = 0, t = 0; document.querySelectorAll('#srpt-sets input[type=checkbox]').forEach(function(c){ t++; if (c.checked) n++; }); return t ? 'Sets: ' + (n === t ? 'all ' + t : n + ' of ' + t) : ''; },
+    rsSel('srpt-show', 'Show'), rsSel('srpt-sort', ''), rsSel('srpt-kind', 'Parts')];
+  var RS_ALMOST = [rsNum('almost-complete-threshold', 'Missing ≤', ' pieces')];
+  var RS_FINISH = [rsSel('finishable-mocs-view', 'List'), rsSel('finishable-mocs-sort', ''), rsSel('finishable-mocs-limit', 'Show'), rsChk('finishable-mocs-reserve', 'Reserve parts for higher priorities')];
+  var RS_HELPS = [rsSel('drawer-helps-sets-filter', 'Show'), rsSel('drawer-helps-sets-sort', '')];
+  var RS_FIGS = [rsNum('figs-almost-threshold', 'Missing ≤', ' pieces'), rsChk('figs-almost-drawer-only', 'Only ones my drawers can finish')];
+  var RS_MISSING = [rsSel('missing-report-show', 'Show'), rsSel('missing-report-sort', '')];
+  var RS_PULLS = [rsTxt('pull-log-search-input', 'Search'), rsChk('pull-log-open-only', 'Only pulls with parts still to grab')];
+  var RS_SHOP = [function(){ var n = 0; document.querySelectorAll('#shop-moc-checks input[type=checkbox]').forEach(function(c){ if (c.checked) n++; }); return n + ' build' + (n === 1 ? '' : 's') + '/set' + (n === 1 ? '' : 's') + ' selected'; },
+    rsChk('shop-only-short', 'Only parts still needed'), rsChk('shop-combine-toggle', 'Combined across builds'), rsChk('shop-subtract-drawers-toggle', 'Drawer & bag stock subtracted'), rsChk('shop-hide-fully-covered-toggle', 'Fully covered parts hidden'),
+    rsTxt('shop-search', 'Search'), rsSel('shop-color-filter', 'Colour'), rsSel('shop-priority-filter', 'Priority'), rsSel('shop-kind-filter', 'Parts'), rsSel('shop-status-filter', 'Drawer status'), rsNum('shop-min-qty', 'Min qty'),
+    function(){ var s = ['shop-sort-1', 'shop-sort-2', 'shop-sort-3'].map(function(id){ var el = document.getElementById(id); return el && el.value ? el.options[el.selectedIndex].textContent.trim() : ''; }).filter(Boolean); return s.length ? 'Sorted by ' + s.join(', then ') : ''; }];
+  var REPORT_SETTINGS = {
+    'clean-report-csv-btn': RS_CLEAN, 'clean-report-pdf-btn': RS_CLEAN.concat([rsSel('clean-report-layout', 'Layout')]),
+    'srpt-csv-btn': RS_SETS.concat([rsNum('srpt-count', 'Top', ' parts')]),
+    'srpt-pdf-btn': RS_SETS.concat([function(){ return 'Grouped by set (every part)'; }, rsSel('srpt-layout', 'Layout'), rsChk('srpt-page-breaks', 'New page for each set')]),
+    'almost-complete-report-btn': RS_ALMOST, 'almost-complete-report-pdf-btn': RS_ALMOST.concat([rsSel('almost-complete-layout', 'Layout')]),
+    'almost-complete-drawer-ready-csv-btn': RS_ALMOST, 'almost-complete-drawer-ready-pdf-btn': RS_ALMOST.concat([rsSel('almost-complete-drawer-ready-layout', 'Layout')]),
+    'finishable-mocs-csv-btn': RS_FINISH, 'finishable-mocs-pdf-btn': RS_FINISH.concat([rsSel('finishable-mocs-layout', 'Layout')]),
+    'drawer-helps-sets-csv-btn': RS_HELPS, 'drawer-helps-sets-pdf-btn': RS_HELPS.concat([rsSel('drawer-helps-sets-layout', 'Layout')]),
+    'figs-almost-csv-btn': RS_FIGS, 'figs-almost-pdf-btn': RS_FIGS.concat([rsSel('figs-almost-layout', 'Layout')]),
+    'missing-report-csv-btn': RS_MISSING, 'missing-report-pdf-btn': RS_MISSING.concat([rsSel('missing-report-layout', 'Layout')]),
+    'pull-log-export-csv-btn': RS_PULLS, 'pull-log-export-pdf-btn': RS_PULLS.concat([rsSel('pull-log-layout', 'Layout')]),
+    'bag-log-export-pdf-btn': [rsTxt('bag-log-search-input', 'Search')],
+    'shop-export-csv-btn': RS_SHOP, 'shop-print-btn': RS_SHOP
+  };
+  function describeReportSettings(btnId){
+    var specs = REPORT_SETTINGS[btnId];
+    if (!specs) return '';
+    var parts = [];
+    specs.forEach(function(f){ try { var t = f(); if (t) parts.push(t); } catch(e){} });
+    return parts.join('  ·  ');
+  }
+  // noted when a report button is pressed (the capture phase runs before the report itself starts)
+  document.addEventListener('click', function(e){
+    var b = e.target.closest && e.target.closest('button');
+    if (!b || !b.id) return;
+    if (REPORT_SETTINGS[b.id]) reportSettingsNote = describeReportSettings(b.id);
+    else if (/pdf|csv|report|export/i.test(b.id)) reportSettingsNote = '';
+  }, true);
+  function reportSettingsCsvLines(lines){
+    if (!reportSettingsNote) return lines;
+    return lines.concat(['', ['Report settings', reportSettingsNote.replace(/\s*·\s*/g, '; ')].map(csvEscape).join(','), ['Generated', new Date().toLocaleString()].map(csvEscape).join(',')]);
+  }
+  function drawReportSettings(doc){
+    if (!reportSettingsNote) return;
+    var w = doc.internal.pageSize.getWidth() - 80;
+    doc.setFontSize(7.5);
+    doc.setTextColor(120, 120, 120);
+    var lines = doc.splitTextToSize('Settings: ' + reportSettingsNote, w).slice(0, 2);
+    doc.text(lines, 40, lines.length > 1 ? 14 : 22);
+  }
   function pdfHeader(doc, title, subtitle){
+    drawReportSettings(doc);
     doc.setFontSize(16);
     doc.setTextColor(20, 32, 43);
     doc.text(title, 40, 40);
@@ -17777,7 +17842,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.17.1';          // bump with every change to this page
+  var APP_VERSION = '2026.10.17.2';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
