@@ -4115,13 +4115,13 @@
         return;
       }
 
-      // Landscape: 2-column split, keeping each build/set's lines together in one column.
+      // Landscape: two columns, filled page by page (left column, then right, then the next page).
       var groups = items.map(function(it){
         var typeLabel = (it.type === 'moc' ? 'MOC Build' : it.type === 'fig' ? 'Minifigure' : 'Official Set');
         var rows = it.parts.length ? it.parts.slice() : [{ noShortage: true }];
         return { header: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' pc' + (it.missing===1?'':'s') + (it.inBags ? ' (' + it.inBags + ' in bags)' : ''), rows: rows };
       });
-      var split = splitGroupsForTwoColumns(groups);
+      var split = { left: groups, right: [] };
 
       function flattenSide(side){
         var rows = [];
@@ -4133,7 +4133,7 @@
       }
       var leftRows = flattenSide(split.left);
       var rightRows = flattenSide(split.right);
-      var rowCount = Math.max(leftRows.length, rightRows.length);
+      var pairs = flowTwoColumns(leftRows, twoColRowsPerPage(doc, 70, PDF_THUMB.split.rowHeight));
 
       function cellsFor(entry){
         if (!entry) return ['', '', '', ''];
@@ -4145,8 +4145,8 @@
 
       var body2 = [];
       var meta2 = [];
-      for (var i = 0; i < rowCount; i++){
-        var L = leftRows[i], R = rightRows[i];
+      for (var i = 0; i < pairs.length; i++){
+        var L = pairs[i][0], R = pairs[i][1];
         body2.push(cellsFor(L).concat(['']).concat(cellsFor(R)));
         meta2.push([L && !L.isHeader && !L.p.noShortage ? L.p : null, R && !R.isHeader && !R.p.noShortage ? R.p : null]);
       }
@@ -4157,13 +4157,15 @@
         head: [['','Part #','Color','Description','','','Part #','Color','Description']],
         body: body2,
         styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: PDF_THUMB.split.rowHeight, valign: 'middle' },
-        headStyles: { fillColor: [0, 166, 94], textColor: 255 },
+        headStyles: { fillColor: [0, 166, 94], textColor: 255, minCellHeight: 0 },
+          rowPageBreak: 'avoid',
         columnStyles: {
-          0: { cellWidth: PDF_THUMB.split.cellWidth }, 1: { cellWidth: 46 }, 2: { cellWidth: 40 }, 3: { cellWidth: 175 },
+          0: { cellWidth: PDF_THUMB.split.cellWidth }, 1: { cellWidth: 46 }, 2: { cellWidth: 56 }, 3: { cellWidth: 159 },
           4: { cellWidth: 10 },
-          5: { cellWidth: PDF_THUMB.split.cellWidth }, 6: { cellWidth: 46 }, 7: { cellWidth: 40 }, 8: { cellWidth: 175 }
+          5: { cellWidth: PDF_THUMB.split.cellWidth }, 6: { cellWidth: 46 }, 7: { cellWidth: 56 }, 8: { cellWidth: 159 }
         },
         didParseCell: function(data){
+          pdfClampLines(doc, data, 2);
           if (data.column.index === 4){
             data.cell.styles.lineWidth = 0;
             data.cell.styles.fillColor = data.section === 'head' ? [0, 166, 94] : 255;
@@ -4378,12 +4380,12 @@
         return;
       }
 
-      // Landscape: 2-column split, keeping each build/set's lines together in one column.
+      // Landscape: two columns, filled page by page (left column, then right, then the next page).
       var groups = items.map(function(it){
         var typeLabel = (it.type === 'moc' ? 'MOC Build' : it.type === 'fig' ? 'Minifigure' : 'Official Set');
         return { header: typeLabel + ': ' + it.label + '  \u2014  missing ' + it.missing.toLocaleString() + ' pc' + (it.missing===1?'':'s') + ', all in drawers' + (it.inBags ? ' & bags' : ''), rows: it.parts };
       });
-      var split = splitGroupsForTwoColumns(groups);
+      var split = { left: groups, right: [] };
 
       function flattenSide(side){
         var rows = [];
@@ -4395,7 +4397,7 @@
       }
       var leftRows = flattenSide(split.left);
       var rightRows = flattenSide(split.right);
-      var rowCount = Math.max(leftRows.length, rightRows.length);
+      var pairs = flowTwoColumns(leftRows, twoColRowsPerPage(doc, 70, PDF_THUMB.split.rowHeight));
 
       function cellsFor(entry){
         if (!entry) return ['', '', '', '', ''];
@@ -4406,8 +4408,8 @@
 
       var body2 = [];
       var meta2 = [];
-      for (var i = 0; i < rowCount; i++){
-        var L = leftRows[i], R = rightRows[i];
+      for (var i = 0; i < pairs.length; i++){
+        var L = pairs[i][0], R = pairs[i][1];
         body2.push(cellsFor(L).concat(['']).concat(cellsFor(R)));
         meta2.push([L && !L.isHeader ? L.p : null, R && !R.isHeader ? R.p : null]);
       }
@@ -4418,13 +4420,15 @@
         head: [['','Part #','Color','Description','Short/In','','','Part #','Color','Description','Short/In']],
         body: body2,
         styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: PDF_THUMB.split.rowHeight, valign: 'middle' },
-        headStyles: { fillColor: [0, 166, 94], textColor: 255 },
+        headStyles: { fillColor: [0, 166, 94], textColor: 255, minCellHeight: 0 },
+          rowPageBreak: 'avoid',
         columnStyles: {
-          0: { cellWidth: PDF_THUMB.split.cellWidth }, 1: { cellWidth: 44 }, 2: { cellWidth: 38 }, 3: { cellWidth: 135 }, 4: { cellWidth: 50 },
+          0: { cellWidth: PDF_THUMB.split.cellWidth }, 1: { cellWidth: 44 }, 2: { cellWidth: 56 }, 3: { cellWidth: 117 }, 4: { cellWidth: 50 },
           5: { cellWidth: 10 },
-          6: { cellWidth: PDF_THUMB.split.cellWidth }, 7: { cellWidth: 44 }, 8: { cellWidth: 38 }, 9: { cellWidth: 135 }, 10: { cellWidth: 50 }
+          6: { cellWidth: PDF_THUMB.split.cellWidth }, 7: { cellWidth: 44 }, 8: { cellWidth: 56 }, 9: { cellWidth: 117 }, 10: { cellWidth: 50 }
         },
         didParseCell: function(data){
+          pdfClampLines(doc, data, 2);
           if (data.column.index === 5){
             data.cell.styles.lineWidth = 0;
             data.cell.styles.fillColor = data.section === 'head' ? [0, 166, 94] : 255;
@@ -5400,8 +5404,7 @@
         return;
       }
 
-      // Landscape: split into two columns. Grouped mode keeps each set's lines together;
-      // ungrouped mode is a simple flat half-split (no group boundaries to respect).
+      // Landscape: two columns, filled page by page (left column, then right, then the next page).
       var leftGroups, rightGroups;
       if (grouped){
         var bySet = [];
@@ -5410,12 +5413,10 @@
           if (!cur || cur.header !== it.setLabel){ cur = { header: it.setLabel, rows: [] }; bySet.push(cur); }
           cur.rows.push(it);
         });
-        var split = splitGroupsForTwoColumns(bySet);
-        leftGroups = split.left; rightGroups = split.right;
+        leftGroups = bySet; rightGroups = [];
       } else {
-        var half = Math.ceil(items.length / 2);
-        leftGroups = [{ header: null, rows: items.slice(0, half) }];
-        rightGroups = [{ header: null, rows: items.slice(half) }];
+        leftGroups = [{ header: null, rows: items }];
+        rightGroups = [];
       }
 
       function flattenSide(groupsSide){
@@ -5428,7 +5429,7 @@
       }
       var leftRows = flattenSide(leftGroups);
       var rightRows = flattenSide(rightGroups);
-      var rowCount = Math.max(leftRows.length, rightRows.length);
+      var pairs = flowTwoColumns(leftRows, twoColRowsPerPage(doc, 70, PDF_THUMB.split.rowHeight));
       var descLen = grouped ? 26 : 20;
 
       function cellsFor(entry){
@@ -5441,8 +5442,8 @@
 
       var body = [];
       var meta = [];
-      for (var i = 0; i < rowCount; i++){
-        var L = leftRows[i], R = rightRows[i];
+      for (var i = 0; i < pairs.length; i++){
+        var L = pairs[i][0], R = pairs[i][1];
         var Lcells = cellsFor(L);
         var Rcells = cellsFor(R);
         body.push(Lcells.concat(['']).concat(Rcells));
@@ -5455,13 +5456,15 @@
         head: [['','Part #','Color','Description','In/Needs','','','Part #','Color','Description','In/Needs']],
         body: body,
         styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: PDF_THUMB.split.rowHeight, valign: 'middle' },
-        headStyles: { fillColor: [138, 18, 168], textColor: 255 },
+        headStyles: { fillColor: [138, 18, 168], textColor: 255, minCellHeight: 0 },
+          rowPageBreak: 'avoid',
         columnStyles: {
-          0: { cellWidth: PDF_THUMB.split.cellWidth }, 1: { cellWidth: 44 }, 2: { cellWidth: 38 }, 3: { cellWidth: 145 }, 4: { cellWidth: 45 },
+          0: { cellWidth: PDF_THUMB.split.cellWidth }, 1: { cellWidth: 44 }, 2: { cellWidth: 56 }, 3: { cellWidth: 127 }, 4: { cellWidth: 45 },
           5: { cellWidth: 10 },
-          6: { cellWidth: PDF_THUMB.split.cellWidth }, 7: { cellWidth: 44 }, 8: { cellWidth: 38 }, 9: { cellWidth: 145 }, 10: { cellWidth: 45 }
+          6: { cellWidth: PDF_THUMB.split.cellWidth }, 7: { cellWidth: 44 }, 8: { cellWidth: 56 }, 9: { cellWidth: 127 }, 10: { cellWidth: 45 }
         },
         didParseCell: function(data){
+          pdfClampLines(doc, data, 2);
           if (data.column.index === 5){
             data.cell.styles.lineWidth = 0;
             data.cell.styles.fillColor = data.section === 'head' ? [138, 18, 168] : 255;
@@ -15201,6 +15204,56 @@
 
   // Splits an array of { header, rows } groups into two columns for a 2-column PDF layout,
   // keeping each group's header and all its rows together in one column (never split mid-group).
+
+  // Two columns on a landscape page, read like a newspaper: down the left column, then down the right, then on to
+  // the next page's left column. entries is the report in order; group headings ({ isHeader, label }) are repeated
+  // "(continued)" when a group carries on into a new column, and never left alone at the bottom of one.
+  // Returns the table's rows as [left, right] pairs, a full page of rows per page so each page starts fresh.
+
+  // A two-column PDF row has room for two lines of text: anything longer is cut short with "…", so every row is the
+  // same height and the page-by-page column flow stays exact.
+  function pdfClampLines(doc, data, maxLines){
+    if (data.section !== 'body' || data.cell.colSpan > 1) return;
+    var w = data.cell.styles.cellWidth;
+    if (typeof w !== 'number' || !data.cell.text || !data.cell.text.length) return;
+    var avail = w - 6;
+    var prev = doc.getFontSize();
+    doc.setFontSize(data.cell.styles.fontSize || 8);
+    var lines = doc.splitTextToSize(data.cell.text.join(' '), avail);
+    if (lines.length > maxLines){
+      lines = lines.slice(0, maxLines);
+      var last = lines[maxLines - 1];
+      while (last.length > 1 && doc.getTextWidth(last + '…') > avail) last = last.slice(0, -1);
+      lines[maxLines - 1] = last.replace(/\s+$/, '') + '…';
+    }
+    data.cell.text = lines;
+    doc.setFontSize(prev);
+  }
+  function twoColRowsPerPage(doc, startY, rowH){
+    var usable = doc.internal.pageSize.getHeight() - 30 - startY - 17;   // bottom margin, then the heading row
+    return Math.max(2, Math.floor(usable / rowH));
+  }
+  function flowTwoColumns(entries, perCol){
+    var cols = [], col = [], curHeader = null;
+    entries.forEach(function(e){
+      if (e && e.isHeader){
+        curHeader = e;
+        if (col.length >= perCol - 1){ cols.push(col); col = []; }
+      } else if (col.length >= perCol){
+        cols.push(col); col = [];
+        if (curHeader) col.push({ isHeader: true, label: curHeader.label + ' (continued)' });
+      }
+      col.push(e);
+    });
+    if (col.length) cols.push(col);
+    var rows = [];
+    for (var c = 0; c < cols.length; c += 2){
+      var L = cols[c], R = cols[c + 1] || [];
+      var n = c + 2 < cols.length ? perCol : Math.max(L.length, R.length);
+      for (var i = 0; i < n; i++) rows.push([L[i] || null, R[i] || null]);
+    }
+    return rows;
+  }
   function splitGroupsForTwoColumns(groups){
     var totalLines = groups.reduce(function(sum, g){ return sum + 1 + g.rows.length; }, 0);
     var target = totalLines / 2;
@@ -15927,6 +15980,7 @@
           body: g.lines.map(function(l){ return ['', '#' + l.rank, l.partNum, l.color, truncateForPdf(l.desc, wide ? 70 : 40) + countFlagNote(itemCountFlag(l.it)), l.miss.toLocaleString(), (l.it.drawerTotal || 0).toLocaleString(), (l.it.bagTotal || 0).toLocaleString()]; }),
           styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: PDF_THUMB.single.rowHeight, valign: 'middle' },
           headStyles: { fillColor: [90, 90, 90], textColor: 255, minCellHeight: 0 },
+          rowPageBreak: 'avoid',
           columnStyles: wide
             ? { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 40 }, 2: { cellWidth: 70 }, 3: { cellWidth: 90 }, 5: { cellWidth: 70, halign: 'right' }, 6: { cellWidth: 52, halign: 'right' }, 7: { cellWidth: 44, halign: 'right' } }
             : { 0: { cellWidth: PDF_THUMB.single.cellWidth }, 1: { cellWidth: 34 }, 2: { cellWidth: 55 }, 3: { cellWidth: 62 }, 5: { cellWidth: 40, halign: 'right' }, 6: { cellWidth: 44, halign: 'right' }, 7: { cellWidth: 34, halign: 'right' } },
@@ -16050,15 +16104,13 @@
         doc.text(totalsLine, 40, 68);
         if (flagKey){ doc.setFontSize(7.5); doc.text(flagKey, 40, 78); doc.setFontSize(10); }
 
-        var half = Math.ceil(items.length / 2);
-        var leftItems = items.slice(0, half);
-        var rightItems = items.slice(half);
-        var rowCount = Math.max(leftItems.length, rightItems.length);
+        // two columns, filled page by page: down the left, then down the right, then the next page
+        var pairs = flowTwoColumns(items.slice(), twoColRowsPerPage(doc, 82, PDF_THUMB.split.rowHeight));
 
         var body = [];
         var rowItems = [];
-        for (var i = 0; i < rowCount; i++){
-          var L = leftItems[i], R = rightItems[i];
+        for (var i = 0; i < pairs.length; i++){
+          var L = pairs[i][0], R = pairs[i][1];
           body.push([
             '', L ? '#' + L.rank : '', L ? L.partNum : '', L ? L.color : '', L ? L.desc + bagNote(L) : '', L ? qtyOf(L).toLocaleString() : '',
             '',
@@ -16073,13 +16125,15 @@
           head: [['','Rank','Part #','Color','Description',qtyLabelShort,'','','Rank','Part #','Color','Description',qtyLabelShort]],
           body: body,
           styles: { fontSize: 8, cellPadding: 3, overflow: 'linebreak', minCellHeight: PDF_THUMB.split.rowHeight, valign: 'middle' },
-          headStyles: { fillColor: fillColor, textColor: 255 },
+          headStyles: { fillColor: fillColor, textColor: 255, minCellHeight: 0 },
+          rowPageBreak: 'avoid',
           columnStyles: {
-            0: { cellWidth: PDF_THUMB.split.cellWidth }, 1: { cellWidth: 26 }, 2: { cellWidth: 42 }, 3: { cellWidth: 38 }, 4: { cellWidth: 124 }, 5: { cellWidth: 40 },
+            0: { cellWidth: PDF_THUMB.split.cellWidth }, 1: { cellWidth: 26 }, 2: { cellWidth: 42 }, 3: { cellWidth: 56 }, 4: { cellWidth: 106 }, 5: { cellWidth: 40 },
             6: { cellWidth: 10 },
-            7: { cellWidth: PDF_THUMB.split.cellWidth }, 8: { cellWidth: 26 }, 9: { cellWidth: 42 }, 10: { cellWidth: 38 }, 11: { cellWidth: 124 }, 12: { cellWidth: 40 }
+            7: { cellWidth: PDF_THUMB.split.cellWidth }, 8: { cellWidth: 26 }, 9: { cellWidth: 42 }, 10: { cellWidth: 56 }, 11: { cellWidth: 106 }, 12: { cellWidth: 40 }
           },
           didParseCell: function(data){
+            pdfClampLines(doc, data, 2);
             if (data.column.index === 6){
               data.cell.styles.lineWidth = 0;
               data.cell.styles.fillColor = data.section === 'head' ? fillColor : 255;
@@ -17842,7 +17896,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.17.2';          // bump with every change to this page
+  var APP_VERSION = '2026.10.17.3';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
