@@ -528,6 +528,17 @@
 #lego-inv-root .rc-pal-row .icon-btn { padding:2px 6px; }
 #lego-inv-root .rc-pal-pos { width:16px; text-align:right; font-size:11px; color:var(--text-muted); }
 #lego-inv-root .rc-pal-sw { display:inline-flex; width:18px; }
+#lego-inv-root .rc-pv-bar { display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:8px 0 4px; }
+#lego-inv-root .rc-pv { border:1px solid var(--border); border-radius:8px; padding:10px; margin:4px 0 8px; background:var(--surface-1); }
+#lego-inv-root .rc-pv-stage { position:relative; line-height:0; border-radius:6px; overflow:hidden; background:#111; }
+#lego-inv-root .rc-pv-stage canvas { display:block; width:100%; height:auto; }
+#lego-inv-root #rc-pv-before { position:absolute; inset:0; }
+#lego-inv-root .rc-pv-line { position:absolute; top:0; bottom:0; width:2px; background:#fff; box-shadow:0 0 3px rgba(0,0,0,0.7); pointer-events:none; }
+#lego-inv-root .rc-pv-tag { position:absolute; top:6px; font-size:11px; line-height:1.4; padding:1px 6px; border-radius:4px; background:rgba(0,0,0,0.55); color:#fff; pointer-events:none; }
+#lego-inv-root .rc-pv-tag-l { left:6px; } #lego-inv-root .rc-pv-tag-r { right:6px; }
+#lego-inv-root .rc-pv-legend { display:flex; flex-wrap:wrap; gap:4px 12px; font-size:12px; color:var(--text-secondary); }
+#lego-inv-root .rc-pv-legend span { display:inline-flex; align-items:center; gap:4px; }
+#lego-inv-root .rc-pv-legend .rc-pv-miss { opacity:0.55; }
 #lego-inv-root .rc-step { display:flex; align-items:center; gap:8px; margin:12px 0 2px; font-size:14px; }
 #lego-inv-root .rc-step-num { display:inline-flex; width:20px; height:20px; border-radius:50%; background:var(--lego-blue, #0055bf); color:#fff; font-size:11px; font-weight:800; align-items:center; justify-content:center; }
 #lego-inv-root .rc-swatches { display:inline-flex; gap:4px; align-items:center; }
@@ -2065,6 +2076,30 @@
     </div>
     <div class="rc-step"><span class="rc-step-num">2</span><strong>Check each colour swap</strong> <span style="font-size:12px; color:var(--text-secondary);">(change any of them)</span></div>
     <div id="rc-map"></div>
+    <div class="rc-pv-bar">
+      <button type="button" id="rc-pv-show" class="icon-btn"><i class="ti ti-photo" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Preview on the photo</button>
+      <span style="font-size:12px; color:var(--text-secondary);">See roughly how the build looks with these swaps.</span>
+    </div>
+    <div id="rc-pv" class="rc-pv" style="display:none;">
+      <p id="rc-pv-status" style="margin:0 0 6px; font-size:12px; color:var(--text-secondary);"></p>
+      <div id="rc-pv-stage" class="rc-pv-stage" style="display:none;">
+        <canvas id="rc-pv-after"></canvas>
+        <canvas id="rc-pv-before"></canvas>
+        <div id="rc-pv-line" class="rc-pv-line"></div>
+        <span class="rc-pv-tag rc-pv-tag-l">Before</span><span class="rc-pv-tag rc-pv-tag-r">After</span>
+      </div>
+      <input type="range" id="rc-pv-split" min="0" max="100" value="50" aria-label="Slide between before and after" style="width:100%; margin:6px 0 2px;" />
+      <div id="rc-pv-legend" class="rc-pv-legend"></div>
+      <div class="row" style="gap:6px 14px; flex-wrap:wrap; align-items:center; margin-top:6px;">
+        <label style="font-size:12px; color:var(--text-secondary);" title="How different a spot in the photo can look from a colour and still count as that colour (shadows, glare, camera colour)">Colour matching
+          <input type="range" id="rc-pv-sens" min="12" max="60" value="32" style="width:110px; vertical-align:middle;" />
+        </label>
+        <label class="checkbox-label" style="margin:0; font-size:12px;" title="Leave the plain area around the build alone, even if it looks like one of the build's colours"><input type="checkbox" id="rc-pv-bg" checked /> Leave the background alone</label>
+        <label class="icon-btn" style="padding:2px 8px; font-size:12px; cursor:pointer;" title="Try the preview on a different photo (it isn't saved)"><i class="ti ti-upload" aria-hidden="true"></i> Use another photo<input type="file" id="rc-pv-file" accept="image/*" style="display:none;" /></label>
+        <button type="button" id="rc-pv-dl" class="icon-btn" style="padding:2px 8px; font-size:12px;"><i class="ti ti-download" aria-hidden="true"></i> Save image</button>
+      </div>
+      <p style="margin:6px 0 0; font-size:11px; color:var(--text-muted);">This repaints the photo colour by colour, so it&rsquo;s a guide rather than an exact render: every part of a colour changes together, and colours that look alike in the photo (black and dark gray in shadow, white and a pale background) can blur into each other. The &ldquo;Colour matching&rdquo; slider helps with that.</p>
+    </div>
     <div class="rc-step"><span class="rc-step-num">3</span><strong>Check the parts on Rebrickable</strong></div>
     <div class="row" style="gap:8px; flex-wrap:wrap; align-items:center; margin:6px 0;">
       <label style="font-size:12px; color:var(--text-secondary);">Too rare if
@@ -2746,7 +2781,7 @@
   var lockWriteBypassUntil = 0;
   var lockNoticeTimer = null;
   var LOCK_EXEMPT_IDS = {};
-  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-sort pml-open-btn-3 pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing shop-kind-filter shop-status-filter pml-open-btn-4 pml-no-figs top-needed-kind clean-report-kind pml-sort slim-refresh-btn device-name-input auto-photos-toggle auto-photos-run auto-photos-stop figs-almost-toggle-btn figs-almost-threshold figs-almost-drawer-only figs-almost-layout figs-almost-csv-btn figs-almost-pdf-btn moc-tier-toggle top-needed-tier tier-filter mocbuild-group-by sets-group-by sets-sort-by srpt-count srpt-filter srpt-kind srpt-kind-list srpt-show srpt-sort srpt-layout srpt-page-breaks srpt-pick-search top-needed-sel-only srpt-sel-only missing-sel-only rc-theme rc-keep-grays rc-keep-metal rc-rare rc-fallback rc-new-name co-filter co-sort rc-pal-name collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
+  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-sort pml-open-btn-3 pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing shop-kind-filter shop-status-filter pml-open-btn-4 pml-no-figs top-needed-kind clean-report-kind pml-sort slim-refresh-btn device-name-input auto-photos-toggle auto-photos-run auto-photos-stop figs-almost-toggle-btn figs-almost-threshold figs-almost-drawer-only figs-almost-layout figs-almost-csv-btn figs-almost-pdf-btn moc-tier-toggle top-needed-tier tier-filter mocbuild-group-by sets-group-by sets-sort-by srpt-count srpt-filter srpt-kind srpt-kind-list srpt-show srpt-sort srpt-layout srpt-page-breaks srpt-pick-search top-needed-sel-only srpt-sel-only missing-sel-only rc-theme rc-keep-grays rc-keep-metal rc-rare rc-fallback rc-new-name co-filter co-sort rc-pal-name rc-pv-show rc-pv-split rc-pv-sens rc-pv-bg rc-pv-file rc-pv-dl collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
   var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input, #srpt-sets input, input.pick-cb, #rc-map select, #rc-pal-editor select';
   var LOCK_CONTROL_SELECTOR = 'input, select, textarea, button';
 
@@ -10590,6 +10625,7 @@
     document.getElementById('rc-source').textContent = (kind === 'set' ? 'Official set ' : 'MOC build ') + label + ' · ' + lines.length + ' part line' + (lines.length === 1 ? '' : 's') + ' · ' + lines.reduce(function(t, l){ return t + l.qty; }, 0).toLocaleString() + ' pieces';
     rcRefreshThemeSelect();
     document.getElementById('rc-pal-editor').style.display = 'none';
+    rcPvReset();
     document.getElementById('rc-results').innerHTML = '';
     document.getElementById('rc-status').textContent = '';
     document.getElementById('rc-create').style.display = 'none';
@@ -10640,9 +10676,243 @@
         rcState.results = null;
         document.getElementById('rc-create').style.display = 'none';
         document.getElementById('rc-status').textContent = 'Swaps changed: check the parts again.';
+        rcPvRefresh(false);
       });
     });
+    rcPvRefresh(false);
   }
+  // ---- photo preview: repaint the build's photo with the colour swaps ----
+  var rcPv = null;   // { srcLabel, w, h, rgb, L, A, B, bg, labels, centres, keys }
+  var rcPvTimer = 0;
+  function rcHexKnown(name){
+    var k = normColorKey(name);
+    for (var n in RC_HEX) if (normColorKey(n) === k) return RC_HEX[n];
+    return null;
+  }
+  function rcSrgbToLab(r, g, b){
+    function lin(c){ c /= 255; return c <= 0.04045 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4); }
+    var R = lin(r), G = lin(g), B = lin(b);
+    var x = (R * 0.4124 + G * 0.3576 + B * 0.1805) / 0.95047, y = R * 0.2126 + G * 0.7152 + B * 0.0722, z = (R * 0.0193 + G * 0.1192 + B * 0.9505) / 1.08883;
+    function f(t){ return t > 0.008856 ? Math.cbrt(t) : 7.787 * t + 16 / 116; }
+    var fx = f(x), fy = f(y), fz = f(z);
+    return [116 * fy - 16, 500 * (fx - fy), 200 * (fy - fz)];
+  }
+  function rcLabToSrgb(L, a, b){
+    var fy = (L + 16) / 116, fx = fy + a / 500, fz = fy - b / 200;
+    function fi(t){ var t3 = t * t * t; return t3 > 0.008856 ? t3 : (t - 16 / 116) / 7.787; }
+    var x = fi(fx) * 0.95047, y = fi(fy), z = fi(fz) * 1.08883;
+    var R = x * 3.2406 - y * 1.5372 - z * 0.4986, G = -x * 0.9689 + y * 1.8758 + z * 0.0415, B = x * 0.0557 - y * 0.2040 + z * 1.0570;
+    function g(c){ c = c <= 0.0031308 ? 12.92 * c : 1.055 * Math.pow(Math.max(c, 0), 1 / 2.4) - 0.055; return Math.max(0, Math.min(255, Math.round(c * 255))); }
+    return [g(R), g(G), g(B)];
+  }
+  function rcHexLab(hex){ return rcSrgbToLab(parseInt(hex.substr(0, 2), 16), parseInt(hex.substr(2, 2), 16), parseInt(hex.substr(4, 2), 16)); }
+  // where the build's photo can come from, best first
+  function rcPvCandidates(){
+    var out = [], kind = rcState.kind, key = rcState.key;
+    var local = photoMapFor(kind)[key];
+    if (local) out.push({ url: local, label: 'your photo of this build' });
+    out.push({ url: photoSitePath(kind, key) + '?_=' + Date.now(), label: 'the photo on your site', cors: true });
+    if (kind === 'set'){
+      var s = ownedSets.find(function(x){ return x.setNum === key; });
+      if (s && s.imgUrl){ out.push({ url: s.imgUrl, label: 'Rebrickable’s photo of the set', cors: true }); out.push({ url: forceProxyImgUrl(s.imgUrl), label: 'Rebrickable’s photo of the set', cors: true }); }
+    }
+    return out;
+  }
+  function rcPvLoadOne(c){
+    return new Promise(function(resolve, reject){
+      var img = new Image();
+      if (c.cors) img.crossOrigin = 'anonymous';
+      img.onload = function(){ resolve(img); };
+      img.onerror = function(){ reject(new Error('load')); };
+      img.src = c.url;
+    });
+  }
+  // draw the photo small enough to work on quickly, and read its pixels (fails if the photo's host doesn't allow it)
+  function rcPvRead(img){
+    var max = 800, sc = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+    var w = Math.max(1, Math.round(img.naturalWidth * sc)), h = Math.max(1, Math.round(img.naturalHeight * sc));
+    var cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+    var cx = cv.getContext('2d'); cx.drawImage(img, 0, 0, w, h);
+    var d = cx.getImageData(0, 0, w, h).data;   // throws on a photo from a host that doesn't allow it
+    var n = w * h, L = new Float32Array(n), A = new Float32Array(n), B = new Float32Array(n);
+    for (var i = 0; i < n; i++){ var lab = rcSrgbToLab(d[i * 4], d[i * 4 + 1], d[i * 4 + 2]); L[i] = lab[0]; A[i] = lab[1]; B[i] = lab[2]; }
+    return { w: w, h: h, rgb: d, L: L, A: A, B: B };
+  }
+  function rcPvStart(list){
+    var st = document.getElementById('rc-pv-status');
+    st.textContent = 'Loading the photo…';
+    var token = rcState;
+    var i = 0;
+    (function next(){
+      if (token !== rcState) return;
+      if (i >= list.length){
+        rcPv = null;
+        document.getElementById('rc-pv-stage').style.display = 'none';
+        document.getElementById('rc-pv-legend').innerHTML = '';
+        st.innerHTML = 'There’s no photo of this ' + (rcState.kind === 'set' ? 'set' : 'build') + ' to preview on. Add one in its window (it’s used here once it’s saved), or use <strong>Use another photo</strong> to try one just for this preview.';
+        return;
+      }
+      var c = list[i++];
+      rcPvLoadOne(c).then(function(img){
+        if (token !== rcState) return;
+        var px;
+        try { px = rcPvRead(img); } catch(e){ next(); return; }
+        rcPv = px; rcPv.srcLabel = c.label;
+        rcPvClassify(); rcPvPaint();
+      }).catch(next);
+    })();
+  }
+  // which pixels are plain background: spread in from the edges while the colour stays smooth and close to the edge colour
+  function rcPvBackground(){
+    var p = rcPv, w = p.w, h = p.h, n = w * h, bg = new Uint8Array(n);
+    var sL = 0, sA = 0, sB = 0, cnt = 0, edge = [];
+    for (var x = 0; x < w; x++){ edge.push(x, (h - 1) * w + x); }
+    for (var y = 0; y < h; y++){ edge.push(y * w, y * w + w - 1); }
+    edge.forEach(function(i){ sL += p.L[i]; sA += p.A[i]; sB += p.B[i]; cnt++; });
+    var mL = sL / cnt, mA = sA / cnt, mB = sB / cnt;
+    function farFromEdge(i){ var dl = p.L[i] - mL, da = p.A[i] - mA, db = p.B[i] - mB; return dl * dl + da * da + db * db > 324; }
+    var stack = [];
+    edge.forEach(function(i){ if (!bg[i] && !farFromEdge(i)){ bg[i] = 1; stack.push(i); } });
+    while (stack.length){
+      var i = stack.pop(), x0 = i % w;
+      var nb = [x0 > 0 ? i - 1 : -1, x0 < w - 1 ? i + 1 : -1, i >= w ? i - w : -1, i < n - w ? i + w : -1];
+      for (var k = 0; k < 4; k++){
+        var j = nb[k];
+        if (j < 0 || bg[j]) continue;
+        var dl = p.L[j] - p.L[i], da = p.A[j] - p.A[i], db = p.B[j] - p.B[i];
+        if (dl * dl + da * da + db * db < 9 && !farFromEdge(j)){ bg[j] = 1; stack.push(j); }
+      }
+    }
+    return bg;
+  }
+  // match each pixel to one of the build's colours, nudging each colour towards how it actually looks in this photo
+  function rcPvClassify(){
+    var p = rcPv; if (!p) return;
+    var n = p.w * p.h;
+    var keys = rcState.order.filter(function(k){ return rcState.names[k] && rcHexKnown(rcState.names[k]); });
+    var nominal = keys.map(function(k){ return rcHexLab(rcHexKnown(rcState.names[k])); });
+    var centres = nominal.map(function(c){ return c.slice(); });
+    var useBg = document.getElementById('rc-pv-bg').checked;
+    p.bg = useBg ? rcPvBackground() : null;
+    var thr = +document.getElementById('rc-pv-sens').value, WL = 0.6;
+    // colours with only a few pieces (and see-through ones) must match closely, so they don't steal big areas
+    var maxCount = Math.max.apply(null, keys.map(function(k){ return rcState.counts[k] || 1; }));
+    var bias = keys.map(function(k){ return 3 * Math.log(maxCount / Math.max(1, rcState.counts[k] || 1)) + (rcIsTrans(rcState.names[k]) ? 8 : 0); });
+    var labels = new Int16Array(n);
+    for (var pass = 0; pass < 4; pass++){
+      var sums = centres.map(function(){ return [0, 0, 0, 0]; });
+      for (var i = 0; i < n; i++){
+        if (p.bg && p.bg[i]){ labels[i] = -1; continue; }
+        var best = -1, bd = thr, L = p.L[i], A = p.A[i], B = p.B[i];
+        for (var c = 0; c < centres.length; c++){
+          var dl = (L - centres[c][0]) * WL, da = A - centres[c][1], db = B - centres[c][2], d = Math.sqrt(dl * dl + da * da + db * db) + bias[c];
+          if (d < bd){ bd = d; best = c; }
+        }
+        labels[i] = best;
+        if (best >= 0){ var s = sums[best]; s[0] += L; s[1] += A; s[2] += B; s[3]++; }
+      }
+      if (pass === 3) break;
+      centres = centres.map(function(c, ci){
+        var s = sums[ci]; if (!s[3]) return nominal[ci].slice();
+        var m = [s[0] / s[3], s[1] / s[3], s[2] / s[3]], o = nominal[ci];
+        // follow the photo's lighting, but never wander far from the real colour
+        var dx = [m[0] - o[0], m[1] - o[1], m[2] - o[2]], dist = Math.sqrt(dx[0] * dx[0] + dx[1] * dx[1] + dx[2] * dx[2]), lim = 28;
+        var f = dist > lim ? lim / dist : 1;
+        return [o[0] + dx[0] * f, o[1] + dx[1] * f, o[2] + dx[2] * f];
+      });
+    }
+    // tidy the soft edges between colours: an unmatched pixel next to a colour joins it if it's a looser match
+    var w = p.w;
+    for (var grow = 0; grow < 2; grow++){
+      var add = [];
+      for (var q = 0; q < n; q++){
+        if (labels[q] !== -1 || (p.bg && p.bg[q])) continue;
+        var x1 = q % w, nbs = [x1 > 0 ? q - 1 : -1, x1 < w - 1 ? q + 1 : -1, q >= w ? q - w : -1, q < n - w ? q + w : -1];
+        for (var t = 0; t < 4; t++){
+          var lc = nbs[t] >= 0 ? labels[nbs[t]] : -1; if (lc < 0) continue;
+          var el = (p.L[q] - centres[lc][0]) * WL, ea = p.A[q] - centres[lc][1], eb = p.B[q] - centres[lc][2];
+          if (Math.sqrt(el * el + ea * ea + eb * eb) < thr * 1.8){ add.push(q, lc); break; }
+        }
+      }
+      for (var u = 0; u < add.length; u += 2) labels[add[u]] = add[u + 1];
+    }
+    p.labels = labels; p.centres = centres; p.keys = keys;
+    p.counts = new Array(keys.length).fill(0);
+    for (var j = 0; j < n; j++) if (labels[j] >= 0) p.counts[labels[j]]++;
+  }
+  function rcPvPaint(){
+    var p = rcPv; if (!p || !p.labels) return;
+    var w = p.w, h = p.h, n = w * h;
+    var before = document.getElementById('rc-pv-before'), after = document.getElementById('rc-pv-after');
+    before.width = after.width = w; before.height = after.height = h;
+    var bctx = before.getContext('2d'), actx = after.getContext('2d');
+    var orig = bctx.createImageData(w, h); orig.data.set(p.rgb); bctx.putImageData(orig, 0, 0);
+    var out = actx.createImageData(w, h), o = out.data; o.set(p.rgb);
+    var targets = p.keys.map(function(k){
+      var to = rcState.map[k], from = rcState.names[k];
+      if (!to || normColorKey(to) === normColorKey(from)) return null;
+      var hx = rcHexKnown(to); return hx ? rcHexLab(hx) : null;
+    });
+    for (var i = 0; i < n; i++){
+      var c = p.labels[i]; if (c < 0) continue;
+      var T = targets[c]; if (!T) continue;
+      var C = p.centres[c];
+      // keep the photo's shading: carry each pixel's difference from its colour's average over to the new colour
+      var k = Math.max(0.5, Math.min(2, (T[0] + 15) / (C[0] + 15)));
+      var rgb = rcLabToSrgb(Math.max(0, Math.min(100, T[0] + (p.L[i] - C[0]) * k)), T[1] + (p.A[i] - C[1]) * 0.5, T[2] + (p.B[i] - C[2]) * 0.5);
+      o[i * 4] = rgb[0]; o[i * 4 + 1] = rgb[1]; o[i * 4 + 2] = rgb[2];
+    }
+    actx.putImageData(out, 0, 0);
+    document.getElementById('rc-pv-stage').style.display = '';
+    rcPvSplit();
+    var tot = 0; p.counts.forEach(function(c){ tot += c; });
+    document.getElementById('rc-pv-legend').innerHTML = p.keys.map(function(k, i){
+      var pct = tot ? Math.round(p.counts[i] * 100 / tot) : 0, from = rcState.names[k], to = rcState.map[k];
+      var same = normColorKey(to) === normColorKey(from);
+      return '<span' + (p.counts[i] ? '' : ' class="rc-pv-miss" title="Not spotted in this photo"') + '>' + rcSw(from) + (same ? '' : '<i class="ti ti-arrow-right" aria-hidden="true"></i>' + rcSw(to)) + escapeHtml(from) + ' ' + (p.counts[i] ? (pct < 1 ? '<1' : pct) + '%' : '—') + '</span>';
+    }).join('');
+    var unknown = rcState.order.filter(function(k){ return rcState.names[k] && !rcHexKnown(rcState.names[k]); }).map(function(k){ return rcState.names[k]; });
+    document.getElementById('rc-pv-status').textContent = 'Using ' + p.srcLabel + '. Drag the slider to compare before and after.' + (unknown.length ? ' Not repainted (no colour sample for them): ' + unknown.join(', ') + '.' : '');
+  }
+  function rcPvSplit(){
+    var v = +document.getElementById('rc-pv-split').value;
+    document.getElementById('rc-pv-before').style.clipPath = 'inset(0 ' + (100 - v) + '% 0 0)';
+    document.getElementById('rc-pv-line').style.left = 'calc(' + v + '% - 1px)';
+  }
+  function rcPvRefresh(reclassify){
+    if (!rcPv || document.getElementById('rc-pv').style.display === 'none') return;
+    clearTimeout(rcPvTimer);
+    rcPvTimer = setTimeout(function(){ if (!rcPv) return; if (reclassify) rcPvClassify(); rcPvPaint(); }, 120);
+  }
+  function rcPvReset(){
+    rcPv = null;
+    document.getElementById('rc-pv').style.display = 'none';
+    document.getElementById('rc-pv-stage').style.display = 'none';
+    document.getElementById('rc-pv-legend').innerHTML = '';
+    document.getElementById('rc-pv-file').value = '';
+  }
+  wireEl('rc-pv-show', 'click', function(){
+    var box = document.getElementById('rc-pv');
+    if (box.style.display !== 'none' && rcPv){ box.style.display = 'none'; return; }
+    box.style.display = '';
+    if (!rcPv) rcPvStart(rcPvCandidates()); else rcPvPaint();
+  });
+  wireEl('rc-pv-split', 'input', rcPvSplit);
+  wireEl('rc-pv-sens', 'change', function(){ rcPvRefresh(true); });
+  wireEl('rc-pv-bg', 'change', function(){ rcPvRefresh(true); });
+  wireEl('rc-pv-file', 'change', function(e){
+    var f = e.target.files && e.target.files[0]; if (!f) return;
+    var r = new FileReader();
+    r.onload = function(){ document.getElementById('rc-pv').style.display = ''; rcPvStart([{ url: r.result, label: 'the photo you picked (just for this preview)' }]); };
+    r.readAsDataURL(f);
+  });
+  wireEl('rc-pv-dl', 'click', function(){
+    if (!rcPv) return;
+    var a = document.createElement('a');
+    a.download = 'Recolour preview - ' + String(rcState.label).replace(/[\\/:*?"<>|]+/g, ' ').trim() + ' - ' + rcTheme().name.replace(/[\\/:*?"<>|]+/g, ' ') + '.png';
+    a.href = document.getElementById('rc-pv-after').toDataURL('image/png');
+    document.body.appendChild(a); a.click(); a.remove();
+  });
   function rcRarity(entry){
     if (!entry) return { level: 'notmade', sets: 0 };
     var n = entry.numSets || 0;
@@ -18679,7 +18949,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.17.7';          // bump with every change to this page
+  var APP_VERSION = '2026.10.18.1';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
