@@ -539,6 +539,24 @@
 #lego-inv-root .rc-pv-legend { display:flex; flex-wrap:wrap; gap:4px 12px; font-size:12px; color:var(--text-secondary); }
 #lego-inv-root .rc-pv-legend span { display:inline-flex; align-items:center; gap:4px; }
 #lego-inv-root .rc-pv-legend .rc-pv-miss { opacity:0.55; }
+#lego-inv-root .rc-pal-preview { margin:0 0 10px; }
+#lego-inv-root .rc-pal-band { display:flex; height:46px; border-radius:6px; overflow:hidden; border:1px solid rgba(0,0,0,.35); }
+#lego-inv-root .rc-pal-band span { display:block; min-width:10px; }
+#lego-inv-root .rc-pal-tiles { display:flex; flex-wrap:wrap; gap:8px; margin:8px 0; }
+#lego-inv-root .rc-pal-tile { width:76px; }
+#lego-inv-root .rc-pal-tile b { display:flex; align-items:flex-end; justify-content:flex-start; width:76px; height:60px; border-radius:6px; border:1px solid rgba(0,0,0,.35); font-size:11px; font-weight:600; padding:3px 5px; box-sizing:border-box; }
+#lego-inv-root .rc-pal-tile small { display:block; font-size:11px; line-height:1.25; color:var(--text-secondary); margin-top:3px; word-break:break-word; }
+#lego-inv-root .rc-pal-wall { display:block; width:100%; max-width:420px; height:auto; border-radius:6px; }
+#lego-inv-root .rc-stripes { background-image: linear-gradient(135deg, rgba(255,255,255,.5) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.5) 50%, rgba(255,255,255,.5) 75%, transparent 75%); background-size: 12px 12px; }
+#lego-inv-root .pm-group { margin:12px 0 4px; font-size:12px; text-transform:uppercase; letter-spacing:.02em; color:var(--text-secondary); border-top:2px solid var(--border); padding-top:10px; }
+#lego-inv-root .pm-row { display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:6px 0; border-bottom:1px solid var(--border); }
+#lego-inv-root .pm-row.pm-hidden { opacity:.55; }
+#lego-inv-root .pm-strip { display:inline-flex; flex-wrap:wrap; gap:3px; min-width:136px; }
+#lego-inv-root .pm-strip .rc-sw { width:24px; height:24px; border-radius:5px; }
+#lego-inv-root .pm-name { flex:1; min-width:140px; font-size:14px; }
+#lego-inv-root .pm-badge { font-size:11px; padding:0 6px; border-radius:8px; border:1px solid var(--border); color:var(--text-secondary); margin-left:6px; white-space:nowrap; }
+#lego-inv-root .pm-acts { display:flex; gap:4px; flex-wrap:wrap; }
+#lego-inv-root .pm-acts .icon-btn { padding:2px 8px; font-size:12px; }
 #lego-inv-root .rc-step { display:flex; align-items:center; gap:8px; margin:12px 0 2px; font-size:14px; }
 #lego-inv-root .rc-step-num { display:inline-flex; width:20px; height:20px; border-radius:50%; background:var(--lego-blue, #0055bf); color:#fff; font-size:11px; font-weight:800; align-items:center; justify-content:center; }
 #lego-inv-root .rc-swatches { display:inline-flex; gap:4px; align-items:center; }
@@ -1821,6 +1839,14 @@
   </div>
 
   <div class="collapse-section">
+    <button type="button" class="collapse-header" data-collapse-target="cs-recolour-palettes"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Recolour Palettes</span></button>
+    <div class="collapse-body" id="cs-recolour-palettes" style="display:none;">
+      <p style="margin: 0 0 10px; color: var(--text-secondary);">Make, edit, copy, hide or delete the colour palettes the Recolour tool uses on a build or set.</p>
+      <button type="button" id="pm-open-btn"><i class="ti ti-palette" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Manage palettes</button>
+    </div>
+  </div>
+
+  <div class="collapse-section">
     <button type="button" class="collapse-header" data-collapse-target="cs-merge-parts"><i class="ti ti-chevron-right" aria-hidden="true"></i><span>Merge Part Numbers</span></button>
     <div class="collapse-body" id="cs-merge-parts" style="display:none;">
       <p style="margin: 0 0 10px; color: var(--text-secondary);">
@@ -2056,9 +2082,12 @@
       <button type="button" id="rc-pal-copy" class="icon-btn" style="padding:2px 8px;" title="Start a palette of your own from this one"><i class="ti ti-copy" aria-hidden="true"></i> Copy to edit</button>
       <button type="button" id="rc-pal-edit" class="icon-btn" style="padding:2px 8px; display:none;"><i class="ti ti-pencil" aria-hidden="true"></i> Edit palette</button>
       <button type="button" id="rc-pal-delete" class="icon-btn" style="padding:2px 8px; display:none; color:var(--text-danger);"><i class="ti ti-trash" aria-hidden="true"></i> Delete palette</button>
+      <button type="button" id="rc-pal-manage" class="icon-btn" style="padding:2px 8px;" title="Edit, hide or delete palettes"><i class="ti ti-settings" aria-hidden="true"></i> Manage palettes</button>
     </div>
-    <div id="rc-pal-editor" class="rc-pal-editor" style="display:none;">
-      <input type="text" id="rc-pal-name" placeholder="Palette name, e.g. My Blacktron" style="width:100%; margin-bottom:6px;" />
+    <div id="rc-pal-editor-home"><div id="rc-pal-editor" class="rc-pal-editor" style="display:none;">
+      <p id="rc-pal-editing" style="margin:0 0 6px; font-size:12px; color:var(--text-secondary);"></p>
+      <input type="text" id="rc-pal-name" placeholder="Palette name, e.g. My Blacktron" style="width:100%; margin-bottom:8px;" />
+      <div id="rc-pal-preview" class="rc-pal-preview"></div>
       <p style="margin:0 0 4px; font-size:12px; color:var(--text-secondary);">Main colours, in order: the build&rsquo;s most-used colour becomes the first one, the next most-used the second, and so on.</p>
       <div id="rc-pal-colors"></div>
       <button type="button" id="rc-pal-add" class="icon-btn" style="padding:2px 8px; margin:4px 0 8px;"><i class="ti ti-plus" aria-hidden="true"></i> Add a colour</button>
@@ -2069,7 +2098,7 @@
         <button type="button" id="rc-pal-cancel" class="icon-btn" style="padding:3px 10px;">Cancel</button>
         <span id="rc-pal-status" style="font-size:12px; align-self:center;"></span>
       </div>
-    </div>
+    </div></div>
     <div class="row" style="gap:6px 14px; flex-wrap:wrap; margin:4px 0 8px;">
       <label class="checkbox-label" style="margin:0; font-size:12px;" title="Light and dark bluish gray are often hidden structure: leave them alone"><input type="checkbox" id="rc-keep-grays" checked /> Keep light &amp; dark bluish gray</label>
       <label class="checkbox-label" style="margin:0; font-size:12px;" title="Pearl, metallic, chrome and flat silver accents stay as they are"><input type="checkbox" id="rc-keep-metal" checked /> Keep metallic accents</label>
@@ -2131,6 +2160,20 @@
       </div>
       <p id="rc-create-status" style="margin:6px 0 0; font-size:12px; color:var(--text-secondary);">Makes a new MOC build with these colours. The original stays as it is.</p>
     </div>
+  </div>
+</div>
+<div id="pm-modal-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1150; align-items:center; justify-content:center; padding:20px;">
+  <div id="pm-modal" style="background:var(--surface-2); border-radius:var(--radius); max-width:760px; width:100%; max-height:90vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
+    <button id="pm-close" class="icon-btn close-x-btn" style="position:absolute; top:14px; right:14px;" aria-label="Close" title="Close (Esc)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <h2 style="margin:0 0 4px; font-size:20px; color:var(--lego-black); padding-right:36px;">Recolour palettes</h2>
+    <p style="margin:0 0 10px; color:var(--text-secondary); font-size:13px;">Edit, copy, hide or delete the palettes Recolour offers. Built-in palettes can be edited too, and put back to the original any time. Changes are kept with your collection, so your other devices get them.</p>
+    <div class="row" style="gap:8px 14px; flex-wrap:wrap; align-items:center; margin:0 0 8px;">
+      <button type="button" id="pm-new" class="icon-btn" style="padding:3px 10px;"><i class="ti ti-plus" aria-hidden="true"></i> New palette</button>
+      <label class="checkbox-label" style="margin:0; font-size:12px;"><input type="checkbox" id="pm-show-hidden" /> Show hidden palettes</label>
+      <span id="pm-status" style="font-size:12px; color:var(--text-secondary);"></span>
+    </div>
+    <div id="pm-editor-home"></div>
+    <div id="pm-list"></div>
   </div>
 </div>
 
@@ -2781,7 +2824,7 @@
   var lockWriteBypassUntil = 0;
   var lockNoticeTimer = null;
   var LOCK_EXEMPT_IDS = {};
-  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-sort pml-open-btn-3 pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing shop-kind-filter shop-status-filter pml-open-btn-4 pml-no-figs top-needed-kind clean-report-kind pml-sort slim-refresh-btn device-name-input auto-photos-toggle auto-photos-run auto-photos-stop figs-almost-toggle-btn figs-almost-threshold figs-almost-drawer-only figs-almost-layout figs-almost-csv-btn figs-almost-pdf-btn moc-tier-toggle top-needed-tier tier-filter mocbuild-group-by sets-group-by sets-sort-by srpt-count srpt-filter srpt-kind srpt-kind-list srpt-show srpt-sort srpt-layout srpt-page-breaks srpt-pick-search top-needed-sel-only srpt-sel-only missing-sel-only rc-theme rc-keep-grays rc-keep-metal rc-rare rc-fallback rc-new-name co-filter co-sort rc-pal-name rc-pv-show rc-pv-split rc-pv-sens rc-pv-bg rc-pv-file rc-pv-dl collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
+  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-sort pml-open-btn-3 pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing shop-kind-filter shop-status-filter pml-open-btn-4 pml-no-figs top-needed-kind clean-report-kind pml-sort slim-refresh-btn device-name-input auto-photos-toggle auto-photos-run auto-photos-stop figs-almost-toggle-btn figs-almost-threshold figs-almost-drawer-only figs-almost-layout figs-almost-csv-btn figs-almost-pdf-btn moc-tier-toggle top-needed-tier tier-filter mocbuild-group-by sets-group-by sets-sort-by srpt-count srpt-filter srpt-kind srpt-kind-list srpt-show srpt-sort srpt-layout srpt-page-breaks srpt-pick-search top-needed-sel-only srpt-sel-only missing-sel-only rc-theme rc-keep-grays rc-keep-metal rc-rare rc-fallback rc-new-name co-filter co-sort rc-pal-name rc-pv-show rc-pv-split rc-pv-sens rc-pv-bg rc-pv-file rc-pv-dl pm-show-hidden collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
   var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input, #srpt-sets input, input.pick-cb, #rc-map select, #rc-pal-editor select';
   var LOCK_CONTROL_SELECTOR = 'input, select, textarea, button';
 
@@ -10503,37 +10546,62 @@
     [a || {}, b || {}].forEach(function(src){ Object.keys(src).forEach(function(k){ var x = src[k]; if (x && (!out[k] || (x.at || 0) > (out[k].at || 0))) out[k] = x; }); });
     return out;
   }
+  // built-in palettes you've edited or hidden are kept as 'preset:<id>' entries
+  function rcPresetRec(id){ var r = recolorSchemes['preset:' + id]; return r && !r.deleted ? r : null; }
+  function rcPresets(includeHidden){
+    return RC_THEMES.map(function(t){
+      var r = rcPresetRec(t.id), edited = !!(r && r.colors && r.colors.length);
+      return Object.assign({}, t, {
+        name: edited && r.name ? r.name : t.name,
+        colors: edited ? r.colors.filter(Boolean) : t.colors,
+        trans: edited ? (r.trans || '') : t.trans,
+        edited: edited, hidden: !!(r && r.hidden), preset: true
+      });
+    }).filter(function(t){ return includeHidden || !t.hidden; });
+  }
+  function rcSetPreset(id, changes){
+    var r = Object.assign({}, rcPresetRec(id) || {}, changes, { at: Date.now() });
+    delete r.deleted;
+    if (!(r.colors && r.colors.length) && !r.hidden) r = { at: r.at, deleted: true };
+    recolorSchemes['preset:' + id] = r;
+    saveRecolorSchemes();
+  }
   function rcMySchemes(){
-    return Object.keys(recolorSchemes).filter(function(id){ return recolorSchemes[id] && !recolorSchemes[id].deleted; })
+    return Object.keys(recolorSchemes).filter(function(id){ return recolorSchemes[id] && !recolorSchemes[id].deleted && id.indexOf('preset:') !== 0; })
       .map(function(id){ var t = recolorSchemes[id]; return { id: 'mine:' + id, key: id, group: 'My palettes', name: t.name, colors: (t.colors || []).filter(Boolean), trans: t.trans || '', mine: true }; })
       .sort(function(a, b){ return a.name.localeCompare(b.name); });
   }
-  function rcAllThemes(){ return rcMySchemes().concat(RC_THEMES); }
+  function rcAllThemes(){ return rcMySchemes().concat(rcPresets(false)); }
   function rcThemeOptionsHtml(selId){
     var groups = {}, order = [];
     rcAllThemes().forEach(function(t){ if (!groups[t.group]){ groups[t.group] = []; order.push(t.group); } groups[t.group].push(t); });
     return order.map(function(g){
-      return '<optgroup label="' + escapeHtml(g) + '">' + groups[g].map(function(t){ return '<option value="' + escapeHtml(t.id) + '"' + (t.id === selId ? ' selected' : '') + '>' + escapeHtml(t.name) + '</option>'; }).join('') + '</optgroup>';
+      return '<optgroup label="' + escapeHtml(g) + '">' + groups[g].map(function(t){ return '<option value="' + escapeHtml(t.id) + '"' + (t.id === selId ? ' selected' : '') + '>' + escapeHtml(t.name + (t.edited ? ' (edited)' : '')) + '</option>'; }).join('') + '</optgroup>';
     }).join('');
   }
   function rcRefreshThemeSelect(selId){
     var sel = document.getElementById('rc-theme');
     var cur = selId || sel.value || RC_THEMES[0].id;
     sel.innerHTML = rcThemeOptionsHtml(cur);
-    if (!rcAllThemes().some(function(t){ return t.id === cur; })) sel.value = RC_THEMES[0].id;
+    if (!rcAllThemes().some(function(t){ return t.id === cur; })) sel.selectedIndex = 0;
     rcUpdatePaletteButtons();
   }
   function rcUpdatePaletteButtons(){
     var t = rcTheme();
-    document.getElementById('rc-pal-edit').style.display = t.mine ? '' : 'none';
+    document.getElementById('rc-pal-edit').style.display = '';
     document.getElementById('rc-pal-delete').style.display = t.mine ? '' : 'none';
     document.getElementById('rc-pal-copy').style.display = t.mine ? 'none' : '';
   }
   // ---- the palette editor ----
   var rcEdit = null;   // { key (existing id or null), name, colors, trans }
-  function rcOpenEditor(start){
+  function rcOpenEditor(start, host){
     rcEdit = start;
-    document.getElementById('rc-pal-editor').style.display = '';
+    rcEdit.host = host === 'pm' ? 'pm' : 'rc';
+    var ed = document.getElementById('rc-pal-editor');
+    document.getElementById(rcEdit.host === 'pm' ? 'pm-editor-home' : 'rc-pal-editor-home').appendChild(ed);
+    document.getElementById('rc-pal-status').textContent = '';
+    document.getElementById('rc-pal-editing').textContent = start.presetId ? 'Editing a built-in palette. You can put it back to the original from Manage palettes.' : start.key ? 'Editing your palette.' : 'New palette.';
+    ed.style.display = '';
     document.getElementById('rc-pal-name').value = start.name || '';
     rcRenderEditor();
     document.getElementById('rc-pal-name').focus();
@@ -10554,6 +10622,7 @@
     }).join('');
     document.getElementById('rc-pal-add').disabled = rcEdit.colors.length >= 8;
     document.getElementById('rc-pal-trans').innerHTML = '<span class="rc-pal-sw">' + (rcEdit.trans ? rcSw(rcEdit.trans) : '') + '</span>' + rcColourSelect(rcEdit.trans, true, true);
+    document.getElementById('rc-pal-preview').innerHTML = rcPalettePreviewHtml(rcEdit.colors, rcEdit.trans);
   }
   function rcEditorClick(e){
     var b = e.target.closest && e.target.closest('button[data-act]');
@@ -10578,17 +10647,32 @@
     if (!name){ st.style.color = 'var(--text-danger)'; st.textContent = 'Give the palette a name.'; return; }
     var colors = rcEdit.colors.filter(function(c, i, a){ return c && a.indexOf(c) === i; });
     if (!colors.length){ st.style.color = 'var(--text-danger)'; st.textContent = 'Add at least one colour.'; return; }
-    var key = rcEdit.key || ('p' + Date.now().toString(36));
-    recolorSchemes[key] = { name: name, colors: colors, trans: rcEdit.trans || '', at: Date.now() };
-    saveRecolorSchemes();
+    var host = rcEdit.host, selId;
+    if (rcEdit.presetId){
+      var orig = RC_THEMES.find(function(t){ return t.id === rcEdit.presetId; });
+      rcSetPreset(rcEdit.presetId, { name: name === orig.name ? '' : name, colors: colors, trans: rcEdit.trans || '' });
+      selId = rcEdit.presetId;
+    } else {
+      var key = rcEdit.key || ('p' + Date.now().toString(36));
+      recolorSchemes[key] = { name: name, colors: colors, trans: rcEdit.trans || '', at: Date.now() };
+      saveRecolorSchemes();
+      selId = 'mine:' + key;
+    }
     document.getElementById('rc-pal-editor').style.display = 'none';
     rcEdit = null;
-    rcRefreshThemeSelect('mine:' + key);
+    if (host === 'pm'){
+      document.getElementById('pm-status').textContent = 'Saved “' + name + '”.';
+      rcPalettesChanged();
+      return;
+    }
+    rcRefreshThemeSelect(selId);
     rcApplyTheme();
+    if (document.getElementById('pm-modal-overlay').style.display === 'flex') pmRender();
     document.getElementById('rc-status').textContent = 'Saved “' + name + '” to your palettes. It’s kept with your collection, so your other devices get it too.';
   }
   function rcCurrentAsEdit(copy){
     var t = rcTheme();
+    if (!copy && !t.mine) return { presetId: t.id, name: t.name, colors: t.colors.slice(), trans: t.trans || '' };
     return { key: copy ? null : t.key, name: copy ? t.name + ' (my version)' : t.name, colors: t.colors.slice(), trans: t.trans || '' };
   }
   function rcHex(name){
@@ -10624,7 +10708,7 @@
     rcState = { kind: kind, key: key, label: label, lines: lines, map: {}, results: null, running: false, cancel: false };
     document.getElementById('rc-source').textContent = (kind === 'set' ? 'Official set ' : 'MOC build ') + label + ' · ' + lines.length + ' part line' + (lines.length === 1 ? '' : 's') + ' · ' + lines.reduce(function(t, l){ return t + l.qty; }, 0).toLocaleString() + ' pieces';
     rcRefreshThemeSelect();
-    document.getElementById('rc-pal-editor').style.display = 'none';
+    if (!rcEdit || rcEdit.host !== 'pm'){ rcEdit = null; document.getElementById('rc-pal-editor').style.display = 'none'; }
     rcPvReset();
     document.getElementById('rc-results').innerHTML = '';
     document.getElementById('rc-status').textContent = '';
@@ -10634,7 +10718,7 @@
     document.getElementById('rc-modal-overlay').style.display = 'flex';
     if (viewLocked) applyLockToTree(document.getElementById('rc-modal'));
   }
-  function rcTheme(){ var id = document.getElementById('rc-theme').value; return rcAllThemes().find(function(t){ return t.id === id; }) || RC_THEMES[0]; }
+  function rcTheme(){ var id = document.getElementById('rc-theme').value, all = rcAllThemes(); return all.find(function(t){ return t.id === id; }) || all[0] || rcPresets(true)[0]; }
   // suggest a colour for each colour in the build: the most-used colours take the scheme's main colours in order
   function rcApplyTheme(){
     if (!rcState) return;
@@ -11070,6 +11154,7 @@
     saveRecolorSchemes();
     rcRefreshThemeSelect(RC_THEMES[0].id);
     rcApplyTheme();
+    if (document.getElementById('pm-modal-overlay').style.display === 'flex') pmRender();
   });
   wireEl('rc-pal-add', 'click', function(){ if (rcEdit && rcEdit.colors.length < 8){ rcEdit.colors.push('White'); rcRenderEditor(); } });
   wireEl('rc-pal-colors', 'click', rcEditorClick);
@@ -11077,6 +11162,110 @@
   wireEl('rc-pal-trans', 'change', rcEditorChange);
   wireEl('rc-pal-save', 'click', rcSavePalette);
   wireEl('rc-pal-cancel', 'click', function(){ rcEdit = null; document.getElementById('rc-pal-editor').style.display = 'none'; });
+  // ---- bigger look at a palette: a band in proportion, large tiles, and a little brick wall ----
+  function rcTextOn(name){ var h = rcHex(name).slice(1), r = parseInt(h.substr(0, 2), 16), g = parseInt(h.substr(2, 2), 16), b = parseInt(h.substr(4, 2), 16); return (r * 299 + g * 587 + b * 114) / 1000 > 140 ? '#111' : '#fff'; }
+  function rcShade(hex, f){ var h = hex.slice(1); return '#' + [0, 2, 4].map(function(i){ var v = Math.max(0, Math.min(255, Math.round(parseInt(h.substr(i, 2), 16) * f))); return ('0' + v.toString(16)).slice(-2); }).join(''); }
+  function rcPaletteWeights(n){ var w = []; for (var i = 0; i < n; i++) w.push(1 / (i + 1)); return w; }
+  function rcPalettePreviewHtml(colors, trans){
+    colors = colors.filter(Boolean);
+    if (!colors.length) return '';
+    var w = rcPaletteWeights(colors.length);
+    var band = '<div class="rc-pal-band" title="Roughly how much of a build each colour covers: the first colour takes the most-used parts">' +
+      colors.map(function(c, i){ return '<span style="flex:' + w[i].toFixed(3) + '; background:' + rcHex(c) + ';" title="' + escapeHtml(c) + '"></span>'; }).join('') +
+      (trans ? '<span class="rc-stripes" style="flex:0.12; background-color:' + rcHex(trans) + ';" title="' + escapeHtml(trans) + '"></span>' : '') + '</div>';
+    var ord = ['1st', '2nd', '3rd', '4th', '5th', '6th', '7th', '8th'];
+    var tiles = '<div class="rc-pal-tiles">' + colors.map(function(c, i){
+      return '<div class="rc-pal-tile"><b style="background:' + rcHex(c) + '; color:' + rcTextOn(c) + ';">' + ord[i] + '</b><small>' + escapeHtml(c) + '</small></div>';
+    }).join('') + (trans ? '<div class="rc-pal-tile"><b class="rc-stripes" style="background-color:' + rcHex(trans) + '; color:' + rcTextOn(trans) + ';">Trans</b><small>' + escapeHtml(trans) + '</small></div>' : '') + '</div>';
+    // brick wall: colours picked in proportion, the same pattern every time
+    var seed = 7, cum = [], tot = 0;
+    w.forEach(function(x){ tot += x; cum.push(tot); });
+    function rnd(){ seed = (seed * 9301 + 49297) % 233280; return seed / 233280; }
+    function pick(){ var r = rnd() * tot; for (var i = 0; i < cum.length; i++) if (r < cum[i]) return colors[i]; return colors[0]; }
+    var bw = 48, bh = 18, rows = 6, cols = 9, svg = [], studs = [];
+    for (var y = 0; y < rows; y++){
+      var off = y % 2 ? -bw / 2 : 0;
+      for (var x = 0; x <= cols; x++){
+        var cx = off + x * bw, cy = 8 + y * bh;
+        var isWin = trans && (y === 2 || y === 3) && (x === 3 || x === 6);
+        var c = isWin ? trans : pick(), hex = rcHex(c);
+        svg.push('<g' + (isWin ? ' opacity="0.7"' : '') + '><rect x="' + cx + '" y="' + cy + '" width="' + bw + '" height="' + bh + '" fill="' + hex + '" stroke="' + rcShade(hex, 0.6) + '" stroke-width="1"/><rect x="' + (cx + 1) + '" y="' + (cy + 1) + '" width="' + (bw - 2) + '" height="2" fill="' + rcShade(hex, 1.25) + '"/></g>');
+        if (y === 0) for (var s = 0; s < 4; s++) studs.push('<rect x="' + (cx + 4 + s * 12) + '" y="3" width="7" height="5" rx="1" fill="' + hex + '" stroke="' + rcShade(hex, 0.6) + '" stroke-width="1"/>');
+      }
+    }
+    var W = bw * cols, H = 8 + rows * bh;
+    var wall = '<svg class="rc-pal-wall" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="A brick wall in these colours"><rect width="' + W + '" height="' + H + '" fill="#e9ecef"/>' + studs.join('') + svg.join('') + '</svg>';
+    return band + tiles + wall;
+  }
+  // ---- palette manager ----
+  function pmOpen(){
+    document.getElementById('pm-status').textContent = '';
+    pmRender();
+    document.getElementById('pm-modal-overlay').style.display = 'flex';
+  }
+  function pmStripHtml(t){ return '<span class="pm-strip">' + t.colors.map(rcSw).join('') + (t.trans ? rcSw(t.trans) : '') + '</span>'; }
+  function pmRender(){
+    var showHidden = document.getElementById('pm-show-hidden').checked;
+    var mine = rcMySchemes(), presets = rcPresets(true);
+    var hiddenCount = presets.filter(function(t){ return t.hidden; }).length;
+    function row(t){
+      var acts = [];
+      acts.push('<button type="button" class="icon-btn" data-pm="edit"><i class="ti ti-pencil" aria-hidden="true"></i> Edit</button>');
+      acts.push('<button type="button" class="icon-btn" data-pm="copy" title="Make a palette of your own from this one"><i class="ti ti-copy" aria-hidden="true"></i> Copy</button>');
+      if (t.mine) acts.push('<button type="button" class="icon-btn" data-pm="delete" style="color:var(--text-danger);"><i class="ti ti-trash" aria-hidden="true"></i> Delete</button>');
+      else {
+        acts.push('<button type="button" class="icon-btn" data-pm="' + (t.hidden ? 'show' : 'hide') + '" title="' + (t.hidden ? 'Show it in Recolour again' : 'Leave it out of the list in Recolour') + '"><i class="ti ti-' + (t.hidden ? 'eye' : 'eye-off') + '" aria-hidden="true"></i> ' + (t.hidden ? 'Show' : 'Hide') + '</button>');
+        if (t.edited) acts.push('<button type="button" class="icon-btn" data-pm="reset" title="Put back the original colours"><i class="ti ti-arrow-back-up" aria-hidden="true"></i> Reset</button>');
+      }
+      return '<div class="pm-row' + (t.hidden ? ' pm-hidden' : '') + '" data-id="' + escapeHtml(t.mine ? t.key : t.id) + '" data-mine="' + (t.mine ? 1 : 0) + '">' + pmStripHtml(t) +
+        '<span class="pm-name">' + escapeHtml(t.name) + (t.edited ? '<span class="pm-badge">edited</span>' : '') + (t.hidden ? '<span class="pm-badge">hidden</span>' : '') + '</span><span class="pm-acts">' + acts.join('') + '</span></div>';
+    }
+    var html = '<div class="pm-group">My palettes</div>' + (mine.length ? mine.map(row).join('') : '<p style="font-size:13px; color:var(--text-secondary); margin:6px 0;">None yet. Use <strong>New palette</strong>, or <strong>Copy</strong> on any palette below.</p>');
+    var groups = {}, order = [];
+    presets.forEach(function(t){ if (t.hidden && !showHidden) return; if (!groups[t.group]){ groups[t.group] = []; order.push(t.group); } groups[t.group].push(t); });
+    order.forEach(function(g){ html += '<div class="pm-group">' + escapeHtml(g) + '</div>' + groups[g].map(row).join(''); });
+    if (hiddenCount && !showHidden) html += '<p style="font-size:12px; color:var(--text-secondary); margin:8px 0 0;">' + hiddenCount + ' hidden palette' + (hiddenCount === 1 ? '' : 's') + ' not shown.</p>';
+    document.getElementById('pm-list').innerHTML = html;
+  }
+  function pmFind(row){
+    var id = row.getAttribute('data-id');
+    if (row.getAttribute('data-mine') === '1') return rcMySchemes().find(function(t){ return t.key === id; });
+    return rcPresets(true).find(function(t){ return t.id === id; });
+  }
+  function rcPalettesChanged(){
+    if (document.getElementById('pm-modal-overlay').style.display === 'flex') pmRender();
+    if (rcState && document.getElementById('rc-modal-overlay').style.display === 'flex'){
+      var before = document.getElementById('rc-theme').value;
+      rcRefreshThemeSelect(before);
+      rcApplyTheme();
+    }
+  }
+  wireEl('pm-list', 'click', function(e){
+    var b = e.target.closest && e.target.closest('button[data-pm]'); if (!b) return;
+    var row = b.closest('.pm-row'), t = pmFind(row); if (!t) return;
+    var act = b.getAttribute('data-pm'), st = document.getElementById('pm-status');
+    if (act === 'edit') rcOpenEditor(t.mine ? { key: t.key, name: t.name, colors: t.colors.slice(), trans: t.trans || '' } : { presetId: t.id, name: t.name, colors: t.colors.slice(), trans: t.trans || '' }, 'pm');
+    else if (act === 'copy') rcOpenEditor({ key: null, name: t.name + ' (my version)', colors: t.colors.slice(), trans: t.trans || '' }, 'pm');
+    else if (act === 'delete'){
+      if (!confirm('Delete your palette “' + t.name + '”?')) return;
+      recolorSchemes[t.key] = { name: t.name, colors: [], trans: '', at: Date.now(), deleted: true };
+      saveRecolorSchemes(); st.textContent = 'Deleted “' + t.name + '”.'; rcPalettesChanged();
+    } else if (act === 'hide' || act === 'show'){
+      rcSetPreset(t.id, { hidden: act === 'hide' }); st.textContent = (act === 'hide' ? 'Hid “' : 'Showing “') + t.name + '”' + (act === 'hide' ? ' from Recolour.' : ' in Recolour again.'); rcPalettesChanged();
+    } else if (act === 'reset'){
+      if (!confirm('Put “' + t.name + '” back to its original colours?')) return;
+      rcSetPreset(t.id, { colors: [], trans: '', name: '' }); st.textContent = 'Put “' + t.name + '” back to the original.'; rcPalettesChanged();
+    }
+    if (act === 'edit' || act === 'copy') document.getElementById('pm-modal').scrollTop = 0;
+  });
+  wireEl('pm-new', 'click', function(){ rcOpenEditor({ key: null, name: '', colors: ['Black', 'Light Bluish Gray'], trans: '' }, 'pm'); });
+  wireEl('pm-show-hidden', 'change', pmRender);
+  wireEl('pm-open-btn', 'click', pmOpen);
+  wireEl('rc-pal-manage', 'click', pmOpen);
+  wireEl('pm-close', 'click', function(){
+    if (rcEdit && rcEdit.host === 'pm'){ rcEdit = null; document.getElementById('rc-pal-editor').style.display = 'none'; }
+    document.getElementById('pm-modal-overlay').style.display = 'none';
+  });
   wireEl('rc-close', 'click', function(){ if (rcState) rcState.cancel = true; document.getElementById('rc-modal-overlay').style.display = 'none'; });
   wireEl('rc-theme', 'change', rcApplyTheme);
   wireEl('rc-keep-grays', 'change', rcApplyTheme);
@@ -18949,7 +19138,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.18.1';          // bump with every change to this page
+  var APP_VERSION = '2026.10.18.2';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
