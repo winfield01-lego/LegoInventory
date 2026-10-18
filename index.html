@@ -522,6 +522,44 @@
 #lego-inv-root .tn-card .top-needed-rank.has-pick { display:flex; flex-direction:column; align-items:center; gap:3px; width:auto; }
 #lego-inv-root .tn-card.picked, #lego-inv-root .top-needed-item.picked { box-shadow: inset 3px 0 0 var(--lego-yellow, #f2cd37); }
 @media (max-width: 600px){ #lego-inv-root .tn-card { grid-template-columns: 26px 52px minmax(0, 1fr); } }
+#lego-inv-root .rc-pal-editor { border:1px solid var(--border); border-radius:8px; padding:10px; margin:0 0 8px; background:var(--surface-1); }
+#lego-inv-root .rc-pal-row { display:flex; align-items:center; gap:6px; margin:3px 0; }
+#lego-inv-root .rc-pal-row select { flex:1; min-width:0; }
+#lego-inv-root .rc-pal-row .icon-btn { padding:2px 6px; }
+#lego-inv-root .rc-pal-pos { width:16px; text-align:right; font-size:11px; color:var(--text-muted); }
+#lego-inv-root .rc-pal-sw { display:inline-flex; width:18px; }
+#lego-inv-root .rc-step { display:flex; align-items:center; gap:8px; margin:12px 0 2px; font-size:14px; }
+#lego-inv-root .rc-step-num { display:inline-flex; width:20px; height:20px; border-radius:50%; background:var(--lego-blue, #0055bf); color:#fff; font-size:11px; font-weight:800; align-items:center; justify-content:center; }
+#lego-inv-root .rc-swatches { display:inline-flex; gap:4px; align-items:center; }
+#lego-inv-root .rc-sw { display:inline-block; width:16px; height:16px; border-radius:4px; border:1px solid rgba(0,0,0,.35); vertical-align:middle; flex-shrink:0; }
+#lego-inv-root .rc-sw.trans { background-image: linear-gradient(135deg, rgba(255,255,255,.55) 25%, transparent 25%, transparent 50%, rgba(255,255,255,.55) 50%, rgba(255,255,255,.55) 75%, transparent 75%); background-size: 8px 8px; }
+#lego-inv-root .rc-map-row { display:flex; flex-wrap:wrap; align-items:center; gap:6px 10px; padding:5px 0; border-bottom:1px dashed var(--border); font-size:13px; }
+#lego-inv-root .rc-map-from { display:flex; align-items:center; gap:6px; flex:1 1 200px; min-width:0; }
+#lego-inv-root .rc-map-from small { color:var(--text-muted); }
+#lego-inv-root .rc-map-row select { min-width:180px; flex:1 1 180px; }
+#lego-inv-root .rc-res { width:100%; border-collapse:collapse; font-size:12px; }
+#lego-inv-root .rc-res td { padding:4px 6px; border-bottom:1px solid var(--border); vertical-align:middle; }
+#lego-inv-root .rc-res .rc-colors { white-space:nowrap; }
+#lego-inv-root .rc-badge { display:inline-block; font-size:10px; font-weight:800; letter-spacing:.03em; text-transform:uppercase; padding:1px 6px; border-radius:4px; white-space:nowrap; border:1px solid currentColor; }
+#lego-inv-root .rc-common { color: var(--text-success); }
+#lego-inv-root .rc-uncommon { color: var(--lego-blue, #3b82f6); }
+#lego-inv-root .rc-rare { color: var(--lego-orange, #F2A33A); }
+#lego-inv-root .rc-notmade { color: var(--text-danger); }
+#lego-inv-root .rc-unknown, #lego-inv-root .rc-same { color: var(--text-muted); }
+#lego-inv-root .rc-summary { display:flex; flex-wrap:wrap; gap:6px; margin:4px 0 8px; }
+#lego-inv-root #rc-modal select { max-width:100%; }
+#lego-inv-root #rc-modal label { max-width:100%; }
+@media (max-width: 600px){ #lego-inv-root .rc-res .rc-desc { display:none; } }
+#lego-inv-root .co-head { display:flex; gap:10px; align-items:center; font-size:13px; color:var(--text-secondary); }
+#lego-inv-root .co-head .part-thumb-wrap { width:48px; height:48px; flex-shrink:0; }
+#lego-inv-root .co-row { display:flex; flex-wrap:wrap; align-items:center; gap:4px 10px; padding:6px 0; border-bottom:1px dashed var(--border); font-size:13px; }
+#lego-inv-root .co-row.co-current { background: color-mix(in srgb, var(--lego-yellow, #f2cd37) 14%, transparent); }
+#lego-inv-root .co-name { flex:1 1 160px; min-width:0; display:flex; align-items:center; gap:6px; }
+#lego-inv-root .co-have { font-size:12px; color:var(--text-secondary); white-space:nowrap; }
+#lego-inv-root .co-have.yes { color: var(--text-success); font-weight:700; }
+#lego-inv-root .color-cell .co-btn { padding:2px 6px; margin-left:4px; vertical-align:middle; }
+#lego-inv-root .color-cell { white-space:nowrap; }
+#lego-inv-root .color-cell .field-edit-input { width:calc(100% - 34px); min-width:70px; display:inline-block; }
 #lego-inv-root .shop-item .shop-partnum { cursor: pointer; text-decoration: underline; text-decoration-color: color-mix(in srgb, currentColor 35%, transparent); text-underline-offset: 2px; }
 #lego-inv-root .shop-item .count-chip, #lego-inv-root .shop-item .kind-chip { flex-shrink: 0; cursor: pointer; }
 #lego-inv-root .count-chip.count-none { background: var(--surface-1); color: var(--text-primary); border: 1px solid var(--text-secondary); }
@@ -1991,6 +2029,95 @@
   </div>
 </div>
 
+
+<div id="rc-modal-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1100; align-items:center; justify-content:center; padding:20px;">
+  <div id="rc-modal" style="background:var(--surface-2); border-radius:var(--radius); max-width:860px; width:100%; max-height:90vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
+    <button id="rc-close" class="icon-btn close-x-btn" style="position:absolute; top:14px; right:14px;" aria-label="Close" title="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <h2 style="margin:0 0 4px; font-size:20px; color:var(--lego-black); padding-right:36px;">Recolour</h2>
+    <p id="rc-source" style="margin:0 0 10px; color:var(--text-secondary); font-size:13px;"></p>
+    <div class="rc-step"><span class="rc-step-num">1</span><strong>Pick a colour scheme</strong></div>
+    <div class="row" style="gap:8px; flex-wrap:wrap; align-items:center; margin:6px 0 4px;">
+      <select id="rc-theme" style="min-width:220px;"></select>
+      <span id="rc-theme-swatches" class="rc-swatches"></span>
+    </div>
+    <div class="row" style="gap:6px; flex-wrap:wrap; margin:2px 0 6px;">
+      <button type="button" id="rc-pal-new" class="icon-btn" style="padding:2px 8px;"><i class="ti ti-plus" aria-hidden="true"></i> New palette</button>
+      <button type="button" id="rc-pal-copy" class="icon-btn" style="padding:2px 8px;" title="Start a palette of your own from this one"><i class="ti ti-copy" aria-hidden="true"></i> Copy to edit</button>
+      <button type="button" id="rc-pal-edit" class="icon-btn" style="padding:2px 8px; display:none;"><i class="ti ti-pencil" aria-hidden="true"></i> Edit palette</button>
+      <button type="button" id="rc-pal-delete" class="icon-btn" style="padding:2px 8px; display:none; color:var(--text-danger);"><i class="ti ti-trash" aria-hidden="true"></i> Delete palette</button>
+    </div>
+    <div id="rc-pal-editor" class="rc-pal-editor" style="display:none;">
+      <input type="text" id="rc-pal-name" placeholder="Palette name, e.g. My Blacktron" style="width:100%; margin-bottom:6px;" />
+      <p style="margin:0 0 4px; font-size:12px; color:var(--text-secondary);">Main colours, in order: the build&rsquo;s most-used colour becomes the first one, the next most-used the second, and so on.</p>
+      <div id="rc-pal-colors"></div>
+      <button type="button" id="rc-pal-add" class="icon-btn" style="padding:2px 8px; margin:4px 0 8px;"><i class="ti ti-plus" aria-hidden="true"></i> Add a colour</button>
+      <p style="margin:0 0 4px; font-size:12px; color:var(--text-secondary);">Transparent parts (windows, lights) become:</p>
+      <div id="rc-pal-trans" class="rc-pal-row"></div>
+      <div class="row" style="gap:6px; margin-top:8px;">
+        <button type="button" id="rc-pal-save" class="icon-btn" style="padding:3px 10px; color:var(--lego-green); border-color:var(--lego-green);">Save palette</button>
+        <button type="button" id="rc-pal-cancel" class="icon-btn" style="padding:3px 10px;">Cancel</button>
+        <span id="rc-pal-status" style="font-size:12px; align-self:center;"></span>
+      </div>
+    </div>
+    <div class="row" style="gap:6px 14px; flex-wrap:wrap; margin:4px 0 8px;">
+      <label class="checkbox-label" style="margin:0; font-size:12px;" title="Light and dark bluish gray are often hidden structure: leave them alone"><input type="checkbox" id="rc-keep-grays" checked /> Keep light &amp; dark bluish gray</label>
+      <label class="checkbox-label" style="margin:0; font-size:12px;" title="Pearl, metallic, chrome and flat silver accents stay as they are"><input type="checkbox" id="rc-keep-metal" checked /> Keep metallic accents</label>
+    </div>
+    <div class="rc-step"><span class="rc-step-num">2</span><strong>Check each colour swap</strong> <span style="font-size:12px; color:var(--text-secondary);">(change any of them)</span></div>
+    <div id="rc-map"></div>
+    <div class="rc-step"><span class="rc-step-num">3</span><strong>Check the parts on Rebrickable</strong></div>
+    <div class="row" style="gap:8px; flex-wrap:wrap; align-items:center; margin:6px 0;">
+      <label style="font-size:12px; color:var(--text-secondary);">Too rare if
+        <select id="rc-rare">
+          <option value="0">it isn't made in that colour</option>
+          <option value="5">it's in fewer than 5 sets</option>
+          <option value="20">it's in fewer than 20 sets</option>
+        </select>
+      </label>
+      <label style="font-size:12px; color:var(--text-secondary);">Then
+        <select id="rc-fallback">
+          <option value="next">try the scheme's other colours, else keep the original</option>
+          <option value="keep">keep the original colour</option>
+          <option value="leave">use it anyway (just flag it)</option>
+        </select>
+      </label>
+      <button type="button" id="rc-check-btn" class="icon-btn"><i class="ti ti-search" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Check parts</button>
+      <button type="button" id="rc-stop-btn" class="icon-btn" style="display:none;">Stop</button>
+    </div>
+    <p id="rc-status" style="margin:4px 0 8px; font-size:13px; color:var(--text-secondary);"></p>
+    <div id="rc-results"></div>
+    <div id="rc-create" style="display:none; border-top:2px solid var(--border); margin-top:10px; padding-top:10px;">
+      <div class="rc-step"><span class="rc-step-num">4</span><strong>Save it</strong></div>
+      <div class="row" style="gap:8px; flex-wrap:wrap; align-items:center; margin-top:6px;">
+        <input type="text" id="rc-new-name" placeholder="Name for the recoloured copy" style="flex:1; min-width:220px;" />
+        <button type="button" id="rc-create-btn" class="icon-btn lockable" style="color:var(--lego-green); border-color:var(--lego-green);"><i class="ti ti-copy" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Create recoloured copy</button>
+        <button type="button" id="rc-csv-btn" class="icon-btn"><i class="ti ti-report" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Plan (CSV)</button>
+        <button type="button" id="rc-save-scheme-btn" class="icon-btn" title="Make a palette of your own from these swaps, to use on other builds">Save as my palette</button>
+      </div>
+      <p id="rc-create-status" style="margin:6px 0 0; font-size:12px; color:var(--text-secondary);">Makes a new MOC build with these colours. The original stays as it is.</p>
+    </div>
+  </div>
+</div>
+
+
+<div id="co-modal-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1100; align-items:center; justify-content:center; padding:20px;">
+  <div id="co-modal" style="background:var(--surface-2); border-radius:var(--radius); max-width:640px; width:100%; max-height:88vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
+    <button id="co-close" class="icon-btn close-x-btn" style="position:absolute; top:14px; right:14px;" aria-label="Close" title="Close"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <h2 style="margin:0 0 4px; font-size:20px; color:var(--lego-black); padding-right:36px;">Other colours</h2>
+    <div id="co-head" class="co-head"></div>
+    <div class="row" style="gap:8px; flex-wrap:wrap; align-items:center; margin:8px 0;">
+      <input type="text" id="co-filter" placeholder="Filter colours, e.g. blue" style="flex:1; min-width:150px;" autocapitalize="off" autocorrect="off" spellcheck="false" />
+      <select id="co-sort" title="Order">
+        <option value="have">What I have first</option>
+        <option value="sets">Most common first</option>
+        <option value="name">Colour name</option>
+      </select>
+    </div>
+    <p id="co-status" style="margin:0 0 6px; font-size:12px; color:var(--text-secondary);"></p>
+    <div id="co-list"></div>
+  </div>
+</div>
+
 <div id="pml-modal-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1000; align-items:center; justify-content:center; padding:20px;">
   <div id="pml-modal" style="background:var(--surface-2); border-radius:var(--radius); max-width:820px; width:100%; max-height:88vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
     <button id="pml-close" class="icon-btn close-x-btn" style="position:absolute; top:14px; right:14px;" aria-label="Close" title="Close (Esc)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false" style="display:block;"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
@@ -2076,6 +2203,7 @@
     <button id="detail-modal-mark-complete" class="icon-btn lockable" style="display:none; color: var(--lego-green); border-color: var(--lego-green); margin-bottom:14px;"><i class="ti ti-checkbox" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Mark Complete (set On Hand to Needed for every part)</button>
     <button id="detail-modal-clear-quantities" class="icon-btn lockable" style="display:none; color: var(--text-danger); border-color: var(--text-danger); margin-bottom:14px; margin-left:8px;"><i class="ti ti-eraser" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Clear All Quantities (set On Hand to 0 for every part)</button>
     <button id="detail-modal-refetch-parts" class="icon-btn lockable" style="display:none; margin-bottom:14px; margin-left:8px;" title="Replace this set's parts list with the current one from Rebrickable (spare parts left out)"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Re-fetch parts from Rebrickable</button>
+    <button id="detail-modal-recolor" class="icon-btn" style="margin-bottom:14px; margin-left:8px;" title="Swap this build's colours to a theme or your own scheme, checking every part is made in its new colour"><i class="ti ti-palette" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Recolour&hellip;</button>
     <p id="detail-modal-refetch-status" style="font-size:12px; color:var(--text-secondary); margin:-6px 0 12px;"></p>
     <button id="detail-modal-refetch-stop" class="icon-btn" style="display:none; margin:-4px 0 12px;">Stop</button>
 
@@ -2618,8 +2746,8 @@
   var lockWriteBypassUntil = 0;
   var lockNoticeTimer = null;
   var LOCK_EXEMPT_IDS = {};
-  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-sort pml-open-btn-3 pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing shop-kind-filter shop-status-filter pml-open-btn-4 pml-no-figs top-needed-kind clean-report-kind pml-sort slim-refresh-btn device-name-input auto-photos-toggle auto-photos-run auto-photos-stop figs-almost-toggle-btn figs-almost-threshold figs-almost-drawer-only figs-almost-layout figs-almost-csv-btn figs-almost-pdf-btn moc-tier-toggle top-needed-tier tier-filter mocbuild-group-by sets-group-by sets-sort-by srpt-count srpt-filter srpt-kind srpt-kind-list srpt-show srpt-sort srpt-layout srpt-page-breaks srpt-pick-search top-needed-sel-only srpt-sel-only missing-sel-only collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
-  var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input, #srpt-sets input, input.pick-cb';
+  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-sort pml-open-btn-3 pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing shop-kind-filter shop-status-filter pml-open-btn-4 pml-no-figs top-needed-kind clean-report-kind pml-sort slim-refresh-btn device-name-input auto-photos-toggle auto-photos-run auto-photos-stop figs-almost-toggle-btn figs-almost-threshold figs-almost-drawer-only figs-almost-layout figs-almost-csv-btn figs-almost-pdf-btn moc-tier-toggle top-needed-tier tier-filter mocbuild-group-by sets-group-by sets-sort-by srpt-count srpt-filter srpt-kind srpt-kind-list srpt-show srpt-sort srpt-layout srpt-page-breaks srpt-pick-search top-needed-sel-only srpt-sel-only missing-sel-only rc-theme rc-keep-grays rc-keep-metal rc-rare rc-fallback rc-new-name co-filter co-sort rc-pal-name collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
+  var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input, #srpt-sets input, input.pick-cb, #rc-map select, #rc-pal-editor select';
   var LOCK_CONTROL_SELECTOR = 'input, select, textarea, button';
 
   function lockControlApplies(el){
@@ -3678,6 +3806,7 @@
       makeFieldEditor('.partnum-cell', 'partNum', 'Part #');
       makeFieldEditor('.color-cell', 'color', 'Color');
       makeFieldEditor('.desc-cell', 'desc', 'Description');
+      tr.querySelector('.color-cell').appendChild(colourOptionsButton(r, function(){ renderParts(); }));
 
       function refreshStatus(){
         var pill = tr.querySelector('.pill');
@@ -10268,6 +10397,565 @@
     });
   }
 
+
+  // ---- Recolour a build or set: swap its colours to a scheme, checking each part is made (and how common it is)
+  // in its new colour on Rebrickable. The result is saved as a new MOC build; the original is never changed.
+  var RC_HEX = { 'Black':'05131D','Dark Blue':'0A3463','Blue':'0055BF','Green':'237841','Dark Turquoise':'008F9B','Red':'C91A09','Dark Pink':'C870A0','Brown':'583927','Light Gray':'9BA19D','Dark Gray':'6D6E5C','Light Blue':'B4D2E3','Bright Green':'4B9F4A','Light Turquoise':'55A5AF','Salmon':'F2705E','Pink':'FC97AC','Yellow':'F2CD37','White':'FFFFFF','Light Green':'C2DAB8','Light Yellow':'FBE696','Tan':'E4CD9E','Light Violet':'C9CAE2','Purple':'81007B','Orange':'FE8A18','Magenta':'923978','Lime':'BBE90B','Dark Tan':'958A73','Bright Pink':'E4ADC8','Medium Lavender':'AC78BA','Lavender':'E1D5ED','Reddish Brown':'582A12','Light Bluish Gray':'A0A5A9','Dark Bluish Gray':'6C6E68','Medium Blue':'5A93DB','Medium Green':'73DCA1','Light Pink':'FECCCF','Light Nougat':'F6D7B3','Medium Nougat':'AA7D55','Dark Purple':'3F3691','Dark Brown':'352100','Sand Blue':'6074A1','Sand Green':'A0BCAC','Dark Green':'184632','Dark Red':'720E0F','Dark Azure':'078BC9','Medium Azure':'36AEBF','Light Aqua':'ADC3C0','Olive Green':'9B9A5A','Dark Orange':'A95500','Bright Light Orange':'F8BB3D','Bright Light Blue':'9FC3E9','Bright Light Yellow':'FFF03A','Nougat':'D09168','Vibrant Yellow':'EBD800','Coral':'FF698F','Yellowish Green':'DFEEA5','Medium Brown':'755945','Warm Tan':'CCA373','Reddish Orange':'CA4C0B','Blue Violet':'4354A3','Pearl Gold':'AA7F2E','Flat Silver':'898788','Metallic Silver':'A5A9B4','Metallic Gold':'DBAC34','Pearl Titanium':'3E3C39','Chrome Gold':'BBA53D','Chrome Silver':'E0E0E0','Glow in Dark White':'D9D9D9',
+    'Trans-Clear':'FCFCFC','Trans-Red':'C91A09','Trans-Yellow':'F5CD2F','Trans-Neon Green':'F8F184','Trans-Neon Orange':'FF800D','Trans-Light Blue':'AEEFEC','Trans-Dark Blue':'0020A0','Trans-Green':'84B68D','Trans-Bright Green':'D9E4A7','Trans-Orange':'F08F1C','Trans-Black':'635F52','Trans-Brown':'635F52','Trans-Dark Pink':'DF6695','Trans-Purple':'A5A5CB','Trans-Medium Blue':'CFE2F7','Opal Trans-Clear':'FCFCFC','Opal Trans-Light Blue':'68BCC5','Opal Trans-Dark Blue':'0020A0','Opal Trans-Dark Pink':'CE1D9B','Opal Trans-Purple':'8320B7' };
+  // palettes: the main colours in order of how much of the model they should cover, and one transparent colour
+  var RC_THEMES = [
+    // Classic Space era (colours as the sets used them; tweak any of them in a palette of your own)
+    { id: 'classic', group: 'Classic Space themes', name: 'Classic Space', colors: ['Blue', 'Light Bluish Gray', 'Yellow'], trans: 'Trans-Yellow' },
+    { id: 'blacktron', group: 'Classic Space themes', name: 'Blacktron', colors: ['Black', 'Yellow'], trans: 'Trans-Red' },
+    { id: 'blacktron2', group: 'Classic Space themes', name: 'Blacktron II', colors: ['Black', 'White', 'Dark Bluish Gray'], trans: 'Trans-Neon Green' },
+    { id: 'futuron', group: 'Classic Space themes', name: 'Futuron', colors: ['Blue', 'White', 'Black'], trans: 'Trans-Yellow' },
+    { id: 'spacepolice', group: 'Classic Space themes', name: 'Space Police', colors: ['Black', 'Blue', 'Light Bluish Gray'], trans: 'Trans-Red' },
+    { id: 'spacepolice2', group: 'Classic Space themes', name: 'Space Police II', colors: ['Black', 'Light Bluish Gray', 'Red'], trans: 'Trans-Green' },
+    { id: 'mtron', group: 'Classic Space themes', name: 'M:Tron', colors: ['Red', 'Black', 'Light Bluish Gray'], trans: 'Trans-Neon Green' },
+    { id: 'iceplanet', group: 'Classic Space themes', name: 'Ice Planet 2002', colors: ['White', 'Blue', 'Black'], trans: 'Trans-Neon Orange' },
+    { id: 'unitron', group: 'Classic Space themes', name: 'Unitron', colors: ['Black', 'Light Bluish Gray', 'Medium Blue'], trans: 'Trans-Light Blue' },
+    { id: 'spyrius', group: 'Classic Space themes', name: 'Spyrius', colors: ['Red', 'Black', 'Light Bluish Gray'], trans: 'Trans-Dark Blue' },
+    { id: 'exploriens', group: 'Classic Space themes', name: 'Exploriens', colors: ['White', 'Black', 'Light Bluish Gray'], trans: 'Trans-Green' },
+    { id: 'neoclassic', group: 'Classic Space themes', name: 'Neo-Classic Space', colors: ['Blue', 'Light Bluish Gray', 'Yellow', 'Dark Bluish Gray'], trans: 'Trans-Yellow' },
+    // looks for other kinds of builds
+    { id: 'imperial', group: 'Other looks', name: 'Imperial gray', colors: ['Light Bluish Gray', 'Dark Bluish Gray', 'Black'], trans: 'Trans-Red' },
+    { id: 'rebel', group: 'Other looks', name: 'Rebel', colors: ['Light Bluish Gray', 'White', 'Dark Orange', 'Dark Red'], trans: 'Trans-Light Blue' },
+    { id: 'grayscale', group: 'Other looks', name: 'Grayscale', colors: ['Light Bluish Gray', 'Dark Bluish Gray', 'Black'], trans: 'Trans-Clear' },
+    { id: 'whiteout', group: 'Other looks', name: 'All white', colors: ['White', 'Light Bluish Gray'], trans: 'Trans-Clear' },
+    { id: 'stealth', group: 'Other looks', name: 'Stealth black', colors: ['Black', 'Dark Bluish Gray'], trans: 'Trans-Black' },
+    { id: 'arctic', group: 'Other looks', name: 'Arctic', colors: ['White', 'Light Bluish Gray', 'Medium Azure'], trans: 'Trans-Light Blue' },
+    { id: 'winter', group: 'Other looks', name: 'Winter', colors: ['White', 'Sand Blue', 'Light Bluish Gray'], trans: 'Trans-Clear' },
+    { id: 'ocean', group: 'Other looks', name: 'Ocean', colors: ['Dark Azure', 'White', 'Medium Azure', 'Dark Blue'], trans: 'Trans-Light Blue' },
+    { id: 'desert', group: 'Other looks', name: 'Desert', colors: ['Tan', 'Dark Tan', 'Reddish Brown'], trans: 'Trans-Orange' },
+    { id: 'mars', group: 'Other looks', name: 'Red planet', colors: ['Dark Orange', 'Reddish Brown', 'Dark Tan'], trans: 'Trans-Orange' },
+    { id: 'forest', group: 'Other looks', name: 'Forest', colors: ['Dark Green', 'Reddish Brown', 'Tan'], trans: 'Trans-Green' },
+    { id: 'jungle', group: 'Other looks', name: 'Jungle', colors: ['Green', 'Dark Green', 'Reddish Brown', 'Lime'], trans: 'Trans-Green' },
+    { id: 'military', group: 'Other looks', name: 'Military', colors: ['Olive Green', 'Dark Tan', 'Dark Bluish Gray'], trans: 'Trans-Orange' },
+    { id: 'castle', group: 'Other looks', name: 'Castle stone', colors: ['Light Bluish Gray', 'Dark Bluish Gray', 'Reddish Brown'], trans: 'Trans-Orange' },
+    { id: 'pirate', group: 'Other looks', name: 'Pirate', colors: ['Reddish Brown', 'Black', 'Tan', 'Dark Red'], trans: 'Trans-Clear' },
+    { id: 'steampunk', group: 'Other looks', name: 'Steampunk', colors: ['Reddish Brown', 'Dark Tan', 'Black', 'Pearl Gold'], trans: 'Trans-Orange' },
+    { id: 'fire', group: 'Other looks', name: 'Fire & rescue', colors: ['Red', 'White', 'Black'], trans: 'Trans-Clear' },
+    { id: 'police', group: 'Other looks', name: 'Police', colors: ['White', 'Blue', 'Black'], trans: 'Trans-Dark Blue' },
+    { id: 'construction', group: 'Other looks', name: 'Construction', colors: ['Yellow', 'Black', 'Dark Bluish Gray'], trans: 'Trans-Orange' },
+    { id: 'racing', group: 'Other looks', name: 'Racing', colors: ['Red', 'White', 'Black', 'Yellow'], trans: 'Trans-Clear' },
+    { id: 'volcano', group: 'Other looks', name: 'Volcano', colors: ['Black', 'Dark Red', 'Dark Orange'], trans: 'Trans-Orange' },
+    { id: 'sunset', group: 'Other looks', name: 'Sunset', colors: ['Orange', 'Dark Orange', 'Dark Red', 'Bright Light Orange'], trans: 'Trans-Orange' },
+    { id: 'neon', group: 'Other looks', name: 'Neon', colors: ['Black', 'Lime', 'Magenta'], trans: 'Trans-Neon Green' },
+    { id: 'royal', group: 'Other looks', name: 'Royal', colors: ['Dark Purple', 'Pearl Gold', 'Black'], trans: 'Trans-Purple' },
+    { id: 'pastel', group: 'Other looks', name: 'Pastel', colors: ['Lavender', 'Bright Pink', 'Light Aqua', 'Bright Light Yellow'], trans: 'Trans-Clear' },
+    { id: 'retro', group: 'Other looks', name: 'Retro primary', colors: ['Red', 'Blue', 'Yellow', 'White'], trans: 'Trans-Clear' }
+  ];
+  // your own palettes: kept with your collection on your site, so every device has them
+  var RC_SCHEMES_KEY = 'recolor-schemes-v2';
+  var recolorSchemes = {};   // { id: { name, colors: [...], trans, at, deleted } }
+  function loadRecolorSchemes(){
+    return storage.get(RC_SCHEMES_KEY, false).then(function(res){
+      if (res && res.value){ try { recolorSchemes = JSON.parse(res.value) || {}; } catch(e){ recolorSchemes = {}; } }
+      // palettes saved on this device by the earlier version
+      try {
+        var old = JSON.parse(localStorage.getItem('legoinv:recolor-schemes-v1') || '[]') || [];
+        if (old.length){
+          old.forEach(function(t, i){ var id = 'm' + Date.now().toString(36) + i; recolorSchemes[id] = { name: t.name, colors: t.colors || [], trans: t.trans || '', at: Date.now() }; });
+          localStorage.removeItem('legoinv:recolor-schemes-v1');
+          saveRecolorSchemes();
+        }
+      } catch(e){}
+    }).catch(function(){});
+  }
+  function saveRecolorSchemes(){ storage.set(RC_SCHEMES_KEY, JSON.stringify(recolorSchemes), false); if (typeof scheduleAutoPublish === 'function') scheduleAutoPublish(); }
+  function mergeRecolorSchemes(a, b){
+    var out = {};
+    [a || {}, b || {}].forEach(function(src){ Object.keys(src).forEach(function(k){ var x = src[k]; if (x && (!out[k] || (x.at || 0) > (out[k].at || 0))) out[k] = x; }); });
+    return out;
+  }
+  function rcMySchemes(){
+    return Object.keys(recolorSchemes).filter(function(id){ return recolorSchemes[id] && !recolorSchemes[id].deleted; })
+      .map(function(id){ var t = recolorSchemes[id]; return { id: 'mine:' + id, key: id, group: 'My palettes', name: t.name, colors: (t.colors || []).filter(Boolean), trans: t.trans || '', mine: true }; })
+      .sort(function(a, b){ return a.name.localeCompare(b.name); });
+  }
+  function rcAllThemes(){ return rcMySchemes().concat(RC_THEMES); }
+  function rcThemeOptionsHtml(selId){
+    var groups = {}, order = [];
+    rcAllThemes().forEach(function(t){ if (!groups[t.group]){ groups[t.group] = []; order.push(t.group); } groups[t.group].push(t); });
+    return order.map(function(g){
+      return '<optgroup label="' + escapeHtml(g) + '">' + groups[g].map(function(t){ return '<option value="' + escapeHtml(t.id) + '"' + (t.id === selId ? ' selected' : '') + '>' + escapeHtml(t.name) + '</option>'; }).join('') + '</optgroup>';
+    }).join('');
+  }
+  function rcRefreshThemeSelect(selId){
+    var sel = document.getElementById('rc-theme');
+    var cur = selId || sel.value || RC_THEMES[0].id;
+    sel.innerHTML = rcThemeOptionsHtml(cur);
+    if (!rcAllThemes().some(function(t){ return t.id === cur; })) sel.value = RC_THEMES[0].id;
+    rcUpdatePaletteButtons();
+  }
+  function rcUpdatePaletteButtons(){
+    var t = rcTheme();
+    document.getElementById('rc-pal-edit').style.display = t.mine ? '' : 'none';
+    document.getElementById('rc-pal-delete').style.display = t.mine ? '' : 'none';
+    document.getElementById('rc-pal-copy').style.display = t.mine ? 'none' : '';
+  }
+  // ---- the palette editor ----
+  var rcEdit = null;   // { key (existing id or null), name, colors, trans }
+  function rcOpenEditor(start){
+    rcEdit = start;
+    document.getElementById('rc-pal-editor').style.display = '';
+    document.getElementById('rc-pal-name').value = start.name || '';
+    rcRenderEditor();
+    document.getElementById('rc-pal-name').focus();
+  }
+  function rcColourSelect(value, allowNone, transOnly){
+    var opts = rcColourOptions().filter(function(c){ return transOnly ? rcIsTrans(c) : !rcIsTrans(c); });
+    if (value && opts.indexOf(value) === -1) opts.unshift(value);
+    return '<select>' + (allowNone ? '<option value=""' + (value ? '' : ' selected') + '>Keep transparent parts as they are</option>' : '') +
+      opts.map(function(o){ return '<option' + (o === value ? ' selected' : '') + '>' + escapeHtml(o) + '</option>'; }).join('') + '</select>';
+  }
+  function rcRenderEditor(){
+    var box = document.getElementById('rc-pal-colors');
+    box.innerHTML = rcEdit.colors.map(function(c, i){
+      return '<div class="rc-pal-row" data-i="' + i + '"><span class="rc-pal-pos">' + (i + 1) + '</span><span class="rc-pal-sw">' + rcSw(c) + '</span>' + rcColourSelect(c) +
+        '<button type="button" class="icon-btn" data-act="up" title="Move up"' + (i ? '' : ' disabled') + '><i class="ti ti-arrow-up" aria-hidden="true"></i></button>' +
+        '<button type="button" class="icon-btn" data-act="down" title="Move down"' + (i < rcEdit.colors.length - 1 ? '' : ' disabled') + '><i class="ti ti-arrow-down" aria-hidden="true"></i></button>' +
+        '<button type="button" class="icon-btn" data-act="del" title="Remove"' + (rcEdit.colors.length > 1 ? '' : ' disabled') + '><i class="ti ti-x" aria-hidden="true"></i></button></div>';
+    }).join('');
+    document.getElementById('rc-pal-add').disabled = rcEdit.colors.length >= 8;
+    document.getElementById('rc-pal-trans').innerHTML = '<span class="rc-pal-sw">' + (rcEdit.trans ? rcSw(rcEdit.trans) : '') + '</span>' + rcColourSelect(rcEdit.trans, true, true);
+  }
+  function rcEditorClick(e){
+    var b = e.target.closest && e.target.closest('button[data-act]');
+    if (!b) return;
+    var i = +b.closest('.rc-pal-row').getAttribute('data-i'), c = rcEdit.colors;
+    if (b.getAttribute('data-act') === 'up' && i > 0){ var t = c[i - 1]; c[i - 1] = c[i]; c[i] = t; }
+    if (b.getAttribute('data-act') === 'down' && i < c.length - 1){ var t2 = c[i + 1]; c[i + 1] = c[i]; c[i] = t2; }
+    if (b.getAttribute('data-act') === 'del' && c.length > 1) c.splice(i, 1);
+    rcRenderEditor();
+  }
+  function rcEditorChange(e){
+    var sel = e.target;
+    if (sel.tagName !== 'SELECT') return;
+    var row = sel.closest('#rc-pal-colors .rc-pal-row');
+    if (row) rcEdit.colors[+row.getAttribute('data-i')] = sel.value;
+    else rcEdit.trans = sel.value;
+    rcRenderEditor();
+  }
+  function rcSavePalette(){
+    var st = document.getElementById('rc-pal-status');
+    var name = document.getElementById('rc-pal-name').value.trim();
+    if (!name){ st.style.color = 'var(--text-danger)'; st.textContent = 'Give the palette a name.'; return; }
+    var colors = rcEdit.colors.filter(function(c, i, a){ return c && a.indexOf(c) === i; });
+    if (!colors.length){ st.style.color = 'var(--text-danger)'; st.textContent = 'Add at least one colour.'; return; }
+    var key = rcEdit.key || ('p' + Date.now().toString(36));
+    recolorSchemes[key] = { name: name, colors: colors, trans: rcEdit.trans || '', at: Date.now() };
+    saveRecolorSchemes();
+    document.getElementById('rc-pal-editor').style.display = 'none';
+    rcEdit = null;
+    rcRefreshThemeSelect('mine:' + key);
+    rcApplyTheme();
+    document.getElementById('rc-status').textContent = 'Saved “' + name + '” to your palettes. It’s kept with your collection, so your other devices get it too.';
+  }
+  function rcCurrentAsEdit(copy){
+    var t = rcTheme();
+    return { key: copy ? null : t.key, name: copy ? t.name + ' (my version)' : t.name, colors: t.colors.slice(), trans: t.trans || '' };
+  }
+  function rcHex(name){
+    var k = normColorKey(name);
+    for (var n in RC_HEX) if (normColorKey(n) === k) return '#' + RC_HEX[n];
+    return '#cccccc';
+  }
+  function rcIsTrans(name){ return /^(opal )?trans/i.test(String(name || '').replace(/-/g, ' ')); }
+  function rcIsMetal(name){ return /pearl|metallic|chrome|flat silver|glitter/i.test(name || ''); }
+  function rcIsGray(name){ var k = normColorKey(name); return k === 'light bluish gray' || k === 'dark bluish gray'; }
+  function rcSw(name){ return '<span class="rc-sw' + (rcIsTrans(name) ? ' trans' : '') + '" style="background-color:' + rcHex(name) + '" title="' + escapeHtml(name) + '"></span>'; }
+  var rcState = null;
+  // the lines to recolour: a build's lines, or a set's (times the copies you own)
+  function rcSourceLines(kind, key){
+    var out = [];
+    if (kind === 'set'){
+      setParts.forEach(function(r){ if (r.setNum === key) out.push({ partNum: r.partNum, color: r.color || '', desc: r.desc || '', elementId: r.elementId || '', qty: setPartNeeded(r) }); });
+    } else {
+      state.rows.forEach(function(r){ if (r.moc === key) out.push({ partNum: r.partNum, color: r.color || '', desc: r.desc || '', elementId: r.elementId || '', qty: r.qty || 0 }); });
+    }
+    return out.filter(function(l){ return l.partNum && l.qty > 0; });
+  }
+  function rcColourOptions(){
+    var seen = {}, list = [];
+    Object.keys(RC_HEX).concat(Object.keys(BL_COLOR_IDS || {})).forEach(function(n){ var k = normColorKey(n); if (!seen[k]){ seen[k] = 1; list.push(n); } });
+    [state.rows, setParts, drawerParts].forEach(function(L){ L.forEach(function(r){ var k = normColorKey(r.color); if (r.color && !seen[k]){ seen[k] = 1; list.push(r.color); } }); });
+    return list.sort(function(a, b){ return a.localeCompare(b); });
+  }
+  function openRecolor(kind, key){
+    var lines = rcSourceLines(kind, key);
+    if (!lines.length){ alert('This ' + (kind === 'set' ? 'set' : 'build') + ' has no parts to recolour yet.'); return; }
+    var label = kind === 'set' ? (function(){ var s = ownedSets.find(function(x){ return x.setNum === key; }); return key + (s && s.name ? ' ' + s.name : ''); })() : key;
+    rcState = { kind: kind, key: key, label: label, lines: lines, map: {}, results: null, running: false, cancel: false };
+    document.getElementById('rc-source').textContent = (kind === 'set' ? 'Official set ' : 'MOC build ') + label + ' · ' + lines.length + ' part line' + (lines.length === 1 ? '' : 's') + ' · ' + lines.reduce(function(t, l){ return t + l.qty; }, 0).toLocaleString() + ' pieces';
+    rcRefreshThemeSelect();
+    document.getElementById('rc-pal-editor').style.display = 'none';
+    document.getElementById('rc-results').innerHTML = '';
+    document.getElementById('rc-status').textContent = '';
+    document.getElementById('rc-create').style.display = 'none';
+    document.getElementById('rc-new-name').value = '';
+    rcApplyTheme();
+    document.getElementById('rc-modal-overlay').style.display = 'flex';
+    if (viewLocked) applyLockToTree(document.getElementById('rc-modal'));
+  }
+  function rcTheme(){ var id = document.getElementById('rc-theme').value; return rcAllThemes().find(function(t){ return t.id === id; }) || RC_THEMES[0]; }
+  // suggest a colour for each colour in the build: the most-used colours take the scheme's main colours in order
+  function rcApplyTheme(){
+    if (!rcState) return;
+    var t = rcTheme();
+    rcUpdatePaletteButtons();
+    document.getElementById('rc-theme-swatches').innerHTML = t.colors.concat([t.trans]).filter(Boolean).map(rcSw).join('');
+    var keepGrays = document.getElementById('rc-keep-grays').checked, keepMetal = document.getElementById('rc-keep-metal').checked;
+    var counts = {}, names = {};
+    rcState.lines.forEach(function(l){ var k = normColorKey(l.color); counts[k] = (counts[k] || 0) + l.qty; if (!names[k]) names[k] = l.color; });
+    var keys = Object.keys(counts).sort(function(a, b){ return counts[b] - counts[a]; });
+    var map = {}, i = 0;
+    keys.forEach(function(k){
+      var name = names[k];
+      if (!name || (keepMetal && rcIsMetal(name)) || (keepGrays && rcIsGray(name))) map[k] = name;
+      else if (rcIsTrans(name)) map[k] = t.trans || name;
+      else { map[k] = t.colors[i % t.colors.length]; i++; }
+    });
+    rcState.map = map; rcState.counts = counts; rcState.names = names; rcState.order = keys; rcState.results = null;
+    document.getElementById('rc-results').innerHTML = '';
+    document.getElementById('rc-create').style.display = 'none';
+    document.getElementById('rc-status').textContent = 'Check the swaps, then check the parts.';
+    rcRenderMap();
+  }
+  function rcRenderMap(){
+    var opts = rcColourOptions();
+    var box = document.getElementById('rc-map');
+    box.innerHTML = rcState.order.map(function(k){
+      var name = rcState.names[k], to = rcState.map[k];
+      if (opts.indexOf(to) === -1) opts.push(to);
+      return '<div class="rc-map-row" data-k="' + escapeHtml(k) + '"><span class="rc-map-from">' + rcSw(name) + '<span>' + escapeHtml(name || '(no colour)') + ' <small>' + rcState.counts[k].toLocaleString() + ' pcs</small></span></span>' +
+        '<i class="ti ti-arrow-right" aria-hidden="true"></i><span class="rc-to-sw">' + rcSw(to) + '</span>' +
+        '<select>' + opts.map(function(o){ return '<option' + (o === to ? ' selected' : '') + '>' + escapeHtml(o) + '</option>'; }).join('') + '</select></div>';
+    }).join('');
+    box.querySelectorAll('.rc-map-row select').forEach(function(sel){
+      sel.addEventListener('change', function(){
+        var row = sel.closest('.rc-map-row'), k = row.getAttribute('data-k');
+        rcState.map[k] = sel.value;
+        row.querySelector('.rc-to-sw').innerHTML = rcSw(sel.value);
+        rcState.results = null;
+        document.getElementById('rc-create').style.display = 'none';
+        document.getElementById('rc-status').textContent = 'Swaps changed: check the parts again.';
+      });
+    });
+  }
+  function rcRarity(entry){
+    if (!entry) return { level: 'notmade', sets: 0 };
+    var n = entry.numSets || 0;
+    return { level: n >= 20 ? 'common' : n >= 5 ? 'uncommon' : 'rare', sets: n };
+  }
+  function rcRarityText(rr){ return rr.level === 'notmade' ? 'not made' : rr.level + ' · ' + rr.sets + ' set' + (rr.sets === 1 ? '' : 's'); }
+  function rcBadge(r){
+    if (r.status === 'same') return '<span class="rc-badge rc-same">unchanged</span>';
+    if (r.status === 'unknown') return '<span class="rc-badge rc-unknown" title="Rebrickable has no colour list for this part">couldn’t check</span>';
+    var w = r.wantedRarity;
+    if (r.status === 'kept') return '<span class="rc-badge rc-' + w.level + '">' + escapeHtml(r.wanted) + ': ' + rcRarityText(w) + '</span> <span class="rc-badge rc-same">kept original colour</span>';
+    if (r.status === 'swapped') return '<span class="rc-badge rc-' + r.rarity.level + '">' + rcRarityText(r.rarity) + '</span> <span class="rc-badge rc-uncommon">instead of ' + escapeHtml(r.wanted) + ' (' + rcRarityText(w) + ')</span>';
+    return '<span class="rc-badge rc-' + r.rarity.level + '">' + rcRarityText(r.rarity) + '</span>';
+  }
+  function rcRun(){
+    if (!rcState || rcState.running) return;
+    if (!rebrickableApiKey){ document.getElementById('rc-status').textContent = 'Add a Rebrickable API key first (Rebrickable Connection, on the Data & Tools tab).'; return; }
+    var rare = parseInt(document.getElementById('rc-rare').value, 10) || 0;
+    var fallback = document.getElementById('rc-fallback').value;
+    var t = rcTheme();
+    var drawerStock = buildDrawerStockMap();
+    var lines = rcState.lines, results = [], i = 0;
+    var parts = {}; lines.forEach(function(l){ parts[normKey(l.partNum)] = l.partNum; });
+    var partList = Object.keys(parts), colorsBy = {}, pi = 0;
+    rcState.running = true; rcState.cancel = false;
+    document.getElementById('rc-stop-btn').style.display = '';
+    document.getElementById('rc-check-btn').disabled = true;
+    rbPaceMs = 450; rbRetry429 = true;
+    var tooRare = function(r){ return r.level === 'notmade' || (rare && r.sets < rare); };
+    function done(){
+      rcState.running = false; rbPaceMs = 0; rbRetry429 = false;
+      document.getElementById('rc-stop-btn').style.display = 'none';
+      document.getElementById('rc-check-btn').disabled = false;
+      if (rcState.cancel){ document.getElementById('rc-status').textContent = 'Stopped. Check again to finish.'; return; }
+      lines.forEach(function(l){
+        var k = normColorKey(l.color), want = rcState.map[k] || l.color;
+        var colors = colorsBy[normKey(l.partNum)];
+        var r = { line: l, wanted: want, color: want, elementId: '', status: 'ok', rarity: null, wantedRarity: null };
+        if (normColorKey(want) === normColorKey(l.color)){ r.status = 'same'; r.color = l.color; r.elementId = l.elementId; }
+        else if (!colors || !colors.length){ r.status = 'unknown'; }
+        else {
+          var e = rbColorMatch(colors, want);
+          r.rarity = r.wantedRarity = rcRarity(e);
+          if (e && e.elements && e.elements.length) r.elementId = String(e.elements[0]);
+          if (tooRare(r.rarity) && fallback !== 'leave'){
+            var alt = null;
+            if (fallback === 'next'){
+              var pool = (rcIsTrans(l.color) ? [t.trans] : t.colors).filter(function(c){ return c && normColorKey(c) !== normColorKey(want); });
+              pool.map(function(c){ var ce = rbColorMatch(colors, c); return { c: c, e: ce, r: rcRarity(ce) }; })
+                .filter(function(x){ return !tooRare(x.r); })
+                .sort(function(a, b){ return b.r.sets - a.r.sets; })
+                .slice(0, 1).forEach(function(x){ alt = x; });
+            }
+            if (alt){ r.status = 'swapped'; r.color = alt.c; r.rarity = alt.r; r.elementId = alt.e && alt.e.elements && alt.e.elements.length ? String(alt.e.elements[0]) : ''; }
+            else { r.status = 'kept'; r.color = l.color; r.elementId = l.elementId; }
+          }
+        }
+        r.inDrawers = drawerStock[stockKeyOf(l.partNum, r.color)] || 0;
+        results.push(r);
+      });
+      rcState.results = results;
+      rcRenderResults();
+    }
+    function next(){
+      if (rcState.cancel || pi >= partList.length) return done();
+      var pn = parts[partList[pi++]];
+      document.getElementById('rc-status').textContent = 'Checking part ' + pi + ' of ' + partList.length + ' on Rebrickable… (' + pn + ')';
+      rbGetPartColors(pn).then(function(c){ colorsBy[normKey(pn)] = c || []; }, function(){ colorsBy[normKey(pn)] = null; }).then(next);
+    }
+    next();
+  }
+  function rcRenderResults(){
+    var res = rcState.results;
+    var c = { common: 0, uncommon: 0, rare: 0, notmade: 0, swapped: 0, kept: 0, unknown: 0, same: 0, pcs: 0, have: 0 };
+    res.forEach(function(r){
+      c.pcs += r.line.qty;
+      c.have += Math.min(r.inDrawers, r.line.qty);
+      if (r.status === 'same') c.same++;
+      else if (r.status === 'unknown') c.unknown++;
+      else if (r.status === 'kept') c.kept++;
+      else { c[r.rarity.level]++; if (r.status === 'swapped') c.swapped++; }
+    });
+    var chip = function(n, cls, label){ return n ? '<span class="rc-badge rc-' + cls + '">' + n + ' ' + label + '</span>' : ''; };
+    var order = { notmade: 0, rare: 1, unknown: 2, uncommon: 3, common: 4, same: 5 };
+    var sorted = res.slice().sort(function(a, b){
+      var lv = function(r){ return r.status === 'same' ? 'same' : r.status === 'unknown' ? 'unknown' : r.status === 'kept' ? 'rare' : r.rarity.level; };
+      var la = lv(a), lb = lv(b);
+      return (order[la] - order[lb]) || (b.line.qty - a.line.qty);
+    });
+    document.getElementById('rc-status').innerHTML = 'Checked ' + res.length + ' part line' + (res.length === 1 ? '' : 's') + '. Your drawers already have ' + c.have.toLocaleString() + ' of the ' + c.pcs.toLocaleString() + ' pieces in their new colours.';
+    document.getElementById('rc-results').innerHTML =
+      '<div class="rc-summary">' + chip(c.common, 'common', 'common') + chip(c.uncommon, 'uncommon', 'uncommon') + chip(c.rare, 'rare', 'rare') + chip(c.notmade, 'notmade', 'not made in that colour (used anyway)') +
+        chip(c.swapped, 'uncommon', 'swapped to another scheme colour') + chip(c.kept, 'same', 'kept their original colour (new one too rare or not made)') + chip(c.unknown, 'unknown', 'couldn’t check') + chip(c.same, 'same', 'unchanged') + '</div>' +
+      '<div style="max-height:340px; overflow-y:auto;"><table class="rc-res"><tbody>' + sorted.map(function(r){
+        var l = r.line;
+        return '<tr><td><strong>' + l.qty + '×</strong></td><td>#' + escapeHtml(l.partNum) + '</td><td class="rc-desc">' + escapeHtml(truncateForPdf(l.desc, 40)) + '</td>' +
+          '<td class="rc-colors">' + rcSw(l.color) + (normColorKey(r.color) === normColorKey(l.color) ? ' ' + escapeHtml(l.color) : ' <i class="ti ti-arrow-right" aria-hidden="true"></i> ' + rcSw(r.color) + ' ' + escapeHtml(r.color)) + '</td>' +
+          '<td>' + rcBadge(r) + '</td><td style="white-space:nowrap; color:var(--text-secondary);">' + (r.inDrawers ? r.inDrawers + ' in drawers' : '') + '</td></tr>';
+      }).join('') + '</tbody></table></div>';
+    document.getElementById('rc-create').style.display = '';
+    var nm = document.getElementById('rc-new-name');
+    if (!nm.value) nm.value = (rcState.kind === 'set' ? rcState.label : rcState.key) + ' (' + rcTheme().name + ')';
+    if (viewLocked) applyLockToTree(document.getElementById('rc-modal'));
+  }
+  function rcCreate(){
+    if (viewLocked || !rcState || !rcState.results) return;
+    var st = document.getElementById('rc-create-status');
+    var name = document.getElementById('rc-new-name').value.trim();
+    if (!name){ st.style.color = 'var(--text-danger)'; st.textContent = 'Give the copy a name first.'; return; }
+    if (mocBuilds.some(function(b){ return b.name === name; }) || state.rows.some(function(r){ return r.moc === name; })){ st.style.color = 'var(--text-danger)'; st.textContent = 'A build called “' + name + '” already exists. Pick another name.'; return; }
+    var merged = {}, order = [];
+    rcState.results.forEach(function(r){
+      var k = stockKeyOf(r.line.partNum, r.color);
+      if (!merged[k]){ merged[k] = { partNum: r.line.partNum, qty: 0, color: r.color, desc: r.line.desc, moc: name, elementId: r.elementId || '', onHand: 0, built: false, priority: '' }; order.push(k); }
+      merged[k].qty += r.line.qty;
+    });
+    order.forEach(function(k){ state.rows.push(merged[k]); });
+    mocBuilds.push({ name: name, lastEdited: new Date().toISOString() });
+    var srcTheme = rcState.kind === 'set' ? ((ownedSets.find(function(s){ return s.setNum === rcState.key; }) || {}).theme || '') : (mocThemes[rcState.key] || '');
+    if (srcTheme) mocThemes[name] = srcTheme;
+    saveMocBuilds(); saveMocThemes(); saveState();
+    safeRun('master list after recolouring', function(){ reconcilePartCatalog(catalogShouldPersist()); });
+    render();
+    if (typeof renderMocBuildsTab === 'function') renderMocBuildsTab();
+    st.style.color = 'var(--text-success)';
+    st.innerHTML = 'Created “' + escapeHtml(name) + '” with ' + order.length + ' part lines. ';
+    var open = document.createElement('button'); open.type = 'button'; open.className = 'icon-btn'; open.style.padding = '2px 8px'; open.textContent = 'Open it';
+    open.addEventListener('click', function(){ document.getElementById('rc-modal-overlay').style.display = 'none'; openMocDetail(name); });
+    st.appendChild(open);
+  }
+  function rcCsv(){
+    if (!rcState || !rcState.results) return;
+    var lines = [['Part #', 'Description', 'Qty', 'Original Colour', 'New Colour', 'Wanted Colour', 'Result', 'Sets With Part In New Colour', 'Rarity', 'New Element ID', 'In Drawers (new colour)'].map(csvEscape).join(',')];
+    rcState.results.forEach(function(r){
+      var fin = r.status === 'kept' ? null : r.rarity;
+      lines.push([r.line.partNum, r.line.desc, r.line.qty, r.line.color, r.color, r.wanted, r.status === 'ok' ? 'recoloured' : r.status === 'kept' ? 'kept original (' + r.wanted + ' ' + rcRarityText(r.wantedRarity) + ')' : r.status === 'swapped' ? 'swapped (' + r.wanted + ' ' + rcRarityText(r.wantedRarity) + ')' : r.status, fin ? fin.sets : '', fin ? fin.level : '', r.elementId, r.inDrawers].map(csvEscape).join(','));
+    });
+    reportSettingsNote = 'Scheme: ' + rcTheme().name + '  ·  Too rare: ' + document.getElementById('rc-rare').selectedOptions[0].textContent + '  ·  Then: ' + document.getElementById('rc-fallback').selectedOptions[0].textContent;
+    downloadCsv(lines, 'lego-recolour-' + slugify(rcState.label));
+  }
+  function rcSaveScheme(){
+    if (!rcState) return;
+    var opaque = [], trans = '';
+    rcState.order.forEach(function(k){ var to = rcState.map[k]; if (rcIsTrans(to)){ if (!trans) trans = to; } else if (opaque.indexOf(to) === -1 && !(document.getElementById('rc-keep-grays').checked && rcIsGray(to) && rcIsGray(rcState.names[k]))) opaque.push(to); });
+    rcOpenEditor({ key: null, name: rcTheme().name + ' (my version)', colors: opaque.slice(0, 8), trans: trans });
+    document.getElementById('rc-pal-editor').scrollIntoView({ block: 'center' });
+  }
+  wireEl('rc-pal-new', 'click', function(){ rcOpenEditor({ key: null, name: '', colors: ['Black', 'Light Bluish Gray'], trans: '' }); });
+  wireEl('rc-pal-copy', 'click', function(){ rcOpenEditor(rcCurrentAsEdit(true)); });
+  wireEl('rc-pal-edit', 'click', function(){ rcOpenEditor(rcCurrentAsEdit(false)); });
+  wireEl('rc-pal-delete', 'click', function(){
+    var t = rcTheme();
+    if (!t.mine || !confirm('Delete your palette “' + t.name + '”?')) return;
+    recolorSchemes[t.key] = { name: t.name, colors: [], trans: '', at: Date.now(), deleted: true };
+    saveRecolorSchemes();
+    rcRefreshThemeSelect(RC_THEMES[0].id);
+    rcApplyTheme();
+  });
+  wireEl('rc-pal-add', 'click', function(){ if (rcEdit && rcEdit.colors.length < 8){ rcEdit.colors.push('White'); rcRenderEditor(); } });
+  wireEl('rc-pal-colors', 'click', rcEditorClick);
+  wireEl('rc-pal-colors', 'change', rcEditorChange);
+  wireEl('rc-pal-trans', 'change', rcEditorChange);
+  wireEl('rc-pal-save', 'click', rcSavePalette);
+  wireEl('rc-pal-cancel', 'click', function(){ rcEdit = null; document.getElementById('rc-pal-editor').style.display = 'none'; });
+  wireEl('rc-close', 'click', function(){ if (rcState) rcState.cancel = true; document.getElementById('rc-modal-overlay').style.display = 'none'; });
+  wireEl('rc-theme', 'change', rcApplyTheme);
+  wireEl('rc-keep-grays', 'change', rcApplyTheme);
+  wireEl('rc-keep-metal', 'change', rcApplyTheme);
+  wireEl('rc-check-btn', 'click', function(){ safeRun('recolouring', rcRun); });
+  wireEl('rc-stop-btn', 'click', function(){ if (rcState) rcState.cancel = true; });
+  wireEl('rc-create-btn', 'click', function(){ safeRun('creating the recoloured copy', rcCreate); });
+  wireEl('rc-csv-btn', 'click', rcCsv);
+  wireEl('rc-save-scheme-btn', 'click', rcSaveScheme);
+  wireEl('detail-modal-recolor', 'click', function(){ if (detailContext) openRecolor(detailContext.kind, detailContext.key); });
+
+  // ---- Other colours of a part: every colour Rebrickable makes it in, how common each is, and how many you have
+  // loose in drawers and bags, with a way to switch a MOC line to one of them.
+  var coState = null;
+  function colourOptionsButton(r, after){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'icon-btn co-btn';
+    b.title = 'Other colours of this part';
+    b.setAttribute('aria-label', 'Other colours of this part');
+    b.innerHTML = '<i class="ti ti-palette" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i>';
+    b.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); openColourOptions(r, after); });
+    return b;
+  }
+  function openColourOptions(r, after){
+    if (!r || !r.partNum){ alert('Give this line a part number first.'); return; }
+    coState = { r: r, after: after, colors: null, undo: null };
+    var head = document.getElementById('co-head');
+    head.innerHTML = '<span class="part-thumb-wrap"></span><span><strong>#' + escapeHtml(r.partNum) + '</strong> ' + escapeHtml(r.desc || '') +
+      '<br>Now ' + rcSw(r.color) + ' ' + escapeHtml(r.color || '(no colour)') + ' · ' + (r.qty || 0) + ' needed in ' + escapeHtml(r.moc || '') + '</span>';
+    buildThumb(r, head.querySelector('.part-thumb-wrap'));
+    document.getElementById('co-filter').value = '';
+    document.getElementById('co-list').innerHTML = '';
+    document.getElementById('co-modal-overlay').style.display = 'flex';
+    var st = document.getElementById('co-status');
+    if (!rebrickableApiKey){
+      st.textContent = 'Add a Rebrickable API key (Data & Tools tab) to see every colour this part is made in. Showing the colours in your own collection.';
+      coState.colors = [];
+      coRender();
+      return;
+    }
+    st.textContent = 'Asking Rebrickable which colours this part comes in…';
+    var mine = coState;
+    rbGetPartColors(r.partNum).then(function(c){
+      if (coState !== mine) return;
+      coState.colors = c || [];
+      st.textContent = coState.colors.length ? 'Made in ' + coState.colors.length + ' colour' + (coState.colors.length === 1 ? '' : 's') + '.' : 'Rebrickable has no colours listed for this part. Showing the colours in your own collection.';
+      coRender();
+    }, function(err){
+      if (coState !== mine) return;
+      coState.colors = [];
+      st.textContent = 'Couldn’t reach Rebrickable (' + ((err && err.message) || 'error') + '). Showing the colours in your own collection.';
+      coRender();
+    });
+  }
+  // Rebrickable's colours plus any colour you have this part in that isn't on its list
+  function coRows(){
+    var r = coState.r, pk = normKey(r.partNum);
+    var drawerStock = buildDrawerStockMap(), bagStock = buildBagStockMap();
+    var byK = {};
+    (coState.colors || []).forEach(function(c){ byK[normColorKey(c.color)] = { name: c.color, entry: c, rb: true }; });
+    var addLocal = function(color){ var k = normColorKey(color); if (color && !byK[k]) byK[k] = { name: color, entry: null, rb: false }; };
+    drawerParts.forEach(function(p){ if (normKey(p.partNum) === pk) addLocal(p.color); });
+    Object.keys(bagStock).forEach(function(k){ if (k.indexOf(pk + '|') === 0) addLocal(k.slice(pk.length + 1)); });
+    addLocal(r.color);
+    return Object.keys(byK).map(function(k){
+      var o = byK[k], sk = stockKeyOf(r.partNum, o.name);
+      o.inDrawers = drawerStock[sk] || 0;
+      o.inBags = bagStock[sk] ? bagStock[sk].qty : 0;
+      o.rarity = o.entry ? rcRarity(o.entry) : null;
+      o.current = normColorKey(o.name) === normColorKey(r.color);
+      return o;
+    });
+  }
+  function coRender(){
+    if (!coState) return;
+    var r = coState.r;
+    var q = normColorKey(document.getElementById('co-filter').value || '');
+    var sort = document.getElementById('co-sort').value;
+    var rows = coRows().filter(function(o){ return !q || normColorKey(o.name).indexOf(q) !== -1; });
+    var sets = function(o){ return o.rarity ? o.rarity.sets : -1; };
+    rows.sort(sort === 'name' ? function(a, b){ return a.name.localeCompare(b.name); }
+      : sort === 'sets' ? function(a, b){ return (sets(b) - sets(a)) || a.name.localeCompare(b.name); }
+      : function(a, b){ return (b.inDrawers + b.inBags - a.inDrawers - a.inBags) || (sets(b) - sets(a)) || a.name.localeCompare(b.name); });
+    rows.sort(function(a, b){ return (b.current ? 1 : 0) - (a.current ? 1 : 0); });   // the current colour stays on top
+    var need = r.qty || 0;
+    var list = document.getElementById('co-list');
+    list.innerHTML = rows.length ? '' : '<div class="empty-msg">No colours match.</div>';
+    rows.forEach(function(o){
+      var have = o.inDrawers + o.inBags;
+      var row = document.createElement('div');
+      row.className = 'co-row' + (o.current ? ' co-current' : '');
+      row.innerHTML = '<span class="co-name">' + rcSw(o.name) + '<span>' + escapeHtml(o.name) + (o.current ? ' <small style="color:var(--text-muted);">(now)</small>' : '') + '</span></span>' +
+        (o.rarity ? '<span class="rc-badge rc-' + o.rarity.level + '">' + rcRarityText(o.rarity) + '</span>' : '<span class="rc-badge rc-unknown" title="You have this part in this colour, but it isn’t on Rebrickable’s list for it">not on Rebrickable’s list</span>') +
+        '<span class="co-have' + (have >= need && have > 0 ? ' yes' : '') + '">' + (have ? (o.inDrawers ? o.inDrawers + ' in drawers' : '') + (o.inDrawers && o.inBags ? ', ' : '') + (o.inBags ? o.inBags + ' in bags' : '') + (need ? (have >= need ? ' ✓ enough' : ' (need ' + need + ')') : '') : 'none loose') + '</span>' +
+        (o.current ? '' : '<button type="button" class="icon-btn lockable" style="padding:2px 8px;">Use this colour</button>');
+      var b = row.querySelector('button');
+      if (b) b.addEventListener('click', function(){ coSwitch(o); });
+      list.appendChild(row);
+    });
+    if (viewLocked) applyLockToTree(list);
+  }
+  // switch the MOC line to another colour (joining a line of the same part and colour in that build, if there is one)
+  function coSwitch(o){
+    if (viewLocked || !coState) return;
+    var r = coState.r, st = document.getElementById('co-status');
+    var other = state.rows.find(function(x){ return x !== r && x.moc === r.moc && normKey(x.partNum) === normKey(r.partNum) && normColorKey(x.color) === normColorKey(o.name); });
+    var prev = { color: r.color, elementId: r.elementId };
+    if (other){
+      if (!confirm(r.moc + ' already has #' + r.partNum + ' in ' + o.name + ' (' + other.qty + ' needed). Add these ' + (r.qty || 0) + ' to that line?')) return;
+      other.qty = (other.qty || 0) + (r.qty || 0);
+      other.onHand = (other.onHand || 0) + (r.onHand || 0);
+      var idx = state.rows.indexOf(r);
+      if (idx !== -1) state.rows.splice(idx, 1);
+      coState.r = other;
+      coState.undo = null;
+    } else {
+      r.color = o.name;
+      r.elementId = o.entry && o.entry.elements && o.entry.elements.length ? String(o.entry.elements[0]) : '';
+      coState.undo = prev;
+    }
+    touchMocLastEdited(r.moc);
+    saveState();
+    safeRun('master list after a colour change', function(){ reconcilePartCatalog(catalogShouldPersist()); });
+    render();
+    if (typeof refreshMocBuildViews === 'function') refreshMocBuildViews();
+    if (typeof coState.after === 'function') safeRun('refreshing after a colour change', coState.after);
+    st.style.color = 'var(--text-success)';
+    st.innerHTML = other ? 'Added to the ' + escapeHtml(o.name) + ' line.' : 'Switched to ' + escapeHtml(o.name) + '. ';
+    if (coState.undo){
+      var u = document.createElement('button'); u.type = 'button'; u.className = 'icon-btn lockable'; u.style.padding = '1px 8px'; u.textContent = 'Undo';
+      u.addEventListener('click', function(){
+        if (viewLocked) return;
+        r.color = prev.color; r.elementId = prev.elementId;
+        touchMocLastEdited(r.moc); saveState(); render();
+        if (typeof refreshMocBuildViews === 'function') refreshMocBuildViews();
+        if (typeof coState.after === 'function') safeRun('refreshing after a colour change', coState.after);
+        st.style.color = 'var(--text-secondary)'; st.textContent = 'Back to ' + prev.color + '.';
+        coRender();
+      });
+      st.appendChild(u);
+    }
+    var head = document.getElementById('co-head');
+    head.querySelector('span:last-child').innerHTML = '<strong>#' + escapeHtml(coState.r.partNum) + '</strong> ' + escapeHtml(coState.r.desc || '') + '<br>Now ' + rcSw(coState.r.color) + ' ' + escapeHtml(coState.r.color) + ' · ' + (coState.r.qty || 0) + ' needed in ' + escapeHtml(coState.r.moc || '');
+    coRender();
+  }
+  wireEl('co-close', 'click', function(){ document.getElementById('co-modal-overlay').style.display = 'none'; coState = null; });
+  wireEl('co-filter', 'input', coRender);
+  wireEl('co-sort', 'change', coRender);
   wireEl('missing-report-toggle', 'click', function(){ missingPanelOpen = !missingPanelOpen; refreshMissingPanel(); });
   wireEl('missing-report-show', 'change', refreshMissingPanel);
   wireEl('missing-report-sort', 'change', refreshMissingPanel);
@@ -10482,6 +11170,7 @@
       makeFieldEditor('.partnum-cell', 'partNum', 'Part #');
       makeFieldEditor('.color-cell', 'color', 'Color');
       makeFieldEditor('.desc-cell', 'desc', 'Description');
+      tr.querySelector('.color-cell').appendChild(colourOptionsButton(r, function(){ openMocDetail(mocName); }));
 
       var qtyOnHandCell = tr.querySelector('.onhand-qty-cell');
       var onHandInput = document.createElement('input');
@@ -17573,6 +18262,7 @@
       bagSavedProgressList: bagSavedProgressList,
       partCatalog: partCatalog,
       partKinds: partKinds,
+      recolorSchemes: recolorSchemes,
       dataFormat: dataFormat,
       devices: siteDevices,
       syncMeta: syncMeta
@@ -17604,6 +18294,7 @@
     if (data.partCatalog && typeof data.partCatalog === 'object' && !Array.isArray(data.partCatalog)){ partCatalog = data.partCatalog; catSeen = new WeakMap(); }
     adoptDataFormat(data.dataFormat);
     if (data.partKinds && typeof data.partKinds === 'object'){ partKinds = data.partKinds; storage.set(PART_KINDS_KEY, JSON.stringify(partKinds), false); }
+    if (data.recolorSchemes && typeof data.recolorSchemes === 'object' && !Array.isArray(data.recolorSchemes)){ recolorSchemes = data.recolorSchemes; storage.set(RC_SCHEMES_KEY, JSON.stringify(recolorSchemes), false); }
     if (data.devices && typeof data.devices === 'object') siteDevices = mergeDevices(siteDevices, data.devices);
     hydrateLinesFromCatalog();
 
@@ -17880,6 +18571,7 @@
     out.partCatalog = mergePartCatalogs(local.partCatalog, remote.partCatalog);
     out.devices = mergeDevices(local.devices, remote.devices);
     out.partKinds = mergePartKinds(local.partKinds, remote.partKinds);
+    out.recolorSchemes = mergeRecolorSchemes(local.recolorSchemes, remote.recolorSchemes);
     out.dataFormat = ((local.dataFormat && local.dataFormat.at) || 0) > ((remote.dataFormat && remote.dataFormat.at) || 0) ? local.dataFormat : (remote.dataFormat || local.dataFormat);
 
     // --- bookkeeping: keep deletions for 180 days (dropping any for things that exist again); newest stamps
@@ -17987,7 +18679,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.17.4';          // bump with every change to this page
+  var APP_VERSION = '2026.10.17.7';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
@@ -20391,7 +21083,7 @@
   function bootApp(){
     safeRun('lock state', applyViewLockState);
     bootStage = 'loading your saved data';
-    stepSafe('loadState', loadState).then(function(){ return stepSafe('loadImageCacheIndex', loadImageCacheIndex); }).then(function(){ return stepSafe('loadPartImgCacheIndex', loadPartImgCacheIndex); }).then(function(){ return stepSafe('loadChecklist', loadChecklist); }).then(function(){ return stepSafe('loadTallyCounts', loadTallyCounts); }).then(function(){ return stepSafe('loadTallyDrawerAssignments', loadTallyDrawerAssignments); }).then(function(){ return stepSafe('loadProxyPreference', loadProxyPreference); }).then(function(){ return stepSafe('loadPriorityLabels', loadPriorityLabels); }).then(function(){ return stepSafe('loadOwnedSets', loadOwnedSets); }).then(function(){ return stepSafe('loadSetParts', loadSetParts); }).then(function(){ return stepSafe('loadDrawers', loadDrawers); }).then(function(){ return stepSafe('loadDrawerParts', loadDrawerParts); }).then(function(){ return stepSafe('loadBagInventoryLog', loadBagInventoryLog); }).then(function(){ return stepSafe('loadPullLog', loadPullLog); }).then(function(){ return stepSafe('loadBagProgressList', loadBagProgressList); }).then(function(){ return stepSafe('loadSetPhotos', loadSetPhotos); }).then(function(){ return stepSafe('loadMocPhotos', loadMocPhotos); }).then(function(){ return stepSafe('loadMocLocations', loadMocLocations); }).then(function(){ return stepSafe('loadMocBuilds', loadMocBuilds); }).then(function(){ return stepSafe('loadMocThemes', loadMocThemes); }).then(function(){ return stepSafe('loadMocDescriptions', loadMocDescriptions); }).then(function(){ return stepSafe('loadMocInstructions', loadMocInstructions); }).then(function(){ return stepSafe('loadLocationLabels', loadLocationLabels); }).then(function(){ return stepSafe('loadPartCatalog', loadPartCatalog); }).then(function(){ return stepSafe('loadDataFormat', loadDataFormat); }).then(function(){ return stepSafe('loadPartKinds', loadPartKinds); })
+    stepSafe('loadState', loadState).then(function(){ return stepSafe('loadImageCacheIndex', loadImageCacheIndex); }).then(function(){ return stepSafe('loadPartImgCacheIndex', loadPartImgCacheIndex); }).then(function(){ return stepSafe('loadChecklist', loadChecklist); }).then(function(){ return stepSafe('loadTallyCounts', loadTallyCounts); }).then(function(){ return stepSafe('loadTallyDrawerAssignments', loadTallyDrawerAssignments); }).then(function(){ return stepSafe('loadProxyPreference', loadProxyPreference); }).then(function(){ return stepSafe('loadPriorityLabels', loadPriorityLabels); }).then(function(){ return stepSafe('loadOwnedSets', loadOwnedSets); }).then(function(){ return stepSafe('loadSetParts', loadSetParts); }).then(function(){ return stepSafe('loadDrawers', loadDrawers); }).then(function(){ return stepSafe('loadDrawerParts', loadDrawerParts); }).then(function(){ return stepSafe('loadBagInventoryLog', loadBagInventoryLog); }).then(function(){ return stepSafe('loadPullLog', loadPullLog); }).then(function(){ return stepSafe('loadBagProgressList', loadBagProgressList); }).then(function(){ return stepSafe('loadSetPhotos', loadSetPhotos); }).then(function(){ return stepSafe('loadMocPhotos', loadMocPhotos); }).then(function(){ return stepSafe('loadMocLocations', loadMocLocations); }).then(function(){ return stepSafe('loadMocBuilds', loadMocBuilds); }).then(function(){ return stepSafe('loadMocThemes', loadMocThemes); }).then(function(){ return stepSafe('loadMocDescriptions', loadMocDescriptions); }).then(function(){ return stepSafe('loadMocInstructions', loadMocInstructions); }).then(function(){ return stepSafe('loadLocationLabels', loadLocationLabels); }).then(function(){ return stepSafe('loadPartCatalog', loadPartCatalog); }).then(function(){ return stepSafe('loadDataFormat', loadDataFormat); }).then(function(){ return stepSafe('loadPartKinds', loadPartKinds); }).then(function(){ return stepSafe('loadRecolorSchemes', loadRecolorSchemes); })
     .then(function(){ return stepSafe('loadRebrickableKey', loadRebrickableKey); }).then(function(){ return stepSafe('loadRbCatalogCache', loadRbCatalogCache); }).then(function(){ return stepSafe('loadSetProxyPref', loadSetProxyPref); }).then(function(){ return stepSafe('loadGithubSettings', loadGithubSettings); }).then(function(){ return stepSafe('loadBackupPassword', loadBackupPassword); }).then(function(){ return stepSafe('loadGithubShaMap', loadGithubShaMap); }).then(function(){ return stepSafe('loadDirtyFlag', loadDirtyFlag); }).then(function(){ return stepSafe('loadSyncState', loadSyncState); }).then(function(){ return stepSafe('loadStorageHealth', loadStorageHealth); }).then(function(){ return stepSafe('loadViewLocked', loadViewLocked); })
     .then(function(){
       // Draw what's saved on this device straight away -- never make the first draw wait on the network.
