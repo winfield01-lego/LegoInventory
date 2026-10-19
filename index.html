@@ -579,6 +579,10 @@
 #lego-inv-root .cp-opt.cp-active { background:var(--surface-1); outline:2px solid var(--lego-yellow, #f2cd37); outline-offset:-2px; }
 #lego-inv-root .cp-opt.cp-current { font-weight:700; }
 #lego-inv-root .cp-note { font-size:11px; color:var(--text-secondary); padding:4px; }
+#lego-inv-root .bag-sel-bar { display:flex; align-items:center; gap:6px 8px; flex-wrap:wrap; margin:6px 0 4px; padding:6px 8px; border:1px solid var(--border); border-radius:8px; background:var(--surface-1); }
+#lego-inv-root .bag-row-sel { background: color-mix(in srgb, var(--lego-green) 10%, transparent); }
+#lego-inv-root .bag-move-qty { display:inline-flex; align-items:center; gap:4px; font-size:11px; color:var(--text-secondary); flex-shrink:0; }
+#lego-inv-root .bag-move-qty input { width:52px; }
 #lego-inv-root .rc-step { display:flex; align-items:center; gap:8px; margin:12px 0 2px; font-size:14px; }
 #lego-inv-root .rc-step-num { display:inline-flex; width:20px; height:20px; border-radius:50%; background:var(--lego-blue, #0055bf); color:#fff; font-size:11px; font-weight:800; align-items:center; justify-content:center; }
 #lego-inv-root .rc-swatches { display:inline-flex; gap:4px; align-items:center; }
@@ -2544,6 +2548,14 @@
       <button id="bag-inventory-add-part-btn" class="icon-btn lockable" style="flex-shrink:0;"><i class="ti ti-search" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Search the full catalog for something new</button>
     </div>
     <div id="bag-staging-stats" style="display:none;"></div>
+    <div id="bag-sel-bar" class="bag-sel-bar" style="display:none;">
+      <span style="font-size:12px; font-weight:700;">Put away part of the bag:</span>
+      <button type="button" id="bag-sel-all" class="icon-btn" style="padding:2px 8px;">All</button>
+      <button type="button" id="bag-sel-none" class="icon-btn" style="padding:2px 8px;">None</button>
+      <select id="bag-sel-by" style="min-width:170px; flex:1;" title="Tick every line going to one drawer or drawer group"></select>
+      <span id="bag-sel-count" style="font-size:12px; color:var(--text-secondary);"></span>
+    </div>
+    <p id="bag-moved-note" style="display:none; margin:0 0 8px; font-size:12px; color:var(--text-success);"></p>
     <div id="bag-inventory-staging-list" style="margin-bottom:10px; border-top:2px solid var(--border); padding-top:10px;"></div>
     <p id="bag-inventory-empty-msg" class="empty-msg" style="display:none;">Nothing added yet &mdash; search above to get started.</p>
     <div class="row" style="align-items:center; gap:8px; margin-bottom:10px;">
@@ -2557,6 +2569,7 @@
       </div>
       <div class="row" style="gap:8px;">
         <button id="bag-inventory-save-progress-btn" class="icon-btn lockable" title="Save this list so you can come back and finish it later"><i class="ti ti-device-floppy" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Save Progress</button>
+        <button id="bag-inventory-move-sel-btn" class="icon-btn lockable" title="Put away just the ticked lines and keep the rest of the bag going" disabled><i class="ti ti-truck-delivery" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Move ticked</button>
         <button id="bag-inventory-commit-btn" class="lockable"><i class="ti ti-truck-delivery" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Move all to drawers</button>
       </div>
     </div>
@@ -2875,8 +2888,8 @@
   var lockWriteBypassUntil = 0;
   var lockNoticeTimer = null;
   var LOCK_EXEMPT_IDS = {};
-  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-sort pml-open-btn-3 pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing shop-kind-filter shop-status-filter pml-open-btn-4 pml-no-figs top-needed-kind clean-report-kind pml-sort slim-refresh-btn device-name-input auto-photos-toggle auto-photos-run auto-photos-stop figs-almost-toggle-btn figs-almost-threshold figs-almost-drawer-only figs-almost-layout figs-almost-csv-btn figs-almost-pdf-btn moc-tier-toggle top-needed-tier tier-filter mocbuild-group-by sets-group-by sets-sort-by srpt-count srpt-filter srpt-kind srpt-kind-list srpt-show srpt-sort srpt-layout srpt-page-breaks srpt-pick-search top-needed-sel-only srpt-sel-only missing-sel-only rc-theme rc-keep-grays rc-keep-metal rc-rare rc-fallback rc-new-name co-filter co-sort rc-pal-name rc-pv-show rc-pv-split rc-pv-sens rc-pv-bg rc-pv-file rc-pv-dl pm-show-hidden collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
-  var LOCK_EXEMPT_SELECTOR = '#shop-moc-checks input, #srpt-sets input, input.pick-cb, #rc-map select, #rc-pal-editor select';
+  'top-needed-count clean-report-show clean-report-sort clean-report-layout top-needed-filter almost-complete-threshold almost-complete-layout almost-complete-drawer-ready-layout drawer-helps-sets-filter drawer-helps-sets-sort drawer-helps-sets-layout overview-mocs-search overview-sets-search part-search moc-filter color-filter priority-filter missing-only incomplete-info-only no-photo-only combine-parts-toggle shop-almost-complete-threshold shop-tally-show-completed shop-tally-drawer-group-filter shop-only-short shop-combine-toggle shop-subtract-drawers-toggle shop-hide-fully-covered-toggle shop-search shop-color-filter shop-priority-filter shop-min-qty shop-sort-1 shop-sort-2 shop-sort-3 mocbuild-search set-parts-search set-parts-set-filter set-parts-color-filter set-parts-combine-toggle sp-search sp-set-filter sp-color-filter sp-no-photo-only sp-combine-toggle drawer-parts-search drawer-parts-group-filter drawer-parts-drawer-filter drawer-parts-color-filter bag-log-search-input gh-repo-input gh-branch-input gh-token-input rebrickable-key-input set-use-proxy-toggle use-proxy-toggle finishable-mocs-sort finishable-mocs-layout finishable-mocs-view finishable-mocs-limit finishable-mocs-reserve missing-report-show missing-report-sort missing-report-layout detail-only-missing pull-log-search-input pull-log-open-only pull-log-layout mocbuild-only-missing sets-only-missing fill-scope fill-desc fill-element fill-ids fill-photo fill-refetch fill-refetch-skip pml-search pml-filter pml-sort pml-open-btn-3 pml-desc pml-element pml-photo set-refetch-scope set-refetch-skip fig-search-input fig-theme-select fig-scan-all fig-refetch-skip figs-search figs-only-missing shop-kind-filter shop-status-filter pml-open-btn-4 pml-no-figs top-needed-kind clean-report-kind pml-sort slim-refresh-btn device-name-input auto-photos-toggle auto-photos-run auto-photos-stop figs-almost-toggle-btn figs-almost-threshold figs-almost-drawer-only figs-almost-layout figs-almost-csv-btn figs-almost-pdf-btn moc-tier-toggle top-needed-tier tier-filter mocbuild-group-by sets-group-by sets-sort-by srpt-count srpt-filter srpt-kind srpt-kind-list srpt-show srpt-sort srpt-layout srpt-page-breaks srpt-pick-search top-needed-sel-only srpt-sel-only missing-sel-only rc-theme rc-keep-grays rc-keep-metal rc-rare rc-fallback rc-new-name co-filter co-sort rc-pal-name rc-pv-show rc-pv-split rc-pv-sens rc-pv-bg rc-pv-file rc-pv-dl pm-show-hidden bag-sel-by collapse-all-btn version-badge-btn version-badge-close version-badge-save version-badge-reload'.split(' ').forEach(function(id){ LOCK_EXEMPT_IDS[id] = true; });
+  var LOCK_EXEMPT_SELECTOR = '#bag-inventory-staging-list .bag-sel-cb, #bag-inventory-staging-list .bag-move-qty input, #shop-moc-checks input, #srpt-sets input, input.pick-cb, #rc-map select, #rc-pal-editor select';
   var LOCK_CONTROL_SELECTOR = 'input, select, textarea, button';
 
   function lockControlApplies(el){
@@ -14688,6 +14701,7 @@
     var emptyMsg = document.getElementById('bag-inventory-empty-msg');
     list.innerHTML = '';
     safeRun('bag statistics', renderBagStats);
+    safeRun('bag selection', renderBagSelBar);
     if (!bagStagingItems.length){
       emptyMsg.style.display = 'block';
       return;
@@ -14696,7 +14710,9 @@
     bagStagingItems.forEach(function(it, idx){
       var row = document.createElement('div');
       row.style.cssText = 'display:flex; align-items:center; gap:8px; padding:7px 0; border-bottom:1px solid var(--border); flex-wrap:wrap;';
-      row.innerHTML = '<span class="part-thumb-wrap"></span>' +
+      row.setAttribute('data-bag-i', idx);
+      if (it.sel) row.classList.add('bag-row-sel');
+      row.innerHTML = '<input type="checkbox" class="bag-sel-cb" title="Sorted: tick to put this line away with “Move ticked”"' + (it.sel ? ' checked' : '') + ' />' + '<span class="part-thumb-wrap"></span>' +
         '<div style="flex:1; min-width:140px;"><div style="font-weight:700; font-size:13px;">'+escapeHtml(it.color)+' '+escapeHtml(it.desc)+'</div>' +
         '<div style="font-size:12px; color:var(--text-secondary);">#'+escapeHtml(it.partNum)+'</div></div>';
       buildThumb({ elementId: it.elementId, imgUrl: it.imgUrl, desc: it.desc, partNum: it.partNum }, row.querySelector('.part-thumb-wrap'));
@@ -14711,13 +14727,32 @@
         it.qty = v;
         qtyInput.value = v;
         safeRun('bag statistics', renderBagStats);
+        renderBagStagingList();
       });
       row.appendChild(qtyInput);
+      row.querySelector('.bag-sel-cb').addEventListener('change', function(e){
+        it.sel = e.target.checked;
+        if (!it.sel) delete it.moveQty;
+        renderBagStagingList();
+      });
+      if (it.sel && it.qty > 1){
+        var mq = document.createElement('label');
+        mq.className = 'bag-move-qty';
+        mq.title = 'Only sorted some of them? Move just this many now; the rest stay in the bag';
+        mq.innerHTML = 'move <input type="number" min="1" max="' + it.qty + '" value="' + bagMoveQtyOf(it) + '" /> of ' + it.qty;
+        mq.querySelector('input').addEventListener('change', function(e){
+          var v = parseInt(e.target.value, 10);
+          if (isNaN(v) || v < 1) v = 1; if (v > it.qty) v = it.qty;
+          e.target.value = v; it.moveQty = v;
+          safeRun('bag selection', renderBagSelBar);
+        });
+        row.appendChild(mq);
+      }
       var sel = document.createElement('select');
       sel.style.cssText = 'flex-shrink:0; min-width:150px;';
       sel.title = it.suggested ? 'Suggested because this same part is already in this drawer, just in a different color \u2014 change it if that\u2019s wrong.' : '';
       sel.innerHTML = drawerOptGroupsHtml(it.drawerId, it.matchCount > 1 ? 'In ' + it.matchCount + ' drawers \u2014 choose one' : 'Choose a drawer\u2026', null);
-      sel.addEventListener('change', function(){ it.drawerId = sel.value; it.suggested = false; suggestedNote.style.display = 'none'; safeRun('bag statistics', renderBagStats); });
+      sel.addEventListener('change', function(){ it.drawerId = sel.value; it.suggested = false; suggestedNote.style.display = 'none'; safeRun('bag statistics', renderBagStats); safeRun('bag selection', renderBagSelBar); });
       row.appendChild(sel);
       var suggestedNote = document.createElement('span');
       suggestedNote.textContent = 'suggested (diff. color)';
@@ -15041,64 +15076,122 @@
       statusEl.textContent = 'Couldn\u2019t save your current bag \u2014 try again before starting a new one.';
     });
   });
-  wireEl('bag-inventory-commit-btn', 'click', function(){
+  // ---- putting part of a bag away: tick lines (or a drawer's worth), move just those, keep adding to the rest ----
+  function bagSelected(){ return bagStagingItems.filter(function(it){ return it.sel; }); }
+  function bagMoveQtyOf(it){ var q = parseInt(it.moveQty, 10); return isNaN(q) || q < 1 || q > it.qty ? it.qty : q; }
+  function renderBagSelBar(){
+    var bar = document.getElementById('bag-sel-bar');
+    if (!bar) return;
+    bar.style.display = bagStagingItems.length ? '' : 'none';
+    var sel = bagSelected(), pcs = sel.reduce(function(t, it){ return t + bagMoveQtyOf(it); }, 0);
+    document.getElementById('bag-sel-count').textContent = sel.length ? sel.length + ' line' + (sel.length === 1 ? '' : 's') + ' ticked · ' + pcs.toLocaleString() + ' piece' + (pcs === 1 ? '' : 's') : 'Tick the lines you’ve sorted';
+    var btn = document.getElementById('bag-inventory-move-sel-btn');
+    btn.disabled = !sel.length;
+    btn.innerHTML = '<i class="ti ti-truck-delivery" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Move ticked' + (sel.length ? ' (' + pcs.toLocaleString() + ')' : '');
+    // "tick everything going to…" choices: each drawer and drawer group used in this bag
+    var byDrawer = {}, byGroup = {};
+    bagStagingItems.forEach(function(it){
+      if (!it.drawerId) return;
+      var d = drawers.find(function(x){ return x.id === it.drawerId; });
+      byDrawer[it.drawerId] = (byDrawer[it.drawerId] || 0) + 1;
+      var g = d && d.group && d.group.trim() ? d.group.trim() : '';
+      if (g) byGroup[g] = (byGroup[g] || 0) + 1;
+    });
+    var dsel = document.getElementById('bag-sel-by');
+    var opts = '<option value="">Tick everything going to…</option>';
+    var gk = Object.keys(byGroup).sort();
+    if (gk.length) opts += '<optgroup label="Drawer groups">' + gk.map(function(g){ return '<option value="g:' + escapeHtml(g) + '">' + escapeHtml(g) + ' (' + byGroup[g] + ')</option>'; }).join('') + '</optgroup>';
+    var dk = Object.keys(byDrawer).sort(function(a, b){ return pullDrawerLabel(a).localeCompare(pullDrawerLabel(b)); });
+    if (dk.length) opts += '<optgroup label="Drawers">' + dk.map(function(id){ return '<option value="d:' + escapeHtml(id) + '">' + escapeHtml(pullDrawerLabel(id)) + ' (' + byDrawer[id] + ')</option>'; }).join('') + '</optgroup>';
+    dsel.innerHTML = opts;
+    var entry = bagActiveProgressId ? bagSavedProgressList.find(function(p){ return p.id === bagActiveProgressId; }) : null;
+    var note = document.getElementById('bag-moved-note');
+    if (entry && entry.moved && entry.moved.batches){
+      note.style.display = '';
+      note.textContent = 'Already put away from this bag: ' + entry.moved.pieces.toLocaleString() + ' piece' + (entry.moved.pieces === 1 ? '' : 's') + ' in ' + entry.moved.batches + ' batch' + (entry.moved.batches === 1 ? '' : 'es') + '.';
+    } else note.style.display = 'none';
+  }
+  function bagMoveToDrawers(onlyTicked){
     var statusEl = document.getElementById('bag-inventory-status');
-    if (!bagStagingItems.length){
+    var picked = onlyTicked ? bagSelected() : bagStagingItems.slice();
+    if (!picked.length){
       statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Nothing to move \u2014 search for a part above first.';
+      statusEl.textContent = onlyTicked ? 'Tick the lines you’ve sorted first (or pick a drawer in “Tick everything going to”).' : 'Nothing to move — search for a part above first.';
       return;
     }
-    var missing = bagStagingItems.filter(function(it){ return !it.drawerId; });
+    var missing = picked.filter(function(it){ return !it.drawerId; });
     if (missing.length){
       statusEl.style.color = 'var(--text-danger)';
-      statusEl.textContent = 'Choose a drawer for ' + missing.length + ' item' + (missing.length===1?'':'s') + ' still missing one before moving \u2014 highlighted above.';
+      statusEl.textContent = 'Choose a drawer for ' + missing.length + ' item' + (missing.length === 1 ? '' : 's') + ' still missing one before moving — highlighted above.';
       renderBagStagingList();
       missing.forEach(function(it){
-        var idx = bagStagingItems.indexOf(it);
-        var row = document.getElementById('bag-inventory-staging-list').children[idx];
+        var row = document.querySelector('#bag-inventory-staging-list [data-bag-i="' + bagStagingItems.indexOf(it) + '"]');
         if (row) row.style.background = 'var(--bg-danger)';
       });
       return;
     }
-    var totalQty = 0;
-    var drawerIdsUsed = {};
-    var logItems = bagStagingItems.map(function(it){
-      var d = drawers.find(function(dd){ return dd.id === it.drawerId; });
-      return { partNum: it.partNum, color: it.color, desc: it.desc, elementId: it.elementId || '', qty: it.qty, drawerId: it.drawerId, drawerLabel: d ? d.label : it.drawerId };
-    });
+    var label = document.getElementById('bag-inventory-label').value.trim() || defaultBagLabel();
+    var entry = bagActiveProgressId ? bagSavedProgressList.find(function(p){ return p.id === bagActiveProgressId; }) : null;
+    var prevBatches = entry && entry.moved ? entry.moved.batches : 0;
+    var totalQty = 0, drawerIdsUsed = {}, logItems = [], rest = [];
+    var pickedSet = new Set(picked);
     bagStagingItems.forEach(function(it){
+      if (!pickedSet.has(it)){ rest.push(it); return; }
+      var q = onlyTicked ? bagMoveQtyOf(it) : it.qty;
+      var d = drawers.find(function(dd){ return dd.id === it.drawerId; });
+      logItems.push({ partNum: it.partNum, color: it.color, desc: it.desc, elementId: it.elementId || '', qty: q, drawerId: it.drawerId, drawerLabel: d ? d.label : it.drawerId });
       var existing = drawerParts.find(function(p){ return p.drawerId === it.drawerId && normKey(p.partNum) === normKey(it.partNum) && normKey(p.color) === normKey(it.color); });
-      if (existing){ existing.qty += it.qty; if (!existing.elementId && it.elementId) existing.elementId = it.elementId; }
-      else drawerParts.push({ drawerId: it.drawerId, partNum: it.partNum, color: it.color, desc: it.desc, elementId: it.elementId || '', qty: it.qty });
-      totalQty += it.qty;
+      if (existing){ existing.qty += q; if (!existing.elementId && it.elementId) existing.elementId = it.elementId; }
+      else drawerParts.push({ drawerId: it.drawerId, partNum: it.partNum, color: it.color, desc: it.desc, elementId: it.elementId || '', qty: q });
+      totalQty += q;
       drawerIdsUsed[it.drawerId] = true;
+      if (q < it.qty){ it.qty -= q; it.sel = false; delete it.moveQty; rest.push(it); }   // only some of this line was put away
     });
     Object.keys(drawerIdsUsed).forEach(function(id){ touchDrawerLastEdited(id); });
     saveDrawerParts();
     renderDrawersTab();
     Object.keys(drawerIdsUsed).forEach(function(id){
-      if (drawerDetailContext === id){
-        renderDrawerCards();
-        refreshDrawerDetailMetrics(id);
-        renderDrawerDetailTable(id);
-      }
+      if (drawerDetailContext === id){ renderDrawerCards(); refreshDrawerDetailMetrics(id); renderDrawerDetailTable(id); }
     });
-    var itemCount = bagStagingItems.length;
-    var drawerCount = Object.keys(drawerIdsUsed).length;
-    var label = document.getElementById('bag-inventory-label').value.trim() || defaultBagLabel();
-    bagInventoryLog.unshift({
-      id: 'bag_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 7),
-      label: label,
-      timestamp: new Date().toISOString(),
-      items: logItems
-    });
+    var batchNo = prevBatches + 1;
+    var finished = !rest.length;
+    var logLabel = (prevBatches || !finished) ? label + ' (batch ' + batchNo + ')' : label;
+    bagInventoryLog.unshift({ id: 'bag_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 7), label: logLabel, timestamp: new Date().toISOString(), items: logItems });
     saveBagInventoryLog();
-    bagStagingItems = [];
-    clearActiveBagProgress().then(renderBagSavedList);
-    renderBagStagingList();
-    document.getElementById('bag-inventory-label').value = defaultBagLabel();
+    var drawerCount = Object.keys(drawerIdsUsed).length;
+    var moved = 'Moved ' + totalQty.toLocaleString() + ' piece' + (totalQty === 1 ? '' : 's') + ' across ' + logItems.length.toLocaleString() + ' item' + (logItems.length === 1 ? '' : 's') + ' to ' + drawerCount.toLocaleString() + ' drawer' + (drawerCount === 1 ? '' : 's') + ', logged as “' + logLabel + '”.';
     statusEl.style.color = 'var(--text-success)';
-    statusEl.textContent = 'Moved ' + totalQty.toLocaleString() + ' piece' + (totalQty===1?'':'s') + ' across ' + itemCount.toLocaleString() + ' item' + (itemCount===1?'':'s') + ' to ' + drawerCount.toLocaleString() + ' drawer' + (drawerCount===1?'':'s') + ', logged as \u201c' + label + '\u201d.';
+    if (finished){
+      bagStagingItems = [];
+      clearActiveBagProgress().then(renderBagSavedList);
+      document.getElementById('bag-inventory-label').value = defaultBagLabel();
+      statusEl.textContent = moved + (prevBatches ? ' That was the last of the bag.' : '');
+    } else {
+      // keep the rest of the bag going: saved, so you can carry on adding now or later
+      rest.forEach(function(it){ it.sel = false; delete it.moveQty; });
+      bagStagingItems = rest;
+      var prevMoved = entry && entry.moved ? entry.moved : { batches: 0, pieces: 0 };
+      saveBagProgressNow(label, bagStagingItems);
+      var e2 = bagSavedProgressList.find(function(p){ return p.id === bagActiveProgressId; });
+      if (e2){ e2.moved = { batches: prevMoved.batches + 1, pieces: prevMoved.pieces + totalQty }; saveBagProgressList(); }
+      renderBagSavedList();
+      statusEl.textContent = moved + ' ' + rest.length + ' line' + (rest.length === 1 ? '' : 's') + ' still in the bag, saved so you can keep adding.';
+    }
+    renderBagStagingList();
+  }
+  wireEl('bag-inventory-commit-btn', 'click', function(){ bagMoveToDrawers(false); });
+  wireEl('bag-inventory-move-sel-btn', 'click', function(){ bagMoveToDrawers(true); });
+  wireEl('bag-sel-all', 'click', function(){ bagStagingItems.forEach(function(it){ it.sel = true; }); renderBagStagingList(); });
+  wireEl('bag-sel-none', 'click', function(){ bagStagingItems.forEach(function(it){ it.sel = false; delete it.moveQty; }); renderBagStagingList(); });
+  wireEl('bag-sel-by', 'change', function(e){
+    var v = e.target.value; if (!v) return;
+    var kind = v.slice(0, 2), key = v.slice(2);
+    bagStagingItems.forEach(function(it){
+      if (!it.drawerId) return;
+      if (kind === 'd:' && it.drawerId === key) it.sel = true;
+      if (kind === 'g:'){ var d = drawers.find(function(x){ return x.id === it.drawerId; }); if (d && (d.group || '').trim() === key) it.sel = true; }
+    });
+    renderBagStagingList();
   });
 
   function openBagLog(){
@@ -19497,7 +19590,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.18.4';          // bump with every change to this page
+  var APP_VERSION = '2026.10.18.5';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
