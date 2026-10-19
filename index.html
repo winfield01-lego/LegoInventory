@@ -557,6 +557,28 @@
 #lego-inv-root .pm-badge { font-size:11px; padding:0 6px; border-radius:8px; border:1px solid var(--border); color:var(--text-secondary); margin-left:6px; white-space:nowrap; }
 #lego-inv-root .pm-acts { display:flex; gap:4px; flex-wrap:wrap; }
 #lego-inv-root .pm-acts .icon-btn { padding:2px 8px; font-size:12px; }
+#lego-inv-root .cp-trigger, #lego-inv-root .cp-opt { text-transform:none; letter-spacing:normal; font-weight:400; }
+#lego-inv-root .cp-trigger { display:inline-flex; align-items:center; gap:6px; max-width:100%; padding:3px 6px; border:1px solid var(--border); border-radius:6px; background:var(--surface-1); color:inherit; font:inherit; font-size:13px; cursor:pointer; text-align:left; line-height:1.25; }
+#lego-inv-root .cp-trigger:hover { border-color:var(--text-secondary); }
+#lego-inv-root .cp-trigger .rc-sw { width:18px; height:18px; }
+#lego-inv-root .cp-trigger .cp-name { overflow-wrap:anywhere; }
+#lego-inv-root .cp-trigger .ti { font-size:12px; opacity:.7; }
+#lego-inv-root .cp-trigger.cp-missing { border-style:dashed; color:var(--text-secondary); }
+#lego-inv-root .cp-trigger:disabled { cursor:default; opacity:.85; }
+#lego-inv-root .cp-pop { position:fixed; z-index:1400; width:290px; max-width:calc(100vw - 16px); background:var(--surface-2); border:2px solid var(--border); border-radius:10px; box-shadow:0 10px 30px rgba(0,0,0,.35); padding:8px; box-sizing:border-box; display:flex; flex-direction:column; }
+#lego-inv-root .cp-preview { display:flex; align-items:center; gap:10px; padding:2px 2px 8px; }
+#lego-inv-root .cp-preview .rc-sw { width:44px; height:44px; border-radius:8px; }
+#lego-inv-root .cp-preview strong { display:block; font-size:14px; }
+#lego-inv-root .cp-preview small { font-size:11px; color:var(--text-secondary); }
+#lego-inv-root .cp-search { width:100%; box-sizing:border-box; margin-bottom:6px; }
+#lego-inv-root .cp-list { overflow-y:auto; max-height:280px; }
+#lego-inv-root .cp-head { font-size:11px; text-transform:uppercase; letter-spacing:.02em; color:var(--text-secondary); padding:6px 4px 2px; }
+#lego-inv-root .cp-opt { display:flex; align-items:center; gap:8px; width:100%; padding:4px 6px; border:0; border-radius:6px; background:none; color:inherit; font:inherit; font-size:13px; text-align:left; cursor:pointer; }
+#lego-inv-root .cp-opt .rc-sw { width:18px; height:18px; }
+#lego-inv-root .cp-opt small { margin-left:auto; color:var(--text-secondary); font-size:11px; white-space:nowrap; }
+#lego-inv-root .cp-opt.cp-active { background:var(--surface-1); outline:2px solid var(--lego-yellow, #f2cd37); outline-offset:-2px; }
+#lego-inv-root .cp-opt.cp-current { font-weight:700; }
+#lego-inv-root .cp-note { font-size:11px; color:var(--text-secondary); padding:4px; }
 #lego-inv-root .rc-step { display:flex; align-items:center; gap:8px; margin:12px 0 2px; font-size:14px; }
 #lego-inv-root .rc-step-num { display:inline-flex; width:20px; height:20px; border-radius:50%; background:var(--lego-blue, #0055bf); color:#fff; font-size:11px; font-weight:800; align-items:center; justify-content:center; }
 #lego-inv-root .rc-swatches { display:inline-flex; gap:4px; align-items:center; }
@@ -1133,6 +1155,16 @@
       <button id="manage-locations-toggle-mocsets" class="icon-btn"><i class="ti ti-map-pin" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Locations</button>
       <button id="build-add-btn" class="lockable"><i class="ti ti-plus" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Add build</button>
     </div>
+  </div>
+
+  <div style="background: var(--surface-1); border: 2px solid var(--border); border-radius: var(--radius); padding: 12px; margin-bottom: 16px;">
+    <p style="margin: 0 0 8px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary);">Start a build from an official set</p>
+    <p style="margin: 0 0 8px; font-size: 13px; color: var(--text-secondary);">Copies a set&rsquo;s parts list into a new MOC build you can customise. Works with any set: one you own, or any other set number (looked up on Rebrickable with your API key).</p>
+    <div class="controls" style="margin-bottom: 0;">
+      <input type="text" id="tomoc-setnum" class="lockable" placeholder="Set number, e.g. 6990" style="min-width:180px;" autocapitalize="off" autocorrect="off" spellcheck="false" />
+      <button id="tomoc-lookup" class="lockable"><i class="ti ti-search" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Get the parts list</button>
+    </div>
+    <p id="tomoc-lookup-status" style="margin: 8px 0 0; font-size: 13px; color: var(--text-secondary);"></p>
   </div>
 
   <p style="font-size: 12px; text-transform: uppercase; letter-spacing: 0.02em; color: var(--text-secondary); margin: 0 0 6px;">Builds by theme</p>
@@ -2162,6 +2194,24 @@
     </div>
   </div>
 </div>
+<div id="tomoc-modal-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1120; align-items:center; justify-content:center; padding:20px;">
+  <div id="tomoc-modal" style="background:var(--surface-2); border-radius:var(--radius); max-width:560px; width:100%; max-height:90vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
+    <button id="tomoc-close" class="icon-btn close-x-btn" style="position:absolute; top:14px; right:14px;" aria-label="Close" title="Close (Esc)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <h2 style="margin:0 0 4px; font-size:20px; color:var(--lego-black); padding-right:36px;">Make a MOC build from a set</h2>
+    <p id="tomoc-source" style="margin:0 0 12px; color:var(--text-secondary); font-size:13px;"></p>
+    <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;" for="tomoc-name">Name for the build</label>
+    <input type="text" id="tomoc-name" class="lockable" style="width:100%; box-sizing:border-box; margin-bottom:12px;" />
+    <label class="checkbox-label" id="tomoc-figs-row" style="margin:0 0 10px; font-size:13px;"><input type="checkbox" id="tomoc-figs" class="lockable" checked /> <span id="tomoc-figs-label">Include the minifigures&rsquo; parts</span></label>
+    <label style="display:block; font-size:12px; font-weight:700; margin-bottom:4px;" for="tomoc-onhand">Pieces on hand for the build</label>
+    <select id="tomoc-onhand" class="lockable" style="width:100%; margin-bottom:12px;"></select>
+    <label class="checkbox-label" id="tomoc-remove-row" style="margin:0 0 6px; font-size:13px;"><input type="checkbox" id="tomoc-remove" class="lockable" /> Remove the official set from my collection (I&rsquo;m taking it apart for this build)</label>
+    <p style="margin:6px 0 12px; font-size:12px; color:var(--text-secondary);">The build gets its own copy of the parts list, so you can change colours, swap parts, add and remove lines without touching the official set. Its theme, location and photo come along too.</p>
+    <div class="row" style="gap:8px; align-items:center; flex-wrap:wrap;">
+      <button type="button" id="tomoc-create" class="icon-btn lockable" style="color:var(--lego-green); border-color:var(--lego-green);"><i class="ti ti-copy" style="font-size:13px; vertical-align:-2px;" aria-hidden="true"></i> Create the build</button>
+      <span id="tomoc-status" style="font-size:13px;"></span>
+    </div>
+  </div>
+</div>
 <div id="pm-modal-overlay" class="no-print" style="display:none; position:fixed; inset:0; background:rgba(20,32,43,0.6); z-index:1150; align-items:center; justify-content:center; padding:20px;">
   <div id="pm-modal" style="background:var(--surface-2); border-radius:var(--radius); max-width:760px; width:100%; max-height:90vh; overflow-y:auto; padding:20px; position:relative; border:2px solid var(--border);">
     <button id="pm-close" class="icon-btn close-x-btn" style="position:absolute; top:14px; right:14px;" aria-label="Close" title="Close (Esc)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
@@ -2282,6 +2332,7 @@
     <button id="detail-modal-clear-quantities" class="icon-btn lockable" style="display:none; color: var(--text-danger); border-color: var(--text-danger); margin-bottom:14px; margin-left:8px;"><i class="ti ti-eraser" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Clear All Quantities (set On Hand to 0 for every part)</button>
     <button id="detail-modal-refetch-parts" class="icon-btn lockable" style="display:none; margin-bottom:14px; margin-left:8px;" title="Replace this set's parts list with the current one from Rebrickable (spare parts left out)"><i class="ti ti-cloud-download" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Re-fetch parts from Rebrickable</button>
     <button id="detail-modal-recolor" class="icon-btn" style="margin-bottom:14px; margin-left:8px;" title="Swap this build's colours to a theme or your own scheme, checking every part is made in its new colour"><i class="ti ti-palette" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Recolour&hellip;</button>
+    <button id="detail-modal-to-moc" class="icon-btn lockable" style="margin-bottom:14px; margin-left:8px; display:none;" title="Copy this set's parts list into a new MOC build you can customise"><i class="ti ti-git-branch" style="font-size:14px; vertical-align:-2px;" aria-hidden="true"></i> Make a MOC build&hellip;</button>
     <p id="detail-modal-refetch-status" style="font-size:12px; color:var(--text-secondary); margin:-6px 0 12px;"></p>
     <button id="detail-modal-refetch-stop" class="icon-btn" style="display:none; margin:-4px 0 12px;">Stop</button>
 
@@ -10478,7 +10529,7 @@
 
   // ---- Recolour a build or set: swap its colours to a scheme, checking each part is made (and how common it is)
   // in its new colour on Rebrickable. The result is saved as a new MOC build; the original is never changed.
-  var RC_HEX = { 'Black':'05131D','Dark Blue':'0A3463','Blue':'0055BF','Green':'237841','Dark Turquoise':'008F9B','Red':'C91A09','Dark Pink':'C870A0','Brown':'583927','Light Gray':'9BA19D','Dark Gray':'6D6E5C','Light Blue':'B4D2E3','Bright Green':'4B9F4A','Light Turquoise':'55A5AF','Salmon':'F2705E','Pink':'FC97AC','Yellow':'F2CD37','White':'FFFFFF','Light Green':'C2DAB8','Light Yellow':'FBE696','Tan':'E4CD9E','Light Violet':'C9CAE2','Purple':'81007B','Orange':'FE8A18','Magenta':'923978','Lime':'BBE90B','Dark Tan':'958A73','Bright Pink':'E4ADC8','Medium Lavender':'AC78BA','Lavender':'E1D5ED','Reddish Brown':'582A12','Light Bluish Gray':'A0A5A9','Dark Bluish Gray':'6C6E68','Medium Blue':'5A93DB','Medium Green':'73DCA1','Light Pink':'FECCCF','Light Nougat':'F6D7B3','Medium Nougat':'AA7D55','Dark Purple':'3F3691','Dark Brown':'352100','Sand Blue':'6074A1','Sand Green':'A0BCAC','Dark Green':'184632','Dark Red':'720E0F','Dark Azure':'078BC9','Medium Azure':'36AEBF','Light Aqua':'ADC3C0','Olive Green':'9B9A5A','Dark Orange':'A95500','Bright Light Orange':'F8BB3D','Bright Light Blue':'9FC3E9','Bright Light Yellow':'FFF03A','Nougat':'D09168','Vibrant Yellow':'EBD800','Coral':'FF698F','Yellowish Green':'DFEEA5','Medium Brown':'755945','Warm Tan':'CCA373','Reddish Orange':'CA4C0B','Blue Violet':'4354A3','Pearl Gold':'AA7F2E','Flat Silver':'898788','Metallic Silver':'A5A9B4','Metallic Gold':'DBAC34','Pearl Titanium':'3E3C39','Chrome Gold':'BBA53D','Chrome Silver':'E0E0E0','Glow in Dark White':'D9D9D9',
+  var RC_HEX = { 'Very Light Gray':'E6E3DA','Very Light Bluish Gray':'E6E3E0','Rust':'B31004','Light Salmon':'FEBABD','Sand Red':'D67572','Earth Orange':'FA9C1C','Medium Orange':'FFA70B','Light Orange':'F9BA61','Light Lime':'D9E4A7','Medium Lime':'C7D23C','Aqua':'B3D7D1','Maersk Blue':'3592C3','Sky Blue':'7DBFDD','Violet':'4354A3','Medium Violet':'9391E4','Light Purple':'CD6298','Sand Purple':'845E84','Medium Dark Pink':'F785B1','Trans-Neon Yellow':'DAB000','Trans-Very Light Blue':'C1DFF0','Trans-Light Purple':'96709F','Trans-Pink':'E4ADC8','Black':'05131D','Dark Blue':'0A3463','Blue':'0055BF','Green':'237841','Dark Turquoise':'008F9B','Red':'C91A09','Dark Pink':'C870A0','Brown':'583927','Light Gray':'9BA19D','Dark Gray':'6D6E5C','Light Blue':'B4D2E3','Bright Green':'4B9F4A','Light Turquoise':'55A5AF','Salmon':'F2705E','Pink':'FC97AC','Yellow':'F2CD37','White':'FFFFFF','Light Green':'C2DAB8','Light Yellow':'FBE696','Tan':'E4CD9E','Light Violet':'C9CAE2','Purple':'81007B','Orange':'FE8A18','Magenta':'923978','Lime':'BBE90B','Dark Tan':'958A73','Bright Pink':'E4ADC8','Medium Lavender':'AC78BA','Lavender':'E1D5ED','Reddish Brown':'582A12','Light Bluish Gray':'A0A5A9','Dark Bluish Gray':'6C6E68','Medium Blue':'5A93DB','Medium Green':'73DCA1','Light Pink':'FECCCF','Light Nougat':'F6D7B3','Medium Nougat':'AA7D55','Dark Purple':'3F3691','Dark Brown':'352100','Sand Blue':'6074A1','Sand Green':'A0BCAC','Dark Green':'184632','Dark Red':'720E0F','Dark Azure':'078BC9','Medium Azure':'36AEBF','Light Aqua':'ADC3C0','Olive Green':'9B9A5A','Dark Orange':'A95500','Bright Light Orange':'F8BB3D','Bright Light Blue':'9FC3E9','Bright Light Yellow':'FFF03A','Nougat':'D09168','Vibrant Yellow':'EBD800','Coral':'FF698F','Yellowish Green':'DFEEA5','Medium Brown':'755945','Warm Tan':'CCA373','Reddish Orange':'CA4C0B','Blue Violet':'4354A3','Pearl Gold':'AA7F2E','Flat Silver':'898788','Metallic Silver':'A5A9B4','Metallic Gold':'DBAC34','Pearl Titanium':'3E3C39','Chrome Gold':'BBA53D','Chrome Silver':'E0E0E0','Glow in Dark White':'D9D9D9',
     'Trans-Clear':'FCFCFC','Trans-Red':'C91A09','Trans-Yellow':'F5CD2F','Trans-Neon Green':'F8F184','Trans-Neon Orange':'FF800D','Trans-Light Blue':'AEEFEC','Trans-Dark Blue':'0020A0','Trans-Green':'84B68D','Trans-Bright Green':'D9E4A7','Trans-Orange':'F08F1C','Trans-Black':'635F52','Trans-Brown':'635F52','Trans-Dark Pink':'DF6695','Trans-Purple':'A5A5CB','Trans-Medium Blue':'CFE2F7','Opal Trans-Clear':'FCFCFC','Opal Trans-Light Blue':'68BCC5','Opal Trans-Dark Blue':'0020A0','Opal Trans-Dark Pink':'CE1D9B','Opal Trans-Purple':'8320B7' };
   // palettes: the main colours in order of how much of the model they should cover, and one transparent colour
   var RC_THEMES = [
@@ -11276,10 +11327,315 @@
   wireEl('rc-csv-btn', 'click', rcCsv);
   wireEl('rc-save-scheme-btn', 'click', rcSaveScheme);
   wireEl('detail-modal-recolor', 'click', function(){ if (detailContext) openRecolor(detailContext.kind, detailContext.key); });
+  // ---- an official set's parts list -> a new MOC build you can customise ----
+  var toMoc = null;   // { setNum, name, theme, location, owned, lines: [{ partNum, color, desc, elementId, imgUrl, qty, onHand }], figLines: [...], figCount }
+  function toMocFromOwned(setNum){
+    var s = ownedSets.find(function(x){ return x.setNum === setNum; });
+    if (!s) return null;
+    var lines = setParts.filter(function(r){ return r.setNum === setNum; }).map(function(r){
+      return { partNum: r.partNum, color: r.color || '', desc: r.desc || '', elementId: r.elementId || '', imgUrl: r.imgUrl || '', qty: setPartNeeded(r), onHand: Math.min(setPartOnHand(r), setPartNeeded(r)) };
+    });
+    var figLines = [], figCount = 0;
+    if (!isFigEntry(s)){
+      ownedSets.filter(function(f){ return isFigEntry(f) && f.figSources && f.figSources[setNum]; }).forEach(function(f){
+        var per = f.figSources[setNum] * (s.qty || 1);
+        figCount += per;
+        setParts.filter(function(r){ return r.setNum === f.setNum; }).forEach(function(r){
+          var q = (r.qtyPerSet || 0) * per;
+          figLines.push({ partNum: r.partNum, color: r.color || '', desc: r.desc || '', elementId: r.elementId || '', imgUrl: r.imgUrl || '', qty: q, onHand: q });
+        });
+      });
+    }
+    return { setNum: setNum, name: s.name || '', theme: s.theme || '', location: s.location || '', owned: true, lines: lines, figLines: figLines, figCount: figCount };
+  }
+  function openToMoc(src){
+    toMoc = src;
+    var pcs = function(L){ return L.reduce(function(t, l){ return t + l.qty; }, 0); };
+    document.getElementById('tomoc-source').textContent = (src.owned ? 'Your set ' : 'Set ') + src.setNum + (src.name ? ' ' + src.name : '') + ' · ' + src.lines.length + ' part line' + (src.lines.length === 1 ? '' : 's') + ' · ' + pcs(src.lines).toLocaleString() + ' pieces' + (src.owned ? '' : ' (from Rebrickable)');
+    var base = (src.name || src.setNum) + ' (custom)', name = base, n = 2;
+    while (mocNameTaken(name)) name = base.replace(/\)$/, ' ' + n++ + ')');
+    document.getElementById('tomoc-name').value = name;
+    var figRow = document.getElementById('tomoc-figs-row');
+    figRow.style.display = src.figLines.length ? '' : 'none';
+    document.getElementById('tomoc-figs').checked = true;
+    document.getElementById('tomoc-figs-label').textContent = 'Include the minifigures’ parts (' + (src.figCount ? src.figCount + ' figure' + (src.figCount === 1 ? '' : 's') + ', ' : '') + pcs(src.figLines).toLocaleString() + ' pieces)';
+    document.getElementById('tomoc-onhand').innerHTML =
+      '<option value="none">None yet: I’ll gather the pieces</option>' +
+      (src.owned ? '<option value="set">Same as the set: I’m using this set’s own pieces</option>' : '<option value="all">All of them: I already have the pieces</option>');
+    var rm = document.getElementById('tomoc-remove-row');
+    rm.style.display = src.owned ? '' : 'none';
+    document.getElementById('tomoc-remove').checked = false;
+    document.getElementById('tomoc-status').textContent = '';
+    document.getElementById('tomoc-modal-overlay').style.display = 'flex';
+    if (viewLocked) applyLockToTree(document.getElementById('tomoc-modal'));
+  }
+  function mocNameTaken(name){ return mocBuilds.some(function(b){ return b.name === name; }) || state.rows.some(function(r){ return r.moc === name; }); }
+  function toMocCreate(){
+    if (viewLocked || !toMoc) return;
+    var st = document.getElementById('tomoc-status');
+    var name = document.getElementById('tomoc-name').value.trim();
+    if (!name){ st.style.color = 'var(--text-danger)'; st.textContent = 'Give the build a name.'; return; }
+    if (mocNameTaken(name)){ st.style.color = 'var(--text-danger)'; st.textContent = 'A build called “' + name + '” already exists. Pick another name.'; return; }
+    var onHandMode = document.getElementById('tomoc-onhand').value;
+    var lines = toMoc.lines.concat(document.getElementById('tomoc-figs').checked ? toMoc.figLines : []);
+    var merged = {}, order = [];
+    lines.forEach(function(l){
+      var k = stockKeyOf(l.partNum, l.color);
+      if (!merged[k]){ merged[k] = { partNum: l.partNum, qty: 0, color: l.color, desc: l.desc, moc: name, elementId: l.elementId || '', onHand: 0, built: false, priority: '' }; if (l.imgUrl) merged[k].imgUrl = l.imgUrl; order.push(k); }
+      merged[k].qty += l.qty;
+      merged[k].onHand += onHandMode === 'all' ? l.qty : onHandMode === 'set' ? (l.onHand || 0) : 0;
+    });
+    order.forEach(function(k){ state.rows.push(merged[k]); });
+    mocBuilds.push({ name: name, lastEdited: new Date().toISOString() });
+    if (toMoc.theme) mocThemes[name] = toMoc.theme;
+    if (toMoc.location) mocLocations[name] = toMoc.location;
+    mocDescriptions[name] = 'Started from official set ' + toMoc.setNum + (toMoc.name ? ' ' + toMoc.name : '') + '.';
+    if (toMoc.owned && setPhotos[toMoc.setNum]){ mocPhotos[name] = setPhotos[toMoc.setNum]; saveMocPhotos(); }
+    saveMocBuilds(); saveMocThemes(); saveMocLocations(); saveMocDescriptions(); saveState();
+    var removed = false;
+    if (toMoc.owned && document.getElementById('tomoc-remove').checked){
+      var sn = toMoc.setNum;
+      noteDeleted('set', sn);
+      ownedSets = ownedSets.filter(function(x){ return x.setNum !== sn; });
+      setParts = setParts.filter(function(p){ return p.setNum !== sn; });
+      saveOwnedSets(); saveSetParts();
+      syncFigQuantities();
+      removed = true;
+    }
+    safeRun('master list after copying a set', function(){ reconcilePartCatalog(catalogShouldPersist()); });
+    render();
+    if (typeof renderMocBuildsTab === 'function') renderMocBuildsTab();
+    if (typeof renderSetsTab === 'function') renderSetsTab();
+    if (removed && typeof renderOverviewSetsList === 'function') renderOverviewSetsList();
+    document.getElementById('tomoc-modal-overlay').style.display = 'none';
+    var dm = document.getElementById('detail-modal-overlay');
+    if (dm.style.display === 'flex' && typeof closeDetailModal === 'function') closeDetailModal();
+    toMoc = null;
+    openMocDetail(name);
+  }
+  // look a set up on Rebrickable (parts with or without the minifigures' parts, paging if it's huge)
+  function toMocFetchAll(path){
+    var out = [];
+    function page(url){
+      return rbFetchJson(url).then(function(d){
+        if (!d) return null;
+        out = out.concat(d.results || []);
+        return d.next ? page(d.next) : out;
+      });
+    }
+    return page(rbApiUrl(path));
+  }
+  function toMocLookup(){
+    var st = document.getElementById('tomoc-lookup-status');
+    var raw = document.getElementById('tomoc-setnum').value.trim();
+    if (!raw){ st.style.color = 'var(--text-danger)'; st.textContent = 'Type a set number first.'; return; }
+    var sn = normalizedSetNum(raw);
+    st.style.color = 'var(--text-secondary)';
+    var owned = toMocFromOwned(sn);
+    if (owned && owned.lines.length){ st.textContent = 'You own ' + sn + ', so its parts list comes from your collection.'; openToMoc(owned); return; }
+    if (!rebrickableApiKey){ st.style.color = 'var(--text-danger)'; st.textContent = 'To use a set you don’t own, add your Rebrickable API key (Data & Tools tab) first. Or add the set on the Official Sets tab, then use “Make a MOC build” in its summary.'; return; }
+    st.textContent = 'Getting ' + sn + ' from Rebrickable…';
+    var btn = document.getElementById('tomoc-lookup'); btn.disabled = true;
+    Promise.all([
+      rbFetchJson(rbApiUrl('sets/' + encodeURIComponent(sn) + '/')),
+      toMocFetchAll('sets/' + encodeURIComponent(sn) + '/parts/?page_size=1000'),
+      toMocFetchAll('sets/' + encodeURIComponent(sn) + '/parts/?page_size=1000&inc_minifig_parts=1')
+    ]).then(function(res){
+      btn.disabled = false;
+      var info = res[0], plain = res[1], withFigs = res[2];
+      if (!info || !plain){ st.style.color = 'var(--text-danger)'; st.textContent = 'Rebrickable doesn’t know a set ' + sn + '. Check the number (some need a suffix, like 6990-1).'; return; }
+      function map(list){ return (list || []).filter(function(it){ return !it.is_spare && it.part; }).map(function(it){ return { partNum: it.part.part_num, color: (it.color && it.color.name) || '', desc: it.part.name || '', elementId: it.element_id ? String(it.element_id) : '', imgUrl: it.part.part_img_url || '', qty: it.quantity || 1, onHand: 0 }; }); }
+      var lines = map(plain);
+      // the minifigures' parts are whatever the "with minifigures" list has on top of the plain one
+      var base = {}; lines.forEach(function(l){ var k = stockKeyOf(l.partNum, l.color); base[k] = (base[k] || 0) + l.qty; });
+      var figLines = [];
+      map(withFigs).forEach(function(l){ var k = stockKeyOf(l.partNum, l.color), have = base[k] || 0, extra = l.qty - have; base[k] = Math.max(0, have - l.qty); if (extra > 0){ l.qty = extra; figLines.push(l); } });
+      var themeP = info.theme_id && typeof fetchThemeName === 'function' ? fetchThemeName(info.theme_id) : Promise.resolve('');
+      return themeP.then(function(theme){
+        st.textContent = 'Found ' + sn + (info.name ? ' ' + info.name : '') + '.';
+        openToMoc({ setNum: sn, name: info.name || '', theme: theme || '', location: '', owned: false, lines: lines, figLines: figLines, figCount: 0 });
+      });
+    }).catch(function(err){
+      btn.disabled = false;
+      st.style.color = 'var(--text-danger)'; st.textContent = 'Couldn’t reach Rebrickable (' + ((err && err.message) || 'error') + ').';
+    });
+  }
+  wireEl('tomoc-lookup', 'click', toMocLookup);
+  wireEl('tomoc-setnum', 'keydown', function(e){ if (e.key === 'Enter'){ e.preventDefault(); toMocLookup(); } });
+  wireEl('tomoc-create', 'click', toMocCreate);
+  wireEl('tomoc-close', 'click', function(){ document.getElementById('tomoc-modal-overlay').style.display = 'none'; toMoc = null; });
+  wireEl('detail-modal-to-moc', 'click', function(){
+    if (!detailContext || detailContext.kind !== 'set') return;
+    var src = toMocFromOwned(detailContext.key);
+    if (!src || !src.lines.length){ alert('This set has no parts list yet. Get its parts first, then make a build from it.'); return; }
+    openToMoc(src);
+  });
+
 
   // ---- Other colours of a part: every colour Rebrickable makes it in, how common each is, and how many you have
   // loose in drawers and bags, with a way to switch a MOC line to one of them.
   var coState = null;
+  // ---- colour picker for a part line: a swatch + name button that opens a searchable list of colours with swatches ----
+  var cpState = null;   // { pop, anchor, r, onPick, items, active, rb }
+  function cpSw(name){ return name && rcHexKnown(name) ? rcSw(name) : '<span class="rc-sw" style="background:transparent; border-style:dashed;" title="No colour sample for this name"></span>'; }
+  function colourPickerButton(r, onPick){
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'cp-trigger lockable' + (r.color ? '' : ' cp-missing');
+    b.title = 'Change the colour';
+    b.innerHTML = (r.color ? cpSw(r.color) : '') + '<span class="cp-name">' + escapeHtml(r.color || 'Pick a colour') + '</span><i class="ti ti-chevron-down" aria-hidden="true"></i>';
+    b.addEventListener('click', function(e){ e.preventDefault(); e.stopPropagation(); if (viewLocked) return; openColourPicker(b, r, onPick); });
+    return b;
+  }
+  function closeColourPicker(){
+    if (!cpState) return;
+    var a = cpState.anchor;
+    cpState.pop.remove();
+    cpState = null;
+    document.removeEventListener('mousedown', cpOutside, true);
+    document.removeEventListener('touchstart', cpOutside, true);
+    document.removeEventListener('scroll', cpScroll, true);
+    window.removeEventListener('resize', closeColourPicker);
+    if (a && document.body.contains(a)) a.focus();
+  }
+  function cpOutside(e){ if (cpState && !cpState.pop.contains(e.target) && !cpState.anchor.contains(e.target)) closeColourPicker(); }
+  function cpScroll(e){ if (cpState && !cpState.pop.contains(e.target)) closeColourPicker(); }
+  function cpPlace(){
+    var p = cpState.pop, a = cpState.anchor.getBoundingClientRect(), vw = window.innerWidth, vh = window.innerHeight;
+    var w = p.offsetWidth, h = p.offsetHeight;
+    var left = Math.min(Math.max(8, a.left), vw - w - 8);
+    var top = a.bottom + 4;
+    if (top + h > vh - 8 && a.top - h - 4 > 8) top = a.top - h - 4;
+    p.style.left = left + 'px'; p.style.top = Math.max(8, Math.min(top, vh - h - 8)) + 'px';
+  }
+  function openColourPicker(anchor, r, onPick){
+    closeColourPicker();
+    var pop = document.createElement('div');
+    pop.className = 'cp-pop';
+    pop.setAttribute('role', 'dialog');
+    pop.setAttribute('aria-label', 'Pick a colour');
+    pop.innerHTML = '<div class="cp-preview"></div><input type="text" class="cp-search" placeholder="Search colours…" aria-label="Search colours" /><div class="cp-list" role="listbox"></div>';
+    document.getElementById('lego-inv-root').appendChild(pop);
+    cpState = { pop: pop, anchor: anchor, r: r, onPick: onPick, items: [], active: 0, rb: null };
+    var search = pop.querySelector('.cp-search');
+    search.addEventListener('input', function(){ cpState.active = 0; cpState.touched = true; cpRender(); });
+    search.addEventListener('keydown', function(e){
+      if (e.key === 'Escape' || e.key === 'Esc'){ e.preventDefault(); e.stopPropagation(); closeColourPicker(); return; }
+      if (e.key === 'ArrowDown' || e.key === 'ArrowUp'){
+        e.preventDefault();
+        cpState.touched = true;
+        cpState.active = Math.max(0, Math.min(cpState.items.length - 1, cpState.active + (e.key === 'ArrowDown' ? 1 : -1)));
+        cpHighlight(true);
+      }
+      if (e.key === 'Enter'){ e.preventDefault(); var it = cpState.items[cpState.active]; if (it) cpChoose(it); }
+    });
+    pop.querySelector('.cp-list').addEventListener('click', function(e){
+      var o = e.target.closest && e.target.closest('.cp-opt'); if (!o) return;
+      cpChoose(cpState.items[+o.getAttribute('data-i')]);
+    });
+    pop.querySelector('.cp-list').addEventListener('mousemove', function(e){
+      var o = e.target.closest && e.target.closest('.cp-opt'); if (!o) return;
+      var i = +o.getAttribute('data-i'); if (i !== cpState.active){ cpState.active = i; cpState.touched = true; cpHighlight(false); }
+    });
+    cpRender();
+    cpPlace();
+    search.focus();
+    setTimeout(function(){
+      document.addEventListener('mousedown', cpOutside, true);
+      document.addEventListener('touchstart', cpOutside, true);
+      document.addEventListener('scroll', cpScroll, true);
+      window.addEventListener('resize', closeColourPicker);
+    }, 0);
+    // which colours this part is actually made in, when Rebrickable can tell us
+    if (r.partNum && (rebrickableApiKey || rbPersistedColors.hasOwnProperty(normKey(r.partNum)))){
+      var mine = cpState;
+      cpState.rbLoading = true;
+      rbGetPartColors(r.partNum).then(function(c){ if (cpState !== mine) return; mine.rb = c || []; mine.rbLoading = false; cpRender(); cpPlace(); },
+        function(){ if (cpState !== mine) return; mine.rbLoading = false; mine.rbFailed = true; cpRender(); });
+    }
+  }
+  function cpRender(){
+    var st = cpState, q = normColorKey(st.pop.querySelector('.cp-search').value.trim()), raw = st.pop.querySelector('.cp-search').value.trim();
+    function match(n){ return !q || normColorKey(n).indexOf(q) !== -1; }
+    var items = [], html = [], seen = {};
+    function add(name, entry, label){
+      var i = items.length;
+      items.push({ name: name, entry: entry || null });
+      seen[normColorKey(name)] = 1;
+      var cur = normColorKey(name) === normColorKey(st.r.color);
+      html.push('<button type="button" class="cp-opt' + (cur ? ' cp-current' : '') + '" data-i="' + i + '" role="option">' + cpSw(name) + '<span>' + escapeHtml(name) + (cur ? ' ✓' : '') + '</span>' + (label ? '<small>' + escapeHtml(label) + '</small>' : '') + '</button>');
+    }
+    if (st.rb && st.rb.length){
+      var made = st.rb.filter(function(c){ return c.color && match(c.color); });
+      if (made.length){
+        html.push('<div class="cp-head">This part is made in</div>');
+        made.slice().sort(function(a, b){ return (b.numSets || 0) - (a.numSets || 0); }).forEach(function(c){ add(c.color, c, (c.numSets || 0) + ' set' + (c.numSets === 1 ? '' : 's')); });
+      }
+    }
+    var rest = rcColourOptions().filter(function(n){ return !seen[normColorKey(n)] && match(n); });
+    if (rest.length){
+      html.push('<div class="cp-head">' + (st.rb && st.rb.length ? 'Other colours' : 'All colours') + '</div>');
+      rest.forEach(function(n){ add(n, null, st.rb && st.rb.length ? 'not made' : ''); });
+    }
+    if (raw && !items.some(function(it){ return normColorKey(it.name) === q; })){
+      html.push('<div class="cp-head">Not in the list</div>');
+      var i = items.length; items.push({ name: raw, entry: null, custom: true });
+      html.push('<button type="button" class="cp-opt" data-i="' + i + '" role="option"><span class="rc-sw" style="background:transparent; border-style:dashed;"></span><span>Use “' + escapeHtml(raw) + '”</span></button>');
+    }
+    if (st.rbLoading) html.push('<div class="cp-note">Checking which colours this part comes in…</div>');
+    else if (st.rbFailed) html.push('<div class="cp-note">Couldn’t reach Rebrickable, so every colour is listed.</div>');
+    st.items = items;
+    if (!q){ var curI = items.findIndex(function(it){ return normColorKey(it.name) === normColorKey(st.r.color); }); if (curI >= 0 && !st.touched) st.active = curI; }
+    else if (st.active === 0){ var ex = items.findIndex(function(it){ return normColorKey(it.name) === q; }); if (ex > 0) st.active = ex; }
+    st.active = Math.max(0, Math.min(st.active, items.length - 1));
+    st.pop.querySelector('.cp-list').innerHTML = html.join('') || '<div class="cp-note">No colours match.</div>';
+    cpHighlight(true);
+  }
+  function cpHighlight(scroll){
+    var st = cpState; if (!st) return;
+    st.pop.querySelectorAll('.cp-opt').forEach(function(o){ o.classList.toggle('cp-active', +o.getAttribute('data-i') === st.active); });
+    var it = st.items[st.active];
+    var pv = st.pop.querySelector('.cp-preview');
+    if (it){
+      var note = it.custom ? 'Your own colour name' : it.entry ? 'Made in this colour · in ' + (it.entry.numSets || 0) + ' set' + (it.entry.numSets === 1 ? '' : 's') : (st.rb && st.rb.length ? 'Not made in this colour, as far as Rebrickable knows' : '');
+      pv.innerHTML = cpSw(it.custom ? '' : it.name) + '<span><strong>' + escapeHtml(it.name) + '</strong>' + (note ? '<small>' + escapeHtml(note) + '</small>' : '') + '</span>';
+    } else pv.innerHTML = '';
+    if (scroll){ var el = st.pop.querySelector('.cp-opt.cp-active'); if (el) el.scrollIntoView({ block: 'nearest' }); }
+  }
+  function cpChoose(it){
+    if (!it || !cpState) return;
+    var st = cpState;
+    closeColourPicker();
+    if (normColorKey(it.name) === normColorKey(st.r.color) && !it.custom) return;
+    st.onPick(it.name, it.entry);
+  }
+  // change one part line's colour (a MOC line or an official set line); joins a line already in that colour
+  function changeLineColour(kind, r, name, entry, after){
+    if (viewLocked) return;
+    var rb = entry;
+    if (!rb && r.partNum && rbPersistedColors.hasOwnProperty(normKey(r.partNum))) rb = rbColorMatch(rbPersistedColors[normKey(r.partNum)] || [], name);
+    var list = kind === 'set' ? setParts : state.rows;
+    var owner = kind === 'set' ? r.setNum : r.moc;
+    var other = list.find(function(x){ return x !== r && (kind === 'set' ? x.setNum === owner : x.moc === owner) && normKey(x.partNum) === normKey(r.partNum) && normColorKey(x.color) === normColorKey(name); });
+    if (other){
+      var n = kind === 'set' ? (r.qtyPerSet || 0) : (r.qty || 0);
+      if (!confirm(owner + ' already has #' + r.partNum + ' in ' + name + '. Add these ' + n + ' to that line?')) return;
+      if (kind === 'set') other.qtyPerSet = (other.qtyPerSet || 0) + (r.qtyPerSet || 0); else other.qty = (other.qty || 0) + (r.qty || 0);
+      other.onHand = (other.onHand || 0) + (r.onHand || 0);
+      var idx = list.indexOf(r); if (idx !== -1) list.splice(idx, 1);
+    } else {
+      r.color = name;
+      r.elementId = rb && rb.elements && rb.elements.length ? String(rb.elements[0]) : '';
+      if (r.imgUrl || (rb && rb.img)) r.imgUrl = rb && rb.img ? rb.img : '';
+    }
+    if (kind === 'set'){ touchSetLastEdited(owner); saveSetParts(); }
+    else { touchMocLastEdited(owner); saveState(); }
+    safeRun('master list after a colour change', function(){ reconcilePartCatalog(catalogShouldPersist()); });
+    render();
+    if (kind === 'set'){ if (typeof renderSetsTab === 'function') renderSetsTab(); }
+    else if (typeof refreshMocBuildViews === 'function') refreshMocBuildViews();
+    if (typeof after === 'function') safeRun('refreshing after a colour change', after);
+  }
   function colourOptionsButton(r, after){
     var b = document.createElement('button');
     b.type = 'button';
@@ -11453,6 +11809,7 @@
     var setInfo = ownedSets.find(function(s){ return s.setNum === setNum; });
     if (!setInfo) return;
     detailContext = { kind: 'set', key: setNum };
+    document.getElementById('detail-modal-to-moc').style.display = '';
 
     document.getElementById('detail-modal-title').textContent = setInfo.setNum + (setInfo.name ? ' \u2014 ' + setInfo.name : '') + (setYearOf(setInfo) ? ' (' + setYearOf(setInfo) + ')' : '');
     var themeEl = document.getElementById('detail-modal-theme');
@@ -11480,11 +11837,12 @@
       tr.innerHTML =
         '<td class="img-cell"><div class="part-thumb-wrap"></div></td>'+
         '<td class="wrap-cell">'+escapeHtml(r.partNum)+'</td>'+
-        '<td class="wrap-cell">'+escapeHtml(r.color)+'</td>'+
+        '<td class="wrap-cell color-cell"></td>'+
         '<td class="wrap-cell">'+escapeHtml(r.desc)+'</td>'+
         '<td class="onhand-qty-cell"></td>'+
         '<td class="actions-cell"></td>';
       buildThumb({ elementId: r.elementId, imgUrl: r.imgUrl, desc: r.desc, partNum: r.partNum }, tr.querySelector('.part-thumb-wrap'));
+      tr.querySelector('.color-cell').appendChild(colourPickerButton(r, function(name, entry){ changeLineColour('set', r, name, entry, function(){ openSetDetail(setNum); }); }));
 
       var needed = setPartNeeded(r);
       var qtyOnHandCell = tr.querySelector('.onhand-qty-cell');
@@ -11576,6 +11934,7 @@
     var rows = state.rows.filter(function(r){ return r.moc === mocName; });
     if (!rows.length && !mocBuilds.some(function(b){ return b.name === mocName; })) return;
     detailContext = { kind: 'moc', key: mocName };
+    document.getElementById('detail-modal-to-moc').style.display = 'none';
 
     document.getElementById('detail-modal-title').textContent = mocName;
     var themeEl = document.getElementById('detail-modal-theme');
@@ -11627,7 +11986,7 @@
         tr.querySelector(cellClass).appendChild(input);
       }
       makeFieldEditor('.partnum-cell', 'partNum', 'Part #');
-      makeFieldEditor('.color-cell', 'color', 'Color');
+      tr.querySelector('.color-cell').appendChild(colourPickerButton(r, function(name, entry){ changeLineColour('moc', r, name, entry, function(){ openMocDetail(mocName); }); }));
       makeFieldEditor('.desc-cell', 'desc', 'Description');
       tr.querySelector('.color-cell').appendChild(colourOptionsButton(r, function(){ openMocDetail(mocName); }));
 
@@ -19138,7 +19497,7 @@
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.18.2';          // bump with every change to this page
+  var APP_VERSION = '2026.10.18.4';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
