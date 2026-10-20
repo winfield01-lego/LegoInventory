@@ -11974,7 +11974,33 @@ body.sec-dragging, body.sec-dragging * { cursor:ns-resize !important; user-selec
     if (detailContext.kind === 'set') openSetDetail(detailContext.key); else openMocDetail(detailContext.key);
   });
 
-  function openSetDetail(setNum){
+  // re-drawing an open summary (after a split, a colour change, an edit) keeps your place in it instead of jumping to the top
+  function keepDetailScroll(kind, key, fn){
+    var ov = document.getElementById('detail-modal-overlay'), win = document.getElementById('detail-modal');
+    var same = ov && ov.style.display === 'flex' && detailContext && detailContext.kind === kind && detailContext.key === key;
+    if (!same) return fn();
+    var wraps = Array.prototype.map.call(win.querySelectorAll('.tbl-wrap'), function(w){ return w.scrollTop; });
+    var top = win.scrollTop, pageY = window.scrollY;
+    var out = fn();
+    function restore(){
+      win.querySelectorAll('.tbl-wrap').forEach(function(w, i){ if (wraps[i] !== undefined) w.scrollTop = wraps[i]; });
+      win.scrollTop = top;
+      if (window.scrollY !== pageY) window.scrollTo(window.scrollX, pageY);
+    }
+    // some parts of the window fill in a moment later, so put the place back a few times unless you scroll first
+    var moved = false;
+    function mark(){ moved = true; }
+    win.addEventListener('wheel', mark, { once: true, passive: true });
+    win.addEventListener('touchmove', mark, { once: true, passive: true });
+    function again(){ if (!moved) restore(); }
+    restore();
+    requestAnimationFrame(again);
+    [60, 200, 450].forEach(function(ms){ setTimeout(again, ms); });
+    setTimeout(function(){ win.removeEventListener('wheel', mark); win.removeEventListener('touchmove', mark); }, 500);
+    return out;
+  }
+  function openSetDetail(setNum){ return keepDetailScroll('set', setNum, function(){ return openSetDetailRaw(setNum); }); }
+  function openSetDetailRaw(setNum){
     var setInfo = ownedSets.find(function(s){ return s.setNum === setNum; });
     if (!setInfo) return;
     detailContext = { kind: 'set', key: setNum };
@@ -12099,7 +12125,8 @@ body.sec-dragging, body.sec-dragging * { cursor:ns-resize !important; user-selec
     metricsEl.appendChild(buildDetailMetric('Complete', pct + '%'));
   }
 
-  function openMocDetail(mocName){
+  function openMocDetail(mocName){ return keepDetailScroll('moc', mocName, function(){ return openMocDetailRaw(mocName); }); }
+  function openMocDetailRaw(mocName){
     var rows = state.rows.filter(function(r){ return r.moc === mocName; });
     if (!rows.length && !mocBuilds.some(function(b){ return b.name === mocName; })) return;
     detailContext = { kind: 'moc', key: mocName };
@@ -20213,7 +20240,7 @@ body.sec-dragging, body.sec-dragging * { cursor:ns-resize !important; user-selec
   }
 
   // ---- Version badge: app version + when the site's data was last saved, bottom-right corner ----
-  var APP_VERSION = '2026.10.19.4';          // bump with every change to this page
+  var APP_VERSION = '2026.10.19.5';          // bump with every change to this page
   var APP_BUILT = '2026-10-10';
   var SITE_INFO_KEY = 'site-saved-info-v1';
   var vbStatus = 'starting', vbError = '', vbCheckedAt = 0, vbOpen = false, vbCommitLookup = false;
