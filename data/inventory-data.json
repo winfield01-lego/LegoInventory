@@ -28608,7 +28608,7 @@
       "",
       "Blacktron Galaxy Explorer",
       "",
-      5,
+      6,
       0,
       "1"
     ],
@@ -458191,6 +458191,19 @@
       "elementId": "362228"
     },
     {
+      "drawerId": "A6",
+      "partNum": "3622",
+      "color": "Reddish Brown",
+      "elementId": "4211220",
+      "qty": 1
+    },
+    {
+      "drawerId": "A6",
+      "partNum": "3622",
+      "color": "Medium Nougat",
+      "qty": 2
+    },
+    {
       "drawerId": "A7",
       "partNum": "2465",
       "color": "Black",
@@ -458387,6 +458400,12 @@
       "partNum": "3004",
       "color": "Light Bluish Gray",
       "qty": 130
+    },
+    {
+      "drawerId": "A9",
+      "partNum": "3004",
+      "color": "Dark Orange",
+      "qty": 9
     },
     {
       "drawerId": "A10",
@@ -460499,127 +460518,6 @@
       "color": "Dark Orange",
       "elementId": "4277109",
       "qty": 6
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "Black",
-      "qty": 51
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "Blue",
-      "qty": 71
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "Bright Light Blue",
-      "qty": 7
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "Dark Azure",
-      "elementId": "6089833",
-      "qty": 2
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "Dark Blue",
-      "elementId": "4177734",
-      "qty": 14
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "Dark Bluish Gray",
-      "qty": 30
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "Dark Orange",
-      "elementId": "4244385",
-      "qty": 2
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "Dark Red",
-      "elementId": "4164108",
-      "qty": 5
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "Dark Tan",
-      "qty": 3
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "Green",
-      "qty": 4
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "Light Bluish Gray",
-      "qty": 38
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "Lime",
-      "elementId": "4122442",
-      "qty": 5
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "Medium Blue",
-      "qty": 9
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "Orange",
-      "elementId": "3666106",
-      "qty": 3
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "Red",
-      "qty": 33
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "Tan",
-      "elementId": "366605",
-      "qty": 10
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "White",
-      "qty": 42
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "Yellow",
-      "qty": 20
-    },
-    {
-      "drawerId": "Y3",
-      "partNum": "3666",
-      "color": "Brown",
-      "qty": 12
     },
     {
       "drawerId": "D7",
@@ -464700,6 +464598,104 @@
       "qty": 3
     },
     {
+      "drawerId": "U5",
+      "partNum": "3007",
+      "color": "Black",
+      "elementId": "300726",
+      "qty": 7
+    },
+    {
+      "drawerId": "U5",
+      "partNum": "3007",
+      "color": "Blue",
+      "qty": 9
+    },
+    {
+      "drawerId": "U5",
+      "partNum": "3007",
+      "color": "Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "U5",
+      "partNum": "3007",
+      "color": "Dark Bluish Gray",
+      "elementId": "4211113",
+      "qty": 2
+    },
+    {
+      "drawerId": "U5",
+      "partNum": "3007",
+      "color": "Light Bluish Gray",
+      "elementId": "4211391",
+      "qty": 11
+    },
+    {
+      "drawerId": "U5",
+      "partNum": "3007",
+      "color": "Red",
+      "qty": 9
+    },
+    {
+      "drawerId": "U5",
+      "partNum": "3007",
+      "color": "Tan",
+      "qty": 2
+    },
+    {
+      "drawerId": "U5",
+      "partNum": "3007",
+      "color": "White",
+      "elementId": "300701",
+      "qty": 8
+    },
+    {
+      "drawerId": "U5",
+      "partNum": "3007",
+      "color": "Yellow",
+      "qty": 9
+    },
+    {
+      "drawerId": "U5",
+      "partNum": "3006",
+      "color": "Black",
+      "elementId": "300626",
+      "qty": 5
+    },
+    {
+      "drawerId": "U5",
+      "partNum": "3006",
+      "color": "Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "U5",
+      "partNum": "3006",
+      "color": "Light Bluish Gray",
+      "elementId": "4211390",
+      "qty": 1
+    },
+    {
+      "drawerId": "U5",
+      "partNum": "3006",
+      "color": "Red",
+      "elementId": "300621",
+      "qty": 5
+    },
+    {
+      "drawerId": "U5",
+      "partNum": "3006",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "U5",
+      "partNum": "3006",
+      "color": "White",
+      "elementId": "300601",
+      "qty": 14
+    },
+    {
       "drawerId": "Y2",
       "partNum": "3660",
       "color": "Light Bluish Gray",
@@ -464810,121 +464806,125 @@
       "qty": 12
     },
     {
-      "drawerId": "U5",
-      "partNum": "3007",
+      "drawerId": "Y3",
+      "partNum": "3666",
       "color": "Black",
-      "elementId": "300726",
+      "qty": 51
+    },
+    {
+      "drawerId": "Y3",
+      "partNum": "3666",
+      "color": "Blue",
+      "qty": 71
+    },
+    {
+      "drawerId": "Y3",
+      "partNum": "3666",
+      "color": "Bright Light Blue",
       "qty": 7
     },
     {
-      "drawerId": "U5",
-      "partNum": "3007",
-      "color": "Blue",
-      "qty": 9
-    },
-    {
-      "drawerId": "U5",
-      "partNum": "3007",
-      "color": "Brown",
-      "qty": 1
-    },
-    {
-      "drawerId": "U5",
-      "partNum": "3007",
-      "color": "Dark Bluish Gray",
-      "elementId": "4211113",
+      "drawerId": "Y3",
+      "partNum": "3666",
+      "color": "Dark Azure",
+      "elementId": "6089833",
       "qty": 2
     },
     {
-      "drawerId": "U5",
-      "partNum": "3007",
-      "color": "Light Bluish Gray",
-      "elementId": "4211391",
-      "qty": 11
-    },
-    {
-      "drawerId": "U5",
-      "partNum": "3007",
-      "color": "Red",
-      "qty": 9
-    },
-    {
-      "drawerId": "U5",
-      "partNum": "3007",
-      "color": "Tan",
-      "qty": 2
-    },
-    {
-      "drawerId": "U5",
-      "partNum": "3007",
-      "color": "White",
-      "elementId": "300701",
-      "qty": 8
-    },
-    {
-      "drawerId": "U5",
-      "partNum": "3007",
-      "color": "Yellow",
-      "qty": 9
-    },
-    {
-      "drawerId": "U5",
-      "partNum": "3006",
-      "color": "Black",
-      "elementId": "300626",
-      "qty": 5
-    },
-    {
-      "drawerId": "U5",
-      "partNum": "3006",
-      "color": "Blue",
-      "qty": 2
-    },
-    {
-      "drawerId": "U5",
-      "partNum": "3006",
-      "color": "Light Bluish Gray",
-      "elementId": "4211390",
-      "qty": 1
-    },
-    {
-      "drawerId": "U5",
-      "partNum": "3006",
-      "color": "Red",
-      "elementId": "300621",
-      "qty": 5
-    },
-    {
-      "drawerId": "U5",
-      "partNum": "3006",
-      "color": "Tan",
-      "qty": 1
-    },
-    {
-      "drawerId": "U5",
-      "partNum": "3006",
-      "color": "White",
-      "elementId": "300601",
+      "drawerId": "Y3",
+      "partNum": "3666",
+      "color": "Dark Blue",
+      "elementId": "4177734",
       "qty": 14
     },
     {
-      "drawerId": "A6",
-      "partNum": "3622",
-      "color": "Reddish Brown",
-      "elementId": "4211220",
-      "qty": 1
+      "drawerId": "Y3",
+      "partNum": "3666",
+      "color": "Dark Bluish Gray",
+      "qty": 30
     },
     {
-      "drawerId": "A6",
-      "partNum": "3622",
-      "color": "Medium Nougat",
+      "drawerId": "Y3",
+      "partNum": "3666",
+      "color": "Dark Orange",
+      "elementId": "4244385",
       "qty": 2
     },
     {
-      "drawerId": "A9",
-      "partNum": "3004",
-      "color": "Dark Orange",
+      "drawerId": "Y3",
+      "partNum": "3666",
+      "color": "Dark Red",
+      "elementId": "4164108",
+      "qty": 5
+    },
+    {
+      "drawerId": "Y3",
+      "partNum": "3666",
+      "color": "Dark Tan",
+      "qty": 3
+    },
+    {
+      "drawerId": "Y3",
+      "partNum": "3666",
+      "color": "Green",
+      "qty": 4
+    },
+    {
+      "drawerId": "Y3",
+      "partNum": "3666",
+      "color": "Light Bluish Gray",
+      "qty": 38
+    },
+    {
+      "drawerId": "Y3",
+      "partNum": "3666",
+      "color": "Lime",
+      "elementId": "4122442",
+      "qty": 5
+    },
+    {
+      "drawerId": "Y3",
+      "partNum": "3666",
+      "color": "Medium Blue",
       "qty": 9
+    },
+    {
+      "drawerId": "Y3",
+      "partNum": "3666",
+      "color": "Orange",
+      "elementId": "3666106",
+      "qty": 3
+    },
+    {
+      "drawerId": "Y3",
+      "partNum": "3666",
+      "color": "Red",
+      "qty": 33
+    },
+    {
+      "drawerId": "Y3",
+      "partNum": "3666",
+      "color": "Tan",
+      "elementId": "366605",
+      "qty": 10
+    },
+    {
+      "drawerId": "Y3",
+      "partNum": "3666",
+      "color": "White",
+      "qty": 42
+    },
+    {
+      "drawerId": "Y3",
+      "partNum": "3666",
+      "color": "Yellow",
+      "qty": 20
+    },
+    {
+      "drawerId": "Y3",
+      "partNum": "3666",
+      "color": "Brown",
+      "qty": 12
     }
   ],
   "mocLocations": {
@@ -465034,7 +465034,7 @@
     },
     {
       "name": "Blacktron Galaxy Explorer",
-      "lastEdited": "2026-10-15T03:12:09.289Z",
+      "lastEdited": "2026-10-25T16:30:57.652Z",
       "tier": "short"
     },
     {
@@ -465323,11 +465323,11 @@
     "Landing Platform": "Classic Space",
     "Tie Phantom": "Star Wars",
     "Locomotive Alternative to Cargo Train (Classic Space)": "Trains",
-    "Void Explorer": "Blacktron",
-    "Enterprise D - Main Bridge": "Star Trek",
     "Millennium Falcon (Kitbash)": "Ultimate Collector Series",
     "Space Cruiser - Galaxy Explorer Alt Build - Modern 924-1": "Icons",
-    "Space Transport - Galaxy Explorer Alt Build - 918-1": "Icons"
+    "Space Transport - Galaxy Explorer Alt Build - 918-1": "Icons",
+    "Void Explorer": "Blacktron",
+    "Enterprise D - Main Bridge": "Star Trek"
   },
   "locationLabels": [
     "Zorah's House"
@@ -556832,6 +556832,11 @@
       "name": "iPhone · Safari",
       "v": "2026.10.18.2",
       "at": "2026-10-18T23:08:36.772Z"
+    },
+    "dmvo1ouzqzgevwm": {
+      "name": "iPhone · Safari",
+      "v": "2026.10.22.1",
+      "at": "2026-10-25T16:34:33.846Z"
     }
   },
   "syncMeta": {
@@ -556845,7 +556850,7 @@
       "bags": "2026-10-23T06:19:26.526Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-25T05:10:31.438Z",
+    "savedAt": "2026-10-25T16:34:33.846Z",
     "appVersion": "2026.10.22.1"
   }
 }
