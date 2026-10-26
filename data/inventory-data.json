@@ -457385,7 +457385,7 @@
       "label": "P1",
       "notes": "3 x 3. Plate",
       "group": "P",
-      "lastEdited": "2026-10-26T05:45:37.686Z"
+      "lastEdited": "2026-10-26T20:12:00.707Z"
     },
     {
       "id": "P2",
@@ -465019,7 +465019,7 @@
       "drawerId": "P1",
       "partNum": "11212",
       "color": "Light Bluish Gray",
-      "qty": 102
+      "qty": 114
     },
     {
       "drawerId": "P1",
@@ -465592,6 +465592,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvpp0adm_2y464",
+      "label": "October 17 BAM Visit (batch 3)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 3,
+      "timestamp": "2026-10-26T20:12:00.778Z",
+      "items": [
+        {
+          "partNum": "11212",
+          "color": "Light Bluish Gray",
+          "desc": "Plate 3 x 3",
+          "elementId": "6015347",
+          "qty": 12,
+          "drawerId": "P1",
+          "drawerLabel": "P1"
+        }
+      ]
+    },
     {
       "id": "bag_mvou1ogb_8umun",
       "label": "October 17 BAM Visit (batch 2)",
@@ -470309,17 +470328,6 @@
           "sel": false
         },
         {
-          "partNum": "11212",
-          "color": "Light Bluish Gray",
-          "desc": "Plate 3 x 3",
-          "elementId": "6015347",
-          "qty": 12,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "2420",
           "color": "Light Bluish Gray",
           "desc": "Plate 2 x 2 Corner",
@@ -471189,12 +471197,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-26T05:45:17.578Z",
+      "savedAt": "2026-10-26T20:12:03.581Z",
       "keepOpen": true,
       "moved": {
-        "batches": 2,
-        "pieces": 182,
-        "last": "2026-10-26T05:45:17.578Z"
+        "batches": 3,
+        "pieces": 194,
+        "last": "2026-10-26T20:12:00.778Z"
       }
     },
     {
@@ -559514,7 +559522,7 @@
     "dmv712kxj4w19rt": {
       "name": "Windows PC · Edge",
       "v": "2026.10.25.3",
-      "at": "2026-10-26T16:17:47.412Z"
+      "at": "2026-10-26T20:12:07.619Z"
     },
     "dmv713c9mk1k9ay": {
       "name": "iPhone · Safari",
@@ -559545,10 +559553,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-26T05:45:17.579Z",
+      "bags": "2026-10-26T20:12:03.581Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-26T16:17:47.412Z",
+    "savedAt": "2026-10-26T20:12:07.619Z",
     "appVersion": "2026.10.25.3"
   }
 }
