@@ -457392,7 +457392,7 @@
       "label": "P2",
       "notes": "",
       "group": "P",
-      "lastEdited": "2026-10-13T17:14:14.307Z"
+      "lastEdited": "2026-10-26T05:45:17.502Z"
     },
     {
       "id": "P3",
@@ -465087,6 +465087,13 @@
       "color": "Dark Blue",
       "elementId": "6135597",
       "qty": 9
+    },
+    {
+      "drawerId": "P2",
+      "partNum": "3031",
+      "color": "Green",
+      "elementId": "4113158",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -465499,6 +465506,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvou1ogb_8umun",
+      "label": "October 17 BAM Visit (batch 2)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 2,
+      "timestamp": "2026-10-26T05:45:17.579Z",
+      "items": [
+        {
+          "partNum": "3031",
+          "color": "Green",
+          "desc": "Plate 4 x 4",
+          "elementId": "4113158",
+          "qty": 3,
+          "drawerId": "P2",
+          "drawerLabel": "P2"
+        }
+      ]
+    },
     {
       "id": "bag_mvosr4o4_irmt6",
       "label": "October 17 BAM Visit (batch 1)",
@@ -470131,17 +470157,6 @@
       "label": "October 17 BAM Visit",
       "items": [
         {
-          "partNum": "3031",
-          "color": "Green",
-          "desc": "Plate 4 x 4",
-          "elementId": "4113158",
-          "qty": 3,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "3022",
           "color": "Light Bluish Gray",
           "desc": "Plate 2 x 2",
@@ -471088,12 +471103,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-26T05:23:18.252Z",
+      "savedAt": "2026-10-26T05:45:17.578Z",
       "keepOpen": true,
       "moved": {
-        "batches": 1,
-        "pieces": 179,
-        "last": "2026-10-26T05:09:05.763Z"
+        "batches": 2,
+        "pieces": 182,
+        "last": "2026-10-26T05:45:17.578Z"
       }
     },
     {
@@ -493561,9 +493576,12 @@
       "c": "Green",
       "d": "Plate 4 x 4",
       "e": "4243821",
-      "u": 1791916924851,
+      "u": 1792993518780,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4113158.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4113158.jpg",
+      "ea": [
+        "4113158"
+      ]
     },
     "3032|green": {
       "p": "3032",
@@ -559373,7 +559391,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.25.3",
-      "at": "2026-10-26T05:36:47.079Z"
+      "at": "2026-10-26T05:45:22.882Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -559394,10 +559412,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-26T05:23:18.252Z",
+      "bags": "2026-10-26T05:45:17.579Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-26T05:36:47.079Z",
+    "savedAt": "2026-10-26T05:45:22.881Z",
     "appVersion": "2026.10.25.3"
   }
 }
