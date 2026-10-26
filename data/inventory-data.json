@@ -465747,7 +465747,8 @@
           "drawerId": "A9",
           "drawerLabel": "A9"
         }
-      ]
+      ],
+      "bagId": "bagprog_mvoo1wik_nkx0"
     },
     {
       "id": "bag_muq6agmz_wpg0u",
@@ -466542,6 +466543,17 @@
   ],
   "pullLog": [],
   "bagSavedProgressList": [
+    {
+      "id": "bagprog_mvoo1wik_nkx0",
+      "label": "Ebay Bulk Box #1 - 1x Bricks",
+      "items": [],
+      "keepOpen": true,
+      "savedAt": "2026-10-26T02:57:30.332Z",
+      "moved": {
+        "batches": 1,
+        "pieces": 163
+      }
+    },
     {
       "id": "bagprog_mvkiy8py_sac9",
       "label": "CdA BAM - 10/22/26",
@@ -556826,7 +556838,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.25.2",
-      "at": "2026-10-26T02:57:23.521Z"
+      "at": "2026-10-26T02:57:34.357Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -556847,10 +556859,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-23T06:19:26.526Z",
+      "bags": "2026-10-26T02:57:30.334Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-26T02:57:23.521Z",
+    "savedAt": "2026-10-26T02:57:34.357Z",
     "appVersion": "2026.10.25.2"
   }
 }
