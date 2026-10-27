@@ -455277,7 +455277,8 @@
       "id": "I41",
       "label": "I41",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-10-27T18:22:05.007Z"
     },
     {
       "id": "I42",
@@ -467181,6 +467182,20 @@
       "partNum": "85984",
       "color": "Yellow",
       "qty": 8
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Light Bluish Gray",
+      "elementId": "4211451",
+      "qty": 43
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "White",
+      "elementId": "379401",
+      "qty": 64
     }
   ],
   "mocLocations": {
@@ -467593,6 +467608,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvr0irs7_cicpu",
+      "label": "October 17 BAM Visit (batch 18)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 18,
+      "timestamp": "2026-10-27T18:22:05.095Z",
+      "items": [
+        {
+          "partNum": "15573",
+          "color": "Light Bluish Gray",
+          "desc": "Plate Special 1 x 2 with 1 Stud with Groove and Inside Stud Holder (Jumper)",
+          "elementId": "4211451",
+          "qty": 43,
+          "drawerId": "I41",
+          "drawerLabel": "I41"
+        },
+        {
+          "partNum": "15573",
+          "color": "White",
+          "desc": "Plate Special 1 x 2 with 1 Stud with Groove and Inside Stud Holder (Jumper)",
+          "elementId": "379401",
+          "qty": 64,
+          "drawerId": "I41",
+          "drawerLabel": "I41"
+        }
+      ]
+    },
     {
       "id": "bag_mvqzkydi_vgq08",
       "label": "October 17 BAM Visit (batch 17)",
@@ -472848,17 +472891,6 @@
           "sel": false
         },
         {
-          "partNum": "15573",
-          "color": "Light Bluish Gray",
-          "desc": "Plate Special 1 x 2 with 1 Stud with Groove and Inside Stud Holder (Jumper)",
-          "elementId": "4211451",
-          "qty": 43,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "6541",
           "color": "Blue",
           "desc": "Technic Brick 1 x 1 with Pin Hole",
@@ -472878,17 +472910,6 @@
           "drawerId": "D8",
           "matchCount": 0,
           "suggested": true,
-          "sel": false
-        },
-        {
-          "partNum": "15573",
-          "color": "White",
-          "desc": "Plate Special 1 x 2 with 1 Stud with Groove and Inside Stud Holder (Jumper)",
-          "elementId": "379401",
-          "qty": 64,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
           "sel": false
         },
         {
@@ -473200,12 +473221,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-27T17:55:47.334Z",
+      "savedAt": "2026-10-27T18:22:05.095Z",
       "keepOpen": true,
       "moved": {
-        "batches": 17,
-        "pieces": 737,
-        "last": "2026-10-27T17:55:47.334Z"
+        "batches": 18,
+        "pieces": 844,
+        "last": "2026-10-27T18:22:05.095Z"
       }
     },
     {
@@ -476349,10 +476370,11 @@
       "c": "White",
       "d": "Plate Special 1 x 2 with 1 Stud with Groove and Inside Stud Holder (Jumper)",
       "e": "6051511",
-      "u": 1792033929265,
+      "u": 1793125326296,
       "at": 1791847424498,
       "ea": [
-        "6550152"
+        "6550152",
+        "379401"
       ]
     },
     "18674|white": {
@@ -561980,7 +562002,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T18:17:01.365Z"
+      "at": "2026-10-27T18:22:09.134Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -562001,10 +562023,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T17:55:47.334Z",
+      "bags": "2026-10-27T18:22:05.095Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T18:17:01.365Z",
+    "savedAt": "2026-10-27T18:22:09.134Z",
     "appVersion": "2026.10.26.2"
   }
 }
