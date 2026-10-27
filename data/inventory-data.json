@@ -455677,7 +455677,7 @@
       "label": "Y1",
       "notes": "2x plates 2-16",
       "group": "Y Rolling Drawer",
-      "lastEdited": "2026-10-27T03:21:12.617Z"
+      "lastEdited": "2026-10-27T03:27:10.053Z"
     },
     {
       "id": "Y2",
@@ -465635,6 +465635,19 @@
       "partNum": "3021",
       "color": "Yellow",
       "qty": 18
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3020",
+      "color": "Light Bluish Gray",
+      "qty": 89
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3020",
+      "color": "Tan",
+      "elementId": "302005",
+      "qty": 40
     }
   ],
   "mocLocations": {
@@ -466047,6 +466060,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvq4jwhr_ucbz1",
+      "label": "October 17 BAM Visit (batch 8)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 8,
+      "timestamp": "2026-10-27T03:27:10.143Z",
+      "items": [
+        {
+          "partNum": "3020",
+          "color": "Light Bluish Gray",
+          "desc": "Plate 2 x 4",
+          "elementId": "4211395",
+          "qty": 89,
+          "drawerId": "Y1",
+          "drawerLabel": "Y1"
+        },
+        {
+          "partNum": "3020",
+          "color": "Tan",
+          "desc": "Plate 2 x 4",
+          "elementId": "302005",
+          "qty": 40,
+          "drawerId": "Y1",
+          "drawerLabel": "Y1"
+        }
+      ]
+    },
     {
       "id": "bag_mvq3icw1_6xc72",
       "label": "October 17 BAM Visit (batch 7)",
@@ -470883,28 +470924,6 @@
       "label": "October 17 BAM Visit",
       "items": [
         {
-          "partNum": "3020",
-          "color": "Light Bluish Gray",
-          "desc": "Plate 2 x 4",
-          "elementId": "4211395",
-          "qty": 88,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "3020",
-          "color": "Tan",
-          "desc": "Plate 2 x 4",
-          "elementId": "302005",
-          "qty": 40,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "3795",
           "color": "Green",
           "desc": "Plate 2 x 6",
@@ -471664,12 +471683,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-27T02:57:58.465Z",
+      "savedAt": "2026-10-27T03:27:10.142Z",
       "keepOpen": true,
       "moved": {
-        "batches": 7,
-        "pieces": 369,
-        "last": "2026-10-27T02:57:58.465Z"
+        "batches": 8,
+        "pieces": 498,
+        "last": "2026-10-27T03:27:10.143Z"
       }
     },
     {
@@ -479618,8 +479637,11 @@
       "c": "Tan",
       "d": "Plate 2 x 4",
       "e": "4114309",
-      "u": 1791916924851,
-      "at": 1791671921036
+      "u": 1793071631344,
+      "at": 1791671921036,
+      "ea": [
+        "302005"
+      ]
     },
     "87994|light bluish gray": {
       "p": "87994",
@@ -560115,7 +560137,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T03:21:16.651Z"
+      "at": "2026-10-27T03:27:14.176Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -560136,10 +560158,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T02:57:58.465Z",
+      "bags": "2026-10-27T03:27:10.143Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T03:21:16.651Z",
+    "savedAt": "2026-10-27T03:27:14.176Z",
     "appVersion": "2026.10.26.2"
   }
 }
