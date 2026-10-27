@@ -454116,7 +454116,7 @@
       "label": "D7",
       "notes": "45 degree 1 x 2 with cutout",
       "group": "D",
-      "lastEdited": "2026-10-27T17:41:34.420Z"
+      "lastEdited": "2026-10-27T17:50:10.201Z"
     },
     {
       "id": "D8",
@@ -466973,6 +466973,97 @@
       "color": "Yellow",
       "elementId": "416224",
       "qty": 4
+    },
+    {
+      "drawerId": "D7",
+      "partNum": "28192",
+      "color": "Black",
+      "qty": 12
+    },
+    {
+      "drawerId": "D7",
+      "partNum": "28192",
+      "color": "Blue",
+      "qty": 4
+    },
+    {
+      "drawerId": "D7",
+      "partNum": "28192",
+      "color": "Bright Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "D7",
+      "partNum": "28192",
+      "color": "Dark Blue",
+      "qty": 16
+    },
+    {
+      "drawerId": "D7",
+      "partNum": "28192",
+      "color": "Dark Bluish Gray",
+      "qty": 36
+    },
+    {
+      "drawerId": "D7",
+      "partNum": "28192",
+      "color": "Dark Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "D7",
+      "partNum": "28192",
+      "color": "Dark Tan",
+      "qty": 2
+    },
+    {
+      "drawerId": "D7",
+      "partNum": "28192",
+      "color": "Light Bluish Gray",
+      "qty": 23
+    },
+    {
+      "drawerId": "D7",
+      "partNum": "28192",
+      "color": "Lime",
+      "qty": 3
+    },
+    {
+      "drawerId": "D7",
+      "partNum": "28192",
+      "color": "Pearl Gold",
+      "qty": 3
+    },
+    {
+      "drawerId": "D7",
+      "partNum": "28192",
+      "color": "Red",
+      "qty": 4
+    },
+    {
+      "drawerId": "D7",
+      "partNum": "28192",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "D7",
+      "partNum": "28192",
+      "color": "Metallic Silver",
+      "elementId": "6237127",
+      "qty": 2
+    },
+    {
+      "drawerId": "D7",
+      "partNum": "28192",
+      "color": "Yellow",
+      "qty": 14
+    },
+    {
+      "drawerId": "D7",
+      "partNum": "28192",
+      "color": "White",
+      "qty": 192
     }
   ],
   "mocLocations": {
@@ -531451,8 +531542,11 @@
       "c": "Metallic Silver",
       "d": "Brick Sloped 45° 2 x 1 with 2/3 Inverted Cutout and no stud",
       "e": "6345725",
-      "u": 1791916924851,
-      "at": 1791654677272
+      "u": 1793123411403,
+      "at": 1791654677272,
+      "ea": [
+        "6237127"
+      ]
     },
     "63864|metallic silver": {
       "p": "63864",
@@ -561579,6 +561673,34 @@
       "d": "Tile 1 x 8 with Groove",
       "e": "6213268",
       "u": 1793122757457
+    },
+    "28192|bright green": {
+      "p": "28192",
+      "c": "Bright Green",
+      "d": "Brick Sloped 45° 2 x 1 with 2/3 Inverted Cutout and no stud",
+      "e": "6523383",
+      "u": 1793123411403
+    },
+    "28192|lime": {
+      "p": "28192",
+      "c": "Lime",
+      "d": "Brick Sloped 45° 2 x 1 with 2/3 Inverted Cutout and no stud",
+      "e": "6258413",
+      "u": 1793123411403
+    },
+    "28192|pearl gold": {
+      "p": "28192",
+      "c": "Pearl Gold",
+      "d": "Brick Sloped 45° 2 x 1 with 2/3 Inverted Cutout and no stud",
+      "e": "6287530",
+      "u": 1793123411403
+    },
+    "28192|reddish brown": {
+      "p": "28192",
+      "c": "Reddish Brown",
+      "d": "Brick Sloped 45° 2 x 1 with 2/3 Inverted Cutout and no stud",
+      "e": "6248854",
+      "u": 1793123411403
     }
   },
   "partKinds": {
@@ -561722,7 +561844,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T17:41:38.465Z"
+      "at": "2026-10-27T17:50:14.236Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -561746,7 +561868,7 @@
       "bags": "2026-10-27T17:28:31.624Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T17:41:38.465Z",
+    "savedAt": "2026-10-27T17:50:14.236Z",
     "appVersion": "2026.10.26.2"
   }
 }
