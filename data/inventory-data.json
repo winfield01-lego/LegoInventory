@@ -454452,7 +454452,7 @@
       "label": "F42",
       "notes": "1 x 1 technic brick",
       "group": "F",
-      "lastEdited": "2026-10-27T21:52:33.062Z"
+      "lastEdited": "2026-10-27T21:52:57.178Z"
     },
     {
       "id": "F43",
@@ -468230,6 +468230,12 @@
       "partNum": "67095",
       "color": "Red",
       "qty": 1
+    },
+    {
+      "drawerId": "F42",
+      "partNum": "6541",
+      "color": "Blue",
+      "qty": 9
     }
   ],
   "mocLocations": {
@@ -468642,6 +468648,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvr81y9k_knm4m",
+      "label": "October 17 BAM Visit (batch 29)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 29,
+      "timestamp": "2026-10-27T21:52:57.272Z",
+      "items": [
+        {
+          "partNum": "6541",
+          "color": "Blue",
+          "desc": "Technic Brick 1 x 1 with Pin Hole",
+          "elementId": "4119014",
+          "qty": 9,
+          "drawerId": "F42",
+          "drawerLabel": "F42"
+        }
+      ]
+    },
     {
       "id": "bag_mvr7prca_xfbwu",
       "label": "October 17 BAM Visit (batch 28)",
@@ -474255,17 +474280,6 @@
       "label": "October 17 BAM Visit",
       "items": [
         {
-          "partNum": "6541",
-          "color": "Blue",
-          "desc": "Technic Brick 1 x 1 with Pin Hole",
-          "elementId": "4119014",
-          "qty": 9,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "2412b",
           "color": "Dark Bluish Gray",
           "desc": "Tile Special 1 x 2 Grille with Bottom Groove",
@@ -474277,12 +474291,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-27T21:43:28.425Z",
+      "savedAt": "2026-10-27T21:52:57.272Z",
       "keepOpen": true,
       "moved": {
-        "batches": 28,
-        "pieces": 968,
-        "last": "2026-10-27T21:43:28.426Z"
+        "batches": 29,
+        "pieces": 977,
+        "last": "2026-10-27T21:52:57.272Z"
       }
     },
     {
@@ -563334,7 +563348,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T21:52:37.092Z"
+      "at": "2026-10-27T21:53:01.313Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -563355,10 +563369,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T21:43:28.426Z",
+      "bags": "2026-10-27T21:52:57.272Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T21:52:37.092Z",
+    "savedAt": "2026-10-27T21:53:01.313Z",
     "appVersion": "2026.10.26.2"
   }
 }
