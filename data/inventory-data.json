@@ -455677,7 +455677,7 @@
       "label": "Y1",
       "notes": "2x plates 2-16",
       "group": "Y Rolling Drawer",
-      "lastEdited": "2026-10-27T02:57:58.372Z"
+      "lastEdited": "2026-10-27T03:21:05.309Z"
     },
     {
       "id": "Y2",
@@ -465532,7 +465532,109 @@
       "drawerId": "Y1",
       "partNum": "3021",
       "color": "Light Bluish Gray",
-      "qty": 64
+      "qty": 262
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3021",
+      "color": "Black",
+      "qty": 47
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3021",
+      "color": "Blue",
+      "qty": 33
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3021",
+      "color": "Bright Light Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3021",
+      "color": "Dark Azure",
+      "elementId": "6089837",
+      "qty": 12
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3021",
+      "color": "Dark Blue",
+      "elementId": "4224491",
+      "qty": 8
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3021",
+      "color": "Dark Bluish Gray",
+      "qty": 83
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3021",
+      "color": "Dark Red",
+      "elementId": "4177047",
+      "qty": 3
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3021",
+      "color": "Dark Tan",
+      "elementId": "4247156",
+      "qty": 3
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3021",
+      "color": "Green",
+      "qty": 4
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3021",
+      "color": "Lime",
+      "elementId": "4122444",
+      "qty": 1
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3021",
+      "color": "Orange",
+      "qty": 8
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3021",
+      "color": "Red",
+      "qty": 52
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3021",
+      "color": "Reddish Brown",
+      "qty": 8
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3021",
+      "color": "Tan",
+      "elementId": "302105",
+      "qty": 20
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3021",
+      "color": "White",
+      "qty": 36
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3021",
+      "color": "Yellow",
+      "qty": 18
     }
   ],
   "mocLocations": {
@@ -484585,9 +484687,12 @@
       "c": "Tan",
       "d": "Plate 2 x 3",
       "e": "4118790",
-      "u": 1791916924851,
+      "u": 1793071266510,
       "at": 1791671921036,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/302105.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/302105.jpg",
+      "ea": [
+        "302105"
+      ]
     },
     "3021|yellow": {
       "p": "3021",
@@ -499631,9 +499736,12 @@
       "c": "Dark Blue",
       "d": "Plate 2 x 3",
       "e": "6554192",
-      "u": 1791916924851,
+      "u": 1793071266510,
       "at": 1791654973174,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4530028.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4530028.jpg",
+      "ea": [
+        "4224491"
+      ]
     },
     "3034|dark blue": {
       "p": "3034",
@@ -501748,9 +501856,12 @@
       "c": "Lime",
       "d": "Plate 2 x 3",
       "e": "6013793",
-      "u": 1791916924851,
+      "u": 1793071266510,
       "at": 1791654340279,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4210215.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4210215.jpg",
+      "ea": [
+        "4122444"
+      ]
     },
     "3068b|lime": {
       "p": "3068b",
@@ -502596,8 +502707,11 @@
       "c": "Dark Azure",
       "d": "Plate 2 x 3",
       "e": "6144149",
-      "u": 1791916924851,
-      "at": 1791654681669
+      "u": 1793071266510,
+      "at": 1791654681669,
+      "ea": [
+        "6089837"
+      ]
     },
     "3795|dark azure": {
       "p": "3795",
@@ -512495,9 +512609,12 @@
       "c": "Dark Tan",
       "d": "Plate 2 x 3",
       "e": "6035540",
-      "u": 1791916924851,
+      "u": 1793071266510,
       "at": 1791654755320,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4613822.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4613822.jpg",
+      "ea": [
+        "4247156"
+      ]
     },
     "60474|dark tan": {
       "p": "60474",
@@ -532320,9 +532437,12 @@
       "c": "Dark Red",
       "d": "Plate 2 x 3",
       "e": "6264030",
-      "u": 1791916924851,
+      "u": 1793071266510,
       "at": 1791654710977,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4177047.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4177047.jpg",
+      "ea": [
+        "4177047"
+      ]
     },
     "3008|dark turquoise": {
       "p": "3008",
@@ -559845,6 +559965,13 @@
       "d": "Plate 2 x 2",
       "e": "4539745",
       "u": 1793064777683
+    },
+    "3021|bright light blue": {
+      "p": "3021",
+      "c": "Bright Light Blue",
+      "d": "Plate 2 x 3",
+      "e": "6013810",
+      "u": 1793071266510
     }
   },
   "partKinds": {
@@ -559988,7 +560115,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T02:58:02.496Z"
+      "at": "2026-10-27T03:21:10.608Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -560012,7 +560139,7 @@
       "bags": "2026-10-27T02:57:58.465Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T02:58:02.496Z",
+    "savedAt": "2026-10-27T03:21:10.608Z",
     "appVersion": "2026.10.26.2"
   }
 }
