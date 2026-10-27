@@ -454675,7 +454675,7 @@
       "label": "G35",
       "notes": "1 x 2 tile, grille",
       "group": "G",
-      "lastEdited": "2026-10-27T22:02:20.347Z"
+      "lastEdited": "2026-10-27T22:02:40.462Z"
     },
     {
       "id": "G36",
@@ -468293,6 +468293,12 @@
       "partNum": "6541",
       "color": "Yellow",
       "qty": 24
+    },
+    {
+      "drawerId": "G35",
+      "partNum": "2412b",
+      "color": "Dark Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -468705,6 +468711,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvr8egbw_zmp6l",
+      "label": "October 17 BAM Visit (batch 30)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 30,
+      "timestamp": "2026-10-27T22:02:40.557Z",
+      "items": [
+        {
+          "partNum": "2412b",
+          "color": "Dark Bluish Gray",
+          "desc": "Tile Special 1 x 2 Grille with Bottom Groove",
+          "elementId": "4210631",
+          "qty": 1,
+          "drawerId": "G35",
+          "drawerLabel": "G35"
+        }
+      ]
+    },
     {
       "id": "bag_mvr81y9k_knm4m",
       "label": "October 17 BAM Visit (batch 29)",
@@ -474335,25 +474360,13 @@
     {
       "id": "bagprog_mvdf0cda_x6nv",
       "label": "October 17 BAM Visit",
-      "items": [
-        {
-          "partNum": "2412b",
-          "color": "Dark Bluish Gray",
-          "desc": "Tile Special 1 x 2 Grille with Bottom Groove",
-          "elementId": "4210631",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        }
-      ],
-      "savedAt": "2026-10-27T21:52:57.272Z",
+      "items": [],
+      "savedAt": "2026-10-27T22:02:40.556Z",
       "keepOpen": true,
       "moved": {
-        "batches": 29,
-        "pieces": 977,
-        "last": "2026-10-27T21:52:57.272Z"
+        "batches": 30,
+        "pieces": 978,
+        "last": "2026-10-27T22:02:40.556Z"
       }
     },
     {
@@ -563411,7 +563424,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T22:02:24.390Z"
+      "at": "2026-10-27T22:02:44.592Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -563432,10 +563445,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T21:52:57.272Z",
+      "bags": "2026-10-27T22:02:40.557Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T22:02:24.390Z",
+    "savedAt": "2026-10-27T22:02:44.592Z",
     "appVersion": "2026.10.26.2"
   }
 }
