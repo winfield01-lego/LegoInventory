@@ -455064,7 +455064,7 @@
       "label": "I5",
       "notes": "2 x 2 round tile",
       "group": "I",
-      "lastEdited": "2026-10-27T21:42:42.658Z"
+      "lastEdited": "2026-10-27T21:43:28.326Z"
     },
     {
       "id": "I6",
@@ -468125,6 +468125,18 @@
       "partNum": "35787",
       "color": "White",
       "qty": 62
+    },
+    {
+      "drawerId": "I5",
+      "partNum": "14769",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "I5",
+      "partNum": "14769",
+      "color": "Red",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -468537,6 +468549,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvr7prca_xfbwu",
+      "label": "October 17 BAM Visit (batch 28)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 28,
+      "timestamp": "2026-10-27T21:43:28.426Z",
+      "items": [
+        {
+          "partNum": "14769",
+          "color": "Light Bluish Gray",
+          "desc": "Tile Round 2 x 2 with Bottom Stud Holder",
+          "elementId": "6052200",
+          "qty": 1,
+          "drawerId": "I5",
+          "drawerLabel": "I5"
+        },
+        {
+          "partNum": "14769",
+          "color": "Red",
+          "desc": "Tile Round 2 x 2 with Bottom Stud Holder",
+          "elementId": "6066342",
+          "qty": 1,
+          "drawerId": "I5",
+          "drawerLabel": "I5"
+        }
+      ]
+    },
     {
       "id": "bag_mvr7cu05_k9cmy",
       "label": "October 17 BAM Visit (batch 27)",
@@ -474142,47 +474182,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "14769",
-          "color": "Dark Bluish Gray",
-          "desc": "Tile Round 2 x 2 with Bottom Stud Holder",
-          "elementId": "4541223",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "14769",
-          "color": "Light Bluish Gray",
-          "desc": "Tile Round 2 x 2 with Bottom Stud Holder",
-          "elementId": "6052200",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "14769",
-          "color": "Red",
-          "desc": "Tile Round 2 x 2 with Bottom Stud Holder",
-          "elementId": "6066342",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
         }
       ],
-      "savedAt": "2026-10-27T21:33:25.348Z",
+      "savedAt": "2026-10-27T21:43:28.425Z",
       "keepOpen": true,
       "moved": {
-        "batches": 27,
-        "pieces": 966,
-        "last": "2026-10-27T21:33:25.349Z"
+        "batches": 28,
+        "pieces": 968,
+        "last": "2026-10-27T21:43:28.426Z"
       }
     },
     {
@@ -563186,7 +563193,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T21:42:46.689Z"
+      "at": "2026-10-27T21:43:32.458Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -563207,10 +563214,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T21:33:25.349Z",
+      "bags": "2026-10-27T21:43:28.426Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T21:42:46.689Z",
+    "savedAt": "2026-10-27T21:43:32.458Z",
     "appVersion": "2026.10.26.2"
   }
 }
