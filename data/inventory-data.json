@@ -454088,7 +454088,7 @@
       "label": "D3",
       "notes": "",
       "group": "D",
-      "lastEdited": "2026-10-26T05:25:16.602Z"
+      "lastEdited": "2026-10-27T05:40:00.457Z"
     },
     {
       "id": "D4",
@@ -466430,6 +466430,19 @@
       "partNum": "63864",
       "color": "Yellow",
       "qty": 12
+    },
+    {
+      "drawerId": "D3",
+      "partNum": "2431",
+      "color": "Light Bluish Gray",
+      "elementId": "2431194",
+      "qty": 10
+    },
+    {
+      "drawerId": "D3",
+      "partNum": "2431",
+      "color": "Dark Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -466842,6 +466855,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvq9aqic_fvxdt",
+      "label": "October 17 BAM Visit (batch 12)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 12,
+      "timestamp": "2026-10-27T05:40:00.564Z",
+      "items": [
+        {
+          "partNum": "2431",
+          "color": "Light Bluish Gray",
+          "desc": "Tile 1 x 4 with Groove",
+          "elementId": "2431194",
+          "qty": 10,
+          "drawerId": "D3",
+          "drawerLabel": "D3"
+        },
+        {
+          "partNum": "2431",
+          "color": "Dark Bluish Gray",
+          "desc": "Tile 1 x 4 with Groove",
+          "elementId": "4211053",
+          "qty": 1,
+          "drawerId": "D3",
+          "drawerLabel": "D3"
+        }
+      ]
+    },
     {
       "id": "bag_mvq8fnje_o8rp7",
       "label": "October 17 BAM Visit (batch 11)",
@@ -472227,28 +472268,6 @@
           "sel": false
         },
         {
-          "partNum": "2431",
-          "color": "Light Bluish Gray",
-          "desc": "Tile 1 x 4 with Groove",
-          "elementId": "2431194",
-          "qty": 10,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "2431",
-          "color": "Dark Bluish Gray",
-          "desc": "Tile 1 x 4 with Groove",
-          "elementId": "4211053",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "35459",
           "color": "Black",
           "desc": "Tile Special 1 x 3 Inverted with Center Hole",
@@ -472447,12 +472466,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-27T05:15:50.378Z",
+      "savedAt": "2026-10-27T05:40:00.564Z",
       "keepOpen": true,
       "moved": {
-        "batches": 11,
-        "pieces": 561,
-        "last": "2026-10-27T05:15:50.378Z"
+        "batches": 12,
+        "pieces": 572,
+        "last": "2026-10-27T05:40:00.564Z"
       }
     },
     {
@@ -482109,8 +482128,11 @@
       "c": "Light Bluish Gray",
       "d": "Tile 1 x 4 with Groove",
       "e": "4211356",
-      "u": 1791916924851,
-      "at": 1791847424498
+      "u": 1793079601765,
+      "at": 1791847424498,
+      "ea": [
+        "2431194"
+      ]
     },
     "4162|dark bluish gray": {
       "p": "4162",
@@ -561038,7 +561060,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T05:37:30.530Z"
+      "at": "2026-10-27T05:40:04.606Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -561059,10 +561081,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T05:15:50.378Z",
+      "bags": "2026-10-27T05:40:00.564Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T05:37:30.530Z",
+    "savedAt": "2026-10-27T05:40:04.606Z",
     "appVersion": "2026.10.26.2"
   }
 }
