@@ -454123,7 +454123,7 @@
       "label": "D8",
       "notes": "",
       "group": "D",
-      "lastEdited": "2026-10-27T06:08:56.871Z"
+      "lastEdited": "2026-10-27T17:28:31.538Z"
     },
     {
       "id": "D9",
@@ -466885,6 +466885,12 @@
       "color": "Yellow",
       "elementId": "6388488",
       "qty": 5
+    },
+    {
+      "drawerId": "D8",
+      "partNum": "4162",
+      "color": "Light Bluish Gray",
+      "qty": 9
     }
   ],
   "mocLocations": {
@@ -467297,6 +467303,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvqylw94_lwxew",
+      "label": "October 17 BAM Visit (batch 16)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 16,
+      "timestamp": "2026-10-27T17:28:31.624Z",
+      "items": [
+        {
+          "partNum": "4162",
+          "color": "Light Bluish Gray",
+          "desc": "Tile 1 x 8 with Groove",
+          "elementId": "4211481",
+          "qty": 9,
+          "drawerId": "D8",
+          "drawerLabel": "D8"
+        }
+      ]
+    },
     {
       "id": "bag_mvqy012g_zilny",
       "label": "October 17 BAM Visit (batch 15)",
@@ -472703,17 +472728,6 @@
           "sel": false
         },
         {
-          "partNum": "4162",
-          "color": "Light Bluish Gray",
-          "desc": "Tile 1 x 8 with Groove",
-          "elementId": "4211481",
-          "qty": 9,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "35459",
           "color": "Black",
           "desc": "Tile Special 1 x 3 Inverted with Center Hole",
@@ -472890,12 +472904,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-27T17:11:31.432Z",
+      "savedAt": "2026-10-27T17:28:31.623Z",
       "keepOpen": true,
       "moved": {
-        "batches": 15,
-        "pieces": 643,
-        "last": "2026-10-27T17:11:31.432Z"
+        "batches": 16,
+        "pieces": 652,
+        "last": "2026-10-27T17:28:31.624Z"
       }
     },
     {
@@ -561607,7 +561621,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T17:27:36.234Z"
+      "at": "2026-10-27T17:28:35.654Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -561628,10 +561642,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T17:11:31.432Z",
+      "bags": "2026-10-27T17:28:31.624Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T17:27:36.234Z",
+    "savedAt": "2026-10-27T17:28:35.654Z",
     "appVersion": "2026.10.26.2"
   }
 }
