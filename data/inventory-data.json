@@ -455037,7 +455037,7 @@
       "label": "I1",
       "notes": "1 x 2 Ingot",
       "group": "I",
-      "lastEdited": "2026-10-27T21:08:59.711Z"
+      "lastEdited": "2026-10-27T21:30:59.424Z"
     },
     {
       "id": "I2",
@@ -467944,33 +467944,33 @@
       "drawerId": "I1",
       "partNum": "99563",
       "color": "Flat Silver",
-      "qty": 4
+      "qty": 38
     },
     {
       "drawerId": "I1",
       "partNum": "99563",
       "color": "Pearl Titanium",
-      "qty": 3
+      "qty": 20
     },
     {
       "drawerId": "I1",
       "partNum": "99563",
       "color": "Black",
-      "qty": 2
+      "qty": 52
     },
     {
       "drawerId": "I1",
       "partNum": "99563",
       "color": "Light Bluish Gray",
       "elementId": "6034045",
-      "qty": 2
+      "qty": 45
     },
     {
       "drawerId": "I1",
       "partNum": "99563",
       "color": "Pearl Gold",
       "elementId": "4651407",
-      "qty": 1
+      "qty": 22
     },
     {
       "drawerId": "I1",
@@ -467982,7 +467982,56 @@
       "drawerId": "I1",
       "partNum": "99563",
       "color": "White",
-      "qty": 1
+      "qty": 44
+    },
+    {
+      "drawerId": "I1",
+      "partNum": "99563",
+      "color": "Chrome Gold",
+      "elementId": "",
+      "qty": 16
+    },
+    {
+      "drawerId": "I1",
+      "partNum": "99563",
+      "color": "Dark Bluish Gray",
+      "qty": 20
+    },
+    {
+      "drawerId": "I1",
+      "partNum": "99563",
+      "color": "Dark Orange",
+      "qty": 10
+    },
+    {
+      "drawerId": "I1",
+      "partNum": "99563",
+      "color": "Orange",
+      "qty": 28
+    },
+    {
+      "drawerId": "I1",
+      "partNum": "99563",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "I1",
+      "partNum": "99563",
+      "color": "Sand Blue",
+      "qty": 66
+    },
+    {
+      "drawerId": "I1",
+      "partNum": "99563",
+      "color": "Tan",
+      "qty": 4
+    },
+    {
+      "drawerId": "I1",
+      "partNum": "99563",
+      "color": "Yellow",
+      "qty": 17
     }
   ],
   "mocLocations": {
@@ -562852,6 +562901,13 @@
       "d": "Tile Round 1 x 1 Half Circle",
       "e": "6489985",
       "u": 1793134825820
+    },
+    "99563|chrome gold": {
+      "p": "99563",
+      "c": "Chrome Gold",
+      "d": "Tile Special 1 x 2 with Sloped Walls AKA Money / Gold Bar [Ingot]",
+      "e": "",
+      "u": 1793136660626
     }
   },
   "partKinds": {
@@ -562995,7 +563051,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T21:09:03.741Z"
+      "at": "2026-10-27T21:31:03.471Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -563019,7 +563075,7 @@
       "bags": "2026-10-27T21:08:49.186Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T21:09:03.741Z",
+    "savedAt": "2026-10-27T21:31:03.471Z",
     "appVersion": "2026.10.26.2"
   }
 }
