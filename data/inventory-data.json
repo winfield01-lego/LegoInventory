@@ -455047,8 +455047,9 @@
     {
       "id": "I3",
       "label": "I3",
-      "notes": "",
-      "group": "I"
+      "notes": "1 x 3 Tile - Inverted",
+      "group": "I",
+      "lastEdited": "2026-10-27T18:43:10.915Z"
     },
     {
       "id": "I4",
@@ -467312,6 +467313,24 @@
       "partNum": "15573",
       "color": "Yellow",
       "qty": 19
+    },
+    {
+      "drawerId": "I3",
+      "partNum": "35459",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "I3",
+      "partNum": "35459",
+      "color": "Dark Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "I3",
+      "partNum": "35459",
+      "color": "White",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -467724,6 +467743,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvr18dfo_q5jwm",
+      "label": "October 17 BAM Visit (batch 19)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 19,
+      "timestamp": "2026-10-27T18:41:59.556Z",
+      "items": [
+        {
+          "partNum": "35459",
+          "color": "Black",
+          "desc": "Tile Special 1 x 3 Inverted with Center Hole",
+          "elementId": "6272184",
+          "qty": 1,
+          "drawerId": "I3",
+          "drawerLabel": "I3"
+        },
+        {
+          "partNum": "35459",
+          "color": "Dark Brown",
+          "desc": "Tile Special 1 x 3 Inverted with Center Hole",
+          "elementId": "6272145",
+          "qty": 1,
+          "drawerId": "I3",
+          "drawerLabel": "I3"
+        },
+        {
+          "partNum": "35459",
+          "color": "White",
+          "desc": "Tile Special 1 x 3 Inverted with Center Hole",
+          "elementId": "6223491",
+          "qty": 2,
+          "drawerId": "I3",
+          "drawerLabel": "I3"
+        }
+      ]
+    },
     {
       "id": "bag_mvr0irs7_cicpu",
       "label": "October 17 BAM Visit (batch 18)",
@@ -473161,39 +473217,6 @@
           "sel": false
         },
         {
-          "partNum": "35459",
-          "color": "Black",
-          "desc": "Tile Special 1 x 3 Inverted with Center Hole",
-          "elementId": "6272184",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "35459",
-          "color": "Dark Brown",
-          "desc": "Tile Special 1 x 3 Inverted with Center Hole",
-          "elementId": "6272145",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "35459",
-          "color": "White",
-          "desc": "Tile Special 1 x 3 Inverted with Center Hole",
-          "elementId": "6223491",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "99563",
           "color": "Flat Silver",
           "desc": "Tile Special 1 x 2 with Sloped Walls AKA Money / Gold Bar [Ingot]",
@@ -473337,12 +473360,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-27T18:22:05.095Z",
+      "savedAt": "2026-10-27T18:41:59.556Z",
       "keepOpen": true,
       "moved": {
-        "batches": 18,
-        "pieces": 844,
-        "last": "2026-10-27T18:22:05.095Z"
+        "batches": 19,
+        "pieces": 848,
+        "last": "2026-10-27T18:41:59.556Z"
       }
     },
     {
@@ -561988,6 +562011,13 @@
       "d": "Plate Special 1 x 2 with 1 Stud with Groove and Inside Stud Holder (Jumper)",
       "e": "6347533",
       "u": 1793126465846
+    },
+    "35459|dark brown": {
+      "p": "35459",
+      "c": "Dark Brown",
+      "d": "Tile Special 1 x 3 Inverted with Center Hole",
+      "e": "6272145",
+      "u": 1793126520758
     }
   },
   "partKinds": {
@@ -562131,7 +562161,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T18:41:09.934Z"
+      "at": "2026-10-27T18:43:14.952Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -562152,10 +562182,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T18:22:05.095Z",
+      "bags": "2026-10-27T18:41:59.556Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T18:41:09.934Z",
+    "savedAt": "2026-10-27T18:43:14.952Z",
     "appVersion": "2026.10.26.2"
   }
 }
