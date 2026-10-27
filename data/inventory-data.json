@@ -455278,7 +455278,7 @@
       "label": "I41",
       "notes": "1 x 2 Jumper",
       "group": "I",
-      "lastEdited": "2026-10-27T18:22:48.985Z"
+      "lastEdited": "2026-10-27T18:41:04.644Z"
     },
     {
       "id": "I42",
@@ -467188,14 +467188,130 @@
       "partNum": "15573",
       "color": "Light Bluish Gray",
       "elementId": "4211451",
-      "qty": 43
+      "qty": 194
     },
     {
       "drawerId": "I41",
       "partNum": "15573",
       "color": "White",
       "elementId": "379401",
-      "qty": 64
+      "qty": 117
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Black",
+      "qty": 84
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Blue",
+      "qty": 40
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Bright Green",
+      "qty": 9
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Dark Azure",
+      "qty": 3
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Dark Blue",
+      "elementId": "6092588",
+      "qty": 21
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Dark Bluish Gray",
+      "qty": 39
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Dark Red",
+      "qty": 11
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Dark Tan",
+      "qty": 6
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Green",
+      "qty": 12
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Lime",
+      "qty": 8
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Medium Blue",
+      "qty": 7
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Medium Nougat",
+      "elementId": "6218364",
+      "qty": 4
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Metallic Gold",
+      "qty": 2
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Orange",
+      "qty": 16
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Pearl Gold",
+      "qty": 12
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Red",
+      "qty": 38
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Reddish Brown",
+      "qty": 35
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Tan",
+      "qty": 13
+    },
+    {
+      "drawerId": "I41",
+      "partNum": "15573",
+      "color": "Yellow",
+      "qty": 19
     }
   ],
   "mocLocations": {
@@ -502428,9 +502544,12 @@
       "c": "Dark Blue",
       "d": "Plate Special 1 x 2 with 1 Stud with Groove and Inside Stud Holder (Jumper)",
       "e": "6554197",
-      "u": 1792033929265,
+      "u": 1793126465846,
       "at": 1791654759952,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6092588.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6092588.jpg",
+      "ea": [
+        "6092588"
+      ]
     },
     "3068b|dark blue": {
       "p": "3068b",
@@ -506018,9 +506137,12 @@
       "c": "Medium Nougat",
       "d": "Plate Special 1 x 2 with 1 Stud with Groove and Inside Stud Holder (Jumper)",
       "e": "6292154",
-      "u": 1792033929265,
+      "u": 1793126465846,
       "at": 1791654748438,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6218364.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6218364.jpg",
+      "ea": [
+        "6218364"
+      ]
     },
     "15208|medium nougat": {
       "p": "15208",
@@ -561859,6 +561981,13 @@
       "d": "Brick Sloped 30° 1 x 2 x 2/3",
       "e": "6127366",
       "u": 1793125002373
+    },
+    "15573|metallic gold": {
+      "p": "15573",
+      "c": "Metallic Gold",
+      "d": "Plate Special 1 x 2 with 1 Stud with Groove and Inside Stud Holder (Jumper)",
+      "e": "6347533",
+      "u": 1793126465846
     }
   },
   "partKinds": {
@@ -562002,7 +562131,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T18:22:53.015Z"
+      "at": "2026-10-27T18:41:09.934Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -562026,7 +562155,7 @@
       "bags": "2026-10-27T18:22:05.095Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T18:22:53.015Z",
+    "savedAt": "2026-10-27T18:41:09.934Z",
     "appVersion": "2026.10.26.2"
   }
 }
