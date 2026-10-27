@@ -454137,7 +454137,7 @@
       "label": "D10",
       "notes": "",
       "group": "D",
-      "lastEdited": "2026-10-26T05:26:39.337Z"
+      "lastEdited": "2026-10-27T00:22:26.370Z"
     },
     {
       "id": "E1",
@@ -465180,6 +465180,43 @@
       "color": "Yellow",
       "elementId": "303124",
       "qty": 4
+    },
+    {
+      "drawerId": "D10",
+      "partNum": "87079",
+      "color": "Light Bluish Gray",
+      "qty": 33
+    },
+    {
+      "drawerId": "D10",
+      "partNum": "87079",
+      "color": "Dark Bluish Gray",
+      "qty": 5
+    },
+    {
+      "drawerId": "D10",
+      "partNum": "87079",
+      "color": "Sand Blue",
+      "elementId": "6052832",
+      "qty": 2
+    },
+    {
+      "drawerId": "D10",
+      "partNum": "87079",
+      "color": "White",
+      "qty": 3
+    },
+    {
+      "drawerId": "D10",
+      "partNum": "87079",
+      "color": "Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "D10",
+      "partNum": "87079",
+      "color": "Dark Orange",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -465592,6 +465629,70 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvpxyc9g_zjikh",
+      "label": "October 17 BAM Visit (batch 4)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 4,
+      "timestamp": "2026-10-27T00:22:26.452Z",
+      "items": [
+        {
+          "partNum": "87079",
+          "color": "Light Bluish Gray",
+          "desc": "Tile 2 x 4 with Groove",
+          "elementId": "4560183",
+          "qty": 33,
+          "drawerId": "D10",
+          "drawerLabel": "D10"
+        },
+        {
+          "partNum": "87079",
+          "color": "Dark Bluish Gray",
+          "desc": "Tile 2 x 4 with Groove",
+          "elementId": "4560184",
+          "qty": 5,
+          "drawerId": "D10",
+          "drawerLabel": "D10"
+        },
+        {
+          "partNum": "87079",
+          "color": "Sand Blue",
+          "desc": "Tile 2 x 4 with Groove",
+          "elementId": "6052832",
+          "qty": 2,
+          "drawerId": "D10",
+          "drawerLabel": "D10"
+        },
+        {
+          "partNum": "87079",
+          "color": "White",
+          "desc": "Tile 2 x 4 with Groove",
+          "elementId": "4560178",
+          "qty": 3,
+          "drawerId": "D10",
+          "drawerLabel": "D10"
+        },
+        {
+          "partNum": "87079",
+          "color": "Green",
+          "desc": "Tile 2 x 4 with Groove",
+          "elementId": "4566179",
+          "qty": 1,
+          "drawerId": "D10",
+          "drawerLabel": "D10"
+        },
+        {
+          "partNum": "87079",
+          "color": "Dark Orange",
+          "desc": "Tile 2 x 4 with Groove",
+          "elementId": "6058089",
+          "qty": 1,
+          "drawerId": "D10",
+          "drawerLabel": "D10"
+        }
+      ]
+    },
     {
       "id": "bag_mvpp0adm_2y464",
       "label": "October 17 BAM Visit (batch 3)",
@@ -470471,72 +470572,6 @@
           "sel": false
         },
         {
-          "partNum": "87079",
-          "color": "Light Bluish Gray",
-          "desc": "Tile 2 x 4 with Groove",
-          "elementId": "4560183",
-          "qty": 33,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "87079",
-          "color": "Dark Bluish Gray",
-          "desc": "Tile 2 x 4 with Groove",
-          "elementId": "4560184",
-          "qty": 5,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "87079",
-          "color": "Sand Blue",
-          "desc": "Tile 2 x 4 with Groove",
-          "elementId": "6052832",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "87079",
-          "color": "White",
-          "desc": "Tile 2 x 4 with Groove",
-          "elementId": "4560178",
-          "qty": 3,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "87079",
-          "color": "Green",
-          "desc": "Tile 2 x 4 with Groove",
-          "elementId": "4566179",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "87079",
-          "color": "Dark Orange",
-          "desc": "Tile 2 x 4 with Groove",
-          "elementId": "6058089",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "11203",
           "color": "Black",
           "desc": "Tile Special 2 x 2 Inverted",
@@ -471197,12 +471232,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-26T20:12:03.581Z",
+      "savedAt": "2026-10-27T00:22:26.452Z",
       "keepOpen": true,
       "moved": {
-        "batches": 3,
-        "pieces": 194,
-        "last": "2026-10-26T20:12:00.778Z"
+        "batches": 4,
+        "pieces": 239,
+        "last": "2026-10-27T00:22:26.452Z"
       }
     },
     {
@@ -487731,9 +487766,12 @@
       "c": "Sand Blue",
       "d": "Tile 2 x 4 with Groove",
       "e": "6124349",
-      "u": 1791916924851,
+      "u": 1793060547653,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6052832.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6052832.jpg",
+      "ea": [
+        "6052832"
+      ]
     },
     "69729|dark bluish gray": {
       "p": "69729",
@@ -559532,7 +559570,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T00:19:41.320Z"
+      "at": "2026-10-27T00:22:31.734Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -559553,10 +559591,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-26T20:12:03.581Z",
+      "bags": "2026-10-27T00:22:26.452Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T00:19:41.320Z",
+    "savedAt": "2026-10-27T00:22:31.734Z",
     "appVersion": "2026.10.26.2"
   }
 }
