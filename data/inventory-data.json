@@ -455049,7 +455049,7 @@
       "label": "I3",
       "notes": "1 x 3 Tile - Inverted",
       "group": "I",
-      "lastEdited": "2026-10-27T18:43:10.915Z"
+      "lastEdited": "2026-10-27T18:45:05.576Z"
     },
     {
       "id": "I4",
@@ -467318,18 +467318,36 @@
       "drawerId": "I3",
       "partNum": "35459",
       "color": "Black",
-      "qty": 1
+      "qty": 27
     },
     {
       "drawerId": "I3",
       "partNum": "35459",
       "color": "Dark Brown",
-      "qty": 1
+      "qty": 3
     },
     {
       "drawerId": "I3",
       "partNum": "35459",
       "color": "White",
+      "qty": 19
+    },
+    {
+      "drawerId": "I3",
+      "partNum": "35459",
+      "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "I3",
+      "partNum": "35459",
+      "color": "Light Bluish Gray",
+      "qty": 22
+    },
+    {
+      "drawerId": "I3",
+      "partNum": "35459",
+      "color": "Tan",
       "qty": 2
     }
   ],
@@ -562018,6 +562036,20 @@
       "d": "Tile Special 1 x 3 Inverted with Center Hole",
       "e": "6272145",
       "u": 1793126520758
+    },
+    "35459|dark blue": {
+      "p": "35459",
+      "c": "Dark Blue",
+      "d": "Tile Special 1 x 3 Inverted with Center Hole",
+      "e": "6484004",
+      "u": 1793126706780
+    },
+    "35459|tan": {
+      "p": "35459",
+      "c": "Tan",
+      "d": "Tile Special 1 x 3 Inverted with Center Hole",
+      "e": "6223613",
+      "u": 1793126706780
     }
   },
   "partKinds": {
@@ -562161,7 +562193,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T18:43:14.952Z"
+      "at": "2026-10-27T18:45:09.618Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -562185,7 +562217,7 @@
       "bags": "2026-10-27T18:41:59.556Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T18:43:14.952Z",
+    "savedAt": "2026-10-27T18:45:09.618Z",
     "appVersion": "2026.10.26.2"
   }
 }
