@@ -455677,7 +455677,7 @@
       "label": "Y1",
       "notes": "2x plates 2-16",
       "group": "Y Rolling Drawer",
-      "lastEdited": "2026-10-27T03:48:12.161Z"
+      "lastEdited": "2026-10-27T03:57:55.809Z"
     },
     {
       "id": "Y2",
@@ -465783,7 +465783,119 @@
       "drawerId": "Y1",
       "partNum": "3795",
       "color": "Green",
+      "qty": 8
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3795",
+      "color": "Black",
+      "qty": 35
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3795",
+      "color": "Blue",
+      "qty": 18
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3795",
+      "color": "Bright Green",
+      "elementId": "4195199",
       "qty": 2
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3795",
+      "color": "Bright Light Blue",
+      "qty": 6
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3795",
+      "color": "Dark Azure",
+      "qty": 2
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3795",
+      "color": "Dark Brown",
+      "qty": 3
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3795",
+      "color": "Dark Bluish Gray",
+      "qty": 49
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3795",
+      "color": "Dark Tan",
+      "qty": 4
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3795",
+      "color": "Light Bluish Gray",
+      "elementId": "3795194",
+      "qty": 36
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3795",
+      "color": "Lime",
+      "elementId": "4210218",
+      "qty": 3
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3795",
+      "color": "Medium Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3795",
+      "color": "Orange",
+      "qty": 2
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3795",
+      "color": "Red",
+      "qty": 15
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3795",
+      "color": "Reddish Brown",
+      "qty": 14
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3795",
+      "color": "Sand Blue",
+      "qty": 5
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3795",
+      "color": "Tan",
+      "elementId": "379505",
+      "qty": 19
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3795",
+      "color": "White",
+      "qty": 35
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3795",
+      "color": "Yellow",
+      "qty": 7
     }
   ],
   "mocLocations": {
@@ -479510,8 +479622,11 @@
       "c": "Tan",
       "d": "Plate 2 x 6",
       "e": "4113993",
-      "u": 1791916924851,
-      "at": 1791660084431
+      "u": 1793073477012,
+      "at": 1791660084431,
+      "ea": [
+        "379505"
+      ]
     },
     "3034|tan": {
       "p": "3034",
@@ -499227,8 +499342,11 @@
       "c": "Lime",
       "d": "Plate 2 x 6",
       "e": "4621548",
-      "u": 1791916924851,
-      "at": 1791654487845
+      "u": 1793073477012,
+      "at": 1791654487845,
+      "ea": [
+        "4210218"
+      ]
     },
     "85861|lime": {
       "p": "85861",
@@ -517486,8 +517604,11 @@
       "c": "Bright Green",
       "d": "Plate 2 x 6",
       "e": "6399741",
-      "u": 1791916924851,
-      "at": 1791654768078
+      "u": 1793073477012,
+      "at": 1791654768078,
+      "ea": [
+        "4195199"
+      ]
     },
     "6141|bright light yellow": {
       "p": "6141",
@@ -560173,6 +560294,27 @@
       "d": "Plate 2 x 4",
       "e": "4128581",
       "u": 1793072832331
+    },
+    "3795|bright light blue": {
+      "p": "3795",
+      "c": "Bright Light Blue",
+      "d": "Plate 2 x 6",
+      "e": "6013812",
+      "u": 1793073477012
+    },
+    "3795|medium blue": {
+      "p": "3795",
+      "c": "Medium Blue",
+      "d": "Plate 2 x 6",
+      "e": "4179824",
+      "u": 1793073477012
+    },
+    "3795|sand blue": {
+      "p": "3795",
+      "c": "Sand Blue",
+      "d": "Plate 2 x 6",
+      "e": "4153430",
+      "u": 1793073477012
     }
   },
   "partKinds": {
@@ -560316,7 +560458,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T03:48:16.285Z"
+      "at": "2026-10-27T03:57:59.842Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -560340,7 +560482,7 @@
       "bags": "2026-10-27T03:48:12.247Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T03:48:16.285Z",
+    "savedAt": "2026-10-27T03:57:59.842Z",
     "appVersion": "2026.10.26.2"
   }
 }
