@@ -455246,7 +455246,8 @@
       "id": "I36",
       "label": "I36",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-10-27T17:55:47.249Z"
     },
     {
       "id": "I37",
@@ -467064,6 +467065,18 @@
       "partNum": "28192",
       "color": "White",
       "qty": 192
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "Light Bluish Gray",
+      "qty": 26
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "White",
+      "qty": 59
     }
   ],
   "mocLocations": {
@@ -467476,6 +467489,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvqzkydi_vgq08",
+      "label": "October 17 BAM Visit (batch 17)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 17,
+      "timestamp": "2026-10-27T17:55:47.334Z",
+      "items": [
+        {
+          "partNum": "85984",
+          "color": "Light Bluish Gray",
+          "desc": "Brick Sloped 30° 1 x 2 x 2/3",
+          "elementId": "4568637",
+          "qty": 26,
+          "drawerId": "I36",
+          "drawerLabel": "I36"
+        },
+        {
+          "partNum": "85984",
+          "color": "White",
+          "desc": "Brick Sloped 30° 1 x 2 x 2/3",
+          "elementId": "4547489",
+          "qty": 59,
+          "drawerId": "I36",
+          "drawerLabel": "I36"
+        }
+      ]
+    },
     {
       "id": "bag_mvqylw94_lwxew",
       "label": "October 17 BAM Visit (batch 16)",
@@ -472714,28 +472755,6 @@
           "sel": false
         },
         {
-          "partNum": "85984",
-          "color": "Light Bluish Gray",
-          "desc": "Brick Sloped 30° 1 x 2 x 2/3",
-          "elementId": "4568637",
-          "qty": 27,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "85984",
-          "color": "White",
-          "desc": "Brick Sloped 30° 1 x 2 x 2/3",
-          "elementId": "4547489",
-          "qty": 59,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "6541",
           "color": "Blue",
           "desc": "Technic Brick 1 x 1 with Pin Hole",
@@ -473077,12 +473096,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-27T17:28:31.623Z",
+      "savedAt": "2026-10-27T17:55:47.334Z",
       "keepOpen": true,
       "moved": {
-        "batches": 16,
-        "pieces": 652,
-        "last": "2026-10-27T17:28:31.624Z"
+        "batches": 17,
+        "pieces": 737,
+        "last": "2026-10-27T17:55:47.334Z"
       }
     },
     {
@@ -561844,7 +561863,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T17:53:07.673Z"
+      "at": "2026-10-27T17:55:51.363Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -561865,10 +561884,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T17:28:31.624Z",
+      "bags": "2026-10-27T17:55:47.334Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T17:53:07.673Z",
+    "savedAt": "2026-10-27T17:55:51.363Z",
     "appVersion": "2026.10.26.2"
   }
 }
