@@ -454109,7 +454109,7 @@
       "label": "D6",
       "notes": "",
       "group": "D",
-      "lastEdited": "2026-10-26T05:25:10.453Z"
+      "lastEdited": "2026-10-27T06:07:33.631Z"
     },
     {
       "id": "D7",
@@ -466564,6 +466564,54 @@
       "partNum": "2431",
       "color": "Yellow",
       "qty": 11
+    },
+    {
+      "drawerId": "D6",
+      "partNum": "11203",
+      "color": "Black",
+      "qty": 3
+    },
+    {
+      "drawerId": "D6",
+      "partNum": "11203",
+      "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "D6",
+      "partNum": "11203",
+      "color": "Dark Bluish Gray",
+      "qty": 7
+    },
+    {
+      "drawerId": "D6",
+      "partNum": "11203",
+      "color": "Light Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "D6",
+      "partNum": "11203",
+      "color": "Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "D6",
+      "partNum": "11203",
+      "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "D6",
+      "partNum": "11203",
+      "color": "Tan",
+      "qty": 3
+    },
+    {
+      "drawerId": "D6",
+      "partNum": "11203",
+      "color": "Dark Tan",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -466976,6 +467024,88 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvqaa63h_sxjcw",
+      "label": "October 17 BAM Visit (batch 13)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 13,
+      "timestamp": "2026-10-27T06:07:33.725Z",
+      "items": [
+        {
+          "partNum": "11203",
+          "color": "Black",
+          "desc": "Tile Special 2 x 2 Inverted",
+          "elementId": "6013867",
+          "qty": 3,
+          "drawerId": "D6",
+          "drawerLabel": "D6"
+        },
+        {
+          "partNum": "11203",
+          "color": "Dark Blue",
+          "desc": "Tile Special 2 x 2 Inverted",
+          "elementId": "6285466",
+          "qty": 1,
+          "drawerId": "D6",
+          "drawerLabel": "D6"
+        },
+        {
+          "partNum": "11203",
+          "color": "Dark Bluish Gray",
+          "desc": "Tile Special 2 x 2 Inverted",
+          "elementId": "6013082",
+          "qty": 7,
+          "drawerId": "D6",
+          "drawerLabel": "D6"
+        },
+        {
+          "partNum": "11203",
+          "color": "Light Bluish Gray",
+          "desc": "Tile Special 2 x 2 Inverted",
+          "elementId": "6132886",
+          "qty": 4,
+          "drawerId": "D6",
+          "drawerLabel": "D6"
+        },
+        {
+          "partNum": "11203",
+          "color": "Red",
+          "desc": "Tile Special 2 x 2 Inverted",
+          "elementId": "6013868",
+          "qty": 2,
+          "drawerId": "D6",
+          "drawerLabel": "D6"
+        },
+        {
+          "partNum": "11203",
+          "color": "White",
+          "desc": "Tile Special 2 x 2 Inverted",
+          "elementId": "6013866",
+          "qty": 1,
+          "drawerId": "D6",
+          "drawerLabel": "D6"
+        },
+        {
+          "partNum": "11203",
+          "color": "Tan",
+          "desc": "Tile Special 2 x 2 Inverted",
+          "elementId": "6013081",
+          "qty": 3,
+          "drawerId": "D6",
+          "drawerLabel": "D6"
+        },
+        {
+          "partNum": "11203",
+          "color": "Dark Tan",
+          "desc": "Tile Special 2 x 2 Inverted",
+          "elementId": "6406008",
+          "qty": 1,
+          "drawerId": "D6",
+          "drawerLabel": "D6"
+        }
+      ]
+    },
     {
       "id": "bag_mvq9aqic_fvxdt",
       "label": "October 17 BAM Visit (batch 12)",
@@ -472158,94 +472288,6 @@
           "sel": false
         },
         {
-          "partNum": "11203",
-          "color": "Black",
-          "desc": "Tile Special 2 x 2 Inverted",
-          "elementId": "6013867",
-          "qty": 3,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "11203",
-          "color": "Dark Blue",
-          "desc": "Tile Special 2 x 2 Inverted",
-          "elementId": "6285466",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "11203",
-          "color": "Dark Bluish Gray",
-          "desc": "Tile Special 2 x 2 Inverted",
-          "elementId": "6013082",
-          "qty": 7,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "11203",
-          "color": "Light Bluish Gray",
-          "desc": "Tile Special 2 x 2 Inverted",
-          "elementId": "6132886",
-          "qty": 4,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "11203",
-          "color": "Red",
-          "desc": "Tile Special 2 x 2 Inverted",
-          "elementId": "6013868",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "11203",
-          "color": "White",
-          "desc": "Tile Special 2 x 2 Inverted",
-          "elementId": "6013866",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "11203",
-          "color": "Tan",
-          "desc": "Tile Special 2 x 2 Inverted",
-          "elementId": "6013081",
-          "qty": 3,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "11203",
-          "color": "Dark Tan",
-          "desc": "Tile Special 2 x 2 Inverted",
-          "elementId": "6406008",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "2412b",
           "color": "Dark Bluish Gray",
           "desc": "Tile Special 1 x 2 Grille with Bottom Groove",
@@ -472587,12 +472629,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-27T05:40:00.564Z",
+      "savedAt": "2026-10-27T06:07:36.547Z",
       "keepOpen": true,
       "moved": {
-        "batches": 12,
-        "pieces": 572,
-        "last": "2026-10-27T05:40:00.564Z"
+        "batches": 13,
+        "pieces": 594,
+        "last": "2026-10-27T06:07:33.725Z"
       }
     },
     {
@@ -561073,6 +561115,13 @@
       "d": "Tile 1 x 4 with Groove",
       "e": "6467809",
       "u": 1793080745466
+    },
+    "11203|tan": {
+      "p": "11203",
+      "c": "Tan",
+      "d": "Tile Special 2 x 2 Inverted",
+      "e": "6013081",
+      "u": 1793081254925
     }
   },
   "partKinds": {
@@ -561216,7 +561265,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T05:59:52.576Z"
+      "at": "2026-10-27T06:07:40.577Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -561237,10 +561286,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T05:40:00.564Z",
+      "bags": "2026-10-27T06:07:36.547Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T05:59:52.576Z",
+    "savedAt": "2026-10-27T06:07:40.577Z",
     "appVersion": "2026.10.26.2"
   }
 }
