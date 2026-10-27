@@ -454074,7 +454074,7 @@
       "label": "D1",
       "notes": "",
       "group": "D",
-      "lastEdited": "2026-10-26T05:25:21.275Z"
+      "lastEdited": "2026-10-27T04:41:11.508Z"
     },
     {
       "id": "D2",
@@ -466143,6 +466143,42 @@
       "color": "Tan",
       "elementId": "4124486",
       "qty": 4
+    },
+    {
+      "drawerId": "D1",
+      "partNum": "3069b",
+      "color": "Tan",
+      "qty": 7
+    },
+    {
+      "drawerId": "D1",
+      "partNum": "3069b",
+      "color": "Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "D1",
+      "partNum": "3069b",
+      "color": "White",
+      "qty": 11
+    },
+    {
+      "drawerId": "D1",
+      "partNum": "3069b",
+      "color": "Light Bluish Gray",
+      "qty": 20
+    },
+    {
+      "drawerId": "D1",
+      "partNum": "3069b",
+      "color": "Dark Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "D1",
+      "partNum": "3069b",
+      "color": "Medium Nougat",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -466555,6 +466591,70 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvq773jw_5lghg",
+      "label": "October 17 BAM Visit (batch 10)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 10,
+      "timestamp": "2026-10-27T04:41:11.612Z",
+      "items": [
+        {
+          "partNum": "3069b",
+          "color": "Tan",
+          "desc": "Tile 1 x 2 with Groove",
+          "elementId": "4114026",
+          "qty": 7,
+          "drawerId": "D1",
+          "drawerLabel": "D1"
+        },
+        {
+          "partNum": "3069b",
+          "color": "Blue",
+          "desc": "Tile 1 x 2 with Groove",
+          "elementId": "306923",
+          "qty": 2,
+          "drawerId": "D1",
+          "drawerLabel": "D1"
+        },
+        {
+          "partNum": "3069b",
+          "color": "White",
+          "desc": "Tile 1 x 2 with Groove",
+          "elementId": "306901",
+          "qty": 11,
+          "drawerId": "D1",
+          "drawerLabel": "D1"
+        },
+        {
+          "partNum": "3069b",
+          "color": "Light Bluish Gray",
+          "desc": "Tile 1 x 2 with Groove",
+          "elementId": "4211414",
+          "qty": 20,
+          "drawerId": "D1",
+          "drawerLabel": "D1"
+        },
+        {
+          "partNum": "3069b",
+          "color": "Dark Bluish Gray",
+          "desc": "Tile 1 x 2 with Groove",
+          "elementId": "4211052",
+          "qty": 2,
+          "drawerId": "D1",
+          "drawerLabel": "D1"
+        },
+        {
+          "partNum": "3069b",
+          "color": "Medium Nougat",
+          "desc": "Tile 1 x 2 with Groove",
+          "elementId": "6021997",
+          "qty": 1,
+          "drawerId": "D1",
+          "drawerLabel": "D1"
+        }
+      ]
+    },
     {
       "id": "bag_mvq5ayc7_olte2",
       "label": "October 17 BAM Visit (batch 9)",
@@ -471856,72 +471956,6 @@
           "sel": false
         },
         {
-          "partNum": "3069b",
-          "color": "Tan",
-          "desc": "Tile 1 x 2 with Groove",
-          "elementId": "4114026",
-          "qty": 7,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "3069b",
-          "color": "Blue",
-          "desc": "Tile 1 x 2 with Groove",
-          "elementId": "306923",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "3069b",
-          "color": "White",
-          "desc": "Tile 1 x 2 with Groove",
-          "elementId": "306901",
-          "qty": 11,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "3069b",
-          "color": "Light Bluish Gray",
-          "desc": "Tile 1 x 2 with Groove",
-          "elementId": "4211414",
-          "qty": 20,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "3069b",
-          "color": "Dark Bluish Gray",
-          "desc": "Tile 1 x 2 with Groove",
-          "elementId": "4211052",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "3069b",
-          "color": "Medium Nougat",
-          "desc": "Tile 1 x 2 with Groove",
-          "elementId": "6021997",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "63864",
           "color": "Light Bluish Gray",
           "desc": "Tile 1 x 3",
@@ -472186,12 +472220,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-27T03:48:12.247Z",
+      "savedAt": "2026-10-27T04:41:11.611Z",
       "keepOpen": true,
       "moved": {
-        "batches": 9,
-        "pieces": 500,
-        "last": "2026-10-27T03:48:12.247Z"
+        "batches": 10,
+        "pieces": 543,
+        "last": "2026-10-27T04:41:11.612Z"
       }
     },
     {
@@ -560737,7 +560771,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T04:28:12.502Z"
+      "at": "2026-10-27T04:41:15.645Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -560758,10 +560792,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T03:48:12.247Z",
+      "bags": "2026-10-27T04:41:11.612Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T04:28:12.502Z",
+    "savedAt": "2026-10-27T04:41:15.645Z",
     "appVersion": "2026.10.26.2"
   }
 }
