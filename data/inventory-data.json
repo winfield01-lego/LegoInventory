@@ -455036,7 +455036,8 @@
       "id": "I1",
       "label": "I1",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-10-27T21:08:49.093Z"
     },
     {
       "id": "I2",
@@ -467938,6 +467939,50 @@
       "partNum": "24246",
       "color": "Yellow",
       "qty": 20
+    },
+    {
+      "drawerId": "I1",
+      "partNum": "99563",
+      "color": "Flat Silver",
+      "qty": 4
+    },
+    {
+      "drawerId": "I1",
+      "partNum": "99563",
+      "color": "Pearl Titanium",
+      "qty": 3
+    },
+    {
+      "drawerId": "I1",
+      "partNum": "99563",
+      "color": "Black",
+      "qty": 2
+    },
+    {
+      "drawerId": "I1",
+      "partNum": "99563",
+      "color": "Light Bluish Gray",
+      "elementId": "6034045",
+      "qty": 2
+    },
+    {
+      "drawerId": "I1",
+      "partNum": "99563",
+      "color": "Pearl Gold",
+      "elementId": "4651407",
+      "qty": 1
+    },
+    {
+      "drawerId": "I1",
+      "partNum": "99563",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "I1",
+      "partNum": "99563",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -468350,6 +468395,79 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvr6h6zm_k81ko",
+      "label": "October 17 BAM Visit (batch 26)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 26,
+      "timestamp": "2026-10-27T21:08:49.186Z",
+      "items": [
+        {
+          "partNum": "99563",
+          "color": "Flat Silver",
+          "desc": "Tile Special 1 x 2 with Sloped Walls AKA Money / Gold Bar [Ingot]",
+          "elementId": "6208446",
+          "qty": 4,
+          "drawerId": "I1",
+          "drawerLabel": "I1"
+        },
+        {
+          "partNum": "99563",
+          "color": "Pearl Titanium",
+          "desc": "Tile Special 1 x 2 with Sloped Walls AKA Money / Gold Bar [Ingot]",
+          "elementId": "6208447",
+          "qty": 3,
+          "drawerId": "I1",
+          "drawerLabel": "I1"
+        },
+        {
+          "partNum": "99563",
+          "color": "Black",
+          "desc": "Tile Special 1 x 2 with Sloped Walls AKA Money / Gold Bar [Ingot]",
+          "elementId": "6156991",
+          "qty": 2,
+          "drawerId": "I1",
+          "drawerLabel": "I1"
+        },
+        {
+          "partNum": "99563",
+          "color": "Light Bluish Gray",
+          "desc": "Tile Special 1 x 2 with Sloped Walls AKA Money / Gold Bar [Ingot]",
+          "elementId": "6034045",
+          "qty": 2,
+          "drawerId": "I1",
+          "drawerLabel": "I1"
+        },
+        {
+          "partNum": "99563",
+          "color": "Pearl Gold",
+          "desc": "Tile Special 1 x 2 with Sloped Walls AKA Money / Gold Bar [Ingot]",
+          "elementId": "4651407",
+          "qty": 1,
+          "drawerId": "I1",
+          "drawerLabel": "I1"
+        },
+        {
+          "partNum": "99563",
+          "color": "Red",
+          "desc": "Tile Special 1 x 2 with Sloped Walls AKA Money / Gold Bar [Ingot]",
+          "elementId": "6394880",
+          "qty": 1,
+          "drawerId": "I1",
+          "drawerLabel": "I1"
+        },
+        {
+          "partNum": "99563",
+          "color": "White",
+          "desc": "Tile Special 1 x 2 with Sloped Walls AKA Money / Gold Bar [Ingot]",
+          "elementId": "6210076",
+          "qty": 1,
+          "drawerId": "I1",
+          "drawerLabel": "I1"
+        }
+      ]
+    },
     {
       "id": "bag_mvr52usc_u07p6",
       "label": "October 17 BAM Visit (batch 25)",
@@ -473911,91 +474029,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "99563",
-          "color": "Flat Silver",
-          "desc": "Tile Special 1 x 2 with Sloped Walls AKA Money / Gold Bar [Ingot]",
-          "elementId": "6208446",
-          "qty": 4,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "99563",
-          "color": "Pearl Titanium",
-          "desc": "Tile Special 1 x 2 with Sloped Walls AKA Money / Gold Bar [Ingot]",
-          "elementId": "6208447",
-          "qty": 3,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "99563",
-          "color": "Black",
-          "desc": "Tile Special 1 x 2 with Sloped Walls AKA Money / Gold Bar [Ingot]",
-          "elementId": "6156991",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "99563",
-          "color": "Light Bluish Gray",
-          "desc": "Tile Special 1 x 2 with Sloped Walls AKA Money / Gold Bar [Ingot]",
-          "elementId": "6034045",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "99563",
-          "color": "Pearl Gold",
-          "desc": "Tile Special 1 x 2 with Sloped Walls AKA Money / Gold Bar [Ingot]",
-          "elementId": "4651407",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "99563",
-          "color": "Red",
-          "desc": "Tile Special 1 x 2 with Sloped Walls AKA Money / Gold Bar [Ingot]",
-          "elementId": "6394880",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "99563",
-          "color": "White",
-          "desc": "Tile Special 1 x 2 with Sloped Walls AKA Money / Gold Bar [Ingot]",
-          "elementId": "6210076",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
         }
       ],
-      "savedAt": "2026-10-27T20:29:40.572Z",
+      "savedAt": "2026-10-27T21:08:49.186Z",
       "keepOpen": true,
       "moved": {
-        "batches": 25,
-        "pieces": 948,
-        "last": "2026-10-27T20:29:40.572Z"
+        "batches": 26,
+        "pieces": 962,
+        "last": "2026-10-27T21:08:49.186Z"
       }
     },
     {
@@ -500295,8 +500336,11 @@
       "c": "Pearl Gold",
       "d": "Tile Special 1 x 2 with Sloped Walls AKA Money / Gold Bar [Ingot]",
       "e": "6207933",
-      "u": 1791916924851,
-      "at": 1791660732205
+      "u": 1793135330387,
+      "at": 1791660732205,
+      "ea": [
+        "4651407"
+      ]
     },
     "99563|pearl titanium": {
       "p": "99563",
@@ -562951,7 +562995,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T21:02:09.947Z"
+      "at": "2026-10-27T21:08:53.225Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -562972,10 +563016,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T20:29:40.572Z",
+      "bags": "2026-10-27T21:08:49.186Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T21:02:09.947Z",
+    "savedAt": "2026-10-27T21:08:53.225Z",
     "appVersion": "2026.10.26.2"
   }
 }
