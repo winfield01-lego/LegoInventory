@@ -455677,7 +455677,7 @@
       "label": "Y1",
       "notes": "2x plates 2-16",
       "group": "Y Rolling Drawer",
-      "lastEdited": "2026-10-27T04:13:29.786Z"
+      "lastEdited": "2026-10-27T04:20:16.132Z"
     },
     {
       "id": "Y2",
@@ -466031,6 +466031,55 @@
       "partNum": "3832",
       "color": "Yellow",
       "qty": 2
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "2445",
+      "color": "Black",
+      "qty": 24
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "2445",
+      "color": "Blue",
+      "qty": 7
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "2445",
+      "color": "Dark Bluish Gray",
+      "qty": 7
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "2445",
+      "color": "Dark Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "2445",
+      "color": "White",
+      "qty": 5
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "2445",
+      "color": "Red",
+      "elementId": "244521",
+      "qty": 1
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "2445",
+      "color": "Reddish Brown",
+      "qty": 3
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "2445",
+      "color": "Light Bluish Gray",
+      "qty": 42
     }
   ],
   "mocLocations": {
@@ -525898,9 +525947,12 @@
       "c": "Red",
       "d": "Plate 2 x 12",
       "e": "4255035",
-      "u": 1791916924851,
+      "u": 1793074817333,
       "at": 1791846545325,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/244521.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/244521.jpg",
+      "ea": [
+        "244521"
+      ]
     },
     "68568|red": {
       "p": "68568",
@@ -560459,6 +560511,13 @@
       "d": "Plate 2 x 6",
       "e": "4153430",
       "u": 1793073477012
+    },
+    "2445|dark tan": {
+      "p": "2445",
+      "c": "Dark Tan",
+      "d": "Plate 2 x 12",
+      "e": "4268715",
+      "u": 1793074817333
     }
   },
   "partKinds": {
@@ -560602,7 +560661,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T04:13:33.816Z"
+      "at": "2026-10-27T04:20:21.425Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -560626,7 +560685,7 @@
       "bags": "2026-10-27T03:48:12.247Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T04:13:33.816Z",
+    "savedAt": "2026-10-27T04:20:21.425Z",
     "appVersion": "2026.10.26.2"
   }
 }
