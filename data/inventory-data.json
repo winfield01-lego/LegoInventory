@@ -454081,7 +454081,7 @@
       "label": "D2",
       "notes": "",
       "group": "D",
-      "lastEdited": "2026-10-26T05:25:18.137Z"
+      "lastEdited": "2026-10-27T05:15:50.284Z"
     },
     {
       "id": "D3",
@@ -466301,6 +466301,42 @@
       "partNum": "3069b",
       "color": "Yellow",
       "qty": 20
+    },
+    {
+      "drawerId": "D2",
+      "partNum": "63864",
+      "color": "Light Bluish Gray",
+      "qty": 6
+    },
+    {
+      "drawerId": "D2",
+      "partNum": "63864",
+      "color": "Dark Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "D2",
+      "partNum": "63864",
+      "color": "White",
+      "qty": 4
+    },
+    {
+      "drawerId": "D2",
+      "partNum": "63864",
+      "color": "Green",
+      "qty": 3
+    },
+    {
+      "drawerId": "D2",
+      "partNum": "63864",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "D2",
+      "partNum": "63864",
+      "color": "Dark Brown",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -466713,6 +466749,70 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvq8fnje_o8rp7",
+      "label": "October 17 BAM Visit (batch 11)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 11,
+      "timestamp": "2026-10-27T05:15:50.378Z",
+      "items": [
+        {
+          "partNum": "63864",
+          "color": "Light Bluish Gray",
+          "desc": "Tile 1 x 3",
+          "elementId": "4558169",
+          "qty": 6,
+          "drawerId": "D2",
+          "drawerLabel": "D2"
+        },
+        {
+          "partNum": "63864",
+          "color": "Dark Bluish Gray",
+          "desc": "Tile 1 x 3",
+          "elementId": "4568734",
+          "qty": 2,
+          "drawerId": "D2",
+          "drawerLabel": "D2"
+        },
+        {
+          "partNum": "63864",
+          "color": "White",
+          "desc": "Tile 1 x 3",
+          "elementId": "4558168",
+          "qty": 4,
+          "drawerId": "D2",
+          "drawerLabel": "D2"
+        },
+        {
+          "partNum": "63864",
+          "color": "Green",
+          "desc": "Tile 1 x 3",
+          "elementId": "6023083",
+          "qty": 3,
+          "drawerId": "D2",
+          "drawerLabel": "D2"
+        },
+        {
+          "partNum": "63864",
+          "color": "Black",
+          "desc": "Tile 1 x 3",
+          "elementId": "4558170",
+          "qty": 1,
+          "drawerId": "D2",
+          "drawerLabel": "D2"
+        },
+        {
+          "partNum": "63864",
+          "color": "Dark Brown",
+          "desc": "Tile 1 x 3",
+          "elementId": "6167928",
+          "qty": 2,
+          "drawerId": "D2",
+          "drawerLabel": "D2"
+        }
+      ]
+    },
     {
       "id": "bag_mvq773jw_5lghg",
       "label": "October 17 BAM Visit (batch 10)",
@@ -472056,94 +472156,6 @@
           "sel": false
         },
         {
-          "partNum": "2431pr0115",
-          "color": "Dark Blue",
-          "desc": "Tile 1 x 4 with Solar Panels Print",
-          "elementId": "6215341",
-          "qty": 4,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "2431pr0192",
-          "color": "Light Bluish Gray",
-          "desc": "Tile 1 x 4 with Car Front, Yellow Headlights Print",
-          "elementId": "6419125",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "63864",
-          "color": "Light Bluish Gray",
-          "desc": "Tile 1 x 3",
-          "elementId": "4558169",
-          "qty": 6,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "63864",
-          "color": "Dark Bluish Gray",
-          "desc": "Tile 1 x 3",
-          "elementId": "4568734",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "63864",
-          "color": "White",
-          "desc": "Tile 1 x 3",
-          "elementId": "4558168",
-          "qty": 4,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "63864",
-          "color": "Green",
-          "desc": "Tile 1 x 3",
-          "elementId": "6023083",
-          "qty": 3,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "63864",
-          "color": "Black",
-          "desc": "Tile 1 x 3",
-          "elementId": "4558170",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "63864",
-          "color": "Dark Brown",
-          "desc": "Tile 1 x 3",
-          "elementId": "6167928",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "35459",
           "color": "Black",
           "desc": "Tile Special 1 x 3 Inverted with Center Hole",
@@ -472342,12 +472354,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-27T04:41:11.611Z",
+      "savedAt": "2026-10-27T05:15:50.378Z",
       "keepOpen": true,
       "moved": {
-        "batches": 10,
-        "pieces": 543,
-        "last": "2026-10-27T04:41:11.612Z"
+        "batches": 11,
+        "pieces": 561,
+        "last": "2026-10-27T05:15:50.378Z"
       }
     },
     {
@@ -560924,7 +560936,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T05:11:38.574Z"
+      "at": "2026-10-27T05:15:54.408Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -560945,10 +560957,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T04:41:11.612Z",
+      "bags": "2026-10-27T05:15:50.378Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T05:11:38.574Z",
+    "savedAt": "2026-10-27T05:15:54.408Z",
     "appVersion": "2026.10.26.2"
   }
 }
