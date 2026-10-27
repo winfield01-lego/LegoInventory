@@ -456241,7 +456241,7 @@
       "label": "L33",
       "notes": "2 x 2 - 2 studs edge",
       "group": "L",
-      "lastEdited": "2026-10-27T19:45:40.312Z"
+      "lastEdited": "2026-10-27T19:53:35.513Z"
     },
     {
       "id": "L34",
@@ -467519,7 +467519,80 @@
       "drawerId": "L33",
       "partNum": "33909",
       "color": "Light Bluish Gray",
-      "qty": 3
+      "qty": 57
+    },
+    {
+      "drawerId": "L33",
+      "partNum": "33909",
+      "color": "Black",
+      "qty": 22
+    },
+    {
+      "drawerId": "L33",
+      "partNum": "33909",
+      "color": "Blue",
+      "qty": 21
+    },
+    {
+      "drawerId": "L33",
+      "partNum": "33909",
+      "color": "Dark Blue",
+      "elementId": "6214810",
+      "qty": 8
+    },
+    {
+      "drawerId": "L33",
+      "partNum": "33909",
+      "color": "Dark Bluish Gray",
+      "qty": 12
+    },
+    {
+      "drawerId": "L33",
+      "partNum": "33909",
+      "color": "Dark Orange",
+      "qty": 2
+    },
+    {
+      "drawerId": "L33",
+      "partNum": "33909",
+      "color": "Dark Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "L33",
+      "partNum": "33909",
+      "color": "Dark Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "L33",
+      "partNum": "33909",
+      "color": "Red",
+      "qty": 9
+    },
+    {
+      "drawerId": "L33",
+      "partNum": "33909",
+      "color": "Reddish Brown",
+      "qty": 6
+    },
+    {
+      "drawerId": "L33",
+      "partNum": "33909",
+      "color": "Tan",
+      "qty": 7
+    },
+    {
+      "drawerId": "L33",
+      "partNum": "33909",
+      "color": "White",
+      "qty": 6
+    },
+    {
+      "drawerId": "L33",
+      "partNum": "33909",
+      "color": "Yellow",
+      "qty": 12
     }
   ],
   "mocLocations": {
@@ -501799,9 +501872,12 @@
       "c": "Dark Blue",
       "d": "Plate Special 2 x 2 with Only 2 studs",
       "e": "6554209",
-      "u": 1791916924851,
+      "u": 1793130816715,
       "at": 1791654759952,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6214810.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6214810.jpg",
+      "ea": [
+        "6214810"
+      ]
     },
     "26601|dark blue": {
       "p": "26601",
@@ -562419,7 +562495,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T19:45:44.427Z"
+      "at": "2026-10-27T19:53:40.806Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -562443,7 +562519,7 @@
       "bags": "2026-10-27T19:45:40.398Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T19:45:44.427Z",
+    "savedAt": "2026-10-27T19:53:40.806Z",
     "appVersion": "2026.10.26.2"
   }
 }
