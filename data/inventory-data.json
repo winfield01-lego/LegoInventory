@@ -455677,7 +455677,7 @@
       "label": "Y1",
       "notes": "2x plates 2-16",
       "group": "Y Rolling Drawer",
-      "lastEdited": "2026-10-27T01:03:23.937Z"
+      "lastEdited": "2026-10-27T01:05:28.436Z"
     },
     {
       "id": "Y2",
@@ -465382,6 +465382,18 @@
       "color": "Yellow",
       "elementId": "6179184",
       "qty": 2
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3022",
+      "color": "Light Bluish Gray",
+      "qty": 54
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3022",
+      "color": "White",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -465794,6 +465806,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvpzholi_v147i",
+      "label": "October 17 BAM Visit (batch 6)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 6,
+      "timestamp": "2026-10-27T01:05:28.518Z",
+      "items": [
+        {
+          "partNum": "3022",
+          "color": "Light Bluish Gray",
+          "desc": "Plate 2 x 2",
+          "elementId": "4211397",
+          "qty": 54,
+          "drawerId": "Y1",
+          "drawerLabel": "Y1"
+        },
+        {
+          "partNum": "3022",
+          "color": "White",
+          "desc": "Plate 2 x 2",
+          "elementId": "302201",
+          "qty": 4,
+          "drawerId": "Y1",
+          "drawerLabel": "Y1"
+        }
+      ]
+    },
     {
       "id": "bag_mvpyr93i_8uce3",
       "label": "October 17 BAM Visit (batch 5)",
@@ -470583,28 +470623,6 @@
       "label": "October 17 BAM Visit",
       "items": [
         {
-          "partNum": "3022",
-          "color": "Light Bluish Gray",
-          "desc": "Plate 2 x 2",
-          "elementId": "4211397",
-          "qty": 54,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "3022",
-          "color": "White",
-          "desc": "Plate 2 x 2",
-          "elementId": "302201",
-          "qty": 4,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "3020",
           "color": "Light Bluish Gray",
           "desc": "Plate 2 x 4",
@@ -471397,12 +471415,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-27T00:44:55.374Z",
+      "savedAt": "2026-10-27T01:05:28.517Z",
       "keepOpen": true,
       "moved": {
-        "batches": 5,
-        "pieces": 247,
-        "last": "2026-10-27T00:44:55.374Z"
+        "batches": 6,
+        "pieces": 305,
+        "last": "2026-10-27T01:05:28.518Z"
       }
     },
     {
@@ -559779,7 +559797,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T01:03:27.967Z"
+      "at": "2026-10-27T01:05:32.543Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -559800,10 +559818,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T00:44:55.374Z",
+      "bags": "2026-10-27T01:05:28.518Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T01:03:27.967Z",
+    "savedAt": "2026-10-27T01:05:32.543Z",
     "appVersion": "2026.10.26.2"
   }
 }
