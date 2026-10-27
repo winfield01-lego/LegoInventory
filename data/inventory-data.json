@@ -455129,7 +455129,7 @@
       "label": "I16",
       "notes": "1 x 2 - 2 clips, side",
       "group": "I",
-      "lastEdited": "2026-10-27T19:55:31.508Z"
+      "lastEdited": "2026-10-27T19:56:04.229Z"
     },
     {
       "id": "I17",
@@ -467594,6 +467594,13 @@
       "partNum": "33909",
       "color": "Yellow",
       "qty": 12
+    },
+    {
+      "drawerId": "I16",
+      "partNum": "60470b",
+      "color": "Light Bluish Gray",
+      "elementId": "4515173",
+      "qty": 7
     }
   ],
   "mocLocations": {
@@ -468006,6 +468013,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvr3vn1c_1q0qe",
+      "label": "October 17 BAM Visit (batch 23)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 23,
+      "timestamp": "2026-10-27T19:56:04.320Z",
+      "items": [
+        {
+          "partNum": "60470b",
+          "color": "Light Bluish Gray",
+          "desc": "Plate Special 1 x 2 with Clips Horizontal [Open O Clips]",
+          "elementId": "4515173",
+          "qty": 7,
+          "drawerId": "I16",
+          "drawerLabel": "I16"
+        }
+      ]
+    },
     {
       "id": "bag_mvr3i9m6_8oilz",
       "label": "October 17 BAM Visit (batch 22)",
@@ -473412,17 +473438,6 @@
           "sel": false
         },
         {
-          "partNum": "60470b",
-          "color": "Light Bluish Gray",
-          "desc": "Plate Special 1 x 2 with Clips Horizontal [Open O Clips]",
-          "elementId": "4515173",
-          "qty": 7,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "2412b",
           "color": "Dark Bluish Gray",
           "desc": "Tile Special 1 x 2 Grille with Bottom Groove",
@@ -473643,12 +473658,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-27T19:45:40.398Z",
+      "savedAt": "2026-10-27T19:56:04.320Z",
       "keepOpen": true,
       "moved": {
-        "batches": 22,
-        "pieces": 891,
-        "last": "2026-10-27T19:45:40.398Z"
+        "batches": 23,
+        "pieces": 898,
+        "last": "2026-10-27T19:56:04.320Z"
       }
     },
     {
@@ -478047,8 +478062,11 @@
       "c": "Light Bluish Gray",
       "d": "Plate Special 1 x 2 with Clips Horizontal [Open O Clips]",
       "e": "6337268",
-      "u": 1791916924851,
-      "at": 1791847424498
+      "u": 1793130965521,
+      "at": 1791847424498,
+      "ea": [
+        "4515173"
+      ]
     },
     "32028|blue": {
       "p": "32028",
@@ -562496,7 +562514,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T19:55:35.536Z"
+      "at": "2026-10-27T19:56:08.356Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -562517,10 +562535,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T19:45:40.398Z",
+      "bags": "2026-10-27T19:56:04.320Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T19:55:35.536Z",
+    "savedAt": "2026-10-27T19:56:08.356Z",
     "appVersion": "2026.10.26.2"
   }
 }
