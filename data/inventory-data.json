@@ -454095,7 +454095,7 @@
       "label": "D4",
       "notes": "",
       "group": "D",
-      "lastEdited": "2026-10-26T05:25:12.203Z"
+      "lastEdited": "2026-10-27T17:11:31.349Z"
     },
     {
       "id": "D5",
@@ -466781,6 +466781,25 @@
       "partNum": "3068b",
       "color": "Yellow",
       "qty": 12
+    },
+    {
+      "drawerId": "D4",
+      "partNum": "6636",
+      "color": "Light Bluish Gray",
+      "qty": 28
+    },
+    {
+      "drawerId": "D4",
+      "partNum": "6636",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "D4",
+      "partNum": "6636",
+      "color": "Dark Tan",
+      "elementId": "4251129",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -467193,6 +467212,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvqy012g_zilny",
+      "label": "October 17 BAM Visit (batch 15)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 15,
+      "timestamp": "2026-10-27T17:11:31.432Z",
+      "items": [
+        {
+          "partNum": "6636",
+          "color": "Light Bluish Gray",
+          "desc": "Tile 1 x 6 with Groove",
+          "elementId": "4211549",
+          "qty": 28,
+          "drawerId": "D4",
+          "drawerLabel": "D4"
+        },
+        {
+          "partNum": "6636",
+          "color": "Dark Bluish Gray",
+          "desc": "Tile 1 x 6 with Groove",
+          "elementId": "4210651",
+          "qty": 1,
+          "drawerId": "D4",
+          "drawerLabel": "D4"
+        },
+        {
+          "partNum": "6636",
+          "color": "Dark Tan",
+          "desc": "Tile 1 x 6 with Groove",
+          "elementId": "4251129",
+          "qty": 1,
+          "drawerId": "D4",
+          "drawerLabel": "D4"
+        }
+      ]
+    },
     {
       "id": "bag_mvqx0gnw_hr7pz",
       "label": "October 17 BAM Visit (batch 14)",
@@ -472562,39 +472618,6 @@
           "sel": false
         },
         {
-          "partNum": "6636",
-          "color": "Light Bluish Gray",
-          "desc": "Tile 1 x 6 with Groove",
-          "elementId": "4211549",
-          "qty": 28,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "6636",
-          "color": "Dark Bluish Gray",
-          "desc": "Tile 1 x 6 with Groove",
-          "elementId": "4210651",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "6636",
-          "color": "Dark Tan",
-          "desc": "Tile 1 x 6 with Groove",
-          "elementId": "4251129",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "4162",
           "color": "Light Bluish Gray",
           "desc": "Tile 1 x 8 with Groove",
@@ -472782,12 +472805,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-27T16:43:52.028Z",
+      "savedAt": "2026-10-27T17:11:31.432Z",
       "keepOpen": true,
       "moved": {
-        "batches": 14,
-        "pieces": 613,
-        "last": "2026-10-27T16:43:52.028Z"
+        "batches": 15,
+        "pieces": 643,
+        "last": "2026-10-27T17:11:31.432Z"
       }
     },
     {
@@ -497023,8 +497046,11 @@
       "c": "Dark Tan",
       "d": "Tile 1 x 6 with Groove",
       "e": "4507047",
-      "u": 1791916924851,
-      "at": 1791660732205
+      "u": 1793121092633,
+      "at": 1791660732205,
+      "ea": [
+        "4251129"
+      ]
     },
     "14719|dark tan": {
       "p": "14719",
@@ -561478,7 +561504,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T17:02:09.570Z"
+      "at": "2026-10-27T17:11:35.463Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -561499,10 +561525,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T16:43:52.028Z",
+      "bags": "2026-10-27T17:11:31.432Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T17:02:09.570Z",
+    "savedAt": "2026-10-27T17:11:35.463Z",
     "appVersion": "2026.10.26.2"
   }
 }
