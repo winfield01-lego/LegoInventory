@@ -456597,7 +456597,7 @@
       "label": "M40",
       "notes": "",
       "group": "M",
-      "lastEdited": "2026-10-13T17:13:28.024Z"
+      "lastEdited": "2026-10-27T18:59:01.238Z"
     },
     {
       "id": "M41",
@@ -467349,6 +467349,19 @@
       "partNum": "35459",
       "color": "Tan",
       "qty": 2
+    },
+    {
+      "drawerId": "M40",
+      "partNum": "2420",
+      "color": "Light Bluish Gray",
+      "qty": 25
+    },
+    {
+      "drawerId": "M40",
+      "partNum": "2420",
+      "color": "Tan",
+      "elementId": "242005",
+      "qty": 11
     }
   ],
   "mocLocations": {
@@ -467761,6 +467774,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvr1u9u8_zet1h",
+      "label": "October 17 BAM Visit (batch 20)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 20,
+      "timestamp": "2026-10-27T18:59:01.328Z",
+      "items": [
+        {
+          "partNum": "2420",
+          "color": "Light Bluish Gray",
+          "desc": "Plate 2 x 2 Corner",
+          "elementId": "4211353",
+          "qty": 25,
+          "drawerId": "M40",
+          "drawerLabel": "M40"
+        },
+        {
+          "partNum": "2420",
+          "color": "Tan",
+          "desc": "Plate 2 x 2 Corner",
+          "elementId": "242005",
+          "qty": 11,
+          "drawerId": "M40",
+          "drawerLabel": "M40"
+        }
+      ]
+    },
     {
       "id": "bag_mvr18dfo_q5jwm",
       "label": "October 17 BAM Visit (batch 19)",
@@ -473059,28 +473100,6 @@
       "label": "October 17 BAM Visit",
       "items": [
         {
-          "partNum": "2420",
-          "color": "Light Bluish Gray",
-          "desc": "Plate 2 x 2 Corner",
-          "elementId": "4211353",
-          "qty": 25,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "2420",
-          "color": "Tan",
-          "desc": "Plate 2 x 2 Corner",
-          "elementId": "242005",
-          "qty": 11,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "6541",
           "color": "Blue",
           "desc": "Technic Brick 1 x 1 with Pin Hole",
@@ -473378,12 +473397,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-27T18:41:59.556Z",
+      "savedAt": "2026-10-27T18:59:01.328Z",
       "keepOpen": true,
       "moved": {
-        "batches": 19,
-        "pieces": 848,
-        "last": "2026-10-27T18:41:59.556Z"
+        "batches": 20,
+        "pieces": 884,
+        "last": "2026-10-27T18:59:01.328Z"
       }
     },
     {
@@ -486434,8 +486453,11 @@
       "c": "Tan",
       "d": "Plate 2 x 2 Corner",
       "e": "4114077",
-      "u": 1791916924851,
-      "at": 1791671921036
+      "u": 1793127542530,
+      "at": 1791671921036,
+      "ea": [
+        "242005"
+      ]
     },
     "3021|tan": {
       "p": "3021",
@@ -562193,7 +562215,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T18:45:09.618Z"
+      "at": "2026-10-27T18:59:05.368Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -562214,10 +562236,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T18:41:59.556Z",
+      "bags": "2026-10-27T18:59:01.328Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T18:45:09.618Z",
+    "savedAt": "2026-10-27T18:59:05.368Z",
     "appVersion": "2026.10.26.2"
   }
 }
