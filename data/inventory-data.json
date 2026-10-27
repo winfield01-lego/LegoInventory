@@ -455247,7 +455247,7 @@
       "label": "I36",
       "notes": "30 degrees 1 x 2 x 2/3 slope",
       "group": "I",
-      "lastEdited": "2026-10-27T17:56:33.566Z"
+      "lastEdited": "2026-10-27T18:16:41.170Z"
     },
     {
       "id": "I37",
@@ -467070,13 +467070,117 @@
       "drawerId": "I36",
       "partNum": "85984",
       "color": "Light Bluish Gray",
-      "qty": 26
+      "qty": 157
     },
     {
       "drawerId": "I36",
       "partNum": "85984",
       "color": "White",
-      "qty": 59
+      "qty": 186
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "Black",
+      "qty": 57
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "Blue",
+      "qty": 39
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "Bright Green",
+      "qty": 14
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "Dark Azure",
+      "qty": 5
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "Dark Blue",
+      "elementId": "6216905",
+      "qty": 6
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "Dark Bluish Gray",
+      "qty": 57
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "Dark Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "Dark Red",
+      "qty": 12
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "Dark Tan",
+      "qty": 11
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "Green",
+      "qty": 4
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "Lime",
+      "qty": 8
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "Metallic Silver",
+      "qty": 5
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "Orange",
+      "elementId": "4648855",
+      "qty": 25
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "Red",
+      "qty": 27
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "Reddish Brown",
+      "qty": 3
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "Tan",
+      "qty": 16
+    },
+    {
+      "drawerId": "I36",
+      "partNum": "85984",
+      "color": "Yellow",
+      "qty": 8
     }
   ],
   "mocLocations": {
@@ -502229,9 +502333,12 @@
       "c": "Dark Blue",
       "d": "Brick Sloped 30° 1 x 2 x 2/3",
       "e": "6554210",
-      "u": 1791916924851,
+      "u": 1793125002373,
       "at": 1791654669028,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6216905.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6216905.jpg",
+      "ea": [
+        "6216905"
+      ]
     },
     "15672|dark blue": {
       "p": "15672",
@@ -522669,9 +522776,12 @@
       "c": "Orange",
       "d": "Brick Sloped 30° 1 x 2 x 2/3",
       "e": "6068996",
-      "u": 1791916924851,
+      "u": 1793125002373,
       "at": 1791654819756,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4648855.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4648855.jpg",
+      "ea": [
+        "4648855"
+      ]
     },
     "3298|orange": {
       "p": "3298",
@@ -561720,6 +561830,13 @@
       "d": "Brick Sloped 45° 2 x 1 with 2/3 Inverted Cutout and no stud",
       "e": "6248854",
       "u": 1793123411403
+    },
+    "85984|dark brown": {
+      "p": "85984",
+      "c": "Dark Brown",
+      "d": "Brick Sloped 30° 1 x 2 x 2/3",
+      "e": "6127366",
+      "u": 1793125002373
     }
   },
   "partKinds": {
@@ -561863,7 +561980,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T17:56:37.597Z"
+      "at": "2026-10-27T18:16:46.459Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -561887,7 +562004,7 @@
       "bags": "2026-10-27T17:55:47.334Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T17:56:37.597Z",
+    "savedAt": "2026-10-27T18:16:46.459Z",
     "appVersion": "2026.10.26.2"
   }
 }
