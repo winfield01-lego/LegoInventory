@@ -455677,7 +455677,7 @@
       "label": "Y1",
       "notes": "2x plates 2-16",
       "group": "Y Rolling Drawer",
-      "lastEdited": "2026-10-27T04:20:16.132Z"
+      "lastEdited": "2026-10-27T04:22:06.699Z"
     },
     {
       "id": "Y2",
@@ -466080,6 +466080,30 @@
       "partNum": "2445",
       "color": "Light Bluish Gray",
       "qty": 42
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "91988",
+      "color": "Black",
+      "qty": 10
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "91988",
+      "color": "Dark Bluish Gray",
+      "qty": 11
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "91988",
+      "color": "Light Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "91988",
+      "color": "Tan",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -560661,7 +560685,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T04:20:21.425Z"
+      "at": "2026-10-27T04:22:10.733Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -560685,7 +560709,7 @@
       "bags": "2026-10-27T03:48:12.247Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T04:20:21.425Z",
+    "savedAt": "2026-10-27T04:22:10.733Z",
     "appVersion": "2026.10.26.2"
   }
 }
