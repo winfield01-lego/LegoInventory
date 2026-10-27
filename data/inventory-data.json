@@ -455157,7 +455157,7 @@
       "label": "I20",
       "notes": "2 x 2 tile, triangular",
       "group": "I",
-      "lastEdited": "2026-10-27T21:33:05.436Z"
+      "lastEdited": "2026-10-27T21:33:25.256Z"
     },
     {
       "id": "I21",
@@ -468033,6 +468033,24 @@
       "partNum": "99563",
       "color": "Yellow",
       "qty": 17
+    },
+    {
+      "drawerId": "I20",
+      "partNum": "35787",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "I20",
+      "partNum": "35787",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "I20",
+      "partNum": "35787",
+      "color": "Orange",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -468445,6 +468463,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvr7cu05_k9cmy",
+      "label": "October 17 BAM Visit (batch 27)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 27,
+      "timestamp": "2026-10-27T21:33:25.349Z",
+      "items": [
+        {
+          "partNum": "35787",
+          "color": "Black",
+          "desc": "Tile 45° Cut 2 x 2 (Triangle)",
+          "elementId": "6214807",
+          "qty": 1,
+          "drawerId": "I20",
+          "drawerLabel": "I20"
+        },
+        {
+          "partNum": "35787",
+          "color": "Red",
+          "desc": "Tile 45° Cut 2 x 2 (Triangle)",
+          "elementId": "6351892",
+          "qty": 1,
+          "drawerId": "I20",
+          "drawerLabel": "I20"
+        },
+        {
+          "partNum": "35787",
+          "color": "Orange",
+          "desc": "Tile 45° Cut 2 x 2 (Triangle)",
+          "elementId": "6346092",
+          "qty": 2,
+          "drawerId": "I20",
+          "drawerLabel": "I20"
+        }
+      ]
+    },
     {
       "id": "bag_mvr6h6zm_k81ko",
       "label": "October 17 BAM Visit (batch 26)",
@@ -474046,47 +474101,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "35787",
-          "color": "Black",
-          "desc": "Tile 45° Cut 2 x 2 (Triangle)",
-          "elementId": "6214807",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "35787",
-          "color": "Red",
-          "desc": "Tile 45° Cut 2 x 2 (Triangle)",
-          "elementId": "6351892",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "35787",
-          "color": "Orange",
-          "desc": "Tile 45° Cut 2 x 2 (Triangle)",
-          "elementId": "6346092",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
         }
       ],
-      "savedAt": "2026-10-27T21:08:49.186Z",
+      "savedAt": "2026-10-27T21:33:25.348Z",
       "keepOpen": true,
       "moved": {
-        "batches": 26,
-        "pieces": 962,
-        "last": "2026-10-27T21:08:49.186Z"
+        "batches": 27,
+        "pieces": 966,
+        "last": "2026-10-27T21:33:25.349Z"
       }
     },
     {
@@ -563052,7 +563074,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T21:33:09.466Z"
+      "at": "2026-10-27T21:33:29.376Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -563073,10 +563095,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T21:08:49.186Z",
+      "bags": "2026-10-27T21:33:25.349Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T21:33:09.466Z",
+    "savedAt": "2026-10-27T21:33:29.376Z",
     "appVersion": "2026.10.26.2"
   }
 }
