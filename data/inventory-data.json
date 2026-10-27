@@ -455136,7 +455136,7 @@
       "label": "I17",
       "notes": "1 x 1 tile, curved end",
       "group": "I",
-      "lastEdited": "2026-10-27T20:28:37.762Z"
+      "lastEdited": "2026-10-27T20:29:40.482Z"
     },
     {
       "id": "I18",
@@ -467808,6 +467808,32 @@
       "partNum": "3070b",
       "color": "Yellow",
       "qty": 21
+    },
+    {
+      "drawerId": "I17",
+      "partNum": "24246",
+      "color": "Dark Azure",
+      "qty": 1
+    },
+    {
+      "drawerId": "I17",
+      "partNum": "24246",
+      "color": "Light Bluish Gray",
+      "elementId": "6151688",
+      "qty": 2
+    },
+    {
+      "drawerId": "I17",
+      "partNum": "24246",
+      "color": "White",
+      "elementId": "6131655",
+      "qty": 1
+    },
+    {
+      "drawerId": "I17",
+      "partNum": "24246",
+      "color": "Black",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -468220,6 +468246,52 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvr52usc_u07p6",
+      "label": "October 17 BAM Visit (batch 25)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 25,
+      "timestamp": "2026-10-27T20:29:40.572Z",
+      "items": [
+        {
+          "partNum": "24246",
+          "color": "Dark Azure",
+          "desc": "Tile Round 1 x 1 Half Circle",
+          "elementId": "6313557",
+          "qty": 1,
+          "drawerId": "I17",
+          "drawerLabel": "I17"
+        },
+        {
+          "partNum": "24246",
+          "color": "Light Bluish Gray",
+          "desc": "Tile Round 1 x 1 Half Circle",
+          "elementId": "6151688",
+          "qty": 2,
+          "drawerId": "I17",
+          "drawerLabel": "I17"
+        },
+        {
+          "partNum": "24246",
+          "color": "White",
+          "desc": "Tile Round 1 x 1 Half Circle",
+          "elementId": "6131655",
+          "qty": 1,
+          "drawerId": "I17",
+          "drawerLabel": "I17"
+        },
+        {
+          "partNum": "24246",
+          "color": "Black",
+          "desc": "Tile Round 1 x 1 Half Circle",
+          "elementId": "6256435",
+          "qty": 1,
+          "drawerId": "I17",
+          "drawerLabel": "I17"
+        }
+      ]
+    },
     {
       "id": "bag_mvr45sc9_bytix",
       "label": "October 17 BAM Visit (batch 24)",
@@ -473812,47 +473884,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "24246",
-          "color": "Dark Azure",
-          "desc": "Tile Round 1 x 1 Half Circle",
-          "elementId": "6313557",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "24246",
-          "color": "Light Bluish Gray",
-          "desc": "Tile Round 1 x 1 Half Circle",
-          "elementId": "6151688",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "24246",
-          "color": "White",
-          "desc": "Tile Round 1 x 1 Half Circle",
-          "elementId": "6131655",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
         }
       ],
-      "savedAt": "2026-10-27T20:03:57.753Z",
+      "savedAt": "2026-10-27T20:29:40.572Z",
       "keepOpen": true,
       "moved": {
-        "batches": 24,
-        "pieces": 943,
-        "last": "2026-10-27T20:03:57.753Z"
+        "batches": 25,
+        "pieces": 948,
+        "last": "2026-10-27T20:29:40.572Z"
       }
     },
     {
@@ -478694,9 +478733,12 @@
       "c": "Light Bluish Gray",
       "d": "Tile Round 1 x 1 Half Circle",
       "e": "6250597",
-      "u": 1791916924851,
+      "u": 1793132981774,
       "at": 1791671921036,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6151688.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6151688.jpg",
+      "ea": [
+        "6151688"
+      ]
     },
     "25269|light bluish gray": {
       "p": "25269",
@@ -481311,10 +481353,11 @@
       "c": "White",
       "d": "Tile Round 1 x 1 Half Circle",
       "e": "6250591",
-      "u": 1791916924851,
+      "u": 1793132981774,
       "at": 1791674782589,
       "ea": [
-        "6609539"
+        "6609539",
+        "6131655"
       ],
       "i": "https://cdn.rebrickable.com/media/parts/elements/6131655.jpg"
     },
@@ -562627,6 +562670,13 @@
       "d": "Tile 1 x 1 with Groove",
       "e": "6316569",
       "u": 1793132886002
+    },
+    "24246|dark azure": {
+      "p": "24246",
+      "c": "Dark Azure",
+      "d": "Tile Round 1 x 1 Half Circle",
+      "e": "6313557",
+      "u": 1793132981774
     }
   },
   "partKinds": {
@@ -562770,7 +562820,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T20:28:41.886Z"
+      "at": "2026-10-27T20:29:45.863Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -562791,10 +562841,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T20:03:57.753Z",
+      "bags": "2026-10-27T20:29:40.572Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T20:28:41.886Z",
+    "savedAt": "2026-10-27T20:29:45.863Z",
     "appVersion": "2026.10.26.2"
   }
 }
