@@ -455157,7 +455157,7 @@
       "label": "I20",
       "notes": "2 x 2 tile, triangular",
       "group": "I",
-      "lastEdited": "2026-10-27T21:33:25.256Z"
+      "lastEdited": "2026-10-27T21:42:22.410Z"
     },
     {
       "id": "I21",
@@ -468038,19 +468038,92 @@
       "drawerId": "I20",
       "partNum": "35787",
       "color": "Black",
-      "qty": 1
+      "qty": 24
     },
     {
       "drawerId": "I20",
       "partNum": "35787",
       "color": "Red",
-      "qty": 1
+      "qty": 4
     },
     {
       "drawerId": "I20",
       "partNum": "35787",
       "color": "Orange",
+      "qty": 4
+    },
+    {
+      "drawerId": "I20",
+      "partNum": "35787",
+      "color": "Dark Azure",
+      "qty": 11
+    },
+    {
+      "drawerId": "I20",
+      "partNum": "35787",
+      "color": "Dark Blue",
+      "elementId": "6214808",
+      "qty": 10
+    },
+    {
+      "drawerId": "I20",
+      "partNum": "35787",
+      "color": "Dark Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "I20",
+      "partNum": "35787",
+      "color": "Dark Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "I20",
+      "partNum": "35787",
+      "color": "Dark Red",
+      "qty": 3
+    },
+    {
+      "drawerId": "I20",
+      "partNum": "35787",
+      "color": "Dark Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "I20",
+      "partNum": "35787",
+      "color": "Light Bluish Gray",
+      "qty": 29
+    },
+    {
+      "drawerId": "I20",
+      "partNum": "35787",
+      "color": "Lime",
+      "qty": 5
+    },
+    {
+      "drawerId": "I20",
+      "partNum": "35787",
+      "color": "Metallic Gold",
       "qty": 2
+    },
+    {
+      "drawerId": "I20",
+      "partNum": "35787",
+      "color": "Tan",
+      "qty": 3
+    },
+    {
+      "drawerId": "I20",
+      "partNum": "35787",
+      "color": "Yellow",
+      "qty": 8
+    },
+    {
+      "drawerId": "I20",
+      "partNum": "35787",
+      "color": "White",
+      "qty": 62
     }
   ],
   "mocLocations": {
@@ -515943,9 +516016,12 @@
       "c": "Dark Blue",
       "d": "Tile 45° Cut 2 x 2 (Triangle)",
       "e": "6554208",
-      "u": 1791916924851,
+      "u": 1793137343624,
       "at": 1791654487845,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6214808.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6214808.jpg",
+      "ea": [
+        "6214808"
+      ]
     },
     "41770|dark blue": {
       "p": "41770",
@@ -562931,6 +563007,41 @@
       "d": "Tile Special 1 x 2 with Sloped Walls AKA Money / Gold Bar [Ingot]",
       "e": "",
       "u": 1793136660626
+    },
+    "35787|dark azure": {
+      "p": "35787",
+      "c": "Dark Azure",
+      "d": "Tile 45° Cut 2 x 2 (Triangle)",
+      "e": "6369497",
+      "u": 1793137343624
+    },
+    "35787|dark brown": {
+      "p": "35787",
+      "c": "Dark Brown",
+      "d": "Tile 45° Cut 2 x 2 (Triangle)",
+      "e": "6480375",
+      "u": 1793137343624
+    },
+    "35787|dark tan": {
+      "p": "35787",
+      "c": "Dark Tan",
+      "d": "Tile 45° Cut 2 x 2 (Triangle)",
+      "e": "6480380",
+      "u": 1793137343624
+    },
+    "35787|lime": {
+      "p": "35787",
+      "c": "Lime",
+      "d": "Tile 45° Cut 2 x 2 (Triangle)",
+      "e": "6247209",
+      "u": 1793137343624
+    },
+    "35787|metallic gold": {
+      "p": "35787",
+      "c": "Metallic Gold",
+      "d": "Tile 45° Cut 2 x 2 (Triangle)",
+      "e": "6316567",
+      "u": 1793137343624
     }
   },
   "partKinds": {
@@ -563074,7 +563185,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T21:33:29.376Z"
+      "at": "2026-10-27T21:42:27.733Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -563098,7 +563209,7 @@
       "bags": "2026-10-27T21:33:25.349Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T21:33:29.376Z",
+    "savedAt": "2026-10-27T21:42:27.732Z",
     "appVersion": "2026.10.26.2"
   }
 }
