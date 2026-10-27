@@ -454109,7 +454109,7 @@
       "label": "D6",
       "notes": "2 x 2 Tile - Inverted",
       "group": "D",
-      "lastEdited": "2026-10-27T06:09:10.335Z"
+      "lastEdited": "2026-10-27T06:18:20.553Z"
     },
     {
       "id": "D7",
@@ -466569,49 +466569,62 @@
       "drawerId": "D6",
       "partNum": "11203",
       "color": "Black",
-      "qty": 3
+      "qty": 24
     },
     {
       "drawerId": "D6",
       "partNum": "11203",
       "color": "Dark Blue",
-      "qty": 1
+      "qty": 13
     },
     {
       "drawerId": "D6",
       "partNum": "11203",
       "color": "Dark Bluish Gray",
-      "qty": 7
+      "qty": 114
     },
     {
       "drawerId": "D6",
       "partNum": "11203",
       "color": "Light Bluish Gray",
-      "qty": 4
+      "qty": 135
     },
     {
       "drawerId": "D6",
       "partNum": "11203",
       "color": "Red",
-      "qty": 2
+      "qty": 13
     },
     {
       "drawerId": "D6",
       "partNum": "11203",
       "color": "White",
-      "qty": 1
+      "qty": 76
     },
     {
       "drawerId": "D6",
       "partNum": "11203",
       "color": "Tan",
-      "qty": 3
+      "qty": 25
     },
     {
       "drawerId": "D6",
       "partNum": "11203",
       "color": "Dark Tan",
+      "qty": 2
+    },
+    {
+      "drawerId": "D6",
+      "partNum": "11203",
+      "color": "Dark Red",
       "qty": 1
+    },
+    {
+      "drawerId": "D6",
+      "partNum": "11203",
+      "color": "Yellow",
+      "elementId": "6388485",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -484412,7 +484425,10 @@
       "c": "Yellow",
       "d": "Tile Special 2 x 2 Inverted",
       "e": "6411902",
-      "u": 1791916924851
+      "u": 1793081901755,
+      "ea": [
+        "6388485"
+      ]
     },
     "22385|black": {
       "p": "22385",
@@ -561265,7 +561281,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T06:09:14.369Z"
+      "at": "2026-10-27T06:18:24.599Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -561289,7 +561305,7 @@
       "bags": "2026-10-27T06:07:36.547Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T06:09:14.369Z",
+    "savedAt": "2026-10-27T06:18:24.599Z",
     "appVersion": "2026.10.26.2"
   }
 }
