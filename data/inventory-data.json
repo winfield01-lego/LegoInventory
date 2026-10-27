@@ -455677,7 +455677,7 @@
       "label": "Y1",
       "notes": "2x plates 2-16",
       "group": "Y Rolling Drawer",
-      "lastEdited": "2026-10-27T02:53:53.737Z"
+      "lastEdited": "2026-10-27T02:57:58.372Z"
     },
     {
       "id": "Y2",
@@ -465527,6 +465527,12 @@
       "partNum": "3022",
       "color": "Yellow",
       "qty": 19
+    },
+    {
+      "drawerId": "Y1",
+      "partNum": "3021",
+      "color": "Light Bluish Gray",
+      "qty": 64
     }
   ],
   "mocLocations": {
@@ -465939,6 +465945,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvq3icw1_6xc72",
+      "label": "October 17 BAM Visit (batch 7)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 7,
+      "timestamp": "2026-10-27T02:57:58.465Z",
+      "items": [
+        {
+          "partNum": "3021",
+          "color": "Light Bluish Gray",
+          "desc": "Plate 2 x 3",
+          "elementId": "4211396",
+          "qty": 64,
+          "drawerId": "Y1",
+          "drawerLabel": "Y1"
+        }
+      ]
+    },
     {
       "id": "bag_mvpzholi_v147i",
       "label": "October 17 BAM Visit (batch 6)",
@@ -470778,17 +470803,6 @@
           "sel": false
         },
         {
-          "partNum": "3021",
-          "color": "Light Bluish Gray",
-          "desc": "Plate 2 x 3",
-          "elementId": "4211396",
-          "qty": 64,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "3795",
           "color": "Green",
           "desc": "Plate 2 x 6",
@@ -471548,12 +471562,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-27T01:05:28.517Z",
+      "savedAt": "2026-10-27T02:57:58.465Z",
       "keepOpen": true,
       "moved": {
-        "batches": 6,
-        "pieces": 305,
-        "last": "2026-10-27T01:05:28.518Z"
+        "batches": 7,
+        "pieces": 369,
+        "last": "2026-10-27T02:57:58.465Z"
       }
     },
     {
@@ -559974,7 +559988,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T02:53:57.803Z"
+      "at": "2026-10-27T02:58:02.496Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -559995,10 +560009,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T01:05:28.518Z",
+      "bags": "2026-10-27T02:57:58.465Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T02:53:57.803Z",
+    "savedAt": "2026-10-27T02:58:02.496Z",
     "appVersion": "2026.10.26.2"
   }
 }
