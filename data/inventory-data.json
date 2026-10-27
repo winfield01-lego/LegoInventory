@@ -455141,7 +455141,8 @@
       "id": "I18",
       "label": "I18",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-10-27T20:03:57.665Z"
     },
     {
       "id": "I19",
@@ -467643,6 +467644,24 @@
       "color": "Yellow",
       "elementId": "4556156",
       "qty": 7
+    },
+    {
+      "drawerId": "I18",
+      "partNum": "3070b",
+      "color": "White",
+      "qty": 22
+    },
+    {
+      "drawerId": "I18",
+      "partNum": "3070b",
+      "color": "Light Bluish Gray",
+      "qty": 22
+    },
+    {
+      "drawerId": "I18",
+      "partNum": "3070b",
+      "color": "Dark Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -468055,6 +468074,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvr45sc9_bytix",
+      "label": "October 17 BAM Visit (batch 24)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 24,
+      "timestamp": "2026-10-27T20:03:57.753Z",
+      "items": [
+        {
+          "partNum": "3070b",
+          "color": "White",
+          "desc": "Tile 1 x 1 with Groove",
+          "elementId": "307001",
+          "qty": 22,
+          "drawerId": "I18",
+          "drawerLabel": "I18"
+        },
+        {
+          "partNum": "3070b",
+          "color": "Light Bluish Gray",
+          "desc": "Tile 1 x 1 with Groove",
+          "elementId": "4211415",
+          "qty": 22,
+          "drawerId": "I18",
+          "drawerLabel": "I18"
+        },
+        {
+          "partNum": "3070b",
+          "color": "Dark Bluish Gray",
+          "desc": "Tile 1 x 1 with Groove",
+          "elementId": "4210848",
+          "qty": 1,
+          "drawerId": "I18",
+          "drawerLabel": "I18"
+        }
+      ]
+    },
     {
       "id": "bag_mvr3vn1c_1q0qe",
       "label": "October 17 BAM Visit (batch 23)",
@@ -473458,28 +473514,6 @@
           "sel": false
         },
         {
-          "partNum": "6141",
-          "color": "Trans-Red",
-          "desc": "Plate Round 1 x 1 with Solid Stud",
-          "elementId": "3005741",
-          "qty": 26,
-          "drawerId": "D8",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": false
-        },
-        {
-          "partNum": "3023",
-          "color": "Trans-Clear",
-          "desc": "Plate 1 x 2",
-          "elementId": "302310",
-          "qty": 45,
-          "drawerId": "D9",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": false
-        },
-        {
           "partNum": "2412b",
           "color": "Dark Bluish Gray",
           "desc": "Tile Special 1 x 2 Grille with Bottom Groove",
@@ -473634,39 +473668,6 @@
           "sel": false
         },
         {
-          "partNum": "3070b",
-          "color": "White",
-          "desc": "Tile 1 x 1 with Groove",
-          "elementId": "307001",
-          "qty": 22,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "3070b",
-          "color": "Light Bluish Gray",
-          "desc": "Tile 1 x 1 with Groove",
-          "elementId": "4211415",
-          "qty": 22,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "3070b",
-          "color": "Dark Bluish Gray",
-          "desc": "Tile 1 x 1 with Groove",
-          "elementId": "4210848",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "24246",
           "color": "Dark Azure",
           "desc": "Tile Round 1 x 1 Half Circle",
@@ -473700,12 +473701,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-27T19:56:04.320Z",
+      "savedAt": "2026-10-27T20:03:57.753Z",
       "keepOpen": true,
       "moved": {
-        "batches": 23,
-        "pieces": 898,
-        "last": "2026-10-27T19:56:04.320Z"
+        "batches": 24,
+        "pieces": 943,
+        "last": "2026-10-27T20:03:57.753Z"
       }
     },
     {
@@ -562574,7 +562575,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-27T20:02:59.028Z"
+      "at": "2026-10-27T20:04:01.785Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -562595,10 +562596,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-27T19:56:04.320Z",
+      "bags": "2026-10-27T20:03:57.753Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-27T20:02:59.028Z",
+    "savedAt": "2026-10-27T20:04:01.785Z",
     "appVersion": "2026.10.26.2"
   }
 }
