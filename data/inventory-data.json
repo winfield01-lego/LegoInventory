@@ -455246,7 +455246,8 @@
       "id": "I33",
       "label": "I33",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-10-28T05:23:16.907Z"
     },
     {
       "id": "I34",
@@ -470016,6 +470017,12 @@
       "partNum": "86996",
       "color": "Red",
       "qty": 2
+    },
+    {
+      "drawerId": "I33",
+      "partNum": "14719",
+      "color": "Light Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -470428,6 +470435,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvro52ty_l3blo",
+      "label": "Zorah's October 1 Trip (batch 6)",
+      "bagId": "bagprog_muqihlr1_v3ef",
+      "bagLabel": "Zorah's October 1 Trip",
+      "batch": 6,
+      "timestamp": "2026-10-28T05:23:17.014Z",
+      "items": [
+        {
+          "partNum": "14719",
+          "color": "Light Bluish Gray",
+          "desc": "Tile 2 x 2 Corner",
+          "elementId": "6065824",
+          "qty": 1,
+          "drawerId": "I33",
+          "drawerLabel": "I33"
+        }
+      ]
+    },
     {
       "id": "bag_mvrny4ab_7dxqv",
       "label": "Zorah's October 1 Trip (batch 5)",
@@ -477099,17 +477125,6 @@
       "label": "Zorah's October 1 Trip",
       "items": [
         {
-          "partNum": "14719",
-          "color": "Light Bluish Gray",
-          "desc": "Tile 2 x 2 Corner",
-          "elementId": "6065824",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "11610",
           "color": "Dark Bluish Gray",
           "desc": "Cone 1 x 1 Inverted with Bar at Bottom (Ice Cream Cone)",
@@ -477209,12 +477224,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T05:17:52.307Z",
+      "savedAt": "2026-10-28T05:23:17.013Z",
       "keepOpen": true,
       "moved": {
-        "batches": 5,
-        "pieces": 248,
-        "last": "2026-10-28T05:17:52.307Z"
+        "batches": 6,
+        "pieces": 249,
+        "last": "2026-10-28T05:23:17.014Z"
       }
     }
   ],
@@ -566090,7 +566105,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T05:22:47.368Z"
+      "at": "2026-10-28T05:23:21.046Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -566111,10 +566126,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T05:17:52.307Z",
+      "bags": "2026-10-28T05:23:17.014Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T05:22:47.368Z",
+    "savedAt": "2026-10-28T05:23:21.046Z",
     "appVersion": "2026.10.27.1"
   }
 }
