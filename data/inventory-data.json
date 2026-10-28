@@ -456218,7 +456218,7 @@
       "label": "L26",
       "notes": "1 x 2 with Door Rail",
       "group": "L",
-      "lastEdited": "2026-10-28T23:48:42.580Z"
+      "lastEdited": "2026-10-28T23:52:43.975Z"
     },
     {
       "id": "L27",
@@ -471344,7 +471344,91 @@
       "drawerId": "L26",
       "partNum": "32028",
       "color": "Light Bluish Gray",
+      "qty": 43
+    },
+    {
+      "drawerId": "L26",
+      "partNum": "32028",
+      "color": "Black",
+      "qty": 50
+    },
+    {
+      "drawerId": "L26",
+      "partNum": "32028",
+      "color": "Blue",
+      "elementId": "4208733",
+      "qty": 3
+    },
+    {
+      "drawerId": "L26",
+      "partNum": "32028",
+      "color": "Dark Bluish Gray",
+      "elementId": "4210944",
+      "qty": 11
+    },
+    {
+      "drawerId": "L26",
+      "partNum": "32028",
+      "color": "Dark Orange",
+      "elementId": "4616022",
+      "qty": 4
+    },
+    {
+      "drawerId": "L26",
+      "partNum": "32028",
+      "color": "Dark Red",
       "qty": 1
+    },
+    {
+      "drawerId": "L26",
+      "partNum": "32028",
+      "color": "Flat Silver",
+      "qty": 8
+    },
+    {
+      "drawerId": "L26",
+      "partNum": "32028",
+      "color": "Green",
+      "elementId": "4107760",
+      "qty": 1
+    },
+    {
+      "drawerId": "L26",
+      "partNum": "32028",
+      "color": "Red",
+      "elementId": "4239063",
+      "qty": 12
+    },
+    {
+      "drawerId": "L26",
+      "partNum": "32028",
+      "color": "Reddish Brown",
+      "qty": 8
+    },
+    {
+      "drawerId": "L26",
+      "partNum": "32028",
+      "color": "Sand Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "L26",
+      "partNum": "32028",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "L26",
+      "partNum": "32028",
+      "color": "White",
+      "elementId": "320281",
+      "qty": 7
+    },
+    {
+      "drawerId": "L26",
+      "partNum": "32028",
+      "color": "Yellow",
+      "qty": 8
     }
   ],
   "mocLocations": {
@@ -485650,10 +485734,11 @@
       "c": "White",
       "d": "Plate Special 1 x 2 with Door Rail",
       "e": "4249563",
-      "u": 1791916924851,
+      "u": 1793231565176,
       "at": 1791654677272,
       "ea": [
-        "6550168"
+        "6550168",
+        "320281"
       ],
       "i": "https://cdn.rebrickable.com/media/parts/elements/4170253.jpg"
     },
@@ -501345,9 +501430,12 @@
       "c": "Green",
       "d": "Plate Special 1 x 2 with Door Rail",
       "e": "4272665",
-      "u": 1791916924851,
+      "u": 1793231565176,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4107760.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4107760.jpg",
+      "ea": [
+        "4107760"
+      ]
     },
     "87580|green": {
       "p": "87580",
@@ -502768,8 +502856,11 @@
       "c": "Red",
       "d": "Plate Special 1 x 2 with Door Rail",
       "e": "4612575",
-      "u": 1791916924851,
-      "at": 1791660732205
+      "u": 1793231565176,
+      "at": 1791660732205,
+      "ea": [
+        "4239063"
+      ]
     },
     "4215a|trans yellow": {
       "p": "4215a",
@@ -504653,8 +504744,11 @@
       "c": "Dark Bluish Gray",
       "d": "Plate Special 1 x 2 with Door Rail",
       "e": "4543086",
-      "u": 1791916924851,
-      "at": 1791660732205
+      "u": 1793231565176,
+      "at": 1791660732205,
+      "ea": [
+        "4210944"
+      ]
     },
     "4590|dark bluish gray": {
       "p": "4590",
@@ -531909,9 +532003,12 @@
       "c": "Dark Orange",
       "d": "Plate Special 1 x 2 with Door Rail",
       "e": "6228839",
-      "u": 1791916924851,
+      "u": 1793231565176,
       "at": 1791654657762,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4616022.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4616022.jpg",
+      "ea": [
+        "4616022"
+      ]
     },
     "79393|dark orange": {
       "p": "79393",
@@ -568948,6 +569045,13 @@
       "d": "Brick Round, Half 1 x 2",
       "e": "6351413",
       "u": 1793230843187
+    },
+    "32028|reddish brown": {
+      "p": "32028",
+      "c": "Reddish Brown",
+      "d": "Plate Special 1 x 2 with Door Rail",
+      "e": "4541288",
+      "u": 1793231565176
     }
   },
   "partKinds": {
@@ -569091,7 +569195,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T23:48:46.614Z"
+      "at": "2026-10-28T23:52:49.266Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569115,7 +569219,7 @@
       "bags": "2026-10-28T23:45:26.811Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T23:48:46.614Z",
+    "savedAt": "2026-10-28T23:52:49.266Z",
     "appVersion": "2026.10.28.10"
   }
 }
