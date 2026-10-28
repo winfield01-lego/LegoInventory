@@ -457793,7 +457793,7 @@
       "label": "Q3",
       "notes": "Windows - 2 wide",
       "group": "Q",
-      "lastEdited": "2026-10-28T03:36:00.595Z"
+      "lastEdited": "2026-10-28T03:36:41.910Z"
     },
     {
       "id": "Q4",
@@ -469130,6 +469130,12 @@
       "partNum": "30046",
       "color": "Pearl Gold",
       "qty": 4
+    },
+    {
+      "drawerId": "Q3",
+      "partNum": "94161",
+      "color": "Reddish Brown",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -564658,6 +564664,13 @@
       "d": "Window 1 x 2 x 2 2/3 Pane Lattice Diamond with Rounded Top",
       "e": "4493365",
       "u": 1793158561797
+    },
+    "94161|reddish brown": {
+      "p": "94161",
+      "c": "Reddish Brown",
+      "d": "Window 1 x 2 x 2 2/3 Shutter with Rounded Top",
+      "e": "4624507",
+      "u": 1793158603113
     }
   },
   "partKinds": {
@@ -564801,7 +564814,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T03:36:04.640Z"
+      "at": "2026-10-28T03:36:45.956Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -564825,7 +564838,7 @@
       "bags": "2026-10-28T02:48:31.195Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T03:36:04.640Z",
+    "savedAt": "2026-10-28T03:36:45.956Z",
     "appVersion": "2026.10.27.1"
   }
 }
