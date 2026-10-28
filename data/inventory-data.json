@@ -457800,7 +457800,7 @@
       "label": "Q4",
       "notes": "Windows - 4 wide",
       "group": "Q",
-      "lastEdited": "2026-10-28T03:38:46.826Z"
+      "lastEdited": "2026-10-28T03:39:43.661Z"
     },
     {
       "id": "Q5",
@@ -469156,6 +469156,18 @@
       "color": "Red",
       "elementId": "",
       "qty": 1
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "60607",
+      "color": "Pearl Gold",
+      "qty": 7
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "60607",
+      "color": "Reddish Brown",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -564708,6 +564720,13 @@
       "d": "Window 1 x 2 x 1, Short Lip [no Glass]",
       "e": "",
       "u": 1793158728028
+    },
+    "60607|reddish brown": {
+      "p": "60607",
+      "c": "Reddish Brown",
+      "d": "Window 1 x 2 x 3 Pane Latticed with Thick Corner Tabs",
+      "e": "6084571",
+      "u": 1793158784862
     }
   },
   "partKinds": {
@@ -564851,7 +564870,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T03:38:50.855Z"
+      "at": "2026-10-28T03:39:47.684Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -564875,7 +564894,7 @@
       "bags": "2026-10-28T02:48:31.195Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T03:38:50.855Z",
+    "savedAt": "2026-10-28T03:39:47.684Z",
     "appVersion": "2026.10.27.1"
   }
 }
