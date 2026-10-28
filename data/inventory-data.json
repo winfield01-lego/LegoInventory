@@ -457317,7 +457317,7 @@
       "label": "O51",
       "notes": "1 x 1 clip on top",
       "group": "O",
-      "lastEdited": "2026-10-28T23:09:46.578Z"
+      "lastEdited": "2026-10-28T23:24:28.242Z"
     },
     {
       "id": "O52",
@@ -471144,13 +471144,55 @@
       "drawerId": "O51",
       "partNum": "2555",
       "color": "Light Bluish Gray",
-      "qty": 1
+      "qty": 9
     },
     {
       "drawerId": "O51",
       "partNum": "2555",
       "color": "Dark Bluish Gray",
-      "qty": 3
+      "qty": 119
+    },
+    {
+      "drawerId": "O51",
+      "partNum": "2555",
+      "color": "Black",
+      "qty": 46
+    },
+    {
+      "drawerId": "O51",
+      "partNum": "2555",
+      "color": "Blue",
+      "qty": 4
+    },
+    {
+      "drawerId": "O51",
+      "partNum": "2555",
+      "color": "Dark Red",
+      "qty": 5
+    },
+    {
+      "drawerId": "O51",
+      "partNum": "2555",
+      "color": "Red",
+      "qty": 12
+    },
+    {
+      "drawerId": "O51",
+      "partNum": "2555",
+      "color": "Reddish Brown",
+      "qty": 18
+    },
+    {
+      "drawerId": "O51",
+      "partNum": "2555",
+      "color": "White",
+      "qty": 30
+    },
+    {
+      "drawerId": "O51",
+      "partNum": "2555",
+      "color": "Yellow",
+      "qty": 8
     }
   ],
   "mocLocations": {
@@ -568600,6 +568642,34 @@
       "d": "Tile Special 1 x 1 with Clip and Straight Tips",
       "e": "4211069",
       "u": 1793228961383
+    },
+    "2555|blue": {
+      "p": "2555",
+      "c": "Blue",
+      "d": "Tile Special 1 x 1 with Clip and Straight Tips",
+      "e": "255523",
+      "u": 1793229869444
+    },
+    "2555|dark red": {
+      "p": "2555",
+      "c": "Dark Red",
+      "d": "Tile Special 1 x 1 with Clip and Straight Tips",
+      "e": "4182850",
+      "u": 1793229869444
+    },
+    "2555|reddish brown": {
+      "p": "2555",
+      "c": "Reddish Brown",
+      "d": "Tile Special 1 x 1 with Clip and Straight Tips",
+      "e": "4255554",
+      "u": 1793229869444
+    },
+    "2555|yellow": {
+      "p": "2555",
+      "c": "Yellow",
+      "d": "Tile Special 1 x 1 with Clip and Straight Tips",
+      "e": "255524",
+      "u": 1793229869444
     }
   },
   "partKinds": {
@@ -568743,7 +568813,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T23:09:50.613Z"
+      "at": "2026-10-28T23:24:32.275Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -568767,7 +568837,7 @@
       "bags": "2026-10-28T23:09:20.182Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T23:09:50.613Z",
+    "savedAt": "2026-10-28T23:24:32.275Z",
     "appVersion": "2026.10.28.10"
   }
 }
