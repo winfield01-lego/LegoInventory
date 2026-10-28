@@ -455123,7 +455123,7 @@
       "label": "I14",
       "notes": "4 x 4 tile - macaroni",
       "group": "I",
-      "lastEdited": "2026-10-28T02:10:30.326Z"
+      "lastEdited": "2026-10-28T02:14:07.531Z"
     },
     {
       "id": "I15",
@@ -468468,13 +468468,13 @@
       "partNum": "27507",
       "color": "Black",
       "elementId": "6171264",
-      "qty": 2
+      "qty": 13
     },
     {
       "drawerId": "I14",
       "partNum": "27507",
       "color": "Light Bluish Gray",
-      "qty": 1
+      "qty": 15
     },
     {
       "drawerId": "I14",
@@ -468488,7 +468488,40 @@
       "partNum": "27507",
       "color": "White",
       "elementId": "6195358",
+      "qty": 18
+    },
+    {
+      "drawerId": "I14",
+      "partNum": "27507",
+      "color": "Blue",
+      "elementId": "6397956",
+      "qty": 1
+    },
+    {
+      "drawerId": "I14",
+      "partNum": "27507",
+      "color": "Dark Azure",
+      "qty": 1
+    },
+    {
+      "drawerId": "I14",
+      "partNum": "27507",
+      "color": "Dark Bluish Gray",
+      "elementId": "6232146",
+      "qty": 1
+    },
+    {
+      "drawerId": "I14",
+      "partNum": "27507",
+      "color": "Dark Blue",
       "qty": 2
+    },
+    {
+      "drawerId": "I14",
+      "partNum": "27507",
+      "color": "Tan",
+      "elementId": "6348203",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -493817,9 +493850,12 @@
       "c": "Dark Bluish Gray",
       "d": "Tile 4 x 4 Curved, Macaroni",
       "e": "6458171",
-      "u": 1791916924851,
+      "u": 1793153648734,
       "at": 1791654771905,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6232146.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6232146.jpg",
+      "ea": [
+        "6232146"
+      ]
     },
     "1126|dark bluish gray": {
       "p": "1126",
@@ -526193,9 +526229,12 @@
       "c": "Tan",
       "d": "Tile 4 x 4 Curved, Macaroni",
       "e": "6458175",
-      "u": 1791916924851,
+      "u": 1793153648734,
       "at": 1791654586559,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6348203.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6348203.jpg",
+      "ea": [
+        "6348203"
+      ]
     },
     "54662|black": {
       "p": "54662",
@@ -535616,9 +535655,12 @@
       "c": "Blue",
       "d": "Tile 4 x 4 Curved, Macaroni",
       "e": "6475596",
-      "u": 1791916924851,
+      "u": 1793153648734,
       "at": 1791654708313,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6397956.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6397956.jpg",
+      "ea": [
+        "6397956"
+      ]
     },
     "26601|blue": {
       "p": "26601",
@@ -563642,6 +563684,20 @@
       "d": "Tile 2 x 2 Curved, Macaroni",
       "e": "6195186",
       "u": 1793153196514
+    },
+    "27507|dark azure": {
+      "p": "27507",
+      "c": "Dark Azure",
+      "d": "Tile 4 x 4 Curved, Macaroni",
+      "e": "6199902",
+      "u": 1793153648734
+    },
+    "27507|dark blue": {
+      "p": "27507",
+      "c": "Dark Blue",
+      "d": "Tile 4 x 4 Curved, Macaroni",
+      "e": "6177822",
+      "u": 1793153648734
     }
   },
   "partKinds": {
@@ -563785,7 +563841,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-28T02:10:46.032Z"
+      "at": "2026-10-28T02:14:12.824Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -563809,7 +563865,7 @@
       "bags": "2026-10-28T02:07:30.660Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T02:10:46.032Z",
+    "savedAt": "2026-10-28T02:14:12.824Z",
     "appVersion": "2026.10.26.2"
   }
 }
