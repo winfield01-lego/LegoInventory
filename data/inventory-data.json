@@ -454795,7 +454795,7 @@
       "label": "H10",
       "notes": "1x4 bracket",
       "group": "H",
-      "lastEdited": "2026-10-26T03:30:45.874Z"
+      "lastEdited": "2026-10-28T23:36:20.349Z"
     },
     {
       "id": "H9",
@@ -471279,6 +471279,12 @@
       "partNum": "61252",
       "color": "Trans-Clear",
       "qty": 8
+    },
+    {
+      "drawerId": "H10",
+      "partNum": "10201",
+      "color": "Yellow",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -471691,6 +471697,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsr6rcq_px43p",
+      "label": "CdA BAM - 10/22/26 (batch 29)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 29,
+      "timestamp": "2026-10-28T23:36:20.474Z",
+      "items": [
+        {
+          "partNum": "10201",
+          "color": "Yellow",
+          "desc": "Bracket 1 x 2 - 1 x 4 [Rounded Corners]",
+          "elementId": "6076799",
+          "qty": 1,
+          "drawerId": "H10",
+          "drawerLabel": "H10"
+        }
+      ]
+    },
     {
       "id": "bag_mvsqvfz7_ju3go",
       "label": "CdA BAM - 10/22/26 (batch 28)",
@@ -478688,17 +478713,6 @@
           "sel": false
         },
         {
-          "partNum": "10201",
-          "color": "Yellow",
-          "desc": "Bracket 1 x 2 - 1 x 4 [Rounded Corners]",
-          "elementId": "6076799",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "68013",
           "color": "Light Bluish Gray",
           "desc": "Brick Round, Half 1 x 2",
@@ -479117,12 +479131,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T23:27:32.515Z",
+      "savedAt": "2026-10-28T23:36:20.474Z",
       "keepOpen": true,
       "moved": {
-        "batches": 28,
-        "pieces": 276,
-        "last": "2026-10-28T23:27:32.515Z"
+        "batches": 29,
+        "pieces": 277,
+        "last": "2026-10-28T23:36:20.474Z"
       }
     },
     {
@@ -568817,6 +568831,13 @@
       "d": "Plate Special 1 x 1 with Clip Horizontal [Thick Open O Clip]",
       "e": "6172373",
       "u": 1793230525919
+    },
+    "10201|yellow": {
+      "p": "10201",
+      "c": "Yellow",
+      "d": "Bracket 1 x 2 - 1 x 4 [Rounded Corners]",
+      "e": "6076799",
+      "u": 1793230581675
     }
   },
   "partKinds": {
@@ -568960,7 +568981,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T23:35:42.212Z"
+      "at": "2026-10-28T23:36:24.509Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -568981,10 +569002,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T23:27:32.515Z",
+      "bags": "2026-10-28T23:36:20.474Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T23:35:42.212Z",
+    "savedAt": "2026-10-28T23:36:24.509Z",
     "appVersion": "2026.10.28.10"
   }
 }
