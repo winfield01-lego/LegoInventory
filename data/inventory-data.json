@@ -454824,7 +454824,7 @@
       "label": "H14",
       "notes": "4 x 1 slope and 6 x 1 slope",
       "group": "H",
-      "lastEdited": "2026-10-28T04:20:08.994Z"
+      "lastEdited": "2026-10-28T04:20:29.876Z"
     },
     {
       "id": "H15",
@@ -469631,6 +469631,12 @@
       "color": "White",
       "elementId": "6462354",
       "qty": 20
+    },
+    {
+      "drawerId": "H14",
+      "partNum": "5654",
+      "color": "Dark Brown",
+      "qty": 6
     }
   ],
   "mocLocations": {
@@ -565462,6 +565468,13 @@
       "d": "Plate Special Round 1 x 2 Half Circle with Stud (Jumper)",
       "e": "6503258",
       "u": 1793160983446
+    },
+    "5654|dark brown": {
+      "p": "5654",
+      "c": "Dark Brown",
+      "d": "Brick Sloped 1 x 4 with 1 x 2 Cutout",
+      "e": "6556985",
+      "u": 1793161231078
     }
   },
   "partKinds": {
@@ -565605,7 +565618,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T04:20:13.042Z"
+      "at": "2026-10-28T04:20:33.916Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -565629,7 +565642,7 @@
       "bags": "2026-10-28T04:04:49.581Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T04:20:13.042Z",
+    "savedAt": "2026-10-28T04:20:33.916Z",
     "appVersion": "2026.10.27.1"
   }
 }
