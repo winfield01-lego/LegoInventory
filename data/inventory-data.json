@@ -477456,7 +477456,7 @@
           "desc": "Brick 1 x 1",
           "elementId": "300505",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "A5",
           "matchCount": 2,
           "suggested": false,
           "sel": true
@@ -477467,7 +477467,7 @@
           "desc": "Brick 1 x 1",
           "elementId": "300501",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "A5",
           "matchCount": 2,
           "suggested": false,
           "sel": true
@@ -477478,7 +477478,7 @@
           "desc": "Brick 1 x 1",
           "elementId": "4211242",
           "qty": 1,
-          "drawerId": "A1",
+          "drawerId": "A5",
           "matchCount": 0,
           "suggested": false,
           "sel": true
@@ -477489,7 +477489,7 @@
           "desc": "Brick 1 x 1",
           "elementId": "4211389",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "A5",
           "matchCount": 2,
           "suggested": false,
           "sel": true
@@ -477502,7 +477502,8 @@
           "qty": 2,
           "drawerId": "M37",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "6141",
@@ -477512,7 +477513,8 @@
           "qty": 1,
           "drawerId": "M37",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "6141",
@@ -477522,7 +477524,8 @@
           "qty": 3,
           "drawerId": "M37",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "6141",
@@ -477532,7 +477535,8 @@
           "qty": 1,
           "drawerId": "M37",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "6141",
@@ -477542,7 +477546,8 @@
           "qty": 3,
           "drawerId": "M37",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "32952",
@@ -477552,7 +477557,8 @@
           "qty": 1,
           "drawerId": "H38",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "32952",
@@ -477562,7 +477568,8 @@
           "qty": 1,
           "drawerId": "H38",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "24246",
@@ -477572,7 +477579,8 @@
           "qty": 2,
           "drawerId": "I17",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "24246",
@@ -477582,7 +477590,8 @@
           "qty": 1,
           "drawerId": "I17",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "87087",
@@ -477592,7 +477601,8 @@
           "qty": 1,
           "drawerId": "H33",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "47905",
@@ -477612,7 +477622,8 @@
           "qty": 1,
           "drawerId": "C7",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "3024",
@@ -478225,7 +478236,7 @@
           "suggested": false
         }
       ],
-      "savedAt": "2026-10-28T20:17:01.432Z",
+      "savedAt": "2026-10-28T20:17:29.243Z",
       "keepOpen": true,
       "moved": {
         "batches": 16,
@@ -567712,7 +567723,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.9",
-      "at": "2026-10-28T20:17:05.460Z"
+      "at": "2026-10-28T20:17:33.275Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -567733,10 +567744,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T20:17:01.432Z",
+      "bags": "2026-10-28T20:17:29.243Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T20:17:05.460Z",
+    "savedAt": "2026-10-28T20:17:33.275Z",
     "appVersion": "2026.10.28.9"
   }
 }
