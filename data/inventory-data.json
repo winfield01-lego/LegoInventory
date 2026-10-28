@@ -457581,7 +457581,7 @@
       "label": "S1",
       "notes": "Crates, Boxes Chests, Trash Cans and Barrels",
       "group": "S",
-      "lastEdited": "2026-10-28T21:45:20.795Z"
+      "lastEdited": "2026-10-28T21:45:44.828Z"
     },
     {
       "id": "S2",
@@ -470579,6 +470579,12 @@
       "color": "Medium Nougat",
       "elementId": "",
       "qty": 3
+    },
+    {
+      "drawerId": "S1",
+      "partNum": "4738c",
+      "color": "Medium Lavender",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -567781,6 +567787,13 @@
       "d": "Treasure Chest Bottom with Rear Slots, with Groove",
       "e": "",
       "u": 1793223921996
+    },
+    "4738c|medium lavender": {
+      "p": "4738c",
+      "c": "Medium Lavender",
+      "d": "Treasure Chest Bottom with Rear Slots, No Groove",
+      "e": "6056226",
+      "u": 1793223946031
     }
   },
   "partKinds": {
@@ -567924,7 +567937,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T21:45:24.828Z"
+      "at": "2026-10-28T21:45:48.861Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -567948,7 +567961,7 @@
       "bags": "2026-10-28T21:37:29.091Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T21:45:24.828Z",
+    "savedAt": "2026-10-28T21:45:48.861Z",
     "appVersion": "2026.10.28.10"
   }
 }
