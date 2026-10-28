@@ -457317,7 +457317,7 @@
       "label": "O51",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-10-13T17:14:08.108Z"
+      "lastEdited": "2026-10-28T23:09:20.057Z"
     },
     {
       "id": "O52",
@@ -471139,6 +471139,18 @@
       "partNum": "22388",
       "color": "Reddish Brown",
       "qty": 1
+    },
+    {
+      "drawerId": "O51",
+      "partNum": "2555",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "O51",
+      "partNum": "2555",
+      "color": "Dark Bluish Gray",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -471551,6 +471563,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsq814m_gbstb",
+      "label": "CdA BAM - 10/22/26 (batch 27)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 27,
+      "timestamp": "2026-10-28T23:09:20.182Z",
+      "items": [
+        {
+          "partNum": "2555",
+          "color": "Light Bluish Gray",
+          "desc": "Tile Special 1 x 1 with Clip and Straight Tips",
+          "elementId": "2555194",
+          "qty": 1,
+          "drawerId": "O51",
+          "drawerLabel": "O51"
+        },
+        {
+          "partNum": "2555",
+          "color": "Dark Bluish Gray",
+          "desc": "Tile Special 1 x 1 with Clip and Straight Tips",
+          "elementId": "4211069",
+          "qty": 3,
+          "drawerId": "O51",
+          "drawerLabel": "O51"
+        }
+      ]
+    },
     {
       "id": "bag_mvsouk07_19qwf",
       "label": "CdA BAM - 10/22/26 (batch 26)",
@@ -478501,28 +478541,6 @@
           "sel": false
         },
         {
-          "partNum": "2555",
-          "color": "Light Bluish Gray",
-          "desc": "Tile Special 1 x 1 with Clip and Straight Tips",
-          "elementId": "2555194",
-          "qty": 1,
-          "drawerId": "O51",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "2555",
-          "color": "Dark Bluish Gray",
-          "desc": "Tile Special 1 x 1 with Clip and Straight Tips",
-          "elementId": "4211069",
-          "qty": 3,
-          "drawerId": "O51",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "6019",
           "color": "Black",
           "desc": "Plate Special 1 x 1 with Clip Horizontal [Thick U Clip]",
@@ -478963,12 +478981,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T23:09:14.876Z",
+      "savedAt": "2026-10-28T23:09:20.182Z",
       "keepOpen": true,
       "moved": {
-        "batches": 26,
-        "pieces": 271,
-        "last": "2026-10-28T22:30:51.847Z"
+        "batches": 27,
+        "pieces": 275,
+        "last": "2026-10-28T23:09:20.182Z"
       }
     },
     {
@@ -505634,8 +505652,8 @@
       "p": "2555",
       "c": "Light Bluish Gray",
       "d": "Tile Special 1 x 1 with Clip and Straight Tips",
-      "e": "",
-      "u": 1791916924851,
+      "e": "2555194",
+      "u": 1793228961383,
       "at": 1791672762872
     },
     "2419|light bluish gray": {
@@ -568575,6 +568593,13 @@
       "d": "Brick Sloped 30° 1 x 1 x 2/3 (Cheese Slope)",
       "e": "4587002",
       "u": 1793228764345
+    },
+    "2555|dark bluish gray": {
+      "p": "2555",
+      "c": "Dark Bluish Gray",
+      "d": "Tile Special 1 x 1 with Clip and Straight Tips",
+      "e": "4211069",
+      "u": 1793228961383
     }
   },
   "partKinds": {
@@ -568718,7 +568743,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T23:09:18.909Z"
+      "at": "2026-10-28T23:09:25.471Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -568739,10 +568764,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T23:09:14.876Z",
+      "bags": "2026-10-28T23:09:20.182Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T23:09:18.909Z",
+    "savedAt": "2026-10-28T23:09:25.471Z",
     "appVersion": "2026.10.28.10"
   }
 }
