@@ -457159,7 +457159,7 @@
       "label": "O29",
       "notes": "Small Cones",
       "group": "O",
-      "lastEdited": "2026-10-28T05:56:39.368Z"
+      "lastEdited": "2026-10-28T05:58:15.102Z"
     },
     {
       "id": "O30",
@@ -470245,6 +470245,37 @@
       "partNum": "33492",
       "color": "Dark Bluish Gray",
       "qty": 1
+    },
+    {
+      "drawerId": "O29",
+      "partNum": "85975",
+      "color": "Black",
+      "elementId": "4619597",
+      "qty": 11
+    },
+    {
+      "drawerId": "O29",
+      "partNum": "85975",
+      "color": "Flat Silver",
+      "qty": 9
+    },
+    {
+      "drawerId": "O29",
+      "partNum": "85975",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "O29",
+      "partNum": "85975",
+      "color": "Pearl Gold",
+      "qty": 12
+    },
+    {
+      "drawerId": "O29",
+      "partNum": "85975",
+      "color": "White",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -487247,9 +487278,12 @@
       "c": "Black",
       "d": "Cone 1.17 x 1.17 x 2/3 (Fez)",
       "e": "6203937",
-      "u": 1791916924851,
+      "u": 1793167096304,
       "at": 1791732118013,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4619597.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4619597.jpg",
+      "ea": [
+        "4619597"
+      ]
     },
     "30540|blue": {
       "p": "30540",
@@ -566279,6 +566313,13 @@
       "d": "Light Cover with Internal Bar / Bionicle Barraki Eye with Hole in Bar",
       "e": "6484410",
       "u": 1793166777404
+    },
+    "85975|pearl gold": {
+      "p": "85975",
+      "c": "Pearl Gold",
+      "d": "Cone 1.17 x 1.17 x 2/3 (Fez)",
+      "e": "6006217",
+      "u": 1793167096304
     }
   },
   "partKinds": {
@@ -566422,7 +566463,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T05:56:43.508Z"
+      "at": "2026-10-28T05:58:20.385Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -566446,7 +566487,7 @@
       "bags": "2026-10-28T05:56:39.467Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T05:56:43.508Z",
+    "savedAt": "2026-10-28T05:58:20.385Z",
     "appVersion": "2026.10.27.1"
   }
 }
