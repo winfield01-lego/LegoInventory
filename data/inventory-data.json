@@ -456540,7 +456540,7 @@
       "label": "M30",
       "notes": "2 x 3 with cutout and 3 x 3 cross",
       "group": "M",
-      "lastEdited": "2026-10-28T03:55:34.899Z"
+      "lastEdited": "2026-10-28T03:56:06.931Z"
     },
     {
       "id": "M31",
@@ -469356,6 +469356,24 @@
       "partNum": "15397",
       "color": "White",
       "qty": 17
+    },
+    {
+      "drawerId": "M30",
+      "partNum": "73831",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "M30",
+      "partNum": "73831",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "M30",
+      "partNum": "73831",
+      "color": "Dark Brown",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -565046,6 +565064,13 @@
       "d": "Plate 3 x 3 Cross",
       "e": "6061575",
       "u": 1793159736102
+    },
+    "73831|blue": {
+      "p": "73831",
+      "c": "Blue",
+      "d": "Plate 2 x 3 with 1 x 1 Cutout",
+      "e": "6431782",
+      "u": 1793159768133
     }
   },
   "partKinds": {
@@ -565189,7 +565214,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T03:55:38.937Z"
+      "at": "2026-10-28T03:56:10.968Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -565213,7 +565238,7 @@
       "bags": "2026-10-28T03:45:45.481Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T03:55:38.937Z",
+    "savedAt": "2026-10-28T03:56:10.968Z",
     "appVersion": "2026.10.27.1"
   }
 }
