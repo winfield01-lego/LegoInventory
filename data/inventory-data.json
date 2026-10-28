@@ -456666,7 +456666,7 @@
       "label": "N2",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.789Z"
+      "lastEdited": "2026-10-28T23:27:32.387Z"
     },
     {
       "id": "N3",
@@ -471200,6 +471200,13 @@
       "color": "Pearl Gold",
       "elementId": "6071259",
       "qty": 12
+    },
+    {
+      "drawerId": "N2",
+      "partNum": "6019",
+      "color": "Black",
+      "elementId": "601926",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -471612,6 +471619,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsqvfz7_ju3go",
+      "label": "CdA BAM - 10/22/26 (batch 28)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 28,
+      "timestamp": "2026-10-28T23:27:32.515Z",
+      "items": [
+        {
+          "partNum": "6019",
+          "color": "Black",
+          "desc": "Plate Special 1 x 1 with Clip Horizontal [Thick U Clip]",
+          "elementId": "601926",
+          "qty": 1,
+          "drawerId": "N2",
+          "drawerLabel": "N2"
+        }
+      ]
+    },
     {
       "id": "bag_mvsq814m_gbstb",
       "label": "CdA BAM - 10/22/26 (batch 27)",
@@ -478590,17 +478616,6 @@
           "sel": false
         },
         {
-          "partNum": "6019",
-          "color": "Black",
-          "desc": "Plate Special 1 x 1 with Clip Horizontal [Thick U Clip]",
-          "elementId": "601926",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "10201",
           "color": "Yellow",
           "desc": "Bracket 1 x 2 - 1 x 4 [Rounded Corners]",
@@ -479030,12 +479045,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T23:09:20.182Z",
+      "savedAt": "2026-10-28T23:27:32.515Z",
       "keepOpen": true,
       "moved": {
-        "batches": 27,
-        "pieces": 275,
-        "last": "2026-10-28T23:09:20.182Z"
+        "batches": 28,
+        "pieces": 276,
+        "last": "2026-10-28T23:27:32.515Z"
       }
     },
     {
@@ -502462,9 +502477,12 @@
       "c": "Black",
       "d": "Plate Special 1 x 1 with Clip Horizontal [Thick U Clip]",
       "e": "601976",
-      "u": 1791916924851,
+      "u": 1793230053716,
       "at": 1791846902427,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/601926.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/601926.jpg",
+      "ea": [
+        "601926"
+      ]
     },
     "55295|black": {
       "p": "55295",
@@ -568823,7 +568841,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T23:26:56.985Z"
+      "at": "2026-10-28T23:27:37.796Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -568844,10 +568862,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T23:09:20.182Z",
+      "bags": "2026-10-28T23:27:32.515Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T23:26:56.985Z",
+    "savedAt": "2026-10-28T23:27:37.796Z",
     "appVersion": "2026.10.28.10"
   }
 }
