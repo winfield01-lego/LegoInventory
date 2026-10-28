@@ -457301,7 +457301,7 @@
       "label": "O49",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-10-13T17:14:08.108Z"
+      "lastEdited": "2026-10-28T22:20:56.798Z"
     },
     {
       "id": "O50",
@@ -470844,6 +470844,12 @@
       "partNum": "24299",
       "color": "Yellow",
       "qty": 5
+    },
+    {
+      "drawerId": "O49",
+      "partNum": "64799",
+      "color": "Yellow",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -471256,6 +471262,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsohsyi_cbmtg",
+      "label": "CdA BAM - 10/22/26 (batch 22)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 22,
+      "timestamp": "2026-10-28T22:20:56.922Z",
+      "items": [
+        {
+          "partNum": "64799",
+          "color": "Yellow",
+          "desc": "Plate Special 4 x 4 with 2 x 2 Opening",
+          "elementId": "4549896",
+          "qty": 1,
+          "drawerId": "O49",
+          "drawerLabel": "O49"
+        }
+      ]
+    },
     {
       "id": "bag_mvso8lmc_4j96n",
       "label": "CdA BAM - 10/22/26 (batch 21)",
@@ -478102,17 +478127,6 @@
           "sel": false
         },
         {
-          "partNum": "64799",
-          "color": "Yellow",
-          "desc": "Plate Special 4 x 4 with 2 x 2 Opening",
-          "elementId": "4549896",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "92582",
           "color": "Black",
           "desc": "Hinge Plate 2 x 2 Locking with 1 Finger on Top",
@@ -478630,12 +478644,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T22:13:47.507Z",
+      "savedAt": "2026-10-28T22:20:56.922Z",
       "keepOpen": true,
       "moved": {
-        "batches": 21,
-        "pieces": 263,
-        "last": "2026-10-28T22:13:47.508Z"
+        "batches": 22,
+        "pieces": 264,
+        "last": "2026-10-28T22:20:56.922Z"
       }
     },
     {
@@ -568294,7 +568308,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T22:20:15.854Z"
+      "at": "2026-10-28T22:21:00.954Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -568315,10 +568329,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T22:13:47.508Z",
+      "bags": "2026-10-28T22:20:56.922Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T22:20:15.854Z",
+    "savedAt": "2026-10-28T22:21:00.954Z",
     "appVersion": "2026.10.28.10"
   }
 }
