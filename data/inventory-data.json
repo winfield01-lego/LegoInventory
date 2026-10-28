@@ -457370,7 +457370,7 @@
       "label": "O59",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-10-13T17:14:08.108Z"
+      "lastEdited": "2026-10-28T06:04:15.518Z"
     },
     {
       "id": "O60",
@@ -470335,6 +470335,20 @@
       "partNum": "11610",
       "color": "White",
       "qty": 20
+    },
+    {
+      "drawerId": "O59",
+      "partNum": "65578",
+      "color": "Light Bluish Gray",
+      "elementId": "6326748",
+      "qty": 1
+    },
+    {
+      "drawerId": "O59",
+      "partNum": "79194",
+      "color": "Dark Bluish Gray",
+      "elementId": "6392597",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -470747,6 +470761,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvrplrwi_offzv",
+      "label": "Zorah's October 1 Trip (batch 11)",
+      "bagId": "bagprog_muqihlr1_v3ef",
+      "bagLabel": "Zorah's October 1 Trip",
+      "batch": 11,
+      "timestamp": "2026-10-28T06:04:15.618Z",
+      "items": [
+        {
+          "partNum": "65578",
+          "color": "Light Bluish Gray",
+          "desc": "Bar, Angled with 1 x 1 Round Plate / Stud on End",
+          "elementId": "6326748",
+          "qty": 1,
+          "drawerId": "O59",
+          "drawerLabel": "O59"
+        },
+        {
+          "partNum": "79194",
+          "color": "Dark Bluish Gray",
+          "desc": "Plate Special Round 1 x 1 with Hollow Stud and Bar on Underside - Long Space",
+          "elementId": "6392597",
+          "qty": 1,
+          "drawerId": "O59",
+          "drawerLabel": "O59"
+        }
+      ]
+    },
     {
       "id": "bag_mvrpfh0k_v1q2t",
       "label": "Zorah's October 1 Trip (batch 10)",
@@ -477513,17 +477555,6 @@
       "label": "Zorah's October 1 Trip",
       "items": [
         {
-          "partNum": "65578",
-          "color": "Light Bluish Gray",
-          "desc": "Bar, Angled with 1 x 1 Round Plate / Stud on End",
-          "elementId": "6326748",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "2433",
           "color": "Yellow",
           "desc": "Hinge Bar with 3 Fingers and End Stud (Control Lever)",
@@ -477544,25 +477575,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "79194",
-          "color": "Dark Bluish Gray",
-          "desc": "Plate Special Round 1 x 1 with Hollow Stud and Bar on Underside - Long Space",
-          "elementId": "6392597",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
         }
       ],
-      "savedAt": "2026-10-28T05:59:21.572Z",
+      "savedAt": "2026-10-28T06:04:15.618Z",
       "keepOpen": true,
       "moved": {
-        "batches": 10,
-        "pieces": 253,
-        "last": "2026-10-28T05:59:21.572Z"
+        "batches": 11,
+        "pieces": 255,
+        "last": "2026-10-28T06:04:15.618Z"
       }
     }
   ],
@@ -493954,9 +493974,12 @@
       "c": "Light Bluish Gray",
       "d": "Bar, Angled with 1 x 1 Round Plate / Stud on End",
       "e": "6510189",
-      "u": 1791916924851,
+      "u": 1793167456819,
       "at": 1791655384672,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6326748.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6326748.jpg",
+      "ea": [
+        "6326748"
+      ]
     },
     "7052|black": {
       "p": "7052",
@@ -497017,9 +497040,12 @@
       "c": "Dark Bluish Gray",
       "d": "Plate Special Round 1 x 1 with Hollow Stud and Bar on Underside - Long Space",
       "e": "6510220",
-      "u": 1791916924851,
+      "u": 1793167456819,
       "at": 1791660084431,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6392597.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6392597.jpg",
+      "ea": [
+        "6392597"
+      ]
     },
     "44661|dark bluish gray": {
       "p": "44661",
@@ -566556,7 +566582,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T06:02:47.407Z"
+      "at": "2026-10-28T06:04:20.904Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -566577,10 +566603,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T05:59:21.572Z",
+      "bags": "2026-10-28T06:04:15.618Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T06:02:47.407Z",
+    "savedAt": "2026-10-28T06:04:20.904Z",
     "appVersion": "2026.10.27.1"
   }
 }
