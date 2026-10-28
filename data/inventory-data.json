@@ -456526,7 +456526,7 @@
       "label": "M28",
       "notes": "",
       "group": "M",
-      "lastEdited": "2026-10-13T17:13:28.024Z"
+      "lastEdited": "2026-10-28T03:45:45.392Z"
     },
     {
       "id": "M29",
@@ -469186,6 +469186,31 @@
       "partNum": "60608",
       "color": "Yellow",
       "qty": 8
+    },
+    {
+      "drawerId": "M28",
+      "partNum": "77844",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "M28",
+      "partNum": "77844",
+      "color": "Dark Brown",
+      "qty": 3
+    },
+    {
+      "drawerId": "M28",
+      "partNum": "77844",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "M28",
+      "partNum": "77844",
+      "color": "White",
+      "elementId": "6428165",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -469598,6 +469623,52 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvrknnrd_f5uhb",
+      "label": "CdA BAM - 10/22/26 (batch 10)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 10,
+      "timestamp": "2026-10-28T03:45:45.481Z",
+      "items": [
+        {
+          "partNum": "77844",
+          "color": "Black",
+          "desc": "Plate 3 x 3 Corner",
+          "elementId": "6439175",
+          "qty": 1,
+          "drawerId": "M28",
+          "drawerLabel": "M28"
+        },
+        {
+          "partNum": "77844",
+          "color": "Dark Brown",
+          "desc": "Plate 3 x 3 Corner",
+          "elementId": "6473454",
+          "qty": 3,
+          "drawerId": "M28",
+          "drawerLabel": "M28"
+        },
+        {
+          "partNum": "77844",
+          "color": "Red",
+          "desc": "Plate 3 x 3 Corner",
+          "elementId": "6493105",
+          "qty": 1,
+          "drawerId": "M28",
+          "drawerLabel": "M28"
+        },
+        {
+          "partNum": "77844",
+          "color": "White",
+          "desc": "Plate 3 x 3 Corner",
+          "elementId": "6428165",
+          "qty": 1,
+          "drawerId": "M28",
+          "drawerLabel": "M28"
+        }
+      ]
+    },
     {
       "id": "bag_mvrkmdak_5ysbp",
       "label": "CdA BAM - 10/22/26 (batch 9)",
@@ -474954,50 +475025,6 @@
           "sel": false
         },
         {
-          "partNum": "77844",
-          "color": "Black",
-          "desc": "Plate 3 x 3 Corner",
-          "elementId": "6439175",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "77844",
-          "color": "Dark Brown",
-          "desc": "Plate 3 x 3 Corner",
-          "elementId": "6473454",
-          "qty": 3,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "77844",
-          "color": "Red",
-          "desc": "Plate 3 x 3 Corner",
-          "elementId": "6493105",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "77844",
-          "color": "White",
-          "desc": "Plate 3 x 3 Corner",
-          "elementId": "6428165",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "79491",
           "color": "Black",
           "desc": "Plate Round Corner 2 x 2 with 1 x 1 Cutout",
@@ -475086,12 +475113,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T03:44:45.260Z",
+      "savedAt": "2026-10-28T03:45:45.480Z",
       "keepOpen": true,
       "moved": {
-        "batches": 9,
-        "pieces": 176,
-        "last": "2026-10-28T03:44:45.260Z"
+        "batches": 10,
+        "pieces": 182,
+        "last": "2026-10-28T03:45:45.480Z"
       }
     },
     {
@@ -505198,9 +505225,12 @@
       "c": "White",
       "d": "Plate 3 x 3 Corner",
       "e": "6548294",
-      "u": 1791916924851,
+      "u": 1793159146682,
       "at": 1791654611386,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6428165.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6428165.jpg",
+      "ea": [
+        "6428165"
+      ]
     },
     "48171|black": {
       "p": "48171",
@@ -564770,6 +564800,20 @@
       "d": "Window 1 x 2 x 3 Pane with Thick Corner Tabs",
       "e": "4528136",
       "u": 1793158878562
+    },
+    "77844|dark brown": {
+      "p": "77844",
+      "c": "Dark Brown",
+      "d": "Plate 3 x 3 Corner",
+      "e": "6473454",
+      "u": 1793159146682
+    },
+    "77844|red": {
+      "p": "77844",
+      "c": "Red",
+      "d": "Plate 3 x 3 Corner",
+      "e": "6493105",
+      "u": 1793159146682
     }
   },
   "partKinds": {
@@ -564913,7 +564957,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T03:44:49.290Z"
+      "at": "2026-10-28T03:45:50.779Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -564934,10 +564978,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T03:44:45.260Z",
+      "bags": "2026-10-28T03:45:45.481Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T03:44:49.290Z",
+    "savedAt": "2026-10-28T03:45:50.779Z",
     "appVersion": "2026.10.27.1"
   }
 }
