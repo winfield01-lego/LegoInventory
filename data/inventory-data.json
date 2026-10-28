@@ -456883,7 +456883,7 @@
       "label": "N33",
       "notes": "1 x 2 Half Barrel",
       "group": "N",
-      "lastEdited": "2026-10-28T23:37:28.952Z"
+      "lastEdited": "2026-10-28T23:40:41.984Z"
     },
     {
       "id": "N34",
@@ -471296,13 +471296,49 @@
       "drawerId": "N33",
       "partNum": "68013",
       "color": "Light Bluish Gray",
-      "qty": 1
+      "qty": 8
     },
     {
       "drawerId": "N33",
       "partNum": "68013",
       "color": "Yellow",
+      "qty": 11
+    },
+    {
+      "drawerId": "N33",
+      "partNum": "68013",
+      "color": "Black",
+      "qty": 28
+    },
+    {
+      "drawerId": "N33",
+      "partNum": "68013",
+      "color": "Dark Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "N33",
+      "partNum": "68013",
+      "color": "Red",
+      "qty": 10
+    },
+    {
+      "drawerId": "N33",
+      "partNum": "68013",
+      "color": "Reddish Brown",
       "qty": 1
+    },
+    {
+      "drawerId": "N33",
+      "partNum": "68013",
+      "color": "Tan",
+      "qty": 3
+    },
+    {
+      "drawerId": "N33",
+      "partNum": "68013",
+      "color": "White",
+      "qty": 34
     }
   ],
   "mocLocations": {
@@ -568877,6 +568913,27 @@
       "d": "Bracket 1 x 2 - 2 x 4 Inverted",
       "e": "6546601",
       "u": 1793230591458
+    },
+    "68013|red": {
+      "p": "68013",
+      "c": "Red",
+      "d": "Brick Round, Half 1 x 2",
+      "e": "6525850",
+      "u": 1793230843187
+    },
+    "68013|reddish brown": {
+      "p": "68013",
+      "c": "Reddish Brown",
+      "d": "Brick Round, Half 1 x 2",
+      "e": "6478179",
+      "u": 1793230843187
+    },
+    "68013|tan": {
+      "p": "68013",
+      "c": "Tan",
+      "d": "Brick Round, Half 1 x 2",
+      "e": "6351413",
+      "u": 1793230843187
     }
   },
   "partKinds": {
@@ -569020,7 +569077,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T23:37:32.992Z"
+      "at": "2026-10-28T23:40:46.029Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569044,7 +569101,7 @@
       "bags": "2026-10-28T23:37:09.989Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T23:37:32.992Z",
+    "savedAt": "2026-10-28T23:40:46.029Z",
     "appVersion": "2026.10.28.10"
   }
 }
