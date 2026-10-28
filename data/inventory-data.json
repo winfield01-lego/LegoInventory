@@ -455663,7 +455663,7 @@
       "label": "U1",
       "notes": "",
       "group": "U",
-      "lastEdited": "2026-10-13T17:00:41.050Z"
+      "lastEdited": "2026-10-28T21:46:37.129Z"
     },
     {
       "id": "U2",
@@ -470585,6 +470585,12 @@
       "partNum": "4738c",
       "color": "Medium Lavender",
       "qty": 1
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "Black",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -470997,6 +471003,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsn9now_zgv6x",
+      "label": "CdA BAM - 10/22/26 (batch 19)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 19,
+      "timestamp": "2026-10-28T21:46:37.232Z",
+      "items": [
+        {
+          "partNum": "3003",
+          "color": "Black",
+          "desc": "Brick 2 x 2",
+          "elementId": "300326",
+          "qty": 1,
+          "drawerId": "U1",
+          "drawerLabel": "U1"
+        }
+      ]
+    },
     {
       "id": "bag_mvsmxwqr_nwvwm",
       "label": "CdA BAM - 10/22/26 (batch 18)",
@@ -477786,17 +477811,6 @@
           "sel": false
         },
         {
-          "partNum": "3003",
-          "color": "Black",
-          "desc": "Brick 2 x 2",
-          "elementId": "300326",
-          "qty": 1,
-          "drawerId": "U1",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "3679",
           "color": "Light Bluish Gray",
           "desc": "Turntable 2 x 2 Plate - Top",
@@ -478347,12 +478361,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T21:46:27.846Z",
+      "savedAt": "2026-10-28T21:46:37.232Z",
       "keepOpen": true,
       "moved": {
-        "batches": 18,
-        "pieces": 258,
-        "last": "2026-10-28T21:37:29.091Z"
+        "batches": 19,
+        "pieces": 259,
+        "last": "2026-10-28T21:46:37.232Z"
       }
     },
     {
@@ -567937,7 +567951,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T21:46:31.868Z"
+      "at": "2026-10-28T21:46:38.686Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -567958,10 +567972,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T21:46:27.846Z",
+      "bags": "2026-10-28T21:46:37.232Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T21:46:31.868Z",
+    "savedAt": "2026-10-28T21:46:38.686Z",
     "appVersion": "2026.10.28.10"
   }
 }
