@@ -455531,7 +455531,8 @@
       "id": "J37",
       "label": "J37",
       "notes": "",
-      "group": "j"
+      "group": "j",
+      "lastEdited": "2026-10-28T02:41:10.756Z"
     },
     {
       "id": "J38",
@@ -468606,6 +468607,13 @@
       "partNum": "67095",
       "color": "Green",
       "qty": 1
+    },
+    {
+      "drawerId": "J37",
+      "partNum": "47457",
+      "color": "Black",
+      "elementId": "4218575",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -469018,6 +469026,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvricm2m_fnrdh",
+      "label": "CdA BAM - 10/22/26 (batch 7)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 7,
+      "timestamp": "2026-10-28T02:41:10.846Z",
+      "items": [
+        {
+          "partNum": "47457",
+          "color": "Black",
+          "desc": "Brick Curved 2 x 2 x 2/3 Two Studs and Curved Slope End",
+          "elementId": "4218575",
+          "qty": 1,
+          "drawerId": "J37",
+          "drawerLabel": "J37"
+        }
+      ]
+    },
     {
       "id": "bag_mvri6ksv_jjy8d",
       "label": "CdA BAM - 10/22/26 (batch 6)",
@@ -474246,17 +474273,6 @@
           "sel": false
         },
         {
-          "partNum": "47457",
-          "color": "Black",
-          "desc": "Brick Curved 2 x 2 x 2/3 Two Studs and Curved Slope End",
-          "elementId": "4218575",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "3567",
           "color": "Light Bluish Gray",
           "desc": "Tile Special Round 2 x 2 Inverted",
@@ -474488,12 +474504,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T02:36:29.263Z",
+      "savedAt": "2026-10-28T02:41:10.846Z",
       "keepOpen": true,
       "moved": {
-        "batches": 6,
-        "pieces": 165,
-        "last": "2026-10-28T02:36:29.263Z"
+        "batches": 7,
+        "pieces": 166,
+        "last": "2026-10-28T02:41:10.846Z"
       }
     },
     {
@@ -482717,9 +482733,12 @@
       "c": "Black",
       "d": "Brick Curved 2 x 2 x 2/3 Two Studs and Curved Slope End",
       "e": "6394979",
-      "u": 1791916924851,
+      "u": 1793155272047,
       "at": 1791654298603,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4218575.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4218575.jpg",
+      "ea": [
+        "4218575"
+      ]
     },
     "60212|black": {
       "p": "60212",
@@ -563883,7 +563902,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T02:40:27.067Z"
+      "at": "2026-10-28T02:41:16.126Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -563904,10 +563923,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T02:36:29.263Z",
+      "bags": "2026-10-28T02:41:10.846Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T02:40:27.067Z",
+    "savedAt": "2026-10-28T02:41:16.125Z",
     "appVersion": "2026.10.27.1"
   }
 }
