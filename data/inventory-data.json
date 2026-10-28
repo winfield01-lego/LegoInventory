@@ -456160,7 +456160,7 @@
       "label": "L18",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-10-13T17:13:18.947Z"
+      "lastEdited": "2026-10-28T22:24:37.964Z"
     },
     {
       "id": "L19",
@@ -470880,6 +470880,13 @@
       "partNum": "64799",
       "color": "White",
       "qty": 3
+    },
+    {
+      "drawerId": "L18",
+      "partNum": "92582",
+      "color": "Black",
+      "elementId": "4613759",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -471292,6 +471299,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsomjm1_tq8px",
+      "label": "CdA BAM - 10/22/26 (batch 23)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 23,
+      "timestamp": "2026-10-28T22:24:38.089Z",
+      "items": [
+        {
+          "partNum": "92582",
+          "color": "Black",
+          "desc": "Hinge Plate 2 x 2 Locking with 1 Finger on Top",
+          "elementId": "4613759",
+          "qty": 1,
+          "drawerId": "L18",
+          "drawerLabel": "L18"
+        }
+      ]
+    },
     {
       "id": "bag_mvsohsyi_cbmtg",
       "label": "CdA BAM - 10/22/26 (batch 22)",
@@ -478157,17 +478183,6 @@
           "sel": false
         },
         {
-          "partNum": "92582",
-          "color": "Black",
-          "desc": "Hinge Plate 2 x 2 Locking with 1 Finger on Top",
-          "elementId": "4613759",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "47905",
           "color": "Black",
           "desc": "Brick Special 1 x 1 with Studs on 2 Sides",
@@ -478674,12 +478689,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T22:20:56.922Z",
+      "savedAt": "2026-10-28T22:24:38.089Z",
       "keepOpen": true,
       "moved": {
-        "batches": 22,
-        "pieces": 264,
-        "last": "2026-10-28T22:20:56.922Z"
+        "batches": 23,
+        "pieces": 265,
+        "last": "2026-10-28T22:24:38.089Z"
       }
     },
     {
@@ -501001,9 +501016,12 @@
       "c": "Black",
       "d": "Hinge Plate 2 x 2 Locking with 1 Finger on Top",
       "e": "6265730",
-      "u": 1791916924851,
+      "u": 1793226279290,
       "at": 1791660084431,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4613759.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4613759.jpg",
+      "ea": [
+        "4613759"
+      ]
     },
     "64415c01|black": {
       "p": "64415c01",
@@ -568338,7 +568356,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T22:22:34.176Z"
+      "at": "2026-10-28T22:24:43.361Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -568359,10 +568377,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T22:20:56.922Z",
+      "bags": "2026-10-28T22:24:38.089Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T22:22:34.176Z",
+    "savedAt": "2026-10-28T22:24:43.361Z",
     "appVersion": "2026.10.28.10"
   }
 }
