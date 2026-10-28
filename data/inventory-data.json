@@ -454647,7 +454647,8 @@
       "id": "G30",
       "label": "G30",
       "notes": "",
-      "group": "G"
+      "group": "G",
+      "lastEdited": "2026-10-28T22:27:31.665Z"
     },
     {
       "id": "G31",
@@ -470926,6 +470927,12 @@
       "color": "Red",
       "elementId": "237621",
       "qty": 1
+    },
+    {
+      "drawerId": "G30",
+      "partNum": "47905",
+      "color": "Black",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -471338,6 +471345,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsoq9n2_ut33k",
+      "label": "CdA BAM - 10/22/26 (batch 24)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 24,
+      "timestamp": "2026-10-28T22:27:31.790Z",
+      "items": [
+        {
+          "partNum": "47905",
+          "color": "Black",
+          "desc": "Brick Special 1 x 1 with Studs on 2 Sides",
+          "elementId": "4214559",
+          "qty": 1,
+          "drawerId": "G30",
+          "drawerLabel": "G30"
+        }
+      ]
+    },
     {
       "id": "bag_mvsomjm1_tq8px",
       "label": "CdA BAM - 10/22/26 (batch 23)",
@@ -478222,17 +478248,6 @@
           "sel": false
         },
         {
-          "partNum": "47905",
-          "color": "Black",
-          "desc": "Brick Special 1 x 1 with Studs on 2 Sides",
-          "elementId": "4214559",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "3024",
           "color": "Blue",
           "desc": "Plate 1 x 1",
@@ -478728,12 +478743,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T22:24:38.089Z",
+      "savedAt": "2026-10-28T22:27:31.790Z",
       "keepOpen": true,
       "moved": {
-        "batches": 23,
-        "pieces": 265,
-        "last": "2026-10-28T22:24:38.089Z"
+        "batches": 24,
+        "pieces": 266,
+        "last": "2026-10-28T22:27:31.790Z"
       }
     },
     {
@@ -568415,7 +568430,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T22:26:56.695Z"
+      "at": "2026-10-28T22:27:35.814Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -568436,10 +568451,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T22:24:38.089Z",
+      "bags": "2026-10-28T22:27:31.790Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T22:26:56.695Z",
+    "savedAt": "2026-10-28T22:27:35.813Z",
     "appVersion": "2026.10.28.10"
   }
 }
