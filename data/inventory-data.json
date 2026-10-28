@@ -455718,7 +455718,7 @@
       "label": "Y3",
       "notes": "1x plates 2-12",
       "group": "Y Rolling Drawer",
-      "lastEdited": "2026-10-28T19:00:11.850Z"
+      "lastEdited": "2026-10-28T19:00:29.349Z"
     },
     {
       "id": "Y4",
@@ -470512,6 +470512,12 @@
       "color": "Orange",
       "elementId": "4122464",
       "qty": 1
+    },
+    {
+      "drawerId": "Y3",
+      "partNum": "3710",
+      "color": "Light Gray",
+      "qty": 6
     }
   ],
   "mocLocations": {
@@ -566745,7 +566751,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.5",
-      "at": "2026-10-28T19:00:15.887Z"
+      "at": "2026-10-28T19:00:33.387Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -566769,7 +566775,7 @@
       "bags": "2026-10-28T18:26:05.360Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T19:00:15.887Z",
+    "savedAt": "2026-10-28T19:00:33.387Z",
     "appVersion": "2026.10.28.5"
   }
 }
