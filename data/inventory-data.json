@@ -457581,7 +457581,7 @@
       "label": "S1",
       "notes": "",
       "group": "S",
-      "lastEdited": "2026-10-13T17:14:43.203Z"
+      "lastEdited": "2026-10-28T21:37:29.004Z"
     },
     {
       "id": "S2",
@@ -470454,6 +470454,19 @@
       "partNum": "86876",
       "color": "Black",
       "qty": 1
+    },
+    {
+      "drawerId": "S1",
+      "partNum": "30150",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "S1",
+      "partNum": "2489",
+      "color": "Dark Bluish Gray",
+      "elementId": "4218730",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -470866,6 +470879,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsmxwqr_nwvwm",
+      "label": "CdA BAM - 10/22/26 (batch 18)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 18,
+      "timestamp": "2026-10-28T21:37:29.091Z",
+      "items": [
+        {
+          "partNum": "30150",
+          "color": "Blue",
+          "desc": "Box / Crate with Handholds 3 x 4 x 1 2/3",
+          "elementId": "4141380",
+          "qty": 1,
+          "drawerId": "S1",
+          "drawerLabel": "S1"
+        },
+        {
+          "partNum": "2489",
+          "color": "Dark Bluish Gray",
+          "desc": "Barrel 2 x 2 x 2",
+          "elementId": "4218730",
+          "qty": 1,
+          "drawerId": "S1",
+          "drawerLabel": "S1"
+        }
+      ]
+    },
     {
       "id": "bag_mvsk4i3l_aimve",
       "label": "CdA BAM - 10/22/26 (batch 17)",
@@ -477627,17 +477668,6 @@
           "sel": false
         },
         {
-          "partNum": "30150",
-          "color": "Blue",
-          "desc": "Box / Crate with Handholds 3 x 4 x 1 2/3",
-          "elementId": "4141380",
-          "qty": 1,
-          "drawerId": "S1",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "3003",
           "color": "Black",
           "desc": "Brick 2 x 2",
@@ -477647,17 +477677,6 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "2489",
-          "color": "Dark Bluish Gray",
-          "desc": "Barrel 2 x 2 x 2",
-          "elementId": "4218730",
-          "qty": 1,
-          "drawerId": "S1",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
         },
         {
           "partNum": "3679",
@@ -478210,12 +478229,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T21:37:24.791Z",
+      "savedAt": "2026-10-28T21:37:29.091Z",
       "keepOpen": true,
       "moved": {
-        "batches": 17,
-        "pieces": 256,
-        "last": "2026-10-28T20:18:37.857Z"
+        "batches": 18,
+        "pieces": 258,
+        "last": "2026-10-28T21:37:29.091Z"
       }
     },
     {
@@ -517758,9 +517777,12 @@
       "c": "Dark Bluish Gray",
       "d": "Barrel 2 x 2 x 2",
       "e": "6278986",
-      "u": 1791916924851,
+      "u": 1793223450292,
       "at": 1791654586559,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4218730.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4218730.jpg",
+      "ea": [
+        "4218730"
+      ]
     },
     "30150|dark bluish gray": {
       "p": "30150",
@@ -567561,6 +567583,13 @@
       "d": "Plate Special 2 x 2 x 2/3 with Two Studs On Side and Two Raised [Half Hollow Anti-stud] - Updated Version",
       "e": "6470191",
       "u": 1793218719058
+    },
+    "30150|blue": {
+      "p": "30150",
+      "c": "Blue",
+      "d": "Box / Crate with Handholds 3 x 4 x 1 2/3",
+      "e": "4141380",
+      "u": 1793223450292
     }
   },
   "partKinds": {
@@ -567704,7 +567733,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T21:37:28.823Z"
+      "at": "2026-10-28T21:37:35.534Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -567725,10 +567754,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T21:37:24.791Z",
+      "bags": "2026-10-28T21:37:29.091Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T21:37:28.823Z",
+    "savedAt": "2026-10-28T21:37:35.534Z",
     "appVersion": "2026.10.28.10"
   }
 }
