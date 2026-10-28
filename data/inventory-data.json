@@ -457793,7 +457793,7 @@
       "label": "Q3",
       "notes": "Windows - 2 wide",
       "group": "Q",
-      "lastEdited": "2026-10-28T03:28:00.994Z"
+      "lastEdited": "2026-10-28T03:28:50.178Z"
     },
     {
       "id": "Q4",
@@ -469042,6 +469042,32 @@
       "partNum": "60032",
       "color": "Yellow",
       "qty": 2
+    },
+    {
+      "drawerId": "Q3",
+      "partNum": "90195",
+      "color": "Black",
+      "qty": 5
+    },
+    {
+      "drawerId": "Q3",
+      "partNum": "90195",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q3",
+      "partNum": "90195",
+      "color": "Light Bluish Gray",
+      "elementId": "4583689",
+      "qty": 4
+    },
+    {
+      "drawerId": "Q3",
+      "partNum": "90195",
+      "color": "White",
+      "elementId": "4645098",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -532051,9 +532077,12 @@
       "c": "Light Bluish Gray",
       "d": "Window 1 x 2 x 2 Castle",
       "e": "4642934",
-      "u": 1791916924851,
+      "u": 1793158131380,
       "at": 1791654648834,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4583689.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4583689.jpg",
+      "ea": [
+        "4583689"
+      ]
     },
     "44861|medium nougat": {
       "p": "44861",
@@ -541211,9 +541240,12 @@
       "c": "White",
       "d": "Window 1 x 2 x 2 Castle",
       "e": "6615526",
-      "u": 1791916924851,
+      "u": 1793158131380,
       "at": 1791654768078,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4645098.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4645098.jpg",
+      "ea": [
+        "4645098"
+      ]
     },
     "25214|yellow": {
       "p": "25214",
@@ -564491,6 +564523,13 @@
       "d": "Window 1 x 2 x 2 Plane, Hollow Studs, Single Hole Top and Bottom for Glass",
       "e": "4521134",
       "u": 1793158082197
+    },
+    "90195|black": {
+      "p": "90195",
+      "c": "Black",
+      "d": "Window 1 x 2 x 2 Castle",
+      "e": "4583690",
+      "u": 1793158131380
     }
   },
   "partKinds": {
@@ -564634,7 +564673,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T03:28:06.302Z"
+      "at": "2026-10-28T03:28:55.470Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -564658,7 +564697,7 @@
       "bags": "2026-10-28T02:48:31.195Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T03:28:06.302Z",
+    "savedAt": "2026-10-28T03:28:55.470Z",
     "appVersion": "2026.10.27.1"
   }
 }
