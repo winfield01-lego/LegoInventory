@@ -456517,7 +456517,7 @@
       "label": "M25",
       "notes": "",
       "group": "M",
-      "lastEdited": "2026-10-28T22:13:47.381Z"
+      "lastEdited": "2026-10-28T22:20:10.565Z"
     },
     {
       "id": "M26",
@@ -470770,7 +470770,80 @@
       "drawerId": "M25",
       "partNum": "24299",
       "color": "Red",
+      "qty": 7
+    },
+    {
+      "drawerId": "M25",
+      "partNum": "24299",
+      "color": "Black",
+      "qty": 21
+    },
+    {
+      "drawerId": "M25",
+      "partNum": "24299",
+      "color": "Blue",
+      "qty": 18
+    },
+    {
+      "drawerId": "M25",
+      "partNum": "24299",
+      "color": "Dark Azure",
+      "qty": 7
+    },
+    {
+      "drawerId": "M25",
+      "partNum": "24299",
+      "color": "Dark Blue",
+      "elementId": "6224384",
+      "qty": 2
+    },
+    {
+      "drawerId": "M25",
+      "partNum": "24299",
+      "color": "Dark Bluish Gray",
+      "qty": 32
+    },
+    {
+      "drawerId": "M25",
+      "partNum": "24299",
+      "color": "Dark Red",
       "qty": 1
+    },
+    {
+      "drawerId": "M25",
+      "partNum": "24299",
+      "color": "Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "M25",
+      "partNum": "24299",
+      "color": "Light Bluish Gray",
+      "qty": 26
+    },
+    {
+      "drawerId": "M25",
+      "partNum": "24299",
+      "color": "Lime",
+      "qty": 3
+    },
+    {
+      "drawerId": "M25",
+      "partNum": "24299",
+      "color": "Orange",
+      "qty": 4
+    },
+    {
+      "drawerId": "M25",
+      "partNum": "24299",
+      "color": "White",
+      "qty": 11
+    },
+    {
+      "drawerId": "M25",
+      "partNum": "24299",
+      "color": "Yellow",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -506267,9 +506340,12 @@
       "c": "Dark Blue",
       "d": "Wedge Plate 2 x 2 Left",
       "e": "6554213",
-      "u": 1791916924851,
+      "u": 1793226011767,
       "at": 1791654669028,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6224384.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6224384.jpg",
+      "ea": [
+        "6224384"
+      ]
     },
     "24307|dark blue": {
       "p": "24307",
@@ -568068,6 +568144,13 @@
       "d": "Turntable 2 x 2 Plate with Hinge, Base [3 Fingers]",
       "e": "450821",
       "u": 1793225471816
+    },
+    "24299|green": {
+      "p": "24299",
+      "c": "Green",
+      "d": "Wedge Plate 2 x 2 Left",
+      "e": "6385276",
+      "u": 1793226011767
     }
   },
   "partKinds": {
@@ -568211,7 +568294,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T22:13:51.541Z"
+      "at": "2026-10-28T22:20:15.854Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -568235,7 +568318,7 @@
       "bags": "2026-10-28T22:13:47.508Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T22:13:51.541Z",
+    "savedAt": "2026-10-28T22:20:15.854Z",
     "appVersion": "2026.10.28.10"
   }
 }
