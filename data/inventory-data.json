@@ -455663,7 +455663,7 @@
       "label": "U1",
       "notes": "2 x 2 Brick",
       "group": "U",
-      "lastEdited": "2026-10-28T21:46:48.860Z"
+      "lastEdited": "2026-10-28T21:52:42.863Z"
     },
     {
       "id": "U2",
@@ -470590,7 +470590,38 @@
       "drawerId": "U1",
       "partNum": "3003",
       "color": "Black",
-      "qty": 1
+      "qty": 144
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "White",
+      "qty": 122
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "Orange",
+      "elementId": "4119643",
+      "qty": 32
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "Blue",
+      "qty": 87
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "Light Bluish Gray",
+      "qty": 79
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "Green",
+      "qty": 32
     }
   ],
   "mocLocations": {
@@ -543662,8 +543693,11 @@
       "c": "Orange",
       "d": "Brick 2 x 2",
       "e": "4153825",
-      "u": 1791916924851,
-      "at": 1791654768078
+      "u": 1793224364065,
+      "at": 1791654768078,
+      "ea": [
+        "4119643"
+      ]
     },
     "3665|orange": {
       "p": "3665",
@@ -567951,7 +567985,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T21:46:52.907Z"
+      "at": "2026-10-28T21:52:46.902Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -567975,7 +568009,7 @@
       "bags": "2026-10-28T21:46:37.232Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T21:46:52.907Z",
+    "savedAt": "2026-10-28T21:52:46.902Z",
     "appVersion": "2026.10.28.10"
   }
 }
