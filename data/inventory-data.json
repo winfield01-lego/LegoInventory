@@ -454573,7 +454573,7 @@
       "label": "G18",
       "notes": "1 x 1 x 2/3 plate",
       "group": "G",
-      "lastEdited": "2026-10-28T05:18:44.877Z"
+      "lastEdited": "2026-10-28T05:22:43.319Z"
     },
     {
       "id": "G19",
@@ -469973,6 +469973,48 @@
       "drawerId": "G18",
       "partNum": "86996",
       "color": "White",
+      "qty": 29
+    },
+    {
+      "drawerId": "G18",
+      "partNum": "86996",
+      "color": "Black",
+      "qty": 10
+    },
+    {
+      "drawerId": "G18",
+      "partNum": "86996",
+      "color": "Blue",
+      "qty": 70
+    },
+    {
+      "drawerId": "G18",
+      "partNum": "86996",
+      "color": "Dark Bluish Gray",
+      "qty": 22
+    },
+    {
+      "drawerId": "G18",
+      "partNum": "86996",
+      "color": "Light Bluish Gray",
+      "qty": 24
+    },
+    {
+      "drawerId": "G18",
+      "partNum": "86996",
+      "color": "Medium Nougat",
+      "qty": 27
+    },
+    {
+      "drawerId": "G18",
+      "partNum": "86996",
+      "color": "Orange",
+      "qty": 4
+    },
+    {
+      "drawerId": "G18",
+      "partNum": "86996",
+      "color": "Red",
       "qty": 2
     }
   ],
@@ -565898,6 +565940,13 @@
       "d": "Plate Special 1 x 3 with 2 Studs with Groove and Inside Stud Holder (Jumper)",
       "e": "6498753",
       "u": 1793164545450
+    },
+    "86996|orange": {
+      "p": "86996",
+      "c": "Orange",
+      "d": "Plate 1 x 1 x 2/3 with Open Stud",
+      "e": "6442359",
+      "u": 1793164964521
     }
   },
   "partKinds": {
@@ -566041,7 +566090,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T05:18:48.918Z"
+      "at": "2026-10-28T05:22:47.368Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -566065,7 +566114,7 @@
       "bags": "2026-10-28T05:17:52.307Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T05:18:48.918Z",
+    "savedAt": "2026-10-28T05:22:47.368Z",
     "appVersion": "2026.10.27.1"
   }
 }
