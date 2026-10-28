@@ -455309,7 +455309,7 @@
       "label": "I43",
       "notes": "",
       "group": "I",
-      "lastEdited": "2026-10-28T05:02:51.554Z"
+      "lastEdited": "2026-10-28T05:15:44.243Z"
     },
     {
       "id": "I44",
@@ -469869,7 +469869,104 @@
       "drawerId": "I43",
       "partNum": "34103",
       "color": "Light Bluish Gray",
+      "qty": 77
+    },
+    {
+      "drawerId": "I43",
+      "partNum": "34103",
+      "color": "Black",
+      "qty": 56
+    },
+    {
+      "drawerId": "I43",
+      "partNum": "34103",
+      "color": "Blue",
+      "qty": 7
+    },
+    {
+      "drawerId": "I43",
+      "partNum": "34103",
+      "color": "Bright Light Blue",
+      "qty": 10
+    },
+    {
+      "drawerId": "I43",
+      "partNum": "34103",
+      "color": "Dark Bluish Gray",
+      "qty": 7
+    },
+    {
+      "drawerId": "I43",
+      "partNum": "34103",
+      "color": "Dark Orange",
+      "qty": 4
+    },
+    {
+      "drawerId": "I43",
+      "partNum": "34103",
+      "color": "Dark Red",
+      "qty": 4
+    },
+    {
+      "drawerId": "I43",
+      "partNum": "34103",
+      "color": "Dark Tan",
+      "qty": 10
+    },
+    {
+      "drawerId": "I43",
+      "partNum": "34103",
+      "color": "Green",
+      "elementId": "6341408",
+      "qty": 1
+    },
+    {
+      "drawerId": "I43",
+      "partNum": "34103",
+      "color": "Medium Blue",
+      "qty": 5
+    },
+    {
+      "drawerId": "I43",
+      "partNum": "34103",
+      "color": "Medium Nougat",
+      "qty": 12
+    },
+    {
+      "drawerId": "I43",
+      "partNum": "34103",
+      "color": "Orange",
       "qty": 2
+    },
+    {
+      "drawerId": "I43",
+      "partNum": "34103",
+      "color": "Reddish Brown",
+      "qty": 13
+    },
+    {
+      "drawerId": "I43",
+      "partNum": "34103",
+      "color": "Sand Blue",
+      "qty": 10
+    },
+    {
+      "drawerId": "I43",
+      "partNum": "34103",
+      "color": "Tan",
+      "qty": 19
+    },
+    {
+      "drawerId": "I43",
+      "partNum": "34103",
+      "color": "White",
+      "qty": 59
+    },
+    {
+      "drawerId": "I43",
+      "partNum": "34103",
+      "color": "Yellow",
+      "qty": 15
     }
   ],
   "mocLocations": {
@@ -536701,9 +536798,12 @@
       "c": "Green",
       "d": "Plate Special 1 x 3 with 2 Studs with Groove and Inside Stud Holder (Jumper)",
       "e": "6378110",
-      "u": 1791916924851,
+      "u": 1793164545450,
       "at": 1791654704338,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6341408.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6341408.jpg",
+      "ea": [
+        "6341408"
+      ]
     },
     "3001|orange": {
       "p": "3001",
@@ -565755,6 +565855,34 @@
       "d": "Support Round 2 x 2 x 2 Stand with Blocked Center Hole",
       "e": "",
       "u": 1793163690491
+    },
+    "34103|bright light blue": {
+      "p": "34103",
+      "c": "Bright Light Blue",
+      "d": "Plate Special 1 x 3 with 2 Studs with Groove and Inside Stud Holder (Jumper)",
+      "e": "6331339",
+      "u": 1793164545450
+    },
+    "34103|medium blue": {
+      "p": "34103",
+      "c": "Medium Blue",
+      "d": "Plate Special 1 x 3 with 2 Studs with Groove and Inside Stud Holder (Jumper)",
+      "e": "6211970",
+      "u": 1793164545450
+    },
+    "34103|orange": {
+      "p": "34103",
+      "c": "Orange",
+      "d": "Plate Special 1 x 3 with 2 Studs with Groove and Inside Stud Holder (Jumper)",
+      "e": "6441100",
+      "u": 1793164545450
+    },
+    "34103|sand blue": {
+      "p": "34103",
+      "c": "Sand Blue",
+      "d": "Plate Special 1 x 3 with 2 Studs with Groove and Inside Stud Holder (Jumper)",
+      "e": "6498753",
+      "u": 1793164545450
     }
   },
   "partKinds": {
@@ -565898,7 +566026,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T05:02:55.686Z"
+      "at": "2026-10-28T05:15:49.545Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -565922,7 +566050,7 @@
       "bags": "2026-10-28T05:02:51.657Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T05:02:55.686Z",
+    "savedAt": "2026-10-28T05:15:49.545Z",
     "appVersion": "2026.10.27.1"
   }
 }
