@@ -455764,7 +455764,7 @@
       "label": "K3",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-10-13T17:12:46.630Z"
+      "lastEdited": "2026-10-28T23:58:35.891Z"
     },
     {
       "id": "K4",
@@ -471461,6 +471461,12 @@
       "color": "White",
       "elementId": "6249273",
       "qty": 1
+    },
+    {
+      "drawerId": "K3",
+      "partNum": "3172",
+      "color": "Dark Blue",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -471873,6 +471879,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsrzdv0_8mkej",
+      "label": "CdA BAM - 10/22/26 (batch 34)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 34,
+      "timestamp": "2026-10-28T23:58:36.012Z",
+      "items": [
+        {
+          "partNum": "3172",
+          "color": "Dark Blue",
+          "desc": "Plate Special 1 x 2 with Pin Hole On Side",
+          "elementId": "6490173",
+          "qty": 1,
+          "drawerId": "K3",
+          "drawerLabel": "K3"
+        }
+      ]
+    },
     {
       "id": "bag_mvsrsh36_p5knj",
       "label": "CdA BAM - 10/22/26 (batch 33)",
@@ -478974,17 +478999,6 @@
           "sel": false
         },
         {
-          "partNum": "3172",
-          "color": "Dark Blue",
-          "desc": "Plate Special 1 x 2 with Pin Hole On Side",
-          "elementId": "6490173",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "48336",
           "color": "Light Bluish Gray",
           "desc": "Plate Special 1 x 2 [Side Handle Closed Ends]",
@@ -479337,12 +479351,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T23:55:36.810Z",
+      "savedAt": "2026-10-28T23:58:36.012Z",
       "keepOpen": true,
       "moved": {
-        "batches": 33,
-        "pieces": 282,
-        "last": "2026-10-28T23:53:13.602Z"
+        "batches": 34,
+        "pieces": 283,
+        "last": "2026-10-28T23:58:36.012Z"
       }
     },
     {
@@ -569102,6 +569116,13 @@
       "d": "Plate Special 1 x 2 with Handles on Ends",
       "e": "6288196",
       "u": 1793231705642
+    },
+    "3172|dark blue": {
+      "p": "3172",
+      "c": "Dark Blue",
+      "d": "Plate Special 1 x 2 with Pin Hole On Side",
+      "e": "6490173",
+      "u": 1793231917213
     }
   },
   "partKinds": {
@@ -569245,7 +569266,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T23:55:40.840Z"
+      "at": "2026-10-28T23:58:40.048Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569266,10 +569287,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T23:55:36.810Z",
+      "bags": "2026-10-28T23:58:36.012Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T23:55:40.840Z",
+    "savedAt": "2026-10-28T23:58:40.048Z",
     "appVersion": "2026.10.28.10"
   }
 }
