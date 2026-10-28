@@ -456218,7 +456218,7 @@
       "label": "L26",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-10-13T17:13:18.947Z"
+      "lastEdited": "2026-10-28T23:45:26.693Z"
     },
     {
       "id": "L27",
@@ -471339,6 +471339,12 @@
       "partNum": "68013",
       "color": "White",
       "qty": 34
+    },
+    {
+      "drawerId": "L26",
+      "partNum": "32028",
+      "color": "Light Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -471751,6 +471757,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsrigwr_z1mw4",
+      "label": "CdA BAM - 10/22/26 (batch 32)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 32,
+      "timestamp": "2026-10-28T23:45:26.811Z",
+      "items": [
+        {
+          "partNum": "32028",
+          "color": "Light Bluish Gray",
+          "desc": "Plate Special 1 x 2 with Door Rail",
+          "elementId": "4211568",
+          "qty": 1,
+          "drawerId": "L26",
+          "drawerLabel": "L26"
+        }
+      ]
+    },
     {
       "id": "bag_mvsr7tk5_a0ogm",
       "label": "CdA BAM - 10/22/26 (batch 31)",
@@ -478814,17 +478839,6 @@
           "sel": false
         },
         {
-          "partNum": "32028",
-          "color": "Light Bluish Gray",
-          "desc": "Plate Special 1 x 2 with Door Rail",
-          "elementId": "4211568",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "18649",
           "color": "Light Bluish Gray",
           "desc": "Plate Special 1 x 2 with Handles on Ends",
@@ -479199,12 +479213,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T23:37:09.989Z",
+      "savedAt": "2026-10-28T23:45:26.811Z",
       "keepOpen": true,
       "moved": {
-        "batches": 31,
-        "pieces": 280,
-        "last": "2026-10-28T23:37:09.989Z"
+        "batches": 32,
+        "pieces": 281,
+        "last": "2026-10-28T23:45:26.811Z"
       }
     },
     {
@@ -569077,7 +569091,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T23:40:46.029Z"
+      "at": "2026-10-28T23:45:30.839Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569098,10 +569112,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T23:37:09.989Z",
+      "bags": "2026-10-28T23:45:26.811Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T23:40:46.029Z",
+    "savedAt": "2026-10-28T23:45:30.839Z",
     "appVersion": "2026.10.28.10"
   }
 }
