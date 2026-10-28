@@ -457399,7 +457399,7 @@
       "label": "O64",
       "notes": "3x3 and 4x4 Corner Slope",
       "group": "O",
-      "lastEdited": "2026-10-28T04:54:32.519Z"
+      "lastEdited": "2026-10-28T04:54:51.101Z"
     },
     {
       "id": "P1",
@@ -469825,6 +469825,19 @@
       "partNum": "3675",
       "color": "Light Bluish Gray",
       "qty": 1
+    },
+    {
+      "drawerId": "O64",
+      "partNum": "43708",
+      "color": "Black",
+      "qty": 3
+    },
+    {
+      "drawerId": "O64",
+      "partNum": "43708",
+      "color": "Light Bluish Gray",
+      "elementId": "4180391",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -499293,9 +499306,12 @@
       "c": "Light Bluish Gray",
       "d": "Brick Wedged, Sloped 18° 4 x 4 Corner",
       "e": "6309133",
-      "u": 1791916924851,
+      "u": 1793163292303,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4180391.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4180391.jpg",
+      "ea": [
+        "4180391"
+      ]
     },
     "3961|light bluish gray": {
       "p": "3961",
@@ -565663,6 +565679,13 @@
       "d": "Brick Sloped 33° 3 x 3 Double Convex",
       "e": "4186667",
       "u": 1793163273721
+    },
+    "43708|black": {
+      "p": "43708",
+      "c": "Black",
+      "d": "Brick Wedged, Sloped 18° 4 x 4 Corner",
+      "e": "4180400",
+      "u": 1793163292303
     }
   },
   "partKinds": {
@@ -565806,7 +565829,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T04:54:37.810Z"
+      "at": "2026-10-28T04:54:56.384Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -565830,7 +565853,7 @@
       "bags": "2026-10-28T04:53:50.255Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T04:54:37.810Z",
+    "savedAt": "2026-10-28T04:54:56.384Z",
     "appVersion": "2026.10.27.1"
   }
 }
