@@ -456526,7 +456526,7 @@
       "label": "M28",
       "notes": "3 x 3 corner",
       "group": "M",
-      "lastEdited": "2026-10-28T03:47:21.376Z"
+      "lastEdited": "2026-10-28T03:48:34.433Z"
     },
     {
       "id": "M29",
@@ -469191,7 +469191,7 @@
       "drawerId": "M28",
       "partNum": "77844",
       "color": "Black",
-      "qty": 1
+      "qty": 14
     },
     {
       "drawerId": "M28",
@@ -469210,6 +469210,24 @@
       "partNum": "77844",
       "color": "White",
       "elementId": "6428165",
+      "qty": 4
+    },
+    {
+      "drawerId": "M28",
+      "partNum": "77844",
+      "color": "Dark Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "M28",
+      "partNum": "77844",
+      "color": "Dark Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "M28",
+      "partNum": "77844",
+      "color": "Medium Nougat",
       "qty": 1
     }
   ],
@@ -564814,6 +564832,27 @@
       "d": "Plate 3 x 3 Corner",
       "e": "6493105",
       "u": 1793159146682
+    },
+    "77844|dark blue": {
+      "p": "77844",
+      "c": "Dark Blue",
+      "d": "Plate 3 x 3 Corner",
+      "e": "6474895",
+      "u": 1793159315636
+    },
+    "77844|dark red": {
+      "p": "77844",
+      "c": "Dark Red",
+      "d": "Plate 3 x 3 Corner",
+      "e": "6490321",
+      "u": 1793159315636
+    },
+    "77844|medium nougat": {
+      "p": "77844",
+      "c": "Medium Nougat",
+      "d": "Plate 3 x 3 Corner",
+      "e": "6431822",
+      "u": 1793159315636
     }
   },
   "partKinds": {
@@ -564957,7 +564996,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T03:47:25.458Z"
+      "at": "2026-10-28T03:48:38.470Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -564981,7 +565020,7 @@
       "bags": "2026-10-28T03:45:45.481Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T03:47:25.458Z",
+    "savedAt": "2026-10-28T03:48:38.470Z",
     "appVersion": "2026.10.27.1"
   }
 }
