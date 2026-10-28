@@ -457581,7 +457581,7 @@
       "label": "S1",
       "notes": "Crates, Boxes Chests, Trash Cans and Barrels",
       "group": "S",
-      "lastEdited": "2026-10-28T21:41:03.706Z"
+      "lastEdited": "2026-10-28T21:43:04.046Z"
     },
     {
       "id": "S2",
@@ -470505,6 +470505,24 @@
       "partNum": "2489",
       "color": "Reddish Brown",
       "qty": 7
+    },
+    {
+      "drawerId": "S1",
+      "partNum": "61780",
+      "color": "Dark Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "S1",
+      "partNum": "61780",
+      "color": "Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "S1",
+      "partNum": "61780",
+      "color": "Reddish Brown",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -567648,6 +567666,13 @@
       "d": "Barrel 2 x 2 x 2",
       "e": "4211147",
       "u": 1793223664908
+    },
+    "61780|green": {
+      "p": "61780",
+      "c": "Green",
+      "d": "Container Box 2 x 2 x 2 - Top Opening",
+      "e": "4548102",
+      "u": 1793223785249
     }
   },
   "partKinds": {
@@ -567791,7 +567816,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T21:41:09.003Z"
+      "at": "2026-10-28T21:43:08.093Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -567815,7 +567840,7 @@
       "bags": "2026-10-28T21:37:29.091Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T21:41:09.003Z",
+    "savedAt": "2026-10-28T21:43:08.093Z",
     "appVersion": "2026.10.28.10"
   }
 }
