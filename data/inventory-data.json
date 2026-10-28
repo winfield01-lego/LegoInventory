@@ -455079,7 +455079,7 @@
       "label": "I7",
       "notes": "1 x 2 Tile - half circle and half circle with jumper",
       "group": "I",
-      "lastEdited": "2026-10-28T04:04:49.483Z"
+      "lastEdited": "2026-10-28T04:14:17.329Z"
     },
     {
       "id": "I8",
@@ -469519,7 +469519,7 @@
       "drawerId": "I7",
       "partNum": "1748",
       "color": "Light Bluish Gray",
-      "qty": 2
+      "qty": 31
     },
     {
       "drawerId": "I7",
@@ -469532,7 +469532,57 @@
       "drawerId": "I7",
       "partNum": "1748",
       "color": "Dark Bluish Gray",
+      "qty": 27
+    },
+    {
+      "drawerId": "I7",
+      "partNum": "1748",
+      "color": "Black",
+      "elementId": "6420852",
+      "qty": 13
+    },
+    {
+      "drawerId": "I7",
+      "partNum": "1748",
+      "color": "Bright Green",
+      "qty": 25
+    },
+    {
+      "drawerId": "I7",
+      "partNum": "1748",
+      "color": "Medium Nougat",
+      "qty": 2
+    },
+    {
+      "drawerId": "I7",
+      "partNum": "1748",
+      "color": "Orange",
+      "elementId": "6477975",
       "qty": 1
+    },
+    {
+      "drawerId": "I7",
+      "partNum": "1748",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "I7",
+      "partNum": "1748",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "I7",
+      "partNum": "1748",
+      "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "I7",
+      "partNum": "1748",
+      "color": "White",
+      "qty": 29
     }
   ],
   "mocLocations": {
@@ -492379,9 +492429,12 @@
       "c": "Black",
       "d": "Tile Round 1 x 2 Half Circle",
       "e": "6510071",
-      "u": 1791916924851,
+      "u": 1793160858533,
       "at": 1791656428749,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6420852.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6420852.jpg",
+      "ea": [
+        "6420852"
+      ]
     },
     "4150|light bluish gray": {
       "p": "4150",
@@ -520252,9 +520305,12 @@
       "c": "Orange",
       "d": "Tile Round 1 x 2 Half Circle",
       "e": "6510077",
-      "u": 1791916924851,
+      "u": 1793160858533,
       "at": 1791654440640,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6477975.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6477975.jpg",
+      "ea": [
+        "6477975"
+      ]
     },
     "93274|red": {
       "p": "93274",
@@ -565311,6 +565367,27 @@
       "d": "Panel 1 x 4 x 1 with Rounded Corners [Thin Wall]",
       "e": "6046379",
       "u": 1793160216751
+    },
+    "1748|bright green": {
+      "p": "1748",
+      "c": "Bright Green",
+      "d": "Tile Round 1 x 2 Half Circle",
+      "e": "6536989",
+      "u": 1793160858533
+    },
+    "1748|medium nougat": {
+      "p": "1748",
+      "c": "Medium Nougat",
+      "d": "Tile Round 1 x 2 Half Circle",
+      "e": "6440958",
+      "u": 1793160858533
+    },
+    "1748|yellow": {
+      "p": "1748",
+      "c": "Yellow",
+      "d": "Tile Round 1 x 2 Half Circle",
+      "e": "6527809",
+      "u": 1793160858533
     }
   },
   "partKinds": {
@@ -565454,7 +565531,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T04:04:54.874Z"
+      "at": "2026-10-28T04:14:22.641Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -565478,7 +565555,7 @@
       "bags": "2026-10-28T04:04:49.581Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T04:04:54.874Z",
+    "savedAt": "2026-10-28T04:14:22.640Z",
     "appVersion": "2026.10.27.1"
   }
 }
