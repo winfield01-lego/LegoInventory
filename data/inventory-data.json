@@ -456748,7 +456748,7 @@
       "label": "N14",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.790Z"
+      "lastEdited": "2026-10-28T21:58:08.029Z"
     },
     {
       "id": "N15",
@@ -470708,6 +470708,13 @@
       "partNum": "3003",
       "color": "Dark Blue",
       "qty": 7
+    },
+    {
+      "drawerId": "N14",
+      "partNum": "3679",
+      "color": "Light Bluish Gray",
+      "elementId": "4211439",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -471120,6 +471127,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsnogsy_dgcz1",
+      "label": "CdA BAM - 10/22/26 (batch 20)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 20,
+      "timestamp": "2026-10-28T21:58:08.146Z",
+      "items": [
+        {
+          "partNum": "3679",
+          "color": "Light Bluish Gray",
+          "desc": "Turntable 2 x 2 Plate - Top",
+          "elementId": "4211439",
+          "qty": 3,
+          "drawerId": "N14",
+          "drawerLabel": "N14"
+        }
+      ]
+    },
     {
       "id": "bag_mvsn9now_zgv6x",
       "label": "CdA BAM - 10/22/26 (batch 19)",
@@ -477928,17 +477954,6 @@
           "sel": false
         },
         {
-          "partNum": "3679",
-          "color": "Light Bluish Gray",
-          "desc": "Turntable 2 x 2 Plate - Top",
-          "elementId": "4211439",
-          "qty": 3,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "24299",
           "color": "Red",
           "desc": "Wedge Plate 2 x 2 Left",
@@ -478478,12 +478493,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T21:46:37.232Z",
+      "savedAt": "2026-10-28T21:58:08.146Z",
       "keepOpen": true,
       "moved": {
-        "batches": 19,
-        "pieces": 259,
-        "last": "2026-10-28T21:46:37.232Z"
+        "batches": 20,
+        "pieces": 262,
+        "last": "2026-10-28T21:58:08.146Z"
       }
     },
     {
@@ -482792,9 +482807,12 @@
       "c": "Light Bluish Gray",
       "d": "Turntable 2 x 2 Plate - Top",
       "e": "4540203",
-      "u": 1791916924851,
+      "u": 1793224689347,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4211439.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4211439.jpg",
+      "ea": [
+        "4211439"
+      ]
     },
     "3680|light bluish gray": {
       "p": "3680",
@@ -568109,7 +568127,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T21:57:22.279Z"
+      "at": "2026-10-28T21:58:13.429Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -568130,10 +568148,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T21:46:37.232Z",
+      "bags": "2026-10-28T21:58:08.146Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T21:57:22.279Z",
+    "savedAt": "2026-10-28T21:58:13.429Z",
     "appVersion": "2026.10.28.10"
   }
 }
