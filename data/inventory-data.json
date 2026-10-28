@@ -455109,7 +455109,7 @@
       "label": "I12",
       "notes": "2 x2 tile - macaroni",
       "group": "I",
-      "lastEdited": "2026-10-28T02:10:41.998Z"
+      "lastEdited": "2026-10-28T02:22:08.179Z"
     },
     {
       "id": "I13",
@@ -468425,37 +468425,37 @@
       "drawerId": "I12",
       "partNum": "27925",
       "color": "Black",
-      "qty": 1
+      "qty": 11
     },
     {
       "drawerId": "I12",
       "partNum": "27925",
       "color": "Blue",
-      "qty": 1
+      "qty": 7
     },
     {
       "drawerId": "I12",
       "partNum": "27925",
       "color": "Dark Blue",
-      "qty": 1
+      "qty": 8
     },
     {
       "drawerId": "I12",
       "partNum": "27925",
       "color": "Dark Bluish Gray",
-      "qty": 1
+      "qty": 13
     },
     {
       "drawerId": "I12",
       "partNum": "27925",
       "color": "Light Bluish Gray",
-      "qty": 2
+      "qty": 25
     },
     {
       "drawerId": "I12",
       "partNum": "27925",
       "color": "Yellow",
-      "qty": 2
+      "qty": 3
     },
     {
       "drawerId": "I13",
@@ -468528,6 +468528,54 @@
       "partNum": "79393",
       "color": "Dark Bluish Gray",
       "qty": 10
+    },
+    {
+      "drawerId": "I12",
+      "partNum": "27925",
+      "color": "Dark Azure",
+      "qty": 4
+    },
+    {
+      "drawerId": "I12",
+      "partNum": "27925",
+      "color": "Dark Orange",
+      "qty": 2
+    },
+    {
+      "drawerId": "I12",
+      "partNum": "27925",
+      "color": "Dark Red",
+      "qty": 3
+    },
+    {
+      "drawerId": "I12",
+      "partNum": "27925",
+      "color": "Pearl Gold",
+      "qty": 8
+    },
+    {
+      "drawerId": "I12",
+      "partNum": "27925",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "I12",
+      "partNum": "27925",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "I12",
+      "partNum": "27925",
+      "color": "Tan",
+      "qty": 3
+    },
+    {
+      "drawerId": "I12",
+      "partNum": "27925",
+      "color": "White",
+      "qty": 19
     }
   ],
   "mocLocations": {
@@ -563704,6 +563752,20 @@
       "d": "Tile 4 x 4 Curved, Macaroni",
       "e": "6177822",
       "u": 1793153648734
+    },
+    "27925|dark azure": {
+      "p": "27925",
+      "c": "Dark Azure",
+      "d": "Tile 2 x 2 Curved, Macaroni",
+      "e": "6199897",
+      "u": 1793154129380
+    },
+    "27925|tan": {
+      "p": "27925",
+      "c": "Tan",
+      "d": "Tile 2 x 2 Curved, Macaroni",
+      "e": "6226565",
+      "u": 1793154129380
     }
   },
   "partKinds": {
@@ -563847,7 +563909,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-28T02:16:37.999Z"
+      "at": "2026-10-28T02:22:12.212Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -563871,7 +563933,7 @@
       "bags": "2026-10-28T02:07:30.660Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T02:16:37.999Z",
+    "savedAt": "2026-10-28T02:22:12.212Z",
     "appVersion": "2026.10.26.2"
   }
 }
