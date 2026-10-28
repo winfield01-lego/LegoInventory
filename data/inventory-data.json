@@ -456666,7 +456666,7 @@
       "label": "N2",
       "notes": "1 x 1 Clip - Horizontal",
       "group": "N",
-      "lastEdited": "2026-10-28T23:34:28.233Z"
+      "lastEdited": "2026-10-28T23:35:24.717Z"
     },
     {
       "id": "N3",
@@ -471267,6 +471267,18 @@
       "color": "Yellow",
       "elementId": "4107445",
       "qty": 4
+    },
+    {
+      "drawerId": "N2",
+      "partNum": "61252",
+      "color": "Bright Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "N2",
+      "partNum": "61252",
+      "color": "Trans-Clear",
+      "qty": 8
     }
   ],
   "mocLocations": {
@@ -568798,6 +568810,13 @@
       "d": "Plate Special 1 x 1 with Clip Horizontal [Thick U Clip]",
       "e": "4222034",
       "u": 1793230469435
+    },
+    "61252|bright green": {
+      "p": "61252",
+      "c": "Bright Green",
+      "d": "Plate Special 1 x 1 with Clip Horizontal [Thick Open O Clip]",
+      "e": "6172373",
+      "u": 1793230525919
     }
   },
   "partKinds": {
@@ -568941,7 +568960,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T23:34:33.532Z"
+      "at": "2026-10-28T23:35:28.750Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -568965,7 +568984,7 @@
       "bags": "2026-10-28T23:27:32.515Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T23:34:33.532Z",
+    "savedAt": "2026-10-28T23:35:28.750Z",
     "appVersion": "2026.10.28.10"
   }
 }
