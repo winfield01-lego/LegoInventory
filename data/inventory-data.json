@@ -455079,7 +455079,7 @@
       "label": "I7",
       "notes": "1 x 2 Tile - half circle and half circle with jumper",
       "group": "I",
-      "lastEdited": "2026-10-28T04:04:23.040Z"
+      "lastEdited": "2026-10-28T04:04:49.483Z"
     },
     {
       "id": "I8",
@@ -469514,6 +469514,25 @@
       "partNum": "15207",
       "color": "Yellow",
       "qty": 1
+    },
+    {
+      "drawerId": "I7",
+      "partNum": "1748",
+      "color": "Light Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "I7",
+      "partNum": "1748",
+      "color": "Tan",
+      "elementId": "6408047",
+      "qty": 1
+    },
+    {
+      "drawerId": "I7",
+      "partNum": "1748",
+      "color": "Dark Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -469926,6 +469945,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvrlc6jx_of03s",
+      "label": "CdA BAM - 10/22/26 (batch 13)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 13,
+      "timestamp": "2026-10-28T04:04:49.581Z",
+      "items": [
+        {
+          "partNum": "1748",
+          "color": "Light Bluish Gray",
+          "desc": "Tile Round 1 x 2 Half Circle",
+          "elementId": "6408629",
+          "qty": 2,
+          "drawerId": "I7",
+          "drawerLabel": "I7"
+        },
+        {
+          "partNum": "1748",
+          "color": "Tan",
+          "desc": "Tile Round 1 x 2 Half Circle",
+          "elementId": "6408047",
+          "qty": 1,
+          "drawerId": "I7",
+          "drawerLabel": "I7"
+        },
+        {
+          "partNum": "1748",
+          "color": "Dark Bluish Gray",
+          "desc": "Tile Round 1 x 2 Half Circle",
+          "elementId": "6483944",
+          "qty": 1,
+          "drawerId": "I7",
+          "drawerLabel": "I7"
+        }
+      ]
+    },
     {
       "id": "bag_mvrl36s8_9uu0b",
       "label": "CdA BAM - 10/22/26 (batch 12)",
@@ -475360,43 +475416,10 @@
           "sel": false
         },
         {
-          "partNum": "1748",
-          "color": "Light Bluish Gray",
-          "desc": "Tile Round 1 x 2 Half Circle",
-          "elementId": "6408629",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "1748",
-          "color": "Tan",
-          "desc": "Tile Round 1 x 2 Half Circle",
-          "elementId": "6408047",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "5404",
           "color": "Black",
           "desc": "Brick Sloped 18° 2 x 1 x 2/3",
           "elementId": "6483559",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "1748",
-          "color": "Dark Bluish Gray",
-          "desc": "Tile Round 1 x 2 Half Circle",
-          "elementId": "6483944",
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
@@ -475426,12 +475449,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T03:57:49.976Z",
+      "savedAt": "2026-10-28T04:04:49.581Z",
       "keepOpen": true,
       "moved": {
-        "batches": 12,
-        "pieces": 188,
-        "last": "2026-10-28T03:57:49.976Z"
+        "batches": 13,
+        "pieces": 192,
+        "last": "2026-10-28T04:04:49.581Z"
       }
     },
     {
@@ -516676,8 +516699,11 @@
       "c": "Tan",
       "d": "Tile Round 1 x 2 Half Circle",
       "e": "6510069",
-      "u": 1791916924851,
-      "at": 1791654378386
+      "u": 1793160290782,
+      "at": 1791654378386,
+      "ea": [
+        "6408047"
+      ]
     },
     "98138|trans black": {
       "p": "98138",
@@ -565428,7 +565454,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T04:04:27.079Z"
+      "at": "2026-10-28T04:04:54.874Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -565449,10 +565475,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T03:57:49.976Z",
+      "bags": "2026-10-28T04:04:49.581Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T04:04:27.079Z",
+    "savedAt": "2026-10-28T04:04:54.874Z",
     "appVersion": "2026.10.27.1"
   }
 }
