@@ -456748,7 +456748,7 @@
       "label": "N14",
       "notes": "2 x 2 Turntables - top and base",
       "group": "N",
-      "lastEdited": "2026-10-28T22:10:51.764Z"
+      "lastEdited": "2026-10-28T22:11:10.614Z"
     },
     {
       "id": "N15",
@@ -470753,6 +470753,18 @@
       "partNum": "3680",
       "color": "Red",
       "qty": 9
+    },
+    {
+      "drawerId": "N14",
+      "partNum": "251",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "N14",
+      "partNum": "251",
+      "color": "Red",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -568028,6 +568040,20 @@
       "d": "Brick 2 x 2",
       "e": "4264580",
       "u": 1793224638182
+    },
+    "251|black": {
+      "p": "251",
+      "c": "Black",
+      "d": "Turntable 2 x 2 Plate with Hinge, Base [3 Fingers]",
+      "e": "450826",
+      "u": 1793225471816
+    },
+    "251|red": {
+      "p": "251",
+      "c": "Red",
+      "d": "Turntable 2 x 2 Plate with Hinge, Base [3 Fingers]",
+      "e": "450821",
+      "u": 1793225471816
     }
   },
   "partKinds": {
@@ -568171,7 +568197,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T22:10:57.058Z"
+      "at": "2026-10-28T22:11:14.650Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -568195,7 +568221,7 @@
       "bags": "2026-10-28T21:58:08.146Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T22:10:57.058Z",
+    "savedAt": "2026-10-28T22:11:14.650Z",
     "appVersion": "2026.10.28.10"
   }
 }
