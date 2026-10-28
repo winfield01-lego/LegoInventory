@@ -457800,7 +457800,7 @@
       "label": "Q4",
       "notes": "Windows - 4 wide",
       "group": "Q",
-      "lastEdited": "2026-10-28T02:48:31.103Z"
+      "lastEdited": "2026-10-28T02:51:05.365Z"
     },
     {
       "id": "Q5",
@@ -468743,6 +468743,33 @@
       "partNum": "60594",
       "color": "Light Bluish Gray",
       "elementId": "4597420",
+      "qty": 2
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "60594",
+      "color": "Black",
+      "elementId": "4520620",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "60594",
+      "color": "Red",
+      "elementId": "4583716",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "60594",
+      "color": "White",
+      "elementId": "4520702",
+      "qty": 5
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "60594",
+      "color": "Reddish Brown",
       "qty": 1
     }
   ],
@@ -488901,8 +488928,11 @@
       "c": "Black",
       "d": "Window 1 x 4 x 3 without Shutter Tabs",
       "e": "4530589",
-      "u": 1791916924851,
-      "at": 1791654771905
+      "u": 1793155866567,
+      "at": 1791654771905,
+      "ea": [
+        "4520620"
+      ]
     },
     "62576|trans yellow": {
       "p": "62576",
@@ -522624,9 +522654,12 @@
       "c": "Red",
       "d": "Window 1 x 4 x 3 without Shutter Tabs",
       "e": "6138800",
-      "u": 1791916924851,
+      "u": 1793155866567,
       "at": 1791654513595,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4583716.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4583716.jpg",
+      "ea": [
+        "4583716"
+      ]
     },
     "34103|reddish brown": {
       "p": "34103",
@@ -529189,9 +529222,12 @@
       "c": "White",
       "d": "Window 1 x 4 x 3 without Shutter Tabs",
       "e": "4530590",
-      "u": 1791916924851,
+      "u": 1793155866567,
       "at": 1791654638086,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4520702.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4520702.jpg",
+      "ea": [
+        "4520702"
+      ]
     },
     "13731|yellow": {
       "p": "13731",
@@ -563935,6 +563971,13 @@
       "d": "Brick Curved 2 x 2 x 2/3 Two Studs and Curved Slope End",
       "e": "4286596",
       "u": 1793155566673
+    },
+    "60594|reddish brown": {
+      "p": "60594",
+      "c": "Reddish Brown",
+      "d": "Window 1 x 4 x 3 without Shutter Tabs",
+      "e": "4595889",
+      "u": 1793155866567
     }
   },
   "partKinds": {
@@ -564078,7 +564121,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T02:48:36.466Z"
+      "at": "2026-10-28T02:51:10.647Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -564102,7 +564145,7 @@
       "bags": "2026-10-28T02:48:31.195Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T02:48:36.466Z",
+    "savedAt": "2026-10-28T02:51:10.647Z",
     "appVersion": "2026.10.27.1"
   }
 }
