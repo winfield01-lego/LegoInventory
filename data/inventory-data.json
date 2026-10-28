@@ -455349,7 +455349,7 @@
       "label": "J5",
       "notes": "",
       "group": "j",
-      "lastEdited": "2026-10-28T05:52:35.436Z"
+      "lastEdited": "2026-10-28T05:52:56.202Z"
     },
     {
       "id": "J6",
@@ -470209,6 +470209,12 @@
       "partNum": "58176",
       "color": "Light Bluish Gray",
       "qty": 9
+    },
+    {
+      "drawerId": "J5",
+      "partNum": "4278",
+      "color": "Dark Tan",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -566239,6 +566245,13 @@
       "d": "Light Cover 1 x 1 Round with Internal Bar / Bionicle Barraki Eye",
       "e": "6030198",
       "u": 1793166756637
+    },
+    "4278|dark tan": {
+      "p": "4278",
+      "c": "Dark Tan",
+      "d": "Light Cover with Internal Bar / Bionicle Barraki Eye with Hole in Bar",
+      "e": "6484410",
+      "u": 1793166777404
     }
   },
   "partKinds": {
@@ -566382,7 +566395,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T05:52:40.732Z"
+      "at": "2026-10-28T05:53:00.222Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -566406,7 +566419,7 @@
       "bags": "2026-10-28T05:50:28.052Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T05:52:40.732Z",
+    "savedAt": "2026-10-28T05:53:00.222Z",
     "appVersion": "2026.10.27.1"
   }
 }
