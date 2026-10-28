@@ -457800,7 +457800,7 @@
       "label": "Q4",
       "notes": "Windows - 4 wide",
       "group": "Q",
-      "lastEdited": "2026-10-28T03:39:43.661Z"
+      "lastEdited": "2026-10-28T03:41:17.360Z"
     },
     {
       "id": "Q5",
@@ -469168,6 +469168,24 @@
       "partNum": "60607",
       "color": "Reddish Brown",
       "qty": 4
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "60608",
+      "color": "Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "60608",
+      "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "60608",
+      "color": "Yellow",
+      "qty": 8
     }
   ],
   "mocLocations": {
@@ -564727,6 +564745,27 @@
       "d": "Window 1 x 2 x 3 Pane Latticed with Thick Corner Tabs",
       "e": "6084571",
       "u": 1793158784862
+    },
+    "60608|green": {
+      "p": "60608",
+      "c": "Green",
+      "d": "Window 1 x 2 x 3 Pane with Thick Corner Tabs",
+      "e": "6112266",
+      "u": 1793158878562
+    },
+    "60608|white": {
+      "p": "60608",
+      "c": "White",
+      "d": "Window 1 x 2 x 3 Pane with Thick Corner Tabs",
+      "e": "4520842",
+      "u": 1793158878562
+    },
+    "60608|yellow": {
+      "p": "60608",
+      "c": "Yellow",
+      "d": "Window 1 x 2 x 3 Pane with Thick Corner Tabs",
+      "e": "4528136",
+      "u": 1793158878562
     }
   },
   "partKinds": {
@@ -564870,7 +564909,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T03:39:47.684Z"
+      "at": "2026-10-28T03:41:21.393Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -564894,7 +564933,7 @@
       "bags": "2026-10-28T02:48:31.195Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T03:39:47.684Z",
+    "savedAt": "2026-10-28T03:41:21.393Z",
     "appVersion": "2026.10.27.1"
   }
 }
