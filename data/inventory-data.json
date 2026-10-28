@@ -457800,7 +457800,7 @@
       "label": "Q4",
       "notes": "Windows - 4 wide",
       "group": "Q",
-      "lastEdited": "2026-10-28T02:53:23.346Z"
+      "lastEdited": "2026-10-28T02:55:12.009Z"
     },
     {
       "id": "Q5",
@@ -468789,6 +468789,37 @@
       "partNum": "4033",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "3853",
+      "color": "Blue",
+      "qty": 3
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "3853",
+      "color": "Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "3853",
+      "color": "Yellow",
+      "qty": 2
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "3853",
+      "color": "White",
+      "elementId": "385301",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "3853",
+      "color": "Tan",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -478350,8 +478381,11 @@
       "c": "White",
       "d": "Window 1 x 4 x 3",
       "e": "4175392",
-      "u": 1791916924851,
-      "at": 1791846561196
+      "u": 1793156113211,
+      "at": 1791846561196,
+      "ea": [
+        "385301"
+      ]
     },
     "93092|medium lavender": {
       "p": "93092",
@@ -564003,6 +564037,34 @@
       "d": "Window 1 x 4 x 3 Train with All Studs Hollow",
       "e": "403326",
       "u": 1793156004549
+    },
+    "3853|blue": {
+      "p": "3853",
+      "c": "Blue",
+      "d": "Window 1 x 4 x 3",
+      "e": "385323",
+      "u": 1793156113211
+    },
+    "3853|red": {
+      "p": "3853",
+      "c": "Red",
+      "d": "Window 1 x 4 x 3",
+      "e": "385321",
+      "u": 1793156113211
+    },
+    "3853|yellow": {
+      "p": "3853",
+      "c": "Yellow",
+      "d": "Window 1 x 4 x 3",
+      "e": "385324",
+      "u": 1793156113211
+    },
+    "3853|tan": {
+      "p": "3853",
+      "c": "Tan",
+      "d": "Window 1 x 4 x 3",
+      "e": "385305",
+      "u": 1793156113211
     }
   },
   "partKinds": {
@@ -564146,7 +564208,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T02:53:28.640Z"
+      "at": "2026-10-28T02:55:16.054Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -564170,7 +564232,7 @@
       "bags": "2026-10-28T02:48:31.195Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T02:53:28.640Z",
+    "savedAt": "2026-10-28T02:55:16.054Z",
     "appVersion": "2026.10.27.1"
   }
 }
