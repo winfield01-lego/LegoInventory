@@ -457399,7 +457399,7 @@
       "label": "O64",
       "notes": "3x3 and 4x4 Corner Slope",
       "group": "O",
-      "lastEdited": "2026-10-28T04:53:36.219Z"
+      "lastEdited": "2026-10-28T04:53:50.154Z"
     },
     {
       "id": "P1",
@@ -469800,6 +469800,12 @@
       "partNum": "3675",
       "color": "Dark Tan",
       "qty": 1
+    },
+    {
+      "drawerId": "O64",
+      "partNum": "3675",
+      "color": "Black",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -470212,6 +470218,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvrn37lb_fpamz",
+      "label": "CdA BAM - 10/22/26 (batch 16)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 16,
+      "timestamp": "2026-10-28T04:53:50.255Z",
+      "items": [
+        {
+          "partNum": "3675",
+          "color": "Black",
+          "desc": "Brick Sloped 33° 3 x 3 Double Convex",
+          "elementId": "367526",
+          "qty": 1,
+          "drawerId": "O64",
+          "drawerLabel": "O64"
+        }
+      ]
+    },
     {
       "id": "bag_mvrn2wu7_n7qo4",
       "label": "Zorah's October 1 Trip (batch 2)",
@@ -475915,17 +475940,6 @@
           "sel": false
         },
         {
-          "partNum": "3675",
-          "color": "Black",
-          "desc": "Brick Sloped 33° 3 x 3 Double Convex",
-          "elementId": "367526",
-          "qty": 1,
-          "drawerId": "O64",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": false
-        },
-        {
           "partNum": "3573",
           "color": "Black",
           "desc": "Brick Curved 1 x 4 x 1 2/3 No Studs",
@@ -475959,12 +475973,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T04:34:32.434Z",
+      "savedAt": "2026-10-28T04:53:50.255Z",
       "keepOpen": true,
       "moved": {
-        "batches": 15,
-        "pieces": 197,
-        "last": "2026-10-28T04:34:32.434Z"
+        "batches": 16,
+        "pieces": 198,
+        "last": "2026-10-28T04:53:50.255Z"
       }
     },
     {
@@ -565756,7 +565770,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T04:53:46.446Z"
+      "at": "2026-10-28T04:53:54.289Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -565777,10 +565791,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T04:53:42.429Z",
+      "bags": "2026-10-28T04:53:50.255Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T04:53:46.446Z",
+    "savedAt": "2026-10-28T04:53:54.289Z",
     "appVersion": "2026.10.27.1"
   }
 }
