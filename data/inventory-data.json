@@ -455289,7 +455289,7 @@
       "label": "I40",
       "notes": "45 degree 2 x 1 with cutout",
       "group": "I",
-      "lastEdited": "2026-10-28T04:22:11.954Z"
+      "lastEdited": "2026-10-28T04:32:45.777Z"
     },
     {
       "id": "I41",
@@ -469649,7 +469649,101 @@
       "drawerId": "I40",
       "partNum": "15672",
       "color": "Light Bluish Gray",
+      "qty": 46
+    },
+    {
+      "drawerId": "I40",
+      "partNum": "15672",
+      "color": "Black",
+      "elementId": "4653087",
+      "qty": 31
+    },
+    {
+      "drawerId": "I40",
+      "partNum": "15672",
+      "color": "Blue",
+      "qty": 21
+    },
+    {
+      "drawerId": "I40",
+      "partNum": "15672",
+      "color": "Bright Light Blue",
+      "qty": 6
+    },
+    {
+      "drawerId": "I40",
+      "partNum": "15672",
+      "color": "Dark Azure",
+      "qty": 3
+    },
+    {
+      "drawerId": "I40",
+      "partNum": "15672",
+      "color": "Dark Blue",
+      "elementId": "6186683",
+      "qty": 11
+    },
+    {
+      "drawerId": "I40",
+      "partNum": "15672",
+      "color": "Dark Bluish Gray",
+      "elementId": "4621917",
+      "qty": 28
+    },
+    {
+      "drawerId": "I40",
+      "partNum": "15672",
+      "color": "Dark Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "I40",
+      "partNum": "15672",
+      "color": "Dark Tan",
+      "qty": 8
+    },
+    {
+      "drawerId": "I40",
+      "partNum": "15672",
+      "color": "Lime",
+      "qty": 2
+    },
+    {
+      "drawerId": "I40",
+      "partNum": "15672",
+      "color": "Reddish Brown",
+      "qty": 7
+    },
+    {
+      "drawerId": "I40",
+      "partNum": "15672",
+      "color": "Tan",
       "qty": 4
+    },
+    {
+      "drawerId": "I40",
+      "partNum": "15672",
+      "color": "White",
+      "qty": 45
+    },
+    {
+      "drawerId": "I40",
+      "partNum": "15672",
+      "color": "Yellow",
+      "qty": 7
+    },
+    {
+      "drawerId": "I40",
+      "partNum": "15672",
+      "color": "Sand Blue",
+      "qty": 6
+    },
+    {
+      "drawerId": "I40",
+      "partNum": "15672",
+      "color": "Red",
+      "elementId": "4603263",
+      "qty": 8
     }
   ],
   "mocLocations": {
@@ -486031,9 +486125,12 @@
       "c": "Black",
       "d": "Brick Sloped 45° 2 x 1 with 2/3 Cutout [New Version]",
       "e": "6069000",
-      "u": 1791916924851,
+      "u": 1793161966984,
       "at": 1791732118013,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4653087.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4653087.jpg",
+      "ea": [
+        "4653087"
+      ]
     },
     "3040b|black": {
       "p": "3040b",
@@ -492075,9 +492172,12 @@
       "c": "Dark Bluish Gray",
       "d": "Brick Sloped 45° 2 x 1 with 2/3 Cutout [New Version]",
       "e": "6069164",
-      "u": 1791916924851,
+      "u": 1793161966984,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4621917.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4621917.jpg",
+      "ea": [
+        "4621917"
+      ]
     },
     "28192|sand blue": {
       "p": "28192",
@@ -503195,9 +503295,9 @@
     "15672|lime": {
       "p": "15672",
       "c": "Lime",
-      "d": "",
-      "e": "",
-      "u": 1791916924851
+      "d": "Brick Sloped 45° 2 x 1 with 2/3 Cutout [New Version]",
+      "e": "6069166",
+      "u": 1793161966984
     },
     "3040b|lime": {
       "p": "3040b",
@@ -505005,9 +505105,12 @@
       "c": "Dark Blue",
       "d": "Brick Sloped 45° 2 x 1 with 2/3 Cutout [New Version]",
       "e": "6554206",
-      "u": 1791916924851,
+      "u": 1793161966984,
       "at": 1791654669028,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6186683.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6186683.jpg",
+      "ea": [
+        "6186683"
+      ]
     },
     "60481|dark blue": {
       "p": "60481",
@@ -534118,9 +534221,12 @@
       "c": "Red",
       "d": "Brick Sloped 45° 2 x 1 with 2/3 Cutout [New Version]",
       "e": "6053011",
-      "u": 1791916924851,
+      "u": 1793161966984,
       "at": 1791654669028,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4603263.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4603263.jpg",
+      "ea": [
+        "4603263"
+      ]
     },
     "60219|red": {
       "p": "60219",
@@ -565496,6 +565602,20 @@
       "d": "Brick Sloped 1 x 4 with 1 x 2 Cutout",
       "e": "6556985",
       "u": 1793161231078
+    },
+    "15672|bright light blue": {
+      "p": "15672",
+      "c": "Bright Light Blue",
+      "d": "Brick Sloped 45° 2 x 1 with 2/3 Cutout [New Version]",
+      "e": "6361987",
+      "u": 1793161966984
+    },
+    "15672|yellow": {
+      "p": "15672",
+      "c": "Yellow",
+      "d": "Brick Sloped 45° 2 x 1 with 2/3 Cutout [New Version]",
+      "e": "6018491",
+      "u": 1793161966984
     }
   },
   "partKinds": {
@@ -565639,7 +565759,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T04:22:15.980Z"
+      "at": "2026-10-28T04:32:51.092Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -565663,7 +565783,7 @@
       "bags": "2026-10-28T04:21:47.332Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T04:22:15.980Z",
+    "savedAt": "2026-10-28T04:32:51.092Z",
     "appVersion": "2026.10.27.1"
   }
 }
