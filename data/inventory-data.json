@@ -455263,7 +455263,8 @@
       "id": "I35",
       "label": "I35",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-10-28T22:30:51.730Z"
     },
     {
       "id": "I36",
@@ -470965,6 +470966,20 @@
       "partNum": "47905",
       "color": "Tan",
       "qty": 15
+    },
+    {
+      "drawerId": "I35",
+      "partNum": "54200",
+      "color": "Black",
+      "elementId": "4263949",
+      "qty": 2
+    },
+    {
+      "drawerId": "I35",
+      "partNum": "54200",
+      "color": "Light Bluish Gray",
+      "elementId": "4244372",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -471377,6 +471392,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsouk07_19qwf",
+      "label": "CdA BAM - 10/22/26 (batch 26)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 26,
+      "timestamp": "2026-10-28T22:30:51.847Z",
+      "items": [
+        {
+          "partNum": "54200",
+          "color": "Black",
+          "desc": "Brick Sloped 30° 1 x 1 x 2/3 (Cheese Slope)",
+          "elementId": "4263949",
+          "qty": 2,
+          "drawerId": "I35",
+          "drawerLabel": "I35"
+        },
+        {
+          "partNum": "54200",
+          "color": "Light Bluish Gray",
+          "desc": "Brick Sloped 30° 1 x 1 x 2/3 (Cheese Slope)",
+          "elementId": "4244372",
+          "qty": 2,
+          "drawerId": "I35",
+          "drawerLabel": "I35"
+        }
+      ]
+    },
     {
       "id": "bag_mvsoqh27_op23b",
       "label": "CdA BAM - 10/22/26 (batch 25)",
@@ -478299,28 +478342,6 @@
           "sel": false
         },
         {
-          "partNum": "54200",
-          "color": "Black",
-          "desc": "Brick Sloped 30° 1 x 1 x 2/3 (Cheese Slope)",
-          "elementId": "4263949",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "54200",
-          "color": "Light Bluish Gray",
-          "desc": "Brick Sloped 30° 1 x 1 x 2/3 (Cheese Slope)",
-          "elementId": "4244372",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "2555",
           "color": "Light Bluish Gray",
           "desc": "Tile Special 1 x 1 with Clip and Straight Tips",
@@ -478783,12 +478804,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T22:27:41.406Z",
+      "savedAt": "2026-10-28T22:30:51.847Z",
       "keepOpen": true,
       "moved": {
-        "batches": 25,
-        "pieces": 267,
-        "last": "2026-10-28T22:27:41.406Z"
+        "batches": 26,
+        "pieces": 271,
+        "last": "2026-10-28T22:30:51.847Z"
       }
     },
     {
@@ -568474,7 +568495,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T22:30:22.520Z"
+      "at": "2026-10-28T22:30:57.130Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -568495,10 +568516,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T22:27:41.407Z",
+      "bags": "2026-10-28T22:30:51.847Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T22:30:22.519Z",
+    "savedAt": "2026-10-28T22:30:57.130Z",
     "appVersion": "2026.10.28.10"
   }
 }
