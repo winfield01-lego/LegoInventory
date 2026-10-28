@@ -456883,7 +456883,7 @@
       "label": "N33",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.790Z"
+      "lastEdited": "2026-10-28T23:37:09.865Z"
     },
     {
       "id": "N34",
@@ -471291,6 +471291,18 @@
       "partNum": "7452",
       "color": "Light Bluish Gray",
       "qty": 1
+    },
+    {
+      "drawerId": "N33",
+      "partNum": "68013",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "N33",
+      "partNum": "68013",
+      "color": "Yellow",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -471703,6 +471715,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsr7tk5_a0ogm",
+      "label": "CdA BAM - 10/22/26 (batch 31)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 31,
+      "timestamp": "2026-10-28T23:37:09.989Z",
+      "items": [
+        {
+          "partNum": "68013",
+          "color": "Light Bluish Gray",
+          "desc": "Brick Round, Half 1 x 2",
+          "elementId": "6311384",
+          "qty": 1,
+          "drawerId": "N33",
+          "drawerLabel": "N33"
+        },
+        {
+          "partNum": "68013",
+          "color": "Yellow",
+          "desc": "Brick Round, Half 1 x 2",
+          "elementId": "6311385",
+          "qty": 1,
+          "drawerId": "N33",
+          "drawerLabel": "N33"
+        }
+      ]
+    },
     {
       "id": "bag_mvsr6ywi_9ybgc",
       "label": "CdA BAM - 10/22/26 (batch 30)",
@@ -478738,28 +478778,6 @@
           "sel": false
         },
         {
-          "partNum": "68013",
-          "color": "Light Bluish Gray",
-          "desc": "Brick Round, Half 1 x 2",
-          "elementId": "6311384",
-          "qty": 1,
-          "drawerId": "N33",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "68013",
-          "color": "Yellow",
-          "desc": "Brick Round, Half 1 x 2",
-          "elementId": "6311385",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "32028",
           "color": "Light Bluish Gray",
           "desc": "Plate Special 1 x 2 with Door Rail",
@@ -479145,12 +479163,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T23:37:02.746Z",
+      "savedAt": "2026-10-28T23:37:09.989Z",
       "keepOpen": true,
       "moved": {
-        "batches": 30,
-        "pieces": 278,
-        "last": "2026-10-28T23:36:30.258Z"
+        "batches": 31,
+        "pieces": 280,
+        "last": "2026-10-28T23:37:09.989Z"
       }
     },
     {
@@ -569002,7 +569020,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T23:37:06.776Z"
+      "at": "2026-10-28T23:37:14.030Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569023,10 +569041,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T23:37:02.746Z",
+      "bags": "2026-10-28T23:37:09.989Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T23:37:06.776Z",
+    "savedAt": "2026-10-28T23:37:14.030Z",
     "appVersion": "2026.10.28.10"
   }
 }
