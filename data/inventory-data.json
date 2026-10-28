@@ -457800,7 +457800,7 @@
       "label": "Q4",
       "notes": "Windows - 4 wide",
       "group": "Q",
-      "lastEdited": "2026-10-28T02:55:12.009Z"
+      "lastEdited": "2026-10-28T02:55:34.143Z"
     },
     {
       "id": "Q5",
@@ -468819,6 +468819,12 @@
       "drawerId": "Q4",
       "partNum": "3853",
       "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "2493b",
+      "color": "White",
       "qty": 1
     }
   ],
@@ -564065,6 +564071,13 @@
       "d": "Window 1 x 4 x 3",
       "e": "385305",
       "u": 1793156113211
+    },
+    "2493b|white": {
+      "p": "2493b",
+      "c": "White",
+      "d": "Window 1 x 4 x 5 with Hollow Studs",
+      "e": "4100414",
+      "u": 1793156135346
     }
   },
   "partKinds": {
@@ -564208,7 +564221,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T02:55:16.054Z"
+      "at": "2026-10-28T02:55:38.174Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -564232,7 +564245,7 @@
       "bags": "2026-10-28T02:48:31.195Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T02:55:16.054Z",
+    "savedAt": "2026-10-28T02:55:38.174Z",
     "appVersion": "2026.10.27.1"
   }
 }
