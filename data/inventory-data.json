@@ -457800,7 +457800,7 @@
       "label": "Q4",
       "notes": "Windows - 4 wide",
       "group": "Q",
-      "lastEdited": "2026-10-28T02:48:00.329Z"
+      "lastEdited": "2026-10-28T02:48:31.103Z"
     },
     {
       "id": "Q5",
@@ -468730,6 +468730,20 @@
       "partNum": "47457",
       "color": "Yellow",
       "qty": 1
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "60594",
+      "color": "Blue",
+      "elementId": "4597415",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "60594",
+      "color": "Light Bluish Gray",
+      "elementId": "4597420",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -469142,6 +469156,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvrim1uj_551ad",
+      "label": "CdA BAM - 10/22/26 (batch 8)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 8,
+      "timestamp": "2026-10-28T02:48:31.195Z",
+      "items": [
+        {
+          "partNum": "60594",
+          "color": "Blue",
+          "desc": "Window 1 x 4 x 3 without Shutter Tabs",
+          "elementId": "4597415",
+          "qty": 1,
+          "drawerId": "Q4",
+          "drawerLabel": "Q4"
+        },
+        {
+          "partNum": "60594",
+          "color": "Light Bluish Gray",
+          "desc": "Window 1 x 4 x 3 without Shutter Tabs",
+          "elementId": "4597420",
+          "qty": 1,
+          "drawerId": "Q4",
+          "drawerLabel": "Q4"
+        }
+      ]
+    },
     {
       "id": "bag_mvricm2m_fnrdh",
       "label": "CdA BAM - 10/22/26 (batch 7)",
@@ -474565,28 +474607,6 @@
           "sel": false
         },
         {
-          "partNum": "60594",
-          "color": "Blue",
-          "desc": "Window 1 x 4 x 3 without Shutter Tabs",
-          "elementId": "4597415",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "60594",
-          "color": "Light Bluish Gray",
-          "desc": "Window 1 x 4 x 3 without Shutter Tabs",
-          "elementId": "4597420",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "1748",
           "color": "Dark Bluish Gray",
           "desc": "Tile Round 1 x 2 Half Circle",
@@ -474620,12 +474640,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T02:41:10.846Z",
+      "savedAt": "2026-10-28T02:48:31.195Z",
       "keepOpen": true,
       "moved": {
-        "batches": 7,
-        "pieces": 166,
-        "last": "2026-10-28T02:41:10.846Z"
+        "batches": 8,
+        "pieces": 168,
+        "last": "2026-10-28T02:48:31.195Z"
       }
     },
     {
@@ -506295,9 +506315,12 @@
       "c": "Light Bluish Gray",
       "d": "Window 1 x 4 x 3 without Shutter Tabs",
       "e": "6146299",
-      "u": 1791916924851,
+      "u": 1793155712396,
       "at": 1791654304977,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4597420.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4597420.jpg",
+      "ea": [
+        "4597420"
+      ]
     },
     "15395|medium azure": {
       "p": "15395",
@@ -542402,9 +542425,12 @@
       "c": "Blue",
       "d": "Window 1 x 4 x 3 without Shutter Tabs",
       "e": "6097556",
-      "u": 1791916924851,
+      "u": 1793155712396,
       "at": 1791654806816,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4597415.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4597415.jpg",
+      "ea": [
+        "4597415"
+      ]
     },
     "44728|bright light orange": {
       "p": "44728",
@@ -564052,7 +564078,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T02:48:04.369Z"
+      "at": "2026-10-28T02:48:36.466Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -564073,10 +564099,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T02:41:10.846Z",
+      "bags": "2026-10-28T02:48:31.195Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T02:48:04.369Z",
+    "savedAt": "2026-10-28T02:48:36.466Z",
     "appVersion": "2026.10.27.1"
   }
 }
