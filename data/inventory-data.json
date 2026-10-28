@@ -455108,14 +455108,15 @@
       "id": "I12",
       "label": "I12",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-10-28T02:06:35.226Z"
     },
     {
       "id": "I13",
       "label": "I13",
       "notes": "",
       "group": "I",
-      "lastEdited": "2026-10-28T02:05:16.909Z"
+      "lastEdited": "2026-10-28T02:06:35.226Z"
     },
     {
       "id": "I14",
@@ -468418,6 +468419,48 @@
       "partNum": "79393",
       "color": "Dark Azure",
       "qty": 1
+    },
+    {
+      "drawerId": "I12",
+      "partNum": "27925",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "I12",
+      "partNum": "27925",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "I12",
+      "partNum": "27925",
+      "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "I12",
+      "partNum": "27925",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "I12",
+      "partNum": "27925",
+      "color": "Light Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "I12",
+      "partNum": "27925",
+      "color": "Yellow",
+      "qty": 2
+    },
+    {
+      "drawerId": "I13",
+      "partNum": "79393",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -468830,6 +468873,79 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvrh44kw_0pdpc",
+      "label": "CdA BAM - 10/22/26 (batch 4)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 4,
+      "timestamp": "2026-10-28T02:06:35.312Z",
+      "items": [
+        {
+          "partNum": "27925",
+          "color": "Black",
+          "desc": "Tile 2 x 2 Curved, Macaroni",
+          "elementId": "6191630",
+          "qty": 1,
+          "drawerId": "I12",
+          "drawerLabel": "I12"
+        },
+        {
+          "partNum": "27925",
+          "color": "Blue",
+          "desc": "Tile 2 x 2 Curved, Macaroni",
+          "elementId": "6194724",
+          "qty": 1,
+          "drawerId": "I12",
+          "drawerLabel": "I12"
+        },
+        {
+          "partNum": "27925",
+          "color": "Dark Blue",
+          "desc": "Tile 2 x 2 Curved, Macaroni",
+          "elementId": "6199898",
+          "qty": 1,
+          "drawerId": "I12",
+          "drawerLabel": "I12"
+        },
+        {
+          "partNum": "27925",
+          "color": "Dark Bluish Gray",
+          "desc": "Tile 2 x 2 Curved, Macaroni",
+          "elementId": "6265306",
+          "qty": 1,
+          "drawerId": "I12",
+          "drawerLabel": "I12"
+        },
+        {
+          "partNum": "27925",
+          "color": "Light Bluish Gray",
+          "desc": "Tile 2 x 2 Curved, Macaroni",
+          "elementId": "6163990",
+          "qty": 2,
+          "drawerId": "I12",
+          "drawerLabel": "I12"
+        },
+        {
+          "partNum": "27925",
+          "color": "Yellow",
+          "desc": "Tile 2 x 2 Curved, Macaroni",
+          "elementId": "6195186",
+          "qty": 2,
+          "drawerId": "I12",
+          "drawerLabel": "I12"
+        },
+        {
+          "partNum": "79393",
+          "color": "White",
+          "desc": "Tile 3 x 3 Curved, Macaroni",
+          "elementId": "6373439",
+          "qty": 1,
+          "drawerId": "I13",
+          "drawerLabel": "I13"
+        }
+      ]
+    },
     {
       "id": "bag_mvrh2g59_9tulg",
       "label": "CdA BAM - 10/22/26 (batch 3)",
@@ -473557,83 +473673,6 @@
           "sel": false
         },
         {
-          "partNum": "27925",
-          "color": "Black",
-          "desc": "Tile 2 x 2 Curved, Macaroni",
-          "elementId": "6191630",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "27925",
-          "color": "Blue",
-          "desc": "Tile 2 x 2 Curved, Macaroni",
-          "elementId": "6194724",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "27925",
-          "color": "Dark Blue",
-          "desc": "Tile 2 x 2 Curved, Macaroni",
-          "elementId": "6199898",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "27925",
-          "color": "Dark Bluish Gray",
-          "desc": "Tile 2 x 2 Curved, Macaroni",
-          "elementId": "6265306",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "27925",
-          "color": "Light Bluish Gray",
-          "desc": "Tile 2 x 2 Curved, Macaroni",
-          "elementId": "6163990",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "27925",
-          "color": "Yellow",
-          "desc": "Tile 2 x 2 Curved, Macaroni",
-          "elementId": "6195186",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "79393",
-          "color": "White",
-          "desc": "Tile 3 x 3 Curved, Macaroni",
-          "elementId": "6373439",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "5095",
           "color": "Green",
           "desc": "Brick Wedged, Curved 2 x 2 with Stud Notch Left",
@@ -474393,12 +474432,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T02:05:16.989Z",
+      "savedAt": "2026-10-28T02:06:35.312Z",
       "keepOpen": true,
       "moved": {
-        "batches": 3,
-        "pieces": 8,
-        "last": "2026-10-28T02:05:16.989Z"
+        "batches": 4,
+        "pieces": 17,
+        "last": "2026-10-28T02:06:35.312Z"
       }
     },
     {
@@ -563552,6 +563591,20 @@
       "d": "Tile 3 x 3 Curved, Macaroni",
       "e": "6451474",
       "u": 1793153118191
+    },
+    "27925|blue": {
+      "p": "27925",
+      "c": "Blue",
+      "d": "Tile 2 x 2 Curved, Macaroni",
+      "e": "6194724",
+      "u": 1793153196514
+    },
+    "27925|yellow": {
+      "p": "27925",
+      "c": "Yellow",
+      "d": "Tile 2 x 2 Curved, Macaroni",
+      "e": "6195186",
+      "u": 1793153196514
     }
   },
   "partKinds": {
@@ -563695,7 +563748,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-28T02:05:21.024Z"
+      "at": "2026-10-28T02:06:39.354Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -563716,10 +563769,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T02:05:16.989Z",
+      "bags": "2026-10-28T02:06:35.312Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T02:05:21.024Z",
+    "savedAt": "2026-10-28T02:06:39.354Z",
     "appVersion": "2026.10.26.2"
   }
 }
