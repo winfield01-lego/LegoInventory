@@ -457793,7 +457793,7 @@
       "label": "Q3",
       "notes": "Windows - 2 wide",
       "group": "Q",
-      "lastEdited": "2026-10-28T03:28:50.178Z"
+      "lastEdited": "2026-10-28T03:29:32.311Z"
     },
     {
       "id": "Q4",
@@ -469068,6 +469068,12 @@
       "color": "White",
       "elementId": "4645098",
       "qty": 4
+    },
+    {
+      "drawerId": "Q3",
+      "partNum": "7276",
+      "color": "Blue",
+      "qty": 10
     }
   ],
   "mocLocations": {
@@ -564530,6 +564536,13 @@
       "d": "Window 1 x 2 x 2 Castle",
       "e": "4583690",
       "u": 1793158131380
+    },
+    "7276|blue": {
+      "p": "7276",
+      "c": "Blue",
+      "d": "Window 1 x 2 x 2 Plane, Round Hole",
+      "e": "6586464",
+      "u": 1793158173514
     }
   },
   "partKinds": {
@@ -564673,7 +564686,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T03:28:55.470Z"
+      "at": "2026-10-28T03:29:36.342Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -564697,7 +564710,7 @@
       "bags": "2026-10-28T02:48:31.195Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T03:28:55.470Z",
+    "savedAt": "2026-10-28T03:29:36.342Z",
     "appVersion": "2026.10.27.1"
   }
 }
