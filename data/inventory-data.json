@@ -454572,7 +454572,8 @@
       "id": "G18",
       "label": "G18",
       "notes": "",
-      "group": "G"
+      "group": "G",
+      "lastEdited": "2026-10-28T05:17:52.204Z"
     },
     {
       "id": "G19",
@@ -469967,6 +469968,12 @@
       "partNum": "34103",
       "color": "Yellow",
       "qty": 15
+    },
+    {
+      "drawerId": "G18",
+      "partNum": "86996",
+      "color": "White",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -470379,6 +470386,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvrny4ab_7dxqv",
+      "label": "Zorah's October 1 Trip (batch 5)",
+      "bagId": "bagprog_muqihlr1_v3ef",
+      "bagLabel": "Zorah's October 1 Trip",
+      "batch": 5,
+      "timestamp": "2026-10-28T05:17:52.307Z",
+      "items": [
+        {
+          "partNum": "86996",
+          "color": "White",
+          "desc": "Plate 1 x 1 x 2/3 with Open Stud",
+          "elementId": "6383985",
+          "qty": 2,
+          "drawerId": "G18",
+          "drawerLabel": "G18"
+        }
+      ]
+    },
     {
       "id": "bag_mvrnetc9_7z3l1",
       "label": "Zorah's October 1 Trip (batch 4)",
@@ -477064,17 +477090,6 @@
           "sel": false
         },
         {
-          "partNum": "86996",
-          "color": "White",
-          "desc": "Plate 1 x 1 x 2/3 with Open Stud",
-          "elementId": "6383985",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "65578",
           "color": "Light Bluish Gray",
           "desc": "Bar, Angled with 1 x 1 Round Plate / Stud on End",
@@ -477152,12 +477167,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T05:02:51.657Z",
+      "savedAt": "2026-10-28T05:17:52.307Z",
       "keepOpen": true,
       "moved": {
-        "batches": 4,
-        "pieces": 246,
-        "last": "2026-10-28T05:02:51.657Z"
+        "batches": 5,
+        "pieces": 248,
+        "last": "2026-10-28T05:17:52.307Z"
       }
     }
   ],
@@ -566026,7 +566041,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T05:15:49.545Z"
+      "at": "2026-10-28T05:17:56.337Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -566047,10 +566062,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T05:02:51.657Z",
+      "bags": "2026-10-28T05:17:52.307Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T05:15:49.545Z",
+    "savedAt": "2026-10-28T05:17:56.337Z",
     "appVersion": "2026.10.27.1"
   }
 }
