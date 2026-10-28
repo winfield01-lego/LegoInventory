@@ -457793,7 +457793,7 @@
       "label": "Q3",
       "notes": "Windows - 2 wide",
       "group": "Q",
-      "lastEdited": "2026-10-28T03:36:41.910Z"
+      "lastEdited": "2026-10-28T03:44:45.163Z"
     },
     {
       "id": "Q4",
@@ -468941,7 +468941,7 @@
       "partNum": "60592",
       "color": "Black",
       "elementId": "4521439",
-      "qty": 9
+      "qty": 12
     },
     {
       "drawerId": "Q3",
@@ -468966,7 +468966,7 @@
       "drawerId": "Q3",
       "partNum": "60592",
       "color": "Sand Blue",
-      "qty": 1
+      "qty": 3
     },
     {
       "drawerId": "Q3",
@@ -468979,7 +468979,7 @@
       "partNum": "60592",
       "color": "White",
       "elementId": "4521210",
-      "qty": 9
+      "qty": 12
     },
     {
       "drawerId": "Q3",
@@ -469598,6 +469598,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvrkmdak_5ysbp",
+      "label": "CdA BAM - 10/22/26 (batch 9)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 9,
+      "timestamp": "2026-10-28T03:44:45.260Z",
+      "items": [
+        {
+          "partNum": "60592",
+          "color": "Black",
+          "desc": "Window 1 x 2 x 2 Flat Front",
+          "elementId": "4521439",
+          "qty": 3,
+          "drawerId": "Q3",
+          "drawerLabel": "Q3"
+        },
+        {
+          "partNum": "60592",
+          "color": "Sand Blue",
+          "desc": "Window 1 x 2 x 2 Flat Front",
+          "elementId": "6149585",
+          "qty": 2,
+          "drawerId": "Q3",
+          "drawerLabel": "Q3"
+        },
+        {
+          "partNum": "60592",
+          "color": "White",
+          "desc": "Window 1 x 2 x 2 Flat Front",
+          "elementId": "4521210",
+          "qty": 3,
+          "drawerId": "Q3",
+          "drawerLabel": "Q3"
+        }
+      ]
+    },
     {
       "id": "bag_mvrim1uj_551ad",
       "label": "CdA BAM - 10/22/26 (batch 8)",
@@ -475016,39 +475053,6 @@
           "sel": false
         },
         {
-          "partNum": "60592",
-          "color": "Black",
-          "desc": "Window 1 x 2 x 2 Flat Front",
-          "elementId": "4521439",
-          "qty": 3,
-          "drawerId": "Q3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "60592",
-          "color": "Sand Blue",
-          "desc": "Window 1 x 2 x 2 Flat Front",
-          "elementId": "6149585",
-          "qty": 2,
-          "drawerId": "Q3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "60592",
-          "color": "White",
-          "desc": "Window 1 x 2 x 2 Flat Front",
-          "elementId": "4521210",
-          "qty": 3,
-          "drawerId": "Q3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "1748",
           "color": "Dark Bluish Gray",
           "desc": "Tile Round 1 x 2 Half Circle",
@@ -475082,12 +475086,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T02:48:31.195Z",
+      "savedAt": "2026-10-28T03:44:45.260Z",
       "keepOpen": true,
       "moved": {
-        "batches": 8,
-        "pieces": 168,
-        "last": "2026-10-28T02:48:31.195Z"
+        "batches": 9,
+        "pieces": 176,
+        "last": "2026-10-28T03:44:45.260Z"
       }
     },
     {
@@ -564909,7 +564913,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T03:44:26.775Z"
+      "at": "2026-10-28T03:44:49.290Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -564930,10 +564934,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T03:44:22.746Z",
+      "bags": "2026-10-28T03:44:45.260Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T03:44:26.775Z",
+    "savedAt": "2026-10-28T03:44:49.290Z",
     "appVersion": "2026.10.27.1"
   }
 }
