@@ -456343,7 +456343,7 @@
       "label": "L44",
       "notes": "1 x 1 plate",
       "group": "L",
-      "lastEdited": "2026-10-28T20:19:23.858Z"
+      "lastEdited": "2026-10-28T22:27:41.283Z"
     },
     {
       "id": "M1",
@@ -468872,7 +468872,7 @@
       "drawerId": "L44",
       "partNum": "3024",
       "color": "Blue",
-      "qty": 38
+      "qty": 39
     },
     {
       "drawerId": "L44",
@@ -471345,6 +471345,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsoqh27_op23b",
+      "label": "CdA BAM - 10/22/26 (batch 25)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 25,
+      "timestamp": "2026-10-28T22:27:41.407Z",
+      "items": [
+        {
+          "partNum": "3024",
+          "color": "Blue",
+          "desc": "Plate 1 x 1",
+          "elementId": "302423",
+          "qty": 1,
+          "drawerId": "L44",
+          "drawerLabel": "L44"
+        }
+      ]
+    },
     {
       "id": "bag_mvsoq9n2_ut33k",
       "label": "CdA BAM - 10/22/26 (batch 24)",
@@ -478248,17 +478267,6 @@
           "sel": false
         },
         {
-          "partNum": "3024",
-          "color": "Blue",
-          "desc": "Plate 1 x 1",
-          "elementId": "302423",
-          "qty": 1,
-          "drawerId": "L44",
-          "matchCount": 2,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "54200",
           "color": "Black",
           "desc": "Brick Sloped 30° 1 x 1 x 2/3 (Cheese Slope)",
@@ -478743,12 +478751,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T22:27:31.790Z",
+      "savedAt": "2026-10-28T22:27:41.406Z",
       "keepOpen": true,
       "moved": {
-        "batches": 24,
-        "pieces": 266,
-        "last": "2026-10-28T22:27:31.790Z"
+        "batches": 25,
+        "pieces": 267,
+        "last": "2026-10-28T22:27:41.406Z"
       }
     },
     {
@@ -568430,7 +568438,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T22:27:35.814Z"
+      "at": "2026-10-28T22:27:45.445Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -568451,10 +568459,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T22:27:31.790Z",
+      "bags": "2026-10-28T22:27:41.407Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T22:27:35.813Z",
+    "savedAt": "2026-10-28T22:27:45.445Z",
     "appVersion": "2026.10.28.10"
   }
 }
