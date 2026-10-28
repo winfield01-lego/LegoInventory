@@ -457800,7 +457800,7 @@
       "label": "Q4",
       "notes": "Windows - 4 wide",
       "group": "Q",
-      "lastEdited": "2026-10-28T02:59:03.894Z"
+      "lastEdited": "2026-10-28T02:59:24.474Z"
     },
     {
       "id": "Q5",
@@ -468874,6 +468874,18 @@
       "partNum": "95270",
       "color": "Dark Bluish Gray",
       "qty": 2
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "3856",
+      "color": "Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "3856",
+      "color": "Green",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -564175,6 +564187,20 @@
       "d": "Window 2 x 4 x 3 Frame with Hollow Studs",
       "e": "6141496",
       "u": 1793156284244
+    },
+    "3856|blue": {
+      "p": "3856",
+      "c": "Blue",
+      "d": "Window 1 x 2 x 3 Shutter",
+      "e": "385623",
+      "u": 1793156365676
+    },
+    "3856|green": {
+      "p": "3856",
+      "c": "Green",
+      "d": "Window 1 x 2 x 3 Shutter",
+      "e": "385628",
+      "u": 1793156365676
     }
   },
   "partKinds": {
@@ -564318,7 +564344,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T02:59:07.979Z"
+      "at": "2026-10-28T02:59:28.509Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -564342,7 +564368,7 @@
       "bags": "2026-10-28T02:48:31.195Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T02:59:07.978Z",
+    "savedAt": "2026-10-28T02:59:28.509Z",
     "appVersion": "2026.10.27.1"
   }
 }
