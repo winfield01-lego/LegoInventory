@@ -457581,7 +457581,7 @@
       "label": "S1",
       "notes": "Crates, Boxes Chests, Trash Cans and Barrels",
       "group": "S",
-      "lastEdited": "2026-10-28T21:44:15.680Z"
+      "lastEdited": "2026-10-28T21:45:20.795Z"
     },
     {
       "id": "S2",
@@ -470566,6 +470566,19 @@
       "color": "Medium Nougat",
       "elementId": "6102983",
       "qty": 2
+    },
+    {
+      "drawerId": "S1",
+      "partNum": "4738b",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "S1",
+      "partNum": "4738b",
+      "color": "Medium Nougat",
+      "elementId": "",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -567754,6 +567767,20 @@
       "d": "Treasure Chest Lid [Thick Hinge]",
       "e": "6056227",
       "u": 1793223856882
+    },
+    "4738b|tan": {
+      "p": "4738b",
+      "c": "Tan",
+      "d": "Treasure Chest Bottom with Rear Slots, with Groove",
+      "e": "4618652",
+      "u": 1793223921996
+    },
+    "4738b|medium nougat": {
+      "p": "4738b",
+      "c": "Medium Nougat",
+      "d": "Treasure Chest Bottom with Rear Slots, with Groove",
+      "e": "",
+      "u": 1793223921996
     }
   },
   "partKinds": {
@@ -567897,7 +567924,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T21:44:20.971Z"
+      "at": "2026-10-28T21:45:24.828Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -567921,7 +567948,7 @@
       "bags": "2026-10-28T21:37:29.091Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T21:44:20.971Z",
+    "savedAt": "2026-10-28T21:45:24.828Z",
     "appVersion": "2026.10.28.10"
   }
 }
