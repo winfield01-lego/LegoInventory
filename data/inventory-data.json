@@ -456517,7 +456517,7 @@
       "label": "M25",
       "notes": "",
       "group": "M",
-      "lastEdited": "2026-10-13T17:13:28.024Z"
+      "lastEdited": "2026-10-28T22:13:47.381Z"
     },
     {
       "id": "M26",
@@ -470765,6 +470765,12 @@
       "partNum": "251",
       "color": "Red",
       "qty": 1
+    },
+    {
+      "drawerId": "M25",
+      "partNum": "24299",
+      "color": "Red",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -471177,6 +471183,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvso8lmc_4j96n",
+      "label": "CdA BAM - 10/22/26 (batch 21)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 21,
+      "timestamp": "2026-10-28T22:13:47.508Z",
+      "items": [
+        {
+          "partNum": "24299",
+          "color": "Red",
+          "desc": "Wedge Plate 2 x 2 Left",
+          "elementId": "6141552",
+          "qty": 1,
+          "drawerId": "M25",
+          "drawerLabel": "M25"
+        }
+      ]
+    },
     {
       "id": "bag_mvsnogsy_dgcz1",
       "label": "CdA BAM - 10/22/26 (batch 20)",
@@ -478004,17 +478029,6 @@
           "sel": false
         },
         {
-          "partNum": "24299",
-          "color": "Red",
-          "desc": "Wedge Plate 2 x 2 Left",
-          "elementId": "6141552",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "64799",
           "color": "Yellow",
           "desc": "Plate Special 4 x 4 with 2 x 2 Opening",
@@ -478543,12 +478557,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T21:58:08.146Z",
+      "savedAt": "2026-10-28T22:13:47.507Z",
       "keepOpen": true,
       "moved": {
-        "batches": 20,
-        "pieces": 262,
-        "last": "2026-10-28T21:58:08.146Z"
+        "batches": 21,
+        "pieces": 263,
+        "last": "2026-10-28T22:13:47.508Z"
       }
     },
     {
@@ -568197,7 +568211,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T22:12:27.104Z"
+      "at": "2026-10-28T22:13:51.541Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -568218,10 +568232,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T21:58:08.146Z",
+      "bags": "2026-10-28T22:13:47.508Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T22:12:27.104Z",
+    "savedAt": "2026-10-28T22:13:51.541Z",
     "appVersion": "2026.10.28.10"
   }
 }
