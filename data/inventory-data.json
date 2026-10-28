@@ -454802,7 +454802,7 @@
       "label": "H9",
       "notes": "2x6 and 2x4 Brackets",
       "group": "H",
-      "lastEdited": "2026-10-26T03:30:45.874Z"
+      "lastEdited": "2026-10-28T23:36:30.132Z"
     },
     {
       "id": "H11",
@@ -471285,6 +471285,12 @@
       "partNum": "10201",
       "color": "Yellow",
       "qty": 1
+    },
+    {
+      "drawerId": "H9",
+      "partNum": "7452",
+      "color": "Light Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -471697,6 +471703,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsr6ywi_9ybgc",
+      "label": "CdA BAM - 10/22/26 (batch 30)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 30,
+      "timestamp": "2026-10-28T23:36:30.258Z",
+      "items": [
+        {
+          "partNum": "7452",
+          "color": "Light Bluish Gray",
+          "desc": "Bracket 1 x 2 - 2 x 4 Inverted",
+          "elementId": "6546601",
+          "qty": 1,
+          "drawerId": "H9",
+          "drawerLabel": "H9"
+        }
+      ]
+    },
     {
       "id": "bag_mvsr6rcq_px43p",
       "label": "CdA BAM - 10/22/26 (batch 29)",
@@ -478735,17 +478760,6 @@
           "sel": false
         },
         {
-          "partNum": "7452",
-          "color": "Light Bluish Gray",
-          "desc": "Bracket 1 x 2 - 2 x 4 Inverted",
-          "elementId": "6546601",
-          "qty": 1,
-          "drawerId": "H9",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "32028",
           "color": "Light Bluish Gray",
           "desc": "Plate Special 1 x 2 with Door Rail",
@@ -479131,12 +479145,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T23:36:20.474Z",
+      "savedAt": "2026-10-28T23:36:30.257Z",
       "keepOpen": true,
       "moved": {
-        "batches": 29,
-        "pieces": 277,
-        "last": "2026-10-28T23:36:20.474Z"
+        "batches": 30,
+        "pieces": 278,
+        "last": "2026-10-28T23:36:30.258Z"
       }
     },
     {
@@ -568838,6 +568852,13 @@
       "d": "Bracket 1 x 2 - 1 x 4 [Rounded Corners]",
       "e": "6076799",
       "u": 1793230581675
+    },
+    "7452|light bluish gray": {
+      "p": "7452",
+      "c": "Light Bluish Gray",
+      "d": "Bracket 1 x 2 - 2 x 4 Inverted",
+      "e": "6546601",
+      "u": 1793230591458
     }
   },
   "partKinds": {
@@ -568981,7 +569002,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T23:36:24.509Z"
+      "at": "2026-10-28T23:36:34.292Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569002,10 +569023,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T23:36:20.474Z",
+      "bags": "2026-10-28T23:36:30.258Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T23:36:24.509Z",
+    "savedAt": "2026-10-28T23:36:34.291Z",
     "appVersion": "2026.10.28.10"
   }
 }
