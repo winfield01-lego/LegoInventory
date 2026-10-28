@@ -457800,7 +457800,7 @@
       "label": "Q4",
       "notes": "Windows - 4 wide",
       "group": "Q",
-      "lastEdited": "2026-10-28T03:00:24.370Z"
+      "lastEdited": "2026-10-28T03:11:16.833Z"
     },
     {
       "id": "Q5",
@@ -468892,6 +468892,12 @@
       "partNum": "3087c",
       "color": "Red",
       "elementId": "",
+      "qty": 2
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "2352b",
+      "color": "Yellow",
       "qty": 2
     }
   ],
@@ -564215,6 +564221,13 @@
       "d": "Window 1 x 1 x 1 Classic with Short Sill, No Glass",
       "e": "",
       "u": 1793156425573
+    },
+    "2352b|yellow": {
+      "p": "2352b",
+      "c": "Yellow",
+      "d": "Windscreen 2 x 4 x 3 Frame with Hollow Studs",
+      "e": "235224",
+      "u": 1793157078036
     }
   },
   "partKinds": {
@@ -564358,7 +564371,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T03:00:28.405Z"
+      "at": "2026-10-28T03:11:20.877Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -564382,7 +564395,7 @@
       "bags": "2026-10-28T02:48:31.195Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T03:00:28.405Z",
+    "savedAt": "2026-10-28T03:11:20.877Z",
     "appVersion": "2026.10.27.1"
   }
 }
