@@ -457399,7 +457399,7 @@
       "label": "O64",
       "notes": "3x3 and 4x4 Corner Slope",
       "group": "O",
-      "lastEdited": "2026-10-28T04:53:50.154Z"
+      "lastEdited": "2026-10-28T04:54:32.519Z"
     },
     {
       "id": "P1",
@@ -469805,6 +469805,25 @@
       "drawerId": "O64",
       "partNum": "3675",
       "color": "Black",
+      "qty": 3
+    },
+    {
+      "drawerId": "O64",
+      "partNum": "3675",
+      "color": "Blue",
+      "qty": 4
+    },
+    {
+      "drawerId": "O64",
+      "partNum": "3675",
+      "color": "Dark Blue",
+      "elementId": "4249900",
+      "qty": 1
+    },
+    {
+      "drawerId": "O64",
+      "partNum": "3675",
+      "color": "Light Bluish Gray",
       "qty": 1
     }
   ],
@@ -509290,9 +509309,12 @@
       "c": "Dark Blue",
       "d": "Brick Sloped 33° 3 x 3 Double Convex",
       "e": "6351912",
-      "u": 1791916924851,
+      "u": 1793163273721,
       "at": 1791654319350,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6124249.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6124249.jpg",
+      "ea": [
+        "4249900"
+      ]
     },
     "3045|dark blue": {
       "p": "3045",
@@ -565627,6 +565649,20 @@
       "d": "Brick Sloped 33° 3 x 3 Double Convex",
       "e": "6096662",
       "u": 1793163217520
+    },
+    "3675|blue": {
+      "p": "3675",
+      "c": "Blue",
+      "d": "Brick Sloped 33° 3 x 3 Double Convex",
+      "e": "367523",
+      "u": 1793163273721
+    },
+    "3675|light bluish gray": {
+      "p": "3675",
+      "c": "Light Bluish Gray",
+      "d": "Brick Sloped 33° 3 x 3 Double Convex",
+      "e": "4186667",
+      "u": 1793163273721
     }
   },
   "partKinds": {
@@ -565770,7 +565806,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T04:53:54.289Z"
+      "at": "2026-10-28T04:54:37.810Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -565794,7 +565830,7 @@
       "bags": "2026-10-28T04:53:50.255Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T04:53:54.289Z",
+    "savedAt": "2026-10-28T04:54:37.810Z",
     "appVersion": "2026.10.27.1"
   }
 }
