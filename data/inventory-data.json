@@ -457581,7 +457581,7 @@
       "label": "S1",
       "notes": "Crates, Boxes Chests, Trash Cans and Barrels",
       "group": "S",
-      "lastEdited": "2026-10-28T21:39:21.672Z"
+      "lastEdited": "2026-10-28T21:41:03.706Z"
     },
     {
       "id": "S2",
@@ -470466,7 +470466,7 @@
       "partNum": "2489",
       "color": "Dark Bluish Gray",
       "elementId": "4218730",
-      "qty": 1
+      "qty": 4
     },
     {
       "drawerId": "S1",
@@ -470485,6 +470485,26 @@
       "partNum": "30150",
       "color": "Reddish Brown",
       "qty": 1
+    },
+    {
+      "drawerId": "S1",
+      "partNum": "2489",
+      "color": "Black",
+      "elementId": "248926",
+      "qty": 2
+    },
+    {
+      "drawerId": "S1",
+      "partNum": "2489",
+      "color": "Dark Brown",
+      "elementId": "4536677",
+      "qty": 4
+    },
+    {
+      "drawerId": "S1",
+      "partNum": "2489",
+      "color": "Reddish Brown",
+      "qty": 7
     }
   ],
   "mocLocations": {
@@ -511145,9 +511165,12 @@
       "c": "Dark Brown",
       "d": "Barrel 2 x 2 x 2",
       "e": "6605459",
-      "u": 1791916924851,
+      "u": 1793223664908,
       "at": 1791654748438,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4536677.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4536677.jpg",
+      "ea": [
+        "4536677"
+      ]
     },
     "47457|dark brown": {
       "p": "47457",
@@ -556698,8 +556721,11 @@
       "c": "Black",
       "d": "Barrel 2 x 2 x 2",
       "e": "6300358",
-      "u": 1791916924851,
-      "at": 1791732100389
+      "u": 1793223664908,
+      "at": 1791732100389,
+      "ea": [
+        "248926"
+      ]
     },
     "56823c75|black": {
       "p": "56823c75",
@@ -567615,6 +567641,13 @@
       "d": "Panel 2 x 2 x 1 Corner Posts with Centre Stud",
       "e": "6506831",
       "u": 1793223522558
+    },
+    "2489|reddish brown": {
+      "p": "2489",
+      "c": "Reddish Brown",
+      "d": "Barrel 2 x 2 x 2",
+      "e": "4211147",
+      "u": 1793223664908
     }
   },
   "partKinds": {
@@ -567758,7 +567791,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T21:39:25.709Z"
+      "at": "2026-10-28T21:41:09.003Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -567782,7 +567815,7 @@
       "bags": "2026-10-28T21:37:29.091Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T21:39:25.709Z",
+    "savedAt": "2026-10-28T21:41:09.003Z",
     "appVersion": "2026.10.28.10"
   }
 }
