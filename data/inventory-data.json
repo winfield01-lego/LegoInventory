@@ -455663,7 +455663,7 @@
       "label": "U1",
       "notes": "2 x 2 Brick",
       "group": "U",
-      "lastEdited": "2026-10-28T21:52:42.863Z"
+      "lastEdited": "2026-10-28T21:57:16.980Z"
     },
     {
       "id": "U2",
@@ -470622,6 +470622,92 @@
       "partNum": "3003",
       "color": "Green",
       "qty": 32
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "Yellow",
+      "qty": 94
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "Red",
+      "elementId": "300321",
+      "qty": 122
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "Dark Red",
+      "elementId": "4249697",
+      "qty": 9
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "Dark Orange",
+      "elementId": "4122460",
+      "qty": 3
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "Dark Brown",
+      "qty": 4
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "Dark Bluish Gray",
+      "qty": 29
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "Dark Tan",
+      "elementId": "4255416",
+      "qty": 8
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "Reddish Brown",
+      "qty": 26
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "Medium Nougat",
+      "elementId": "4645062",
+      "qty": 16
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "Lime",
+      "elementId": "4122451",
+      "qty": 17
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "Medium Blue",
+      "elementId": "4162705",
+      "qty": 4
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "Tan",
+      "elementId": "300305",
+      "qty": 26
+    },
+    {
+      "drawerId": "U1",
+      "partNum": "3003",
+      "color": "Dark Blue",
+      "qty": 7
     }
   ],
   "mocLocations": {
@@ -497106,8 +497192,11 @@
       "c": "Tan",
       "d": "Brick 2 x 2",
       "e": "4114306",
-      "u": 1791916924851,
-      "at": 1791671921036
+      "u": 1793224638182,
+      "at": 1791671921036,
+      "ea": [
+        "300305"
+      ]
     },
     "3001|tan": {
       "p": "3001",
@@ -497946,9 +498035,12 @@
       "c": "Red",
       "d": "Brick 2 x 2",
       "e": "4103590",
-      "u": 1791916924851,
+      "u": 1793224638182,
       "at": 1791846526705,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/300321.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/300321.jpg",
+      "ea": [
+        "300321"
+      ]
     },
     "18838|red": {
       "p": "18838",
@@ -508150,8 +508242,11 @@
       "c": "Lime",
       "d": "Brick 2 x 2",
       "e": "4220632",
-      "u": 1791916924851,
-      "at": 1791654295737
+      "u": 1793224638182,
+      "at": 1791654295737,
+      "ea": [
+        "4122451"
+      ]
     },
     "3001|lime": {
       "p": "3001",
@@ -519215,9 +519310,12 @@
       "c": "Dark Orange",
       "d": "Brick 2 x 2",
       "e": "6212081",
-      "u": 1791916924851,
+      "u": 1793224638182,
       "at": 1791654388223,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4164440.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4164440.jpg",
+      "ea": [
+        "4122460"
+      ]
     },
     "77808|dark orange": {
       "p": "77808",
@@ -520745,9 +520843,12 @@
       "c": "Dark Red",
       "d": "Brick 2 x 2",
       "e": "4539104",
-      "u": 1791916924851,
+      "u": 1793224638182,
       "at": 1791654523244,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4249697.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4249697.jpg",
+      "ea": [
+        "4249697"
+      ]
     },
     "85984|dark red": {
       "p": "85984",
@@ -541079,9 +541180,12 @@
       "c": "Dark Tan",
       "d": "Brick 2 x 2",
       "e": "4497068",
-      "u": 1791916924851,
+      "u": 1793224638182,
       "at": 1791654748438,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4255416.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4255416.jpg",
+      "ea": [
+        "4255416"
+      ]
     },
     "49656pat0001|dark tan": {
       "p": "49656pat0001",
@@ -541216,8 +541320,11 @@
       "c": "Medium Nougat",
       "d": "Brick 2 x 2",
       "e": "6058085",
-      "u": 1791916924851,
-      "at": 1791654748438
+      "u": 1793224638182,
+      "at": 1791654748438,
+      "ea": [
+        "4645062"
+      ]
     },
     "88292|medium nougat": {
       "p": "88292",
@@ -564285,8 +564392,11 @@
       "c": "Medium Blue",
       "d": "Brick 2 x 2",
       "e": "4205047",
-      "u": 1792429579553,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4201235.jpg"
+      "u": 1793224638182,
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4201235.jpg",
+      "ea": [
+        "4162705"
+      ]
     },
     "3040b|medium nougat": {
       "p": "3040b",
@@ -567842,6 +567952,20 @@
       "d": "Treasure Chest Bottom with Rear Slots, No Groove",
       "e": "6056226",
       "u": 1793223946031
+    },
+    "3003|dark brown": {
+      "p": "3003",
+      "c": "Dark Brown",
+      "d": "Brick 2 x 2",
+      "e": "4623773",
+      "u": 1793224638182
+    },
+    "3003|dark blue": {
+      "p": "3003",
+      "c": "Dark Blue",
+      "d": "Brick 2 x 2",
+      "e": "4264580",
+      "u": 1793224638182
     }
   },
   "partKinds": {
@@ -567985,7 +568109,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T21:52:46.902Z"
+      "at": "2026-10-28T21:57:22.279Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -568009,7 +568133,7 @@
       "bags": "2026-10-28T21:46:37.232Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T21:52:46.902Z",
+    "savedAt": "2026-10-28T21:57:22.279Z",
     "appVersion": "2026.10.28.10"
   }
 }
