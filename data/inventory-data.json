@@ -454588,7 +454588,7 @@
       "label": "G20",
       "notes": "1 x 2 Plate Handle on Both Ends",
       "group": "G",
-      "lastEdited": "2026-10-28T23:53:35.054Z"
+      "lastEdited": "2026-10-28T23:55:04.441Z"
     },
     {
       "id": "G21",
@@ -462301,7 +462301,7 @@
       "drawerId": "G20",
       "partNum": "18649",
       "color": "Light Bluish Gray",
-      "qty": 1
+      "qty": 27
     },
     {
       "drawerId": "G30",
@@ -471436,6 +471436,31 @@
       "partNum": "60608",
       "color": "Yellow",
       "qty": 8
+    },
+    {
+      "drawerId": "G20",
+      "partNum": "18649",
+      "color": "Black",
+      "qty": 25
+    },
+    {
+      "drawerId": "G20",
+      "partNum": "18649",
+      "color": "Dark Azure",
+      "qty": 1
+    },
+    {
+      "drawerId": "G20",
+      "partNum": "18649",
+      "color": "Red",
+      "qty": 8
+    },
+    {
+      "drawerId": "G20",
+      "partNum": "18649",
+      "color": "White",
+      "elementId": "6249273",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -514737,9 +514762,12 @@
       "c": "White",
       "d": "Plate Special 1 x 2 with Handles on Ends",
       "e": "6615560",
-      "u": 1791916924851,
+      "u": 1793231705642,
       "at": 1791654578181,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6249273.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6249273.jpg",
+      "ea": [
+        "6249273"
+      ]
     },
     "44661|white": {
       "p": "44661",
@@ -569067,6 +569095,13 @@
       "d": "Plate Special 1 x 2 with Door Rail",
       "e": "4541288",
       "u": 1793231565176
+    },
+    "18649|dark azure": {
+      "p": "18649",
+      "c": "Dark Azure",
+      "d": "Plate Special 1 x 2 with Handles on Ends",
+      "e": "6288196",
+      "u": 1793231705642
     }
   },
   "partKinds": {
@@ -569210,7 +569245,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T23:53:39.093Z"
+      "at": "2026-10-28T23:55:09.726Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569234,7 +569269,7 @@
       "bags": "2026-10-28T23:53:13.602Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T23:53:39.093Z",
+    "savedAt": "2026-10-28T23:55:09.726Z",
     "appVersion": "2026.10.28.10"
   }
 }
