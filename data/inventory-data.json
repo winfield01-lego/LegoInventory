@@ -457793,7 +457793,7 @@
       "label": "Q3",
       "notes": "Windows - 2 wide",
       "group": "Q",
-      "lastEdited": "2026-10-28T03:23:48.307Z"
+      "lastEdited": "2026-10-28T03:28:00.994Z"
     },
     {
       "id": "Q4",
@@ -468980,6 +468980,68 @@
       "color": "White",
       "elementId": "4521210",
       "qty": 9
+    },
+    {
+      "drawerId": "Q3",
+      "partNum": "60032",
+      "color": "Black",
+      "elementId": "4507687",
+      "qty": 16
+    },
+    {
+      "drawerId": "Q3",
+      "partNum": "60032",
+      "color": "Blue",
+      "elementId": "4587381",
+      "qty": 3
+    },
+    {
+      "drawerId": "Q3",
+      "partNum": "60032",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q3",
+      "partNum": "60032",
+      "color": "Dark Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "Q3",
+      "partNum": "60032",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q3",
+      "partNum": "60032",
+      "color": "Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q3",
+      "partNum": "60032",
+      "color": "Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "Q3",
+      "partNum": "60032",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q3",
+      "partNum": "60032",
+      "color": "White",
+      "qty": 6
+    },
+    {
+      "drawerId": "Q3",
+      "partNum": "60032",
+      "color": "Yellow",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -481723,7 +481785,10 @@
       "c": "Blue",
       "d": "Window 1 x 2 x 2 Plane, Hollow Studs, Single Hole Top and Bottom for Glass",
       "e": "6331891",
-      "u": 1791916924851
+      "u": 1793158082197,
+      "ea": [
+        "4587381"
+      ]
     },
     "61345|blue": {
       "p": "61345",
@@ -487658,9 +487723,12 @@
       "c": "Black",
       "d": "Window 1 x 2 x 2 Plane, Hollow Studs, Single Hole Top and Bottom for Glass",
       "e": "4539128",
-      "u": 1791916924851,
+      "u": 1793158082197,
       "at": 1791656721266,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4507687.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4507687.jpg",
+      "ea": [
+        "4507687"
+      ]
     },
     "6232|light bluish gray": {
       "p": "6232",
@@ -564381,6 +564449,48 @@
       "d": "Window 1 x 2 x 2 Flat Front",
       "e": "4595814",
       "u": 1793157829510
+    },
+    "60032|dark bluish gray": {
+      "p": "60032",
+      "c": "Dark Bluish Gray",
+      "d": "Window 1 x 2 x 2 Plane, Hollow Studs, Single Hole Top and Bottom for Glass",
+      "e": "4525170",
+      "u": 1793158082197
+    },
+    "60032|dark red": {
+      "p": "60032",
+      "c": "Dark Red",
+      "d": "Window 1 x 2 x 2 Plane, Hollow Studs, Single Hole Top and Bottom for Glass",
+      "e": "6000790",
+      "u": 1793158082197
+    },
+    "60032|orange": {
+      "p": "60032",
+      "c": "Orange",
+      "d": "Window 1 x 2 x 2 Plane, Hollow Studs, Single Hole Top and Bottom for Glass",
+      "e": "6074035",
+      "u": 1793158082197
+    },
+    "60032|red": {
+      "p": "60032",
+      "c": "Red",
+      "d": "Window 1 x 2 x 2 Plane, Hollow Studs, Single Hole Top and Bottom for Glass",
+      "e": "4507686",
+      "u": 1793158082197
+    },
+    "60032|tan": {
+      "p": "60032",
+      "c": "Tan",
+      "d": "Window 1 x 2 x 2 Plane, Hollow Studs, Single Hole Top and Bottom for Glass",
+      "e": "4543947",
+      "u": 1793158082197
+    },
+    "60032|yellow": {
+      "p": "60032",
+      "c": "Yellow",
+      "d": "Window 1 x 2 x 2 Plane, Hollow Studs, Single Hole Top and Bottom for Glass",
+      "e": "4521134",
+      "u": 1793158082197
     }
   },
   "partKinds": {
@@ -564524,7 +564634,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T03:23:53.604Z"
+      "at": "2026-10-28T03:28:06.302Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -564548,7 +564658,7 @@
       "bags": "2026-10-28T02:48:31.195Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T03:23:53.604Z",
+    "savedAt": "2026-10-28T03:28:06.302Z",
     "appVersion": "2026.10.27.1"
   }
 }
