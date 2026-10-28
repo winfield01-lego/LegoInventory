@@ -455217,13 +455217,15 @@
       "id": "I29",
       "label": "I29",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-10-28T03:57:49.881Z"
     },
     {
       "id": "I30",
       "label": "I30",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-10-28T03:57:49.882Z"
     },
     {
       "id": "I31",
@@ -469374,6 +469376,18 @@
       "partNum": "73831",
       "color": "Dark Brown",
       "qty": 4
+    },
+    {
+      "drawerId": "I29",
+      "partNum": "23950",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "I30",
+      "partNum": "15207",
+      "color": "Dark Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -469786,6 +469800,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvrl36s8_9uu0b",
+      "label": "CdA BAM - 10/22/26 (batch 12)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 12,
+      "timestamp": "2026-10-28T03:57:49.976Z",
+      "items": [
+        {
+          "partNum": "23950",
+          "color": "Dark Bluish Gray",
+          "desc": "Panel 1 x 3 x 1",
+          "elementId": "6149768",
+          "qty": 1,
+          "drawerId": "I29",
+          "drawerLabel": "I29"
+        },
+        {
+          "partNum": "15207",
+          "color": "Dark Bluish Gray",
+          "desc": "Panel 1 x 4 x 1 with Rounded Corners [Thin Wall]",
+          "elementId": "6092649",
+          "qty": 1,
+          "drawerId": "I30",
+          "drawerLabel": "I30"
+        }
+      ]
+    },
     {
       "id": "bag_mvrl1hy9_zclpb",
       "label": "CdA BAM - 10/22/26 (batch 11)",
@@ -475214,28 +475256,6 @@
           "sel": false
         },
         {
-          "partNum": "23950",
-          "color": "Dark Bluish Gray",
-          "desc": "Panel 1 x 3 x 1",
-          "elementId": "6149768",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "15207",
-          "color": "Dark Bluish Gray",
-          "desc": "Panel 1 x 4 x 1 with Rounded Corners [Thin Wall]",
-          "elementId": "6092649",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "5404",
           "color": "Black",
           "desc": "Brick Sloped 18° 2 x 1 x 2/3",
@@ -475280,12 +475300,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T03:56:31.137Z",
+      "savedAt": "2026-10-28T03:57:49.976Z",
       "keepOpen": true,
       "moved": {
-        "batches": 11,
-        "pieces": 186,
-        "last": "2026-10-28T03:56:31.137Z"
+        "batches": 12,
+        "pieces": 188,
+        "last": "2026-10-28T03:57:49.976Z"
       }
     },
     {
@@ -565218,7 +565238,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T03:56:35.169Z"
+      "at": "2026-10-28T03:57:54.015Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -565239,10 +565259,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T03:56:31.137Z",
+      "bags": "2026-10-28T03:57:49.976Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T03:56:35.169Z",
+    "savedAt": "2026-10-28T03:57:54.015Z",
     "appVersion": "2026.10.27.1"
   }
 }
