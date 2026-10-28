@@ -454648,7 +454648,7 @@
       "label": "G30",
       "notes": "1 x 1 brick - 2 studs opposite",
       "group": "G",
-      "lastEdited": "2026-10-28T22:28:08.337Z"
+      "lastEdited": "2026-10-28T22:30:18.480Z"
     },
     {
       "id": "G31",
@@ -470932,7 +470932,39 @@
       "drawerId": "G30",
       "partNum": "47905",
       "color": "Black",
+      "qty": 23
+    },
+    {
+      "drawerId": "G30",
+      "partNum": "47905",
+      "color": "Dark Bluish Gray",
+      "qty": 14
+    },
+    {
+      "drawerId": "G30",
+      "partNum": "47905",
+      "color": "Light Bluish Gray",
+      "qty": 6
+    },
+    {
+      "drawerId": "G30",
+      "partNum": "47905",
+      "color": "Red",
+      "elementId": "4213569",
+      "qty": 3
+    },
+    {
+      "drawerId": "G30",
+      "partNum": "47905",
+      "color": "White",
+      "elementId": "4213566",
       "qty": 1
+    },
+    {
+      "drawerId": "G30",
+      "partNum": "47905",
+      "color": "Tan",
+      "qty": 15
     }
   ],
   "mocLocations": {
@@ -479304,10 +479336,11 @@
       "c": "White",
       "d": "Brick Special 1 x 1 with Studs on 2 Sides",
       "e": "4626882",
-      "u": 1791916924851,
+      "u": 1793226619682,
       "at": 1791654611386,
       "ea": [
-        "6548273"
+        "6548273",
+        "4213566"
       ]
     },
     "47905|yellow": {
@@ -497930,8 +497963,11 @@
       "c": "Red",
       "d": "Brick Special 1 x 1 with Studs on 2 Sides",
       "e": "6030266",
-      "u": 1791916924851,
-      "at": 1791654915559
+      "u": 1793226619682,
+      "at": 1791654915559,
+      "ea": [
+        "4213569"
+      ]
     },
     "5843|tan": {
       "p": "5843",
@@ -568438,7 +568474,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T22:28:12.369Z"
+      "at": "2026-10-28T22:30:22.520Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -568462,7 +568498,7 @@
       "bags": "2026-10-28T22:27:41.407Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T22:28:12.369Z",
+    "savedAt": "2026-10-28T22:30:22.519Z",
     "appVersion": "2026.10.28.10"
   }
 }
