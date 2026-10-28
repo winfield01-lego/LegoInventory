@@ -456160,7 +456160,7 @@
       "label": "L18",
       "notes": "2 x 2 - One Finger Hinge - Base and 2 x 2 round with ring on top",
       "group": "L",
-      "lastEdited": "2026-10-28T22:26:08.148Z"
+      "lastEdited": "2026-10-28T22:26:45.164Z"
     },
     {
       "id": "L19",
@@ -470912,6 +470912,19 @@
       "drawerId": "L18",
       "partNum": "92582",
       "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "L18",
+      "partNum": "2376",
+      "color": "Black",
+      "qty": 10
+    },
+    {
+      "drawerId": "L18",
+      "partNum": "2376",
+      "color": "Red",
+      "elementId": "237621",
       "qty": 1
     }
   ],
@@ -559403,9 +559416,12 @@
       "c": "Red",
       "d": "Tile Special Round 2 x 2 - Thin Lifting Ring",
       "e": "4235017",
-      "u": 1791916924851,
+      "u": 1793226406366,
       "at": 1791732234165,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/4/2376.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/4/2376.png",
+      "ea": [
+        "237621"
+      ]
     },
     "4480c01|red": {
       "p": "4480c01",
@@ -568249,6 +568265,13 @@
       "d": "Hinge Plate 2 x 2 Locking with 1 Finger on Top",
       "e": "6195270",
       "u": 1793226369350
+    },
+    "2376|black": {
+      "p": "2376",
+      "c": "Black",
+      "d": "Tile Special Round 2 x 2 - Thin Lifting Ring",
+      "e": "237626",
+      "u": 1793226406366
     }
   },
   "partKinds": {
@@ -568392,7 +568415,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T22:26:13.449Z"
+      "at": "2026-10-28T22:26:50.447Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -568416,7 +568439,7 @@
       "bags": "2026-10-28T22:24:38.089Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T22:26:13.449Z",
+    "savedAt": "2026-10-28T22:26:50.447Z",
     "appVersion": "2026.10.28.10"
   }
 }
