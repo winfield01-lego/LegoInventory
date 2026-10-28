@@ -455349,7 +455349,7 @@
       "label": "J5",
       "notes": "",
       "group": "j",
-      "lastEdited": "2026-10-28T05:50:27.953Z"
+      "lastEdited": "2026-10-28T05:52:35.436Z"
     },
     {
       "id": "J6",
@@ -470183,7 +470183,32 @@
       "partNum": "58176",
       "color": "White",
       "elementId": "4623199",
+      "qty": 8
+    },
+    {
+      "drawerId": "J5",
+      "partNum": "58176",
+      "color": "Black",
+      "elementId": "6070376",
+      "qty": 5
+    },
+    {
+      "drawerId": "J5",
+      "partNum": "58176",
+      "color": "Dark Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "J5",
+      "partNum": "58176",
+      "color": "Flat Silver",
       "qty": 1
+    },
+    {
+      "drawerId": "J5",
+      "partNum": "58176",
+      "color": "Light Bluish Gray",
+      "qty": 9
     }
   ],
   "mocLocations": {
@@ -520039,9 +520064,12 @@
       "c": "Black",
       "d": "Light Cover 1 x 1 Round with Internal Bar / Bionicle Barraki Eye",
       "e": "6174075",
-      "u": 1791916924851,
+      "u": 1793166756637,
       "at": 1791654427528,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6070376.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6070376.jpg",
+      "ea": [
+        "6070376"
+      ]
     },
     "68568|black": {
       "p": "68568",
@@ -566204,6 +566232,13 @@
       "d": "Brick Round 1 x 1 diameter Tube with 90 Degree Elbow (2 x 2 x 1) and Axle Holes (Crossholes) at each end",
       "e": "6156875",
       "u": 1793166502023
+    },
+    "58176|flat silver": {
+      "p": "58176",
+      "c": "Flat Silver",
+      "d": "Light Cover 1 x 1 Round with Internal Bar / Bionicle Barraki Eye",
+      "e": "6030198",
+      "u": 1793166756637
     }
   },
   "partKinds": {
@@ -566347,7 +566382,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T05:50:33.356Z"
+      "at": "2026-10-28T05:52:40.732Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -566371,7 +566406,7 @@
       "bags": "2026-10-28T05:50:28.052Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T05:50:33.356Z",
+    "savedAt": "2026-10-28T05:52:40.732Z",
     "appVersion": "2026.10.27.1"
   }
 }
