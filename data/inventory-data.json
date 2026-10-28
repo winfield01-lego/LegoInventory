@@ -457793,7 +457793,7 @@
       "label": "Q3",
       "notes": "Windows - 2 wide",
       "group": "Q",
-      "lastEdited": "2026-10-28T03:33:29.728Z"
+      "lastEdited": "2026-10-28T03:34:26.861Z"
     },
     {
       "id": "Q4",
@@ -469104,6 +469104,12 @@
       "partNum": "31bc01",
       "color": "White",
       "elementId": "",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q3",
+      "partNum": "20309",
+      "color": "Black",
       "qty": 1
     }
   ],
@@ -564609,6 +564615,13 @@
       "d": "Window 1 x 3 x 2 Classic with Long Sill [Complete]",
       "e": "",
       "u": 1793158410930
+    },
+    "20309|black": {
+      "p": "20309",
+      "c": "Black",
+      "d": "Window 1 x 4 x 1 2/3 with Spoked Rounded Top",
+      "e": "6177083",
+      "u": 1793158468063
     }
   },
   "partKinds": {
@@ -564752,7 +564765,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T03:33:33.776Z"
+      "at": "2026-10-28T03:34:30.885Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -564776,7 +564789,7 @@
       "bags": "2026-10-28T02:48:31.195Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T03:33:33.776Z",
+    "savedAt": "2026-10-28T03:34:30.885Z",
     "appVersion": "2026.10.27.1"
   }
 }
