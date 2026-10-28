@@ -455079,7 +455079,7 @@
       "label": "I7",
       "notes": "1 x 2 Tile - half circle and half circle with jumper",
       "group": "I",
-      "lastEdited": "2026-10-28T04:14:17.329Z"
+      "lastEdited": "2026-10-28T04:16:22.242Z"
     },
     {
       "id": "I8",
@@ -469583,6 +469583,53 @@
       "partNum": "1748",
       "color": "White",
       "qty": 29
+    },
+    {
+      "drawerId": "I7",
+      "partNum": "1745",
+      "color": "Black",
+      "elementId": "6438919",
+      "qty": 25
+    },
+    {
+      "drawerId": "I7",
+      "partNum": "1745",
+      "color": "Dark Bluish Gray",
+      "qty": 10
+    },
+    {
+      "drawerId": "I7",
+      "partNum": "1745",
+      "color": "Green",
+      "elementId": "6424859",
+      "qty": 2
+    },
+    {
+      "drawerId": "I7",
+      "partNum": "1745",
+      "color": "Light Bluish Gray",
+      "elementId": "6420741",
+      "qty": 21
+    },
+    {
+      "drawerId": "I7",
+      "partNum": "1745",
+      "color": "Pearl Gold",
+      "qty": 2
+    },
+    {
+      "drawerId": "I7",
+      "partNum": "1745",
+      "color": "Red",
+      "elementId": "6400110",
+      "qty": 1
+    },
+    {
+      "drawerId": "I7",
+      "partNum": "1745",
+      "color": "White",
+      "elementId": "6462354",
+      "qty": 20
     }
   ],
   "mocLocations": {
@@ -481274,9 +481321,12 @@
       "c": "White",
       "d": "Plate Special Round 1 x 2 Half Circle with Stud (Jumper)",
       "e": "6510064",
-      "u": 1791916924851,
+      "u": 1793160983446,
       "at": 1791660084431,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6462354.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6462354.jpg",
+      "ea": [
+        "6462354"
+      ]
     },
     "4081b|white": {
       "p": "4081b",
@@ -515383,9 +515433,12 @@
       "c": "Light Bluish Gray",
       "d": "Plate Special Round 1 x 2 Half Circle with Stud (Jumper)",
       "e": "6510058",
-      "u": 1791916924851,
+      "u": 1793160983446,
       "at": 1791654813892,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6420741.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6420741.jpg",
+      "ea": [
+        "6420741"
+      ]
     },
     "4450|light bluish gray": {
       "p": "4450",
@@ -520224,9 +520277,12 @@
       "c": "Green",
       "d": "Plate Special Round 1 x 2 Half Circle with Stud (Jumper)",
       "e": "6510059",
-      "u": 1791916924851,
+      "u": 1793160983446,
       "at": 1791654440640,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6424859.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6424859.jpg",
+      "ea": [
+        "6424859"
+      ]
     },
     "76797|light bluish gray": {
       "p": "76797",
@@ -529080,9 +529136,12 @@
       "c": "Red",
       "d": "Plate Special Round 1 x 2 Half Circle with Stud (Jumper)",
       "e": "6510057",
-      "u": 1791916924851,
+      "u": 1793160983446,
       "at": 1791654603847,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6400110.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6400110.jpg",
+      "ea": [
+        "6400110"
+      ]
     },
     "18674|red": {
       "p": "18674",
@@ -565388,6 +565447,20 @@
       "d": "Tile Round 1 x 2 Half Circle",
       "e": "6527809",
       "u": 1793160858533
+    },
+    "1745|dark bluish gray": {
+      "p": "1745",
+      "c": "Dark Bluish Gray",
+      "d": "Plate Special Round 1 x 2 Half Circle with Stud (Jumper)",
+      "e": "6601830",
+      "u": 1793160983446
+    },
+    "1745|pearl gold": {
+      "p": "1745",
+      "c": "Pearl Gold",
+      "d": "Plate Special Round 1 x 2 Half Circle with Stud (Jumper)",
+      "e": "6503258",
+      "u": 1793160983446
     }
   },
   "partKinds": {
@@ -565531,7 +565604,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T04:14:22.641Z"
+      "at": "2026-10-28T04:16:27.535Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -565555,7 +565628,7 @@
       "bags": "2026-10-28T04:04:49.581Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T04:14:22.640Z",
+    "savedAt": "2026-10-28T04:16:27.535Z",
     "appVersion": "2026.10.27.1"
   }
 }
