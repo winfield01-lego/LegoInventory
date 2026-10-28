@@ -457581,7 +457581,7 @@
       "label": "S1",
       "notes": "Crates, Boxes Chests, Trash Cans and Barrels",
       "group": "S",
-      "lastEdited": "2026-10-28T21:43:04.046Z"
+      "lastEdited": "2026-10-28T21:43:48.213Z"
     },
     {
       "id": "S2",
@@ -470523,6 +470523,30 @@
       "partNum": "61780",
       "color": "Reddish Brown",
       "qty": 4
+    },
+    {
+      "drawerId": "S1",
+      "partNum": "35700",
+      "color": "Bright Light Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "S1",
+      "partNum": "35700",
+      "color": "Light Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "S1",
+      "partNum": "35700",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "S1",
+      "partNum": "35700",
+      "color": "Medium Nougat",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -567673,6 +567697,27 @@
       "d": "Container Box 2 x 2 x 2 - Top Opening",
       "e": "4548102",
       "u": 1793223785249
+    },
+    "35700|bright light orange": {
+      "p": "35700",
+      "c": "Bright Light Orange",
+      "d": "Container Box 2 x 2 x 1 [Plain]",
+      "e": "6279767",
+      "u": 1793223829415
+    },
+    "35700|light bluish gray": {
+      "p": "35700",
+      "c": "Light Bluish Gray",
+      "d": "Container Box 2 x 2 x 1 [Plain]",
+      "e": "6318314",
+      "u": 1793223829415
+    },
+    "35700|red": {
+      "p": "35700",
+      "c": "Red",
+      "d": "Container Box 2 x 2 x 1 [Plain]",
+      "e": "6439748",
+      "u": 1793223829415
     }
   },
   "partKinds": {
@@ -567816,7 +567861,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T21:43:08.093Z"
+      "at": "2026-10-28T21:43:52.250Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -567840,7 +567885,7 @@
       "bags": "2026-10-28T21:37:29.091Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T21:43:08.093Z",
+    "savedAt": "2026-10-28T21:43:52.250Z",
     "appVersion": "2026.10.28.10"
   }
 }
