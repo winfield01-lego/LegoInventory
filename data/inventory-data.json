@@ -457317,7 +457317,7 @@
       "label": "O51",
       "notes": "1 x 1 clip on top",
       "group": "O",
-      "lastEdited": "2026-10-28T23:24:28.242Z"
+      "lastEdited": "2026-10-28T23:25:51.423Z"
     },
     {
       "id": "O52",
@@ -471193,6 +471193,13 @@
       "partNum": "2555",
       "color": "Yellow",
       "qty": 8
+    },
+    {
+      "drawerId": "O51",
+      "partNum": "15712",
+      "color": "Pearl Gold",
+      "elementId": "6071259",
+      "qty": 12
     }
   ],
   "mocLocations": {
@@ -510052,9 +510059,12 @@
       "c": "Pearl Gold",
       "d": "Tile Special 1 x 1 with Clip with Rounded Edges",
       "e": "6262138",
-      "u": 1791916924851,
+      "u": 1793229952625,
       "at": 1791654773340,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6071259.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6071259.jpg",
+      "ea": [
+        "6071259"
+      ]
     },
     "2357|red": {
       "p": "2357",
@@ -568813,7 +568823,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T23:24:32.275Z"
+      "at": "2026-10-28T23:25:56.706Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -568837,7 +568847,7 @@
       "bags": "2026-10-28T23:09:20.182Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T23:24:32.275Z",
+    "savedAt": "2026-10-28T23:25:56.706Z",
     "appVersion": "2026.10.28.10"
   }
 }
