@@ -457159,7 +457159,7 @@
       "label": "O29",
       "notes": "Small Cones",
       "group": "O",
-      "lastEdited": "2026-10-28T05:56:13.635Z"
+      "lastEdited": "2026-10-28T05:56:39.368Z"
     },
     {
       "id": "O30",
@@ -470239,6 +470239,12 @@
       "partNum": "37762",
       "color": "White",
       "qty": 69
+    },
+    {
+      "drawerId": "O29",
+      "partNum": "33492",
+      "color": "Dark Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -470651,6 +470657,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvrpbzxn_yvf9j",
+      "label": "Zorah's October 1 Trip (batch 9)",
+      "bagId": "bagprog_muqihlr1_v3ef",
+      "bagLabel": "Zorah's October 1 Trip",
+      "batch": 9,
+      "timestamp": "2026-10-28T05:56:39.467Z",
+      "items": [
+        {
+          "partNum": "33492",
+          "color": "Dark Bluish Gray",
+          "desc": "Cone 1 1/2 x 1 1/2 x 2/3",
+          "elementId": "6340333",
+          "qty": 1,
+          "drawerId": "O29",
+          "drawerLabel": "O29"
+        }
+      ]
+    },
     {
       "id": "bag_mvrp41ck_des6c",
       "label": "Zorah's October 1 Trip (batch 8)",
@@ -477401,28 +477426,6 @@
           "sel": false
         },
         {
-          "partNum": "87618",
-          "color": "Light Bluish Gray",
-          "desc": "Bar 5L with Handle (Friction Ram)",
-          "elementId": "4565433",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "33492",
-          "color": "Dark Bluish Gray",
-          "desc": "Cone 1 1/2 x 1 1/2 x 2/3",
-          "elementId": "6340333",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "2433",
           "color": "Yellow",
           "desc": "Hinge Bar with 3 Fingers and End Stud (Control Lever)",
@@ -477456,12 +477459,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T05:50:28.051Z",
+      "savedAt": "2026-10-28T05:56:39.467Z",
       "keepOpen": true,
       "moved": {
-        "batches": 8,
-        "pieces": 251,
-        "last": "2026-10-28T05:50:28.052Z"
+        "batches": 9,
+        "pieces": 252,
+        "last": "2026-10-28T05:56:39.467Z"
       }
     }
   ],
@@ -566419,7 +566422,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T05:56:17.678Z"
+      "at": "2026-10-28T05:56:43.508Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -566440,10 +566443,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T05:50:28.052Z",
+      "bags": "2026-10-28T05:56:39.467Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T05:56:17.678Z",
+    "savedAt": "2026-10-28T05:56:43.508Z",
     "appVersion": "2026.10.27.1"
   }
 }
