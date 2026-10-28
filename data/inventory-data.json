@@ -455122,7 +455122,8 @@
       "id": "I14",
       "label": "I14",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-10-28T02:07:30.576Z"
     },
     {
       "id": "I15",
@@ -468461,6 +468462,33 @@
       "partNum": "79393",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "I14",
+      "partNum": "27507",
+      "color": "Black",
+      "elementId": "6171264",
+      "qty": 2
+    },
+    {
+      "drawerId": "I14",
+      "partNum": "27507",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "I14",
+      "partNum": "27507",
+      "color": "Reddish Brown",
+      "elementId": "6176608",
+      "qty": 2
+    },
+    {
+      "drawerId": "I14",
+      "partNum": "27507",
+      "color": "White",
+      "elementId": "6195358",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -468873,6 +468901,52 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvrh5bac_oa23z",
+      "label": "CdA BAM - 10/22/26 (batch 5)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 5,
+      "timestamp": "2026-10-28T02:07:30.660Z",
+      "items": [
+        {
+          "partNum": "27507",
+          "color": "Black",
+          "desc": "Tile 4 x 4 Curved, Macaroni",
+          "elementId": "6171264",
+          "qty": 2,
+          "drawerId": "I14",
+          "drawerLabel": "I14"
+        },
+        {
+          "partNum": "27507",
+          "color": "Light Bluish Gray",
+          "desc": "Tile 4 x 4 Curved, Macaroni",
+          "elementId": "6163989",
+          "qty": 1,
+          "drawerId": "I14",
+          "drawerLabel": "I14"
+        },
+        {
+          "partNum": "27507",
+          "color": "Reddish Brown",
+          "desc": "Tile 4 x 4 Curved, Macaroni",
+          "elementId": "6176608",
+          "qty": 2,
+          "drawerId": "I14",
+          "drawerLabel": "I14"
+        },
+        {
+          "partNum": "27507",
+          "color": "White",
+          "desc": "Tile 4 x 4 Curved, Macaroni",
+          "elementId": "6195358",
+          "qty": 2,
+          "drawerId": "I14",
+          "drawerLabel": "I14"
+        }
+      ]
+    },
     {
       "id": "bag_mvrh44kw_0pdpc",
       "label": "CdA BAM - 10/22/26 (batch 4)",
@@ -473629,50 +473703,6 @@
           "sel": false
         },
         {
-          "partNum": "27507",
-          "color": "Black",
-          "desc": "Tile 4 x 4 Curved, Macaroni",
-          "elementId": "6171264",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "27507",
-          "color": "Light Bluish Gray",
-          "desc": "Tile 4 x 4 Curved, Macaroni",
-          "elementId": "6163989",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "27507",
-          "color": "Reddish Brown",
-          "desc": "Tile 4 x 4 Curved, Macaroni",
-          "elementId": "6176608",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "27507",
-          "color": "White",
-          "desc": "Tile 4 x 4 Curved, Macaroni",
-          "elementId": "6195358",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "5095",
           "color": "Green",
           "desc": "Brick Wedged, Curved 2 x 2 with Stud Notch Left",
@@ -474432,12 +474462,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-28T02:06:35.312Z",
+      "savedAt": "2026-10-28T02:07:30.660Z",
       "keepOpen": true,
       "moved": {
-        "batches": 4,
-        "pieces": 17,
-        "last": "2026-10-28T02:06:35.312Z"
+        "batches": 5,
+        "pieces": 24,
+        "last": "2026-10-28T02:07:30.660Z"
       }
     },
     {
@@ -482050,10 +482080,11 @@
       "c": "White",
       "d": "Tile 4 x 4 Curved, Macaroni",
       "e": "6457244",
-      "u": 1791916924851,
+      "u": 1793153251861,
       "at": 1791654560264,
       "ea": [
-        "6550142"
+        "6550142",
+        "6195358"
       ],
       "i": "https://cdn.rebrickable.com/media/parts/elements/6195358.jpg"
     },
@@ -534394,9 +534425,12 @@
       "c": "Black",
       "d": "Tile 4 x 4 Curved, Macaroni",
       "e": "6458165",
-      "u": 1791916924851,
+      "u": 1793153251861,
       "at": 1791654687645,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6171264.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6171264.jpg",
+      "ea": [
+        "6171264"
+      ]
     },
     "1745|bright pink": {
       "p": "1745",
@@ -538097,9 +538131,12 @@
       "c": "Reddish Brown",
       "d": "Tile 4 x 4 Curved, Macaroni",
       "e": "6458167",
-      "u": 1791916924851,
+      "u": 1793153251861,
       "at": 1791654748438,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6176608.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6176608.jpg",
+      "ea": [
+        "6176608"
+      ]
     },
     "60596|sand blue": {
       "p": "60596",
@@ -563748,7 +563785,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.26.2",
-      "at": "2026-10-28T02:06:39.354Z"
+      "at": "2026-10-28T02:07:35.940Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -563769,10 +563806,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-28T02:06:35.312Z",
+      "bags": "2026-10-28T02:07:30.660Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T02:06:39.354Z",
+    "savedAt": "2026-10-28T02:07:35.940Z",
     "appVersion": "2026.10.26.2"
   }
 }
