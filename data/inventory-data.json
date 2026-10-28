@@ -457370,7 +457370,7 @@
       "label": "O59",
       "notes": "1 x 1 round with bars, clips and handles",
       "group": "O",
-      "lastEdited": "2026-10-28T06:09:46.884Z"
+      "lastEdited": "2026-10-28T06:10:34.293Z"
     },
     {
       "id": "O60",
@@ -470348,7 +470348,7 @@
       "partNum": "79194",
       "color": "Dark Bluish Gray",
       "elementId": "6392597",
-      "qty": 1
+      "qty": 5
     },
     {
       "drawerId": "O59",
@@ -470391,6 +470391,26 @@
       "color": "Trans-Clear",
       "elementId": "6285587",
       "qty": 17
+    },
+    {
+      "drawerId": "O59",
+      "partNum": "79194",
+      "color": "Black",
+      "elementId": "6356406",
+      "qty": 10
+    },
+    {
+      "drawerId": "O59",
+      "partNum": "79194",
+      "color": "Pearl Gold",
+      "qty": 1
+    },
+    {
+      "drawerId": "O59",
+      "partNum": "79194",
+      "color": "Trans-Clear",
+      "elementId": "6359231",
+      "qty": 8
     }
   ],
   "mocLocations": {
@@ -482643,9 +482663,12 @@
       "c": "Black",
       "d": "Plate Special Round 1 x 1 with Hollow Stud and Bar on Underside - Long Space",
       "e": "6510216",
-      "u": 1791916924851,
+      "u": 1793167835495,
       "at": 1791660084431,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6356406.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6356406.jpg",
+      "ea": [
+        "6356406"
+      ]
     },
     "32828|dark bluish gray": {
       "p": "32828",
@@ -540275,9 +540298,12 @@
       "c": "Trans-Clear",
       "d": "Plate Special Round 1 x 1 with Hollow Stud and Bar on Underside - Long Space",
       "e": "6510217",
-      "u": 1791916924851,
+      "u": 1793167835495,
       "at": 1791654748438,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6359231.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6359231.jpg",
+      "ea": [
+        "6359231"
+      ]
     },
     "30153|trans clear": {
       "p": "30153",
@@ -566499,6 +566525,13 @@
       "d": "Cone 1 x 1 Inverted with Bar at Bottom (Ice Cream Cone)",
       "e": "6187283",
       "u": 1793167363321
+    },
+    "79194|pearl gold": {
+      "p": "79194",
+      "c": "Pearl Gold",
+      "d": "Plate Special Round 1 x 1 with Hollow Stud and Bar on Underside - Long Space",
+      "e": "6369112",
+      "u": 1793167835495
     }
   },
   "partKinds": {
@@ -566642,7 +566675,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.27.1",
-      "at": "2026-10-28T06:09:52.193Z"
+      "at": "2026-10-28T06:10:39.588Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -566666,7 +566699,7 @@
       "bags": "2026-10-28T06:04:15.618Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T06:09:52.193Z",
+    "savedAt": "2026-10-28T06:10:39.588Z",
     "appVersion": "2026.10.27.1"
   }
 }
