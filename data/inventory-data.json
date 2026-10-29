@@ -455313,7 +455313,8 @@
       "id": "I42",
       "label": "I42",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-10-29T00:50:57.952Z"
     },
     {
       "id": "I43",
@@ -471941,6 +471942,12 @@
       "partNum": "67329",
       "color": "Yellow",
       "qty": 10
+    },
+    {
+      "drawerId": "I42",
+      "partNum": "87580",
+      "color": "Black",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -472353,6 +472360,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvstuqaa_v9y8j",
+      "label": "CdA BAM - 10/22/26 (batch 41)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 41,
+      "timestamp": "2026-10-29T00:50:58.066Z",
+      "items": [
+        {
+          "partNum": "87580",
+          "color": "Black",
+          "desc": "Plate Special 2 x 2 with Groove and Center Stud (Jumper)",
+          "elementId": "4565323",
+          "qty": 1,
+          "drawerId": "I42",
+          "drawerLabel": "I42"
+        }
+      ]
+    },
     {
       "id": "bag_mvstrfba_ikain",
       "label": "CdA BAM - 10/22/26 (batch 40)",
@@ -479596,17 +479622,6 @@
           "sel": false
         },
         {
-          "partNum": "87580",
-          "color": "Black",
-          "desc": "Plate Special 2 x 2 with Groove and Center Stud (Jumper)",
-          "elementId": "4565323",
-          "qty": 1,
-          "drawerId": "I42",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "4865a",
           "color": "Red",
           "desc": "Panel 1 x 2 x 1 [Square Corners]",
@@ -479871,12 +479886,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T00:50:42.591Z",
+      "savedAt": "2026-10-29T00:50:58.066Z",
       "keepOpen": true,
       "moved": {
-        "batches": 40,
-        "pieces": 290,
-        "last": "2026-10-29T00:48:23.878Z"
+        "batches": 41,
+        "pieces": 291,
+        "last": "2026-10-29T00:50:58.066Z"
       }
     },
     {
@@ -569907,7 +569922,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T00:50:46.625Z"
+      "at": "2026-10-29T00:51:02.094Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569928,10 +569943,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T00:50:42.591Z",
+      "bags": "2026-10-29T00:50:58.066Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T00:50:46.625Z",
+    "savedAt": "2026-10-29T00:51:02.094Z",
     "appVersion": "2026.10.28.10"
   }
 }
