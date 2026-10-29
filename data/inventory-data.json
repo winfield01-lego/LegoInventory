@@ -455397,7 +455397,7 @@
       "label": "J11",
       "notes": "Claws and Elephant Trunk",
       "group": "j",
-      "lastEdited": "2026-10-29T01:49:19.042Z"
+      "lastEdited": "2026-10-29T01:49:56.726Z"
     },
     {
       "id": "J12",
@@ -472667,6 +472667,30 @@
       "color": "White",
       "elementId": "4182304",
       "qty": 15
+    },
+    {
+      "drawerId": "J11",
+      "partNum": "40378",
+      "color": "Black",
+      "qty": 2
+    },
+    {
+      "drawerId": "J11",
+      "partNum": "40378",
+      "color": "Dark Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "J11",
+      "partNum": "40378",
+      "color": "Flat Silver",
+      "qty": 1
+    },
+    {
+      "drawerId": "J11",
+      "partNum": "40378",
+      "color": "Reddish Brown",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -570784,6 +570808,34 @@
       "d": "Animal Body Part / Plant, Tail / Claw / Horn / Branch / Tentacle, End Section",
       "e": "6060833",
       "u": 1793238560264
+    },
+    "40378|black": {
+      "p": "40378",
+      "c": "Black",
+      "d": "Animal Body Part / Plant, Tail / Neck / Branch / Trunk, Middle Section with Pin, Round Pin Hole",
+      "e": "4159182",
+      "u": 1793238597928
+    },
+    "40378|dark brown": {
+      "p": "40378",
+      "c": "Dark Brown",
+      "d": "Animal Body Part / Plant, Tail / Neck / Branch / Trunk, Middle Section with Pin, Round Pin Hole",
+      "e": "6109321",
+      "u": 1793238597928
+    },
+    "40378|flat silver": {
+      "p": "40378",
+      "c": "Flat Silver",
+      "d": "Animal Body Part / Plant, Tail / Neck / Branch / Trunk, Middle Section with Pin, Round Pin Hole",
+      "e": "6097639",
+      "u": 1793238597928
+    },
+    "40378|reddish brown": {
+      "p": "40378",
+      "c": "Reddish Brown",
+      "d": "Animal Body Part / Plant, Tail / Neck / Branch / Trunk, Middle Section with Pin, Round Pin Hole",
+      "e": "4274318",
+      "u": 1793238597928
     }
   },
   "partKinds": {
@@ -570927,7 +570979,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:49:24.333Z"
+      "at": "2026-10-29T01:50:00.763Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -570951,7 +571003,7 @@
       "bags": "2026-10-29T01:47:49.585Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:49:24.333Z",
+    "savedAt": "2026-10-29T01:50:00.763Z",
     "appVersion": "2026.10.28.10"
   }
 }
