@@ -454392,7 +454392,8 @@
       "id": "F32",
       "label": "F32",
       "notes": "",
-      "group": "F"
+      "group": "F",
+      "lastEdited": "2026-10-29T02:01:52.415Z"
     },
     {
       "id": "F33",
@@ -472790,6 +472791,13 @@
       "partNum": "18395",
       "color": "Red",
       "qty": 1
+    },
+    {
+      "drawerId": "F32",
+      "partNum": "22484",
+      "color": "Dark Bluish Gray",
+      "elementId": "6158469",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -473202,6 +473210,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvswdx1c_f1dbr",
+      "label": "CdA BAM - 10/22/26 (batch 49)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 49,
+      "timestamp": "2026-10-29T02:01:52.512Z",
+      "items": [
+        {
+          "partNum": "22484",
+          "color": "Dark Bluish Gray",
+          "desc": "Bar 2L with Towball",
+          "elementId": "6158469",
+          "qty": 1,
+          "drawerId": "F32",
+          "drawerLabel": "F32"
+        }
+      ]
+    },
     {
       "id": "bag_mvsw0bvv_e6cqs",
       "label": "CdA BAM - 10/22/26 (batch 48)",
@@ -480624,17 +480651,6 @@
           "sel": false
         },
         {
-          "partNum": "22484",
-          "color": "Dark Bluish Gray",
-          "desc": "Bar 2L with Towball",
-          "elementId": "6158469",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "30374",
           "color": "Dark Bluish Gray",
           "desc": "Bar 4L (Lightsaber Blade / Wand)",
@@ -480778,12 +480794,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T01:59:52.663Z",
+      "savedAt": "2026-10-29T02:01:52.512Z",
       "keepOpen": true,
       "moved": {
-        "batches": 48,
-        "pieces": 301,
-        "last": "2026-10-29T01:51:18.571Z"
+        "batches": 49,
+        "pieces": 302,
+        "last": "2026-10-29T02:01:52.512Z"
       }
     },
     {
@@ -486822,9 +486838,12 @@
       "c": "Dark Bluish Gray",
       "d": "Bar 2L with Towball",
       "e": "6364352",
-      "u": 1791916924851,
+      "u": 1793239313712,
       "at": 1791660084431,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6158469.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6158469.jpg",
+      "ea": [
+        "6158469"
+      ]
     },
     "30374|white": {
       "p": "30374",
@@ -571160,7 +571179,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:59:56.700Z"
+      "at": "2026-10-29T02:01:57.779Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571181,10 +571200,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T01:59:52.663Z",
+      "bags": "2026-10-29T02:01:52.512Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:59:56.700Z",
+    "savedAt": "2026-10-29T02:01:57.779Z",
     "appVersion": "2026.10.28.10"
   }
 }
