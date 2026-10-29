@@ -456930,7 +456930,7 @@
       "label": "N35",
       "notes": "6 wide double Slope - Fuselage",
       "group": "N",
-      "lastEdited": "2026-10-29T23:52:05.187Z"
+      "lastEdited": "2026-10-29T23:53:35.829Z"
     },
     {
       "id": "N36",
@@ -476560,7 +476560,7 @@
       "drawerId": "N35",
       "partNum": "60219",
       "color": "Black",
-      "qty": 1
+      "qty": 3
     },
     {
       "drawerId": "F2",
@@ -476577,6 +476577,36 @@
     {
       "drawerId": "J25",
       "partNum": "64644",
+      "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "N35",
+      "partNum": "60219",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "N35",
+      "partNum": "60219",
+      "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "N35",
+      "partNum": "60219",
+      "color": "Dark Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "N35",
+      "partNum": "60219",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "N35",
+      "partNum": "60219",
       "color": "White",
       "qty": 1
     }
@@ -578733,6 +578763,34 @@
       "d": "Equipment Telescope / Torch / Spyglass, Support Round 1 x 1 x 1 2/3",
       "e": "6070327",
       "u": 1793317896820
+    },
+    "60219|blue": {
+      "p": "60219",
+      "c": "Blue",
+      "d": "Brick Sloped Inverted 45° 6 x 4 Double with 4 x 4 Recessed and 3 Holes",
+      "e": "4163532",
+      "u": 1793318017032
+    },
+    "60219|dark blue": {
+      "p": "60219",
+      "c": "Dark Blue",
+      "d": "Brick Sloped Inverted 45° 6 x 4 Double with 4 x 4 Recessed and 3 Holes",
+      "e": "4529017",
+      "u": 1793318017032
+    },
+    "60219|reddish brown": {
+      "p": "60219",
+      "c": "Reddish Brown",
+      "d": "Brick Sloped Inverted 45° 6 x 4 Double with 4 x 4 Recessed and 3 Holes",
+      "e": "6170326",
+      "u": 1793318017032
+    },
+    "60219|white": {
+      "p": "60219",
+      "c": "White",
+      "d": "Brick Sloped Inverted 45° 6 x 4 Double with 4 x 4 Recessed and 3 Holes",
+      "e": "4168937",
+      "u": 1793318017032
     }
   },
   "partKinds": {
@@ -578876,7 +578934,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T23:52:09.222Z"
+      "at": "2026-10-29T23:53:39.863Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578900,7 +578958,7 @@
       "bags": "2026-10-29T23:51:35.618Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T23:52:09.222Z",
+    "savedAt": "2026-10-29T23:53:39.863Z",
     "appVersion": "2026.10.29.1"
   }
 }
