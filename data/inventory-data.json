@@ -454399,7 +454399,7 @@
       "label": "F33",
       "notes": "1 x 2 Rounded Plate with Holes",
       "group": "F",
-      "lastEdited": "2026-10-29T00:15:38.123Z"
+      "lastEdited": "2026-10-29T00:29:44.994Z"
     },
     {
       "id": "F34",
@@ -471667,6 +471667,108 @@
       "partNum": "35480",
       "color": "Reddish Orange",
       "qty": 1
+    },
+    {
+      "drawerId": "F33",
+      "partNum": "35480",
+      "color": "Black",
+      "qty": 100
+    },
+    {
+      "drawerId": "F33",
+      "partNum": "35480",
+      "color": "Blue",
+      "qty": 31
+    },
+    {
+      "drawerId": "F33",
+      "partNum": "35480",
+      "color": "Bright Light Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "F33",
+      "partNum": "35480",
+      "color": "Dark Blue",
+      "qty": 6
+    },
+    {
+      "drawerId": "F33",
+      "partNum": "35480",
+      "color": "Dark Bluish Gray",
+      "qty": 119
+    },
+    {
+      "drawerId": "F33",
+      "partNum": "35480",
+      "color": "Dark Orange",
+      "qty": 8
+    },
+    {
+      "drawerId": "F33",
+      "partNum": "35480",
+      "color": "Dark Red",
+      "qty": 7
+    },
+    {
+      "drawerId": "F33",
+      "partNum": "35480",
+      "color": "Dark Tan",
+      "qty": 18
+    },
+    {
+      "drawerId": "F33",
+      "partNum": "35480",
+      "color": "Green",
+      "qty": 27
+    },
+    {
+      "drawerId": "F33",
+      "partNum": "35480",
+      "color": "Light Bluish Gray",
+      "qty": 61
+    },
+    {
+      "drawerId": "F33",
+      "partNum": "35480",
+      "color": "Lime",
+      "qty": 5
+    },
+    {
+      "drawerId": "F33",
+      "partNum": "35480",
+      "color": "Orange",
+      "qty": 2
+    },
+    {
+      "drawerId": "F33",
+      "partNum": "35480",
+      "color": "Red",
+      "qty": 23
+    },
+    {
+      "drawerId": "F33",
+      "partNum": "35480",
+      "color": "Reddish Brown",
+      "qty": 8
+    },
+    {
+      "drawerId": "F33",
+      "partNum": "35480",
+      "color": "Tan",
+      "qty": 17
+    },
+    {
+      "drawerId": "F33",
+      "partNum": "35480",
+      "color": "Yellow",
+      "qty": 4
+    },
+    {
+      "drawerId": "F33",
+      "partNum": "35480",
+      "color": "White",
+      "qty": 80
     }
   ],
   "mocLocations": {
@@ -569400,6 +569502,27 @@
       "d": "Plate Special 1 x 2 Rounded with 2 Open Studs",
       "e": "6527033",
       "u": 1793232901246
+    },
+    "35480|bright light blue": {
+      "p": "35480",
+      "c": "Bright Light Blue",
+      "d": "Plate Special 1 x 2 Rounded with 2 Open Studs",
+      "e": "6372122",
+      "u": 1793233786195
+    },
+    "35480|dark blue": {
+      "p": "35480",
+      "c": "Dark Blue",
+      "d": "Plate Special 1 x 2 Rounded with 2 Open Studs",
+      "e": "6236571",
+      "u": 1793233786195
+    },
+    "35480|orange": {
+      "p": "35480",
+      "c": "Orange",
+      "d": "Plate Special 1 x 2 Rounded with 2 Open Studs",
+      "e": "6585274",
+      "u": 1793233786195
     }
   },
   "partKinds": {
@@ -569543,7 +569666,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T00:15:42.173Z"
+      "at": "2026-10-29T00:29:49.025Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569567,7 +569690,7 @@
       "bags": "2026-10-29T00:15:00.045Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T00:15:42.173Z",
+    "savedAt": "2026-10-29T00:29:49.025Z",
     "appVersion": "2026.10.28.10"
   }
 }
