@@ -456100,7 +456100,7 @@
       "label": "L6",
       "notes": "Flags and Tiles with Clips",
       "group": "L",
-      "lastEdited": "2026-10-29T19:01:17.759Z"
+      "lastEdited": "2026-10-29T19:04:17.315Z"
     },
     {
       "id": "L7",
@@ -474283,6 +474283,54 @@
       "drawerId": "L6",
       "partNum": "65676",
       "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "65886",
+      "color": "Black",
+      "qty": 5
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "65886",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "65886",
+      "color": "Bright Light Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "65886",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "65886",
+      "color": "Light Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "65886",
+      "color": "Reddish Brown",
+      "qty": 8
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "65886",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "65886",
+      "color": "White",
       "qty": 1
     }
   ],
@@ -575150,6 +575198,34 @@
       "d": "Plate Special 1 x 1 with Clip Vertical [Thick Open O Clip]",
       "e": "6340735",
       "u": 1793300329089
+    },
+    "65886|blue": {
+      "p": "65886",
+      "c": "Blue",
+      "d": "Tile Special 2 x 3 with 2 Clips without Tab Between Clips",
+      "e": "6351452",
+      "u": 1793300658518
+    },
+    "65886|bright light blue": {
+      "p": "65886",
+      "c": "Bright Light Blue",
+      "d": "Tile Special 2 x 3 with 2 Clips without Tab Between Clips",
+      "e": "6360050",
+      "u": 1793300658518
+    },
+    "65886|dark bluish gray": {
+      "p": "65886",
+      "c": "Dark Bluish Gray",
+      "d": "Tile Special 2 x 3 with 2 Clips without Tab Between Clips",
+      "e": "6331689",
+      "u": 1793300658518
+    },
+    "65886|reddish brown": {
+      "p": "65886",
+      "c": "Reddish Brown",
+      "d": "Tile Special 2 x 3 with 2 Clips without Tab Between Clips",
+      "e": "6348062",
+      "u": 1793300658518
     }
   },
   "partKinds": {
@@ -575293,7 +575369,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T19:01:21.794Z"
+      "at": "2026-10-29T19:04:22.611Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -575317,7 +575393,7 @@
       "bags": "2026-10-29T19:00:50.035Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T19:01:21.794Z",
+    "savedAt": "2026-10-29T19:04:22.611Z",
     "appVersion": "2026.10.28.10"
   }
 }
