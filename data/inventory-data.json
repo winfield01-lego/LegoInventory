@@ -456216,7 +456216,7 @@
       "label": "L22",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-10-13T17:13:18.947Z"
+      "lastEdited": "2026-10-29T21:47:34.219Z"
     },
     {
       "id": "L23",
@@ -475339,6 +475339,18 @@
       "color": "Pearl Gold",
       "elementId": "4654247",
       "qty": 6
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "20310",
+      "color": "Pearl Gold",
+      "qty": 1
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "20310",
+      "color": "White",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -475751,6 +475763,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu2qqge_4duw0",
+      "label": "October 17 BAM Visit (batch 54)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 54,
+      "timestamp": "2026-10-29T21:47:34.382Z",
+      "items": [
+        {
+          "partNum": "20310",
+          "color": "Pearl Gold",
+          "desc": "Brick Special 1 x 1 with Scroll with Open Stud",
+          "elementId": "6112307",
+          "qty": 1,
+          "drawerId": "L22",
+          "drawerLabel": "L22"
+        },
+        {
+          "partNum": "20310",
+          "color": "White",
+          "desc": "Brick Special 1 x 1 with Scroll with Open Stud",
+          "elementId": "6133766",
+          "qty": 2,
+          "drawerId": "L22",
+          "drawerLabel": "L22"
+        }
+      ]
+    },
     {
       "id": "bag_mvu244ad_f9vj8",
       "label": "October 17 BAM Visit (batch 53)",
@@ -485168,28 +485208,6 @@
           "sel": false
         },
         {
-          "partNum": "20310",
-          "color": "Pearl Gold",
-          "desc": "Brick Special 1 x 1 with Scroll with Open Stud",
-          "elementId": "6112307",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "20310",
-          "color": "White",
-          "desc": "Brick Special 1 x 1 with Scroll with Open Stud",
-          "elementId": "6133766",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "38583",
           "color": "Dark Bluish Gray",
           "desc": "Brick Arch 1 x 2 Jumper",
@@ -485564,12 +485582,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T21:47:16.495Z",
+      "savedAt": "2026-10-29T21:47:34.381Z",
       "keepOpen": true,
       "moved": {
-        "batches": 53,
-        "pieces": 1180,
-        "last": "2026-10-29T21:29:59.221Z"
+        "batches": 54,
+        "pieces": 1183,
+        "last": "2026-10-29T21:47:34.382Z"
       }
     },
     {
@@ -576826,6 +576844,20 @@
       "d": "Bucket 1 x 1 x 1 Handle",
       "e": "4626884",
       "u": 1793309726212
+    },
+    "20310|pearl gold": {
+      "p": "20310",
+      "c": "Pearl Gold",
+      "d": "Brick Special 1 x 1 with Scroll with Open Stud",
+      "e": "6112307",
+      "u": 1793310455583
+    },
+    "20310|white": {
+      "p": "20310",
+      "c": "White",
+      "d": "Brick Special 1 x 1 with Scroll with Open Stud",
+      "e": "6133766",
+      "u": 1793310455583
     }
   },
   "partKinds": {
@@ -576969,7 +577001,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T21:47:20.539Z"
+      "at": "2026-10-29T21:47:38.408Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576990,10 +577022,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T21:47:16.495Z",
+      "bags": "2026-10-29T21:47:34.382Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T21:47:20.538Z",
+    "savedAt": "2026-10-29T21:47:38.408Z",
     "appVersion": "2026.10.29.1"
   }
 }
