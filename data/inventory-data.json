@@ -454310,7 +454310,7 @@
       "label": "F18",
       "notes": "1 x 3 and 1 x 4 Rounded",
       "group": "F",
-      "lastEdited": "2026-10-29T05:07:31.135Z"
+      "lastEdited": "2026-10-29T05:13:41.582Z"
     },
     {
       "id": "F19",
@@ -473403,6 +473403,43 @@
       "partNum": "77845",
       "color": "Light Bluish Gray",
       "qty": 1
+    },
+    {
+      "drawerId": "F18",
+      "partNum": "77850",
+      "color": "Black",
+      "qty": 40
+    },
+    {
+      "drawerId": "F18",
+      "partNum": "77850",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "F18",
+      "partNum": "77850",
+      "color": "Dark Bluish Gray",
+      "qty": 11
+    },
+    {
+      "drawerId": "F18",
+      "partNum": "77850",
+      "color": "Light Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "F18",
+      "partNum": "77850",
+      "color": "Medium Nougat",
+      "qty": 2
+    },
+    {
+      "drawerId": "F18",
+      "partNum": "77850",
+      "color": "White",
+      "elementId": "6450820",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -535478,9 +535515,12 @@
       "c": "White",
       "d": "Plate Special 1 x 3 Rounded with 3 Open Studs",
       "e": "6550184",
-      "u": 1791916924851,
+      "u": 1793250822784,
       "at": 1791654720908,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6450820.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6450820.jpg",
+      "ea": [
+        "6450820"
+      ]
     },
     "77845|white": {
       "p": "77845",
@@ -572006,6 +572046,20 @@
       "d": "Brick Special 1 x 1 with 3 Speakers / Loudspeakers / Space Positioning Rockets",
       "e": "396301",
       "u": 1793249243953
+    },
+    "77850|blue": {
+      "p": "77850",
+      "c": "Blue",
+      "d": "Plate Special 1 x 3 Rounded with 3 Open Studs",
+      "e": "6537694",
+      "u": 1793250822784
+    },
+    "77850|medium nougat": {
+      "p": "77850",
+      "c": "Medium Nougat",
+      "d": "Plate Special 1 x 3 Rounded with 3 Open Studs",
+      "e": "6492538",
+      "u": 1793250822784
     }
   },
   "partKinds": {
@@ -572149,7 +572203,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T05:07:35.165Z"
+      "at": "2026-10-29T05:13:46.884Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -572173,7 +572227,7 @@
       "bags": "2026-10-29T05:07:12.776Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T05:07:35.165Z",
+    "savedAt": "2026-10-29T05:13:46.884Z",
     "appVersion": "2026.10.28.10"
   }
 }
