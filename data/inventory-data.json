@@ -456100,7 +456100,7 @@
       "label": "L6",
       "notes": "Flags and Tiles with Clips",
       "group": "L",
-      "lastEdited": "2026-10-29T19:08:07.377Z"
+      "lastEdited": "2026-10-29T19:08:23.913Z"
     },
     {
       "id": "L7",
@@ -474394,6 +474394,12 @@
       "color": "White",
       "elementId": "4272616",
       "qty": 2
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "30261",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -575336,6 +575342,13 @@
       "d": "Flag 2 x 2 Trapezoid with Flat Area between Clips",
       "e": "6097642",
       "u": 1793300883699
+    },
+    "30261|white": {
+      "p": "30261",
+      "c": "White",
+      "d": "Road Sign Clip-on 2 x 2 Round",
+      "e": "4116816",
+      "u": 1793300905115
     }
   },
   "partKinds": {
@@ -575479,7 +575492,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T19:08:11.426Z"
+      "at": "2026-10-29T19:08:27.942Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -575503,7 +575516,7 @@
       "bags": "2026-10-29T19:00:50.035Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T19:08:11.426Z",
+    "savedAt": "2026-10-29T19:08:27.942Z",
     "appVersion": "2026.10.28.10"
   }
 }
