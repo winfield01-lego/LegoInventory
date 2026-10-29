@@ -456429,7 +456429,7 @@
       "label": "M8",
       "notes": "Double Wedge - 7 x 6 and 4 x 6",
       "group": "M",
-      "lastEdited": "2026-10-29T23:17:36.652Z"
+      "lastEdited": "2026-10-29T23:17:57.840Z"
     },
     {
       "id": "M9",
@@ -476303,6 +476303,18 @@
       "drawerId": "M19",
       "partNum": "3935",
       "color": "Dark Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "M8",
+      "partNum": "50303",
+      "color": "Dark Tan",
+      "qty": 2
+    },
+    {
+      "drawerId": "M8",
+      "partNum": "50303",
+      "color": "Red",
       "qty": 1
     }
   ],
@@ -578378,6 +578390,20 @@
       "d": "Wedge Plate 4 x 4 Wing Right",
       "e": "393527",
       "u": 1793315828613
+    },
+    "50303|dark tan": {
+      "p": "50303",
+      "c": "Dark Tan",
+      "d": "Wedge Plate 7 x 6 Boat Bow with Stud Notches",
+      "e": "6175570",
+      "u": 1793315879042
+    },
+    "50303|red": {
+      "p": "50303",
+      "c": "Red",
+      "d": "Wedge Plate 7 x 6 Boat Bow with Stud Notches",
+      "e": "262521",
+      "u": 1793315879042
     }
   },
   "partKinds": {
@@ -578521,7 +578547,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T23:17:40.683Z"
+      "at": "2026-10-29T23:18:01.875Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578545,7 +578571,7 @@
       "bags": "2026-10-29T22:57:13.855Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T23:17:40.683Z",
+    "savedAt": "2026-10-29T23:18:01.875Z",
     "appVersion": "2026.10.29.1"
   }
 }
