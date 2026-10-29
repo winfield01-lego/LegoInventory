@@ -457147,7 +457147,7 @@
       "label": "O23",
       "notes": "Hinge Bar - 3 Finger",
       "group": "O",
-      "lastEdited": "2026-10-29T22:08:03.896Z"
+      "lastEdited": "2026-10-29T22:08:36.461Z"
     },
     {
       "id": "O24",
@@ -475611,12 +475611,18 @@
       "drawerId": "O23",
       "partNum": "2923",
       "color": "Black",
-      "qty": 1
+      "qty": 9
     },
     {
       "drawerId": "O23",
       "partNum": "4319",
       "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "O23",
+      "partNum": "2923",
+      "color": "Red",
       "qty": 1
     }
   ],
@@ -577286,6 +577292,13 @@
       "d": "Hinge Plate 1 x 2 with 3 Fingers On Side",
       "e": "245202",
       "u": 1793311623429
+    },
+    "2923|red": {
+      "p": "2923",
+      "c": "Red",
+      "d": "Hinge Bar 2.5L with 2 and 3 Fingers on Ends (Pantograph Shoe Holder)",
+      "e": "292321",
+      "u": 1793311717663
     }
   },
   "partKinds": {
@@ -577429,7 +577442,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:08:09.197Z"
+      "at": "2026-10-29T22:08:40.491Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577453,7 +577466,7 @@
       "bags": "2026-10-29T22:07:24.527Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:08:09.197Z",
+    "savedAt": "2026-10-29T22:08:40.491Z",
     "appVersion": "2026.10.29.1"
   }
 }
