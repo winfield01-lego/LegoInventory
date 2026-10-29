@@ -457336,7 +457336,7 @@
       "label": "O50",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-10-29T22:13:11.110Z"
+      "lastEdited": "2026-10-29T22:14:21.744Z"
     },
     {
       "id": "O51",
@@ -475695,6 +475695,12 @@
       "drawerId": "O50",
       "partNum": "62113",
       "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "O50",
+      "partNum": "6016",
+      "color": "Light Gray",
       "qty": 1
     }
   ],
@@ -577407,6 +577413,13 @@
       "d": "Bar 1 x 4 x 3 [End Tabs]",
       "e": "6099448",
       "u": 1793311992313
+    },
+    "6016|light gray": {
+      "p": "6016",
+      "c": "Light Gray",
+      "d": "Bar 1 x 4 x 3 Window [Side Tabs]",
+      "e": "4240294",
+      "u": 1793312062946
     }
   },
   "partKinds": {
@@ -577550,7 +577563,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:13:15.147Z"
+      "at": "2026-10-29T22:14:25.781Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577574,7 +577587,7 @@
       "bags": "2026-10-29T22:10:38.237Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:13:15.147Z",
+    "savedAt": "2026-10-29T22:14:25.781Z",
     "appVersion": "2026.10.29.1"
   }
 }
