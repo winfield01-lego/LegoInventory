@@ -456132,7 +456132,7 @@
       "label": "L10",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-10-13T17:13:18.947Z"
+      "lastEdited": "2026-10-29T21:56:16.307Z"
     },
     {
       "id": "L11",
@@ -475456,6 +475456,18 @@
       "partNum": "20310",
       "color": "Tan",
       "qty": 10
+    },
+    {
+      "drawerId": "L10",
+      "partNum": "38583",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "L10",
+      "partNum": "38585",
+      "color": "Tan",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -475868,6 +475880,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu31xae_yqpbf",
+      "label": "October 17 BAM Visit (batch 55)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 55,
+      "timestamp": "2026-10-29T21:56:16.454Z",
+      "items": [
+        {
+          "partNum": "38583",
+          "color": "Dark Bluish Gray",
+          "desc": "Brick Arch 1 x 2 Jumper",
+          "elementId": "6292417",
+          "qty": 1,
+          "drawerId": "L10",
+          "drawerLabel": "L10"
+        },
+        {
+          "partNum": "38585",
+          "color": "Tan",
+          "desc": "Brick Arch 1 1/2 x 1 1/2 Corner",
+          "elementId": "6236425",
+          "qty": 1,
+          "drawerId": "L10",
+          "drawerLabel": "L10"
+        }
+      ]
+    },
     {
       "id": "bag_mvu2qqge_4duw0",
       "label": "October 17 BAM Visit (batch 54)",
@@ -485313,28 +485353,6 @@
           "sel": false
         },
         {
-          "partNum": "38583",
-          "color": "Dark Bluish Gray",
-          "desc": "Brick Arch 1 x 2 Jumper",
-          "elementId": "6292417",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "38585",
-          "color": "Tan",
-          "desc": "Brick Arch 1 1/2 x 1 1/2 Corner",
-          "elementId": "6236425",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "4315",
           "color": "Blue",
           "desc": "Hinge Vehicle Roof Holder 1 x 4",
@@ -485687,12 +485705,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T21:55:56.013Z",
+      "savedAt": "2026-10-29T21:56:16.454Z",
       "keepOpen": true,
       "moved": {
-        "batches": 54,
-        "pieces": 1183,
-        "last": "2026-10-29T21:47:34.382Z"
+        "batches": 55,
+        "pieces": 1185,
+        "last": "2026-10-29T21:56:16.454Z"
       }
     },
     {
@@ -577007,6 +577025,13 @@
       "d": "Brick Special 1 x 1 with Scroll with Open Stud",
       "e": "6172757",
       "u": 1793310949028
+    },
+    "38585|tan": {
+      "p": "38585",
+      "c": "Tan",
+      "d": "Brick Arch 1 1/2 x 1 1/2 Corner",
+      "e": "6236425",
+      "u": 1793310977655
     }
   },
   "partKinds": {
@@ -577150,7 +577175,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T21:56:00.052Z"
+      "at": "2026-10-29T21:56:20.482Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577171,10 +577196,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T21:55:56.013Z",
+      "bags": "2026-10-29T21:56:16.454Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T21:56:00.052Z",
+    "savedAt": "2026-10-29T21:56:20.482Z",
     "appVersion": "2026.10.29.1"
   }
 }
