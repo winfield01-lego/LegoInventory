@@ -455410,7 +455410,7 @@
       "label": "J13",
       "notes": "Claws",
       "group": "j",
-      "lastEdited": "2026-10-29T01:52:21.492Z"
+      "lastEdited": "2026-10-29T01:52:32.175Z"
     },
     {
       "id": "J14",
@@ -472735,6 +472735,13 @@
       "partNum": "3171",
       "color": "Red",
       "qty": 1
+    },
+    {
+      "drawerId": "J13",
+      "partNum": "16770",
+      "color": "Black",
+      "elementId": "6177168",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -511301,8 +511308,11 @@
       "c": "Black",
       "d": "Creature Body Part, Barb Large (Claw, Talon) with Clip",
       "e": "6254273",
-      "u": 1791916924851,
-      "at": 1791654304977
+      "u": 1793238753377,
+      "at": 1791654304977,
+      "ea": [
+        "6177168"
+      ]
     },
     "60797c04|black": {
       "p": "60797c04",
@@ -571053,7 +571063,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:52:25.524Z"
+      "at": "2026-10-29T01:52:36.205Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571077,7 +571087,7 @@
       "bags": "2026-10-29T01:51:18.571Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:52:25.524Z",
+    "savedAt": "2026-10-29T01:52:36.205Z",
     "appVersion": "2026.10.28.10"
   }
 }
