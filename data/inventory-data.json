@@ -454381,7 +454381,7 @@
       "label": "F30",
       "notes": "3/4 Technic Pin",
       "group": "F",
-      "lastEdited": "2026-10-29T02:17:16.521Z"
+      "lastEdited": "2026-10-29T02:21:24.178Z"
     },
     {
       "id": "F31",
@@ -472831,6 +472831,19 @@
       "color": "Light Bluish Gray",
       "elementId": "4211375",
       "qty": 23
+    },
+    {
+      "drawerId": "F30",
+      "partNum": "32002",
+      "color": "Tan",
+      "qty": 45
+    },
+    {
+      "drawerId": "F30",
+      "partNum": "32002",
+      "color": "Dark Bluish Gray",
+      "elementId": "32002199",
+      "qty": 30
     }
   ],
   "mocLocations": {
@@ -505347,8 +505360,11 @@
       "c": "Dark Bluish Gray",
       "d": "Technic Pin 3/4",
       "e": "4211050",
-      "u": 1791916924851,
-      "at": 1791660732205
+      "u": 1793240485379,
+      "at": 1791660732205,
+      "ea": [
+        "32002199"
+      ]
     },
     "92946|dark green": {
       "p": "92946",
@@ -571218,7 +571234,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T02:17:20.557Z"
+      "at": "2026-10-29T02:21:28.225Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571242,7 +571258,7 @@
       "bags": "2026-10-29T02:01:52.512Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T02:17:20.557Z",
+    "savedAt": "2026-10-29T02:21:28.225Z",
     "appVersion": "2026.10.28.10"
   }
 }
