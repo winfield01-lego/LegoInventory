@@ -456887,7 +456887,7 @@
       "label": "N30",
       "notes": "Panels with Bars",
       "group": "N",
-      "lastEdited": "2026-10-29T20:46:45.390Z"
+      "lastEdited": "2026-10-29T20:50:24.408Z"
     },
     {
       "id": "N31",
@@ -475029,6 +475029,12 @@
       "drawerId": "N30",
       "partNum": "5066",
       "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "N30",
+      "partNum": "28220",
+      "color": "Light Bluish Gray",
       "qty": 1
     }
   ],
@@ -576362,6 +576368,13 @@
       "d": "Plate Special / Shield Rectangular with 4 Studs, Handle",
       "e": "6328480",
       "u": 1793306798812
+    },
+    "28220|light bluish gray": {
+      "p": "28220",
+      "c": "Light Bluish Gray",
+      "d": "Large Figure Armor Plate, Small",
+      "e": "6168742",
+      "u": 1793307025610
     }
   },
   "partKinds": {
@@ -576505,7 +576518,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T20:46:49.423Z"
+      "at": "2026-10-29T20:50:28.442Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576529,7 +576542,7 @@
       "bags": "2026-10-29T20:43:33.298Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T20:46:49.423Z",
+    "savedAt": "2026-10-29T20:50:28.442Z",
     "appVersion": "2026.10.28.10"
   }
 }
