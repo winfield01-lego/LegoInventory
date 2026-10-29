@@ -456887,7 +456887,7 @@
       "label": "N30",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.790Z"
+      "lastEdited": "2026-10-29T20:43:33.157Z"
     },
     {
       "id": "N31",
@@ -474957,6 +474957,12 @@
       "partNum": "79846",
       "color": "White",
       "qty": 2
+    },
+    {
+      "drawerId": "N30",
+      "partNum": "5066",
+      "color": "Dark Bluish Gray",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -475369,6 +475375,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu0genm_7r7xy",
+      "label": "October 17 BAM Visit (batch 49)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 49,
+      "timestamp": "2026-10-29T20:43:33.298Z",
+      "items": [
+        {
+          "partNum": "5066",
+          "color": "Dark Bluish Gray",
+          "desc": "Plate Special 2 x 2 with Horizontal T-Bar Underneath",
+          "elementId": "6457961",
+          "qty": 2,
+          "drawerId": "N30",
+          "drawerLabel": "N30"
+        }
+      ]
+    },
     {
       "id": "bag_mvu0elkk_id2ym",
       "label": "October 17 BAM Visit (batch 48)",
@@ -484662,17 +484687,6 @@
           "sel": false
         },
         {
-          "partNum": "5066",
-          "color": "Dark Bluish Gray",
-          "desc": "Plate Special 2 x 2 with Horizontal T-Bar Underneath",
-          "elementId": "6457961",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "98284",
           "color": "Black",
           "desc": "Plate Special Round 2 x 2 with Pin Hole and 4 Bars Up",
@@ -485135,12 +485149,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T20:43:09.926Z",
+      "savedAt": "2026-10-29T20:43:33.298Z",
       "keepOpen": true,
       "moved": {
-        "batches": 48,
-        "pieces": 1172,
-        "last": "2026-10-29T20:42:08.948Z"
+        "batches": 49,
+        "pieces": 1174,
+        "last": "2026-10-29T20:43:33.298Z"
       }
     },
     {
@@ -576400,7 +576414,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T20:43:13.957Z"
+      "at": "2026-10-29T20:43:37.326Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576421,10 +576435,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T20:43:09.926Z",
+      "bags": "2026-10-29T20:43:33.298Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T20:43:13.957Z",
+    "savedAt": "2026-10-29T20:43:37.326Z",
     "appVersion": "2026.10.28.10"
   }
 }
