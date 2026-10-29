@@ -455396,7 +455396,8 @@
       "id": "J11",
       "label": "J11",
       "notes": "",
-      "group": "j"
+      "group": "j",
+      "lastEdited": "2026-10-29T01:47:49.458Z"
     },
     {
       "id": "J12",
@@ -472634,6 +472635,12 @@
       "partNum": "78444",
       "color": "White",
       "qty": 9
+    },
+    {
+      "drawerId": "J11",
+      "partNum": "40379",
+      "color": "Bright Light Blue",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -473046,6 +473053,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsvvump_tepd9",
+      "label": "CdA BAM - 10/22/26 (batch 47)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 47,
+      "timestamp": "2026-10-29T01:47:49.585Z",
+      "items": [
+        {
+          "partNum": "40379",
+          "color": "Bright Light Blue",
+          "desc": "Animal Body Part / Plant, Tail / Claw / Horn / Branch / Tentacle, End Section",
+          "elementId": "6438974",
+          "qty": 1,
+          "drawerId": "J11",
+          "drawerLabel": "J11"
+        }
+      ]
+    },
     {
       "id": "bag_mvsvr07a_zhmy0",
       "label": "CdA BAM - 10/22/26 (batch 46)",
@@ -480443,17 +480469,6 @@
           "sel": false
         },
         {
-          "partNum": "40379",
-          "color": "Bright Light Blue",
-          "desc": "Animal Body Part / Plant, Tail / Claw / Horn / Branch / Tentacle, End Section",
-          "elementId": "6438974",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "22484",
           "color": "Dark Bluish Gray",
           "desc": "Bar 2L with Towball",
@@ -480608,12 +480623,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T01:44:03.526Z",
+      "savedAt": "2026-10-29T01:47:49.585Z",
       "keepOpen": true,
       "moved": {
-        "batches": 46,
-        "pieces": 298,
-        "last": "2026-10-29T01:44:03.526Z"
+        "batches": 47,
+        "pieces": 299,
+        "last": "2026-10-29T01:47:49.585Z"
       }
     },
     {
@@ -570723,6 +570738,13 @@
       "d": "Wedge Plate 6 x 2 Right",
       "e": "6440000",
       "u": 1793238338911
+    },
+    "40379|bright light blue": {
+      "p": "40379",
+      "c": "Bright Light Blue",
+      "d": "Animal Body Part / Plant, Tail / Claw / Horn / Branch / Tentacle, End Section",
+      "e": "6438974",
+      "u": 1793238470786
     }
   },
   "partKinds": {
@@ -570866,7 +570888,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:45:41.739Z"
+      "at": "2026-10-29T01:47:53.625Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -570887,10 +570909,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T01:44:03.526Z",
+      "bags": "2026-10-29T01:47:49.585Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:45:41.739Z",
+    "savedAt": "2026-10-29T01:47:53.625Z",
     "appVersion": "2026.10.28.10"
   }
 }
