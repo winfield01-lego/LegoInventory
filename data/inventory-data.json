@@ -455409,7 +455409,8 @@
       "id": "J13",
       "label": "J13",
       "notes": "",
-      "group": "j"
+      "group": "j",
+      "lastEdited": "2026-10-29T01:51:18.443Z"
     },
     {
       "id": "J14",
@@ -472709,6 +472710,19 @@
       "partNum": "80497",
       "color": "Reddish Brown",
       "qty": 1
+    },
+    {
+      "drawerId": "J13",
+      "partNum": "3171",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "J13",
+      "partNum": "16770",
+      "color": "Light Bluish Gray",
+      "elementId": "6271212",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -473121,6 +473135,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsw0bvv_e6cqs",
+      "label": "CdA BAM - 10/22/26 (batch 48)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 48,
+      "timestamp": "2026-10-29T01:51:18.571Z",
+      "items": [
+        {
+          "partNum": "3171",
+          "color": "Black",
+          "desc": "Animal / Creature Body Part, Claw with Clip",
+          "elementId": "6420198",
+          "qty": 1,
+          "drawerId": "J13",
+          "drawerLabel": "J13"
+        },
+        {
+          "partNum": "16770",
+          "color": "Light Bluish Gray",
+          "desc": "Creature Body Part, Barb Large (Claw, Talon) with Clip",
+          "elementId": "6271212",
+          "qty": 1,
+          "drawerId": "J13",
+          "drawerLabel": "J13"
+        }
+      ]
+    },
     {
       "id": "bag_mvsvvump_tepd9",
       "label": "CdA BAM - 10/22/26 (batch 47)",
@@ -480515,28 +480557,6 @@
           "sel": false
         },
         {
-          "partNum": "3171",
-          "color": "Black",
-          "desc": "Animal / Creature Body Part, Claw with Clip",
-          "elementId": "6420198",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "16770",
-          "color": "Light Bluish Gray",
-          "desc": "Creature Body Part, Barb Large (Claw, Talon) with Clip",
-          "elementId": "6271212",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "22484",
           "color": "Dark Bluish Gray",
           "desc": "Bar 2L with Towball",
@@ -480691,12 +480711,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T01:51:02.592Z",
+      "savedAt": "2026-10-29T01:51:18.571Z",
       "keepOpen": true,
       "moved": {
-        "batches": 47,
-        "pieces": 299,
-        "last": "2026-10-29T01:47:49.585Z"
+        "batches": 48,
+        "pieces": 301,
+        "last": "2026-10-29T01:51:18.571Z"
       }
     },
     {
@@ -550994,9 +551014,12 @@
       "c": "Light Bluish Gray",
       "d": "Creature Body Part, Barb Large (Claw, Talon) with Clip",
       "e": "6359723",
-      "u": 1791916924851,
+      "u": 1793238679772,
       "at": 1791655021067,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6271212.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6271212.jpg",
+      "ea": [
+        "6271212"
+      ]
     },
     "36762|dark tan": {
       "p": "36762",
@@ -571011,7 +571034,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:51:06.622Z"
+      "at": "2026-10-29T01:51:23.843Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571032,10 +571055,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T01:51:02.592Z",
+      "bags": "2026-10-29T01:51:18.571Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:51:06.622Z",
+    "savedAt": "2026-10-29T01:51:23.843Z",
     "appVersion": "2026.10.28.10"
   }
 }
