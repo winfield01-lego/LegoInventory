@@ -457175,7 +457175,7 @@
       "label": "O27",
       "notes": "Hinge Plate 2 and 3 Finger Sides",
       "group": "O",
-      "lastEdited": "2026-10-29T22:05:24.207Z"
+      "lastEdited": "2026-10-29T22:05:37.109Z"
     },
     {
       "id": "O28",
@@ -475546,6 +475546,19 @@
       "partNum": "60608",
       "color": "Yellow",
       "qty": 8
+    },
+    {
+      "drawerId": "O27",
+      "partNum": "4507",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "O27",
+      "partNum": "4507",
+      "color": "Red",
+      "elementId": "",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -577163,6 +577176,20 @@
       "d": "Hinge Vehicle Roof Holder 1 x 4",
       "e": "431502",
       "u": 1793311392879
+    },
+    "4507|blue": {
+      "p": "4507",
+      "c": "Blue",
+      "d": "Hinge Plate 1 x 6 with 2 and 3 Fingers On Sides",
+      "e": "450723",
+      "u": 1793311538311
+    },
+    "4507|red": {
+      "p": "4507",
+      "c": "Red",
+      "d": "Hinge Plate 1 x 6 with 2 and 3 Fingers On Sides",
+      "e": "",
+      "u": 1793311538311
     }
   },
   "partKinds": {
@@ -577306,7 +577333,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:05:28.239Z"
+      "at": "2026-10-29T22:05:41.145Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577330,7 +577357,7 @@
       "bags": "2026-10-29T22:03:53.419Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:05:28.239Z",
+    "savedAt": "2026-10-29T22:05:41.145Z",
     "appVersion": "2026.10.29.1"
   }
 }
