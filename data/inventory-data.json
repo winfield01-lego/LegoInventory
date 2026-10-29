@@ -456100,7 +456100,7 @@
       "label": "L6",
       "notes": "Flags and Tiles with Clips",
       "group": "L",
-      "lastEdited": "2026-10-29T19:05:09.523Z"
+      "lastEdited": "2026-10-29T19:05:57.980Z"
     },
     {
       "id": "L7",
@@ -474332,6 +474332,30 @@
       "partNum": "65886",
       "color": "White",
       "qty": 2
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "11055",
+      "color": "Black",
+      "qty": 2
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "11055",
+      "color": "Blue",
+      "qty": 3
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "11055",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "11055",
+      "color": "Yellow",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -575226,6 +575250,27 @@
       "d": "Tile Special 2 x 3 with 2 Clips without Tab Between Clips",
       "e": "6348062",
       "u": 1793300658518
+    },
+    "11055|blue": {
+      "p": "11055",
+      "c": "Blue",
+      "d": "Flag 2 x 2 Square, Flat Clip Edge [Thick Clips]",
+      "e": "6011816",
+      "u": 1793300759183
+    },
+    "11055|light bluish gray": {
+      "p": "11055",
+      "c": "Light Bluish Gray",
+      "d": "Flag 2 x 2 Square, Flat Clip Edge [Thick Clips]",
+      "e": "4271362",
+      "u": 1793300759183
+    },
+    "11055|yellow": {
+      "p": "11055",
+      "c": "Yellow",
+      "d": "Flag 2 x 2 Square, Flat Clip Edge [Thick Clips]",
+      "e": "6012442",
+      "u": 1793300759183
     }
   },
   "partKinds": {
@@ -575369,7 +575414,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T19:05:13.554Z"
+      "at": "2026-10-29T19:06:02.021Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -575393,7 +575438,7 @@
       "bags": "2026-10-29T19:00:50.035Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T19:05:13.554Z",
+    "savedAt": "2026-10-29T19:06:02.021Z",
     "appVersion": "2026.10.28.10"
   }
 }
