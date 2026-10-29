@@ -456506,7 +456506,7 @@
       "label": "M19",
       "notes": "4 x 4 Wings - Right and Left",
       "group": "M",
-      "lastEdited": "2026-10-29T23:12:22.444Z"
+      "lastEdited": "2026-10-29T23:16:20.844Z"
     },
     {
       "id": "M20",
@@ -476263,6 +476263,33 @@
       "drawerId": "B6",
       "partNum": "30036",
       "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "M19",
+      "partNum": "3936",
+      "color": "Black",
+      "elementId": "393626",
+      "qty": 3
+    },
+    {
+      "drawerId": "M19",
+      "partNum": "3936",
+      "color": "Light Gray",
+      "elementId": "393602",
+      "qty": 5
+    },
+    {
+      "drawerId": "M19",
+      "partNum": "3936",
+      "color": "Dark Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "M19",
+      "partNum": "3936",
+      "color": "White",
+      "elementId": "393601",
       "qty": 1
     }
   ],
@@ -499351,9 +499378,12 @@
       "c": "Black",
       "d": "Wedge Plate 4 x 4 Wing Left",
       "e": "4280156",
-      "u": 1791916924851,
+      "u": 1793315782047,
       "at": 1791846567871,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/3936.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/3936.png",
+      "ea": [
+        "393626"
+      ]
     },
     "3935|black": {
       "p": "3935",
@@ -551659,9 +551689,12 @@
       "c": "Light Gray",
       "d": "Wedge Plate 4 x 4 Wing Left",
       "e": "4248128",
-      "u": 1791916924851,
+      "u": 1793315782047,
       "at": 1791673658842,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/7/3936.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/7/3936.png",
+      "ea": [
+        "393602"
+      ]
     },
     "3935|light gray": {
       "p": "3935",
@@ -553610,9 +553643,12 @@
       "c": "White",
       "d": "Wedge Plate 4 x 4 Wing Left",
       "e": "4280155",
-      "u": 1791916924851,
+      "u": 1793315782047,
       "at": 1791846545325,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/15/3936.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/15/3936.png",
+      "ea": [
+        "393601"
+      ]
     },
     "3935|white": {
       "p": "3935",
@@ -578312,6 +578348,13 @@
       "d": "Wedge Plate 8 x 6 x 2/3 with Grille",
       "e": "3003601",
       "u": 1793315467766
+    },
+    "3936|dark gray": {
+      "p": "3936",
+      "c": "Dark Gray",
+      "d": "Wedge Plate 4 x 4 Wing Left",
+      "e": "393627",
+      "u": 1793315782047
     }
   },
   "partKinds": {
@@ -578455,7 +578498,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T23:12:26.472Z"
+      "at": "2026-10-29T23:16:26.131Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578479,7 +578522,7 @@
       "bags": "2026-10-29T22:57:13.855Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T23:12:26.472Z",
+    "savedAt": "2026-10-29T23:16:26.131Z",
     "appVersion": "2026.10.29.1"
   }
 }
