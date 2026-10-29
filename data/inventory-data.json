@@ -456429,7 +456429,7 @@
       "label": "M8",
       "notes": "Double Wedge - 7 x 6 and 4 x 6",
       "group": "M",
-      "lastEdited": "2026-10-29T23:17:57.840Z"
+      "lastEdited": "2026-10-29T23:18:33.574Z"
     },
     {
       "id": "M9",
@@ -476315,6 +476315,26 @@
       "drawerId": "M8",
       "partNum": "50303",
       "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "M8",
+      "partNum": "32059",
+      "color": "Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "M8",
+      "partNum": "32059",
+      "color": "Dark Bluish Gray",
+      "elementId": "4210652",
+      "qty": 4
+    },
+    {
+      "drawerId": "M8",
+      "partNum": "32059",
+      "color": "White",
+      "elementId": "4117026",
       "qty": 1
     }
   ],
@@ -511801,8 +511821,11 @@
       "c": "Dark Bluish Gray",
       "d": "Wedge Plate 4 x 6 Cut Corners",
       "e": "4521572",
-      "u": 1791916924851,
-      "at": 1791660732205
+      "u": 1793315914776,
+      "at": 1791660732205,
+      "ea": [
+        "4210652"
+      ]
     },
     "68297|dark bluish gray": {
       "p": "68297",
@@ -535365,9 +535388,12 @@
       "c": "White",
       "d": "Wedge Plate 4 x 6 Cut Corners",
       "e": "4508408",
-      "u": 1791916924851,
+      "u": 1793315914776,
       "at": 1791654530095,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4117026.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4117026.jpg",
+      "ea": [
+        "4117026"
+      ]
     },
     "30363|yellow": {
       "p": "30363",
@@ -578404,6 +578430,13 @@
       "d": "Wedge Plate 7 x 6 Boat Bow with Stud Notches",
       "e": "262521",
       "u": 1793315879042
+    },
+    "32059|blue": {
+      "p": "32059",
+      "c": "Blue",
+      "d": "Wedge Plate 4 x 6 Cut Corners",
+      "e": "4141268",
+      "u": 1793315914776
     }
   },
   "partKinds": {
@@ -578547,7 +578580,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T23:18:01.875Z"
+      "at": "2026-10-29T23:18:38.851Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578571,7 +578604,7 @@
       "bags": "2026-10-29T22:57:13.855Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T23:18:01.875Z",
+    "savedAt": "2026-10-29T23:18:38.851Z",
     "appVersion": "2026.10.29.1"
   }
 }
