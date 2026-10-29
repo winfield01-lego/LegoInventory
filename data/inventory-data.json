@@ -457254,7 +457254,7 @@
       "label": "O40",
       "notes": "1 x 8 Bar with 1 x 2 Brick and 1 x 5 1/2 Cylinder with handle",
       "group": "O",
-      "lastEdited": "2026-10-29T04:21:27.879Z"
+      "lastEdited": "2026-10-29T04:22:14.686Z"
     },
     {
       "id": "O41",
@@ -473047,7 +473047,13 @@
       "partNum": "30359b",
       "color": "Light Bluish Gray",
       "elementId": "4258313",
-      "qty": 1
+      "qty": 2
+    },
+    {
+      "drawerId": "O40",
+      "partNum": "30359a",
+      "color": "Sand Blue",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -571387,6 +571393,13 @@
       "d": "Bar 1 x 8 with Brick 1 x 2 Curved Top End (Axle Holder Inside Small End)",
       "e": "4261781",
       "u": 1793247689083
+    },
+    "30359a|sand blue": {
+      "p": "30359a",
+      "c": "Sand Blue",
+      "d": "Bar 1 x 8 with Brick 1 x 2 Curved Top End (Original, No Axle Holder)",
+      "e": "4164071",
+      "u": 1793247732195
     }
   },
   "partKinds": {
@@ -571530,7 +571543,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T04:21:33.179Z"
+      "at": "2026-10-29T04:22:18.726Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571554,7 +571567,7 @@
       "bags": "2026-10-29T04:16:44.317Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T04:21:33.179Z",
+    "savedAt": "2026-10-29T04:22:18.726Z",
     "appVersion": "2026.10.28.10"
   }
 }
