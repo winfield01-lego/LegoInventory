@@ -455500,7 +455500,8 @@
       "id": "J26",
       "label": "J26",
       "notes": "",
-      "group": "j"
+      "group": "j",
+      "lastEdited": "2026-10-29T18:26:31.910Z"
     },
     {
       "id": "J27",
@@ -473970,6 +473971,13 @@
       "partNum": "2429",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "11090",
+      "color": "Black",
+      "elementId": "6015891",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -474382,6 +474390,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvtvk73b_li34n",
+      "label": "October 17 BAM Visit (batch 37)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 37,
+      "timestamp": "2026-10-29T18:26:32.039Z",
+      "items": [
+        {
+          "partNum": "11090",
+          "color": "Black",
+          "desc": "Bar Holder with Clip",
+          "elementId": "6015891",
+          "qty": 1,
+          "drawerId": "J26",
+          "drawerLabel": "J26"
+        }
+      ]
+    },
     {
       "id": "bag_mvtv5v0p_g31bl",
       "label": "October 17 BAM Visit (batch 36)",
@@ -483411,17 +483438,6 @@
           "sel": false
         },
         {
-          "partNum": "11090",
-          "color": "Black",
-          "desc": "Bar Holder with Clip",
-          "elementId": "6015891",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "3484",
           "color": "Light Bluish Gray",
           "desc": "Bar 1L with Clip [Cut Edges and One Side Hole] [Full Clip]",
@@ -484060,12 +484076,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T18:15:23.209Z",
+      "savedAt": "2026-10-29T18:26:32.038Z",
       "keepOpen": true,
       "moved": {
-        "batches": 36,
-        "pieces": 1150,
-        "last": "2026-10-29T18:15:23.209Z"
+        "batches": 37,
+        "pieces": 1151,
+        "last": "2026-10-29T18:26:32.039Z"
       }
     },
     {
@@ -498100,8 +498116,11 @@
       "c": "Black",
       "d": "Bar Holder with Clip",
       "e": "6315887",
-      "u": 1791916924851,
-      "at": 1791655414575
+      "u": 1793298393240,
+      "at": 1791655414575,
+      "ea": [
+        "6015891"
+      ]
     },
     "23443|blue": {
       "p": "23443",
@@ -574834,7 +574853,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T18:23:25.004Z"
+      "at": "2026-10-29T18:26:36.069Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -574855,10 +574874,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T18:15:23.209Z",
+      "bags": "2026-10-29T18:26:32.039Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T18:23:25.004Z",
+    "savedAt": "2026-10-29T18:26:36.069Z",
     "appVersion": "2026.10.28.10"
   }
 }
