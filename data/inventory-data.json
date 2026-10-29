@@ -457625,7 +457625,7 @@
       "label": "S5",
       "notes": "Doors - Left and Right",
       "group": "S",
-      "lastEdited": "2026-10-29T04:23:59.929Z"
+      "lastEdited": "2026-10-29T04:24:15.493Z"
     },
     {
       "id": "S6",
@@ -473067,6 +473067,13 @@
       "partNum": "87617",
       "color": "Red",
       "qty": 7
+    },
+    {
+      "drawerId": "S5",
+      "partNum": "3822",
+      "color": "White",
+      "elementId": "382201",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -473479,6 +473486,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvt1h0y0_i7i1e",
+      "label": "CdA BAM - 10/22/26 (batch 52)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 52,
+      "timestamp": "2026-10-29T04:24:15.624Z",
+      "items": [
+        {
+          "partNum": "3822",
+          "color": "White",
+          "desc": "Door 1 x 3 x 1 Left",
+          "elementId": "382201",
+          "qty": 1,
+          "drawerId": "S5",
+          "drawerLabel": "S5"
+        }
+      ]
+    },
     {
       "id": "bag_mvt17cpp_o1xxy",
       "label": "CdA BAM - 10/22/26 (batch 51)",
@@ -480991,17 +481017,6 @@
           "sel": false
         },
         {
-          "partNum": "3822",
-          "color": "White",
-          "desc": "Door 1 x 3 x 1 Left",
-          "elementId": "382201",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "3713",
           "color": "Light Bluish Gray",
           "desc": "Technic Bush",
@@ -481057,12 +481072,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T04:16:44.317Z",
+      "savedAt": "2026-10-29T04:24:15.624Z",
       "keepOpen": true,
       "moved": {
-        "batches": 51,
-        "pieces": 304,
-        "last": "2026-10-29T04:16:44.317Z"
+        "batches": 52,
+        "pieces": 305,
+        "last": "2026-10-29T04:24:15.624Z"
       }
     },
     {
@@ -548761,9 +548776,12 @@
       "c": "White",
       "d": "Door 1 x 3 x 1 Left",
       "e": "4527637",
-      "u": 1791916924851,
+      "u": 1793247856825,
       "at": 1791846545325,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/382201.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/382201.jpg",
+      "ea": [
+        "382201"
+      ]
     },
     "3821|white": {
       "p": "3821",
@@ -571566,7 +571584,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T04:24:03.963Z"
+      "at": "2026-10-29T04:24:20.915Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571587,10 +571605,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T04:16:44.317Z",
+      "bags": "2026-10-29T04:24:15.624Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T04:24:03.963Z",
+    "savedAt": "2026-10-29T04:24:20.915Z",
     "appVersion": "2026.10.28.10"
   }
 }
