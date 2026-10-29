@@ -457175,7 +457175,7 @@
       "label": "O27",
       "notes": "Hinge Plate 2 and 3 Finger Sides",
       "group": "O",
-      "lastEdited": "2026-10-29T22:06:30.261Z"
+      "lastEdited": "2026-10-29T22:07:02.227Z"
     },
     {
       "id": "O28",
@@ -475600,6 +475600,12 @@
       "color": "White",
       "elementId": "245201",
       "qty": 1
+    },
+    {
+      "drawerId": "O27",
+      "partNum": "2452",
+      "color": "Light Gray",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -577253,6 +577259,13 @@
       "d": "Hinge Plate 1 x 6 with 2 and 3 Fingers On Ends",
       "e": "4246942",
       "u": 1793311559329
+    },
+    "2452|light gray": {
+      "p": "2452",
+      "c": "Light Gray",
+      "d": "Hinge Plate 1 x 2 with 3 Fingers On Side",
+      "e": "245202",
+      "u": 1793311623429
     }
   },
   "partKinds": {
@@ -577396,7 +577409,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:06:35.537Z"
+      "at": "2026-10-29T22:07:06.260Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577420,7 +577433,7 @@
       "bags": "2026-10-29T22:03:53.419Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:06:35.537Z",
+    "savedAt": "2026-10-29T22:07:06.260Z",
     "appVersion": "2026.10.29.1"
   }
 }
