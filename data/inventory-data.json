@@ -456198,7 +456198,7 @@
       "label": "L20",
       "notes": "Bar with Clip and Nozzles",
       "group": "L",
-      "lastEdited": "2026-10-29T18:45:24.446Z"
+      "lastEdited": "2026-10-29T18:46:30.611Z"
     },
     {
       "id": "L21",
@@ -474170,6 +474170,31 @@
       "partNum": "4210",
       "color": "Yellow",
       "qty": 2
+    },
+    {
+      "drawerId": "L20",
+      "partNum": "60849",
+      "color": "Black",
+      "qty": 17
+    },
+    {
+      "drawerId": "L20",
+      "partNum": "60849",
+      "color": "Light Bluish Gray",
+      "qty": 15
+    },
+    {
+      "drawerId": "L20",
+      "partNum": "60849",
+      "color": "Pearl Gold",
+      "elementId": "6167585",
+      "qty": 2
+    },
+    {
+      "drawerId": "L20",
+      "partNum": "60849",
+      "color": "Yellow",
+      "qty": 7
     }
   ],
   "mocLocations": {
@@ -534103,9 +534128,12 @@
       "c": "Pearl Gold",
       "d": "Equipment Hose Nozzle / Gun with Side String Hole Simplified",
       "e": "6597556",
-      "u": 1791916924851,
+      "u": 1793299591813,
       "at": 1791654623251,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6167585.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6167585.jpg",
+      "ea": [
+        "6167585"
+      ]
     },
     "37776|pearl gold": {
       "p": "37776",
@@ -574974,6 +575002,13 @@
       "d": "Equipment Hose Nozzle Simple",
       "e": "4248254",
       "u": 1793299525648
+    },
+    "60849|yellow": {
+      "p": "60849",
+      "c": "Yellow",
+      "d": "Equipment Hose Nozzle / Gun with Side String Hole Simplified",
+      "e": "4498789",
+      "u": 1793299591813
     }
   },
   "partKinds": {
@@ -575117,7 +575152,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T18:45:28.479Z"
+      "at": "2026-10-29T18:46:35.899Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -575141,7 +575176,7 @@
       "bags": "2026-10-29T18:35:28.019Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T18:45:28.478Z",
+    "savedAt": "2026-10-29T18:46:35.899Z",
     "appVersion": "2026.10.28.10"
   }
 }
