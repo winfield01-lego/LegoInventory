@@ -455666,7 +455666,7 @@
       "label": "T7",
       "notes": "",
       "group": "T",
-      "lastEdited": "2026-10-13T17:00:26.813Z"
+      "lastEdited": "2026-10-29T19:09:53.197Z"
     },
     {
       "id": "T8",
@@ -474420,6 +474420,13 @@
       "color": "Black",
       "elementId": "6063617",
       "qty": 1
+    },
+    {
+      "drawerId": "T7",
+      "partNum": "3038",
+      "color": "White",
+      "elementId": "303801",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -474832,6 +474839,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvtx3y9i_uzaor",
+      "label": "October 17 BAM Visit (batch 41)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 41,
+      "timestamp": "2026-10-29T19:09:53.334Z",
+      "items": [
+        {
+          "partNum": "3038",
+          "color": "White",
+          "desc": "Brick Sloped 45° 2 x 3",
+          "elementId": "303801",
+          "qty": 1,
+          "drawerId": "T7",
+          "drawerLabel": "T7"
+        }
+      ]
+    },
     {
       "id": "bag_mvtwsb1v_axbei",
       "label": "October 17 BAM Visit (batch 40)",
@@ -483946,17 +483972,6 @@
           "sel": false
         },
         {
-          "partNum": "3038",
-          "color": "White",
-          "desc": "Brick Sloped 45° 2 x 3",
-          "elementId": "303801",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "4216",
           "color": "White",
           "desc": "Brick Special 1 x 2 with Groove",
@@ -484540,12 +484555,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T19:09:24.717Z",
+      "savedAt": "2026-10-29T19:09:53.334Z",
       "keepOpen": true,
       "moved": {
-        "batches": 40,
-        "pieces": 1156,
-        "last": "2026-10-29T19:00:50.035Z"
+        "batches": 41,
+        "pieces": 1157,
+        "last": "2026-10-29T19:09:53.334Z"
       }
     },
     {
@@ -490091,10 +490106,11 @@
       "c": "White",
       "d": "Brick Sloped 45° 2 x 3",
       "e": "4258358",
-      "u": 1791916924851,
+      "u": 1793300994535,
       "at": 1791846902427,
       "ea": [
-        "6632141"
+        "6632141",
+        "303801"
       ],
       "i": "https://cdn.rebrickable.com/media/parts/elements/303801.jpg"
     },
@@ -575525,7 +575541,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T19:09:28.749Z"
+      "at": "2026-10-29T19:09:58.623Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -575546,10 +575562,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T19:09:24.717Z",
+      "bags": "2026-10-29T19:09:53.334Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T19:09:28.749Z",
+    "savedAt": "2026-10-29T19:09:58.623Z",
     "appVersion": "2026.10.28.10"
   }
 }
