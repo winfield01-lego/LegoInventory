@@ -454639,7 +454639,7 @@
       "label": "G28",
       "notes": "3 x 2 Plate - Rounded end with hole",
       "group": "G",
-      "lastEdited": "2026-10-29T01:09:38.587Z"
+      "lastEdited": "2026-10-29T01:12:55.030Z"
     },
     {
       "id": "G29",
@@ -472187,7 +472187,59 @@
       "partNum": "3176",
       "color": "Black",
       "elementId": "317626",
+      "qty": 8
+    },
+    {
+      "drawerId": "G28",
+      "partNum": "3176",
+      "color": "Blue",
+      "qty": 12
+    },
+    {
+      "drawerId": "G28",
+      "partNum": "3176",
+      "color": "Dark Bluish Gray",
+      "qty": 10
+    },
+    {
+      "drawerId": "G28",
+      "partNum": "3176",
+      "color": "Dark Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "G28",
+      "partNum": "3176",
+      "color": "Light Bluish Gray",
+      "qty": 18
+    },
+    {
+      "drawerId": "G28",
+      "partNum": "3176",
+      "color": "Lime",
+      "elementId": "4183132",
       "qty": 1
+    },
+    {
+      "drawerId": "G28",
+      "partNum": "3176",
+      "color": "Red",
+      "elementId": "317621",
+      "qty": 2
+    },
+    {
+      "drawerId": "G28",
+      "partNum": "3176",
+      "color": "Reddish Brown",
+      "elementId": "4216978",
+      "qty": 2
+    },
+    {
+      "drawerId": "G28",
+      "partNum": "3176",
+      "color": "White",
+      "elementId": "317601",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -525906,9 +525958,12 @@
       "c": "White",
       "d": "Plate Special 3 x 2 with Rounded End, Hole",
       "e": "6609537",
-      "u": 1791916924851,
+      "u": 1793236376232,
       "at": 1791732109766,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4241007.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4241007.jpg",
+      "ea": [
+        "317601"
+      ]
     },
     "88646|white": {
       "p": "88646",
@@ -530834,9 +530889,12 @@
       "c": "Lime",
       "d": "Plate Special 3 x 2 with Rounded End, Hole",
       "e": "6586460",
-      "u": 1791916924851,
+      "u": 1793236376232,
       "at": 1791654578181,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4183132.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4183132.jpg",
+      "ea": [
+        "4183132"
+      ]
     },
     "15535|lime": {
       "p": "15535",
@@ -531055,8 +531113,11 @@
       "c": "Reddish Brown",
       "d": "Plate Special 3 x 2 with Rounded End, Hole",
       "e": "6172636",
-      "u": 1791916924851,
-      "at": 1791654582190
+      "u": 1793236376232,
+      "at": 1791654582190,
+      "ea": [
+        "4216978"
+      ]
     },
     "3957b|trans clear": {
       "p": "3957b",
@@ -532353,9 +532414,12 @@
       "c": "Red",
       "d": "Plate Special 3 x 2 with Rounded End, Hole",
       "e": "4188189",
-      "u": 1791916924851,
+      "u": 1793236376232,
       "at": 1791732100390,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/317621.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/317621.jpg",
+      "ea": [
+        "317621"
+      ]
     },
     "18654|red": {
       "p": "18654",
@@ -570103,6 +570167,20 @@
       "d": "Panel 1 x 2 x 1 [Rounded Corners]",
       "e": "4541240",
       "u": 1793236125452
+    },
+    "3176|blue": {
+      "p": "3176",
+      "c": "Blue",
+      "d": "Plate Special 3 x 2 with Rounded End, Hole",
+      "e": "317623",
+      "u": 1793236376232
+    },
+    "3176|dark red": {
+      "p": "3176",
+      "c": "Dark Red",
+      "d": "Plate Special 3 x 2 with Rounded End, Hole",
+      "e": "4217788",
+      "u": 1793236376232
     }
   },
   "partKinds": {
@@ -570246,7 +570324,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:09:42.616Z"
+      "at": "2026-10-29T01:13:00.312Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -570270,7 +570348,7 @@
       "bags": "2026-10-29T01:09:24.011Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:09:42.616Z",
+    "savedAt": "2026-10-29T01:13:00.312Z",
     "appVersion": "2026.10.28.10"
   }
 }
