@@ -455593,7 +455593,7 @@
       "label": "J41",
       "notes": "Panels - Corner - 2 x 2, 2 x 1, 1 x 1",
       "group": "j",
-      "lastEdited": "2026-10-29T19:27:08.853Z"
+      "lastEdited": "2026-10-29T19:29:08.482Z"
     },
     {
       "id": "J42",
@@ -474589,14 +474589,14 @@
       "drawerId": "J41",
       "partNum": "91501",
       "color": "Black",
-      "qty": 3
+      "qty": 10
     },
     {
       "drawerId": "J41",
       "partNum": "91501",
       "color": "Light Bluish Gray",
       "elementId": "6008311",
-      "qty": 2
+      "qty": 47
     },
     {
       "drawerId": "J41",
@@ -474688,6 +474688,20 @@
       "partNum": "23969",
       "color": "White",
       "qty": 5
+    },
+    {
+      "drawerId": "J41",
+      "partNum": "91501",
+      "color": "Tan",
+      "elementId": "4593748",
+      "qty": 10
+    },
+    {
+      "drawerId": "J41",
+      "partNum": "91501",
+      "color": "White",
+      "elementId": "4610290",
+      "qty": 23
     }
   ],
   "mocLocations": {
@@ -516149,8 +516163,11 @@
       "c": "White",
       "d": "Panel 2 x 2 x 1 Corner",
       "e": "6181753",
-      "u": 1791916924851,
-      "at": 1791654701651
+      "u": 1793302149684,
+      "at": 1791654701651,
+      "ea": [
+        "4610290"
+      ]
     },
     "92099|white": {
       "p": "92099",
@@ -552001,8 +552018,11 @@
       "c": "Tan",
       "d": "Panel 2 x 2 x 1 Corner",
       "e": "6181752",
-      "u": 1791916924851,
-      "at": 1791654796747
+      "u": 1793302149684,
+      "at": 1791654796747,
+      "ea": [
+        "4593748"
+      ]
     },
     "68495pat0001|trans clear": {
       "p": "68495pat0001",
@@ -575987,7 +576007,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T19:27:12.894Z"
+      "at": "2026-10-29T19:29:12.515Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576011,7 +576031,7 @@
       "bags": "2026-10-29T19:20:57.551Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T19:27:12.894Z",
+    "savedAt": "2026-10-29T19:29:12.515Z",
     "appVersion": "2026.10.28.10"
   }
 }
