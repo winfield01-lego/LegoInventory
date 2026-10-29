@@ -456946,7 +456946,7 @@
       "label": "N39",
       "notes": "Inverted Slopes from 2 to 4 wide - fuselage",
       "group": "N",
-      "lastEdited": "2026-10-29T18:03:42.453Z"
+      "lastEdited": "2026-10-29T18:04:08.520Z"
     },
     {
       "id": "N40",
@@ -473777,6 +473777,19 @@
       "partNum": "32802",
       "color": "Dark Bluish Gray",
       "qty": 1
+    },
+    {
+      "drawerId": "N39",
+      "partNum": "4854",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "N39",
+      "partNum": "4854",
+      "color": "Red",
+      "elementId": "4603489",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -558871,9 +558884,12 @@
       "c": "Red",
       "d": "Brick Sloped Inverted 45° 4 x 4 Double with 4 x 2 Recessed",
       "e": "485421",
-      "u": 1791916924851,
+      "u": 1793297049723,
       "at": 1791846522345,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4603489.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4603489.jpg",
+      "ea": [
+        "4603489"
+      ]
     },
     "2434|red": {
       "p": "2434",
@@ -574563,7 +574579,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T18:03:46.496Z"
+      "at": "2026-10-29T18:04:13.816Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -574587,7 +574603,7 @@
       "bags": "2026-10-29T17:59:39.182Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T18:03:46.496Z",
+    "savedAt": "2026-10-29T18:04:13.816Z",
     "appVersion": "2026.10.28.10"
   }
 }
