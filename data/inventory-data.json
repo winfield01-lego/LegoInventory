@@ -456744,7 +456744,7 @@
       "label": "N10",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.790Z"
+      "lastEdited": "2026-10-29T18:47:33.144Z"
     },
     {
       "id": "N11",
@@ -474195,6 +474195,13 @@
       "partNum": "60849",
       "color": "Yellow",
       "qty": 7
+    },
+    {
+      "drawerId": "N10",
+      "partNum": "60897",
+      "color": "White",
+      "elementId": "4613256",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -474607,6 +474614,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvtwb89u_gpjjz",
+      "label": "October 17 BAM Visit (batch 39)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 39,
+      "timestamp": "2026-10-29T18:47:33.282Z",
+      "items": [
+        {
+          "partNum": "60897",
+          "color": "White",
+          "desc": "Plate Special 1 x 1 with Clip Vertical [Thick Open O Clip]",
+          "elementId": "4613256",
+          "qty": 1,
+          "drawerId": "N10",
+          "drawerLabel": "N10"
+        }
+      ]
+    },
     {
       "id": "bag_mvtvvonn_b9q23",
       "label": "October 17 BAM Visit (batch 38)",
@@ -483674,17 +483700,6 @@
           "sel": false
         },
         {
-          "partNum": "60897",
-          "color": "White",
-          "desc": "Plate Special 1 x 1 with Clip Vertical [Thick Open O Clip]",
-          "elementId": "4613256",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "15210",
           "color": "Dark Bluish Gray",
           "desc": "Road Sign Clip-on 2 x 2 Square [Thick Open O Clip]",
@@ -484301,12 +484316,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T18:47:16.713Z",
+      "savedAt": "2026-10-29T18:47:33.282Z",
       "keepOpen": true,
       "moved": {
-        "batches": 38,
-        "pieces": 1152,
-        "last": "2026-10-29T18:35:28.019Z"
+        "batches": 39,
+        "pieces": 1153,
+        "last": "2026-10-29T18:47:33.282Z"
       }
     },
     {
@@ -491264,9 +491279,12 @@
       "c": "White",
       "d": "Plate Special 1 x 1 with Clip Vertical [Thick Open O Clip]",
       "e": "6330191",
-      "u": 1791916924851,
+      "u": 1793299654483,
       "at": 1791732118013,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4613256.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4613256.jpg",
+      "ea": [
+        "4613256"
+      ]
     },
     "15573|tan": {
       "p": "15573",
@@ -575152,7 +575170,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T18:47:20.746Z"
+      "at": "2026-10-29T18:47:38.571Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -575173,10 +575191,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T18:47:16.713Z",
+      "bags": "2026-10-29T18:47:33.282Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T18:47:20.746Z",
+    "savedAt": "2026-10-29T18:47:38.571Z",
     "appVersion": "2026.10.28.10"
   }
 }
