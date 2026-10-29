@@ -454398,7 +454398,8 @@
       "id": "F33",
       "label": "F33",
       "notes": "",
-      "group": "F"
+      "group": "F",
+      "lastEdited": "2026-10-29T00:14:59.923Z"
     },
     {
       "id": "F34",
@@ -471660,6 +471661,12 @@
       "color": "Yellow",
       "elementId": "254024",
       "qty": 9
+    },
+    {
+      "drawerId": "F33",
+      "partNum": "35480",
+      "color": "Reddish Orange",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -472072,6 +472079,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsskh59_qv2ne",
+      "label": "CdA BAM - 10/22/26 (batch 36)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 36,
+      "timestamp": "2026-10-29T00:15:00.045Z",
+      "items": [
+        {
+          "partNum": "35480",
+          "color": "Reddish Orange",
+          "desc": "Plate Special 1 x 2 Rounded with 2 Open Studs",
+          "elementId": "6527033",
+          "qty": 1,
+          "drawerId": "F33",
+          "drawerLabel": "F33"
+        }
+      ]
+    },
     {
       "id": "bag_mvss55o9_d1j6i",
       "label": "CdA BAM - 10/22/26 (batch 35)",
@@ -479211,17 +479237,6 @@
           "sel": false
         },
         {
-          "partNum": "35480",
-          "color": "Reddish Orange",
-          "desc": "Plate Special 1 x 2 Rounded with 2 Open Studs",
-          "elementId": "6527033",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "14704",
           "color": "Light Bluish Gray",
           "desc": "Plate Special 1 x 2 5.9mm Centre Side Towball Socket",
@@ -479552,12 +479567,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T00:03:05.337Z",
+      "savedAt": "2026-10-29T00:15:00.045Z",
       "keepOpen": true,
       "moved": {
-        "batches": 35,
-        "pieces": 284,
-        "last": "2026-10-29T00:03:05.337Z"
+        "batches": 36,
+        "pieces": 285,
+        "last": "2026-10-29T00:15:00.045Z"
       }
     },
     {
@@ -569378,6 +569393,13 @@
       "d": "Plate Special 1 x 2 Side Handle [Free Ends]",
       "e": "4211209",
       "u": 1793232872312
+    },
+    "35480|reddish orange": {
+      "p": "35480",
+      "c": "Reddish Orange",
+      "d": "Plate Special 1 x 2 Rounded with 2 Open Studs",
+      "e": "6527033",
+      "u": 1793232901246
     }
   },
   "partKinds": {
@@ -569521,7 +569543,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T00:14:36.387Z"
+      "at": "2026-10-29T00:15:04.083Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569542,10 +569564,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T00:03:05.337Z",
+      "bags": "2026-10-29T00:15:00.045Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T00:14:36.387Z",
+    "savedAt": "2026-10-29T00:15:04.083Z",
     "appVersion": "2026.10.28.10"
   }
 }
