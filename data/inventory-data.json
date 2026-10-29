@@ -455510,7 +455510,7 @@
       "label": "J27",
       "notes": "Fence - Bar Type - 1 x 8 and 1 x 4",
       "group": "j",
-      "lastEdited": "2026-10-29T22:41:34.599Z"
+      "lastEdited": "2026-10-29T22:42:36.539Z"
     },
     {
       "id": "J28",
@@ -475955,6 +475955,44 @@
     {
       "drawerId": "N25",
       "partNum": "20482",
+      "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "J27",
+      "partNum": "4083",
+      "color": "Black",
+      "qty": 7
+    },
+    {
+      "drawerId": "J27",
+      "partNum": "4083",
+      "color": "Blue",
+      "elementId": "408323",
+      "qty": 3
+    },
+    {
+      "drawerId": "J27",
+      "partNum": "4083",
+      "color": "Light Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "J27",
+      "partNum": "4083",
+      "color": "Red",
+      "elementId": "408321",
+      "qty": 2
+    },
+    {
+      "drawerId": "J27",
+      "partNum": "4083",
+      "color": "White",
+      "qty": 2
+    },
+    {
+      "drawerId": "J27",
+      "partNum": "4083",
       "color": "Yellow",
       "qty": 1
     }
@@ -566291,9 +566329,12 @@
       "c": "Blue",
       "d": "Bar 1 x 4 x 2 with Studs",
       "e": "4280136",
-      "u": 1791916924851,
+      "u": 1793313757741,
       "at": 1791846540843,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/408323.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/408323.jpg",
+      "ea": [
+        "408323"
+      ]
     },
     "6076|red": {
       "p": "6076",
@@ -568414,9 +568455,12 @@
       "c": "Red",
       "d": "Bar 1 x 4 x 2 with Studs",
       "e": "6001207",
-      "u": 1791916924851,
+      "u": 1793313757741,
       "at": 1791846557290,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/408321.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/408321.jpg",
+      "ea": [
+        "408321"
+      ]
     },
     "4488|white": {
       "p": "4488",
@@ -577815,6 +577859,13 @@
       "d": "Tile Special Round 1 x 1 with Hollow Bar",
       "e": "6232001",
       "u": 1793313602523
+    },
+    "4083|light bluish gray": {
+      "p": "4083",
+      "c": "Light Bluish Gray",
+      "d": "Bar 1 x 4 x 2 with Studs",
+      "e": "4211478",
+      "u": 1793313757741
     }
   },
   "partKinds": {
@@ -577958,7 +578009,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:41:38.632Z"
+      "at": "2026-10-29T22:42:41.835Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577982,7 +578033,7 @@
       "bags": "2026-10-29T22:34:38.251Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:41:38.632Z",
+    "savedAt": "2026-10-29T22:42:41.835Z",
     "appVersion": "2026.10.29.1"
   }
 }
