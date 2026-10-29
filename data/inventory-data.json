@@ -456887,7 +456887,7 @@
       "label": "N30",
       "notes": "Panels with Bars",
       "group": "N",
-      "lastEdited": "2026-10-29T20:45:52.307Z"
+      "lastEdited": "2026-10-29T20:46:37.610Z"
     },
     {
       "id": "N31",
@@ -475000,6 +475000,30 @@
       "partNum": "98834",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "N30",
+      "partNum": "30166",
+      "color": "Dark Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "N30",
+      "partNum": "30166",
+      "color": "Light Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "N30",
+      "partNum": "30166",
+      "color": "Reddish Brown",
+      "qty": 3
+    },
+    {
+      "drawerId": "N30",
+      "partNum": "30166",
+      "color": "White",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -576325,6 +576349,13 @@
       "d": "Spoiler 2 x 4 with Handle [Plain]",
       "e": "6131830",
       "u": 1793306753510
+    },
+    "30166|reddish brown": {
+      "p": "30166",
+      "c": "Reddish Brown",
+      "d": "Plate Special / Shield Rectangular with 4 Studs, Handle",
+      "e": "6328480",
+      "u": 1793306798812
     }
   },
   "partKinds": {
@@ -576468,7 +576499,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T20:45:57.594Z"
+      "at": "2026-10-29T20:46:41.659Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576492,7 +576523,7 @@
       "bags": "2026-10-29T20:43:33.298Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T20:45:57.594Z",
+    "savedAt": "2026-10-29T20:46:41.658Z",
     "appVersion": "2026.10.28.10"
   }
 }
