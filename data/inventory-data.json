@@ -456684,7 +456684,7 @@
       "label": "N1",
       "notes": "Multibar connection pieces - axle and studs",
       "group": "N",
-      "lastEdited": "2026-10-29T20:53:23.842Z"
+      "lastEdited": "2026-10-29T20:55:30.909Z"
     },
     {
       "id": "N2",
@@ -475063,6 +475063,18 @@
       "color": "Black",
       "elementId": "256626",
       "qty": 4
+    },
+    {
+      "drawerId": "N1",
+      "partNum": "48723",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "N1",
+      "partNum": "48723",
+      "color": "Reddish Brown",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -576433,6 +576445,13 @@
       "d": "Bar, 4 Top Bars, Palm Tree Top",
       "e": "256623",
       "u": 1793307080284
+    },
+    "48723|reddish brown": {
+      "p": "48723",
+      "c": "Reddish Brown",
+      "d": "Technic Axle Connector Hub with 4 Bars at 90°",
+      "e": "4252456",
+      "u": 1793307332111
     }
   },
   "partKinds": {
@@ -576576,7 +576595,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T20:53:27.883Z"
+      "at": "2026-10-29T20:55:34.948Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576600,7 +576619,7 @@
       "bags": "2026-10-29T20:51:19.083Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T20:53:27.883Z",
+    "savedAt": "2026-10-29T20:55:34.948Z",
     "appVersion": "2026.10.28.10"
   }
 }
