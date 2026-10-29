@@ -454732,7 +454732,7 @@
       "label": "G42",
       "notes": "1 x 2 x2 and 1 x 2 x 3 - Tall Bricks",
       "group": "G",
-      "lastEdited": "2026-10-29T04:14:38.962Z"
+      "lastEdited": "2026-10-29T04:15:03.112Z"
     },
     {
       "id": "G43",
@@ -473009,6 +473009,19 @@
       "color": "White",
       "elementId": "",
       "qty": 4
+    },
+    {
+      "drawerId": "G42",
+      "partNum": "22886",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "G42",
+      "partNum": "22886",
+      "color": "White",
+      "elementId": "6153776",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -516404,9 +516417,12 @@
       "c": "White",
       "d": "Brick 1 x 2 x 3 with Bottom Stud Holder",
       "e": "6548283",
-      "u": 1791916924851,
+      "u": 1793247304314,
       "at": 1791654494211,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6153776.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6153776.jpg",
+      "ea": [
+        "6153776"
+      ]
     },
     "3007|white": {
       "p": "3007",
@@ -571482,7 +571498,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T04:14:42.993Z"
+      "at": "2026-10-29T04:15:08.390Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571506,7 +571522,7 @@
       "bags": "2026-10-29T03:55:08.653Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T04:14:42.993Z",
+    "savedAt": "2026-10-29T04:15:08.390Z",
     "appVersion": "2026.10.28.10"
   }
 }
