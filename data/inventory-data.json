@@ -455275,7 +455275,8 @@
       "id": "I34",
       "label": "I34",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-10-29T19:32:02.147Z"
     },
     {
       "id": "I35",
@@ -474721,6 +474722,12 @@
       "partNum": "27448",
       "color": "Dark Orange",
       "qty": 1
+    },
+    {
+      "drawerId": "I34",
+      "partNum": "15068",
+      "color": "Black",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -475133,6 +475140,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvtxwfor_362sh",
+      "label": "October 17 BAM Visit (batch 45)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 45,
+      "timestamp": "2026-10-29T19:32:02.283Z",
+      "items": [
+        {
+          "partNum": "15068",
+          "color": "Black",
+          "desc": "Brick Curved 2 x 2 x 2/3",
+          "elementId": "6053077",
+          "qty": 1,
+          "drawerId": "I34",
+          "drawerLabel": "I34"
+        }
+      ]
+    },
     {
       "id": "bag_mvtxu28g_ntl0l",
       "label": "October 17 BAM Visit (batch 44)",
@@ -484350,17 +484376,6 @@
           "sel": false
         },
         {
-          "partNum": "15068",
-          "color": "Black",
-          "desc": "Brick Curved 2 x 2 x 2/3",
-          "elementId": "6053077",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "16091",
           "color": "Light Bluish Gray",
           "desc": "Steering Wheel Small, 2 x 2 [Reinforced]",
@@ -484867,12 +484882,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T19:31:14.842Z",
+      "savedAt": "2026-10-29T19:32:02.282Z",
       "keepOpen": true,
       "moved": {
-        "batches": 44,
-        "pieces": 1168,
-        "last": "2026-10-29T19:30:11.536Z"
+        "batches": 45,
+        "pieces": 1169,
+        "last": "2026-10-29T19:32:02.282Z"
       }
     },
     {
@@ -576051,7 +576066,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T19:31:18.871Z"
+      "at": "2026-10-29T19:32:06.313Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576072,10 +576087,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T19:31:14.842Z",
+      "bags": "2026-10-29T19:32:02.283Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T19:31:18.871Z",
+    "savedAt": "2026-10-29T19:32:06.313Z",
     "appVersion": "2026.10.28.10"
   }
 }
