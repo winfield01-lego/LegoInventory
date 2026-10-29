@@ -455593,7 +455593,7 @@
       "label": "J41",
       "notes": "Panels - Corner - 2 x 2, 2 x 1, 1 x 1",
       "group": "j",
-      "lastEdited": "2026-10-29T19:25:03.519Z"
+      "lastEdited": "2026-10-29T19:26:56.082Z"
     },
     {
       "id": "J42",
@@ -474650,6 +474650,44 @@
       "color": "Red",
       "elementId": "4190219",
       "qty": 2
+    },
+    {
+      "drawerId": "J41",
+      "partNum": "23969",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "J41",
+      "partNum": "23969",
+      "color": "Dark Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "J41",
+      "partNum": "23969",
+      "color": "Light Bluish Gray",
+      "elementId": "6138696",
+      "qty": 3
+    },
+    {
+      "drawerId": "J41",
+      "partNum": "23969",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "J41",
+      "partNum": "23969",
+      "color": "Tan",
+      "elementId": "6173986",
+      "qty": 2
+    },
+    {
+      "drawerId": "J41",
+      "partNum": "23969",
+      "color": "White",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -522760,9 +522798,12 @@
       "c": "Tan",
       "d": "Panel 1 x 2 x 1 with Rounded Corners and 2 Sides",
       "e": "6248495",
-      "u": 1791916924851,
+      "u": 1793302017284,
       "at": 1791654346340,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6173986.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6173986.jpg",
+      "ea": [
+        "6173986"
+      ]
     },
     "32064a|tan": {
       "p": "32064a",
@@ -523909,9 +523950,12 @@
       "c": "Light Bluish Gray",
       "d": "Panel 1 x 2 x 1 with Rounded Corners and 2 Sides",
       "e": "6248492",
-      "u": 1791916924851,
+      "u": 1793302017284,
       "at": 1791654578181,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6138696.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6138696.jpg",
+      "ea": [
+        "6138696"
+      ]
     },
     "3535|light bluish gray": {
       "p": "3535",
@@ -575786,6 +575830,20 @@
       "d": "Panel 1 x 1 x 1 Corner",
       "e": "4101707",
       "u": 1793301904720
+    },
+    "23969|reddish brown": {
+      "p": "23969",
+      "c": "Reddish Brown",
+      "d": "Panel 1 x 2 x 1 with Rounded Corners and 2 Sides",
+      "e": "6291040",
+      "u": 1793302017284
+    },
+    "23969|white": {
+      "p": "23969",
+      "c": "White",
+      "d": "Panel 1 x 2 x 1 with Rounded Corners and 2 Sides",
+      "e": "6135529",
+      "u": 1793302017284
     }
   },
   "partKinds": {
@@ -575929,7 +575987,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T19:25:08.805Z"
+      "at": "2026-10-29T19:27:01.368Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -575953,7 +576011,7 @@
       "bags": "2026-10-29T19:20:57.551Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T19:25:08.805Z",
+    "savedAt": "2026-10-29T19:27:01.368Z",
     "appVersion": "2026.10.28.10"
   }
 }
