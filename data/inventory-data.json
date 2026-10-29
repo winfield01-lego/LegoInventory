@@ -454608,7 +454608,7 @@
       "label": "G23",
       "notes": "1 x 2 x 1 2/3 - studs on 3 sides",
       "group": "G",
-      "lastEdited": "2026-10-29T00:48:57.275Z"
+      "lastEdited": "2026-10-29T00:50:15.153Z"
     },
     {
       "id": "G24",
@@ -471904,13 +471904,43 @@
       "drawerId": "G23",
       "partNum": "67329",
       "color": "Dark Bluish Gray",
-      "qty": 1
+      "qty": 11
     },
     {
       "drawerId": "G23",
       "partNum": "67329",
       "color": "White",
+      "qty": 14
+    },
+    {
+      "drawerId": "G23",
+      "partNum": "67329",
+      "color": "Black",
+      "qty": 6
+    },
+    {
+      "drawerId": "G23",
+      "partNum": "67329",
+      "color": "Blue",
+      "qty": 4
+    },
+    {
+      "drawerId": "G23",
+      "partNum": "67329",
+      "color": "Dark Orange",
+      "qty": 2
+    },
+    {
+      "drawerId": "G23",
+      "partNum": "67329",
+      "color": "Light Bluish Gray",
       "qty": 1
+    },
+    {
+      "drawerId": "G23",
+      "partNum": "67329",
+      "color": "Yellow",
+      "qty": 10
     }
   ],
   "mocLocations": {
@@ -569727,6 +569757,13 @@
       "d": "Plate Special 1 x 2 with Clip Horizontal on Side",
       "e": "6186049",
       "u": 1793234881073
+    },
+    "67329|blue": {
+      "p": "67329",
+      "c": "Blue",
+      "d": "Brick Special 1 x 2 x 1 2/3 with 8 Studs on 3 Sides",
+      "e": "6378789",
+      "u": 1793235016355
     }
   },
   "partKinds": {
@@ -569870,7 +569907,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T00:49:01.311Z"
+      "at": "2026-10-29T00:50:19.185Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569894,7 +569931,7 @@
       "bags": "2026-10-29T00:48:23.878Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T00:49:01.311Z",
+    "savedAt": "2026-10-29T00:50:19.185Z",
     "appVersion": "2026.10.28.10"
   }
 }
