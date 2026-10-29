@@ -454327,7 +454327,7 @@
       "label": "F21",
       "notes": "Spiral Staircase and Connector",
       "group": "F",
-      "lastEdited": "2026-10-29T04:40:38.639Z"
+      "lastEdited": "2026-10-29T04:41:13.889Z"
     },
     {
       "id": "F22",
@@ -473243,6 +473243,18 @@
       "partNum": "40243",
       "color": "Light Bluish Gray",
       "qty": 6
+    },
+    {
+      "drawerId": "F21",
+      "partNum": "40244",
+      "color": "Black",
+      "qty": 8
+    },
+    {
+      "drawerId": "F21",
+      "partNum": "40244",
+      "color": "Tan",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -571747,6 +571759,20 @@
       "d": "Stairs Spiral Step",
       "e": "4211704",
       "u": 1793248804104
+    },
+    "40244|black": {
+      "p": "40244",
+      "c": "Black",
+      "d": "Support 1 x 1 x 5 1/3 Spiral Staircase Axle",
+      "e": "4155558",
+      "u": 1793248875091
+    },
+    "40244|tan": {
+      "p": "40244",
+      "c": "Tan",
+      "d": "Support 1 x 1 x 5 1/3 Spiral Staircase Axle",
+      "e": "4153421",
+      "u": 1793248875091
     }
   },
   "partKinds": {
@@ -571890,7 +571916,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T04:40:42.672Z"
+      "at": "2026-10-29T04:41:17.920Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571914,7 +571940,7 @@
       "bags": "2026-10-29T04:40:02.903Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T04:40:42.672Z",
+    "savedAt": "2026-10-29T04:41:17.920Z",
     "appVersion": "2026.10.28.10"
   }
 }
