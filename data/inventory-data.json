@@ -454230,7 +454230,7 @@
       "label": "F5",
       "notes": "Technic Worm Gears and Rack",
       "group": "F",
-      "lastEdited": "2026-10-29T04:42:36.406Z"
+      "lastEdited": "2026-10-29T04:43:54.555Z"
     },
     {
       "id": "F6",
@@ -473268,6 +473268,26 @@
       "partNum": "32905",
       "color": "Black",
       "qty": 7
+    },
+    {
+      "drawerId": "F5",
+      "partNum": "3743",
+      "color": "Black",
+      "elementId": "374326",
+      "qty": 11
+    },
+    {
+      "drawerId": "F5",
+      "partNum": "3743",
+      "color": "Light Bluish Gray",
+      "elementId": "4211450",
+      "qty": 13
+    },
+    {
+      "drawerId": "F5",
+      "partNum": "3743",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -506595,9 +506615,12 @@
       "c": "Black",
       "d": "Technic Gear Rack 1 x 4",
       "e": "6457282",
-      "u": 1791916924851,
+      "u": 1793249035756,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/374326.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/374326.jpg",
+      "ea": [
+        "374326"
+      ]
     },
     "11010|chrome gold": {
       "p": "11010",
@@ -571801,6 +571824,13 @@
       "d": "Technic Worm Gear Type 2",
       "e": "6199162",
       "u": 1793248957608
+    },
+    "3743|white": {
+      "p": "3743",
+      "c": "White",
+      "d": "Technic Gear Rack 1 x 4",
+      "e": "374301",
+      "u": 1793249035756
     }
   },
   "partKinds": {
@@ -571944,7 +571974,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T04:42:40.437Z"
+      "at": "2026-10-29T04:43:59.841Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571968,7 +571998,7 @@
       "bags": "2026-10-29T04:41:45.137Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T04:42:40.437Z",
+    "savedAt": "2026-10-29T04:43:59.841Z",
     "appVersion": "2026.10.28.10"
   }
 }
