@@ -457625,7 +457625,7 @@
       "label": "S5",
       "notes": "Doors - Left and Right",
       "group": "S",
-      "lastEdited": "2026-10-29T04:27:22.127Z"
+      "lastEdited": "2026-10-29T04:28:08.626Z"
     },
     {
       "id": "S6",
@@ -473135,6 +473135,12 @@
       "partNum": "3821",
       "color": "Yellow",
       "elementId": "382124",
+      "qty": 1
+    },
+    {
+      "drawerId": "S5",
+      "partNum": "92262",
+      "color": "Red",
       "qty": 1
     }
   ],
@@ -571534,6 +571540,13 @@
       "d": "Door 1 x 3 x 1 Right",
       "e": "382123",
       "u": 1793248043329
+    },
+    "92262|red": {
+      "p": "92262",
+      "c": "Red",
+      "d": "Door 1 x 3 x 2 Left - Open Between Top and Bottom Hinge",
+      "e": "4522380",
+      "u": 1793248089829
     }
   },
   "partKinds": {
@@ -571677,7 +571690,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T04:27:27.429Z"
+      "at": "2026-10-29T04:28:12.670Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571701,7 +571714,7 @@
       "bags": "2026-10-29T04:24:15.624Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T04:27:27.429Z",
+    "savedAt": "2026-10-29T04:28:12.670Z",
     "appVersion": "2026.10.28.10"
   }
 }
