@@ -457041,7 +457041,7 @@
       "label": "O8",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-10-13T17:14:08.108Z"
+      "lastEdited": "2026-10-29T20:42:08.806Z"
     },
     {
       "id": "O9",
@@ -474933,6 +474933,12 @@
       "color": "Dark Bluish Gray",
       "elementId": "4211024",
       "qty": 13
+    },
+    {
+      "drawerId": "O8",
+      "partNum": "79846",
+      "color": "Dark Azure",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -475345,6 +475351,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu0elkk_id2ym",
+      "label": "October 17 BAM Visit (batch 48)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 48,
+      "timestamp": "2026-10-29T20:42:08.948Z",
+      "items": [
+        {
+          "partNum": "79846",
+          "color": "Dark Azure",
+          "desc": "Plate Angled 2 x 2 with Step and Hole in Center",
+          "elementId": "6365678",
+          "qty": 1,
+          "drawerId": "O8",
+          "drawerLabel": "O8"
+        }
+      ]
+    },
     {
       "id": "bag_mvu0cpwy_padoc",
       "label": "October 17 BAM Visit (batch 47)",
@@ -484619,17 +484644,6 @@
           "sel": false
         },
         {
-          "partNum": "79846",
-          "color": "Dark Azure",
-          "desc": "Plate Angled 2 x 2 with Step and Hole in Center",
-          "elementId": "6365678",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "5066",
           "color": "Dark Bluish Gray",
           "desc": "Plate Special 2 x 2 with Horizontal T-Bar Underneath",
@@ -485103,12 +485117,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T20:41:50.825Z",
+      "savedAt": "2026-10-29T20:42:08.948Z",
       "keepOpen": true,
       "moved": {
-        "batches": 47,
-        "pieces": 1171,
-        "last": "2026-10-29T20:40:41.266Z"
+        "batches": 48,
+        "pieces": 1172,
+        "last": "2026-10-29T20:42:08.948Z"
       }
     },
     {
@@ -576204,6 +576218,13 @@
       "d": "Brick Special 2 x 2 with 2 Pins and Axle Hole",
       "e": "3000023",
       "u": 1793306504659
+    },
+    "79846|dark azure": {
+      "p": "79846",
+      "c": "Dark Azure",
+      "d": "Plate Angled 2 x 2 with Step and Hole in Center",
+      "e": "6365678",
+      "u": 1793306530149
     }
   },
   "partKinds": {
@@ -576347,7 +576368,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T20:41:55.517Z"
+      "at": "2026-10-29T20:42:12.981Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576368,10 +576389,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T20:41:50.825Z",
+      "bags": "2026-10-29T20:42:08.948Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T20:41:55.517Z",
+    "savedAt": "2026-10-29T20:42:12.981Z",
     "appVersion": "2026.10.28.10"
   }
 }
