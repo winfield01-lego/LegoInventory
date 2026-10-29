@@ -456697,7 +456697,7 @@
       "label": "N3",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.789Z"
+      "lastEdited": "2026-10-29T20:31:50.108Z"
     },
     {
       "id": "N4",
@@ -474855,6 +474855,13 @@
       "partNum": "15068",
       "color": "Yellow",
       "qty": 4
+    },
+    {
+      "drawerId": "N3",
+      "partNum": "16091",
+      "color": "Light Bluish Gray",
+      "elementId": "6061697",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -475267,6 +475274,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu01c6k_5gftf",
+      "label": "October 17 BAM Visit (batch 46)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 46,
+      "timestamp": "2026-10-29T20:31:50.252Z",
+      "items": [
+        {
+          "partNum": "16091",
+          "color": "Light Bluish Gray",
+          "desc": "Steering Wheel Small, 2 x 2 [Reinforced]",
+          "elementId": "6061697",
+          "qty": 1,
+          "drawerId": "N3",
+          "drawerLabel": "N3"
+        }
+      ]
+    },
     {
       "id": "bag_mvtxwfor_362sh",
       "label": "October 17 BAM Visit (batch 45)",
@@ -484503,17 +484529,6 @@
           "sel": false
         },
         {
-          "partNum": "16091",
-          "color": "Light Bluish Gray",
-          "desc": "Steering Wheel Small, 2 x 2 [Reinforced]",
-          "elementId": "6061697",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "30000",
           "color": "Light Bluish Gray",
           "desc": "Brick Special 2 x 2 with 2 Pins and Axle Hole",
@@ -485009,12 +485024,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T20:31:39.528Z",
+      "savedAt": "2026-10-29T20:31:50.251Z",
       "keepOpen": true,
       "moved": {
-        "batches": 45,
-        "pieces": 1169,
-        "last": "2026-10-29T19:32:02.282Z"
+        "batches": 46,
+        "pieces": 1170,
+        "last": "2026-10-29T20:31:50.252Z"
       }
     },
     {
@@ -489650,8 +489665,11 @@
       "c": "Light Bluish Gray",
       "d": "Steering Wheel Small, 2 x 2 [Reinforced]",
       "e": "6092956",
-      "u": 1791916924851,
-      "at": 1791660732205
+      "u": 1793305911453,
+      "at": 1791660732205,
+      "ea": [
+        "6061697"
+      ]
     },
     "3069bpr0307|light bluish gray": {
       "p": "3069bpr0307",
@@ -576224,7 +576242,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T20:31:43.572Z"
+      "at": "2026-10-29T20:31:54.293Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576245,10 +576263,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T20:31:39.530Z",
+      "bags": "2026-10-29T20:31:50.252Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T20:31:43.572Z",
+    "savedAt": "2026-10-29T20:31:54.293Z",
     "appVersion": "2026.10.28.10"
   }
 }
