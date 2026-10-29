@@ -456122,7 +456122,7 @@
       "label": "L9",
       "notes": "2 x 2 Turntable Base",
       "group": "L",
-      "lastEdited": "2026-10-29T19:30:30.801Z"
+      "lastEdited": "2026-10-29T19:31:02.967Z"
     },
     {
       "id": "L10",
@@ -474708,6 +474708,18 @@
       "partNum": "27448",
       "color": "White",
       "elementId": "6238334",
+      "qty": 18
+    },
+    {
+      "drawerId": "L9",
+      "partNum": "27448",
+      "color": "Black",
+      "qty": 4
+    },
+    {
+      "drawerId": "L9",
+      "partNum": "27448",
+      "color": "Dark Orange",
       "qty": 1
     }
   ],
@@ -575882,6 +575894,20 @@
       "d": "Panel 1 x 2 x 1 with Rounded Corners and 2 Sides",
       "e": "6135529",
       "u": 1793302017284
+    },
+    "27448|black": {
+      "p": "27448",
+      "c": "Black",
+      "d": "Turntable 2 x 2 Female",
+      "e": "6310981",
+      "u": 1793302264169
+    },
+    "27448|dark orange": {
+      "p": "27448",
+      "c": "Dark Orange",
+      "d": "Turntable 2 x 2 Female",
+      "e": "6375188",
+      "u": 1793302264169
     }
   },
   "partKinds": {
@@ -576025,7 +576051,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T19:30:34.841Z"
+      "at": "2026-10-29T19:31:07.001Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576049,7 +576075,7 @@
       "bags": "2026-10-29T19:30:11.536Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T19:30:34.841Z",
+    "savedAt": "2026-10-29T19:31:07.001Z",
     "appVersion": "2026.10.28.10"
   }
 }
