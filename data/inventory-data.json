@@ -455207,7 +455207,7 @@
       "label": "I23",
       "notes": "Brick Double Curved 1 x 1 to 1 x 4 and 2 x 2 Corner",
       "group": "I",
-      "lastEdited": "2026-10-29T23:00:39.076Z"
+      "lastEdited": "2026-10-29T23:01:14.895Z"
     },
     {
       "id": "I24",
@@ -476128,7 +476128,7 @@
       "drawerId": "I23",
       "partNum": "79756",
       "color": "Light Bluish Gray",
-      "qty": 1
+      "qty": 2
     },
     {
       "drawerId": "J9",
@@ -476158,6 +476158,30 @@
     {
       "drawerId": "I23",
       "partNum": "79757",
+      "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "I23",
+      "partNum": "79756",
+      "color": "Black",
+      "qty": 4
+    },
+    {
+      "drawerId": "I23",
+      "partNum": "79756",
+      "color": "Dark Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "I23",
+      "partNum": "79756",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "I23",
+      "partNum": "79756",
       "color": "White",
       "qty": 1
     }
@@ -578160,6 +578184,13 @@
       "d": "Brick Curved 2 x 2 x 2/3 Double, Corner, No Studs",
       "e": "6378417",
       "u": 1793314840278
+    },
+    "79756|tan": {
+      "p": "79756",
+      "c": "Tan",
+      "d": "Brick Curved 1 x 4 x 2/3 Double, No Studs",
+      "e": "6375672",
+      "u": 1793314876098
     }
   },
   "partKinds": {
@@ -578303,7 +578334,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T23:00:43.110Z"
+      "at": "2026-10-29T23:01:18.920Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578327,7 +578358,7 @@
       "bags": "2026-10-29T22:57:13.855Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T23:00:43.110Z",
+    "savedAt": "2026-10-29T23:01:18.919Z",
     "appVersion": "2026.10.29.1"
   }
 }
