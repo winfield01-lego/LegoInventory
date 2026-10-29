@@ -455845,7 +455845,7 @@
       "label": "K11",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-10-13T17:12:46.630Z"
+      "lastEdited": "2026-10-29T22:16:50.945Z"
     },
     {
       "id": "K12",
@@ -455873,7 +455873,7 @@
       "label": "K15",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-10-13T17:12:46.630Z"
+      "lastEdited": "2026-10-29T22:16:50.944Z"
     },
     {
       "id": "K16",
@@ -475742,6 +475742,19 @@
       "partNum": "4175",
       "color": "Yellow",
       "qty": 1
+    },
+    {
+      "drawerId": "K15",
+      "partNum": "32000",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "K11",
+      "partNum": "32064a",
+      "color": "Green",
+      "elementId": "4113840",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -476154,6 +476167,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu3sdxf_75in9",
+      "label": "October 17 BAM Visit (batch 61)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 61,
+      "timestamp": "2026-10-29T22:16:51.075Z",
+      "items": [
+        {
+          "partNum": "32000",
+          "color": "Reddish Brown",
+          "desc": "Technic Brick 1 x 2 [2 Pin Holes]",
+          "elementId": "6151461",
+          "qty": 1,
+          "drawerId": "K15",
+          "drawerLabel": "K15"
+        },
+        {
+          "partNum": "32064a",
+          "color": "Green",
+          "desc": "Technic Brick 1 x 2 with Axle Hole Type 1 [+ Opening] and Bottom Pin",
+          "elementId": "4113840",
+          "qty": 1,
+          "drawerId": "K11",
+          "drawerLabel": "K11"
+        }
+      ]
+    },
     {
       "id": "bag_mvu3r7hu_umqj2",
       "label": "October 17 BAM Visit (batch 60)",
@@ -485740,28 +485781,6 @@
           "sel": false
         },
         {
-          "partNum": "32000",
-          "color": "Reddish Brown",
-          "desc": "Technic Brick 1 x 2 [2 Pin Holes]",
-          "elementId": "6151461",
-          "qty": 1,
-          "drawerId": "K15",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "32064a",
-          "color": "Green",
-          "desc": "Technic Brick 1 x 2 with Axle Hole Type 1 [+ Opening] and Bottom Pin",
-          "elementId": "4113840",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "93273",
           "color": "Dark Tan",
           "desc": "Brick Curved 4 x 1 Double, No Studs",
@@ -486026,12 +486045,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T22:16:40.991Z",
+      "savedAt": "2026-10-29T22:16:51.075Z",
       "keepOpen": true,
       "moved": {
-        "batches": 60,
-        "pieces": 1193,
-        "last": "2026-10-29T22:15:56.081Z"
+        "batches": 61,
+        "pieces": 1195,
+        "last": "2026-10-29T22:16:51.075Z"
       }
     },
     {
@@ -508469,9 +508488,12 @@
       "c": "Green",
       "d": "Technic Brick 1 x 2 with Axle Hole Type 1 [+ Opening] and Bottom Pin",
       "e": "6206248",
-      "u": 1791916924851,
+      "u": 1793312212276,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4113840.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4113840.jpg",
+      "ea": [
+        "4113840"
+      ]
     },
     "51739|green": {
       "p": "51739",
@@ -577648,7 +577670,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:16:45.021Z"
+      "at": "2026-10-29T22:16:56.361Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577669,10 +577691,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T22:16:40.991Z",
+      "bags": "2026-10-29T22:16:51.075Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:16:45.021Z",
+    "savedAt": "2026-10-29T22:16:56.361Z",
     "appVersion": "2026.10.29.1"
   }
 }
