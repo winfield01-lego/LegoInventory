@@ -454533,7 +454533,8 @@
       "id": "G10",
       "label": "G10",
       "notes": "",
-      "group": "G"
+      "group": "G",
+      "lastEdited": "2026-10-29T04:46:16.189Z"
     },
     {
       "id": "G11",
@@ -473302,6 +473303,12 @@
       "color": "Black",
       "elementId": "4540906",
       "qty": 1
+    },
+    {
+      "drawerId": "G10",
+      "partNum": "3963",
+      "color": "Light Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -473714,6 +473721,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvt29c01_4c5vv",
+      "label": "CdA BAM - 10/22/26 (batch 56)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 56,
+      "timestamp": "2026-10-29T04:46:16.321Z",
+      "items": [
+        {
+          "partNum": "3963",
+          "color": "Light Bluish Gray",
+          "desc": "Brick Special 1 x 1 with 3 Speakers / Loudspeakers / Space Positioning Rockets",
+          "elementId": "4223363",
+          "qty": 1,
+          "drawerId": "G10",
+          "drawerLabel": "G10"
+        }
+      ]
+    },
     {
       "id": "bag_mvt23ir5_j3f3j",
       "label": "CdA BAM - 10/22/26 (batch 55)",
@@ -481269,17 +481295,6 @@
           "sel": false
         },
         {
-          "partNum": "3963",
-          "color": "Light Bluish Gray",
-          "desc": "Brick Special 1 x 1 with 3 Speakers / Loudspeakers / Space Positioning Rockets",
-          "elementId": "4223363",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "11478",
           "color": "Red",
           "desc": "Technic Beam 1 x 5 Thin with Axle Holes on Ends",
@@ -481324,12 +481339,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T04:45:50.051Z",
+      "savedAt": "2026-10-29T04:46:16.321Z",
       "keepOpen": true,
       "moved": {
-        "batches": 55,
-        "pieces": 308,
-        "last": "2026-10-29T04:41:45.137Z"
+        "batches": 56,
+        "pieces": 309,
+        "last": "2026-10-29T04:46:16.321Z"
       }
     },
     {
@@ -571994,7 +572009,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T04:45:54.082Z"
+      "at": "2026-10-29T04:46:20.354Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -572015,10 +572030,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T04:45:50.051Z",
+      "bags": "2026-10-29T04:46:16.321Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T04:45:54.082Z",
+    "savedAt": "2026-10-29T04:46:20.354Z",
     "appVersion": "2026.10.28.10"
   }
 }
