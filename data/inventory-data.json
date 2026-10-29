@@ -454229,7 +454229,8 @@
       "id": "F5",
       "label": "F5",
       "notes": "",
-      "group": "F"
+      "group": "F",
+      "lastEdited": "2026-10-29T04:41:45.006Z"
     },
     {
       "id": "F6",
@@ -473255,6 +473256,12 @@
       "partNum": "40244",
       "color": "Tan",
       "qty": 2
+    },
+    {
+      "drawerId": "F5",
+      "partNum": "32905",
+      "color": "Light Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -473667,6 +473674,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvt23ir5_j3f3j",
+      "label": "CdA BAM - 10/22/26 (batch 55)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 55,
+      "timestamp": "2026-10-29T04:41:45.137Z",
+      "items": [
+        {
+          "partNum": "32905",
+          "color": "Light Bluish Gray",
+          "desc": "Technic Worm Gear Type 2",
+          "elementId": "6185471",
+          "qty": 1,
+          "drawerId": "F5",
+          "drawerLabel": "F5"
+        }
+      ]
+    },
     {
       "id": "bag_mvt21bvb_lm18u",
       "label": "CdA BAM - 10/22/26 (batch 54)",
@@ -481256,25 +481282,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "32905",
-          "color": "Light Bluish Gray",
-          "desc": "Technic Worm Gear Type 2",
-          "elementId": "6185471",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
         }
       ],
-      "savedAt": "2026-10-29T04:40:02.903Z",
+      "savedAt": "2026-10-29T04:41:45.137Z",
       "keepOpen": true,
       "moved": {
-        "batches": 54,
-        "pieces": 307,
-        "last": "2026-10-29T04:40:02.903Z"
+        "batches": 55,
+        "pieces": 308,
+        "last": "2026-10-29T04:41:45.137Z"
       }
     },
     {
@@ -571916,7 +571931,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T04:41:17.920Z"
+      "at": "2026-10-29T04:41:49.177Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571937,10 +571952,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T04:40:02.903Z",
+      "bags": "2026-10-29T04:41:45.137Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T04:41:17.920Z",
+    "savedAt": "2026-10-29T04:41:49.177Z",
     "appVersion": "2026.10.28.10"
   }
 }
