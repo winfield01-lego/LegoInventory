@@ -456077,7 +456077,7 @@
       "label": "L2",
       "notes": "Space gun, Control Panel, Chainsaw Body",
       "group": "L",
-      "lastEdited": "2026-10-29T22:51:15.013Z"
+      "lastEdited": "2026-10-29T22:51:39.447Z"
     },
     {
       "id": "L3",
@@ -476033,6 +476033,25 @@
       "partNum": "7033",
       "color": "Lime",
       "qty": 4
+    },
+    {
+      "drawerId": "L2",
+      "partNum": "2342",
+      "color": "Red",
+      "elementId": "",
+      "qty": 1
+    },
+    {
+      "drawerId": "L2",
+      "partNum": "2342",
+      "color": "Dark Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "L2",
+      "partNum": "2342",
+      "color": "White",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -577949,6 +577968,20 @@
       "d": "Brick Round Corner 5 x 5 x 1 Curved, Bottom Cut Outs, No Studs, 9 Bottom Tubes",
       "e": "6585451",
       "u": 1793314236743
+    },
+    "2342|red": {
+      "p": "2342",
+      "c": "Red",
+      "d": "Equipment Control Panel",
+      "e": "",
+      "u": 1793314300649
+    },
+    "2342|dark gray": {
+      "p": "2342",
+      "c": "Dark Gray",
+      "d": "Equipment Control Panel",
+      "e": "234227",
+      "u": 1793314300649
     }
   },
   "partKinds": {
@@ -578092,7 +578125,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:51:19.055Z"
+      "at": "2026-10-29T22:51:44.762Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578116,7 +578149,7 @@
       "bags": "2026-10-29T22:48:13.722Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:51:19.055Z",
+    "savedAt": "2026-10-29T22:51:44.762Z",
     "appVersion": "2026.10.29.1"
   }
 }
