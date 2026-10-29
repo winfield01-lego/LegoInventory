@@ -457625,7 +457625,7 @@
       "label": "S5",
       "notes": "Doors - Left and Right",
       "group": "S",
-      "lastEdited": "2026-10-29T04:34:46.207Z"
+      "lastEdited": "2026-10-29T04:35:56.791Z"
     },
     {
       "id": "S6",
@@ -473178,6 +473178,24 @@
       "drawerId": "S5",
       "partNum": "58380",
       "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "S5",
+      "partNum": "60623",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "S5",
+      "partNum": "60623",
+      "color": "Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "S5",
+      "partNum": "60623",
+      "color": "White",
       "qty": 1
     }
   ],
@@ -571608,6 +571626,27 @@
       "d": "Door 1 x 3 x 4 Right - Open Between Top and Bottom Hinge",
       "e": "4580433",
       "u": 1793248487410
+    },
+    "60623|black": {
+      "p": "60623",
+      "c": "Black",
+      "d": "Door 1 x 4 x 6 with 4 Panes and Stud Handle",
+      "e": "4521208",
+      "u": 1793248557994
+    },
+    "60623|orange": {
+      "p": "60623",
+      "c": "Orange",
+      "d": "Door 1 x 4 x 6 with 4 Panes and Stud Handle",
+      "e": "6209675",
+      "u": 1793248557994
+    },
+    "60623|white": {
+      "p": "60623",
+      "c": "White",
+      "d": "Door 1 x 4 x 6 with 4 Panes and Stud Handle",
+      "e": "4521943",
+      "u": 1793248557994
     }
   },
   "partKinds": {
@@ -571751,7 +571790,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T04:34:50.237Z"
+      "at": "2026-10-29T04:36:00.836Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571775,7 +571814,7 @@
       "bags": "2026-10-29T04:24:15.624Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T04:34:50.237Z",
+    "savedAt": "2026-10-29T04:36:00.836Z",
     "appVersion": "2026.10.28.10"
   }
 }
