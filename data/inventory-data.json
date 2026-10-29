@@ -456964,7 +456964,7 @@
       "label": "N41",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.790Z"
+      "lastEdited": "2026-10-29T20:58:04.059Z"
     },
     {
       "id": "N42",
@@ -475108,6 +475108,13 @@
       "color": "Dark Brown",
       "elementId": "6167942",
       "qty": 1
+    },
+    {
+      "drawerId": "N41",
+      "partNum": "4032a",
+      "color": "Bright Green",
+      "elementId": "4114430",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -475520,6 +475527,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu0z2ng_rqw9w",
+      "label": "October 17 BAM Visit (batch 51)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 51,
+      "timestamp": "2026-10-29T20:58:04.204Z",
+      "items": [
+        {
+          "partNum": "4032a",
+          "color": "Bright Green",
+          "desc": "Plate Round 2 x 2 with Axle Hole Type 1 (+ Opening)",
+          "elementId": "4114430",
+          "qty": 1,
+          "drawerId": "N41",
+          "drawerLabel": "N41"
+        }
+      ]
+    },
     {
       "id": "bag_mvu0qe23_63g87",
       "label": "October 17 BAM Visit (batch 50)",
@@ -484880,17 +484906,6 @@
           "sel": false
         },
         {
-          "partNum": "4032a",
-          "color": "Bright Green",
-          "desc": "Plate Round 2 x 2 with Axle Hole Type 1 (+ Opening)",
-          "elementId": "4114430",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "30389b",
           "color": "Black",
           "desc": "Hinge Brick 2 x 2 Locking with 1 Finger Vertical and Axle Hole [+ Opening]",
@@ -485309,12 +485324,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T20:57:54.350Z",
+      "savedAt": "2026-10-29T20:58:04.204Z",
       "keepOpen": true,
       "moved": {
-        "batches": 50,
-        "pieces": 1177,
-        "last": "2026-10-29T20:51:19.083Z"
+        "batches": 51,
+        "pieces": 1178,
+        "last": "2026-10-29T20:58:04.204Z"
       }
     },
     {
@@ -509616,9 +509631,12 @@
       "c": "Bright Green",
       "d": "Plate Round 2 x 2 with Axle Hole Type 1 (+ Opening)",
       "e": "6138624",
-      "u": 1791916924851,
+      "u": 1793307485405,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4114430.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4114430.jpg",
+      "ea": [
+        "4114430"
+      ]
     },
     "2431|bright green": {
       "p": "2431",
@@ -576637,7 +576655,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T20:57:58.378Z"
+      "at": "2026-10-29T20:58:09.483Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576658,10 +576676,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T20:57:54.350Z",
+      "bags": "2026-10-29T20:58:04.204Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T20:57:58.378Z",
+    "savedAt": "2026-10-29T20:58:09.483Z",
     "appVersion": "2026.10.28.10"
   }
 }
