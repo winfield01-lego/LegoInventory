@@ -455843,7 +455843,7 @@
       "label": "K10",
       "notes": "Pin Connectors and Bar Holder with Axle",
       "group": "K",
-      "lastEdited": "2026-10-29T23:26:53.123Z"
+      "lastEdited": "2026-10-29T23:28:49.029Z"
     },
     {
       "id": "K11",
@@ -476401,6 +476401,36 @@
       "color": "Light Bluish Gray",
       "elementId": "4600518",
       "qty": 7
+    },
+    {
+      "drawerId": "K10",
+      "partNum": "65487",
+      "color": "Black",
+      "qty": 28
+    },
+    {
+      "drawerId": "K10",
+      "partNum": "65487",
+      "color": "Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "K10",
+      "partNum": "65487",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "K10",
+      "partNum": "65487",
+      "color": "Lime",
+      "qty": 4
+    },
+    {
+      "drawerId": "K10",
+      "partNum": "65487",
+      "color": "White",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -578507,6 +578537,13 @@
       "d": "Wedge Plate 4 x 6 Cut Corners",
       "e": "4141268",
       "u": 1793315914776
+    },
+    "65487|lime": {
+      "p": "65487",
+      "c": "Lime",
+      "d": "Technic Pin Connector Hub with 1 Pin with Friction Ridges Lengthwise [Centered Friction Ridge]",
+      "e": "6326619",
+      "u": 1793316530232
     }
   },
   "partKinds": {
@@ -578650,7 +578687,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T23:26:57.166Z"
+      "at": "2026-10-29T23:28:53.078Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578674,7 +578711,7 @@
       "bags": "2026-10-29T23:21:16.224Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T23:26:57.166Z",
+    "savedAt": "2026-10-29T23:28:53.078Z",
     "appVersion": "2026.10.29.1"
   }
 }
