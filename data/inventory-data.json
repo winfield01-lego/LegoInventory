@@ -455666,7 +455666,7 @@
       "label": "T7",
       "notes": "2 x 3 Slope - Side",
       "group": "T",
-      "lastEdited": "2026-10-29T19:10:08.977Z"
+      "lastEdited": "2026-10-29T19:12:01.579Z"
     },
     {
       "id": "T8",
@@ -474426,6 +474426,54 @@
       "partNum": "3038",
       "color": "White",
       "elementId": "303801",
+      "qty": 19
+    },
+    {
+      "drawerId": "T7",
+      "partNum": "3038",
+      "color": "Black",
+      "qty": 13
+    },
+    {
+      "drawerId": "T7",
+      "partNum": "3038",
+      "color": "Blue",
+      "qty": 6
+    },
+    {
+      "drawerId": "T7",
+      "partNum": "3038",
+      "color": "Dark Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "T7",
+      "partNum": "3038",
+      "color": "Dark Bluish Gray",
+      "qty": 6
+    },
+    {
+      "drawerId": "T7",
+      "partNum": "3038",
+      "color": "Dark Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "T7",
+      "partNum": "3038",
+      "color": "Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "T7",
+      "partNum": "3038",
+      "color": "Light Bluish Gray",
+      "qty": 13
+    },
+    {
+      "drawerId": "T7",
+      "partNum": "3038",
+      "color": "Red",
       "qty": 1
     }
   ],
@@ -575398,6 +575446,41 @@
       "d": "Road Sign Clip-on 2.2 x 2.667 Triangular with Open O Clip",
       "e": "6317561",
       "u": 1793300945131
+    },
+    "3038|blue": {
+      "p": "3038",
+      "c": "Blue",
+      "d": "Brick Sloped 45° 2 x 3",
+      "e": "303823",
+      "u": 1793301122782
+    },
+    "3038|dark blue": {
+      "p": "3038",
+      "c": "Dark Blue",
+      "d": "Brick Sloped 45° 2 x 3",
+      "e": "4261779",
+      "u": 1793301122782
+    },
+    "3038|dark red": {
+      "p": "3038",
+      "c": "Dark Red",
+      "d": "Brick Sloped 45° 2 x 3",
+      "e": "4260842",
+      "u": 1793301122782
+    },
+    "3038|green": {
+      "p": "3038",
+      "c": "Green",
+      "d": "Brick Sloped 45° 2 x 3",
+      "e": "303828",
+      "u": 1793301122782
+    },
+    "3038|red": {
+      "p": "3038",
+      "c": "Red",
+      "d": "Brick Sloped 45° 2 x 3",
+      "e": "303821",
+      "u": 1793301122782
     }
   },
   "partKinds": {
@@ -575541,7 +575624,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T19:10:13.007Z"
+      "at": "2026-10-29T19:12:05.610Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -575565,7 +575648,7 @@
       "bags": "2026-10-29T19:09:53.334Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T19:10:13.007Z",
+    "savedAt": "2026-10-29T19:12:05.610Z",
     "appVersion": "2026.10.28.10"
   }
 }
