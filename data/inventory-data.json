@@ -456617,7 +456617,7 @@
       "label": "M36",
       "notes": "1 x 4 Hinge",
       "group": "M",
-      "lastEdited": "2026-10-29T18:15:38.431Z"
+      "lastEdited": "2026-10-29T18:21:52.712Z"
     },
     {
       "id": "M37",
@@ -473888,32 +473888,56 @@
       "drawerId": "M36",
       "partNum": "1927",
       "color": "Dark Bluish Gray",
-      "qty": 2
+      "qty": 37
     },
     {
       "drawerId": "M36",
       "partNum": "1927",
       "color": "Black",
-      "qty": 2
+      "qty": 37
     },
     {
       "drawerId": "M36",
       "partNum": "1927",
       "color": "Light Bluish Gray",
-      "qty": 2
+      "qty": 35
     },
     {
       "drawerId": "M36",
       "partNum": "1927",
       "color": "Tan",
-      "qty": 2
+      "qty": 6
     },
     {
       "drawerId": "M36",
       "partNum": "1927",
       "color": "White",
       "elementId": "6416527",
-      "qty": 2
+      "qty": 19
+    },
+    {
+      "drawerId": "M36",
+      "partNum": "1927",
+      "color": "Blue",
+      "qty": 22
+    },
+    {
+      "drawerId": "M36",
+      "partNum": "1927",
+      "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "M36",
+      "partNum": "1927",
+      "color": "Red",
+      "qty": 17
+    },
+    {
+      "drawerId": "M36",
+      "partNum": "1927",
+      "color": "Yellow",
+      "qty": 7
     }
   ],
   "mocLocations": {
@@ -574593,6 +574617,13 @@
       "d": "Brick Sloped Inverted 45° 4 x 2 Double with 2 x 2 Recessed",
       "e": "6039192",
       "u": 1793297199892
+    },
+    "1927|dark blue": {
+      "p": "1927",
+      "c": "Dark Blue",
+      "d": "Hinge Plate 1 x 4 Swivel Top / Base - Hollow Clip [Complete Assembly]",
+      "e": "6416530",
+      "u": 1793298113915
     }
   },
   "partKinds": {
@@ -574736,7 +574767,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T18:15:42.471Z"
+      "at": "2026-10-29T18:21:56.751Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -574760,7 +574791,7 @@
       "bags": "2026-10-29T18:15:23.209Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T18:15:42.471Z",
+    "savedAt": "2026-10-29T18:21:56.751Z",
     "appVersion": "2026.10.28.10"
   }
 }
