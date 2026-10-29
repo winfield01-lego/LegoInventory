@@ -457336,7 +457336,7 @@
       "label": "O50",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-10-29T22:14:21.744Z"
+      "lastEdited": "2026-10-29T22:15:15.245Z"
     },
     {
       "id": "O51",
@@ -475644,7 +475644,7 @@
       "partNum": "4175",
       "color": "Light Bluish Gray",
       "elementId": "4211545",
-      "qty": 2
+      "qty": 8
     },
     {
       "drawerId": "L36",
@@ -475701,6 +475701,46 @@
       "drawerId": "O50",
       "partNum": "6016",
       "color": "Light Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "O50",
+      "partNum": "4175",
+      "color": "Black",
+      "elementId": "4100530",
+      "qty": 9
+    },
+    {
+      "drawerId": "O50",
+      "partNum": "4175",
+      "color": "Blue",
+      "elementId": "4100528",
+      "qty": 1
+    },
+    {
+      "drawerId": "O50",
+      "partNum": "4175",
+      "color": "Dark Bluish Gray",
+      "elementId": "4210801",
+      "qty": 8
+    },
+    {
+      "drawerId": "O50",
+      "partNum": "4175",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "O50",
+      "partNum": "4175",
+      "color": "White",
+      "elementId": "417501",
+      "qty": 1
+    },
+    {
+      "drawerId": "O50",
+      "partNum": "4175",
+      "color": "Yellow",
       "qty": 1
     }
   ],
@@ -491426,9 +491466,12 @@
       "c": "Black",
       "d": "Plate Special 1 x 2 with Ladder",
       "e": "6285241",
-      "u": 1791916924851,
+      "u": 1793312116447,
       "at": 1791846553338,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4100530.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4100530.jpg",
+      "ea": [
+        "4100530"
+      ]
     },
     "77850|dark tan": {
       "p": "77850",
@@ -495943,7 +495986,10 @@
       "c": "Blue",
       "d": "Plate Special 1 x 2 with Ladder",
       "e": "4519966",
-      "u": 1791916924851
+      "u": 1793312116447,
+      "ea": [
+        "4100528"
+      ]
     },
     "87580|black": {
       "p": "87580",
@@ -499065,7 +499111,10 @@
       "c": "White",
       "d": "Plate Special 1 x 2 with Ladder",
       "e": "6317345",
-      "u": 1791916924851
+      "u": 1793312116447,
+      "ea": [
+        "417501"
+      ]
     },
     "11458|light bluish gray": {
       "p": "11458",
@@ -520441,9 +520490,12 @@
       "c": "Dark Bluish Gray",
       "d": "Plate Special 1 x 2 with Ladder",
       "e": "6285244",
-      "u": 1791916924851,
+      "u": 1793312116447,
       "at": 1791654586559,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4210801.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4210801.jpg",
+      "ea": [
+        "4210801"
+      ]
     },
     "80563|dark bluish gray": {
       "p": "80563",
@@ -577420,6 +577472,20 @@
       "d": "Bar 1 x 4 x 3 Window [Side Tabs]",
       "e": "4240294",
       "u": 1793312062946
+    },
+    "4175|red": {
+      "p": "4175",
+      "c": "Red",
+      "d": "Plate Special 1 x 2 with Ladder",
+      "e": "4100527",
+      "u": 1793312116447
+    },
+    "4175|yellow": {
+      "p": "4175",
+      "c": "Yellow",
+      "d": "Plate Special 1 x 2 with Ladder",
+      "e": "4100529",
+      "u": 1793312116447
     }
   },
   "partKinds": {
@@ -577563,7 +577629,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:14:25.781Z"
+      "at": "2026-10-29T22:15:20.546Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577587,7 +577653,7 @@
       "bags": "2026-10-29T22:10:38.237Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:14:25.781Z",
+    "savedAt": "2026-10-29T22:15:20.546Z",
     "appVersion": "2026.10.29.1"
   }
 }
