@@ -456958,7 +456958,7 @@
       "label": "N40",
       "notes": "1 x 2 Handle - Side and Free End",
       "group": "N",
-      "lastEdited": "2026-10-29T00:14:31.109Z"
+      "lastEdited": "2026-10-29T22:09:22.378Z"
     },
     {
       "id": "N41",
@@ -473827,7 +473827,7 @@
       "partNum": "2540",
       "color": "Black",
       "elementId": "254026",
-      "qty": 57
+      "qty": 58
     },
     {
       "drawerId": "N40",
@@ -474089,10 +474089,102 @@
       "qty": 2
     },
     {
+      "drawerId": "O23",
+      "partNum": "2923",
+      "color": "Black",
+      "qty": 9
+    },
+    {
+      "drawerId": "O23",
+      "partNum": "4319",
+      "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "O23",
+      "partNum": "2923",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "O23",
+      "partNum": "2433",
+      "color": "White",
+      "elementId": "243301",
+      "qty": 1
+    },
+    {
+      "drawerId": "O23",
+      "partNum": "2433",
+      "color": "Black",
+      "elementId": "243326",
+      "qty": 10
+    },
+    {
       "drawerId": "O27",
       "partNum": "2452",
       "color": "Black",
       "qty": 9
+    },
+    {
+      "drawerId": "O27",
+      "partNum": "4507",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "O27",
+      "partNum": "4507",
+      "color": "Red",
+      "elementId": "",
+      "qty": 1
+    },
+    {
+      "drawerId": "O27",
+      "partNum": "4504",
+      "color": "Black",
+      "elementId": "4160816",
+      "qty": 3
+    },
+    {
+      "drawerId": "O27",
+      "partNum": "4504",
+      "color": "Blue",
+      "elementId": "4246943",
+      "qty": 3
+    },
+    {
+      "drawerId": "O27",
+      "partNum": "4504",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "O27",
+      "partNum": "2452",
+      "color": "Blue",
+      "elementId": "4112883",
+      "qty": 3
+    },
+    {
+      "drawerId": "O27",
+      "partNum": "2452",
+      "color": "Red",
+      "elementId": "245221",
+      "qty": 3
+    },
+    {
+      "drawerId": "O27",
+      "partNum": "2452",
+      "color": "White",
+      "elementId": "245201",
+      "qty": 1
+    },
+    {
+      "drawerId": "O27",
+      "partNum": "2452",
+      "color": "Light Gray",
+      "qty": 3
     },
     {
       "drawerId": "O28",
@@ -475546,98 +475638,6 @@
       "partNum": "60608",
       "color": "Yellow",
       "qty": 8
-    },
-    {
-      "drawerId": "O27",
-      "partNum": "4507",
-      "color": "Blue",
-      "qty": 1
-    },
-    {
-      "drawerId": "O27",
-      "partNum": "4507",
-      "color": "Red",
-      "elementId": "",
-      "qty": 1
-    },
-    {
-      "drawerId": "O27",
-      "partNum": "4504",
-      "color": "Black",
-      "elementId": "4160816",
-      "qty": 3
-    },
-    {
-      "drawerId": "O27",
-      "partNum": "4504",
-      "color": "Blue",
-      "elementId": "4246943",
-      "qty": 3
-    },
-    {
-      "drawerId": "O27",
-      "partNum": "4504",
-      "color": "Red",
-      "qty": 1
-    },
-    {
-      "drawerId": "O27",
-      "partNum": "2452",
-      "color": "Blue",
-      "elementId": "4112883",
-      "qty": 3
-    },
-    {
-      "drawerId": "O27",
-      "partNum": "2452",
-      "color": "Red",
-      "elementId": "245221",
-      "qty": 3
-    },
-    {
-      "drawerId": "O27",
-      "partNum": "2452",
-      "color": "White",
-      "elementId": "245201",
-      "qty": 1
-    },
-    {
-      "drawerId": "O27",
-      "partNum": "2452",
-      "color": "Light Gray",
-      "qty": 3
-    },
-    {
-      "drawerId": "O23",
-      "partNum": "2923",
-      "color": "Black",
-      "qty": 9
-    },
-    {
-      "drawerId": "O23",
-      "partNum": "4319",
-      "color": "Yellow",
-      "qty": 1
-    },
-    {
-      "drawerId": "O23",
-      "partNum": "2923",
-      "color": "Red",
-      "qty": 1
-    },
-    {
-      "drawerId": "O23",
-      "partNum": "2433",
-      "color": "White",
-      "elementId": "243301",
-      "qty": 1
-    },
-    {
-      "drawerId": "O23",
-      "partNum": "2433",
-      "color": "Black",
-      "elementId": "243326",
-      "qty": 10
     }
   ],
   "mocLocations": {
@@ -577462,7 +577462,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:09:05.418Z"
+      "at": "2026-10-29T22:09:36.173Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577486,7 +577486,7 @@
       "bags": "2026-10-29T22:07:24.527Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:09:05.418Z",
+    "savedAt": "2026-10-29T22:09:36.173Z",
     "appVersion": "2026.10.29.1"
   }
 }
