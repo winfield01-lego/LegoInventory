@@ -455397,7 +455397,7 @@
       "label": "J11",
       "notes": "Claws and Elephant Trunk",
       "group": "j",
-      "lastEdited": "2026-10-29T01:49:56.726Z"
+      "lastEdited": "2026-10-29T01:50:50.225Z"
     },
     {
       "id": "J12",
@@ -472691,6 +472691,24 @@
       "partNum": "40378",
       "color": "Reddish Brown",
       "qty": 3
+    },
+    {
+      "drawerId": "J11",
+      "partNum": "80497",
+      "color": "Black",
+      "qty": 4
+    },
+    {
+      "drawerId": "J11",
+      "partNum": "80497",
+      "color": "Dark Brown",
+      "qty": 3
+    },
+    {
+      "drawerId": "J11",
+      "partNum": "80497",
+      "color": "Reddish Brown",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -570836,6 +570854,20 @@
       "d": "Animal Body Part / Plant, Tail / Neck / Branch / Trunk, Middle Section with Pin, Round Pin Hole",
       "e": "4274318",
       "u": 1793238597928
+    },
+    "80497|dark brown": {
+      "p": "80497",
+      "c": "Dark Brown",
+      "d": "Animal Body Part / Plant, Tail / Trunk / Tentacle / Tongue / Vine / Tree Branch (Long Tip)",
+      "e": "6378109",
+      "u": 1793238651428
+    },
+    "80497|reddish brown": {
+      "p": "80497",
+      "c": "Reddish Brown",
+      "d": "Animal Body Part / Plant, Tail / Trunk / Tentacle / Tongue / Vine / Tree Branch (Long Tip)",
+      "e": "6382326",
+      "u": 1793238651428
     }
   },
   "partKinds": {
@@ -570979,7 +571011,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:50:00.763Z"
+      "at": "2026-10-29T01:50:54.265Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571003,7 +571035,7 @@
       "bags": "2026-10-29T01:47:49.585Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:50:00.763Z",
+    "savedAt": "2026-10-29T01:50:54.265Z",
     "appVersion": "2026.10.28.10"
   }
 }
