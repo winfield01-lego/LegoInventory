@@ -456100,7 +456100,7 @@
       "label": "L6",
       "notes": "Flags and Tiles with Clips",
       "group": "L",
-      "lastEdited": "2026-10-29T19:08:23.913Z"
+      "lastEdited": "2026-10-29T19:09:03.929Z"
     },
     {
       "id": "L7",
@@ -474283,7 +474283,7 @@
       "drawerId": "L6",
       "partNum": "65676",
       "color": "Light Bluish Gray",
-      "qty": 1
+      "qty": 5
     },
     {
       "drawerId": "L6",
@@ -474399,6 +474399,19 @@
       "drawerId": "L6",
       "partNum": "30261",
       "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "65676",
+      "color": "Reddish Brown",
+      "qty": 3
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "65676",
+      "color": "White",
+      "elementId": "6287901",
       "qty": 1
     }
   ],
@@ -535443,9 +535456,12 @@
       "c": "White",
       "d": "Road Sign Clip-on 2.2 x 2.667 Triangular with Open O Clip",
       "e": "6317569",
-      "u": 1791916924851,
+      "u": 1793300945131,
       "at": 1791654582190,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6287901.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6287901.jpg",
+      "ea": [
+        "6287901"
+      ]
     },
     "6254|bright light orange": {
       "p": "6254",
@@ -575349,6 +575365,13 @@
       "d": "Road Sign Clip-on 2 x 2 Round",
       "e": "4116816",
       "u": 1793300905115
+    },
+    "65676|reddish brown": {
+      "p": "65676",
+      "c": "Reddish Brown",
+      "d": "Road Sign Clip-on 2.2 x 2.667 Triangular with Open O Clip",
+      "e": "6317561",
+      "u": 1793300945131
     }
   },
   "partKinds": {
@@ -575492,7 +575515,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T19:08:27.942Z"
+      "at": "2026-10-29T19:09:09.211Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -575516,7 +575539,7 @@
       "bags": "2026-10-29T19:00:50.035Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T19:08:27.942Z",
+    "savedAt": "2026-10-29T19:09:09.211Z",
     "appVersion": "2026.10.28.10"
   }
 }
