@@ -454638,7 +454638,8 @@
       "id": "G28",
       "label": "G28",
       "notes": "",
-      "group": "G"
+      "group": "G",
+      "lastEdited": "2026-10-29T01:09:23.882Z"
     },
     {
       "id": "G29",
@@ -472180,6 +472181,13 @@
       "partNum": "4865b",
       "color": "White",
       "qty": 37
+    },
+    {
+      "drawerId": "G28",
+      "partNum": "3176",
+      "color": "Black",
+      "elementId": "317626",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -472592,6 +472600,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsuifmz_fxw15",
+      "label": "CdA BAM - 10/22/26 (batch 43)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 43,
+      "timestamp": "2026-10-29T01:09:24.011Z",
+      "items": [
+        {
+          "partNum": "3176",
+          "color": "Black",
+          "desc": "Plate Special 3 x 2 with Rounded End, Hole",
+          "elementId": "317626",
+          "qty": 1,
+          "drawerId": "G28",
+          "drawerLabel": "G28"
+        }
+      ]
+    },
     {
       "id": "bag_mvsuabm2_8jqim",
       "label": "CdA BAM - 10/22/26 (batch 42)",
@@ -479873,17 +479900,6 @@
           "sel": false
         },
         {
-          "partNum": "3176",
-          "color": "Black",
-          "desc": "Plate Special 3 x 2 with Rounded End, Hole",
-          "elementId": "317626",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "43723",
           "color": "Blue",
           "desc": "Wedge Plate 3 x 2 Left",
@@ -480126,12 +480142,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T01:03:05.546Z",
+      "savedAt": "2026-10-29T01:09:24.011Z",
       "keepOpen": true,
       "moved": {
-        "batches": 42,
-        "pieces": 292,
-        "last": "2026-10-29T01:03:05.546Z"
+        "batches": 43,
+        "pieces": 293,
+        "last": "2026-10-29T01:09:24.011Z"
       }
     },
     {
@@ -491839,9 +491855,12 @@
       "c": "Black",
       "d": "Plate Special 3 x 2 with Rounded End, Hole",
       "e": "317676",
-      "u": 1791916924851,
+      "u": 1793236165212,
       "at": 1791846548975,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/317626.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/317626.jpg",
+      "ea": [
+        "317626"
+      ]
     },
     "6179|black": {
       "p": "6179",
@@ -570227,7 +570246,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:08:49.562Z"
+      "at": "2026-10-29T01:09:29.288Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -570248,10 +570267,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T01:03:05.546Z",
+      "bags": "2026-10-29T01:09:24.011Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:08:49.562Z",
+    "savedAt": "2026-10-29T01:09:29.288Z",
     "appVersion": "2026.10.28.10"
   }
 }
