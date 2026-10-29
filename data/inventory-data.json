@@ -455501,7 +455501,7 @@
       "label": "J26",
       "notes": "Bar Holder with Clip or Handles",
       "group": "j",
-      "lastEdited": "2026-10-29T18:32:06.278Z"
+      "lastEdited": "2026-10-29T18:32:29.544Z"
     },
     {
       "id": "J27",
@@ -474051,6 +474051,12 @@
       "partNum": "11090",
       "color": "Orange",
       "qty": 1
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "72869",
+      "color": "Black",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -574811,6 +574817,13 @@
       "d": "Bar Holder with Clip",
       "e": "6630084",
       "u": 1793298727480
+    },
+    "72869|black": {
+      "p": "72869",
+      "c": "Black",
+      "d": "Bar Holder with Clip and 90° Angle (Mechanical Leg)",
+      "e": "6338384",
+      "u": 1793298750746
     }
   },
   "partKinds": {
@@ -574954,7 +574967,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T18:32:11.555Z"
+      "at": "2026-10-29T18:32:33.573Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -574978,7 +574991,7 @@
       "bags": "2026-10-29T18:26:32.039Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T18:32:11.555Z",
+    "savedAt": "2026-10-29T18:32:33.573Z",
     "appVersion": "2026.10.28.10"
   }
 }
