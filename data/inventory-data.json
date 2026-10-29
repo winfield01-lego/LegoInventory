@@ -455410,7 +455410,7 @@
       "label": "J13",
       "notes": "Claws",
       "group": "j",
-      "lastEdited": "2026-10-29T01:57:39.427Z"
+      "lastEdited": "2026-10-29T01:57:50.327Z"
     },
     {
       "id": "J14",
@@ -472765,6 +472765,12 @@
       "drawerId": "J13",
       "partNum": "41669",
       "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "J13",
+      "partNum": "41669",
+      "color": "Red",
       "qty": 1
     }
   ],
@@ -570972,6 +570978,13 @@
       "d": "Technic Tooth 1 x 3 with Axle Hole [Rounded Underside]",
       "e": "4173941",
       "u": 1793239060630
+    },
+    "41669|red": {
+      "p": "41669",
+      "c": "Red",
+      "d": "Technic Tooth 1 x 3 with Axle Hole [Rounded Underside]",
+      "e": "4185661",
+      "u": 1793239071529
     }
   },
   "partKinds": {
@@ -571115,7 +571128,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:57:43.468Z"
+      "at": "2026-10-29T01:57:54.356Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571139,7 +571152,7 @@
       "bags": "2026-10-29T01:51:18.571Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:57:43.468Z",
+    "savedAt": "2026-10-29T01:57:54.356Z",
     "appVersion": "2026.10.28.10"
   }
 }
