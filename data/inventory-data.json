@@ -456659,7 +456659,7 @@
       "label": "M44",
       "notes": "",
       "group": "M",
-      "lastEdited": "2026-10-13T17:13:28.024Z"
+      "lastEdited": "2026-10-29T01:44:03.408Z"
     },
     {
       "id": "N1",
@@ -472604,6 +472604,18 @@
       "partNum": "78443",
       "color": "Light Bluish Gray",
       "qty": 11
+    },
+    {
+      "drawerId": "M44",
+      "partNum": "78444",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "M44",
+      "partNum": "78444",
+      "color": "Light Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -473016,6 +473028,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsvr07a_zhmy0",
+      "label": "CdA BAM - 10/22/26 (batch 46)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 46,
+      "timestamp": "2026-10-29T01:44:03.526Z",
+      "items": [
+        {
+          "partNum": "78444",
+          "color": "Black",
+          "desc": "Wedge Plate 6 x 2 Right",
+          "elementId": "6344428",
+          "qty": 1,
+          "drawerId": "M44",
+          "drawerLabel": "M44"
+        },
+        {
+          "partNum": "78444",
+          "color": "Light Bluish Gray",
+          "desc": "Wedge Plate 6 x 2 Right",
+          "elementId": "6344703",
+          "qty": 1,
+          "drawerId": "M44",
+          "drawerLabel": "M44"
+        }
+      ]
+    },
     {
       "id": "bag_mvsvmb4g_ipba6",
       "label": "CdA BAM - 10/22/26 (batch 45)",
@@ -480363,28 +480403,6 @@
           "sel": false
         },
         {
-          "partNum": "78444",
-          "color": "Black",
-          "desc": "Wedge Plate 6 x 2 Right",
-          "elementId": "6344428",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "78444",
-          "color": "Light Bluish Gray",
-          "desc": "Wedge Plate 6 x 2 Right",
-          "elementId": "6344703",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "3171",
           "color": "Black",
           "desc": "Animal / Creature Body Part, Claw with Clip",
@@ -480572,12 +480590,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T01:40:24.399Z",
+      "savedAt": "2026-10-29T01:44:03.526Z",
       "keepOpen": true,
       "moved": {
-        "batches": 45,
-        "pieces": 296,
-        "last": "2026-10-29T01:40:24.400Z"
+        "batches": 46,
+        "pieces": 298,
+        "last": "2026-10-29T01:44:03.526Z"
       }
     },
     {
@@ -570823,7 +570841,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:43:44.561Z"
+      "at": "2026-10-29T01:44:07.560Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -570844,10 +570862,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T01:40:24.400Z",
+      "bags": "2026-10-29T01:44:03.526Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:43:44.561Z",
+    "savedAt": "2026-10-29T01:44:07.560Z",
     "appVersion": "2026.10.28.10"
   }
 }
