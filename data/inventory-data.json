@@ -456652,7 +456652,7 @@
       "label": "M43",
       "notes": "6 x 2 Wedge - Left",
       "group": "M",
-      "lastEdited": "2026-10-29T01:40:37.516Z"
+      "lastEdited": "2026-10-29T01:43:40.525Z"
     },
     {
       "id": "M44",
@@ -472573,13 +472573,37 @@
       "drawerId": "M43",
       "partNum": "78443",
       "color": "Black",
-      "qty": 1
+      "qty": 10
     },
     {
       "drawerId": "M43",
       "partNum": "78443",
       "color": "White",
+      "qty": 10
+    },
+    {
+      "drawerId": "M43",
+      "partNum": "78443",
+      "color": "Blue",
+      "qty": 5
+    },
+    {
+      "drawerId": "M43",
+      "partNum": "78443",
+      "color": "Dark Bluish Gray",
+      "qty": 6
+    },
+    {
+      "drawerId": "M43",
+      "partNum": "78443",
+      "color": "Dark Tan",
       "qty": 1
+    },
+    {
+      "drawerId": "M43",
+      "partNum": "78443",
+      "color": "Light Bluish Gray",
+      "qty": 11
     }
   ],
   "mocLocations": {
@@ -570649,6 +570673,13 @@
       "d": "Wedge Plate 4 x 2 Right",
       "e": "4205469",
       "u": 1793237940605
+    },
+    "78443|blue": {
+      "p": "78443",
+      "c": "Blue",
+      "d": "Wedge Plate 6 x 2 Left",
+      "e": "6559911",
+      "u": 1793238221728
     }
   },
   "partKinds": {
@@ -570792,7 +570823,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:40:41.546Z"
+      "at": "2026-10-29T01:43:44.561Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -570816,7 +570847,7 @@
       "bags": "2026-10-29T01:40:24.400Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:40:41.546Z",
+    "savedAt": "2026-10-29T01:43:44.561Z",
     "appVersion": "2026.10.28.10"
   }
 }
