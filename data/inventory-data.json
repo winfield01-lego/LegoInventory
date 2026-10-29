@@ -456216,7 +456216,7 @@
       "label": "L22",
       "notes": "Horizontal Teeth and 1 x 1 Brick with Scroll",
       "group": "L",
-      "lastEdited": "2026-10-29T21:47:56.201Z"
+      "lastEdited": "2026-10-29T21:52:23.056Z"
     },
     {
       "id": "L23",
@@ -475351,6 +475351,36 @@
       "partNum": "20310",
       "color": "White",
       "qty": 2
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "15208",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "15208",
+      "color": "Dark Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "15208",
+      "color": "Pearl Gold",
+      "qty": 5
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "15208",
+      "color": "Tan",
+      "qty": 13
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "15208",
+      "color": "White",
+      "qty": 22
     }
   ],
   "mocLocations": {
@@ -576858,6 +576888,20 @@
       "d": "Brick Special 1 x 1 with Scroll with Open Stud",
       "e": "6133766",
       "u": 1793310455583
+    },
+    "15208|black": {
+      "p": "15208",
+      "c": "Black",
+      "d": "Plate Special 1 x 2 with Three Teeth [Tri-Tooth]",
+      "e": "6094141",
+      "u": 1793310744257
+    },
+    "15208|pearl gold": {
+      "p": "15208",
+      "c": "Pearl Gold",
+      "d": "Plate Special 1 x 2 with Three Teeth [Tri-Tooth]",
+      "e": "6207764",
+      "u": 1793310744257
     }
   },
   "partKinds": {
@@ -577001,7 +577045,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T21:48:00.241Z"
+      "at": "2026-10-29T21:52:27.095Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577025,7 +577069,7 @@
       "bags": "2026-10-29T21:47:34.382Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T21:48:00.241Z",
+    "savedAt": "2026-10-29T21:52:27.095Z",
     "appVersion": "2026.10.29.1"
   }
 }
