@@ -455510,7 +455510,7 @@
       "label": "J27",
       "notes": "Fence - Bar Type - 1 x 8 and 1 x 4",
       "group": "j",
-      "lastEdited": "2026-10-29T22:42:36.539Z"
+      "lastEdited": "2026-10-29T22:42:55.535Z"
     },
     {
       "id": "J28",
@@ -475995,6 +475995,19 @@
       "partNum": "4083",
       "color": "Yellow",
       "qty": 1
+    },
+    {
+      "drawerId": "J27",
+      "partNum": "2486",
+      "color": "Black",
+      "elementId": "248626",
+      "qty": 2
+    },
+    {
+      "drawerId": "J27",
+      "partNum": "2486",
+      "color": "White",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -488130,9 +488143,12 @@
       "c": "Black",
       "d": "Bar 1 x 8 x 2",
       "e": "6226740",
-      "u": 1791916924851,
+      "u": 1793313776737,
       "at": 1791654785010,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/248626.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/248626.jpg",
+      "ea": [
+        "248626"
+      ]
     },
     "48729b|metallic silver": {
       "p": "48729b",
@@ -578009,7 +578025,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:42:41.835Z"
+      "at": "2026-10-29T22:43:00.821Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578033,7 +578049,7 @@
       "bags": "2026-10-29T22:34:38.251Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:42:41.835Z",
+    "savedAt": "2026-10-29T22:43:00.821Z",
     "appVersion": "2026.10.29.1"
   }
 }
