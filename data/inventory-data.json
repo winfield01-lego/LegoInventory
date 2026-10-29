@@ -456216,7 +456216,7 @@
       "label": "L22",
       "notes": "Horizontal Teeth and 1 x 1 Brick with Scroll",
       "group": "L",
-      "lastEdited": "2026-10-29T21:54:31.639Z"
+      "lastEdited": "2026-10-29T21:54:55.625Z"
     },
     {
       "id": "L23",
@@ -475431,6 +475431,13 @@
       "partNum": "49668",
       "color": "Flat Silver",
       "qty": 20
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "49668",
+      "color": "White",
+      "elementId": "4224792",
+      "qty": 15
     }
   ],
   "mocLocations": {
@@ -518318,9 +518325,12 @@
       "c": "White",
       "d": "Plate Special 1 x 1 with Tooth",
       "e": "6601935",
-      "u": 1791916924851,
+      "u": 1793310896827,
       "at": 1791674782589,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4224792.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4224792.jpg",
+      "ea": [
+        "4224792"
+      ]
     },
     "47455|white": {
       "p": "47455",
@@ -577108,7 +577118,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T21:54:36.921Z"
+      "at": "2026-10-29T21:55:00.911Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577132,7 +577142,7 @@
       "bags": "2026-10-29T21:47:34.382Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T21:54:36.921Z",
+    "savedAt": "2026-10-29T21:55:00.911Z",
     "appVersion": "2026.10.29.1"
   }
 }
