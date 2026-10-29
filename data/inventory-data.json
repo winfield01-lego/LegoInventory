@@ -455222,7 +455222,8 @@
       "id": "I28",
       "label": "I28",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-10-29T01:03:05.452Z"
     },
     {
       "id": "I29",
@@ -472087,6 +472088,13 @@
       "color": "Yellow",
       "elementId": "4565386",
       "qty": 22
+    },
+    {
+      "drawerId": "I28",
+      "partNum": "4865a",
+      "color": "Red",
+      "elementId": "",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -472499,6 +472507,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsuabm2_8jqim",
+      "label": "CdA BAM - 10/22/26 (batch 42)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 42,
+      "timestamp": "2026-10-29T01:03:05.546Z",
+      "items": [
+        {
+          "partNum": "4865a",
+          "color": "Red",
+          "desc": "Panel 1 x 2 x 1 [Square Corners]",
+          "elementId": "",
+          "qty": 1,
+          "drawerId": "I28",
+          "drawerLabel": "I28"
+        }
+      ]
+    },
     {
       "id": "bag_mvstuqaa_v9y8j",
       "label": "CdA BAM - 10/22/26 (batch 41)",
@@ -479761,17 +479788,6 @@
           "sel": false
         },
         {
-          "partNum": "4865a",
-          "color": "Red",
-          "desc": "Panel 1 x 2 x 1 [Square Corners]",
-          "elementId": "",
-          "qty": 1,
-          "drawerId": "I28",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "3176",
           "color": "Black",
           "desc": "Plate Special 3 x 2 with Rounded End, Hole",
@@ -480025,12 +480041,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T01:02:59.660Z",
+      "savedAt": "2026-10-29T01:03:05.546Z",
       "keepOpen": true,
       "moved": {
-        "batches": 41,
-        "pieces": 291,
-        "last": "2026-10-29T00:50:58.066Z"
+        "batches": 42,
+        "pieces": 292,
+        "last": "2026-10-29T01:03:05.546Z"
       }
     },
     {
@@ -570102,7 +570118,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:03:03.699Z"
+      "at": "2026-10-29T01:03:10.826Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -570123,10 +570139,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T01:02:59.660Z",
+      "bags": "2026-10-29T01:03:05.546Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:03:03.699Z",
+    "savedAt": "2026-10-29T01:03:10.826Z",
     "appVersion": "2026.10.28.10"
   }
 }
