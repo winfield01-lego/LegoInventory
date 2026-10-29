@@ -455909,7 +455909,7 @@
       "label": "K21",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-10-29T05:26:28.027Z"
+      "lastEdited": "2026-10-29T05:29:30.246Z"
     },
     {
       "id": "K22",
@@ -473537,6 +473537,60 @@
       "partNum": "32017",
       "color": "Light Bluish Gray",
       "qty": 11
+    },
+    {
+      "drawerId": "K21",
+      "partNum": "6632",
+      "color": "Black",
+      "elementId": "4107828",
+      "qty": 11
+    },
+    {
+      "drawerId": "K21",
+      "partNum": "6632",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "K21",
+      "partNum": "6632",
+      "color": "Dark Bluish Gray",
+      "elementId": "4223767",
+      "qty": 2
+    },
+    {
+      "drawerId": "K21",
+      "partNum": "6632",
+      "color": "Light Bluish Gray",
+      "elementId": "4211566",
+      "qty": 20
+    },
+    {
+      "drawerId": "K21",
+      "partNum": "6632",
+      "color": "Orange",
+      "elementId": "4140326",
+      "qty": 1
+    },
+    {
+      "drawerId": "K21",
+      "partNum": "6632",
+      "color": "Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "K21",
+      "partNum": "6632",
+      "color": "White",
+      "elementId": "4107826",
+      "qty": 1
+    },
+    {
+      "drawerId": "K21",
+      "partNum": "6632",
+      "color": "Yellow",
+      "elementId": "4107823",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -521676,9 +521730,12 @@
       "c": "Dark Bluish Gray",
       "d": "Technic Beam 1 x 3 Thin",
       "e": "6632199",
-      "u": 1791916924851,
+      "u": 1793251771450,
       "at": 1791654796747,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4223767.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4223767.jpg",
+      "ea": [
+        "4223767"
+      ]
     },
     "32017|dark bluish gray": {
       "p": "32017",
@@ -523939,9 +523996,12 @@
       "c": "Black",
       "d": "Technic Beam 1 x 3 Thin",
       "e": "663226",
-      "u": 1791916924851,
+      "u": 1793251771450,
       "at": 1791654657762,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4107828.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4107828.jpg",
+      "ea": [
+        "4107828"
+      ]
     },
     "32016|dark bluish gray": {
       "p": "32016",
@@ -527538,9 +527598,12 @@
       "c": "Light Bluish Gray",
       "d": "Technic Beam 1 x 3 Thin",
       "e": "6360043",
-      "u": 1791916924851,
+      "u": 1793251771450,
       "at": 1791654501911,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4211566.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4211566.jpg",
+      "ea": [
+        "4211566"
+      ]
     },
     "14769pr1305|light bluish gray": {
       "p": "14769pr1305",
@@ -529681,9 +529744,12 @@
       "c": "Yellow",
       "d": "Technic Beam 1 x 3 Thin",
       "e": "663224",
-      "u": 1791916924851,
+      "u": 1793251771450,
       "at": 1791654523244,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4107823.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4107823.jpg",
+      "ea": [
+        "4107823"
+      ]
     },
     "6153b|black": {
       "p": "6153b",
@@ -530259,9 +530325,12 @@
       "c": "White",
       "d": "Technic Beam 1 x 3 Thin",
       "e": "663201",
-      "u": 1791916924851,
+      "u": 1793251771450,
       "at": 1791654677272,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4107826.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4107826.jpg",
+      "ea": [
+        "4107826"
+      ]
     },
     "64782|white": {
       "p": "64782",
@@ -536816,9 +536885,12 @@
       "c": "Orange",
       "d": "Technic Beam 1 x 3 Thin",
       "e": "6364450",
-      "u": 1791916924851,
+      "u": 1793251771450,
       "at": 1791654633155,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4140326.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4140326.jpg",
+      "ea": [
+        "4140326"
+      ]
     },
     "26604|reddish brown": {
       "p": "26604",
@@ -572228,6 +572300,20 @@
       "d": "Technic Beam 1 x 5 Thin",
       "e": "4211554",
       "u": 1793251589230
+    },
+    "6632|blue": {
+      "p": "6632",
+      "c": "Blue",
+      "d": "Technic Beam 1 x 3 Thin",
+      "e": "4107804",
+      "u": 1793251771450
+    },
+    "6632|red": {
+      "p": "6632",
+      "c": "Red",
+      "d": "Technic Beam 1 x 3 Thin",
+      "e": "4107824",
+      "u": 1793251771450
     }
   },
   "partKinds": {
@@ -572371,7 +572457,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T05:26:33.324Z"
+      "at": "2026-10-29T05:29:35.540Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -572395,7 +572481,7 @@
       "bags": "2026-10-29T05:17:17.080Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T05:26:33.324Z",
+    "savedAt": "2026-10-29T05:29:35.540Z",
     "appVersion": "2026.10.28.10"
   }
 }
