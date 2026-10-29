@@ -455501,7 +455501,7 @@
       "label": "J26",
       "notes": "Bar Holder with Clip or Handles",
       "group": "j",
-      "lastEdited": "2026-10-29T18:27:00.004Z"
+      "lastEdited": "2026-10-29T18:32:06.278Z"
     },
     {
       "id": "J27",
@@ -473977,6 +473977,79 @@
       "partNum": "11090",
       "color": "Black",
       "elementId": "6015891",
+      "qty": 14
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "11090",
+      "color": "Dark Bluish Gray",
+      "elementId": "6015890",
+      "qty": 37
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "11090",
+      "color": "Flat Silver",
+      "qty": 1
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "11090",
+      "color": "Light Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "11090",
+      "color": "Pearl Gold",
+      "elementId": "6078364",
+      "qty": 8
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "11090",
+      "color": "Yellow",
+      "elementId": "6015892",
+      "qty": 20
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "11090",
+      "color": "White",
+      "elementId": "6052824",
+      "qty": 22
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "11090",
+      "color": "Warm Tan",
+      "qty": 3
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "11090",
+      "color": "Sand Blue",
+      "elementId": "6174945",
+      "qty": 2
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "11090",
+      "color": "Reddish Brown",
+      "elementId": "6080355",
+      "qty": 4
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "11090",
+      "color": "Red",
+      "elementId": "6328911",
+      "qty": 13
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "11090",
+      "color": "Orange",
       "qty": 1
     }
   ],
@@ -500207,9 +500280,12 @@
       "c": "Dark Bluish Gray",
       "d": "Bar Holder with Clip",
       "e": "6336970",
-      "u": 1791916924851,
+      "u": 1793298727480,
       "at": 1791655384672,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6015890.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6015890.jpg",
+      "ea": [
+        "6015890"
+      ]
     },
     "99207|yellow": {
       "p": "99207",
@@ -515732,9 +515808,12 @@
       "c": "Reddish Brown",
       "d": "Bar Holder with Clip",
       "e": "6341968",
-      "u": 1791916924851,
+      "u": 1793298727480,
       "at": 1791654307821,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6080355.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6080355.jpg",
+      "ea": [
+        "6080355"
+      ]
     },
     "11476|tan": {
       "p": "11476",
@@ -533983,9 +534062,12 @@
       "c": "Sand Blue",
       "d": "Bar Holder with Clip",
       "e": "6341970",
-      "u": 1791916924851,
+      "u": 1793298727480,
       "at": 1791654560264,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6174945.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6174945.jpg",
+      "ea": [
+        "6174945"
+      ]
     },
     "2454b|tan": {
       "p": "2454b",
@@ -535954,9 +536036,12 @@
       "c": "Yellow",
       "d": "Bar Holder with Clip",
       "e": "6341463",
-      "u": 1791916924851,
+      "u": 1793298727480,
       "at": 1791654681669,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6015892.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6015892.jpg",
+      "ea": [
+        "6015892"
+      ]
     },
     "14769|yellow": {
       "p": "14769",
@@ -538927,9 +539012,12 @@
       "c": "Pearl Gold",
       "d": "Bar Holder with Clip",
       "e": "6252838",
-      "u": 1791916924851,
+      "u": 1793298727480,
       "at": 1791654677272,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6078364.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6078364.jpg",
+      "ea": [
+        "6078364"
+      ]
     },
     "63864|reddish orange": {
       "p": "63864",
@@ -540656,8 +540744,11 @@
       "c": "Red",
       "d": "Bar Holder with Clip",
       "e": "6341972",
-      "u": 1791916924851,
-      "at": 1791655381661
+      "u": 1793298727480,
+      "at": 1791655381661,
+      "ea": [
+        "6328911"
+      ]
     },
     "32802|red": {
       "p": "32802",
@@ -542503,9 +542594,12 @@
       "c": "White",
       "d": "Bar Holder with Clip",
       "e": "6341465",
-      "u": 1791916924851,
+      "u": 1793298727480,
       "at": 1791732118013,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6052824.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6052824.jpg",
+      "ea": [
+        "6052824"
+      ]
     },
     "3008pr0043|white": {
       "p": "3008pr0043",
@@ -574710,6 +574804,13 @@
       "d": "Hinge Plate 1 x 4 Swivel Base with Hole",
       "e": "242901",
       "u": 1793298202164
+    },
+    "11090|warm tan": {
+      "p": "11090",
+      "c": "Warm Tan",
+      "d": "Bar Holder with Clip",
+      "e": "6630084",
+      "u": 1793298727480
     }
   },
   "partKinds": {
@@ -574853,7 +574954,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T18:27:04.034Z"
+      "at": "2026-10-29T18:32:11.555Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -574877,7 +574978,7 @@
       "bags": "2026-10-29T18:26:32.039Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T18:27:04.034Z",
+    "savedAt": "2026-10-29T18:32:11.555Z",
     "appVersion": "2026.10.28.10"
   }
 }
