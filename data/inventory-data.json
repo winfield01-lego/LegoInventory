@@ -456506,7 +456506,7 @@
       "label": "M19",
       "notes": "4 x 4 Wings - Right and Left",
       "group": "M",
-      "lastEdited": "2026-10-29T23:16:20.844Z"
+      "lastEdited": "2026-10-29T23:17:07.410Z"
     },
     {
       "id": "M20",
@@ -476141,7 +476141,7 @@
       "partNum": "3935",
       "color": "Light Gray",
       "elementId": "393502",
-      "qty": 1
+      "qty": 3
     },
     {
       "drawerId": "M8",
@@ -476290,6 +476290,19 @@
       "partNum": "3936",
       "color": "White",
       "elementId": "393601",
+      "qty": 1
+    },
+    {
+      "drawerId": "M19",
+      "partNum": "3935",
+      "color": "Black",
+      "elementId": "393526",
+      "qty": 5
+    },
+    {
+      "drawerId": "M19",
+      "partNum": "3935",
+      "color": "Dark Gray",
       "qty": 1
     }
   ],
@@ -499390,9 +499403,12 @@
       "c": "Black",
       "d": "Wedge Plate 4 x 4 Wing Right",
       "e": "4280157",
-      "u": 1791916924851,
+      "u": 1793315828613,
       "at": 1791846567871,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/3935.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/3935.png",
+      "ea": [
+        "393526"
+      ]
     },
     "13548|white": {
       "p": "13548",
@@ -578355,6 +578371,13 @@
       "d": "Wedge Plate 4 x 4 Wing Left",
       "e": "393627",
       "u": 1793315782047
+    },
+    "3935|dark gray": {
+      "p": "3935",
+      "c": "Dark Gray",
+      "d": "Wedge Plate 4 x 4 Wing Right",
+      "e": "393527",
+      "u": 1793315828613
     }
   },
   "partKinds": {
@@ -578498,7 +578521,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T23:16:26.131Z"
+      "at": "2026-10-29T23:17:12.701Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578522,7 +578545,7 @@
       "bags": "2026-10-29T22:57:13.855Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T23:16:26.131Z",
+    "savedAt": "2026-10-29T23:17:12.701Z",
     "appVersion": "2026.10.29.1"
   }
 }
