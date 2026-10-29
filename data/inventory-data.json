@@ -457336,7 +457336,7 @@
       "label": "O50",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-10-29T22:15:15.245Z"
+      "lastEdited": "2026-10-29T22:15:55.945Z"
     },
     {
       "id": "O51",
@@ -475677,7 +475677,7 @@
       "drawerId": "O50",
       "partNum": "62113",
       "color": "Dark Bluish Gray",
-      "qty": 6
+      "qty": 7
     },
     {
       "drawerId": "O50",
@@ -476154,6 +476154,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu3r7hu_umqj2",
+      "label": "October 17 BAM Visit (batch 60)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 60,
+      "timestamp": "2026-10-29T22:15:56.082Z",
+      "items": [
+        {
+          "partNum": "62113",
+          "color": "Dark Bluish Gray",
+          "desc": "Bar 1 x 4 x 3 [End Tabs]",
+          "elementId": "4521886",
+          "qty": 1,
+          "drawerId": "O50",
+          "drawerLabel": "O50"
+        }
+      ]
+    },
     {
       "id": "bag_mvu3ke8t_7o4uw",
       "label": "October 17 BAM Visit (batch 59)",
@@ -486005,25 +486024,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "62113",
-          "color": "Dark Bluish Gray",
-          "desc": "Bar 1 x 4 x 3 [End Tabs]",
-          "elementId": "4521886",
-          "qty": 1,
-          "drawerId": "O50",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
         }
       ],
-      "savedAt": "2026-10-29T22:15:50.114Z",
+      "savedAt": "2026-10-29T22:15:56.081Z",
       "keepOpen": true,
       "moved": {
-        "batches": 59,
-        "pieces": 1192,
-        "last": "2026-10-29T22:10:38.237Z"
+        "batches": 60,
+        "pieces": 1193,
+        "last": "2026-10-29T22:15:56.081Z"
       }
     },
     {
@@ -577640,7 +577648,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:15:54.148Z"
+      "at": "2026-10-29T22:16:00.102Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577661,10 +577669,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T22:15:50.114Z",
+      "bags": "2026-10-29T22:15:56.082Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:15:54.148Z",
+    "savedAt": "2026-10-29T22:16:00.102Z",
     "appVersion": "2026.10.29.1"
   }
 }
