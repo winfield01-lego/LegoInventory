@@ -457822,7 +457822,7 @@
       "label": "Q2",
       "notes": "",
       "group": "Q",
-      "lastEdited": "2026-10-29T19:12:44.215Z"
+      "lastEdited": "2026-10-29T19:15:19.262Z"
     },
     {
       "id": "Q3",
@@ -474494,6 +474494,27 @@
       "color": "Dark Bluish Gray",
       "elementId": "4583879",
       "qty": 2
+    },
+    {
+      "drawerId": "Q2",
+      "partNum": "4217",
+      "color": "Blue",
+      "elementId": "4119373",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q2",
+      "partNum": "4217",
+      "color": "Light Bluish Gray",
+      "elementId": "4492172",
+      "qty": 9
+    },
+    {
+      "drawerId": "Q2",
+      "partNum": "4217",
+      "color": "White",
+      "elementId": "4177841",
+      "qty": 8
     }
   ],
   "mocLocations": {
@@ -493202,7 +493223,10 @@
       "c": "Light Bluish Gray",
       "d": "Brick Special 1 x 14 Grooved",
       "e": "6023978",
-      "u": 1791916924851
+      "u": 1793301320463,
+      "ea": [
+        "4492172"
+      ]
     },
     "86876|light bluish gray": {
       "p": "86876",
@@ -562001,9 +562025,12 @@
       "c": "Blue",
       "d": "Brick Special 1 x 14 Grooved",
       "e": "6177962",
-      "u": 1791916924851,
+      "u": 1793301320463,
       "at": 1791673636355,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4119373.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4119373.jpg",
+      "ea": [
+        "4119373"
+      ]
     },
     "4216|blue": {
       "p": "4216",
@@ -566402,9 +566429,12 @@
       "c": "White",
       "d": "Brick Special 1 x 14 Grooved",
       "e": "6381738",
-      "u": 1791916924851,
+      "u": 1793301320463,
       "at": 1791846522345,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4177841.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4177841.jpg",
+      "ea": [
+        "4177841"
+      ]
     },
     "3581|white": {
       "p": "3581",
@@ -575664,7 +575694,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T19:12:49.620Z"
+      "at": "2026-10-29T19:15:24.560Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -575688,7 +575718,7 @@
       "bags": "2026-10-29T19:12:44.344Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T19:12:49.620Z",
+    "savedAt": "2026-10-29T19:15:24.560Z",
     "appVersion": "2026.10.28.10"
   }
 }
