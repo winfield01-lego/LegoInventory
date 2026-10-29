@@ -456077,7 +456077,7 @@
       "label": "L2",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-10-13T17:13:18.947Z"
+      "lastEdited": "2026-10-29T22:44:12.989Z"
     },
     {
       "id": "L3",
@@ -456707,7 +456707,7 @@
       "label": "N4",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.789Z"
+      "lastEdited": "2026-10-29T22:44:12.988Z"
     },
     {
       "id": "N5",
@@ -476008,6 +476008,19 @@
       "partNum": "2486",
       "color": "White",
       "qty": 2
+    },
+    {
+      "drawerId": "N4",
+      "partNum": "24599",
+      "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "L2",
+      "partNum": "2342",
+      "color": "Black",
+      "elementId": "234226",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -476420,6 +476433,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu4rky3_280f1",
+      "label": "October 17 BAM Visit (batch 64)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 64,
+      "timestamp": "2026-10-29T22:44:13.131Z",
+      "items": [
+        {
+          "partNum": "24599",
+          "color": "Dark Blue",
+          "desc": "Brick Round Corner 5 x 5 x 1 Curved, Bottom Cut Outs, No Studs, 7 Bottom Tubes",
+          "elementId": "6249289",
+          "qty": 1,
+          "drawerId": "N4",
+          "drawerLabel": "N4"
+        },
+        {
+          "partNum": "2342",
+          "color": "Black",
+          "desc": "Equipment Control Panel",
+          "elementId": "234226",
+          "qty": 1,
+          "drawerId": "L2",
+          "drawerLabel": "L2"
+        }
+      ]
+    },
     {
       "id": "bag_mvu4f9d7_7h4n6",
       "label": "October 17 BAM Visit (batch 63)",
@@ -486090,28 +486131,6 @@
           "sel": false
         },
         {
-          "partNum": "24599",
-          "color": "Dark Blue",
-          "desc": "Brick Round Corner 5 x 5 x 1 Curved, Bottom Cut Outs, No Studs, 7 Bottom Tubes",
-          "elementId": "6249289",
-          "qty": 1,
-          "drawerId": "N4",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "2342",
-          "color": "Black",
-          "desc": "Equipment Control Panel",
-          "elementId": "234226",
-          "qty": 1,
-          "drawerId": "L2",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "79756",
           "color": "Light Bluish Gray",
           "desc": "Brick Curved 1 x 4 x 2/3 Double, No Studs",
@@ -486310,12 +486329,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T22:43:57.500Z",
+      "savedAt": "2026-10-29T22:44:13.131Z",
       "keepOpen": true,
       "moved": {
-        "batches": 63,
-        "pieces": 1199,
-        "last": "2026-10-29T22:34:38.251Z"
+        "batches": 64,
+        "pieces": 1201,
+        "last": "2026-10-29T22:44:13.131Z"
       }
     },
     {
@@ -562280,9 +562299,12 @@
       "c": "Black",
       "d": "Equipment Control Panel",
       "e": "4164402",
-      "u": 1791916924851,
+      "u": 1793313854333,
       "at": 1791846572021,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/2342.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/2342.png",
+      "ea": [
+        "234226"
+      ]
     },
     "298c03|black": {
       "p": "298c03",
@@ -578025,7 +578047,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:44:01.538Z"
+      "at": "2026-10-29T22:44:18.426Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578046,10 +578068,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T22:43:57.500Z",
+      "bags": "2026-10-29T22:44:13.131Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:44:01.538Z",
+    "savedAt": "2026-10-29T22:44:18.426Z",
     "appVersion": "2026.10.29.1"
   }
 }
