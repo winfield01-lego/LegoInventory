@@ -454363,7 +454363,7 @@
       "label": "F27",
       "notes": "3L Pin with Bushing",
       "group": "F",
-      "lastEdited": "2026-10-29T02:21:43.456Z"
+      "lastEdited": "2026-10-29T02:26:18.429Z"
     },
     {
       "id": "F28",
@@ -472845,6 +472845,42 @@
       "color": "Dark Bluish Gray",
       "elementId": "32002199",
       "qty": 30
+    },
+    {
+      "drawerId": "F27",
+      "partNum": "65304",
+      "color": "Black",
+      "qty": 40
+    },
+    {
+      "drawerId": "F27",
+      "partNum": "65304",
+      "color": "Flat Silver",
+      "qty": 1
+    },
+    {
+      "drawerId": "F27",
+      "partNum": "65304",
+      "color": "Light Bluish Gray",
+      "qty": 7
+    },
+    {
+      "drawerId": "F27",
+      "partNum": "65304",
+      "color": "Lime",
+      "qty": 1
+    },
+    {
+      "drawerId": "F27",
+      "partNum": "65304",
+      "color": "Orange",
+      "qty": 3
+    },
+    {
+      "drawerId": "F27",
+      "partNum": "65304",
+      "color": "Red",
+      "qty": 15
     }
   ],
   "mocLocations": {
@@ -571092,6 +571128,13 @@
       "d": "Insect Body Part, Leg / Tail / Tentacle / Claw",
       "e": "6093626",
       "u": 1793239163828
+    },
+    "65304|lime": {
+      "p": "65304",
+      "c": "Lime",
+      "d": "Technic Pin Long with Friction Ridges Lengthwise and Stop Bush [2 Lateral Holes, Small Pin Hole]",
+      "e": "6325515",
+      "u": 1793240779631
     }
   },
   "partKinds": {
@@ -571235,7 +571278,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T02:21:47.491Z"
+      "at": "2026-10-29T02:26:22.460Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571259,7 +571302,7 @@
       "bags": "2026-10-29T02:01:52.512Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T02:21:47.491Z",
+    "savedAt": "2026-10-29T02:26:22.460Z",
     "appVersion": "2026.10.28.10"
   }
 }
