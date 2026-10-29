@@ -455532,7 +455532,8 @@
       "id": "J31",
       "label": "J31",
       "notes": "",
-      "group": "j"
+      "group": "j",
+      "lastEdited": "2026-10-29T20:40:41.122Z"
     },
     {
       "id": "J32",
@@ -474912,6 +474913,13 @@
       "partNum": "16091",
       "color": "Black",
       "qty": 16
+    },
+    {
+      "drawerId": "J31",
+      "partNum": "30000",
+      "color": "Light Bluish Gray",
+      "elementId": "4211752",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -475324,6 +475332,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu0cpwy_padoc",
+      "label": "October 17 BAM Visit (batch 47)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 47,
+      "timestamp": "2026-10-29T20:40:41.266Z",
+      "items": [
+        {
+          "partNum": "30000",
+          "color": "Light Bluish Gray",
+          "desc": "Brick Special 2 x 2 with 2 Pins and Axle Hole",
+          "elementId": "4211752",
+          "qty": 1,
+          "drawerId": "J31",
+          "drawerLabel": "J31"
+        }
+      ]
+    },
     {
       "id": "bag_mvu01c6k_5gftf",
       "label": "October 17 BAM Visit (batch 46)",
@@ -484579,17 +484606,6 @@
           "sel": false
         },
         {
-          "partNum": "30000",
-          "color": "Light Bluish Gray",
-          "desc": "Brick Special 2 x 2 with 2 Pins and Axle Hole",
-          "elementId": "4211752",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "79846",
           "color": "Dark Azure",
           "desc": "Plate Angled 2 x 2 with Step and Hole in Center",
@@ -485074,12 +485090,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T20:38:35.624Z",
+      "savedAt": "2026-10-29T20:40:41.265Z",
       "keepOpen": true,
       "moved": {
-        "batches": 46,
-        "pieces": 1170,
-        "last": "2026-10-29T20:31:50.252Z"
+        "batches": 47,
+        "pieces": 1171,
+        "last": "2026-10-29T20:40:41.266Z"
       }
     },
     {
@@ -533781,9 +533797,12 @@
       "c": "Light Bluish Gray",
       "d": "Brick Special 2 x 2 with 2 Pins and Axle Hole",
       "e": "6356172",
-      "u": 1791916924851,
+      "u": 1793306442466,
       "at": 1791654547546,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4211752.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4211752.jpg",
+      "ea": [
+        "4211752"
+      ]
     },
     "30552|light bluish gray": {
       "p": "30552",
@@ -576305,7 +576324,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T20:38:39.655Z"
+      "at": "2026-10-29T20:40:46.563Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576326,10 +576345,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T20:38:35.624Z",
+      "bags": "2026-10-29T20:40:41.266Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T20:38:39.655Z",
+    "savedAt": "2026-10-29T20:40:46.563Z",
     "appVersion": "2026.10.28.10"
   }
 }
