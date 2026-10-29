@@ -481684,7 +481684,7 @@
           "drawerId": "Q4",
           "matchCount": 0,
           "suggested": false,
-          "sel": false
+          "sel": true
         },
         {
           "partNum": "11610",
@@ -481694,7 +481694,8 @@
           "qty": 12,
           "drawerId": "G11",
           "matchCount": 0,
-          "suggested": true
+          "suggested": true,
+          "sel": true
         },
         {
           "partNum": "60614",
@@ -481724,7 +481725,8 @@
           "qty": 8,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "6583",
@@ -481754,7 +481756,8 @@
           "qty": 3,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "3005",
@@ -481764,7 +481767,8 @@
           "qty": 50,
           "drawerId": "A1",
           "matchCount": 0,
-          "suggested": true
+          "suggested": true,
+          "sel": true
         },
         {
           "partNum": "17457",
@@ -481817,7 +481821,7 @@
           "suggested": true
         }
       ],
-      "savedAt": "2026-10-29T05:33:01.598Z",
+      "savedAt": "2026-10-29T05:34:03.140Z",
       "keepOpen": true
     },
     {
@@ -572439,7 +572443,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T05:33:05.632Z"
+      "at": "2026-10-29T05:34:07.172Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -572460,10 +572464,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T05:33:01.598Z",
+      "bags": "2026-10-29T05:34:03.140Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T05:33:05.632Z",
+    "savedAt": "2026-10-29T05:34:07.172Z",
     "appVersion": "2026.10.28.10"
   }
 }
