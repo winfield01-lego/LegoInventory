@@ -455397,7 +455397,7 @@
       "label": "J11",
       "notes": "Claws and Elephant Trunk",
       "group": "j",
-      "lastEdited": "2026-10-29T01:48:10.711Z"
+      "lastEdited": "2026-10-29T01:49:19.042Z"
     },
     {
       "id": "J12",
@@ -472641,6 +472641,32 @@
       "partNum": "40379",
       "color": "Bright Light Blue",
       "qty": 1
+    },
+    {
+      "drawerId": "J11",
+      "partNum": "40379",
+      "color": "Flat Silver",
+      "qty": 2
+    },
+    {
+      "drawerId": "J11",
+      "partNum": "40379",
+      "color": "Red",
+      "elementId": "4160020",
+      "qty": 1
+    },
+    {
+      "drawerId": "J11",
+      "partNum": "40379",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "J11",
+      "partNum": "40379",
+      "color": "White",
+      "elementId": "4182304",
+      "qty": 15
     }
   ],
   "mocLocations": {
@@ -537271,9 +537297,12 @@
       "c": "Red",
       "d": "Animal Body Part / Plant, Tail / Claw / Horn / Branch / Tentacle, End Section",
       "e": "6253828",
-      "u": 1791916924851,
+      "u": 1793238560264,
       "at": 1791655381661,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4175016.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4175016.jpg",
+      "ea": [
+        "4160020"
+      ]
     },
     "11090|red": {
       "p": "11090",
@@ -546336,9 +546365,12 @@
       "c": "White",
       "d": "Animal Body Part / Plant, Tail / Claw / Horn / Branch / Tentacle, End Section",
       "e": "6110023",
-      "u": 1791916924851,
+      "u": 1793238560264,
       "at": 1791654768078,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4182304.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4182304.jpg",
+      "ea": [
+        "4182304"
+      ]
     },
     "6190|white": {
       "p": "6190",
@@ -570745,6 +570777,13 @@
       "d": "Animal Body Part / Plant, Tail / Claw / Horn / Branch / Tentacle, End Section",
       "e": "6438974",
       "u": 1793238470786
+    },
+    "40379|flat silver": {
+      "p": "40379",
+      "c": "Flat Silver",
+      "d": "Animal Body Part / Plant, Tail / Claw / Horn / Branch / Tentacle, End Section",
+      "e": "6060833",
+      "u": 1793238560264
     }
   },
   "partKinds": {
@@ -570888,7 +570927,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:48:14.731Z"
+      "at": "2026-10-29T01:49:24.333Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -570912,7 +570951,7 @@
       "bags": "2026-10-29T01:47:49.585Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:48:14.731Z",
+    "savedAt": "2026-10-29T01:49:24.333Z",
     "appVersion": "2026.10.28.10"
   }
 }
