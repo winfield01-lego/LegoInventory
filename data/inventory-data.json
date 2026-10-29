@@ -457624,7 +457624,7 @@
       "label": "S3",
       "notes": "5 x 5 Brick Round Corners",
       "group": "S",
-      "lastEdited": "2026-10-29T22:49:56.821Z"
+      "lastEdited": "2026-10-29T22:50:35.540Z"
     },
     {
       "id": "S4",
@@ -476027,6 +476027,12 @@
       "partNum": "76795",
       "color": "Pearl Gold",
       "qty": 1
+    },
+    {
+      "drawerId": "S3",
+      "partNum": "7033",
+      "color": "Lime",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -577936,6 +577942,13 @@
       "d": "Brick Round Corner 5 x 5 x 1 Slope, Bottom Cut Outs, No Studs, Flat Top",
       "e": "6349623",
       "u": 1793314094923
+    },
+    "7033|lime": {
+      "p": "7033",
+      "c": "Lime",
+      "d": "Brick Round Corner 5 x 5 x 1 Curved, Bottom Cut Outs, No Studs, 9 Bottom Tubes",
+      "e": "6585451",
+      "u": 1793314236743
     }
   },
   "partKinds": {
@@ -578079,7 +578092,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:50:00.862Z"
+      "at": "2026-10-29T22:50:39.573Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578103,7 +578116,7 @@
       "bags": "2026-10-29T22:48:13.722Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:50:00.862Z",
+    "savedAt": "2026-10-29T22:50:39.573Z",
     "appVersion": "2026.10.29.1"
   }
 }
