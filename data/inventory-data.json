@@ -457625,7 +457625,7 @@
       "label": "S5",
       "notes": "Doors - Left and Right",
       "group": "S",
-      "lastEdited": "2026-10-29T04:35:56.791Z"
+      "lastEdited": "2026-10-29T04:36:23.491Z"
     },
     {
       "id": "S6",
@@ -473196,6 +473196,12 @@
       "drawerId": "S5",
       "partNum": "60623",
       "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "S5",
+      "partNum": "3861b",
+      "color": "Red",
       "qty": 1
     }
   ],
@@ -571647,6 +571653,13 @@
       "d": "Door 1 x 4 x 6 with 4 Panes and Stud Handle",
       "e": "4521943",
       "u": 1793248557994
+    },
+    "3861b|red": {
+      "p": "3861b",
+      "c": "Red",
+      "d": "Door 1 x 4 x 5 with 4 Panes, Squared Base",
+      "e": "386121",
+      "u": 1793248584693
     }
   },
   "partKinds": {
@@ -571790,7 +571803,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T04:36:00.836Z"
+      "at": "2026-10-29T04:36:27.522Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571814,7 +571827,7 @@
       "bags": "2026-10-29T04:24:15.624Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T04:36:00.836Z",
+    "savedAt": "2026-10-29T04:36:27.522Z",
     "appVersion": "2026.10.28.10"
   }
 }
