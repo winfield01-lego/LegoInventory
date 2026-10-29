@@ -455592,7 +455592,8 @@
       "id": "J41",
       "label": "J41",
       "notes": "",
-      "group": "j"
+      "group": "j",
+      "lastEdited": "2026-10-29T19:20:57.411Z"
     },
     {
       "id": "J42",
@@ -474583,6 +474584,19 @@
       "partNum": "4216",
       "color": "Sand Blue",
       "qty": 2
+    },
+    {
+      "drawerId": "J41",
+      "partNum": "91501",
+      "color": "Black",
+      "qty": 3
+    },
+    {
+      "drawerId": "J41",
+      "partNum": "91501",
+      "color": "Light Bluish Gray",
+      "elementId": "6008311",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -474995,6 +475009,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvtxi6rz_porgj",
+      "label": "October 17 BAM Visit (batch 43)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 43,
+      "timestamp": "2026-10-29T19:20:57.551Z",
+      "items": [
+        {
+          "partNum": "91501",
+          "color": "Black",
+          "desc": "Panel 2 x 2 x 1 Corner",
+          "elementId": "6344005",
+          "qty": 3,
+          "drawerId": "J41",
+          "drawerLabel": "J41"
+        },
+        {
+          "partNum": "91501",
+          "color": "Light Bluish Gray",
+          "desc": "Panel 2 x 2 x 1 Corner",
+          "elementId": "6008311",
+          "qty": 2,
+          "drawerId": "J41",
+          "drawerLabel": "J41"
+        }
+      ]
+    },
     {
       "id": "bag_mvtx7m7s_4vh6a",
       "label": "October 17 BAM Visit (batch 42)",
@@ -484165,28 +484207,6 @@
           "sel": false
         },
         {
-          "partNum": "91501",
-          "color": "Black",
-          "desc": "Panel 2 x 2 x 1 Corner",
-          "elementId": "6344005",
-          "qty": 3,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "91501",
-          "color": "Light Bluish Gray",
-          "desc": "Panel 2 x 2 x 1 Corner",
-          "elementId": "6008311",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "27448",
           "color": "White",
           "desc": "Turntable 2 x 2 Female",
@@ -484715,12 +484735,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T19:20:36.931Z",
+      "savedAt": "2026-10-29T19:20:57.551Z",
       "keepOpen": true,
       "moved": {
-        "batches": 42,
-        "pieces": 1162,
-        "last": "2026-10-29T19:12:44.344Z"
+        "batches": 43,
+        "pieces": 1167,
+        "last": "2026-10-29T19:20:57.551Z"
       }
     },
     {
@@ -487891,8 +487911,11 @@
       "c": "Light Bluish Gray",
       "d": "Panel 2 x 2 x 1 Corner",
       "e": "6181755",
-      "u": 1791916924851,
-      "at": 1791660732205
+      "u": 1793301658752,
+      "at": 1791660732205,
+      "ea": [
+        "6008311"
+      ]
     },
     "2571|trans light blue": {
       "p": "2571",
@@ -575681,6 +575704,13 @@
       "d": "Brick Special 1 x 2 with Groove",
       "e": "4620991",
       "u": 1793301541764
+    },
+    "91501|black": {
+      "p": "91501",
+      "c": "Black",
+      "d": "Panel 2 x 2 x 1 Corner",
+      "e": "6344005",
+      "u": 1793301658752
     }
   },
   "partKinds": {
@@ -575824,7 +575854,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T19:20:40.973Z"
+      "at": "2026-10-29T19:21:01.580Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -575845,10 +575875,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T19:20:36.931Z",
+      "bags": "2026-10-29T19:20:57.551Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T19:20:40.973Z",
+    "savedAt": "2026-10-29T19:21:01.580Z",
     "appVersion": "2026.10.28.10"
   }
 }
