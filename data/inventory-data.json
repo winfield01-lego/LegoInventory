@@ -456946,7 +456946,7 @@
       "label": "N39",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.790Z"
+      "lastEdited": "2026-10-29T17:59:39.056Z"
     },
     {
       "id": "N40",
@@ -473759,6 +473759,12 @@
       "partNum": "44861",
       "color": "Light Bluish Gray",
       "qty": 64
+    },
+    {
+      "drawerId": "N39",
+      "partNum": "2310",
+      "color": "Dark Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -474171,6 +474177,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvtulmlq_x8xhu",
+      "label": "October 17 BAM Visit (batch 35)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 35,
+      "timestamp": "2026-10-29T17:59:39.182Z",
+      "items": [
+        {
+          "partNum": "2310",
+          "color": "Dark Bluish Gray",
+          "desc": "Brick Sloped Inverted 45° 2 x 1 with 2/3 Cutout",
+          "elementId": "6435267",
+          "qty": 1,
+          "drawerId": "N39",
+          "drawerLabel": "N39"
+        }
+      ]
+    },
     {
       "id": "bag_mvtuc4o6_d0d0m",
       "label": "October 17 BAM Visit (batch 34)",
@@ -483115,17 +483140,6 @@
       "label": "October 17 BAM Visit",
       "items": [
         {
-          "partNum": "2310",
-          "color": "Dark Bluish Gray",
-          "desc": "Brick Sloped Inverted 45° 2 x 1 with 2/3 Cutout",
-          "elementId": "6435267",
-          "qty": 1,
-          "drawerId": "N39",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "2422",
           "color": "Red",
           "desc": "Bracket 2 x 2 - 1 x 4",
@@ -483841,12 +483855,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T17:59:07.474Z",
+      "savedAt": "2026-10-29T17:59:39.182Z",
       "keepOpen": true,
       "moved": {
-        "batches": 34,
-        "pieces": 1139,
-        "last": "2026-10-29T17:52:16.038Z"
+        "batches": 35,
+        "pieces": 1140,
+        "last": "2026-10-29T17:59:39.182Z"
       }
     },
     {
@@ -574527,7 +574541,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T17:59:11.516Z"
+      "at": "2026-10-29T17:59:43.222Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -574548,10 +574562,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T17:59:07.474Z",
+      "bags": "2026-10-29T17:59:39.182Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T17:59:11.516Z",
+    "savedAt": "2026-10-29T17:59:43.222Z",
     "appVersion": "2026.10.28.10"
   }
 }
