@@ -456216,7 +456216,7 @@
       "label": "L22",
       "notes": "Horizontal Teeth and 1 x 1 Brick with Scroll",
       "group": "L",
-      "lastEdited": "2026-10-29T21:54:55.625Z"
+      "lastEdited": "2026-10-29T21:55:47.826Z"
     },
     {
       "id": "L23",
@@ -475344,13 +475344,13 @@
       "drawerId": "L22",
       "partNum": "20310",
       "color": "Pearl Gold",
-      "qty": 1
+      "qty": 5
     },
     {
       "drawerId": "L22",
       "partNum": "20310",
       "color": "White",
-      "qty": 2
+      "qty": 16
     },
     {
       "drawerId": "L22",
@@ -475438,6 +475438,24 @@
       "color": "White",
       "elementId": "4224792",
       "qty": 15
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "20310",
+      "color": "Light Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "20310",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "20310",
+      "color": "Tan",
+      "qty": 10
     }
   ],
   "mocLocations": {
@@ -576975,6 +576993,20 @@
       "d": "Plate Special 1 x 1 with Tooth",
       "e": "4263416",
       "u": 1793310872841
+    },
+    "20310|light bluish gray": {
+      "p": "20310",
+      "c": "Light Bluish Gray",
+      "d": "Brick Special 1 x 1 with Scroll with Open Stud",
+      "e": "6211917",
+      "u": 1793310949028
+    },
+    "20310|reddish brown": {
+      "p": "20310",
+      "c": "Reddish Brown",
+      "d": "Brick Special 1 x 1 with Scroll with Open Stud",
+      "e": "6172757",
+      "u": 1793310949028
     }
   },
   "partKinds": {
@@ -577118,7 +577150,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T21:55:00.911Z"
+      "at": "2026-10-29T21:55:51.843Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577142,7 +577174,7 @@
       "bags": "2026-10-29T21:47:34.382Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T21:55:00.911Z",
+    "savedAt": "2026-10-29T21:55:51.843Z",
     "appVersion": "2026.10.29.1"
   }
 }
