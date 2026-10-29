@@ -456930,7 +456930,7 @@
       "label": "N35",
       "notes": "6 wide double Slope - Fuselage",
       "group": "N",
-      "lastEdited": "2026-10-29T23:53:35.829Z"
+      "lastEdited": "2026-10-29T23:54:13.211Z"
     },
     {
       "id": "N36",
@@ -476609,6 +476609,24 @@
       "partNum": "60219",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "N35",
+      "partNum": "22889",
+      "color": "Blue",
+      "qty": 3
+    },
+    {
+      "drawerId": "N35",
+      "partNum": "22889",
+      "color": "Dark Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "N35",
+      "partNum": "22889",
+      "color": "White",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -578791,6 +578809,13 @@
       "d": "Brick Sloped Inverted 45° 6 x 4 Double with 4 x 4 Recessed and 3 Holes",
       "e": "4168937",
       "u": 1793318017032
+    },
+    "22889|blue": {
+      "p": "22889",
+      "c": "Blue",
+      "d": "Brick Sloped Inverted 45° 6 x 2 Double with 2 x 4 Recessed",
+      "e": "6188643",
+      "u": 1793318054414
     }
   },
   "partKinds": {
@@ -578934,7 +578959,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T23:53:39.863Z"
+      "at": "2026-10-29T23:54:17.242Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578958,7 +578983,7 @@
       "bags": "2026-10-29T23:51:35.618Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T23:53:39.863Z",
+    "savedAt": "2026-10-29T23:54:17.242Z",
     "appVersion": "2026.10.29.1"
   }
 }
