@@ -455909,7 +455909,7 @@
       "label": "K21",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-10-29T05:24:13.986Z"
+      "lastEdited": "2026-10-29T05:25:02.360Z"
     },
     {
       "id": "K22",
@@ -473491,6 +473491,12 @@
       "color": "Black",
       "elementId": "6030286",
       "qty": 15
+    },
+    {
+      "drawerId": "K21",
+      "partNum": "32065",
+      "color": "Black",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -572149,6 +572155,13 @@
       "d": "Technic Beam 1 x 5 Thin with Axle Holes on Ends",
       "e": "6029951",
       "u": 1793251455192
+    },
+    "32065|black": {
+      "p": "32065",
+      "c": "Black",
+      "d": "Technic Beam 1 x 7 Thin",
+      "e": "4114295",
+      "u": 1793251503561
     }
   },
   "partKinds": {
@@ -572292,7 +572305,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T05:24:19.289Z"
+      "at": "2026-10-29T05:25:06.395Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -572316,7 +572329,7 @@
       "bags": "2026-10-29T05:17:17.080Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T05:24:19.289Z",
+    "savedAt": "2026-10-29T05:25:06.395Z",
     "appVersion": "2026.10.28.10"
   }
 }
