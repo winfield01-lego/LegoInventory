@@ -456077,7 +456077,7 @@
       "label": "L2",
       "notes": "Space gun, Control Panel, Chainsaw Body",
       "group": "L",
-      "lastEdited": "2026-10-29T22:51:39.447Z"
+      "lastEdited": "2026-10-29T22:52:06.146Z"
     },
     {
       "id": "L3",
@@ -476051,6 +476051,25 @@
       "drawerId": "L2",
       "partNum": "2342",
       "color": "White",
+      "qty": 2
+    },
+    {
+      "drawerId": "L2",
+      "partNum": "2516",
+      "color": "Black",
+      "elementId": "251626",
+      "qty": 1
+    },
+    {
+      "drawerId": "L2",
+      "partNum": "2516",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "L2",
+      "partNum": "2516",
+      "color": "Yellow",
       "qty": 2
     }
   ],
@@ -500372,8 +500391,11 @@
       "c": "Black",
       "d": "Tool Chainsaw / Drill Body",
       "e": "6562846",
-      "u": 1791916924851,
-      "at": 1791673667179
+      "u": 1793314327348,
+      "at": 1791673667179,
+      "ea": [
+        "251626"
+      ]
     },
     "6117|trans neon orange": {
       "p": "6117",
@@ -577982,6 +578004,20 @@
       "d": "Equipment Control Panel",
       "e": "234227",
       "u": 1793314300649
+    },
+    "2516|light bluish gray": {
+      "p": "2516",
+      "c": "Light Bluish Gray",
+      "d": "Tool Chainsaw / Drill Body",
+      "e": "4211689",
+      "u": 1793314327348
+    },
+    "2516|yellow": {
+      "p": "2516",
+      "c": "Yellow",
+      "d": "Tool Chainsaw / Drill Body",
+      "e": "251624",
+      "u": 1793314327348
     }
   },
   "partKinds": {
@@ -578125,7 +578161,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:51:44.762Z"
+      "at": "2026-10-29T22:52:10.180Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578149,7 +578185,7 @@
       "bags": "2026-10-29T22:48:13.722Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:51:44.762Z",
+    "savedAt": "2026-10-29T22:52:10.180Z",
     "appVersion": "2026.10.29.1"
   }
 }
