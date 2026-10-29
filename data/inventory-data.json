@@ -456652,7 +456652,7 @@
       "label": "M43",
       "notes": "",
       "group": "M",
-      "lastEdited": "2026-10-13T17:13:28.024Z"
+      "lastEdited": "2026-10-29T01:40:24.298Z"
     },
     {
       "id": "M44",
@@ -472568,6 +472568,18 @@
       "partNum": "41769",
       "color": "White",
       "qty": 9
+    },
+    {
+      "drawerId": "M43",
+      "partNum": "78443",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "M43",
+      "partNum": "78443",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -472980,6 +472992,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsvmb4g_ipba6",
+      "label": "CdA BAM - 10/22/26 (batch 45)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 45,
+      "timestamp": "2026-10-29T01:40:24.400Z",
+      "items": [
+        {
+          "partNum": "78443",
+          "color": "Black",
+          "desc": "Wedge Plate 6 x 2 Left",
+          "elementId": "6344427",
+          "qty": 1,
+          "drawerId": "M43",
+          "drawerLabel": "M43"
+        },
+        {
+          "partNum": "78443",
+          "color": "White",
+          "desc": "Wedge Plate 6 x 2 Left",
+          "elementId": "6392747",
+          "qty": 1,
+          "drawerId": "M43",
+          "drawerLabel": "M43"
+        }
+      ]
+    },
     {
       "id": "bag_mvsunlxh_5x6ed",
       "label": "CdA BAM - 10/22/26 (batch 44)",
@@ -480299,28 +480339,6 @@
           "sel": false
         },
         {
-          "partNum": "78443",
-          "color": "Black",
-          "desc": "Wedge Plate 6 x 2 Left",
-          "elementId": "6344427",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "78443",
-          "color": "White",
-          "desc": "Wedge Plate 6 x 2 Left",
-          "elementId": "6392747",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "78444",
           "color": "Black",
           "desc": "Wedge Plate 6 x 2 Right",
@@ -480530,12 +480548,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T01:13:25.444Z",
+      "savedAt": "2026-10-29T01:40:24.399Z",
       "keepOpen": true,
       "moved": {
-        "batches": 44,
-        "pieces": 294,
-        "last": "2026-10-29T01:13:25.445Z"
+        "batches": 45,
+        "pieces": 296,
+        "last": "2026-10-29T01:40:24.400Z"
       }
     },
     {
@@ -570774,7 +570792,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:39:18.518Z"
+      "at": "2026-10-29T01:40:28.437Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -570795,10 +570813,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T01:13:25.445Z",
+      "bags": "2026-10-29T01:40:24.400Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:39:18.518Z",
+    "savedAt": "2026-10-29T01:40:28.437Z",
     "appVersion": "2026.10.28.10"
   }
 }
