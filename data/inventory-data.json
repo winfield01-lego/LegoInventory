@@ -455501,7 +455501,7 @@
       "label": "J26",
       "notes": "Bar Holder with Clip or Handles",
       "group": "j",
-      "lastEdited": "2026-10-29T18:32:29.544Z"
+      "lastEdited": "2026-10-29T18:33:58.402Z"
     },
     {
       "id": "J27",
@@ -474057,6 +474057,65 @@
       "partNum": "72869",
       "color": "Black",
       "qty": 2
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "23443",
+      "color": "Black",
+      "elementId": "6143318",
+      "qty": 18
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "23443",
+      "color": "Blue",
+      "elementId": "6254679",
+      "qty": 1
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "23443",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "23443",
+      "color": "Light Bluish Gray",
+      "elementId": "6152107",
+      "qty": 4
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "23443",
+      "color": "Medium Blue",
+      "qty": 4
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "23443",
+      "color": "Pearl Gold",
+      "elementId": "6197509",
+      "qty": 5
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "23443",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "23443",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "J26",
+      "partNum": "23443",
+      "color": "White",
+      "elementId": "6290268",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -484433,8 +484492,11 @@
       "c": "Black",
       "d": "Bar Holder with Hole and Bar Handle",
       "e": "6321194",
-      "u": 1791916924851,
-      "at": 1791660084431
+      "u": 1793298839604,
+      "at": 1791660084431,
+      "ea": [
+        "6143318"
+      ]
     },
     "65578|dark red": {
       "p": "65578",
@@ -496922,9 +496984,12 @@
       "c": "Light Bluish Gray",
       "d": "Bar Holder with Hole and Bar Handle",
       "e": "6343976",
-      "u": 1791916924851,
+      "u": 1793298839604,
       "at": 1791654748438,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6152107.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6152107.jpg",
+      "ea": [
+        "6152107"
+      ]
     },
     "73825|white": {
       "p": "73825",
@@ -498206,7 +498271,10 @@
       "c": "Blue",
       "d": "Bar Holder with Hole and Bar Handle",
       "e": "6366181",
-      "u": 1791916924851
+      "u": 1793298839604,
+      "ea": [
+        "6254679"
+      ]
     },
     "93274|white": {
       "p": "93274",
@@ -549684,9 +549752,12 @@
       "c": "Pearl Gold",
       "d": "Bar Holder with Hole and Bar Handle",
       "e": "6296657",
-      "u": 1791916924851,
+      "u": 1793298839604,
       "at": 1791654771905,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6197509.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6197509.jpg",
+      "ea": [
+        "6197509"
+      ]
     },
     "89522|pearl gold": {
       "p": "89522",
@@ -563841,8 +563912,11 @@
       "c": "White",
       "d": "Bar Holder with Hole and Bar Handle",
       "e": "6322489",
-      "u": 1791916924851,
-      "at": 1791732118013
+      "u": 1793298839604,
+      "at": 1791732118013,
+      "ea": [
+        "6290268"
+      ]
     },
     "30367c|white": {
       "p": "30367c",
@@ -574824,6 +574898,13 @@
       "d": "Bar Holder with Clip and 90° Angle (Mechanical Leg)",
       "e": "6338384",
       "u": 1793298750746
+    },
+    "23443|reddish brown": {
+      "p": "23443",
+      "c": "Reddish Brown",
+      "d": "Bar Holder with Hole and Bar Handle",
+      "e": "6476174",
+      "u": 1793298839604
     }
   },
   "partKinds": {
@@ -574967,7 +575048,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T18:32:33.573Z"
+      "at": "2026-10-29T18:34:03.702Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -574991,7 +575072,7 @@
       "bags": "2026-10-29T18:26:32.039Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T18:32:33.573Z",
+    "savedAt": "2026-10-29T18:34:03.702Z",
     "appVersion": "2026.10.28.10"
   }
 }
