@@ -456844,7 +456844,7 @@
       "label": "N27",
       "notes": "1 x 2 Plate - Clip on Side",
       "group": "N",
-      "lastEdited": "2026-10-29T00:46:03.013Z"
+      "lastEdited": "2026-10-29T00:47:59.871Z"
     },
     {
       "id": "N28",
@@ -471856,7 +471856,48 @@
       "partNum": "11476",
       "color": "White",
       "elementId": "6070712",
-      "qty": 1
+      "qty": 22
+    },
+    {
+      "drawerId": "N27",
+      "partNum": "11476",
+      "color": "Black",
+      "elementId": "6132731",
+      "qty": 13
+    },
+    {
+      "drawerId": "N27",
+      "partNum": "11476",
+      "color": "Blue",
+      "elementId": "6179328",
+      "qty": 4
+    },
+    {
+      "drawerId": "N27",
+      "partNum": "11476",
+      "color": "Dark Orange",
+      "qty": 8
+    },
+    {
+      "drawerId": "N27",
+      "partNum": "11476",
+      "color": "Reddish Brown",
+      "elementId": "6185998",
+      "qty": 2
+    },
+    {
+      "drawerId": "N27",
+      "partNum": "11476",
+      "color": "Red",
+      "elementId": "6178488",
+      "qty": 3
+    },
+    {
+      "drawerId": "N27",
+      "partNum": "11476",
+      "color": "Light Bluish Gray",
+      "elementId": "6028812",
+      "qty": 19
     }
   ],
   "mocLocations": {
@@ -509081,9 +509122,12 @@
       "c": "Reddish Brown",
       "d": "Plate Special 1 x 2 with Clip Horizontal on Side",
       "e": "6313124",
-      "u": 1791916924851,
+      "u": 1793234881073,
       "at": 1791654291536,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6185998.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6185998.jpg",
+      "ea": [
+        "6185998"
+      ]
     },
     "22888|tan": {
       "p": "22888",
@@ -516260,9 +516304,12 @@
       "c": "Blue",
       "d": "Plate Special 1 x 2 with Clip Horizontal on Side",
       "e": "6313131",
-      "u": 1791916924851,
+      "u": 1793234881073,
       "at": 1791654440640,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6179328.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6179328.jpg",
+      "ea": [
+        "6179328"
+      ]
     },
     "32001|blue": {
       "p": "32001",
@@ -522902,9 +522949,12 @@
       "c": "Red",
       "d": "Plate Special 1 x 2 with Clip Horizontal on Side",
       "e": "6313120",
-      "u": 1791916924851,
+      "u": 1793234881073,
       "at": 1791654731050,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6178488.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6178488.jpg",
+      "ea": [
+        "6178488"
+      ]
     },
     "6141|trans bright green": {
       "p": "6141",
@@ -569651,6 +569701,13 @@
       "d": "Plate Special 1 x 2 with Handle on End [Closed Ends]",
       "e": "6167699",
       "u": 1793234654877
+    },
+    "11476|dark orange": {
+      "p": "11476",
+      "c": "Dark Orange",
+      "d": "Plate Special 1 x 2 with Clip Horizontal on Side",
+      "e": "6186049",
+      "u": 1793234881073
     }
   },
   "partKinds": {
@@ -569794,7 +569851,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T00:46:07.051Z"
+      "at": "2026-10-29T00:48:05.164Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569818,7 +569875,7 @@
       "bags": "2026-10-29T00:45:25.687Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T00:46:07.051Z",
+    "savedAt": "2026-10-29T00:48:05.164Z",
     "appVersion": "2026.10.28.10"
   }
 }
