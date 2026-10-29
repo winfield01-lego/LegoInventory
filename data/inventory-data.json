@@ -454950,7 +454950,7 @@
       "label": "H29",
       "notes": "4x1x2/3 Curved, Double",
       "group": "H",
-      "lastEdited": "2026-10-26T04:15:03.344Z"
+      "lastEdited": "2026-10-29T22:26:00.118Z"
     },
     {
       "id": "H30",
@@ -464926,7 +464926,7 @@
       "drawerId": "H29",
       "partNum": "93273",
       "color": "Dark Tan",
-      "qty": 1
+      "qty": 2
     },
     {
       "drawerId": "H29",
@@ -476280,6 +476280,25 @@
   "mocInstructions": {},
   "bagInventoryLog": [
     {
+      "id": "bag_mvu445ol_ki2rn",
+      "label": "October 17 BAM Visit (batch 62)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 62,
+      "timestamp": "2026-10-29T22:26:00.261Z",
+      "items": [
+        {
+          "partNum": "93273",
+          "color": "Dark Tan",
+          "desc": "Brick Curved 4 x 1 Double, No Studs",
+          "elementId": "6167936",
+          "qty": 1,
+          "drawerId": "H29",
+          "drawerLabel": "H29"
+        }
+      ]
+    },
+    {
       "id": "bag_mvu3sdxf_75in9",
       "label": "October 17 BAM Visit (batch 61)",
       "bagId": "bagprog_mvdf0cda_x6nv",
@@ -485893,17 +485912,6 @@
           "sel": false
         },
         {
-          "partNum": "93273",
-          "color": "Dark Tan",
-          "desc": "Brick Curved 4 x 1 Double, No Studs",
-          "elementId": "6167936",
-          "qty": 1,
-          "drawerId": "H29",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "20482",
           "color": "Pearl Gold",
           "desc": "Tile Special Round 1 x 1 with Hollow Bar",
@@ -486157,12 +486165,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T22:16:51.075Z",
+      "savedAt": "2026-10-29T22:26:00.261Z",
       "keepOpen": true,
       "moved": {
-        "batches": 61,
-        "pieces": 1195,
-        "last": "2026-10-29T22:16:51.075Z"
+        "batches": 62,
+        "pieces": 1196,
+        "last": "2026-10-29T22:26:00.261Z"
       }
     },
     {
@@ -577820,7 +577828,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:25:00.540Z"
+      "at": "2026-10-29T22:26:04.304Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577841,10 +577849,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T22:16:51.075Z",
+      "bags": "2026-10-29T22:26:00.261Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:25:00.540Z",
+    "savedAt": "2026-10-29T22:26:04.303Z",
     "appVersion": "2026.10.29.1"
   }
 }
