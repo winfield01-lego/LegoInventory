@@ -456077,7 +456077,7 @@
       "label": "L2",
       "notes": "Space gun, Control Panel, Chainsaw Body",
       "group": "L",
-      "lastEdited": "2026-10-29T22:52:10.419Z"
+      "lastEdited": "2026-10-29T22:53:50.995Z"
     },
     {
       "id": "L3",
@@ -476071,6 +476071,18 @@
       "partNum": "2516",
       "color": "Yellow",
       "qty": 2
+    },
+    {
+      "drawerId": "L2",
+      "partNum": "86208",
+      "color": "Dark Bluish Gray",
+      "qty": 9
+    },
+    {
+      "drawerId": "L2",
+      "partNum": "86208",
+      "color": "Light Bluish Gray",
+      "qty": 7
     }
   ],
   "mocLocations": {
@@ -578161,7 +578173,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:52:15.438Z"
+      "at": "2026-10-29T22:53:55.036Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578185,7 +578197,7 @@
       "bags": "2026-10-29T22:48:13.722Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:52:15.438Z",
+    "savedAt": "2026-10-29T22:53:55.036Z",
     "appVersion": "2026.10.29.1"
   }
 }
