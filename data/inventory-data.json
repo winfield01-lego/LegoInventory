@@ -454612,7 +454612,8 @@
       "id": "G22",
       "label": "G22",
       "notes": "",
-      "group": "G"
+      "group": "G",
+      "lastEdited": "2026-10-29T21:29:59.075Z"
     },
     {
       "id": "G23",
@@ -475264,6 +475265,12 @@
       "partNum": "18455",
       "color": "Light Bluish Gray",
       "qty": 2
+    },
+    {
+      "drawerId": "G22",
+      "partNum": "78257",
+      "color": "Reddish Brown",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -475676,6 +475683,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu244ad_f9vj8",
+      "label": "October 17 BAM Visit (batch 53)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 53,
+      "timestamp": "2026-10-29T21:29:59.221Z",
+      "items": [
+        {
+          "partNum": "78257",
+          "color": "Reddish Brown",
+          "desc": "Plate Special 1 x 1 with Handle on 2 Ends",
+          "elementId": "6383143",
+          "qty": 1,
+          "drawerId": "G22",
+          "drawerLabel": "G22"
+        }
+      ]
+    },
     {
       "id": "bag_mvu1z9rb_bot8t",
       "label": "October 17 BAM Visit (batch 52)",
@@ -485074,17 +485100,6 @@
           "sel": false
         },
         {
-          "partNum": "78257",
-          "color": "Reddish Brown",
-          "desc": "Plate Special 1 x 1 with Handle on 2 Ends",
-          "elementId": "6383143",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "20310",
           "color": "Pearl Gold",
           "desc": "Brick Special 1 x 1 with Scroll with Open Stud",
@@ -485481,12 +485496,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T21:29:41.310Z",
+      "savedAt": "2026-10-29T21:29:59.221Z",
       "keepOpen": true,
       "moved": {
-        "batches": 52,
-        "pieces": 1179,
-        "last": "2026-10-29T21:26:13.031Z"
+        "batches": 53,
+        "pieces": 1180,
+        "last": "2026-10-29T21:29:59.221Z"
       }
     },
     {
@@ -576873,7 +576888,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T21:29:45.343Z"
+      "at": "2026-10-29T21:30:03.248Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576894,10 +576909,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T21:29:41.310Z",
+      "bags": "2026-10-29T21:29:59.221Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T21:29:45.343Z",
+    "savedAt": "2026-10-29T21:30:03.248Z",
     "appVersion": "2026.10.28.10"
   }
 }
