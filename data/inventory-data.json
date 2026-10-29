@@ -456946,7 +456946,7 @@
       "label": "N39",
       "notes": "Inverted Slopes from 2 to 4 wide - fuselage",
       "group": "N",
-      "lastEdited": "2026-10-29T18:04:08.520Z"
+      "lastEdited": "2026-10-29T18:04:34.221Z"
     },
     {
       "id": "N40",
@@ -473790,6 +473790,30 @@
       "color": "Red",
       "elementId": "4603489",
       "qty": 2
+    },
+    {
+      "drawerId": "N39",
+      "partNum": "72454",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "N39",
+      "partNum": "72454",
+      "color": "Dark Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "N39",
+      "partNum": "72454",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "N39",
+      "partNum": "72454",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -574436,6 +574460,20 @@
       "d": "Brick Sloped Inverted 45° 4 x 4 Double with 4 x 2 Recessed",
       "e": "4211513",
       "u": 1793296910460
+    },
+    "72454|black": {
+      "p": "72454",
+      "c": "Black",
+      "d": "Brick Sloped Inverted 45° 4 x 4 Double with 4 x 2 Recessed, 2 Holes",
+      "e": "4658977",
+      "u": 1793297075424
+    },
+    "72454|red": {
+      "p": "72454",
+      "c": "Red",
+      "d": "Brick Sloped Inverted 45° 4 x 4 Double with 4 x 2 Recessed, 2 Holes",
+      "e": "4658975",
+      "u": 1793297075424
     }
   },
   "partKinds": {
@@ -574579,7 +574617,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T18:04:13.816Z"
+      "at": "2026-10-29T18:04:38.262Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -574603,7 +574641,7 @@
       "bags": "2026-10-29T17:59:39.182Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T18:04:13.816Z",
+    "savedAt": "2026-10-29T18:04:38.262Z",
     "appVersion": "2026.10.28.10"
   }
 }
