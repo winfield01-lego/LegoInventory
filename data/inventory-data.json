@@ -456638,7 +456638,7 @@
       "label": "M41",
       "notes": "4 x 2 Wedge - Left",
       "group": "M",
-      "lastEdited": "2026-10-29T01:26:40.770Z"
+      "lastEdited": "2026-10-29T01:35:30.737Z"
     },
     {
       "id": "M42",
@@ -472381,6 +472381,99 @@
       "partNum": "43722",
       "color": "Yellow",
       "qty": 4
+    },
+    {
+      "drawerId": "M41",
+      "partNum": "41770",
+      "color": "Black",
+      "qty": 32
+    },
+    {
+      "drawerId": "M41",
+      "partNum": "41770",
+      "color": "Blue",
+      "qty": 4
+    },
+    {
+      "drawerId": "M41",
+      "partNum": "41770",
+      "color": "Dark Azure",
+      "qty": 3
+    },
+    {
+      "drawerId": "M41",
+      "partNum": "41770",
+      "color": "Dark Blue",
+      "elementId": "4247065",
+      "qty": 4
+    },
+    {
+      "drawerId": "M41",
+      "partNum": "41770",
+      "color": "Dark Bluish Gray",
+      "qty": 12
+    },
+    {
+      "drawerId": "M41",
+      "partNum": "41770",
+      "color": "Dark Red",
+      "elementId": "4162587",
+      "qty": 1
+    },
+    {
+      "drawerId": "M41",
+      "partNum": "41770",
+      "color": "Green",
+      "qty": 2
+    },
+    {
+      "drawerId": "M41",
+      "partNum": "41770",
+      "color": "Light Bluish Gray",
+      "qty": 13
+    },
+    {
+      "drawerId": "M41",
+      "partNum": "41770",
+      "color": "Medium Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "M41",
+      "partNum": "41770",
+      "color": "Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "M41",
+      "partNum": "41770",
+      "color": "Red",
+      "qty": 5
+    },
+    {
+      "drawerId": "M41",
+      "partNum": "41770",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "M41",
+      "partNum": "41770",
+      "color": "Sand Blue",
+      "elementId": "4182468",
+      "qty": 7
+    },
+    {
+      "drawerId": "M41",
+      "partNum": "41770",
+      "color": "Yellow",
+      "qty": 3
+    },
+    {
+      "drawerId": "M41",
+      "partNum": "41770",
+      "color": "White",
+      "qty": 9
     }
   ],
   "mocLocations": {
@@ -502685,8 +502778,8 @@
       "p": "41770",
       "c": "Green",
       "d": "Wedge Plate 4 x 2 Left",
-      "e": "",
-      "u": 1791916924851,
+      "e": "4161334",
+      "u": 1793237731940,
       "at": 1791660732205
     },
     "41769|green": {
@@ -504991,9 +505084,12 @@
       "c": "Dark Red",
       "d": "Wedge Plate 4 x 2 Left",
       "e": "6008593",
-      "u": 1791916924851,
+      "u": 1793237731940,
       "at": 1791671921036,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4162587.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4162587.jpg",
+      "ea": [
+        "4162587"
+      ]
     },
     "41769|dark red": {
       "p": "41769",
@@ -521849,8 +521945,11 @@
       "c": "Dark Blue",
       "d": "Wedge Plate 4 x 2 Left",
       "e": "4529954",
-      "u": 1791916924851,
-      "at": 1791654487845
+      "u": 1793237731940,
+      "at": 1791654487845,
+      "ea": [
+        "4247065"
+      ]
     },
     "41769|dark blue": {
       "p": "41769",
@@ -527800,9 +527899,12 @@
       "c": "Sand Blue",
       "d": "Wedge Plate 4 x 2 Left",
       "e": "6207945",
-      "u": 1791916924851,
+      "u": 1793237731940,
       "at": 1791654578181,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4182468.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4182468.jpg",
+      "ea": [
+        "4182468"
+      ]
     },
     "41769|sand blue": {
       "p": "41769",
@@ -570367,6 +570469,34 @@
       "d": "Wedge Plate 3 x 2 Right",
       "e": "4183167",
       "u": 1793237147328
+    },
+    "41770|blue": {
+      "p": "41770",
+      "c": "Blue",
+      "d": "Wedge Plate 4 x 2 Left",
+      "e": "4161330",
+      "u": 1793237731940
+    },
+    "41770|medium blue": {
+      "p": "41770",
+      "c": "Medium Blue",
+      "d": "Wedge Plate 4 x 2 Left",
+      "e": "4161338",
+      "u": 1793237731940
+    },
+    "41770|orange": {
+      "p": "41770",
+      "c": "Orange",
+      "d": "Wedge Plate 4 x 2 Left",
+      "e": "4169351",
+      "u": 1793237731940
+    },
+    "41770|reddish brown": {
+      "p": "41770",
+      "c": "Reddish Brown",
+      "d": "Wedge Plate 4 x 2 Left",
+      "e": "4205470",
+      "u": 1793237731940
     }
   },
   "partKinds": {
@@ -570510,7 +570640,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:26:44.800Z"
+      "at": "2026-10-29T01:35:36.023Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -570534,7 +570664,7 @@
       "bags": "2026-10-29T01:13:25.445Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:26:44.800Z",
+    "savedAt": "2026-10-29T01:35:36.023Z",
     "appVersion": "2026.10.28.10"
   }
 }
