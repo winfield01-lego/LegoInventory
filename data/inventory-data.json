@@ -455400,7 +455400,7 @@
       "label": "J9",
       "notes": "8 x 6 Wedge Plate with Grille",
       "group": "j",
-      "lastEdited": "2026-10-29T23:10:22.664Z"
+      "lastEdited": "2026-10-29T23:11:06.563Z"
     },
     {
       "id": "J10",
@@ -476134,7 +476134,7 @@
       "drawerId": "J9",
       "partNum": "30036",
       "color": "Dark Bluish Gray",
-      "qty": 1
+      "qty": 2
     },
     {
       "drawerId": "M19",
@@ -476252,6 +476252,18 @@
       "color": "White",
       "elementId": "6258135",
       "qty": 42
+    },
+    {
+      "drawerId": "J9",
+      "partNum": "30036",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "J9",
+      "partNum": "30036",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -578286,6 +578298,20 @@
       "d": "Brick Curved 1 x 1 x 2/3 Double Curved Top, No Studs",
       "e": "6394524",
       "u": 1793315140066
+    },
+    "30036|light bluish gray": {
+      "p": "30036",
+      "c": "Light Bluish Gray",
+      "d": "Wedge Plate 8 x 6 x 2/3 with Grille",
+      "e": "6142379",
+      "u": 1793315467766
+    },
+    "30036|white": {
+      "p": "30036",
+      "c": "White",
+      "d": "Wedge Plate 8 x 6 x 2/3 with Grille",
+      "e": "3003601",
+      "u": 1793315467766
     }
   },
   "partKinds": {
@@ -578429,7 +578455,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T23:10:26.711Z"
+      "at": "2026-10-29T23:11:10.605Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578453,7 +578479,7 @@
       "bags": "2026-10-29T22:57:13.855Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T23:10:26.711Z",
+    "savedAt": "2026-10-29T23:11:10.605Z",
     "appVersion": "2026.10.29.1"
   }
 }
