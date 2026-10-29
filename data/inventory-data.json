@@ -456564,7 +456564,7 @@
       "label": "M27",
       "notes": "Wedge Plate 2 x 4 - Left",
       "group": "M",
-      "lastEdited": "2026-10-29T23:40:41.476Z"
+      "lastEdited": "2026-10-29T23:46:02.697Z"
     },
     {
       "id": "M28",
@@ -476349,13 +476349,13 @@
       "drawerId": "M27",
       "partNum": "65429",
       "color": "Black",
-      "qty": 1
+      "qty": 11
     },
     {
       "drawerId": "M27",
       "partNum": "65429",
       "color": "White",
-      "qty": 1
+      "qty": 5
     },
     {
       "drawerId": "K10",
@@ -476473,6 +476473,37 @@
       "partNum": "15706",
       "color": "Reddish Brown",
       "qty": 1
+    },
+    {
+      "drawerId": "M27",
+      "partNum": "65429",
+      "color": "Dark Blue",
+      "elementId": "6337527",
+      "qty": 1
+    },
+    {
+      "drawerId": "M27",
+      "partNum": "65429",
+      "color": "Light Bluish Gray",
+      "qty": 33
+    },
+    {
+      "drawerId": "M27",
+      "partNum": "65429",
+      "color": "Red",
+      "qty": 6
+    },
+    {
+      "drawerId": "M27",
+      "partNum": "65429",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "M27",
+      "partNum": "65429",
+      "color": "Yellow",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -533229,9 +533260,12 @@
       "c": "Dark Blue",
       "d": "Wedge Plate 2 x 4 27° Left",
       "e": "6547183",
-      "u": 1791916924851,
+      "u": 1793317563899,
       "at": 1791654487845,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6337527.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6337527.jpg",
+      "ea": [
+        "6337527"
+      ]
     },
     "65426|dark blue": {
       "p": "65426",
@@ -578607,6 +578641,13 @@
       "d": "Wedge Plate 4 Stud 45° Angle Plate",
       "e": "6084573",
       "u": 1793317151333
+    },
+    "65429|tan": {
+      "p": "65429",
+      "c": "Tan",
+      "d": "Wedge Plate 2 x 4 27° Left",
+      "e": "6421618",
+      "u": 1793317563899
     }
   },
   "partKinds": {
@@ -578750,7 +578791,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T23:40:55.928Z"
+      "at": "2026-10-29T23:46:07.984Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578774,7 +578815,7 @@
       "bags": "2026-10-29T23:21:16.224Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T23:40:55.928Z",
+    "savedAt": "2026-10-29T23:46:07.984Z",
     "appVersion": "2026.10.29.1"
   }
 }
