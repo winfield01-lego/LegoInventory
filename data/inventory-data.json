@@ -456314,7 +456314,7 @@
       "label": "L36",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-10-29T05:35:01.607Z"
+      "lastEdited": "2026-10-29T22:10:38.103Z"
     },
     {
       "id": "L37",
@@ -457336,7 +457336,7 @@
       "label": "O50",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-10-13T17:14:08.108Z"
+      "lastEdited": "2026-10-29T22:10:38.101Z"
     },
     {
       "id": "O51",
@@ -475638,6 +475638,27 @@
       "partNum": "60608",
       "color": "Yellow",
       "qty": 8
+    },
+    {
+      "drawerId": "O50",
+      "partNum": "4175",
+      "color": "Light Bluish Gray",
+      "elementId": "4211545",
+      "qty": 2
+    },
+    {
+      "drawerId": "L36",
+      "partNum": "6583",
+      "color": "Black",
+      "elementId": "6271649",
+      "qty": 1
+    },
+    {
+      "drawerId": "L36",
+      "partNum": "6583",
+      "color": "Dark Bluish Gray",
+      "elementId": "4211047",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -476050,6 +476071,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu3ke8t_7o4uw",
+      "label": "October 17 BAM Visit (batch 59)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 59,
+      "timestamp": "2026-10-29T22:10:38.237Z",
+      "items": [
+        {
+          "partNum": "4175",
+          "color": "Light Bluish Gray",
+          "desc": "Plate Special 1 x 2 with Ladder",
+          "elementId": "4211545",
+          "qty": 2,
+          "drawerId": "O50",
+          "drawerLabel": "O50"
+        },
+        {
+          "partNum": "6583",
+          "color": "Black",
+          "desc": "Plate Special 1 x 6 with Train Wagon End Fence",
+          "elementId": "6271649",
+          "qty": 1,
+          "drawerId": "L36",
+          "drawerLabel": "L36"
+        },
+        {
+          "partNum": "6583",
+          "color": "Dark Bluish Gray",
+          "desc": "Plate Special 1 x 6 with Train Wagon End Fence",
+          "elementId": "4211047",
+          "qty": 1,
+          "drawerId": "L36",
+          "drawerLabel": "L36"
+        }
+      ]
+    },
     {
       "id": "bag_mvu3g8rz_bb2nl",
       "label": "October 17 BAM Visit (batch 58)",
@@ -485580,39 +485638,6 @@
           "sel": false
         },
         {
-          "partNum": "4175",
-          "color": "Light Bluish Gray",
-          "desc": "Plate Special 1 x 2 with Ladder",
-          "elementId": "4211545",
-          "qty": 2,
-          "drawerId": "O50",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "6583",
-          "color": "Black",
-          "desc": "Plate Special 1 x 6 with Train Wagon End Fence",
-          "elementId": "6271649",
-          "qty": 1,
-          "drawerId": "L36",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": false
-        },
-        {
-          "partNum": "6583",
-          "color": "Dark Bluish Gray",
-          "desc": "Plate Special 1 x 6 with Train Wagon End Fence",
-          "elementId": "4211047",
-          "qty": 1,
-          "drawerId": "L36",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": false
-        },
-        {
           "partNum": "32000",
           "color": "Reddish Brown",
           "desc": "Technic Brick 1 x 2 [2 Pin Holes]",
@@ -485899,12 +485924,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T22:10:22.164Z",
+      "savedAt": "2026-10-29T22:10:38.237Z",
       "keepOpen": true,
       "moved": {
-        "batches": 58,
-        "pieces": 1188,
-        "last": "2026-10-29T22:07:24.526Z"
+        "batches": 59,
+        "pieces": 1192,
+        "last": "2026-10-29T22:10:38.237Z"
       }
     },
     {
@@ -490175,9 +490200,12 @@
       "c": "Light Bluish Gray",
       "d": "Plate Special 1 x 2 with Ladder",
       "e": "6285243",
-      "u": 1791916924851,
+      "u": 1793311839438,
       "at": 1791654560264,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4211545.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4211545.jpg",
+      "ea": [
+        "4211545"
+      ]
     },
     "6141|trans yellow": {
       "p": "6141",
@@ -521670,8 +521698,11 @@
       "c": "Black",
       "d": "Plate Special 1 x 6 with Train Wagon End Fence",
       "e": "658326",
-      "u": 1791916924851,
-      "at": 1791654329939
+      "u": 1793311839438,
+      "at": 1791654329939,
+      "ea": [
+        "6271649"
+      ]
     },
     "4488|black": {
       "p": "4488",
@@ -553472,9 +553503,12 @@
       "c": "Dark Bluish Gray",
       "d": "Plate Special 1 x 6 with Train Wagon End Fence",
       "e": "6271647",
-      "u": 1791916924851,
+      "u": 1793311839438,
       "at": 1791654806816,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6112207.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6112207.jpg",
+      "ea": [
+        "4211047"
+      ]
     },
     "53400|dark bluish gray": {
       "p": "53400",
@@ -577462,7 +577496,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:10:26.198Z"
+      "at": "2026-10-29T22:10:43.535Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577483,10 +577517,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T22:10:22.164Z",
+      "bags": "2026-10-29T22:10:38.237Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:10:26.198Z",
+    "savedAt": "2026-10-29T22:10:43.535Z",
     "appVersion": "2026.10.29.1"
   }
 }
