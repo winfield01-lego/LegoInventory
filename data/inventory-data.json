@@ -454613,7 +454613,7 @@
       "label": "G22",
       "notes": "Buckets and Handles",
       "group": "G",
-      "lastEdited": "2026-10-29T21:34:05.495Z"
+      "lastEdited": "2026-10-29T21:35:25.011Z"
     },
     {
       "id": "G23",
@@ -475307,6 +475307,38 @@
       "partNum": "95343",
       "color": "Reddish Brown",
       "qty": 13
+    },
+    {
+      "drawerId": "G22",
+      "partNum": "95344",
+      "color": "Black",
+      "elementId": "6121725",
+      "qty": 20
+    },
+    {
+      "drawerId": "G22",
+      "partNum": "95344",
+      "color": "Dark Bluish Gray",
+      "qty": 6
+    },
+    {
+      "drawerId": "G22",
+      "partNum": "95344",
+      "color": "Dark Tan",
+      "qty": 8
+    },
+    {
+      "drawerId": "G22",
+      "partNum": "95344",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "G22",
+      "partNum": "95344",
+      "color": "Pearl Gold",
+      "elementId": "4654247",
+      "qty": 6
     }
   ],
   "mocLocations": {
@@ -518864,9 +518896,12 @@
       "c": "Pearl Gold",
       "d": "Bucket 1 x 1 x 1 Handle",
       "e": "6245278",
-      "u": 1791916924851,
+      "u": 1793309726212,
       "at": 1791654319350,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4654247.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4654247.jpg",
+      "ea": [
+        "4654247"
+      ]
     },
     "48336|pearl gold": {
       "p": "48336",
@@ -523110,9 +523145,12 @@
       "c": "Black",
       "d": "Bucket 1 x 1 x 1 Handle",
       "e": "6245281",
-      "u": 1791916924851,
+      "u": 1793309726212,
       "at": 1791654484158,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6121725.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6121725.jpg",
+      "ea": [
+        "6121725"
+      ]
     },
     "77083|black": {
       "p": "77083",
@@ -576781,6 +576819,13 @@
       "d": "Hinge Brick 2 x 4 Locking with 1 Finger on Top at One End",
       "e": "6097167",
       "u": 1793309349761
+    },
+    "95344|dark tan": {
+      "p": "95344",
+      "c": "Dark Tan",
+      "d": "Bucket 1 x 1 x 1 Handle",
+      "e": "4626884",
+      "u": 1793309726212
     }
   },
   "partKinds": {
@@ -576924,7 +576969,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T21:34:09.528Z"
+      "at": "2026-10-29T21:35:30.309Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576948,7 +576993,7 @@
       "bags": "2026-10-29T21:29:59.221Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T21:34:09.528Z",
+    "savedAt": "2026-10-29T21:35:30.309Z",
     "appVersion": "2026.10.28.10"
   }
 }
