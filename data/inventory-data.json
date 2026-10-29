@@ -456198,7 +456198,7 @@
       "label": "L20",
       "notes": "Bar with Clip and Nozzles",
       "group": "L",
-      "lastEdited": "2026-10-29T18:43:48.513Z"
+      "lastEdited": "2026-10-29T18:45:24.446Z"
     },
     {
       "id": "L21",
@@ -474164,6 +474164,12 @@
       "partNum": "3484",
       "color": "White",
       "qty": 8
+    },
+    {
+      "drawerId": "L20",
+      "partNum": "4210",
+      "color": "Yellow",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -574961,6 +574967,13 @@
       "d": "Bar Holder with Hole and Bar Handle",
       "e": "6476174",
       "u": 1793298839604
+    },
+    "4210|yellow": {
+      "p": "4210",
+      "c": "Yellow",
+      "d": "Equipment Hose Nozzle Simple",
+      "e": "4248254",
+      "u": 1793299525648
     }
   },
   "partKinds": {
@@ -575104,7 +575117,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T18:43:52.552Z"
+      "at": "2026-10-29T18:45:28.479Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -575128,7 +575141,7 @@
       "bags": "2026-10-29T18:35:28.019Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T18:43:52.552Z",
+    "savedAt": "2026-10-29T18:45:28.478Z",
     "appVersion": "2026.10.28.10"
   }
 }
