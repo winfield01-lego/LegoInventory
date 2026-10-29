@@ -454309,7 +454309,8 @@
       "id": "F18",
       "label": "F18",
       "notes": "",
-      "group": "F"
+      "group": "F",
+      "lastEdited": "2026-10-29T05:07:12.654Z"
     },
     {
       "id": "F19",
@@ -473390,6 +473391,18 @@
       "partNum": "4265a",
       "color": "Light Gray",
       "qty": 25
+    },
+    {
+      "drawerId": "F18",
+      "partNum": "77850",
+      "color": "Dark Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "F18",
+      "partNum": "77845",
+      "color": "Light Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -473802,6 +473815,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvt309hk_rrzar",
+      "label": "CdA BAM - 10/22/26 (batch 58)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 58,
+      "timestamp": "2026-10-29T05:07:12.776Z",
+      "items": [
+        {
+          "partNum": "77850",
+          "color": "Dark Tan",
+          "desc": "Plate Special 1 x 3 Rounded with 3 Open Studs",
+          "elementId": "6449564",
+          "qty": 1,
+          "drawerId": "F18",
+          "drawerLabel": "F18"
+        },
+        {
+          "partNum": "77845",
+          "color": "Light Bluish Gray",
+          "desc": "Plate Special 1 x 4 Rounded with 2 Open Studs",
+          "elementId": "6456718",
+          "qty": 1,
+          "drawerId": "F18",
+          "drawerLabel": "F18"
+        }
+      ]
+    },
     {
       "id": "bag_mvt2bgm2_x2f95",
       "label": "CdA BAM - 10/22/26 (batch 57)",
@@ -481404,36 +481445,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "77850",
-          "color": "Dark Tan",
-          "desc": "Plate Special 1 x 3 Rounded with 3 Open Studs",
-          "elementId": "6449564",
-          "qty": 1,
-          "drawerId": "F18",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "77845",
-          "color": "Light Bluish Gray",
-          "desc": "Plate Special 1 x 4 Rounded with 2 Open Studs",
-          "elementId": "6456718",
-          "qty": 1,
-          "drawerId": "F18",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
         }
       ],
-      "savedAt": "2026-10-29T05:07:07.310Z",
+      "savedAt": "2026-10-29T05:07:12.776Z",
       "keepOpen": true,
       "moved": {
-        "batches": 57,
-        "pieces": 310,
-        "last": "2026-10-29T04:47:55.610Z"
+        "batches": 58,
+        "pieces": 312,
+        "last": "2026-10-29T05:07:12.776Z"
       }
     },
     {
@@ -572130,7 +572149,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T05:07:11.350Z"
+      "at": "2026-10-29T05:07:16.815Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -572151,10 +572170,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T05:07:07.310Z",
+      "bags": "2026-10-29T05:07:12.776Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T05:07:11.350Z",
+    "savedAt": "2026-10-29T05:07:16.815Z",
     "appVersion": "2026.10.28.10"
   }
 }
