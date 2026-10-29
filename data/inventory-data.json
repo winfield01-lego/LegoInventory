@@ -453864,7 +453864,7 @@
       "label": "A1",
       "notes": "1 x 1 Bricks",
       "group": "A",
-      "lastEdited": "2026-10-28T04:46:59.171Z"
+      "lastEdited": "2026-10-29T05:35:01.608Z"
     },
     {
       "id": "A2",
@@ -454543,7 +454543,7 @@
       "label": "G11",
       "notes": "1 x 1 Cone - Inverted with Bar",
       "group": "G",
-      "lastEdited": "2026-10-28T19:08:41.373Z"
+      "lastEdited": "2026-10-29T05:35:01.607Z"
     },
     {
       "id": "G12",
@@ -456154,7 +456154,7 @@
       "label": "L14",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-10-13T17:13:18.947Z"
+      "lastEdited": "2026-10-29T05:35:01.608Z"
     },
     {
       "id": "L15",
@@ -456308,7 +456308,7 @@
       "label": "L36",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-10-13T17:13:18.947Z"
+      "lastEdited": "2026-10-29T05:35:01.607Z"
     },
     {
       "id": "L37",
@@ -457834,7 +457834,7 @@
       "label": "Q4",
       "notes": "Windows - 4 wide",
       "group": "Q",
-      "lastEdited": "2026-10-28T03:41:17.360Z"
+      "lastEdited": "2026-10-29T05:35:01.606Z"
     },
     {
       "id": "Q5",
@@ -471242,7 +471242,7 @@
       "partNum": "60594",
       "color": "Blue",
       "elementId": "4597415",
-      "qty": 1
+      "qty": 9
     },
     {
       "drawerId": "Q4",
@@ -473591,6 +473591,32 @@
       "color": "Yellow",
       "elementId": "4107823",
       "qty": 3
+    },
+    {
+      "drawerId": "G11",
+      "partNum": "11610",
+      "color": "Dark Blue",
+      "qty": 12
+    },
+    {
+      "drawerId": "L36",
+      "partNum": "6583",
+      "color": "Dark Tan",
+      "elementId": "6003566",
+      "qty": 8
+    },
+    {
+      "drawerId": "L14",
+      "partNum": "98100",
+      "color": "Nougat",
+      "qty": 3
+    },
+    {
+      "drawerId": "A1",
+      "partNum": "3005",
+      "color": "Sand Green",
+      "elementId": "4155050",
+      "qty": 50
     }
   ],
   "mocLocations": {
@@ -474003,6 +474029,61 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvt4019e_dwz57",
+      "label": "10/19 Bricklink Order (batch 1)",
+      "bagId": "bagprog_mvk75aw3_outd",
+      "bagLabel": "10/19 Bricklink Order",
+      "batch": 1,
+      "timestamp": "2026-10-29T05:35:01.731Z",
+      "items": [
+        {
+          "partNum": "60594",
+          "color": "Blue",
+          "desc": "Window 1 x 4 x 3 without Shutter Tabs",
+          "elementId": "4597415",
+          "qty": 8,
+          "drawerId": "Q4",
+          "drawerLabel": "Q4"
+        },
+        {
+          "partNum": "11610",
+          "color": "Dark Blue",
+          "desc": "Cone 1 x 1 Inverted with Bar at Bottom (Ice Cream Cone)",
+          "elementId": "6249288",
+          "qty": 12,
+          "drawerId": "G11",
+          "drawerLabel": "G11"
+        },
+        {
+          "partNum": "6583",
+          "color": "Dark Tan",
+          "desc": "Plate Special 1 x 6 with Train Wagon End Fence",
+          "elementId": "6003566",
+          "qty": 8,
+          "drawerId": "L36",
+          "drawerLabel": "L36"
+        },
+        {
+          "partNum": "98100",
+          "color": "Nougat",
+          "desc": "Brick Round 2 x 2 Truncated Cone",
+          "elementId": "6292981",
+          "qty": 3,
+          "drawerId": "L14",
+          "drawerLabel": "L14"
+        },
+        {
+          "partNum": "3005",
+          "color": "Sand Green",
+          "desc": "Brick 1 x 1",
+          "elementId": "4155050",
+          "qty": 50,
+          "drawerId": "A1",
+          "drawerLabel": "A1"
+        }
+      ]
+    },
     {
       "id": "bag_mvt3d7rs_h8w4c",
       "label": "CdA BAM - 10/22/26 (batch 59)",
@@ -481663,7 +481744,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "17454",
@@ -481673,29 +481755,8 @@
           "qty": 4,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "60594",
-          "color": "Blue",
-          "desc": "Window 1 x 4 x 3 without Shutter Tabs",
-          "elementId": "4597415",
-          "qty": 8,
-          "drawerId": "Q4",
-          "matchCount": 0,
           "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "11610",
-          "color": "Dark Blue",
-          "desc": "Cone 1 x 1 Inverted with Bar at Bottom (Ice Cream Cone)",
-          "elementId": "6249288",
-          "qty": 12,
-          "drawerId": "G11",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": true
+          "sel": false
         },
         {
           "partNum": "60614",
@@ -481705,7 +481766,8 @@
           "qty": 6,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "6583",
@@ -481715,18 +481777,8 @@
           "qty": 9,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "6583",
-          "color": "Dark Tan",
-          "desc": "Plate Special 1 x 6 with Train Wagon End Fence",
-          "elementId": "6003566",
-          "qty": 8,
-          "drawerId": "L36",
-          "matchCount": 0,
           "suggested": false,
-          "sel": true
+          "sel": false
         },
         {
           "partNum": "6583",
@@ -481736,7 +481788,8 @@
           "qty": 3,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "4515",
@@ -481746,29 +481799,8 @@
           "qty": 5,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "98100",
-          "color": "Nougat",
-          "desc": "Brick Round 2 x 2 Truncated Cone",
-          "elementId": "6292981",
-          "qty": 3,
-          "drawerId": "L14",
-          "matchCount": 0,
           "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3005",
-          "color": "Sand Green",
-          "desc": "Brick 1 x 1",
-          "elementId": "4155050",
-          "qty": 50,
-          "drawerId": "A1",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": true
+          "sel": false
         },
         {
           "partNum": "17457",
@@ -481778,7 +481810,8 @@
           "qty": 4,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "30000",
@@ -481788,7 +481821,8 @@
           "qty": 8,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "57779",
@@ -481798,7 +481832,8 @@
           "qty": 4,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "64448",
@@ -481808,7 +481843,8 @@
           "qty": 3,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "32063",
@@ -481818,11 +481854,17 @@
           "qty": 4,
           "drawerId": "K21",
           "matchCount": 0,
-          "suggested": true
+          "suggested": true,
+          "sel": false
         }
       ],
-      "savedAt": "2026-10-29T05:34:51.293Z",
-      "keepOpen": true
+      "savedAt": "2026-10-29T05:35:01.730Z",
+      "keepOpen": true,
+      "moved": {
+        "batches": 1,
+        "pieces": 81,
+        "last": "2026-10-29T05:35:01.730Z"
+      }
     },
     {
       "id": "bagprog_mvdf0cda_x6nv",
@@ -505539,9 +505581,12 @@
       "c": "Sand Green",
       "d": "Brick 1 x 1",
       "e": "4521948",
-      "u": 1791916924851,
+      "u": 1793252102931,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4155050.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4155050.jpg",
+      "ea": [
+        "4155050"
+      ]
     },
     "3004|sand green": {
       "p": "3004",
@@ -549215,9 +549260,12 @@
       "c": "Dark Tan",
       "d": "Plate Special 1 x 6 with Train Wagon End Fence",
       "e": "6271648",
-      "u": 1791916924851,
+      "u": 1793252102931,
       "at": 1791654806816,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6003566.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6003566.jpg",
+      "ea": [
+        "6003566"
+      ]
     },
     "2456|green": {
       "p": "2456",
@@ -572443,7 +572491,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T05:34:55.335Z"
+      "at": "2026-10-29T05:35:07.019Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -572464,10 +572512,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T05:34:51.293Z",
+      "bags": "2026-10-29T05:35:01.731Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T05:34:55.335Z",
+    "savedAt": "2026-10-29T05:35:07.019Z",
     "appVersion": "2026.10.28.10"
   }
 }
