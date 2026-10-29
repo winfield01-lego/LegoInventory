@@ -454251,7 +454251,7 @@
       "label": "F8",
       "notes": "",
       "group": "F",
-      "lastEdited": "2026-10-29T23:22:03.457Z"
+      "lastEdited": "2026-10-29T23:22:20.673Z"
     },
     {
       "id": "F9",
@@ -476374,7 +476374,7 @@
       "drawerId": "F8",
       "partNum": "92690",
       "color": "Pearl Titanium",
-      "qty": 1
+      "qty": 2
     },
     {
       "drawerId": "F22",
@@ -476394,6 +476394,13 @@
       "partNum": "66909",
       "color": "Dark Bluish Gray",
       "qty": 2
+    },
+    {
+      "drawerId": "F8",
+      "partNum": "92690",
+      "color": "Light Bluish Gray",
+      "elementId": "4600518",
+      "qty": 7
     }
   ],
   "mocLocations": {
@@ -491650,8 +491657,11 @@
       "c": "Light Bluish Gray",
       "d": "Bar 1L with Top Stud and Two Side Studs",
       "e": "4640844",
-      "u": 1791916924851,
-      "at": 1791654748438
+      "u": 1793316141876,
+      "at": 1791654748438,
+      "ea": [
+        "4600518"
+      ]
     },
     "22484|dark red": {
       "p": "22484",
@@ -578640,7 +578650,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T23:22:07.488Z"
+      "at": "2026-10-29T23:22:24.716Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578664,7 +578674,7 @@
       "bags": "2026-10-29T23:21:16.224Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T23:22:07.488Z",
+    "savedAt": "2026-10-29T23:22:24.716Z",
     "appVersion": "2026.10.29.1"
   }
 }
