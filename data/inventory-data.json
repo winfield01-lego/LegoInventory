@@ -455206,7 +455206,8 @@
       "id": "I23",
       "label": "I23",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-10-29T22:57:13.726Z"
     },
     {
       "id": "I24",
@@ -455398,7 +455399,8 @@
       "id": "J9",
       "label": "J9",
       "notes": "",
-      "group": "j"
+      "group": "j",
+      "lastEdited": "2026-10-29T22:57:13.726Z"
     },
     {
       "id": "J10",
@@ -456427,7 +456429,7 @@
       "label": "M8",
       "notes": "",
       "group": "M",
-      "lastEdited": "2026-10-13T17:13:28.024Z"
+      "lastEdited": "2026-10-29T22:57:13.727Z"
     },
     {
       "id": "M9",
@@ -456504,7 +456506,7 @@
       "label": "M19",
       "notes": "",
       "group": "M",
-      "lastEdited": "2026-10-13T17:13:28.024Z"
+      "lastEdited": "2026-10-29T22:57:13.727Z"
     },
     {
       "id": "M20",
@@ -476121,6 +476123,31 @@
       "partNum": "3959",
       "color": "Yellow",
       "qty": 5
+    },
+    {
+      "drawerId": "I23",
+      "partNum": "79756",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "J9",
+      "partNum": "30036",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "M19",
+      "partNum": "3935",
+      "color": "Light Gray",
+      "elementId": "393502",
+      "qty": 1
+    },
+    {
+      "drawerId": "M8",
+      "partNum": "32059",
+      "color": "Black",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -476533,6 +476560,52 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu58bcv_8f6mp",
+      "label": "October 17 BAM Visit (batch 66)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 66,
+      "timestamp": "2026-10-29T22:57:13.855Z",
+      "items": [
+        {
+          "partNum": "79756",
+          "color": "Light Bluish Gray",
+          "desc": "Brick Curved 1 x 4 x 2/3 Double, No Studs",
+          "elementId": "6402876",
+          "qty": 1,
+          "drawerId": "I23",
+          "drawerLabel": "I23"
+        },
+        {
+          "partNum": "30036",
+          "color": "Dark Bluish Gray",
+          "desc": "Wedge Plate 8 x 6 x 2/3 with Grille",
+          "elementId": "4527144",
+          "qty": 1,
+          "drawerId": "J9",
+          "drawerLabel": "J9"
+        },
+        {
+          "partNum": "3935",
+          "color": "Light Gray",
+          "desc": "Wedge Plate 4 x 4 Wing Right",
+          "elementId": "393502",
+          "qty": 1,
+          "drawerId": "M19",
+          "drawerLabel": "M19"
+        },
+        {
+          "partNum": "32059",
+          "color": "Black",
+          "desc": "Wedge Plate 4 x 6 Cut Corners",
+          "elementId": "4129572",
+          "qty": 1,
+          "drawerId": "M8",
+          "drawerLabel": "M8"
+        }
+      ]
+    },
     {
       "id": "bag_mvu4wql6_a1b08",
       "label": "October 17 BAM Visit (batch 65)",
@@ -486250,50 +486323,6 @@
           "sel": false
         },
         {
-          "partNum": "79756",
-          "color": "Light Bluish Gray",
-          "desc": "Brick Curved 1 x 4 x 2/3 Double, No Studs",
-          "elementId": "6402876",
-          "qty": 1,
-          "drawerId": "I23",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "30036",
-          "color": "Dark Bluish Gray",
-          "desc": "Wedge Plate 8 x 6 x 2/3 with Grille",
-          "elementId": "4527144",
-          "qty": 1,
-          "drawerId": "J9",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3935",
-          "color": "Light Gray",
-          "desc": "Wedge Plate 4 x 4 Wing Right",
-          "elementId": "393502",
-          "qty": 1,
-          "drawerId": "M19",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "32059",
-          "color": "Black",
-          "desc": "Wedge Plate 4 x 6 Cut Corners",
-          "elementId": "4129572",
-          "qty": 1,
-          "drawerId": "M8",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "15706",
           "color": "Black",
           "desc": "Wedge Plate 4 Stud 45° Angle Plate",
@@ -486448,12 +486477,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T22:57:08.828Z",
+      "savedAt": "2026-10-29T22:57:13.855Z",
       "keepOpen": true,
       "moved": {
-        "batches": 65,
-        "pieces": 1202,
-        "last": "2026-10-29T22:48:13.721Z"
+        "batches": 66,
+        "pieces": 1206,
+        "last": "2026-10-29T22:57:13.855Z"
       }
     },
     {
@@ -551517,9 +551546,12 @@
       "c": "Light Gray",
       "d": "Wedge Plate 4 x 4 Wing Right",
       "e": "4248118",
-      "u": 1791916924851,
+      "u": 1793314635056,
       "at": 1791673658842,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/7/3935.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/7/3935.png",
+      "ea": [
+        "393502"
+      ]
     },
     "6106|light gray": {
       "p": "6106",
@@ -578102,6 +578134,13 @@
       "d": "Weapon Gun / Torch (Space) [with Grooves]",
       "e": "395924",
       "u": 1793314516198
+    },
+    "30036|dark bluish gray": {
+      "p": "30036",
+      "c": "Dark Bluish Gray",
+      "d": "Wedge Plate 8 x 6 x 2/3 with Grille",
+      "e": "4527144",
+      "u": 1793314635056
     }
   },
   "partKinds": {
@@ -578245,7 +578284,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:57:12.866Z"
+      "at": "2026-10-29T22:57:19.675Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578266,10 +578305,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T22:57:08.828Z",
+      "bags": "2026-10-29T22:57:13.855Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:57:12.866Z",
+    "savedAt": "2026-10-29T22:57:19.675Z",
     "appVersion": "2026.10.29.1"
   }
 }
