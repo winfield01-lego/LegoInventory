@@ -454732,7 +454732,7 @@
       "label": "G42",
       "notes": "1 x 2 x2 and 1 x 2 x 3 - Tall Bricks",
       "group": "G",
-      "lastEdited": "2026-10-29T04:14:01.497Z"
+      "lastEdited": "2026-10-29T04:14:38.962Z"
     },
     {
       "id": "G43",
@@ -472995,6 +472995,20 @@
       "partNum": "3245c",
       "color": "Yellow",
       "qty": 1
+    },
+    {
+      "drawerId": "G42",
+      "partNum": "3245b",
+      "color": "Light Bluish Gray",
+      "elementId": "",
+      "qty": 2
+    },
+    {
+      "drawerId": "G42",
+      "partNum": "3245b",
+      "color": "White",
+      "elementId": "",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -571311,6 +571325,20 @@
       "d": "Brick 1 x 2 x 2 with Inside Stud Holder",
       "e": "6133724",
       "u": 1793246862108
+    },
+    "3245b|light bluish gray": {
+      "p": "3245b",
+      "c": "Light Bluish Gray",
+      "d": "Brick 1 x 2 x 2 with Inside Axle Holder",
+      "e": "",
+      "u": 1793247280164
+    },
+    "3245b|white": {
+      "p": "3245b",
+      "c": "White",
+      "d": "Brick 1 x 2 x 2 with Inside Axle Holder",
+      "e": "",
+      "u": 1793247280164
     }
   },
   "partKinds": {
@@ -571454,7 +571482,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T04:14:06.804Z"
+      "at": "2026-10-29T04:14:42.993Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571478,7 +571506,7 @@
       "bags": "2026-10-29T03:55:08.653Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T04:14:06.804Z",
+    "savedAt": "2026-10-29T04:14:42.993Z",
     "appVersion": "2026.10.28.10"
   }
 }
