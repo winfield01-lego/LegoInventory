@@ -456684,7 +456684,7 @@
       "label": "N1",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.789Z"
+      "lastEdited": "2026-10-29T20:51:18.942Z"
     },
     {
       "id": "N2",
@@ -475036,6 +475036,26 @@
       "partNum": "28220",
       "color": "Light Bluish Gray",
       "qty": 1
+    },
+    {
+      "drawerId": "N1",
+      "partNum": "98284",
+      "color": "Black",
+      "elementId": "4650145",
+      "qty": 1
+    },
+    {
+      "drawerId": "N1",
+      "partNum": "98284",
+      "color": "Reddish Brown",
+      "elementId": "4648118",
+      "qty": 1
+    },
+    {
+      "drawerId": "N1",
+      "partNum": "2566",
+      "color": "Blue",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -475448,6 +475468,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu0qe23_63g87",
+      "label": "October 17 BAM Visit (batch 50)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 50,
+      "timestamp": "2026-10-29T20:51:19.083Z",
+      "items": [
+        {
+          "partNum": "98284",
+          "color": "Black",
+          "desc": "Plate Special Round 2 x 2 with Pin Hole and 4 Bars Up",
+          "elementId": "4650145",
+          "qty": 1,
+          "drawerId": "N1",
+          "drawerLabel": "N1"
+        },
+        {
+          "partNum": "98284",
+          "color": "Reddish Brown",
+          "desc": "Plate Special Round 2 x 2 with Pin Hole and 4 Bars Up",
+          "elementId": "4648118",
+          "qty": 1,
+          "drawerId": "N1",
+          "drawerLabel": "N1"
+        },
+        {
+          "partNum": "2566",
+          "color": "Blue",
+          "desc": "Bar, 4 Top Bars, Palm Tree Top",
+          "elementId": "256623",
+          "qty": 1,
+          "drawerId": "N1",
+          "drawerLabel": "N1"
+        }
+      ]
+    },
     {
       "id": "bag_mvu0genm_7r7xy",
       "label": "October 17 BAM Visit (batch 49)",
@@ -484760,28 +484817,6 @@
           "sel": false
         },
         {
-          "partNum": "98284",
-          "color": "Black",
-          "desc": "Plate Special Round 2 x 2 with Pin Hole and 4 Bars Up",
-          "elementId": "4650145",
-          "qty": 1,
-          "drawerId": "N1",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "98284",
-          "color": "Reddish Brown",
-          "desc": "Plate Special Round 2 x 2 with Pin Hole and 4 Bars Up",
-          "elementId": "4648118",
-          "qty": 1,
-          "drawerId": "N1",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "73111",
           "color": "Light Bluish Gray",
           "desc": "Brick Round 3 x 3 x 2 Recessed Center with 2 x 2 Studs and Axle Hole",
@@ -485220,25 +485255,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "2566",
-          "color": "Blue",
-          "desc": "Bar, 4 Top Bars, Palm Tree Top",
-          "elementId": "256623",
-          "qty": 1,
-          "drawerId": "N1",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
         }
       ],
-      "savedAt": "2026-10-29T20:51:13.998Z",
+      "savedAt": "2026-10-29T20:51:19.083Z",
       "keepOpen": true,
       "moved": {
-        "batches": 49,
-        "pieces": 1174,
-        "last": "2026-10-29T20:43:33.298Z"
+        "batches": 50,
+        "pieces": 1177,
+        "last": "2026-10-29T20:51:19.083Z"
       }
     },
     {
@@ -521154,8 +521178,11 @@
       "c": "Reddish Brown",
       "d": "Plate Special Round 2 x 2 with Pin Hole and 4 Bars Up",
       "e": "6313506",
-      "u": 1791916924851,
-      "at": 1791654806816
+      "u": 1793307080284,
+      "at": 1791654806816,
+      "ea": [
+        "4648118"
+      ]
     },
     "4176|trans clear": {
       "p": "4176",
@@ -551159,8 +551186,11 @@
       "c": "Black",
       "d": "Plate Special Round 2 x 2 with Pin Hole and 4 Bars Up",
       "e": "6313508",
-      "u": 1791916924851,
-      "at": 1791654771905
+      "u": 1793307080284,
+      "at": 1791654771905,
+      "ea": [
+        "4650145"
+      ]
     },
     "32126|black": {
       "p": "32126",
@@ -576386,6 +576416,13 @@
       "d": "Large Figure Armor Plate, Small",
       "e": "6168742",
       "u": 1793307025610
+    },
+    "2566|blue": {
+      "p": "2566",
+      "c": "Blue",
+      "d": "Bar, 4 Top Bars, Palm Tree Top",
+      "e": "256623",
+      "u": 1793307080284
     }
   },
   "partKinds": {
@@ -576529,7 +576566,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T20:51:18.039Z"
+      "at": "2026-10-29T20:51:23.120Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576550,10 +576587,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T20:51:13.998Z",
+      "bags": "2026-10-29T20:51:19.083Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T20:51:18.039Z",
+    "savedAt": "2026-10-29T20:51:23.120Z",
     "appVersion": "2026.10.28.10"
   }
 }
