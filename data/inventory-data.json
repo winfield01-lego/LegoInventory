@@ -454363,7 +454363,7 @@
       "label": "F27",
       "notes": "3L Pin with Bushing",
       "group": "F",
-      "lastEdited": "2026-10-29T02:26:18.429Z"
+      "lastEdited": "2026-10-29T02:27:52.728Z"
     },
     {
       "id": "F28",
@@ -472881,6 +472881,30 @@
       "partNum": "65304",
       "color": "Red",
       "qty": 15
+    },
+    {
+      "drawerId": "F27",
+      "partNum": "32054",
+      "color": "Blue",
+      "qty": 4
+    },
+    {
+      "drawerId": "F27",
+      "partNum": "32054",
+      "color": "Dark Turquoise",
+      "qty": 1
+    },
+    {
+      "drawerId": "F27",
+      "partNum": "32054",
+      "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "F27",
+      "partNum": "32054",
+      "color": "White",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -571135,6 +571159,34 @@
       "d": "Technic Pin Long with Friction Ridges Lengthwise and Stop Bush [2 Lateral Holes, Small Pin Hole]",
       "e": "6325515",
       "u": 1793240779631
+    },
+    "32054|blue": {
+      "p": "32054",
+      "c": "Blue",
+      "d": "Technic Pin Long with Friction Ridges Lengthwise and Stop Bush [3 Lateral Holes, Big Pin Hole]",
+      "e": "3205423",
+      "u": 1793240873930
+    },
+    "32054|dark turquoise": {
+      "p": "32054",
+      "c": "Dark Turquoise",
+      "d": "Technic Pin Long with Friction Ridges Lengthwise and Stop Bush [3 Lateral Holes, Big Pin Hole]",
+      "e": "4111958",
+      "u": 1793240873930
+    },
+    "32054|yellow": {
+      "p": "32054",
+      "c": "Yellow",
+      "d": "Technic Pin Long with Friction Ridges Lengthwise and Stop Bush [3 Lateral Holes, Big Pin Hole]",
+      "e": "3205424",
+      "u": 1793240873930
+    },
+    "32054|white": {
+      "p": "32054",
+      "c": "White",
+      "d": "Technic Pin Long with Friction Ridges Lengthwise and Stop Bush [3 Lateral Holes, Big Pin Hole]",
+      "e": "4193409",
+      "u": 1793240873930
     }
   },
   "partKinds": {
@@ -571278,7 +571330,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T02:26:22.460Z"
+      "at": "2026-10-29T02:27:56.759Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571302,7 +571354,7 @@
       "bags": "2026-10-29T02:01:52.512Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T02:26:22.460Z",
+    "savedAt": "2026-10-29T02:27:56.759Z",
     "appVersion": "2026.10.28.10"
   }
 }
