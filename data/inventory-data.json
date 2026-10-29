@@ -454506,7 +454506,8 @@
       "id": "G6",
       "label": "G6",
       "notes": "",
-      "group": "G"
+      "group": "G",
+      "lastEdited": "2026-10-29T04:37:29.124Z"
     },
     {
       "id": "G7",
@@ -473216,6 +473217,12 @@
       "color": "Red",
       "elementId": "",
       "qty": 1
+    },
+    {
+      "drawerId": "G6",
+      "partNum": "2723",
+      "color": "Light Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -473628,6 +473635,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvt1y1b7_uir05",
+      "label": "CdA BAM - 10/22/26 (batch 53)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 53,
+      "timestamp": "2026-10-29T04:37:29.251Z",
+      "items": [
+        {
+          "partNum": "2723",
+          "color": "Light Bluish Gray",
+          "desc": "Technic Disc 3 x 3",
+          "elementId": "4667578",
+          "qty": 1,
+          "drawerId": "G6",
+          "drawerLabel": "G6"
+        }
+      ]
+    },
     {
       "id": "bag_mvt1h0y0_i7i1e",
       "label": "CdA BAM - 10/22/26 (batch 52)",
@@ -481181,17 +481207,6 @@
           "sel": false
         },
         {
-          "partNum": "2723",
-          "color": "Light Bluish Gray",
-          "desc": "Technic Disc 3 x 3",
-          "elementId": "4667578",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "77845",
           "color": "Light Bluish Gray",
           "desc": "Plate Special 1 x 4 Rounded with 2 Open Studs",
@@ -481214,12 +481229,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T04:24:15.624Z",
+      "savedAt": "2026-10-29T04:37:29.251Z",
       "keepOpen": true,
       "moved": {
-        "batches": 52,
-        "pieces": 305,
-        "last": "2026-10-29T04:24:15.624Z"
+        "batches": 53,
+        "pieces": 306,
+        "last": "2026-10-29T04:37:29.251Z"
       }
     },
     {
@@ -571830,7 +571845,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T04:36:50.191Z"
+      "at": "2026-10-29T04:37:33.274Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571851,10 +571866,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T04:24:15.624Z",
+      "bags": "2026-10-29T04:37:29.251Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T04:36:50.191Z",
+    "savedAt": "2026-10-29T04:37:33.274Z",
     "appVersion": "2026.10.28.10"
   }
 }
