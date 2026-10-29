@@ -455207,7 +455207,7 @@
       "label": "I23",
       "notes": "Brick Double Curved 1 x 1 to 1 x 4 and 2 x 2 Corner",
       "group": "I",
-      "lastEdited": "2026-10-29T23:00:08.523Z"
+      "lastEdited": "2026-10-29T23:00:39.076Z"
     },
     {
       "id": "I24",
@@ -476154,6 +476154,12 @@
       "partNum": "3563",
       "color": "Black",
       "qty": 4
+    },
+    {
+      "drawerId": "I23",
+      "partNum": "79757",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -578147,6 +578153,13 @@
       "d": "Wedge Plate 8 x 6 x 2/3 with Grille",
       "e": "4527144",
       "u": 1793314635056
+    },
+    "79757|white": {
+      "p": "79757",
+      "c": "White",
+      "d": "Brick Curved 2 x 2 x 2/3 Double, Corner, No Studs",
+      "e": "6378417",
+      "u": 1793314840278
     }
   },
   "partKinds": {
@@ -578290,7 +578303,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T23:00:12.564Z"
+      "at": "2026-10-29T23:00:43.110Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578314,7 +578327,7 @@
       "bags": "2026-10-29T22:57:13.855Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T23:00:12.564Z",
+    "savedAt": "2026-10-29T23:00:43.110Z",
     "appVersion": "2026.10.29.1"
   }
 }
