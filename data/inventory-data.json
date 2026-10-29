@@ -456216,7 +456216,7 @@
       "label": "L22",
       "notes": "Horizontal Teeth and 1 x 1 Brick with Scroll",
       "group": "L",
-      "lastEdited": "2026-10-29T21:52:23.056Z"
+      "lastEdited": "2026-10-29T21:54:31.639Z"
     },
     {
       "id": "L23",
@@ -475381,6 +475381,56 @@
       "partNum": "15208",
       "color": "White",
       "qty": 22
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "49668",
+      "color": "Black",
+      "qty": 21
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "49668",
+      "color": "Blue",
+      "elementId": "4247040",
+      "qty": 6
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "49668",
+      "color": "Dark Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "49668",
+      "color": "Lime",
+      "qty": 1
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "49668",
+      "color": "Red",
+      "elementId": "4247069",
+      "qty": 3
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "49668",
+      "color": "Pearl Light Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "49668",
+      "color": "Tan",
+      "qty": 2
+    },
+    {
+      "drawerId": "L22",
+      "partNum": "49668",
+      "color": "Flat Silver",
+      "qty": 20
     }
   ],
   "mocLocations": {
@@ -486181,7 +486231,10 @@
       "c": "Red",
       "d": "Plate Special 1 x 1 with Tooth",
       "e": "6078640",
-      "u": 1791916924851
+      "u": 1793310872841,
+      "ea": [
+        "4247069"
+      ]
     },
     "44861|white": {
       "p": "44861",
@@ -512597,9 +512650,9 @@
     "49668|lime": {
       "p": "49668",
       "c": "Lime",
-      "d": "",
-      "e": "",
-      "u": 1791916924851
+      "d": "Plate Special 1 x 1 with Tooth",
+      "e": "4611784",
+      "u": 1793310872841
     },
     "15070|lime": {
       "p": "15070",
@@ -518370,9 +518423,12 @@
       "c": "Blue",
       "d": "Plate Special 1 x 1 with Tooth",
       "e": "6123860",
-      "u": 1791916924851,
+      "u": 1793310872841,
       "at": 1791654353233,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4247040.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4247040.jpg",
+      "ea": [
+        "4247040"
+      ]
     },
     "41677|blue": {
       "p": "41677",
@@ -576902,6 +576958,13 @@
       "d": "Plate Special 1 x 2 with Three Teeth [Tri-Tooth]",
       "e": "6207764",
       "u": 1793310744257
+    },
+    "49668|pearl light gray": {
+      "p": "49668",
+      "c": "Pearl Light Gray",
+      "d": "Plate Special 1 x 1 with Tooth",
+      "e": "4263416",
+      "u": 1793310872841
     }
   },
   "partKinds": {
@@ -577045,7 +577108,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T21:52:27.095Z"
+      "at": "2026-10-29T21:54:36.921Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577069,7 +577132,7 @@
       "bags": "2026-10-29T21:47:34.382Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T21:52:27.095Z",
+    "savedAt": "2026-10-29T21:54:36.921Z",
     "appVersion": "2026.10.29.1"
   }
 }
