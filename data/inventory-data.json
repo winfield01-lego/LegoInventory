@@ -456610,7 +456610,7 @@
       "label": "M37",
       "notes": "3 x 2 Wedge Left and Right",
       "group": "M",
-      "lastEdited": "2026-10-29T01:13:45.768Z"
+      "lastEdited": "2026-10-29T01:22:27.977Z"
     },
     {
       "id": "M38",
@@ -472246,7 +472246,74 @@
       "partNum": "43723",
       "color": "Blue",
       "elementId": "4180534",
+      "qty": 7
+    },
+    {
+      "drawerId": "M37",
+      "partNum": "43723",
+      "color": "Black",
+      "qty": 33
+    },
+    {
+      "drawerId": "M37",
+      "partNum": "43723",
+      "color": "Dark Azure",
       "qty": 1
+    },
+    {
+      "drawerId": "M37",
+      "partNum": "43723",
+      "color": "Dark Bluish Gray",
+      "qty": 6
+    },
+    {
+      "drawerId": "M37",
+      "partNum": "43723",
+      "color": "Dark Red",
+      "elementId": "4224297",
+      "qty": 1
+    },
+    {
+      "drawerId": "M37",
+      "partNum": "43723",
+      "color": "Dark Tan",
+      "qty": 2
+    },
+    {
+      "drawerId": "M37",
+      "partNum": "43723",
+      "color": "Light Bluish Gray",
+      "qty": 18
+    },
+    {
+      "drawerId": "M37",
+      "partNum": "43723",
+      "color": "Lime",
+      "qty": 2
+    },
+    {
+      "drawerId": "M37",
+      "partNum": "43723",
+      "color": "Orange",
+      "qty": 2
+    },
+    {
+      "drawerId": "M37",
+      "partNum": "43723",
+      "color": "Red",
+      "qty": 10
+    },
+    {
+      "drawerId": "M37",
+      "partNum": "43723",
+      "color": "White",
+      "qty": 12
+    },
+    {
+      "drawerId": "M37",
+      "partNum": "43723",
+      "color": "Yellow",
+      "qty": 7
     }
   ],
   "mocLocations": {
@@ -506681,9 +506748,12 @@
       "c": "Dark Red",
       "d": "Wedge Plate 3 x 2 Left",
       "e": "6267490",
-      "u": 1791916924851,
+      "u": 1793236949179,
       "at": 1791671921036,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4224297.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4224297.jpg",
+      "ea": [
+        "4224297"
+      ]
     },
     "43722|dark red": {
       "p": "43722",
@@ -570199,6 +570269,20 @@
       "d": "Plate Special 3 x 2 with Rounded End, Hole",
       "e": "4217788",
       "u": 1793236376232
+    },
+    "43723|dark azure": {
+      "p": "43723",
+      "c": "Dark Azure",
+      "d": "Wedge Plate 3 x 2 Left",
+      "e": "6167074",
+      "u": 1793236949179
+    },
+    "43723|lime": {
+      "p": "43723",
+      "c": "Lime",
+      "d": "Wedge Plate 3 x 2 Left",
+      "e": "4183168",
+      "u": 1793236949179
     }
   },
   "partKinds": {
@@ -570342,7 +570426,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:13:49.797Z"
+      "at": "2026-10-29T01:22:33.272Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -570366,7 +570450,7 @@
       "bags": "2026-10-29T01:13:25.445Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:13:49.797Z",
+    "savedAt": "2026-10-29T01:22:33.272Z",
     "appVersion": "2026.10.28.10"
   }
 }
