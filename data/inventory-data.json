@@ -455764,7 +455764,7 @@
       "label": "K3",
       "notes": "1 x 2 Plate - 1 Pin Hole on Bottom and Pin Hin Hole on Side",
       "group": "K",
-      "lastEdited": "2026-10-28T23:59:15.133Z"
+      "lastEdited": "2026-10-29T00:01:36.508Z"
     },
     {
       "id": "K4",
@@ -471466,6 +471466,39 @@
       "drawerId": "K3",
       "partNum": "3172",
       "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "K3",
+      "partNum": "18677",
+      "color": "Black",
+      "elementId": "6167497",
+      "qty": 37
+    },
+    {
+      "drawerId": "K3",
+      "partNum": "18677",
+      "color": "Light Bluish Gray",
+      "elementId": "6089147",
+      "qty": 52
+    },
+    {
+      "drawerId": "K3",
+      "partNum": "18677",
+      "color": "Orange",
+      "qty": 3
+    },
+    {
+      "drawerId": "K3",
+      "partNum": "18677",
+      "color": "Red",
+      "elementId": "6109459",
+      "qty": 9
+    },
+    {
+      "drawerId": "K3",
+      "partNum": "18677",
+      "color": "White",
       "qty": 1
     }
   ],
@@ -490973,9 +491006,12 @@
       "c": "Black",
       "d": "Plate Special 1 x 2 with Pin Hole Underneath",
       "e": "6192309",
-      "u": 1791916924851,
+      "u": 1793232097711,
       "at": 1791656721266,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6167497.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6167497.jpg",
+      "ea": [
+        "6167497"
+      ]
     },
     "34103|black": {
       "p": "34103",
@@ -569123,6 +569159,13 @@
       "d": "Plate Special 1 x 2 with Pin Hole On Side",
       "e": "6490173",
       "u": 1793231917213
+    },
+    "18677|orange": {
+      "p": "18677",
+      "c": "Orange",
+      "d": "Plate Special 1 x 2 with Pin Hole Underneath",
+      "e": "6442367",
+      "u": 1793232097711
     }
   },
   "partKinds": {
@@ -569266,7 +569309,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-28T23:59:19.163Z"
+      "at": "2026-10-29T00:01:41.793Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569290,7 +569333,7 @@
       "bags": "2026-10-28T23:58:36.012Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-28T23:59:19.163Z",
+    "savedAt": "2026-10-29T00:01:41.793Z",
     "appVersion": "2026.10.28.10"
   }
 }
