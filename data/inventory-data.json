@@ -454662,7 +454662,8 @@
       "id": "G32",
       "label": "G32",
       "notes": "",
-      "group": "G"
+      "group": "G",
+      "lastEdited": "2026-10-29T00:38:46.889Z"
     },
     {
       "id": "G33",
@@ -471789,6 +471790,12 @@
       "color": "Dark Bluish Gray",
       "elementId": "6146792",
       "qty": 7
+    },
+    {
+      "drawerId": "G32",
+      "partNum": "60478",
+      "color": "Black",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -472201,6 +472208,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvstf26k_bc0j2",
+      "label": "CdA BAM - 10/22/26 (batch 38)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 38,
+      "timestamp": "2026-10-29T00:38:46.988Z",
+      "items": [
+        {
+          "partNum": "60478",
+          "color": "Black",
+          "desc": "Plate Special 1 x 2 with Handle on End [Closed Ends]",
+          "elementId": "4515368",
+          "qty": 1,
+          "drawerId": "G32",
+          "drawerLabel": "G32"
+        }
+      ]
+    },
     {
       "id": "bag_mvst8pdj_0p56e",
       "label": "CdA BAM - 10/22/26 (batch 37)",
@@ -479411,17 +479437,6 @@
           "sel": false
         },
         {
-          "partNum": "60478",
-          "color": "Black",
-          "desc": "Plate Special 1 x 2 with Handle on End [Closed Ends]",
-          "elementId": "4515368",
-          "qty": 1,
-          "drawerId": "G32",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "87580",
           "color": "Black",
           "desc": "Plate Special 2 x 2 with Groove and Center Stud (Jumper)",
@@ -479697,12 +479712,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T00:38:35.813Z",
+      "savedAt": "2026-10-29T00:38:46.988Z",
       "keepOpen": true,
       "moved": {
-        "batches": 37,
-        "pieces": 286,
-        "last": "2026-10-29T00:33:50.455Z"
+        "batches": 38,
+        "pieces": 287,
+        "last": "2026-10-29T00:38:46.988Z"
       }
     },
     {
@@ -569700,7 +569715,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T00:38:40.426Z"
+      "at": "2026-10-29T00:38:51.028Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569721,10 +569736,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T00:38:35.813Z",
+      "bags": "2026-10-29T00:38:46.988Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T00:38:40.426Z",
+    "savedAt": "2026-10-29T00:38:51.028Z",
     "appVersion": "2026.10.28.10"
   }
 }
