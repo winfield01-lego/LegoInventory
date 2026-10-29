@@ -455410,7 +455410,7 @@
       "label": "J13",
       "notes": "Claws",
       "group": "j",
-      "lastEdited": "2026-10-29T01:57:50.327Z"
+      "lastEdited": "2026-10-29T01:59:22.626Z"
     },
     {
       "id": "J14",
@@ -472771,6 +472771,18 @@
       "drawerId": "J13",
       "partNum": "41669",
       "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "J13",
+      "partNum": "15064",
+      "color": "Blue",
+      "qty": 4
+    },
+    {
+      "drawerId": "J13",
+      "partNum": "15064",
+      "color": "Flat Silver",
       "qty": 1
     }
   ],
@@ -570985,6 +570997,20 @@
       "d": "Technic Tooth 1 x 3 with Axle Hole [Rounded Underside]",
       "e": "4185661",
       "u": 1793239071529
+    },
+    "15064|blue": {
+      "p": "15064",
+      "c": "Blue",
+      "d": "Insect Body Part, Leg / Tail / Tentacle / Claw",
+      "e": "6212037",
+      "u": 1793239163828
+    },
+    "15064|flat silver": {
+      "p": "15064",
+      "c": "Flat Silver",
+      "d": "Insect Body Part, Leg / Tail / Tentacle / Claw",
+      "e": "6093626",
+      "u": 1793239163828
     }
   },
   "partKinds": {
@@ -571128,7 +571154,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:57:54.356Z"
+      "at": "2026-10-29T01:59:26.659Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571152,7 +571178,7 @@
       "bags": "2026-10-29T01:51:18.571Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:57:54.356Z",
+    "savedAt": "2026-10-29T01:59:26.659Z",
     "appVersion": "2026.10.28.10"
   }
 }
