@@ -457182,7 +457182,7 @@
       "label": "O28",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-10-13T17:14:08.108Z"
+      "lastEdited": "2026-10-29T22:00:02.807Z"
     },
     {
       "id": "O29",
@@ -475480,6 +475480,13 @@
       "partNum": "38585",
       "color": "White",
       "qty": 62
+    },
+    {
+      "drawerId": "O28",
+      "partNum": "4315",
+      "color": "Blue",
+      "elementId": "4167102",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -475892,6 +475899,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu36s2a_reb1u",
+      "label": "October 17 BAM Visit (batch 56)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 56,
+      "timestamp": "2026-10-29T22:00:02.962Z",
+      "items": [
+        {
+          "partNum": "4315",
+          "color": "Blue",
+          "desc": "Hinge Vehicle Roof Holder 1 x 4",
+          "elementId": "4167102",
+          "qty": 1,
+          "drawerId": "O28",
+          "drawerLabel": "O28"
+        }
+      ]
+    },
     {
       "id": "bag_mvu31xae_yqpbf",
       "label": "October 17 BAM Visit (batch 55)",
@@ -485365,17 +485391,6 @@
           "sel": false
         },
         {
-          "partNum": "4315",
-          "color": "Blue",
-          "desc": "Hinge Vehicle Roof Holder 1 x 4",
-          "elementId": "4167102",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "2452",
           "color": "Black",
           "desc": "Hinge Plate 1 x 2 with 3 Fingers On Side",
@@ -485717,12 +485732,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T21:59:34.825Z",
+      "savedAt": "2026-10-29T22:00:02.962Z",
       "keepOpen": true,
       "moved": {
-        "batches": 55,
-        "pieces": 1185,
-        "last": "2026-10-29T21:56:16.454Z"
+        "batches": 56,
+        "pieces": 1186,
+        "last": "2026-10-29T22:00:02.962Z"
       }
     },
     {
@@ -488850,10 +488865,11 @@
       "c": "Blue",
       "d": "Hinge Vehicle Roof Holder 1 x 4",
       "e": "4256388",
-      "u": 1791916924851,
+      "u": 1793311204163,
       "at": 1791673648311,
       "ea": [
-        "431523"
+        "431523",
+        "4167102"
       ],
       "i": "https://cdn.rebrickable.com/media/parts/ldraw/1/4315.png"
     },
@@ -577194,7 +577210,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T21:59:38.857Z"
+      "at": "2026-10-29T22:00:08.252Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577215,10 +577231,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T21:59:34.825Z",
+      "bags": "2026-10-29T22:00:02.962Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T21:59:38.857Z",
+    "savedAt": "2026-10-29T22:00:08.252Z",
     "appVersion": "2026.10.29.1"
   }
 }
