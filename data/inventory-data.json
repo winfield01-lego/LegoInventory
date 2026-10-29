@@ -456122,7 +456122,7 @@
       "label": "L9",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-10-13T17:13:18.947Z"
+      "lastEdited": "2026-10-29T19:30:11.397Z"
     },
     {
       "id": "L10",
@@ -474702,6 +474702,13 @@
       "color": "White",
       "elementId": "4610290",
       "qty": 23
+    },
+    {
+      "drawerId": "L9",
+      "partNum": "27448",
+      "color": "White",
+      "elementId": "6238334",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -475114,6 +475121,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvtxu28g_ntl0l",
+      "label": "October 17 BAM Visit (batch 44)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 44,
+      "timestamp": "2026-10-29T19:30:11.536Z",
+      "items": [
+        {
+          "partNum": "27448",
+          "color": "White",
+          "desc": "Turntable 2 x 2 Female",
+          "elementId": "6238334",
+          "qty": 1,
+          "drawerId": "L9",
+          "drawerLabel": "L9"
+        }
+      ]
+    },
     {
       "id": "bag_mvtxi6rz_porgj",
       "label": "October 17 BAM Visit (batch 43)",
@@ -484312,17 +484338,6 @@
           "sel": false
         },
         {
-          "partNum": "27448",
-          "color": "White",
-          "desc": "Turntable 2 x 2 Female",
-          "elementId": "6238334",
-          "qty": 1,
-          "drawerId": "L9",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "15068",
           "color": "Black",
           "desc": "Brick Curved 2 x 2 x 2/3",
@@ -484840,12 +484855,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T19:29:59.560Z",
+      "savedAt": "2026-10-29T19:30:11.535Z",
       "keepOpen": true,
       "moved": {
-        "batches": 43,
-        "pieces": 1167,
-        "last": "2026-10-29T19:20:57.551Z"
+        "batches": 44,
+        "pieces": 1168,
+        "last": "2026-10-29T19:30:11.536Z"
       }
     },
     {
@@ -504931,9 +504946,12 @@
       "c": "White",
       "d": "Turntable 2 x 2 Female",
       "e": "6536567",
-      "u": 1791916924851,
+      "u": 1793302212736,
       "at": 1791660084431,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6238334.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6238334.jpg",
+      "ea": [
+        "6238334"
+      ]
     },
     "14181|white": {
       "p": "14181",
@@ -576007,7 +576025,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T19:30:03.592Z"
+      "at": "2026-10-29T19:30:16.832Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576028,10 +576046,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T19:29:59.560Z",
+      "bags": "2026-10-29T19:30:11.536Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T19:30:03.592Z",
+    "savedAt": "2026-10-29T19:30:16.832Z",
     "appVersion": "2026.10.28.10"
   }
 }
