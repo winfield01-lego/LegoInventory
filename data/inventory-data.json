@@ -457041,7 +457041,7 @@
       "label": "O8",
       "notes": "Plate, Angled 2 x 2 with Step and Hole in Center",
       "group": "O",
-      "lastEdited": "2026-10-29T20:42:26.662Z"
+      "lastEdited": "2026-10-29T20:43:01.006Z"
     },
     {
       "id": "O9",
@@ -474939,6 +474939,24 @@
       "partNum": "79846",
       "color": "Dark Azure",
       "qty": 1
+    },
+    {
+      "drawerId": "O8",
+      "partNum": "79846",
+      "color": "Dark Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "O8",
+      "partNum": "79846",
+      "color": "Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "O8",
+      "partNum": "79846",
+      "color": "White",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -576225,6 +576243,20 @@
       "d": "Plate Angled 2 x 2 with Step and Hole in Center",
       "e": "6365678",
       "u": 1793306530149
+    },
+    "79846|green": {
+      "p": "79846",
+      "c": "Green",
+      "d": "Plate Angled 2 x 2 with Step and Hole in Center",
+      "e": "6372712",
+      "u": 1793306582208
+    },
+    "79846|white": {
+      "p": "79846",
+      "c": "White",
+      "d": "Plate Angled 2 x 2 with Step and Hole in Center",
+      "e": "6425460",
+      "u": 1793306582208
     }
   },
   "partKinds": {
@@ -576368,7 +576400,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T20:42:30.697Z"
+      "at": "2026-10-29T20:43:05.043Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576392,7 +576424,7 @@
       "bags": "2026-10-29T20:42:08.948Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T20:42:30.697Z",
+    "savedAt": "2026-10-29T20:43:05.043Z",
     "appVersion": "2026.10.28.10"
   }
 }
