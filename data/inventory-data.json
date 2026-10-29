@@ -454663,7 +454663,7 @@
       "label": "G32",
       "notes": "1 x 2 Handle - End",
       "group": "G",
-      "lastEdited": "2026-10-29T00:39:03.140Z"
+      "lastEdited": "2026-10-29T00:44:13.674Z"
     },
     {
       "id": "G33",
@@ -471795,7 +471795,61 @@
       "drawerId": "G32",
       "partNum": "60478",
       "color": "Black",
+      "qty": 17
+    },
+    {
+      "drawerId": "G32",
+      "partNum": "60478",
+      "color": "Blue",
+      "qty": 14
+    },
+    {
+      "drawerId": "G32",
+      "partNum": "60478",
+      "color": "Dark Bluish Gray",
+      "qty": 50
+    },
+    {
+      "drawerId": "G32",
+      "partNum": "60478",
+      "color": "Dark Tan",
       "qty": 1
+    },
+    {
+      "drawerId": "G32",
+      "partNum": "60478",
+      "color": "Light Bluish Gray",
+      "qty": 24
+    },
+    {
+      "drawerId": "G32",
+      "partNum": "60478",
+      "color": "Lime",
+      "qty": 3
+    },
+    {
+      "drawerId": "G32",
+      "partNum": "60478",
+      "color": "Medium Nougat",
+      "qty": 2
+    },
+    {
+      "drawerId": "G32",
+      "partNum": "60478",
+      "color": "Red",
+      "qty": 8
+    },
+    {
+      "drawerId": "G32",
+      "partNum": "60478",
+      "color": "White",
+      "qty": 18
+    },
+    {
+      "drawerId": "G32",
+      "partNum": "60478",
+      "color": "Yellow",
+      "qty": 9
     }
   ],
   "mocLocations": {
@@ -569572,6 +569626,13 @@
       "d": "Plate Special 1 x 2 Rounded with 2 Open Studs",
       "e": "6585274",
       "u": 1793233786195
+    },
+    "60478|medium nougat": {
+      "p": "60478",
+      "c": "Medium Nougat",
+      "d": "Plate Special 1 x 2 with Handle on End [Closed Ends]",
+      "e": "6167699",
+      "u": 1793234654877
     }
   },
   "partKinds": {
@@ -569715,7 +569776,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T00:39:07.172Z"
+      "at": "2026-10-29T00:44:17.708Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569739,7 +569800,7 @@
       "bags": "2026-10-29T00:38:46.988Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T00:39:07.172Z",
+    "savedAt": "2026-10-29T00:44:17.708Z",
     "appVersion": "2026.10.28.10"
   }
 }
