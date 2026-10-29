@@ -456715,7 +456715,7 @@
       "label": "N6",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.790Z"
+      "lastEdited": "2026-10-29T17:52:15.918Z"
     },
     {
       "id": "N7",
@@ -473711,6 +473711,12 @@
       "color": "Black",
       "elementId": "4501927",
       "qty": 1
+    },
+    {
+      "drawerId": "N6",
+      "partNum": "79987",
+      "color": "Dark Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -474123,6 +474129,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvtuc4o6_d0d0m",
+      "label": "October 17 BAM Visit (batch 34)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 34,
+      "timestamp": "2026-10-29T17:52:16.038Z",
+      "items": [
+        {
+          "partNum": "79987",
+          "color": "Dark Bluish Gray",
+          "desc": "Plate Special 1 x 3 with 2 Clips on Top",
+          "elementId": "6365692",
+          "qty": 1,
+          "drawerId": "N6",
+          "drawerLabel": "N6"
+        }
+      ]
+    },
     {
       "id": "bag_mvtp9ww2_xkjte",
       "label": "October 17 BAM Visit (batch 33)",
@@ -483048,17 +483073,6 @@
       "label": "October 17 BAM Visit",
       "items": [
         {
-          "partNum": "79987",
-          "color": "Dark Bluish Gray",
-          "desc": "Plate Special 1 x 3 with 2 Clips on Top",
-          "elementId": "6365692",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "2310",
           "color": "Dark Bluish Gray",
           "desc": "Brick Sloped Inverted 45° 2 x 1 with 2/3 Cutout",
@@ -483088,7 +483102,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "1927",
@@ -483098,7 +483113,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "1927",
@@ -483108,7 +483124,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "1927",
@@ -483118,7 +483135,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "1927",
@@ -483128,7 +483146,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "11090",
@@ -483138,7 +483157,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "3484",
@@ -483148,7 +483168,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "60897",
@@ -483158,7 +483179,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "15210",
@@ -483168,7 +483190,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "65676",
@@ -483178,7 +483201,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "3038",
@@ -483188,7 +483212,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "4216",
@@ -483198,7 +483223,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "90258",
@@ -483208,7 +483234,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "90258",
@@ -483218,7 +483245,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "91501",
@@ -483228,7 +483256,8 @@
           "qty": 3,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "91501",
@@ -483238,7 +483267,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "27448",
@@ -483248,7 +483278,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "15068",
@@ -483258,7 +483289,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "16091",
@@ -483268,7 +483300,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "30000",
@@ -483278,7 +483311,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "79846",
@@ -483288,7 +483322,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "5066",
@@ -483298,7 +483333,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "98284",
@@ -483308,7 +483344,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "98284",
@@ -483318,7 +483355,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "73111",
@@ -483328,7 +483366,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "4032a",
@@ -483338,7 +483377,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "30389b",
@@ -483348,7 +483388,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "78257",
@@ -483358,7 +483399,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "20310",
@@ -483368,7 +483410,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "20310",
@@ -483378,7 +483421,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "38583",
@@ -483388,7 +483432,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "38585",
@@ -483398,7 +483443,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "4315",
@@ -483408,7 +483454,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "2452",
@@ -483418,7 +483465,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "2923",
@@ -483428,7 +483476,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "4175",
@@ -483438,7 +483487,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "6583",
@@ -483448,7 +483498,8 @@
           "qty": 1,
           "drawerId": "L36",
           "matchCount": 0,
-          "suggested": true
+          "suggested": true,
+          "sel": false
         },
         {
           "partNum": "6583",
@@ -483458,7 +483509,8 @@
           "qty": 1,
           "drawerId": "L36",
           "matchCount": 0,
-          "suggested": true
+          "suggested": true,
+          "sel": false
         },
         {
           "partNum": "32000",
@@ -483468,7 +483520,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "32064a",
@@ -483478,7 +483531,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "93273",
@@ -483488,7 +483542,8 @@
           "qty": 1,
           "drawerId": "H29",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "20482",
@@ -483498,7 +483553,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "20482",
@@ -483508,7 +483564,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "2486",
@@ -483518,7 +483575,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "24599",
@@ -483528,7 +483586,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "2342",
@@ -483538,7 +483597,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "79756",
@@ -483548,7 +483608,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "30036",
@@ -483558,7 +483619,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "3935",
@@ -483568,7 +483630,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "32059",
@@ -483578,7 +483641,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "15706",
@@ -483588,7 +483652,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "65429",
@@ -483598,7 +483663,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "65429",
@@ -483608,7 +483674,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "24122",
@@ -483618,7 +483685,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "24122",
@@ -483628,7 +483696,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "92690",
@@ -483638,7 +483707,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "42445",
@@ -483648,7 +483718,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "60219",
@@ -483658,7 +483729,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "3709",
@@ -483668,7 +483740,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "4732",
@@ -483678,7 +483751,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "6141",
@@ -483688,7 +483762,8 @@
           "qty": 1,
           "drawerId": "G40",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "64644",
@@ -483698,7 +483773,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "43888",
@@ -483708,7 +483784,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "2569",
@@ -483718,15 +483795,16 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         }
       ],
-      "savedAt": "2026-10-29T17:52:05.599Z",
+      "savedAt": "2026-10-29T17:52:16.038Z",
       "keepOpen": true,
       "moved": {
-        "batches": 33,
-        "pieces": 1138,
-        "last": "2026-10-29T15:30:34.562Z"
+        "batches": 34,
+        "pieces": 1139,
+        "last": "2026-10-29T17:52:16.038Z"
       }
     },
     {
@@ -574407,7 +574485,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T17:52:09.638Z"
+      "at": "2026-10-29T17:52:20.076Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -574428,10 +574506,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T17:52:05.599Z",
+      "bags": "2026-10-29T17:52:16.038Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T17:52:09.638Z",
+    "savedAt": "2026-10-29T17:52:20.076Z",
     "appVersion": "2026.10.28.10"
   }
 }
