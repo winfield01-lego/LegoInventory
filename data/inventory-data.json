@@ -457182,7 +457182,7 @@
       "label": "O28",
       "notes": "1 x 4 Hinge - 5 finger side",
       "group": "O",
-      "lastEdited": "2026-10-29T22:02:16.113Z"
+      "lastEdited": "2026-10-29T22:03:11.676Z"
     },
     {
       "id": "O29",
@@ -475486,7 +475486,7 @@
       "partNum": "4315",
       "color": "Blue",
       "elementId": "4167102",
-      "qty": 1
+      "qty": 14
     },
     {
       "drawerId": "O28",
@@ -475512,6 +475512,33 @@
       "partNum": "4625",
       "color": "White",
       "elementId": "4188632",
+      "qty": 5
+    },
+    {
+      "drawerId": "O28",
+      "partNum": "4315",
+      "color": "Black",
+      "elementId": "4250225",
+      "qty": 6
+    },
+    {
+      "drawerId": "O28",
+      "partNum": "4315",
+      "color": "Light Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "O28",
+      "partNum": "4315",
+      "color": "Red",
+      "elementId": "4179280",
+      "qty": 4
+    },
+    {
+      "drawerId": "O28",
+      "partNum": "4315",
+      "color": "White",
+      "elementId": "4190507",
       "qty": 5
     }
   ],
@@ -509282,9 +509309,12 @@
       "c": "White",
       "d": "Hinge Vehicle Roof Holder 1 x 4",
       "e": "431551",
-      "u": 1791916924851,
+      "u": 1793311392879,
       "at": 1791846548975,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4214079.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4214079.jpg",
+      "ea": [
+        "4190507"
+      ]
     },
     "3794a|white": {
       "p": "3794a",
@@ -550423,9 +550453,12 @@
       "c": "Black",
       "d": "Hinge Vehicle Roof Holder 1 x 4",
       "e": "431576",
-      "u": 1791916924851,
+      "u": 1793311392879,
       "at": 1791846567871,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/4315.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/4315.png",
+      "ea": [
+        "4250225"
+      ]
     },
     "4865a|black": {
       "p": "4865a",
@@ -561040,9 +561073,12 @@
       "c": "Red",
       "d": "Hinge Vehicle Roof Holder 1 x 4",
       "e": "431521",
-      "u": 1791916924851,
+      "u": 1793311392879,
       "at": 1791846557290,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/4/4315.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/4/4315.png",
+      "ea": [
+        "4179280"
+      ]
     },
     "3068bpr0074|red": {
       "p": "3068bpr0074",
@@ -577106,6 +577142,13 @@
       "d": "Hinge Tile 1 x 4",
       "e": "4256575",
       "u": 1793311337315
+    },
+    "4315|light gray": {
+      "p": "4315",
+      "c": "Light Gray",
+      "d": "Hinge Vehicle Roof Holder 1 x 4",
+      "e": "431502",
+      "u": 1793311392879
     }
   },
   "partKinds": {
@@ -577249,7 +577292,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:02:21.406Z"
+      "at": "2026-10-29T22:03:16.978Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577273,7 +577316,7 @@
       "bags": "2026-10-29T22:00:02.962Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:02:21.406Z",
+    "savedAt": "2026-10-29T22:03:16.978Z",
     "appVersion": "2026.10.29.1"
   }
 }
