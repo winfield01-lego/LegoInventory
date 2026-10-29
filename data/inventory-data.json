@@ -481878,7 +481878,8 @@
           "qty": 1,
           "drawerId": "C8",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "99781",
@@ -481888,7 +481889,8 @@
           "qty": 2,
           "drawerId": "C8",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "99780",
@@ -481898,7 +481900,8 @@
           "qty": 4,
           "drawerId": "C4",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "99780",
@@ -481908,7 +481911,8 @@
           "qty": 5,
           "drawerId": "C4",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "99780",
@@ -481918,7 +481922,8 @@
           "qty": 1,
           "drawerId": "C4",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "44728",
@@ -481928,7 +481933,8 @@
           "qty": 1,
           "drawerId": "C6",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "99207",
@@ -481938,7 +481944,8 @@
           "qty": 1,
           "drawerId": "C2",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "73825",
@@ -481948,7 +481955,8 @@
           "qty": 1,
           "drawerId": "C7",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "93274",
@@ -481958,7 +481966,8 @@
           "qty": 1,
           "drawerId": "H9",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "52107",
@@ -481968,7 +481977,8 @@
           "qty": 1,
           "drawerId": "C3",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "52107",
@@ -481978,7 +481988,8 @@
           "qty": 1,
           "drawerId": "C3",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "22885",
@@ -481988,7 +481999,8 @@
           "qty": 2,
           "drawerId": "H34",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "22885",
@@ -481998,7 +482010,8 @@
           "qty": 1,
           "drawerId": "H34",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "67329",
@@ -482008,7 +482021,8 @@
           "qty": 2,
           "drawerId": "G23",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "67329",
@@ -482018,7 +482032,8 @@
           "qty": 1,
           "drawerId": "G23",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "4595",
@@ -482028,7 +482043,8 @@
           "qty": 2,
           "drawerId": "H3",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "64570",
@@ -482038,7 +482054,8 @@
           "qty": 1,
           "drawerId": "H9",
           "matchCount": 0,
-          "suggested": true
+          "suggested": true,
+          "sel": true
         },
         {
           "partNum": "87609",
@@ -482048,7 +482065,8 @@
           "qty": 1,
           "drawerId": "H18",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "30414",
@@ -482058,7 +482076,8 @@
           "qty": 1,
           "drawerId": "C9",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "30414",
@@ -482068,7 +482087,8 @@
           "qty": 1,
           "drawerId": "C9",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "30414",
@@ -482078,7 +482098,8 @@
           "qty": 1,
           "drawerId": "C9",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "36841",
@@ -482088,7 +482109,8 @@
           "qty": 1,
           "drawerId": "C5",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         },
         {
           "partNum": "26604",
@@ -482098,10 +482120,11 @@
           "qty": 2,
           "drawerId": "H12",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": true
         }
       ],
-      "savedAt": "2026-10-29T05:56:41.187Z",
+      "savedAt": "2026-10-29T05:57:07.301Z",
       "keepOpen": true,
       "moved": {
         "batches": 30,
@@ -572722,7 +572745,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T05:56:45.234Z"
+      "at": "2026-10-29T05:57:11.343Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -572743,10 +572766,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T05:56:41.189Z",
+      "bags": "2026-10-29T05:57:07.301Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T05:56:45.234Z",
+    "savedAt": "2026-10-29T05:57:11.343Z",
     "appVersion": "2026.10.28.10"
   }
 }
