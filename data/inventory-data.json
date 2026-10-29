@@ -454732,7 +454732,7 @@
       "label": "G42",
       "notes": "1 x 2 x2 and 1 x 2 x 3 - Tall Bricks",
       "group": "G",
-      "lastEdited": "2026-10-29T04:07:40.897Z"
+      "lastEdited": "2026-10-29T04:08:08.531Z"
     },
     {
       "id": "G43",
@@ -472958,6 +472958,12 @@
       "partNum": "3245c",
       "color": "Blue",
       "qty": 8
+    },
+    {
+      "drawerId": "G42",
+      "partNum": "3245c",
+      "color": "Dark Bluish Gray",
+      "qty": 7
     }
   ],
   "mocLocations": {
@@ -571414,7 +571420,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T04:07:44.952Z"
+      "at": "2026-10-29T04:08:12.556Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571438,7 +571444,7 @@
       "bags": "2026-10-29T03:55:08.653Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T04:07:44.951Z",
+    "savedAt": "2026-10-29T04:08:12.556Z",
     "appVersion": "2026.10.28.10"
   }
 }
