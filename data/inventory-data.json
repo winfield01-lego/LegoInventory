@@ -457822,7 +457822,7 @@
       "label": "Q2",
       "notes": "",
       "group": "Q",
-      "lastEdited": "2026-10-29T19:17:27.581Z"
+      "lastEdited": "2026-10-29T19:19:00.561Z"
     },
     {
       "id": "Q3",
@@ -474480,7 +474480,7 @@
       "drawerId": "Q2",
       "partNum": "4216",
       "color": "White",
-      "qty": 2
+      "qty": 27
     },
     {
       "drawerId": "Q2",
@@ -474545,6 +474545,44 @@
       "partNum": "88393",
       "color": "Red",
       "qty": 1
+    },
+    {
+      "drawerId": "Q2",
+      "partNum": "4216",
+      "color": "Light Bluish Gray",
+      "elementId": "4541224",
+      "qty": 29
+    },
+    {
+      "drawerId": "Q2",
+      "partNum": "4216",
+      "color": "Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "Q2",
+      "partNum": "4216",
+      "color": "Reddish Brown",
+      "qty": 6
+    },
+    {
+      "drawerId": "Q2",
+      "partNum": "4216",
+      "color": "Dark Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q2",
+      "partNum": "4216",
+      "color": "Tan",
+      "elementId": "4163617",
+      "qty": 4
+    },
+    {
+      "drawerId": "Q2",
+      "partNum": "4216",
+      "color": "Sand Blue",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -529173,8 +529211,11 @@
       "c": "Light Bluish Gray",
       "d": "Brick Special 1 x 2 with Groove",
       "e": "4617170",
-      "u": 1791916924851,
-      "at": 1791654530095
+      "u": 1793301541764,
+      "at": 1791654530095,
+      "ea": [
+        "4541224"
+      ]
     },
     "32525|light bluish gray": {
       "p": "32525",
@@ -535844,8 +535885,11 @@
       "c": "Tan",
       "d": "Brick Special 1 x 2 with Groove",
       "e": "6103001",
-      "u": 1791916924851,
-      "at": 1791654586559
+      "u": 1793301541764,
+      "at": 1791654586559,
+      "ea": [
+        "4163617"
+      ]
     },
     "30987|tan": {
       "p": "30987",
@@ -575609,6 +575653,34 @@
       "d": "Brick Special 1 x 2 x 5 with Groove",
       "e": "4578025",
       "u": 1793301395697
+    },
+    "4216|red": {
+      "p": "4216",
+      "c": "Red",
+      "d": "Brick Special 1 x 2 with Groove",
+      "e": "4188314",
+      "u": 1793301541764
+    },
+    "4216|reddish brown": {
+      "p": "4216",
+      "c": "Reddish Brown",
+      "d": "Brick Special 1 x 2 with Groove",
+      "e": "4242336",
+      "u": 1793301541764
+    },
+    "4216|dark red": {
+      "p": "4216",
+      "c": "Dark Red",
+      "d": "Brick Special 1 x 2 with Groove",
+      "e": "6070691",
+      "u": 1793301541764
+    },
+    "4216|sand blue": {
+      "p": "4216",
+      "c": "Sand Blue",
+      "d": "Brick Special 1 x 2 with Groove",
+      "e": "4620991",
+      "u": 1793301541764
     }
   },
   "partKinds": {
@@ -575752,7 +575824,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T19:17:31.617Z"
+      "at": "2026-10-29T19:19:04.593Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -575776,7 +575848,7 @@
       "bags": "2026-10-29T19:12:44.344Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T19:17:31.617Z",
+    "savedAt": "2026-10-29T19:19:04.593Z",
     "appVersion": "2026.10.28.10"
   }
 }
