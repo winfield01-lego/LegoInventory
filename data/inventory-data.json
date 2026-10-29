@@ -457139,7 +457139,7 @@
       "label": "O22",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-10-13T17:14:08.108Z"
+      "lastEdited": "2026-10-29T21:26:12.906Z"
     },
     {
       "id": "O23",
@@ -475220,6 +475220,12 @@
       "partNum": "4032a",
       "color": "Yellow",
       "qty": 7
+    },
+    {
+      "drawerId": "O22",
+      "partNum": "30389b",
+      "color": "Black",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -475632,6 +475638,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu1z9rb_bot8t",
+      "label": "October 17 BAM Visit (batch 52)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 52,
+      "timestamp": "2026-10-29T21:26:13.031Z",
+      "items": [
+        {
+          "partNum": "30389b",
+          "color": "Black",
+          "desc": "Hinge Brick 2 x 2 Locking with 1 Finger Vertical and Axle Hole [+ Opening]",
+          "elementId": "6413328",
+          "qty": 1,
+          "drawerId": "O22",
+          "drawerLabel": "O22"
+        }
+      ]
+    },
     {
       "id": "bag_mvu0z2ng_rqw9w",
       "label": "October 17 BAM Visit (batch 51)",
@@ -485011,17 +485036,6 @@
           "sel": false
         },
         {
-          "partNum": "30389b",
-          "color": "Black",
-          "desc": "Hinge Brick 2 x 2 Locking with 1 Finger Vertical and Axle Hole [+ Opening]",
-          "elementId": "6413328",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "78257",
           "color": "Reddish Brown",
           "desc": "Plate Special 1 x 1 with Handle on 2 Ends",
@@ -485429,12 +485443,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T21:25:39.576Z",
+      "savedAt": "2026-10-29T21:26:13.030Z",
       "keepOpen": true,
       "moved": {
-        "batches": 51,
-        "pieces": 1178,
-        "last": "2026-10-29T20:58:04.204Z"
+        "batches": 52,
+        "pieces": 1179,
+        "last": "2026-10-29T21:26:13.031Z"
       }
     },
     {
@@ -576783,7 +576797,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T21:25:43.612Z"
+      "at": "2026-10-29T21:26:17.063Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576804,10 +576818,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T21:25:39.576Z",
+      "bags": "2026-10-29T21:26:13.031Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T21:25:43.612Z",
+    "savedAt": "2026-10-29T21:26:17.063Z",
     "appVersion": "2026.10.28.10"
   }
 }
