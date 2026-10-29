@@ -456241,7 +456241,7 @@
       "label": "L29",
       "notes": "1 x 2 side Socket and Towball",
       "group": "L",
-      "lastEdited": "2026-10-29T00:34:17.478Z"
+      "lastEdited": "2026-10-29T00:35:36.726Z"
     },
     {
       "id": "L30",
@@ -471775,6 +471775,13 @@
       "partNum": "14704",
       "color": "Light Bluish Gray",
       "qty": 1
+    },
+    {
+      "drawerId": "L29",
+      "partNum": "14417",
+      "color": "Dark Bluish Gray",
+      "elementId": "6039479",
+      "qty": 43
     }
   ],
   "mocLocations": {
@@ -507901,9 +507908,12 @@
       "c": "Dark Bluish Gray",
       "d": "Plate Special 1 x 2 with 5.9mm Centre Side Towball",
       "e": "6414560",
-      "u": 1791916924851,
+      "u": 1793234137927,
       "at": 1791654796747,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6039479.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6039479.jpg",
+      "ea": [
+        "6039479"
+      ]
     },
     "72132|dark bluish gray": {
       "p": "72132",
@@ -569680,7 +569690,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T00:34:21.517Z"
+      "at": "2026-10-29T00:35:42.018Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569704,7 +569714,7 @@
       "bags": "2026-10-29T00:33:50.455Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T00:34:21.517Z",
+    "savedAt": "2026-10-29T00:35:42.018Z",
     "appVersion": "2026.10.28.10"
   }
 }
