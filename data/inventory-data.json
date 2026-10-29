@@ -456617,7 +456617,7 @@
       "label": "M38",
       "notes": "3 x 2 Wedge - Right",
       "group": "M",
-      "lastEdited": "2026-10-29T01:22:44.727Z"
+      "lastEdited": "2026-10-29T01:25:46.125Z"
     },
     {
       "id": "M39",
@@ -472314,6 +472314,73 @@
       "partNum": "43723",
       "color": "Yellow",
       "qty": 7
+    },
+    {
+      "drawerId": "M38",
+      "partNum": "43722",
+      "color": "Black",
+      "qty": 28
+    },
+    {
+      "drawerId": "M38",
+      "partNum": "43722",
+      "color": "Blue",
+      "elementId": "4180505",
+      "qty": 8
+    },
+    {
+      "drawerId": "M38",
+      "partNum": "43722",
+      "color": "Dark Azure",
+      "qty": 2
+    },
+    {
+      "drawerId": "M38",
+      "partNum": "43722",
+      "color": "Dark Bluish Gray",
+      "qty": 8
+    },
+    {
+      "drawerId": "M38",
+      "partNum": "43722",
+      "color": "Light Bluish Gray",
+      "qty": 22
+    },
+    {
+      "drawerId": "M38",
+      "partNum": "43722",
+      "color": "Lime",
+      "qty": 4
+    },
+    {
+      "drawerId": "M38",
+      "partNum": "43722",
+      "color": "Orange",
+      "qty": 4
+    },
+    {
+      "drawerId": "M38",
+      "partNum": "43722",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "M38",
+      "partNum": "43722",
+      "color": "Red",
+      "qty": 4
+    },
+    {
+      "drawerId": "M38",
+      "partNum": "43722",
+      "color": "White",
+      "qty": 15
+    },
+    {
+      "drawerId": "M38",
+      "partNum": "43722",
+      "color": "Yellow",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -482201,9 +482268,12 @@
       "c": "Blue",
       "d": "Wedge Plate 3 x 2 Right",
       "e": "4498155",
-      "u": 1791916924851,
+      "u": 1793237147328,
       "at": 1792904691991,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4180505.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4180505.jpg",
+      "ea": [
+        "4180505"
+      ]
     },
     "90194|light bluish gray": {
       "p": "90194",
@@ -506881,8 +506951,8 @@
       "p": "43722",
       "c": "Reddish Brown",
       "d": "Wedge Plate 3 x 2 Right",
-      "e": "",
-      "u": 1791916924851,
+      "e": "4180507",
+      "u": 1793237147328,
       "at": 1791671921036
     },
     "36841|tan": {
@@ -570283,6 +570353,20 @@
       "d": "Wedge Plate 3 x 2 Left",
       "e": "4183168",
       "u": 1793236949179
+    },
+    "43722|dark azure": {
+      "p": "43722",
+      "c": "Dark Azure",
+      "d": "Wedge Plate 3 x 2 Right",
+      "e": "6167073",
+      "u": 1793237147328
+    },
+    "43722|lime": {
+      "p": "43722",
+      "c": "Lime",
+      "d": "Wedge Plate 3 x 2 Right",
+      "e": "4183167",
+      "u": 1793237147328
     }
   },
   "partKinds": {
@@ -570426,7 +570510,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:22:48.768Z"
+      "at": "2026-10-29T01:25:51.404Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -570450,7 +570534,7 @@
       "bags": "2026-10-29T01:13:25.445Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:22:48.768Z",
+    "savedAt": "2026-10-29T01:25:51.404Z",
     "appVersion": "2026.10.28.10"
   }
 }
