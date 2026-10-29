@@ -454393,7 +454393,7 @@
       "label": "F32",
       "notes": "",
       "group": "F",
-      "lastEdited": "2026-10-29T02:08:39.977Z"
+      "lastEdited": "2026-10-29T02:10:26.877Z"
     },
     {
       "id": "F33",
@@ -472811,6 +472811,18 @@
       "color": "Orange",
       "elementId": "6373074",
       "qty": 2
+    },
+    {
+      "drawerId": "F32",
+      "partNum": "66906",
+      "color": "Red",
+      "qty": 5
+    },
+    {
+      "drawerId": "F32",
+      "partNum": "66906",
+      "color": "Black",
+      "qty": 35
     }
   ],
   "mocLocations": {
@@ -571195,7 +571207,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T02:08:45.262Z"
+      "at": "2026-10-29T02:10:30.909Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571219,7 +571231,7 @@
       "bags": "2026-10-29T02:01:52.512Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T02:08:45.262Z",
+    "savedAt": "2026-10-29T02:10:30.909Z",
     "appVersion": "2026.10.28.10"
   }
 }
