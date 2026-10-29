@@ -456077,7 +456077,7 @@
       "label": "L2",
       "notes": "Space gun, Control Panel, Chainsaw Body",
       "group": "L",
-      "lastEdited": "2026-10-29T22:54:39.546Z"
+      "lastEdited": "2026-10-29T22:55:14.996Z"
     },
     {
       "id": "L3",
@@ -476102,6 +476102,25 @@
       "partNum": "3959",
       "color": "Light Bluish Gray",
       "qty": 22
+    },
+    {
+      "drawerId": "L2",
+      "partNum": "3959",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "L2",
+      "partNum": "3959",
+      "color": "White",
+      "elementId": "395901",
+      "qty": 2
+    },
+    {
+      "drawerId": "L2",
+      "partNum": "3959",
+      "color": "Yellow",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -564519,9 +564538,12 @@
       "c": "White",
       "d": "Weapon Gun / Torch (Space) [with Grooves]",
       "e": "4550643",
-      "u": 1791916924851,
+      "u": 1793314516198,
       "at": 1791673641072,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/395901.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/395901.jpg",
+      "ea": [
+        "395901"
+      ]
     },
     "2436|black": {
       "p": "2436",
@@ -578066,6 +578088,20 @@
       "d": "Weapon Gun / Torch (Space) [with Grooves]",
       "e": "4244750",
       "u": 1793314480749
+    },
+    "3959|red": {
+      "p": "3959",
+      "c": "Red",
+      "d": "Weapon Gun / Torch (Space) [with Grooves]",
+      "e": "395921",
+      "u": 1793314516198
+    },
+    "3959|yellow": {
+      "p": "3959",
+      "c": "Yellow",
+      "d": "Weapon Gun / Torch (Space) [with Grooves]",
+      "e": "395924",
+      "u": 1793314516198
     }
   },
   "partKinds": {
@@ -578209,7 +578245,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:54:44.840Z"
+      "at": "2026-10-29T22:55:20.294Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578233,7 +578269,7 @@
       "bags": "2026-10-29T22:48:13.722Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:54:44.840Z",
+    "savedAt": "2026-10-29T22:55:20.294Z",
     "appVersion": "2026.10.29.1"
   }
 }
