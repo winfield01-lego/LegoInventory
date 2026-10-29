@@ -456077,7 +456077,7 @@
       "label": "L2",
       "notes": "Space gun, Control Panel, Chainsaw Body",
       "group": "L",
-      "lastEdited": "2026-10-29T22:53:50.995Z"
+      "lastEdited": "2026-10-29T22:54:39.546Z"
     },
     {
       "id": "L3",
@@ -476083,6 +476083,25 @@
       "partNum": "86208",
       "color": "Light Bluish Gray",
       "qty": 7
+    },
+    {
+      "drawerId": "L2",
+      "partNum": "3959",
+      "color": "Black",
+      "elementId": "395926",
+      "qty": 8
+    },
+    {
+      "drawerId": "L2",
+      "partNum": "3959",
+      "color": "Dark Bluish Gray",
+      "qty": 5
+    },
+    {
+      "drawerId": "L2",
+      "partNum": "3959",
+      "color": "Light Bluish Gray",
+      "qty": 22
     }
   ],
   "mocLocations": {
@@ -500422,9 +500441,12 @@
       "c": "Black",
       "d": "Weapon Gun / Torch (Space) [with Grooves]",
       "e": "4254942",
-      "u": 1791916924851,
+      "u": 1793314480749,
       "at": 1791846902427,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/395926.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/395926.jpg",
+      "ea": [
+        "395926"
+      ]
     },
     "2401|white": {
       "p": "2401",
@@ -578030,6 +578052,20 @@
       "d": "Tool Chainsaw / Drill Body",
       "e": "251624",
       "u": 1793314327348
+    },
+    "3959|dark bluish gray": {
+      "p": "3959",
+      "c": "Dark Bluish Gray",
+      "d": "Weapon Gun / Torch (Space) [with Grooves]",
+      "e": "4242182",
+      "u": 1793314480749
+    },
+    "3959|light bluish gray": {
+      "p": "3959",
+      "c": "Light Bluish Gray",
+      "d": "Weapon Gun / Torch (Space) [with Grooves]",
+      "e": "4244750",
+      "u": 1793314480749
     }
   },
   "partKinds": {
@@ -578173,7 +578209,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:53:55.036Z"
+      "at": "2026-10-29T22:54:44.840Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578197,7 +578233,7 @@
       "bags": "2026-10-29T22:48:13.722Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:53:55.036Z",
+    "savedAt": "2026-10-29T22:54:44.840Z",
     "appVersion": "2026.10.29.1"
   }
 }
