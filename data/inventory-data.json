@@ -454732,7 +454732,7 @@
       "label": "G42",
       "notes": "1 x 2 x2 and 1 x 2 x 3 - Tall Bricks",
       "group": "G",
-      "lastEdited": "2026-10-29T03:55:58.808Z"
+      "lastEdited": "2026-10-29T04:03:44.856Z"
     },
     {
       "id": "G43",
@@ -472940,6 +472940,12 @@
       "partNum": "3245c",
       "color": "Light Bluish Gray",
       "qty": 1
+    },
+    {
+      "drawerId": "G42",
+      "partNum": "3245b",
+      "color": "Dark Blue",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -571239,6 +571245,13 @@
       "d": "Technic Axle Pin without Friction Ridges Lengthwise",
       "e": "374926",
       "u": 1793241167931
+    },
+    "3245b|dark blue": {
+      "p": "3245b",
+      "c": "Dark Blue",
+      "d": "Brick 1 x 2 x 2 with Inside Axle Holder",
+      "e": "4274538",
+      "u": 1793246626060
     }
   },
   "partKinds": {
@@ -571382,7 +571395,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T03:56:02.840Z"
+      "at": "2026-10-29T04:03:48.900Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571406,7 +571419,7 @@
       "bags": "2026-10-29T03:55:08.653Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T03:56:02.840Z",
+    "savedAt": "2026-10-29T04:03:48.900Z",
     "appVersion": "2026.10.28.10"
   }
 }
