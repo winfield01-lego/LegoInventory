@@ -456946,7 +456946,7 @@
       "label": "N39",
       "notes": "Inverted Slopes from 2 to 4 wide - fuselage",
       "group": "N",
-      "lastEdited": "2026-10-29T18:07:14.871Z"
+      "lastEdited": "2026-10-29T18:08:22.322Z"
     },
     {
       "id": "N40",
@@ -473764,7 +473764,7 @@
       "drawerId": "N39",
       "partNum": "2310",
       "color": "Dark Bluish Gray",
-      "qty": 1
+      "qty": 7
     },
     {
       "drawerId": "N39",
@@ -473865,6 +473865,24 @@
       "partNum": "32802",
       "color": "Black",
       "qty": 6
+    },
+    {
+      "drawerId": "N39",
+      "partNum": "2310",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "N39",
+      "partNum": "2310",
+      "color": "Light Bluish Gray",
+      "qty": 18
+    },
+    {
+      "drawerId": "N39",
+      "partNum": "2310",
+      "color": "White",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -574684,7 +574702,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T18:07:18.901Z"
+      "at": "2026-10-29T18:08:26.361Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -574708,7 +574726,7 @@
       "bags": "2026-10-29T17:59:39.182Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T18:07:18.901Z",
+    "savedAt": "2026-10-29T18:08:26.361Z",
     "appVersion": "2026.10.28.10"
   }
 }
