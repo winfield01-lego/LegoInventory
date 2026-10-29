@@ -457139,7 +457139,7 @@
       "label": "O22",
       "notes": "Bricks with Finger Hinges - 1 x 2 and 2 x 2",
       "group": "O",
-      "lastEdited": "2026-10-29T21:28:38.776Z"
+      "lastEdited": "2026-10-29T21:28:55.694Z"
     },
     {
       "id": "O23",
@@ -475252,6 +475252,12 @@
       "color": "Light Bluish Gray",
       "elementId": "",
       "qty": 3
+    },
+    {
+      "drawerId": "O22",
+      "partNum": "76385",
+      "color": "Dark Bluish Gray",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -576704,6 +576710,13 @@
       "d": "Hinge Brick 2 x 2 Locking with 1 Finger Vertical and Axle Hole [+ Opening]",
       "e": "",
       "u": 1793309319978
+    },
+    "76385|dark bluish gray": {
+      "p": "76385",
+      "c": "Dark Bluish Gray",
+      "d": "Hinge Brick 1 x 2 Locking with Single Finger On Top",
+      "e": "4257234",
+      "u": 1793309336896
     }
   },
   "partKinds": {
@@ -576847,7 +576860,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T21:28:42.803Z"
+      "at": "2026-10-29T21:28:59.723Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -576871,7 +576884,7 @@
       "bags": "2026-10-29T21:26:13.031Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T21:28:42.803Z",
+    "savedAt": "2026-10-29T21:28:59.723Z",
     "appVersion": "2026.10.28.10"
   }
 }
