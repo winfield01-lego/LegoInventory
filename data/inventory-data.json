@@ -456946,7 +456946,7 @@
       "label": "N39",
       "notes": "Inverted Slopes from 2 to 4 wide - fuselage",
       "group": "N",
-      "lastEdited": "2026-10-29T18:01:29.386Z"
+      "lastEdited": "2026-10-29T18:01:49.257Z"
     },
     {
       "id": "N40",
@@ -473771,6 +473771,12 @@
       "partNum": "4854",
       "color": "White",
       "elementId": "4289569",
+      "qty": 1
+    },
+    {
+      "drawerId": "N39",
+      "partNum": "4854",
+      "color": "Light Bluish Gray",
       "qty": 1
     }
   ],
@@ -574408,6 +574414,13 @@
       "d": "Brick Round Corner 6 x 6 with 33° Slope and Facet Cutout",
       "e": "4622338",
       "u": 1793287835763
+    },
+    "4854|light bluish gray": {
+      "p": "4854",
+      "c": "Light Bluish Gray",
+      "d": "Brick Sloped Inverted 45° 4 x 4 Double with 4 x 2 Recessed",
+      "e": "4211513",
+      "u": 1793296910460
     }
   },
   "partKinds": {
@@ -574551,7 +574564,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T18:01:34.679Z"
+      "at": "2026-10-29T18:01:53.302Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -574575,7 +574588,7 @@
       "bags": "2026-10-29T17:59:39.182Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T18:01:34.679Z",
+    "savedAt": "2026-10-29T18:01:53.302Z",
     "appVersion": "2026.10.28.10"
   }
 }
