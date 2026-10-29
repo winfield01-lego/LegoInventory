@@ -455207,7 +455207,7 @@
       "label": "I23",
       "notes": "Brick Double Curved 1 x 1 to 1 x 4 and 2 x 2 Corner",
       "group": "I",
-      "lastEdited": "2026-10-29T23:01:14.895Z"
+      "lastEdited": "2026-10-29T23:05:38.855Z"
     },
     {
       "id": "I24",
@@ -476184,6 +476184,74 @@
       "partNum": "79756",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "I23",
+      "partNum": "49307",
+      "color": "Black",
+      "qty": 9
+    },
+    {
+      "drawerId": "I23",
+      "partNum": "49307",
+      "color": "Dark Blue",
+      "elementId": "6403899",
+      "qty": 2
+    },
+    {
+      "drawerId": "I23",
+      "partNum": "49307",
+      "color": "Dark Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "I23",
+      "partNum": "49307",
+      "color": "Light Bluish Gray",
+      "qty": 8
+    },
+    {
+      "drawerId": "I23",
+      "partNum": "49307",
+      "color": "Lime",
+      "qty": 4
+    },
+    {
+      "drawerId": "I23",
+      "partNum": "49307",
+      "color": "Medium Nougat",
+      "qty": 7
+    },
+    {
+      "drawerId": "I23",
+      "partNum": "49307",
+      "color": "Orange",
+      "qty": 3
+    },
+    {
+      "drawerId": "I23",
+      "partNum": "49307",
+      "color": "Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "I23",
+      "partNum": "49307",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "I23",
+      "partNum": "49307",
+      "color": "Yellow",
+      "qty": 2
+    },
+    {
+      "drawerId": "I23",
+      "partNum": "49307",
+      "color": "White",
+      "elementId": "6258135",
+      "qty": 42
     }
   ],
   "mocLocations": {
@@ -533545,9 +533613,12 @@
       "c": "White",
       "d": "Brick Curved 1 x 1 x 2/3 Double Curved Top, No Studs",
       "e": "6552178",
-      "u": 1791916924851,
+      "u": 1793315140066,
       "at": 1791654799757,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6258135.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6258135.jpg",
+      "ea": [
+        "6258135"
+      ]
     },
     "98560|white": {
       "p": "98560",
@@ -543891,9 +543962,12 @@
       "c": "Dark Blue",
       "d": "Brick Curved 1 x 1 x 2/3 Double Curved Top, No Studs",
       "e": "6554228",
-      "u": 1791916924851,
+      "u": 1793315140066,
       "at": 1791654657762,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6403899.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6403899.jpg",
+      "ea": [
+        "6403899"
+      ]
     },
     "4287c|dark blue": {
       "p": "4287c",
@@ -578191,6 +578265,27 @@
       "d": "Brick Curved 1 x 4 x 2/3 Double, No Studs",
       "e": "6375672",
       "u": 1793314876098
+    },
+    "49307|lime": {
+      "p": "49307",
+      "c": "Lime",
+      "d": "Brick Curved 1 x 1 x 2/3 Double Curved Top, No Studs",
+      "e": "6312452",
+      "u": 1793315140066
+    },
+    "49307|medium nougat": {
+      "p": "49307",
+      "c": "Medium Nougat",
+      "d": "Brick Curved 1 x 1 x 2/3 Double Curved Top, No Studs",
+      "e": "6296061",
+      "u": 1793315140066
+    },
+    "49307|yellow": {
+      "p": "49307",
+      "c": "Yellow",
+      "d": "Brick Curved 1 x 1 x 2/3 Double Curved Top, No Studs",
+      "e": "6394524",
+      "u": 1793315140066
     }
   },
   "partKinds": {
@@ -578334,7 +578429,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T23:01:18.920Z"
+      "at": "2026-10-29T23:05:44.177Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578358,7 +578453,7 @@
       "bags": "2026-10-29T22:57:13.855Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T23:01:18.919Z",
+    "savedAt": "2026-10-29T23:05:44.176Z",
     "appVersion": "2026.10.29.1"
   }
 }
