@@ -456132,7 +456132,7 @@
       "label": "L10",
       "notes": "Brick 1 x 2 Double Arch - 1 1/2 x 1 1/2 corner Arch",
       "group": "L",
-      "lastEdited": "2026-10-29T21:57:54.524Z"
+      "lastEdited": "2026-10-29T21:59:20.874Z"
     },
     {
       "id": "L11",
@@ -475467,13 +475467,19 @@
       "drawerId": "L10",
       "partNum": "38585",
       "color": "Tan",
-      "qty": 1
+      "qty": 5
     },
     {
       "drawerId": "L10",
       "partNum": "38583",
       "color": "White",
       "qty": 2
+    },
+    {
+      "drawerId": "L10",
+      "partNum": "38585",
+      "color": "White",
+      "qty": 62
     }
   ],
   "mocLocations": {
@@ -577038,6 +577044,13 @@
       "d": "Brick Arch 1 1/2 x 1 1/2 Corner",
       "e": "6236425",
       "u": 1793310977655
+    },
+    "38585|white": {
+      "p": "38585",
+      "c": "White",
+      "d": "Brick Arch 1 1/2 x 1 1/2 Corner",
+      "e": "6300101",
+      "u": 1793311162077
     }
   },
   "partKinds": {
@@ -577181,7 +577194,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T21:57:59.810Z"
+      "at": "2026-10-29T21:59:24.905Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577205,7 +577218,7 @@
       "bags": "2026-10-29T21:56:16.454Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T21:57:59.810Z",
+    "savedAt": "2026-10-29T21:59:24.905Z",
     "appVersion": "2026.10.29.1"
   }
 }
