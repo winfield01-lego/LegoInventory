@@ -456707,7 +456707,7 @@
       "label": "N4",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-29T22:44:12.988Z"
+      "lastEdited": "2026-10-29T22:48:13.588Z"
     },
     {
       "id": "N5",
@@ -476021,6 +476021,12 @@
       "color": "Black",
       "elementId": "234226",
       "qty": 1
+    },
+    {
+      "drawerId": "N4",
+      "partNum": "76795",
+      "color": "Pearl Gold",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -476433,6 +476439,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu4wql6_a1b08",
+      "label": "October 17 BAM Visit (batch 65)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 65,
+      "timestamp": "2026-10-29T22:48:13.722Z",
+      "items": [
+        {
+          "partNum": "76795",
+          "color": "Pearl Gold",
+          "desc": "Brick Round Corner 5 x 5 x 1 Slope, Bottom Cut Outs, No Studs, Flat Top",
+          "elementId": "6349623",
+          "qty": 1,
+          "drawerId": "N4",
+          "drawerLabel": "N4"
+        }
+      ]
+    },
     {
       "id": "bag_mvu4rky3_280f1",
       "label": "October 17 BAM Visit (batch 64)",
@@ -486327,25 +486352,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "76795",
-          "color": "Pearl Gold",
-          "desc": "Brick Round Corner 5 x 5 x 1 Slope, Bottom Cut Outs, No Studs, Flat Top",
-          "elementId": "6349623",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
         }
       ],
-      "savedAt": "2026-10-29T22:48:04.445Z",
+      "savedAt": "2026-10-29T22:48:13.721Z",
       "keepOpen": true,
       "moved": {
-        "batches": 64,
-        "pieces": 1201,
-        "last": "2026-10-29T22:44:13.131Z"
+        "batches": 65,
+        "pieces": 1202,
+        "last": "2026-10-29T22:48:13.721Z"
       }
     },
     {
@@ -577915,6 +577929,13 @@
       "d": "Bar 1 x 4 x 2 with Studs",
       "e": "4211478",
       "u": 1793313757741
+    },
+    "76795|pearl gold": {
+      "p": "76795",
+      "c": "Pearl Gold",
+      "d": "Brick Round Corner 5 x 5 x 1 Slope, Bottom Cut Outs, No Studs, Flat Top",
+      "e": "6349623",
+      "u": 1793314094923
     }
   },
   "partKinds": {
@@ -578058,7 +578079,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:48:08.478Z"
+      "at": "2026-10-29T22:48:17.762Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578079,10 +578100,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T22:48:04.445Z",
+      "bags": "2026-10-29T22:48:13.722Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:48:08.478Z",
+    "savedAt": "2026-10-29T22:48:17.762Z",
     "appVersion": "2026.10.29.1"
   }
 }
