@@ -457147,7 +457147,7 @@
       "label": "O23",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-10-13T17:14:08.108Z"
+      "lastEdited": "2026-10-29T22:07:24.412Z"
     },
     {
       "id": "O24",
@@ -475606,6 +475606,12 @@
       "partNum": "2452",
       "color": "Light Gray",
       "qty": 3
+    },
+    {
+      "drawerId": "O23",
+      "partNum": "2923",
+      "color": "Black",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -476018,6 +476024,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu3g8rz_bb2nl",
+      "label": "October 17 BAM Visit (batch 58)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 58,
+      "timestamp": "2026-10-29T22:07:24.527Z",
+      "items": [
+        {
+          "partNum": "2923",
+          "color": "Black",
+          "desc": "Hinge Bar 2.5L with 2 and 3 Fingers on Ends (Pantograph Shoe Holder)",
+          "elementId": "292326",
+          "qty": 1,
+          "drawerId": "O23",
+          "drawerLabel": "O23"
+        }
+      ]
+    },
     {
       "id": "bag_mvu3bpvv_yr4qj",
       "label": "October 17 BAM Visit (batch 57)",
@@ -485529,17 +485554,6 @@
           "sel": false
         },
         {
-          "partNum": "2923",
-          "color": "Black",
-          "desc": "Hinge Bar 2.5L with 2 and 3 Fingers on Ends (Pantograph Shoe Holder)",
-          "elementId": "292326",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "4175",
           "color": "Light Bluish Gray",
           "desc": "Plate Special 1 x 2 with Ladder",
@@ -485859,12 +485873,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T22:03:53.419Z",
+      "savedAt": "2026-10-29T22:07:24.526Z",
       "keepOpen": true,
       "moved": {
-        "batches": 57,
-        "pieces": 1187,
-        "last": "2026-10-29T22:03:53.419Z"
+        "batches": 58,
+        "pieces": 1188,
+        "last": "2026-10-29T22:07:24.526Z"
       }
     },
     {
@@ -577409,7 +577423,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:07:06.260Z"
+      "at": "2026-10-29T22:07:29.803Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577430,10 +577444,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T22:03:53.419Z",
+      "bags": "2026-10-29T22:07:24.527Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:07:06.260Z",
+    "savedAt": "2026-10-29T22:07:29.803Z",
     "appVersion": "2026.10.29.1"
   }
 }
