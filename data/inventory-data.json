@@ -455909,7 +455909,7 @@
       "label": "K21",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-10-29T05:25:37.095Z"
+      "lastEdited": "2026-10-29T05:26:28.027Z"
     },
     {
       "id": "K22",
@@ -473518,6 +473518,25 @@
       "color": "White",
       "elementId": "3206301",
       "qty": 1
+    },
+    {
+      "drawerId": "K21",
+      "partNum": "32017",
+      "color": "Black",
+      "qty": 4
+    },
+    {
+      "drawerId": "K21",
+      "partNum": "32017",
+      "color": "Dark Bluish Gray",
+      "elementId": "32017199",
+      "qty": 1
+    },
+    {
+      "drawerId": "K21",
+      "partNum": "32017",
+      "color": "Light Bluish Gray",
+      "qty": 11
     }
   ],
   "mocLocations": {
@@ -521666,9 +521685,12 @@
       "c": "Dark Bluish Gray",
       "d": "Technic Beam 1 x 5 Thin",
       "e": "6215176",
-      "u": 1791916924851,
+      "u": 1793251589230,
       "at": 1791654578181,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4210666.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4210666.jpg",
+      "ea": [
+        "32017199"
+      ]
     },
     "2391|dark bluish gray": {
       "p": "2391",
@@ -572192,6 +572214,20 @@
       "d": "Technic Beam 1 x 7 Thin",
       "e": "4114295",
       "u": 1793251503561
+    },
+    "32017|black": {
+      "p": "32017",
+      "c": "Black",
+      "d": "Technic Beam 1 x 5 Thin",
+      "e": "4106380",
+      "u": 1793251589230
+    },
+    "32017|light bluish gray": {
+      "p": "32017",
+      "c": "Light Bluish Gray",
+      "d": "Technic Beam 1 x 5 Thin",
+      "e": "4211554",
+      "u": 1793251589230
     }
   },
   "partKinds": {
@@ -572335,7 +572371,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T05:25:42.373Z"
+      "at": "2026-10-29T05:26:33.324Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -572359,7 +572395,7 @@
       "bags": "2026-10-29T05:17:17.080Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T05:25:42.373Z",
+    "savedAt": "2026-10-29T05:26:33.324Z",
     "appVersion": "2026.10.28.10"
   }
 }
