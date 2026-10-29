@@ -456198,7 +456198,7 @@
       "label": "L20",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-10-13T17:13:18.947Z"
+      "lastEdited": "2026-10-29T18:35:27.882Z"
     },
     {
       "id": "L21",
@@ -474116,6 +474116,12 @@
       "color": "White",
       "elementId": "6290268",
       "qty": 2
+    },
+    {
+      "drawerId": "L20",
+      "partNum": "3484",
+      "color": "Light Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -474528,6 +474534,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvtvvonn_b9q23",
+      "label": "October 17 BAM Visit (batch 38)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 38,
+      "timestamp": "2026-10-29T18:35:28.019Z",
+      "items": [
+        {
+          "partNum": "3484",
+          "color": "Light Bluish Gray",
+          "desc": "Bar 1L with Clip [Cut Edges and One Side Hole] [Full Clip]",
+          "elementId": "6439041",
+          "qty": 1,
+          "drawerId": "L20",
+          "drawerLabel": "L20"
+        }
+      ]
+    },
     {
       "id": "bag_mvtvk73b_li34n",
       "label": "October 17 BAM Visit (batch 37)",
@@ -483576,17 +483601,6 @@
           "sel": false
         },
         {
-          "partNum": "3484",
-          "color": "Light Bluish Gray",
-          "desc": "Bar 1L with Clip [Cut Edges and One Side Hole] [Full Clip]",
-          "elementId": "6439041",
-          "qty": 1,
-          "drawerId": "L20",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "60897",
           "color": "White",
           "desc": "Plate Special 1 x 1 with Clip Vertical [Thick Open O Clip]",
@@ -484214,12 +484228,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T18:35:21.989Z",
+      "savedAt": "2026-10-29T18:35:28.018Z",
       "keepOpen": true,
       "moved": {
-        "batches": 37,
-        "pieces": 1151,
-        "last": "2026-10-29T18:26:32.039Z"
+        "batches": 38,
+        "pieces": 1152,
+        "last": "2026-10-29T18:35:28.019Z"
       }
     },
     {
@@ -575048,7 +575062,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T18:35:26.031Z"
+      "at": "2026-10-29T18:35:33.675Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -575069,10 +575083,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T18:35:21.989Z",
+      "bags": "2026-10-29T18:35:28.019Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T18:35:26.031Z",
+    "savedAt": "2026-10-29T18:35:33.675Z",
     "appVersion": "2026.10.28.10"
   }
 }
