@@ -454732,7 +454732,7 @@
       "label": "G42",
       "notes": "1 x 2 x2 and 1 x 2 x 3 - Tall Bricks",
       "group": "G",
-      "lastEdited": "2026-10-29T04:08:08.531Z"
+      "lastEdited": "2026-10-29T04:14:01.497Z"
     },
     {
       "id": "G43",
@@ -472939,7 +472939,7 @@
       "drawerId": "G42",
       "partNum": "3245c",
       "color": "Light Bluish Gray",
-      "qty": 1
+      "qty": 30
     },
     {
       "drawerId": "G42",
@@ -472963,7 +472963,38 @@
       "drawerId": "G42",
       "partNum": "3245c",
       "color": "Dark Bluish Gray",
-      "qty": 7
+      "qty": 8
+    },
+    {
+      "drawerId": "G42",
+      "partNum": "3245c",
+      "color": "Orange",
+      "elementId": "4545311",
+      "qty": 3
+    },
+    {
+      "drawerId": "G42",
+      "partNum": "3245c",
+      "color": "Red",
+      "qty": 6
+    },
+    {
+      "drawerId": "G42",
+      "partNum": "3245c",
+      "color": "Tan",
+      "qty": 18
+    },
+    {
+      "drawerId": "G42",
+      "partNum": "3245c",
+      "color": "White",
+      "qty": 43
+    },
+    {
+      "drawerId": "G42",
+      "partNum": "3245c",
+      "color": "Yellow",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -515917,9 +515948,12 @@
       "c": "Orange",
       "d": "Brick 1 x 2 x 2 with Inside Stud Holder",
       "e": "6078590",
-      "u": 1791916924851,
+      "u": 1793247242706,
       "at": 1791654633155,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4545311.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4545311.jpg",
+      "ea": [
+        "4545311"
+      ]
     },
     "15068|orange": {
       "p": "15068",
@@ -571420,7 +571454,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T04:08:12.556Z"
+      "at": "2026-10-29T04:14:06.804Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571444,7 +571478,7 @@
       "bags": "2026-10-29T03:55:08.653Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T04:08:12.556Z",
+    "savedAt": "2026-10-29T04:14:06.804Z",
     "appVersion": "2026.10.28.10"
   }
 }
