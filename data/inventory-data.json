@@ -456933,7 +456933,7 @@
       "label": "N40",
       "notes": "1 x 2 Handle - Side and Free End",
       "group": "N",
-      "lastEdited": "2026-10-29T00:09:14.442Z"
+      "lastEdited": "2026-10-29T00:14:31.109Z"
     },
     {
       "id": "N41",
@@ -471574,6 +471574,92 @@
       "partNum": "48336",
       "color": "White",
       "qty": 21
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "2540",
+      "color": "Black",
+      "elementId": "254026",
+      "qty": 57
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "2540",
+      "color": "Blue",
+      "elementId": "254023",
+      "qty": 16
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "2540",
+      "color": "Dark Bluish Gray",
+      "qty": 31
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "2540",
+      "color": "Dark Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "2540",
+      "color": "Green",
+      "elementId": "254028",
+      "qty": 2
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "2540",
+      "color": "Light Bluish Gray",
+      "qty": 22
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "2540",
+      "color": "Orange",
+      "elementId": "4125255",
+      "qty": 2
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "2540",
+      "color": "Pearl Gold",
+      "qty": 3
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "2540",
+      "color": "Red",
+      "elementId": "254021",
+      "qty": 14
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "2540",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "2540",
+      "color": "Tan",
+      "elementId": "254005",
+      "qty": 1
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "2540",
+      "color": "White",
+      "elementId": "254001",
+      "qty": 24
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "2540",
+      "color": "Yellow",
+      "elementId": "254024",
+      "qty": 9
     }
   ],
   "mocLocations": {
@@ -483162,9 +483248,12 @@
       "c": "Black",
       "d": "Plate Special 1 x 2 Side Handle [Free Ends]",
       "e": "4140588",
-      "u": 1791916924851,
+      "u": 1793232872312,
       "at": 1791846902427,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/254026.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/254026.jpg",
+      "ea": [
+        "254026"
+      ]
     },
     "15573|blue": {
       "p": "15573",
@@ -491621,9 +491710,12 @@
       "c": "Yellow",
       "d": "Plate Special 1 x 2 Side Handle [Free Ends]",
       "e": "4140587",
-      "u": 1791916924851,
+      "u": 1793232872312,
       "at": 1791656721266,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/254024.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/254024.jpg",
+      "ea": [
+        "254024"
+      ]
     },
     "11458|yellow": {
       "p": "11458",
@@ -492658,16 +492750,22 @@
       "c": "Tan",
       "d": "Plate Special 1 x 2 Side Handle [Free Ends]",
       "e": "4140593",
-      "u": 1791916924851
+      "u": 1793232872312,
+      "ea": [
+        "254005"
+      ]
     },
     "2540|white": {
       "p": "2540",
       "c": "White",
       "d": "Plate Special 1 x 2 Side Handle [Free Ends]",
       "e": "4140583",
-      "u": 1791916924851,
+      "u": 1793232872312,
       "at": 1791846553338,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/254001.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/254001.jpg",
+      "ea": [
+        "254001"
+      ]
     },
     "32028|yellow": {
       "p": "32028",
@@ -493006,9 +493104,12 @@
       "c": "Blue",
       "d": "Plate Special 1 x 2 Side Handle [Free Ends]",
       "e": "4140586",
-      "u": 1791916924851,
+      "u": 1793232872312,
       "at": 1791671921036,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/254023.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/254023.jpg",
+      "ea": [
+        "254023"
+      ]
     },
     "15672|light bluish gray": {
       "p": "15672",
@@ -508298,9 +508399,12 @@
       "c": "Red",
       "d": "Plate Special 1 x 2 Side Handle [Free Ends]",
       "e": "4140585",
-      "u": 1791916924851,
+      "u": 1793232872312,
       "at": 1791732126885,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/254021.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/254021.jpg",
+      "ea": [
+        "254021"
+      ]
     },
     "60470b|red": {
       "p": "60470b",
@@ -531195,9 +531299,12 @@
       "c": "Orange",
       "d": "Plate Special 1 x 2 Side Handle [Free Ends]",
       "e": "4190164",
-      "u": 1791916924851,
+      "u": 1793232872312,
       "at": 1791654669028,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4140592.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4140592.jpg",
+      "ea": [
+        "4125255"
+      ]
     },
     "39262|pearl gold": {
       "p": "39262",
@@ -546833,9 +546940,12 @@
       "c": "Green",
       "d": "Plate Special 1 x 2 Side Handle [Free Ends]",
       "e": "4542391",
-      "u": 1791916924851,
+      "u": 1793232872312,
       "at": 1791654806816,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/254028.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/254028.jpg",
+      "ea": [
+        "254028"
+      ]
     },
     "30387|light bluish gray": {
       "p": "30387",
@@ -569261,6 +569371,13 @@
       "d": "Plate Special 1 x 2 [Side Handle Closed Ends]",
       "e": "4259941",
       "u": 1793232555644
+    },
+    "2540|reddish brown": {
+      "p": "2540",
+      "c": "Reddish Brown",
+      "d": "Plate Special 1 x 2 Side Handle [Free Ends]",
+      "e": "4211209",
+      "u": 1793232872312
     }
   },
   "partKinds": {
@@ -569404,7 +569521,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T00:09:19.741Z"
+      "at": "2026-10-29T00:14:36.387Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569428,7 +569545,7 @@
       "bags": "2026-10-29T00:03:05.337Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T00:09:19.741Z",
+    "savedAt": "2026-10-29T00:14:36.387Z",
     "appVersion": "2026.10.28.10"
   }
 }
