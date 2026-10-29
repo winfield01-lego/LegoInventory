@@ -457254,7 +457254,7 @@
       "label": "O40",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-10-13T17:14:08.108Z"
+      "lastEdited": "2026-10-29T04:16:44.196Z"
     },
     {
       "id": "O41",
@@ -473022,6 +473022,13 @@
       "color": "White",
       "elementId": "6153776",
       "qty": 2
+    },
+    {
+      "drawerId": "O40",
+      "partNum": "30359b",
+      "color": "Dark Bluish Gray",
+      "elementId": "4210815",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -473434,6 +473441,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvt17cpp_o1xxy",
+      "label": "CdA BAM - 10/22/26 (batch 51)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 51,
+      "timestamp": "2026-10-29T04:16:44.317Z",
+      "items": [
+        {
+          "partNum": "30359b",
+          "color": "Dark Bluish Gray",
+          "desc": "Bar 1 x 8 with Brick 1 x 2 Curved Top End (Axle Holder Inside Small End)",
+          "elementId": "4210815",
+          "qty": 1,
+          "drawerId": "O40",
+          "drawerLabel": "O40"
+        }
+      ]
+    },
     {
       "id": "bag_mvt0fkz1_g68k5",
       "label": "CdA BAM - 10/22/26 (batch 50)",
@@ -480894,17 +480920,6 @@
           "sel": false
         },
         {
-          "partNum": "30359b",
-          "color": "Dark Bluish Gray",
-          "desc": "Bar 1 x 8 with Brick 1 x 2 Curved Top End (Axle Holder Inside Small End)",
-          "elementId": "4210815",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "3963",
           "color": "Light Bluish Gray",
           "desc": "Brick Special 1 x 1 with 3 Speakers / Loudspeakers / Space Positioning Rockets",
@@ -481004,12 +481019,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T04:15:57.389Z",
+      "savedAt": "2026-10-29T04:16:44.317Z",
       "keepOpen": true,
       "moved": {
-        "batches": 50,
-        "pieces": 303,
-        "last": "2026-10-29T03:55:08.653Z"
+        "batches": 51,
+        "pieces": 304,
+        "last": "2026-10-29T04:16:44.317Z"
       }
     },
     {
@@ -567022,8 +567037,11 @@
       "c": "Dark Bluish Gray",
       "d": "Bar 1 x 8 with Brick 1 x 2 Curved Top End (Axle Holder Inside Small End)",
       "e": "6273322",
-      "u": 1792429579553,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4210815.jpg"
+      "u": 1793247405518,
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4210815.jpg",
+      "ea": [
+        "4210815"
+      ]
     },
     "30365|dark bluish gray": {
       "p": "30365",
@@ -571476,7 +571494,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T04:16:01.420Z"
+      "at": "2026-10-29T04:16:49.605Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571497,10 +571515,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T04:15:57.389Z",
+      "bags": "2026-10-29T04:16:44.317Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T04:16:01.420Z",
+    "savedAt": "2026-10-29T04:16:49.605Z",
     "appVersion": "2026.10.28.10"
   }
 }
