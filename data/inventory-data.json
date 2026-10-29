@@ -456100,7 +456100,7 @@
       "label": "L6",
       "notes": "Flags and Tiles with Clips",
       "group": "L",
-      "lastEdited": "2026-10-29T19:05:57.980Z"
+      "lastEdited": "2026-10-29T19:08:07.377Z"
     },
     {
       "id": "L7",
@@ -474337,7 +474337,7 @@
       "drawerId": "L6",
       "partNum": "11055",
       "color": "Black",
-      "qty": 2
+      "qty": 4
     },
     {
       "drawerId": "L6",
@@ -474356,6 +474356,44 @@
       "partNum": "11055",
       "color": "Yellow",
       "qty": 1
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "44676",
+      "color": "Black",
+      "qty": 9
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "44676",
+      "color": "Dark Blue",
+      "elementId": "4261792",
+      "qty": 3
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "44676",
+      "color": "Dark Bluish Gray",
+      "qty": 8
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "44676",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "44676",
+      "color": "Sand Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "44676",
+      "color": "White",
+      "elementId": "4272616",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -534676,9 +534714,12 @@
       "c": "White",
       "d": "Flag 2 x 2 Trapezoid with Flat Area between Clips",
       "e": "6023099",
-      "u": 1791916924851,
+      "u": 1793300883699,
       "at": 1791654560264,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4272616.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4272616.jpg",
+      "ea": [
+        "4272616"
+      ]
     },
     "55982|white": {
       "p": "55982",
@@ -552643,9 +552684,12 @@
       "c": "Dark Blue",
       "d": "Flag 2 x 2 Trapezoid with Flat Area between Clips",
       "e": "4529551",
-      "u": 1791916924851,
+      "u": 1793300883699,
       "at": 1791654819756,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4261792.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4261792.jpg",
+      "ea": [
+        "4261792"
+      ]
     },
     "6231|dark blue": {
       "p": "6231",
@@ -575271,6 +575315,27 @@
       "d": "Flag 2 x 2 Square, Flat Clip Edge [Thick Clips]",
       "e": "6012442",
       "u": 1793300759183
+    },
+    "44676|dark bluish gray": {
+      "p": "44676",
+      "c": "Dark Bluish Gray",
+      "d": "Flag 2 x 2 Trapezoid with Flat Area between Clips",
+      "e": "4215387",
+      "u": 1793300883699
+    },
+    "44676|light bluish gray": {
+      "p": "44676",
+      "c": "Light Bluish Gray",
+      "d": "Flag 2 x 2 Trapezoid with Flat Area between Clips",
+      "e": "6301896",
+      "u": 1793300883699
+    },
+    "44676|sand blue": {
+      "p": "44676",
+      "c": "Sand Blue",
+      "d": "Flag 2 x 2 Trapezoid with Flat Area between Clips",
+      "e": "6097642",
+      "u": 1793300883699
     }
   },
   "partKinds": {
@@ -575414,7 +575479,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T19:06:02.021Z"
+      "at": "2026-10-29T19:08:11.426Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -575438,7 +575503,7 @@
       "bags": "2026-10-29T19:00:50.035Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T19:06:02.021Z",
+    "savedAt": "2026-10-29T19:08:11.426Z",
     "appVersion": "2026.10.28.10"
   }
 }
