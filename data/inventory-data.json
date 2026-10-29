@@ -454250,7 +454250,8 @@
       "id": "F8",
       "label": "F8",
       "notes": "",
-      "group": "F"
+      "group": "F",
+      "lastEdited": "2026-10-29T23:21:16.092Z"
     },
     {
       "id": "F9",
@@ -454337,7 +454338,8 @@
       "id": "F22",
       "label": "F22",
       "notes": "",
-      "group": "F"
+      "group": "F",
+      "lastEdited": "2026-10-29T23:21:16.092Z"
     },
     {
       "id": "F23",
@@ -455841,7 +455843,7 @@
       "label": "K10",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-10-13T17:12:46.630Z"
+      "lastEdited": "2026-10-29T23:21:16.092Z"
     },
     {
       "id": "K11",
@@ -456562,7 +456564,7 @@
       "label": "M27",
       "notes": "",
       "group": "M",
-      "lastEdited": "2026-10-13T17:13:28.024Z"
+      "lastEdited": "2026-10-29T23:21:16.092Z"
     },
     {
       "id": "M28",
@@ -456590,7 +456592,7 @@
       "label": "M31",
       "notes": "",
       "group": "M",
-      "lastEdited": "2026-10-13T17:13:28.024Z"
+      "lastEdited": "2026-10-29T23:21:16.091Z"
     },
     {
       "id": "M32",
@@ -476336,6 +476338,50 @@
       "color": "White",
       "elementId": "4117026",
       "qty": 1
+    },
+    {
+      "drawerId": "M31",
+      "partNum": "15706",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "M27",
+      "partNum": "65429",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "M27",
+      "partNum": "65429",
+      "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "K10",
+      "partNum": "24122",
+      "color": "Black",
+      "elementId": "6155068",
+      "qty": 1
+    },
+    {
+      "drawerId": "K10",
+      "partNum": "24122",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "F8",
+      "partNum": "92690",
+      "color": "Pearl Titanium",
+      "qty": 1
+    },
+    {
+      "drawerId": "F22",
+      "partNum": "42445",
+      "color": "Light Bluish Gray",
+      "elementId": "4211759",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -476748,6 +476794,79 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu638ao_kntpu",
+      "label": "October 17 BAM Visit (batch 67)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 67,
+      "timestamp": "2026-10-29T23:21:16.224Z",
+      "items": [
+        {
+          "partNum": "15706",
+          "color": "Black",
+          "desc": "Wedge Plate 4 Stud 45° Angle Plate",
+          "elementId": "6054852",
+          "qty": 1,
+          "drawerId": "M31",
+          "drawerLabel": "M31"
+        },
+        {
+          "partNum": "65429",
+          "color": "Black",
+          "desc": "Wedge Plate 2 x 4 27° Left",
+          "elementId": "6295295",
+          "qty": 1,
+          "drawerId": "M27",
+          "drawerLabel": "M27"
+        },
+        {
+          "partNum": "65429",
+          "color": "White",
+          "desc": "Wedge Plate 2 x 4 27° Left",
+          "elementId": "6354823",
+          "qty": 1,
+          "drawerId": "M27",
+          "drawerLabel": "M27"
+        },
+        {
+          "partNum": "24122",
+          "color": "Black",
+          "desc": "Large Figure Weapon Lightsaber Hilt with Axle Hole and Two Bar Holders",
+          "elementId": "6155068",
+          "qty": 1,
+          "drawerId": "K10",
+          "drawerLabel": "K10"
+        },
+        {
+          "partNum": "24122",
+          "color": "Reddish Brown",
+          "desc": "Large Figure Weapon Lightsaber Hilt with Axle Hole and Two Bar Holders",
+          "elementId": "6459423",
+          "qty": 1,
+          "drawerId": "K10",
+          "drawerLabel": "K10"
+        },
+        {
+          "partNum": "92690",
+          "color": "Pearl Titanium",
+          "desc": "Bar 1L with Top Stud and Two Side Studs",
+          "elementId": "6158415",
+          "qty": 1,
+          "drawerId": "F8",
+          "drawerLabel": "F8"
+        },
+        {
+          "partNum": "42445",
+          "color": "Light Bluish Gray",
+          "desc": "Bar 1 x 12 with 1 x 2 Plate End with Solid Studs and 1 x 1 Round Plate End",
+          "elementId": "4211759",
+          "qty": 1,
+          "drawerId": "F22",
+          "drawerLabel": "F22"
+        }
+      ]
+    },
     {
       "id": "bag_mvu58bcv_8f6mp",
       "label": "October 17 BAM Visit (batch 66)",
@@ -486511,83 +486630,6 @@
           "sel": false
         },
         {
-          "partNum": "15706",
-          "color": "Black",
-          "desc": "Wedge Plate 4 Stud 45° Angle Plate",
-          "elementId": "6054852",
-          "qty": 1,
-          "drawerId": "M31",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "65429",
-          "color": "Black",
-          "desc": "Wedge Plate 2 x 4 27° Left",
-          "elementId": "6295295",
-          "qty": 1,
-          "drawerId": "M27",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "65429",
-          "color": "White",
-          "desc": "Wedge Plate 2 x 4 27° Left",
-          "elementId": "6354823",
-          "qty": 1,
-          "drawerId": "M27",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "24122",
-          "color": "Black",
-          "desc": "Large Figure Weapon Lightsaber Hilt with Axle Hole and Two Bar Holders",
-          "elementId": "6155068",
-          "qty": 1,
-          "drawerId": "K10",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "24122",
-          "color": "Reddish Brown",
-          "desc": "Large Figure Weapon Lightsaber Hilt with Axle Hole and Two Bar Holders",
-          "elementId": "6459423",
-          "qty": 1,
-          "drawerId": "K10",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "92690",
-          "color": "Pearl Titanium",
-          "desc": "Bar 1L with Top Stud and Two Side Studs",
-          "elementId": "6158415",
-          "qty": 1,
-          "drawerId": "F8",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "42445",
-          "color": "Light Bluish Gray",
-          "desc": "Bar 1 x 12 with 1 x 2 Plate End with Solid Studs and 1 x 1 Round Plate End",
-          "elementId": "4211759",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "60219",
           "color": "Black",
           "desc": "Brick Sloped Inverted 45° 6 x 4 Double with 4 x 4 Recessed and 3 Holes",
@@ -486665,12 +486707,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T23:20:16.433Z",
+      "savedAt": "2026-10-29T23:21:16.224Z",
       "keepOpen": true,
       "moved": {
-        "batches": 66,
-        "pieces": 1206,
-        "last": "2026-10-29T22:57:13.855Z"
+        "batches": 67,
+        "pieces": 1213,
+        "last": "2026-10-29T23:21:16.224Z"
       }
     },
     {
@@ -520970,9 +521012,12 @@
       "c": "Black",
       "d": "Large Figure Weapon Lightsaber Hilt with Axle Hole and Two Bar Holders",
       "e": "6280097",
-      "u": 1791916924851,
+      "u": 1793316077426,
       "at": 1791654806816,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6155068.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6155068.jpg",
+      "ea": [
+        "6155068"
+      ]
     },
     "64799|black": {
       "p": "64799",
@@ -521334,8 +521379,11 @@
       "c": "Light Bluish Gray",
       "d": "Bar 1 x 12 with 1 x 2 Plate End with Solid Studs and 1 x 1 Round Plate End",
       "e": "6277023",
-      "u": 1791916924851,
-      "at": 1791654570481
+      "u": 1793316077426,
+      "at": 1791654570481,
+      "ea": [
+        "4211759"
+      ]
     },
     "4264|light bluish gray": {
       "p": "4264",
@@ -578580,7 +578628,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T23:20:20.464Z"
+      "at": "2026-10-29T23:21:21.504Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578601,10 +578649,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T23:20:16.433Z",
+      "bags": "2026-10-29T23:21:16.224Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T23:20:20.464Z",
+    "savedAt": "2026-10-29T23:21:21.504Z",
     "appVersion": "2026.10.29.1"
   }
 }
