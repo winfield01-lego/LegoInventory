@@ -456844,7 +456844,7 @@
       "label": "N27",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.790Z"
+      "lastEdited": "2026-10-29T00:45:25.595Z"
     },
     {
       "id": "N28",
@@ -471850,6 +471850,13 @@
       "partNum": "60478",
       "color": "Yellow",
       "qty": 9
+    },
+    {
+      "drawerId": "N27",
+      "partNum": "11476",
+      "color": "White",
+      "elementId": "6070712",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -472262,6 +472269,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvstnltj_ixvtr",
+      "label": "CdA BAM - 10/22/26 (batch 39)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 39,
+      "timestamp": "2026-10-29T00:45:25.687Z",
+      "items": [
+        {
+          "partNum": "11476",
+          "color": "White",
+          "desc": "Plate Special 1 x 2 with Clip Horizontal on Side",
+          "elementId": "6070712",
+          "qty": 1,
+          "drawerId": "N27",
+          "drawerLabel": "N27"
+        }
+      ]
+    },
     {
       "id": "bag_mvstf26k_bc0j2",
       "label": "CdA BAM - 10/22/26 (batch 38)",
@@ -479458,17 +479484,6 @@
           "sel": false
         },
         {
-          "partNum": "11476",
-          "color": "White",
-          "desc": "Plate Special 1 x 2 with Clip Horizontal on Side",
-          "elementId": "6070712",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "67329",
           "color": "Dark Bluish Gray",
           "desc": "Brick Special 1 x 2 x 1 2/3 with 8 Studs on 3 Sides",
@@ -479766,12 +479781,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T00:38:46.988Z",
+      "savedAt": "2026-10-29T00:45:25.687Z",
       "keepOpen": true,
       "moved": {
-        "batches": 38,
-        "pieces": 287,
-        "last": "2026-10-29T00:38:46.988Z"
+        "batches": 39,
+        "pieces": 288,
+        "last": "2026-10-29T00:45:25.687Z"
       }
     },
     {
@@ -510246,9 +510261,12 @@
       "c": "White",
       "d": "Plate Special 1 x 2 with Clip Horizontal on Side",
       "e": "6313115",
-      "u": 1791916924851,
+      "u": 1793234726890,
       "at": 1791674782589,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6070712.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6070712.jpg",
+      "ea": [
+        "6070712"
+      ]
     },
     "4740|yellow": {
       "p": "4740",
@@ -569776,7 +569794,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T00:44:40.462Z"
+      "at": "2026-10-29T00:45:30.961Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569797,10 +569815,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T00:38:46.988Z",
+      "bags": "2026-10-29T00:45:25.687Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T00:44:40.462Z",
+    "savedAt": "2026-10-29T00:45:30.961Z",
     "appVersion": "2026.10.28.10"
   }
 }
