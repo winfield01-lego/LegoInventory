@@ -454213,7 +454213,8 @@
       "id": "F2",
       "label": "F2",
       "notes": "",
-      "group": "F"
+      "group": "F",
+      "lastEdited": "2026-10-29T23:51:35.478Z"
     },
     {
       "id": "F3",
@@ -454729,7 +454730,7 @@
       "label": "G40",
       "notes": "",
       "group": "G",
-      "lastEdited": "2026-10-28T20:26:48.413Z"
+      "lastEdited": "2026-10-29T23:51:35.478Z"
     },
     {
       "id": "G41",
@@ -455500,7 +455501,8 @@
       "id": "J25",
       "label": "J25",
       "notes": "",
-      "group": "j"
+      "group": "j",
+      "lastEdited": "2026-10-29T23:51:35.478Z"
     },
     {
       "id": "J26",
@@ -456928,7 +456930,7 @@
       "label": "N35",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.790Z"
+      "lastEdited": "2026-10-29T23:51:35.477Z"
     },
     {
       "id": "N36",
@@ -457299,7 +457301,7 @@
       "label": "O44",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-10-13T17:14:08.108Z"
+      "lastEdited": "2026-10-29T23:51:35.478Z"
     },
     {
       "id": "O45",
@@ -463281,7 +463283,7 @@
       "drawerId": "G40",
       "partNum": "6141",
       "color": "Blue",
-      "qty": 52
+      "qty": 53
     },
     {
       "drawerId": "G40",
@@ -476553,6 +476555,30 @@
       "partNum": "65426",
       "color": "White",
       "qty": 3
+    },
+    {
+      "drawerId": "N35",
+      "partNum": "60219",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "F2",
+      "partNum": "3709",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "O44",
+      "partNum": "4732",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "J25",
+      "partNum": "64644",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -476965,6 +476991,61 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu7685e_21wjs",
+      "label": "October 17 BAM Visit (batch 68)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 68,
+      "timestamp": "2026-10-29T23:51:35.618Z",
+      "items": [
+        {
+          "partNum": "60219",
+          "color": "Black",
+          "desc": "Brick Sloped Inverted 45° 6 x 4 Double with 4 x 4 Recessed and 3 Holes",
+          "elementId": "4541984",
+          "qty": 1,
+          "drawerId": "N35",
+          "drawerLabel": "N35"
+        },
+        {
+          "partNum": "3709",
+          "color": "Light Bluish Gray",
+          "desc": "Technic Plate 2 x 4 [3 Holes]",
+          "elementId": "4211444",
+          "qty": 1,
+          "drawerId": "F2",
+          "drawerLabel": "F2"
+        },
+        {
+          "partNum": "4732",
+          "color": "Blue",
+          "desc": "Bracket 8 x 2 x 1 1/3",
+          "elementId": "473223",
+          "qty": 1,
+          "drawerId": "O44",
+          "drawerLabel": "O44"
+        },
+        {
+          "partNum": "6141",
+          "color": "Blue",
+          "desc": "Plate Round 1 x 1 with Solid Stud",
+          "elementId": "614123",
+          "qty": 1,
+          "drawerId": "G40",
+          "drawerLabel": "G40"
+        },
+        {
+          "partNum": "64644",
+          "color": "White",
+          "desc": "Equipment Telescope / Torch / Spyglass, Support Round 1 x 1 x 1 2/3",
+          "elementId": "6070327",
+          "qty": 1,
+          "drawerId": "J25",
+          "drawerLabel": "J25"
+        }
+      ]
+    },
     {
       "id": "bag_mvu638ao_kntpu",
       "label": "October 17 BAM Visit (batch 67)",
@@ -486801,61 +486882,6 @@
           "sel": false
         },
         {
-          "partNum": "60219",
-          "color": "Black",
-          "desc": "Brick Sloped Inverted 45° 6 x 4 Double with 4 x 4 Recessed and 3 Holes",
-          "elementId": "4541984",
-          "qty": 1,
-          "drawerId": "N35",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3709",
-          "color": "Light Bluish Gray",
-          "desc": "Technic Plate 2 x 4 [3 Holes]",
-          "elementId": "4211444",
-          "qty": 1,
-          "drawerId": "F2",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "4732",
-          "color": "Blue",
-          "desc": "Bracket 8 x 2 x 1 1/3",
-          "elementId": "473223",
-          "qty": 1,
-          "drawerId": "O44",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "6141",
-          "color": "Blue",
-          "desc": "Plate Round 1 x 1 with Solid Stud",
-          "elementId": "614123",
-          "qty": 1,
-          "drawerId": "G40",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "64644",
-          "color": "White",
-          "desc": "Equipment Telescope / Torch / Spyglass, Support Round 1 x 1 x 1 2/3",
-          "elementId": "6070327",
-          "qty": 1,
-          "drawerId": "J25",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "43888",
           "color": "White",
           "desc": "Support Round 1 x 1 x 6 Solid Pillar",
@@ -486878,12 +486904,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T23:50:33.164Z",
+      "savedAt": "2026-10-29T23:51:35.618Z",
       "keepOpen": true,
       "moved": {
-        "batches": 67,
-        "pieces": 1213,
-        "last": "2026-10-29T23:21:16.224Z"
+        "batches": 68,
+        "pieces": 1218,
+        "last": "2026-10-29T23:51:35.618Z"
       }
     },
     {
@@ -578700,6 +578726,13 @@
       "d": "Wedge Plate 2 x 4 27° Left",
       "e": "6421618",
       "u": 1793317563899
+    },
+    "64644|white": {
+      "p": "64644",
+      "c": "White",
+      "d": "Equipment Telescope / Torch / Spyglass, Support Round 1 x 1 x 1 2/3",
+      "e": "6070327",
+      "u": 1793317896820
     }
   },
   "partKinds": {
@@ -578843,7 +578876,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T23:50:37.194Z"
+      "at": "2026-10-29T23:51:40.904Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578864,10 +578897,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T23:50:33.164Z",
+      "bags": "2026-10-29T23:51:35.618Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T23:50:37.194Z",
+    "savedAt": "2026-10-29T23:51:40.904Z",
     "appVersion": "2026.10.29.1"
   }
 }
