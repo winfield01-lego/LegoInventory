@@ -456610,7 +456610,7 @@
       "label": "M37",
       "notes": "1 x 1 round",
       "group": "M",
-      "lastEdited": "2026-10-28T20:26:48.412Z"
+      "lastEdited": "2026-10-29T01:13:25.330Z"
     },
     {
       "id": "M38",
@@ -472240,6 +472240,13 @@
       "color": "White",
       "elementId": "317601",
       "qty": 5
+    },
+    {
+      "drawerId": "M37",
+      "partNum": "43723",
+      "color": "Blue",
+      "elementId": "4180534",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -472652,6 +472659,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvsunlxh_5x6ed",
+      "label": "CdA BAM - 10/22/26 (batch 44)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 44,
+      "timestamp": "2026-10-29T01:13:25.445Z",
+      "items": [
+        {
+          "partNum": "43723",
+          "color": "Blue",
+          "desc": "Wedge Plate 3 x 2 Left",
+          "elementId": "4180534",
+          "qty": 1,
+          "drawerId": "M37",
+          "drawerLabel": "M37"
+        }
+      ]
+    },
     {
       "id": "bag_mvsuifmz_fxw15",
       "label": "CdA BAM - 10/22/26 (batch 43)",
@@ -479952,17 +479978,6 @@
           "sel": false
         },
         {
-          "partNum": "43723",
-          "color": "Blue",
-          "desc": "Wedge Plate 3 x 2 Left",
-          "elementId": "4180534",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "78443",
           "color": "Black",
           "desc": "Wedge Plate 6 x 2 Left",
@@ -480194,12 +480209,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T01:09:24.011Z",
+      "savedAt": "2026-10-29T01:13:25.444Z",
       "keepOpen": true,
       "moved": {
-        "batches": 43,
-        "pieces": 293,
-        "last": "2026-10-29T01:09:24.011Z"
+        "batches": 44,
+        "pieces": 294,
+        "last": "2026-10-29T01:13:25.445Z"
       }
     },
     {
@@ -482107,9 +482122,12 @@
       "c": "Blue",
       "d": "Wedge Plate 3 x 2 Left",
       "e": "4498156",
-      "u": 1791916924851,
+      "u": 1793236406646,
       "at": 1792904691991,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4180534.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4180534.jpg",
+      "ea": [
+        "4180534"
+      ]
     },
     "43722|blue": {
       "p": "43722",
@@ -570324,7 +570342,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:13:00.312Z"
+      "at": "2026-10-29T01:13:30.736Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -570345,10 +570363,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T01:09:24.011Z",
+      "bags": "2026-10-29T01:13:25.445Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:13:00.312Z",
+    "savedAt": "2026-10-29T01:13:30.736Z",
     "appVersion": "2026.10.28.10"
   }
 }
