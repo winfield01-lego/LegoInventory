@@ -455509,7 +455509,8 @@
       "id": "J27",
       "label": "J27",
       "notes": "",
-      "group": "j"
+      "group": "j",
+      "lastEdited": "2026-10-29T22:34:38.134Z"
     },
     {
       "id": "J28",
@@ -456853,7 +456854,7 @@
       "label": "N25",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.790Z"
+      "lastEdited": "2026-10-29T22:34:38.134Z"
     },
     {
       "id": "N26",
@@ -475867,6 +475868,26 @@
       "color": "White",
       "elementId": "4125562",
       "qty": 11
+    },
+    {
+      "drawerId": "N25",
+      "partNum": "20482",
+      "color": "Pearl Gold",
+      "elementId": "6126113",
+      "qty": 1
+    },
+    {
+      "drawerId": "N25",
+      "partNum": "20482",
+      "color": "White",
+      "elementId": "6178492",
+      "qty": 1
+    },
+    {
+      "drawerId": "J27",
+      "partNum": "2486",
+      "color": "Dark Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -476279,6 +476300,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu4f9d7_7h4n6",
+      "label": "October 17 BAM Visit (batch 63)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 63,
+      "timestamp": "2026-10-29T22:34:38.251Z",
+      "items": [
+        {
+          "partNum": "20482",
+          "color": "Pearl Gold",
+          "desc": "Tile Special Round 1 x 1 with Hollow Bar",
+          "elementId": "6126113",
+          "qty": 1,
+          "drawerId": "N25",
+          "drawerLabel": "N25"
+        },
+        {
+          "partNum": "20482",
+          "color": "White",
+          "desc": "Tile Special Round 1 x 1 with Hollow Bar",
+          "elementId": "6178492",
+          "qty": 1,
+          "drawerId": "N25",
+          "drawerLabel": "N25"
+        },
+        {
+          "partNum": "2486",
+          "color": "Dark Bluish Gray",
+          "desc": "Bar 1 x 8 x 2",
+          "elementId": "6062482",
+          "qty": 1,
+          "drawerId": "J27",
+          "drawerLabel": "J27"
+        }
+      ]
+    },
     {
       "id": "bag_mvu445ol_ki2rn",
       "label": "October 17 BAM Visit (batch 62)",
@@ -485912,39 +485970,6 @@
           "sel": false
         },
         {
-          "partNum": "20482",
-          "color": "Pearl Gold",
-          "desc": "Tile Special Round 1 x 1 with Hollow Bar",
-          "elementId": "6126113",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "20482",
-          "color": "White",
-          "desc": "Tile Special Round 1 x 1 with Hollow Bar",
-          "elementId": "6178492",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "2486",
-          "color": "Dark Bluish Gray",
-          "desc": "Bar 1 x 8 x 2",
-          "elementId": "6062482",
-          "qty": 1,
-          "drawerId": "J27",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "24599",
           "color": "Dark Blue",
           "desc": "Brick Round Corner 5 x 5 x 1 Curved, Bottom Cut Outs, No Studs, 7 Bottom Tubes",
@@ -486165,12 +486190,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T22:34:27.368Z",
+      "savedAt": "2026-10-29T22:34:38.251Z",
       "keepOpen": true,
       "moved": {
-        "batches": 62,
-        "pieces": 1196,
-        "last": "2026-10-29T22:26:00.261Z"
+        "batches": 63,
+        "pieces": 1199,
+        "last": "2026-10-29T22:34:38.251Z"
       }
     },
     {
@@ -490225,8 +490250,11 @@
       "c": "White",
       "d": "Tile Special Round 1 x 1 with Hollow Bar",
       "e": "6186681",
-      "u": 1791916924851,
-      "at": 1791732118013
+      "u": 1793313279452,
+      "at": 1791732118013,
+      "ea": [
+        "6178492"
+      ]
     },
     "1126|white": {
       "p": "1126",
@@ -537375,9 +537403,12 @@
       "c": "Pearl Gold",
       "d": "Tile Special Round 1 x 1 with Hollow Bar",
       "e": "6186672",
-      "u": 1791916924851,
+      "u": 1793313279452,
       "at": 1791654810716,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6126113.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6126113.jpg",
+      "ea": [
+        "6126113"
+      ]
     },
     "30115|red": {
       "p": "30115",
@@ -577685,6 +577716,13 @@
       "d": "Technic Brick 1 x 2 with Axle Hole Type 1 [+ Opening] and Bottom Pin",
       "e": "6249815",
       "u": 1793312696451
+    },
+    "2486|dark bluish gray": {
+      "p": "2486",
+      "c": "Dark Bluish Gray",
+      "d": "Bar 1 x 8 x 2",
+      "e": "6062482",
+      "u": 1793313279452
     }
   },
   "partKinds": {
@@ -577828,7 +577866,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T22:34:31.409Z"
+      "at": "2026-10-29T22:34:43.529Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -577849,10 +577887,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T22:34:27.368Z",
+      "bags": "2026-10-29T22:34:38.251Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T22:34:31.409Z",
+    "savedAt": "2026-10-29T22:34:43.529Z",
     "appVersion": "2026.10.29.1"
   }
 }
