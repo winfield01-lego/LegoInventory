@@ -457822,7 +457822,7 @@
       "label": "Q2",
       "notes": "",
       "group": "Q",
-      "lastEdited": "2026-10-29T19:16:20.894Z"
+      "lastEdited": "2026-10-29T19:16:34.495Z"
     },
     {
       "id": "Q3",
@@ -474538,6 +474538,12 @@
       "drawerId": "Q2",
       "partNum": "6056",
       "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q2",
+      "partNum": "88393",
+      "color": "Red",
       "qty": 1
     }
   ],
@@ -575596,6 +575602,13 @@
       "d": "Brick Special 2 x 2 x 6 with Groove",
       "e": "4106968",
       "u": 1793301382096
+    },
+    "88393|red": {
+      "p": "88393",
+      "c": "Red",
+      "d": "Brick Special 1 x 2 x 5 with Groove",
+      "e": "4578025",
+      "u": 1793301395697
     }
   },
   "partKinds": {
@@ -575739,7 +575752,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T19:16:24.925Z"
+      "at": "2026-10-29T19:16:38.526Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -575763,7 +575776,7 @@
       "bags": "2026-10-29T19:12:44.344Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T19:16:24.925Z",
+    "savedAt": "2026-10-29T19:16:38.526Z",
     "appVersion": "2026.10.28.10"
   }
 }
