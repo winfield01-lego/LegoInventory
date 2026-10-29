@@ -456933,7 +456933,7 @@
       "label": "N40",
       "notes": "1 x 2 Handle - Side and Free End",
       "group": "N",
-      "lastEdited": "2026-10-29T00:06:19.293Z"
+      "lastEdited": "2026-10-29T00:09:14.442Z"
     },
     {
       "id": "N41",
@@ -471505,7 +471505,75 @@
       "drawerId": "N40",
       "partNum": "48336",
       "color": "Light Bluish Gray",
+      "qty": 41
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "48336",
+      "color": "Black",
+      "qty": 35
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "48336",
+      "color": "Blue",
+      "elementId": "4247103",
+      "qty": 11
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "48336",
+      "color": "Dark Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "48336",
+      "color": "Dark Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "48336",
+      "color": "Green",
+      "qty": 7
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "48336",
+      "color": "Pearl Gold",
+      "qty": 13
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "48336",
+      "color": "Red",
+      "qty": 3
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "48336",
+      "color": "Reddish Brown",
+      "elementId": "4234362",
       "qty": 1
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "48336",
+      "color": "Tan",
+      "qty": 10
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "48336",
+      "color": "Yellow",
+      "qty": 4
+    },
+    {
+      "drawerId": "N40",
+      "partNum": "48336",
+      "color": "White",
+      "qty": 21
     }
   ],
   "mocLocations": {
@@ -493871,8 +493939,11 @@
       "c": "Blue",
       "d": "Plate Special 1 x 2 [Side Handle Closed Ends]",
       "e": "4514398",
-      "u": 1791916924851,
-      "at": 1791654677272
+      "u": 1793232555644,
+      "at": 1791654677272,
+      "ea": [
+        "4247103"
+      ]
     },
     "92280|black": {
       "p": "92280",
@@ -508659,9 +508730,12 @@
       "c": "Reddish Brown",
       "d": "Plate Special 1 x 2 [Side Handle Closed Ends]",
       "e": "6236915",
-      "u": 1791916924851,
+      "u": 1793232555644,
       "at": 1791654759952,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4234362.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4234362.jpg",
+      "ea": [
+        "4234362"
+      ]
     },
     "11476|reddish brown": {
       "p": "11476",
@@ -569180,6 +569254,13 @@
       "d": "Plate Special 1 x 2 with Pin Hole Underneath",
       "e": "6442367",
       "u": 1793232097711
+    },
+    "48336|dark red": {
+      "p": "48336",
+      "c": "Dark Red",
+      "d": "Plate Special 1 x 2 [Side Handle Closed Ends]",
+      "e": "4259941",
+      "u": 1793232555644
     }
   },
   "partKinds": {
@@ -569323,7 +569404,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T00:06:23.323Z"
+      "at": "2026-10-29T00:09:19.741Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569347,7 +569428,7 @@
       "bags": "2026-10-29T00:03:05.337Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T00:06:23.323Z",
+    "savedAt": "2026-10-29T00:09:19.741Z",
     "appVersion": "2026.10.28.10"
   }
 }
