@@ -455410,7 +455410,7 @@
       "label": "J13",
       "notes": "Claws",
       "group": "j",
-      "lastEdited": "2026-10-29T01:51:35.309Z"
+      "lastEdited": "2026-10-29T01:52:21.492Z"
     },
     {
       "id": "J14",
@@ -472715,13 +472715,25 @@
       "drawerId": "J13",
       "partNum": "3171",
       "color": "Black",
-      "qty": 1
+      "qty": 9
     },
     {
       "drawerId": "J13",
       "partNum": "16770",
       "color": "Light Bluish Gray",
       "elementId": "6271212",
+      "qty": 1
+    },
+    {
+      "drawerId": "J13",
+      "partNum": "3171",
+      "color": "Pearl Gold",
+      "qty": 1
+    },
+    {
+      "drawerId": "J13",
+      "partNum": "3171",
+      "color": "Red",
       "qty": 1
     }
   ],
@@ -570891,6 +570903,13 @@
       "d": "Animal Body Part / Plant, Tail / Trunk / Tentacle / Tongue / Vine / Tree Branch (Long Tip)",
       "e": "6382326",
       "u": 1793238651428
+    },
+    "3171|pearl gold": {
+      "p": "3171",
+      "c": "Pearl Gold",
+      "d": "Animal / Creature Body Part, Claw with Clip",
+      "e": "6426622",
+      "u": 1793238742694
     }
   },
   "partKinds": {
@@ -571034,7 +571053,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T01:51:39.339Z"
+      "at": "2026-10-29T01:52:25.524Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -571058,7 +571077,7 @@
       "bags": "2026-10-29T01:51:18.571Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T01:51:39.339Z",
+    "savedAt": "2026-10-29T01:52:25.524Z",
     "appVersion": "2026.10.28.10"
   }
 }
