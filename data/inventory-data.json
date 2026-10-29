@@ -456617,7 +456617,7 @@
       "label": "M36",
       "notes": "",
       "group": "M",
-      "lastEdited": "2026-10-13T17:13:28.024Z"
+      "lastEdited": "2026-10-29T18:15:23.078Z"
     },
     {
       "id": "M37",
@@ -473883,6 +473883,37 @@
       "partNum": "2310",
       "color": "White",
       "qty": 4
+    },
+    {
+      "drawerId": "M36",
+      "partNum": "1927",
+      "color": "Dark Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "M36",
+      "partNum": "1927",
+      "color": "Black",
+      "qty": 2
+    },
+    {
+      "drawerId": "M36",
+      "partNum": "1927",
+      "color": "Light Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "M36",
+      "partNum": "1927",
+      "color": "Tan",
+      "qty": 2
+    },
+    {
+      "drawerId": "M36",
+      "partNum": "1927",
+      "color": "White",
+      "elementId": "6416527",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -474295,6 +474326,61 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvtv5v0p_g31bl",
+      "label": "October 17 BAM Visit (batch 36)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 36,
+      "timestamp": "2026-10-29T18:15:23.209Z",
+      "items": [
+        {
+          "partNum": "1927",
+          "color": "Dark Bluish Gray",
+          "desc": "Hinge Plate 1 x 4 Swivel Top / Base - Hollow Clip [Complete Assembly]",
+          "elementId": "6416526",
+          "qty": 2,
+          "drawerId": "M36",
+          "drawerLabel": "M36"
+        },
+        {
+          "partNum": "1927",
+          "color": "Black",
+          "desc": "Hinge Plate 1 x 4 Swivel Top / Base - Hollow Clip [Complete Assembly]",
+          "elementId": "6416444",
+          "qty": 2,
+          "drawerId": "M36",
+          "drawerLabel": "M36"
+        },
+        {
+          "partNum": "1927",
+          "color": "Light Bluish Gray",
+          "desc": "Hinge Plate 1 x 4 Swivel Top / Base - Hollow Clip [Complete Assembly]",
+          "elementId": "6416524",
+          "qty": 2,
+          "drawerId": "M36",
+          "drawerLabel": "M36"
+        },
+        {
+          "partNum": "1927",
+          "color": "Tan",
+          "desc": "Hinge Plate 1 x 4 Swivel Top / Base - Hollow Clip [Complete Assembly]",
+          "elementId": "6416525",
+          "qty": 2,
+          "drawerId": "M36",
+          "drawerLabel": "M36"
+        },
+        {
+          "partNum": "1927",
+          "color": "White",
+          "desc": "Hinge Plate 1 x 4 Swivel Top / Base - Hollow Clip [Complete Assembly]",
+          "elementId": "6416527",
+          "qty": 2,
+          "drawerId": "M36",
+          "drawerLabel": "M36"
+        }
+      ]
+    },
     {
       "id": "bag_mvtulmlq_x8xhu",
       "label": "October 17 BAM Visit (batch 35)",
@@ -483269,61 +483355,6 @@
           "sel": false
         },
         {
-          "partNum": "1927",
-          "color": "Dark Bluish Gray",
-          "desc": "Hinge Plate 1 x 4 Swivel Top / Base - Hollow Clip [Complete Assembly]",
-          "elementId": "6416526",
-          "qty": 2,
-          "drawerId": "M36",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "1927",
-          "color": "Black",
-          "desc": "Hinge Plate 1 x 4 Swivel Top / Base - Hollow Clip [Complete Assembly]",
-          "elementId": "6416444",
-          "qty": 2,
-          "drawerId": "M36",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "1927",
-          "color": "Light Bluish Gray",
-          "desc": "Hinge Plate 1 x 4 Swivel Top / Base - Hollow Clip [Complete Assembly]",
-          "elementId": "6416524",
-          "qty": 2,
-          "drawerId": "M36",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "1927",
-          "color": "Tan",
-          "desc": "Hinge Plate 1 x 4 Swivel Top / Base - Hollow Clip [Complete Assembly]",
-          "elementId": "6416525",
-          "qty": 2,
-          "drawerId": "M36",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "1927",
-          "color": "White",
-          "desc": "Hinge Plate 1 x 4 Swivel Top / Base - Hollow Clip [Complete Assembly]",
-          "elementId": "6416527",
-          "qty": 2,
-          "drawerId": "M36",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "11090",
           "color": "Black",
           "desc": "Bar Holder with Clip",
@@ -483973,12 +484004,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T18:14:24.576Z",
+      "savedAt": "2026-10-29T18:15:23.209Z",
       "keepOpen": true,
       "moved": {
-        "batches": 35,
-        "pieces": 1140,
-        "last": "2026-10-29T17:59:39.182Z"
+        "batches": 36,
+        "pieces": 1150,
+        "last": "2026-10-29T18:15:23.209Z"
       }
     },
     {
@@ -539180,9 +539211,12 @@
       "c": "White",
       "d": "Hinge Plate 1 x 4 Swivel Top / Base - Hollow Clip [Complete Assembly]",
       "e": "6497109",
-      "u": 1791916924851,
+      "u": 1793297724410,
       "at": 1791654633156,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6416527.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6416527.jpg",
+      "ea": [
+        "6416527"
+      ]
     },
     "18910|white": {
       "p": "18910",
@@ -574702,7 +574736,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T18:14:28.609Z"
+      "at": "2026-10-29T18:15:28.489Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -574723,10 +574757,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T18:14:24.576Z",
+      "bags": "2026-10-29T18:15:23.209Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T18:14:28.609Z",
+    "savedAt": "2026-10-29T18:15:28.489Z",
     "appVersion": "2026.10.28.10"
   }
 }
