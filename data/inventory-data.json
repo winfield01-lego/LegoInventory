@@ -456123,7 +456123,7 @@
       "label": "L8",
       "notes": "A - Shape - 8 studs",
       "group": "L",
-      "lastEdited": "2026-10-29T23:38:16.291Z"
+      "lastEdited": "2026-10-29T23:39:10.132Z"
     },
     {
       "id": "L9",
@@ -476343,7 +476343,7 @@
       "drawerId": "L8",
       "partNum": "15706",
       "color": "Black",
-      "qty": 1
+      "qty": 11
     },
     {
       "drawerId": "M27",
@@ -476454,6 +476454,24 @@
       "drawerId": "K10",
       "partNum": "24122",
       "color": "Dark Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "L8",
+      "partNum": "15706",
+      "color": "Dark Bluish Gray",
+      "qty": 8
+    },
+    {
+      "drawerId": "L8",
+      "partNum": "15706",
+      "color": "Orange",
+      "qty": 6
+    },
+    {
+      "drawerId": "L8",
+      "partNum": "15706",
+      "color": "Reddish Brown",
       "qty": 1
     }
   ],
@@ -578575,6 +578593,20 @@
       "d": "Technic Pin Connector Hub with 2 Pins with Friction Ridges Lengthwise [Small Squared Pin Holes]",
       "e": "6366229",
       "u": 1793316551192
+    },
+    "15706|orange": {
+      "p": "15706",
+      "c": "Orange",
+      "d": "Wedge Plate 4 Stud 45° Angle Plate",
+      "e": "6224699",
+      "u": 1793317151333
+    },
+    "15706|reddish brown": {
+      "p": "15706",
+      "c": "Reddish Brown",
+      "d": "Wedge Plate 4 Stud 45° Angle Plate",
+      "e": "6084573",
+      "u": 1793317151333
     }
   },
   "partKinds": {
@@ -578718,7 +578750,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-29T23:38:20.333Z"
+      "at": "2026-10-29T23:39:14.163Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -578742,7 +578774,7 @@
       "bags": "2026-10-29T23:21:16.224Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T23:38:20.333Z",
+    "savedAt": "2026-10-29T23:39:14.163Z",
     "appVersion": "2026.10.29.1"
   }
 }
