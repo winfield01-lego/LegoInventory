@@ -481869,8 +481869,29 @@
     {
       "id": "bagprog_mvdf0cda_x6nv",
       "label": "October 17 BAM Visit",
-      "items": [],
-      "savedAt": "2026-10-27T22:02:40.556Z",
+      "items": [
+        {
+          "partNum": "99781",
+          "color": "Black",
+          "desc": "Bracket 1 x 2 - 1 x 2",
+          "elementId": "6016172",
+          "qty": 1,
+          "drawerId": "C8",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "99781",
+          "color": "Dark Bluish Gray",
+          "desc": "Bracket 1 x 2 - 1 x 2",
+          "elementId": "6214341",
+          "qty": 2,
+          "drawerId": "C8",
+          "matchCount": 0,
+          "suggested": false
+        }
+      ],
+      "savedAt": "2026-10-29T05:51:33.139Z",
       "keepOpen": true,
       "moved": {
         "batches": 30,
@@ -572491,7 +572512,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T05:50:22.983Z"
+      "at": "2026-10-29T05:51:37.174Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -572512,10 +572533,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T05:50:18.948Z",
+      "bags": "2026-10-29T05:51:33.139Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T05:50:22.983Z",
+    "savedAt": "2026-10-29T05:51:37.174Z",
     "appVersion": "2026.10.28.10"
   }
 }
