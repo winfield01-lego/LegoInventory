@@ -456241,7 +456241,7 @@
       "label": "L29",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-10-13T17:13:18.947Z"
+      "lastEdited": "2026-10-29T00:33:50.342Z"
     },
     {
       "id": "L30",
@@ -471769,6 +471769,12 @@
       "partNum": "35480",
       "color": "White",
       "qty": 80
+    },
+    {
+      "drawerId": "L29",
+      "partNum": "14704",
+      "color": "Light Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -472181,6 +472187,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvst8pdj_0p56e",
+      "label": "CdA BAM - 10/22/26 (batch 37)",
+      "bagId": "bagprog_mvkiy8py_sac9",
+      "bagLabel": "CdA BAM - 10/22/26",
+      "batch": 37,
+      "timestamp": "2026-10-29T00:33:50.455Z",
+      "items": [
+        {
+          "partNum": "14704",
+          "color": "Light Bluish Gray",
+          "desc": "Plate Special 1 x 2 5.9mm Centre Side Towball Socket",
+          "elementId": "6043656",
+          "qty": 1,
+          "drawerId": "L29",
+          "drawerLabel": "L29"
+        }
+      ]
+    },
     {
       "id": "bag_mvsskh59_qv2ne",
       "label": "CdA BAM - 10/22/26 (batch 36)",
@@ -479339,17 +479364,6 @@
           "sel": false
         },
         {
-          "partNum": "14704",
-          "color": "Light Bluish Gray",
-          "desc": "Plate Special 1 x 2 5.9mm Centre Side Towball Socket",
-          "elementId": "6043656",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "11476",
           "color": "White",
           "desc": "Plate Special 1 x 2 with Clip Horizontal on Side",
@@ -479669,12 +479683,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-29T00:33:26.451Z",
+      "savedAt": "2026-10-29T00:33:50.455Z",
       "keepOpen": true,
       "moved": {
-        "batches": 36,
-        "pieces": 285,
-        "last": "2026-10-29T00:15:00.045Z"
+        "batches": 37,
+        "pieces": 286,
+        "last": "2026-10-29T00:33:50.455Z"
       }
     },
     {
@@ -569666,7 +569680,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T00:33:30.492Z"
+      "at": "2026-10-29T00:33:54.486Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -569687,10 +569701,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-29T00:33:26.451Z",
+      "bags": "2026-10-29T00:33:50.455Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T00:33:30.492Z",
+    "savedAt": "2026-10-29T00:33:54.486Z",
     "appVersion": "2026.10.28.10"
   }
 }
