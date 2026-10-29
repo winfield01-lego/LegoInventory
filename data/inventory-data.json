@@ -456744,7 +456744,7 @@
       "label": "N10",
       "notes": "1 x 1 with Clip - Vertical",
       "group": "N",
-      "lastEdited": "2026-10-29T18:47:48.833Z"
+      "lastEdited": "2026-10-29T18:58:47.886Z"
     },
     {
       "id": "N11",
@@ -474201,7 +474201,76 @@
       "partNum": "60897",
       "color": "White",
       "elementId": "4613256",
+      "qty": 30
+    },
+    {
+      "drawerId": "N10",
+      "partNum": "60897",
+      "color": "Black",
+      "elementId": "4550017",
+      "qty": 41
+    },
+    {
+      "drawerId": "N10",
+      "partNum": "60897",
+      "color": "Blue",
+      "elementId": "4613257",
+      "qty": 7
+    },
+    {
+      "drawerId": "N10",
+      "partNum": "60897",
+      "color": "Dark Bluish Gray",
+      "elementId": "4587212",
+      "qty": 19
+    },
+    {
+      "drawerId": "N10",
+      "partNum": "60897",
+      "color": "Light Bluish Gray",
+      "elementId": "4594238",
+      "qty": 51
+    },
+    {
+      "drawerId": "N10",
+      "partNum": "60897",
+      "color": "Orange",
+      "elementId": "4587052",
+      "qty": 6
+    },
+    {
+      "drawerId": "N10",
+      "partNum": "60897",
+      "color": "Dark Orange",
       "qty": 1
+    },
+    {
+      "drawerId": "N10",
+      "partNum": "60897",
+      "color": "Reddish Brown",
+      "elementId": "4597443",
+      "qty": 2
+    },
+    {
+      "drawerId": "N10",
+      "partNum": "60897",
+      "color": "Yellow",
+      "elementId": "4613258",
+      "qty": 3
+    },
+    {
+      "drawerId": "N10",
+      "partNum": "60897",
+      "color": "Tan",
+      "elementId": "4597425",
+      "qty": 4
+    },
+    {
+      "drawerId": "N10",
+      "partNum": "60897",
+      "color": "Red",
+      "elementId": "4588003",
+      "qty": 17
     }
   ],
   "mocLocations": {
@@ -487798,9 +487867,12 @@
       "c": "Light Bluish Gray",
       "d": "Plate Special 1 x 1 with Clip Vertical [Thick Open O Clip]",
       "e": "6296894",
-      "u": 1791916924851,
+      "u": 1793300329089,
       "at": 1791671921036,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4594238.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4594238.jpg",
+      "ea": [
+        "4594238"
+      ]
     },
     "78257|dark bluish gray": {
       "p": "78257",
@@ -488720,9 +488792,12 @@
       "c": "Blue",
       "d": "Plate Special 1 x 1 with Clip Vertical [Thick Open O Clip]",
       "e": "6352221",
-      "u": 1791916924851,
+      "u": 1793300329089,
       "at": 1792904691991,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4613257.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4613257.jpg",
+      "ea": [
+        "4613257"
+      ]
     },
     "3070b|blue": {
       "p": "3070b",
@@ -489700,10 +489775,11 @@
       "c": "Dark Bluish Gray",
       "d": "Plate Special 1 x 1 with Clip Vertical [Thick Open O Clip]",
       "e": "6296892",
-      "u": 1791916924851,
+      "u": 1793300329089,
       "at": 1791672975304,
       "ea": [
-        "6489464"
+        "6489464",
+        "4587212"
       ],
       "i": "https://cdn.rebrickable.com/media/parts/elements/4587212.jpg"
     },
@@ -495736,9 +495812,12 @@
       "c": "Black",
       "d": "Plate Special 1 x 1 with Clip Vertical [Thick Open O Clip]",
       "e": "6330189",
-      "u": 1791916924851,
+      "u": 1793300329089,
       "at": 1791673241697,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4550017.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4550017.jpg",
+      "ea": [
+        "4550017"
+      ]
     },
     "49668|black": {
       "p": "49668",
@@ -496296,9 +496375,12 @@
       "c": "Yellow",
       "d": "Plate Special 1 x 1 with Clip Vertical [Thick Open O Clip]",
       "e": "6348065",
-      "u": 1791916924851,
+      "u": 1793300329089,
       "at": 1791656721266,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4613258.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4613258.jpg",
+      "ea": [
+        "4613258"
+      ]
     },
     "2540|yellow": {
       "p": "2540",
@@ -512696,9 +512778,12 @@
       "c": "Tan",
       "d": "Plate Special 1 x 1 with Clip Vertical [Thick Open O Clip]",
       "e": "6352222",
-      "u": 1791916924851,
+      "u": 1793300329089,
       "at": 1791654560264,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6029889.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6029889.jpg",
+      "ea": [
+        "4597425"
+      ]
     },
     "71752|tan": {
       "p": "71752",
@@ -514213,9 +514298,12 @@
       "c": "Red",
       "d": "Plate Special 1 x 1 with Clip Vertical [Thick Open O Clip]",
       "e": "6337002",
-      "u": 1791916924851,
+      "u": 1793300329089,
       "at": 1791654724601,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4588003.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4588003.jpg",
+      "ea": [
+        "4588003"
+      ]
     },
     "5565|red": {
       "p": "5565",
@@ -515357,9 +515445,12 @@
       "c": "Reddish Brown",
       "d": "Plate Special 1 x 1 with Clip Vertical [Thick Open O Clip]",
       "e": "6337003",
-      "u": 1791916924851,
+      "u": 1793300329089,
       "at": 1791654560264,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6066142.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6066142.jpg",
+      "ea": [
+        "4597443"
+      ]
     },
     "87580|reddish brown": {
       "p": "87580",
@@ -538678,9 +538769,12 @@
       "c": "Orange",
       "d": "Plate Special 1 x 1 with Clip Vertical [Thick Open O Clip]",
       "e": "6352223",
-      "u": 1791916924851,
+      "u": 1793300329089,
       "at": 1791654615447,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4587052.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4587052.jpg",
+      "ea": [
+        "4587052"
+      ]
     },
     "4185|pearl gold": {
       "p": "4185",
@@ -575027,6 +575121,13 @@
       "d": "Equipment Hose Nozzle / Gun with Side String Hole Simplified",
       "e": "4498789",
       "u": 1793299591813
+    },
+    "60897|dark orange": {
+      "p": "60897",
+      "c": "Dark Orange",
+      "d": "Plate Special 1 x 1 with Clip Vertical [Thick Open O Clip]",
+      "e": "6340735",
+      "u": 1793300329089
     }
   },
   "partKinds": {
@@ -575170,7 +575271,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.28.10",
-      "at": "2026-10-29T18:47:52.869Z"
+      "at": "2026-10-29T18:58:53.201Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -575194,7 +575295,7 @@
       "bags": "2026-10-29T18:47:33.282Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-29T18:47:52.869Z",
+    "savedAt": "2026-10-29T18:58:53.201Z",
     "appVersion": "2026.10.28.10"
   }
 }
