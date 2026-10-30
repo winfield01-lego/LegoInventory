@@ -454444,7 +454444,8 @@
       "id": "F38",
       "label": "F38",
       "notes": "",
-      "group": "F"
+      "group": "F",
+      "lastEdited": "2026-10-30T20:36:50.324Z"
     },
     {
       "id": "F39",
@@ -479909,6 +479910,25 @@
       "partNum": "4285b",
       "color": "Light Bluish Gray",
       "qty": 5
+    },
+    {
+      "drawerId": "F38",
+      "partNum": "35442",
+      "color": "Dark Purple",
+      "qty": 1
+    },
+    {
+      "drawerId": "F38",
+      "partNum": "69779",
+      "color": "Dark Azure",
+      "qty": 1
+    },
+    {
+      "drawerId": "F38",
+      "partNum": "3648a",
+      "color": "Light Gray",
+      "elementId": "",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -480321,6 +480341,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvfnmid_fx5t5",
+      "label": "October 17 BAM Visit (batch 117)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 117,
+      "timestamp": "2026-10-30T20:36:50.485Z",
+      "items": [
+        {
+          "partNum": "35442",
+          "color": "Dark Purple",
+          "desc": "Plate Special 2 x 2 Splat Gear, 6 Teeth",
+          "elementId": "6238330",
+          "qty": 1,
+          "drawerId": "F38",
+          "drawerLabel": "F38"
+        },
+        {
+          "partNum": "69779",
+          "color": "Dark Azure",
+          "desc": "Technic Gear 20 Tooth with Axle Hole [+ Opening]",
+          "elementId": "6396480",
+          "qty": 1,
+          "drawerId": "F38",
+          "drawerLabel": "F38"
+        },
+        {
+          "partNum": "3648a",
+          "color": "Light Gray",
+          "desc": "Technic Gear 24 Tooth [Old Style - Three Axle Holes]",
+          "elementId": "",
+          "qty": 1,
+          "drawerId": "F38",
+          "drawerLabel": "F38"
+        }
+      ]
+    },
     {
       "id": "bag_mvvfh4jb_4l6ks",
       "label": "October 17 BAM Visit (batch 116)",
@@ -493448,17 +493505,6 @@
           "sel": false
         },
         {
-          "partNum": "35442",
-          "color": "Dark Purple",
-          "desc": "Plate Special 2 x 2 Splat Gear, 6 Teeth",
-          "elementId": "6238330",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "6589",
           "color": "Tan",
           "desc": "Technic Gear 12 Tooth Bevel",
@@ -493479,17 +493525,6 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "69779",
-          "color": "Dark Azure",
-          "desc": "Technic Gear 20 Tooth with Axle Hole [+ Opening]",
-          "elementId": "6396480",
-          "qty": 1,
-          "drawerId": "F38",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
         },
         {
           "partNum": "7052",
@@ -493525,17 +493560,6 @@
           "sel": false
         },
         {
-          "partNum": "3648a",
-          "color": "Light Gray",
-          "desc": "Technic Gear 24 Tooth [Old Style - Three Axle Holes]",
-          "elementId": "",
-          "qty": 1,
-          "drawerId": "F38",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "98138",
           "color": "Light Bluish Gray",
           "desc": "Tile Round 1 x 1",
@@ -493569,12 +493593,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T20:36:44.066Z",
+      "savedAt": "2026-10-30T20:36:50.484Z",
       "keepOpen": true,
       "moved": {
-        "batches": 116,
-        "pieces": 1717,
-        "last": "2026-10-30T20:31:47.255Z"
+        "batches": 117,
+        "pieces": 1720,
+        "last": "2026-10-30T20:36:50.484Z"
       }
     },
     {
@@ -586925,6 +586949,20 @@
       "d": "Dish 6 x 6 Inverted, Radar / Webbed [Anti-studs at 90°]",
       "e": "4224253",
       "u": 1793392429943
+    },
+    "69779|dark azure": {
+      "p": "69779",
+      "c": "Dark Azure",
+      "d": "Technic Gear 20 Tooth with Axle Hole [+ Opening]",
+      "e": "6396480",
+      "u": 1793392611686
+    },
+    "3648a|light gray": {
+      "p": "3648a",
+      "c": "Light Gray",
+      "d": "Technic Gear 24 Tooth [Old Style - Three Axle Holes]",
+      "e": "",
+      "u": 1793392611686
     }
   },
   "partKinds": {
@@ -587068,7 +587106,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:36:44.408Z"
+      "at": "2026-10-30T20:36:54.523Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -587089,10 +587127,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T20:36:44.066Z",
+      "bags": "2026-10-30T20:36:50.485Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:36:44.407Z",
+    "savedAt": "2026-10-30T20:36:54.523Z",
     "appVersion": "2026.10.30.1"
   }
 }
