@@ -457839,7 +457839,7 @@
       "label": "Q1",
       "notes": "4 x 2 and 6 x 2 Windows",
       "group": "Q",
-      "lastEdited": "2026-10-30T18:07:42.926Z"
+      "lastEdited": "2026-10-30T18:08:23.976Z"
     },
     {
       "id": "Q2",
@@ -478888,6 +478888,13 @@
       "drawerId": "Q1",
       "partNum": "4863",
       "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q1",
+      "partNum": "645",
+      "color": "Red",
+      "elementId": "",
       "qty": 1
     }
   ],
@@ -585316,6 +585323,13 @@
       "d": "Window 1 x 4 x 2 Plane, Solid Studs",
       "e": "486323",
       "u": 1793382651801
+    },
+    "645|red": {
+      "p": "645",
+      "c": "Red",
+      "d": "Window 1 x 6 x 2",
+      "e": "",
+      "u": 1793383705178
     }
   },
   "partKinds": {
@@ -585459,7 +585473,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T18:07:46.960Z"
+      "at": "2026-10-30T18:08:28.018Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585483,7 +585497,7 @@
       "bags": "2026-10-30T17:50:50.601Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T18:07:46.960Z",
+    "savedAt": "2026-10-30T18:08:28.018Z",
     "appVersion": "2026.10.29.1"
   }
 }
