@@ -456018,7 +456018,7 @@
       "label": "K32",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-10-30T20:24:39.176Z"
+      "lastEdited": "2026-10-30T20:25:39.406Z"
     },
     {
       "id": "K33",
@@ -479833,6 +479833,12 @@
       "color": "Dark Bluish Gray",
       "elementId": "4211026",
       "qty": 1
+    },
+    {
+      "drawerId": "K32",
+      "partNum": "7684",
+      "color": "Black",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -586778,6 +586784,13 @@
       "d": "Large Figure Weapon, Barrel with 2 Pin Holes and 3 Axle Holes",
       "e": "6071683",
       "u": 1793391782860
+    },
+    "7684|black": {
+      "p": "7684",
+      "c": "Black",
+      "d": "Technic Link 1 x 6 x 2 Angled, Bent, Double",
+      "e": "6564530",
+      "u": 1793391940608
     }
   },
   "partKinds": {
@@ -586921,7 +586934,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:24:44.637Z"
+      "at": "2026-10-30T20:25:43.438Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -586945,7 +586958,7 @@
       "bags": "2026-10-30T20:24:39.344Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:24:44.637Z",
+    "savedAt": "2026-10-30T20:25:43.438Z",
     "appVersion": "2026.10.30.1"
   }
 }
