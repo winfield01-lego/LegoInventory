@@ -455398,7 +455398,7 @@
       "label": "J6",
       "notes": "Animal Horns and Barbs",
       "group": "j",
-      "lastEdited": "2026-10-30T18:31:36.931Z"
+      "lastEdited": "2026-10-30T18:32:08.881Z"
     },
     {
       "id": "J7",
@@ -478993,6 +478993,12 @@
       "color": "White",
       "elementId": "6032360",
       "qty": 3
+    },
+    {
+      "drawerId": "J6",
+      "partNum": "24204",
+      "color": "Black",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -585525,6 +585531,13 @@
       "d": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Small",
       "e": "4618195",
       "u": 1793384968177
+    },
+    "24204|black": {
+      "p": "24204",
+      "c": "Black",
+      "d": "Plant / Animal Body Part, Tree / Branch / Tail / Appendage Bladed with Pin",
+      "e": "6536753",
+      "u": 1793385130083
     }
   },
   "partKinds": {
@@ -585668,7 +585681,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T18:31:42.232Z"
+      "at": "2026-10-30T18:32:12.909Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585692,7 +585705,7 @@
       "bags": "2026-10-30T18:29:26.976Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T18:31:42.232Z",
+    "savedAt": "2026-10-30T18:32:12.909Z",
     "appVersion": "2026.10.29.1"
   }
 }
