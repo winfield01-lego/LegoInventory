@@ -455962,7 +455962,7 @@
       "label": "K24",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-10-30T20:21:51.659Z"
+      "lastEdited": "2026-10-30T20:23:01.658Z"
     },
     {
       "id": "K25",
@@ -479781,7 +479781,37 @@
       "partNum": "98585",
       "color": "Black",
       "elementId": "6156897",
+      "qty": 10
+    },
+    {
+      "drawerId": "K24",
+      "partNum": "98585",
+      "color": "Pearl Titanium",
       "qty": 1
+    },
+    {
+      "drawerId": "K24",
+      "partNum": "98585",
+      "color": "Light Bluish Gray",
+      "qty": 13
+    },
+    {
+      "drawerId": "K24",
+      "partNum": "98585",
+      "color": "Dark Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "K24",
+      "partNum": "98585",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "K24",
+      "partNum": "98585",
+      "color": "White",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -586696,6 +586726,13 @@
       "d": "Tile Round 1 x 2",
       "e": "6533008",
       "u": 1793391513493
+    },
+    "98585|dark orange": {
+      "p": "98585",
+      "c": "Dark Orange",
+      "d": "Large Figure Weapon, Barrel with 2 Pin Holes and 3 Axle Holes",
+      "e": "6071683",
+      "u": 1793391782860
     }
   },
   "partKinds": {
@@ -586839,7 +586876,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T20:21:57.111Z"
+      "at": "2026-10-30T20:23:05.700Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -586863,7 +586900,7 @@
       "bags": "2026-10-30T20:21:51.821Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:21:57.110Z",
+    "savedAt": "2026-10-30T20:23:05.700Z",
     "appVersion": "2026.10.29.1"
   }
 }
