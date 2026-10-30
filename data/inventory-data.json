@@ -454248,7 +454248,7 @@
       "label": "F7",
       "notes": "",
       "group": "F",
-      "lastEdited": "2026-10-30T17:34:29.341Z"
+      "lastEdited": "2026-10-30T17:39:56.144Z"
     },
     {
       "id": "F8",
@@ -478705,7 +478705,51 @@
       "partNum": "64567",
       "color": "Black",
       "elementId": "4523775",
-      "qty": 1
+      "qty": 24
+    },
+    {
+      "drawerId": "F7",
+      "partNum": "64567",
+      "color": "Chrome Silver",
+      "elementId": "",
+      "qty": 20
+    },
+    {
+      "drawerId": "F7",
+      "partNum": "64567",
+      "color": "Pearl Gold",
+      "qty": 3
+    },
+    {
+      "drawerId": "F7",
+      "partNum": "64567",
+      "color": "Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "F7",
+      "partNum": "64567",
+      "color": "Dark Brown",
+      "qty": 5
+    },
+    {
+      "drawerId": "F7",
+      "partNum": "64567",
+      "color": "White",
+      "qty": 2
+    },
+    {
+      "drawerId": "F7",
+      "partNum": "64567",
+      "color": "Metallic Silver",
+      "elementId": "4542406",
+      "qty": 4
+    },
+    {
+      "drawerId": "F7",
+      "partNum": "64567",
+      "color": "Pearl Titanium",
+      "qty": 10
     }
   ],
   "mocLocations": {
@@ -519473,9 +519517,9 @@
     "64567|white": {
       "p": "64567",
       "c": "White",
-      "d": "",
-      "e": "",
-      "u": 1791916924851
+      "d": "Weapon Lightsaber Hilt with Bottom Ring",
+      "e": "6040333",
+      "u": 1793381997362
     },
     "4519|black": {
       "p": "4519",
@@ -520178,9 +520222,12 @@
       "c": "Metallic Silver",
       "d": "Weapon Lightsaber Hilt with Bottom Ring",
       "e": "6546103",
-      "u": 1791916924851,
+      "u": 1793381997362,
       "at": 1791654813892,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6051389.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6051389.jpg",
+      "ea": [
+        "4542406"
+      ]
     },
     "48300|[no color/any color]": {
       "p": "48300",
@@ -585064,6 +585111,13 @@
       "d": "Brick Round 2 x 2 D. Tube with Rotation Joint Ball Half",
       "e": "6428169",
       "u": 1793381625009
+    },
+    "64567|chrome silver": {
+      "p": "64567",
+      "c": "Chrome Silver",
+      "d": "Weapon Lightsaber Hilt with Bottom Ring",
+      "e": "",
+      "u": 1793381997362
     }
   },
   "partKinds": {
@@ -585207,7 +585261,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:34:34.800Z"
+      "at": "2026-10-30T17:40:01.468Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585231,7 +585285,7 @@
       "bags": "2026-10-30T17:34:29.511Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:34:34.800Z",
+    "savedAt": "2026-10-30T17:40:01.468Z",
     "appVersion": "2026.10.29.1"
   }
 }
