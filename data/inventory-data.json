@@ -455910,7 +455910,7 @@
       "label": "K19",
       "notes": "2 x 2 Round Brick with 2 pine holes",
       "group": "K",
-      "lastEdited": "2026-10-30T05:43:09.593Z"
+      "lastEdited": "2026-10-30T05:45:31.428Z"
     },
     {
       "id": "K20",
@@ -477166,14 +477166,14 @@
       "partNum": "17485",
       "color": "Yellow",
       "elementId": "6102524",
-      "qty": 2
+      "qty": 7
     },
     {
       "drawerId": "K19",
       "partNum": "17485",
       "color": "Light Bluish Gray",
       "elementId": "6078985",
-      "qty": 1
+      "qty": 21
     },
     {
       "drawerId": "Q4",
@@ -477181,6 +477181,43 @@
       "color": "Red",
       "elementId": "",
       "qty": 1
+    },
+    {
+      "drawerId": "K19",
+      "partNum": "17485",
+      "color": "Black",
+      "elementId": "6195273",
+      "qty": 4
+    },
+    {
+      "drawerId": "K19",
+      "partNum": "17485",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "K19",
+      "partNum": "17485",
+      "color": "Orange",
+      "qty": 3
+    },
+    {
+      "drawerId": "K19",
+      "partNum": "17485",
+      "color": "Red",
+      "qty": 3
+    },
+    {
+      "drawerId": "K19",
+      "partNum": "17485",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "K19",
+      "partNum": "17485",
+      "color": "White",
+      "qty": 18
     }
   ],
   "mocLocations": {
@@ -501706,9 +501743,12 @@
       "c": "Black",
       "d": "Brick Round 2 x 2, Pin Holes",
       "e": "6536593",
-      "u": 1791916924851,
+      "u": 1793339132640,
       "at": 1791660084431,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6195273.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6195273.jpg",
+      "ea": [
+        "6195273"
+      ]
     },
     "68325|black": {
       "p": "68325",
@@ -582676,6 +582716,20 @@
       "d": "Window 2 x 4 x 3 Pane",
       "e": "",
       "u": 1793338971621
+    },
+    "17485|blue": {
+      "p": "17485",
+      "c": "Blue",
+      "d": "Brick Round 2 x 2, Pin Holes",
+      "e": "6297279",
+      "u": 1793339132640
+    },
+    "17485|tan": {
+      "p": "17485",
+      "c": "Tan",
+      "d": "Brick Round 2 x 2, Pin Holes",
+      "e": "6232037",
+      "u": 1793339132640
     }
   },
   "partKinds": {
@@ -582819,7 +582873,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T05:43:13.622Z"
+      "at": "2026-10-30T05:45:36.740Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -582843,7 +582897,7 @@
       "bags": "2026-10-30T05:42:50.421Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T05:43:13.622Z",
+    "savedAt": "2026-10-30T05:45:36.739Z",
     "appVersion": "2026.10.29.1"
   }
 }
