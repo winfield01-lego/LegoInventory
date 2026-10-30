@@ -454572,7 +454572,7 @@
       "label": "G14",
       "notes": "Gates and Doors with 2 finger connections",
       "group": "G",
-      "lastEdited": "2026-10-30T19:09:30.816Z"
+      "lastEdited": "2026-10-30T19:09:50.982Z"
     },
     {
       "id": "G15",
@@ -479283,7 +479283,7 @@
       "drawerId": "G14",
       "partNum": "44569",
       "color": "Dark Bluish Gray",
-      "qty": 2
+      "qty": 8
     },
     {
       "drawerId": "G14",
@@ -479309,6 +479309,18 @@
       "partNum": "44570",
       "color": "White",
       "qty": 3
+    },
+    {
+      "drawerId": "G14",
+      "partNum": "44569",
+      "color": "Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "G14",
+      "partNum": "44569",
+      "color": "Tan",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -586040,6 +586052,20 @@
       "d": "Hinge Plate 3 x 4 Locking Dual 2 Finger, 9 Teeth",
       "e": "4194558",
       "u": 1793387372018
+    },
+    "44569|red": {
+      "p": "44569",
+      "c": "Red",
+      "d": "Hinge Train Gate 2 x 4 Locking Dual 2 Fingers with Rear Reinforcements, 9 Teeth",
+      "e": "4191116",
+      "u": 1793387392184
+    },
+    "44569|tan": {
+      "p": "44569",
+      "c": "Tan",
+      "d": "Hinge Train Gate 2 x 4 Locking Dual 2 Fingers with Rear Reinforcements, 9 Teeth",
+      "e": "4286666",
+      "u": 1793387392184
     }
   },
   "partKinds": {
@@ -586183,7 +586209,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T19:09:36.121Z"
+      "at": "2026-10-30T19:09:55.012Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -586207,7 +586233,7 @@
       "bags": "2026-10-30T19:07:13.442Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T19:09:36.121Z",
+    "savedAt": "2026-10-30T19:09:55.012Z",
     "appVersion": "2026.10.29.1"
   }
 }
