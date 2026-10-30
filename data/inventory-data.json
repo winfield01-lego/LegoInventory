@@ -456269,7 +456269,7 @@
       "label": "L27",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-10-30T17:10:25.912Z"
+      "lastEdited": "2026-10-30T17:12:16.844Z"
     },
     {
       "id": "L28",
@@ -478467,6 +478467,13 @@
       "partNum": "3170",
       "color": "Black",
       "qty": 2
+    },
+    {
+      "drawerId": "L27",
+      "partNum": "22890",
+      "color": "Dark Bluish Gray",
+      "elementId": "6123814",
+      "qty": 16
     }
   ],
   "mocLocations": {
@@ -511882,9 +511889,12 @@
       "c": "Dark Bluish Gray",
       "d": "Plate Special 1 x 2 with End Towball",
       "e": "6370802",
-      "u": 1791916924851,
+      "u": 1793380338046,
       "at": 1791660084431,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6123814.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6123814.jpg",
+      "ea": [
+        "6123814"
+      ]
     },
     "3176|dark bluish gray": {
       "p": "3176",
@@ -584791,7 +584801,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:10:30.110Z"
+      "at": "2026-10-30T17:12:22.127Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584815,7 +584825,7 @@
       "bags": "2026-10-30T17:10:26.082Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:10:30.109Z",
+    "savedAt": "2026-10-30T17:12:22.127Z",
     "appVersion": "2026.10.29.1"
   }
 }
