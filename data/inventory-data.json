@@ -457571,7 +457571,7 @@
       "label": "R3",
       "notes": "Rotation Joints Click and Ball and Socket",
       "group": "R",
-      "lastEdited": "2026-10-30T17:19:35.977Z"
+      "lastEdited": "2026-10-30T17:20:45.261Z"
     },
     {
       "id": "R4",
@@ -478542,6 +478542,24 @@
       "partNum": "67696",
       "color": "White",
       "qty": 3
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "32174",
+      "color": "Dark Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "32174",
+      "color": "Dark Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "32174",
+      "color": "Red",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -584766,6 +584784,27 @@
       "d": "Technic Brick Special 2 x 2 with Ball Socket Wide and Axle Hole",
       "e": "4619760",
       "u": 1793380753463
+    },
+    "32174|dark bluish gray": {
+      "p": "32174",
+      "c": "Dark Bluish Gray",
+      "d": "Technic Axle Connector 2 x 3 with Ball Socket, Open Sides",
+      "e": "4217829",
+      "u": 1793380846465
+    },
+    "32174|dark orange": {
+      "p": "32174",
+      "c": "Dark Orange",
+      "d": "Technic Axle Connector 2 x 3 with Ball Socket, Open Sides",
+      "e": "4194992",
+      "u": 1793380846465
+    },
+    "32174|red": {
+      "p": "32174",
+      "c": "Red",
+      "d": "Technic Axle Connector 2 x 3 with Ball Socket, Open Sides",
+      "e": "4119331",
+      "u": 1793380846465
     }
   },
   "partKinds": {
@@ -584909,7 +584948,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:19:40.016Z"
+      "at": "2026-10-30T17:20:49.292Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584933,7 +584972,7 @@
       "bags": "2026-10-30T17:14:33.224Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:19:40.016Z",
+    "savedAt": "2026-10-30T17:20:49.292Z",
     "appVersion": "2026.10.29.1"
   }
 }
