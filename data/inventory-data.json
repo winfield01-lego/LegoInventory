@@ -455397,7 +455397,8 @@
       "id": "J6",
       "label": "J6",
       "notes": "",
-      "group": "j"
+      "group": "j",
+      "lastEdited": "2026-10-30T18:29:26.799Z"
     },
     {
       "id": "J7",
@@ -455515,7 +455516,7 @@
       "label": "J25",
       "notes": "1 x 1 with Handle and Telescope",
       "group": "j",
-      "lastEdited": "2026-10-30T04:34:19.545Z"
+      "lastEdited": "2026-10-30T18:29:26.800Z"
     },
     {
       "id": "J26",
@@ -476760,7 +476761,7 @@
       "drawerId": "J25",
       "partNum": "32828",
       "color": "Dark Bluish Gray",
-      "qty": 15
+      "qty": 16
     },
     {
       "drawerId": "J25",
@@ -478952,6 +478953,19 @@
       "partNum": "13760",
       "color": "Green",
       "qty": 2
+    },
+    {
+      "drawerId": "J6",
+      "partNum": "89522",
+      "color": "Flat Silver",
+      "elementId": "4612829",
+      "qty": 2
+    },
+    {
+      "drawerId": "J6",
+      "partNum": "53451",
+      "color": "Pearl Gold",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -479364,6 +479378,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvb3sqo_bzkk5",
+      "label": "October 17 BAM Visit (batch 102)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 102,
+      "timestamp": "2026-10-30T18:29:26.976Z",
+      "items": [
+        {
+          "partNum": "89522",
+          "color": "Flat Silver",
+          "desc": "Creature Body Part, Horn (Unicorn)",
+          "elementId": "4612829",
+          "qty": 2,
+          "drawerId": "J6",
+          "drawerLabel": "J6"
+        },
+        {
+          "partNum": "53451",
+          "color": "Pearl Gold",
+          "desc": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Small",
+          "elementId": "4618195",
+          "qty": 5,
+          "drawerId": "J6",
+          "drawerLabel": "J6"
+        },
+        {
+          "partNum": "32828",
+          "color": "Dark Bluish Gray",
+          "desc": "Plate Special Round 1 x 1 with Hollow Stud and Horizontal Bar 1L",
+          "elementId": "6388118",
+          "qty": 1,
+          "drawerId": "J25",
+          "drawerLabel": "J25"
+        }
+      ]
+    },
     {
       "id": "bag_mvvau6hk_u5t4g",
       "label": "October 17 BAM Visit (batch 101)",
@@ -492306,39 +492357,6 @@
           "sel": false
         },
         {
-          "partNum": "89522",
-          "color": "Flat Silver",
-          "desc": "Creature Body Part, Horn (Unicorn)",
-          "elementId": "4612829",
-          "qty": 2,
-          "drawerId": "J6",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "53451",
-          "color": "Pearl Gold",
-          "desc": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Small",
-          "elementId": "4618195",
-          "qty": 5,
-          "drawerId": "J6",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "32828",
-          "color": "Dark Bluish Gray",
-          "desc": "Plate Special Round 1 x 1 with Hollow Stud and Horizontal Bar 1L",
-          "elementId": "6388118",
-          "qty": 1,
-          "drawerId": "J25",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "24482",
           "color": "White",
           "desc": "Weapon Spear Tip with Fins",
@@ -492493,12 +492511,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T18:29:05.434Z",
+      "savedAt": "2026-10-30T18:29:26.976Z",
       "keepOpen": true,
       "moved": {
-        "batches": 101,
-        "pieces": 1687,
-        "last": "2026-10-30T18:21:58.232Z"
+        "batches": 102,
+        "pieces": 1695,
+        "last": "2026-10-30T18:29:26.976Z"
       }
     },
     {
@@ -533498,8 +533516,11 @@
       "c": "Flat Silver",
       "d": "Creature Body Part, Horn (Unicorn)",
       "e": "6214214",
-      "u": 1791916924851,
-      "at": 1791654697968
+      "u": 1793384968177,
+      "at": 1791654697968,
+      "ea": [
+        "4612829"
+      ]
     },
     "11212|green": {
       "p": "11212",
@@ -585461,6 +585482,13 @@
       "d": "Train Front 2 x 6 x 2",
       "e": "6226434",
       "u": 1793384352484
+    },
+    "53451|pearl gold": {
+      "p": "53451",
+      "c": "Pearl Gold",
+      "d": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Small",
+      "e": "4618195",
+      "u": 1793384968177
     }
   },
   "partKinds": {
@@ -585604,7 +585632,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T18:29:09.473Z"
+      "at": "2026-10-30T18:29:31.007Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585625,10 +585653,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T18:29:05.434Z",
+      "bags": "2026-10-30T18:29:26.976Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T18:29:09.473Z",
+    "savedAt": "2026-10-30T18:29:31.007Z",
     "appVersion": "2026.10.29.1"
   }
 }
