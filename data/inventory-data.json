@@ -455436,7 +455436,8 @@
       "id": "J12",
       "label": "J12",
       "notes": "",
-      "group": "j"
+      "group": "j",
+      "lastEdited": "2026-10-30T18:39:09.209Z"
     },
     {
       "id": "J13",
@@ -479090,6 +479091,12 @@
       "partNum": "64847",
       "color": "Red",
       "qty": 1
+    },
+    {
+      "drawerId": "J12",
+      "partNum": "24482",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -479502,6 +479509,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvbga4p_ey3wj",
+      "label": "October 17 BAM Visit (batch 103)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 103,
+      "timestamp": "2026-10-30T18:39:09.385Z",
+      "items": [
+        {
+          "partNum": "24482",
+          "color": "White",
+          "desc": "Weapon Spear Tip with Fins",
+          "elementId": "6136388",
+          "qty": 1,
+          "drawerId": "J12",
+          "drawerLabel": "J12"
+        }
+      ]
+    },
     {
       "id": "bag_mvvb3sqo_bzkk5",
       "label": "October 17 BAM Visit (batch 102)",
@@ -492481,17 +492507,6 @@
           "sel": false
         },
         {
-          "partNum": "24482",
-          "color": "White",
-          "desc": "Weapon Spear Tip with Fins",
-          "elementId": "6136388",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "59900",
           "color": "Pearl Gold",
           "desc": "Cone 1 x 1 [Top Groove]",
@@ -492635,12 +492650,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T18:29:26.976Z",
+      "savedAt": "2026-10-30T18:39:09.385Z",
       "keepOpen": true,
       "moved": {
-        "batches": 102,
-        "pieces": 1695,
-        "last": "2026-10-30T18:29:26.976Z"
+        "batches": 103,
+        "pieces": 1696,
+        "last": "2026-10-30T18:39:09.385Z"
       }
     },
     {
@@ -585678,6 +585693,13 @@
       "d": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Small",
       "e": "4296108",
       "u": 1793385450680
+    },
+    "24482|white": {
+      "p": "24482",
+      "c": "White",
+      "d": "Weapon Spear Tip with Fins",
+      "e": "6136388",
+      "u": 1793385550586
     }
   },
   "partKinds": {
@@ -585821,7 +585843,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T18:38:04.780Z"
+      "at": "2026-10-30T18:39:13.425Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585842,10 +585864,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T18:29:26.976Z",
+      "bags": "2026-10-30T18:39:09.385Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T18:38:04.780Z",
+    "savedAt": "2026-10-30T18:39:13.425Z",
     "appVersion": "2026.10.29.1"
   }
 }
