@@ -455135,7 +455135,7 @@
       "label": "I11",
       "notes": "2 x 2 Curved Inverted and Corner",
       "group": "I",
-      "lastEdited": "2026-10-30T14:57:14.226Z"
+      "lastEdited": "2026-10-30T14:58:20.045Z"
     },
     {
       "id": "I12",
@@ -477994,6 +477994,12 @@
       "drawerId": "I11",
       "partNum": "67810",
       "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "I11",
+      "partNum": "5174",
+      "color": "White",
       "qty": 1
     }
   ],
@@ -583867,6 +583873,13 @@
       "d": "Brick Round, Curved 2 x 2 x 1 1/3, Corner",
       "e": "6388484",
       "u": 1793372235429
+    },
+    "5174|white": {
+      "p": "5174",
+      "c": "White",
+      "d": "Brick Curved Inverted 2 x 4 Double",
+      "e": "6461062",
+      "u": 1793372301247
     }
   },
   "partKinds": {
@@ -584010,7 +584023,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T14:57:18.259Z"
+      "at": "2026-10-30T14:58:24.079Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584034,7 +584047,7 @@
       "bags": "2026-10-30T14:56:29.100Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T14:57:18.259Z",
+    "savedAt": "2026-10-30T14:58:24.079Z",
     "appVersion": "2026.10.29.1"
   }
 }
