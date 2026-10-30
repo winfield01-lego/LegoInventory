@@ -454727,7 +454727,7 @@
       "label": "G39",
       "notes": "1 x 4 Log Palisades",
       "group": "G",
-      "lastEdited": "2026-10-30T14:59:31.614Z"
+      "lastEdited": "2026-10-30T15:00:42.629Z"
     },
     {
       "id": "G40",
@@ -478019,7 +478019,37 @@
       "drawerId": "G39",
       "partNum": "30137",
       "color": "Black",
+      "qty": 4
+    },
+    {
+      "drawerId": "G39",
+      "partNum": "30137",
+      "color": "Dark Bluish Gray",
       "qty": 2
+    },
+    {
+      "drawerId": "G39",
+      "partNum": "30137",
+      "color": "Light Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "G39",
+      "partNum": "30137",
+      "color": "Medium Nougat",
+      "qty": 7
+    },
+    {
+      "drawerId": "G39",
+      "partNum": "30137",
+      "color": "Reddish Brown",
+      "qty": 13
+    },
+    {
+      "drawerId": "G39",
+      "partNum": "30137",
+      "color": "Tan",
+      "qty": 9
     }
   ],
   "mocLocations": {
@@ -583914,6 +583944,34 @@
       "d": "Brick Special 1 x 4 Palisade [aka Log]",
       "e": "4112585",
       "u": 1793372356294
+    },
+    "30137|dark bluish gray": {
+      "p": "30137",
+      "c": "Dark Bluish Gray",
+      "d": "Brick Special 1 x 4 Palisade [aka Log]",
+      "e": "4268139",
+      "u": 1793372443831
+    },
+    "30137|light bluish gray": {
+      "p": "30137",
+      "c": "Light Bluish Gray",
+      "d": "Brick Special 1 x 4 Palisade [aka Log]",
+      "e": "4211833",
+      "u": 1793372443831
+    },
+    "30137|medium nougat": {
+      "p": "30137",
+      "c": "Medium Nougat",
+      "d": "Brick Special 1 x 4 Palisade [aka Log]",
+      "e": "4651232",
+      "u": 1793372443831
+    },
+    "30137|tan": {
+      "p": "30137",
+      "c": "Tan",
+      "d": "Brick Special 1 x 4 Palisade [aka Log]",
+      "e": "4114055",
+      "u": 1793372443831
     }
   },
   "partKinds": {
@@ -584057,7 +584115,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T14:59:35.647Z"
+      "at": "2026-10-30T15:00:46.674Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584081,7 +584139,7 @@
       "bags": "2026-10-30T14:59:15.092Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T14:59:35.647Z",
+    "savedAt": "2026-10-30T15:00:46.674Z",
     "appVersion": "2026.10.29.1"
   }
 }
