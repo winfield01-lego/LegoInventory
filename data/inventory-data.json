@@ -455910,7 +455910,7 @@
       "label": "K19",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-10-13T17:12:46.630Z"
+      "lastEdited": "2026-10-30T05:42:50.267Z"
     },
     {
       "id": "K20",
@@ -457849,7 +457849,7 @@
       "label": "Q4",
       "notes": "Windows - 4 wide",
       "group": "Q",
-      "lastEdited": "2026-10-30T05:36:13.136Z"
+      "lastEdited": "2026-10-30T05:42:50.267Z"
     },
     {
       "id": "Q5",
@@ -477160,6 +477160,27 @@
       "partNum": "5630",
       "color": "Yellow",
       "qty": 1
+    },
+    {
+      "drawerId": "K19",
+      "partNum": "17485",
+      "color": "Yellow",
+      "elementId": "6102524",
+      "qty": 2
+    },
+    {
+      "drawerId": "K19",
+      "partNum": "17485",
+      "color": "Light Bluish Gray",
+      "elementId": "6078985",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "4133",
+      "color": "Red",
+      "elementId": "",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -477572,6 +477593,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvujpxkl_ijeul",
+      "label": "October 17 BAM Visit (batch 77)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 77,
+      "timestamp": "2026-10-30T05:42:50.421Z",
+      "items": [
+        {
+          "partNum": "17485",
+          "color": "Yellow",
+          "desc": "Brick Round 2 x 2, Pin Holes",
+          "elementId": "6102524",
+          "qty": 2,
+          "drawerId": "K19",
+          "drawerLabel": "K19"
+        },
+        {
+          "partNum": "17485",
+          "color": "Light Bluish Gray",
+          "desc": "Brick Round 2 x 2, Pin Holes",
+          "elementId": "6078985",
+          "qty": 1,
+          "drawerId": "K19",
+          "drawerLabel": "K19"
+        },
+        {
+          "partNum": "4133",
+          "color": "Red",
+          "desc": "Window 2 x 4 x 3 Pane",
+          "elementId": "",
+          "qty": 1,
+          "drawerId": "Q4",
+          "drawerLabel": "Q4"
+        }
+      ]
+    },
     {
       "id": "bag_mvujiojl_3km3w",
       "label": "October 17 BAM Visit (batch 76)",
@@ -489752,28 +489810,6 @@
           "sel": false
         },
         {
-          "partNum": "17485",
-          "color": "Yellow",
-          "desc": "Brick Round 2 x 2, Pin Holes",
-          "elementId": "6102524",
-          "qty": 2,
-          "drawerId": "K19",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "17485",
-          "color": "Light Bluish Gray",
-          "desc": "Brick Round 2 x 2, Pin Holes",
-          "elementId": "6078985",
-          "qty": 1,
-          "drawerId": "K19",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "3941",
           "color": "Reddish Brown",
           "desc": "Brick Round 2 x 2 with Axle Hole",
@@ -490487,25 +490523,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "4133",
-          "color": "Red",
-          "desc": "Window 2 x 4 x 3 Pane",
-          "elementId": "",
-          "qty": 1,
-          "drawerId": "Q4",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": false
         }
       ],
-      "savedAt": "2026-10-30T05:42:41.288Z",
+      "savedAt": "2026-10-30T05:42:50.420Z",
       "keepOpen": true,
       "moved": {
-        "batches": 76,
-        "pieces": 1642,
-        "last": "2026-10-30T05:37:12.129Z"
+        "batches": 77,
+        "pieces": 1646,
+        "last": "2026-10-30T05:42:50.421Z"
       }
     },
     {
@@ -497917,9 +497942,12 @@
       "c": "Light Bluish Gray",
       "d": "Brick Round 2 x 2, Pin Holes",
       "e": "6372076",
-      "u": 1791916924851,
+      "u": 1793338971621,
       "at": 1792904691991,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6078985.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6078985.jpg",
+      "ea": [
+        "6078985"
+      ]
     },
     "87087|yellow": {
       "p": "87087",
@@ -534606,9 +534634,12 @@
       "c": "Yellow",
       "d": "Brick Round 2 x 2, Pin Holes",
       "e": "6378132",
-      "u": 1791916924851,
+      "u": 1793338971621,
       "at": 1791654501911,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6102524.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6102524.jpg",
+      "ea": [
+        "6102524"
+      ]
     },
     "1871|black": {
       "p": "1871",
@@ -582638,6 +582669,13 @@
       "d": "Bar 7 x 3 with Double Clips (Ladder) [Round Clips]",
       "e": "6529090",
       "u": 1793338867316
+    },
+    "4133|red": {
+      "p": "4133",
+      "c": "Red",
+      "d": "Window 2 x 4 x 3 Pane",
+      "e": "",
+      "u": 1793338971621
     }
   },
   "partKinds": {
@@ -582781,7 +582819,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T05:42:45.327Z"
+      "at": "2026-10-30T05:42:55.695Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -582802,10 +582840,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T05:42:41.288Z",
+      "bags": "2026-10-30T05:42:50.421Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T05:42:45.327Z",
+    "savedAt": "2026-10-30T05:42:55.695Z",
     "appVersion": "2026.10.29.1"
   }
 }
