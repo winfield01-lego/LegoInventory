@@ -457134,7 +457134,7 @@
       "label": "O19",
       "notes": "2 Finger Hinge Bricks - 1 x 2 and 2 x 2 Horizontal and Vertical",
       "group": "O",
-      "lastEdited": "2026-10-30T16:46:55.449Z"
+      "lastEdited": "2026-10-30T16:47:46.550Z"
     },
     {
       "id": "O20",
@@ -478279,6 +478279,24 @@
       "partNum": "40902",
       "color": "Light Bluish Gray",
       "qty": 1
+    },
+    {
+      "drawerId": "O19",
+      "partNum": "30540",
+      "color": "Black",
+      "qty": 4
+    },
+    {
+      "drawerId": "O19",
+      "partNum": "30540",
+      "color": "Light Bluish Gray",
+      "qty": 11
+    },
+    {
+      "drawerId": "O19",
+      "partNum": "30540",
+      "color": "White",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -584320,6 +584338,27 @@
       "d": "Hinge Brick 2 x 2 Locking with 2 Fingers Vertical and Axle Hole, 9 Teeth",
       "e": "4215971",
       "u": 1793378816650
+    },
+    "30540|black": {
+      "p": "30540",
+      "c": "Black",
+      "d": "Hinge Brick 1 x 2 Locking with 2 Fingers Horizontal End, 9 Teeth",
+      "e": "4144533",
+      "u": 1793378867753
+    },
+    "30540|light bluish gray": {
+      "p": "30540",
+      "c": "Light Bluish Gray",
+      "d": "Hinge Brick 1 x 2 Locking with 2 Fingers Horizontal End, 9 Teeth",
+      "e": "4211678",
+      "u": 1793378867753
+    },
+    "30540|white": {
+      "p": "30540",
+      "c": "White",
+      "d": "Hinge Brick 1 x 2 Locking with 2 Fingers Horizontal End, 9 Teeth",
+      "e": "4179247",
+      "u": 1793378867753
     }
   },
   "partKinds": {
@@ -584463,7 +584502,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T16:46:59.485Z"
+      "at": "2026-10-30T16:47:50.581Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584487,7 +584526,7 @@
       "bags": "2026-10-30T16:44:21.938Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T16:46:59.485Z",
+    "savedAt": "2026-10-30T16:47:50.581Z",
     "appVersion": "2026.10.29.1"
   }
 }
