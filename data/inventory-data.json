@@ -454445,7 +454445,7 @@
       "label": "F38",
       "notes": "",
       "group": "F",
-      "lastEdited": "2026-10-30T20:38:27.357Z"
+      "lastEdited": "2026-10-30T20:39:06.390Z"
     },
     {
       "id": "F39",
@@ -479947,6 +479947,24 @@
       "partNum": "35446",
       "color": "Medium Nougat",
       "qty": 2
+    },
+    {
+      "drawerId": "F38",
+      "partNum": "35442",
+      "color": "Black",
+      "qty": 6
+    },
+    {
+      "drawerId": "F38",
+      "partNum": "35442",
+      "color": "Green",
+      "qty": 5
+    },
+    {
+      "drawerId": "F38",
+      "partNum": "35442",
+      "color": "Medium Azure",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -586995,6 +587013,13 @@
       "d": "Plate Special 6 x 6 Splat Gear, 14 Teeth",
       "e": "6338455",
       "u": 1793392708559
+    },
+    "35442|green": {
+      "p": "35442",
+      "c": "Green",
+      "d": "Plate Special 2 x 2 Splat Gear, 6 Teeth",
+      "e": "6328186",
+      "u": 1793392747593
     }
   },
   "partKinds": {
@@ -587138,7 +587163,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:38:31.392Z"
+      "at": "2026-10-30T20:39:10.439Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -587162,7 +587187,7 @@
       "bags": "2026-10-30T20:36:50.485Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:38:31.391Z",
+    "savedAt": "2026-10-30T20:39:10.438Z",
     "appVersion": "2026.10.30.1"
   }
 }
