@@ -457571,7 +457571,7 @@
       "label": "R3",
       "notes": "Rotation Joints Click and Ball and Socket",
       "group": "R",
-      "lastEdited": "2026-10-30T17:28:24.026Z"
+      "lastEdited": "2026-10-30T17:28:49.842Z"
     },
     {
       "id": "R4",
@@ -478603,6 +478603,13 @@
       "partNum": "48169",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "48172",
+      "color": "Black",
+      "elementId": "4275826",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -521555,9 +521562,12 @@
       "c": "Black",
       "d": "Technic Brick Special 2 x 2 with Pin Hole, with 2 Rotation Joint Sockets",
       "e": "6296186",
-      "u": 1791916924851,
+      "u": 1793381331044,
       "at": 1791654295737,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4275826.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4275826.jpg",
+      "ea": [
+        "4275826"
+      ]
     },
     "32124|black": {
       "p": "32124",
@@ -585022,7 +585032,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:28:29.329Z"
+      "at": "2026-10-30T17:28:55.150Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585046,7 +585056,7 @@
       "bags": "2026-10-30T17:14:33.224Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:28:29.329Z",
+    "savedAt": "2026-10-30T17:28:55.150Z",
     "appVersion": "2026.10.29.1"
   }
 }
