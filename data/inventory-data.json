@@ -457253,7 +457253,7 @@
       "label": "O34",
       "notes": "2 x 2 and 1 x 4 Plates with Sockets",
       "group": "O",
-      "lastEdited": "2026-10-30T20:49:10.181Z"
+      "lastEdited": "2026-10-30T20:50:03.506Z"
     },
     {
       "id": "O35",
@@ -480069,6 +480069,12 @@
       "partNum": "3730",
       "color": "Blue",
       "qty": 1
+    },
+    {
+      "drawerId": "O34",
+      "partNum": "98263",
+      "color": "Light Bluish Gray",
+      "qty": 10
     }
   ],
   "mocLocations": {
@@ -587203,6 +587209,13 @@
       "d": "Plate Special 2 x 2 with Towball Socket, Short, 4 Slots",
       "e": "373023",
       "u": 1793393324248
+    },
+    "98263|light bluish gray": {
+      "p": "98263",
+      "c": "Light Bluish Gray",
+      "d": "Plate Special 1 x 4 with Towball Socket, Flattened",
+      "e": "4667166",
+      "u": 1793393404708
     }
   },
   "partKinds": {
@@ -587346,7 +587359,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:49:14.216Z"
+      "at": "2026-10-30T20:50:07.545Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -587370,7 +587383,7 @@
       "bags": "2026-10-30T20:48:43.047Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:49:14.216Z",
+    "savedAt": "2026-10-30T20:50:07.545Z",
     "appVersion": "2026.10.30.1"
   }
 }
