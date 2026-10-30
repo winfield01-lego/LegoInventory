@@ -456018,7 +456018,7 @@
       "label": "K32",
       "notes": "Technic 4 Lob wheels and Links",
       "group": "K",
-      "lastEdited": "2026-10-30T20:26:21.715Z"
+      "lastEdited": "2026-10-30T20:26:38.757Z"
     },
     {
       "id": "K33",
@@ -479844,6 +479844,13 @@
       "drawerId": "K32",
       "partNum": "32293",
       "color": "Black",
+      "qty": 3
+    },
+    {
+      "drawerId": "K32",
+      "partNum": "15460",
+      "color": "Dark Bluish Gray",
+      "elementId": "6055629",
       "qty": 3
     }
   ],
@@ -548532,9 +548539,12 @@
       "c": "Dark Bluish Gray",
       "d": "Technic Steering Gear with 3 Towball Joints, Compact",
       "e": "6359227",
-      "u": 1791916924851,
+      "u": 1793391999959,
       "at": 1791654771905,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6055629.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6055629.jpg",
+      "ea": [
+        "6055629"
+      ]
     },
     "13786pr0005|dark orange": {
       "p": "13786pr0005",
@@ -586947,7 +586957,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:26:25.749Z"
+      "at": "2026-10-30T20:26:44.052Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -586971,7 +586981,7 @@
       "bags": "2026-10-30T20:24:39.344Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:26:25.749Z",
+    "savedAt": "2026-10-30T20:26:44.052Z",
     "appVersion": "2026.10.30.1"
   }
 }
