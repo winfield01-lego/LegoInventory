@@ -456291,7 +456291,7 @@
       "label": "L30",
       "notes": "Plates with 2 Finger Hinge",
       "group": "L",
-      "lastEdited": "2026-10-30T17:45:34.642Z"
+      "lastEdited": "2026-10-30T17:46:15.890Z"
     },
     {
       "id": "L31",
@@ -478845,6 +478845,24 @@
       "drawerId": "L30",
       "partNum": "54657",
       "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "L30",
+      "partNum": "44302a",
+      "color": "Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "L30",
+      "partNum": "44302a",
+      "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "L30",
+      "partNum": "44302a",
+      "color": "Green",
       "qty": 1
     }
   ],
@@ -514277,8 +514295,8 @@
       "p": "44302a",
       "c": "Green",
       "d": "Hinge Plate 1 x 2 Locking with 2 Fingers On End, with Groove, 9 Teeth",
-      "e": "",
-      "u": 1791916924851,
+      "e": "4183062",
+      "u": 1793382377092,
       "at": 1791660732205
     },
     "4213|green": {
@@ -585236,6 +585254,13 @@
       "d": "Hinge Plate 1 x 2 Locking with 2 Fingers On End, without Groove, 7 Teeth",
       "e": "6267049",
       "u": 1793382335846
+    },
+    "44302a|blue": {
+      "p": "44302a",
+      "c": "Blue",
+      "d": "Hinge Plate 1 x 2 Locking with 2 Fingers On End, with Groove, 9 Teeth",
+      "e": "4183052",
+      "u": 1793382377092
     }
   },
   "partKinds": {
@@ -585379,7 +585404,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:45:38.687Z"
+      "at": "2026-10-30T17:46:21.183Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585403,7 +585428,7 @@
       "bags": "2026-10-30T17:40:49.722Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:45:38.687Z",
+    "savedAt": "2026-10-30T17:46:21.183Z",
     "appVersion": "2026.10.29.1"
   }
 }
