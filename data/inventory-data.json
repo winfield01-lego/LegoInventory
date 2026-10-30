@@ -457839,7 +457839,7 @@
       "label": "Q1",
       "notes": "1 x 6 x 2 and 1 x 6 x 2 Windows",
       "group": "Q",
-      "lastEdited": "2026-10-30T18:11:59.734Z"
+      "lastEdited": "2026-10-30T18:13:12.415Z"
     },
     {
       "id": "Q2",
@@ -478928,6 +478928,12 @@
       "partNum": "4863",
       "color": "White",
       "qty": 6
+    },
+    {
+      "drawerId": "Q1",
+      "partNum": "61345",
+      "color": "Dark Blue",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -585386,6 +585392,13 @@
       "d": "Window 1 x 4 x 2 Plane, Solid Studs",
       "e": "4217651",
       "u": 1793383920936
+    },
+    "61345|dark blue": {
+      "p": "61345",
+      "c": "Dark Blue",
+      "d": "Window 1 x 4 x 2 Plane, Hollow Studs, Single Hole Top and Bottom for Glass",
+      "e": "6097407",
+      "u": 1793383993618
     }
   },
   "partKinds": {
@@ -585529,7 +585542,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T18:12:05.023Z"
+      "at": "2026-10-30T18:13:16.460Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585553,7 +585566,7 @@
       "bags": "2026-10-30T17:50:50.601Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T18:12:05.023Z",
+    "savedAt": "2026-10-30T18:13:16.460Z",
     "appVersion": "2026.10.29.1"
   }
 }
