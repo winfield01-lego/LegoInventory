@@ -457571,7 +457571,7 @@
       "label": "R3",
       "notes": "Rotation Joints Click and Ball and Socket",
       "group": "R",
-      "lastEdited": "2026-10-30T17:17:23.677Z"
+      "lastEdited": "2026-10-30T17:17:40.644Z"
     },
     {
       "id": "R4",
@@ -478504,6 +478504,12 @@
     {
       "drawerId": "R3",
       "partNum": "67697",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "61054",
       "color": "Black",
       "qty": 1
     }
@@ -584709,6 +584715,13 @@
       "d": "Technic Beam 1 x 2 with Ball Joint Holes in Ball",
       "e": "6338171",
       "u": 1793380644879
+    },
+    "61054|black": {
+      "p": "61054",
+      "c": "Black",
+      "d": "Technic Axle and Pin Connector 2 x 7 with Two Ball Joint Sockets [Squared Ends]",
+      "e": "4519224",
+      "u": 1793380661845
     }
   },
   "partKinds": {
@@ -584852,7 +584865,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:17:27.714Z"
+      "at": "2026-10-30T17:17:44.677Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584876,7 +584889,7 @@
       "bags": "2026-10-30T17:14:33.224Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:17:27.714Z",
+    "savedAt": "2026-10-30T17:17:44.677Z",
     "appVersion": "2026.10.29.1"
   }
 }
