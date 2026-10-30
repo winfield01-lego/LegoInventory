@@ -456321,7 +456321,7 @@
       "label": "L36",
       "notes": "1 x 6 Train Wagon End / Fence",
       "group": "L",
-      "lastEdited": "2026-10-29T22:11:36.028Z"
+      "lastEdited": "2026-10-30T00:35:18.638Z"
     },
     {
       "id": "L37",
@@ -475665,7 +475665,7 @@
       "partNum": "6583",
       "color": "Dark Bluish Gray",
       "elementId": "4211047",
-      "qty": 1
+      "qty": 8
     },
     {
       "drawerId": "L36",
@@ -476984,6 +476984,13 @@
       "partNum": "43888",
       "color": "Tan",
       "qty": 1
+    },
+    {
+      "drawerId": "L36",
+      "partNum": "6583",
+      "color": "Yellow",
+      "elementId": "4251468",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -477396,6 +477403,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu8qg6y_rpwn5",
+      "label": "10/19 Bricklink Order (batch 2)",
+      "bagId": "bagprog_mvk75aw3_outd",
+      "bagLabel": "10/19 Bricklink Order",
+      "batch": 2,
+      "timestamp": "2026-10-30T00:35:18.778Z",
+      "items": [
+        {
+          "partNum": "6583",
+          "color": "Dark Bluish Gray",
+          "desc": "Plate Special 1 x 6 with Train Wagon End Fence",
+          "elementId": "4211047",
+          "qty": 7,
+          "drawerId": "L36",
+          "drawerLabel": "L36"
+        },
+        {
+          "partNum": "6583",
+          "color": "Yellow",
+          "desc": "Plate Special 1 x 6 with Train Wagon End Fence",
+          "elementId": "4251468",
+          "qty": 2,
+          "drawerId": "L36",
+          "drawerLabel": "L36"
+        }
+      ]
+    },
     {
       "id": "bag_mvu849s2_jd29d",
       "label": "October 17 BAM Visit (batch 69)",
@@ -487201,28 +487236,6 @@
           "sel": false
         },
         {
-          "partNum": "6583",
-          "color": "Dark Bluish Gray",
-          "desc": "Plate Special 1 x 6 with Train Wagon End Fence",
-          "elementId": "4211047",
-          "qty": 7,
-          "drawerId": "L36",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "6583",
-          "color": "Yellow",
-          "desc": "Plate Special 1 x 6 with Train Wagon End Fence",
-          "elementId": "4251468",
-          "qty": 2,
-          "drawerId": "L36",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": true
-        },
-        {
           "partNum": "4515",
           "color": "Light Bluish Gray",
           "desc": "Brick Sloped 10° 6 x 8",
@@ -487289,12 +487302,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T00:35:13.154Z",
+      "savedAt": "2026-10-30T00:35:18.778Z",
       "keepOpen": true,
       "moved": {
-        "batches": 1,
-        "pieces": 81,
-        "last": "2026-10-29T05:35:01.730Z"
+        "batches": 2,
+        "pieces": 90,
+        "last": "2026-10-30T00:35:18.778Z"
       }
     },
     {
@@ -579484,7 +579497,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T00:35:17.189Z"
+      "at": "2026-10-30T00:35:24.059Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -579505,10 +579518,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T00:35:13.154Z",
+      "bags": "2026-10-30T00:35:18.778Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T00:35:17.189Z",
+    "savedAt": "2026-10-30T00:35:24.059Z",
     "appVersion": "2026.10.29.1"
   }
 }
