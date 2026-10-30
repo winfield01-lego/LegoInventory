@@ -456210,7 +456210,7 @@
       "label": "L20",
       "notes": "Bar with Clip and Nozzles",
       "group": "L",
-      "lastEdited": "2026-10-30T04:34:19.550Z"
+      "lastEdited": "2026-10-30T05:34:31.491Z"
     },
     {
       "id": "L21",
@@ -456896,7 +456896,7 @@
       "label": "N30",
       "notes": "Panels with Bars",
       "group": "N",
-      "lastEdited": "2026-10-29T20:50:24.408Z"
+      "lastEdited": "2026-10-30T05:34:31.491Z"
     },
     {
       "id": "N31",
@@ -457848,7 +457848,7 @@
       "label": "Q4",
       "notes": "Windows - 4 wide",
       "group": "Q",
-      "lastEdited": "2026-10-30T04:01:13.118Z"
+      "lastEdited": "2026-10-30T05:34:31.492Z"
     },
     {
       "id": "Q5",
@@ -471513,7 +471513,7 @@
       "drawerId": "L20",
       "partNum": "3484",
       "color": "Black",
-      "qty": 40
+      "qty": 41
     },
     {
       "drawerId": "L20",
@@ -471525,7 +471525,7 @@
       "drawerId": "L20",
       "partNum": "3484",
       "color": "Dark Bluish Gray",
-      "qty": 54
+      "qty": 55
     },
     {
       "drawerId": "L20",
@@ -471580,7 +471580,7 @@
       "drawerId": "L20",
       "partNum": "60849",
       "color": "Yellow",
-      "qty": 7
+      "qty": 8
     },
     {
       "drawerId": "L22",
@@ -473509,7 +473509,7 @@
       "drawerId": "N30",
       "partNum": "5066",
       "color": "Dark Bluish Gray",
-      "qty": 3
+      "qty": 4
     },
     {
       "drawerId": "N30",
@@ -475633,7 +475633,7 @@
       "drawerId": "Q4",
       "partNum": "60608",
       "color": "Green",
-      "qty": 1
+      "qty": 2
     },
     {
       "drawerId": "Q4",
@@ -477535,6 +477535,61 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvujf8pa_tqug1",
+      "label": "October 17 BAM Visit (batch 74)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 74,
+      "timestamp": "2026-10-30T05:34:31.630Z",
+      "items": [
+        {
+          "partNum": "3484",
+          "color": "Black",
+          "desc": "Bar 1L with Clip [Cut Edges and One Side Hole] [Full Clip]",
+          "elementId": "6439039",
+          "qty": 1,
+          "drawerId": "L20",
+          "drawerLabel": "L20"
+        },
+        {
+          "partNum": "3484",
+          "color": "Dark Bluish Gray",
+          "desc": "Bar 1L with Clip [Cut Edges and One Side Hole] [Full Clip]",
+          "elementId": "6439040",
+          "qty": 1,
+          "drawerId": "L20",
+          "drawerLabel": "L20"
+        },
+        {
+          "partNum": "60849",
+          "color": "Yellow",
+          "desc": "Equipment Hose Nozzle / Gun with Side String Hole Simplified",
+          "elementId": "4498789",
+          "qty": 1,
+          "drawerId": "L20",
+          "drawerLabel": "L20"
+        },
+        {
+          "partNum": "5066",
+          "color": "Dark Bluish Gray",
+          "desc": "Plate Special 2 x 2 with Horizontal T-Bar Underneath",
+          "elementId": "6457961",
+          "qty": 1,
+          "drawerId": "N30",
+          "drawerLabel": "N30"
+        },
+        {
+          "partNum": "60608",
+          "color": "Green",
+          "desc": "Window 1 x 2 x 3 Pane with Thick Corner Tabs",
+          "elementId": "6112266",
+          "qty": 1,
+          "drawerId": "Q4",
+          "drawerLabel": "Q4"
+        }
+      ]
+    },
     {
       "id": "bag_mvuh9tpt_naile",
       "label": "October 17 BAM Visit (batch 73)",
@@ -489629,7 +489684,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "17485",
@@ -489639,7 +489695,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "17485",
@@ -489649,7 +489706,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "3941",
@@ -489659,7 +489717,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "35654",
@@ -489669,7 +489728,8 @@
           "qty": 5,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "3032",
@@ -489679,7 +489739,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "32739",
@@ -489689,7 +489750,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "64567",
@@ -489699,7 +489761,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "32039",
@@ -489709,7 +489772,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "78666",
@@ -489719,7 +489783,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "78666",
@@ -489729,7 +489794,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "11477",
@@ -489739,7 +489805,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "11477",
@@ -489749,7 +489816,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "11477",
@@ -489759,7 +489827,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "30162",
@@ -489769,7 +489838,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "42195",
@@ -489779,7 +489849,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "6538b",
@@ -489789,7 +489860,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "37352",
@@ -489799,7 +489871,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "14418",
@@ -489809,7 +489882,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "80431",
@@ -489819,7 +489893,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "80431",
@@ -489829,7 +489904,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "3183b",
@@ -489839,7 +489915,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "3170",
@@ -489849,7 +489926,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "15460",
@@ -489859,7 +489937,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "98585",
@@ -489869,7 +489948,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "2609a",
@@ -489879,7 +489959,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "4735",
@@ -489889,29 +489970,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "3484",
-          "color": "Black",
-          "desc": "Bar 1L with Clip [Cut Edges and One Side Hole] [Full Clip]",
-          "elementId": "6439039",
-          "qty": 1,
-          "drawerId": "L20",
-          "matchCount": 0,
           "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3484",
-          "color": "Dark Bluish Gray",
-          "desc": "Bar 1L with Clip [Cut Edges and One Side Hole] [Full Clip]",
-          "elementId": "6439040",
-          "qty": 1,
-          "drawerId": "L20",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
+          "sel": false
         },
         {
           "partNum": "1126",
@@ -489921,7 +489981,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "77808",
@@ -489931,7 +489992,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "30137",
@@ -489941,7 +490003,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "32072",
@@ -489951,7 +490014,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "32072",
@@ -489961,7 +490025,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "35442",
@@ -489971,7 +490036,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "6589",
@@ -489981,7 +490047,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "87407",
@@ -489991,7 +490058,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "69779",
@@ -490001,7 +490069,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "25269",
@@ -490011,7 +490080,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "25269",
@@ -490021,7 +490091,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "6190",
@@ -490031,7 +490102,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "7052",
@@ -490041,7 +490113,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "11253",
@@ -490051,7 +490124,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "4133",
@@ -490061,7 +490135,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "27263",
@@ -490071,7 +490146,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "1750",
@@ -490081,7 +490157,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "6081",
@@ -490091,7 +490168,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "89522",
@@ -490101,7 +490179,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "53451",
@@ -490111,7 +490190,8 @@
           "qty": 5,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "61409",
@@ -490121,7 +490201,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "32828",
@@ -490131,7 +490212,8 @@
           "qty": 1,
           "drawerId": "J25",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "24482",
@@ -490141,7 +490223,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "59900",
@@ -490151,7 +490234,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "85861",
@@ -490161,29 +490245,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "60849",
-          "color": "Yellow",
-          "desc": "Equipment Hose Nozzle / Gun with Side String Hole Simplified",
-          "elementId": "4498789",
-          "qty": 1,
-          "drawerId": "L20",
-          "matchCount": 0,
           "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "5066",
-          "color": "Dark Bluish Gray",
-          "desc": "Plate Special 2 x 2 with Horizontal T-Bar Underneath",
-          "elementId": "6457961",
-          "qty": 1,
-          "drawerId": "N30",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
+          "sel": false
         },
         {
           "partNum": "34816",
@@ -490193,7 +490256,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "30365",
@@ -490203,18 +490267,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "60608",
-          "color": "Green",
-          "desc": "Window 1 x 2 x 3 Pane with Thick Corner Tabs",
-          "elementId": "6112266",
-          "qty": 1,
-          "drawerId": "Q4",
-          "matchCount": 0,
           "suggested": false,
-          "sel": true
+          "sel": false
         },
         {
           "partNum": "30386",
@@ -490224,7 +490278,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "85861",
@@ -490234,7 +490289,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "54657",
@@ -490244,7 +490300,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "44569",
@@ -490254,7 +490311,8 @@
           "qty": 2,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "3839b",
@@ -490264,7 +490322,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "3730",
@@ -490274,7 +490333,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "4863",
@@ -490284,7 +490344,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "32529",
@@ -490294,7 +490355,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "3648a",
@@ -490304,7 +490366,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "98138",
@@ -490314,7 +490377,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "30586",
@@ -490324,7 +490388,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "76766",
@@ -490334,7 +490399,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "65826",
@@ -490344,7 +490410,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "4285a",
@@ -490354,7 +490421,8 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         },
         {
           "partNum": "49699",
@@ -490364,15 +490432,16 @@
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
-          "suggested": false
+          "suggested": false,
+          "sel": false
         }
       ],
-      "savedAt": "2026-10-30T05:34:01.890Z",
+      "savedAt": "2026-10-30T05:34:31.629Z",
       "keepOpen": true,
       "moved": {
-        "batches": 73,
-        "pieces": 1634,
-        "last": "2026-10-30T04:34:19.697Z"
+        "batches": 74,
+        "pieces": 1639,
+        "last": "2026-10-30T05:34:31.629Z"
       }
     },
     {
@@ -582613,7 +582682,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T05:34:05.920Z"
+      "at": "2026-10-30T05:34:35.669Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -582634,10 +582703,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T05:34:01.890Z",
+      "bags": "2026-10-30T05:34:31.630Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T05:34:05.920Z",
+    "savedAt": "2026-10-30T05:34:35.669Z",
     "appVersion": "2026.10.29.1"
   }
 }
