@@ -456721,7 +456721,7 @@
       "label": "N4",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-29T22:49:11.007Z"
+      "lastEdited": "2026-10-30T15:06:40.874Z"
     },
     {
       "id": "N5",
@@ -478137,6 +478137,12 @@
       "partNum": "27263",
       "color": "White",
       "qty": 11
+    },
+    {
+      "drawerId": "N4",
+      "partNum": "37352",
+      "color": "Orange",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -478549,6 +478555,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvv3v1fy_9j7y4",
+      "label": "October 17 BAM Visit (batch 90)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 90,
+      "timestamp": "2026-10-30T15:06:41.038Z",
+      "items": [
+        {
+          "partNum": "37352",
+          "color": "Orange",
+          "desc": "Brick Curved 1 x 2 x 1 No Studs",
+          "elementId": "6385785",
+          "qty": 1,
+          "drawerId": "N4",
+          "drawerLabel": "N4"
+        }
+      ]
+    },
     {
       "id": "bag_mvv3o88m_6pb9h",
       "label": "October 17 BAM Visit (batch 89)",
@@ -491061,17 +491086,6 @@
           "sel": false
         },
         {
-          "partNum": "37352",
-          "color": "Orange",
-          "desc": "Brick Curved 1 x 2 x 1 No Studs",
-          "elementId": "6385785",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "14418",
           "color": "Light Bluish Gray",
           "desc": "Plate Special 1 x 2 5.9mm Towball Socket",
@@ -491567,12 +491581,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T15:01:23.254Z",
+      "savedAt": "2026-10-30T15:06:41.038Z",
       "keepOpen": true,
       "moved": {
-        "batches": 89,
-        "pieces": 1670,
-        "last": "2026-10-30T15:01:23.254Z"
+        "batches": 90,
+        "pieces": 1671,
+        "last": "2026-10-30T15:06:41.038Z"
       }
     },
     {
@@ -584237,7 +584251,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T15:05:52.413Z"
+      "at": "2026-10-30T15:06:45.067Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584258,10 +584272,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T15:01:23.254Z",
+      "bags": "2026-10-30T15:06:41.038Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T15:05:52.413Z",
+    "savedAt": "2026-10-30T15:06:45.067Z",
     "appVersion": "2026.10.29.1"
   }
 }
