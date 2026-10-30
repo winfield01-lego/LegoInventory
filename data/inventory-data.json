@@ -457134,7 +457134,7 @@
       "label": "O19",
       "notes": "2 Finger Hinge Bricks - 1 x 2 and 2 x 2 Horizontal and Vertical",
       "group": "O",
-      "lastEdited": "2026-10-30T16:45:11.166Z"
+      "lastEdited": "2026-10-30T16:46:55.449Z"
     },
     {
       "id": "O20",
@@ -478260,6 +478260,24 @@
       "drawerId": "O19",
       "partNum": "30365",
       "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "O19",
+      "partNum": "40902",
+      "color": "Black",
+      "qty": 4
+    },
+    {
+      "drawerId": "O19",
+      "partNum": "40902",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "O19",
+      "partNum": "40902",
+      "color": "Light Bluish Gray",
       "qty": 1
     }
   ],
@@ -584281,6 +584299,27 @@
       "d": "Hinge Brick 1 x 2 Locking with 2 Fingers Vertical End, 9 Teeth",
       "e": "3036523",
       "u": 1793378663139
+    },
+    "40902|black": {
+      "p": "40902",
+      "c": "Black",
+      "d": "Hinge Brick 2 x 2 Locking with 2 Fingers Vertical and Axle Hole, 9 Teeth",
+      "e": "4162235",
+      "u": 1793378816650
+    },
+    "40902|dark bluish gray": {
+      "p": "40902",
+      "c": "Dark Bluish Gray",
+      "d": "Hinge Brick 2 x 2 Locking with 2 Fingers Vertical and Axle Hole, 9 Teeth",
+      "e": "4210791",
+      "u": 1793378816650
+    },
+    "40902|light bluish gray": {
+      "p": "40902",
+      "c": "Light Bluish Gray",
+      "d": "Hinge Brick 2 x 2 Locking with 2 Fingers Vertical and Axle Hole, 9 Teeth",
+      "e": "4215971",
+      "u": 1793378816650
     }
   },
   "partKinds": {
@@ -584424,7 +584463,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T16:45:15.202Z"
+      "at": "2026-10-30T16:46:59.485Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584448,7 +584487,7 @@
       "bags": "2026-10-30T16:44:21.938Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T16:45:15.202Z",
+    "savedAt": "2026-10-30T16:46:59.485Z",
     "appVersion": "2026.10.29.1"
   }
 }
