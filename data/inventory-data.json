@@ -454572,7 +454572,7 @@
       "label": "G14",
       "notes": "Gates and Doors with 2 finger connections",
       "group": "G",
-      "lastEdited": "2026-10-30T19:07:49.723Z"
+      "lastEdited": "2026-10-30T19:09:30.816Z"
     },
     {
       "id": "G15",
@@ -479284,6 +479284,31 @@
       "partNum": "44569",
       "color": "Dark Bluish Gray",
       "qty": 2
+    },
+    {
+      "drawerId": "G14",
+      "partNum": "44570",
+      "color": "Blue",
+      "qty": 3
+    },
+    {
+      "drawerId": "G14",
+      "partNum": "44570",
+      "color": "Dark Bluish Gray",
+      "elementId": "4194562",
+      "qty": 3
+    },
+    {
+      "drawerId": "G14",
+      "partNum": "44570",
+      "color": "Light Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "G14",
+      "partNum": "44570",
+      "color": "White",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -515932,8 +515957,8 @@
       "p": "44570",
       "c": "Blue",
       "d": "Hinge Plate 3 x 4 Locking Dual 2 Finger, 9 Teeth",
-      "e": "",
-      "u": 1791916924851,
+      "e": "4194559",
+      "u": 1793387372018,
       "at": 1791660732205
     },
     "4081b|blue": {
@@ -520729,9 +520754,12 @@
       "c": "Dark Bluish Gray",
       "d": "Hinge Plate 3 x 4 Locking Dual 2 Finger, 9 Teeth",
       "e": "4552248",
-      "u": 1791916924851,
+      "u": 1793387372018,
       "at": 1791654462245,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4194562.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4194562.jpg",
+      "ea": [
+        "4194562"
+      ]
     },
     "30350b|dark bluish gray": {
       "p": "30350b",
@@ -585998,6 +586026,20 @@
       "d": "Hinge Train Gate 2 x 4 Locking Dual 2 Fingers with Rear Reinforcements, 9 Teeth",
       "e": "4210926",
       "u": 1793387234643
+    },
+    "44570|light bluish gray": {
+      "p": "44570",
+      "c": "Light Bluish Gray",
+      "d": "Hinge Plate 3 x 4 Locking Dual 2 Finger, 9 Teeth",
+      "e": "4211841",
+      "u": 1793387372018
+    },
+    "44570|white": {
+      "p": "44570",
+      "c": "White",
+      "d": "Hinge Plate 3 x 4 Locking Dual 2 Finger, 9 Teeth",
+      "e": "4194558",
+      "u": 1793387372018
     }
   },
   "partKinds": {
@@ -586141,7 +586183,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T19:07:53.752Z"
+      "at": "2026-10-30T19:09:36.121Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -586165,7 +586207,7 @@
       "bags": "2026-10-30T19:07:13.442Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T19:07:53.752Z",
+    "savedAt": "2026-10-30T19:09:36.121Z",
     "appVersion": "2026.10.29.1"
   }
 }
