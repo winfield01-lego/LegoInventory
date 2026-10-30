@@ -455398,7 +455398,7 @@
       "label": "J6",
       "notes": "Animal Horns and Barbs",
       "group": "j",
-      "lastEdited": "2026-10-30T18:32:08.881Z"
+      "lastEdited": "2026-10-30T18:32:41.732Z"
     },
     {
       "id": "J7",
@@ -478998,6 +478998,19 @@
       "drawerId": "J6",
       "partNum": "24204",
       "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "J6",
+      "partNum": "64847",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "J6",
+      "partNum": "64847",
+      "color": "Tan",
+      "elementId": "4551156",
       "qty": 1
     }
   ],
@@ -550344,8 +550357,11 @@
       "c": "Tan",
       "d": "Animal Body Part, Horn (Cattle)",
       "e": "6368620",
-      "u": 1791916924851,
-      "at": 1791654657762
+      "u": 1793385162934,
+      "at": 1791654657762,
+      "ea": [
+        "4551156"
+      ]
     },
     "11090|tan": {
       "p": "11090",
@@ -585538,6 +585554,13 @@
       "d": "Plant / Animal Body Part, Tree / Branch / Tail / Appendage Bladed with Pin",
       "e": "6536753",
       "u": 1793385130083
+    },
+    "64847|black": {
+      "p": "64847",
+      "c": "Black",
+      "d": "Animal Body Part, Horn (Cattle)",
+      "e": "6536138",
+      "u": 1793385162934
     }
   },
   "partKinds": {
@@ -585681,7 +585704,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T18:32:12.909Z"
+      "at": "2026-10-30T18:32:45.758Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585705,7 +585728,7 @@
       "bags": "2026-10-30T18:29:26.976Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T18:32:12.909Z",
+    "savedAt": "2026-10-30T18:32:45.757Z",
     "appVersion": "2026.10.29.1"
   }
 }
