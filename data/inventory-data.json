@@ -454445,7 +454445,7 @@
       "label": "F38",
       "notes": "",
       "group": "F",
-      "lastEdited": "2026-10-30T20:41:43.106Z"
+      "lastEdited": "2026-10-30T20:42:45.340Z"
     },
     {
       "id": "F39",
@@ -479984,6 +479984,12 @@
       "partNum": "3649",
       "color": "Light Bluish Gray",
       "qty": 7
+    },
+    {
+      "drawerId": "F38",
+      "partNum": "4019",
+      "color": "Light Bluish Gray",
+      "qty": 11
     }
   ],
   "mocLocations": {
@@ -587056,6 +587062,13 @@
       "d": "Technic Gear 40 Tooth",
       "e": "4211433",
       "u": 1793392904308
+    },
+    "4019|light bluish gray": {
+      "p": "4019",
+      "c": "Light Bluish Gray",
+      "d": "Technic Gear 16 Tooth with Round Holes [Old Style]",
+      "e": "4019194",
+      "u": 1793392966542
     }
   },
   "partKinds": {
@@ -587199,7 +587212,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:41:47.143Z"
+      "at": "2026-10-30T20:42:49.366Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -587223,7 +587236,7 @@
       "bags": "2026-10-30T20:36:50.485Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:41:47.143Z",
+    "savedAt": "2026-10-30T20:42:49.366Z",
     "appVersion": "2026.10.30.1"
   }
 }
