@@ -457571,7 +457571,7 @@
       "label": "R3",
       "notes": "",
       "group": "R",
-      "lastEdited": "2026-10-13T17:14:36.333Z"
+      "lastEdited": "2026-10-30T17:14:33.077Z"
     },
     {
       "id": "R4",
@@ -478481,6 +478481,18 @@
       "color": "Dark Bluish Gray",
       "elementId": "6039482",
       "qty": 16
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "80431",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "80431",
+      "color": "Red",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -478893,6 +478905,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvv8fhc8_f4hln",
+      "label": "October 17 BAM Visit (batch 96)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 96,
+      "timestamp": "2026-10-30T17:14:33.224Z",
+      "items": [
+        {
+          "partNum": "80431",
+          "color": "Dark Bluish Gray",
+          "desc": "Brick Special 1 x 2 x 1 1/3 with Rotation Joint Socket",
+          "elementId": "6398662",
+          "qty": 1,
+          "drawerId": "R3",
+          "drawerLabel": "R3"
+        },
+        {
+          "partNum": "80431",
+          "color": "Red",
+          "desc": "Brick Special 1 x 2 x 1 1/3 with Rotation Joint Socket",
+          "elementId": "6377024",
+          "qty": 2,
+          "drawerId": "R3",
+          "drawerLabel": "R3"
+        }
+      ]
+    },
     {
       "id": "bag_mvv8a6n6_ofn08",
       "label": "October 17 BAM Visit (batch 95)",
@@ -491528,28 +491568,6 @@
           "sel": false
         },
         {
-          "partNum": "80431",
-          "color": "Dark Bluish Gray",
-          "desc": "Brick Special 1 x 2 x 1 1/3 with Rotation Joint Socket",
-          "elementId": "6398662",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "80431",
-          "color": "Red",
-          "desc": "Brick Special 1 x 2 x 1 1/3 with Rotation Joint Socket",
-          "elementId": "6377024",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "3183b",
           "color": "White",
           "desc": "Plate Special 1 x 4 with Towball Socket, Long, 4 Slots",
@@ -491957,12 +491975,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T17:14:19.210Z",
+      "savedAt": "2026-10-30T17:14:33.224Z",
       "keepOpen": true,
       "moved": {
-        "batches": 95,
-        "pieces": 1678,
-        "last": "2026-10-30T17:10:26.082Z"
+        "batches": 96,
+        "pieces": 1681,
+        "last": "2026-10-30T17:14:33.224Z"
       }
     },
     {
@@ -584811,7 +584829,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:14:23.244Z"
+      "at": "2026-10-30T17:14:37.246Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584832,10 +584850,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T17:14:19.210Z",
+      "bags": "2026-10-30T17:14:33.224Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:14:23.244Z",
+    "savedAt": "2026-10-30T17:14:37.246Z",
     "appVersion": "2026.10.29.1"
   }
 }
