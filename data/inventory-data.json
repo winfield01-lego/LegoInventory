@@ -457839,7 +457839,7 @@
       "label": "Q1",
       "notes": "1 x 6 x 2 and 1 x 6 x 2 Windows",
       "group": "Q",
-      "lastEdited": "2026-10-30T18:14:34.281Z"
+      "lastEdited": "2026-10-30T18:16:04.432Z"
     },
     {
       "id": "Q2",
@@ -478921,6 +478921,25 @@
       "partNum": "61345",
       "color": "Dark Blue",
       "qty": 1
+    },
+    {
+      "drawerId": "Q1",
+      "partNum": "61345",
+      "color": "Blue",
+      "elementId": "4577218",
+      "qty": 26
+    },
+    {
+      "drawerId": "Q1",
+      "partNum": "61345",
+      "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q1",
+      "partNum": "61345",
+      "color": "White",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -498325,9 +498344,12 @@
       "c": "Blue",
       "d": "Window 1 x 4 x 2 Plane, Hollow Studs, Single Hole Top and Bottom for Glass",
       "e": "6207688",
-      "u": 1791916924851,
+      "u": 1793384165635,
       "at": 1792904691991,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4577218.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4577218.jpg",
+      "ea": [
+        "4577218"
+      ]
     },
     "22484|dark bluish gray": {
       "p": "22484",
@@ -585386,6 +585408,13 @@
       "d": "Window 1 x 4 x 2 Plane, Hollow Studs, Single Hole Top and Bottom for Glass",
       "e": "6097407",
       "u": 1793383993618
+    },
+    "61345|yellow": {
+      "p": "61345",
+      "c": "Yellow",
+      "d": "Window 1 x 4 x 2 Plane, Hollow Studs, Single Hole Top and Bottom for Glass",
+      "e": "4521696",
+      "u": 1793384165635
     }
   },
   "partKinds": {
@@ -585529,7 +585558,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T18:14:38.311Z"
+      "at": "2026-10-30T18:16:09.712Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585553,7 +585582,7 @@
       "bags": "2026-10-30T17:50:50.601Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T18:14:38.311Z",
+    "savedAt": "2026-10-30T18:16:09.712Z",
     "appVersion": "2026.10.29.1"
   }
 }
