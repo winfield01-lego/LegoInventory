@@ -454445,7 +454445,7 @@
       "label": "F38",
       "notes": "",
       "group": "F",
-      "lastEdited": "2026-10-30T20:36:50.324Z"
+      "lastEdited": "2026-10-30T20:38:13.891Z"
     },
     {
       "id": "F39",
@@ -479929,6 +479929,18 @@
       "color": "Light Gray",
       "elementId": "",
       "qty": 1
+    },
+    {
+      "drawerId": "F38",
+      "partNum": "35443",
+      "color": "Dark Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "F38",
+      "partNum": "35443",
+      "color": "Medium Azure",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -586963,6 +586975,13 @@
       "d": "Technic Gear 24 Tooth [Old Style - Three Axle Holes]",
       "e": "",
       "u": 1793392611686
+    },
+    "35443|medium azure": {
+      "p": "35443",
+      "c": "Medium Azure",
+      "d": "Plate Special 4 x 4 Splat Gear, 10 Teeth",
+      "e": "6238331",
+      "u": 1793392695093
     }
   },
   "partKinds": {
@@ -587106,7 +587125,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:36:54.523Z"
+      "at": "2026-10-30T20:38:17.944Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -587130,7 +587149,7 @@
       "bags": "2026-10-30T20:36:50.485Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:36:54.523Z",
+    "savedAt": "2026-10-30T20:38:17.944Z",
     "appVersion": "2026.10.30.1"
   }
 }
