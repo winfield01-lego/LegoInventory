@@ -456018,7 +456018,7 @@
       "label": "K32",
       "notes": "Technic 4 Lob wheels and Links",
       "group": "K",
-      "lastEdited": "2026-10-30T20:27:28.640Z"
+      "lastEdited": "2026-10-30T20:28:02.540Z"
     },
     {
       "id": "K33",
@@ -479851,7 +479851,7 @@
       "partNum": "15460",
       "color": "Dark Bluish Gray",
       "elementId": "6055629",
-      "qty": 3
+      "qty": 4
     },
     {
       "drawerId": "K32",
@@ -480277,6 +480277,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvfcb9q_izmt2",
+      "label": "October 17 BAM Visit (batch 114)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 114,
+      "timestamp": "2026-10-30T20:28:02.702Z",
+      "items": [
+        {
+          "partNum": "15460",
+          "color": "Dark Bluish Gray",
+          "desc": "Technic Steering Gear with 3 Towball Joints, Compact",
+          "elementId": "6055629",
+          "qty": 1,
+          "drawerId": "K32",
+          "drawerLabel": "K32"
+        }
+      ]
+    },
     {
       "id": "bag_mvvf7ycw_bq5mo",
       "label": "October 17 BAM Visit (batch 113)",
@@ -493325,17 +493344,6 @@
           "sel": false
         },
         {
-          "partNum": "15460",
-          "color": "Dark Bluish Gray",
-          "desc": "Technic Steering Gear with 3 Towball Joints, Compact",
-          "elementId": "6055629",
-          "qty": 1,
-          "drawerId": "K32",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "2609a",
           "color": "White",
           "desc": "Magnet Holder Tile 2 x 2 - Short Arms",
@@ -493501,12 +493509,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T20:27:52.853Z",
+      "savedAt": "2026-10-30T20:28:02.702Z",
       "keepOpen": true,
       "moved": {
-        "batches": 113,
-        "pieces": 1714,
-        "last": "2026-10-30T20:24:39.344Z"
+        "batches": 114,
+        "pieces": 1715,
+        "last": "2026-10-30T20:28:02.702Z"
       }
     },
     {
@@ -586980,7 +586988,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:27:56.872Z"
+      "at": "2026-10-30T20:28:06.743Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -587001,10 +587009,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T20:27:52.853Z",
+      "bags": "2026-10-30T20:28:02.702Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:27:56.872Z",
+    "savedAt": "2026-10-30T20:28:06.743Z",
     "appVersion": "2026.10.30.1"
   }
 }
