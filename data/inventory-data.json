@@ -456237,7 +456237,7 @@
       "label": "L24",
       "notes": "Short and Long Antennae",
       "group": "L",
-      "lastEdited": "2026-10-30T00:18:52.395Z"
+      "lastEdited": "2026-10-30T00:23:28.401Z"
     },
     {
       "id": "L25",
@@ -476828,6 +476828,37 @@
       "color": "Black",
       "elementId": "256926",
       "qty": 2
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "3957b",
+      "color": "Black",
+      "qty": 8
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "3957b",
+      "color": "Blue",
+      "qty": 3
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "3957b",
+      "color": "Light Bluish Gray",
+      "qty": 5
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "3957b",
+      "color": "Reddish Brown",
+      "qty": 5
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "3957b",
+      "color": "White",
+      "elementId": "395701",
+      "qty": 12
     }
   ],
   "mocLocations": {
@@ -534195,9 +534226,12 @@
       "c": "White",
       "d": "Antenna 1 x 4 with Flat Top",
       "e": "6550147",
-      "u": 1791916924851,
+      "u": 1793319809603,
       "at": 1791654768078,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/395701.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/395701.jpg",
+      "ea": [
+        "395701"
+      ]
     },
     "3956|white": {
       "p": "3956",
@@ -579229,7 +579263,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T00:18:56.425Z"
+      "at": "2026-10-30T00:23:33.694Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -579253,7 +579287,7 @@
       "bags": "2026-10-30T00:18:04.034Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T00:18:56.425Z",
+    "savedAt": "2026-10-30T00:23:33.694Z",
     "appVersion": "2026.10.29.1"
   }
 }
