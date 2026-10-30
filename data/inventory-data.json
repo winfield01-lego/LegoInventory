@@ -456237,7 +456237,7 @@
       "label": "L24",
       "notes": "Short and Long Antennae",
       "group": "L",
-      "lastEdited": "2026-10-30T00:23:28.401Z"
+      "lastEdited": "2026-10-30T00:25:27.047Z"
     },
     {
       "id": "L25",
@@ -476859,6 +476859,58 @@
       "color": "White",
       "elementId": "395701",
       "qty": 12
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "3957a",
+      "color": "Black",
+      "elementId": "",
+      "qty": 16
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "3957a",
+      "color": "Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "3957a",
+      "color": "Chrome Silver",
+      "qty": 1
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "3957a",
+      "color": "Light Gray",
+      "qty": 11
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "3957a",
+      "color": "Red",
+      "elementId": "395721",
+      "qty": 2
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "3957a",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "3957a",
+      "color": "Yellow",
+      "elementId": "395724",
+      "qty": 1
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "3957a",
+      "color": "White",
+      "elementId": "",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -565234,9 +565286,12 @@
       "c": "Red",
       "d": "Antenna 1 x 4 with Rounded Top",
       "e": "4280153",
-      "u": 1791916924851,
+      "u": 1793319928249,
       "at": 1791846545325,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/4/3957a.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/4/3957a.png",
+      "ea": [
+        "395721"
+      ]
     },
     "2569|red": {
       "p": "2569",
@@ -566543,9 +566598,12 @@
       "c": "Yellow",
       "d": "Antenna 1 x 4 with Rounded Top",
       "e": "4497183",
-      "u": 1791916924851,
+      "u": 1793319928249,
       "at": 1791732100390,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/395724.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/395724.jpg",
+      "ea": [
+        "395724"
+      ]
     },
     "6217b|black": {
       "p": "6217b",
@@ -579120,6 +579178,27 @@
       "d": "Equipment Telescope / Torch / Spyglass, Support Round 1 x 1 x 1 2/3",
       "e": "4538950",
       "u": 1793319287221
+    },
+    "3957a|blue": {
+      "p": "3957a",
+      "c": "Blue",
+      "d": "Antenna 1 x 4 with Rounded Top",
+      "e": "395723",
+      "u": 1793319928249
+    },
+    "3957a|chrome silver": {
+      "p": "3957a",
+      "c": "Chrome Silver",
+      "d": "Antenna 1 x 4 with Rounded Top",
+      "e": "4143533",
+      "u": 1793319928249
+    },
+    "3957a|reddish brown": {
+      "p": "3957a",
+      "c": "Reddish Brown",
+      "d": "Antenna 1 x 4 with Rounded Top",
+      "e": "4541564",
+      "u": 1793319928249
     }
   },
   "partKinds": {
@@ -579263,7 +579342,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T00:23:33.694Z"
+      "at": "2026-10-30T00:25:32.330Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -579287,7 +579366,7 @@
       "bags": "2026-10-30T00:18:04.034Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T00:23:33.694Z",
+    "savedAt": "2026-10-30T00:25:32.330Z",
     "appVersion": "2026.10.29.1"
   }
 }
