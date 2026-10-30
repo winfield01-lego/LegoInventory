@@ -456018,7 +456018,7 @@
       "label": "K32",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-10-13T17:12:46.630Z"
+      "lastEdited": "2026-10-30T20:24:39.176Z"
     },
     {
       "id": "K33",
@@ -479812,6 +479812,27 @@
       "partNum": "98585",
       "color": "White",
       "qty": 2
+    },
+    {
+      "drawerId": "K32",
+      "partNum": "32072",
+      "color": "Black",
+      "elementId": "4248204",
+      "qty": 1
+    },
+    {
+      "drawerId": "K32",
+      "partNum": "32072",
+      "color": "Yellow",
+      "elementId": "4203493",
+      "qty": 2
+    },
+    {
+      "drawerId": "K32",
+      "partNum": "32005a",
+      "color": "Dark Bluish Gray",
+      "elementId": "4211026",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -480224,6 +480245,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvf7ycw_bq5mo",
+      "label": "October 17 BAM Visit (batch 113)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 113,
+      "timestamp": "2026-10-30T20:24:39.344Z",
+      "items": [
+        {
+          "partNum": "32072",
+          "color": "Black",
+          "desc": "Technic Knob Wheel",
+          "elementId": "4248204",
+          "qty": 1,
+          "drawerId": "K32",
+          "drawerLabel": "K32"
+        },
+        {
+          "partNum": "32072",
+          "color": "Yellow",
+          "desc": "Technic Knob Wheel",
+          "elementId": "4203493",
+          "qty": 2,
+          "drawerId": "K32",
+          "drawerLabel": "K32"
+        },
+        {
+          "partNum": "32005a",
+          "color": "Dark Bluish Gray",
+          "desc": "Technic Link 1 x 6 without Stoppers",
+          "elementId": "4211026",
+          "qty": 1,
+          "drawerId": "K32",
+          "drawerLabel": "K32"
+        }
+      ]
+    },
     {
       "id": "bag_mvvf4d3h_bzk5h",
       "label": "October 17 BAM Visit (batch 112)",
@@ -493268,28 +493326,6 @@
           "sel": false
         },
         {
-          "partNum": "32072",
-          "color": "Black",
-          "desc": "Technic Knob Wheel",
-          "elementId": "4248204",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "32072",
-          "color": "Yellow",
-          "desc": "Technic Knob Wheel",
-          "elementId": "4203493",
-          "qty": 2,
-          "drawerId": "K32",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "35442",
           "color": "Dark Purple",
           "desc": "Plate Special 2 x 2 Splat Gear, 6 Teeth",
@@ -493431,25 +493467,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "32005a",
-          "color": "Dark Bluish Gray",
-          "desc": "Technic Link 1 x 6 without Stoppers",
-          "elementId": "4211026",
-          "qty": 1,
-          "drawerId": "K32",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
         }
       ],
-      "savedAt": "2026-10-30T20:24:29.944Z",
+      "savedAt": "2026-10-30T20:24:39.343Z",
       "keepOpen": true,
       "moved": {
-        "batches": 112,
-        "pieces": 1710,
-        "last": "2026-10-30T20:21:51.821Z"
+        "batches": 113,
+        "pieces": 1714,
+        "last": "2026-10-30T20:24:39.344Z"
       }
     },
     {
@@ -500565,9 +500590,12 @@
       "c": "Dark Bluish Gray",
       "d": "Technic Link 1 x 6 without Stoppers",
       "e": "4629920",
-      "u": 1791916924851,
+      "u": 1793391880544,
       "at": 1791654717569,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4211026.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4211026.jpg",
+      "ea": [
+        "4211026"
+      ]
     },
     "62462|white": {
       "p": "62462",
@@ -524074,9 +524102,12 @@
       "c": "Yellow",
       "d": "Technic Knob Wheel",
       "e": "6284189",
-      "u": 1791916924851,
+      "u": 1793391880544,
       "at": 1791654717569,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4203493.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4203493.jpg",
+      "ea": [
+        "4203493"
+      ]
     },
     "6020|black": {
       "p": "6020",
@@ -542445,9 +542476,12 @@
       "c": "Black",
       "d": "Technic Knob Wheel",
       "e": "6284188",
-      "u": 1791916924851,
+      "u": 1793391880544,
       "at": 1791654717569,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4248204.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4248204.jpg",
+      "ea": [
+        "4248204"
+      ]
     },
     "44302b|dark bluish gray": {
       "p": "44302b",
@@ -586887,7 +586921,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:24:33.985Z"
+      "at": "2026-10-30T20:24:44.637Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -586908,10 +586942,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T20:24:29.945Z",
+      "bags": "2026-10-30T20:24:39.344Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:24:33.984Z",
+    "savedAt": "2026-10-30T20:24:44.637Z",
     "appVersion": "2026.10.30.1"
   }
 }
