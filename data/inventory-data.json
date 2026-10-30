@@ -456099,7 +456099,7 @@
       "label": "L4",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-10-30T06:14:48.325Z"
+      "lastEdited": "2026-10-30T06:17:16.296Z"
     },
     {
       "id": "L5",
@@ -477489,6 +477489,36 @@
       "partNum": "30162",
       "color": "Pearl Gold",
       "qty": 2
+    },
+    {
+      "drawerId": "L4",
+      "partNum": "4349",
+      "color": "Black",
+      "qty": 36
+    },
+    {
+      "drawerId": "L4",
+      "partNum": "4349",
+      "color": "Dark Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "L4",
+      "partNum": "4349",
+      "color": "Light Bluish Gray",
+      "qty": 5
+    },
+    {
+      "drawerId": "L4",
+      "partNum": "4349",
+      "color": "Red",
+      "qty": 5
+    },
+    {
+      "drawerId": "L4",
+      "partNum": "4349",
+      "color": "White",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -583121,6 +583151,13 @@
       "d": "Bar 1 x 3 [Clip / Anti-Stud]",
       "e": "4210699",
       "u": 1793340737082
+    },
+    "4349|light bluish gray": {
+      "p": "4349",
+      "c": "Light Bluish Gray",
+      "d": "Equipment Weapon, Loudhailer / Speaker / Blaster / Space Gun",
+      "e": "4211493",
+      "u": 1793341037505
     }
   },
   "partKinds": {
@@ -583264,7 +583301,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T06:14:53.635Z"
+      "at": "2026-10-30T06:17:20.352Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -583288,7 +583325,7 @@
       "bags": "2026-10-30T06:09:44.710Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T06:14:53.635Z",
+    "savedAt": "2026-10-30T06:17:20.352Z",
     "appVersion": "2026.10.29.1"
   }
 }
