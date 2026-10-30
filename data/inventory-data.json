@@ -454445,7 +454445,7 @@
       "label": "F38",
       "notes": "",
       "group": "F",
-      "lastEdited": "2026-10-30T20:41:06.306Z"
+      "lastEdited": "2026-10-30T20:41:43.106Z"
     },
     {
       "id": "F39",
@@ -479976,6 +479976,12 @@
     {
       "drawerId": "F38",
       "partNum": "3648b",
+      "color": "Light Bluish Gray",
+      "qty": 7
+    },
+    {
+      "drawerId": "F38",
+      "partNum": "3649",
       "color": "Light Bluish Gray",
       "qty": 7
     }
@@ -587043,6 +587049,13 @@
       "d": "Technic Gear 24 Tooth [New Style with Single Axle Hole]",
       "e": "4211565",
       "u": 1793392867516
+    },
+    "3649|light bluish gray": {
+      "p": "3649",
+      "c": "Light Bluish Gray",
+      "d": "Technic Gear 40 Tooth",
+      "e": "4211433",
+      "u": 1793392904308
     }
   },
   "partKinds": {
@@ -587186,7 +587199,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:41:11.628Z"
+      "at": "2026-10-30T20:41:47.143Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -587210,7 +587223,7 @@
       "bags": "2026-10-30T20:36:50.485Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:41:11.627Z",
+    "savedAt": "2026-10-30T20:41:47.143Z",
     "appVersion": "2026.10.30.1"
   }
 }
