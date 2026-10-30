@@ -457571,7 +457571,7 @@
       "label": "R3",
       "notes": "Rotation Joints Click and Ball and Socket",
       "group": "R",
-      "lastEdited": "2026-10-30T17:33:17.075Z"
+      "lastEdited": "2026-10-30T17:33:43.807Z"
     },
     {
       "id": "R4",
@@ -478686,6 +478686,12 @@
       "partNum": "48170",
       "color": "Light Bluish Gray",
       "qty": 2
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "1994",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -585026,6 +585032,13 @@
       "d": "Technic Brick Special 2 x 2 with Pin Hole, Rotation Joint Ball Half [Horizontal Top]",
       "e": "4226637",
       "u": 1793381598277
+    },
+    "1994|white": {
+      "p": "1994",
+      "c": "White",
+      "d": "Brick Round 2 x 2 D. Tube with Rotation Joint Ball Half",
+      "e": "6428169",
+      "u": 1793381625009
     }
   },
   "partKinds": {
@@ -585169,7 +585182,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:33:21.113Z"
+      "at": "2026-10-30T17:33:47.848Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585193,7 +585206,7 @@
       "bags": "2026-10-30T17:14:33.224Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:33:21.113Z",
+    "savedAt": "2026-10-30T17:33:47.848Z",
     "appVersion": "2026.10.29.1"
   }
 }
