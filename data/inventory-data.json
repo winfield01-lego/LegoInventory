@@ -454496,7 +454496,8 @@
       "id": "G3",
       "label": "G3",
       "notes": "",
-      "group": "G"
+      "group": "G",
+      "lastEdited": "2026-10-30T05:37:11.985Z"
     },
     {
       "id": "G4",
@@ -477129,6 +477130,12 @@
       "partNum": "4133",
       "color": "Yellow",
       "qty": 2
+    },
+    {
+      "drawerId": "G3",
+      "partNum": "95229",
+      "color": "Black",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -477541,6 +477548,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvujiojl_3km3w",
+      "label": "October 17 BAM Visit (batch 76)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 76,
+      "timestamp": "2026-10-30T05:37:12.129Z",
+      "items": [
+        {
+          "partNum": "95229",
+          "color": "Black",
+          "desc": "Bar 1 x 8 x 3 - 1 x 8 x 4 Curved",
+          "elementId": "4620385",
+          "qty": 1,
+          "drawerId": "G3",
+          "drawerLabel": "G3"
+        }
+      ]
+    },
     {
       "id": "bag_mvujhf4h_nu3wq",
       "label": "October 17 BAM Visit (batch 75)",
@@ -489702,17 +489728,6 @@
           "sel": false
         },
         {
-          "partNum": "95229",
-          "color": "Black",
-          "desc": "Bar 1 x 8 x 3 - 1 x 8 x 4 Curved",
-          "elementId": "4620385",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "17485",
           "color": "Yellow",
           "desc": "Brick Round 2 x 2, Pin Holes",
@@ -490457,15 +490472,16 @@
           "qty": 1,
           "drawerId": "Q4",
           "matchCount": 0,
-          "suggested": true
+          "suggested": true,
+          "sel": false
         }
       ],
-      "savedAt": "2026-10-30T05:36:59.888Z",
+      "savedAt": "2026-10-30T05:37:12.128Z",
       "keepOpen": true,
       "moved": {
-        "batches": 75,
-        "pieces": 1641,
-        "last": "2026-10-30T05:36:13.265Z"
+        "batches": 76,
+        "pieces": 1642,
+        "last": "2026-10-30T05:37:12.129Z"
       }
     },
     {
@@ -582570,6 +582586,13 @@
       "d": "Window 2 x 4 x 3 Pane",
       "e": "4101806",
       "u": 1793338574466
+    },
+    "95229|black": {
+      "p": "95229",
+      "c": "Black",
+      "d": "Bar 1 x 8 x 3 - 1 x 8 x 4 Curved",
+      "e": "4620385",
+      "u": 1793338633330
     }
   },
   "partKinds": {
@@ -582713,7 +582736,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T05:37:03.917Z"
+      "at": "2026-10-30T05:37:16.159Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -582734,10 +582757,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T05:36:59.888Z",
+      "bags": "2026-10-30T05:37:12.129Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T05:37:03.917Z",
+    "savedAt": "2026-10-30T05:37:16.159Z",
     "appVersion": "2026.10.29.1"
   }
 }
