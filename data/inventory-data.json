@@ -456995,7 +456995,7 @@
       "label": "N44",
       "notes": "Roofs",
       "group": "N",
-      "lastEdited": "2026-10-30T06:29:41.205Z"
+      "lastEdited": "2026-10-30T06:30:07.571Z"
     },
     {
       "id": "O1",
@@ -477668,6 +477668,18 @@
       "partNum": "52031",
       "color": "Black",
       "qty": 2
+    },
+    {
+      "drawerId": "N44",
+      "partNum": "98281",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "N44",
+      "partNum": "98281",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -583394,6 +583406,13 @@
       "d": "Brick Wedged, Curved Triple 4 x 6 x 2/3 with 4 Studs",
       "e": "4500917",
       "u": 1793341782407
+    },
+    "98281|red": {
+      "p": "98281",
+      "c": "Red",
+      "d": "Brick Curved 6 x 4 x 2/3 Quad Curved with 2 x 2 Studs",
+      "e": "6016451",
+      "u": 1793341808773
     }
   },
   "partKinds": {
@@ -583537,7 +583556,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T06:29:45.238Z"
+      "at": "2026-10-30T06:30:11.603Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -583561,7 +583580,7 @@
       "bags": "2026-10-30T06:26:26.755Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T06:29:45.238Z",
+    "savedAt": "2026-10-30T06:30:11.603Z",
     "appVersion": "2026.10.29.1"
   }
 }
