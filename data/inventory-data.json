@@ -455129,7 +455129,8 @@
       "id": "I9",
       "label": "I9",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-10-30T20:01:26.492Z"
     },
     {
       "id": "I10",
@@ -479568,6 +479569,19 @@
       "partNum": "59900",
       "color": "Yellow",
       "qty": 12
+    },
+    {
+      "drawerId": "I9",
+      "partNum": "25269",
+      "color": "Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "I9",
+      "partNum": "25269",
+      "color": "Metallic Silver",
+      "elementId": "6294879",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -479980,6 +479994,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvee3qy_eszdc",
+      "label": "October 17 BAM Visit (batch 110)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 110,
+      "timestamp": "2026-10-30T20:01:26.650Z",
+      "items": [
+        {
+          "partNum": "25269",
+          "color": "Green",
+          "desc": "Tile Round 1 x 1 Quarter",
+          "elementId": "6150607",
+          "qty": 1,
+          "drawerId": "I9",
+          "drawerLabel": "I9"
+        },
+        {
+          "partNum": "25269",
+          "color": "Metallic Silver",
+          "desc": "Tile Round 1 x 1 Quarter",
+          "elementId": "6294879",
+          "qty": 2,
+          "drawerId": "I9",
+          "drawerLabel": "I9"
+        }
+      ]
+    },
     {
       "id": "bag_mvvdfwnp_nul6p",
       "label": "October 17 BAM Visit (batch 109)",
@@ -493046,28 +493088,6 @@
           "sel": false
         },
         {
-          "partNum": "25269",
-          "color": "Green",
-          "desc": "Tile Round 1 x 1 Quarter",
-          "elementId": "6150607",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "25269",
-          "color": "Metallic Silver",
-          "desc": "Tile Round 1 x 1 Quarter",
-          "elementId": "6294879",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "6190",
           "color": "Dark Bluish Gray",
           "desc": "Bar 1 x 3 (Radio Handle, Phone Handset)",
@@ -493167,12 +493187,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T19:34:51.156Z",
+      "savedAt": "2026-10-30T20:01:26.650Z",
       "keepOpen": true,
       "moved": {
-        "batches": 109,
-        "pieces": 1705,
-        "last": "2026-10-30T19:34:51.157Z"
+        "batches": 110,
+        "pieces": 1708,
+        "last": "2026-10-30T20:01:26.650Z"
       }
     },
     {
@@ -551924,9 +551944,12 @@
       "c": "Metallic Silver",
       "d": "Tile Round 1 x 1 Quarter",
       "e": "6546124",
-      "u": 1791916924851,
+      "u": 1793390487851,
       "at": 1791654677272,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6294879.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6294879.jpg",
+      "ea": [
+        "6294879"
+      ]
     },
     "78267a|[no color/any color]": {
       "p": "78267a",
@@ -586533,7 +586556,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T19:57:20.098Z"
+      "at": "2026-10-30T20:01:31.946Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -586554,10 +586577,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T19:34:51.157Z",
+      "bags": "2026-10-30T20:01:26.650Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T19:57:20.098Z",
+    "savedAt": "2026-10-30T20:01:31.946Z",
     "appVersion": "2026.10.29.1"
   }
 }
