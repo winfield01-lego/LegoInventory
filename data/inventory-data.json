@@ -457571,7 +457571,7 @@
       "label": "R3",
       "notes": "Rotation Joints Click and Ball and Socket",
       "group": "R",
-      "lastEdited": "2026-10-30T17:20:45.261Z"
+      "lastEdited": "2026-10-30T17:21:16.527Z"
     },
     {
       "id": "R4",
@@ -478559,6 +478559,18 @@
       "drawerId": "R3",
       "partNum": "32174",
       "color": "Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "67695",
+      "color": "Black",
+      "qty": 3
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "67695",
+      "color": "Dark Bluish Gray",
       "qty": 2
     }
   ],
@@ -584805,6 +584817,13 @@
       "d": "Technic Axle Connector 2 x 3 with Ball Socket, Open Sides",
       "e": "4119331",
       "u": 1793380846465
+    },
+    "67695|dark bluish gray": {
+      "p": "67695",
+      "c": "Dark Bluish Gray",
+      "d": "Technic Axle Connector 2 x 3 with Ball Socket, Closed Sides",
+      "e": "6360824",
+      "u": 1793380877729
     }
   },
   "partKinds": {
@@ -584948,7 +584967,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:20:49.292Z"
+      "at": "2026-10-30T17:21:20.565Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584972,7 +584991,7 @@
       "bags": "2026-10-30T17:14:33.224Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:20:49.292Z",
+    "savedAt": "2026-10-30T17:21:20.565Z",
     "appVersion": "2026.10.29.1"
   }
 }
