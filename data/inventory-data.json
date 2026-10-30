@@ -457513,7 +457513,7 @@
       "label": "P10",
       "notes": "",
       "group": "P",
-      "lastEdited": "2026-10-13T17:14:14.307Z"
+      "lastEdited": "2026-10-30T06:17:58.240Z"
     },
     {
       "id": "Q7",
@@ -477519,6 +477519,12 @@
       "partNum": "4349",
       "color": "White",
       "qty": 3
+    },
+    {
+      "drawerId": "P10",
+      "partNum": "3032",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -477931,6 +477937,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvukz435_e4djv",
+      "label": "October 17 BAM Visit (batch 82)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 82,
+      "timestamp": "2026-10-30T06:17:58.385Z",
+      "items": [
+        {
+          "partNum": "3032",
+          "color": "White",
+          "desc": "Plate 4 x 6",
+          "elementId": "303201",
+          "qty": 1,
+          "drawerId": "P10",
+          "drawerLabel": "P10"
+        }
+      ]
+    },
     {
       "id": "bag_mvukoj5y_ram1p",
       "label": "October 17 BAM Visit (batch 81)",
@@ -490242,17 +490267,6 @@
           "sel": false
         },
         {
-          "partNum": "3032",
-          "color": "White",
-          "desc": "Plate 4 x 6",
-          "elementId": "303201",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "32739",
           "color": "Dark Bluish Gray",
           "desc": "Brick Sloped 4 x 6 x 2/3 Double",
@@ -490891,12 +490905,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T06:17:30.376Z",
+      "savedAt": "2026-10-30T06:17:58.384Z",
       "keepOpen": true,
       "moved": {
-        "batches": 81,
-        "pieces": 1656,
-        "last": "2026-10-30T06:09:44.709Z"
+        "batches": 82,
+        "pieces": 1657,
+        "last": "2026-10-30T06:17:58.385Z"
       }
     },
     {
@@ -583301,7 +583315,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T06:17:34.417Z"
+      "at": "2026-10-30T06:18:02.425Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -583322,10 +583336,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T06:17:30.376Z",
+      "bags": "2026-10-30T06:17:58.385Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T06:17:34.416Z",
+    "savedAt": "2026-10-30T06:18:02.425Z",
     "appVersion": "2026.10.29.1"
   }
 }
