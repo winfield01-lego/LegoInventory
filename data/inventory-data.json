@@ -454667,7 +454667,7 @@
       "label": "G29",
       "notes": "2 x 8 Plate with Door Rail",
       "group": "G",
-      "lastEdited": "2026-10-30T17:47:50.156Z"
+      "lastEdited": "2026-10-30T17:50:11.225Z"
     },
     {
       "id": "G30",
@@ -478870,7 +478870,19 @@
       "drawerId": "G29",
       "partNum": "30586",
       "color": "White",
+      "qty": 9
+    },
+    {
+      "drawerId": "G29",
+      "partNum": "30586",
+      "color": "Black",
       "qty": 1
+    },
+    {
+      "drawerId": "G29",
+      "partNum": "30586",
+      "color": "Light Bluish Gray",
+      "qty": 21
     }
   ],
   "mocLocations": {
@@ -585426,7 +585438,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:47:54.187Z"
+      "at": "2026-10-30T17:50:15.261Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585450,7 +585462,7 @@
       "bags": "2026-10-30T17:47:12.320Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:47:54.187Z",
+    "savedAt": "2026-10-30T17:50:15.261Z",
     "appVersion": "2026.10.29.1"
   }
 }
