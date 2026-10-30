@@ -493558,9 +493558,20 @@
     {
       "id": "bagprog_mvoo1wik_nkx0",
       "label": "Ebay Bulk Boxes",
-      "items": [],
+      "items": [
+        {
+          "partNum": "3031",
+          "color": "Light Bluish Gray",
+          "desc": "Plate 4 x 4",
+          "elementId": "4211403",
+          "qty": 1,
+          "drawerId": "P2",
+          "matchCount": 0,
+          "suggested": false
+        }
+      ],
       "keepOpen": true,
-      "savedAt": "2026-10-30T21:06:20.522Z",
+      "savedAt": "2026-10-30T21:25:39.830Z",
       "moved": {
         "batches": 4,
         "pieces": 741,
@@ -587423,7 +587434,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T21:06:27.821Z"
+      "at": "2026-10-30T21:25:43.867Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -587444,10 +587455,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T21:06:20.522Z",
+      "bags": "2026-10-30T21:25:39.830Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T21:06:27.821Z",
+    "savedAt": "2026-10-30T21:25:43.867Z",
     "appVersion": "2026.10.30.1"
   }
 }
