@@ -455437,7 +455437,7 @@
       "label": "J12",
       "notes": "",
       "group": "j",
-      "lastEdited": "2026-10-30T18:39:09.209Z"
+      "lastEdited": "2026-10-30T18:43:12.625Z"
     },
     {
       "id": "J13",
@@ -479097,6 +479097,38 @@
       "partNum": "24482",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "J12",
+      "partNum": "87747",
+      "color": "Black",
+      "elementId": "4563477",
+      "qty": 36
+    },
+    {
+      "drawerId": "J12",
+      "partNum": "87747",
+      "color": "Pearl Gold",
+      "qty": 1
+    },
+    {
+      "drawerId": "J12",
+      "partNum": "87747",
+      "color": "Tan",
+      "qty": 4
+    },
+    {
+      "drawerId": "J12",
+      "partNum": "87747",
+      "color": "Red",
+      "elementId": "6172746",
+      "qty": 2
+    },
+    {
+      "drawerId": "J12",
+      "partNum": "87747",
+      "color": "White",
+      "qty": 103
     }
   ],
   "mocLocations": {
@@ -522687,9 +522719,12 @@
       "c": "Red",
       "d": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Medium",
       "e": "6270094",
-      "u": 1791916924851,
+      "u": 1793385793826,
       "at": 1791654748438,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6172746.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6172746.jpg",
+      "ea": [
+        "6172746"
+      ]
     },
     "4588|red": {
       "p": "4588",
@@ -542120,8 +542155,11 @@
       "c": "Black",
       "d": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Medium",
       "e": "6270091",
-      "u": 1791916924851,
-      "at": 1791655414575
+      "u": 1793385793826,
+      "at": 1791655414575,
+      "ea": [
+        "4563477"
+      ]
     },
     "21566pr0001|black": {
       "p": "21566pr0001",
@@ -585700,6 +585738,20 @@
       "d": "Weapon Spear Tip with Fins",
       "e": "6136388",
       "u": 1793385550586
+    },
+    "87747|pearl gold": {
+      "p": "87747",
+      "c": "Pearl Gold",
+      "d": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Medium",
+      "e": "4611904",
+      "u": 1793385793826
+    },
+    "87747|white": {
+      "p": "87747",
+      "c": "White",
+      "d": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Medium",
+      "e": "4566256",
+      "u": 1793385793826
     }
   },
   "partKinds": {
@@ -585843,7 +585895,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T18:39:13.425Z"
+      "at": "2026-10-30T18:43:17.913Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585867,7 +585919,7 @@
       "bags": "2026-10-30T18:39:09.385Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T18:39:13.425Z",
+    "savedAt": "2026-10-30T18:43:17.913Z",
     "appVersion": "2026.10.29.1"
   }
 }
