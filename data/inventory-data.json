@@ -455868,7 +455868,7 @@
       "label": "K13",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-10-30T05:57:34.009Z"
+      "lastEdited": "2026-10-30T06:03:17.019Z"
     },
     {
       "id": "K14",
@@ -477319,7 +477319,7 @@
       "drawerId": "K13",
       "partNum": "6538b",
       "color": "Dark Bluish Gray",
-      "qty": 1
+      "qty": 15
     },
     {
       "drawerId": "K13",
@@ -477327,6 +477327,49 @@
       "color": "White",
       "elementId": "6100932",
       "qty": 3
+    },
+    {
+      "drawerId": "K13",
+      "partNum": "6538b",
+      "color": "Black",
+      "qty": 3
+    },
+    {
+      "drawerId": "K13",
+      "partNum": "6538b",
+      "color": "Blue",
+      "qty": 3
+    },
+    {
+      "drawerId": "K13",
+      "partNum": "6538b",
+      "color": "Light Bluish Gray",
+      "qty": 36
+    },
+    {
+      "drawerId": "K13",
+      "partNum": "6538b",
+      "color": "Lime",
+      "qty": 1
+    },
+    {
+      "drawerId": "K13",
+      "partNum": "6538b",
+      "color": "Pearl Light Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "K13",
+      "partNum": "6538b",
+      "color": "White",
+      "elementId": "4100407",
+      "qty": 1
+    },
+    {
+      "drawerId": "K13",
+      "partNum": "6538b",
+      "color": "Yellow",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -582884,6 +582927,41 @@
       "d": "Technic Axle Connector Ridged [with x Hole x Orientation]",
       "e": "4210672",
       "u": 1793339796858
+    },
+    "6538b|black": {
+      "p": "6538b",
+      "c": "Black",
+      "d": "Technic Axle Connector Ridged [with x Hole x Orientation]",
+      "e": "4107083",
+      "u": 1793340198230
+    },
+    "6538b|blue": {
+      "p": "6538b",
+      "c": "Blue",
+      "d": "Technic Axle Connector Ridged [with x Hole x Orientation]",
+      "e": "4107802",
+      "u": 1793340198230
+    },
+    "6538b|lime": {
+      "p": "6538b",
+      "c": "Lime",
+      "d": "Technic Axle Connector Ridged [with x Hole x Orientation]",
+      "e": "4154499",
+      "u": 1793340198230
+    },
+    "6538b|pearl light gray": {
+      "p": "6538b",
+      "c": "Pearl Light Gray",
+      "d": "Technic Axle Connector Ridged [with x Hole x Orientation]",
+      "e": "4177258",
+      "u": 1793340198230
+    },
+    "6538b|yellow": {
+      "p": "6538b",
+      "c": "Yellow",
+      "d": "Technic Axle Connector Ridged [with x Hole x Orientation]",
+      "e": "4140507",
+      "u": 1793340198230
     }
   },
   "partKinds": {
@@ -583027,7 +583105,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T05:57:39.322Z"
+      "at": "2026-10-30T06:03:21.077Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -583051,7 +583129,7 @@
       "bags": "2026-10-30T05:56:35.657Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T05:57:39.322Z",
+    "savedAt": "2026-10-30T06:03:21.076Z",
     "appVersion": "2026.10.29.1"
   }
 }
