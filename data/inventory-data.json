@@ -457839,7 +457839,7 @@
       "label": "Q1",
       "notes": "1 x 6 x 2 and 1 x 6 x 2 Windows",
       "group": "Q",
-      "lastEdited": "2026-10-30T18:19:11.130Z"
+      "lastEdited": "2026-10-30T18:21:58.065Z"
     },
     {
       "id": "Q2",
@@ -478946,6 +478946,12 @@
       "partNum": "17454",
       "color": "Black",
       "qty": 4
+    },
+    {
+      "drawerId": "Q1",
+      "partNum": "13760",
+      "color": "Green",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -479358,6 +479364,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvau6hk_u5t4g",
+      "label": "October 17 BAM Visit (batch 101)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 101,
+      "timestamp": "2026-10-30T18:21:58.232Z",
+      "items": [
+        {
+          "partNum": "13760",
+          "color": "Green",
+          "desc": "Windscreen 2 x 6 x 2 Train without Glass",
+          "elementId": "6279877",
+          "qty": 2,
+          "drawerId": "Q1",
+          "drawerLabel": "Q1"
+        }
+      ]
+    },
     {
       "id": "bag_mvvaqlo3_c2s86",
       "label": "10/19 Bricklink Order (batch 3)",
@@ -492466,25 +492491,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "13760",
-          "color": "Green",
-          "desc": "Windscreen 2 x 6 x 2 Train without Glass",
-          "elementId": "6279877",
-          "qty": 2,
-          "drawerId": "Q1",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
         }
       ],
-      "savedAt": "2026-10-30T18:21:49.950Z",
+      "savedAt": "2026-10-30T18:21:58.232Z",
       "keepOpen": true,
       "moved": {
-        "batches": 100,
-        "pieces": 1685,
-        "last": "2026-10-30T17:50:50.601Z"
+        "batches": 101,
+        "pieces": 1687,
+        "last": "2026-10-30T18:21:58.232Z"
       }
     },
     {
@@ -585590,7 +585604,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T18:21:55.205Z"
+      "at": "2026-10-30T18:22:03.555Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585611,10 +585625,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T18:21:49.950Z",
+      "bags": "2026-10-30T18:21:58.232Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T18:21:55.205Z",
+    "savedAt": "2026-10-30T18:22:03.555Z",
     "appVersion": "2026.10.29.1"
   }
 }
