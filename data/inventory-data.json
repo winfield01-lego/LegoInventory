@@ -493644,7 +493644,7 @@
           "color": "Dark Azure",
           "desc": "Brick 1 x 2",
           "elementId": "6004943",
-          "qty": 1,
+          "qty": 2,
           "drawerId": "A9",
           "matchCount": 0,
           "suggested": false
@@ -493654,7 +493654,7 @@
           "color": "Tan",
           "desc": "Brick 1 x 2",
           "elementId": "300405",
-          "qty": 1,
+          "qty": 3,
           "drawerId": "A9",
           "matchCount": 0,
           "suggested": false
@@ -494888,10 +494888,60 @@
           "drawerId": "I34",
           "matchCount": 0,
           "suggested": false
+        },
+        {
+          "partNum": "3004",
+          "color": "Dark Bluish Gray",
+          "desc": "Brick 1 x 2",
+          "elementId": "4211088",
+          "qty": 1,
+          "drawerId": "A9",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "3004",
+          "color": "Dark Orange",
+          "desc": "Brick 1 x 2",
+          "elementId": "4122457",
+          "qty": 1,
+          "drawerId": "A9",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "3004",
+          "color": "Dark Red",
+          "desc": "Brick 1 x 2",
+          "elementId": "4163454",
+          "qty": 1,
+          "drawerId": "A9",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "3004",
+          "color": "Lime",
+          "desc": "Brick 1 x 2",
+          "elementId": "4122447",
+          "qty": 1,
+          "drawerId": "A9",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "3004",
+          "color": "Medium Blue",
+          "desc": "Brick 1 x 2",
+          "elementId": "4165451",
+          "qty": 1,
+          "drawerId": "A9",
+          "matchCount": 0,
+          "suggested": false
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-10-30T22:24:51.079Z",
+      "savedAt": "2026-10-30T22:45:34.281Z",
       "moved": {
         "batches": 4,
         "pieces": 741,
@@ -588754,7 +588804,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T22:24:55.112Z"
+      "at": "2026-10-30T22:45:38.316Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -588775,10 +588825,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T22:24:51.079Z",
+      "bags": "2026-10-30T22:45:34.281Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T22:24:55.112Z",
+    "savedAt": "2026-10-30T22:45:38.316Z",
     "appVersion": "2026.10.30.1"
   }
 }
