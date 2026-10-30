@@ -457141,14 +457141,14 @@
       "label": "O20",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-10-13T17:14:08.108Z"
+      "lastEdited": "2026-10-30T16:50:31.884Z"
     },
     {
       "id": "O21",
       "label": "O21",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-10-13T17:14:08.108Z"
+      "lastEdited": "2026-10-30T16:50:31.883Z"
     },
     {
       "id": "O22",
@@ -478321,6 +478321,18 @@
       "partNum": "30365",
       "color": "Red",
       "qty": 1
+    },
+    {
+      "drawerId": "O21",
+      "partNum": "34816",
+      "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "O20",
+      "partNum": "30386",
+      "color": "Black",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -478733,6 +478745,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvv7klbj_mvxp2",
+      "label": "October 17 BAM Visit (batch 92)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 92,
+      "timestamp": "2026-10-30T16:50:32.047Z",
+      "items": [
+        {
+          "partNum": "34816",
+          "color": "White",
+          "desc": "Brick Special 1 x 2 with Vertical Closed Handle on Edge",
+          "elementId": "6198933",
+          "qty": 1,
+          "drawerId": "O21",
+          "drawerLabel": "O21"
+        },
+        {
+          "partNum": "30386",
+          "color": "Black",
+          "desc": "Hinge Brick 1 x 2 Locking with 1 Finger Vertical End and 2 Fingers Vertical End, 9 Teeth",
+          "elementId": "3038626",
+          "qty": 1,
+          "drawerId": "O20",
+          "drawerLabel": "O20"
+        }
+      ]
+    },
     {
       "id": "bag_mvv7cnqq_6xoms",
       "label": "October 17 BAM Visit (batch 91)",
@@ -491591,28 +491631,6 @@
           "sel": false
         },
         {
-          "partNum": "34816",
-          "color": "White",
-          "desc": "Brick Special 1 x 2 with Vertical Closed Handle on Edge",
-          "elementId": "6198933",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "30386",
-          "color": "Black",
-          "desc": "Hinge Brick 1 x 2 Locking with 1 Finger Vertical End and 2 Fingers Vertical End, 9 Teeth",
-          "elementId": "3038626",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "85861",
           "color": "Light Bluish Gray",
           "desc": "Plate Round 1 x 1 with Open Stud",
@@ -491767,12 +491785,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T16:44:21.938Z",
+      "savedAt": "2026-10-30T16:50:32.047Z",
       "keepOpen": true,
       "moved": {
-        "batches": 91,
-        "pieces": 1672,
-        "last": "2026-10-30T16:44:21.938Z"
+        "batches": 92,
+        "pieces": 1674,
+        "last": "2026-10-30T16:50:32.047Z"
       }
     },
     {
@@ -584397,6 +584415,13 @@
       "d": "Hinge Brick 1 x 2 Locking with 2 Fingers Vertical End, 9 Teeth",
       "e": "3036521",
       "u": 1793378914136
+    },
+    "30386|black": {
+      "p": "30386",
+      "c": "Black",
+      "d": "Hinge Brick 1 x 2 Locking with 1 Finger Vertical End and 2 Fingers Vertical End, 9 Teeth",
+      "e": "3038626",
+      "u": 1793379033247
     }
   },
   "partKinds": {
@@ -584540,7 +584565,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T16:49:36.612Z"
+      "at": "2026-10-30T16:50:36.095Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584561,10 +584586,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T16:44:21.938Z",
+      "bags": "2026-10-30T16:50:32.047Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T16:49:36.612Z",
+    "savedAt": "2026-10-30T16:50:36.095Z",
     "appVersion": "2026.10.29.1"
   }
 }
