@@ -457253,7 +457253,7 @@
       "label": "O34",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-10-13T17:14:08.108Z"
+      "lastEdited": "2026-10-30T20:48:42.888Z"
     },
     {
       "id": "O35",
@@ -480056,6 +480056,19 @@
       "color": "Pearl Gold",
       "elementId": "6370621",
       "qty": 2
+    },
+    {
+      "drawerId": "O34",
+      "partNum": "3183b",
+      "color": "White",
+      "elementId": "",
+      "qty": 1
+    },
+    {
+      "drawerId": "O34",
+      "partNum": "3730",
+      "color": "Blue",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -480468,6 +480481,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvg2wbr_m2uc1",
+      "label": "October 17 BAM Visit (batch 120)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 120,
+      "timestamp": "2026-10-30T20:48:43.047Z",
+      "items": [
+        {
+          "partNum": "3183b",
+          "color": "White",
+          "desc": "Plate Special 1 x 4 with Towball Socket, Long, 4 Slots",
+          "elementId": "",
+          "qty": 1,
+          "drawerId": "O34",
+          "drawerLabel": "O34"
+        },
+        {
+          "partNum": "3730",
+          "color": "Blue",
+          "desc": "Plate Special 2 x 2 with Towball Socket, Short, 4 Slots",
+          "elementId": "373023",
+          "qty": 1,
+          "drawerId": "O34",
+          "drawerLabel": "O34"
+        }
+      ]
+    },
     {
       "id": "bag_mvvg0q8e_qcr97",
       "label": "October 17 BAM Visit (batch 119)",
@@ -493637,17 +493678,6 @@
           "sel": false
         },
         {
-          "partNum": "3183b",
-          "color": "White",
-          "desc": "Plate Special 1 x 4 with Towball Socket, Long, 4 Slots",
-          "elementId": "",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "2609a",
           "color": "White",
           "desc": "Magnet Holder Tile 2 x 2 - Short Arms",
@@ -493692,17 +493722,6 @@
           "sel": false
         },
         {
-          "partNum": "3730",
-          "color": "Blue",
-          "desc": "Plate Special 2 x 2 with Towball Socket, Short, 4 Slots",
-          "elementId": "373023",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "98138",
           "color": "Light Bluish Gray",
           "desc": "Tile Round 1 x 1",
@@ -493736,12 +493755,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T20:47:01.838Z",
+      "savedAt": "2026-10-30T20:48:43.047Z",
       "keepOpen": true,
       "moved": {
-        "batches": 119,
-        "pieces": 1722,
-        "last": "2026-10-30T20:47:01.838Z"
+        "batches": 120,
+        "pieces": 1724,
+        "last": "2026-10-30T20:48:43.047Z"
       }
     },
     {
@@ -587177,6 +587196,13 @@
       "d": "Technic Pin Connector Plate 1 x 2 x 1 2/3 [Two Holes On Top]",
       "e": "3253024",
       "u": 1793393175258
+    },
+    "3730|blue": {
+      "p": "3730",
+      "c": "Blue",
+      "d": "Plate Special 2 x 2 with Towball Socket, Short, 4 Slots",
+      "e": "373023",
+      "u": 1793393324248
     }
   },
   "partKinds": {
@@ -587320,7 +587346,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:48:04.040Z"
+      "at": "2026-10-30T20:48:48.345Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -587341,10 +587367,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T20:47:01.838Z",
+      "bags": "2026-10-30T20:48:43.047Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:48:04.040Z",
+    "savedAt": "2026-10-30T20:48:48.345Z",
     "appVersion": "2026.10.30.1"
   }
 }
