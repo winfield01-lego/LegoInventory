@@ -455502,7 +455502,7 @@
       "label": "J25",
       "notes": "1 x 1 with Handle and Telescope",
       "group": "j",
-      "lastEdited": "2026-10-30T00:12:21.503Z"
+      "lastEdited": "2026-10-30T00:14:46.019Z"
     },
     {
       "id": "J26",
@@ -476578,7 +476578,7 @@
       "drawerId": "J25",
       "partNum": "64644",
       "color": "White",
-      "qty": 1
+      "qty": 8
     },
     {
       "drawerId": "N35",
@@ -476760,6 +476760,54 @@
       "partNum": "32828",
       "color": "Black",
       "qty": 66
+    },
+    {
+      "drawerId": "J25",
+      "partNum": "64644",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "J25",
+      "partNum": "64644",
+      "color": "Dark Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "J25",
+      "partNum": "64644",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "J25",
+      "partNum": "64644",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "J25",
+      "partNum": "64644",
+      "color": "Pearl Gold",
+      "qty": 5
+    },
+    {
+      "drawerId": "J25",
+      "partNum": "64644",
+      "color": "Light Bluish Gray",
+      "qty": 13
+    },
+    {
+      "drawerId": "J25",
+      "partNum": "64644",
+      "color": "Black",
+      "qty": 19
+    },
+    {
+      "drawerId": "J25",
+      "partNum": "64644",
+      "color": "Dark Brown",
+      "qty": 20
     }
   ],
   "mocLocations": {
@@ -578980,6 +579028,34 @@
       "d": "Plate Special Round 1 x 1 with Hollow Stud and Horizontal Bar 1L",
       "e": "6449593",
       "u": 1793319142705
+    },
+    "64644|dark bluish gray": {
+      "p": "64644",
+      "c": "Dark Bluish Gray",
+      "d": "Equipment Telescope / Torch / Spyglass, Support Round 1 x 1 x 1 2/3",
+      "e": "6396412",
+      "u": 1793319287221
+    },
+    "64644|dark orange": {
+      "p": "64644",
+      "c": "Dark Orange",
+      "d": "Equipment Telescope / Torch / Spyglass, Support Round 1 x 1 x 1 2/3",
+      "e": "6070517",
+      "u": 1793319287221
+    },
+    "64644|tan": {
+      "p": "64644",
+      "c": "Tan",
+      "d": "Equipment Telescope / Torch / Spyglass, Support Round 1 x 1 x 1 2/3",
+      "e": "6060850",
+      "u": 1793319287221
+    },
+    "64644|dark brown": {
+      "p": "64644",
+      "c": "Dark Brown",
+      "d": "Equipment Telescope / Torch / Spyglass, Support Round 1 x 1 x 1 2/3",
+      "e": "4538950",
+      "u": 1793319287221
     }
   },
   "partKinds": {
@@ -579123,7 +579199,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T00:12:26.779Z"
+      "at": "2026-10-30T00:14:50.050Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -579147,7 +579223,7 @@
       "bags": "2026-10-29T23:51:35.618Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T00:12:26.779Z",
+    "savedAt": "2026-10-30T00:14:50.050Z",
     "appVersion": "2026.10.29.1"
   }
 }
