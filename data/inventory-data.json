@@ -456284,7 +456284,7 @@
       "label": "L29",
       "notes": "1 x 2 side Socket and Towball",
       "group": "L",
-      "lastEdited": "2026-10-29T00:36:45.643Z"
+      "lastEdited": "2026-10-30T17:47:12.173Z"
     },
     {
       "id": "L30",
@@ -478864,6 +478864,12 @@
       "partNum": "44302a",
       "color": "Green",
       "qty": 1
+    },
+    {
+      "drawerId": "L29",
+      "partNum": "30586",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -479276,6 +479282,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvv9lgzk_ymxr7",
+      "label": "October 17 BAM Visit (batch 99)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 99,
+      "timestamp": "2026-10-30T17:47:12.320Z",
+      "items": [
+        {
+          "partNum": "30586",
+          "color": "White",
+          "desc": "Plate Special 2 x 8 with Door Rail",
+          "elementId": "3058601",
+          "qty": 1,
+          "drawerId": "L29",
+          "drawerLabel": "L29"
+        }
+      ]
+    },
     {
       "id": "bag_mvv9d9ru_1xx5l",
       "label": "October 17 BAM Visit (batch 98)",
@@ -492307,17 +492332,6 @@
           "sel": false
         },
         {
-          "partNum": "30586",
-          "color": "White",
-          "desc": "Plate Special 2 x 8 with Door Rail",
-          "elementId": "3058601",
-          "qty": 1,
-          "drawerId": "L29",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "76766",
           "color": "White",
           "desc": "Bracket 5 x 2 x 2 1/3 with Holes, Inside Stud Holder",
@@ -492362,12 +492376,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T17:47:06.743Z",
+      "savedAt": "2026-10-30T17:47:12.320Z",
       "keepOpen": true,
       "moved": {
-        "batches": 98,
-        "pieces": 1683,
-        "last": "2026-10-30T17:40:49.722Z"
+        "batches": 99,
+        "pieces": 1684,
+        "last": "2026-10-30T17:47:12.320Z"
       }
     },
     {
@@ -585261,6 +585275,13 @@
       "d": "Hinge Plate 1 x 2 Locking with 2 Fingers On End, with Groove, 9 Teeth",
       "e": "4183052",
       "u": 1793382377092
+    },
+    "30586|white": {
+      "p": "30586",
+      "c": "White",
+      "d": "Plate Special 2 x 8 with Door Rail",
+      "e": "3058601",
+      "u": 1793382433521
     }
   },
   "partKinds": {
@@ -585404,7 +585425,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:47:10.775Z"
+      "at": "2026-10-30T17:47:16.361Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585425,10 +585446,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T17:47:06.743Z",
+      "bags": "2026-10-30T17:47:12.320Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:47:10.775Z",
+    "savedAt": "2026-10-30T17:47:16.361Z",
     "appVersion": "2026.10.29.1"
   }
 }
