@@ -456321,7 +456321,7 @@
       "label": "L36",
       "notes": "1 x 6 Train Wagon End / Fence",
       "group": "L",
-      "lastEdited": "2026-10-30T00:35:18.638Z"
+      "lastEdited": "2026-10-30T00:35:33.523Z"
     },
     {
       "id": "L37",
@@ -475658,7 +475658,7 @@
       "partNum": "6583",
       "color": "Black",
       "elementId": "6271649",
-      "qty": 6
+      "qty": 7
     },
     {
       "drawerId": "L36",
@@ -477403,6 +477403,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu8qroq_hgv4q",
+      "label": "October 17 BAM Visit (batch 70)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 70,
+      "timestamp": "2026-10-30T00:35:33.674Z",
+      "items": [
+        {
+          "partNum": "6583",
+          "color": "Black",
+          "desc": "Plate Special 1 x 6 with Train Wagon End Fence",
+          "elementId": "6271649",
+          "qty": 1,
+          "drawerId": "L36",
+          "drawerLabel": "L36"
+        }
+      ]
+    },
     {
       "id": "bag_mvu8qg6y_rpwn5",
       "label": "10/19 Bricklink Order (batch 2)",
@@ -487324,24 +487343,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "6583",
-          "color": "Black",
-          "desc": "Plate Special 1 x 6 with Train Wagon End Fence",
-          "elementId": "6271649",
-          "qty": 1,
-          "drawerId": "L36",
-          "matchCount": 0,
-          "suggested": false
         }
       ],
-      "savedAt": "2026-10-30T00:34:36.835Z",
+      "savedAt": "2026-10-30T00:35:33.674Z",
       "keepOpen": true,
       "moved": {
-        "batches": 69,
-        "pieces": 1222,
-        "last": "2026-10-30T00:18:04.034Z"
+        "batches": 70,
+        "pieces": 1223,
+        "last": "2026-10-30T00:35:33.674Z"
       }
     },
     {
@@ -579497,7 +579506,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T00:35:24.059Z"
+      "at": "2026-10-30T00:35:37.704Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -579518,10 +579527,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T00:35:18.778Z",
+      "bags": "2026-10-30T00:35:33.674Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T00:35:24.059Z",
+    "savedAt": "2026-10-30T00:35:37.704Z",
     "appVersion": "2026.10.29.1"
   }
 }
