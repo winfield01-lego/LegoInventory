@@ -457007,7 +457007,7 @@
       "label": "O2",
       "notes": "Columns - 1 x 1 x 6 and 2 x 2 x 10",
       "group": "O",
-      "lastEdited": "2026-10-30T00:28:48.254Z"
+      "lastEdited": "2026-10-30T00:29:44.387Z"
     },
     {
       "id": "O3",
@@ -476929,6 +476929,12 @@
       "drawerId": "G42",
       "partNum": "49311",
       "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "O2",
+      "partNum": "75347",
+      "color": "Black",
       "qty": 1
     }
   ],
@@ -579221,6 +579227,13 @@
       "d": "Antenna 1 x 4 with Rounded Top",
       "e": "4541564",
       "u": 1793319928249
+    },
+    "75347|black": {
+      "p": "75347",
+      "c": "Black",
+      "d": "Support 2 x 2 x 11 Solid Pillar",
+      "e": "4106961",
+      "u": 1793320185590
     }
   },
   "partKinds": {
@@ -579364,7 +579377,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T00:28:52.293Z"
+      "at": "2026-10-30T00:29:48.436Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -579388,7 +579401,7 @@
       "bags": "2026-10-30T00:18:04.034Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T00:28:52.293Z",
+    "savedAt": "2026-10-30T00:29:48.436Z",
     "appVersion": "2026.10.29.1"
   }
 }
