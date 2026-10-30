@@ -455190,7 +455190,8 @@
       "id": "I19",
       "label": "I19",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-10-30T15:01:23.093Z"
     },
     {
       "id": "I20",
@@ -478050,6 +478051,13 @@
       "partNum": "30137",
       "color": "Tan",
       "qty": 9
+    },
+    {
+      "drawerId": "I19",
+      "partNum": "27263",
+      "color": "Pearl Gold",
+      "elementId": "6207046",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -478462,6 +478470,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvv3o88m_6pb9h",
+      "label": "October 17 BAM Visit (batch 89)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 89,
+      "timestamp": "2026-10-30T15:01:23.254Z",
+      "items": [
+        {
+          "partNum": "27263",
+          "color": "Pearl Gold",
+          "desc": "Tile Special 2 x 2 Corner with Cut Corner - Facet",
+          "elementId": "6207046",
+          "qty": 2,
+          "drawerId": "I19",
+          "drawerLabel": "I19"
+        }
+      ]
+    },
     {
       "id": "bag_mvv3lhck_916a7",
       "label": "October 17 BAM Visit (batch 88)",
@@ -491197,17 +491224,6 @@
           "sel": false
         },
         {
-          "partNum": "27263",
-          "color": "Pearl Gold",
-          "desc": "Tile Special 2 x 2 Corner with Cut Corner - Facet",
-          "elementId": "6207046",
-          "qty": 2,
-          "drawerId": "I19",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "89522",
           "color": "Flat Silver",
           "desc": "Creature Body Part, Horn (Unicorn)",
@@ -491472,12 +491488,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T15:01:14.796Z",
+      "savedAt": "2026-10-30T15:01:23.254Z",
       "keepOpen": true,
       "moved": {
-        "batches": 88,
-        "pieces": 1668,
-        "last": "2026-10-30T14:59:15.092Z"
+        "batches": 89,
+        "pieces": 1670,
+        "last": "2026-10-30T15:01:23.254Z"
       }
     },
     {
@@ -521464,9 +521480,12 @@
       "c": "Pearl Gold",
       "d": "Tile Special 2 x 2 Corner with Cut Corner - Facet",
       "e": "6388241",
-      "u": 1791916924851,
+      "u": 1793372484455,
       "at": 1791654295737,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6207046.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6207046.jpg",
+      "ea": [
+        "6207046"
+      ]
     },
     "87747|red": {
       "p": "87747",
@@ -584115,7 +584134,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T15:01:18.834Z"
+      "at": "2026-10-30T15:01:28.528Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584136,10 +584155,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T15:01:14.796Z",
+      "bags": "2026-10-30T15:01:23.254Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T15:01:18.834Z",
+    "savedAt": "2026-10-30T15:01:28.528Z",
     "appVersion": "2026.10.29.1"
   }
 }
