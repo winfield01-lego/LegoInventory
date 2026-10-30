@@ -457141,7 +457141,7 @@
       "label": "O20",
       "notes": "1 x 2 Bricks with Fingers on both sides",
       "group": "O",
-      "lastEdited": "2026-10-30T16:50:51.372Z"
+      "lastEdited": "2026-10-30T16:51:42.183Z"
     },
     {
       "id": "O21",
@@ -478332,7 +478332,25 @@
       "drawerId": "O20",
       "partNum": "30386",
       "color": "Black",
-      "qty": 1
+      "qty": 6
+    },
+    {
+      "drawerId": "O20",
+      "partNum": "30386",
+      "color": "Light Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "O20",
+      "partNum": "30386",
+      "color": "Sand Blue",
+      "qty": 3
+    },
+    {
+      "drawerId": "O20",
+      "partNum": "30386",
+      "color": "White",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -584422,6 +584440,27 @@
       "d": "Hinge Brick 1 x 2 Locking with 1 Finger Vertical End and 2 Fingers Vertical End, 9 Teeth",
       "e": "3038626",
       "u": 1793379033247
+    },
+    "30386|light bluish gray": {
+      "p": "30386",
+      "c": "Light Bluish Gray",
+      "d": "Hinge Brick 1 x 2 Locking with 1 Finger Vertical End and 2 Fingers Vertical End, 9 Teeth",
+      "e": "4211667",
+      "u": 1793379103386
+    },
+    "30386|sand blue": {
+      "p": "30386",
+      "c": "Sand Blue",
+      "d": "Hinge Brick 1 x 2 Locking with 1 Finger Vertical End and 2 Fingers Vertical End, 9 Teeth",
+      "e": "4251959",
+      "u": 1793379103386
+    },
+    "30386|white": {
+      "p": "30386",
+      "c": "White",
+      "d": "Hinge Brick 1 x 2 Locking with 1 Finger Vertical End and 2 Fingers Vertical End, 9 Teeth",
+      "e": "4140748",
+      "u": 1793379103386
     }
   },
   "partKinds": {
@@ -584565,7 +584604,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T16:50:55.412Z"
+      "at": "2026-10-30T16:51:46.219Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584589,7 +584628,7 @@
       "bags": "2026-10-30T16:50:32.047Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T16:50:55.412Z",
+    "savedAt": "2026-10-30T16:51:46.219Z",
     "appVersion": "2026.10.29.1"
   }
 }
