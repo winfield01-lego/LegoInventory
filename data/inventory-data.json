@@ -454485,7 +454485,7 @@
       "label": "G1",
       "notes": "1 x 2 1/2 Arch",
       "group": "G",
-      "lastEdited": "2026-10-30T14:38:21.339Z"
+      "lastEdited": "2026-10-30T14:39:34.725Z"
     },
     {
       "id": "G2",
@@ -477850,12 +477850,55 @@
       "drawerId": "G1",
       "partNum": "78666",
       "color": "Black",
-      "qty": 1
+      "qty": 5
     },
     {
       "drawerId": "G1",
       "partNum": "78666",
       "color": "Orange",
+      "qty": 2
+    },
+    {
+      "drawerId": "G1",
+      "partNum": "78666",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "G1",
+      "partNum": "78666",
+      "color": "Dark Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "G1",
+      "partNum": "78666",
+      "color": "Light Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "G1",
+      "partNum": "78666",
+      "color": "Red",
+      "qty": 4
+    },
+    {
+      "drawerId": "G1",
+      "partNum": "78666",
+      "color": "Tan",
+      "qty": 3
+    },
+    {
+      "drawerId": "G1",
+      "partNum": "78666",
+      "color": "White",
+      "elementId": "6346616",
+      "qty": 17
+    },
+    {
+      "drawerId": "G1",
+      "partNum": "78666",
+      "color": "Yellow",
       "qty": 1
     }
   ],
@@ -539001,9 +539044,12 @@
       "c": "White",
       "d": "Brick Curved 2 x 1 with Inverted Cutout",
       "e": "6550186",
-      "u": 1791916924851,
+      "u": 1793371175928,
       "at": 1791654691519,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6346616.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6346616.jpg",
+      "ea": [
+        "6346616"
+      ]
     },
     "32523|white": {
       "p": "32523",
@@ -583638,6 +583684,34 @@
       "d": "Brick Curved 2 x 1 No Studs [1/2 Bow]",
       "e": "6294532",
       "u": 1793342820378
+    },
+    "78666|blue": {
+      "p": "78666",
+      "c": "Blue",
+      "d": "Brick Curved 2 x 1 with Inverted Cutout",
+      "e": "6523962",
+      "u": 1793371175928
+    },
+    "78666|dark red": {
+      "p": "78666",
+      "c": "Dark Red",
+      "d": "Brick Curved 2 x 1 with Inverted Cutout",
+      "e": "6364637",
+      "u": 1793371175928
+    },
+    "78666|red": {
+      "p": "78666",
+      "c": "Red",
+      "d": "Brick Curved 2 x 1 with Inverted Cutout",
+      "e": "6369577",
+      "u": 1793371175928
+    },
+    "78666|yellow": {
+      "p": "78666",
+      "c": "Yellow",
+      "d": "Brick Curved 2 x 1 with Inverted Cutout",
+      "e": "6425974",
+      "u": 1793371175928
     }
   },
   "partKinds": {
@@ -583781,7 +583855,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T14:38:25.373Z"
+      "at": "2026-10-30T14:39:40.011Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -583805,7 +583879,7 @@
       "bags": "2026-10-30T14:37:53.719Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T14:38:25.373Z",
+    "savedAt": "2026-10-30T14:39:40.011Z",
     "appVersion": "2026.10.29.1"
   }
 }
