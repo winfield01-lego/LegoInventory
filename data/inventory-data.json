@@ -456237,7 +456237,7 @@
       "label": "L24",
       "notes": "Short and Long Antennae",
       "group": "L",
-      "lastEdited": "2026-10-30T00:25:32.897Z"
+      "lastEdited": "2026-10-30T00:26:15.481Z"
     },
     {
       "id": "L25",
@@ -476827,13 +476827,13 @@
       "partNum": "2569",
       "color": "Black",
       "elementId": "256926",
-      "qty": 2
+      "qty": 17
     },
     {
       "drawerId": "L24",
       "partNum": "3957b",
       "color": "Black",
-      "qty": 8
+      "qty": 9
     },
     {
       "drawerId": "L24",
@@ -476911,6 +476911,19 @@
       "color": "White",
       "elementId": "",
       "qty": 5
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "2569",
+      "color": "Light Bluish Gray",
+      "elementId": "4251564",
+      "qty": 5
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "2569",
+      "color": "Red",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -495220,9 +495233,12 @@
       "c": "Light Bluish Gray",
       "d": "Antenna 8H Whip",
       "e": "6265157",
-      "u": 1791916924851,
+      "u": 1793319972323,
       "at": 1791671921036,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6164381.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6164381.jpg",
+      "ea": [
+        "4251564"
+      ]
     },
     "3062b|blue": {
       "p": "3062b",
@@ -579342,7 +579358,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T00:25:38.822Z"
+      "at": "2026-10-30T00:26:19.522Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -579366,7 +579382,7 @@
       "bags": "2026-10-30T00:18:04.034Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T00:25:38.822Z",
+    "savedAt": "2026-10-30T00:26:19.522Z",
     "appVersion": "2026.10.29.1"
   }
 }
