@@ -455403,7 +455403,7 @@
       "label": "J9",
       "notes": "",
       "group": "j",
-      "lastEdited": "2026-10-29T23:11:54.581Z"
+      "lastEdited": "2026-10-30T00:18:03.885Z"
     },
     {
       "id": "J10",
@@ -456237,7 +456237,7 @@
       "label": "L24",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-10-13T17:13:18.947Z"
+      "lastEdited": "2026-10-30T00:18:03.886Z"
     },
     {
       "id": "L25",
@@ -457007,7 +457007,7 @@
       "label": "O2",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-10-13T17:14:08.107Z"
+      "lastEdited": "2026-10-30T00:18:03.886Z"
     },
     {
       "id": "O3",
@@ -476808,6 +476808,26 @@
       "partNum": "64644",
       "color": "Dark Brown",
       "qty": 20
+    },
+    {
+      "drawerId": "J9",
+      "partNum": "73111",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "O2",
+      "partNum": "43888",
+      "color": "White",
+      "elementId": "6073345",
+      "qty": 1
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "2569",
+      "color": "Black",
+      "elementId": "256926",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -477220,6 +477240,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvu849s2_jd29d",
+      "label": "October 17 BAM Visit (batch 69)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 69,
+      "timestamp": "2026-10-30T00:18:04.034Z",
+      "items": [
+        {
+          "partNum": "73111",
+          "color": "Light Bluish Gray",
+          "desc": "Brick Round 3 x 3 x 2 Recessed Center with 2 x 2 Studs and Axle Hole",
+          "elementId": "6326483",
+          "qty": 1,
+          "drawerId": "J9",
+          "drawerLabel": "J9"
+        },
+        {
+          "partNum": "43888",
+          "color": "White",
+          "desc": "Support Round 1 x 1 x 6 Solid Pillar",
+          "elementId": "6073345",
+          "qty": 1,
+          "drawerId": "O2",
+          "drawerLabel": "O2"
+        },
+        {
+          "partNum": "2569",
+          "color": "Black",
+          "desc": "Antenna 8H Whip",
+          "elementId": "256926",
+          "qty": 2,
+          "drawerId": "L24",
+          "drawerLabel": "L24"
+        }
+      ]
+    },
     {
       "id": "bag_mvu7685e_21wjs",
       "label": "October 17 BAM Visit (batch 68)",
@@ -487098,47 +487155,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "73111",
-          "color": "Light Bluish Gray",
-          "desc": "Brick Round 3 x 3 x 2 Recessed Center with 2 x 2 Studs and Axle Hole",
-          "elementId": "6326483",
-          "qty": 1,
-          "drawerId": "J9",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "43888",
-          "color": "White",
-          "desc": "Support Round 1 x 1 x 6 Solid Pillar",
-          "elementId": "6073345",
-          "qty": 1,
-          "drawerId": "O2",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "2569",
-          "color": "Black",
-          "desc": "Antenna 8H Whip",
-          "elementId": "256926",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
         }
       ],
-      "savedAt": "2026-10-30T00:17:51.149Z",
+      "savedAt": "2026-10-30T00:18:04.034Z",
       "keepOpen": true,
       "moved": {
-        "batches": 68,
-        "pieces": 1218,
-        "last": "2026-10-29T23:51:35.618Z"
+        "batches": 69,
+        "pieces": 1222,
+        "last": "2026-10-30T00:18:04.034Z"
       }
     },
     {
@@ -489842,8 +489866,11 @@
       "c": "Black",
       "d": "Antenna 8H Whip",
       "e": "6265148",
-      "u": 1791916924851,
-      "at": 1791654560263
+      "u": 1793319485235,
+      "at": 1791654560263,
+      "ea": [
+        "256926"
+      ]
     },
     "6190|dark bluish gray": {
       "p": "6190",
@@ -547440,9 +547467,12 @@
       "c": "White",
       "d": "Support Round 1 x 1 x 6 Solid Pillar",
       "e": "6615531",
-      "u": 1791916924851,
+      "u": 1793319485235,
       "at": 1791654696050,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6073345.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6073345.jpg",
+      "ea": [
+        "6073345"
+      ]
     },
     "6636pr0017|white": {
       "p": "6636pr0017",
@@ -579199,7 +579229,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T00:17:55.181Z"
+      "at": "2026-10-30T00:18:09.332Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -579220,10 +579250,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T00:17:51.149Z",
+      "bags": "2026-10-30T00:18:04.034Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T00:17:55.181Z",
+    "savedAt": "2026-10-30T00:18:09.332Z",
     "appVersion": "2026.10.29.1"
   }
 }
