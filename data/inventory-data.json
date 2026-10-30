@@ -457848,7 +457848,7 @@
       "label": "Q4",
       "notes": "Windows - 4 wide",
       "group": "Q",
-      "lastEdited": "2026-10-30T05:34:31.492Z"
+      "lastEdited": "2026-10-30T05:36:13.136Z"
     },
     {
       "id": "Q5",
@@ -477123,6 +477123,12 @@
       "partNum": "1748",
       "color": "Green",
       "qty": 1
+    },
+    {
+      "drawerId": "Q4",
+      "partNum": "4133",
+      "color": "Yellow",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -477535,6 +477541,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvujhf4h_nu3wq",
+      "label": "October 17 BAM Visit (batch 75)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 75,
+      "timestamp": "2026-10-30T05:36:13.265Z",
+      "items": [
+        {
+          "partNum": "4133",
+          "color": "Yellow",
+          "desc": "Window 2 x 4 x 3 Pane",
+          "elementId": "4101806",
+          "qty": 2,
+          "drawerId": "Q4",
+          "drawerLabel": "Q4"
+        }
+      ]
+    },
     {
       "id": "bag_mvujf8pa_tqug1",
       "label": "October 17 BAM Visit (batch 74)",
@@ -490128,17 +490153,6 @@
           "sel": false
         },
         {
-          "partNum": "4133",
-          "color": "Yellow",
-          "desc": "Window 2 x 4 x 3 Pane",
-          "elementId": "4101806",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "27263",
           "color": "Pearl Gold",
           "desc": "Tile Special 2 x 2 Corner with Cut Corner - Facet",
@@ -490436,12 +490450,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T05:35:41.096Z",
+      "savedAt": "2026-10-30T05:36:13.264Z",
       "keepOpen": true,
       "moved": {
-        "batches": 74,
-        "pieces": 1639,
-        "last": "2026-10-30T05:34:31.629Z"
+        "batches": 75,
+        "pieces": 1641,
+        "last": "2026-10-30T05:36:13.265Z"
       }
     },
     {
@@ -582539,6 +582553,13 @@
       "d": "Tile Round 1 x 2 Half Circle",
       "e": "6493697",
       "u": 1793334860898
+    },
+    "4133|yellow": {
+      "p": "4133",
+      "c": "Yellow",
+      "d": "Window 2 x 4 x 3 Pane",
+      "e": "4101806",
+      "u": 1793338574466
     }
   },
   "partKinds": {
@@ -582682,7 +582703,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T05:35:45.139Z"
+      "at": "2026-10-30T05:36:17.306Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -582703,10 +582724,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T05:35:41.099Z",
+      "bags": "2026-10-30T05:36:13.265Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T05:35:45.138Z",
+    "savedAt": "2026-10-30T05:36:17.306Z",
     "appVersion": "2026.10.29.1"
   }
 }
