@@ -456018,7 +456018,7 @@
       "label": "K32",
       "notes": "Technic 4 Lob wheels and Links",
       "group": "K",
-      "lastEdited": "2026-10-30T20:26:38.757Z"
+      "lastEdited": "2026-10-30T20:27:00.174Z"
     },
     {
       "id": "K33",
@@ -479818,14 +479818,14 @@
       "partNum": "32072",
       "color": "Black",
       "elementId": "4248204",
-      "qty": 1
+      "qty": 11
     },
     {
       "drawerId": "K32",
       "partNum": "32072",
       "color": "Yellow",
       "elementId": "4203493",
-      "qty": 2
+      "qty": 3
     },
     {
       "drawerId": "K32",
@@ -479852,6 +479852,12 @@
       "color": "Dark Bluish Gray",
       "elementId": "6055629",
       "qty": 3
+    },
+    {
+      "drawerId": "K32",
+      "partNum": "32072",
+      "color": "Light Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -586814,6 +586820,13 @@
       "d": "Technic Link 1 x 9",
       "e": "3229326",
       "u": 1793391963209
+    },
+    "32072|light bluish gray": {
+      "p": "32072",
+      "c": "Light Bluish Gray",
+      "d": "Technic Knob Wheel",
+      "e": "4261230",
+      "u": 1793392021376
     }
   },
   "partKinds": {
@@ -586957,7 +586970,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:26:44.052Z"
+      "at": "2026-10-30T20:27:04.215Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -586981,7 +586994,7 @@
       "bags": "2026-10-30T20:24:39.344Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:26:44.052Z",
+    "savedAt": "2026-10-30T20:27:04.215Z",
     "appVersion": "2026.10.30.1"
   }
 }
