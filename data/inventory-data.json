@@ -457571,7 +457571,7 @@
       "label": "R3",
       "notes": "Rotation Joints Click and Ball and Socket",
       "group": "R",
-      "lastEdited": "2026-10-30T17:31:30.107Z"
+      "lastEdited": "2026-10-30T17:32:00.775Z"
     },
     {
       "id": "R4",
@@ -478629,6 +478629,32 @@
       "partNum": "44224",
       "color": "Dark Bluish Gray",
       "qty": 2
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "47455",
+      "color": "Black",
+      "elementId": "4213374",
+      "qty": 7
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "47455",
+      "color": "Dark Bluish Gray",
+      "elementId": "4225361",
+      "qty": 3
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "47455",
+      "color": "Dark Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "47455",
+      "color": "Tan",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -521605,9 +521631,12 @@
       "c": "Black",
       "d": "Technic Rotation Joint Ball Loop with Two Perpendicular Pins with Friction",
       "e": "4272426",
-      "u": 1791916924851,
+      "u": 1793381521977,
       "at": 1791654295737,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4213374.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4213374.jpg",
+      "ea": [
+        "4213374"
+      ]
     },
     "79505|black": {
       "p": "79505",
@@ -550220,9 +550249,12 @@
       "c": "Dark Bluish Gray",
       "d": "Technic Rotation Joint Ball Loop with Two Perpendicular Pins with Friction",
       "e": "4522784",
-      "u": 1791916924851,
+      "u": 1793381521977,
       "at": 1791654669028,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4225361.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4225361.jpg",
+      "ea": [
+        "4225361"
+      ]
     },
     "62462|flat silver": {
       "p": "62462",
@@ -584918,6 +584950,20 @@
       "d": "Brick Special 2 x 2 x 2 with Rotation Joint Socket and Rear Pin Hole",
       "e": "4162241",
       "u": 1793381349144
+    },
+    "47455|dark red": {
+      "p": "47455",
+      "c": "Dark Red",
+      "d": "Technic Rotation Joint Ball Loop with Two Perpendicular Pins with Friction",
+      "e": "4217975",
+      "u": 1793381521977
+    },
+    "47455|tan": {
+      "p": "47455",
+      "c": "Tan",
+      "d": "Technic Rotation Joint Ball Loop with Two Perpendicular Pins with Friction",
+      "e": "4217983",
+      "u": 1793381521977
     }
   },
   "partKinds": {
@@ -585061,7 +585107,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:31:34.146Z"
+      "at": "2026-10-30T17:32:06.058Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585085,7 +585131,7 @@
       "bags": "2026-10-30T17:14:33.224Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:31:34.146Z",
+    "savedAt": "2026-10-30T17:32:06.058Z",
     "appVersion": "2026.10.29.1"
   }
 }
