@@ -455398,7 +455398,7 @@
       "label": "J6",
       "notes": "Animal Horns and Barbs",
       "group": "j",
-      "lastEdited": "2026-10-30T18:32:41.732Z"
+      "lastEdited": "2026-10-30T18:37:29.477Z"
     },
     {
       "id": "J7",
@@ -478965,7 +478965,7 @@
       "drawerId": "J6",
       "partNum": "53451",
       "color": "Pearl Gold",
-      "qty": 5
+      "qty": 9
     },
     {
       "drawerId": "J6",
@@ -479012,6 +479012,71 @@
       "color": "Tan",
       "elementId": "4551156",
       "qty": 1
+    },
+    {
+      "drawerId": "J6",
+      "partNum": "53451",
+      "color": "Black",
+      "elementId": "4504476",
+      "qty": 17
+    },
+    {
+      "drawerId": "J6",
+      "partNum": "53451",
+      "color": "Dark Tan",
+      "qty": 2
+    },
+    {
+      "drawerId": "J6",
+      "partNum": "53451",
+      "color": "Flat Silver",
+      "elementId": "4612901",
+      "qty": 13
+    },
+    {
+      "drawerId": "J6",
+      "partNum": "53451",
+      "color": "Lime",
+      "qty": 1
+    },
+    {
+      "drawerId": "J6",
+      "partNum": "53451",
+      "color": "Orange",
+      "qty": 3
+    },
+    {
+      "drawerId": "J6",
+      "partNum": "53451",
+      "color": "Pearl Light Gray",
+      "qty": 17
+    },
+    {
+      "drawerId": "J6",
+      "partNum": "53451",
+      "color": "Red",
+      "elementId": "4276053",
+      "qty": 6
+    },
+    {
+      "drawerId": "J6",
+      "partNum": "53451",
+      "color": "Tan",
+      "qty": 2
+    },
+    {
+      "drawerId": "J6",
+      "partNum": "53451",
+      "color": "White",
+      "elementId": "4273397",
+      "qty": 12
+    },
+    {
+      "drawerId": "J6",
+      "partNum": "53451",
+      "color": "Yellow",
+      "elementId": "4521048",
+      "qty": 6
     }
   ],
   "mocLocations": {
@@ -519382,9 +519447,9 @@
     "53451|lime": {
       "p": "53451",
       "c": "Lime",
-      "d": "",
-      "e": "",
-      "u": 1791916924851
+      "d": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Small",
+      "e": "4500378",
+      "u": 1793385450680
     },
     "23443|lime": {
       "p": "23443",
@@ -521420,9 +521485,12 @@
       "c": "Red",
       "d": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Small",
       "e": "6270107",
-      "u": 1791916924851,
+      "u": 1793385450680,
       "at": 1791654291536,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4276053.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4276053.jpg",
+      "ea": [
+        "4276053"
+      ]
     },
     "15068|red": {
       "p": "15068",
@@ -526381,9 +526449,12 @@
       "c": "White",
       "d": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Small",
       "e": "6270106",
-      "u": 1791916924851,
+      "u": 1793385450680,
       "at": 1791654322565,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4273397.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4273397.jpg",
+      "ea": [
+        "4273397"
+      ]
     },
     "13564|white": {
       "p": "13564",
@@ -526870,9 +526941,12 @@
       "c": "Yellow",
       "d": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Small",
       "e": "6270110",
-      "u": 1791916924851,
+      "u": 1793385450680,
       "at": 1791654322565,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4521048.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4521048.jpg",
+      "ea": [
+        "4521048"
+      ]
     },
     "44861|yellow": {
       "p": "44861",
@@ -549791,8 +549865,11 @@
       "c": "Flat Silver",
       "d": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Small",
       "e": "6270108",
-      "u": 1791916924851,
-      "at": 1791654779264
+      "u": 1793385450680,
+      "at": 1791654779264,
+      "ea": [
+        "4612901"
+      ]
     },
     "5240|flat silver": {
       "p": "5240",
@@ -555555,8 +555632,11 @@
       "c": "Black",
       "d": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Small",
       "e": "6270103",
-      "u": 1791916924851,
-      "at": 1791654748438
+      "u": 1793385450680,
+      "at": 1791654748438,
+      "ea": [
+        "4504476"
+      ]
     },
     "13564|black": {
       "p": "13564",
@@ -585561,6 +585641,27 @@
       "d": "Animal Body Part, Horn (Cattle)",
       "e": "6536138",
       "u": 1793385162934
+    },
+    "53451|dark tan": {
+      "p": "53451",
+      "c": "Dark Tan",
+      "d": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Small",
+      "e": "6022717",
+      "u": 1793385450680
+    },
+    "53451|orange": {
+      "p": "53451",
+      "c": "Orange",
+      "d": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Small",
+      "e": "4499884",
+      "u": 1793385450680
+    },
+    "53451|pearl light gray": {
+      "p": "53451",
+      "c": "Pearl Light Gray",
+      "d": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Small",
+      "e": "4296108",
+      "u": 1793385450680
     }
   },
   "partKinds": {
@@ -585704,7 +585805,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T18:32:45.758Z"
+      "at": "2026-10-30T18:37:34.781Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585728,7 +585829,7 @@
       "bags": "2026-10-30T18:29:26.976Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T18:32:45.757Z",
+    "savedAt": "2026-10-30T18:37:34.781Z",
     "appVersion": "2026.10.29.1"
   }
 }
