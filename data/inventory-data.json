@@ -454484,7 +454484,8 @@
       "id": "G1",
       "label": "G1",
       "notes": "",
-      "group": "G"
+      "group": "G",
+      "lastEdited": "2026-10-30T14:37:53.559Z"
     },
     {
       "id": "G2",
@@ -477844,6 +477845,18 @@
       "partNum": "11477",
       "color": "Yellow",
       "qty": 8
+    },
+    {
+      "drawerId": "G1",
+      "partNum": "78666",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "G1",
+      "partNum": "78666",
+      "color": "Orange",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -478256,6 +478269,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvv2u0mv_igo2i",
+      "label": "October 17 BAM Visit (batch 85)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 85,
+      "timestamp": "2026-10-30T14:37:53.719Z",
+      "items": [
+        {
+          "partNum": "78666",
+          "color": "Black",
+          "desc": "Brick Curved 2 x 1 with Inverted Cutout",
+          "elementId": "6369578",
+          "qty": 1,
+          "drawerId": "G1",
+          "drawerLabel": "G1"
+        },
+        {
+          "partNum": "78666",
+          "color": "Orange",
+          "desc": "Brick Curved 2 x 1 with Inverted Cutout",
+          "elementId": "6431333",
+          "qty": 1,
+          "drawerId": "G1",
+          "drawerLabel": "G1"
+        }
+      ]
+    },
     {
       "id": "bag_mvuljco5_wy5ta",
       "label": "October 17 BAM Visit (batch 84)",
@@ -490664,28 +490705,6 @@
           "sel": false
         },
         {
-          "partNum": "78666",
-          "color": "Black",
-          "desc": "Brick Curved 2 x 1 with Inverted Cutout",
-          "elementId": "6369578",
-          "qty": 1,
-          "drawerId": "G1",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "78666",
-          "color": "Orange",
-          "desc": "Brick Curved 2 x 1 with Inverted Cutout",
-          "elementId": "6431333",
-          "qty": 1,
-          "drawerId": "G1",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "37352",
           "color": "Orange",
           "desc": "Brick Curved 1 x 2 x 1 No Studs",
@@ -491236,12 +491255,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T14:37:45.793Z",
+      "savedAt": "2026-10-30T14:37:53.718Z",
       "keepOpen": true,
       "moved": {
-        "batches": 84,
-        "pieces": 1661,
-        "last": "2026-10-30T06:33:42.629Z"
+        "batches": 85,
+        "pieces": 1663,
+        "last": "2026-10-30T14:37:53.718Z"
       }
     },
     {
@@ -583762,7 +583781,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T14:37:49.824Z"
+      "at": "2026-10-30T14:37:57.747Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -583783,10 +583802,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T14:37:45.793Z",
+      "bags": "2026-10-30T14:37:53.719Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T14:37:49.824Z",
+    "savedAt": "2026-10-30T14:37:57.747Z",
     "appVersion": "2026.10.29.1"
   }
 }
