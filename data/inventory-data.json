@@ -455143,7 +455143,7 @@
       "label": "I12",
       "notes": "2 x2 tile - macaroni",
       "group": "I",
-      "lastEdited": "2026-10-30T04:01:13.119Z"
+      "lastEdited": "2026-10-30T16:55:37.981Z"
     },
     {
       "id": "I13",
@@ -478363,6 +478363,13 @@
       "partNum": "34816",
       "color": "Sand Blue",
       "qty": 7
+    },
+    {
+      "drawerId": "I12",
+      "partNum": "61409",
+      "color": "Metallic Silver",
+      "elementId": "6092115",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -478775,6 +478782,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvv7r5ib_6gttu",
+      "label": "October 17 BAM Visit (batch 93)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 93,
+      "timestamp": "2026-10-30T16:55:38.147Z",
+      "items": [
+        {
+          "partNum": "61409",
+          "color": "Metallic Silver",
+          "desc": "Brick Sloped 18° 2 x 1 x 2/3 with 4 Slots / Grate",
+          "elementId": "6092115",
+          "qty": 1,
+          "drawerId": "I12",
+          "drawerLabel": "I12"
+        }
+      ]
+    },
     {
       "id": "bag_mvv7klbj_mvxp2",
       "label": "October 17 BAM Visit (batch 92)",
@@ -491606,17 +491632,6 @@
           "sel": false
         },
         {
-          "partNum": "61409",
-          "color": "Metallic Silver",
-          "desc": "Brick Sloped 18° 2 x 1 x 2/3 with 4 Slots / Grate",
-          "elementId": "6092115",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "32828",
           "color": "Dark Bluish Gray",
           "desc": "Plate Special Round 1 x 1 with Hollow Stud and Horizontal Bar 1L",
@@ -491815,12 +491830,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T16:55:26.483Z",
+      "savedAt": "2026-10-30T16:55:38.147Z",
       "keepOpen": true,
       "moved": {
-        "batches": 92,
-        "pieces": 1674,
-        "last": "2026-10-30T16:50:32.047Z"
+        "batches": 93,
+        "pieces": 1675,
+        "last": "2026-10-30T16:55:38.147Z"
       }
     },
     {
@@ -528775,9 +528790,12 @@
       "c": "Metallic Silver",
       "d": "Brick Sloped 18° 2 x 1 x 2/3 with 4 Slots / Grate",
       "e": "6546109",
-      "u": 1791916924851,
+      "u": 1793379339351,
       "at": 1791654810716,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6092115.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6092115.jpg",
+      "ea": [
+        "6092115"
+      ]
     },
     "10107619|[no color/any color]": {
       "p": "10107619",
@@ -584623,7 +584641,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T16:55:30.512Z"
+      "at": "2026-10-30T16:55:43.432Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584644,10 +584662,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T16:55:26.483Z",
+      "bags": "2026-10-30T16:55:38.147Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T16:55:30.512Z",
+    "savedAt": "2026-10-30T16:55:43.432Z",
     "appVersion": "2026.10.29.1"
   }
 }
