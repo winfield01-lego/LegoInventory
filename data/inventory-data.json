@@ -456018,7 +456018,7 @@
       "label": "K32",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-10-30T20:25:39.406Z"
+      "lastEdited": "2026-10-30T20:26:02.007Z"
     },
     {
       "id": "K33",
@@ -479839,6 +479839,12 @@
       "partNum": "7684",
       "color": "Black",
       "qty": 2
+    },
+    {
+      "drawerId": "K32",
+      "partNum": "32293",
+      "color": "Black",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -586791,6 +586797,13 @@
       "d": "Technic Link 1 x 6 x 2 Angled, Bent, Double",
       "e": "6564530",
       "u": 1793391940608
+    },
+    "32293|black": {
+      "p": "32293",
+      "c": "Black",
+      "d": "Technic Link 1 x 9",
+      "e": "3229326",
+      "u": 1793391963209
     }
   },
   "partKinds": {
@@ -586934,7 +586947,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:25:43.438Z"
+      "at": "2026-10-30T20:26:06.041Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -586958,7 +586971,7 @@
       "bags": "2026-10-30T20:24:39.344Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:25:43.438Z",
+    "savedAt": "2026-10-30T20:26:06.041Z",
     "appVersion": "2026.10.30.1"
   }
 }
