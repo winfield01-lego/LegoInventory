@@ -455437,7 +455437,7 @@
       "label": "J12",
       "notes": "",
       "group": "j",
-      "lastEdited": "2026-10-30T18:43:12.625Z"
+      "lastEdited": "2026-10-30T18:43:45.857Z"
     },
     {
       "id": "J13",
@@ -479129,6 +479129,18 @@
       "partNum": "87747",
       "color": "White",
       "qty": 103
+    },
+    {
+      "drawerId": "J12",
+      "partNum": "92220",
+      "color": "Flat Silver",
+      "qty": 3
+    },
+    {
+      "drawerId": "J12",
+      "partNum": "92220",
+      "color": "Pearl Titanium",
+      "qty": 6
     }
   ],
   "mocLocations": {
@@ -585752,6 +585764,20 @@
       "d": "Animal Body Part, Barb / Claw / Tooth / Talon / Horn, Medium",
       "e": "4566256",
       "u": 1793385793826
+    },
+    "92220|flat silver": {
+      "p": "92220",
+      "c": "Flat Silver",
+      "d": "Large Figure Weapon Claw, with Clip",
+      "e": "4659335",
+      "u": 1793385827058
+    },
+    "92220|pearl titanium": {
+      "p": "92220",
+      "c": "Pearl Titanium",
+      "d": "Large Figure Weapon Claw, with Clip",
+      "e": "4625376",
+      "u": 1793385827058
     }
   },
   "partKinds": {
@@ -585895,7 +585921,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T18:43:17.913Z"
+      "at": "2026-10-30T18:43:49.887Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585919,7 +585945,7 @@
       "bags": "2026-10-30T18:39:09.385Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T18:43:17.913Z",
+    "savedAt": "2026-10-30T18:43:49.887Z",
     "appVersion": "2026.10.29.1"
   }
 }
