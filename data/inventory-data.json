@@ -457839,7 +457839,7 @@
       "label": "Q1",
       "notes": "1 x 6 x 2 and 1 x 6 x 2 Windows",
       "group": "Q",
-      "lastEdited": "2026-10-30T18:16:04.432Z"
+      "lastEdited": "2026-10-30T18:19:11.130Z"
     },
     {
       "id": "Q2",
@@ -478940,6 +478940,12 @@
       "partNum": "61345",
       "color": "White",
       "qty": 5
+    },
+    {
+      "drawerId": "Q1",
+      "partNum": "17454",
+      "color": "Black",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -479352,6 +479358,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvaqlo3_c2s86",
+      "label": "10/19 Bricklink Order (batch 3)",
+      "bagId": "bagprog_mvk75aw3_outd",
+      "bagLabel": "10/19 Bricklink Order",
+      "batch": 3,
+      "timestamp": "2026-10-30T18:19:11.283Z",
+      "items": [
+        {
+          "partNum": "17454",
+          "color": "Black",
+          "desc": "Train Front 2 x 6 x 2",
+          "elementId": "6226434",
+          "qty": 4,
+          "drawerId": "Q1",
+          "drawerLabel": "Q1"
+        }
+      ]
+    },
     {
       "id": "bag_mvv9q5ex_gut3c",
       "label": "October 17 BAM Visit (batch 100)",
@@ -491957,17 +491982,6 @@
           "sel": false
         },
         {
-          "partNum": "17454",
-          "color": "Black",
-          "desc": "Train Front 2 x 6 x 2",
-          "elementId": "6226434",
-          "qty": 4,
-          "drawerId": "Q1",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "60614",
           "color": "Dark Bluish Gray",
           "desc": "Door 1 x 2 x 3 with Vertical Handle, Round Handle Holes on Back",
@@ -492045,12 +492059,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T18:17:24.386Z",
+      "savedAt": "2026-10-30T18:19:11.283Z",
       "keepOpen": true,
       "moved": {
-        "batches": 2,
-        "pieces": 90,
-        "last": "2026-10-30T00:35:18.778Z"
+        "batches": 3,
+        "pieces": 94,
+        "last": "2026-10-30T18:19:11.283Z"
       }
     },
     {
@@ -585415,6 +585429,13 @@
       "d": "Window 1 x 4 x 2 Plane, Hollow Studs, Single Hole Top and Bottom for Glass",
       "e": "4521696",
       "u": 1793384165635
+    },
+    "17454|black": {
+      "p": "17454",
+      "c": "Black",
+      "d": "Train Front 2 x 6 x 2",
+      "e": "6226434",
+      "u": 1793384352484
     }
   },
   "partKinds": {
@@ -585558,7 +585579,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T18:17:28.415Z"
+      "at": "2026-10-30T18:19:15.311Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585579,10 +585600,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T18:17:24.386Z",
+      "bags": "2026-10-30T18:19:11.283Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T18:17:28.415Z",
+    "savedAt": "2026-10-30T18:19:15.311Z",
     "appVersion": "2026.10.29.1"
   }
 }
