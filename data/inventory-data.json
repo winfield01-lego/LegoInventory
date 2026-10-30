@@ -456995,7 +456995,7 @@
       "label": "N44",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.790Z"
+      "lastEdited": "2026-10-30T06:26:26.589Z"
     },
     {
       "id": "O1",
@@ -477632,6 +477632,12 @@
       "partNum": "91405",
       "color": "Green",
       "qty": 1
+    },
+    {
+      "drawerId": "N44",
+      "partNum": "32739",
+      "color": "Dark Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -478044,6 +478050,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvula0ci_lthdq",
+      "label": "October 17 BAM Visit (batch 83)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 83,
+      "timestamp": "2026-10-30T06:26:26.754Z",
+      "items": [
+        {
+          "partNum": "32739",
+          "color": "Dark Bluish Gray",
+          "desc": "Brick Sloped 4 x 6 x 2/3 Double",
+          "elementId": "6226932",
+          "qty": 1,
+          "drawerId": "N44",
+          "drawerLabel": "N44"
+        }
+      ]
+    },
     {
       "id": "bag_mvukz435_e4djv",
       "label": "October 17 BAM Visit (batch 82)",
@@ -490374,17 +490399,6 @@
           "sel": false
         },
         {
-          "partNum": "32739",
-          "color": "Dark Bluish Gray",
-          "desc": "Brick Sloped 4 x 6 x 2/3 Double",
-          "elementId": "6226932",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "64567",
           "color": "Black",
           "desc": "Weapon Lightsaber Hilt with Bottom Ring",
@@ -491012,12 +491026,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T06:26:13.457Z",
+      "savedAt": "2026-10-30T06:26:26.754Z",
       "keepOpen": true,
       "moved": {
-        "batches": 82,
-        "pieces": 1657,
-        "last": "2026-10-30T06:17:58.385Z"
+        "batches": 83,
+        "pieces": 1658,
+        "last": "2026-10-30T06:26:26.754Z"
       }
     },
     {
@@ -583472,7 +583486,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T06:26:17.498Z"
+      "at": "2026-10-30T06:26:30.785Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -583493,10 +583507,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T06:26:13.458Z",
+      "bags": "2026-10-30T06:26:26.755Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T06:26:17.498Z",
+    "savedAt": "2026-10-30T06:26:30.785Z",
     "appVersion": "2026.10.29.1"
   }
 }
