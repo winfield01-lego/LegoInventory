@@ -454497,7 +454497,7 @@
       "label": "G3",
       "notes": "Ladder with Clips and Curved Ladder",
       "group": "G",
-      "lastEdited": "2026-10-30T05:37:47.044Z"
+      "lastEdited": "2026-10-30T05:41:08.493Z"
     },
     {
       "id": "G4",
@@ -477135,6 +477135,30 @@
       "drawerId": "G3",
       "partNum": "95229",
       "color": "Black",
+      "qty": 2
+    },
+    {
+      "drawerId": "G3",
+      "partNum": "5630",
+      "color": "Black",
+      "qty": 6
+    },
+    {
+      "drawerId": "G3",
+      "partNum": "5630",
+      "color": "Light Bluish Gray",
+      "qty": 11
+    },
+    {
+      "drawerId": "G3",
+      "partNum": "5630",
+      "color": "Reddish Brown",
+      "qty": 3
+    },
+    {
+      "drawerId": "G3",
+      "partNum": "5630",
+      "color": "Yellow",
       "qty": 1
     }
   ],
@@ -582593,6 +582617,27 @@
       "d": "Bar 1 x 8 x 3 - 1 x 8 x 4 Curved",
       "e": "4620385",
       "u": 1793338633330
+    },
+    "5630|light bluish gray": {
+      "p": "5630",
+      "c": "Light Bluish Gray",
+      "d": "Bar 7 x 3 with Double Clips (Ladder) [Round Clips]",
+      "e": "6509831",
+      "u": 1793338867316
+    },
+    "5630|reddish brown": {
+      "p": "5630",
+      "c": "Reddish Brown",
+      "d": "Bar 7 x 3 with Double Clips (Ladder) [Round Clips]",
+      "e": "6509834",
+      "u": 1793338867316
+    },
+    "5630|yellow": {
+      "p": "5630",
+      "c": "Yellow",
+      "d": "Bar 7 x 3 with Double Clips (Ladder) [Round Clips]",
+      "e": "6529090",
+      "u": 1793338867316
     }
   },
   "partKinds": {
@@ -582736,7 +582781,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T05:37:51.083Z"
+      "at": "2026-10-30T05:41:12.526Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -582760,7 +582805,7 @@
       "bags": "2026-10-30T05:37:12.129Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T05:37:51.083Z",
+    "savedAt": "2026-10-30T05:41:12.525Z",
     "appVersion": "2026.10.29.1"
   }
 }
