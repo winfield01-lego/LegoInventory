@@ -456269,7 +456269,7 @@
       "label": "L27",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-10-30T17:09:50.827Z"
+      "lastEdited": "2026-10-30T17:10:25.912Z"
     },
     {
       "id": "L28",
@@ -478461,6 +478461,12 @@
       "color": "Light Bluish Gray",
       "elementId": "6043639",
       "qty": 1
+    },
+    {
+      "drawerId": "L27",
+      "partNum": "3170",
+      "color": "Black",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -478873,6 +478879,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvv8a6n6_ofn08",
+      "label": "October 17 BAM Visit (batch 95)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 95,
+      "timestamp": "2026-10-30T17:10:26.082Z",
+      "items": [
+        {
+          "partNum": "3170",
+          "color": "Black",
+          "desc": "Plate Special 1 x 2 with 2 End Towballs",
+          "elementId": "6416838",
+          "qty": 2,
+          "drawerId": "L27",
+          "drawerLabel": "L27"
+        }
+      ]
+    },
     {
       "id": "bag_mvv89fjv_gewa7",
       "label": "October 17 BAM Visit (batch 94)",
@@ -491522,17 +491547,6 @@
           "sel": false
         },
         {
-          "partNum": "3170",
-          "color": "Black",
-          "desc": "Plate Special 1 x 2 with 2 End Towballs",
-          "elementId": "6416838",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "15460",
           "color": "Dark Bluish Gray",
           "desc": "Technic Steering Gear with 3 Towball Joints, Compact",
@@ -491929,12 +491943,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T17:09:50.971Z",
+      "savedAt": "2026-10-30T17:10:26.081Z",
       "keepOpen": true,
       "moved": {
-        "batches": 94,
-        "pieces": 1676,
-        "last": "2026-10-30T17:09:50.971Z"
+        "batches": 95,
+        "pieces": 1678,
+        "last": "2026-10-30T17:10:26.082Z"
       }
     },
     {
@@ -584777,7 +584791,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:09:56.259Z"
+      "at": "2026-10-30T17:10:30.110Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584798,10 +584812,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T17:09:50.971Z",
+      "bags": "2026-10-30T17:10:26.082Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:09:56.259Z",
+    "savedAt": "2026-10-30T17:10:30.109Z",
     "appVersion": "2026.10.29.1"
   }
 }
