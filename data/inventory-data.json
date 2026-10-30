@@ -453974,7 +453974,7 @@
       "label": "B6",
       "notes": "Plate with Grill",
       "group": "B",
-      "lastEdited": "2026-10-29T23:11:17.664Z"
+      "lastEdited": "2026-10-30T20:31:47.090Z"
     },
     {
       "id": "B7",
@@ -479890,6 +479890,13 @@
       "color": "White",
       "elementId": "4106874",
       "qty": 2
+    },
+    {
+      "drawerId": "B6",
+      "partNum": "4285a",
+      "color": "Light Gray",
+      "elementId": "",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -480302,6 +480309,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvfh4jb_4l6ks",
+      "label": "October 17 BAM Visit (batch 116)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 116,
+      "timestamp": "2026-10-30T20:31:47.255Z",
+      "items": [
+        {
+          "partNum": "4285a",
+          "color": "Light Gray",
+          "desc": "Dish 6 x 6 Inverted, Radar / Webbed [No Anti-studs]",
+          "elementId": "",
+          "qty": 1,
+          "drawerId": "B6",
+          "drawerLabel": "B6"
+        }
+      ]
+    },
     {
       "id": "bag_mvvfcjgb_9pmt5",
       "label": "October 17 BAM Visit (batch 115)",
@@ -493520,17 +493546,6 @@
           "sel": false
         },
         {
-          "partNum": "4285a",
-          "color": "Light Gray",
-          "desc": "Dish 6 x 6 Inverted, Radar / Webbed [No Anti-studs]",
-          "elementId": "",
-          "qty": 1,
-          "drawerId": "B6",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "49699",
           "color": "Dark Bluish Gray",
           "desc": "Brick Special 1 x 6 x 4 with 4 Pin Holes and Opening",
@@ -493542,12 +493557,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T20:31:41.574Z",
+      "savedAt": "2026-10-30T20:31:47.255Z",
       "keepOpen": true,
       "moved": {
-        "batches": 115,
-        "pieces": 1716,
-        "last": "2026-10-30T20:28:13.307Z"
+        "batches": 116,
+        "pieces": 1717,
+        "last": "2026-10-30T20:31:47.255Z"
       }
     },
     {
@@ -586881,6 +586896,13 @@
       "d": "Technic Knob Wheel",
       "e": "4261230",
       "u": 1793392021376
+    },
+    "4285a|light gray": {
+      "p": "4285a",
+      "c": "Light Gray",
+      "d": "Dish 6 x 6 Inverted, Radar / Webbed [No Anti-studs]",
+      "e": "",
+      "u": 1793392308457
     }
   },
   "partKinds": {
@@ -587024,7 +587046,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:31:45.607Z"
+      "at": "2026-10-30T20:31:51.278Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -587045,10 +587067,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T20:31:41.574Z",
+      "bags": "2026-10-30T20:31:47.255Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:31:45.607Z",
+    "savedAt": "2026-10-30T20:31:51.278Z",
     "appVersion": "2026.10.30.1"
   }
 }
