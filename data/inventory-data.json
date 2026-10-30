@@ -454247,7 +454247,8 @@
       "id": "F7",
       "label": "F7",
       "notes": "",
-      "group": "F"
+      "group": "F",
+      "lastEdited": "2026-10-30T17:34:29.341Z"
     },
     {
       "id": "F8",
@@ -478698,6 +478699,13 @@
       "partNum": "79505",
       "color": "Black",
       "qty": 1
+    },
+    {
+      "drawerId": "F7",
+      "partNum": "64567",
+      "color": "Black",
+      "elementId": "4523775",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -479110,6 +479118,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvv954ef_e6lvp",
+      "label": "October 17 BAM Visit (batch 97)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 97,
+      "timestamp": "2026-10-30T17:34:29.511Z",
+      "items": [
+        {
+          "partNum": "64567",
+          "color": "Black",
+          "desc": "Weapon Lightsaber Hilt with Bottom Ring",
+          "elementId": "4523775",
+          "qty": 1,
+          "drawerId": "F7",
+          "drawerLabel": "F7"
+        }
+      ]
+    },
     {
       "id": "bag_mvv8fhc8_f4hln",
       "label": "October 17 BAM Visit (batch 96)",
@@ -491751,17 +491778,6 @@
           "sel": false
         },
         {
-          "partNum": "64567",
-          "color": "Black",
-          "desc": "Weapon Lightsaber Hilt with Bottom Ring",
-          "elementId": "4523775",
-          "qty": 1,
-          "drawerId": "F7",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "32039",
           "color": "Red",
           "desc": "Technic Axle Connector with Axle Hole",
@@ -492180,12 +492196,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T17:34:21.776Z",
+      "savedAt": "2026-10-30T17:34:29.511Z",
       "keepOpen": true,
       "moved": {
-        "batches": 96,
-        "pieces": 1681,
-        "last": "2026-10-30T17:14:33.224Z"
+        "batches": 97,
+        "pieces": 1682,
+        "last": "2026-10-30T17:34:29.511Z"
       }
     },
     {
@@ -522883,9 +522899,12 @@
       "c": "Black",
       "d": "Weapon Lightsaber Hilt with Bottom Ring",
       "e": "4614712",
-      "u": 1791916924851,
+      "u": 1793381670712,
       "at": 1791654586559,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4539482.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4539482.jpg",
+      "ea": [
+        "4523775"
+      ]
     },
     "59900|blue": {
       "p": "59900",
@@ -585188,7 +585207,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:34:25.817Z"
+      "at": "2026-10-30T17:34:34.800Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585209,10 +585228,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T17:34:21.776Z",
+      "bags": "2026-10-30T17:34:29.511Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:34:25.817Z",
+    "savedAt": "2026-10-30T17:34:34.800Z",
     "appVersion": "2026.10.29.1"
   }
 }
