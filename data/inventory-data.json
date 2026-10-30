@@ -456753,7 +456753,7 @@
       "label": "N7",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.790Z"
+      "lastEdited": "2026-10-30T20:28:13.155Z"
     },
     {
       "id": "N8",
@@ -479865,6 +479865,12 @@
       "color": "Black",
       "elementId": "4177961",
       "qty": 6
+    },
+    {
+      "drawerId": "N7",
+      "partNum": "6190",
+      "color": "Dark Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -480277,6 +480283,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvfcjgb_9pmt5",
+      "label": "October 17 BAM Visit (batch 115)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 115,
+      "timestamp": "2026-10-30T20:28:13.307Z",
+      "items": [
+        {
+          "partNum": "6190",
+          "color": "Dark Bluish Gray",
+          "desc": "Bar 1 x 3 (Radio Handle, Phone Handset)",
+          "elementId": "4210676",
+          "qty": 1,
+          "drawerId": "N7",
+          "drawerLabel": "N7"
+        }
+      ]
+    },
     {
       "id": "bag_mvvfcb9q_izmt2",
       "label": "October 17 BAM Visit (batch 114)",
@@ -493410,17 +493435,6 @@
           "sel": false
         },
         {
-          "partNum": "6190",
-          "color": "Dark Bluish Gray",
-          "desc": "Bar 1 x 3 (Radio Handle, Phone Handset)",
-          "elementId": "4210676",
-          "qty": 1,
-          "drawerId": "N7",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "7052",
           "color": "Black",
           "desc": "Bar, Curved U-Shape 2 x 3",
@@ -493509,12 +493523,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T20:28:07.809Z",
+      "savedAt": "2026-10-30T20:28:13.307Z",
       "keepOpen": true,
       "moved": {
-        "batches": 114,
-        "pieces": 1715,
-        "last": "2026-10-30T20:28:02.702Z"
+        "batches": 115,
+        "pieces": 1716,
+        "last": "2026-10-30T20:28:13.307Z"
       }
     },
     {
@@ -586988,7 +587002,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:28:11.840Z"
+      "at": "2026-10-30T20:28:17.347Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -587009,10 +587023,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T20:28:07.809Z",
+      "bags": "2026-10-30T20:28:13.307Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:28:11.840Z",
+    "savedAt": "2026-10-30T20:28:17.347Z",
     "appVersion": "2026.10.30.1"
   }
 }
