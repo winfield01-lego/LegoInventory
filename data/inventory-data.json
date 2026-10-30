@@ -455868,7 +455868,7 @@
       "label": "K13",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-10-13T17:12:46.630Z"
+      "lastEdited": "2026-10-30T05:56:35.513Z"
     },
     {
       "id": "K14",
@@ -477308,6 +477308,18 @@
       "partNum": "35654",
       "color": "Black",
       "qty": 6
+    },
+    {
+      "drawerId": "K13",
+      "partNum": "42195",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "K13",
+      "partNum": "6538b",
+      "color": "Dark Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -477720,6 +477732,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvuk7mbt_1ubxw",
+      "label": "October 17 BAM Visit (batch 80)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 80,
+      "timestamp": "2026-10-30T05:56:35.657Z",
+      "items": [
+        {
+          "partNum": "42195",
+          "color": "Black",
+          "desc": "Technic Driving Ring Connector Smooth [2 Rounded and 2 Flat Side Walls]",
+          "elementId": "6286381",
+          "qty": 1,
+          "drawerId": "K13",
+          "drawerLabel": "K13"
+        },
+        {
+          "partNum": "6538b",
+          "color": "Dark Bluish Gray",
+          "desc": "Technic Axle Connector Ridged [with x Hole x Orientation]",
+          "elementId": "4210672",
+          "qty": 1,
+          "drawerId": "K13",
+          "drawerLabel": "K13"
+        }
+      ]
+    },
     {
       "id": "bag_mvuk3eap_irpmc",
       "label": "October 17 BAM Visit (batch 79)",
@@ -490085,28 +490125,6 @@
           "sel": false
         },
         {
-          "partNum": "42195",
-          "color": "Black",
-          "desc": "Technic Driving Ring Connector Smooth [2 Rounded and 2 Flat Side Walls]",
-          "elementId": "6286381",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "6538b",
-          "color": "Dark Bluish Gray",
-          "desc": "Technic Axle Connector Ridged [with x Hole x Orientation]",
-          "elementId": "4210672",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "37352",
           "color": "Orange",
           "desc": "Brick Curved 1 x 2 x 1 No Studs",
@@ -490668,12 +490686,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T05:55:45.808Z",
+      "savedAt": "2026-10-30T05:56:35.656Z",
       "keepOpen": true,
       "moved": {
-        "batches": 79,
-        "pieces": 1652,
-        "last": "2026-10-30T05:53:18.625Z"
+        "batches": 80,
+        "pieces": 1654,
+        "last": "2026-10-30T05:56:35.657Z"
       }
     },
     {
@@ -582849,6 +582867,13 @@
       "d": "Brick Round 2 x 2, Pin Holes",
       "e": "6232037",
       "u": 1793339132640
+    },
+    "6538b|dark bluish gray": {
+      "p": "6538b",
+      "c": "Dark Bluish Gray",
+      "d": "Technic Axle Connector Ridged [with x Hole x Orientation]",
+      "e": "4210672",
+      "u": 1793339796858
     }
   },
   "partKinds": {
@@ -582992,7 +583017,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T05:55:49.834Z"
+      "at": "2026-10-30T05:56:40.949Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -583013,10 +583038,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T05:55:45.808Z",
+      "bags": "2026-10-30T05:56:35.657Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T05:55:49.834Z",
+    "savedAt": "2026-10-30T05:56:40.949Z",
     "appVersion": "2026.10.29.1"
   }
 }
