@@ -457839,7 +457839,7 @@
       "label": "Q1",
       "notes": "",
       "group": "Q",
-      "lastEdited": "2026-10-28T02:47:37.170Z"
+      "lastEdited": "2026-10-30T17:50:50.425Z"
     },
     {
       "id": "Q2",
@@ -478883,6 +478883,12 @@
       "partNum": "30586",
       "color": "Light Bluish Gray",
       "qty": 21
+    },
+    {
+      "drawerId": "Q1",
+      "partNum": "4863",
+      "color": "Blue",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -479295,6 +479301,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvv9q5ex_gut3c",
+      "label": "October 17 BAM Visit (batch 100)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 100,
+      "timestamp": "2026-10-30T17:50:50.601Z",
+      "items": [
+        {
+          "partNum": "4863",
+          "color": "Blue",
+          "desc": "Window 1 x 4 x 2 Plane, Solid Studs",
+          "elementId": "486323",
+          "qty": 1,
+          "drawerId": "Q1",
+          "drawerLabel": "Q1"
+        }
+      ]
+    },
     {
       "id": "bag_mvv9lgzk_ymxr7",
       "label": "October 17 BAM Visit (batch 99)",
@@ -492301,17 +492326,6 @@
           "sel": false
         },
         {
-          "partNum": "4863",
-          "color": "Blue",
-          "desc": "Window 1 x 4 x 2 Plane, Solid Studs",
-          "elementId": "486323",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "32529",
           "color": "Black",
           "desc": "Technic Pin Connector Plate with One Hole (Single on Bottom)",
@@ -492389,12 +492403,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T17:50:41.825Z",
+      "savedAt": "2026-10-30T17:50:50.601Z",
       "keepOpen": true,
       "moved": {
-        "batches": 99,
-        "pieces": 1684,
-        "last": "2026-10-30T17:47:12.320Z"
+        "batches": 100,
+        "pieces": 1685,
+        "last": "2026-10-30T17:50:50.601Z"
       }
     },
     {
@@ -585295,6 +585309,13 @@
       "d": "Plate Special 2 x 8 with Door Rail",
       "e": "3058601",
       "u": 1793382433521
+    },
+    "4863|blue": {
+      "p": "4863",
+      "c": "Blue",
+      "d": "Window 1 x 4 x 2 Plane, Solid Studs",
+      "e": "486323",
+      "u": 1793382651801
     }
   },
   "partKinds": {
@@ -585438,7 +585459,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:50:45.850Z"
+      "at": "2026-10-30T17:50:54.629Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585459,10 +585480,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T17:50:41.825Z",
+      "bags": "2026-10-30T17:50:50.601Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:50:45.850Z",
+    "savedAt": "2026-10-30T17:50:54.629Z",
     "appVersion": "2026.10.29.1"
   }
 }
