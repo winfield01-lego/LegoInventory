@@ -457839,7 +457839,7 @@
       "label": "Q1",
       "notes": "1 x 6 x 2 and 1 x 6 x 2 Windows",
       "group": "Q",
-      "lastEdited": "2026-10-30T18:10:35.250Z"
+      "lastEdited": "2026-10-30T18:11:59.734Z"
     },
     {
       "id": "Q2",
@@ -478888,7 +478888,7 @@
       "drawerId": "Q1",
       "partNum": "4863",
       "color": "Blue",
-      "qty": 1
+      "qty": 27
     },
     {
       "drawerId": "Q1",
@@ -478903,6 +478903,31 @@
       "color": "Red",
       "elementId": "",
       "qty": 1
+    },
+    {
+      "drawerId": "Q1",
+      "partNum": "4863",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q1",
+      "partNum": "4863",
+      "color": "Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "Q1",
+      "partNum": "4863",
+      "color": "Yellow",
+      "elementId": "4526592",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q1",
+      "partNum": "4863",
+      "color": "White",
+      "qty": 6
     }
   ],
   "mocLocations": {
@@ -574030,9 +574055,12 @@
       "c": "Yellow",
       "d": "Window 1 x 4 x 2 Plane, Solid Studs",
       "e": "486324",
-      "u": 1791916924851,
+      "u": 1793383920936,
       "at": 1791732234165,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/14/4863.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/14/4863.png",
+      "ea": [
+        "4526592"
+      ]
     },
     "2431pr0015|blue": {
       "p": "2431pr0015",
@@ -585344,6 +585372,20 @@
       "d": "Window 1 x 6 x 2 (Old Type) with Extended Lip and Solid Studs, No Glass",
       "e": "",
       "u": 1793383819519
+    },
+    "4863|light bluish gray": {
+      "p": "4863",
+      "c": "Light Bluish Gray",
+      "d": "Window 1 x 4 x 2 Plane, Solid Studs",
+      "e": "4224726",
+      "u": 1793383920936
+    },
+    "4863|red": {
+      "p": "4863",
+      "c": "Red",
+      "d": "Window 1 x 4 x 2 Plane, Solid Studs",
+      "e": "4217651",
+      "u": 1793383920936
     }
   },
   "partKinds": {
@@ -585487,7 +585529,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T18:10:39.284Z"
+      "at": "2026-10-30T18:12:05.023Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585511,7 +585553,7 @@
       "bags": "2026-10-30T17:50:50.601Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T18:10:39.284Z",
+    "savedAt": "2026-10-30T18:12:05.023Z",
     "appVersion": "2026.10.29.1"
   }
 }
