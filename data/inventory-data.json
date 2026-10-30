@@ -454363,7 +454363,7 @@
       "label": "F25",
       "notes": "1 x 2 Rounded with Center Bars",
       "group": "F",
-      "lastEdited": "2026-10-30T20:47:24.256Z"
+      "lastEdited": "2026-10-30T20:47:58.756Z"
     },
     {
       "id": "F26",
@@ -480041,7 +480041,21 @@
       "partNum": "77808",
       "color": "Dark Bluish Gray",
       "elementId": "6390673",
-      "qty": 1
+      "qty": 12
+    },
+    {
+      "drawerId": "F25",
+      "partNum": "77808",
+      "color": "Black",
+      "elementId": "6447759",
+      "qty": 4
+    },
+    {
+      "drawerId": "F25",
+      "partNum": "77808",
+      "color": "Pearl Gold",
+      "elementId": "6370621",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -498707,9 +498721,12 @@
       "c": "Black",
       "d": "Brick Special 1 x 2 Rounded with Center Bars",
       "e": "6510214",
-      "u": 1791916924851,
+      "u": 1793393279959,
       "at": 1791660084431,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6447759.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6447759.jpg",
+      "ea": [
+        "6447759"
+      ]
     },
     "86876|white": {
       "p": "86876",
@@ -534249,9 +534266,12 @@
       "c": "Pearl Gold",
       "d": "Brick Special 1 x 2 Rounded with Center Bars",
       "e": "6510211",
-      "u": 1791916924851,
+      "u": 1793393279959,
       "at": 1791654369983,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6370621.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6370621.jpg",
+      "ea": [
+        "6370621"
+      ]
     },
     "2921|red": {
       "p": "2921",
@@ -587300,7 +587320,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:47:28.291Z"
+      "at": "2026-10-30T20:48:04.040Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -587324,7 +587344,7 @@
       "bags": "2026-10-30T20:47:01.838Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:47:28.291Z",
+    "savedAt": "2026-10-30T20:48:04.040Z",
     "appVersion": "2026.10.30.1"
   }
 }
