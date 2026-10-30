@@ -454261,7 +454261,8 @@
       "id": "F9",
       "label": "F9",
       "notes": "",
-      "group": "F"
+      "group": "F",
+      "lastEdited": "2026-10-30T20:44:51.904Z"
     },
     {
       "id": "F10",
@@ -480002,6 +480003,12 @@
       "partNum": "92926",
       "color": "Dark Bluish Gray",
       "qty": 1
+    },
+    {
+      "drawerId": "F9",
+      "partNum": "32529",
+      "color": "Black",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -480414,6 +480421,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvfxy3b_j4ufx",
+      "label": "October 17 BAM Visit (batch 118)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 118,
+      "timestamp": "2026-10-30T20:44:52.055Z",
+      "items": [
+        {
+          "partNum": "32529",
+          "color": "Black",
+          "desc": "Technic Pin Connector Plate with One Hole (Single on Bottom)",
+          "elementId": "4144023",
+          "qty": 1,
+          "drawerId": "F9",
+          "drawerLabel": "F9"
+        }
+      ]
+    },
     {
       "id": "bag_mvvfnmid_fx5t5",
       "label": "October 17 BAM Visit (batch 117)",
@@ -493622,17 +493648,6 @@
           "sel": false
         },
         {
-          "partNum": "32529",
-          "color": "Black",
-          "desc": "Technic Pin Connector Plate with One Hole (Single on Bottom)",
-          "elementId": "4144023",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "98138",
           "color": "Light Bluish Gray",
           "desc": "Tile Round 1 x 1",
@@ -493666,12 +493681,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T20:44:43.608Z",
+      "savedAt": "2026-10-30T20:44:52.055Z",
       "keepOpen": true,
       "moved": {
-        "batches": 117,
-        "pieces": 1720,
-        "last": "2026-10-30T20:36:50.484Z"
+        "batches": 118,
+        "pieces": 1721,
+        "last": "2026-10-30T20:44:52.055Z"
       }
     },
     {
@@ -587231,7 +587246,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:44:47.649Z"
+      "at": "2026-10-30T20:44:56.080Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -587252,10 +587267,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T20:44:43.608Z",
+      "bags": "2026-10-30T20:44:52.055Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:44:47.649Z",
+    "savedAt": "2026-10-30T20:44:56.079Z",
     "appVersion": "2026.10.30.1"
   }
 }
