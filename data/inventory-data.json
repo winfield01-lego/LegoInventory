@@ -455437,7 +455437,7 @@
       "label": "J12",
       "notes": "",
       "group": "j",
-      "lastEdited": "2026-10-30T18:43:45.857Z"
+      "lastEdited": "2026-10-30T18:45:36.825Z"
     },
     {
       "id": "J13",
@@ -479096,7 +479096,7 @@
       "drawerId": "J12",
       "partNum": "24482",
       "color": "White",
-      "qty": 1
+      "qty": 2
     },
     {
       "drawerId": "J12",
@@ -479141,6 +479141,19 @@
       "partNum": "92220",
       "color": "Pearl Titanium",
       "qty": 6
+    },
+    {
+      "drawerId": "J12",
+      "partNum": "24482",
+      "color": "Dark Bluish Gray",
+      "elementId": "6230282",
+      "qty": 4
+    },
+    {
+      "drawerId": "J12",
+      "partNum": "24482",
+      "color": "Pearl Gold",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -533624,9 +533637,12 @@
       "c": "Dark Bluish Gray",
       "d": "Weapon Spear Tip with Fins",
       "e": "6269969",
-      "u": 1791916924851,
+      "u": 1793385938027,
       "at": 1791654494211,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6230282.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6230282.jpg",
+      "ea": [
+        "6230282"
+      ]
     },
     "3062b|dark brown": {
       "p": "3062b",
@@ -585778,6 +585794,13 @@
       "d": "Large Figure Weapon Claw, with Clip",
       "e": "4625376",
       "u": 1793385827058
+    },
+    "24482|pearl gold": {
+      "p": "24482",
+      "c": "Pearl Gold",
+      "d": "Weapon Spear Tip with Fins",
+      "e": "6282861",
+      "u": 1793385938027
     }
   },
   "partKinds": {
@@ -585921,7 +585944,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T18:43:49.887Z"
+      "at": "2026-10-30T18:45:42.119Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585945,7 +585968,7 @@
       "bags": "2026-10-30T18:39:09.385Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T18:43:49.887Z",
+    "savedAt": "2026-10-30T18:45:42.119Z",
     "appVersion": "2026.10.29.1"
   }
 }
