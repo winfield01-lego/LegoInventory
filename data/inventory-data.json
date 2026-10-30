@@ -455437,7 +455437,7 @@
       "label": "J12",
       "notes": "",
       "group": "j",
-      "lastEdited": "2026-10-30T18:46:24.056Z"
+      "lastEdited": "2026-10-30T18:47:22.107Z"
     },
     {
       "id": "J13",
@@ -479160,6 +479160,25 @@
       "partNum": "24204",
       "color": "Pearl Gold",
       "qty": 3
+    },
+    {
+      "drawerId": "J12",
+      "partNum": "64727",
+      "color": "Black",
+      "elementId": "6173917",
+      "qty": 2
+    },
+    {
+      "drawerId": "J12",
+      "partNum": "64727",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "J12",
+      "partNum": "64727",
+      "color": "Tan",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -555545,9 +555564,12 @@
       "c": "Black",
       "d": "Weapon Spike Flexible 3.5L",
       "e": "6270085",
-      "u": 1791916924851,
+      "u": 1793386043309,
       "at": 1791654738545,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6173917.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6173917.jpg",
+      "ea": [
+        "6173917"
+      ]
     },
     "62361|black": {
       "p": "62361",
@@ -585814,6 +585836,13 @@
       "d": "Plant / Animal Body Part, Tree / Branch / Tail / Appendage Bladed with Pin",
       "e": "6133319",
       "u": 1793385985258
+    },
+    "64727|light bluish gray": {
+      "p": "64727",
+      "c": "Light Bluish Gray",
+      "d": "Weapon Spike Flexible 3.5L",
+      "e": "4539187",
+      "u": 1793386043309
     }
   },
   "partKinds": {
@@ -585957,7 +585986,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T18:46:28.083Z"
+      "at": "2026-10-30T18:47:27.386Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585981,7 +586010,7 @@
       "bags": "2026-10-30T18:39:09.385Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T18:46:28.083Z",
+    "savedAt": "2026-10-30T18:47:27.386Z",
     "appVersion": "2026.10.29.1"
   }
 }
