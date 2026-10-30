@@ -457663,7 +457663,7 @@
       "label": "S7",
       "notes": "",
       "group": "S",
-      "lastEdited": "2026-10-13T17:14:43.203Z"
+      "lastEdited": "2026-10-30T14:53:27.284Z"
     },
     {
       "id": "S8",
@@ -477956,6 +477956,13 @@
       "color": "White",
       "elementId": "6357598",
       "qty": 1
+    },
+    {
+      "drawerId": "S7",
+      "partNum": "6081",
+      "color": "White",
+      "elementId": "608101",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -478368,6 +478375,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvv3e13q_k4grw",
+      "label": "October 17 BAM Visit (batch 86)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 86,
+      "timestamp": "2026-10-30T14:53:27.446Z",
+      "items": [
+        {
+          "partNum": "6081",
+          "color": "White",
+          "desc": "Brick Curved 2 x 4 x 1 1/3",
+          "elementId": "608101",
+          "qty": 2,
+          "drawerId": "S7",
+          "drawerLabel": "S7"
+        }
+      ]
+    },
     {
       "id": "bag_mvv2u0mv_igo2i",
       "label": "October 17 BAM Visit (batch 85)",
@@ -491079,17 +491105,6 @@
           "sel": false
         },
         {
-          "partNum": "6081",
-          "color": "White",
-          "desc": "Brick Curved 2 x 4 x 1 1/3",
-          "elementId": "608101",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "89522",
           "color": "Flat Silver",
           "desc": "Creature Body Part, Horn (Unicorn)",
@@ -491354,12 +491369,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T14:53:18.256Z",
+      "savedAt": "2026-10-30T14:53:27.446Z",
       "keepOpen": true,
       "moved": {
-        "batches": 85,
-        "pieces": 1663,
-        "last": "2026-10-30T14:37:53.718Z"
+        "batches": 86,
+        "pieces": 1665,
+        "last": "2026-10-30T14:53:27.446Z"
       }
     },
     {
@@ -560068,9 +560083,12 @@
       "c": "White",
       "d": "Brick Curved 2 x 4 x 1 1/3",
       "e": "608151",
-      "u": 1791916924851,
+      "u": 1793372008647,
       "at": 1791846545325,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/608101.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/608101.jpg",
+      "ea": [
+        "608101"
+      ]
     },
     "14769pr1116|white": {
       "p": "14769pr1116",
@@ -583942,7 +583960,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T14:53:22.293Z"
+      "at": "2026-10-30T14:53:32.732Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -583963,10 +583981,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T14:53:18.258Z",
+      "bags": "2026-10-30T14:53:27.446Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T14:53:22.293Z",
+    "savedAt": "2026-10-30T14:53:32.732Z",
     "appVersion": "2026.10.29.1"
   }
 }
