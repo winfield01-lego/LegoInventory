@@ -455437,7 +455437,7 @@
       "label": "J12",
       "notes": "",
       "group": "j",
-      "lastEdited": "2026-10-30T18:45:36.825Z"
+      "lastEdited": "2026-10-30T18:46:24.056Z"
     },
     {
       "id": "J13",
@@ -479154,6 +479154,12 @@
       "partNum": "24482",
       "color": "Pearl Gold",
       "qty": 1
+    },
+    {
+      "drawerId": "J12",
+      "partNum": "24204",
+      "color": "Pearl Gold",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -585801,6 +585807,13 @@
       "d": "Weapon Spear Tip with Fins",
       "e": "6282861",
       "u": 1793385938027
+    },
+    "24204|pearl gold": {
+      "p": "24204",
+      "c": "Pearl Gold",
+      "d": "Plant / Animal Body Part, Tree / Branch / Tail / Appendage Bladed with Pin",
+      "e": "6133319",
+      "u": 1793385985258
     }
   },
   "partKinds": {
@@ -585944,7 +585957,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T18:45:42.119Z"
+      "at": "2026-10-30T18:46:28.083Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585968,7 +585981,7 @@
       "bags": "2026-10-30T18:39:09.385Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T18:45:42.119Z",
+    "savedAt": "2026-10-30T18:46:28.083Z",
     "appVersion": "2026.10.29.1"
   }
 }
