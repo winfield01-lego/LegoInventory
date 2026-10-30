@@ -457513,7 +457513,7 @@
       "label": "P10",
       "notes": "4 x 6 Plate and 16 x 16 Plate",
       "group": "P",
-      "lastEdited": "2026-10-30T06:18:16.273Z"
+      "lastEdited": "2026-10-30T06:25:00.983Z"
     },
     {
       "id": "Q7",
@@ -477524,7 +477524,96 @@
       "drawerId": "P10",
       "partNum": "3032",
       "color": "White",
+      "qty": 29
+    },
+    {
+      "drawerId": "P10",
+      "partNum": "3032",
+      "color": "Black",
+      "qty": 12
+    },
+    {
+      "drawerId": "P10",
+      "partNum": "3032",
+      "color": "Blue",
+      "qty": 23
+    },
+    {
+      "drawerId": "P10",
+      "partNum": "3032",
+      "color": "Dark Blue",
+      "elementId": "4252314",
+      "qty": 4
+    },
+    {
+      "drawerId": "P10",
+      "partNum": "3032",
+      "color": "Dark Bluish Gray",
+      "elementId": "3032199",
+      "qty": 24
+    },
+    {
+      "drawerId": "P10",
+      "partNum": "3032",
+      "color": "Dark Red",
+      "elementId": "4167304",
       "qty": 1
+    },
+    {
+      "drawerId": "P10",
+      "partNum": "3032",
+      "color": "Dark Tan",
+      "elementId": "4266898",
+      "qty": 4
+    },
+    {
+      "drawerId": "P10",
+      "partNum": "3032",
+      "color": "Green",
+      "qty": 2
+    },
+    {
+      "drawerId": "P10",
+      "partNum": "3032",
+      "color": "Light Bluish Gray",
+      "qty": 18
+    },
+    {
+      "drawerId": "P10",
+      "partNum": "3032",
+      "color": "Lime",
+      "qty": 1
+    },
+    {
+      "drawerId": "P10",
+      "partNum": "3032",
+      "color": "Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "P10",
+      "partNum": "3032",
+      "color": "Red",
+      "qty": 3
+    },
+    {
+      "drawerId": "P10",
+      "partNum": "3032",
+      "color": "Reddish Brown",
+      "elementId": "4211213",
+      "qty": 3
+    },
+    {
+      "drawerId": "P10",
+      "partNum": "3032",
+      "color": "Tan",
+      "qty": 9
+    },
+    {
+      "drawerId": "P10",
+      "partNum": "3032",
+      "color": "Yellow",
+      "qty": 6
     }
   ],
   "mocLocations": {
@@ -498175,8 +498264,11 @@
       "c": "Dark Bluish Gray",
       "d": "Plate 4 x 6",
       "e": "4211115",
-      "u": 1791916924851,
-      "at": 1791671921036
+      "u": 1793341502196,
+      "at": 1791671921036,
+      "ea": [
+        "3032199"
+      ]
     },
     "47457|black": {
       "p": "47457",
@@ -511806,8 +511898,11 @@
       "c": "Dark Red",
       "d": "Plate 4 x 6",
       "e": "6020122",
-      "u": 1791916924851,
-      "at": 1791660084431
+      "u": 1793341502196,
+      "at": 1791660084431,
+      "ea": [
+        "4167304"
+      ]
     },
     "35480|dark red": {
       "p": "35480",
@@ -537351,8 +537446,11 @@
       "c": "Dark Blue",
       "d": "Plate 4 x 6",
       "e": "6037887",
-      "u": 1791916924851,
-      "at": 1791654691519
+      "u": 1793341502196,
+      "at": 1791654691519,
+      "ea": [
+        "4252314"
+      ]
     },
     "3036|dark blue": {
       "p": "3036",
@@ -541068,8 +541166,11 @@
       "c": "Reddish Brown",
       "d": "Plate 4 x 6",
       "e": "4271874",
-      "u": 1791916924851,
-      "at": 1791654691519
+      "u": 1793341502196,
+      "at": 1791654691519,
+      "ea": [
+        "4211213"
+      ]
     },
     "4032a|reddish brown": {
       "p": "4032a",
@@ -541418,8 +541519,11 @@
       "c": "Dark Tan",
       "d": "Plate 4 x 6",
       "e": "6167894",
-      "u": 1791916924851,
-      "at": 1791654796747
+      "u": 1793341502196,
+      "at": 1791654796747,
+      "ea": [
+        "4266898"
+      ]
     },
     "18909|light bluish gray": {
       "p": "18909",
@@ -583172,6 +583276,20 @@
       "d": "Equipment Weapon, Loudhailer / Speaker / Blaster / Space Gun",
       "e": "4211493",
       "u": 1793341037505
+    },
+    "3032|lime": {
+      "p": "3032",
+      "c": "Lime",
+      "d": "Plate 4 x 6",
+      "e": "4160081",
+      "u": 1793341502196
+    },
+    "3032|orange": {
+      "p": "3032",
+      "c": "Orange",
+      "d": "Plate 4 x 6",
+      "e": "4125267",
+      "u": 1793341502196
     }
   },
   "partKinds": {
@@ -583315,7 +583433,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T06:18:20.303Z"
+      "at": "2026-10-30T06:25:05.019Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -583339,7 +583457,7 @@
       "bags": "2026-10-30T06:17:58.385Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T06:18:20.303Z",
+    "savedAt": "2026-10-30T06:25:05.018Z",
     "appVersion": "2026.10.29.1"
   }
 }
