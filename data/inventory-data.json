@@ -456905,7 +456905,7 @@
       "label": "N29",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.790Z"
+      "lastEdited": "2026-10-30T19:34:50.995Z"
     },
     {
       "id": "N30",
@@ -479470,6 +479470,12 @@
       "partNum": "85861",
       "color": "Dark Bluish Gray",
       "qty": 36
+    },
+    {
+      "drawerId": "N29",
+      "partNum": "59900",
+      "color": "Pearl Gold",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -479882,6 +479888,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvdfwnp_nul6p",
+      "label": "October 17 BAM Visit (batch 109)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 109,
+      "timestamp": "2026-10-30T19:34:51.157Z",
+      "items": [
+        {
+          "partNum": "59900",
+          "color": "Pearl Gold",
+          "desc": "Cone 1 x 1 [Top Groove]",
+          "elementId": "4529247",
+          "qty": 1,
+          "drawerId": "N29",
+          "drawerLabel": "N29"
+        }
+      ]
+    },
     {
       "id": "bag_mvvcqb4z_n2a04",
       "label": "October 17 BAM Visit (batch 108)",
@@ -492973,17 +492998,6 @@
           "sel": false
         },
         {
-          "partNum": "59900",
-          "color": "Pearl Gold",
-          "desc": "Cone 1 x 1 [Top Groove]",
-          "elementId": "4529247",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "3730",
           "color": "Blue",
           "desc": "Plate Special 2 x 2 with Towball Socket, Short, 4 Slots",
@@ -493061,12 +493075,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T19:14:56.866Z",
+      "savedAt": "2026-10-30T19:34:51.156Z",
       "keepOpen": true,
       "moved": {
-        "batches": 108,
-        "pieces": 1704,
-        "last": "2026-10-30T19:14:56.867Z"
+        "batches": 109,
+        "pieces": 1705,
+        "last": "2026-10-30T19:34:51.157Z"
       }
     },
     {
@@ -586414,7 +586428,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T19:34:05.440Z"
+      "at": "2026-10-30T19:34:55.189Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -586435,10 +586449,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T19:14:56.867Z",
+      "bags": "2026-10-30T19:34:51.157Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T19:34:05.440Z",
+    "savedAt": "2026-10-30T19:34:55.188Z",
     "appVersion": "2026.10.29.1"
   }
 }
