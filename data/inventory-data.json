@@ -454585,7 +454585,7 @@
       "label": "G16",
       "notes": "Bracket 5 x 2 x 2 1/2",
       "group": "G",
-      "lastEdited": "2026-10-30T19:10:42.176Z"
+      "lastEdited": "2026-10-30T19:11:12.699Z"
     },
     {
       "id": "G17",
@@ -479328,6 +479328,27 @@
       "color": "Red",
       "elementId": "",
       "qty": 1
+    },
+    {
+      "drawerId": "G16",
+      "partNum": "76766",
+      "color": "Black",
+      "elementId": "6012983",
+      "qty": 2
+    },
+    {
+      "drawerId": "G16",
+      "partNum": "76766",
+      "color": "Blue",
+      "elementId": "6012982",
+      "qty": 3
+    },
+    {
+      "drawerId": "G16",
+      "partNum": "76766",
+      "color": "Light Bluish Gray",
+      "elementId": "6012653",
+      "qty": 6
     }
   ],
   "mocLocations": {
@@ -530511,9 +530532,12 @@
       "c": "Blue",
       "d": "Bracket 5 x 2 x 2 1/3 with Holes, Inside Stud Holder",
       "e": "6171063",
-      "u": 1791916924851,
+      "u": 1793387473901,
       "at": 1791654342636,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6012982.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6012982.jpg",
+      "ea": [
+        "6012982"
+      ]
     },
     "18671|dark bluish gray": {
       "p": "18671",
@@ -531896,9 +531920,12 @@
       "c": "Black",
       "d": "Bracket 5 x 2 x 2 1/3 with Holes, Inside Stud Holder",
       "e": "6171066",
-      "u": 1791916924851,
+      "u": 1793387473901,
       "at": 1791654388223,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6012983.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6012983.jpg",
+      "ea": [
+        "6012983"
+      ]
     },
     "26599|black": {
       "p": "26599",
@@ -535904,9 +535931,12 @@
       "c": "Light Bluish Gray",
       "d": "Bracket 5 x 2 x 2 1/3 with Holes, Inside Stud Holder",
       "e": "6171067",
-      "u": 1791916924851,
+      "u": 1793387473901,
       "at": 1791654513594,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6012653.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6012653.jpg",
+      "ea": [
+        "6012653"
+      ]
     },
     "2937|light bluish gray": {
       "p": "2937",
@@ -586224,7 +586254,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T19:10:46.209Z"
+      "at": "2026-10-30T19:11:17.982Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -586248,7 +586278,7 @@
       "bags": "2026-10-30T19:10:26.540Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T19:10:46.209Z",
+    "savedAt": "2026-10-30T19:11:17.982Z",
     "appVersion": "2026.10.29.1"
   }
 }
