@@ -454571,7 +454571,8 @@
       "id": "G14",
       "label": "G14",
       "notes": "",
-      "group": "G"
+      "group": "G",
+      "lastEdited": "2026-10-30T19:07:13.266Z"
     },
     {
       "id": "G15",
@@ -479277,6 +479278,12 @@
       "partNum": "11253",
       "color": "Red",
       "qty": 17
+    },
+    {
+      "drawerId": "G14",
+      "partNum": "44569",
+      "color": "Dark Bluish Gray",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -479689,6 +479696,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvcgdk2_xp3hp",
+      "label": "October 17 BAM Visit (batch 105)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 105,
+      "timestamp": "2026-10-30T19:07:13.442Z",
+      "items": [
+        {
+          "partNum": "44569",
+          "color": "Dark Bluish Gray",
+          "desc": "Hinge Train Gate 2 x 4 Locking Dual 2 Fingers with Rear Reinforcements, 9 Teeth",
+          "elementId": "4210926",
+          "qty": 2,
+          "drawerId": "G14",
+          "drawerLabel": "G14"
+        }
+      ]
+    },
     {
       "id": "bag_mvvbvgu7_kdof9",
       "label": "October 17 BAM Visit (batch 104)",
@@ -492728,17 +492754,6 @@
           "sel": false
         },
         {
-          "partNum": "44569",
-          "color": "Dark Bluish Gray",
-          "desc": "Hinge Train Gate 2 x 4 Locking Dual 2 Fingers with Rear Reinforcements, 9 Teeth",
-          "elementId": "4210926",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "3839b",
           "color": "Light Bluish Gray",
           "desc": "Plate Special 1 x 2 with Handles [Flat Ends / Low Attachment]",
@@ -492838,12 +492853,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T19:07:03.469Z",
+      "savedAt": "2026-10-30T19:07:13.442Z",
       "keepOpen": true,
       "moved": {
-        "batches": 104,
-        "pieces": 1698,
-        "last": "2026-10-30T18:50:57.919Z"
+        "batches": 105,
+        "pieces": 1700,
+        "last": "2026-10-30T19:07:13.442Z"
       }
     },
     {
@@ -585976,6 +585991,13 @@
       "d": "Sports Roller Skate",
       "e": "6177500",
       "u": 1793386856554
+    },
+    "44569|dark bluish gray": {
+      "p": "44569",
+      "c": "Dark Bluish Gray",
+      "d": "Hinge Train Gate 2 x 4 Locking Dual 2 Fingers with Rear Reinforcements, 9 Teeth",
+      "e": "4210926",
+      "u": 1793387234643
     }
   },
   "partKinds": {
@@ -586119,7 +586141,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T19:07:07.499Z"
+      "at": "2026-10-30T19:07:17.471Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -586140,10 +586162,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T19:07:03.469Z",
+      "bags": "2026-10-30T19:07:13.442Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T19:07:07.499Z",
+    "savedAt": "2026-10-30T19:07:17.471Z",
     "appVersion": "2026.10.29.1"
   }
 }
