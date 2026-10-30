@@ -457571,7 +457571,7 @@
       "label": "R3",
       "notes": "Rotation Joints Click and Ball and Socket",
       "group": "R",
-      "lastEdited": "2026-10-30T17:17:40.644Z"
+      "lastEdited": "2026-10-30T17:19:12.261Z"
     },
     {
       "id": "R4",
@@ -478512,6 +478512,18 @@
       "partNum": "61054",
       "color": "Black",
       "qty": 1
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "92013",
+      "color": "Black",
+      "qty": 3
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "92013",
+      "color": "Dark Bluish Gray",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -584722,6 +584734,20 @@
       "d": "Technic Axle and Pin Connector 2 x 7 with Two Ball Joint Sockets [Squared Ends]",
       "e": "4519224",
       "u": 1793380661845
+    },
+    "92013|black": {
+      "p": "92013",
+      "c": "Black",
+      "d": "Technic Brick Special 2 x 2 with Ball Socket Wide and Axle Hole",
+      "e": "4619763",
+      "u": 1793380753463
+    },
+    "92013|dark bluish gray": {
+      "p": "92013",
+      "c": "Dark Bluish Gray",
+      "d": "Technic Brick Special 2 x 2 with Ball Socket Wide and Axle Hole",
+      "e": "4619760",
+      "u": 1793380753463
     }
   },
   "partKinds": {
@@ -584865,7 +584891,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:17:44.677Z"
+      "at": "2026-10-30T17:19:16.303Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584889,7 +584915,7 @@
       "bags": "2026-10-30T17:14:33.224Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:17:44.677Z",
+    "savedAt": "2026-10-30T17:19:16.303Z",
     "appVersion": "2026.10.29.1"
   }
 }
