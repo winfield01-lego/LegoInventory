@@ -457571,7 +457571,7 @@
       "label": "R3",
       "notes": "Rotation Joints Click and Ball and Socket",
       "group": "R",
-      "lastEdited": "2026-10-30T17:16:51.545Z"
+      "lastEdited": "2026-10-30T17:17:23.677Z"
     },
     {
       "id": "R4",
@@ -478499,6 +478499,12 @@
       "partNum": "50923",
       "color": "Dark Bluish Gray",
       "elementId": "4248366",
+      "qty": 1
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "67697",
+      "color": "Black",
       "qty": 1
     }
   ],
@@ -584696,6 +584702,13 @@
       "d": "Brick Sloped 18° 2 x 1 x 2/3 with 4 Slots / Grate",
       "e": "6035764",
       "u": 1793379915018
+    },
+    "67697|black": {
+      "p": "67697",
+      "c": "Black",
+      "d": "Technic Beam 1 x 2 with Ball Joint Holes in Ball",
+      "e": "6338171",
+      "u": 1793380644879
     }
   },
   "partKinds": {
@@ -584839,7 +584852,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:16:56.828Z"
+      "at": "2026-10-30T17:17:27.714Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584863,7 +584876,7 @@
       "bags": "2026-10-30T17:14:33.224Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:16:56.828Z",
+    "savedAt": "2026-10-30T17:17:27.714Z",
     "appVersion": "2026.10.29.1"
   }
 }
