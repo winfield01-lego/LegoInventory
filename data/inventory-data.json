@@ -457134,7 +457134,7 @@
       "label": "O19",
       "notes": "2 Finger Hinge Bricks - 1 x 2 and 2 x 2 Horizontal and Vertical",
       "group": "O",
-      "lastEdited": "2026-10-30T16:47:54.630Z"
+      "lastEdited": "2026-10-30T16:48:32.934Z"
     },
     {
       "id": "O20",
@@ -478297,6 +478297,30 @@
       "partNum": "30540",
       "color": "White",
       "qty": 2
+    },
+    {
+      "drawerId": "O19",
+      "partNum": "30365",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "O19",
+      "partNum": "30365",
+      "color": "Dark Bluish Gray",
+      "qty": 5
+    },
+    {
+      "drawerId": "O19",
+      "partNum": "30365",
+      "color": "Light Bluish Gray",
+      "qty": 6
+    },
+    {
+      "drawerId": "O19",
+      "partNum": "30365",
+      "color": "Red",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -584359,6 +584383,20 @@
       "d": "Hinge Brick 1 x 2 Locking with 2 Fingers Horizontal End, 9 Teeth",
       "e": "4179247",
       "u": 1793378867753
+    },
+    "30365|black": {
+      "p": "30365",
+      "c": "Black",
+      "d": "Hinge Brick 1 x 2 Locking with 2 Fingers Vertical End, 9 Teeth",
+      "e": "4129975",
+      "u": 1793378914136
+    },
+    "30365|red": {
+      "p": "30365",
+      "c": "Red",
+      "d": "Hinge Brick 1 x 2 Locking with 2 Fingers Vertical End, 9 Teeth",
+      "e": "3036521",
+      "u": 1793378914136
     }
   },
   "partKinds": {
@@ -584502,7 +584540,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T16:47:58.670Z"
+      "at": "2026-10-30T16:48:36.979Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584526,7 +584564,7 @@
       "bags": "2026-10-30T16:44:21.938Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T16:47:58.670Z",
+    "savedAt": "2026-10-30T16:48:36.978Z",
     "appVersion": "2026.10.29.1"
   }
 }
