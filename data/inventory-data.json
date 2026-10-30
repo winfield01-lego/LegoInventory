@@ -454362,7 +454362,8 @@
       "id": "F25",
       "label": "F25",
       "notes": "",
-      "group": "F"
+      "group": "F",
+      "lastEdited": "2026-10-30T20:47:01.673Z"
     },
     {
       "id": "F26",
@@ -480034,6 +480035,13 @@
       "partNum": "32530",
       "color": "Yellow",
       "qty": 3
+    },
+    {
+      "drawerId": "F25",
+      "partNum": "77808",
+      "color": "Dark Bluish Gray",
+      "elementId": "6390673",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -480446,6 +480454,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvg0q8e_qcr97",
+      "label": "October 17 BAM Visit (batch 119)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 119,
+      "timestamp": "2026-10-30T20:47:01.838Z",
+      "items": [
+        {
+          "partNum": "77808",
+          "color": "Dark Bluish Gray",
+          "desc": "Brick Special 1 x 2 Rounded with Center Bars",
+          "elementId": "6390673",
+          "qty": 1,
+          "drawerId": "F25",
+          "drawerLabel": "F25"
+        }
+      ]
+    },
     {
       "id": "bag_mvvfxy3b_j4ufx",
       "label": "October 17 BAM Visit (batch 118)",
@@ -493618,17 +493645,6 @@
           "sel": false
         },
         {
-          "partNum": "77808",
-          "color": "Dark Bluish Gray",
-          "desc": "Brick Special 1 x 2 Rounded with Center Bars",
-          "elementId": "6390673",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "6589",
           "color": "Tan",
           "desc": "Technic Gear 12 Tooth Bevel",
@@ -493706,12 +493722,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T20:46:52.471Z",
+      "savedAt": "2026-10-30T20:47:01.838Z",
       "keepOpen": true,
       "moved": {
-        "batches": 118,
-        "pieces": 1721,
-        "last": "2026-10-30T20:44:52.055Z"
+        "batches": 119,
+        "pieces": 1722,
+        "last": "2026-10-30T20:47:01.838Z"
       }
     },
     {
@@ -504414,9 +504430,12 @@
       "c": "Dark Bluish Gray",
       "d": "Brick Special 1 x 2 Rounded with Center Bars",
       "e": "6510213",
-      "u": 1791916924851,
+      "u": 1793393223040,
       "at": 1791672975304,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6390673.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6390673.jpg",
+      "ea": [
+        "6390673"
+      ]
     },
     "4595|black": {
       "p": "4595",
@@ -587281,7 +587300,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:46:56.501Z"
+      "at": "2026-10-30T20:47:07.137Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -587302,10 +587321,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T20:46:52.471Z",
+      "bags": "2026-10-30T20:47:01.838Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:46:56.501Z",
+    "savedAt": "2026-10-30T20:47:07.137Z",
     "appVersion": "2026.10.30.1"
   }
 }
