@@ -454726,7 +454726,8 @@
       "id": "G39",
       "label": "G39",
       "notes": "",
-      "group": "G"
+      "group": "G",
+      "lastEdited": "2026-10-30T14:59:14.929Z"
     },
     {
       "id": "G40",
@@ -478013,6 +478014,12 @@
       "partNum": "1750",
       "color": "Dark Bluish Gray",
       "qty": 1
+    },
+    {
+      "drawerId": "G39",
+      "partNum": "30137",
+      "color": "Black",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -478425,6 +478432,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvv3lhck_916a7",
+      "label": "October 17 BAM Visit (batch 88)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 88,
+      "timestamp": "2026-10-30T14:59:15.092Z",
+      "items": [
+        {
+          "partNum": "30137",
+          "color": "Black",
+          "desc": "Brick Special 1 x 4 Palisade [aka Log]",
+          "elementId": "4112585",
+          "qty": 2,
+          "drawerId": "G39",
+          "drawerLabel": "G39"
+        }
+      ]
+    },
     {
       "id": "bag_mvv3hx9o_x3cv7",
       "label": "October 17 BAM Visit (batch 87)",
@@ -491020,17 +491046,6 @@
           "sel": false
         },
         {
-          "partNum": "30137",
-          "color": "Black",
-          "desc": "Brick Special 1 x 4 Palisade [aka Log]",
-          "elementId": "4112585",
-          "qty": 2,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "32072",
           "color": "Black",
           "desc": "Technic Knob Wheel",
@@ -491427,12 +491442,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T14:56:29.100Z",
+      "savedAt": "2026-10-30T14:59:15.091Z",
       "keepOpen": true,
       "moved": {
-        "batches": 87,
-        "pieces": 1666,
-        "last": "2026-10-30T14:56:29.100Z"
+        "batches": 88,
+        "pieces": 1668,
+        "last": "2026-10-30T14:59:15.092Z"
       }
     },
     {
@@ -583892,6 +583907,13 @@
       "d": "Brick Curved Inverted 2 x 4 Double",
       "e": "6461062",
       "u": 1793372301247
+    },
+    "30137|black": {
+      "p": "30137",
+      "c": "Black",
+      "d": "Brick Special 1 x 4 Palisade [aka Log]",
+      "e": "4112585",
+      "u": 1793372356294
     }
   },
   "partKinds": {
@@ -584035,7 +584057,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T14:58:43.286Z"
+      "at": "2026-10-30T14:59:19.130Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584056,10 +584078,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T14:56:29.100Z",
+      "bags": "2026-10-30T14:59:15.092Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T14:58:43.286Z",
+    "savedAt": "2026-10-30T14:59:19.130Z",
     "appVersion": "2026.10.29.1"
   }
 }
