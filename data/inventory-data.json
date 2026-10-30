@@ -455962,7 +455962,7 @@
       "label": "K24",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-10-13T17:12:46.630Z"
+      "lastEdited": "2026-10-30T20:21:51.659Z"
     },
     {
       "id": "K25",
@@ -479775,6 +479775,13 @@
       "color": "White",
       "elementId": "6448745",
       "qty": 38
+    },
+    {
+      "drawerId": "K24",
+      "partNum": "98585",
+      "color": "Black",
+      "elementId": "6156897",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -480187,6 +480194,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvf4d3h_bzk5h",
+      "label": "October 17 BAM Visit (batch 112)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 112,
+      "timestamp": "2026-10-30T20:21:51.821Z",
+      "items": [
+        {
+          "partNum": "98585",
+          "color": "Black",
+          "desc": "Large Figure Weapon, Barrel with 2 Pin Holes and 3 Axle Holes",
+          "elementId": "6156897",
+          "qty": 1,
+          "drawerId": "K24",
+          "drawerLabel": "K24"
+        }
+      ]
+    },
     {
       "id": "bag_mvvevxiz_4ih5j",
       "label": "October 17 BAM Visit (batch 111)",
@@ -493190,17 +493216,6 @@
           "sel": false
         },
         {
-          "partNum": "98585",
-          "color": "Black",
-          "desc": "Large Figure Weapon, Barrel with 2 Pin Holes and 3 Axle Holes",
-          "elementId": "6156897",
-          "qty": 1,
-          "drawerId": "K24",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "2609a",
           "color": "White",
           "desc": "Magnet Holder Tile 2 x 2 - Short Arms",
@@ -493388,12 +493403,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T20:21:43.680Z",
+      "savedAt": "2026-10-30T20:21:51.821Z",
       "keepOpen": true,
       "moved": {
-        "batches": 111,
-        "pieces": 1709,
-        "last": "2026-10-30T20:15:18.395Z"
+        "batches": 112,
+        "pieces": 1710,
+        "last": "2026-10-30T20:21:51.821Z"
       }
     },
     {
@@ -504786,9 +504801,12 @@
       "c": "Black",
       "d": "Large Figure Weapon, Barrel with 2 Pin Holes and 3 Axle Holes",
       "e": "6186133",
-      "u": 1791916924851,
+      "u": 1793391713022,
       "at": 1791656721266,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6156897.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6156897.jpg",
+      "ea": [
+        "6156897"
+      ]
     },
     "298c01|black": {
       "p": "298c01",
@@ -586821,7 +586839,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T20:21:47.712Z"
+      "at": "2026-10-30T20:21:57.111Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -586842,10 +586860,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T20:21:43.680Z",
+      "bags": "2026-10-30T20:21:51.821Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:21:47.712Z",
+    "savedAt": "2026-10-30T20:21:57.110Z",
     "appVersion": "2026.10.29.1"
   }
 }
