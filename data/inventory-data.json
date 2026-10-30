@@ -456261,7 +456261,7 @@
       "label": "L25",
       "notes": "1 x 2 Plate With Handles",
       "group": "L",
-      "lastEdited": "2026-10-30T19:12:49.048Z"
+      "lastEdited": "2026-10-30T19:13:52.266Z"
     },
     {
       "id": "L26",
@@ -473749,7 +473749,7 @@
       "drawerId": "L25",
       "partNum": "3839b",
       "color": "Light Bluish Gray",
-      "qty": 1
+      "qty": 13
     },
     {
       "drawerId": "L26",
@@ -479355,6 +479355,31 @@
       "color": "Red",
       "elementId": "",
       "qty": 1
+    },
+    {
+      "drawerId": "L25",
+      "partNum": "3839b",
+      "color": "Black",
+      "qty": 12
+    },
+    {
+      "drawerId": "L25",
+      "partNum": "3839b",
+      "color": "Blue",
+      "elementId": "383923",
+      "qty": 3
+    },
+    {
+      "drawerId": "L25",
+      "partNum": "3839b",
+      "color": "Dark Bluish Gray",
+      "qty": 5
+    },
+    {
+      "drawerId": "L25",
+      "partNum": "3839b",
+      "color": "White",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -571461,9 +571486,12 @@
       "c": "Blue",
       "d": "Plate Special 1 x 2 with Handles [Flat Ends / Low Attachment]",
       "e": "4286615",
-      "u": 1791916924851,
+      "u": 1793387633467,
       "at": 1791673654995,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/383923.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/383923.jpg",
+      "ea": [
+        "383923"
+      ]
     },
     "2582|trans neon orange": {
       "p": "2582",
@@ -586268,7 +586296,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T19:12:53.083Z"
+      "at": "2026-10-30T19:13:57.541Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -586292,7 +586320,7 @@
       "bags": "2026-10-30T19:11:44.057Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T19:12:53.083Z",
+    "savedAt": "2026-10-30T19:13:57.541Z",
     "appVersion": "2026.10.29.1"
   }
 }
