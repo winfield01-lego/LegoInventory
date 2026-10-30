@@ -456925,7 +456925,7 @@
       "label": "N34",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.790Z"
+      "lastEdited": "2026-10-30T05:46:08.425Z"
     },
     {
       "id": "N35",
@@ -477218,6 +477218,12 @@
       "partNum": "17485",
       "color": "White",
       "qty": 18
+    },
+    {
+      "drawerId": "N34",
+      "partNum": "3941",
+      "color": "Reddish Brown",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -477630,6 +477636,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvuju6h5_v7a7r",
+      "label": "October 17 BAM Visit (batch 78)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 78,
+      "timestamp": "2026-10-30T05:46:08.585Z",
+      "items": [
+        {
+          "partNum": "3941",
+          "color": "Reddish Brown",
+          "desc": "Brick Round 2 x 2 with Axle Hole",
+          "elementId": "4211166",
+          "qty": 1,
+          "drawerId": "N34",
+          "drawerLabel": "N34"
+        }
+      ]
+    },
     {
       "id": "bag_mvujpxkl_ijeul",
       "label": "October 17 BAM Visit (batch 77)",
@@ -489847,17 +489872,6 @@
           "sel": false
         },
         {
-          "partNum": "3941",
-          "color": "Reddish Brown",
-          "desc": "Brick Round 2 x 2 with Axle Hole",
-          "elementId": "4211166",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "35654",
           "color": "Black",
           "desc": "Grille Bar 1 x 4 x 1 2/3 Bull Bar, Rounded",
@@ -490562,12 +490576,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T05:42:50.420Z",
+      "savedAt": "2026-10-30T05:46:08.585Z",
       "keepOpen": true,
       "moved": {
-        "batches": 77,
-        "pieces": 1646,
-        "last": "2026-10-30T05:42:50.421Z"
+        "batches": 78,
+        "pieces": 1647,
+        "last": "2026-10-30T05:46:08.585Z"
       }
     },
     {
@@ -582873,7 +582887,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T05:45:36.740Z"
+      "at": "2026-10-30T05:46:12.618Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -582894,10 +582908,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T05:42:50.421Z",
+      "bags": "2026-10-30T05:46:08.585Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T05:45:36.739Z",
+    "savedAt": "2026-10-30T05:46:12.618Z",
     "appVersion": "2026.10.29.1"
   }
 }
