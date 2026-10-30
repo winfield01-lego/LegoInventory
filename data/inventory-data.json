@@ -457839,7 +457839,7 @@
       "label": "Q1",
       "notes": "4 x 2 and 6 x 2 Windows",
       "group": "Q",
-      "lastEdited": "2026-10-30T18:08:23.976Z"
+      "lastEdited": "2026-10-30T18:10:18.317Z"
     },
     {
       "id": "Q2",
@@ -478893,6 +478893,13 @@
     {
       "drawerId": "Q1",
       "partNum": "645",
+      "color": "Red",
+      "elementId": "",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q1",
+      "partNum": "645a",
       "color": "Red",
       "elementId": "",
       "qty": 1
@@ -585330,6 +585337,13 @@
       "d": "Window 1 x 6 x 2",
       "e": "",
       "u": 1793383705178
+    },
+    "645a|red": {
+      "p": "645a",
+      "c": "Red",
+      "d": "Window 1 x 6 x 2 (Old Type) with Extended Lip and Solid Studs, No Glass",
+      "e": "",
+      "u": 1793383819519
     }
   },
   "partKinds": {
@@ -585473,7 +585487,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T18:08:28.018Z"
+      "at": "2026-10-30T18:10:22.359Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585497,7 +585511,7 @@
       "bags": "2026-10-30T17:50:50.601Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T18:08:28.018Z",
+    "savedAt": "2026-10-30T18:10:22.359Z",
     "appVersion": "2026.10.29.1"
   }
 }
