@@ -457148,7 +457148,7 @@
       "label": "O21",
       "notes": "1 x 2 Brick with Handles",
       "group": "O",
-      "lastEdited": "2026-10-30T16:52:19.138Z"
+      "lastEdited": "2026-10-30T16:53:08.315Z"
     },
     {
       "id": "O22",
@@ -478326,7 +478326,7 @@
       "drawerId": "O21",
       "partNum": "34816",
       "color": "White",
-      "qty": 1
+      "qty": 5
     },
     {
       "drawerId": "O20",
@@ -478345,6 +478345,24 @@
       "partNum": "30386",
       "color": "Sand Blue",
       "qty": 3
+    },
+    {
+      "drawerId": "O21",
+      "partNum": "34816",
+      "color": "Light Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "O21",
+      "partNum": "34816",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "O21",
+      "partNum": "34816",
+      "color": "Sand Blue",
+      "qty": 7
     }
   ],
   "mocLocations": {
@@ -584455,6 +584473,13 @@
       "d": "Hinge Brick 1 x 2 Locking with 1 Finger Vertical End and 2 Fingers Vertical End, 9 Teeth",
       "e": "4140748",
       "u": 1793379103386
+    },
+    "34816|reddish brown": {
+      "p": "34816",
+      "c": "Reddish Brown",
+      "d": "Brick Special 1 x 2 with Vertical Closed Handle on Edge",
+      "e": "6234272",
+      "u": 1793379189516
     }
   },
   "partKinds": {
@@ -584598,7 +584623,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T16:52:23.166Z"
+      "at": "2026-10-30T16:53:12.352Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584622,7 +584647,7 @@
       "bags": "2026-10-30T16:50:32.047Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T16:52:23.166Z",
+    "savedAt": "2026-10-30T16:53:12.352Z",
     "appVersion": "2026.10.29.1"
   }
 }
