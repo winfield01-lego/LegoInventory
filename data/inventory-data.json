@@ -456099,7 +456099,7 @@
       "label": "L4",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-10-13T17:13:18.947Z"
+      "lastEdited": "2026-10-30T06:09:44.560Z"
     },
     {
       "id": "L5",
@@ -477445,6 +477445,18 @@
       "partNum": "59443",
       "color": "Yellow",
       "qty": 5
+    },
+    {
+      "drawerId": "L4",
+      "partNum": "30162",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "L4",
+      "partNum": "4735",
+      "color": "Black",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -477857,6 +477869,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvukoj5y_ram1p",
+      "label": "October 17 BAM Visit (batch 81)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 81,
+      "timestamp": "2026-10-30T06:09:44.710Z",
+      "items": [
+        {
+          "partNum": "30162",
+          "color": "Dark Bluish Gray",
+          "desc": "Equipment Binoculars",
+          "elementId": "4211051",
+          "qty": 1,
+          "drawerId": "L4",
+          "drawerLabel": "L4"
+        },
+        {
+          "partNum": "4735",
+          "color": "Black",
+          "desc": "Bar 1 x 3 [Clip / Anti-Stud]",
+          "elementId": "4141580",
+          "qty": 1,
+          "drawerId": "L4",
+          "drawerLabel": "L4"
+        }
+      ]
+    },
     {
       "id": "bag_mvuk7mbt_1ubxw",
       "label": "October 17 BAM Visit (batch 80)",
@@ -490239,17 +490279,6 @@
           "sel": false
         },
         {
-          "partNum": "30162",
-          "color": "Dark Bluish Gray",
-          "desc": "Equipment Binoculars",
-          "elementId": "4211051",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "37352",
           "color": "Orange",
           "desc": "Brick Curved 1 x 2 x 1 No Studs",
@@ -490342,17 +490371,6 @@
           "color": "White",
           "desc": "Magnet Holder Tile 2 x 2 - Short Arms",
           "elementId": "",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "4735",
-          "color": "Black",
-          "desc": "Bar 1 x 3 [Clip / Anti-Stud]",
-          "elementId": "4141580",
           "qty": 1,
           "drawerId": "",
           "matchCount": 0,
@@ -490811,12 +490829,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T05:56:35.656Z",
+      "savedAt": "2026-10-30T06:09:44.709Z",
       "keepOpen": true,
       "moved": {
-        "batches": 80,
-        "pieces": 1654,
-        "last": "2026-10-30T05:56:35.657Z"
+        "batches": 81,
+        "pieces": 1656,
+        "last": "2026-10-30T06:09:44.709Z"
       }
     },
     {
@@ -583203,7 +583221,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T06:07:43.208Z"
+      "at": "2026-10-30T06:09:48.752Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -583224,10 +583242,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T05:56:35.657Z",
+      "bags": "2026-10-30T06:09:44.710Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T06:07:43.208Z",
+    "savedAt": "2026-10-30T06:09:48.751Z",
     "appVersion": "2026.10.29.1"
   }
 }
