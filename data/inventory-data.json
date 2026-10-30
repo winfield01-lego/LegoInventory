@@ -455868,7 +455868,7 @@
       "label": "K13",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-10-30T06:03:17.019Z"
+      "lastEdited": "2026-10-30T06:04:33.516Z"
     },
     {
       "id": "K14",
@@ -477313,7 +477313,7 @@
       "drawerId": "K13",
       "partNum": "42195",
       "color": "Black",
-      "qty": 1
+      "qty": 10
     },
     {
       "drawerId": "K13",
@@ -477370,6 +477370,18 @@
       "partNum": "6538b",
       "color": "Yellow",
       "qty": 2
+    },
+    {
+      "drawerId": "K13",
+      "partNum": "42195",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "K13",
+      "partNum": "42195",
+      "color": "Light Bluish Gray",
+      "qty": 8
     }
   ],
   "mocLocations": {
@@ -582962,6 +582974,13 @@
       "d": "Technic Axle Connector Ridged [with x Hole x Orientation]",
       "e": "4140507",
       "u": 1793340198230
+    },
+    "42195|dark bluish gray": {
+      "p": "42195",
+      "c": "Dark Bluish Gray",
+      "d": "Technic Driving Ring Connector Smooth [2 Rounded and 2 Flat Side Walls]",
+      "e": "6391550",
+      "u": 1793340274719
     }
   },
   "partKinds": {
@@ -583105,7 +583124,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T06:03:21.077Z"
+      "at": "2026-10-30T06:04:38.830Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -583129,7 +583148,7 @@
       "bags": "2026-10-30T05:56:35.657Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T06:03:21.076Z",
+    "savedAt": "2026-10-30T06:04:38.830Z",
     "appVersion": "2026.10.29.1"
   }
 }
