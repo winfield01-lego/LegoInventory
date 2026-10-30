@@ -454445,7 +454445,7 @@
       "label": "F38",
       "notes": "",
       "group": "F",
-      "lastEdited": "2026-10-30T20:39:39.521Z"
+      "lastEdited": "2026-10-30T20:41:06.306Z"
     },
     {
       "id": "F39",
@@ -479965,6 +479965,19 @@
       "partNum": "35442",
       "color": "Medium Azure",
       "qty": 1
+    },
+    {
+      "drawerId": "F38",
+      "partNum": "3648b",
+      "color": "Dark Bluish Gray",
+      "elementId": "4514558",
+      "qty": 5
+    },
+    {
+      "drawerId": "F38",
+      "partNum": "3648b",
+      "color": "Light Bluish Gray",
+      "qty": 7
     }
   ],
   "mocLocations": {
@@ -540684,9 +540697,12 @@
       "c": "Dark Bluish Gray",
       "d": "Technic Gear 24 Tooth [New Style with Single Axle Hole]",
       "e": "6133119",
-      "u": 1791916924851,
+      "u": 1793392867516,
       "at": 1791654806816,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4514558.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4514558.jpg",
+      "ea": [
+        "4514558"
+      ]
     },
     "32124|dark bluish gray": {
       "p": "32124",
@@ -587020,6 +587036,13 @@
       "d": "Plate Special 2 x 2 Splat Gear, 6 Teeth",
       "e": "6328186",
       "u": 1793392747593
+    },
+    "3648b|light bluish gray": {
+      "p": "3648b",
+      "c": "Light Bluish Gray",
+      "d": "Technic Gear 24 Tooth [New Style with Single Axle Hole]",
+      "e": "4211565",
+      "u": 1793392867516
     }
   },
   "partKinds": {
@@ -587163,7 +587186,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T20:39:43.560Z"
+      "at": "2026-10-30T20:41:11.628Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -587187,7 +587210,7 @@
       "bags": "2026-10-30T20:36:50.485Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T20:39:43.560Z",
+    "savedAt": "2026-10-30T20:41:11.627Z",
     "appVersion": "2026.10.30.1"
   }
 }
