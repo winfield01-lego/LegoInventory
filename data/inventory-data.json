@@ -456261,7 +456261,7 @@
       "label": "L25",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-10-13T17:13:18.947Z"
+      "lastEdited": "2026-10-30T19:11:43.898Z"
     },
     {
       "id": "L26",
@@ -463181,6 +463181,27 @@
       "partNum": "76766",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "G16",
+      "partNum": "76766",
+      "color": "Black",
+      "elementId": "6012983",
+      "qty": 2
+    },
+    {
+      "drawerId": "G16",
+      "partNum": "76766",
+      "color": "Blue",
+      "elementId": "6012982",
+      "qty": 3
+    },
+    {
+      "drawerId": "G16",
+      "partNum": "76766",
+      "color": "Light Bluish Gray",
+      "elementId": "6012653",
+      "qty": 6
     },
     {
       "drawerId": "G18",
@@ -473725,6 +473746,12 @@
       "qty": 1
     },
     {
+      "drawerId": "L25",
+      "partNum": "3839b",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
       "drawerId": "L26",
       "partNum": "32028",
       "color": "Light Bluish Gray",
@@ -479328,27 +479355,6 @@
       "color": "Red",
       "elementId": "",
       "qty": 1
-    },
-    {
-      "drawerId": "G16",
-      "partNum": "76766",
-      "color": "Black",
-      "elementId": "6012983",
-      "qty": 2
-    },
-    {
-      "drawerId": "G16",
-      "partNum": "76766",
-      "color": "Blue",
-      "elementId": "6012982",
-      "qty": 3
-    },
-    {
-      "drawerId": "G16",
-      "partNum": "76766",
-      "color": "Light Bluish Gray",
-      "elementId": "6012653",
-      "qty": 6
     }
   ],
   "mocLocations": {
@@ -479761,6 +479767,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvcm6d5_orxu5",
+      "label": "October 17 BAM Visit (batch 107)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 107,
+      "timestamp": "2026-10-30T19:11:44.057Z",
+      "items": [
+        {
+          "partNum": "3839b",
+          "color": "Light Bluish Gray",
+          "desc": "Plate Special 1 x 2 with Handles [Flat Ends / Low Attachment]",
+          "elementId": "4211464",
+          "qty": 1,
+          "drawerId": "L25",
+          "drawerLabel": "L25"
+        }
+      ]
+    },
     {
       "id": "bag_mvvckijw_ckg03",
       "label": "October 17 BAM Visit (batch 106)",
@@ -492838,17 +492863,6 @@
           "sel": false
         },
         {
-          "partNum": "3839b",
-          "color": "Light Bluish Gray",
-          "desc": "Plate Special 1 x 2 with Handles [Flat Ends / Low Attachment]",
-          "elementId": "4211464",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "3730",
           "color": "Blue",
           "desc": "Plate Special 2 x 2 with Towball Socket, Short, 4 Slots",
@@ -492926,12 +492940,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T19:10:26.540Z",
+      "savedAt": "2026-10-30T19:11:44.057Z",
       "keepOpen": true,
       "moved": {
-        "batches": 106,
-        "pieces": 1701,
-        "last": "2026-10-30T19:10:26.540Z"
+        "batches": 107,
+        "pieces": 1702,
+        "last": "2026-10-30T19:11:44.057Z"
       }
     },
     {
@@ -586254,7 +586268,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T19:11:17.982Z"
+      "at": "2026-10-30T19:11:48.475Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -586275,10 +586289,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T19:10:26.540Z",
+      "bags": "2026-10-30T19:11:44.057Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T19:11:17.982Z",
+    "savedAt": "2026-10-30T19:11:48.475Z",
     "appVersion": "2026.10.29.1"
   }
 }
