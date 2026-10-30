@@ -457571,7 +457571,7 @@
       "label": "R3",
       "notes": "Rotation Joints Click and Ball and Socket",
       "group": "R",
-      "lastEdited": "2026-10-30T17:32:51.108Z"
+      "lastEdited": "2026-10-30T17:33:17.075Z"
     },
     {
       "id": "R4",
@@ -478668,6 +478668,24 @@
       "partNum": "48171",
       "color": "Dark Bluish Gray",
       "qty": 3
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "48170",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "48170",
+      "color": "Dark Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "48170",
+      "color": "Light Bluish Gray",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -584987,6 +585005,27 @@
       "d": "Technic Brick Special 2 x 2 with Pin Hole, Rotation Joint Ball Half [Vertical Side]",
       "e": "4225975",
       "u": 1793381572310
+    },
+    "48170|dark bluish gray": {
+      "p": "48170",
+      "c": "Dark Bluish Gray",
+      "d": "Technic Brick Special 2 x 2 with Pin Hole, Rotation Joint Ball Half [Horizontal Top]",
+      "e": "4227395",
+      "u": 1793381598277
+    },
+    "48170|dark red": {
+      "p": "48170",
+      "c": "Dark Red",
+      "d": "Technic Brick Special 2 x 2 with Pin Hole, Rotation Joint Ball Half [Horizontal Top]",
+      "e": "6441398",
+      "u": 1793381598277
+    },
+    "48170|light bluish gray": {
+      "p": "48170",
+      "c": "Light Bluish Gray",
+      "d": "Technic Brick Special 2 x 2 with Pin Hole, Rotation Joint Ball Half [Horizontal Top]",
+      "e": "4226637",
+      "u": 1793381598277
     }
   },
   "partKinds": {
@@ -585130,7 +585169,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:32:56.409Z"
+      "at": "2026-10-30T17:33:21.113Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -585154,7 +585193,7 @@
       "bags": "2026-10-30T17:14:33.224Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:32:56.409Z",
+    "savedAt": "2026-10-30T17:33:21.113Z",
     "appVersion": "2026.10.29.1"
   }
 }
