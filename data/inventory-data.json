@@ -456099,7 +456099,7 @@
       "label": "L4",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-10-30T06:09:44.560Z"
+      "lastEdited": "2026-10-30T06:12:15.876Z"
     },
     {
       "id": "L5",
@@ -477456,6 +477456,18 @@
       "drawerId": "L4",
       "partNum": "4735",
       "color": "Black",
+      "qty": 23
+    },
+    {
+      "drawerId": "L4",
+      "partNum": "4735",
+      "color": "Light Bluish Gray",
+      "qty": 16
+    },
+    {
+      "drawerId": "L4",
+      "partNum": "4735",
+      "color": "Dark Bluish Gray",
       "qty": 1
     }
   ],
@@ -583078,6 +583090,13 @@
       "d": "Technic Axle Connector Smooth [with x Hole + Orientation]",
       "e": "6143028",
       "u": 1793340449461
+    },
+    "4735|dark bluish gray": {
+      "p": "4735",
+      "c": "Dark Bluish Gray",
+      "d": "Bar 1 x 3 [Clip / Anti-Stud]",
+      "e": "4210699",
+      "u": 1793340737082
     }
   },
   "partKinds": {
@@ -583221,7 +583240,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T06:09:48.752Z"
+      "at": "2026-10-30T06:12:19.913Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -583245,7 +583264,7 @@
       "bags": "2026-10-30T06:09:44.710Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T06:09:48.751Z",
+    "savedAt": "2026-10-30T06:12:19.913Z",
     "appVersion": "2026.10.29.1"
   }
 }
