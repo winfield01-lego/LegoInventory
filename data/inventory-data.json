@@ -457571,7 +457571,7 @@
       "label": "R3",
       "notes": "Rotation Joints Click and Ball and Socket",
       "group": "R",
-      "lastEdited": "2026-10-30T17:15:49.925Z"
+      "lastEdited": "2026-10-30T17:16:51.545Z"
     },
     {
       "id": "R4",
@@ -478493,6 +478493,13 @@
       "partNum": "80431",
       "color": "Red",
       "qty": 2
+    },
+    {
+      "drawerId": "R3",
+      "partNum": "50923",
+      "color": "Dark Bluish Gray",
+      "elementId": "4248366",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -553362,9 +553369,12 @@
       "c": "Dark Bluish Gray",
       "d": "Technic Beam 1 x 2 with Ball Joint Angled",
       "e": "4503381",
-      "u": 1791916924851,
+      "u": 1793380612747,
       "at": 1791654717569,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4289258.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4289258.jpg",
+      "ea": [
+        "4248366"
+      ]
     },
     "99773|dark bluish gray": {
       "p": "99773",
@@ -584829,7 +584839,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T17:15:53.964Z"
+      "at": "2026-10-30T17:16:56.828Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -584853,7 +584863,7 @@
       "bags": "2026-10-30T17:14:33.224Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T17:15:53.964Z",
+    "savedAt": "2026-10-30T17:16:56.828Z",
     "appVersion": "2026.10.29.1"
   }
 }
