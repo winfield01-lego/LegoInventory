@@ -456995,7 +456995,7 @@
       "label": "N44",
       "notes": "Roofs",
       "group": "N",
-      "lastEdited": "2026-10-30T06:30:58.221Z"
+      "lastEdited": "2026-10-30T06:32:37.654Z"
     },
     {
       "id": "O1",
@@ -477685,6 +477685,12 @@
       "drawerId": "N44",
       "partNum": "13269",
       "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "N44",
+      "partNum": "4861",
+      "color": "Dark Bluish Gray",
       "qty": 1
     }
   ],
@@ -583426,6 +583432,13 @@
       "d": "Brick Wedged, Sloped 45° 6 x 4 Double / 33°, 5 Bottom Tubes [Train Roof]",
       "e": "6031790",
       "u": 1793341859423
+    },
+    "4861|dark bluish gray": {
+      "p": "4861",
+      "c": "Dark Bluish Gray",
+      "d": "Brick Sloped 45° 3 x 4 Double / 33°",
+      "e": "4210905",
+      "u": 1793341958857
     }
   },
   "partKinds": {
@@ -583569,7 +583582,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T06:31:02.253Z"
+      "at": "2026-10-30T06:32:41.696Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -583593,7 +583606,7 @@
       "bags": "2026-10-30T06:26:26.755Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T06:31:02.253Z",
+    "savedAt": "2026-10-30T06:32:41.696Z",
     "appVersion": "2026.10.29.1"
   }
 }
