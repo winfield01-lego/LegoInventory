@@ -456917,7 +456917,7 @@
       "label": "N31",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.790Z"
+      "lastEdited": "2026-10-30T18:50:57.740Z"
     },
     {
       "id": "N32",
@@ -479179,6 +479179,12 @@
       "partNum": "64727",
       "color": "Tan",
       "qty": 1
+    },
+    {
+      "drawerId": "N31",
+      "partNum": "11253",
+      "color": "Light Bluish Gray",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -479591,6 +479597,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvbvgu7_kdof9",
+      "label": "October 17 BAM Visit (batch 104)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 104,
+      "timestamp": "2026-10-30T18:50:57.919Z",
+      "items": [
+        {
+          "partNum": "11253",
+          "color": "Light Bluish Gray",
+          "desc": "Sports Roller Skate",
+          "elementId": "6217791",
+          "qty": 2,
+          "drawerId": "N31",
+          "drawerLabel": "N31"
+        }
+      ]
+    },
     {
       "id": "bag_mvvbga4p_ey3wj",
       "label": "October 17 BAM Visit (batch 103)",
@@ -492578,17 +492603,6 @@
           "sel": false
         },
         {
-          "partNum": "11253",
-          "color": "Light Bluish Gray",
-          "desc": "Sports Roller Skate",
-          "elementId": "6217791",
-          "qty": 2,
-          "drawerId": "N31",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "59900",
           "color": "Pearl Gold",
           "desc": "Cone 1 x 1 [Top Groove]",
@@ -492732,12 +492746,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T18:50:51.396Z",
+      "savedAt": "2026-10-30T18:50:57.919Z",
       "keepOpen": true,
       "moved": {
-        "batches": 103,
-        "pieces": 1696,
-        "last": "2026-10-30T18:39:09.385Z"
+        "batches": 104,
+        "pieces": 1698,
+        "last": "2026-10-30T18:50:57.919Z"
       }
     },
     {
@@ -585986,7 +586000,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T18:50:55.420Z"
+      "at": "2026-10-30T18:51:01.949Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -586007,10 +586021,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T18:50:51.396Z",
+      "bags": "2026-10-30T18:50:57.919Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T18:50:55.420Z",
+    "savedAt": "2026-10-30T18:51:01.949Z",
     "appVersion": "2026.10.29.1"
   }
 }
