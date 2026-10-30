@@ -455134,7 +455134,8 @@
       "id": "I11",
       "label": "I11",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-10-30T14:56:28.942Z"
     },
     {
       "id": "I12",
@@ -477976,6 +477977,12 @@
       "color": "Yellow",
       "elementId": "4204625",
       "qty": 15
+    },
+    {
+      "drawerId": "I11",
+      "partNum": "1750",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -478388,6 +478395,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvv3hx9o_x3cv7",
+      "label": "October 17 BAM Visit (batch 87)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 87,
+      "timestamp": "2026-10-30T14:56:29.100Z",
+      "items": [
+        {
+          "partNum": "1750",
+          "color": "White",
+          "desc": "Brick Curved Inverted 2 x 2 with 1 x 2 Cutouts",
+          "elementId": "6400127",
+          "qty": 1,
+          "drawerId": "I11",
+          "drawerLabel": "I11"
+        }
+      ]
+    },
     {
       "id": "bag_mvv3e13q_k4grw",
       "label": "October 17 BAM Visit (batch 86)",
@@ -491107,17 +491133,6 @@
           "sel": false
         },
         {
-          "partNum": "1750",
-          "color": "White",
-          "desc": "Brick Curved Inverted 2 x 2 with 1 x 2 Cutouts",
-          "elementId": "6400127",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "89522",
           "color": "Flat Silver",
           "desc": "Creature Body Part, Horn (Unicorn)",
@@ -491382,12 +491397,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T14:53:27.446Z",
+      "savedAt": "2026-10-30T14:56:29.100Z",
       "keepOpen": true,
       "moved": {
-        "batches": 86,
-        "pieces": 1665,
-        "last": "2026-10-30T14:53:27.446Z"
+        "batches": 87,
+        "pieces": 1666,
+        "last": "2026-10-30T14:56:29.100Z"
       }
     },
     {
@@ -583976,7 +583991,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T14:55:01.853Z"
+      "at": "2026-10-30T14:56:33.140Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -583997,10 +584012,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T14:53:27.446Z",
+      "bags": "2026-10-30T14:56:29.100Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T14:55:01.853Z",
+    "savedAt": "2026-10-30T14:56:33.140Z",
     "appVersion": "2026.10.29.1"
   }
 }
