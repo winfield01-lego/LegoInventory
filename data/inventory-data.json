@@ -456884,7 +456884,7 @@
       "label": "N26",
       "notes": "",
       "group": "N",
-      "lastEdited": "2026-10-13T17:13:35.790Z"
+      "lastEdited": "2026-10-30T19:14:56.729Z"
     },
     {
       "id": "N27",
@@ -479380,6 +479380,20 @@
       "partNum": "3839b",
       "color": "White",
       "qty": 4
+    },
+    {
+      "drawerId": "N26",
+      "partNum": "85861",
+      "color": "Yellow",
+      "elementId": "6050850",
+      "qty": 1
+    },
+    {
+      "drawerId": "N26",
+      "partNum": "85861",
+      "color": "Light Bluish Gray",
+      "elementId": "6124825",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -479792,6 +479806,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvvcqb4z_n2a04",
+      "label": "October 17 BAM Visit (batch 108)",
+      "bagId": "bagprog_mvdf0cda_x6nv",
+      "bagLabel": "October 17 BAM Visit",
+      "batch": 108,
+      "timestamp": "2026-10-30T19:14:56.867Z",
+      "items": [
+        {
+          "partNum": "85861",
+          "color": "Yellow",
+          "desc": "Plate Round 1 x 1 with Open Stud",
+          "elementId": "6050850",
+          "qty": 1,
+          "drawerId": "N26",
+          "drawerLabel": "N26"
+        },
+        {
+          "partNum": "85861",
+          "color": "Light Bluish Gray",
+          "desc": "Plate Round 1 x 1 with Open Stud",
+          "elementId": "6124825",
+          "qty": 1,
+          "drawerId": "N26",
+          "drawerLabel": "N26"
+        }
+      ]
+    },
     {
       "id": "bag_mvvcm6d5_orxu5",
       "label": "October 17 BAM Visit (batch 107)",
@@ -492866,28 +492908,6 @@
           "sel": false
         },
         {
-          "partNum": "85861",
-          "color": "Yellow",
-          "desc": "Plate Round 1 x 1 with Open Stud",
-          "elementId": "6050850",
-          "qty": 1,
-          "drawerId": "N26",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "85861",
-          "color": "Light Bluish Gray",
-          "desc": "Plate Round 1 x 1 with Open Stud",
-          "elementId": "6124825",
-          "qty": 1,
-          "drawerId": "N26",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "3730",
           "color": "Blue",
           "desc": "Plate Special 2 x 2 with Towball Socket, Short, 4 Slots",
@@ -492965,12 +492985,12 @@
           "sel": false
         }
       ],
-      "savedAt": "2026-10-30T19:14:31.824Z",
+      "savedAt": "2026-10-30T19:14:56.866Z",
       "keepOpen": true,
       "moved": {
-        "batches": 107,
-        "pieces": 1702,
-        "last": "2026-10-30T19:11:44.057Z"
+        "batches": 108,
+        "pieces": 1704,
+        "last": "2026-10-30T19:14:56.867Z"
       }
     },
     {
@@ -498327,9 +498347,12 @@
       "c": "Yellow",
       "d": "Plate Round 1 x 1 with Open Stud",
       "e": "6168644",
-      "u": 1791916924851,
+      "u": 1793387698068,
       "at": 1791656721266,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6050850.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6050850.jpg",
+      "ea": [
+        "6050850"
+      ]
     },
     "6141|orange": {
       "p": "6141",
@@ -586296,7 +586319,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.29.1",
-      "at": "2026-10-30T19:14:35.858Z"
+      "at": "2026-10-30T19:15:02.170Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -586317,10 +586340,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-30T19:14:31.824Z",
+      "bags": "2026-10-30T19:14:56.867Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T19:14:35.858Z",
+    "savedAt": "2026-10-30T19:15:02.170Z",
     "appVersion": "2026.10.29.1"
   }
 }
