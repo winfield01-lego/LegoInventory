@@ -455649,7 +455649,7 @@
       "label": "J43",
       "notes": "1 x 2 x 2 Panel",
       "group": "j",
-      "lastEdited": "2026-10-31T01:25:37.024Z"
+      "lastEdited": "2026-10-31T01:27:24.241Z"
     },
     {
       "id": "J44",
@@ -481427,6 +481427,42 @@
       "partNum": "4864a",
       "color": "Yellow",
       "qty": 3
+    },
+    {
+      "drawerId": "J43",
+      "partNum": "87552",
+      "color": "Black",
+      "qty": 4
+    },
+    {
+      "drawerId": "J43",
+      "partNum": "87552",
+      "color": "Blue",
+      "qty": 22
+    },
+    {
+      "drawerId": "J43",
+      "partNum": "87552",
+      "color": "Light Bluish Gray",
+      "qty": 12
+    },
+    {
+      "drawerId": "J43",
+      "partNum": "87552",
+      "color": "Tan",
+      "qty": 2
+    },
+    {
+      "drawerId": "J43",
+      "partNum": "87552",
+      "color": "Yellow",
+      "qty": 2
+    },
+    {
+      "drawerId": "J43",
+      "partNum": "87552",
+      "color": "White",
+      "qty": 14
     }
   ],
   "mocLocations": {
@@ -591430,6 +591466,13 @@
       "d": "Panel 1 x 2 x 2 [Solid Studs]",
       "e": "486424",
       "u": 1793409938226
+    },
+    "87552|tan": {
+      "p": "87552",
+      "c": "Tan",
+      "d": "Panel 1 x 2 x 2 [Side Supports / Hollow Studs]",
+      "e": "6063943",
+      "u": 1793410045443
     }
   },
   "partKinds": {
@@ -591573,7 +591616,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T01:25:42.305Z"
+      "at": "2026-10-31T01:27:28.273Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -591597,7 +591640,7 @@
       "bags": "2026-10-31T01:10:27.258Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T01:25:42.305Z",
+    "savedAt": "2026-10-31T01:27:28.273Z",
     "appVersion": "2026.10.30.1"
   }
 }
