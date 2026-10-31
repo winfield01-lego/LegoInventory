@@ -456379,7 +456379,7 @@
       "label": "L39",
       "notes": "2 x 2 Wedge Slope",
       "group": "L",
-      "lastEdited": "2026-10-31T03:59:24.131Z"
+      "lastEdited": "2026-10-31T04:01:20.112Z"
     },
     {
       "id": "L40",
@@ -482466,6 +482466,63 @@
       "drawerId": "L39",
       "partNum": "13548",
       "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "L39",
+      "partNum": "3045",
+      "color": "Black",
+      "elementId": "304526",
+      "qty": 7
+    },
+    {
+      "drawerId": "L39",
+      "partNum": "3045",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "L39",
+      "partNum": "3045",
+      "color": "Dark Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "L39",
+      "partNum": "3045",
+      "color": "Dark Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "L39",
+      "partNum": "3045",
+      "color": "Dark Red",
+      "qty": 3
+    },
+    {
+      "drawerId": "L39",
+      "partNum": "3045",
+      "color": "Light Bluish Gray",
+      "qty": 8
+    },
+    {
+      "drawerId": "L39",
+      "partNum": "3045",
+      "color": "Red",
+      "elementId": "304521",
+      "qty": 3
+    },
+    {
+      "drawerId": "L39",
+      "partNum": "3045",
+      "color": "White",
+      "elementId": "304501",
+      "qty": 9
+    },
+    {
+      "drawerId": "L39",
+      "partNum": "3045",
+      "color": "Yellow",
       "qty": 1
     }
   ],
@@ -519721,8 +519778,8 @@
       "p": "3045",
       "c": "Dark Bluish Gray",
       "d": "Brick Sloped 45° 2 x 2 Double Convex",
-      "e": "",
-      "u": 1791916924851,
+      "e": "4210646",
+      "u": 1793419281315,
       "at": 1791660084431
     },
     "44301b|dark bluish gray": {
@@ -522756,9 +522813,12 @@
       "c": "Black",
       "d": "Brick Sloped 45° 2 x 2 Double Convex",
       "e": "4189064",
-      "u": 1791916924851,
+      "u": 1793419281315,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/304526.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/304526.jpg",
+      "ea": [
+        "304526"
+      ]
     },
     "45301|black": {
       "p": "45301",
@@ -565703,9 +565763,12 @@
       "c": "Red",
       "d": "Brick Sloped 45° 2 x 2 Double Convex",
       "e": "4163087",
-      "u": 1791916924851,
+      "u": 1793419281315,
       "at": 1791654785010,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/304521.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/304521.jpg",
+      "ea": [
+        "304521"
+      ]
     },
     "4730|red": {
       "p": "4730",
@@ -580130,9 +580193,12 @@
       "c": "White",
       "d": "Brick Sloped 45° 2 x 2 Double Convex",
       "e": "4233370",
-      "u": 1791916924851,
+      "u": 1793419281315,
       "at": 1791732234165,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/304501.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/304501.jpg",
+      "ea": [
+        "304501"
+      ]
     },
     "3684|white": {
       "p": "3684",
@@ -592774,6 +592840,27 @@
       "d": "Brick Wedged, Sloped 45° 2 x 2 Corner",
       "e": "6058133",
       "u": 1793419165333
+    },
+    "3045|blue": {
+      "p": "3045",
+      "c": "Blue",
+      "d": "Brick Sloped 45° 2 x 2 Double Convex",
+      "e": "304523",
+      "u": 1793419281315
+    },
+    "3045|dark red": {
+      "p": "3045",
+      "c": "Dark Red",
+      "d": "Brick Sloped 45° 2 x 2 Double Convex",
+      "e": "4224301",
+      "u": 1793419281315
+    },
+    "3045|yellow": {
+      "p": "3045",
+      "c": "Yellow",
+      "d": "Brick Sloped 45° 2 x 2 Double Convex",
+      "e": "304524",
+      "u": 1793419281315
     }
   },
   "partKinds": {
@@ -592917,7 +593004,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T03:59:28.162Z"
+      "at": "2026-10-31T04:01:25.424Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -592941,7 +593028,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T03:59:28.161Z",
+    "savedAt": "2026-10-31T04:01:25.424Z",
     "appVersion": "2026.10.30.1"
   }
 }
