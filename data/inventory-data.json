@@ -454734,7 +454734,7 @@
       "label": "G38",
       "notes": "2 x 2 x 2 Slope Brick",
       "group": "G",
-      "lastEdited": "2026-10-31T04:51:22.374Z"
+      "lastEdited": "2026-10-31T04:53:39.862Z"
     },
     {
       "id": "G39",
@@ -483249,6 +483249,51 @@
       "partNum": "2454b",
       "color": "Yellow",
       "qty": 1
+    },
+    {
+      "drawerId": "G38",
+      "partNum": "3678b",
+      "color": "Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "G38",
+      "partNum": "3678b",
+      "color": "Dark Blue",
+      "qty": 3
+    },
+    {
+      "drawerId": "G38",
+      "partNum": "3678b",
+      "color": "Dark Bluish Gray",
+      "elementId": "4210760",
+      "qty": 3
+    },
+    {
+      "drawerId": "G38",
+      "partNum": "3678b",
+      "color": "Dark Tan",
+      "qty": 4
+    },
+    {
+      "drawerId": "G38",
+      "partNum": "3678b",
+      "color": "Light Bluish Gray",
+      "elementId": "4215353",
+      "qty": 7
+    },
+    {
+      "drawerId": "G38",
+      "partNum": "3678b",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "G38",
+      "partNum": "3678b",
+      "color": "White",
+      "elementId": "4159556",
+      "qty": 18
     }
   ],
   "mocLocations": {
@@ -522037,8 +522082,11 @@
       "c": "Light Bluish Gray",
       "d": "Brick Sloped 65° 2 x 2 x 2 with Bottom Tube",
       "e": "4234535",
-      "u": 1791916924851,
-      "at": 1791660732205
+      "u": 1793422421064,
+      "at": 1791660732205,
+      "ea": [
+        "4215353"
+      ]
     },
     "41747|light bluish gray": {
       "p": "41747",
@@ -534824,9 +534872,12 @@
       "c": "White",
       "d": "Brick Sloped 65° 2 x 2 x 2 with Bottom Tube",
       "e": "6552126",
-      "u": 1791916924851,
+      "u": 1793422421064,
       "at": 1791654677272,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4234525.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4234525.jpg",
+      "ea": [
+        "4159556"
+      ]
     },
     "60475b|white": {
       "p": "60475b",
@@ -537186,9 +537237,12 @@
       "c": "Dark Bluish Gray",
       "d": "Brick Sloped 65° 2 x 2 x 2 with Bottom Tube",
       "e": "4234534",
-      "u": 1791916924851,
+      "u": 1793422421064,
       "at": 1791654547546,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4210760.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4210760.jpg",
+      "ea": [
+        "4210760"
+      ]
     },
     "30229|dark bluish gray": {
       "p": "30229",
@@ -593916,6 +593970,27 @@
       "d": "Brick 1 x 2 x 5 with Hollow Studs",
       "e": "4506845",
       "u": 1793422112180
+    },
+    "3678b|blue": {
+      "p": "3678b",
+      "c": "Blue",
+      "d": "Brick Sloped 65° 2 x 2 x 2 with Bottom Tube",
+      "e": "4234524",
+      "u": 1793422421064
+    },
+    "3678b|dark blue": {
+      "p": "3678b",
+      "c": "Dark Blue",
+      "d": "Brick Sloped 65° 2 x 2 x 2 with Bottom Tube",
+      "e": "4505041",
+      "u": 1793422421064
+    },
+    "3678b|reddish brown": {
+      "p": "3678b",
+      "c": "Reddish Brown",
+      "d": "Brick Sloped 65° 2 x 2 x 2 with Bottom Tube",
+      "e": "4211320",
+      "u": 1793422421064
     }
   },
   "partKinds": {
@@ -594059,7 +594134,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T04:51:26.421Z"
+      "at": "2026-10-31T04:53:45.157Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -594083,7 +594158,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T04:51:26.421Z",
+    "savedAt": "2026-10-31T04:53:45.157Z",
     "appVersion": "2026.10.30.1"
   }
 }
