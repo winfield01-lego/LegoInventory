@@ -454755,7 +454755,7 @@
       "label": "G41",
       "notes": "2 x 2 x 3 Sloped Brick",
       "group": "G",
-      "lastEdited": "2026-10-31T04:56:45.660Z"
+      "lastEdited": "2026-10-31T04:57:20.463Z"
     },
     {
       "id": "G42",
@@ -483302,6 +483302,24 @@
       "color": "Black",
       "elementId": "368426",
       "qty": 1
+    },
+    {
+      "drawerId": "G41",
+      "partNum": "98560",
+      "color": "Black",
+      "qty": 10
+    },
+    {
+      "drawerId": "G41",
+      "partNum": "98560",
+      "color": "Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "G41",
+      "partNum": "98560",
+      "color": "Dark Blue",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -594169,7 +594187,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T04:56:51.378Z"
+      "at": "2026-10-31T04:57:24.505Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -594193,7 +594211,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T04:56:51.378Z",
+    "savedAt": "2026-10-31T04:57:24.505Z",
     "appVersion": "2026.10.30.1"
   }
 }
