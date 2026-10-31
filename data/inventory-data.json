@@ -455597,7 +455597,7 @@
       "label": "J36",
       "notes": "2 x 2 x 2 Box and Doors",
       "group": "j",
-      "lastEdited": "2026-10-31T00:46:31.227Z"
+      "lastEdited": "2026-10-31T00:47:18.860Z"
     },
     {
       "id": "J37",
@@ -480802,6 +480802,27 @@
       "partNum": "88292",
       "color": "White",
       "qty": 9
+    },
+    {
+      "drawerId": "J36",
+      "partNum": "4345a",
+      "color": "Blue",
+      "elementId": "",
+      "qty": 2
+    },
+    {
+      "drawerId": "J36",
+      "partNum": "4345a",
+      "color": "Light Gray",
+      "elementId": "",
+      "qty": 2
+    },
+    {
+      "drawerId": "J36",
+      "partNum": "4345a",
+      "color": "Yellow",
+      "elementId": "",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -590423,6 +590444,20 @@
       "d": "Brick Arch 1 x 3 x 2",
       "e": "4579306",
       "u": 1793407494564
+    },
+    "4345a|blue": {
+      "p": "4345a",
+      "c": "Blue",
+      "d": "Box 2 x 2 x 2 [Solid Studs]",
+      "e": "",
+      "u": 1793407640062
+    },
+    "4345a|light gray": {
+      "p": "4345a",
+      "c": "Light Gray",
+      "d": "Box 2 x 2 x 2 [Solid Studs]",
+      "e": "",
+      "u": 1793407640062
     }
   },
   "partKinds": {
@@ -590566,7 +590601,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T00:46:35.257Z"
+      "at": "2026-10-31T00:47:24.150Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -590590,7 +590625,7 @@
       "bags": "2026-10-30T23:16:05.471Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T00:46:35.257Z",
+    "savedAt": "2026-10-31T00:47:24.150Z",
     "appVersion": "2026.10.30.1"
   }
 }
