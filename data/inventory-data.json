@@ -455727,7 +455727,7 @@
       "label": "T8",
       "notes": "Curved Wedges",
       "group": "T",
-      "lastEdited": "2026-10-31T05:55:46.194Z"
+      "lastEdited": "2026-10-31T05:55:54.779Z"
     },
     {
       "id": "T10",
@@ -484379,6 +484379,12 @@
     {
       "drawerId": "T8",
       "partNum": "41747",
+      "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "T8",
+      "partNum": "41764",
       "color": "Yellow",
       "qty": 1
     }
@@ -595691,6 +595697,13 @@
       "d": "Brick Wedged, Curved 6 x 2 Right, Inner Ridges",
       "e": "4160107",
       "u": 1793426147400
+    },
+    "41764|yellow": {
+      "p": "41764",
+      "c": "Yellow",
+      "d": "Brick Wedged, Curved Inverted 6 x 2 Right",
+      "e": "4161265",
+      "u": 1793426155980
     }
   },
   "partKinds": {
@@ -595834,7 +595847,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T05:55:51.518Z"
+      "at": "2026-10-31T05:55:58.817Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -595858,7 +595871,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T05:55:51.517Z",
+    "savedAt": "2026-10-31T05:55:58.817Z",
     "appVersion": "2026.10.30.1"
   }
 }
