@@ -455615,7 +455615,7 @@
       "label": "J38",
       "notes": "2 x 1 x 2 inverted Slope",
       "group": "j",
-      "lastEdited": "2026-10-31T01:12:42.886Z"
+      "lastEdited": "2026-10-31T01:14:27.008Z"
     },
     {
       "id": "J39",
@@ -481206,6 +481206,46 @@
       "color": "Red",
       "elementId": "",
       "qty": 1
+    },
+    {
+      "drawerId": "J38",
+      "partNum": "2449",
+      "color": "Black",
+      "elementId": "244926",
+      "qty": 6
+    },
+    {
+      "drawerId": "J38",
+      "partNum": "2449",
+      "color": "Blue",
+      "qty": 4
+    },
+    {
+      "drawerId": "J38",
+      "partNum": "2449",
+      "color": "Dark Bluish Gray",
+      "elementId": "4226442",
+      "qty": 10
+    },
+    {
+      "drawerId": "J38",
+      "partNum": "2449",
+      "color": "Light Bluish Gray",
+      "qty": 19
+    },
+    {
+      "drawerId": "J38",
+      "partNum": "2449",
+      "color": "Tan",
+      "elementId": "244905",
+      "qty": 3
+    },
+    {
+      "drawerId": "J38",
+      "partNum": "2449",
+      "color": "White",
+      "elementId": "244901",
+      "qty": 14
     }
   ],
   "mocLocations": {
@@ -503651,8 +503691,11 @@
       "c": "Black",
       "d": "Brick Sloped Inverted 75° 2 x 1 x 3",
       "e": "4636202",
-      "u": 1791916924851,
-      "at": 1791846553338
+      "u": 1793409268210,
+      "at": 1791846553338,
+      "ea": [
+        "244926"
+      ]
     },
     "6541|white": {
       "p": "6541",
@@ -509796,18 +509839,22 @@
       "c": "Tan",
       "d": "Brick Sloped Inverted 75° 2 x 1 x 3",
       "e": "6030731",
-      "u": 1791916924851,
-      "at": 1791660732205
+      "u": 1793409268210,
+      "at": 1791660732205,
+      "ea": [
+        "244905"
+      ]
     },
     "2449|white": {
       "p": "2449",
       "c": "White",
       "d": "Brick Sloped Inverted 75° 2 x 1 x 3",
       "e": "4532972",
-      "u": 1791916924851,
+      "u": 1793409268210,
       "at": 1791654759952,
       "ea": [
-        "6619279"
+        "6619279",
+        "244901"
       ],
       "i": "https://cdn.rebrickable.com/media/parts/elements/244901.jpg"
     },
@@ -542877,9 +542924,12 @@
       "c": "Dark Bluish Gray",
       "d": "Brick Sloped Inverted 75° 2 x 1 x 3",
       "e": "4500975",
-      "u": 1791916924851,
+      "u": 1793409268210,
       "at": 1791654462245,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4226442.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4226442.jpg",
+      "ea": [
+        "4226442"
+      ]
     },
     "44359|dark bluish gray": {
       "p": "44359",
@@ -591112,6 +591162,13 @@
       "d": "Brick Curved 2 x 2 No Studs - 3 Recessed Side Ports",
       "e": "4185269",
       "u": 1793409014777
+    },
+    "2449|blue": {
+      "p": "2449",
+      "c": "Blue",
+      "d": "Brick Sloped Inverted 75° 2 x 1 x 3",
+      "e": "244973",
+      "u": 1793409268210
     }
   },
   "partKinds": {
@@ -591255,7 +591312,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T01:12:46.925Z"
+      "at": "2026-10-31T01:14:32.288Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -591279,7 +591336,7 @@
       "bags": "2026-10-31T01:10:27.258Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T01:12:46.925Z",
+    "savedAt": "2026-10-31T01:14:32.288Z",
     "appVersion": "2026.10.30.1"
   }
 }
