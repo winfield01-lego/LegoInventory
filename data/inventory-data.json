@@ -456778,7 +456778,7 @@
       "label": "N8",
       "notes": "1 x 1 Plate with O Ring",
       "group": "N",
-      "lastEdited": "2026-10-31T04:01:47.268Z"
+      "lastEdited": "2026-10-31T04:07:29.869Z"
     },
     {
       "id": "N9",
@@ -482524,6 +482524,84 @@
       "partNum": "3045",
       "color": "Yellow",
       "qty": 1
+    },
+    {
+      "drawerId": "N8",
+      "partNum": "4081b",
+      "color": "Black",
+      "elementId": "408126",
+      "qty": 27
+    },
+    {
+      "drawerId": "N8",
+      "partNum": "4081b",
+      "color": "Blue",
+      "qty": 20
+    },
+    {
+      "drawerId": "N8",
+      "partNum": "4081b",
+      "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "N8",
+      "partNum": "4081b",
+      "color": "Dark Bluish Gray",
+      "elementId": "4210828",
+      "qty": 10
+    },
+    {
+      "drawerId": "N8",
+      "partNum": "4081b",
+      "color": "Dark Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "N8",
+      "partNum": "4081b",
+      "color": "Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "N8",
+      "partNum": "4081b",
+      "color": "Light Bluish Gray",
+      "elementId": "4211477",
+      "qty": 44
+    },
+    {
+      "drawerId": "N8",
+      "partNum": "4081b",
+      "color": "Lime",
+      "qty": 8
+    },
+    {
+      "drawerId": "N8",
+      "partNum": "4081b",
+      "color": "Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "N8",
+      "partNum": "4081b",
+      "color": "Red",
+      "elementId": "408121",
+      "qty": 6
+    },
+    {
+      "drawerId": "N8",
+      "partNum": "4081b",
+      "color": "White",
+      "elementId": "408101",
+      "qty": 50
+    },
+    {
+      "drawerId": "N8",
+      "partNum": "4081b",
+      "color": "Yellow",
+      "elementId": "408124",
+      "qty": 16
     }
   ],
   "mocLocations": {
@@ -498888,9 +498966,12 @@
       "c": "Black",
       "d": "Plate Special 1 x 1 with Clip Light, Bar Hole [Thick Ring]",
       "e": "6281993",
-      "u": 1791916924851,
+      "u": 1793419651073,
       "at": 1791846572021,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/408126.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/408126.jpg",
+      "ea": [
+        "408126"
+      ]
     },
     "49668|red": {
       "p": "49668",
@@ -503138,9 +503219,12 @@
       "c": "White",
       "d": "Plate Special 1 x 1 with Clip Light, Bar Hole [Thick Ring]",
       "e": "6281990",
-      "u": 1791916924851,
+      "u": 1793419651073,
       "at": 1791846902427,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/408101.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/408101.jpg",
+      "ea": [
+        "408101"
+      ]
     },
     "34103|white": {
       "p": "34103",
@@ -503766,9 +503850,12 @@
       "c": "Dark Bluish Gray",
       "d": "Plate Special 1 x 1 with Clip Light, Bar Hole [Thick Ring]",
       "e": "6281996",
-      "u": 1791916924851,
+      "u": 1793419651073,
       "at": 1791673241697,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4210828.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4210828.jpg",
+      "ea": [
+        "4210828"
+      ]
     },
     "60897|dark bluish gray": {
       "p": "60897",
@@ -505909,9 +505996,12 @@
       "c": "Red",
       "d": "Plate Special 1 x 1 with Clip Light, Bar Hole [Thick Ring]",
       "e": "6281994",
-      "u": 1791916924851,
+      "u": 1793419651073,
       "at": 1792904691991,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/408121.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/408121.jpg",
+      "ea": [
+        "408121"
+      ]
     },
     "32028|light bluish gray": {
       "p": "32028",
@@ -521535,8 +521625,8 @@
       "p": "4081b",
       "c": "Blue",
       "d": "Plate Special 1 x 1 with Clip Light, Bar Hole [Thick Ring]",
-      "e": "",
-      "u": 1791916924851,
+      "e": "408123",
+      "u": 1793419651073,
       "at": 1791660732205
     },
     "3709|blue": {
@@ -555328,9 +555418,12 @@
       "c": "Yellow",
       "d": "Plate Special 1 x 1 with Clip Light, Bar Hole [Thick Ring]",
       "e": "6281992",
-      "u": 1791916924851,
+      "u": 1793419651073,
       "at": 1791846557290,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/408124.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/408124.jpg",
+      "ea": [
+        "408124"
+      ]
     },
     "65509|yellow": {
       "p": "65509",
@@ -592861,6 +592954,34 @@
       "d": "Brick Sloped 45° 2 x 2 Double Convex",
       "e": "304524",
       "u": 1793419281315
+    },
+    "4081b|dark red": {
+      "p": "4081b",
+      "c": "Dark Red",
+      "d": "Plate Special 1 x 1 with Clip Light, Bar Hole [Thick Ring]",
+      "e": "4272614",
+      "u": 1793419651073
+    },
+    "4081b|green": {
+      "p": "4081b",
+      "c": "Green",
+      "d": "Plate Special 1 x 1 with Clip Light, Bar Hole [Thick Ring]",
+      "e": "408128",
+      "u": 1793419651073
+    },
+    "4081b|lime": {
+      "p": "4081b",
+      "c": "Lime",
+      "d": "Plate Special 1 x 1 with Clip Light, Bar Hole [Thick Ring]",
+      "e": "4168247",
+      "u": 1793419651073
+    },
+    "4081b|orange": {
+      "p": "4081b",
+      "c": "Orange",
+      "d": "Plate Special 1 x 1 with Clip Light, Bar Hole [Thick Ring]",
+      "e": "4155507",
+      "u": 1793419651073
     }
   },
   "partKinds": {
@@ -593004,7 +593125,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T04:01:51.299Z"
+      "at": "2026-10-31T04:07:35.177Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -593028,7 +593149,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T04:01:51.299Z",
+    "savedAt": "2026-10-31T04:07:35.177Z",
     "appVersion": "2026.10.30.1"
   }
 }
