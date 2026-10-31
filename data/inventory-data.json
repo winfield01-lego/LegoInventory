@@ -456511,7 +456511,7 @@
       "label": "M13",
       "notes": "4 x 8 Plate Half Circle",
       "group": "M",
-      "lastEdited": "2026-10-31T05:24:48.240Z"
+      "lastEdited": "2026-10-31T05:25:57.058Z"
     },
     {
       "id": "M14",
@@ -483941,6 +483941,42 @@
       "color": "White",
       "elementId": "4124432",
       "qty": 12
+    },
+    {
+      "drawerId": "M13",
+      "partNum": "22888",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "M13",
+      "partNum": "22888",
+      "color": "Bright Green",
+      "qty": 4
+    },
+    {
+      "drawerId": "M13",
+      "partNum": "22888",
+      "color": "Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "M13",
+      "partNum": "22888",
+      "color": "Lime",
+      "qty": 1
+    },
+    {
+      "drawerId": "M13",
+      "partNum": "22888",
+      "color": "Light Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "M13",
+      "partNum": "22888",
+      "color": "Tan",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -594971,6 +595007,34 @@
       "d": "Plate Round Corner 3 x 3",
       "e": "4124071",
       "u": 1793424243076
+    },
+    "22888|blue": {
+      "p": "22888",
+      "c": "Blue",
+      "d": "Plate Round Half 4 x 8",
+      "e": "6186378",
+      "u": 1793424358260
+    },
+    "22888|bright green": {
+      "p": "22888",
+      "c": "Bright Green",
+      "d": "Plate Round Half 4 x 8",
+      "e": "6133847",
+      "u": 1793424358260
+    },
+    "22888|lime": {
+      "p": "22888",
+      "c": "Lime",
+      "d": "Plate Round Half 4 x 8",
+      "e": "6133225",
+      "u": 1793424358260
+    },
+    "22888|light bluish gray": {
+      "p": "22888",
+      "c": "Light Bluish Gray",
+      "d": "Plate Round Half 4 x 8",
+      "e": "6353796",
+      "u": 1793424358260
     }
   },
   "partKinds": {
@@ -595114,7 +595178,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T05:24:52.273Z"
+      "at": "2026-10-31T05:26:01.099Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -595138,7 +595202,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T05:24:52.273Z",
+    "savedAt": "2026-10-31T05:26:01.099Z",
     "appVersion": "2026.10.30.1"
   }
 }
