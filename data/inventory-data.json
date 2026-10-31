@@ -455334,7 +455334,7 @@
       "label": "I39",
       "notes": "2 x 2 Round Jumper",
       "group": "I",
-      "lastEdited": "2026-10-31T01:32:33.832Z"
+      "lastEdited": "2026-10-31T01:38:06.058Z"
     },
     {
       "id": "I40",
@@ -481525,6 +481525,84 @@
       "partNum": "65509",
       "color": "Light Bluish Gray",
       "qty": 10
+    },
+    {
+      "drawerId": "I39",
+      "partNum": "18674",
+      "color": "Black",
+      "qty": 25
+    },
+    {
+      "drawerId": "I39",
+      "partNum": "18674",
+      "color": "Blue",
+      "qty": 20
+    },
+    {
+      "drawerId": "I39",
+      "partNum": "18674",
+      "color": "Bright Green",
+      "qty": 2
+    },
+    {
+      "drawerId": "I39",
+      "partNum": "18674",
+      "color": "Dark Blue",
+      "qty": 3
+    },
+    {
+      "drawerId": "I39",
+      "partNum": "18674",
+      "color": "Dark Bluish Gray",
+      "qty": 71
+    },
+    {
+      "drawerId": "I39",
+      "partNum": "18674",
+      "color": "Dark Tan",
+      "qty": 7
+    },
+    {
+      "drawerId": "I39",
+      "partNum": "18674",
+      "color": "Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "I39",
+      "partNum": "18674",
+      "color": "Light Bluish Gray",
+      "qty": 7
+    },
+    {
+      "drawerId": "I39",
+      "partNum": "18674",
+      "color": "Orange",
+      "qty": 6
+    },
+    {
+      "drawerId": "I39",
+      "partNum": "18674",
+      "color": "Red",
+      "qty": 10
+    },
+    {
+      "drawerId": "I39",
+      "partNum": "18674",
+      "color": "Reddish Brown",
+      "qty": 3
+    },
+    {
+      "drawerId": "I39",
+      "partNum": "18674",
+      "color": "Yellow",
+      "qty": 4
+    },
+    {
+      "drawerId": "I39",
+      "partNum": "18674",
+      "color": "White",
+      "qty": 43
     }
   ],
   "mocLocations": {
@@ -524803,8 +524881,8 @@
       "p": "18674",
       "c": "Blue",
       "d": "Plate Special Round 2 x 2 with Center Stud (Jumper Plate)",
-      "e": "",
-      "u": 1791916924851,
+      "e": "6194417",
+      "u": 1793410687260,
       "at": 1791847424498
     },
     "4476b|blue": {
@@ -591549,6 +591627,27 @@
       "d": "Plate Special 2 x 4 with Groove and Two Center Studs (Jumper)",
       "e": "6357956",
       "u": 1793410311341
+    },
+    "18674|dark blue": {
+      "p": "18674",
+      "c": "Dark Blue",
+      "d": "Plate Special Round 2 x 2 with Center Stud (Jumper Plate)",
+      "e": "6253885",
+      "u": 1793410687260
+    },
+    "18674|green": {
+      "p": "18674",
+      "c": "Green",
+      "d": "Plate Special Round 2 x 2 with Center Stud (Jumper Plate)",
+      "e": "6628404",
+      "u": 1793410687260
+    },
+    "18674|orange": {
+      "p": "18674",
+      "c": "Orange",
+      "d": "Plate Special Round 2 x 2 with Center Stud (Jumper Plate)",
+      "e": "6109909",
+      "u": 1793410687260
     }
   },
   "partKinds": {
@@ -591692,7 +591791,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T01:32:37.881Z"
+      "at": "2026-10-31T01:38:11.358Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -591716,7 +591815,7 @@
       "bags": "2026-10-31T01:10:27.258Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T01:32:37.881Z",
+    "savedAt": "2026-10-31T01:38:11.358Z",
     "appVersion": "2026.10.30.1"
   }
 }
