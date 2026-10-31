@@ -455649,7 +455649,7 @@
       "label": "J43",
       "notes": "1 x 2 x 2 Panel",
       "group": "j",
-      "lastEdited": "2026-10-31T01:23:37.366Z"
+      "lastEdited": "2026-10-31T01:25:37.024Z"
     },
     {
       "id": "J44",
@@ -481408,6 +481408,25 @@
       "partNum": "4460b",
       "color": "Light Bluish Gray",
       "qty": 8
+    },
+    {
+      "drawerId": "J43",
+      "partNum": "4864a",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "J43",
+      "partNum": "4864a",
+      "color": "White",
+      "elementId": "4113016",
+      "qty": 3
+    },
+    {
+      "drawerId": "J43",
+      "partNum": "4864a",
+      "color": "Yellow",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -577053,9 +577072,12 @@
       "c": "White",
       "d": "Panel 1 x 2 x 2 [Solid Studs]",
       "e": "486401",
-      "u": 1791916924851,
+      "u": 1793409938226,
       "at": 1791846545325,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4113016.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4113016.jpg",
+      "ea": [
+        "4113016"
+      ]
     },
     "4623|white": {
       "p": "4623",
@@ -591394,6 +591416,20 @@
       "d": "Brick Sloped 75° 2 x 1 x 3 with Hollow Stud",
       "e": "4267279",
       "u": 1793409801828
+    },
+    "4864a|blue": {
+      "p": "4864a",
+      "c": "Blue",
+      "d": "Panel 1 x 2 x 2 [Solid Studs]",
+      "e": "486423",
+      "u": 1793409938226
+    },
+    "4864a|yellow": {
+      "p": "4864a",
+      "c": "Yellow",
+      "d": "Panel 1 x 2 x 2 [Solid Studs]",
+      "e": "486424",
+      "u": 1793409938226
     }
   },
   "partKinds": {
@@ -591537,7 +591573,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T01:23:41.408Z"
+      "at": "2026-10-31T01:25:42.305Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -591561,7 +591597,7 @@
       "bags": "2026-10-31T01:10:27.258Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T01:23:41.408Z",
+    "savedAt": "2026-10-31T01:25:42.305Z",
     "appVersion": "2026.10.30.1"
   }
 }
