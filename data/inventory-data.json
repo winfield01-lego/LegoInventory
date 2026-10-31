@@ -455622,7 +455622,7 @@
       "label": "J39",
       "notes": "2 x 1 x 2 Slope",
       "group": "j",
-      "lastEdited": "2026-10-31T01:15:20.541Z"
+      "lastEdited": "2026-10-31T01:17:23.875Z"
     },
     {
       "id": "J40",
@@ -481247,6 +481247,84 @@
       "color": "White",
       "elementId": "244901",
       "qty": 14
+    },
+    {
+      "drawerId": "J39",
+      "partNum": "60481",
+      "color": "Black",
+      "qty": 10
+    },
+    {
+      "drawerId": "J39",
+      "partNum": "60481",
+      "color": "Blue",
+      "qty": 10
+    },
+    {
+      "drawerId": "J39",
+      "partNum": "60481",
+      "color": "Bright Light Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "J39",
+      "partNum": "60481",
+      "color": "Dark Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "J39",
+      "partNum": "60481",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "J39",
+      "partNum": "60481",
+      "color": "Dark Brown",
+      "qty": 4
+    },
+    {
+      "drawerId": "J39",
+      "partNum": "60481",
+      "color": "Dark Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "J39",
+      "partNum": "60481",
+      "color": "Light Bluish Gray",
+      "qty": 10
+    },
+    {
+      "drawerId": "J39",
+      "partNum": "60481",
+      "color": "Red",
+      "qty": 7
+    },
+    {
+      "drawerId": "J39",
+      "partNum": "60481",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "J39",
+      "partNum": "60481",
+      "color": "Tan",
+      "qty": 2
+    },
+    {
+      "drawerId": "J39",
+      "partNum": "60481",
+      "color": "White",
+      "qty": 14
+    },
+    {
+      "drawerId": "J39",
+      "partNum": "60481",
+      "color": "Yellow",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -591170,6 +591248,41 @@
       "d": "Brick Sloped Inverted 75° 2 x 1 x 3",
       "e": "244973",
       "u": 1793409268210
+    },
+    "60481|bright light blue": {
+      "p": "60481",
+      "c": "Bright Light Blue",
+      "d": "Brick Sloped 65° 2 x 1 x 2",
+      "e": "6060798",
+      "u": 1793409445077
+    },
+    "60481|dark brown": {
+      "p": "60481",
+      "c": "Dark Brown",
+      "d": "Brick Sloped 65° 2 x 1 x 2",
+      "e": "4624089",
+      "u": 1793409445077
+    },
+    "60481|dark tan": {
+      "p": "60481",
+      "c": "Dark Tan",
+      "d": "Brick Sloped 65° 2 x 1 x 2",
+      "e": "6354068",
+      "u": 1793409445077
+    },
+    "60481|red": {
+      "p": "60481",
+      "c": "Red",
+      "d": "Brick Sloped 65° 2 x 1 x 2",
+      "e": "4515371",
+      "u": 1793409445077
+    },
+    "60481|yellow": {
+      "p": "60481",
+      "c": "Yellow",
+      "d": "Brick Sloped 65° 2 x 1 x 2",
+      "e": "6013498",
+      "u": 1793409445077
     }
   },
   "partKinds": {
@@ -591313,7 +591426,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T01:15:24.571Z"
+      "at": "2026-10-31T01:17:29.165Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -591337,7 +591450,7 @@
       "bags": "2026-10-31T01:10:27.258Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T01:15:24.571Z",
+    "savedAt": "2026-10-31T01:17:29.165Z",
     "appVersion": "2026.10.30.1"
   }
 }
