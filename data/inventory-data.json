@@ -454755,7 +454755,7 @@
       "label": "G41",
       "notes": "2 x 2 x 3 Sloped Brick",
       "group": "G",
-      "lastEdited": "2026-10-31T04:57:20.463Z"
+      "lastEdited": "2026-10-31T04:58:06.546Z"
     },
     {
       "id": "G42",
@@ -483301,7 +483301,7 @@
       "partNum": "3684",
       "color": "Black",
       "elementId": "368426",
-      "qty": 1
+      "qty": 4
     },
     {
       "drawerId": "G41",
@@ -483320,6 +483320,43 @@
       "partNum": "98560",
       "color": "Dark Blue",
       "qty": 2
+    },
+    {
+      "drawerId": "G41",
+      "partNum": "3684",
+      "color": "Blue",
+      "qty": 4
+    },
+    {
+      "drawerId": "G41",
+      "partNum": "3684",
+      "color": "Dark Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "G41",
+      "partNum": "3684",
+      "color": "Dark Red",
+      "qty": 5
+    },
+    {
+      "drawerId": "G41",
+      "partNum": "3684",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "G41",
+      "partNum": "3684",
+      "color": "White",
+      "elementId": "368401",
+      "qty": 1
+    },
+    {
+      "drawerId": "G41",
+      "partNum": "3684",
+      "color": "Yellow",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -581080,9 +581117,12 @@
       "c": "White",
       "d": "Brick Sloped 75° 2 x 2 x 3 [Hollow Studs]",
       "e": "4248055",
-      "u": 1791916924851,
+      "u": 1793422687748,
       "at": 1791846553338,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4143976.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4143976.jpg",
+      "ea": [
+        "368401"
+      ]
     },
     "2375|white": {
       "p": "2375",
@@ -594044,6 +594084,41 @@
       "d": "Brick Sloped 75° 2 x 2 x 3 [Solid Studs]",
       "e": "6007898",
       "u": 1793422527712
+    },
+    "3684|blue": {
+      "p": "3684",
+      "c": "Blue",
+      "d": "Brick Sloped 75° 2 x 2 x 3 [Hollow Studs]",
+      "e": "368423",
+      "u": 1793422687748
+    },
+    "3684|dark bluish gray": {
+      "p": "3684",
+      "c": "Dark Bluish Gray",
+      "d": "Brick Sloped 75° 2 x 2 x 3 [Hollow Studs]",
+      "e": "4210696",
+      "u": 1793422687748
+    },
+    "3684|dark red": {
+      "p": "3684",
+      "c": "Dark Red",
+      "d": "Brick Sloped 75° 2 x 2 x 3 [Hollow Studs]",
+      "e": "4251438",
+      "u": 1793422687748
+    },
+    "3684|light bluish gray": {
+      "p": "3684",
+      "c": "Light Bluish Gray",
+      "d": "Brick Sloped 75° 2 x 2 x 3 [Hollow Studs]",
+      "e": "4211684",
+      "u": 1793422687748
+    },
+    "3684|yellow": {
+      "p": "3684",
+      "c": "Yellow",
+      "d": "Brick Sloped 75° 2 x 2 x 3 [Hollow Studs]",
+      "e": "368424",
+      "u": 1793422687748
     }
   },
   "partKinds": {
@@ -594187,7 +594262,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T04:57:24.505Z"
+      "at": "2026-10-31T04:58:11.850Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -594211,7 +594286,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T04:57:24.505Z",
+    "savedAt": "2026-10-31T04:58:11.850Z",
     "appVersion": "2026.10.30.1"
   }
 }
