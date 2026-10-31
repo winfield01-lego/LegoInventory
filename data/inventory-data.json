@@ -456644,7 +456644,7 @@
       "label": "M33",
       "notes": "4 x 4 Corner",
       "group": "M",
-      "lastEdited": "2026-10-31T01:38:57.815Z"
+      "lastEdited": "2026-10-31T01:41:11.157Z"
     },
     {
       "id": "M34",
@@ -481603,6 +481603,63 @@
       "partNum": "18674",
       "color": "White",
       "qty": 43
+    },
+    {
+      "drawerId": "M33",
+      "partNum": "30503",
+      "color": "Black",
+      "qty": 24
+    },
+    {
+      "drawerId": "M33",
+      "partNum": "30503",
+      "color": "Blue",
+      "elementId": "4609342",
+      "qty": 12
+    },
+    {
+      "drawerId": "M33",
+      "partNum": "30503",
+      "color": "Dark Bluish Gray",
+      "qty": 9
+    },
+    {
+      "drawerId": "M33",
+      "partNum": "30503",
+      "color": "Light Bluish Gray",
+      "qty": 11
+    },
+    {
+      "drawerId": "M33",
+      "partNum": "30503",
+      "color": "Orange",
+      "qty": 3
+    },
+    {
+      "drawerId": "M33",
+      "partNum": "30503",
+      "color": "Red",
+      "elementId": "4178728",
+      "qty": 2
+    },
+    {
+      "drawerId": "M33",
+      "partNum": "30503",
+      "color": "Reddish Brown",
+      "qty": 3
+    },
+    {
+      "drawerId": "M33",
+      "partNum": "30503",
+      "color": "Tan",
+      "elementId": "4569474",
+      "qty": 1
+    },
+    {
+      "drawerId": "M33",
+      "partNum": "30503",
+      "color": "White",
+      "qty": 9
     }
   ],
   "mocLocations": {
@@ -505742,9 +505799,12 @@
       "c": "Blue",
       "d": "Wedge Plate 4 x 4 Cut Corner",
       "e": "6503903",
-      "u": 1791916924851,
+      "u": 1793410872359,
       "at": 1791654487845,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4609342.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4609342.jpg",
+      "ea": [
+        "4609342"
+      ]
     },
     "6014b|pearl gold": {
       "p": "6014b",
@@ -536202,9 +536262,12 @@
       "c": "Tan",
       "d": "Wedge Plate 4 x 4 Cut Corner",
       "e": "6034852",
-      "u": 1791916924851,
+      "u": 1793410872359,
       "at": 1791654560264,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4569474.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4569474.jpg",
+      "ea": [
+        "4569474"
+      ]
     },
     "6106|tan": {
       "p": "6106",
@@ -560678,9 +560741,12 @@
       "c": "Red",
       "d": "Wedge Plate 4 x 4 Cut Corner",
       "e": "6278445",
-      "u": 1791916924851,
+      "u": 1793410872359,
       "at": 1791654738545,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4178728.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4178728.jpg",
+      "ea": [
+        "4178728"
+      ]
     },
     "54384|red": {
       "p": "54384",
@@ -591648,6 +591714,20 @@
       "d": "Plate Special Round 2 x 2 with Center Stud (Jumper Plate)",
       "e": "6109909",
       "u": 1793410687260
+    },
+    "30503|orange": {
+      "p": "30503",
+      "c": "Orange",
+      "d": "Wedge Plate 4 x 4 Cut Corner",
+      "e": "4288160",
+      "u": 1793410872359
+    },
+    "30503|reddish brown": {
+      "p": "30503",
+      "c": "Reddish Brown",
+      "d": "Wedge Plate 4 x 4 Cut Corner",
+      "e": "4224732",
+      "u": 1793410872359
     }
   },
   "partKinds": {
@@ -591791,7 +591871,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T01:39:01.852Z"
+      "at": "2026-10-31T01:41:16.451Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -591815,7 +591895,7 @@
       "bags": "2026-10-31T01:10:27.258Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T01:39:01.852Z",
+    "savedAt": "2026-10-31T01:41:16.451Z",
     "appVersion": "2026.10.30.1"
   }
 }
