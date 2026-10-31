@@ -456575,7 +456575,7 @@
       "label": "M23",
       "notes": "3 x 3 and 4 x 4 45 degree Corner Brick",
       "group": "M",
-      "lastEdited": "2026-10-31T04:11:29.473Z"
+      "lastEdited": "2026-10-31T04:11:50.806Z"
     },
     {
       "id": "M24",
@@ -482637,6 +482637,24 @@
       "color": "White",
       "elementId": "246201",
       "qty": 2
+    },
+    {
+      "drawerId": "M23",
+      "partNum": "14413",
+      "color": "Black",
+      "qty": 3
+    },
+    {
+      "drawerId": "M23",
+      "partNum": "14413",
+      "color": "Light Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "M23",
+      "partNum": "14413",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -593030,6 +593048,20 @@
       "d": "Plate Special 1 x 1 with Clip Light, Bar Hole [Thick Ring]",
       "e": "4155507",
       "u": 1793419651073
+    },
+    "14413|black": {
+      "p": "14413",
+      "c": "Black",
+      "d": "Brick Wedged 4 x 4 Facet",
+      "e": "6039347",
+      "u": 1793419912008
+    },
+    "14413|white": {
+      "p": "14413",
+      "c": "White",
+      "d": "Brick Wedged 4 x 4 Facet",
+      "e": "6173055",
+      "u": 1793419912008
     }
   },
   "partKinds": {
@@ -593173,7 +593205,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T04:11:34.774Z"
+      "at": "2026-10-31T04:11:54.837Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -593197,7 +593229,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T04:11:34.773Z",
+    "savedAt": "2026-10-31T04:11:54.837Z",
     "appVersion": "2026.10.30.1"
   }
 }
