@@ -455685,7 +455685,7 @@
       "label": "T5",
       "notes": "1 x 3 and 2 x 3 Slopes",
       "group": "T",
-      "lastEdited": "2026-10-31T00:12:37.331Z"
+      "lastEdited": "2026-10-31T00:16:24.533Z"
     },
     {
       "id": "T6",
@@ -480304,6 +480304,107 @@
     {
       "drawerId": "T5",
       "partNum": "3298",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "4286",
+      "color": "Black",
+      "qty": 22
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "4286",
+      "color": "Dark Bluish Gray",
+      "qty": 8
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "4286",
+      "color": "Light Bluish Gray",
+      "qty": 25
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "4286",
+      "color": "Lime",
+      "qty": 4
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "4286",
+      "color": "Sand Blue",
+      "elementId": "4143694",
+      "qty": 1
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "4286",
+      "color": "Red",
+      "qty": 17
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "4286",
+      "color": "Vibrant Yellow",
+      "qty": 4
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "4286",
+      "color": "Green",
+      "elementId": "4107637",
+      "qty": 8
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "4286",
+      "color": "Tan",
+      "elementId": "4159396",
+      "qty": 9
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "4286",
+      "color": "White",
+      "qty": 7
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "4286",
+      "color": "Yellow",
+      "qty": 14
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "4286",
+      "color": "Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "4286",
+      "color": "Blue",
+      "qty": 13
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "4286",
+      "color": "Dark Blue",
+      "elementId": "4264395",
+      "qty": 1
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "4286",
+      "color": "Dark Red",
+      "elementId": "4168940",
+      "qty": 2
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "4286",
       "color": "Reddish Brown",
       "qty": 2
     }
@@ -513303,7 +513404,10 @@
       "c": "Sand Blue",
       "d": "Brick Sloped 33° 3 x 1",
       "e": "6331952",
-      "u": 1791916924851
+      "u": 1793405785735,
+      "ea": [
+        "4143694"
+      ]
     },
     "87087|dark azure": {
       "p": "87087",
@@ -518057,9 +518161,12 @@
       "c": "Green",
       "d": "Brick Sloped 33° 3 x 1",
       "e": "428628",
-      "u": 1791916924851,
+      "u": 1793405785735,
       "at": 1791660084431,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4107637.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4107637.jpg",
+      "ea": [
+        "4107637"
+      ]
     },
     "3298|green": {
       "p": "3298",
@@ -523149,9 +523256,9 @@
     "4286|lime": {
       "p": "4286",
       "c": "Lime",
-      "d": "",
-      "e": "",
-      "u": 1791916924851
+      "d": "Brick Sloped 33° 3 x 1",
+      "e": "4164030",
+      "u": 1793405785735
     },
     "15672|lime": {
       "p": "15672",
@@ -529264,9 +529371,12 @@
       "c": "Dark Blue",
       "d": "Brick Sloped 33° 3 x 1",
       "e": "6103774",
-      "u": 1791916924851,
+      "u": 1793405785735,
       "at": 1791654669028,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4264395.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4264395.jpg",
+      "ea": [
+        "4264395"
+      ]
     },
     "3298|dark blue": {
       "p": "3298",
@@ -540923,9 +541033,12 @@
       "c": "Dark Red",
       "d": "Brick Sloped 33° 3 x 1",
       "e": "4650862",
-      "u": 1791916924851,
+      "u": 1793405785735,
       "at": 1791654445438,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4168940.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4168940.jpg",
+      "ea": [
+        "4168940"
+      ]
     },
     "3039|dark red": {
       "p": "3039",
@@ -546623,9 +546736,12 @@
       "c": "Tan",
       "d": "Brick Sloped 33° 3 x 1",
       "e": "6058090",
-      "u": 1791916924851,
+      "u": 1793405785735,
       "at": 1791654748438,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4159396.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4159396.jpg",
+      "ea": [
+        "4159396"
+      ]
     },
     "4460b|tan": {
       "p": "4460b",
@@ -589751,6 +589867,20 @@
       "d": "Brick Sloped 33° 3 x 2",
       "e": "4216625",
       "u": 1793405558538
+    },
+    "4286|orange": {
+      "p": "4286",
+      "c": "Orange",
+      "d": "Brick Sloped 33° 3 x 1",
+      "e": "4125256",
+      "u": 1793405785735
+    },
+    "4286|reddish brown": {
+      "p": "4286",
+      "c": "Reddish Brown",
+      "d": "Brick Sloped 33° 3 x 1",
+      "e": "4211197",
+      "u": 1793405785735
     }
   },
   "partKinds": {
@@ -589894,7 +590024,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T00:12:42.633Z"
+      "at": "2026-10-31T00:16:29.821Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -589918,7 +590048,7 @@
       "bags": "2026-10-30T23:16:05.471Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T00:12:42.633Z",
+    "savedAt": "2026-10-31T00:16:29.820Z",
     "appVersion": "2026.10.30.1"
   }
 }
