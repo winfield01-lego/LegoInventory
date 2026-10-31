@@ -454699,7 +454699,7 @@
       "label": "G33",
       "notes": "2 x 3 Brick Curved with 4 Studs",
       "group": "G",
-      "lastEdited": "2026-10-31T04:40:32.690Z"
+      "lastEdited": "2026-10-31T04:42:08.729Z"
     },
     {
       "id": "G34",
@@ -483090,6 +483090,60 @@
       "partNum": "15533",
       "color": "Medium Nougat",
       "qty": 4
+    },
+    {
+      "drawerId": "G33",
+      "partNum": "6215",
+      "color": "Black",
+      "qty": 3
+    },
+    {
+      "drawerId": "G33",
+      "partNum": "6215",
+      "color": "Blue",
+      "qty": 8
+    },
+    {
+      "drawerId": "G33",
+      "partNum": "6215",
+      "color": "Dark Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "G33",
+      "partNum": "6215",
+      "color": "Green",
+      "qty": 9
+    },
+    {
+      "drawerId": "G33",
+      "partNum": "6215",
+      "color": "Light Bluish Gray",
+      "qty": 9
+    },
+    {
+      "drawerId": "G33",
+      "partNum": "6215",
+      "color": "Red",
+      "qty": 6
+    },
+    {
+      "drawerId": "G33",
+      "partNum": "6215",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "G33",
+      "partNum": "6215",
+      "color": "White",
+      "qty": 9
+    },
+    {
+      "drawerId": "G33",
+      "partNum": "6215",
+      "color": "Yellow",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -593659,6 +593713,41 @@
       "d": "Brick Special 1 x 4 with Masonry Brick Profile",
       "e": "6055309",
       "u": 1793421602945
+    },
+    "6215|blue": {
+      "p": "6215",
+      "c": "Blue",
+      "d": "Brick Curved 2 x 3",
+      "e": "621523",
+      "u": 1793421729931
+    },
+    "6215|dark gray": {
+      "p": "6215",
+      "c": "Dark Gray",
+      "d": "Brick Curved 2 x 3",
+      "e": "4112592",
+      "u": 1793421729931
+    },
+    "6215|red": {
+      "p": "6215",
+      "c": "Red",
+      "d": "Brick Curved 2 x 3",
+      "e": "621521",
+      "u": 1793421729931
+    },
+    "6215|tan": {
+      "p": "6215",
+      "c": "Tan",
+      "d": "Brick Curved 2 x 3",
+      "e": "4112588",
+      "u": 1793421729931
+    },
+    "6215|yellow": {
+      "p": "6215",
+      "c": "Yellow",
+      "d": "Brick Curved 2 x 3",
+      "e": "621524",
+      "u": 1793421729931
     }
   },
   "partKinds": {
@@ -593802,7 +593891,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T04:40:36.733Z"
+      "at": "2026-10-31T04:42:12.766Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -593826,7 +593915,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T04:40:36.733Z",
+    "savedAt": "2026-10-31T04:42:12.766Z",
     "appVersion": "2026.10.30.1"
   }
 }
