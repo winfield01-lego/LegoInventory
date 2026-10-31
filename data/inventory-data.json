@@ -456469,7 +456469,7 @@
       "label": "M7",
       "notes": "",
       "group": "M",
-      "lastEdited": "2026-10-13T17:13:28.024Z"
+      "lastEdited": "2026-10-31T05:04:06.527Z"
     },
     {
       "id": "M8",
@@ -483407,6 +483407,74 @@
       "color": "White",
       "elementId": "6254604",
       "qty": 1
+    },
+    {
+      "drawerId": "M7",
+      "partNum": "51739",
+      "color": "Black",
+      "qty": 9
+    },
+    {
+      "drawerId": "M7",
+      "partNum": "51739",
+      "color": "Blue",
+      "qty": 3
+    },
+    {
+      "drawerId": "M7",
+      "partNum": "51739",
+      "color": "Dark Blue",
+      "qty": 4
+    },
+    {
+      "drawerId": "M7",
+      "partNum": "51739",
+      "color": "Dark Bluish Gray",
+      "qty": 15
+    },
+    {
+      "drawerId": "M7",
+      "partNum": "51739",
+      "color": "Dark Tan",
+      "qty": 3
+    },
+    {
+      "drawerId": "M7",
+      "partNum": "51739",
+      "color": "Light Bluish Gray",
+      "elementId": "4252368",
+      "qty": 12
+    },
+    {
+      "drawerId": "M7",
+      "partNum": "51739",
+      "color": "Orange",
+      "qty": 3
+    },
+    {
+      "drawerId": "M7",
+      "partNum": "51739",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "M7",
+      "partNum": "51739",
+      "color": "Tan",
+      "elementId": "6062598",
+      "qty": 1
+    },
+    {
+      "drawerId": "M7",
+      "partNum": "51739",
+      "color": "White",
+      "qty": 11
+    },
+    {
+      "drawerId": "M7",
+      "partNum": "51739",
+      "color": "Yellow",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -523543,9 +523611,12 @@
       "c": "Tan",
       "d": "Wedge Plate 2 x 4",
       "e": "6274685",
-      "u": 1791916924851,
+      "u": 1793423047734,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6062598.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6062598.jpg",
+      "ea": [
+        "6062598"
+      ]
     },
     "41769|tan": {
       "p": "41769",
@@ -594182,6 +594253,20 @@
       "d": "Wedge Plate 6 x 4 Left",
       "e": "6258212",
       "u": 1793422813335
+    },
+    "51739|dark blue": {
+      "p": "51739",
+      "c": "Dark Blue",
+      "d": "Wedge Plate 2 x 4",
+      "e": "4251895",
+      "u": 1793423047734
+    },
+    "51739|orange": {
+      "p": "51739",
+      "c": "Orange",
+      "d": "Wedge Plate 2 x 4",
+      "e": "6025385",
+      "u": 1793423047734
     }
   },
   "partKinds": {
@@ -594325,7 +594410,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T05:01:17.266Z"
+      "at": "2026-10-31T05:04:11.823Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -594349,7 +594434,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T05:01:17.265Z",
+    "savedAt": "2026-10-31T05:04:11.822Z",
     "appVersion": "2026.10.30.1"
   }
 }
