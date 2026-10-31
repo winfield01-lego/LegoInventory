@@ -456567,7 +456567,7 @@
       "label": "M21",
       "notes": "4 x 4 Corner Brick - Circle",
       "group": "M",
-      "lastEdited": "2026-10-31T05:37:52.270Z"
+      "lastEdited": "2026-10-31T05:38:20.692Z"
     },
     {
       "id": "M22",
@@ -484139,6 +484139,18 @@
       "partNum": "30505",
       "color": "White",
       "elementId": "6096679",
+      "qty": 2
+    },
+    {
+      "drawerId": "M21",
+      "partNum": "2577",
+      "color": "Black",
+      "qty": 5
+    },
+    {
+      "drawerId": "M21",
+      "partNum": "2577",
+      "color": "Red",
       "qty": 2
     }
   ],
@@ -595296,6 +595308,20 @@
       "d": "Wedge Plate 8 x 3, 22° Right",
       "e": "4267852",
       "u": 1793424919167
+    },
+    "2577|black": {
+      "p": "2577",
+      "c": "Black",
+      "d": "Brick Round Corner 4 x 4 Full Brick",
+      "e": "257726",
+      "u": 1793425101893
+    },
+    "2577|red": {
+      "p": "2577",
+      "c": "Red",
+      "d": "Brick Round Corner 4 x 4 Full Brick",
+      "e": "257721",
+      "u": 1793425101893
     }
   },
   "partKinds": {
@@ -595439,7 +595465,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T05:37:56.301Z"
+      "at": "2026-10-31T05:38:24.723Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -595463,7 +595489,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T05:37:56.301Z",
+    "savedAt": "2026-10-31T05:38:24.723Z",
     "appVersion": "2026.10.30.1"
   }
 }
