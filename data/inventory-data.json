@@ -455742,7 +455742,7 @@
       "label": "U2",
       "notes": "2 x 3 Brick",
       "group": "U",
-      "lastEdited": "2026-10-31T02:59:10.246Z"
+      "lastEdited": "2026-10-31T03:03:38.201Z"
     },
     {
       "id": "U3",
@@ -482064,6 +482064,93 @@
       "partNum": "3039",
       "color": "Yellow",
       "qty": 15
+    },
+    {
+      "drawerId": "U2",
+      "partNum": "3002",
+      "color": "Black",
+      "qty": 27
+    },
+    {
+      "drawerId": "U2",
+      "partNum": "3002",
+      "color": "Blue",
+      "qty": 61
+    },
+    {
+      "drawerId": "U2",
+      "partNum": "3002",
+      "color": "Dark Bluish Gray",
+      "qty": 8
+    },
+    {
+      "drawerId": "U2",
+      "partNum": "3002",
+      "color": "Dark Red",
+      "qty": 3
+    },
+    {
+      "drawerId": "U2",
+      "partNum": "3002",
+      "color": "Green",
+      "elementId": "300228",
+      "qty": 3
+    },
+    {
+      "drawerId": "U2",
+      "partNum": "3002",
+      "color": "Light Bluish Gray",
+      "qty": 18
+    },
+    {
+      "drawerId": "U2",
+      "partNum": "3002",
+      "color": "Lime",
+      "elementId": "4122452",
+      "qty": 9
+    },
+    {
+      "drawerId": "U2",
+      "partNum": "3002",
+      "color": "Orange",
+      "qty": 5
+    },
+    {
+      "drawerId": "U2",
+      "partNum": "3002",
+      "color": "Red",
+      "qty": 53
+    },
+    {
+      "drawerId": "U2",
+      "partNum": "3002",
+      "color": "Reddish Brown",
+      "qty": 16
+    },
+    {
+      "drawerId": "U2",
+      "partNum": "3002",
+      "color": "Sand Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "U2",
+      "partNum": "3002",
+      "color": "Tan",
+      "elementId": "300205",
+      "qty": 17
+    },
+    {
+      "drawerId": "U2",
+      "partNum": "3002",
+      "color": "White",
+      "qty": 38
+    },
+    {
+      "drawerId": "U2",
+      "partNum": "3002",
+      "color": "Yellow",
+      "qty": 16
     }
   ],
   "mocLocations": {
@@ -513032,8 +513119,11 @@
       "c": "Tan",
       "d": "Brick 2 x 3",
       "e": "4159739",
-      "u": 1791916924851,
-      "at": 1791671921036
+      "u": 1793415819403,
+      "at": 1791671921036,
+      "ea": [
+        "300205"
+      ]
     },
     "13965|tan": {
       "p": "13965",
@@ -522673,8 +522763,11 @@
       "c": "Green",
       "d": "Brick 2 x 3",
       "e": "4109674",
-      "u": 1791916924851,
-      "at": 1791660732205
+      "u": 1793415819403,
+      "at": 1791660732205,
+      "ea": [
+        "300228"
+      ]
     },
     "44675|green": {
       "p": "44675",
@@ -535529,8 +535622,11 @@
       "c": "Lime",
       "d": "Brick 2 x 3",
       "e": "4220631",
-      "u": 1791916924851,
-      "at": 1791654340279
+      "u": 1793415819403,
+      "at": 1791654340279,
+      "ea": [
+        "4122452"
+      ]
     },
     "15068pr0066|lime": {
       "p": "15068pr0066",
@@ -592182,6 +592278,27 @@
       "d": "Brick Sloped 45° 2 x 2",
       "e": "4212554",
       "u": 1793415488654
+    },
+    "3002|dark red": {
+      "p": "3002",
+      "c": "Dark Red",
+      "d": "Brick 2 x 3",
+      "e": "4163453",
+      "u": 1793415819403
+    },
+    "3002|orange": {
+      "p": "3002",
+      "c": "Orange",
+      "d": "Brick 2 x 3",
+      "e": "4125971",
+      "u": 1793415819403
+    },
+    "3002|sand green": {
+      "p": "3002",
+      "c": "Sand Green",
+      "d": "Brick 2 x 3",
+      "e": "4153757",
+      "u": 1793415819403
     }
   },
   "partKinds": {
@@ -592325,7 +592442,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T02:59:14.293Z"
+      "at": "2026-10-31T03:03:42.249Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -592349,7 +592466,7 @@
       "bags": "2026-10-31T01:59:19.781Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T02:59:14.293Z",
+    "savedAt": "2026-10-31T03:03:42.249Z",
     "appVersion": "2026.10.30.1"
   }
 }
