@@ -456434,7 +456434,7 @@
       "label": "M2",
       "notes": "12 x 3 Wedge - Right",
       "group": "M",
-      "lastEdited": "2026-10-31T05:13:57.749Z"
+      "lastEdited": "2026-10-31T05:14:48.401Z"
     },
     {
       "id": "M3",
@@ -483673,6 +483673,30 @@
       "partNum": "6106",
       "color": "White",
       "elementId": "610601",
+      "qty": 4
+    },
+    {
+      "drawerId": "M2",
+      "partNum": "47398",
+      "color": "Black",
+      "qty": 4
+    },
+    {
+      "drawerId": "M2",
+      "partNum": "47398",
+      "color": "Dark Azure",
+      "qty": 1
+    },
+    {
+      "drawerId": "M2",
+      "partNum": "47398",
+      "color": "Dark Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "M2",
+      "partNum": "47398",
+      "color": "Light Bluish Gray",
       "qty": 4
     }
   ],
@@ -594561,6 +594585,13 @@
       "d": "Wedge Plate 3 x 6 Cut Corners",
       "e": "241924",
       "u": 1793423465874
+    },
+    "47398|dark azure": {
+      "p": "47398",
+      "c": "Dark Azure",
+      "d": "Wedge Plate 12 x 3 Right",
+      "e": "6259087",
+      "u": 1793423689603
     }
   },
   "partKinds": {
@@ -594704,7 +594735,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T05:14:01.788Z"
+      "at": "2026-10-31T05:14:52.440Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -594728,7 +594759,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T05:14:01.788Z",
+    "savedAt": "2026-10-31T05:14:52.440Z",
     "appVersion": "2026.10.30.1"
   }
 }
