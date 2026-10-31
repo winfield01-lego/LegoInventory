@@ -455699,7 +455699,7 @@
       "label": "T4",
       "notes": "2 x 4 Slope Brick - Side",
       "group": "T",
-      "lastEdited": "2026-10-31T05:47:24.205Z"
+      "lastEdited": "2026-10-31T05:49:21.430Z"
     },
     {
       "id": "T5",
@@ -484218,6 +484218,68 @@
       "partNum": "48183",
       "color": "Yellow",
       "qty": 9
+    },
+    {
+      "drawerId": "T4",
+      "partNum": "3037",
+      "color": "Black",
+      "qty": 17
+    },
+    {
+      "drawerId": "T4",
+      "partNum": "3037",
+      "color": "Blue",
+      "elementId": "303723",
+      "qty": 41
+    },
+    {
+      "drawerId": "T4",
+      "partNum": "3037",
+      "color": "Dark Blue",
+      "elementId": "4249899",
+      "qty": 2
+    },
+    {
+      "drawerId": "T4",
+      "partNum": "3037",
+      "color": "Dark Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "T4",
+      "partNum": "3037",
+      "color": "Dark Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "T4",
+      "partNum": "3037",
+      "color": "Green",
+      "qty": 2
+    },
+    {
+      "drawerId": "T4",
+      "partNum": "3037",
+      "color": "Light Bluish Gray",
+      "qty": 11
+    },
+    {
+      "drawerId": "T4",
+      "partNum": "3037",
+      "color": "Red",
+      "qty": 8
+    },
+    {
+      "drawerId": "T4",
+      "partNum": "3037",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "T4",
+      "partNum": "3037",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -503765,8 +503827,11 @@
       "c": "Blue",
       "d": "Brick Sloped 45° 2 x 4",
       "e": "4107437",
-      "u": 1791916924851,
-      "at": 1791660732205
+      "u": 1793425762637,
+      "at": 1791660732205,
+      "ea": [
+        "303723"
+      ]
     },
     "24201|light bluish gray": {
       "p": "24201",
@@ -524995,8 +525060,8 @@
       "p": "3037",
       "c": "Green",
       "d": "Brick Sloped 45° 2 x 4",
-      "e": "",
-      "u": 1791916924851,
+      "e": "303728",
+      "u": 1793425762637,
       "at": 1791660732205
     },
     "98560|green": {
@@ -545973,9 +546038,12 @@
       "c": "Dark Blue",
       "d": "Brick Sloped 45° 2 x 4",
       "e": "4578094",
-      "u": 1791916924851,
+      "u": 1793425762637,
       "at": 1791654462245,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4249899.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4249899.jpg",
+      "ea": [
+        "4249899"
+      ]
     },
     "87544|dark blue": {
       "p": "87544",
@@ -595451,6 +595519,20 @@
       "d": "Wedge Plate 3 x 4 with Stud Notches",
       "e": "4177952",
       "u": 1793425398398
+    },
+    "3037|dark red": {
+      "p": "3037",
+      "c": "Dark Red",
+      "d": "Brick Sloped 45° 2 x 4",
+      "e": "4248802",
+      "u": 1793425762637
+    },
+    "3037|reddish brown": {
+      "p": "3037",
+      "c": "Reddish Brown",
+      "d": "Brick Sloped 45° 2 x 4",
+      "e": "4211205",
+      "u": 1793425762637
     }
   },
   "partKinds": {
@@ -595594,7 +595676,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T05:47:28.245Z"
+      "at": "2026-10-31T05:49:26.742Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -595618,7 +595700,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T05:47:28.245Z",
+    "savedAt": "2026-10-31T05:49:26.742Z",
     "appVersion": "2026.10.30.1"
   }
 }
