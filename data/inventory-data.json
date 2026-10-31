@@ -455657,7 +455657,7 @@
       "label": "T1",
       "notes": "",
       "group": "T",
-      "lastEdited": "2026-10-13T17:00:26.813Z"
+      "lastEdited": "2026-10-31T00:06:07.534Z"
     },
     {
       "id": "T2",
@@ -480121,6 +480121,44 @@
       "color": "Red",
       "elementId": "",
       "qty": 1
+    },
+    {
+      "drawerId": "T1",
+      "partNum": "30363",
+      "color": "Black",
+      "qty": 7
+    },
+    {
+      "drawerId": "T1",
+      "partNum": "30363",
+      "color": "Blue",
+      "elementId": "4124107",
+      "qty": 7
+    },
+    {
+      "drawerId": "T1",
+      "partNum": "30363",
+      "color": "Dark Bluish Gray",
+      "qty": 6
+    },
+    {
+      "drawerId": "T1",
+      "partNum": "30363",
+      "color": "Light Bluish Gray",
+      "elementId": "4211618",
+      "qty": 16
+    },
+    {
+      "drawerId": "T1",
+      "partNum": "30363",
+      "color": "Reddish Brown",
+      "qty": 3
+    },
+    {
+      "drawerId": "T1",
+      "partNum": "30363",
+      "color": "White",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -506244,7 +506282,10 @@
       "c": "Blue",
       "d": "Slope 18° 4 x 2",
       "e": "6254675",
-      "u": 1791916924851
+      "u": 1793405168743,
+      "ea": [
+        "4124107"
+      ]
     },
     "30363pr0006|blue": {
       "p": "30363pr0006",
@@ -589501,6 +589542,13 @@
       "d": "Hinge Plate 2 x 9 with Hole Close to Hinge [Complete Assembly]",
       "e": "",
       "u": 1793393944372
+    },
+    "30363|reddish brown": {
+      "p": "30363",
+      "c": "Reddish Brown",
+      "d": "Brick Sloped 18° 4 x 2",
+      "e": "4225869",
+      "u": 1793405168743
     }
   },
   "partKinds": {
@@ -589644,7 +589692,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-30T23:16:09.503Z"
+      "at": "2026-10-31T00:06:12.837Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -589668,7 +589716,7 @@
       "bags": "2026-10-30T23:16:05.471Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-30T23:16:09.503Z",
+    "savedAt": "2026-10-31T00:06:12.837Z",
     "appVersion": "2026.10.30.1"
   }
 }
