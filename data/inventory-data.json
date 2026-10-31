@@ -456323,7 +456323,7 @@
       "label": "L31",
       "notes": "1 x 2 with Single Finger",
       "group": "L",
-      "lastEdited": "2026-10-31T04:24:45.552Z"
+      "lastEdited": "2026-10-31T04:25:55.900Z"
     },
     {
       "id": "L32",
@@ -482888,6 +482888,36 @@
       "color": "Yellow",
       "elementId": "",
       "qty": 3
+    },
+    {
+      "drawerId": "L31",
+      "partNum": "44301b",
+      "color": "Dark Bluish Gray",
+      "qty": 12
+    },
+    {
+      "drawerId": "L31",
+      "partNum": "44301b",
+      "color": "Light Bluish Gray",
+      "qty": 21
+    },
+    {
+      "drawerId": "L31",
+      "partNum": "44301b",
+      "color": "Red",
+      "qty": 5
+    },
+    {
+      "drawerId": "L31",
+      "partNum": "44301b",
+      "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "L31",
+      "partNum": "44301b",
+      "color": "Yellow",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -593374,6 +593404,13 @@
       "d": "Hinge Plate 1 x 2 Locking with 1 Finger on Side, without Groove",
       "e": "",
       "u": 1793420686754
+    },
+    "44301b|yellow": {
+      "p": "44301b",
+      "c": "Yellow",
+      "d": "Hinge Plate 1 x 2 Locking with 1 Finger On End, without Groove",
+      "e": "6266234",
+      "u": 1793420757103
     }
   },
   "partKinds": {
@@ -593517,7 +593554,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T04:24:50.853Z"
+      "at": "2026-10-31T04:25:59.940Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -593541,7 +593578,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T04:24:50.853Z",
+    "savedAt": "2026-10-31T04:25:59.940Z",
     "appVersion": "2026.10.30.1"
   }
 }
