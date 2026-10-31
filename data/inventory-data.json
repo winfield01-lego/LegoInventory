@@ -455692,7 +455692,7 @@
       "label": "T6",
       "notes": "2 x 3 Inverted Slope",
       "group": "T",
-      "lastEdited": "2026-10-31T00:17:02.652Z"
+      "lastEdited": "2026-10-31T00:20:40.948Z"
     },
     {
       "id": "T7",
@@ -480407,6 +480407,75 @@
       "partNum": "4286",
       "color": "Reddish Brown",
       "qty": 2
+    },
+    {
+      "drawerId": "T6",
+      "partNum": "3747b",
+      "color": "Black",
+      "qty": 15
+    },
+    {
+      "drawerId": "T6",
+      "partNum": "3747b",
+      "color": "Blue",
+      "qty": 10
+    },
+    {
+      "drawerId": "T6",
+      "partNum": "3747b",
+      "color": "White",
+      "qty": 55
+    },
+    {
+      "drawerId": "T6",
+      "partNum": "3747b",
+      "color": "Light Bluish Gray",
+      "qty": 39
+    },
+    {
+      "drawerId": "T6",
+      "partNum": "3747b",
+      "color": "Reddish Brown",
+      "elementId": "4217916",
+      "qty": 8
+    },
+    {
+      "drawerId": "T6",
+      "partNum": "3747b",
+      "color": "Red",
+      "qty": 3
+    },
+    {
+      "drawerId": "T6",
+      "partNum": "3747b",
+      "color": "Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "T6",
+      "partNum": "3747b",
+      "color": "Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "T6",
+      "partNum": "3747b",
+      "color": "Dark Bluish Gray",
+      "qty": 11
+    },
+    {
+      "drawerId": "T6",
+      "partNum": "3747b",
+      "color": "Dark Blue",
+      "elementId": "",
+      "qty": 1
+    },
+    {
+      "drawerId": "T6",
+      "partNum": "3747b",
+      "color": "Tan",
+      "elementId": "4225609",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -521452,9 +521521,12 @@
       "c": "Reddish Brown",
       "d": "Brick Sloped Inverted 33° 3 x 2, Connections between Studs, Ovoid Bottom Pin",
       "e": "4508616",
-      "u": 1791916924851,
+      "u": 1793406042150,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4217916.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4217916.jpg",
+      "ea": [
+        "4217916"
+      ]
     },
     "3665|reddish brown": {
       "p": "3665",
@@ -545851,8 +545923,11 @@
       "c": "Tan",
       "d": "Brick Sloped Inverted 33° 3 x 2, Connections between Studs, Ovoid Bottom Pin",
       "e": "4500453",
-      "u": 1791916924851,
-      "at": 1791654748438
+      "u": 1793406042150,
+      "at": 1791654748438,
+      "ea": [
+        "4225609"
+      ]
     },
     "35394pr0045|trans clear": {
       "p": "35394pr0045",
@@ -589881,6 +589956,34 @@
       "d": "Brick Sloped 33° 3 x 1",
       "e": "4211197",
       "u": 1793405785735
+    },
+    "3747b|blue": {
+      "p": "3747b",
+      "c": "Blue",
+      "d": "Brick Sloped Inverted 33° 3 x 2, Connections between Studs, Ovoid Bottom Pin",
+      "e": "4509443",
+      "u": 1793406042150
+    },
+    "3747b|green": {
+      "p": "3747b",
+      "c": "Green",
+      "d": "Brick Sloped Inverted 33° 3 x 2, Connections between Studs, Ovoid Bottom Pin",
+      "e": "4519945",
+      "u": 1793406042150
+    },
+    "3747b|orange": {
+      "p": "3747b",
+      "c": "Orange",
+      "d": "Brick Sloped Inverted 33° 3 x 2, Connections between Studs, Ovoid Bottom Pin",
+      "e": "4500468",
+      "u": 1793406042150
+    },
+    "3747b|dark blue": {
+      "p": "3747b",
+      "c": "Dark Blue",
+      "d": "Brick Sloped Inverted 33° 3 x 2, Connections between Studs, Ovoid Bottom Pin",
+      "e": "",
+      "u": 1793406042150
     }
   },
   "partKinds": {
@@ -590024,7 +590127,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T00:17:06.686Z"
+      "at": "2026-10-31T00:20:46.230Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -590048,7 +590151,7 @@
       "bags": "2026-10-30T23:16:05.471Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T00:17:06.686Z",
+    "savedAt": "2026-10-31T00:20:46.230Z",
     "appVersion": "2026.10.30.1"
   }
 }
