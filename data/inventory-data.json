@@ -454706,7 +454706,7 @@
       "label": "G34",
       "notes": "2 x 2 x 3 Brick",
       "group": "G",
-      "lastEdited": "2026-10-31T04:42:45.155Z"
+      "lastEdited": "2026-10-31T04:43:45.611Z"
     },
     {
       "id": "G35",
@@ -483145,6 +483145,48 @@
       "partNum": "6215",
       "color": "Yellow",
       "qty": 3
+    },
+    {
+      "drawerId": "G34",
+      "partNum": "30145",
+      "color": "Black",
+      "qty": 2
+    },
+    {
+      "drawerId": "G34",
+      "partNum": "30145",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "G34",
+      "partNum": "30145",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "G34",
+      "partNum": "30145",
+      "color": "Light Bluish Gray",
+      "qty": 7
+    },
+    {
+      "drawerId": "G34",
+      "partNum": "30145",
+      "color": "Red",
+      "qty": 4
+    },
+    {
+      "drawerId": "G34",
+      "partNum": "30145",
+      "color": "Tan",
+      "qty": 3
+    },
+    {
+      "drawerId": "G34",
+      "partNum": "30145",
+      "color": "White",
+      "qty": 6
     }
   ],
   "mocLocations": {
@@ -593749,6 +593791,48 @@
       "d": "Brick Curved 2 x 3",
       "e": "621524",
       "u": 1793421729931
+    },
+    "30145|black": {
+      "p": "30145",
+      "c": "Black",
+      "d": "Brick 2 x 2 x 3",
+      "e": "4113241",
+      "u": 1793421826812
+    },
+    "30145|blue": {
+      "p": "30145",
+      "c": "Blue",
+      "d": "Brick 2 x 2 x 3",
+      "e": "4107573",
+      "u": 1793421826812
+    },
+    "30145|dark bluish gray": {
+      "p": "30145",
+      "c": "Dark Bluish Gray",
+      "d": "Brick 2 x 2 x 3",
+      "e": "4227007",
+      "u": 1793421826812
+    },
+    "30145|light bluish gray": {
+      "p": "30145",
+      "c": "Light Bluish Gray",
+      "d": "Brick 2 x 2 x 3",
+      "e": "4211650",
+      "u": 1793421826812
+    },
+    "30145|red": {
+      "p": "30145",
+      "c": "Red",
+      "d": "Brick 2 x 2 x 3",
+      "e": "4107634",
+      "u": 1793421826812
+    },
+    "30145|tan": {
+      "p": "30145",
+      "c": "Tan",
+      "d": "Brick 2 x 2 x 3",
+      "e": "4125265",
+      "u": 1793421826812
     }
   },
   "partKinds": {
@@ -593892,7 +593976,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T04:42:49.189Z"
+      "at": "2026-10-31T04:43:49.643Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -593916,7 +594000,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T04:42:49.189Z",
+    "savedAt": "2026-10-31T04:43:49.643Z",
     "appVersion": "2026.10.30.1"
   }
 }
