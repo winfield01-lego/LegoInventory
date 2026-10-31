@@ -455685,7 +455685,7 @@
       "label": "T5",
       "notes": "1 x 3 and 2 x 3 Slopes",
       "group": "T",
-      "lastEdited": "2026-10-31T00:08:59.629Z"
+      "lastEdited": "2026-10-31T00:12:37.331Z"
     },
     {
       "id": "T6",
@@ -480219,6 +480219,93 @@
       "partNum": "30363",
       "color": "Dark Blue",
       "qty": 1
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "3298",
+      "color": "Black",
+      "qty": 10
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "3298",
+      "color": "Orange",
+      "qty": 7
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "3298",
+      "color": "Light Bluish Gray",
+      "qty": 25
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "3298",
+      "color": "Dark Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "3298",
+      "color": "Sand Blue",
+      "qty": 3
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "3298",
+      "color": "Dark Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "3298",
+      "color": "Blue",
+      "elementId": "329823",
+      "qty": 13
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "3298",
+      "color": "White",
+      "qty": 7
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "3298",
+      "color": "Yellow",
+      "qty": 5
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "3298",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "3298",
+      "color": "Green",
+      "elementId": "329828",
+      "qty": 2
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "3298",
+      "color": "Dark Blue",
+      "elementId": "4163161",
+      "qty": 3
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "3298",
+      "color": "Red",
+      "qty": 12
+    },
+    {
+      "drawerId": "T5",
+      "partNum": "3298",
+      "color": "Reddish Brown",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -517979,9 +518066,12 @@
       "c": "Green",
       "d": "Brick Sloped 33° 3 x 2",
       "e": "6226928",
-      "u": 1791916924851,
+      "u": 1793405558538,
       "at": 1791660084431,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/329828.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/329828.jpg",
+      "ea": [
+        "329828"
+      ]
     },
     "3040b|green": {
       "p": "3040b",
@@ -529183,9 +529273,12 @@
       "c": "Dark Blue",
       "d": "Brick Sloped 33° 3 x 2",
       "e": "6025376",
-      "u": 1791916924851,
+      "u": 1793405558538,
       "at": 1791654462245,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4163161.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4163161.jpg",
+      "ea": [
+        "4163161"
+      ]
     },
     "3675|dark blue": {
       "p": "3675",
@@ -589630,6 +589723,34 @@
       "d": "Brick Sloped 18° 4 x 1",
       "e": "4515361",
       "u": 1793405265465
+    },
+    "3298|dark red": {
+      "p": "3298",
+      "c": "Dark Red",
+      "d": "Brick Sloped 33° 3 x 2",
+      "e": "4162215",
+      "u": 1793405558538
+    },
+    "3298|sand blue": {
+      "p": "3298",
+      "c": "Sand Blue",
+      "d": "Brick Sloped 33° 3 x 2",
+      "e": "4143024",
+      "u": 1793405558538
+    },
+    "3298|tan": {
+      "p": "3298",
+      "c": "Tan",
+      "d": "Brick Sloped 33° 3 x 2",
+      "e": "329805",
+      "u": 1793405558538
+    },
+    "3298|reddish brown": {
+      "p": "3298",
+      "c": "Reddish Brown",
+      "d": "Brick Sloped 33° 3 x 2",
+      "e": "4216625",
+      "u": 1793405558538
     }
   },
   "partKinds": {
@@ -589773,7 +589894,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T00:09:03.651Z"
+      "at": "2026-10-31T00:12:42.633Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -589797,7 +589918,7 @@
       "bags": "2026-10-30T23:16:05.471Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T00:09:03.651Z",
+    "savedAt": "2026-10-31T00:12:42.633Z",
     "appVersion": "2026.10.30.1"
   }
 }
