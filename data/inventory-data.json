@@ -455727,7 +455727,7 @@
       "label": "T8",
       "notes": "Curved Wedges",
       "group": "T",
-      "lastEdited": "2026-10-31T05:49:59.996Z"
+      "lastEdited": "2026-10-31T05:51:45.912Z"
     },
     {
       "id": "T10",
@@ -484279,6 +484279,38 @@
       "drawerId": "T4",
       "partNum": "3037",
       "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "T8",
+      "partNum": "41764",
+      "color": "Black",
+      "elementId": "4161266",
+      "qty": 4
+    },
+    {
+      "drawerId": "T8",
+      "partNum": "41764",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "T8",
+      "partNum": "41764",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "T8",
+      "partNum": "41764",
+      "color": "Red",
+      "qty": 3
+    },
+    {
+      "drawerId": "T8",
+      "partNum": "41764",
+      "color": "White",
+      "elementId": "4161260",
       "qty": 1
     }
   ],
@@ -520547,9 +520579,12 @@
       "c": "Black",
       "d": "Brick Wedged, Curved Inverted 6 x 2 Right",
       "e": "6468984",
-      "u": 1791916924851,
+      "u": 1793425907119,
       "at": 1791656428749,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4161266.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4161266.jpg",
+      "ea": [
+        "4161266"
+      ]
     },
     "77845|black": {
       "p": "77845",
@@ -542592,9 +542627,12 @@
       "c": "White",
       "d": "Brick Wedged, Curved Inverted 6 x 2 Right",
       "e": "6375977",
-      "u": 1791916924851,
+      "u": 1793425907119,
       "at": 1791654536270,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4161260.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4161260.jpg",
+      "ea": [
+        "4161260"
+      ]
     },
     "43721|white": {
       "p": "43721",
@@ -595533,6 +595571,20 @@
       "d": "Brick Sloped 45° 2 x 4",
       "e": "4211205",
       "u": 1793425762637
+    },
+    "41764|dark bluish gray": {
+      "p": "41764",
+      "c": "Dark Bluish Gray",
+      "d": "Brick Wedged, Curved Inverted 6 x 2 Right",
+      "e": "4210785",
+      "u": 1793425907119
+    },
+    "41764|red": {
+      "p": "41764",
+      "c": "Red",
+      "d": "Brick Wedged, Curved Inverted 6 x 2 Right",
+      "e": "4161263",
+      "u": 1793425907119
     }
   },
   "partKinds": {
@@ -595676,7 +595728,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T05:50:04.028Z"
+      "at": "2026-10-31T05:51:51.228Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -595700,7 +595752,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T05:50:04.027Z",
+    "savedAt": "2026-10-31T05:51:51.228Z",
     "appVersion": "2026.10.30.1"
   }
 }
