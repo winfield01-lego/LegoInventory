@@ -455671,7 +455671,7 @@
       "label": "T3",
       "notes": "1 x 2 Slope",
       "group": "T",
-      "lastEdited": "2026-10-31T00:27:47.487Z"
+      "lastEdited": "2026-10-31T00:36:18.848Z"
     },
     {
       "id": "T4",
@@ -480590,6 +480590,136 @@
       "color": "Red",
       "elementId": "",
       "qty": 1
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Black",
+      "elementId": "304026",
+      "qty": 68
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Reddish Brown",
+      "qty": 23
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Orange",
+      "elementId": "4118901",
+      "qty": 13
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Blue",
+      "elementId": "304023",
+      "qty": 17
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Dark Orange",
+      "elementId": "4224730",
+      "qty": 2
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Dark Bluish Gray",
+      "qty": 44
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Dark Red",
+      "elementId": "4209500",
+      "qty": 11
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Medium Nougat",
+      "qty": 4
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Dark Azure",
+      "qty": 15
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Tan",
+      "elementId": "304005",
+      "qty": 31
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Red",
+      "elementId": "304021",
+      "qty": 46
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Medium Blue",
+      "qty": 4
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Green",
+      "elementId": "304028",
+      "qty": 53
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "White",
+      "elementId": "304001",
+      "qty": 49
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Light Bluish Gray",
+      "qty": 51
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Dark Blue",
+      "qty": 7
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Lime",
+      "qty": 8
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Yellow",
+      "qty": 12
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Dark Brown",
+      "qty": 7
+    },
+    {
+      "drawerId": "T3",
+      "partNum": "3040b",
+      "color": "Dark Tan",
+      "elementId": "4251973",
+      "qty": 6
     }
   ],
   "mocLocations": {
@@ -502058,19 +502188,23 @@
       "c": "Blue",
       "d": "Brick Sloped 45° 2 x 1 with Bottom Pin",
       "e": "4121936",
-      "u": 1791916924851,
+      "u": 1793406980050,
       "at": 1791846553338,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/304023.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/304023.jpg",
+      "ea": [
+        "304023"
+      ]
     },
     "3040b|white": {
       "p": "3040b",
       "c": "White",
       "d": "Brick Sloped 45° 2 x 1 with Bottom Pin",
       "e": "4121932",
-      "u": 1791916924851,
+      "u": 1793406980050,
       "at": 1791846902427,
       "ea": [
-        "6552115"
+        "6552115",
+        "304001"
       ],
       "i": "https://cdn.rebrickable.com/media/parts/elements/304001.jpg"
     },
@@ -509080,8 +509214,11 @@
       "c": "Tan",
       "d": "Brick Sloped 45° 2 x 1 with Bottom Pin",
       "e": "4121972",
-      "u": 1791916924851,
-      "at": 1791654796747
+      "u": 1793406980050,
+      "at": 1791654796747,
+      "ea": [
+        "304005"
+      ]
     },
     "3038|black": {
       "p": "3038",
@@ -515988,9 +516125,12 @@
       "c": "Dark Tan",
       "d": "Brick Sloped 45° 2 x 1 with Bottom Pin",
       "e": "4530678",
-      "u": 1791916924851,
+      "u": 1793406980050,
       "at": 1791654755320,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4251973.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4251973.jpg",
+      "ea": [
+        "4251973"
+      ]
     },
     "98283|dark tan": {
       "p": "98283",
@@ -516134,8 +516274,11 @@
       "c": "Red",
       "d": "Brick Sloped 45° 2 x 1 with Bottom Pin",
       "e": "4121934",
-      "u": 1791916924851,
-      "at": 1791672972493
+      "u": 1793406980050,
+      "at": 1791672972493,
+      "ea": [
+        "304021"
+      ]
     },
     "3747b|red": {
       "p": "3747b",
@@ -518371,8 +518514,11 @@
       "c": "Green",
       "d": "Brick Sloped 45° 2 x 1 with Bottom Pin",
       "e": "4121969",
-      "u": 1791916924851,
-      "at": 1791660732205
+      "u": 1793406980050,
+      "at": 1791660732205,
+      "ea": [
+        "304028"
+      ]
     },
     "4070|green": {
       "p": "4070",
@@ -521134,9 +521280,12 @@
       "c": "Dark Orange",
       "d": "Brick Sloped 45° 2 x 1 with Bottom Pin",
       "e": "6069259",
-      "u": 1791916924851,
+      "u": 1793406980050,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4224730.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4224730.jpg",
+      "ea": [
+        "4224730"
+      ]
     },
     "49668|dark red": {
       "p": "49668",
@@ -523459,9 +523608,9 @@
     "3040b|lime": {
       "p": "3040b",
       "c": "Lime",
-      "d": "",
-      "e": "",
-      "u": 1791916924851
+      "d": "Brick Sloped 45° 2 x 1 with Bottom Pin",
+      "e": "4164024",
+      "u": 1793406980050
     },
     "4287c|lime": {
       "p": "4287c",
@@ -532942,8 +533091,11 @@
       "c": "Orange",
       "d": "Brick Sloped 45° 2 x 1 with Bottom Pin",
       "e": "4121967",
-      "u": 1791916924851,
-      "at": 1791654551541
+      "u": 1793406980050,
+      "at": 1791654551541,
+      "ea": [
+        "4118901"
+      ]
     },
     "4070|orange": {
       "p": "4070",
@@ -535013,9 +535165,12 @@
       "c": "Dark Red",
       "d": "Brick Sloped 45° 2 x 1 with Bottom Pin",
       "e": "4541526",
-      "u": 1791916924851,
+      "u": 1793406980050,
       "at": 1791654506704,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4209500.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4209500.jpg",
+      "ea": [
+        "4209500"
+      ]
     },
     "15207|dark red": {
       "p": "15207",
@@ -590130,6 +590285,34 @@
       "d": "Brick Sloped Inverted 45° 2 x 1",
       "e": "4654915",
       "u": 1793406438299
+    },
+    "3040b|medium blue": {
+      "p": "3040b",
+      "c": "Medium Blue",
+      "d": "Brick Sloped 45° 2 x 1 with Bottom Pin",
+      "e": "4128582",
+      "u": 1793406980050
+    },
+    "3040b|dark blue": {
+      "p": "3040b",
+      "c": "Dark Blue",
+      "d": "Brick Sloped 45° 2 x 1 with Bottom Pin",
+      "e": "4187118",
+      "u": 1793406980050
+    },
+    "3040b|yellow": {
+      "p": "3040b",
+      "c": "Yellow",
+      "d": "Brick Sloped 45° 2 x 1 with Bottom Pin",
+      "e": "304024",
+      "u": 1793406980050
+    },
+    "3040b|dark brown": {
+      "p": "3040b",
+      "c": "Dark Brown",
+      "d": "Brick Sloped 45° 2 x 1 with Bottom Pin",
+      "e": "4518557",
+      "u": 1793406980050
     }
   },
   "partKinds": {
@@ -590273,7 +590456,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T00:28:01.378Z"
+      "at": "2026-10-31T00:36:24.155Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -590297,7 +590480,7 @@
       "bags": "2026-10-30T23:16:05.471Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T00:28:01.378Z",
+    "savedAt": "2026-10-31T00:36:24.155Z",
     "appVersion": "2026.10.30.1"
   }
 }
