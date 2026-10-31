@@ -455657,7 +455657,7 @@
       "label": "T1",
       "notes": "",
       "group": "T",
-      "lastEdited": "2026-10-31T00:06:07.534Z"
+      "lastEdited": "2026-10-31T00:07:44.263Z"
     },
     {
       "id": "T2",
@@ -480159,6 +480159,60 @@
       "partNum": "30363",
       "color": "White",
       "qty": 3
+    },
+    {
+      "drawerId": "T1",
+      "partNum": "60477",
+      "color": "Black",
+      "qty": 22
+    },
+    {
+      "drawerId": "T1",
+      "partNum": "60477",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "T1",
+      "partNum": "60477",
+      "color": "Dark Blue",
+      "qty": 3
+    },
+    {
+      "drawerId": "T1",
+      "partNum": "60477",
+      "color": "Dark Bluish Gray",
+      "qty": 16
+    },
+    {
+      "drawerId": "T1",
+      "partNum": "60477",
+      "color": "Dark Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "T1",
+      "partNum": "60477",
+      "color": "Light Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "T1",
+      "partNum": "60477",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "T1",
+      "partNum": "60477",
+      "color": "White",
+      "qty": 4
+    },
+    {
+      "drawerId": "T1",
+      "partNum": "60477",
+      "color": "Yellow",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -589549,6 +589603,27 @@
       "d": "Brick Sloped 18° 4 x 2",
       "e": "4225869",
       "u": 1793405168743
+    },
+    "60477|blue": {
+      "p": "60477",
+      "c": "Blue",
+      "d": "Brick Sloped 18° 4 x 1",
+      "e": "6028122",
+      "u": 1793405265465
+    },
+    "60477|dark brown": {
+      "p": "60477",
+      "c": "Dark Brown",
+      "d": "Brick Sloped 18° 4 x 1",
+      "e": "4519742",
+      "u": 1793405265465
+    },
+    "60477|yellow": {
+      "p": "60477",
+      "c": "Yellow",
+      "d": "Brick Sloped 18° 4 x 1",
+      "e": "4515361",
+      "u": 1793405265465
     }
   },
   "partKinds": {
@@ -589692,7 +589767,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T00:06:12.837Z"
+      "at": "2026-10-31T00:07:48.311Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -589716,7 +589791,7 @@
       "bags": "2026-10-30T23:16:05.471Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T00:06:12.837Z",
+    "savedAt": "2026-10-31T00:07:48.310Z",
     "appVersion": "2026.10.30.1"
   }
 }
