@@ -455380,7 +455380,7 @@
       "label": "J2",
       "notes": "5 x 4 Arch",
       "group": "j",
-      "lastEdited": "2026-10-31T00:37:01.068Z"
+      "lastEdited": "2026-10-31T00:38:23.879Z"
     },
     {
       "id": "J3",
@@ -480720,6 +480720,36 @@
       "partNum": "3040b",
       "color": "Dark Tan",
       "elementId": "4251973",
+      "qty": 6
+    },
+    {
+      "drawerId": "J2",
+      "partNum": "14395",
+      "color": "Black",
+      "qty": 9
+    },
+    {
+      "drawerId": "J2",
+      "partNum": "14395",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "J2",
+      "partNum": "14395",
+      "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "J2",
+      "partNum": "14395",
+      "color": "Dark Brown",
+      "qty": 3
+    },
+    {
+      "drawerId": "J2",
+      "partNum": "14395",
+      "color": "Reddish Brown",
       "qty": 6
     }
   ],
@@ -590314,6 +590344,20 @@
       "d": "Brick Sloped 45° 2 x 1 with Bottom Pin",
       "e": "4518557",
       "u": 1793406980050
+    },
+    "14395|white": {
+      "p": "14395",
+      "c": "White",
+      "d": "Brick Arch 1 x 5 x 4 [Continuous Bow, Raised Underside Cross Supports]",
+      "e": "6056259",
+      "u": 1793407105081
+    },
+    "14395|dark brown": {
+      "p": "14395",
+      "c": "Dark Brown",
+      "d": "Brick Arch 1 x 5 x 4 [Continuous Bow, Raised Underside Cross Supports]",
+      "e": "6075065",
+      "u": 1793407105081
     }
   },
   "partKinds": {
@@ -590457,7 +590501,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T00:37:05.095Z"
+      "at": "2026-10-31T00:38:27.909Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -590481,7 +590525,7 @@
       "bags": "2026-10-30T23:16:05.471Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T00:37:05.095Z",
+    "savedAt": "2026-10-31T00:38:27.909Z",
     "appVersion": "2026.10.30.1"
   }
 }
