@@ -456504,7 +456504,7 @@
       "label": "M12",
       "notes": "8 x 4 Wedge Plate - Right",
       "group": "M",
-      "lastEdited": "2026-10-31T05:26:53.892Z"
+      "lastEdited": "2026-10-31T05:27:59.575Z"
     },
     {
       "id": "M13",
@@ -483976,6 +483976,38 @@
       "drawerId": "M13",
       "partNum": "22888",
       "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "M12",
+      "partNum": "3934",
+      "color": "Black",
+      "elementId": "393426",
+      "qty": 4
+    },
+    {
+      "drawerId": "M12",
+      "partNum": "3934",
+      "color": "Dark Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "M12",
+      "partNum": "3934",
+      "color": "Light Bluish Gray",
+      "qty": 5
+    },
+    {
+      "drawerId": "M12",
+      "partNum": "3934",
+      "color": "White",
+      "elementId": "393401",
+      "qty": 4
+    },
+    {
+      "drawerId": "M12",
+      "partNum": "3934",
+      "color": "Yellow",
       "qty": 1
     }
   ],
@@ -523659,9 +523691,12 @@
       "c": "White",
       "d": "Wedge Plate 8 x 4 Wing Right with Stud Notch",
       "e": "4141488",
-      "u": 1791916924851,
+      "u": 1793424480778,
       "at": 1791732100390,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/15/3934.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/15/3934.png",
+      "ea": [
+        "393401"
+      ]
     },
     "23969|black": {
       "p": "23969",
@@ -565308,9 +565343,12 @@
       "c": "Black",
       "d": "Wedge Plate 8 x 4 Wing Right with Stud Notch",
       "e": "4189090",
-      "u": 1791916924851,
+      "u": 1793424480778,
       "at": 1791846572021,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/3934.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/3934.png",
+      "ea": [
+        "393426"
+      ]
     },
     "4598|light gray": {
       "p": "4598",
@@ -595035,6 +595073,27 @@
       "d": "Plate Round Half 4 x 8",
       "e": "6353796",
       "u": 1793424358260
+    },
+    "3934|dark bluish gray": {
+      "p": "3934",
+      "c": "Dark Bluish Gray",
+      "d": "Wedge Plate 8 x 4 Wing Right with Stud Notch",
+      "e": "4211058",
+      "u": 1793424480778
+    },
+    "3934|light bluish gray": {
+      "p": "3934",
+      "c": "Light Bluish Gray",
+      "d": "Wedge Plate 8 x 4 Wing Right with Stud Notch",
+      "e": "4211468",
+      "u": 1793424480778
+    },
+    "3934|yellow": {
+      "p": "3934",
+      "c": "Yellow",
+      "d": "Wedge Plate 8 x 4 Wing Right with Stud Notch",
+      "e": "4243241",
+      "u": 1793424480778
     }
   },
   "partKinds": {
@@ -595178,7 +595237,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T05:26:57.933Z"
+      "at": "2026-10-31T05:28:04.875Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -595202,7 +595261,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T05:26:57.933Z",
+    "savedAt": "2026-10-31T05:28:04.875Z",
     "appVersion": "2026.10.30.1"
   }
 }
