@@ -456532,7 +456532,7 @@
       "label": "M16",
       "notes": "4 x 4 and 4 x 6 Double Wedge",
       "group": "M",
-      "lastEdited": "2026-10-31T05:18:17.921Z"
+      "lastEdited": "2026-10-31T05:18:50.636Z"
     },
     {
       "id": "M17",
@@ -483776,6 +483776,30 @@
       "partNum": "43719",
       "color": "White",
       "elementId": "4179871",
+      "qty": 2
+    },
+    {
+      "drawerId": "M16",
+      "partNum": "47407",
+      "color": "Black",
+      "qty": 9
+    },
+    {
+      "drawerId": "M16",
+      "partNum": "47407",
+      "color": "Dark Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "M16",
+      "partNum": "47407",
+      "color": "Red",
+      "qty": 3
+    },
+    {
+      "drawerId": "M16",
+      "partNum": "47407",
+      "color": "White",
       "qty": 2
     }
   ],
@@ -594706,6 +594730,27 @@
       "d": "Wedge Plate 4 x 4 with 2 x 2 Cutout",
       "e": "4179091",
       "u": 1793423899123
+    },
+    "47407|dark red": {
+      "p": "47407",
+      "c": "Dark Red",
+      "d": "Wedge Plate 4 x 6",
+      "e": "6250102",
+      "u": 1793423931839
+    },
+    "47407|red": {
+      "p": "47407",
+      "c": "Red",
+      "d": "Wedge Plate 4 x 6",
+      "e": "4212517",
+      "u": 1793423931839
+    },
+    "47407|white": {
+      "p": "47407",
+      "c": "White",
+      "d": "Wedge Plate 4 x 6",
+      "e": "6003065",
+      "u": 1793423931839
     }
   },
   "partKinds": {
@@ -594849,7 +594894,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T05:18:23.214Z"
+      "at": "2026-10-31T05:18:54.669Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -594873,7 +594918,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T05:18:23.214Z",
+    "savedAt": "2026-10-31T05:18:54.669Z",
     "appVersion": "2026.10.30.1"
   }
 }
