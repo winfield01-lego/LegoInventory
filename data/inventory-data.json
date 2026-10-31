@@ -455728,7 +455728,7 @@
       "label": "T10",
       "notes": "2 x 2 Slope",
       "group": "T",
-      "lastEdited": "2026-10-31T02:47:05.182Z"
+      "lastEdited": "2026-10-31T02:58:07.453Z"
     },
     {
       "id": "U1",
@@ -481960,6 +481960,110 @@
       "partNum": "2877",
       "color": "Yellow",
       "qty": 18
+    },
+    {
+      "drawerId": "T10",
+      "partNum": "3039",
+      "color": "Black",
+      "qty": 33
+    },
+    {
+      "drawerId": "T10",
+      "partNum": "3039",
+      "color": "Blue",
+      "qty": 79
+    },
+    {
+      "drawerId": "T10",
+      "partNum": "3039",
+      "color": "Bright Light Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "T10",
+      "partNum": "3039",
+      "color": "Dark Blue",
+      "qty": 6
+    },
+    {
+      "drawerId": "T10",
+      "partNum": "3039",
+      "color": "Dark Bluish Gray",
+      "qty": 30
+    },
+    {
+      "drawerId": "T10",
+      "partNum": "3039",
+      "color": "Dark Orange",
+      "elementId": "4158239",
+      "qty": 2
+    },
+    {
+      "drawerId": "T10",
+      "partNum": "3039",
+      "color": "Dark Red",
+      "elementId": "4162216",
+      "qty": 12
+    },
+    {
+      "drawerId": "T10",
+      "partNum": "3039",
+      "color": "Dark Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "T10",
+      "partNum": "3039",
+      "color": "Green",
+      "qty": 7
+    },
+    {
+      "drawerId": "T10",
+      "partNum": "3039",
+      "color": "Light Bluish Gray",
+      "qty": 110
+    },
+    {
+      "drawerId": "T10",
+      "partNum": "3039",
+      "color": "Lime",
+      "qty": 5
+    },
+    {
+      "drawerId": "T10",
+      "partNum": "3039",
+      "color": "Orange",
+      "qty": 17
+    },
+    {
+      "drawerId": "T10",
+      "partNum": "3039",
+      "color": "Red",
+      "qty": 29
+    },
+    {
+      "drawerId": "T10",
+      "partNum": "3039",
+      "color": "Reddish Brown",
+      "qty": 3
+    },
+    {
+      "drawerId": "T10",
+      "partNum": "3039",
+      "color": "Tan",
+      "qty": 6
+    },
+    {
+      "drawerId": "T10",
+      "partNum": "3039",
+      "color": "White",
+      "qty": 44
+    },
+    {
+      "drawerId": "T10",
+      "partNum": "3039",
+      "color": "Yellow",
+      "qty": 15
     }
   ],
   "mocLocations": {
@@ -522624,8 +522728,8 @@
       "p": "3039",
       "c": "Green",
       "d": "Brick Sloped 45° 2 x 2",
-      "e": "",
-      "u": 1791916924851,
+      "e": "303928",
+      "u": 1793415488654,
       "at": 1791660732205
     },
     "3045|green": {
@@ -530194,9 +530298,12 @@
       "c": "Dark Orange",
       "d": "Brick Sloped 45° 2 x 2",
       "e": "6248859",
-      "u": 1791916924851,
+      "u": 1793415488654,
       "at": 1791654657762,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4158239.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4158239.jpg",
+      "ea": [
+        "4158239"
+      ]
     },
     "35464|dark orange": {
       "p": "35464",
@@ -542618,9 +542725,12 @@
       "c": "Dark Red",
       "d": "Brick Sloped 45° 2 x 2",
       "e": "4609925",
-      "u": 1791916924851,
+      "u": 1793415488654,
       "at": 1791654445438,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4162216.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4162216.jpg",
+      "ea": [
+        "4162216"
+      ]
     },
     "47753|dark red": {
       "p": "47753",
@@ -592058,6 +592168,20 @@
       "d": "Door for Window Frame 1 x 4 x 3, Semicircular Handle Holes on Back",
       "e": "6404419",
       "u": 1793411762582
+    },
+    "3039|bright light blue": {
+      "p": "3039",
+      "c": "Bright Light Blue",
+      "d": "Brick Sloped 45° 2 x 2",
+      "e": "6136396",
+      "u": 1793415488654
+    },
+    "3039|lime": {
+      "p": "3039",
+      "c": "Lime",
+      "d": "Brick Sloped 45° 2 x 2",
+      "e": "4212554",
+      "u": 1793415488654
     }
   },
   "partKinds": {
@@ -592201,7 +592325,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T02:47:09.224Z"
+      "at": "2026-10-31T02:58:12.753Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -592225,7 +592349,7 @@
       "bags": "2026-10-31T01:59:19.781Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T02:47:09.224Z",
+    "savedAt": "2026-10-31T02:58:12.753Z",
     "appVersion": "2026.10.30.1"
   }
 }
