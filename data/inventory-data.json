@@ -454755,7 +454755,7 @@
       "label": "G41",
       "notes": "2 x 2 x 3 Sloped Brick",
       "group": "G",
-      "lastEdited": "2026-10-31T04:54:09.403Z"
+      "lastEdited": "2026-10-31T04:55:26.511Z"
     },
     {
       "id": "G42",
@@ -483295,6 +483295,49 @@
       "color": "White",
       "elementId": "4159556",
       "qty": 18
+    },
+    {
+      "drawerId": "G41",
+      "partNum": "98560",
+      "color": "Black",
+      "qty": 14
+    },
+    {
+      "drawerId": "G41",
+      "partNum": "98560",
+      "color": "Blue",
+      "qty": 6
+    },
+    {
+      "drawerId": "G41",
+      "partNum": "98560",
+      "color": "Dark Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "G41",
+      "partNum": "98560",
+      "color": "Dark Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "G41",
+      "partNum": "98560",
+      "color": "Dark Red",
+      "qty": 5
+    },
+    {
+      "drawerId": "G41",
+      "partNum": "98560",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "G41",
+      "partNum": "98560",
+      "color": "White",
+      "elementId": "6004491",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -546596,9 +546639,12 @@
       "c": "White",
       "d": "Brick Sloped 75° 2 x 2 x 3 [Solid Studs]",
       "e": "6552137",
-      "u": 1791916924851,
+      "u": 1793422527712,
       "at": 1791654633155,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6004491.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6004491.jpg",
+      "ea": [
+        "6004491"
+      ]
     },
     "10190|white": {
       "p": "10190",
@@ -593992,6 +594038,27 @@
       "d": "Brick Sloped 65° 2 x 2 x 2 with Bottom Tube",
       "e": "4211320",
       "u": 1793422421064
+    },
+    "98560|blue": {
+      "p": "98560",
+      "c": "Blue",
+      "d": "Brick Sloped 75° 2 x 2 x 3 [Solid Studs]",
+      "e": "6173944",
+      "u": 1793422527712
+    },
+    "98560|dark blue": {
+      "p": "98560",
+      "c": "Dark Blue",
+      "d": "Brick Sloped 75° 2 x 2 x 3 [Solid Studs]",
+      "e": "6144751",
+      "u": 1793422527712
+    },
+    "98560|dark red": {
+      "p": "98560",
+      "c": "Dark Red",
+      "d": "Brick Sloped 75° 2 x 2 x 3 [Solid Studs]",
+      "e": "6007898",
+      "u": 1793422527712
     }
   },
   "partKinds": {
@@ -594135,7 +594202,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T04:54:13.440Z"
+      "at": "2026-10-31T04:55:31.813Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -594159,7 +594226,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T04:54:13.440Z",
+    "savedAt": "2026-10-31T04:55:31.813Z",
     "appVersion": "2026.10.30.1"
   }
 }
