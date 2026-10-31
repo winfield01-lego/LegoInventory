@@ -454718,7 +454718,7 @@
       "label": "G36",
       "notes": "1 x 2 and 1 x 4 Masonry",
       "group": "G",
-      "lastEdited": "2026-10-31T04:39:41.579Z"
+      "lastEdited": "2026-10-31T04:40:01.744Z"
     },
     {
       "id": "G37",
@@ -483075,6 +483075,19 @@
       "drawerId": "G36",
       "partNum": "98283",
       "color": "Tan",
+      "qty": 4
+    },
+    {
+      "drawerId": "G36",
+      "partNum": "15533",
+      "color": "Light Bluish Gray",
+      "elementId": "631489",
+      "qty": 2
+    },
+    {
+      "drawerId": "G36",
+      "partNum": "15533",
+      "color": "Medium Nougat",
       "qty": 4
     }
   ],
@@ -542158,8 +542171,11 @@
       "c": "Light Bluish Gray",
       "d": "Brick Special 1 x 4 with Masonry Brick Profile",
       "e": "6314891",
-      "u": 1791916924851,
-      "at": 1791654414013
+      "u": 1793421602945,
+      "at": 1791654414013,
+      "ea": [
+        "631489"
+      ]
     },
     "2821pr0005|light bluish gray": {
       "p": "2821pr0005",
@@ -593635,6 +593651,13 @@
       "d": "Brick Special 1 x 2 with Masonry Brick Profile",
       "e": "6075617",
       "u": 1793421582781
+    },
+    "15533|medium nougat": {
+      "p": "15533",
+      "c": "Medium Nougat",
+      "d": "Brick Special 1 x 4 with Masonry Brick Profile",
+      "e": "6055309",
+      "u": 1793421602945
     }
   },
   "partKinds": {
@@ -593778,7 +593801,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T04:39:45.604Z"
+      "at": "2026-10-31T04:40:05.775Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -593802,7 +593825,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T04:39:45.604Z",
+    "savedAt": "2026-10-31T04:40:05.775Z",
     "appVersion": "2026.10.30.1"
   }
 }
