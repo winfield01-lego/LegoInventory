@@ -456539,7 +456539,7 @@
       "label": "M17",
       "notes": "",
       "group": "M",
-      "lastEdited": "2026-10-13T17:13:28.024Z"
+      "lastEdited": "2026-10-31T05:32:42.941Z"
     },
     {
       "id": "M18",
@@ -484047,6 +484047,49 @@
       "partNum": "3933",
       "color": "Yellow",
       "qty": 1
+    },
+    {
+      "drawerId": "M17",
+      "partNum": "50305",
+      "color": "Black",
+      "qty": 3
+    },
+    {
+      "drawerId": "M17",
+      "partNum": "50305",
+      "color": "Dark Azure",
+      "qty": 1
+    },
+    {
+      "drawerId": "M17",
+      "partNum": "50305",
+      "color": "Dark Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "M17",
+      "partNum": "50305",
+      "color": "Light Bluish Gray",
+      "qty": 7
+    },
+    {
+      "drawerId": "M17",
+      "partNum": "50305",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "M17",
+      "partNum": "50305",
+      "color": "White",
+      "qty": 4
+    },
+    {
+      "drawerId": "M17",
+      "partNum": "50305",
+      "color": "Yellow",
+      "elementId": "4247644",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -520485,9 +520528,12 @@
       "c": "Yellow",
       "d": "Wedge Plate 8 x 3, 22° Left",
       "e": "6307260",
-      "u": 1791916924851,
+      "u": 1793424764154,
       "at": 1791656428749,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4247644.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4247644.jpg",
+      "ea": [
+        "4247644"
+      ]
     },
     "50304|yellow": {
       "p": "50304",
@@ -595166,6 +595212,20 @@
       "d": "Wedge Plate 8 x 4 Wing Left",
       "e": "393324",
       "u": 1793424567347
+    },
+    "50305|dark azure": {
+      "p": "50305",
+      "c": "Dark Azure",
+      "d": "Wedge Plate 8 x 3, 22° Left",
+      "e": "4640889",
+      "u": 1793424764154
+    },
+    "50305|red": {
+      "p": "50305",
+      "c": "Red",
+      "d": "Wedge Plate 8 x 3, 22° Left",
+      "e": "4610488",
+      "u": 1793424764154
     }
   },
   "partKinds": {
@@ -595309,7 +595369,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T05:29:31.448Z"
+      "at": "2026-10-31T05:32:48.263Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -595333,7 +595393,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T05:29:31.448Z",
+    "savedAt": "2026-10-31T05:32:48.262Z",
     "appVersion": "2026.10.30.1"
   }
 }
