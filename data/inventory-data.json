@@ -499884,7 +499884,7 @@
           "desc": "Brick Wedged, Sloped 45° 2 x 2 Corner",
           "elementId": "6034676",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "L39",
           "matchCount": 0,
           "suggested": false,
           "sel": false
@@ -499895,7 +499895,7 @@
           "desc": "Brick Sloped 65° 2 x 2 x 2 with Bottom Tube",
           "elementId": "4215353",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "G38",
           "matchCount": 0,
           "suggested": false,
           "sel": false
@@ -499906,7 +499906,7 @@
           "desc": "Brick Wedged 2 x 2 Facet",
           "elementId": "4584274",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "M6",
           "matchCount": 0,
           "suggested": false,
           "sel": false
@@ -499917,7 +499917,7 @@
           "desc": "Wedge Plate 6 x 3 Left",
           "elementId": "4283047",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "R1",
           "matchCount": 0,
           "suggested": false,
           "sel": false
@@ -499928,7 +499928,7 @@
           "desc": "Brick Curved 2 x 3",
           "elementId": "621521",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "G33",
           "matchCount": 0,
           "suggested": false,
           "sel": false
@@ -499939,7 +499939,7 @@
           "desc": "Plate Special 1 x 2 with Clip Vertical on End",
           "elementId": "6354568",
           "qty": 2,
-          "drawerId": "",
+          "drawerId": "N22",
           "matchCount": 0,
           "suggested": false,
           "sel": false
@@ -499972,9 +499972,9 @@
           "desc": "Plate Round Half 4 x 8",
           "elementId": "6138699",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "M13",
           "matchCount": 0,
-          "suggested": false,
+          "suggested": true,
           "sel": false
         },
         {
@@ -500126,7 +500126,7 @@
           "desc": "Wedge Plate 6 x 3 Right",
           "elementId": "4290150",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "R2",
           "matchCount": 0,
           "suggested": false,
           "sel": false
@@ -500137,14 +500137,24 @@
           "desc": "Wedge Plate 6 x 4 Right",
           "elementId": "6266298",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "M10",
           "matchCount": 0,
           "suggested": false,
           "sel": false
+        },
+        {
+          "partNum": "3032",
+          "color": "Light Bluish Gray",
+          "desc": "Plate 4 x 6",
+          "elementId": "4211404",
+          "qty": 1,
+          "drawerId": "P10",
+          "matchCount": 0,
+          "suggested": false
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-10-31T03:44:39.842Z",
+      "savedAt": "2026-10-31T06:03:51.775Z",
       "moved": {
         "batches": 6,
         "pieces": 1001,
@@ -596147,7 +596157,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T06:03:27.486Z"
+      "at": "2026-10-31T06:03:55.809Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -596168,10 +596178,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-10-31T06:03:23.455Z",
+      "bags": "2026-10-31T06:03:51.775Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T06:03:27.486Z",
+    "savedAt": "2026-10-31T06:03:55.809Z",
     "appVersion": "2026.10.30.1"
   }
 }
