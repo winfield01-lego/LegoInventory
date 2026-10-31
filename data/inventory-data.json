@@ -456588,7 +456588,7 @@
       "label": "M24",
       "notes": "3 x 4 Double Wedge Plate",
       "group": "M",
-      "lastEdited": "2026-10-31T05:41:03.224Z"
+      "lastEdited": "2026-10-31T05:43:17.195Z"
     },
     {
       "id": "M25",
@@ -484176,6 +484176,48 @@
       "partNum": "35044",
       "color": "Light Bluish Gray",
       "qty": 3
+    },
+    {
+      "drawerId": "M24",
+      "partNum": "48183",
+      "color": "Black",
+      "qty": 14
+    },
+    {
+      "drawerId": "M24",
+      "partNum": "48183",
+      "color": "Blue",
+      "qty": 6
+    },
+    {
+      "drawerId": "M24",
+      "partNum": "48183",
+      "color": "Dark Bluish Gray",
+      "qty": 10
+    },
+    {
+      "drawerId": "M24",
+      "partNum": "48183",
+      "color": "Light Bluish Gray",
+      "qty": 8
+    },
+    {
+      "drawerId": "M24",
+      "partNum": "48183",
+      "color": "Red",
+      "qty": 3
+    },
+    {
+      "drawerId": "M24",
+      "partNum": "48183",
+      "color": "White",
+      "qty": 7
+    },
+    {
+      "drawerId": "M24",
+      "partNum": "48183",
+      "color": "Yellow",
+      "qty": 9
     }
   ],
   "mocLocations": {
@@ -595360,6 +595402,55 @@
       "d": "Plate Special 4 x 4 with 3 x 3 Quarter Round Cutout",
       "e": "6389443",
       "u": 1793425206660
+    },
+    "48183|black": {
+      "p": "48183",
+      "c": "Black",
+      "d": "Wedge Plate 3 x 4 with Stud Notches",
+      "e": "4238912",
+      "u": 1793425398398
+    },
+    "48183|blue": {
+      "p": "48183",
+      "c": "Blue",
+      "d": "Wedge Plate 3 x 4 with Stud Notches",
+      "e": "4177958",
+      "u": 1793425398398
+    },
+    "48183|dark bluish gray": {
+      "p": "48183",
+      "c": "Dark Bluish Gray",
+      "d": "Wedge Plate 3 x 4 with Stud Notches",
+      "e": "4215981",
+      "u": 1793425398398
+    },
+    "48183|light bluish gray": {
+      "p": "48183",
+      "c": "Light Bluish Gray",
+      "d": "Wedge Plate 3 x 4 with Stud Notches",
+      "e": "4240013",
+      "u": 1793425398398
+    },
+    "48183|red": {
+      "p": "48183",
+      "c": "Red",
+      "d": "Wedge Plate 3 x 4 with Stud Notches",
+      "e": "4177951",
+      "u": 1793425398398
+    },
+    "48183|white": {
+      "p": "48183",
+      "c": "White",
+      "d": "Wedge Plate 3 x 4 with Stud Notches",
+      "e": "4181037",
+      "u": 1793425398398
+    },
+    "48183|yellow": {
+      "p": "48183",
+      "c": "Yellow",
+      "d": "Wedge Plate 3 x 4 with Stud Notches",
+      "e": "4177952",
+      "u": 1793425398398
     }
   },
   "partKinds": {
@@ -595503,7 +595594,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T05:41:07.272Z"
+      "at": "2026-10-31T05:43:21.237Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -595527,7 +595618,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T05:41:07.272Z",
+    "savedAt": "2026-10-31T05:43:21.237Z",
     "appVersion": "2026.10.30.1"
   }
 }
