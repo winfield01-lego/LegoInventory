@@ -455591,7 +455591,7 @@
       "label": "J35",
       "notes": "2 x 3 x 2 Cupboard, drawers and doors",
       "group": "j",
-      "lastEdited": "2026-10-31T00:51:42.428Z"
+      "lastEdited": "2026-10-31T00:52:02.994Z"
     },
     {
       "id": "J36",
@@ -480917,6 +480917,18 @@
       "partNum": "92410",
       "color": "White",
       "qty": 10
+    },
+    {
+      "drawerId": "J35",
+      "partNum": "4532",
+      "color": "Red",
+      "qty": 3
+    },
+    {
+      "drawerId": "J35",
+      "partNum": "4532",
+      "color": "Yellow",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -590596,6 +590608,20 @@
       "d": "Cupboard 2 x 3 x 2 with Hollow Studs",
       "e": "4619666",
       "u": 1793407903630
+    },
+    "4532|red": {
+      "p": "4532",
+      "c": "Red",
+      "d": "Cupboard 2 x 3 x 2 with Solid Studs",
+      "e": "453221",
+      "u": 1793407924196
+    },
+    "4532|yellow": {
+      "p": "4532",
+      "c": "Yellow",
+      "d": "Cupboard 2 x 3 x 2 with Solid Studs",
+      "e": "4289649",
+      "u": 1793407924196
     }
   },
   "partKinds": {
@@ -590739,7 +590765,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T00:51:46.459Z"
+      "at": "2026-10-31T00:52:07.024Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -590763,7 +590789,7 @@
       "bags": "2026-10-30T23:16:05.471Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T00:51:46.459Z",
+    "savedAt": "2026-10-31T00:52:07.024Z",
     "appVersion": "2026.10.30.1"
   }
 }
