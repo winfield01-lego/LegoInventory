@@ -456575,7 +456575,7 @@
       "label": "M23",
       "notes": "3 x 3 and 4 x 4 45 degree Corner Brick",
       "group": "M",
-      "lastEdited": "2026-10-31T04:10:29.487Z"
+      "lastEdited": "2026-10-31T04:11:29.473Z"
     },
     {
       "id": "M24",
@@ -482602,6 +482602,41 @@
       "color": "Yellow",
       "elementId": "408124",
       "qty": 16
+    },
+    {
+      "drawerId": "M23",
+      "partNum": "2462",
+      "color": "Black",
+      "elementId": "246226",
+      "qty": 1
+    },
+    {
+      "drawerId": "M23",
+      "partNum": "2462",
+      "color": "Blue",
+      "elementId": "4129791",
+      "qty": 1
+    },
+    {
+      "drawerId": "M23",
+      "partNum": "2462",
+      "color": "Light Gray",
+      "elementId": "246202",
+      "qty": 12
+    },
+    {
+      "drawerId": "M23",
+      "partNum": "2462",
+      "color": "Tan",
+      "elementId": "246205",
+      "qty": 2
+    },
+    {
+      "drawerId": "M23",
+      "partNum": "2462",
+      "color": "White",
+      "elementId": "246201",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -509799,9 +509834,12 @@
       "c": "Black",
       "d": "Brick Wedged 3 x 3 Facet",
       "e": "6394879",
-      "u": 1791916924851,
+      "u": 1793419890674,
       "at": 1791673663084,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/246226.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/246226.jpg",
+      "ea": [
+        "246226"
+      ]
     },
     "43710|black": {
       "p": "43710",
@@ -511862,19 +511900,23 @@
       "c": "Blue",
       "d": "Brick Wedged 3 x 3 Facet",
       "e": "4579044",
-      "u": 1791916924851,
+      "u": 1793419890674,
       "at": 1791673654995,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4129791.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4129791.jpg",
+      "ea": [
+        "4129791"
+      ]
     },
     "2462|white": {
       "p": "2462",
       "c": "White",
       "d": "Brick Wedged 3 x 3 Facet",
       "e": "6056272",
-      "u": 1791916924851,
+      "u": 1793419890674,
       "at": 1791654324216,
       "ea": [
-        "6619281"
+        "6619281",
+        "246201"
       ],
       "i": "https://cdn.rebrickable.com/media/parts/elements/246201.jpg"
     },
@@ -537183,9 +537225,12 @@
       "c": "Tan",
       "d": "Brick Wedged 3 x 3 Facet",
       "e": "4598467",
-      "u": 1791916924851,
+      "u": 1793419890674,
       "at": 1791654560264,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4282562.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4282562.jpg",
+      "ea": [
+        "246205"
+      ]
     },
     "30503|tan": {
       "p": "30503",
@@ -563876,8 +563921,11 @@
       "c": "Light Gray",
       "d": "Brick Wedged 3 x 3 Facet",
       "e": "4156422",
-      "u": 1791916924851,
-      "at": 1791654762625
+      "u": 1793419890674,
+      "at": 1791654762625,
+      "ea": [
+        "246202"
+      ]
     },
     "6565|light gray": {
       "p": "6565",
@@ -593125,7 +593173,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T04:10:33.509Z"
+      "at": "2026-10-31T04:11:34.774Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -593149,7 +593197,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T04:10:33.509Z",
+    "savedAt": "2026-10-31T04:11:34.773Z",
     "appVersion": "2026.10.30.1"
   }
 }
