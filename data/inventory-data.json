@@ -456455,7 +456455,7 @@
       "label": "M5",
       "notes": "1 x 4 Brick Hinge",
       "group": "M",
-      "lastEdited": "2026-10-31T05:04:44.744Z"
+      "lastEdited": "2026-10-31T05:07:28.601Z"
     },
     {
       "id": "M6",
@@ -483475,6 +483475,66 @@
       "partNum": "51739",
       "color": "Yellow",
       "qty": 4
+    },
+    {
+      "drawerId": "M5",
+      "partNum": "3830",
+      "color": "Black",
+      "elementId": "383026",
+      "qty": 10
+    },
+    {
+      "drawerId": "M5",
+      "partNum": "3830",
+      "color": "Blue",
+      "elementId": "383023",
+      "qty": 7
+    },
+    {
+      "drawerId": "M5",
+      "partNum": "3830",
+      "color": "Dark Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "M5",
+      "partNum": "3830",
+      "color": "Light Bluish Gray",
+      "elementId": "4211460",
+      "qty": 6
+    },
+    {
+      "drawerId": "M5",
+      "partNum": "3830",
+      "color": "Medium Nougat",
+      "elementId": "6162886",
+      "qty": 1
+    },
+    {
+      "drawerId": "M5",
+      "partNum": "3830",
+      "color": "Red",
+      "elementId": "383021",
+      "qty": 2
+    },
+    {
+      "drawerId": "M5",
+      "partNum": "3830",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "M5",
+      "partNum": "3830",
+      "color": "White",
+      "elementId": "383001",
+      "qty": 1
+    },
+    {
+      "drawerId": "M5",
+      "partNum": "3830",
+      "color": "Yellow",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -513245,7 +513305,10 @@
       "c": "Blue",
       "d": "Hinge Brick 1 x 4 [Upper]",
       "e": "6392876",
-      "u": 1791916924851
+      "u": 1793423249813,
+      "ea": [
+        "383023"
+      ]
     },
     "4276b|blue": {
       "p": "4276b",
@@ -516043,9 +516106,12 @@
       "c": "Black",
       "d": "Hinge Brick 1 x 4 [Upper]",
       "e": "6344999",
-      "u": 1791916924851,
+      "u": 1793423249813,
       "at": 1791846902427,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/383026.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/383026.jpg",
+      "ea": [
+        "383026"
+      ]
     },
     "2440pr0003|black": {
       "p": "2440pr0003",
@@ -517620,9 +517686,12 @@
       "c": "Light Bluish Gray",
       "d": "Hinge Brick 1 x 4 [Upper]",
       "e": "6327412",
-      "u": 1791916924851,
+      "u": 1793423249813,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4211460.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4211460.jpg",
+      "ea": [
+        "4211460"
+      ]
     },
     "87544|light bluish gray": {
       "p": "87544",
@@ -530987,9 +531056,12 @@
       "c": "White",
       "d": "Hinge Brick 1 x 4 [Upper]",
       "e": "6327411",
-      "u": 1791916924851,
+      "u": 1793423249813,
       "at": 1791654615447,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/383001.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/383001.jpg",
+      "ea": [
+        "383001"
+      ]
     },
     "91501|white": {
       "p": "91501",
@@ -549669,9 +549741,12 @@
       "c": "Medium Nougat",
       "d": "Hinge Brick 1 x 4 [Upper]",
       "e": "6344798",
-      "u": 1791916924851,
+      "u": 1793423249813,
       "at": 1791654560264,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6162886.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6162886.jpg",
+      "ea": [
+        "6162886"
+      ]
     },
     "3024|medium nougat": {
       "p": "3024",
@@ -575620,9 +575695,12 @@
       "c": "Red",
       "d": "Hinge Brick 1 x 4 [Upper]",
       "e": "6397607",
-      "u": 1791916924851,
+      "u": 1793423249813,
       "at": 1791672972493,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/383021.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/383021.jpg",
+      "ea": [
+        "383021"
+      ]
     },
     "3149bc01|red": {
       "p": "3149bc01",
@@ -594267,6 +594345,27 @@
       "d": "Wedge Plate 2 x 4",
       "e": "6025385",
       "u": 1793423047734
+    },
+    "3830|dark gray": {
+      "p": "3830",
+      "c": "Dark Gray",
+      "d": "Hinge Brick 1 x 4 [Upper]",
+      "e": "383027",
+      "u": 1793423249813
+    },
+    "3830|reddish brown": {
+      "p": "3830",
+      "c": "Reddish Brown",
+      "d": "Hinge Brick 1 x 4 [Upper]",
+      "e": "4215448",
+      "u": 1793423249813
+    },
+    "3830|yellow": {
+      "p": "3830",
+      "c": "Yellow",
+      "d": "Hinge Brick 1 x 4 [Upper]",
+      "e": "383024",
+      "u": 1793423249813
     }
   },
   "partKinds": {
@@ -594410,7 +594509,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T05:04:48.785Z"
+      "at": "2026-10-31T05:07:33.909Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -594434,7 +594533,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T05:04:48.785Z",
+    "savedAt": "2026-10-31T05:07:33.909Z",
     "appVersion": "2026.10.30.1"
   }
 }
