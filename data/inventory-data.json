@@ -455727,7 +455727,7 @@
       "label": "T8",
       "notes": "Curved Wedges",
       "group": "T",
-      "lastEdited": "2026-10-31T05:52:16.463Z"
+      "lastEdited": "2026-10-31T05:55:46.194Z"
     },
     {
       "id": "T10",
@@ -484330,6 +484330,56 @@
       "drawerId": "T8",
       "partNum": "41765",
       "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "T8",
+      "partNum": "41747",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "T8",
+      "partNum": "41747",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "T8",
+      "partNum": "41747",
+      "color": "Dark Bluish Gray",
+      "elementId": "4210771",
+      "qty": 3
+    },
+    {
+      "drawerId": "T8",
+      "partNum": "41747",
+      "color": "Dark Orange",
+      "qty": 3
+    },
+    {
+      "drawerId": "T8",
+      "partNum": "41747",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "T8",
+      "partNum": "41747",
+      "color": "Red",
+      "elementId": "4160105",
+      "qty": 1
+    },
+    {
+      "drawerId": "T8",
+      "partNum": "41747",
+      "color": "White",
+      "qty": 6
+    },
+    {
+      "drawerId": "T8",
+      "partNum": "41747",
+      "color": "Yellow",
       "qty": 1
     }
   ],
@@ -523165,8 +523215,8 @@
       "p": "41747",
       "c": "Light Bluish Gray",
       "d": "Brick Wedged, Curved 6 x 2 Right, Inner Ridges",
-      "e": "",
-      "u": 1791916924851,
+      "e": "4212007",
+      "u": 1793426147400,
       "at": 1791660732205
     },
     "43708|light bluish gray": {
@@ -536141,9 +536191,12 @@
       "c": "Dark Bluish Gray",
       "d": "Brick Wedged, Curved 6 x 2 Right, Inner Ridges",
       "e": "6063685",
-      "u": 1791916924851,
+      "u": 1793426147400,
       "at": 1791654779264,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4210771.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4210771.jpg",
+      "ea": [
+        "4210771"
+      ]
     },
     "4304|dark bluish gray": {
       "p": "4304",
@@ -563572,9 +563625,12 @@
       "c": "Red",
       "d": "Brick Wedged, Curved 6 x 2 Right, Inner Ridges",
       "e": "6268534",
-      "u": 1791916924851,
+      "u": 1793426147400,
       "at": 1791654738545,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4160105.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4160105.jpg",
+      "ea": [
+        "4160105"
+      ]
     },
     "41750|red": {
       "p": "41750",
@@ -595614,6 +595670,27 @@
       "d": "Brick Wedged, Curved Inverted 6 x 2 Left",
       "e": "4210786",
       "u": 1793425937665
+    },
+    "41747|blue": {
+      "p": "41747",
+      "c": "Blue",
+      "d": "Brick Wedged, Curved 6 x 2 Right, Inner Ridges",
+      "e": "4160106",
+      "u": 1793426147400
+    },
+    "41747|dark orange": {
+      "p": "41747",
+      "c": "Dark Orange",
+      "d": "Brick Wedged, Curved 6 x 2 Right, Inner Ridges",
+      "e": "4582987",
+      "u": 1793426147400
+    },
+    "41747|yellow": {
+      "p": "41747",
+      "c": "Yellow",
+      "d": "Brick Wedged, Curved 6 x 2 Right, Inner Ridges",
+      "e": "4160107",
+      "u": 1793426147400
     }
   },
   "partKinds": {
@@ -595757,7 +595834,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T05:52:21.746Z"
+      "at": "2026-10-31T05:55:51.518Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -595781,7 +595858,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T05:52:21.745Z",
+    "savedAt": "2026-10-31T05:55:51.517Z",
     "appVersion": "2026.10.30.1"
   }
 }
