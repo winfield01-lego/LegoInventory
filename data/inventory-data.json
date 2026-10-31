@@ -454718,7 +454718,7 @@
       "label": "G36",
       "notes": "1 x 2 and 1 x 4 Masonry",
       "group": "G",
-      "lastEdited": "2026-10-31T04:34:52.171Z"
+      "lastEdited": "2026-10-31T04:39:41.579Z"
     },
     {
       "id": "G37",
@@ -483016,6 +483016,66 @@
       "partNum": "54383",
       "color": "White",
       "qty": 5
+    },
+    {
+      "drawerId": "G36",
+      "partNum": "98283",
+      "color": "Dark Bluish Gray",
+      "qty": 8
+    },
+    {
+      "drawerId": "G36",
+      "partNum": "98283",
+      "color": "Dark Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "G36",
+      "partNum": "98283",
+      "color": "Dark Red",
+      "qty": 4
+    },
+    {
+      "drawerId": "G36",
+      "partNum": "98283",
+      "color": "Dark Tan",
+      "qty": 5
+    },
+    {
+      "drawerId": "G36",
+      "partNum": "98283",
+      "color": "Medium Nougat",
+      "qty": 7
+    },
+    {
+      "drawerId": "G36",
+      "partNum": "98283",
+      "color": "Olive Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "G36",
+      "partNum": "98283",
+      "color": "Sand Blue",
+      "qty": 54
+    },
+    {
+      "drawerId": "G36",
+      "partNum": "98283",
+      "color": "Sand Green",
+      "qty": 58
+    },
+    {
+      "drawerId": "G36",
+      "partNum": "98283",
+      "color": "Light Bluish Gray",
+      "qty": 27
+    },
+    {
+      "drawerId": "G36",
+      "partNum": "98283",
+      "color": "Tan",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -593533,6 +593593,48 @@
       "d": "Wedge Plate 6 x 3 Right",
       "e": "4529824",
       "u": 1793421222215
+    },
+    "98283|dark orange": {
+      "p": "98283",
+      "c": "Dark Orange",
+      "d": "Brick Special 1 x 2 with Masonry Brick Profile",
+      "e": "6314383",
+      "u": 1793421582781
+    },
+    "98283|dark red": {
+      "p": "98283",
+      "c": "Dark Red",
+      "d": "Brick Special 1 x 2 with Masonry Brick Profile",
+      "e": "6093908",
+      "u": 1793421582781
+    },
+    "98283|medium nougat": {
+      "p": "98283",
+      "c": "Medium Nougat",
+      "d": "Brick Special 1 x 2 with Masonry Brick Profile",
+      "e": "4656783",
+      "u": 1793421582781
+    },
+    "98283|olive green": {
+      "p": "98283",
+      "c": "Olive Green",
+      "d": "Brick Special 1 x 2 with Masonry Brick Profile",
+      "e": "6202628",
+      "u": 1793421582781
+    },
+    "98283|sand blue": {
+      "p": "98283",
+      "c": "Sand Blue",
+      "d": "Brick Special 1 x 2 with Masonry Brick Profile",
+      "e": "6417947",
+      "u": 1793421582781
+    },
+    "98283|sand green": {
+      "p": "98283",
+      "c": "Sand Green",
+      "d": "Brick Special 1 x 2 with Masonry Brick Profile",
+      "e": "6075617",
+      "u": 1793421582781
     }
   },
   "partKinds": {
@@ -593676,7 +593778,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T04:34:56.219Z"
+      "at": "2026-10-31T04:39:45.604Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -593700,7 +593802,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T04:34:56.219Z",
+    "savedAt": "2026-10-31T04:39:45.604Z",
     "appVersion": "2026.10.30.1"
   }
 }
