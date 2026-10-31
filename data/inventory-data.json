@@ -455387,7 +455387,7 @@
       "label": "J3",
       "notes": "3 x 3 Arch",
       "group": "j",
-      "lastEdited": "2026-10-31T00:38:39.279Z"
+      "lastEdited": "2026-10-31T00:43:36.345Z"
     },
     {
       "id": "J4",
@@ -480752,6 +480752,36 @@
       "partNum": "14395",
       "color": "Reddish Brown",
       "qty": 6
+    },
+    {
+      "drawerId": "J3",
+      "partNum": "13965",
+      "color": "Black",
+      "qty": 21
+    },
+    {
+      "drawerId": "J3",
+      "partNum": "13965",
+      "color": "Dark Brown",
+      "qty": 4
+    },
+    {
+      "drawerId": "J3",
+      "partNum": "13965",
+      "color": "Tan",
+      "qty": 3
+    },
+    {
+      "drawerId": "J3",
+      "partNum": "13965",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "J3",
+      "partNum": "13965",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -590359,6 +590389,13 @@
       "d": "Brick Arch 1 x 5 x 4 [Continuous Bow, Raised Underside Cross Supports]",
       "e": "6075065",
       "u": 1793407105081
+    },
+    "13965|dark brown": {
+      "p": "13965",
+      "c": "Dark Brown",
+      "d": "Brick Arch 1 x 3 x 3 [Gothic]",
+      "e": "6177917",
+      "u": 1793407417548
     }
   },
   "partKinds": {
@@ -590502,7 +590539,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T00:38:43.301Z"
+      "at": "2026-10-31T00:43:40.381Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -590526,7 +590563,7 @@
       "bags": "2026-10-30T23:16:05.471Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T00:38:43.301Z",
+    "savedAt": "2026-10-31T00:43:40.381Z",
     "appVersion": "2026.10.30.1"
   }
 }
