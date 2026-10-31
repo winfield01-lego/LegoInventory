@@ -455496,7 +455496,7 @@
       "label": "J20",
       "notes": "3 x 2 Arch - Pointed",
       "group": "j",
-      "lastEdited": "2026-10-31T00:44:04.661Z"
+      "lastEdited": "2026-10-31T00:44:53.362Z"
     },
     {
       "id": "J21",
@@ -480783,6 +480783,24 @@
       "partNum": "13965",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "J20",
+      "partNum": "88292",
+      "color": "Black",
+      "qty": 11
+    },
+    {
+      "drawerId": "J20",
+      "partNum": "88292",
+      "color": "Tan",
+      "qty": 5
+    },
+    {
+      "drawerId": "J20",
+      "partNum": "88292",
+      "color": "White",
+      "qty": 9
     }
   ],
   "mocLocations": {
@@ -590397,6 +590415,13 @@
       "d": "Brick Arch 1 x 3 x 3 [Gothic]",
       "e": "6177917",
       "u": 1793407417548
+    },
+    "88292|tan": {
+      "p": "88292",
+      "c": "Tan",
+      "d": "Brick Arch 1 x 3 x 2",
+      "e": "4579306",
+      "u": 1793407494564
     }
   },
   "partKinds": {
@@ -590540,7 +590565,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T00:44:08.689Z"
+      "at": "2026-10-31T00:44:57.393Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -590564,7 +590589,7 @@
       "bags": "2026-10-30T23:16:05.471Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T00:44:08.689Z",
+    "savedAt": "2026-10-31T00:44:57.393Z",
     "appVersion": "2026.10.30.1"
   }
 }
