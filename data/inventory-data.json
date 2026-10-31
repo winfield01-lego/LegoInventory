@@ -455642,7 +455642,7 @@
       "label": "J42",
       "notes": "2 x 1 x 3 Slope",
       "group": "j",
-      "lastEdited": "2026-10-31T01:21:50.924Z"
+      "lastEdited": "2026-10-31T01:23:20.626Z"
     },
     {
       "id": "J43",
@@ -481352,6 +481352,60 @@
       "partNum": "4460a",
       "color": "Light Bluish Gray",
       "elementId": "",
+      "qty": 8
+    },
+    {
+      "drawerId": "J42",
+      "partNum": "4460b",
+      "color": "Black",
+      "qty": 6
+    },
+    {
+      "drawerId": "J42",
+      "partNum": "4460b",
+      "color": "Blue",
+      "qty": 5
+    },
+    {
+      "drawerId": "J42",
+      "partNum": "4460b",
+      "color": "Dark Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "J42",
+      "partNum": "4460b",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "J42",
+      "partNum": "4460b",
+      "color": "Dark Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "J42",
+      "partNum": "4460b",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "J42",
+      "partNum": "4460b",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "J42",
+      "partNum": "4460b",
+      "color": "White",
+      "qty": 5
+    },
+    {
+      "drawerId": "J42",
+      "partNum": "4460b",
+      "color": "Light Bluish Gray",
       "qty": 8
     }
   ],
@@ -591325,6 +591379,20 @@
       "d": "Brick Sloped 75° 2 x 1 x 3 with Open Stud",
       "e": "",
       "u": 1793409712126
+    },
+    "4460b|dark blue": {
+      "p": "4460b",
+      "c": "Dark Blue",
+      "d": "Brick Sloped 75° 2 x 1 x 3 with Hollow Stud",
+      "e": "4263367",
+      "u": 1793409801828
+    },
+    "4460b|dark red": {
+      "p": "4460b",
+      "c": "Dark Red",
+      "d": "Brick Sloped 75° 2 x 1 x 3 with Hollow Stud",
+      "e": "4267279",
+      "u": 1793409801828
     }
   },
   "partKinds": {
@@ -591468,7 +591536,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T01:21:56.222Z"
+      "at": "2026-10-31T01:23:24.657Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -591492,7 +591560,7 @@
       "bags": "2026-10-31T01:10:27.258Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T01:21:56.222Z",
+    "savedAt": "2026-10-31T01:23:24.657Z",
     "appVersion": "2026.10.30.1"
   }
 }
