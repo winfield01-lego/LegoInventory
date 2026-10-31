@@ -456455,7 +456455,7 @@
       "label": "M5",
       "notes": "1 x 4 Brick Hinge",
       "group": "M",
-      "lastEdited": "2026-10-31T05:07:28.601Z"
+      "lastEdited": "2026-10-31T05:09:02.767Z"
     },
     {
       "id": "M6",
@@ -483533,6 +483533,63 @@
     {
       "drawerId": "M5",
       "partNum": "3830",
+      "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "M5",
+      "partNum": "3831",
+      "color": "Black",
+      "qty": 10
+    },
+    {
+      "drawerId": "M5",
+      "partNum": "3831",
+      "color": "Blue",
+      "elementId": "383123",
+      "qty": 7
+    },
+    {
+      "drawerId": "M5",
+      "partNum": "3831",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "M5",
+      "partNum": "3831",
+      "color": "Light Bluish Gray",
+      "qty": 8
+    },
+    {
+      "drawerId": "M5",
+      "partNum": "3831",
+      "color": "Medium Nougat",
+      "qty": 2
+    },
+    {
+      "drawerId": "M5",
+      "partNum": "3831",
+      "color": "Red",
+      "elementId": "383121",
+      "qty": 2
+    },
+    {
+      "drawerId": "M5",
+      "partNum": "3831",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "M5",
+      "partNum": "3831",
+      "color": "White",
+      "elementId": "383101",
+      "qty": 1
+    },
+    {
+      "drawerId": "M5",
+      "partNum": "3831",
       "color": "Yellow",
       "qty": 1
     }
@@ -513298,7 +513355,10 @@
       "c": "Blue",
       "d": "Hinge Brick 1 x 4 [Lower]",
       "e": "6320053",
-      "u": 1791916924851
+      "u": 1793423343975,
+      "ea": [
+        "383123"
+      ]
     },
     "3830|blue": {
       "p": "3830",
@@ -531047,9 +531107,12 @@
       "c": "White",
       "d": "Hinge Brick 1 x 4 [Lower]",
       "e": "6619285",
-      "u": 1791916924851,
+      "u": 1793423343975,
       "at": 1791654615447,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/383101.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/383101.jpg",
+      "ea": [
+        "383101"
+      ]
     },
     "3830|white": {
       "p": "3830",
@@ -575686,9 +575749,12 @@
       "c": "Red",
       "d": "Hinge Brick 1 x 4 [Lower]",
       "e": "6512257",
-      "u": 1791916924851,
+      "u": 1793423343975,
       "at": 1791672972493,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/383121.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/383121.jpg",
+      "ea": [
+        "383121"
+      ]
     },
     "3830|red": {
       "p": "3830",
@@ -594366,6 +594432,27 @@
       "d": "Hinge Brick 1 x 4 [Upper]",
       "e": "383024",
       "u": 1793423249813
+    },
+    "3831|dark bluish gray": {
+      "p": "3831",
+      "c": "Dark Bluish Gray",
+      "d": "Hinge Brick 1 x 4 [Lower]",
+      "e": "4210795",
+      "u": 1793423343975
+    },
+    "3831|reddish brown": {
+      "p": "3831",
+      "c": "Reddish Brown",
+      "d": "Hinge Brick 1 x 4 [Lower]",
+      "e": "4215449",
+      "u": 1793423343975
+    },
+    "3831|yellow": {
+      "p": "3831",
+      "c": "Yellow",
+      "d": "Hinge Brick 1 x 4 [Lower]",
+      "e": "383124",
+      "u": 1793423343975
     }
   },
   "partKinds": {
@@ -594509,7 +594596,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.10.30.1",
-      "at": "2026-10-31T05:07:33.909Z"
+      "at": "2026-10-31T05:09:08.079Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -594533,7 +594620,7 @@
       "bags": "2026-10-31T03:44:39.842Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-10-31T05:07:33.909Z",
+    "savedAt": "2026-10-31T05:09:08.079Z",
     "appVersion": "2026.10.30.1"
   }
 }
