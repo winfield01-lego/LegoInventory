@@ -456615,7 +456615,7 @@
       "label": "M26",
       "notes": "2 x 2 Wedge Plate - Right",
       "group": "M",
-      "lastEdited": "2026-11-02T07:18:51.594Z"
+      "lastEdited": "2026-11-02T07:26:25.279Z"
     },
     {
       "id": "M27",
@@ -485166,6 +485166,79 @@
       "partNum": "3700",
       "color": "Yellow",
       "qty": 12
+    },
+    {
+      "drawerId": "M26",
+      "partNum": "24307",
+      "color": "Black",
+      "qty": 30
+    },
+    {
+      "drawerId": "M26",
+      "partNum": "24307",
+      "color": "Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "M26",
+      "partNum": "24307",
+      "color": "Bright Light Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "M26",
+      "partNum": "24307",
+      "color": "Dark Azure",
+      "qty": 9
+    },
+    {
+      "drawerId": "M26",
+      "partNum": "24307",
+      "color": "Dark Blue",
+      "elementId": "6224385",
+      "qty": 2
+    },
+    {
+      "drawerId": "M26",
+      "partNum": "24307",
+      "color": "Dark Bluish Gray",
+      "qty": 31
+    },
+    {
+      "drawerId": "M26",
+      "partNum": "24307",
+      "color": "Light Bluish Gray",
+      "qty": 12
+    },
+    {
+      "drawerId": "M26",
+      "partNum": "24307",
+      "color": "Lime",
+      "qty": 2
+    },
+    {
+      "drawerId": "M26",
+      "partNum": "24307",
+      "color": "Orange",
+      "qty": 3
+    },
+    {
+      "drawerId": "M26",
+      "partNum": "24307",
+      "color": "Red",
+      "qty": 7
+    },
+    {
+      "drawerId": "M26",
+      "partNum": "24307",
+      "color": "Yellow",
+      "qty": 3
+    },
+    {
+      "drawerId": "M26",
+      "partNum": "24307",
+      "color": "White",
+      "qty": 13
     }
   ],
   "mocLocations": {
@@ -533383,9 +533456,12 @@
       "c": "Dark Blue",
       "d": "Wedge Plate 2 x 2 Right",
       "e": "6554214",
-      "u": 1791916924851,
+      "u": 1793604386490,
       "at": 1791654669028,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6224385.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6224385.jpg",
+      "ea": [
+        "6224385"
+      ]
     },
     "2419|dark blue": {
       "p": "2419",
@@ -601254,6 +601330,13 @@
       "d": "Technic Brick 1 x 2 [1 Pin Hole]",
       "e": "6132372",
       "u": 1793603871362
+    },
+    "24307|bright light blue": {
+      "p": "24307",
+      "c": "Bright Light Blue",
+      "d": "Wedge Plate 2 x 2 Right",
+      "e": "6383107",
+      "u": 1793604386490
     }
   },
   "partKinds": {
@@ -601402,7 +601485,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.01.1",
-      "at": "2026-11-02T07:18:55.624Z"
+      "at": "2026-11-02T07:26:30.593Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -601426,7 +601509,7 @@
       "bags": "2026-11-02T07:18:27.418Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-11-02T07:18:55.624Z",
+    "savedAt": "2026-11-02T07:26:30.593Z",
     "appVersion": "2026.11.01.1"
   }
 }
