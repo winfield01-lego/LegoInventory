@@ -456012,7 +456012,7 @@
       "label": "K26",
       "notes": "1 x 4 Thin Beam with Stud Holder and 1 x 3 thin beam with 1 pin and 1 axle hole",
       "group": "K",
-      "lastEdited": "2026-11-02T06:53:38.730Z"
+      "lastEdited": "2026-11-02T06:54:25.796Z"
     },
     {
       "id": "K27",
@@ -485001,6 +485001,24 @@
       "partNum": "2825",
       "color": "Light Bluish Gray",
       "qty": 18
+    },
+    {
+      "drawerId": "K26",
+      "partNum": "61408",
+      "color": "Black",
+      "qty": 12
+    },
+    {
+      "drawerId": "K26",
+      "partNum": "61408",
+      "color": "Red",
+      "qty": 4
+    },
+    {
+      "drawerId": "K26",
+      "partNum": "61408",
+      "color": "Light Bluish Gray",
+      "qty": 8
     }
   ],
   "mocLocations": {
@@ -601215,7 +601233,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.01.1",
-      "at": "2026-11-02T06:53:44.011Z"
+      "at": "2026-11-02T06:54:29.838Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -601239,7 +601257,7 @@
       "bags": "2026-11-02T06:51:03.744Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-11-02T06:53:44.011Z",
+    "savedAt": "2026-11-02T06:54:29.838Z",
     "appVersion": "2026.11.01.1"
   }
 }
