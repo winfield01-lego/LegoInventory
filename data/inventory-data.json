@@ -454490,7 +454490,7 @@
       "label": "F43",
       "notes": "1 x 2 Technic Brick with Hole",
       "group": "F",
-      "lastEdited": "2026-11-02T07:17:50.150Z"
+      "lastEdited": "2026-11-02T07:18:27.214Z"
     },
     {
       "id": "F44",
@@ -456363,7 +456363,7 @@
       "label": "L34",
       "notes": "1 x 4 Plate 2 studs on End",
       "group": "L",
-      "lastEdited": "2026-11-02T07:05:20.026Z"
+      "lastEdited": "2026-11-02T07:18:27.215Z"
     },
     {
       "id": "L35",
@@ -485031,7 +485031,7 @@
       "drawerId": "L34",
       "partNum": "41740",
       "color": "Black",
-      "qty": 24
+      "qty": 27
     },
     {
       "drawerId": "L34",
@@ -485049,7 +485049,7 @@
       "drawerId": "L34",
       "partNum": "41740",
       "color": "Dark Bluish Gray",
-      "qty": 12
+      "qty": 13
     },
     {
       "drawerId": "L34",
@@ -485061,13 +485061,13 @@
       "drawerId": "L34",
       "partNum": "41740",
       "color": "Dark Tan",
-      "qty": 5
+      "qty": 6
     },
     {
       "drawerId": "L34",
       "partNum": "41740",
       "color": "Light Bluish Gray",
-      "qty": 59
+      "qty": 60
     },
     {
       "drawerId": "L34",
@@ -485097,7 +485097,7 @@
       "drawerId": "F43",
       "partNum": "3700",
       "color": "Black",
-      "qty": 46
+      "qty": 47
     },
     {
       "drawerId": "F43",
@@ -485122,7 +485122,7 @@
       "drawerId": "F43",
       "partNum": "3700",
       "color": "Light Bluish Gray",
-      "qty": 52
+      "qty": 53
     },
     {
       "drawerId": "F43",
@@ -485140,7 +485140,7 @@
       "drawerId": "F43",
       "partNum": "3700",
       "color": "Red",
-      "qty": 21
+      "qty": 23
     },
     {
       "drawerId": "F43",
@@ -485165,7 +485165,7 @@
       "drawerId": "F43",
       "partNum": "3700",
       "color": "Yellow",
-      "qty": 10
+      "qty": 12
     }
   ],
   "mocLocations": {
@@ -485578,6 +485578,88 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvyxgg9m_v3crw",
+      "label": "Ebay Bulk Boxes (batch 14)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 14,
+      "timestamp": "2026-11-02T07:18:27.418Z",
+      "items": [
+        {
+          "partNum": "3700",
+          "color": "Black",
+          "desc": "Technic Brick 1 x 2 [1 Pin Hole]",
+          "elementId": "370026",
+          "qty": 1,
+          "drawerId": "F43",
+          "drawerLabel": "F43"
+        },
+        {
+          "partNum": "3700",
+          "color": "Light Bluish Gray",
+          "desc": "Technic Brick 1 x 2 [1 Pin Hole]",
+          "elementId": "4211440",
+          "qty": 1,
+          "drawerId": "F43",
+          "drawerLabel": "F43"
+        },
+        {
+          "partNum": "3700",
+          "color": "Red",
+          "desc": "Technic Brick 1 x 2 [1 Pin Hole]",
+          "elementId": "370021",
+          "qty": 2,
+          "drawerId": "F43",
+          "drawerLabel": "F43"
+        },
+        {
+          "partNum": "3700",
+          "color": "Yellow",
+          "desc": "Technic Brick 1 x 2 [1 Pin Hole]",
+          "elementId": "370024",
+          "qty": 2,
+          "drawerId": "F43",
+          "drawerLabel": "F43"
+        },
+        {
+          "partNum": "41740",
+          "color": "Black",
+          "desc": "Plate Special 1 x 4 with 2 Studs with Groove [New Underside]",
+          "elementId": "6254045",
+          "qty": 3,
+          "drawerId": "L34",
+          "drawerLabel": "L34"
+        },
+        {
+          "partNum": "41740",
+          "color": "Dark Bluish Gray",
+          "desc": "Plate Special 1 x 4 with 2 Studs with Groove [New Underside]",
+          "elementId": "6257592",
+          "qty": 1,
+          "drawerId": "L34",
+          "drawerLabel": "L34"
+        },
+        {
+          "partNum": "41740",
+          "color": "Dark Tan",
+          "desc": "Plate Special 1 x 4 with 2 Studs with Groove [New Underside]",
+          "elementId": "6257599",
+          "qty": 1,
+          "drawerId": "L34",
+          "drawerLabel": "L34"
+        },
+        {
+          "partNum": "41740",
+          "color": "Light Bluish Gray",
+          "desc": "Plate Special 1 x 4 with 2 Studs with Groove [New Underside]",
+          "elementId": "6257593",
+          "qty": 1,
+          "drawerId": "L34",
+          "drawerLabel": "L34"
+        }
+      ]
+    },
     {
       "id": "bag_mvywqcda_rqzzw",
       "label": "Ebay Bulk Boxes (batch 13)",
@@ -504262,50 +504344,6 @@
           "sel": false
         },
         {
-          "partNum": "3700",
-          "color": "Black",
-          "desc": "Technic Brick 1 x 2 [1 Pin Hole]",
-          "elementId": "370026",
-          "qty": 1,
-          "drawerId": "F43",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3700",
-          "color": "Light Bluish Gray",
-          "desc": "Technic Brick 1 x 2 [1 Pin Hole]",
-          "elementId": "4211440",
-          "qty": 1,
-          "drawerId": "F43",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3700",
-          "color": "Red",
-          "desc": "Technic Brick 1 x 2 [1 Pin Hole]",
-          "elementId": "370021",
-          "qty": 2,
-          "drawerId": "F43",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3700",
-          "color": "Yellow",
-          "desc": "Technic Brick 1 x 2 [1 Pin Hole]",
-          "elementId": "370024",
-          "qty": 2,
-          "drawerId": "F43",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "89678",
           "color": "Red",
           "desc": "Technic Pin 1/2 with Friction",
@@ -504777,58 +504815,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "41740",
-          "color": "Black",
-          "desc": "Plate Special 1 x 4 with 2 Studs with Groove [New Underside]",
-          "elementId": "6254045",
-          "qty": 3,
-          "drawerId": "L34",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "41740",
-          "color": "Dark Bluish Gray",
-          "desc": "Plate Special 1 x 4 with 2 Studs with Groove [New Underside]",
-          "elementId": "6257592",
-          "qty": 1,
-          "drawerId": "L34",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "41740",
-          "color": "Dark Tan",
-          "desc": "Plate Special 1 x 4 with 2 Studs with Groove [New Underside]",
-          "elementId": "6257599",
-          "qty": 1,
-          "drawerId": "L34",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "41740",
-          "color": "Light Bluish Gray",
-          "desc": "Plate Special 1 x 4 with 2 Studs with Groove [New Underside]",
-          "elementId": "6257593",
-          "qty": 1,
-          "drawerId": "L34",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-02T07:18:10.360Z",
+      "savedAt": "2026-11-02T07:18:27.418Z",
       "moved": {
-        "batches": 13,
-        "pieces": 1455,
-        "last": "2026-11-02T06:58:09.309Z"
+        "batches": 14,
+        "pieces": 1467,
+        "last": "2026-11-02T07:18:27.418Z"
       }
     },
     {
@@ -601408,7 +601402,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.01.1",
-      "at": "2026-11-02T07:18:14.398Z"
+      "at": "2026-11-02T07:18:31.447Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -601429,10 +601423,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-02T07:18:10.360Z",
+      "bags": "2026-11-02T07:18:27.418Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-11-02T07:18:14.397Z",
+    "savedAt": "2026-11-02T07:18:31.447Z",
     "appVersion": "2026.11.01.1"
   }
 }
