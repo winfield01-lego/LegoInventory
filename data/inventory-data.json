@@ -456012,7 +456012,7 @@
       "label": "K26",
       "notes": "1 x 4 Thin Beam with Stud Holder and 1 x 3 thin beam with 1 pin and 1 axle hole",
       "group": "K",
-      "lastEdited": "2026-11-02T06:52:44.525Z"
+      "lastEdited": "2026-11-02T06:53:38.730Z"
     },
     {
       "id": "K27",
@@ -484988,6 +484988,19 @@
       "color": "Dark Bluish Gray",
       "elementId": "6179631",
       "qty": 1
+    },
+    {
+      "drawerId": "K26",
+      "partNum": "2825",
+      "color": "Black",
+      "elementId": "282526",
+      "qty": 5
+    },
+    {
+      "drawerId": "K26",
+      "partNum": "2825",
+      "color": "Light Bluish Gray",
+      "qty": 18
     }
   ],
   "mocLocations": {
@@ -553892,9 +553905,12 @@
       "c": "Black",
       "d": "Technic Beam 1 x 4 Thin with Stud Connector",
       "e": "6331570",
-      "u": 1791916924851,
+      "u": 1793602419932,
       "at": 1791654530095,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4107136.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4107136.jpg",
+      "ea": [
+        "282526"
+      ]
     },
     "32250|black": {
       "p": "32250",
@@ -601044,6 +601060,13 @@
       "d": "Technic Beam 1 x 2 Thick with Pin Hole and Axle Hole",
       "e": "6378050",
       "u": 1793602221352
+    },
+    "2825|light bluish gray": {
+      "p": "2825",
+      "c": "Light Bluish Gray",
+      "d": "Technic Beam 1 x 4 Thin with Stud Connector",
+      "e": "4211561",
+      "u": 1793602419932
     }
   },
   "partKinds": {
@@ -601192,7 +601215,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.01.1",
-      "at": "2026-11-02T06:52:48.566Z"
+      "at": "2026-11-02T06:53:44.011Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -601216,7 +601239,7 @@
       "bags": "2026-11-02T06:51:03.744Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-11-02T06:52:48.566Z",
+    "savedAt": "2026-11-02T06:53:44.011Z",
     "appVersion": "2026.11.01.1"
   }
 }
