@@ -454434,7 +454434,7 @@
       "label": "F34",
       "notes": "2 x 2 Bar Frame - Octagonal",
       "group": "F",
-      "lastEdited": "2026-11-02T14:15:16.441Z"
+      "lastEdited": "2026-11-02T17:36:05.308Z"
     },
     {
       "id": "F35",
@@ -485446,7 +485446,7 @@
       "drawerId": "F34",
       "partNum": "75937",
       "color": "White",
-      "qty": 24
+      "qty": 25
     }
   ],
   "mocLocations": {
@@ -485859,6 +485859,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvzjiqfl_zkpp5",
+      "label": "Ebay Bulk Boxes (batch 17)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 17,
+      "timestamp": "2026-11-02T17:36:05.457Z",
+      "items": [
+        {
+          "partNum": "75937",
+          "color": "White",
+          "desc": "Plate Special 2 x 2 with Bar Frame Octagonal, Reinforced, Completely Round Studs",
+          "elementId": "6009016",
+          "qty": 1,
+          "drawerId": "F34",
+          "drawerLabel": "F34"
+        }
+      ]
+    },
     {
       "id": "bag_mvyyc22q_ktm3w",
       "label": "Ebay Bulk Boxes (batch 16)",
@@ -505093,25 +505112,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "75937",
-          "color": "White",
-          "desc": "Plate Special 2 x 2 with Bar Frame Octagonal, Reinforced, Completely Round Studs",
-          "elementId": "6009016",
-          "qty": 1,
-          "drawerId": "F34",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-02T17:35:52.982Z",
+      "savedAt": "2026-11-02T17:36:05.456Z",
       "moved": {
-        "batches": 16,
-        "pieces": 1476,
-        "last": "2026-11-02T07:43:02.018Z"
+        "batches": 17,
+        "pieces": 1477,
+        "last": "2026-11-02T17:36:05.457Z"
       }
     },
     {
@@ -603816,7 +603824,7 @@
     "dmv712kxj4w19rt": {
       "name": "Windows PC · Edge",
       "v": "2026.11.01.1",
-      "at": "2026-11-02T17:35:57.047Z"
+      "at": "2026-11-02T17:36:09.501Z"
     },
     "dmv713c9mk1k9ay": {
       "name": "iPhone · Safari",
@@ -603847,10 +603855,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-02T17:35:52.982Z",
+      "bags": "2026-11-02T17:36:05.457Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-02T17:35:57.047Z",
+    "savedAt": "2026-11-02T17:36:09.500Z",
     "appVersion": "2026.11.01.1"
   }
 }
