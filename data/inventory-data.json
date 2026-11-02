@@ -456615,7 +456615,7 @@
       "label": "M26",
       "notes": "2 x 2 Wedge Plate - Right",
       "group": "M",
-      "lastEdited": "2026-11-02T07:26:25.279Z"
+      "lastEdited": "2026-11-02T07:26:55.994Z"
     },
     {
       "id": "M27",
@@ -485238,7 +485238,7 @@
       "drawerId": "M26",
       "partNum": "24307",
       "color": "White",
-      "qty": 13
+      "qty": 14
     }
   ],
   "mocLocations": {
@@ -485651,6 +485651,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvyxrcu9_wfici",
+      "label": "Ebay Bulk Boxes (batch 15)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 15,
+      "timestamp": "2026-11-02T07:26:56.193Z",
+      "items": [
+        {
+          "partNum": "24307",
+          "color": "White",
+          "desc": "Wedge Plate 2 x 2 Right",
+          "elementId": "6132204",
+          "qty": 1,
+          "drawerId": "M26",
+          "drawerLabel": "M26"
+        }
+      ]
+    },
     {
       "id": "bag_mvyxgg9m_v3crw",
       "label": "Ebay Bulk Boxes (batch 14)",
@@ -504604,17 +504623,6 @@
           "sel": false
         },
         {
-          "partNum": "24307",
-          "color": "White",
-          "desc": "Wedge Plate 2 x 2 Right",
-          "elementId": "6132204",
-          "qty": 1,
-          "drawerId": "M26",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "88072",
           "color": "Dark Bluish Gray",
           "desc": "Plate Special 1 x 2 with Bar Up [Horizontal Arm 5mm]",
@@ -504891,11 +504899,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-02T07:18:27.418Z",
+      "savedAt": "2026-11-02T07:26:56.193Z",
       "moved": {
-        "batches": 14,
-        "pieces": 1467,
-        "last": "2026-11-02T07:18:27.418Z"
+        "batches": 15,
+        "pieces": 1468,
+        "last": "2026-11-02T07:26:56.193Z"
       }
     },
     {
@@ -601485,7 +601493,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.01.1",
-      "at": "2026-11-02T07:26:50.644Z"
+      "at": "2026-11-02T07:26:56.444Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -601506,10 +601514,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-02T07:26:46.604Z",
+      "bags": "2026-11-02T07:26:56.193Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-11-02T07:26:50.644Z",
+    "savedAt": "2026-11-02T07:26:56.444Z",
     "appVersion": "2026.11.01.1"
   }
 }
