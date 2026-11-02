@@ -454394,7 +454394,7 @@
       "label": "F28",
       "notes": "Smooth Pin and Axle",
       "group": "F",
-      "lastEdited": "2026-11-02T05:39:52.536Z"
+      "lastEdited": "2026-11-02T06:34:09.733Z"
     },
     {
       "id": "F29",
@@ -455935,7 +455935,7 @@
       "label": "K15",
       "notes": "1 x 2 Brick - 2 pin holes",
       "group": "K",
-      "lastEdited": "2026-10-29T22:20:51.397Z"
+      "lastEdited": "2026-11-02T06:34:09.733Z"
     },
     {
       "id": "K16",
@@ -462786,7 +462786,7 @@
       "partNum": "43093",
       "color": "Blue",
       "elementId": "4189110",
-      "qty": 166
+      "qty": 167
     },
     {
       "drawerId": "F28",
@@ -475150,7 +475150,7 @@
       "partNum": "32000",
       "color": "Tan",
       "elementId": "4101763",
-      "qty": 29
+      "qty": 30
     },
     {
       "drawerId": "K15",
@@ -485142,6 +485142,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvyvvhpz_dpz3g",
+      "label": "Ebay Bulk Boxes (batch 10)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 10,
+      "timestamp": "2026-11-02T06:34:09.911Z",
+      "items": [
+        {
+          "partNum": "32000",
+          "color": "Tan",
+          "desc": "Technic Brick 1 x 2 [2 Pin Holes]",
+          "elementId": "4101763",
+          "qty": 1,
+          "drawerId": "K15",
+          "drawerLabel": "K15"
+        },
+        {
+          "partNum": "43093",
+          "color": "Blue",
+          "desc": "Technic Axle Pin with Friction Ridges Lengthwise",
+          "elementId": "4189110",
+          "qty": 1,
+          "drawerId": "F28",
+          "drawerLabel": "F28"
+        }
+      ]
+    },
     {
       "id": "bag_mvytxogo_rs2w3",
       "label": "Ebay Bulk Boxes (batch 9)",
@@ -503694,28 +503722,6 @@
           "sel": false
         },
         {
-          "partNum": "32000",
-          "color": "Tan",
-          "desc": "Technic Brick 1 x 2 [2 Pin Holes]",
-          "elementId": "4101763",
-          "qty": 1,
-          "drawerId": "K15",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "43093",
-          "color": "Blue",
-          "desc": "Technic Axle Pin with Friction Ridges Lengthwise",
-          "elementId": "4189110",
-          "qty": 1,
-          "drawerId": "F28",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "32556",
           "color": "Tan",
           "desc": "Technic Pin Long without Friction Ridges",
@@ -504366,11 +504372,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-02T06:34:05.570Z",
+      "savedAt": "2026-11-02T06:34:09.911Z",
       "moved": {
-        "batches": 9,
-        "pieces": 1445,
-        "last": "2026-11-02T05:39:52.728Z"
+        "batches": 10,
+        "pieces": 1447,
+        "last": "2026-11-02T06:34:09.911Z"
       }
     },
     {
@@ -600770,7 +600776,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.01.1",
-      "at": "2026-11-02T06:34:09.603Z"
+      "at": "2026-11-02T06:34:14.710Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -600791,10 +600797,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-02T06:34:05.570Z",
+      "bags": "2026-11-02T06:34:09.911Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-11-02T06:34:09.603Z",
+    "savedAt": "2026-11-02T06:34:14.710Z",
     "appVersion": "2026.11.01.1"
   }
 }
