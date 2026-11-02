@@ -456040,7 +456040,7 @@
       "label": "K30",
       "notes": "Beams 1 x 2 and 1 x 3",
       "group": "K",
-      "lastEdited": "2026-11-02T06:46:16.838Z"
+      "lastEdited": "2026-11-02T06:50:20.129Z"
     },
     {
       "id": "K31",
@@ -484919,6 +484919,54 @@
       "partNum": "32523",
       "color": "Yellow",
       "qty": 2
+    },
+    {
+      "drawerId": "K30",
+      "partNum": "60483",
+      "color": "Black",
+      "elementId": "4515185",
+      "qty": 17
+    },
+    {
+      "drawerId": "K30",
+      "partNum": "60483",
+      "color": "Dark Bluish Gray",
+      "elementId": "4515183",
+      "qty": 6
+    },
+    {
+      "drawerId": "K30",
+      "partNum": "60483",
+      "color": "Dark Tan",
+      "elementId": "6170313",
+      "qty": 1
+    },
+    {
+      "drawerId": "K30",
+      "partNum": "60483",
+      "color": "Light Bluish Gray",
+      "elementId": "4515184",
+      "qty": 7
+    },
+    {
+      "drawerId": "K30",
+      "partNum": "60483",
+      "color": "Lime",
+      "elementId": "6307436",
+      "qty": 2
+    },
+    {
+      "drawerId": "K30",
+      "partNum": "60483",
+      "color": "Medium Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "K30",
+      "partNum": "60483",
+      "color": "White",
+      "elementId": "6177268",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -547425,9 +547473,12 @@
       "c": "Lime",
       "d": "Technic Beam 1 x 2 Thick with Pin Hole and Axle Hole",
       "e": "6344866",
-      "u": 1791916924851,
+      "u": 1793602221352,
       "at": 1791654397611,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6307436.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6307436.jpg",
+      "ea": [
+        "6307436"
+      ]
     },
     "3070b|lime": {
       "p": "3070b",
@@ -548138,9 +548189,12 @@
       "c": "Dark Bluish Gray",
       "d": "Technic Beam 1 x 2 Thick with Pin Hole and Axle Hole",
       "e": "6265093",
-      "u": 1791916924851,
+      "u": 1793602221352,
       "at": 1791654586559,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4515183.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4515183.jpg",
+      "ea": [
+        "4515183"
+      ]
     },
     "3003|dark red": {
       "p": "3003",
@@ -548498,9 +548552,12 @@
       "c": "Light Bluish Gray",
       "d": "Technic Beam 1 x 2 Thick with Pin Hole and Axle Hole",
       "e": "6265089",
-      "u": 1791916924851,
+      "u": 1793602221352,
       "at": 1791654653764,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4515184.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4515184.jpg",
+      "ea": [
+        "4515184"
+      ]
     },
     "32056|light bluish gray": {
       "p": "32056",
@@ -555499,9 +555556,12 @@
       "c": "Dark Tan",
       "d": "Technic Beam 1 x 2 Thick with Pin Hole and Axle Hole",
       "e": "6344864",
-      "u": 1791916924851,
+      "u": 1793602221352,
       "at": 1791654657762,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6170313.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6170313.jpg",
+      "ea": [
+        "6170313"
+      ]
     },
     "2450|dark tan": {
       "p": "2450",
@@ -559078,9 +559138,12 @@
       "c": "Black",
       "d": "Technic Beam 1 x 2 Thick with Pin Hole and Axle Hole",
       "e": "6265091",
-      "u": 1791916924851,
+      "u": 1793602221352,
       "at": 1791654809281,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4515185.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4515185.jpg",
+      "ea": [
+        "4515185"
+      ]
     },
     "5565|black": {
       "p": "5565",
@@ -564571,9 +564634,12 @@
       "c": "White",
       "d": "Technic Beam 1 x 2 Thick with Pin Hole and Axle Hole",
       "e": "6265135",
-      "u": 1791916924851,
+      "u": 1793602221352,
       "at": 1791654717569,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6177268.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6177268.jpg",
+      "ea": [
+        "6177268"
+      ]
     },
     "22961|white": {
       "p": "22961",
@@ -600937,6 +601003,13 @@
       "d": "Technic Beam 1 x 3 Thick",
       "e": "4154621",
       "u": 1793601978041
+    },
+    "60483|medium blue": {
+      "p": "60483",
+      "c": "Medium Blue",
+      "d": "Technic Beam 1 x 2 Thick with Pin Hole and Axle Hole",
+      "e": "6378050",
+      "u": 1793602221352
     }
   },
   "partKinds": {
@@ -601085,7 +601158,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.01.1",
-      "at": "2026-11-02T06:46:22.141Z"
+      "at": "2026-11-02T06:50:25.470Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -601109,7 +601182,7 @@
       "bags": "2026-11-02T06:42:46.169Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-11-02T06:46:22.141Z",
+    "savedAt": "2026-11-02T06:50:25.469Z",
     "appVersion": "2026.11.01.1"
   }
 }
