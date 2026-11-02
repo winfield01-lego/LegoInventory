@@ -455984,7 +455984,7 @@
       "label": "K22",
       "notes": "Angled Connector #1 and # 2",
       "group": "K",
-      "lastEdited": "2026-11-02T06:42:25.764Z"
+      "lastEdited": "2026-11-02T06:42:45.955Z"
     },
     {
       "id": "K23",
@@ -484830,7 +484830,7 @@
       "partNum": "32034",
       "color": "Light Bluish Gray",
       "elementId": "4211567",
-      "qty": 3
+      "qty": 4
     },
     {
       "drawerId": "K22",
@@ -484855,6 +484855,18 @@
       "drawerId": "K22",
       "partNum": "32034",
       "color": "Yellow",
+      "qty": 2
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32034",
+      "color": "Lime",
+      "qty": 1
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32013",
+      "color": "Lime",
       "qty": 2
     }
   ],
@@ -485268,6 +485280,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvyw6k2h_492l9",
+      "label": "Ebay Bulk Boxes (batch 11)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 11,
+      "timestamp": "2026-11-02T06:42:46.169Z",
+      "items": [
+        {
+          "partNum": "32034",
+          "color": "Light Bluish Gray",
+          "desc": "Technic Axle and Pin Connector Angled #2 - 180°",
+          "elementId": "4211567",
+          "qty": 1,
+          "drawerId": "K22",
+          "drawerLabel": "K22"
+        },
+        {
+          "partNum": "32034",
+          "color": "Lime",
+          "desc": "Technic Axle and Pin Connector Angled #2 - 180°",
+          "elementId": "4140344",
+          "qty": 1,
+          "drawerId": "K22",
+          "drawerLabel": "K22"
+        },
+        {
+          "partNum": "32013",
+          "color": "Lime",
+          "desc": "Technic Axle and Pin Connector Angled #1",
+          "elementId": "4144298",
+          "qty": 2,
+          "drawerId": "K22",
+          "drawerLabel": "K22"
+        }
+      ]
+    },
     {
       "id": "bag_mvyvvhpz_dpz3g",
       "label": "Ebay Bulk Boxes (batch 10)",
@@ -503760,17 +503809,6 @@
           "sel": false
         },
         {
-          "partNum": "32034",
-          "color": "Light Bluish Gray",
-          "desc": "Technic Axle and Pin Connector Angled #2 - 180°",
-          "elementId": "4211567",
-          "qty": 1,
-          "drawerId": "K22",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "2780",
           "color": "Black",
           "desc": "Technic Pin with Friction Ridges Lengthwise and Center Slots",
@@ -503857,17 +503895,6 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "32034",
-          "color": "Lime",
-          "desc": "Technic Axle and Pin Connector Angled #2 - 180°",
-          "elementId": "4140344",
-          "qty": 1,
-          "drawerId": "K22",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": true
         },
         {
           "partNum": "10197",
@@ -504088,17 +504115,6 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "32013",
-          "color": "Lime",
-          "desc": "Technic Axle and Pin Connector Angled #1",
-          "elementId": "4144298",
-          "qty": 2,
-          "drawerId": "K22",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": true
         },
         {
           "partNum": "6536",
@@ -504498,11 +504514,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-02T06:42:35.771Z",
+      "savedAt": "2026-11-02T06:42:46.168Z",
       "moved": {
-        "batches": 10,
-        "pieces": 1447,
-        "last": "2026-11-02T06:34:09.911Z"
+        "batches": 11,
+        "pieces": 1451,
+        "last": "2026-11-02T06:42:46.169Z"
       }
     },
     {
@@ -600833,6 +600849,20 @@
       "d": "Technic Axle and Pin Connector Angled #2 - 180°",
       "e": "3203424",
       "u": 1793601746980
+    },
+    "32034|lime": {
+      "p": "32034",
+      "c": "Lime",
+      "d": "Technic Axle and Pin Connector Angled #2 - 180°",
+      "e": "4140344",
+      "u": 1793601767369
+    },
+    "32013|lime": {
+      "p": "32013",
+      "c": "Lime",
+      "d": "Technic Axle and Pin Connector Angled #1",
+      "e": "4144298",
+      "u": 1793601767369
     }
   },
   "partKinds": {
@@ -600981,7 +601011,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.01.1",
-      "at": "2026-11-02T06:42:39.803Z"
+      "at": "2026-11-02T06:42:50.211Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -601002,10 +601032,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-02T06:42:35.771Z",
+      "bags": "2026-11-02T06:42:46.169Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-11-02T06:42:39.803Z",
+    "savedAt": "2026-11-02T06:42:50.211Z",
     "appVersion": "2026.11.01.1"
   }
 }
