@@ -456012,7 +456012,7 @@
       "label": "K26",
       "notes": "1 x 4 Thin Beam with Stud Holder and 1 x 3 thin beam with 1 pin and 1 axle hole",
       "group": "K",
-      "lastEdited": "2026-11-02T06:57:38.413Z"
+      "lastEdited": "2026-11-02T06:58:09.095Z"
     },
     {
       "id": "K27",
@@ -484994,7 +484994,7 @@
       "partNum": "2825",
       "color": "Black",
       "elementId": "282526",
-      "qty": 5
+      "qty": 6
     },
     {
       "drawerId": "K26",
@@ -485437,6 +485437,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvywqcda_rqzzw",
+      "label": "Ebay Bulk Boxes (batch 13)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 13,
+      "timestamp": "2026-11-02T06:58:09.310Z",
+      "items": [
+        {
+          "partNum": "2825",
+          "color": "Black",
+          "desc": "Technic Beam 1 x 4 Thin with Stud Connector",
+          "elementId": "282526",
+          "qty": 1,
+          "drawerId": "K26",
+          "drawerLabel": "K26"
+        }
+      ]
+    },
     {
       "id": "bag_mvywh800_psalf",
       "label": "Ebay Bulk Boxes (batch 12)",
@@ -504661,25 +504680,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "2825",
-          "color": "Black",
-          "desc": "Technic Beam 1 x 4 Thin with Stud Connector",
-          "elementId": "282526",
-          "qty": 1,
-          "drawerId": "K26",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-02T06:57:58.009Z",
+      "savedAt": "2026-11-02T06:58:09.309Z",
       "moved": {
-        "batches": 12,
-        "pieces": 1454,
-        "last": "2026-11-02T06:51:03.744Z"
+        "batches": 13,
+        "pieces": 1455,
+        "last": "2026-11-02T06:58:09.309Z"
       }
     },
     {
@@ -601246,7 +601254,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.01.1",
-      "at": "2026-11-02T06:58:02.044Z"
+      "at": "2026-11-02T06:58:13.349Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -601267,10 +601275,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-02T06:57:58.009Z",
+      "bags": "2026-11-02T06:58:09.310Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-11-02T06:58:02.044Z",
+    "savedAt": "2026-11-02T06:58:13.349Z",
     "appVersion": "2026.11.01.1"
   }
 }
