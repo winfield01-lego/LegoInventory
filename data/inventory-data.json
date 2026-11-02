@@ -456012,7 +456012,7 @@
       "label": "K26",
       "notes": "1 x 4 Thin Beam with Stud Holder and 1 x 3 thin beam with 1 pin and 1 axle hole",
       "group": "K",
-      "lastEdited": "2026-11-02T06:54:25.796Z"
+      "lastEdited": "2026-11-02T06:57:38.413Z"
     },
     {
       "id": "K27",
@@ -485019,6 +485019,12 @@
       "partNum": "61408",
       "color": "Light Bluish Gray",
       "qty": 8
+    },
+    {
+      "drawerId": "K26",
+      "partNum": "4261",
+      "color": "Light Bluish Gray",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -601085,6 +601091,13 @@
       "d": "Technic Beam 1 x 4 Thin with Stud Connector",
       "e": "4211561",
       "u": 1793602419932
+    },
+    "4261|light bluish gray": {
+      "p": "4261",
+      "c": "Light Bluish Gray",
+      "d": "Technic Steering Arm",
+      "e": "4251566",
+      "u": 1793602659616
     }
   },
   "partKinds": {
@@ -601233,7 +601246,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.01.1",
-      "at": "2026-11-02T06:54:29.838Z"
+      "at": "2026-11-02T06:57:42.463Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -601257,7 +601270,7 @@
       "bags": "2026-11-02T06:51:03.744Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-11-02T06:54:29.838Z",
+    "savedAt": "2026-11-02T06:57:42.462Z",
     "appVersion": "2026.11.01.1"
   }
 }
