@@ -457000,7 +457000,7 @@
       "label": "N37",
       "notes": "1 x 1 Round Brick",
       "group": "N",
-      "lastEdited": "2026-11-02T07:28:14.930Z"
+      "lastEdited": "2026-11-02T07:42:35.564Z"
     },
     {
       "id": "N38",
@@ -485239,6 +485239,122 @@
       "partNum": "24307",
       "color": "White",
       "qty": 14
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "Black",
+      "qty": 42
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "Blue",
+      "qty": 15
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "Bright Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "Dark Azure",
+      "qty": 5
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "Dark Blue",
+      "qty": 6
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "Dark Bluish Gray",
+      "qty": 13
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "Dark Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "Dark Orange",
+      "qty": 15
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "Dark Red",
+      "elementId": "4183880",
+      "qty": 24
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "Light Bluish Gray",
+      "qty": 93
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "Lime",
+      "qty": 26
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "Orange",
+      "qty": 63
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "Pearl Gold",
+      "qty": 6
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "Red",
+      "qty": 15
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "Reddish Brown",
+      "qty": 39
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "Tan",
+      "elementId": "306205",
+      "qty": 39
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "White",
+      "qty": 43
+    },
+    {
+      "drawerId": "N37",
+      "partNum": "3062b",
+      "color": "Yellow",
+      "qty": 24
     }
   ],
   "mocLocations": {
@@ -509891,8 +510007,11 @@
       "c": "Tan",
       "d": "Brick Round 1 x 1 Open Stud",
       "e": "4117070",
-      "u": 1791916924851,
-      "at": 1791671921036
+      "u": 1793605356778,
+      "at": 1791671921036,
+      "ea": [
+        "306205"
+      ]
     },
     "93549pat0005|trans clear": {
       "p": "93549pat0005",
@@ -545710,9 +545829,12 @@
       "c": "Dark Red",
       "d": "Brick Round 1 x 1 Open Stud",
       "e": "4539099",
-      "u": 1791916924851,
+      "u": 1793605356778,
       "at": 1791654796747,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4183880.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4183880.jpg",
+      "ea": [
+        "4183880"
+      ]
     },
     "33909|dark tan": {
       "p": "33909",
@@ -601345,6 +601467,20 @@
       "d": "Wedge Plate 2 x 2 Right",
       "e": "6383107",
       "u": 1793604386490
+    },
+    "3062b|dark blue": {
+      "p": "3062b",
+      "c": "Dark Blue",
+      "d": "Brick Round 1 x 1 Open Stud",
+      "e": "4177741",
+      "u": 1793605356778
+    },
+    "3062b|dark orange": {
+      "p": "3062b",
+      "c": "Dark Orange",
+      "d": "Brick Round 1 x 1 Open Stud",
+      "e": "4195663",
+      "u": 1793605356778
     }
   },
   "partKinds": {
@@ -601493,7 +601629,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.01.1",
-      "at": "2026-11-02T07:28:18.977Z"
+      "at": "2026-11-02T07:42:40.872Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -601517,7 +601653,7 @@
       "bags": "2026-11-02T07:26:56.193Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-11-02T07:28:18.977Z",
+    "savedAt": "2026-11-02T07:42:40.872Z",
     "appVersion": "2026.11.01.1"
   }
 }
