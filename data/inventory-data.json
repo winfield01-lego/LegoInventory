@@ -455984,7 +455984,7 @@
       "label": "K22",
       "notes": "Angled Connector #1 and # 2",
       "group": "K",
-      "lastEdited": "2026-11-02T06:35:42.227Z"
+      "lastEdited": "2026-11-02T06:41:05.910Z"
     },
     {
       "id": "K23",
@@ -484730,6 +484730,79 @@
       "partNum": "65487",
       "color": "Orange",
       "qty": 1
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32013",
+      "color": "Black",
+      "elementId": "4107085",
+      "qty": 37
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32013",
+      "color": "Blue",
+      "elementId": "4107797",
+      "qty": 1
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32013",
+      "color": "Dark Bluish Gray",
+      "elementId": "32013199",
+      "qty": 28
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32013",
+      "color": "Dark Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32013",
+      "color": "Light Bluish Gray",
+      "elementId": "4211550",
+      "qty": 29
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32013",
+      "color": "Medium Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32013",
+      "color": "Orange",
+      "qty": 2
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32013",
+      "color": "Pearl Gold",
+      "qty": 1
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32013",
+      "color": "Red",
+      "elementId": "4119033",
+      "qty": 3
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32013",
+      "color": "White",
+      "elementId": "4118981",
+      "qty": 18
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32013",
+      "color": "Yellow",
+      "elementId": "4107066",
+      "qty": 9
     }
   ],
   "mocLocations": {
@@ -512516,9 +512589,12 @@
       "c": "Black",
       "d": "Technic Axle and Pin Connector Angled #1",
       "e": "6284699",
-      "u": 1791916924851,
+      "u": 1793601667128,
       "at": 1791656721266,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4107085.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4107085.jpg",
+      "ea": [
+        "4107085"
+      ]
     },
     "6536|black": {
       "p": "6536",
@@ -537068,9 +537144,12 @@
       "c": "White",
       "d": "Technic Axle and Pin Connector Angled #1",
       "e": "6332573",
-      "u": 1791916924851,
+      "u": 1793601667128,
       "at": 1791654717569,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4118981.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4118981.jpg",
+      "ea": [
+        "4118981"
+      ]
     },
     "65487|white": {
       "p": "65487",
@@ -549302,9 +549381,12 @@
       "c": "Dark Bluish Gray",
       "d": "Technic Axle and Pin Connector Angled #1",
       "e": "6296856",
-      "u": 1791916924851,
+      "u": 1793601667128,
       "at": 1791654653764,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4210658.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4210658.jpg",
+      "ea": [
+        "32013199"
+      ]
     },
     "54384|dark bluish gray": {
       "p": "54384",
@@ -559759,9 +559841,12 @@
       "c": "Yellow",
       "d": "Technic Axle and Pin Connector Angled #1",
       "e": "6329889",
-      "u": 1791916924851,
+      "u": 1793601667128,
       "at": 1791654806816,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4107066.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4107066.jpg",
+      "ea": [
+        "4107066"
+      ]
     },
     "6536|yellow": {
       "p": "6536",
@@ -559916,9 +560001,12 @@
       "c": "Blue",
       "d": "Technic Axle and Pin Connector Angled #1",
       "e": "6332570",
-      "u": 1791916924851,
+      "u": 1793601667128,
       "at": 1791654615447,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4107797.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4107797.jpg",
+      "ea": [
+        "4107797"
+      ]
     },
     "32034|blue": {
       "p": "32034",
@@ -566964,9 +567052,12 @@
       "c": "Red",
       "d": "Technic Axle and Pin Connector Angled #1",
       "e": "6332580",
-      "u": 1791916924851,
+      "u": 1793601667128,
       "at": 1791654717569,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4119033.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4119033.jpg",
+      "ea": [
+        "4119033"
+      ]
     },
     "42195|red": {
       "p": "42195",
@@ -600628,6 +600719,34 @@
       "d": "Technic Pin Connector Hub with 1 Pin with Friction Ridges Lengthwise [Centered Friction Ridge]",
       "e": "6390390",
       "u": 1793597993928
+    },
+    "32013|dark red": {
+      "p": "32013",
+      "c": "Dark Red",
+      "d": "Technic Axle and Pin Connector Angled #1",
+      "e": "4260023",
+      "u": 1793601667128
+    },
+    "32013|medium blue": {
+      "p": "32013",
+      "c": "Medium Blue",
+      "d": "Technic Axle and Pin Connector Angled #1",
+      "e": "4144297",
+      "u": 1793601667128
+    },
+    "32013|orange": {
+      "p": "32013",
+      "c": "Orange",
+      "d": "Technic Axle and Pin Connector Angled #1",
+      "e": "4144292",
+      "u": 1793601667128
+    },
+    "32013|pearl gold": {
+      "p": "32013",
+      "c": "Pearl Gold",
+      "d": "Technic Axle and Pin Connector Angled #1",
+      "e": "6109757",
+      "u": 1793601667128
     }
   },
   "partKinds": {
@@ -600776,7 +600895,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.01.1",
-      "at": "2026-11-02T06:35:46.267Z"
+      "at": "2026-11-02T06:41:11.238Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -600800,7 +600919,7 @@
       "bags": "2026-11-02T06:34:09.911Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-11-02T06:35:46.267Z",
+    "savedAt": "2026-11-02T06:41:11.237Z",
     "appVersion": "2026.11.01.1"
   }
 }
