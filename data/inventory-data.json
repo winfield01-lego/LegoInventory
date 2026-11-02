@@ -456040,7 +456040,7 @@
       "label": "K30",
       "notes": "Beams 1 x 2 and 1 x 3",
       "group": "K",
-      "lastEdited": "2026-11-02T06:50:49.324Z"
+      "lastEdited": "2026-11-02T06:51:03.540Z"
     },
     {
       "id": "K31",
@@ -484925,7 +484925,7 @@
       "partNum": "60483",
       "color": "Black",
       "elementId": "4515185",
-      "qty": 17
+      "qty": 18
     },
     {
       "drawerId": "K30",
@@ -484946,7 +484946,7 @@
       "partNum": "60483",
       "color": "Light Bluish Gray",
       "elementId": "4515184",
-      "qty": 7
+      "qty": 8
     },
     {
       "drawerId": "K30",
@@ -484981,6 +484981,13 @@
       "color": "White",
       "elementId": "4227695",
       "qty": 4
+    },
+    {
+      "drawerId": "K30",
+      "partNum": "43857",
+      "color": "Dark Bluish Gray",
+      "elementId": "6179631",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -485393,6 +485400,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvywh800_psalf",
+      "label": "Ebay Bulk Boxes (batch 12)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 12,
+      "timestamp": "2026-11-02T06:51:03.744Z",
+      "items": [
+        {
+          "partNum": "43857",
+          "color": "Dark Bluish Gray",
+          "desc": "Technic Beam 1 x 2 Thick",
+          "elementId": "6179631",
+          "qty": 1,
+          "drawerId": "K30",
+          "drawerLabel": "K30"
+        },
+        {
+          "partNum": "60483",
+          "color": "Black",
+          "desc": "Technic Beam 1 x 2 Thick with Pin Hole and Axle Hole",
+          "elementId": "4515185",
+          "qty": 1,
+          "drawerId": "K30",
+          "drawerLabel": "K30"
+        },
+        {
+          "partNum": "60483",
+          "color": "Light Bluish Gray",
+          "desc": "Technic Beam 1 x 2 Thick with Pin Hole and Axle Hole",
+          "elementId": "4515184",
+          "qty": 1,
+          "drawerId": "K30",
+          "drawerLabel": "K30"
+        }
+      ]
+    },
     {
       "id": "bag_mvyw6k2h_492l9",
       "label": "Ebay Bulk Boxes (batch 11)",
@@ -503911,17 +503955,6 @@
           "sel": false
         },
         {
-          "partNum": "43857",
-          "color": "Dark Bluish Gray",
-          "desc": "Technic Beam 1 x 2 Thick",
-          "elementId": "6179631",
-          "qty": 1,
-          "drawerId": "K30",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": true
-        },
-        {
           "partNum": "2780",
           "color": "Black",
           "desc": "Technic Pin with Friction Ridges Lengthwise and Center Slots",
@@ -504560,28 +504593,6 @@
           "sel": false
         },
         {
-          "partNum": "60483",
-          "color": "Black",
-          "desc": "Technic Beam 1 x 2 Thick with Pin Hole and Axle Hole",
-          "elementId": "4515185",
-          "qty": 1,
-          "drawerId": "K30",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "60483",
-          "color": "Light Bluish Gray",
-          "desc": "Technic Beam 1 x 2 Thick with Pin Hole and Axle Hole",
-          "elementId": "4515184",
-          "qty": 1,
-          "drawerId": "K30",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "15070",
           "color": "Black",
           "desc": "Plate Special 1 x 1 with Vertical Tooth",
@@ -504627,11 +504638,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-02T06:50:57.427Z",
+      "savedAt": "2026-11-02T06:51:03.744Z",
       "moved": {
-        "batches": 11,
-        "pieces": 1451,
-        "last": "2026-11-02T06:42:46.169Z"
+        "batches": 12,
+        "pieces": 1454,
+        "last": "2026-11-02T06:51:03.744Z"
       }
     },
     {
@@ -551945,9 +551956,12 @@
       "c": "Dark Bluish Gray",
       "d": "Technic Beam 1 x 2 Thick",
       "e": "6325983",
-      "u": 1791916924851,
+      "u": 1793602264946,
       "at": 1791654484158,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6179631.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6179631.jpg",
+      "ea": [
+        "6179631"
+      ]
     },
     "3960pr0038|light bluish gray": {
       "p": "3960pr0038",
@@ -601178,7 +601192,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.01.1",
-      "at": "2026-11-02T06:51:01.469Z"
+      "at": "2026-11-02T06:51:09.040Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -601199,10 +601213,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-02T06:50:57.427Z",
+      "bags": "2026-11-02T06:51:03.744Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-11-02T06:51:01.469Z",
+    "savedAt": "2026-11-02T06:51:09.040Z",
     "appVersion": "2026.11.01.1"
   }
 }
