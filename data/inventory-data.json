@@ -457000,7 +457000,7 @@
       "label": "N37",
       "notes": "1 x 1 Round Brick",
       "group": "N",
-      "lastEdited": "2026-11-02T07:42:35.564Z"
+      "lastEdited": "2026-11-02T07:43:01.804Z"
     },
     {
       "id": "N38",
@@ -485244,7 +485244,7 @@
       "drawerId": "N37",
       "partNum": "3062b",
       "color": "Black",
-      "qty": 42
+      "qty": 43
     },
     {
       "drawerId": "N37",
@@ -485268,7 +485268,7 @@
       "drawerId": "N37",
       "partNum": "3062b",
       "color": "Dark Blue",
-      "qty": 6
+      "qty": 8
     },
     {
       "drawerId": "N37",
@@ -485286,7 +485286,7 @@
       "drawerId": "N37",
       "partNum": "3062b",
       "color": "Dark Orange",
-      "qty": 15
+      "qty": 16
     },
     {
       "drawerId": "N37",
@@ -485305,7 +485305,7 @@
       "drawerId": "N37",
       "partNum": "3062b",
       "color": "Light Bluish Gray",
-      "qty": 93
+      "qty": 95
     },
     {
       "drawerId": "N37",
@@ -485342,7 +485342,7 @@
       "partNum": "3062b",
       "color": "Tan",
       "elementId": "306205",
-      "qty": 39
+      "qty": 41
     },
     {
       "drawerId": "N37",
@@ -485767,6 +485767,61 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mvyyc22q_ktm3w",
+      "label": "Ebay Bulk Boxes (batch 16)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 16,
+      "timestamp": "2026-11-02T07:43:02.018Z",
+      "items": [
+        {
+          "partNum": "3062b",
+          "color": "Black",
+          "desc": "Brick Round 1 x 1 Open Stud",
+          "elementId": "306226",
+          "qty": 1,
+          "drawerId": "N37",
+          "drawerLabel": "N37"
+        },
+        {
+          "partNum": "3062b",
+          "color": "Dark Blue",
+          "desc": "Brick Round 1 x 1 Open Stud",
+          "elementId": "4177741",
+          "qty": 2,
+          "drawerId": "N37",
+          "drawerLabel": "N37"
+        },
+        {
+          "partNum": "3062b",
+          "color": "Dark Orange",
+          "desc": "Brick Round 1 x 1 Open Stud",
+          "elementId": "4195663",
+          "qty": 1,
+          "drawerId": "N37",
+          "drawerLabel": "N37"
+        },
+        {
+          "partNum": "3062b",
+          "color": "Light Bluish Gray",
+          "desc": "Brick Round 1 x 1 Open Stud",
+          "elementId": "4211412",
+          "qty": 2,
+          "drawerId": "N37",
+          "drawerLabel": "N37"
+        },
+        {
+          "partNum": "3062b",
+          "color": "Tan",
+          "desc": "Brick Round 1 x 1 Open Stud",
+          "elementId": "306205",
+          "qty": 2,
+          "drawerId": "N37",
+          "drawerLabel": "N37"
+        }
+      ]
+    },
     {
       "id": "bag_mvyxrcu9_wfici",
       "label": "Ebay Bulk Boxes (batch 15)",
@@ -504574,61 +504629,6 @@
           "sel": false
         },
         {
-          "partNum": "3062b",
-          "color": "Black",
-          "desc": "Brick Round 1 x 1 Open Stud",
-          "elementId": "306226",
-          "qty": 1,
-          "drawerId": "N37",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3062b",
-          "color": "Dark Blue",
-          "desc": "Brick Round 1 x 1 Open Stud",
-          "elementId": "4177741",
-          "qty": 2,
-          "drawerId": "N37",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3062b",
-          "color": "Dark Orange",
-          "desc": "Brick Round 1 x 1 Open Stud",
-          "elementId": "4195663",
-          "qty": 1,
-          "drawerId": "N37",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3062b",
-          "color": "Light Bluish Gray",
-          "desc": "Brick Round 1 x 1 Open Stud",
-          "elementId": "4211412",
-          "qty": 2,
-          "drawerId": "N37",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3062b",
-          "color": "Tan",
-          "desc": "Brick Round 1 x 1 Open Stud",
-          "elementId": "306205",
-          "qty": 2,
-          "drawerId": "N37",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "11458",
           "color": "Dark Bluish Gray",
           "desc": "Plate Special 1 x 2 with Pin Hole on Top",
@@ -505015,11 +505015,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-02T07:42:44.563Z",
+      "savedAt": "2026-11-02T07:43:02.017Z",
       "moved": {
-        "batches": 15,
-        "pieces": 1468,
-        "last": "2026-11-02T07:26:56.193Z"
+        "batches": 16,
+        "pieces": 1476,
+        "last": "2026-11-02T07:43:02.018Z"
       }
     },
     {
@@ -601629,7 +601629,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.01.1",
-      "at": "2026-11-02T07:42:48.593Z"
+      "at": "2026-11-02T07:43:06.048Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -601650,10 +601650,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-02T07:42:44.563Z",
+      "bags": "2026-11-02T07:43:02.018Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-11-02T07:42:48.593Z",
+    "savedAt": "2026-11-02T07:43:06.048Z",
     "appVersion": "2026.11.01.1"
   }
 }
