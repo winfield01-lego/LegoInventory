@@ -455984,7 +455984,7 @@
       "label": "K22",
       "notes": "Angled Connector #1 and # 2",
       "group": "K",
-      "lastEdited": "2026-11-02T06:41:05.910Z"
+      "lastEdited": "2026-11-02T06:42:25.764Z"
     },
     {
       "id": "K23",
@@ -484803,6 +484803,59 @@
       "color": "Yellow",
       "elementId": "4107066",
       "qty": 9
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32034",
+      "color": "Black",
+      "elementId": "3203426",
+      "qty": 10
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32034",
+      "color": "Blue",
+      "elementId": "3203423",
+      "qty": 2
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32034",
+      "color": "Dark Bluish Gray",
+      "elementId": "32034199",
+      "qty": 2
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32034",
+      "color": "Light Bluish Gray",
+      "elementId": "4211567",
+      "qty": 3
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32034",
+      "color": "Orange",
+      "qty": 2
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32034",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32034",
+      "color": "White",
+      "elementId": "4125554",
+      "qty": 1
+    },
+    {
+      "drawerId": "K22",
+      "partNum": "32034",
+      "color": "Yellow",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -516410,9 +516463,12 @@
       "c": "Black",
       "d": "Technic Axle and Pin Connector Angled #2 - 180°",
       "e": "6271869",
-      "u": 1791916924851,
+      "u": 1793601746980,
       "at": 1791656721266,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4107783.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4107783.jpg",
+      "ea": [
+        "3203426"
+      ]
     },
     "32278|black": {
       "p": "32278",
@@ -559743,9 +559799,12 @@
       "c": "White",
       "d": "Technic Axle and Pin Connector Angled #2 - 180°",
       "e": "6271870",
-      "u": 1791916924851,
+      "u": 1793601746980,
       "at": 1791654717569,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4125554.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4125554.jpg",
+      "ea": [
+        "4125554"
+      ]
     },
     "42003|white": {
       "p": "42003",
@@ -560013,9 +560072,12 @@
       "c": "Blue",
       "d": "Technic Axle and Pin Connector Angled #2 - 180°",
       "e": "6484676",
-      "u": 1791916924851,
+      "u": 1793601746980,
       "at": 1791654615447,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4107798.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4107798.jpg",
+      "ea": [
+        "3203423"
+      ]
     },
     "32123b|blue": {
       "p": "32123b",
@@ -560062,9 +560124,12 @@
       "c": "Dark Bluish Gray",
       "d": "Technic Axle and Pin Connector Angled #2 - 180°",
       "e": "6271876",
-      "u": 1791916924851,
+      "u": 1793601746980,
       "at": 1791654717569,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4210981.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4210981.jpg",
+      "ea": [
+        "32034199"
+      ]
     },
     "32014|dark bluish gray": {
       "p": "32014",
@@ -600747,6 +600812,27 @@
       "d": "Technic Axle and Pin Connector Angled #1",
       "e": "6109757",
       "u": 1793601667128
+    },
+    "32034|orange": {
+      "p": "32034",
+      "c": "Orange",
+      "d": "Technic Axle and Pin Connector Angled #2 - 180°",
+      "e": "4140350",
+      "u": 1793601746980
+    },
+    "32034|red": {
+      "p": "32034",
+      "c": "Red",
+      "d": "Technic Axle and Pin Connector Angled #2 - 180°",
+      "e": "4125208",
+      "u": 1793601746980
+    },
+    "32034|yellow": {
+      "p": "32034",
+      "c": "Yellow",
+      "d": "Technic Axle and Pin Connector Angled #2 - 180°",
+      "e": "3203424",
+      "u": 1793601746980
     }
   },
   "partKinds": {
@@ -600895,7 +600981,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.01.1",
-      "at": "2026-11-02T06:41:11.238Z"
+      "at": "2026-11-02T06:42:31.093Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -600919,7 +601005,7 @@
       "bags": "2026-11-02T06:34:09.911Z",
       "shopping": "2026-10-14T19:05:49.934Z"
     },
-    "savedAt": "2026-11-02T06:41:11.237Z",
+    "savedAt": "2026-11-02T06:42:31.093Z",
     "appVersion": "2026.11.01.1"
   }
 }
