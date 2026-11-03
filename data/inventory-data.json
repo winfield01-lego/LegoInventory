@@ -457664,7 +457664,7 @@
       "label": "R9",
       "notes": "6 x 6 Plate",
       "group": "R",
-      "lastEdited": "2026-11-03T03:50:44.795Z"
+      "lastEdited": "2026-11-03T03:56:29.163Z"
     },
     {
       "id": "R10",
@@ -485939,6 +485939,92 @@
       "partNum": "90498",
       "color": "Black",
       "qty": 1
+    },
+    {
+      "drawerId": "R9",
+      "partNum": "3958",
+      "color": "Black",
+      "qty": 9
+    },
+    {
+      "drawerId": "R9",
+      "partNum": "3958",
+      "color": "Blue",
+      "elementId": "395823",
+      "qty": 14
+    },
+    {
+      "drawerId": "R9",
+      "partNum": "3958",
+      "color": "Bright Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "R9",
+      "partNum": "3958",
+      "color": "Bright Light Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "R9",
+      "partNum": "3958",
+      "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "R9",
+      "partNum": "3958",
+      "color": "Dark Bluish Gray",
+      "qty": 22
+    },
+    {
+      "drawerId": "R9",
+      "partNum": "3958",
+      "color": "Dark Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "R9",
+      "partNum": "3958",
+      "color": "Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "R9",
+      "partNum": "3958",
+      "color": "Light Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "R9",
+      "partNum": "3958",
+      "color": "Orange",
+      "qty": 2
+    },
+    {
+      "drawerId": "R9",
+      "partNum": "3958",
+      "color": "Red",
+      "qty": 4
+    },
+    {
+      "drawerId": "R9",
+      "partNum": "3958",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "R9",
+      "partNum": "3958",
+      "color": "White",
+      "elementId": "395801",
+      "qty": 2
+    },
+    {
+      "drawerId": "R9",
+      "partNum": "3958",
+      "color": "Tan",
+      "qty": 8
     }
   ],
   "mocLocations": {
@@ -505226,10 +505312,10 @@
           "desc": "Plate 6 x 6",
           "elementId": "4530712",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "R9",
           "matchCount": 0,
-          "suggested": false,
-          "sel": false
+          "suggested": true,
+          "sel": true
         },
         {
           "partNum": "3028",
@@ -505662,7 +505748,7 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T03:45:38.096Z",
+      "savedAt": "2026-11-03T03:56:37.254Z",
       "moved": {
         "batches": 24,
         "pieces": 1494,
@@ -514067,9 +514153,12 @@
       "c": "Blue",
       "d": "Plate 6 x 6",
       "e": "4199519",
-      "u": 1791916924851,
+      "u": 1793678190366,
       "at": 1791671921036,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/395823.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/395823.jpg",
+      "ea": [
+        "395823"
+      ]
     },
     "6141|blue": {
       "p": "6141",
@@ -550364,9 +550453,12 @@
       "c": "White",
       "d": "Plate 6 x 6",
       "e": "6552116",
-      "u": 1791916924851,
+      "u": 1793678190366,
       "at": 1791846902427,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/395801.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/395801.jpg",
+      "ea": [
+        "395801"
+      ]
     },
     "47397|white": {
       "p": "47397",
@@ -602363,6 +602455,41 @@
       "d": "Plate 6 x 24",
       "e": "4177842",
       "u": 1793677334644
+    },
+    "3958|bright green": {
+      "p": "3958",
+      "c": "Bright Green",
+      "d": "Plate 6 x 6",
+      "e": "4184006",
+      "u": 1793678190366
+    },
+    "3958|bright light blue": {
+      "p": "3958",
+      "c": "Bright Light Blue",
+      "d": "Plate 6 x 6",
+      "e": "6173947",
+      "u": 1793678190366
+    },
+    "3958|dark blue": {
+      "p": "3958",
+      "c": "Dark Blue",
+      "d": "Plate 6 x 6",
+      "e": "4251992",
+      "u": 1793678190366
+    },
+    "3958|dark red": {
+      "p": "3958",
+      "c": "Dark Red",
+      "d": "Plate 6 x 6",
+      "e": "6173945",
+      "u": 1793678190366
+    },
+    "3958|orange": {
+      "p": "3958",
+      "c": "Orange",
+      "d": "Plate 6 x 6",
+      "e": "6052391",
+      "u": 1793678190366
     }
   },
   "partKinds": {
@@ -607437,7 +607564,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T03:50:48.825Z"
+      "at": "2026-11-03T03:56:41.293Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -607458,10 +607585,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T03:45:38.096Z",
+      "bags": "2026-11-03T03:56:37.254Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T03:50:48.825Z",
+    "savedAt": "2026-11-03T03:56:41.293Z",
     "appVersion": "2026.11.02.1"
   }
 }
