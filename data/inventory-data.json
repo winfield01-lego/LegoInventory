@@ -455898,7 +455898,7 @@
       "label": "K7",
       "notes": "2 x 4 Brick - 2 Pins - 2 Sides",
       "group": "K",
-      "lastEdited": "2026-11-03T07:19:25.732Z"
+      "lastEdited": "2026-11-03T07:19:55.815Z"
     },
     {
       "id": "K8",
@@ -488754,6 +488754,26 @@
       "color": "White",
       "elementId": "245801",
       "qty": 10
+    },
+    {
+      "drawerId": "K7",
+      "partNum": "6249",
+      "color": "Dark Bluish Gray",
+      "elementId": "4210718",
+      "qty": 1
+    },
+    {
+      "drawerId": "K7",
+      "partNum": "6249",
+      "color": "Light Bluish Gray",
+      "elementId": "4211676",
+      "qty": 5
+    },
+    {
+      "drawerId": "K7",
+      "partNum": "6249",
+      "color": "Red",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -540704,9 +540724,12 @@
       "c": "Light Bluish Gray",
       "d": "Brick Special 2 x 4 with Pins",
       "e": "6356158",
-      "u": 1791916924851,
+      "u": 1793690397017,
       "at": 1791654677272,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4211676.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4211676.jpg",
+      "ea": [
+        "4211676"
+      ]
     },
     "60596|light bluish gray": {
       "p": "60596",
@@ -554504,9 +554527,12 @@
       "c": "Dark Bluish Gray",
       "d": "Brick Special 2 x 4 with Pins",
       "e": "6321740",
-      "u": 1791916924851,
+      "u": 1793690397017,
       "at": 1791654819756,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4210718.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4210718.jpg",
+      "ea": [
+        "4210718"
+      ]
     },
     "41239|dark bluish gray": {
       "p": "41239",
@@ -607035,6 +607061,13 @@
       "d": "Brick Special 1 x 2 with Pin",
       "e": "245824",
       "u": 1793690296355
+    },
+    "6249|red": {
+      "p": "6249",
+      "c": "Red",
+      "d": "Brick Special 2 x 4 with Pins",
+      "e": "4100410",
+      "u": 1793690397017
     }
   },
   "partKinds": {
@@ -612109,7 +612142,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T07:19:29.763Z"
+      "at": "2026-11-03T07:20:01.113Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -612133,7 +612166,7 @@
       "bags": "2026-11-03T07:05:17.671Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T07:19:29.763Z",
+    "savedAt": "2026-11-03T07:20:01.113Z",
     "appVersion": "2026.11.02.1"
   }
 }
