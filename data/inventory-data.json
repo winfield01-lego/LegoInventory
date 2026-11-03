@@ -456908,7 +456908,7 @@
       "label": "N23",
       "notes": "Mechnical Arm",
       "group": "N",
-      "lastEdited": "2026-11-03T04:38:40.727Z"
+      "lastEdited": "2026-11-03T04:42:27.006Z"
     },
     {
       "id": "N24",
@@ -486687,6 +486687,77 @@
       "partNum": "2921",
       "color": "Yellow",
       "qty": 3
+    },
+    {
+      "drawerId": "N23",
+      "partNum": "98313",
+      "color": "Black",
+      "elementId": "4650022",
+      "qty": 31
+    },
+    {
+      "drawerId": "N23",
+      "partNum": "98313",
+      "color": "Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "N23",
+      "partNum": "98313",
+      "color": "Dark Bluish Gray",
+      "elementId": "6000967",
+      "qty": 7
+    },
+    {
+      "drawerId": "N23",
+      "partNum": "98313",
+      "color": "Dark Red",
+      "qty": 7
+    },
+    {
+      "drawerId": "N23",
+      "partNum": "98313",
+      "color": "Dark Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "N23",
+      "partNum": "98313",
+      "color": "Flat Silver",
+      "qty": 15
+    },
+    {
+      "drawerId": "N23",
+      "partNum": "98313",
+      "color": "Pearl Gold",
+      "qty": 14
+    },
+    {
+      "drawerId": "N23",
+      "partNum": "98313",
+      "color": "Pearl Titanium",
+      "elementId": "6008484",
+      "qty": 9
+    },
+    {
+      "drawerId": "N23",
+      "partNum": "98313",
+      "color": "Reddish Brown",
+      "elementId": "6006740",
+      "qty": 3
+    },
+    {
+      "drawerId": "N23",
+      "partNum": "98313",
+      "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "N23",
+      "partNum": "98313",
+      "color": "White",
+      "elementId": "4649224",
+      "qty": 12
     }
   ],
   "mocLocations": {
@@ -506313,10 +506384,10 @@
           "desc": "Arm Mechanical with Clip [Thick Support]",
           "elementId": "6006738",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "N23",
           "matchCount": 0,
           "suggested": false,
-          "sel": false
+          "sel": true
         },
         {
           "partNum": "22385",
@@ -506496,7 +506567,7 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T04:30:10.786Z",
+      "savedAt": "2026-11-03T04:42:33.440Z",
       "moved": {
         "batches": 30,
         "pieces": 1503,
@@ -541738,8 +541809,11 @@
       "c": "Black",
       "d": "Arm Mechanical with Clip [Thick Support]",
       "e": "6276867",
-      "u": 1791916924851,
-      "at": 1791655414575
+      "u": 1793680948208,
+      "at": 1791655414575,
+      "ea": [
+        "4650022"
+      ]
     },
     "3245c|black": {
       "p": "3245c",
@@ -550177,9 +550251,12 @@
       "c": "Dark Bluish Gray",
       "d": "Arm Mechanical with Clip [Thick Support]",
       "e": "6276870",
-      "u": 1791916924851,
+      "u": 1793680948208,
       "at": 1791654748438,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6012812.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6012812.jpg",
+      "ea": [
+        "6000967"
+      ]
     },
     "87083|dark bluish gray": {
       "p": "87083",
@@ -568099,9 +568176,12 @@
       "c": "Pearl Titanium",
       "d": "Arm Mechanical with Clip [Thick Support]",
       "e": "6276869",
-      "u": 1791916924851,
+      "u": 1793680948208,
       "at": 1791654696050,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6008484.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6008484.jpg",
+      "ea": [
+        "6008484"
+      ]
     },
     "2922|pearl titanium": {
       "p": "2922",
@@ -572186,9 +572266,12 @@
       "c": "Reddish Brown",
       "d": "Arm Mechanical with Clip [Thick Support]",
       "e": "6276868",
-      "u": 1791916924851,
+      "u": 1793680948208,
       "at": 1791654755320,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6006740.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6006740.jpg",
+      "ea": [
+        "6006740"
+      ]
     },
     "24201pr0002|reddish brown": {
       "p": "24201pr0002",
@@ -572211,9 +572294,12 @@
       "c": "White",
       "d": "Arm Mechanical with Clip [Thick Support]",
       "e": "6276864",
-      "u": 1791916924851,
+      "u": 1793680948208,
       "at": 1791654755320,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6006126.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6006126.jpg",
+      "ea": [
+        "4649224"
+      ]
     },
     "24201pr0001|white": {
       "p": "24201pr0001",
@@ -603521,6 +603607,34 @@
       "d": "Brick Special 1 x 1 with Handle",
       "e": "4114186",
       "u": 1793680692773
+    },
+    "98313|blue": {
+      "p": "98313",
+      "c": "Blue",
+      "d": "Arm Mechanical with Clip [Thick Support]",
+      "e": "6014032",
+      "u": 1793680948208
+    },
+    "98313|dark red": {
+      "p": "98313",
+      "c": "Dark Red",
+      "d": "Arm Mechanical with Clip [Thick Support]",
+      "e": "6006738",
+      "u": 1793680948208
+    },
+    "98313|pearl gold": {
+      "p": "98313",
+      "c": "Pearl Gold",
+      "d": "Arm Mechanical with Clip [Thick Support]",
+      "e": "6006741",
+      "u": 1793680948208
+    },
+    "98313|yellow": {
+      "p": "98313",
+      "c": "Yellow",
+      "d": "Arm Mechanical with Clip [Thick Support]",
+      "e": "6014111",
+      "u": 1793680948208
     }
   },
   "partKinds": {
@@ -608595,7 +608709,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:38:44.768Z"
+      "at": "2026-11-03T04:42:37.480Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -608616,10 +608730,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T04:30:10.786Z",
+      "bags": "2026-11-03T04:42:33.440Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:38:44.768Z",
+    "savedAt": "2026-11-03T04:42:37.480Z",
     "appVersion": "2026.11.02.1"
   }
 }
