@@ -457406,7 +457406,7 @@
       "label": "O49",
       "notes": "2 x 4 Hinges - Parts A and B",
       "group": "O",
-      "lastEdited": "2026-11-03T06:11:20.570Z"
+      "lastEdited": "2026-11-03T06:11:59.020Z"
     },
     {
       "id": "O50",
@@ -488049,6 +488049,30 @@
       "drawerId": "O49",
       "partNum": "3639",
       "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "O49",
+      "partNum": "3640",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "O49",
+      "partNum": "3640",
+      "color": "Dark Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "O49",
+      "partNum": "3640",
+      "color": "Light Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "O49",
+      "partNum": "3640",
+      "color": "Lime",
       "qty": 1
     }
   ],
@@ -605826,6 +605850,27 @@
       "d": "Hinge Plate 2 x 4 with Articulated Joint - Male",
       "e": "363923",
       "u": 1793686281772
+    },
+    "3640|dark bluish gray": {
+      "p": "3640",
+      "c": "Dark Bluish Gray",
+      "d": "Hinge Plate 2 x 4 with Articulated Joint - Female",
+      "e": "4237555",
+      "u": 1793686320222
+    },
+    "3640|light gray": {
+      "p": "3640",
+      "c": "Light Gray",
+      "d": "Hinge Plate 2 x 4 with Articulated Joint - Female",
+      "e": "364002",
+      "u": 1793686320222
+    },
+    "3640|lime": {
+      "p": "3640",
+      "c": "Lime",
+      "d": "Hinge Plate 2 x 4 with Articulated Joint - Female",
+      "e": "6036878",
+      "u": 1793686320222
     }
   },
   "partKinds": {
@@ -610900,7 +610945,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T06:11:24.614Z"
+      "at": "2026-11-03T06:12:03.052Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610924,7 +610969,7 @@
       "bags": "2026-11-03T05:58:00.619Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T06:11:24.614Z",
+    "savedAt": "2026-11-03T06:12:03.052Z",
     "appVersion": "2026.11.02.1"
   }
 }
