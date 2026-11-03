@@ -454298,7 +454298,7 @@
       "label": "F13",
       "notes": "2 x 2 Dish - Inverted",
       "group": "F",
-      "lastEdited": "2026-11-03T03:19:35.619Z"
+      "lastEdited": "2026-11-03T03:26:17.851Z"
     },
     {
       "id": "F14",
@@ -485627,6 +485627,114 @@
       "partNum": "73230",
       "color": "White",
       "qty": 4
+    },
+    {
+      "drawerId": "F13",
+      "partNum": "4740",
+      "color": "Black",
+      "qty": 20
+    },
+    {
+      "drawerId": "F13",
+      "partNum": "4740",
+      "color": "Blue",
+      "qty": 13
+    },
+    {
+      "drawerId": "F13",
+      "partNum": "4740",
+      "color": "Dark Bluish Gray",
+      "qty": 13
+    },
+    {
+      "drawerId": "F13",
+      "partNum": "4740",
+      "color": "Dark Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "F13",
+      "partNum": "4740",
+      "color": "Dark Tan",
+      "qty": 2
+    },
+    {
+      "drawerId": "F13",
+      "partNum": "4740",
+      "color": "Glow in Dark White",
+      "qty": 3
+    },
+    {
+      "drawerId": "F13",
+      "partNum": "4740",
+      "color": "Green",
+      "elementId": "4239191",
+      "qty": 1
+    },
+    {
+      "drawerId": "F13",
+      "partNum": "4740",
+      "color": "Light Bluish Gray",
+      "qty": 16
+    },
+    {
+      "drawerId": "F13",
+      "partNum": "4740",
+      "color": "Lime",
+      "qty": 1
+    },
+    {
+      "drawerId": "F13",
+      "partNum": "4740",
+      "color": "Metallic Gold",
+      "elementId": "6078236",
+      "qty": 2
+    },
+    {
+      "drawerId": "F13",
+      "partNum": "4740",
+      "color": "Metallic Silver",
+      "elementId": "6178683",
+      "qty": 1
+    },
+    {
+      "drawerId": "F13",
+      "partNum": "4740",
+      "color": "Red",
+      "elementId": "4107619",
+      "qty": 5
+    },
+    {
+      "drawerId": "F13",
+      "partNum": "4740",
+      "color": "Reddish Brown",
+      "elementId": "4267996",
+      "qty": 4
+    },
+    {
+      "drawerId": "F13",
+      "partNum": "4740",
+      "color": "Tan",
+      "qty": 5
+    },
+    {
+      "drawerId": "F13",
+      "partNum": "4740",
+      "color": "Vibrant Yellow",
+      "qty": 5
+    },
+    {
+      "drawerId": "F13",
+      "partNum": "4740",
+      "color": "White",
+      "qty": 16
+    },
+    {
+      "drawerId": "F13",
+      "partNum": "4740",
+      "color": "Yellow",
+      "elementId": "4107622",
+      "qty": 9
     }
   ],
   "mocLocations": {
@@ -505138,10 +505246,10 @@
           "desc": "Dish 2 x 2 Inverted [Radar]",
           "elementId": "474026",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "F13",
           "matchCount": 0,
           "suggested": false,
-          "sel": false
+          "sel": true
         },
         {
           "partNum": "4740",
@@ -505149,10 +505257,10 @@
           "desc": "Dish 2 x 2 Inverted [Radar]",
           "elementId": "4107619",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "F13",
           "matchCount": 0,
           "suggested": false,
-          "sel": false
+          "sel": true
         },
         {
           "partNum": "43898",
@@ -505321,7 +505429,7 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T03:08:55.527Z",
+      "savedAt": "2026-11-03T03:26:25.593Z",
       "moved": {
         "batches": 21,
         "pieces": 1488,
@@ -527730,9 +527838,12 @@
       "c": "Green",
       "d": "Dish 2 x 2 Inverted [Radar]",
       "e": "4567908",
-      "u": 1791916924851,
+      "u": 1793676379054,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4239191.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4239191.jpg",
+      "ea": [
+        "4239191"
+      ]
     },
     "44302a|green": {
       "p": "44302a",
@@ -536667,9 +536778,12 @@
       "c": "Yellow",
       "d": "Dish 2 x 2 Inverted [Radar]",
       "e": "474024",
-      "u": 1791916924851,
+      "u": 1793676379054,
       "at": 1791654768078,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4107622.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4107622.jpg",
+      "ea": [
+        "4107622"
+      ]
     },
     "32607|yellow": {
       "p": "32607",
@@ -539677,9 +539791,12 @@
       "c": "Red",
       "d": "Dish 2 x 2 Inverted [Radar]",
       "e": "474021",
-      "u": 1791916924851,
+      "u": 1793676379054,
       "at": 1791654948479,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4107619.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4107619.jpg",
+      "ea": [
+        "4107619"
+      ]
     },
     "33051|red": {
       "p": "33051",
@@ -561619,9 +561736,12 @@
       "c": "Metallic Gold",
       "d": "Dish 2 x 2 Inverted [Radar]",
       "e": "6535070",
-      "u": 1791916924851,
+      "u": 1793676379054,
       "at": 1791654623251,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6078236.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6078236.jpg",
+      "ea": [
+        "6078236"
+      ]
     },
     "10120456|[no color/any color]": {
       "p": "10120456",
@@ -573940,9 +574060,12 @@
       "c": "Metallic Silver",
       "d": "Dish 2 x 2 Inverted [Radar]",
       "e": "6528623",
-      "u": 1791916924851,
+      "u": 1793676379054,
       "at": 1791732118013,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6277260.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6277260.jpg",
+      "ea": [
+        "6178683"
+      ]
     },
     "81859|[no color/any color]": {
       "p": "81859",
@@ -576203,9 +576326,12 @@
       "c": "Reddish Brown",
       "d": "Dish 2 x 2 Inverted [Radar]",
       "e": "4660435",
-      "u": 1791916924851,
+      "u": 1793676379054,
       "at": 1791654921025,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4267996.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4267996.jpg",
+      "ea": [
+        "4267996"
+      ]
     },
     "65035|pearl titanium": {
       "p": "65035",
@@ -601872,6 +601998,41 @@
       "d": "Technic Brick 1 x 1 with Axle Hole",
       "e": "6457557",
       "u": 1793675318709
+    },
+    "4740|blue": {
+      "p": "4740",
+      "c": "Blue",
+      "d": "Dish 2 x 2 Inverted [Radar]",
+      "e": "4143699",
+      "u": 1793676379054
+    },
+    "4740|dark red": {
+      "p": "4740",
+      "c": "Dark Red",
+      "d": "Dish 2 x 2 Inverted [Radar]",
+      "e": "4186361",
+      "u": 1793676379054
+    },
+    "4740|dark tan": {
+      "p": "4740",
+      "c": "Dark Tan",
+      "d": "Dish 2 x 2 Inverted [Radar]",
+      "e": "6021969",
+      "u": 1793676379054
+    },
+    "4740|glow in dark white": {
+      "p": "4740",
+      "c": "Glow in Dark White",
+      "d": "Dish 2 x 2 Inverted [Radar]",
+      "e": "6365601",
+      "u": 1793676379054
+    },
+    "4740|tan": {
+      "p": "4740",
+      "c": "Tan",
+      "d": "Dish 2 x 2 Inverted [Radar]",
+      "e": "4143008",
+      "u": 1793676379054
     }
   },
   "partKinds": {
@@ -606946,7 +607107,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T03:19:39.649Z"
+      "at": "2026-11-03T03:26:29.628Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -606967,10 +607128,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T03:08:55.528Z",
+      "bags": "2026-11-03T03:26:25.593Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T03:19:39.649Z",
+    "savedAt": "2026-11-03T03:26:29.628Z",
     "appVersion": "2026.11.02.1"
   }
 }
