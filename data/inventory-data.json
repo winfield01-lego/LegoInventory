@@ -457714,7 +457714,7 @@
       "label": "S6",
       "notes": "1 x 1 x 3 Brick",
       "group": "S",
-      "lastEdited": "2026-11-03T05:04:28.991Z"
+      "lastEdited": "2026-11-03T05:05:46.975Z"
     },
     {
       "id": "S7",
@@ -487047,6 +487047,51 @@
       "color": "White",
       "elementId": "245301",
       "qty": 4
+    },
+    {
+      "drawerId": "S6",
+      "partNum": "2453a",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "S6",
+      "partNum": "2453a",
+      "color": "Dark Bluish Gray",
+      "elementId": "",
+      "qty": 1
+    },
+    {
+      "drawerId": "S6",
+      "partNum": "2453a",
+      "color": "Dark Red",
+      "qty": 6
+    },
+    {
+      "drawerId": "S6",
+      "partNum": "2453a",
+      "color": "Light Gray",
+      "elementId": "",
+      "qty": 2
+    },
+    {
+      "drawerId": "S6",
+      "partNum": "2453a",
+      "color": "Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "S6",
+      "partNum": "2453a",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "S6",
+      "partNum": "2453a",
+      "color": "White",
+      "elementId": "",
+      "qty": 10
     }
   ],
   "mocLocations": {
@@ -604111,6 +604156,48 @@
       "d": "Brick 1 x 1 x 5 with Solid Stud",
       "e": "4503204",
       "u": 1793682270193
+    },
+    "2453a|black": {
+      "p": "2453a",
+      "c": "Black",
+      "d": "Brick 1 x 1 x 5 with Blocked Open or Hollow Stud",
+      "e": "245326",
+      "u": 1793682348178
+    },
+    "2453a|dark bluish gray": {
+      "p": "2453a",
+      "c": "Dark Bluish Gray",
+      "d": "Brick 1 x 1 x 5 with Blocked Open or Hollow Stud",
+      "e": "",
+      "u": 1793682348178
+    },
+    "2453a|dark red": {
+      "p": "2453a",
+      "c": "Dark Red",
+      "d": "Brick 1 x 1 x 5 with Blocked Open or Hollow Stud",
+      "e": "4186358",
+      "u": 1793682348178
+    },
+    "2453a|light gray": {
+      "p": "2453a",
+      "c": "Light Gray",
+      "d": "Brick 1 x 1 x 5 with Blocked Open or Hollow Stud",
+      "e": "",
+      "u": 1793682348178
+    },
+    "2453a|red": {
+      "p": "2453a",
+      "c": "Red",
+      "d": "Brick 1 x 1 x 5 with Blocked Open or Hollow Stud",
+      "e": "245321",
+      "u": 1793682348178
+    },
+    "2453a|tan": {
+      "p": "2453a",
+      "c": "Tan",
+      "d": "Brick 1 x 1 x 5 with Blocked Open or Hollow Stud",
+      "e": "245305",
+      "u": 1793682348178
     }
   },
   "partKinds": {
@@ -609185,7 +609272,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:04:34.289Z"
+      "at": "2026-11-03T05:05:52.270Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -609209,7 +609296,7 @@
       "bags": "2026-11-03T04:48:18.759Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:04:34.289Z",
+    "savedAt": "2026-11-03T05:05:52.270Z",
     "appVersion": "2026.11.02.1"
   }
 }
