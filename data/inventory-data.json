@@ -454293,7 +454293,7 @@
       "label": "F12",
       "notes": "Angled Connector #3 and #5",
       "group": "F",
-      "lastEdited": "2026-11-03T06:28:39.977Z"
+      "lastEdited": "2026-11-03T06:29:40.460Z"
     },
     {
       "id": "F13",
@@ -488242,7 +488242,7 @@
       "partNum": "32015",
       "color": "Dark Bluish Gray",
       "elementId": "4211034",
-      "qty": 2
+      "qty": 3
     },
     {
       "drawerId": "F12",
@@ -488707,6 +488707,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw0b5kma_l2sg0",
+      "label": "Ebay Bulk Boxes (batch 40)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 40,
+      "timestamp": "2026-11-03T06:29:40.642Z",
+      "items": [
+        {
+          "partNum": "32015",
+          "color": "Dark Bluish Gray",
+          "desc": "Technic Axle and Pin Connector Angled #5 - 112.5°",
+          "elementId": "4211034",
+          "qty": 1,
+          "drawerId": "F12",
+          "drawerLabel": "F12"
+        }
+      ]
+    },
     {
       "id": "bag_mw0azc7u_6z7c1",
       "label": "Ebay Bulk Boxes (batch 39)",
@@ -508049,17 +508068,6 @@
           "sel": false
         },
         {
-          "partNum": "32015",
-          "color": "Dark Bluish Gray",
-          "desc": "Technic Axle and Pin Connector Angled #5 - 112.5°",
-          "elementId": "4211034",
-          "qty": 1,
-          "drawerId": "F12",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "89678",
           "color": "Red",
           "desc": "Technic Pin 1/2 with Friction",
@@ -508171,11 +508179,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T06:29:35.529Z",
+      "savedAt": "2026-11-03T06:29:40.642Z",
       "moved": {
-        "batches": 39,
-        "pieces": 1521,
-        "last": "2026-11-03T06:24:49.818Z"
+        "batches": 40,
+        "pieces": 1522,
+        "last": "2026-11-03T06:29:40.642Z"
       }
     },
     {
@@ -611310,7 +611318,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T06:29:39.562Z"
+      "at": "2026-11-03T06:29:44.671Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -611331,10 +611339,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T06:29:35.529Z",
+      "bags": "2026-11-03T06:29:40.642Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T06:29:39.562Z",
+    "savedAt": "2026-11-03T06:29:44.671Z",
     "appVersion": "2026.11.02.1"
   }
 }
