@@ -454240,7 +454240,7 @@
       "label": "F4",
       "notes": "3L 2-Axle with Center Pin, 1-Axle and 3-Pin",
       "group": "F",
-      "lastEdited": "2026-11-03T06:24:49.626Z"
+      "lastEdited": "2026-11-03T07:23:04.882Z"
     },
     {
       "id": "F5",
@@ -455940,7 +455940,7 @@
       "label": "K13",
       "notes": "Technic Connectors - 2L and 3L",
       "group": "K",
-      "lastEdited": "2026-11-02T05:39:52.537Z"
+      "lastEdited": "2026-11-03T07:23:04.883Z"
     },
     {
       "id": "K14",
@@ -456059,7 +456059,7 @@
       "label": "K30",
       "notes": "Beams 1 x 2 and 1 x 3",
       "group": "K",
-      "lastEdited": "2026-11-02T06:51:03.540Z"
+      "lastEdited": "2026-11-03T07:23:04.881Z"
     },
     {
       "id": "K31",
@@ -456283,7 +456283,7 @@
       "label": "L20",
       "notes": "Bar with Clip and Nozzles",
       "group": "L",
-      "lastEdited": "2026-11-02T05:39:52.532Z"
+      "lastEdited": "2026-11-03T07:23:04.883Z"
     },
     {
       "id": "L21",
@@ -456962,7 +456962,7 @@
       "label": "N29",
       "notes": "1 x 1 Cone",
       "group": "N",
-      "lastEdited": "2026-10-30T19:57:14.793Z"
+      "lastEdited": "2026-11-03T07:23:04.883Z"
     },
     {
       "id": "N30",
@@ -457018,7 +457018,7 @@
       "label": "N37",
       "notes": "1 x 1 Round Brick",
       "group": "N",
-      "lastEdited": "2026-11-02T07:43:01.804Z"
+      "lastEdited": "2026-11-03T07:23:04.884Z"
     },
     {
       "id": "N38",
@@ -462524,7 +462524,7 @@
       "partNum": "32184",
       "color": "Light Bluish Gray",
       "elementId": "4211621",
-      "qty": 3
+      "qty": 4
     },
     {
       "drawerId": "F4",
@@ -477256,7 +477256,7 @@
       "partNum": "59443",
       "color": "Black",
       "elementId": "4512363",
-      "qty": 16
+      "qty": 17
     },
     {
       "drawerId": "K13",
@@ -477900,7 +477900,7 @@
       "partNum": "60483",
       "color": "Black",
       "elementId": "4515185",
-      "qty": 18
+      "qty": 19
     },
     {
       "drawerId": "K30",
@@ -478573,7 +478573,7 @@
       "drawerId": "L20",
       "partNum": "60849",
       "color": "Black",
-      "qty": 17
+      "qty": 18
     },
     {
       "drawerId": "L20",
@@ -483676,7 +483676,7 @@
       "drawerId": "N29",
       "partNum": "59900",
       "color": "Dark Bluish Gray",
-      "qty": 22
+      "qty": 23
     },
     {
       "drawerId": "N29",
@@ -483689,7 +483689,7 @@
       "drawerId": "N29",
       "partNum": "59900",
       "color": "Green",
-      "qty": 9
+      "qty": 10
     },
     {
       "drawerId": "N29",
@@ -484222,7 +484222,7 @@
       "drawerId": "N37",
       "partNum": "3062b",
       "color": "Red",
-      "qty": 15
+      "qty": 16
     },
     {
       "drawerId": "N37",
@@ -489204,6 +489204,79 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw0d2966_eylpf",
+      "label": "Ebay Bulk Boxes (batch 43)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 43,
+      "timestamp": "2026-11-03T07:23:05.070Z",
+      "items": [
+        {
+          "partNum": "60483",
+          "color": "Black",
+          "desc": "Technic Beam 1 x 2 Thick with Pin Hole and Axle Hole",
+          "elementId": "4515185",
+          "qty": 1,
+          "drawerId": "K30",
+          "drawerLabel": "K30"
+        },
+        {
+          "partNum": "32184",
+          "color": "Light Bluish Gray",
+          "desc": "Technic Axle and Pin Connector Perpendicular 3L with Centre Pin Hole",
+          "elementId": "4211621",
+          "qty": 1,
+          "drawerId": "F4",
+          "drawerLabel": "F4"
+        },
+        {
+          "partNum": "59443",
+          "color": "Black",
+          "desc": "Technic Axle Connector Smooth [with x Hole + Orientation]",
+          "elementId": "4512363",
+          "qty": 1,
+          "drawerId": "K13",
+          "drawerLabel": "K13"
+        },
+        {
+          "partNum": "60849",
+          "color": "Black",
+          "desc": "Equipment Hose Nozzle / Gun with Side String Hole Simplified",
+          "elementId": "4537551",
+          "qty": 1,
+          "drawerId": "L20",
+          "drawerLabel": "L20"
+        },
+        {
+          "partNum": "59900",
+          "color": "Dark Bluish Gray",
+          "desc": "Cone 1 x 1 [Top Groove]",
+          "elementId": "4529240",
+          "qty": 1,
+          "drawerId": "N29",
+          "drawerLabel": "N29"
+        },
+        {
+          "partNum": "59900",
+          "color": "Green",
+          "desc": "Cone 1 x 1 [Top Groove]",
+          "elementId": "4529239",
+          "qty": 1,
+          "drawerId": "N29",
+          "drawerLabel": "N29"
+        },
+        {
+          "partNum": "3062b",
+          "color": "Red",
+          "desc": "Brick Round 1 x 1 Open Stud",
+          "elementId": "306221",
+          "qty": 1,
+          "drawerId": "N37",
+          "drawerLabel": "N37"
+        }
+      ]
+    },
     {
       "id": "bag_mw0c7rl2_w0jjs",
       "label": "Ebay Bulk Boxes (batch 42)",
@@ -508696,91 +508769,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "60483",
-          "color": "Black",
-          "desc": "Technic Beam 1 x 2 Thick with Pin Hole and Axle Hole",
-          "elementId": "4515185",
-          "qty": 1,
-          "drawerId": "K30",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "32184",
-          "color": "Light Bluish Gray",
-          "desc": "Technic Axle and Pin Connector Perpendicular 3L with Centre Pin Hole",
-          "elementId": "4211621",
-          "qty": 1,
-          "drawerId": "F4",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "59443",
-          "color": "Black",
-          "desc": "Technic Axle Connector Smooth [with x Hole + Orientation]",
-          "elementId": "4512363",
-          "qty": 1,
-          "drawerId": "K13",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "60849",
-          "color": "Black",
-          "desc": "Equipment Hose Nozzle / Gun with Side String Hole Simplified",
-          "elementId": "4537551",
-          "qty": 1,
-          "drawerId": "L20",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "59900",
-          "color": "Dark Bluish Gray",
-          "desc": "Cone 1 x 1 [Top Groove]",
-          "elementId": "4529240",
-          "qty": 1,
-          "drawerId": "N29",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "59900",
-          "color": "Green",
-          "desc": "Cone 1 x 1 [Top Groove]",
-          "elementId": "4529239",
-          "qty": 1,
-          "drawerId": "N29",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3062b",
-          "color": "Red",
-          "desc": "Brick Round 1 x 1 Open Stud",
-          "elementId": "306221",
-          "qty": 1,
-          "drawerId": "N37",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T07:22:44.155Z",
+      "savedAt": "2026-11-03T07:23:05.069Z",
       "moved": {
-        "batches": 42,
-        "pieces": 1526,
-        "last": "2026-11-03T06:59:22.598Z"
+        "batches": 43,
+        "pieces": 1533,
+        "last": "2026-11-03T07:23:05.069Z"
       }
     },
     {
@@ -612181,7 +612177,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T07:22:58.278Z"
+      "at": "2026-11-03T07:23:09.098Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -612202,10 +612198,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T07:22:44.155Z",
+      "bags": "2026-11-03T07:23:05.070Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T07:22:58.278Z",
+    "savedAt": "2026-11-03T07:23:09.098Z",
     "appVersion": "2026.11.02.1"
   }
 }
