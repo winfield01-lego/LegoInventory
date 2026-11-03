@@ -455877,7 +455877,7 @@
       "label": "K4",
       "notes": "2 x 2 Plate - 1 Pin Hole on Bottom",
       "group": "K",
-      "lastEdited": "2026-11-03T07:08:16.369Z"
+      "lastEdited": "2026-11-03T07:12:10.088Z"
     },
     {
       "id": "K5",
@@ -488614,6 +488614,48 @@
       "partNum": "6536",
       "color": "White",
       "qty": 4
+    },
+    {
+      "drawerId": "K4",
+      "partNum": "2444",
+      "color": "Black",
+      "qty": 14
+    },
+    {
+      "drawerId": "K4",
+      "partNum": "2444",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "K4",
+      "partNum": "2444",
+      "color": "Dark Bluish Gray",
+      "qty": 20
+    },
+    {
+      "drawerId": "K4",
+      "partNum": "2444",
+      "color": "Light Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "K4",
+      "partNum": "2444",
+      "color": "Red",
+      "qty": 3
+    },
+    {
+      "drawerId": "K4",
+      "partNum": "2444",
+      "color": "White",
+      "qty": 8
+    },
+    {
+      "drawerId": "K4",
+      "partNum": "2444",
+      "color": "Yellow",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -606819,6 +606861,41 @@
       "d": "Technic Axle and Pin Connector Perpendicular",
       "e": "4173670",
       "u": 1793689127665
+    },
+    "2444|blue": {
+      "p": "2444",
+      "c": "Blue",
+      "d": "Plate Special 2 x 2 with 1 Pin Hole [Split Underside Ribs]",
+      "e": "244423",
+      "u": 1793689931290
+    },
+    "2444|dark bluish gray": {
+      "p": "2444",
+      "c": "Dark Bluish Gray",
+      "d": "Plate Special 2 x 2 with 1 Pin Hole [Split Underside Ribs]",
+      "e": "4196768",
+      "u": 1793689931290
+    },
+    "2444|light bluish gray": {
+      "p": "2444",
+      "c": "Light Bluish Gray",
+      "d": "Plate Special 2 x 2 with 1 Pin Hole [Split Underside Ribs]",
+      "e": "2444194",
+      "u": 1793689931290
+    },
+    "2444|red": {
+      "p": "2444",
+      "c": "Red",
+      "d": "Plate Special 2 x 2 with 1 Pin Hole [Split Underside Ribs]",
+      "e": "244421",
+      "u": 1793689931290
+    },
+    "2444|yellow": {
+      "p": "2444",
+      "c": "Yellow",
+      "d": "Plate Special 2 x 2 with 1 Pin Hole [Split Underside Ribs]",
+      "e": "244424",
+      "u": 1793689931290
     }
   },
   "partKinds": {
@@ -611893,7 +611970,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T07:08:20.399Z"
+      "at": "2026-11-03T07:12:14.120Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -611917,7 +611994,7 @@
       "bags": "2026-11-03T07:05:17.671Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T07:08:20.399Z",
+    "savedAt": "2026-11-03T07:12:14.120Z",
     "appVersion": "2026.11.02.1"
   }
 }
