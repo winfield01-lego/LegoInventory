@@ -457671,7 +457671,7 @@
       "label": "R10",
       "notes": "Plate 4 x 10 and 4 x 12",
       "group": "R",
-      "lastEdited": "2026-11-03T04:12:40.081Z"
+      "lastEdited": "2026-11-03T04:13:04.965Z"
     },
     {
       "id": "S1",
@@ -486170,7 +486170,7 @@
       "drawerId": "R10",
       "partNum": "3030",
       "color": "Dark Tan",
-      "qty": 1
+      "qty": 2
     },
     {
       "drawerId": "R10",
@@ -486248,6 +486248,13 @@
       "color": "White",
       "elementId": "302901",
       "qty": 4
+    },
+    {
+      "drawerId": "R10",
+      "partNum": "3029",
+      "color": "Dark Azure",
+      "elementId": "6227258",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -486660,6 +486667,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw069wxi_zj37u",
+      "label": "Ebay Bulk Boxes (batch 27)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 27,
+      "timestamp": "2026-11-03T04:13:05.142Z",
+      "items": [
+        {
+          "partNum": "3030",
+          "color": "Dark Tan",
+          "desc": "Plate 4 x 10",
+          "elementId": "6001001",
+          "qty": 1,
+          "drawerId": "R10",
+          "drawerLabel": "R10"
+        },
+        {
+          "partNum": "3029",
+          "color": "Dark Azure",
+          "desc": "Plate 4 x 12",
+          "elementId": "6227258",
+          "qty": 1,
+          "drawerId": "R10",
+          "drawerLabel": "R10"
+        }
+      ]
+    },
     {
       "id": "bag_mw05ywjk_4tkms",
       "label": "Ebay Bulk Boxes (batch 26)",
@@ -506002,36 +506037,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "3030",
-          "color": "Dark Tan",
-          "desc": "Plate 4 x 10",
-          "elementId": "6001001",
-          "qty": 1,
-          "drawerId": "R10",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3029",
-          "color": "Dark Azure",
-          "desc": "Plate 4 x 12",
-          "elementId": "6227258",
-          "qty": 1,
-          "drawerId": "R10",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": true
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T04:13:00.213Z",
+      "savedAt": "2026-11-03T04:13:05.142Z",
       "moved": {
-        "batches": 26,
-        "pieces": 1498,
-        "last": "2026-11-03T04:04:31.424Z"
+        "batches": 27,
+        "pieces": 1500,
+        "last": "2026-11-03T04:13:05.142Z"
       }
     },
     {
@@ -539855,9 +539868,12 @@
       "c": "Dark Azure",
       "d": "Plate 4 x 12",
       "e": "6343650",
-      "u": 1791916924851,
+      "u": 1793679186343,
       "at": 1791654319350,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6227258.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6227258.jpg",
+      "ea": [
+        "6227258"
+      ]
     },
     "3032|dark azure": {
       "p": "3032",
@@ -607927,7 +607943,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:13:04.238Z"
+      "at": "2026-11-03T04:13:13.150Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -607948,10 +607964,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T04:13:00.213Z",
+      "bags": "2026-11-03T04:13:05.142Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:13:04.238Z",
+    "savedAt": "2026-11-03T04:13:13.150Z",
     "appVersion": "2026.11.02.1"
   }
 }
