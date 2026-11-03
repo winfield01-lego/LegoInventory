@@ -457671,7 +457671,7 @@
       "label": "R10",
       "notes": "Plate 4 x 10 and 4 x 12",
       "group": "R",
-      "lastEdited": "2026-11-03T04:11:02.032Z"
+      "lastEdited": "2026-11-03T04:12:40.081Z"
     },
     {
       "id": "S1",
@@ -486196,6 +486196,58 @@
       "color": "White",
       "elementId": "303001",
       "qty": 1
+    },
+    {
+      "drawerId": "R10",
+      "partNum": "3029",
+      "color": "Black",
+      "qty": 12
+    },
+    {
+      "drawerId": "R10",
+      "partNum": "3029",
+      "color": "Blue",
+      "elementId": "302923",
+      "qty": 1
+    },
+    {
+      "drawerId": "R10",
+      "partNum": "3029",
+      "color": "Dark Bluish Gray",
+      "qty": 11
+    },
+    {
+      "drawerId": "R10",
+      "partNum": "3029",
+      "color": "Green",
+      "elementId": "302928",
+      "qty": 1
+    },
+    {
+      "drawerId": "R10",
+      "partNum": "3029",
+      "color": "Light Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "R10",
+      "partNum": "3029",
+      "color": "Lime",
+      "qty": 1
+    },
+    {
+      "drawerId": "R10",
+      "partNum": "3029",
+      "color": "Red",
+      "elementId": "302921",
+      "qty": 3
+    },
+    {
+      "drawerId": "R10",
+      "partNum": "3029",
+      "color": "White",
+      "elementId": "302901",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -509231,7 +509283,10 @@
       "c": "Blue",
       "d": "Plate 4 x 12",
       "e": "4528850",
-      "u": 1791916924851
+      "u": 1793679161284,
+      "ea": [
+        "302923"
+      ]
     },
     "93549pat0001|trans clear": {
       "p": "93549pat0001",
@@ -515654,9 +515709,12 @@
       "c": "White",
       "d": "Plate 4 x 12",
       "e": "4168072",
-      "u": 1791916924851,
+      "u": 1793679161284,
       "at": 1791732234165,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/302901.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/302901.jpg",
+      "ea": [
+        "302901"
+      ]
     },
     "3031|light bluish gray": {
       "p": "3031",
@@ -534639,9 +534697,12 @@
       "c": "Green",
       "d": "Plate 4 x 12",
       "e": "4279059",
-      "u": 1791916924851,
+      "u": 1793679161284,
       "at": 1791846557290,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/302928.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/302928.jpg",
+      "ea": [
+        "302928"
+      ]
     },
     "18671|light bluish gray": {
       "p": "18671",
@@ -549455,9 +549516,12 @@
       "c": "Red",
       "d": "Plate 4 x 12",
       "e": "4514717",
-      "u": 1791916924851,
+      "u": 1793679161284,
       "at": 1791673667179,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/302921.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/302921.jpg",
+      "ea": [
+        "302921"
+      ]
     },
     "4510|red": {
       "p": "4510",
@@ -602782,6 +602846,13 @@
       "d": "Plate 4 x 10",
       "e": "6112967",
       "u": 1793679063234
+    },
+    "3029|lime": {
+      "p": "3029",
+      "c": "Lime",
+      "d": "Plate 4 x 12",
+      "e": "6112968",
+      "u": 1793679161284
     }
   },
   "partKinds": {
@@ -607856,7 +607927,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:11:07.331Z"
+      "at": "2026-11-03T04:12:45.379Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -607880,7 +607951,7 @@
       "bags": "2026-11-03T04:04:31.424Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:11:07.331Z",
+    "savedAt": "2026-11-03T04:12:45.379Z",
     "appVersion": "2026.11.02.1"
   }
 }
