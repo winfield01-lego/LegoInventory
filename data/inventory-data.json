@@ -455874,7 +455874,7 @@
       "label": "K6",
       "notes": "1 x 2 Plate - Pin Hole on Top",
       "group": "K",
-      "lastEdited": "2026-11-03T02:53:55.118Z"
+      "lastEdited": "2026-11-03T02:56:55.891Z"
     },
     {
       "id": "K7",
@@ -485440,6 +485440,54 @@
       "partNum": "30033",
       "color": "Dark Bluish Gray",
       "qty": 2
+    },
+    {
+      "drawerId": "K6",
+      "partNum": "11458",
+      "color": "Black",
+      "qty": 14
+    },
+    {
+      "drawerId": "K6",
+      "partNum": "11458",
+      "color": "Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "K6",
+      "partNum": "11458",
+      "color": "Dark Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "K6",
+      "partNum": "11458",
+      "color": "Dark Bluish Gray",
+      "qty": 43
+    },
+    {
+      "drawerId": "K6",
+      "partNum": "11458",
+      "color": "Light Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "K6",
+      "partNum": "11458",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "K6",
+      "partNum": "11458",
+      "color": "White",
+      "qty": 22
+    },
+    {
+      "drawerId": "K6",
+      "partNum": "11458",
+      "color": "Yellow",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -504551,10 +504599,10 @@
           "desc": "Plate Special 2 x 2 with Bar Frame Octagonal",
           "elementId": "4631264",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "F34",
           "matchCount": 0,
-          "suggested": false,
-          "sel": false
+          "suggested": true,
+          "sel": true
         },
         {
           "partNum": "3958",
@@ -504738,10 +504786,10 @@
           "desc": "Plate Special 1 x 2 with Pin Hole on Top",
           "elementId": "6019987",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "K6",
           "matchCount": 0,
           "suggested": false,
-          "sel": false
+          "sel": true
         },
         {
           "partNum": "11458",
@@ -504749,10 +504797,10 @@
           "desc": "Plate Special 1 x 2 with Pin Hole on Top",
           "elementId": "6099736",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "K6",
           "matchCount": 0,
-          "suggested": false,
-          "sel": false
+          "suggested": true,
+          "sel": true
         },
         {
           "partNum": "11458",
@@ -504760,10 +504808,10 @@
           "desc": "Plate Special 1 x 2 with Pin Hole on Top",
           "elementId": "6057414",
           "qty": 2,
-          "drawerId": "",
+          "drawerId": "K6",
           "matchCount": 0,
           "suggested": false,
-          "sel": false
+          "sel": true
         },
         {
           "partNum": "6536",
@@ -505108,7 +505156,7 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-02T17:36:05.456Z",
+      "savedAt": "2026-11-03T02:57:02.793Z",
       "moved": {
         "batches": 17,
         "pieces": 1477,
@@ -601605,6 +601653,13 @@
       "d": "Plate Special 2 x 2 with Bar Frame Octagonal",
       "e": "4211025",
       "u": 1793674375599
+    },
+    "11458|dark blue": {
+      "p": "11458",
+      "c": "Dark Blue",
+      "d": "Plate Special 1 x 2 with Pin Hole on Top",
+      "e": "6223838",
+      "u": 1793674617093
     }
   },
   "partKinds": {
@@ -606679,7 +606734,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T02:53:59.161Z"
+      "at": "2026-11-03T02:57:06.822Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -606700,10 +606755,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-02T17:36:05.457Z",
+      "bags": "2026-11-03T02:57:02.793Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T02:53:59.161Z",
+    "savedAt": "2026-11-03T02:57:06.822Z",
     "appVersion": "2026.11.02.1"
   }
 }
