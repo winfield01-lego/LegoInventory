@@ -457630,7 +457630,7 @@
       "label": "R4",
       "notes": "Panels, 1 x 2 x 3, 1 x 4 x 2, and 1 x 4 x 3",
       "group": "R",
-      "lastEdited": "2026-11-03T05:12:28.915Z"
+      "lastEdited": "2026-11-03T05:12:48.297Z"
     },
     {
       "id": "R5",
@@ -457714,7 +457714,7 @@
       "label": "S6",
       "notes": "1 x 1 x 3 Brick",
       "group": "S",
-      "lastEdited": "2026-11-03T05:05:46.975Z"
+      "lastEdited": "2026-11-03T05:12:48.298Z"
     },
     {
       "id": "S7",
@@ -486966,7 +486966,7 @@
       "drawerId": "S6",
       "partNum": "14716",
       "color": "Light Bluish Gray",
-      "qty": 10
+      "qty": 11
     },
     {
       "drawerId": "S6",
@@ -487165,14 +487165,14 @@
       "drawerId": "R4",
       "partNum": "14718",
       "color": "Red",
-      "qty": 1
+      "qty": 2
     },
     {
       "drawerId": "R4",
       "partNum": "60581",
       "color": "Black",
       "elementId": "421526",
-      "qty": 2
+      "qty": 3
     },
     {
       "drawerId": "R4",
@@ -487622,6 +487622,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw08epus_k5w5t",
+      "label": "Ebay Bulk Boxes (batch 34)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 34,
+      "timestamp": "2026-11-03T05:12:48.484Z",
+      "items": [
+        {
+          "partNum": "14718",
+          "color": "Red",
+          "desc": "Panel 1 x 4 x 2 with Side Supports - Hollow Studs",
+          "elementId": "6049737",
+          "qty": 1,
+          "drawerId": "R4",
+          "drawerLabel": "R4"
+        },
+        {
+          "partNum": "60581",
+          "color": "Black",
+          "desc": "Panel 1 x 4 x 3 [Side Supports / Hollow Studs]",
+          "elementId": "421526",
+          "qty": 1,
+          "drawerId": "R4",
+          "drawerLabel": "R4"
+        },
+        {
+          "partNum": "14716",
+          "color": "Light Bluish Gray",
+          "desc": "Brick 1 x 1 x 3",
+          "elementId": "6061702",
+          "qty": 1,
+          "drawerId": "S6",
+          "drawerLabel": "S6"
+        }
+      ]
+    },
     {
       "id": "bag_mw07j7t3_yz1o4",
       "label": "Ebay Bulk Boxes (batch 33)",
@@ -506930,39 +506967,6 @@
           "sel": false
         },
         {
-          "partNum": "14718",
-          "color": "Red",
-          "desc": "Panel 1 x 4 x 2 with Side Supports - Hollow Studs",
-          "elementId": "6049737",
-          "qty": 1,
-          "drawerId": "R4",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "60581",
-          "color": "Black",
-          "desc": "Panel 1 x 4 x 3 [Side Supports / Hollow Studs]",
-          "elementId": "421526",
-          "qty": 1,
-          "drawerId": "R4",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "14716",
-          "color": "Light Bluish Gray",
-          "desc": "Brick 1 x 1 x 3",
-          "elementId": "6061702",
-          "qty": 1,
-          "drawerId": "S6",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "60583b",
           "color": "Red",
           "desc": "Brick Special 1 x 1 x 3 with 2 Clips Vertical [Hollow Stud, Open O Clips]",
@@ -507041,11 +507045,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T05:12:36.924Z",
+      "savedAt": "2026-11-03T05:12:48.483Z",
       "moved": {
-        "batches": 33,
-        "pieces": 1508,
-        "last": "2026-11-03T04:48:18.759Z"
+        "batches": 34,
+        "pieces": 1511,
+        "last": "2026-11-03T05:12:48.484Z"
       }
     },
     {
@@ -609439,7 +609443,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:12:40.954Z"
+      "at": "2026-11-03T05:12:52.514Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -609460,10 +609464,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T05:12:36.924Z",
+      "bags": "2026-11-03T05:12:48.484Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:12:40.954Z",
+    "savedAt": "2026-11-03T05:12:52.514Z",
     "appVersion": "2026.11.02.1"
   }
 }
