@@ -457714,7 +457714,7 @@
       "label": "S6",
       "notes": "1 x 1 x 3 Brick",
       "group": "S",
-      "lastEdited": "2026-11-03T04:58:36.964Z"
+      "lastEdited": "2026-11-03T05:00:40.456Z"
     },
     {
       "id": "S7",
@@ -486937,6 +486937,60 @@
       "partNum": "3041",
       "color": "Sand Blue",
       "qty": 4
+    },
+    {
+      "drawerId": "S6",
+      "partNum": "14716",
+      "color": "Black",
+      "qty": 6
+    },
+    {
+      "drawerId": "S6",
+      "partNum": "14716",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "S6",
+      "partNum": "14716",
+      "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "S6",
+      "partNum": "14716",
+      "color": "Dark Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "S6",
+      "partNum": "14716",
+      "color": "Light Bluish Gray",
+      "qty": 10
+    },
+    {
+      "drawerId": "S6",
+      "partNum": "14716",
+      "color": "Medium Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "S6",
+      "partNum": "14716",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "S6",
+      "partNum": "14716",
+      "color": "Tan",
+      "qty": 5
+    },
+    {
+      "drawerId": "S6",
+      "partNum": "14716",
+      "color": "White",
+      "qty": 25
     }
   ],
   "mocLocations": {
@@ -603932,6 +603986,34 @@
       "d": "Brick Sloped 45° 2 x 4 Double",
       "e": "6395798",
       "u": 1793681837174
+    },
+    "14716|dark blue": {
+      "p": "14716",
+      "c": "Dark Blue",
+      "d": "Brick 1 x 1 x 3",
+      "e": "6345563",
+      "u": 1793682041658
+    },
+    "14716|dark orange": {
+      "p": "14716",
+      "c": "Dark Orange",
+      "d": "Brick 1 x 1 x 3",
+      "e": "6397875",
+      "u": 1793682041658
+    },
+    "14716|medium blue": {
+      "p": "14716",
+      "c": "Medium Blue",
+      "d": "Brick 1 x 1 x 3",
+      "e": "6186136",
+      "u": 1793682041658
+    },
+    "14716|red": {
+      "p": "14716",
+      "c": "Red",
+      "d": "Brick 1 x 1 x 3",
+      "e": "6061700",
+      "u": 1793682041658
     }
   },
   "partKinds": {
@@ -609006,7 +609088,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:58:40.991Z"
+      "at": "2026-11-03T05:00:44.492Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -609030,7 +609112,7 @@
       "bags": "2026-11-03T04:48:18.759Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T04:58:40.991Z",
+    "savedAt": "2026-11-03T05:00:44.492Z",
     "appVersion": "2026.11.02.1"
   }
 }
