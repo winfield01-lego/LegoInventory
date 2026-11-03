@@ -456236,7 +456236,7 @@
       "label": "L15",
       "notes": "Double Slope - 2 x 1, 2 x 2, 2 x 4",
       "group": "L",
-      "lastEdited": "2026-11-03T04:56:52.089Z"
+      "lastEdited": "2026-11-03T04:57:15.972Z"
     },
     {
       "id": "L16",
@@ -486918,6 +486918,24 @@
       "partNum": "95270",
       "color": "Dark Tan",
       "qty": 1
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "3041",
+      "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "3041",
+      "color": "Red",
+      "qty": 3
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "3041",
+      "color": "Sand Blue",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -603892,6 +603910,27 @@
       "d": "Brick Sloped 45° 2 x 2 Double",
       "e": "304321",
       "u": 1793681813290
+    },
+    "3041|dark blue": {
+      "p": "3041",
+      "c": "Dark Blue",
+      "d": "Brick Sloped 45° 2 x 4 Double",
+      "e": "4579236",
+      "u": 1793681837174
+    },
+    "3041|red": {
+      "p": "3041",
+      "c": "Red",
+      "d": "Brick Sloped 45° 2 x 4 Double",
+      "e": "304121",
+      "u": 1793681837174
+    },
+    "3041|sand blue": {
+      "p": "3041",
+      "c": "Sand Blue",
+      "d": "Brick Sloped 45° 2 x 4 Double",
+      "e": "6395798",
+      "u": 1793681837174
     }
   },
   "partKinds": {
@@ -608966,7 +609005,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:57:07.402Z"
+      "at": "2026-11-03T04:57:20.002Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -608990,7 +609029,7 @@
       "bags": "2026-11-03T04:48:18.759Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T04:57:07.402Z",
+    "savedAt": "2026-11-03T04:57:20.002Z",
     "appVersion": "2026.11.02.1"
   }
 }
