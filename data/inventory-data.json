@@ -457386,7 +457386,7 @@
       "label": "O47",
       "notes": "1 x 2 Plate with Wheel Pin and 2 x 4 Plate - 2 Pin Holes on Bottom",
       "group": "O",
-      "lastEdited": "2026-11-03T05:28:21.346Z"
+      "lastEdited": "2026-11-03T05:28:38.212Z"
     },
     {
       "id": "O48",
@@ -487412,6 +487412,12 @@
       "partNum": "21445",
       "color": "Black",
       "qty": 4
+    },
+    {
+      "drawerId": "O47",
+      "partNum": "26599",
+      "color": "Light Bluish Gray",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -507130,10 +507136,10 @@
           "desc": "Plate Special 2 x 4 with 2 Pin Holes",
           "elementId": "6194233",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "O47",
           "matchCount": 0,
-          "suggested": false,
-          "sel": false
+          "suggested": true,
+          "sel": true
         },
         {
           "partNum": "22385",
@@ -507247,7 +507253,7 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T05:12:48.483Z",
+      "savedAt": "2026-11-03T05:28:44.959Z",
       "moved": {
         "batches": 34,
         "pieces": 1511,
@@ -609788,7 +609794,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:28:25.376Z"
+      "at": "2026-11-03T05:28:49.000Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -609809,10 +609815,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T05:12:48.484Z",
+      "bags": "2026-11-03T05:28:44.959Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:28:25.376Z",
+    "savedAt": "2026-11-03T05:28:49.000Z",
     "appVersion": "2026.11.02.1"
   }
 }
