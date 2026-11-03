@@ -457727,7 +457727,7 @@
       "label": "S8",
       "notes": "3 x 1 Inverted Slope",
       "group": "S",
-      "lastEdited": "2026-11-03T04:52:03.321Z"
+      "lastEdited": "2026-11-03T04:54:02.506Z"
     },
     {
       "id": "S9",
@@ -486831,6 +486831,56 @@
       "color": "White",
       "elementId": "6046905",
       "qty": 24
+    },
+    {
+      "drawerId": "S8",
+      "partNum": "4287c",
+      "color": "Black",
+      "qty": 15
+    },
+    {
+      "drawerId": "S8",
+      "partNum": "4287c",
+      "color": "Blue",
+      "elementId": "428723",
+      "qty": 2
+    },
+    {
+      "drawerId": "S8",
+      "partNum": "4287c",
+      "color": "Dark Bluish Gray",
+      "qty": 12
+    },
+    {
+      "drawerId": "S8",
+      "partNum": "4287c",
+      "color": "Green",
+      "elementId": "4240114",
+      "qty": 2
+    },
+    {
+      "drawerId": "S8",
+      "partNum": "4287c",
+      "color": "Light Bluish Gray",
+      "qty": 34
+    },
+    {
+      "drawerId": "S8",
+      "partNum": "4287c",
+      "color": "Red",
+      "qty": 4
+    },
+    {
+      "drawerId": "S8",
+      "partNum": "4287c",
+      "color": "Yellow",
+      "qty": 5
+    },
+    {
+      "drawerId": "S8",
+      "partNum": "4287c",
+      "color": "White",
+      "qty": 22
     }
   ],
   "mocLocations": {
@@ -508289,9 +508339,12 @@
       "c": "Blue",
       "d": "Brick Sloped Inverted 33° 3 x 1 with Internal Stopper and No Front Stud Connection",
       "e": "6372038",
-      "u": 1791916924851,
+      "u": 1793681643708,
       "at": 1792904691991,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/428723.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/428723.jpg",
+      "ea": [
+        "428723"
+      ]
     },
     "3665|light bluish gray": {
       "p": "3665",
@@ -532144,8 +532197,11 @@
       "c": "Green",
       "d": "Brick Sloped Inverted 33° 3 x 1 with Internal Stopper and No Front Stud Connection",
       "e": "6037389",
-      "u": 1791916924851,
-      "at": 1791660732205
+      "u": 1793681643708,
+      "at": 1791660732205,
+      "ea": [
+        "4240114"
+      ]
     },
     "3665|green": {
       "p": "3665",
@@ -603761,6 +603817,20 @@
       "d": "Plate Special 1 x 1 with Vertical Tooth",
       "e": "6143058",
       "u": 1793681271057
+    },
+    "4287c|red": {
+      "p": "4287c",
+      "c": "Red",
+      "d": "Brick Sloped Inverted 33° 3 x 1 with Internal Stopper and No Front Stud Connection",
+      "e": "428721",
+      "u": 1793681643708
+    },
+    "4287c|yellow": {
+      "p": "4287c",
+      "c": "Yellow",
+      "d": "Brick Sloped Inverted 33° 3 x 1 with Internal Stopper and No Front Stud Connection",
+      "e": "428724",
+      "u": 1793681643708
     }
   },
   "partKinds": {
@@ -608835,7 +608905,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:52:07.355Z"
+      "at": "2026-11-03T04:54:07.798Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -608859,7 +608929,7 @@
       "bags": "2026-11-03T04:48:18.759Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T04:52:07.355Z",
+    "savedAt": "2026-11-03T04:54:07.798Z",
     "appVersion": "2026.11.02.1"
   }
 }
