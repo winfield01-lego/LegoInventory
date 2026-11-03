@@ -454660,7 +454660,7 @@
       "label": "G24",
       "notes": "1 x 2 x 1 2/3 - Studs on 2 Sides",
       "group": "G",
-      "lastEdited": "2026-11-03T05:17:04.913Z"
+      "lastEdited": "2026-11-03T05:17:50.979Z"
     },
     {
       "id": "G25",
@@ -487211,6 +487211,26 @@
       "color": "White",
       "elementId": "4105202",
       "qty": 1
+    },
+    {
+      "drawerId": "G24",
+      "partNum": "80796",
+      "color": "Dark Bluish Gray",
+      "elementId": "6430926",
+      "qty": 1
+    },
+    {
+      "drawerId": "G24",
+      "partNum": "80796",
+      "color": "Trans-Clear",
+      "elementId": "6411394",
+      "qty": 30
+    },
+    {
+      "drawerId": "G24",
+      "partNum": "80796",
+      "color": "White",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -513397,9 +513417,12 @@
       "c": "Dark Bluish Gray",
       "d": "Brick Special 1 x 2 x 1 2/3 with 8 Studs on 2 Sides",
       "e": "6514456",
-      "u": 1791916924851,
+      "u": 1793683072182,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6430926.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6430926.jpg",
+      "ea": [
+        "6430926"
+      ]
     },
     "80796|white": {
       "p": "80796",
@@ -524611,9 +524634,12 @@
       "c": "Trans-Clear",
       "d": "Brick Special 1 x 2 x 1 2/3 with 8 Studs on 2 Sides",
       "e": "6514455",
-      "u": 1791916924851,
+      "u": 1793683072182,
       "at": 1791660084431,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6411394.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6411394.jpg",
+      "ea": [
+        "6411394"
+      ]
     },
     "67329|black": {
       "p": "67329",
@@ -609444,7 +609470,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:17:08.954Z"
+      "at": "2026-11-03T05:17:56.269Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -609468,7 +609494,7 @@
       "bags": "2026-11-03T05:12:48.484Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:17:08.954Z",
+    "savedAt": "2026-11-03T05:17:56.269Z",
     "appVersion": "2026.11.02.1"
   }
 }
