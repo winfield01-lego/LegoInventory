@@ -455893,7 +455893,7 @@
       "label": "K8",
       "notes": "Plates - 6 x 10, 8 x 8, 6 x 24",
       "group": "K",
-      "lastEdited": "2026-11-03T03:38:56.383Z"
+      "lastEdited": "2026-11-03T03:41:54.226Z"
     },
     {
       "id": "K9",
@@ -485830,6 +485830,64 @@
       "partNum": "3960",
       "color": "White",
       "qty": 8
+    },
+    {
+      "drawerId": "K8",
+      "partNum": "3033",
+      "color": "Black",
+      "qty": 10
+    },
+    {
+      "drawerId": "K8",
+      "partNum": "3033",
+      "color": "Blue",
+      "elementId": "303323",
+      "qty": 1
+    },
+    {
+      "drawerId": "K8",
+      "partNum": "3033",
+      "color": "Dark Bluish Gray",
+      "qty": 5
+    },
+    {
+      "drawerId": "K8",
+      "partNum": "3033",
+      "color": "Dark Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "K8",
+      "partNum": "3033",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "K8",
+      "partNum": "3033",
+      "color": "Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "K8",
+      "partNum": "3033",
+      "color": "Red",
+      "elementId": "303321",
+      "qty": 2
+    },
+    {
+      "drawerId": "K8",
+      "partNum": "3033",
+      "color": "White",
+      "elementId": "303301",
+      "qty": 1
+    },
+    {
+      "drawerId": "K8",
+      "partNum": "3033",
+      "color": "Tan",
+      "elementId": "4114310",
+      "qty": 6
     }
   ],
   "mocLocations": {
@@ -508827,8 +508885,11 @@
       "c": "Blue",
       "d": "Plate 6 x 10",
       "e": "6339304",
-      "u": 1791916924851,
-      "at": 1791671921036
+      "u": 1793677315429,
+      "at": 1791671921036,
+      "ea": [
+        "303323"
+      ]
     },
     "93221pr0003|light bluish gray": {
       "p": "93221pr0003",
@@ -555352,9 +555413,12 @@
       "c": "White",
       "d": "Plate 6 x 10",
       "e": "4528341",
-      "u": 1791916924851,
+      "u": 1793677315429,
       "at": 1791654530095,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/303301.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/303301.jpg",
+      "ea": [
+        "303301"
+      ]
     },
     "11399|white": {
       "p": "11399",
@@ -556980,9 +557044,12 @@
       "c": "Tan",
       "d": "Plate 6 x 10",
       "e": "4624185",
-      "u": 1791916924851,
+      "u": 1793677315429,
       "at": 1791654759952,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4114310.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4114310.jpg",
+      "ea": [
+        "4114310"
+      ]
     },
     "41539|tan": {
       "p": "41539",
@@ -582727,9 +582794,12 @@
       "c": "Red",
       "d": "Plate 6 x 10",
       "e": "6509008",
-      "u": 1791916924851,
+      "u": 1793677315429,
       "at": 1791732234165,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/303321.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/303321.jpg",
+      "ea": [
+        "303321"
+      ]
     },
     "3028|red": {
       "p": "3028",
@@ -602200,6 +602270,13 @@
       "d": "Dish 4 x 4 Inverted [Radar]",
       "e": "4260191",
       "u": 1793676962945
+    },
+    "3033|orange": {
+      "p": "3033",
+      "c": "Orange",
+      "d": "Plate 6 x 10",
+      "e": "4505159",
+      "u": 1793677315429
     }
   },
   "partKinds": {
@@ -607274,7 +607351,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T03:39:00.427Z"
+      "at": "2026-11-03T03:41:59.512Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -607298,7 +607375,7 @@
       "bags": "2026-11-03T03:36:57.902Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T03:39:00.427Z",
+    "savedAt": "2026-11-03T03:41:59.511Z",
     "appVersion": "2026.11.02.1"
   }
 }
