@@ -455863,7 +455863,7 @@
       "label": "K2",
       "notes": "2L and 3L Axle and Pinhole",
       "group": "K",
-      "lastEdited": "2026-11-03T06:58:46.463Z"
+      "lastEdited": "2026-11-03T06:59:22.411Z"
     },
     {
       "id": "K3",
@@ -488518,7 +488518,7 @@
       "partNum": "42003",
       "color": "Black",
       "elementId": "4173970",
-      "qty": 1
+      "qty": 2
     },
     {
       "drawerId": "K2",
@@ -488572,7 +488572,7 @@
       "partNum": "6536",
       "color": "Black",
       "elementId": "4173668",
-      "qty": 22
+      "qty": 23
     },
     {
       "drawerId": "K2",
@@ -488586,7 +488586,7 @@
       "partNum": "6536",
       "color": "Dark Bluish Gray",
       "elementId": "4210851",
-      "qty": 13
+      "qty": 14
     },
     {
       "drawerId": "K2",
@@ -489026,6 +489026,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw0c7rl2_w0jjs",
+      "label": "Ebay Bulk Boxes (batch 42)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 42,
+      "timestamp": "2026-11-03T06:59:22.598Z",
+      "items": [
+        {
+          "partNum": "6536",
+          "color": "Black",
+          "desc": "Technic Axle and Pin Connector Perpendicular",
+          "elementId": "4173668",
+          "qty": 1,
+          "drawerId": "K2",
+          "drawerLabel": "K2"
+        },
+        {
+          "partNum": "6536",
+          "color": "Dark Bluish Gray",
+          "desc": "Technic Axle and Pin Connector Perpendicular",
+          "elementId": "4210851",
+          "qty": 1,
+          "drawerId": "K2",
+          "drawerLabel": "K2"
+        },
+        {
+          "partNum": "42003",
+          "color": "Black",
+          "desc": "Technic Axle and Pin Connector Perpendicular 3L with 2 Pin Holes",
+          "elementId": "4173970",
+          "qty": 1,
+          "drawerId": "K2",
+          "drawerLabel": "K2"
+        }
+      ]
+    },
     {
       "id": "bag_mw0bxyi7_dgfnr",
       "label": "Ebay Bulk Boxes (batch 41)",
@@ -508417,39 +508454,6 @@
           "sel": false
         },
         {
-          "partNum": "6536",
-          "color": "Black",
-          "desc": "Technic Axle and Pin Connector Perpendicular",
-          "elementId": "4173668",
-          "qty": 1,
-          "drawerId": "K2",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "6536",
-          "color": "Dark Bluish Gray",
-          "desc": "Technic Axle and Pin Connector Perpendicular",
-          "elementId": "4210851",
-          "qty": 1,
-          "drawerId": "K2",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "42003",
-          "color": "Black",
-          "desc": "Technic Axle and Pin Connector Perpendicular 3L with 2 Pin Holes",
-          "elementId": "4173970",
-          "qty": 1,
-          "drawerId": "K2",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "22385",
           "color": "Dark Blue",
           "desc": "Tile Special 2 x 3 Pentagonal",
@@ -508506,11 +508510,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T06:59:13.173Z",
+      "savedAt": "2026-11-03T06:59:22.598Z",
       "moved": {
-        "batches": 41,
-        "pieces": 1523,
-        "last": "2026-11-03T06:51:45.007Z"
+        "batches": 42,
+        "pieces": 1526,
+        "last": "2026-11-03T06:59:22.598Z"
       }
     },
     {
@@ -611801,7 +611805,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T06:59:17.217Z"
+      "at": "2026-11-03T06:59:26.626Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -611822,10 +611826,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T06:59:13.173Z",
+      "bags": "2026-11-03T06:59:22.598Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T06:59:17.217Z",
+    "savedAt": "2026-11-03T06:59:26.626Z",
     "appVersion": "2026.11.02.1"
   }
 }
