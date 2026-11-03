@@ -457176,7 +457176,7 @@
       "label": "O17",
       "notes": "4 x 2 Wedge Twist - Left and Right",
       "group": "O",
-      "lastEdited": "2026-11-03T05:19:22.845Z"
+      "lastEdited": "2026-11-03T05:19:49.712Z"
     },
     {
       "id": "O18",
@@ -487244,6 +487244,31 @@
       "color": "Dark Bluish Gray",
       "elementId": "4210870",
       "qty": 1
+    },
+    {
+      "drawerId": "O17",
+      "partNum": "43720",
+      "color": "Black",
+      "qty": 2
+    },
+    {
+      "drawerId": "O17",
+      "partNum": "43720",
+      "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "O17",
+      "partNum": "43720",
+      "color": "Dark Bluish Gray",
+      "elementId": "4210871",
+      "qty": 1
+    },
+    {
+      "drawerId": "O17",
+      "partNum": "43720",
+      "color": "White",
+      "qty": 7
     }
   ],
   "mocLocations": {
@@ -524756,9 +524781,12 @@
       "c": "Dark Bluish Gray",
       "d": "Brick Wedged, Sloped 45° 4 x 2 Right",
       "e": "4298583",
-      "u": 1791916924851,
+      "u": 1793683190915,
       "at": 1791654494211,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4210871.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4210871.jpg",
+      "ea": [
+        "4210871"
+      ]
     },
     "44301b|black": {
       "p": "44301b",
@@ -604419,6 +604447,20 @@
       "d": "Brick Wedged, Sloped 45° 4 x 2 Left",
       "e": "4180518",
       "u": 1793683164047
+    },
+    "43720|black": {
+      "p": "43720",
+      "c": "Black",
+      "d": "Brick Wedged, Sloped 45° 4 x 2 Right",
+      "e": "4180526",
+      "u": 1793683190915
+    },
+    "43720|dark blue": {
+      "p": "43720",
+      "c": "Dark Blue",
+      "d": "Brick Wedged, Sloped 45° 4 x 2 Right",
+      "e": "4236810",
+      "u": 1793683190915
     }
   },
   "partKinds": {
@@ -609493,7 +609535,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:19:26.877Z"
+      "at": "2026-11-03T05:19:54.993Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -609517,7 +609559,7 @@
       "bags": "2026-11-03T05:12:48.484Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:19:26.877Z",
+    "savedAt": "2026-11-03T05:19:54.993Z",
     "appVersion": "2026.11.02.1"
   }
 }
