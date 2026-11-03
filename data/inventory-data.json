@@ -456880,7 +456880,7 @@
       "label": "N19",
       "notes": "1 x 1 Brick with horizontal and vertical clips",
       "group": "N",
-      "lastEdited": "2026-11-03T04:34:38.969Z"
+      "lastEdited": "2026-11-03T04:35:55.953Z"
     },
     {
       "id": "N20",
@@ -486577,6 +486577,69 @@
       "partNum": "60475a",
       "color": "White",
       "qty": 3
+    },
+    {
+      "drawerId": "N19",
+      "partNum": "60475b",
+      "color": "Black",
+      "elementId": "4533771",
+      "qty": 6
+    },
+    {
+      "drawerId": "N19",
+      "partNum": "60475b",
+      "color": "Blue",
+      "elementId": "6072680",
+      "qty": 12
+    },
+    {
+      "drawerId": "N19",
+      "partNum": "60475b",
+      "color": "Dark Bluish Gray",
+      "elementId": "4580437",
+      "qty": 3
+    },
+    {
+      "drawerId": "N19",
+      "partNum": "60475b",
+      "color": "Light Bluish Gray",
+      "elementId": "4533772",
+      "qty": 17
+    },
+    {
+      "drawerId": "N19",
+      "partNum": "60475b",
+      "color": "Medium Nougat",
+      "elementId": "4569385",
+      "qty": 4
+    },
+    {
+      "drawerId": "N19",
+      "partNum": "60475b",
+      "color": "Red",
+      "elementId": "6115324",
+      "qty": 1
+    },
+    {
+      "drawerId": "N19",
+      "partNum": "60475b",
+      "color": "Tan",
+      "elementId": "6136390",
+      "qty": 2
+    },
+    {
+      "drawerId": "N19",
+      "partNum": "60475b",
+      "color": "White",
+      "elementId": "4533763",
+      "qty": 6
+    },
+    {
+      "drawerId": "N19",
+      "partNum": "60475b",
+      "color": "Yellow",
+      "elementId": "4515354",
+      "qty": 7
     }
   ],
   "mocLocations": {
@@ -507625,8 +507688,11 @@
       "c": "Red",
       "d": "Brick Special 1 x 1 with Clip Vertical [Open O Clip, Hollow Stud]",
       "e": "6345429",
-      "u": 1791916924851,
-      "at": 1791656721266
+      "u": 1793680557156,
+      "at": 1791656721266,
+      "ea": [
+        "6115324"
+      ]
     },
     "87087|blue": {
       "p": "87087",
@@ -509560,7 +509626,10 @@
       "c": "Blue",
       "d": "Brick Special 1 x 1 with Clip Vertical [Open O Clip, Hollow Stud]",
       "e": "6345427",
-      "u": 1791916924851
+      "u": 1793680557156,
+      "ea": [
+        "6072680"
+      ]
     },
     "2921|light bluish gray": {
       "p": "2921",
@@ -520339,8 +520408,11 @@
       "c": "Dark Bluish Gray",
       "d": "Brick Special 1 x 1 with Clip Vertical [Open O Clip, Hollow Stud]",
       "e": "6321350",
-      "u": 1791916924851,
-      "at": 1791672975304
+      "u": 1793680557156,
+      "at": 1791672975304,
+      "ea": [
+        "4580437"
+      ]
     },
     "30292|black": {
       "p": "30292",
@@ -539196,8 +539268,11 @@
       "c": "Black",
       "d": "Brick Special 1 x 1 with Clip Vertical [Open O Clip, Hollow Stud]",
       "e": "6336977",
-      "u": 1791916924851,
-      "at": 1791654642651
+      "u": 1793680557156,
+      "at": 1791654642651,
+      "ea": [
+        "4533771"
+      ]
     },
     "106543pr0001|black": {
       "p": "106543pr0001",
@@ -540668,8 +540743,11 @@
       "c": "Medium Nougat",
       "d": "Brick Special 1 x 1 with Clip Vertical [Open O Clip, Hollow Stud]",
       "e": "6360035",
-      "u": 1791916924851,
-      "at": 1791654748438
+      "u": 1793680557156,
+      "at": 1791654748438,
+      "ea": [
+        "4569385"
+      ]
     },
     "3937|medium nougat": {
       "p": "3937",
@@ -542814,8 +542892,11 @@
       "c": "White",
       "d": "Brick Special 1 x 1 with Clip Vertical [Open O Clip, Hollow Stud]",
       "e": "6321349",
-      "u": 1791916924851,
-      "at": 1791654677272
+      "u": 1793680557156,
+      "at": 1791654677272,
+      "ea": [
+        "4533763"
+      ]
     },
     "30505|white": {
       "p": "30505",
@@ -550121,8 +550202,11 @@
       "c": "Light Bluish Gray",
       "d": "Brick Special 1 x 1 with Clip Vertical [Open O Clip, Hollow Stud]",
       "e": "6345426",
-      "u": 1791916924851,
-      "at": 1791654731050
+      "u": 1793680557156,
+      "at": 1791654731050,
+      "ea": [
+        "4533772"
+      ]
     },
     "13349|light bluish gray": {
       "p": "13349",
@@ -557860,8 +557944,11 @@
       "c": "Tan",
       "d": "Brick Special 1 x 1 with Clip Vertical [Open O Clip, Hollow Stud]",
       "e": "6360037",
-      "u": 1791916924851,
-      "at": 1791654582190
+      "u": 1793680557156,
+      "at": 1791654582190,
+      "ea": [
+        "6136390"
+      ]
     },
     "2921|tan": {
       "p": "2921",
@@ -569782,8 +569869,11 @@
       "c": "Yellow",
       "d": "Brick Special 1 x 1 with Clip Vertical [Open O Clip, Hollow Stud]",
       "e": "6336971",
-      "u": 1791916924851,
-      "at": 1791654724601
+      "u": 1793680557156,
+      "at": 1791654724601,
+      "ea": [
+        "4515354"
+      ]
     },
     "14716|black": {
       "p": "14716",
@@ -608432,7 +608522,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:34:44.261Z"
+      "at": "2026-11-03T04:35:59.990Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -608456,7 +608546,7 @@
       "bags": "2026-11-03T04:30:10.786Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:34:44.261Z",
+    "savedAt": "2026-11-03T04:35:59.990Z",
     "appVersion": "2026.11.02.1"
   }
 }
