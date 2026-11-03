@@ -456824,7 +456824,7 @@
       "label": "N11",
       "notes": "1 x 2 and 1 x 4 Plate with Bar",
       "group": "N",
-      "lastEdited": "2026-11-03T04:25:09.555Z"
+      "lastEdited": "2026-11-03T04:28:42.984Z"
     },
     {
       "id": "N12",
@@ -486442,6 +486442,55 @@
       "partNum": "30236",
       "color": "White",
       "qty": 30
+    },
+    {
+      "drawerId": "N11",
+      "partNum": "4623",
+      "color": "Black",
+      "elementId": "4597267",
+      "qty": 11
+    },
+    {
+      "drawerId": "N11",
+      "partNum": "4623",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "N11",
+      "partNum": "4623",
+      "color": "Dark Bluish Gray",
+      "qty": 8
+    },
+    {
+      "drawerId": "N11",
+      "partNum": "4623",
+      "color": "Light Bluish Gray",
+      "qty": 22
+    },
+    {
+      "drawerId": "N11",
+      "partNum": "4623",
+      "color": "Red",
+      "qty": 3
+    },
+    {
+      "drawerId": "N11",
+      "partNum": "4623",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "N11",
+      "partNum": "4623",
+      "color": "White",
+      "qty": 5
+    },
+    {
+      "drawerId": "N11",
+      "partNum": "4623",
+      "color": "Yellow",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -574549,9 +574598,12 @@
       "c": "Black",
       "d": "Plate Special 1 x 2 with Bar Up [Horizontal Arm 6mm]",
       "e": "462326",
-      "u": 1791916924851,
+      "u": 1793680124187,
       "at": 1791673667179,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4597267.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4597267.jpg",
+      "ea": [
+        "4597267"
+      ]
     },
     "2476a|black": {
       "p": "2476a",
@@ -603132,6 +603184,41 @@
       "d": "Brick Special 1 x 2 with Vertical Clip [Open O Clip]",
       "e": "4113205",
       "u": 1793679753552
+    },
+    "4623|dark bluish gray": {
+      "p": "4623",
+      "c": "Dark Bluish Gray",
+      "d": "Plate Special 1 x 2 with Bar Up [Horizontal Arm 6mm]",
+      "e": "4256447",
+      "u": 1793680124187
+    },
+    "4623|light bluish gray": {
+      "p": "4623",
+      "c": "Light Bluish Gray",
+      "d": "Plate Special 1 x 2 with Bar Up [Horizontal Arm 6mm]",
+      "e": "4211505",
+      "u": 1793680124187
+    },
+    "4623|red": {
+      "p": "4623",
+      "c": "Red",
+      "d": "Plate Special 1 x 2 with Bar Up [Horizontal Arm 6mm]",
+      "e": "462321",
+      "u": 1793680124187
+    },
+    "4623|reddish brown": {
+      "p": "4623",
+      "c": "Reddish Brown",
+      "d": "Plate Special 1 x 2 with Bar Up [Horizontal Arm 6mm]",
+      "e": "4225162",
+      "u": 1793680124187
+    },
+    "4623|yellow": {
+      "p": "4623",
+      "c": "Yellow",
+      "d": "Plate Special 1 x 2 with Bar Up [Horizontal Arm 6mm]",
+      "e": "4497185",
+      "u": 1793680124187
     }
   },
   "partKinds": {
@@ -608206,7 +608293,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:25:13.596Z"
+      "at": "2026-11-03T04:28:48.267Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -608230,7 +608317,7 @@
       "bags": "2026-11-03T04:24:24.913Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:25:13.596Z",
+    "savedAt": "2026-11-03T04:28:48.267Z",
     "appVersion": "2026.11.02.1"
   }
 }
