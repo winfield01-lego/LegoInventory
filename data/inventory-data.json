@@ -457480,7 +457480,7 @@
       "label": "O60",
       "notes": "3 x 1 Inverted Slope",
       "group": "O",
-      "lastEdited": "2026-11-03T05:41:56.799Z"
+      "lastEdited": "2026-11-03T05:43:35.440Z"
     },
     {
       "id": "O61",
@@ -487632,6 +487632,37 @@
       "color": "White",
       "elementId": "6254602",
       "qty": 2
+    },
+    {
+      "drawerId": "O60",
+      "partNum": "2341",
+      "color": "Dark Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "O60",
+      "partNum": "2341",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "O60",
+      "partNum": "2341",
+      "color": "Light Bluish Gray",
+      "qty": 7
+    },
+    {
+      "drawerId": "O60",
+      "partNum": "2341",
+      "color": "Red",
+      "elementId": "234121",
+      "qty": 1
+    },
+    {
+      "drawerId": "O60",
+      "partNum": "2341",
+      "color": "White",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -589808,9 +589839,12 @@
       "c": "Red",
       "d": "Brick Sloped Inverted 45° 3 x 1 Double with 2 Completely Open Studs",
       "e": "4161065",
-      "u": 1791916924851,
+      "u": 1793684616644,
       "at": 1791732141038,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/234121.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/234121.jpg",
+      "ea": [
+        "234121"
+      ]
     },
     "4214|red": {
       "p": "4214",
@@ -605104,6 +605138,27 @@
       "d": "Brick Wedged, Sloped 45° 3 x 3 Right",
       "e": "6440474",
       "u": 1793684438591
+    },
+    "2341|dark red": {
+      "p": "2341",
+      "c": "Dark Red",
+      "d": "Brick Sloped Inverted 45° 3 x 1 Double with 2 Completely Open Studs",
+      "e": "4261482",
+      "u": 1793684616644
+    },
+    "2341|dark bluish gray": {
+      "p": "2341",
+      "c": "Dark Bluish Gray",
+      "d": "Brick Sloped Inverted 45° 3 x 1 Double with 2 Completely Open Studs",
+      "e": "4651871",
+      "u": 1793684616644
+    },
+    "2341|light bluish gray": {
+      "p": "2341",
+      "c": "Light Bluish Gray",
+      "d": "Brick Sloped Inverted 45° 3 x 1 Double with 2 Completely Open Studs",
+      "e": "4251563",
+      "u": 1793684616644
     }
   },
   "partKinds": {
@@ -610178,7 +610233,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:42:00.831Z"
+      "at": "2026-11-03T05:43:40.748Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610202,7 +610257,7 @@
       "bags": "2026-11-03T05:35:42.992Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:42:00.831Z",
+    "savedAt": "2026-11-03T05:43:40.748Z",
     "appVersion": "2026.11.02.1"
   }
 }
