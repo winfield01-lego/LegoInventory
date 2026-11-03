@@ -457501,7 +457501,7 @@
       "label": "O63",
       "notes": "2 x 2 x 3 and 2 x 2 x 2 Square Cone",
       "group": "O",
-      "lastEdited": "2026-11-03T05:37:45.673Z"
+      "lastEdited": "2026-11-03T05:37:58.905Z"
     },
     {
       "id": "O64",
@@ -487564,6 +487564,12 @@
       "partNum": "3685",
       "color": "Dark Blue",
       "qty": 1
+    },
+    {
+      "drawerId": "O63",
+      "partNum": "3688",
+      "color": "Blue",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -604995,6 +605001,13 @@
       "d": "Brick Sloped 75° 2 x 2 x 3 Double Convex",
       "e": "6144750",
       "u": 1793684266876
+    },
+    "3688|blue": {
+      "p": "3688",
+      "c": "Blue",
+      "d": "Brick Sloped 75° 2 x 2 x 2 Quadruple Convex",
+      "e": "368823",
+      "u": 1793684280108
     }
   },
   "partKinds": {
@@ -610069,7 +610082,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:37:49.709Z"
+      "at": "2026-11-03T05:38:02.938Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610093,7 +610106,7 @@
       "bags": "2026-11-03T05:35:42.992Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:37:49.709Z",
+    "savedAt": "2026-11-03T05:38:02.938Z",
     "appVersion": "2026.11.02.1"
   }
 }
