@@ -455316,7 +455316,7 @@
       "label": "I32",
       "notes": "4 x 4 Rounded Corner",
       "group": "I",
-      "lastEdited": "2026-11-03T05:31:18.321Z"
+      "lastEdited": "2026-11-03T05:32:27.530Z"
     },
     {
       "id": "I33",
@@ -487450,6 +487450,39 @@
       "partNum": "80015",
       "color": "White",
       "qty": 2
+    },
+    {
+      "drawerId": "I32",
+      "partNum": "48092",
+      "color": "Bright Light Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "I32",
+      "partNum": "48092",
+      "color": "Dark Bluish Gray",
+      "elementId": "4215386",
+      "qty": 4
+    },
+    {
+      "drawerId": "I32",
+      "partNum": "48092",
+      "color": "Light Bluish Gray",
+      "qty": 12
+    },
+    {
+      "drawerId": "I32",
+      "partNum": "48092",
+      "color": "Tan",
+      "elementId": "4215471",
+      "qty": 1
+    },
+    {
+      "drawerId": "I32",
+      "partNum": "48092",
+      "color": "White",
+      "elementId": "4215470",
+      "qty": 6
     }
   ],
   "mocLocations": {
@@ -526242,9 +526275,12 @@
       "c": "Dark Bluish Gray",
       "d": "Brick Round Corner 4 x 4 Macaroni Wide with 3 Studs",
       "e": "6452530",
-      "u": 1791916924851,
+      "u": 1793683948732,
       "at": 1791654731050,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4215386.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4215386.jpg",
+      "ea": [
+        "4215386"
+      ]
     },
     "24599|dark bluish gray": {
       "p": "24599",
@@ -526638,10 +526674,11 @@
       "c": "White",
       "d": "Brick Round Corner 4 x 4 Macaroni Wide with 3 Studs",
       "e": "6337627",
-      "u": 1791916924851,
+      "u": 1793683948732,
       "at": 1791654696050,
       "ea": [
-        "6550183"
+        "6550183",
+        "4215470"
       ],
       "i": "https://cdn.rebrickable.com/media/parts/elements/4215470.jpg"
     },
@@ -558835,9 +558872,12 @@
       "c": "Tan",
       "d": "Brick Round Corner 4 x 4 Macaroni Wide with 3 Studs",
       "e": "6452537",
-      "u": 1791916924851,
+      "u": 1793683948732,
       "at": 1791654560264,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4215471.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4215471.jpg",
+      "ea": [
+        "4215471"
+      ]
     },
     "4286|tan": {
       "p": "4286",
@@ -604781,6 +604821,13 @@
       "d": "Plate Round Corner 5 x 5 with 4 x 4 Round Cutout",
       "e": "6399559",
       "u": 1793683864249
+    },
+    "48092|bright light blue": {
+      "p": "48092",
+      "c": "Bright Light Blue",
+      "d": "Brick Round Corner 4 x 4 Macaroni Wide with 3 Studs",
+      "e": "6383094",
+      "u": 1793683948732
     }
   },
   "partKinds": {
@@ -609855,7 +609902,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:31:22.359Z"
+      "at": "2026-11-03T05:32:32.824Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -609879,7 +609926,7 @@
       "bags": "2026-11-03T05:28:49.892Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:31:22.359Z",
+    "savedAt": "2026-11-03T05:32:32.824Z",
     "appVersion": "2026.11.02.1"
   }
 }
