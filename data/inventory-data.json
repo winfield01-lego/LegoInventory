@@ -457529,7 +457529,7 @@
       "label": "P2",
       "notes": "1 x 1 Beam, 2L Pin Connector",
       "group": "P",
-      "lastEdited": "2026-11-03T06:51:24.498Z"
+      "lastEdited": "2026-11-03T06:51:44.814Z"
     },
     {
       "id": "P3",
@@ -488464,7 +488464,7 @@
       "partNum": "62462",
       "color": "Light Bluish Gray",
       "elementId": "4526985",
-      "qty": 24
+      "qty": 25
     },
     {
       "drawerId": "P2",
@@ -488924,6 +488924,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw0bxyi7_dgfnr",
+      "label": "Ebay Bulk Boxes (batch 41)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 41,
+      "timestamp": "2026-11-03T06:51:45.007Z",
+      "items": [
+        {
+          "partNum": "62462",
+          "color": "Light Bluish Gray",
+          "desc": "Technic Pin Connector Round [Slotted]",
+          "elementId": "4526985",
+          "qty": 1,
+          "drawerId": "P2",
+          "drawerLabel": "P2"
+        }
+      ]
+    },
     {
       "id": "bag_mw0b5kma_l2sg0",
       "label": "Ebay Bulk Boxes (batch 40)",
@@ -508351,17 +508370,6 @@
           "sel": false
         },
         {
-          "partNum": "62462",
-          "color": "Light Bluish Gray",
-          "desc": "Technic Pin Connector Round [Slotted]",
-          "elementId": "4526985",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "4274",
           "color": "Blue",
           "desc": "Technic Pin 1/2 without Friction Ridges",
@@ -508396,11 +508404,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T06:29:40.642Z",
+      "savedAt": "2026-11-03T06:51:45.006Z",
       "moved": {
-        "batches": 40,
-        "pieces": 1522,
-        "last": "2026-11-03T06:29:40.642Z"
+        "batches": 41,
+        "pieces": 1523,
+        "last": "2026-11-03T06:51:45.007Z"
       }
     },
     {
@@ -611636,7 +611644,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T06:51:29.782Z"
+      "at": "2026-11-03T06:51:49.035Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -611657,10 +611665,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T06:29:40.642Z",
+      "bags": "2026-11-03T06:51:45.007Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T06:51:29.782Z",
+    "savedAt": "2026-11-03T06:51:49.035Z",
     "appVersion": "2026.11.02.1"
   }
 }
