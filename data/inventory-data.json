@@ -455893,7 +455893,7 @@
       "label": "K8",
       "notes": "Plates - 6 x 10, 8 x 8, 6 x 24",
       "group": "K",
-      "lastEdited": "2026-11-03T03:44:48.826Z"
+      "lastEdited": "2026-11-03T03:45:37.877Z"
     },
     {
       "id": "K9",
@@ -485873,14 +485873,14 @@
       "partNum": "3033",
       "color": "Red",
       "elementId": "303321",
-      "qty": 2
+      "qty": 3
     },
     {
       "drawerId": "K8",
       "partNum": "3033",
       "color": "White",
       "elementId": "303301",
-      "qty": 1
+      "qty": 2
     },
     {
       "drawerId": "K8",
@@ -485926,6 +485926,13 @@
       "color": "Tan",
       "elementId": "4178317",
       "qty": 3
+    },
+    {
+      "drawerId": "K8",
+      "partNum": "3033",
+      "color": "Reddish Brown",
+      "elementId": "4225550",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -486338,6 +486345,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw05am28_hrnhw",
+      "label": "Ebay Bulk Boxes (batch 24)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 24,
+      "timestamp": "2026-11-03T03:45:38.096Z",
+      "items": [
+        {
+          "partNum": "3033",
+          "color": "Red",
+          "desc": "Plate 6 x 10",
+          "elementId": "303321",
+          "qty": 1,
+          "drawerId": "K8",
+          "drawerLabel": "K8"
+        },
+        {
+          "partNum": "3033",
+          "color": "Reddish Brown",
+          "desc": "Plate 6 x 10",
+          "elementId": "4225550",
+          "qty": 1,
+          "drawerId": "K8",
+          "drawerLabel": "K8"
+        },
+        {
+          "partNum": "3033",
+          "color": "White",
+          "desc": "Plate 6 x 10",
+          "elementId": "303301",
+          "qty": 1,
+          "drawerId": "K8",
+          "drawerLabel": "K8"
+        }
+      ]
+    },
     {
       "id": "bag_mw04sv9h_n0t3j",
       "label": "Ebay Bulk Boxes (batch 23)",
@@ -505182,28 +505226,6 @@
           "sel": false
         },
         {
-          "partNum": "3033",
-          "color": "Red",
-          "desc": "Plate 6 x 10",
-          "elementId": "303321",
-          "qty": 1,
-          "drawerId": "K8",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3033",
-          "color": "Reddish Brown",
-          "desc": "Plate 6 x 10",
-          "elementId": "4225550",
-          "qty": 1,
-          "drawerId": "K8",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": true
-        },
-        {
           "partNum": "3028",
           "color": "Bright Green",
           "desc": "Plate 6 x 12",
@@ -505634,11 +505656,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T03:45:10.487Z",
+      "savedAt": "2026-11-03T03:45:38.096Z",
       "moved": {
-        "batches": 23,
-        "pieces": 1491,
-        "last": "2026-11-03T03:31:50.213Z"
+        "batches": 24,
+        "pieces": 1494,
+        "last": "2026-11-03T03:45:38.096Z"
       }
     },
     {
@@ -506391,9 +506413,12 @@
       "c": "Reddish Brown",
       "d": "Plate 6 x 10",
       "e": "6338230",
-      "u": 1791916924851,
+      "u": 1793677539298,
       "at": 1791654319350,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4225550.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4225550.jpg",
+      "ea": [
+        "4225550"
+      ]
     },
     "32828|red": {
       "p": "32828",
@@ -607406,7 +607431,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T03:45:14.516Z"
+      "at": "2026-11-03T03:45:43.381Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -607427,10 +607452,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T03:45:10.487Z",
+      "bags": "2026-11-03T03:45:38.096Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T03:45:14.516Z",
+    "savedAt": "2026-11-03T03:45:43.381Z",
     "appVersion": "2026.11.02.1"
   }
 }
