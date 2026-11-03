@@ -455912,7 +455912,7 @@
       "label": "K9",
       "notes": "1 x 2 Brick - 1 Pin and 2 Pin",
       "group": "K",
-      "lastEdited": "2026-11-03T07:14:50.935Z"
+      "lastEdited": "2026-11-03T07:16:05.451Z"
     },
     {
       "id": "K10",
@@ -488680,6 +488680,30 @@
       "partNum": "2817",
       "color": "Red",
       "qty": 4
+    },
+    {
+      "drawerId": "K9",
+      "partNum": "30526",
+      "color": "Dark Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "K9",
+      "partNum": "30526",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "K9",
+      "partNum": "30526",
+      "color": "Light Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "K9",
+      "partNum": "30526",
+      "color": "Tan",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -606927,6 +606951,20 @@
       "d": "Plate Special 2 x 2 with 2 Pin Holes",
       "e": "281723",
       "u": 1793690019588
+    },
+    "30526|blue": {
+      "p": "30526",
+      "c": "Blue",
+      "d": "Brick Special 1 x 2 with 2 Pins, Round Pin Holes",
+      "e": "4158266",
+      "u": 1793690166653
+    },
+    "30526|tan": {
+      "p": "30526",
+      "c": "Tan",
+      "d": "Brick Special 1 x 2 with 2 Pins, Round Pin Holes",
+      "e": "4143366",
+      "u": 1793690166653
     }
   },
   "partKinds": {
@@ -612001,7 +612039,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T07:14:54.972Z"
+      "at": "2026-11-03T07:16:09.483Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -612025,7 +612063,7 @@
       "bags": "2026-11-03T07:05:17.671Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T07:14:54.972Z",
+    "savedAt": "2026-11-03T07:16:09.483Z",
     "appVersion": "2026.11.02.1"
   }
 }
