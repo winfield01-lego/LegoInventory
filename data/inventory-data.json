@@ -457386,7 +457386,7 @@
       "label": "O47",
       "notes": "1 x 2 Plate with Wheel Pin and 2 x 4 Plate - 2 Pin Holes on Bottom",
       "group": "O",
-      "lastEdited": "2026-11-03T05:28:38.212Z"
+      "lastEdited": "2026-11-03T05:28:49.695Z"
     },
     {
       "id": "O48",
@@ -487418,6 +487418,12 @@
       "partNum": "26599",
       "color": "Light Bluish Gray",
       "qty": 4
+    },
+    {
+      "drawerId": "O47",
+      "partNum": "26599",
+      "color": "Black",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -487830,6 +487836,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw08zbok_9byys",
+      "label": "Ebay Bulk Boxes (batch 35)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 35,
+      "timestamp": "2026-11-03T05:28:49.892Z",
+      "items": [
+        {
+          "partNum": "26599",
+          "color": "Black",
+          "desc": "Plate Special 2 x 4 with 2 Pin Holes",
+          "elementId": "6194233",
+          "qty": 1,
+          "drawerId": "O47",
+          "drawerLabel": "O47"
+        }
+      ]
+    },
     {
       "id": "bag_mw08epus_k5w5t",
       "label": "Ebay Bulk Boxes (batch 34)",
@@ -507131,17 +507156,6 @@
           "sel": false
         },
         {
-          "partNum": "26599",
-          "color": "Black",
-          "desc": "Plate Special 2 x 4 with 2 Pin Holes",
-          "elementId": "6194233",
-          "qty": 1,
-          "drawerId": "O47",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": true
-        },
-        {
           "partNum": "22385",
           "color": "Dark Blue",
           "desc": "Tile Special 2 x 3 Pentagonal",
@@ -507253,11 +507267,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T05:28:44.959Z",
+      "savedAt": "2026-11-03T05:28:49.892Z",
       "moved": {
-        "batches": 34,
-        "pieces": 1511,
-        "last": "2026-11-03T05:12:48.484Z"
+        "batches": 35,
+        "pieces": 1512,
+        "last": "2026-11-03T05:28:49.892Z"
       }
     },
     {
@@ -609794,7 +609808,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:28:49.000Z"
+      "at": "2026-11-03T05:28:54.956Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -609815,10 +609829,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T05:28:44.959Z",
+      "bags": "2026-11-03T05:28:49.892Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:28:49.000Z",
+    "savedAt": "2026-11-03T05:28:54.956Z",
     "appVersion": "2026.11.02.1"
   }
 }
