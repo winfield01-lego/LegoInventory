@@ -454466,7 +454466,7 @@
       "label": "F39",
       "notes": "4 x 4 Round Brick with and without 4 pinholes",
       "group": "F",
-      "lastEdited": "2026-11-03T03:05:31.127Z"
+      "lastEdited": "2026-11-03T03:05:54.676Z"
     },
     {
       "id": "F40",
@@ -485544,7 +485544,7 @@
       "drawerId": "F39",
       "partNum": "6222",
       "color": "Light Bluish Gray",
-      "qty": 8
+      "qty": 9
     },
     {
       "drawerId": "F39",
@@ -486001,6 +486001,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw03vj66_f8gp7",
+      "label": "Ebay Bulk Boxes (batch 20)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 20,
+      "timestamp": "2026-11-03T03:05:54.894Z",
+      "items": [
+        {
+          "partNum": "6222",
+          "color": "Light Bluish Gray",
+          "desc": "Brick Round 4 x 4 with 4 Side Pin Holes and Center Axle Hole",
+          "elementId": "4211527",
+          "qty": 1,
+          "drawerId": "F39",
+          "drawerLabel": "F39"
+        }
+      ]
+    },
     {
       "id": "bag_mw03oeqo_cgli0",
       "label": "Ebay Bulk Boxes (batch 19)",
@@ -505046,17 +505065,6 @@
           "sel": false
         },
         {
-          "partNum": "6222",
-          "color": "Light Bluish Gray",
-          "desc": "Brick Round 4 x 4 with 4 Side Pin Holes and Center Axle Hole",
-          "elementId": "4211527",
-          "qty": 1,
-          "drawerId": "F39",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "22385",
           "color": "Dark Blue",
           "desc": "Tile Special 2 x 3 Pentagonal",
@@ -505267,11 +505275,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T03:05:46.696Z",
+      "savedAt": "2026-11-03T03:05:54.894Z",
       "moved": {
-        "batches": 19,
-        "pieces": 1483,
-        "last": "2026-11-03T03:00:22.560Z"
+        "batches": 20,
+        "pieces": 1484,
+        "last": "2026-11-03T03:05:54.894Z"
       }
     },
     {
@@ -606885,7 +606893,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T03:05:50.726Z"
+      "at": "2026-11-03T03:05:58.925Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -606906,10 +606914,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T03:05:46.696Z",
+      "bags": "2026-11-03T03:05:54.894Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T03:05:50.726Z",
+    "savedAt": "2026-11-03T03:05:58.924Z",
     "appVersion": "2026.11.02.1"
   }
 }
