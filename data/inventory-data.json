@@ -457510,7 +457510,7 @@
       "label": "P1",
       "notes": "4 x 4 Round - With and Without Cutout",
       "group": "P",
-      "lastEdited": "2026-11-03T04:19:24.348Z"
+      "lastEdited": "2026-11-03T04:19:35.483Z"
     },
     {
       "id": "P2",
@@ -486302,7 +486302,7 @@
       "drawerId": "P1",
       "partNum": "60474",
       "color": "White",
-      "qty": 2
+      "qty": 3
     },
     {
       "drawerId": "P1",
@@ -486749,6 +486749,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw06ia8d_mzsay",
+      "label": "Ebay Bulk Boxes (batch 28)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 28,
+      "timestamp": "2026-11-03T04:19:35.629Z",
+      "items": [
+        {
+          "partNum": "60474",
+          "color": "White",
+          "desc": "Plate Round 4 x 4 with Pin Hole",
+          "elementId": "4515347",
+          "qty": 1,
+          "drawerId": "P1",
+          "drawerLabel": "P1"
+        }
+      ]
+    },
     {
       "id": "bag_mw069wxi_zj37u",
       "label": "Ebay Bulk Boxes (batch 27)",
@@ -505934,17 +505953,6 @@
           "sel": false
         },
         {
-          "partNum": "60474",
-          "color": "White",
-          "desc": "Plate Round 4 x 4 with Pin Hole",
-          "elementId": "4515347",
-          "qty": 1,
-          "drawerId": "P1",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "22385",
           "color": "Dark Blue",
           "desc": "Tile Special 2 x 3 Pentagonal",
@@ -506122,11 +506130,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T04:19:31.326Z",
+      "savedAt": "2026-11-03T04:19:35.629Z",
       "moved": {
-        "batches": 27,
-        "pieces": 1500,
-        "last": "2026-11-03T04:13:05.142Z"
+        "batches": 28,
+        "pieces": 1501,
+        "last": "2026-11-03T04:19:35.629Z"
       }
     },
     {
@@ -608037,7 +608045,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:19:35.356Z"
+      "at": "2026-11-03T04:19:41.290Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -608058,10 +608066,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T04:19:31.326Z",
+      "bags": "2026-11-03T04:19:35.629Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:19:35.356Z",
+    "savedAt": "2026-11-03T04:19:41.290Z",
     "appVersion": "2026.11.02.1"
   }
 }
