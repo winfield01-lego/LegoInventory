@@ -457671,7 +457671,7 @@
       "label": "R10",
       "notes": "Plate 4 x 10 and 4 x 12",
       "group": "R",
-      "lastEdited": "2026-11-03T04:05:43.187Z"
+      "lastEdited": "2026-11-03T04:11:02.032Z"
     },
     {
       "id": "S1",
@@ -486146,6 +486146,55 @@
       "drawerId": "S9",
       "partNum": "3028",
       "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "R10",
+      "partNum": "3030",
+      "color": "Black",
+      "qty": 9
+    },
+    {
+      "drawerId": "R10",
+      "partNum": "3030",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "R10",
+      "partNum": "3030",
+      "color": "Dark Bluish Gray",
+      "qty": 5
+    },
+    {
+      "drawerId": "R10",
+      "partNum": "3030",
+      "color": "Dark Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "R10",
+      "partNum": "3030",
+      "color": "Light Bluish Gray",
+      "qty": 8
+    },
+    {
+      "drawerId": "R10",
+      "partNum": "3030",
+      "color": "Lime",
+      "qty": 2
+    },
+    {
+      "drawerId": "R10",
+      "partNum": "3030",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "R10",
+      "partNum": "3030",
+      "color": "White",
+      "elementId": "303001",
       "qty": 1
     }
   ],
@@ -553367,9 +553416,12 @@
       "c": "White",
       "d": "Plate 4 x 10",
       "e": "6550137",
-      "u": 1791916924851,
+      "u": 1793679063234,
       "at": 1791654530095,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/303001.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/303001.jpg",
+      "ea": [
+        "303001"
+      ]
     },
     "47398|white": {
       "p": "47398",
@@ -602716,6 +602768,20 @@
       "d": "Plate 6 x 12",
       "e": "302824",
       "u": 1793678638300
+    },
+    "3030|dark tan": {
+      "p": "3030",
+      "c": "Dark Tan",
+      "d": "Plate 4 x 10",
+      "e": "6001001",
+      "u": 1793679063234
+    },
+    "3030|lime": {
+      "p": "3030",
+      "c": "Lime",
+      "d": "Plate 4 x 10",
+      "e": "6112967",
+      "u": 1793679063234
     }
   },
   "partKinds": {
@@ -607790,7 +607856,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:05:47.222Z"
+      "at": "2026-11-03T04:11:07.331Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -607814,7 +607880,7 @@
       "bags": "2026-11-03T04:04:31.424Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:05:47.222Z",
+    "savedAt": "2026-11-03T04:11:07.331Z",
     "appVersion": "2026.11.02.1"
   }
 }
