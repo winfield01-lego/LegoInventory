@@ -456824,7 +456824,7 @@
       "label": "N11",
       "notes": "1 x 2 and 1 x 4 Plate with Bar",
       "group": "N",
-      "lastEdited": "2026-11-03T04:29:52.434Z"
+      "lastEdited": "2026-11-03T04:30:10.600Z"
     },
     {
       "id": "N12",
@@ -486519,6 +486519,13 @@
       "color": "Black",
       "elementId": "3004326",
       "qty": 4
+    },
+    {
+      "drawerId": "N11",
+      "partNum": "88072",
+      "color": "Dark Bluish Gray",
+      "elementId": "4611703",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -486931,6 +486938,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw06vwbm_05r94",
+      "label": "Ebay Bulk Boxes (batch 30)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 30,
+      "timestamp": "2026-11-03T04:30:10.786Z",
+      "items": [
+        {
+          "partNum": "88072",
+          "color": "Dark Bluish Gray",
+          "desc": "Plate Special 1 x 2 with Bar Up [Horizontal Arm 5mm]",
+          "elementId": "4611703",
+          "qty": 1,
+          "drawerId": "N11",
+          "drawerLabel": "N11"
+        }
+      ]
+    },
     {
       "id": "bag_mw06ohg1_egwnz",
       "label": "Ebay Bulk Boxes (batch 29)",
@@ -506121,17 +506147,6 @@
           "sel": false
         },
         {
-          "partNum": "88072",
-          "color": "Dark Bluish Gray",
-          "desc": "Plate Special 1 x 2 with Bar Up [Horizontal Arm 5mm]",
-          "elementId": "4611703",
-          "qty": 1,
-          "drawerId": "N11",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": true
-        },
-        {
           "partNum": "98313",
           "color": "Dark Red",
           "desc": "Arm Mechanical with Clip [Thick Support]",
@@ -506320,11 +506335,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T04:29:59.287Z",
+      "savedAt": "2026-11-03T04:30:10.786Z",
       "moved": {
-        "batches": 29,
-        "pieces": 1502,
-        "last": "2026-11-03T04:24:24.913Z"
+        "batches": 30,
+        "pieces": 1503,
+        "last": "2026-11-03T04:30:10.786Z"
       }
     },
     {
@@ -545914,9 +545929,12 @@
       "c": "Dark Bluish Gray",
       "d": "Plate Special 1 x 2 with Bar Up [Horizontal Arm 5mm]",
       "e": "6261355",
-      "u": 1791916924851,
+      "u": 1793680211988,
       "at": 1791732118013,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4611703.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4611703.jpg",
+      "ea": [
+        "4611703"
+      ]
     },
     "3623|dark pink": {
       "p": "3623",
@@ -608333,7 +608351,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:30:03.326Z"
+      "at": "2026-11-03T04:30:16.065Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -608354,10 +608372,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T04:29:59.287Z",
+      "bags": "2026-11-03T04:30:10.786Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:30:03.326Z",
+    "savedAt": "2026-11-03T04:30:16.065Z",
     "appVersion": "2026.11.02.1"
   }
 }
