@@ -457630,7 +457630,7 @@
       "label": "R4",
       "notes": "Panels, 1 x 2 x 3, 1 x 4 x 2, and 1 x 4 x 3",
       "group": "R",
-      "lastEdited": "2026-11-03T05:09:28.774Z"
+      "lastEdited": "2026-11-03T05:10:08.866Z"
     },
     {
       "id": "R5",
@@ -487123,6 +487123,31 @@
       "partNum": "87544",
       "color": "White",
       "qty": 4
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "2362a",
+      "color": "Black",
+      "qty": 4
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "2362a",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "2362a",
+      "color": "Light Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "2362a",
+      "color": "White",
+      "elementId": "",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -604246,6 +604271,13 @@
       "d": "Panel 1 x 2 x 3 [Side Supports / Hollow Studs]",
       "e": "4585448",
       "u": 1793682569977
+    },
+    "2362a|light gray": {
+      "p": "2362a",
+      "c": "Light Gray",
+      "d": "Panel 1 x 2 x 3 - Solid Studs",
+      "e": "4113023",
+      "u": 1793682610069
     }
   },
   "partKinds": {
@@ -609320,7 +609352,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:09:34.071Z"
+      "at": "2026-11-03T05:10:14.143Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -609344,7 +609376,7 @@
       "bags": "2026-11-03T04:48:18.759Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:09:34.071Z",
+    "savedAt": "2026-11-03T05:10:14.143Z",
     "appVersion": "2026.11.02.1"
   }
 }
