@@ -456831,7 +456831,7 @@
       "label": "N12",
       "notes": "1 x 2 Brick with Vertical Clip",
       "group": "N",
-      "lastEdited": "2026-11-03T04:20:21.626Z"
+      "lastEdited": "2026-11-03T04:22:32.349Z"
     },
     {
       "id": "N13",
@@ -486337,6 +486337,79 @@
       "color": "Medium Nougat",
       "elementId": "6018928",
       "qty": 2
+    },
+    {
+      "drawerId": "N12",
+      "partNum": "30237b",
+      "color": "Black",
+      "elementId": "4118624",
+      "qty": 12
+    },
+    {
+      "drawerId": "N12",
+      "partNum": "30237b",
+      "color": "Blue",
+      "elementId": "4116744",
+      "qty": 1
+    },
+    {
+      "drawerId": "N12",
+      "partNum": "30237b",
+      "color": "Dark Bluish Gray",
+      "elementId": "4211074",
+      "qty": 5
+    },
+    {
+      "drawerId": "N12",
+      "partNum": "30237b",
+      "color": "Light Bluish Gray",
+      "elementId": "4641682",
+      "qty": 6
+    },
+    {
+      "drawerId": "N12",
+      "partNum": "30237b",
+      "color": "Lime",
+      "qty": 1
+    },
+    {
+      "drawerId": "N12",
+      "partNum": "30237b",
+      "color": "Orange",
+      "qty": 2
+    },
+    {
+      "drawerId": "N12",
+      "partNum": "30237b",
+      "color": "Red",
+      "qty": 4
+    },
+    {
+      "drawerId": "N12",
+      "partNum": "30237b",
+      "color": "Reddish Brown",
+      "elementId": "4215496",
+      "qty": 8
+    },
+    {
+      "drawerId": "N12",
+      "partNum": "30237b",
+      "color": "Tan",
+      "elementId": "4645405",
+      "qty": 1
+    },
+    {
+      "drawerId": "N12",
+      "partNum": "30237b",
+      "color": "White",
+      "elementId": "4117061",
+      "qty": 20
+    },
+    {
+      "drawerId": "N12",
+      "partNum": "30237b",
+      "color": "Yellow",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -516852,7 +516925,10 @@
       "c": "Blue",
       "d": "Brick Special 1 x 2 with Vertical Clip [Open O Clip]",
       "e": "6335309",
-      "u": 1791916924851
+      "u": 1793679753552,
+      "ea": [
+        "4116744"
+      ]
     },
     "3942c|light bluish gray": {
       "p": "3942c",
@@ -538393,8 +538469,11 @@
       "c": "White",
       "d": "Brick Special 1 x 2 with Vertical Clip [Open O Clip]",
       "e": "6320300",
-      "u": 1791916924851,
-      "at": 1791654768078
+      "u": 1793679753552,
+      "at": 1791654768078,
+      "ea": [
+        "4117061"
+      ]
     },
     "87620|white": {
       "p": "87620",
@@ -542326,8 +542405,11 @@
       "c": "Reddish Brown",
       "d": "Brick Special 1 x 2 with Vertical Clip [Open O Clip]",
       "e": "6330202",
-      "u": 1791916924851,
-      "at": 1791654324216
+      "u": 1793679753552,
+      "at": 1791654324216,
+      "ea": [
+        "4215496"
+      ]
     },
     "6134|reddish brown": {
       "p": "6134",
@@ -543318,9 +543400,12 @@
       "c": "Light Bluish Gray",
       "d": "Brick Special 1 x 2 with Vertical Clip [Open O Clip]",
       "e": "6320297",
-      "u": 1791916924851,
+      "u": 1793679753552,
       "at": 1791654586559,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4641682.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4641682.jpg",
+      "ea": [
+        "4641682"
+      ]
     },
     "98286|light bluish gray": {
       "p": "98286",
@@ -555546,9 +555631,12 @@
       "c": "Dark Bluish Gray",
       "d": "Brick Special 1 x 2 with Vertical Clip [Open O Clip]",
       "e": "6335306",
-      "u": 1791916924851,
+      "u": 1793679753552,
       "at": 1791654615447,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6127738.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6127738.jpg",
+      "ea": [
+        "4211074"
+      ]
     },
     "44300|dark bluish gray": {
       "p": "44300",
@@ -557585,8 +557673,11 @@
       "c": "Tan",
       "d": "Brick Special 1 x 2 with Vertical Clip [Open O Clip]",
       "e": "6335307",
-      "u": 1791916924851,
-      "at": 1791654560264
+      "u": 1793679753552,
+      "at": 1791654560264,
+      "ea": [
+        "4645405"
+      ]
     },
     "73983|tan": {
       "p": "73983",
@@ -558114,8 +558205,11 @@
       "c": "Black",
       "d": "Brick Special 1 x 2 with Vertical Clip [Open O Clip]",
       "e": "6330197",
-      "u": 1791916924851,
-      "at": 1791654768078
+      "u": 1793679753552,
+      "at": 1791654768078,
+      "ea": [
+        "4118624"
+      ]
     },
     "88283|black": {
       "p": "88283",
@@ -602971,6 +603065,27 @@
       "d": "Plate 4 x 12",
       "e": "6112968",
       "u": 1793679161284
+    },
+    "30237b|lime": {
+      "p": "30237b",
+      "c": "Lime",
+      "d": "Brick Special 1 x 2 with Vertical Clip [Open O Clip]",
+      "e": "6146891",
+      "u": 1793679753552
+    },
+    "30237b|orange": {
+      "p": "30237b",
+      "c": "Orange",
+      "d": "Brick Special 1 x 2 with Vertical Clip [Open O Clip]",
+      "e": "4171473",
+      "u": 1793679753552
+    },
+    "30237b|red": {
+      "p": "30237b",
+      "c": "Red",
+      "d": "Brick Special 1 x 2 with Vertical Clip [Open O Clip]",
+      "e": "4113205",
+      "u": 1793679753552
     }
   },
   "partKinds": {
@@ -608045,7 +608160,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:20:25.664Z"
+      "at": "2026-11-03T04:22:37.638Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -608069,7 +608184,7 @@
       "bags": "2026-11-03T04:19:35.629Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:20:25.664Z",
+    "savedAt": "2026-11-03T04:22:37.638Z",
     "appVersion": "2026.11.02.1"
   }
 }
