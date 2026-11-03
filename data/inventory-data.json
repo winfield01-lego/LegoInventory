@@ -456236,7 +456236,7 @@
       "label": "L15",
       "notes": "Double Slope - 2 x 1, 2 x 2, 2 x 4",
       "group": "L",
-      "lastEdited": "2026-11-03T04:55:54.630Z"
+      "lastEdited": "2026-11-03T04:56:26.372Z"
     },
     {
       "id": "L16",
@@ -486881,6 +486881,24 @@
       "partNum": "4287c",
       "color": "White",
       "qty": 22
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "3044c",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "3044c",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "3044c",
+      "color": "Red",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -603831,6 +603849,13 @@
       "d": "Brick Sloped Inverted 33° 3 x 1 with Internal Stopper and No Front Stud Connection",
       "e": "428724",
       "u": 1793681643708
+    },
+    "3044c|black": {
+      "p": "3044c",
+      "c": "Black",
+      "d": "Brick Sloped 45° 2 x 1 Double with Inside Stud Holder",
+      "e": "4121662",
+      "u": 1793681787574
     }
   },
   "partKinds": {
@@ -608905,7 +608930,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:55:58.668Z"
+      "at": "2026-11-03T04:56:30.421Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -608929,7 +608954,7 @@
       "bags": "2026-11-03T04:48:18.759Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T04:55:58.667Z",
+    "savedAt": "2026-11-03T04:56:30.421Z",
     "appVersion": "2026.11.02.1"
   }
 }
