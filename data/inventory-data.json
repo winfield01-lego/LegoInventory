@@ -454549,7 +454549,7 @@
       "label": "G7",
       "notes": "2 x 2 Curved with Studs and 2 x 4 Curved without studs",
       "group": "G",
-      "lastEdited": "2026-11-03T05:49:39.767Z"
+      "lastEdited": "2026-11-03T05:51:04.723Z"
     },
     {
       "id": "G8",
@@ -487711,6 +487711,54 @@
       "drawerId": "O57",
       "partNum": "64799",
       "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "G7",
+      "partNum": "30165",
+      "color": "Black",
+      "qty": 2
+    },
+    {
+      "drawerId": "G7",
+      "partNum": "30165",
+      "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "G7",
+      "partNum": "30165",
+      "color": "Dark Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "G7",
+      "partNum": "30165",
+      "color": "Dark Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "G7",
+      "partNum": "30165",
+      "color": "Red",
+      "qty": 4
+    },
+    {
+      "drawerId": "G7",
+      "partNum": "30165",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "G7",
+      "partNum": "30165",
+      "color": "Sand Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "G7",
+      "partNum": "30165",
+      "color": "Yellow",
       "qty": 1
     }
   ],
@@ -605215,6 +605263,55 @@
       "d": "Brick Sloped 55° 1 x 6 x 5",
       "e": "4243911",
       "u": 1793684753223
+    },
+    "30165|black": {
+      "p": "30165",
+      "c": "Black",
+      "d": "Brick Curved 2 x 2, Two Top Studs",
+      "e": "4113231",
+      "u": 1793685065925
+    },
+    "30165|dark blue": {
+      "p": "30165",
+      "c": "Dark Blue",
+      "d": "Brick Curved 2 x 2, Two Top Studs",
+      "e": "6175295",
+      "u": 1793685065925
+    },
+    "30165|dark orange": {
+      "p": "30165",
+      "c": "Dark Orange",
+      "d": "Brick Curved 2 x 2, Two Top Studs",
+      "e": "4624987",
+      "u": 1793685065925
+    },
+    "30165|red": {
+      "p": "30165",
+      "c": "Red",
+      "d": "Brick Curved 2 x 2, Two Top Studs",
+      "e": "4142112",
+      "u": 1793685065925
+    },
+    "30165|reddish brown": {
+      "p": "30165",
+      "c": "Reddish Brown",
+      "d": "Brick Curved 2 x 2, Two Top Studs",
+      "e": "4211321",
+      "u": 1793685065925
+    },
+    "30165|sand blue": {
+      "p": "30165",
+      "c": "Sand Blue",
+      "d": "Brick Curved 2 x 2, Two Top Studs",
+      "e": "4263381",
+      "u": 1793685065925
+    },
+    "30165|yellow": {
+      "p": "30165",
+      "c": "Yellow",
+      "d": "Brick Curved 2 x 2, Two Top Studs",
+      "e": "4181838",
+      "u": 1793685065925
     }
   },
   "partKinds": {
@@ -610289,7 +610386,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:49:43.809Z"
+      "at": "2026-11-03T05:51:08.767Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610313,7 +610410,7 @@
       "bags": "2026-11-03T05:35:42.992Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:49:43.809Z",
+    "savedAt": "2026-11-03T05:51:08.767Z",
     "appVersion": "2026.11.02.1"
   }
 }
