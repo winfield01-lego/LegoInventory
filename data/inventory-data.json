@@ -455863,7 +455863,7 @@
       "label": "K2",
       "notes": "2L and 3L Axle and Pinhole",
       "group": "K",
-      "lastEdited": "2026-11-03T06:55:10.881Z"
+      "lastEdited": "2026-11-03T06:56:33.913Z"
     },
     {
       "id": "K3",
@@ -488554,6 +488554,18 @@
       "color": "White",
       "elementId": "6254109",
       "qty": 1
+    },
+    {
+      "drawerId": "K2",
+      "partNum": "32068",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "K2",
+      "partNum": "32068",
+      "color": "Light Bluish Gray",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -606630,6 +606642,20 @@
       "d": "Technic Pin Connector Round [Slotted]",
       "e": "6474012",
       "u": 1793688685701
+    },
+    "32068|black": {
+      "p": "32068",
+      "c": "Black",
+      "d": "Technic Axle and Pin Connector Perpendicular 3L with Pin Hole",
+      "e": "4114670",
+      "u": 1793688995115
+    },
+    "32068|light bluish gray": {
+      "p": "32068",
+      "c": "Light Bluish Gray",
+      "d": "Technic Axle and Pin Connector Perpendicular 3L with Pin Hole",
+      "e": "6013936",
+      "u": 1793688995115
     }
   },
   "partKinds": {
@@ -611704,7 +611730,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T06:55:16.198Z"
+      "at": "2026-11-03T06:56:37.943Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -611728,7 +611754,7 @@
       "bags": "2026-11-03T06:51:45.007Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T06:55:16.198Z",
+    "savedAt": "2026-11-03T06:56:37.943Z",
     "appVersion": "2026.11.02.1"
   }
 }
