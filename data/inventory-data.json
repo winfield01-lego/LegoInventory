@@ -454298,7 +454298,7 @@
       "label": "F13",
       "notes": "2 x 2 Dish - Inverted",
       "group": "F",
-      "lastEdited": "2026-11-03T03:26:17.851Z"
+      "lastEdited": "2026-11-03T03:26:50.048Z"
     },
     {
       "id": "F14",
@@ -485632,7 +485632,7 @@
       "drawerId": "F13",
       "partNum": "4740",
       "color": "Black",
-      "qty": 20
+      "qty": 21
     },
     {
       "drawerId": "F13",
@@ -485702,7 +485702,7 @@
       "partNum": "4740",
       "color": "Red",
       "elementId": "4107619",
-      "qty": 5
+      "qty": 6
     },
     {
       "drawerId": "F13",
@@ -486147,6 +486147,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw04mftm_p5n0v",
+      "label": "Ebay Bulk Boxes (batch 22)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 22,
+      "timestamp": "2026-11-03T03:26:50.266Z",
+      "items": [
+        {
+          "partNum": "4740",
+          "color": "Black",
+          "desc": "Dish 2 x 2 Inverted [Radar]",
+          "elementId": "474026",
+          "qty": 1,
+          "drawerId": "F13",
+          "drawerLabel": "F13"
+        },
+        {
+          "partNum": "4740",
+          "color": "Red",
+          "desc": "Dish 2 x 2 Inverted [Radar]",
+          "elementId": "4107619",
+          "qty": 1,
+          "drawerId": "F13",
+          "drawerLabel": "F13"
+        }
+      ]
+    },
     {
       "id": "bag_mw03zejs_p9j45",
       "label": "Ebay Bulk Boxes (batch 21)",
@@ -505241,28 +505269,6 @@
           "sel": false
         },
         {
-          "partNum": "4740",
-          "color": "Black",
-          "desc": "Dish 2 x 2 Inverted [Radar]",
-          "elementId": "474026",
-          "qty": 1,
-          "drawerId": "F13",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "4740",
-          "color": "Red",
-          "desc": "Dish 2 x 2 Inverted [Radar]",
-          "elementId": "4107619",
-          "qty": 1,
-          "drawerId": "F13",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "43898",
           "color": "Dark Bluish Gray",
           "desc": "Dish 3 x 3 Inverted [Radar]",
@@ -505429,11 +505435,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T03:26:25.593Z",
+      "savedAt": "2026-11-03T03:26:50.265Z",
       "moved": {
-        "batches": 21,
-        "pieces": 1488,
-        "last": "2026-11-03T03:08:55.528Z"
+        "batches": 22,
+        "pieces": 1490,
+        "last": "2026-11-03T03:26:50.266Z"
       }
     },
     {
@@ -607107,7 +607113,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T03:26:29.628Z"
+      "at": "2026-11-03T03:26:54.295Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -607128,10 +607134,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T03:26:25.593Z",
+      "bags": "2026-11-03T03:26:50.266Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T03:26:29.628Z",
+    "savedAt": "2026-11-03T03:26:54.295Z",
     "appVersion": "2026.11.02.1"
   }
 }
