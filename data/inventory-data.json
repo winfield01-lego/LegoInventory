@@ -454557,7 +454557,7 @@
       "label": "G8",
       "notes": "2L Bar Stop and Pneumatic T Piece",
       "group": "G",
-      "lastEdited": "2026-11-03T05:58:50.115Z"
+      "lastEdited": "2026-11-03T06:01:31.020Z"
     },
     {
       "id": "G9",
@@ -487886,6 +487886,38 @@
       "partNum": "47456",
       "color": "Dark Blue",
       "qty": 1
+    },
+    {
+      "drawerId": "G8",
+      "partNum": "4697b",
+      "color": "Black",
+      "qty": 13
+    },
+    {
+      "drawerId": "G8",
+      "partNum": "4697b",
+      "color": "Light Bluish Gray",
+      "qty": 9
+    },
+    {
+      "drawerId": "G8",
+      "partNum": "4697b",
+      "color": "Pearl Gold",
+      "elementId": "6167930",
+      "qty": 1
+    },
+    {
+      "drawerId": "G8",
+      "partNum": "4697b",
+      "color": "Tan",
+      "qty": 2
+    },
+    {
+      "drawerId": "G8",
+      "partNum": "4697b",
+      "color": "White",
+      "elementId": "6289866",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -560865,9 +560897,12 @@
       "c": "Pearl Gold",
       "d": "Pneumatic T-Piece (T Bar) [New Style]",
       "e": "6452472",
-      "u": 1791916924851,
+      "u": 1793685692221,
       "at": 1791654590859,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6167930.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6167930.jpg",
+      "ea": [
+        "6167930"
+      ]
     },
     "88072|reddish brown": {
       "p": "88072",
@@ -589503,9 +589538,12 @@
       "c": "White",
       "d": "Pneumatic T-Piece (T Bar) [New Style]",
       "e": "6615553",
-      "u": 1791916924851,
+      "u": 1793685692221,
       "at": 1791732118013,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6289866.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6289866.jpg",
+      "ea": [
+        "6289866"
+      ]
     },
     "92013|white": {
       "p": "92013",
@@ -610635,7 +610673,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:58:54.146Z"
+      "at": "2026-11-03T06:01:36.305Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610659,7 +610697,7 @@
       "bags": "2026-11-03T05:58:00.619Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:58:54.146Z",
+    "savedAt": "2026-11-03T06:01:36.305Z",
     "appVersion": "2026.11.02.1"
   }
 }
