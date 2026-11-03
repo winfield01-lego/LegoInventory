@@ -457630,7 +457630,7 @@
       "label": "R4",
       "notes": "Panels, 1 x 2 x 3, 1 x 4 x 2, and 1 x 4 x 3",
       "group": "R",
-      "lastEdited": "2026-11-03T05:11:31.595Z"
+      "lastEdited": "2026-11-03T05:12:28.915Z"
     },
     {
       "id": "R5",
@@ -487165,6 +487165,50 @@
       "drawerId": "R4",
       "partNum": "14718",
       "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "60581",
+      "color": "Black",
+      "elementId": "421526",
+      "qty": 2
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "60581",
+      "color": "Dark Tan",
+      "qty": 2
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "60581",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "60581",
+      "color": "Orange",
+      "qty": 3
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "60581",
+      "color": "Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "60581",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "60581",
+      "color": "White",
+      "elementId": "4105202",
       "qty": 1
     }
   ],
@@ -520462,18 +520506,22 @@
       "c": "Black",
       "d": "Panel 1 x 4 x 3 [Side Supports / Hollow Studs]",
       "e": "4558209",
-      "u": 1791916924851,
-      "at": 1791654346340
+      "u": 1793682750117,
+      "at": 1791654346340,
+      "ea": [
+        "421526"
+      ]
     },
     "60581|white": {
       "p": "60581",
       "c": "White",
       "d": "Panel 1 x 4 x 3 [Side Supports / Hollow Studs]",
       "e": "4558208",
-      "u": 1791916924851,
+      "u": 1793682750117,
       "at": 1791654401152,
       "ea": [
-        "6615548"
+        "6615548",
+        "4105202"
       ]
     },
     "2420|black": {
@@ -604296,6 +604344,27 @@
       "d": "Panel 1 x 2 x 3 - Solid Studs",
       "e": "4113023",
       "u": 1793682610069
+    },
+    "60581|dark tan": {
+      "p": "60581",
+      "c": "Dark Tan",
+      "d": "Panel 1 x 4 x 3 [Side Supports / Hollow Studs]",
+      "e": "6001833",
+      "u": 1793682750117
+    },
+    "60581|orange": {
+      "p": "60581",
+      "c": "Orange",
+      "d": "Panel 1 x 4 x 3 [Side Supports / Hollow Studs]",
+      "e": "4505157",
+      "u": 1793682750117
+    },
+    "60581|red": {
+      "p": "60581",
+      "c": "Red",
+      "d": "Panel 1 x 4 x 3 [Side Supports / Hollow Studs]",
+      "e": "4248244",
+      "u": 1793682750117
     }
   },
   "partKinds": {
@@ -609370,7 +609439,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:11:35.621Z"
+      "at": "2026-11-03T05:12:32.955Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -609394,7 +609463,7 @@
       "bags": "2026-11-03T04:48:18.759Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:11:35.621Z",
+    "savedAt": "2026-11-03T05:12:32.955Z",
     "appVersion": "2026.11.02.1"
   }
 }
