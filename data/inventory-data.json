@@ -455505,7 +455505,7 @@
       "label": "J16",
       "notes": "1 x 1 x 3 2 clips, 1 x 1 x 2 with Shutter Holder, Shutters",
       "group": "j",
-      "lastEdited": "2026-11-03T05:34:41.055Z"
+      "lastEdited": "2026-11-03T05:35:29.907Z"
     },
     {
       "id": "J17",
@@ -487527,6 +487527,31 @@
       "color": "White",
       "elementId": "",
       "qty": 1
+    },
+    {
+      "drawerId": "J16",
+      "partNum": "60583b",
+      "color": "Light Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "J16",
+      "partNum": "60583b",
+      "color": "Medium Nougat",
+      "qty": 1
+    },
+    {
+      "drawerId": "J16",
+      "partNum": "60583b",
+      "color": "Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "J16",
+      "partNum": "60583b",
+      "color": "White",
+      "elementId": "4550711",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -507297,10 +507322,10 @@
           "desc": "Brick Special 1 x 1 x 3 with 2 Clips Vertical [Hollow Stud, Open O Clips]",
           "elementId": "4528132",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "J16",
           "matchCount": 0,
           "suggested": false,
-          "sel": false
+          "sel": true
         },
         {
           "partNum": "60583b",
@@ -507308,10 +507333,10 @@
           "desc": "Brick Special 1 x 1 x 3 with 2 Clips Vertical [Hollow Stud, Open O Clips]",
           "elementId": "4550711",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "J16",
           "matchCount": 0,
           "suggested": false,
-          "sel": false
+          "sel": true
         },
         {
           "partNum": "62462",
@@ -507370,7 +507395,7 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T05:28:49.892Z",
+      "savedAt": "2026-11-03T05:35:37.686Z",
       "moved": {
         "batches": 35,
         "pieces": 1512,
@@ -576911,9 +576936,12 @@
       "c": "White",
       "d": "Brick Special 1 x 1 x 3 with 2 Clips Vertical [Hollow Stud, Open O Clips]",
       "e": "6320355",
-      "u": 1791916924851,
+      "u": 1793684131109,
       "at": 1791654806816,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4563684.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4563684.jpg",
+      "ea": [
+        "4550711"
+      ]
     },
     "28739|white": {
       "p": "28739",
@@ -604914,6 +604942,27 @@
       "d": "Window 1 x 2 x 2 Shutter",
       "e": "",
       "u": 1793684082256
+    },
+    "60583b|light bluish gray": {
+      "p": "60583b",
+      "c": "Light Bluish Gray",
+      "d": "Brick Special 1 x 1 x 3 with 2 Clips Vertical [Hollow Stud, Open O Clips]",
+      "e": "6008364",
+      "u": 1793684131109
+    },
+    "60583b|medium nougat": {
+      "p": "60583b",
+      "c": "Medium Nougat",
+      "d": "Brick Special 1 x 1 x 3 with 2 Clips Vertical [Hollow Stud, Open O Clips]",
+      "e": "4569473",
+      "u": 1793684131109
+    },
+    "60583b|red": {
+      "p": "60583b",
+      "c": "Red",
+      "d": "Brick Special 1 x 1 x 3 with 2 Clips Vertical [Hollow Stud, Open O Clips]",
+      "e": "4528132",
+      "u": 1793684131109
     }
   },
   "partKinds": {
@@ -609988,7 +610037,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:34:45.085Z"
+      "at": "2026-11-03T05:35:41.727Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610009,10 +610058,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T05:28:49.892Z",
+      "bags": "2026-11-03T05:35:37.686Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:34:45.085Z",
+    "savedAt": "2026-11-03T05:35:41.727Z",
     "appVersion": "2026.11.02.1"
   }
 }
