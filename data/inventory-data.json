@@ -456021,7 +456021,7 @@
       "label": "K25",
       "notes": "3L with 2 Pin Holes and 1-axle and 2 pin holes",
       "group": "K",
-      "lastEdited": "2026-11-03T06:19:49.772Z"
+      "lastEdited": "2026-11-03T06:20:04.122Z"
     },
     {
       "id": "K26",
@@ -488144,14 +488144,14 @@
       "partNum": "32291",
       "color": "Black",
       "elementId": "4140430",
-      "qty": 1
+      "qty": 2
     },
     {
       "drawerId": "K25",
       "partNum": "32291",
       "color": "Dark Bluish Gray",
       "elementId": "4210655",
-      "qty": 7
+      "qty": 8
     },
     {
       "drawerId": "K25",
@@ -488577,6 +488577,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw0at7x4_02v2i",
+      "label": "Ebay Bulk Boxes (batch 38)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 38,
+      "timestamp": "2026-11-03T06:20:04.312Z",
+      "items": [
+        {
+          "partNum": "32291",
+          "color": "Black",
+          "desc": "Technic Axle and Pin Connector Perpendicular Double",
+          "elementId": "4140430",
+          "qty": 1,
+          "drawerId": "K25",
+          "drawerLabel": "K25"
+        },
+        {
+          "partNum": "32291",
+          "color": "Dark Bluish Gray",
+          "desc": "Technic Axle and Pin Connector Perpendicular Double",
+          "elementId": "4210655",
+          "qty": 1,
+          "drawerId": "K25",
+          "drawerLabel": "K25"
+        }
+      ]
+    },
     {
       "id": "bag_mw0a0ujv_acjuv",
       "label": "Ebay Bulk Boxes (batch 37)",
@@ -507909,28 +507937,6 @@
           "sel": false
         },
         {
-          "partNum": "32291",
-          "color": "Black",
-          "desc": "Technic Axle and Pin Connector Perpendicular Double",
-          "elementId": "4140430",
-          "qty": 1,
-          "drawerId": "K25",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "32291",
-          "color": "Dark Bluish Gray",
-          "desc": "Technic Axle and Pin Connector Perpendicular Double",
-          "elementId": "4210655",
-          "qty": 1,
-          "drawerId": "K25",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "42003",
           "color": "Black",
           "desc": "Technic Axle and Pin Connector Perpendicular 3L with 2 Pin Holes",
@@ -508020,11 +508026,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T06:19:57.034Z",
+      "savedAt": "2026-11-03T06:20:04.312Z",
       "moved": {
-        "batches": 37,
-        "pieces": 1516,
-        "last": "2026-11-03T05:58:00.619Z"
+        "batches": 38,
+        "pieces": 1518,
+        "last": "2026-11-03T06:20:04.312Z"
       }
     },
     {
@@ -611082,7 +611088,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T06:20:01.065Z"
+      "at": "2026-11-03T06:20:08.346Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -611103,10 +611109,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T06:19:57.034Z",
+      "bags": "2026-11-03T06:20:04.312Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T06:20:01.065Z",
+    "savedAt": "2026-11-03T06:20:08.346Z",
     "appVersion": "2026.11.02.1"
   }
 }
