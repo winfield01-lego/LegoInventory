@@ -457501,7 +457501,7 @@
       "label": "O63",
       "notes": "2 x 2 x 3 and 2 x 2 x 2 Square Cone",
       "group": "O",
-      "lastEdited": "2026-11-03T05:37:15.033Z"
+      "lastEdited": "2026-11-03T05:37:45.673Z"
     },
     {
       "id": "O64",
@@ -487552,6 +487552,18 @@
       "color": "White",
       "elementId": "4550711",
       "qty": 6
+    },
+    {
+      "drawerId": "O63",
+      "partNum": "3685",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "O63",
+      "partNum": "3685",
+      "color": "Dark Blue",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -604969,6 +604981,20 @@
       "d": "Brick Special 1 x 1 x 3 with 2 Clips Vertical [Hollow Stud, Open O Clips]",
       "e": "4528132",
       "u": 1793684131109
+    },
+    "3685|black": {
+      "p": "3685",
+      "c": "Black",
+      "d": "Brick Sloped 75° 2 x 2 x 3 Double Convex",
+      "e": "368526",
+      "u": 1793684266876
+    },
+    "3685|dark blue": {
+      "p": "3685",
+      "c": "Dark Blue",
+      "d": "Brick Sloped 75° 2 x 2 x 3 Double Convex",
+      "e": "6144750",
+      "u": 1793684266876
     }
   },
   "partKinds": {
@@ -610043,7 +610069,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:37:19.077Z"
+      "at": "2026-11-03T05:37:49.709Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610067,7 +610093,7 @@
       "bags": "2026-11-03T05:35:42.992Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:37:19.077Z",
+    "savedAt": "2026-11-03T05:37:49.709Z",
     "appVersion": "2026.11.02.1"
   }
 }
