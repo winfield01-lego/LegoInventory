@@ -457448,7 +457448,7 @@
       "label": "O55",
       "notes": "Side Slope - 2 x 8",
       "group": "O",
-      "lastEdited": "2026-11-03T06:04:44.381Z"
+      "lastEdited": "2026-11-03T06:05:29.153Z"
     },
     {
       "id": "O56",
@@ -487966,6 +487966,31 @@
       "partNum": "23949",
       "color": "Blue",
       "qty": 1
+    },
+    {
+      "drawerId": "O55",
+      "partNum": "4445",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "O55",
+      "partNum": "4445",
+      "color": "Light Bluish Gray",
+      "elementId": "4215352",
+      "qty": 1
+    },
+    {
+      "drawerId": "O55",
+      "partNum": "4445",
+      "color": "Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "O55",
+      "partNum": "4445",
+      "color": "White",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -554033,9 +554058,12 @@
       "c": "Light Bluish Gray",
       "d": "Brick Sloped 45° 2 x 8",
       "e": "4509914",
-      "u": 1791916924851,
+      "u": 1793685930355,
       "at": 1791654734530,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4215352.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4215352.jpg",
+      "ea": [
+        "4215352"
+      ]
     },
     "53540|light bluish gray": {
       "p": "53540",
@@ -605654,6 +605682,20 @@
       "d": "Brick Sloped 45° 2 x 6",
       "e": "6253010",
       "u": 1793685869138
+    },
+    "4445|red": {
+      "p": "4445",
+      "c": "Red",
+      "d": "Brick Sloped 45° 2 x 8",
+      "e": "4239184",
+      "u": 1793685930355
+    },
+    "4445|white": {
+      "p": "4445",
+      "c": "White",
+      "d": "Brick Sloped 45° 2 x 8",
+      "e": "4163984",
+      "u": 1793685930355
     }
   },
   "partKinds": {
@@ -610728,7 +610770,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T06:04:48.423Z"
+      "at": "2026-11-03T06:05:34.444Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610752,7 +610794,7 @@
       "bags": "2026-11-03T05:58:00.619Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T06:04:48.423Z",
+    "savedAt": "2026-11-03T06:05:34.444Z",
     "appVersion": "2026.11.02.1"
   }
 }
