@@ -454312,7 +454312,7 @@
       "label": "F15",
       "notes": "4 x 4 Dish - Inverted",
       "group": "F",
-      "lastEdited": "2026-11-03T03:33:56.526Z"
+      "lastEdited": "2026-11-03T03:36:01.742Z"
     },
     {
       "id": "F16",
@@ -485800,6 +485800,36 @@
       "color": "Light Bluish Gray",
       "elementId": "6317090",
       "qty": 1
+    },
+    {
+      "drawerId": "F15",
+      "partNum": "3960",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "F15",
+      "partNum": "3960",
+      "color": "Dark Bluish Gray",
+      "qty": 6
+    },
+    {
+      "drawerId": "F15",
+      "partNum": "3960",
+      "color": "Light Bluish Gray",
+      "qty": 13
+    },
+    {
+      "drawerId": "F15",
+      "partNum": "3960",
+      "color": "Sand Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "F15",
+      "partNum": "3960",
+      "color": "White",
+      "qty": 8
     }
   ],
   "mocLocations": {
@@ -602156,6 +602186,20 @@
       "d": "Dish 4 x 4 Inverted with Open Stud [Radar]",
       "e": "6620691",
       "u": 1793676831364
+    },
+    "3960|dark bluish gray": {
+      "p": "3960",
+      "c": "Dark Bluish Gray",
+      "d": "Dish 4 x 4 Inverted [Radar]",
+      "e": "4223981",
+      "u": 1793676962945
+    },
+    "3960|sand blue": {
+      "p": "3960",
+      "c": "Sand Blue",
+      "d": "Dish 4 x 4 Inverted [Radar]",
+      "e": "4260191",
+      "u": 1793676962945
     }
   },
   "partKinds": {
@@ -607230,7 +607274,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T03:34:01.727Z"
+      "at": "2026-11-03T03:36:07.026Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -607254,7 +607298,7 @@
       "bags": "2026-11-03T03:31:50.213Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T03:34:01.727Z",
+    "savedAt": "2026-11-03T03:36:07.026Z",
     "appVersion": "2026.11.02.1"
   }
 }
