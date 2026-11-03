@@ -455893,7 +455893,7 @@
       "label": "K8",
       "notes": "Plates - 6 x 10, 8 x 8, 6 x 24",
       "group": "K",
-      "lastEdited": "2026-11-03T03:42:13.442Z"
+      "lastEdited": "2026-11-03T03:44:48.826Z"
     },
     {
       "id": "K9",
@@ -485901,6 +485901,31 @@
       "partNum": "3026",
       "color": "White",
       "qty": 2
+    },
+    {
+      "drawerId": "K8",
+      "partNum": "41539",
+      "color": "Black",
+      "qty": 11
+    },
+    {
+      "drawerId": "K8",
+      "partNum": "41539",
+      "color": "Dark Bluish Gray",
+      "qty": 10
+    },
+    {
+      "drawerId": "K8",
+      "partNum": "41539",
+      "color": "Light Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "K8",
+      "partNum": "41539",
+      "color": "Tan",
+      "elementId": "4178317",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -557069,9 +557094,12 @@
       "c": "Tan",
       "d": "Plate 8 x 8",
       "e": "4624223",
-      "u": 1791916924851,
+      "u": 1793677490029,
       "at": 1791654560264,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4178317.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4178317.jpg",
+      "ea": [
+        "4178317"
+      ]
     },
     "6003|tan": {
       "p": "6003",
@@ -607378,7 +607406,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T03:42:17.472Z"
+      "at": "2026-11-03T03:44:54.109Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -607402,7 +607430,7 @@
       "bags": "2026-11-03T03:36:57.902Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T03:42:17.472Z",
+    "savedAt": "2026-11-03T03:44:54.109Z",
     "appVersion": "2026.11.02.1"
   }
 }
