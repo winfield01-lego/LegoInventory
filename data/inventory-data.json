@@ -454536,7 +454536,7 @@
       "label": "G5",
       "notes": "2 x 3 x 2/3 Wing End - 2 Studs, 1 x 2 x 2/3 Wing End",
       "group": "G",
-      "lastEdited": "2026-11-03T05:55:58.254Z"
+      "lastEdited": "2026-11-03T05:57:43.700Z"
     },
     {
       "id": "G6",
@@ -487824,6 +487824,61 @@
       "color": "Tan",
       "elementId": "6311187",
       "qty": 1
+    },
+    {
+      "drawerId": "G5",
+      "partNum": "47456",
+      "color": "Black",
+      "elementId": "4218569",
+      "qty": 6
+    },
+    {
+      "drawerId": "G5",
+      "partNum": "47456",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "G5",
+      "partNum": "47456",
+      "color": "Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "G5",
+      "partNum": "47456",
+      "color": "Dark Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "G5",
+      "partNum": "47456",
+      "color": "Pearl Gold",
+      "qty": 1
+    },
+    {
+      "drawerId": "G5",
+      "partNum": "47456",
+      "color": "Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "G5",
+      "partNum": "47456",
+      "color": "Pearl Titanium",
+      "qty": 5
+    },
+    {
+      "drawerId": "G5",
+      "partNum": "47456",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "G5",
+      "partNum": "47456",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -507600,9 +507655,9 @@
           "desc": "Brick Wedged, Curved 2 x 3 x 2/3 Two Studs, Wing End",
           "elementId": "4218675",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "G5",
           "matchCount": 0,
-          "suggested": false,
+          "suggested": true,
           "sel": false
         },
         {
@@ -507666,7 +507721,7 @@
           "desc": "Brick Curved 2 x 2, Two Top Studs",
           "elementId": "4142112",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "G7",
           "matchCount": 0,
           "suggested": false,
           "sel": false
@@ -544864,8 +544919,11 @@
       "c": "Black",
       "d": "Brick Wedged, Curved 2 x 3 x 2/3 Two Studs, Wing End",
       "e": "4285883",
-      "u": 1791916924851,
-      "at": 1791654478524
+      "u": 1793685464903,
+      "at": 1791654478524,
+      "ea": [
+        "4218569"
+      ]
     },
     "44302a|black": {
       "p": "44302a",
@@ -605427,6 +605485,62 @@
       "d": "Brick Wedged, Curved 1 x 2 x 2/3 No Studs, Wing End",
       "e": "4220516",
       "u": 1793685359457
+    },
+    "47456|blue": {
+      "p": "47456",
+      "c": "Blue",
+      "d": "Brick Wedged, Curved 2 x 3 x 2/3 Two Studs, Wing End",
+      "e": "4286004",
+      "u": 1793685464903
+    },
+    "47456|green": {
+      "p": "47456",
+      "c": "Green",
+      "d": "Brick Wedged, Curved 2 x 3 x 2/3 Two Studs, Wing End",
+      "e": "4218669",
+      "u": 1793685464903
+    },
+    "47456|dark bluish gray": {
+      "p": "47456",
+      "c": "Dark Bluish Gray",
+      "d": "Brick Wedged, Curved 2 x 3 x 2/3 Two Studs, Wing End",
+      "e": "4218668",
+      "u": 1793685464903
+    },
+    "47456|pearl gold": {
+      "p": "47456",
+      "c": "Pearl Gold",
+      "d": "Brick Wedged, Curved 2 x 3 x 2/3 Two Studs, Wing End",
+      "e": "4286599",
+      "u": 1793685464903
+    },
+    "47456|red": {
+      "p": "47456",
+      "c": "Red",
+      "d": "Brick Wedged, Curved 2 x 3 x 2/3 Two Studs, Wing End",
+      "e": "4614777",
+      "u": 1793685464903
+    },
+    "47456|pearl titanium": {
+      "p": "47456",
+      "c": "Pearl Titanium",
+      "d": "Brick Wedged, Curved 2 x 3 x 2/3 Two Studs, Wing End",
+      "e": "6167034",
+      "u": 1793685464903
+    },
+    "47456|reddish brown": {
+      "p": "47456",
+      "c": "Reddish Brown",
+      "d": "Brick Wedged, Curved 2 x 3 x 2/3 Two Studs, Wing End",
+      "e": "4507833",
+      "u": 1793685464903
+    },
+    "47456|white": {
+      "p": "47456",
+      "c": "White",
+      "d": "Brick Wedged, Curved 2 x 3 x 2/3 Two Studs, Wing End",
+      "e": "4610897",
+      "u": 1793685464903
     }
   },
   "partKinds": {
@@ -610501,7 +610615,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:56:03.551Z"
+      "at": "2026-11-03T05:57:51.606Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610522,10 +610636,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T05:35:42.992Z",
+      "bags": "2026-11-03T05:57:47.576Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:56:03.551Z",
+    "savedAt": "2026-11-03T05:57:51.606Z",
     "appVersion": "2026.11.02.1"
   }
 }
