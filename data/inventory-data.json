@@ -457455,7 +457455,7 @@
       "label": "O56",
       "notes": "Side Slope - 2 x 6",
       "group": "O",
-      "lastEdited": "2026-11-03T06:04:14.795Z"
+      "lastEdited": "2026-11-03T06:04:27.936Z"
     },
     {
       "id": "O57",
@@ -487959,6 +487959,12 @@
       "drawerId": "G8",
       "partNum": "78258",
       "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "O56",
+      "partNum": "23949",
+      "color": "Blue",
       "qty": 1
     }
   ],
@@ -605641,6 +605647,13 @@
       "d": "Brick Wedged, Curved 2 x 3 x 2/3 Two Studs, Wing End",
       "e": "4218675",
       "u": 1793685481820
+    },
+    "23949|blue": {
+      "p": "23949",
+      "c": "Blue",
+      "d": "Brick Sloped 45° 2 x 6",
+      "e": "6253010",
+      "u": 1793685869138
     }
   },
   "partKinds": {
@@ -610715,7 +610728,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T06:04:18.826Z"
+      "at": "2026-11-03T06:04:31.978Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610739,7 +610752,7 @@
       "bags": "2026-11-03T05:58:00.619Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T06:04:18.826Z",
+    "savedAt": "2026-11-03T06:04:31.978Z",
     "appVersion": "2026.11.02.1"
   }
 }
