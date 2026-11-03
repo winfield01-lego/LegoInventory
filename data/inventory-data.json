@@ -457487,7 +457487,7 @@
       "label": "O61",
       "notes": "3 x 3 Wedge Slope - Left and Right",
       "group": "O",
-      "lastEdited": "2026-11-03T05:40:14.022Z"
+      "lastEdited": "2026-11-03T05:40:37.389Z"
     },
     {
       "id": "O62",
@@ -487613,6 +487613,25 @@
       "color": "White",
       "elementId": "6254601",
       "qty": 4
+    },
+    {
+      "drawerId": "O61",
+      "partNum": "48165",
+      "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "O61",
+      "partNum": "48165",
+      "color": "Dark Red",
+      "qty": 4
+    },
+    {
+      "drawerId": "O61",
+      "partNum": "48165",
+      "color": "White",
+      "elementId": "6254602",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -555052,9 +555071,12 @@
       "c": "White",
       "d": "Brick Wedged, Sloped 45° 3 x 3 Right",
       "e": "6552174",
-      "u": 1791916924851,
+      "u": 1793684438591,
       "at": 1791654677272,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6254602.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6254602.jpg",
+      "ea": [
+        "6254602"
+      ]
     },
     "3030|white": {
       "p": "3030",
@@ -605075,6 +605097,13 @@
       "d": "Brick Wedged, Sloped 45° 3 x 3 Left",
       "e": "6440475",
       "u": 1793684415225
+    },
+    "48165|dark blue": {
+      "p": "48165",
+      "c": "Dark Blue",
+      "d": "Brick Wedged, Sloped 45° 3 x 3 Right",
+      "e": "6440474",
+      "u": 1793684438591
     }
   },
   "partKinds": {
@@ -610149,7 +610178,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:40:19.319Z"
+      "at": "2026-11-03T05:40:42.666Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610173,7 +610202,7 @@
       "bags": "2026-11-03T05:35:42.992Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:40:19.319Z",
+    "savedAt": "2026-11-03T05:40:42.665Z",
     "appVersion": "2026.11.02.1"
   }
 }
