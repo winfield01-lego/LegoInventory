@@ -454293,7 +454293,7 @@
       "label": "F12",
       "notes": "Angled Connector #3 and #5",
       "group": "F",
-      "lastEdited": "2026-11-03T06:27:43.110Z"
+      "lastEdited": "2026-11-03T06:28:39.977Z"
     },
     {
       "id": "F13",
@@ -488261,6 +488261,40 @@
       "partNum": "32015",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "F12",
+      "partNum": "32016",
+      "color": "Black",
+      "elementId": "4107082",
+      "qty": 1
+    },
+    {
+      "drawerId": "F12",
+      "partNum": "32016",
+      "color": "Dark Bluish Gray",
+      "elementId": "4210670",
+      "qty": 2
+    },
+    {
+      "drawerId": "F12",
+      "partNum": "32016",
+      "color": "Light Bluish Gray",
+      "elementId": "4211552",
+      "qty": 6
+    },
+    {
+      "drawerId": "F12",
+      "partNum": "32016",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "F12",
+      "partNum": "32016",
+      "color": "White",
+      "elementId": "4118982",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -508020,7 +508054,7 @@
           "desc": "Technic Axle and Pin Connector Angled #5 - 112.5°",
           "elementId": "4211034",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "F12",
           "matchCount": 0,
           "suggested": false,
           "sel": false
@@ -536603,9 +536637,12 @@
       "c": "Black",
       "d": "Technic Axle and Pin Connector Angled #3 - 157.5°",
       "e": "6261386",
-      "u": 1791916924851,
+      "u": 1793687321179,
       "at": 1791654717569,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4107082.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4107082.jpg",
+      "ea": [
+        "4107082"
+      ]
     },
     "32291|black": {
       "p": "32291",
@@ -551692,9 +551729,12 @@
       "c": "Dark Bluish Gray",
       "d": "Technic Axle and Pin Connector Angled #3 - 157.5°",
       "e": "6366184",
-      "u": 1791916924851,
+      "u": 1793687321179,
       "at": 1791654648834,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6283865.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6283865.jpg",
+      "ea": [
+        "4210670"
+      ]
     },
     "65429|dark bluish gray": {
       "p": "65429",
@@ -555397,9 +555437,12 @@
       "c": "Light Bluish Gray",
       "d": "Technic Axle and Pin Connector Angled #3 - 157.5°",
       "e": "6261387",
-      "u": 1791916924851,
+      "u": 1793687321179,
       "at": 1791654809281,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4211552.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4211552.jpg",
+      "ea": [
+        "4211552"
+      ]
     },
     "6632|light bluish gray": {
       "p": "6632",
@@ -565197,9 +565240,12 @@
       "c": "White",
       "d": "Technic Axle and Pin Connector Angled #3 - 157.5°",
       "e": "6261390",
-      "u": 1791916924851,
+      "u": 1793687321179,
       "at": 1791654717569,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4118982.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4118982.jpg",
+      "ea": [
+        "4118982"
+      ]
     },
     "10202|white": {
       "p": "10202",
@@ -606183,6 +606229,13 @@
       "d": "Technic Axle and Pin Connector Angled #5 - 112.5°",
       "e": "4107579",
       "u": 1793687264312
+    },
+    "32016|reddish brown": {
+      "p": "32016",
+      "c": "Reddish Brown",
+      "d": "Technic Axle and Pin Connector Angled #3 - 157.5°",
+      "e": "4211212",
+      "u": 1793687321179
     }
   },
   "partKinds": {
@@ -611257,7 +611310,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T06:27:48.396Z"
+      "at": "2026-11-03T06:28:49.095Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -611278,10 +611331,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T06:24:49.818Z",
+      "bags": "2026-11-03T06:28:45.063Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T06:27:48.396Z",
+    "savedAt": "2026-11-03T06:28:49.095Z",
     "appVersion": "2026.11.02.1"
   }
 }
