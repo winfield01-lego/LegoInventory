@@ -456887,7 +456887,7 @@
       "label": "N20",
       "notes": "1 x 1 Brick - Vertical Handle",
       "group": "N",
-      "lastEdited": "2026-11-03T04:36:34.768Z"
+      "lastEdited": "2026-11-03T04:38:11.571Z"
     },
     {
       "id": "N21",
@@ -486640,6 +486640,53 @@
       "color": "Yellow",
       "elementId": "4515354",
       "qty": 7
+    },
+    {
+      "drawerId": "N20",
+      "partNum": "2921",
+      "color": "Black",
+      "elementId": "292126",
+      "qty": 2
+    },
+    {
+      "drawerId": "N20",
+      "partNum": "2921",
+      "color": "Light Bluish Gray",
+      "elementId": "4225532",
+      "qty": 36
+    },
+    {
+      "drawerId": "N20",
+      "partNum": "2921",
+      "color": "Medium Nougat",
+      "qty": 1
+    },
+    {
+      "drawerId": "N20",
+      "partNum": "2921",
+      "color": "Red",
+      "elementId": "292121",
+      "qty": 3
+    },
+    {
+      "drawerId": "N20",
+      "partNum": "2921",
+      "color": "Tan",
+      "elementId": "4185259",
+      "qty": 1
+    },
+    {
+      "drawerId": "N20",
+      "partNum": "2921",
+      "color": "White",
+      "elementId": "4119013",
+      "qty": 5
+    },
+    {
+      "drawerId": "N20",
+      "partNum": "2921",
+      "color": "Yellow",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -518068,9 +518115,12 @@
       "c": "Black",
       "d": "Brick Special 1 x 1 with Handle",
       "e": "6170566",
-      "u": 1791916924851,
+      "u": 1793680692773,
       "at": 1791846564409,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/292126.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/292126.jpg",
+      "ea": [
+        "292126"
+      ]
     },
     "87087|black": {
       "p": "87087",
@@ -547904,9 +547954,12 @@
       "c": "Red",
       "d": "Brick Special 1 x 1 with Handle",
       "e": "6170565",
-      "u": 1791916924851,
+      "u": 1793680692773,
       "at": 1791846557290,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/292121.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/292121.jpg",
+      "ea": [
+        "292121"
+      ]
     },
     "11477|reddish brown": {
       "p": "11477",
@@ -557955,9 +558008,12 @@
       "c": "Tan",
       "d": "Brick Special 1 x 1 with Handle",
       "e": "6170568",
-      "u": 1791916924851,
+      "u": 1793680692773,
       "at": 1791654560264,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4185259.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4185259.jpg",
+      "ea": [
+        "4185259"
+      ]
     },
     "30237b|tan": {
       "p": "30237b",
@@ -573931,9 +573987,12 @@
       "c": "White",
       "d": "Brick Special 1 x 1 with Handle",
       "e": "6615537",
-      "u": 1791916924851,
+      "u": 1793680692773,
       "at": 1791654768078,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4119013.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4119013.jpg",
+      "ea": [
+        "4119013"
+      ]
     },
     "60616b|white": {
       "p": "60616b",
@@ -603448,6 +603507,20 @@
       "d": "Brick Special 1 x 1 with Clip Vertical [Thick U Clip, Solid Stud]",
       "e": "4515356",
       "u": 1793680480170
+    },
+    "2921|medium nougat": {
+      "p": "2921",
+      "c": "Medium Nougat",
+      "d": "Brick Special 1 x 1 with Handle",
+      "e": "6102959",
+      "u": 1793680692773
+    },
+    "2921|yellow": {
+      "p": "2921",
+      "c": "Yellow",
+      "d": "Brick Special 1 x 1 with Handle",
+      "e": "4114186",
+      "u": 1793680692773
     }
   },
   "partKinds": {
@@ -608522,7 +608595,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:36:38.801Z"
+      "at": "2026-11-03T04:38:16.856Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -608546,7 +608619,7 @@
       "bags": "2026-11-03T04:30:10.786Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:36:38.801Z",
+    "savedAt": "2026-11-03T04:38:16.856Z",
     "appVersion": "2026.11.02.1"
   }
 }
