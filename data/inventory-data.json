@@ -457734,7 +457734,7 @@
       "label": "S9",
       "notes": "Plate 4 x 8 and 6 x 12",
       "group": "S",
-      "lastEdited": "2026-11-03T04:03:57.097Z"
+      "lastEdited": "2026-11-03T04:04:31.246Z"
     },
     {
       "id": "S10",
@@ -486078,7 +486078,7 @@
       "drawerId": "S9",
       "partNum": "3035",
       "color": "Yellow",
-      "qty": 1
+      "qty": 2
     },
     {
       "drawerId": "S9",
@@ -486109,7 +486109,7 @@
       "drawerId": "S9",
       "partNum": "3028",
       "color": "Bright Green",
-      "qty": 2
+      "qty": 3
     },
     {
       "drawerId": "S9",
@@ -486559,6 +486559,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw05ywjk_4tkms",
+      "label": "Ebay Bulk Boxes (batch 26)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 26,
+      "timestamp": "2026-11-03T04:04:31.424Z",
+      "items": [
+        {
+          "partNum": "3028",
+          "color": "Bright Green",
+          "desc": "Plate 6 x 12",
+          "elementId": "4541414",
+          "qty": 1,
+          "drawerId": "S9",
+          "drawerLabel": "S9"
+        },
+        {
+          "partNum": "3035",
+          "color": "Yellow",
+          "desc": "Plate 4 x 8",
+          "elementId": "303524",
+          "qty": 1,
+          "drawerId": "S9",
+          "drawerLabel": "S9"
+        }
+      ]
+    },
     {
       "id": "bag_mw05ph5s_mx1t0",
       "label": "Ebay Bulk Boxes (batch 25)",
@@ -505457,17 +505485,6 @@
       "label": "Ebay Bulk Boxes",
       "items": [
         {
-          "partNum": "3028",
-          "color": "Bright Green",
-          "desc": "Plate 6 x 12",
-          "elementId": "4541414",
-          "qty": 1,
-          "drawerId": "S9",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "2780",
           "color": "Black",
           "desc": "Technic Pin with Friction Ridges Lengthwise and Center Slots",
@@ -505906,25 +505923,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "3035",
-          "color": "Yellow",
-          "desc": "Plate 4 x 8",
-          "elementId": "303524",
-          "qty": 1,
-          "drawerId": "S9",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T04:04:11.322Z",
+      "savedAt": "2026-11-03T04:04:31.423Z",
       "moved": {
-        "batches": 25,
-        "pieces": 1496,
-        "last": "2026-11-03T03:57:11.584Z"
+        "batches": 26,
+        "pieces": 1498,
+        "last": "2026-11-03T04:04:31.424Z"
       }
     },
     {
@@ -607784,7 +607790,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:04:15.351Z"
+      "at": "2026-11-03T04:04:35.452Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -607805,10 +607811,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T04:04:11.322Z",
+      "bags": "2026-11-03T04:04:31.424Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:04:15.351Z",
+    "savedAt": "2026-11-03T04:04:35.452Z",
     "appVersion": "2026.11.02.1"
   }
 }
