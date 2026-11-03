@@ -454305,7 +454305,7 @@
       "label": "F14",
       "notes": "3 x 3 Dish - Inverted",
       "group": "F",
-      "lastEdited": "2026-11-03T03:31:25.112Z"
+      "lastEdited": "2026-11-03T03:31:49.996Z"
     },
     {
       "id": "F15",
@@ -485753,7 +485753,7 @@
       "drawerId": "F14",
       "partNum": "43898",
       "color": "Dark Bluish Gray",
-      "qty": 13
+      "qty": 14
     },
     {
       "drawerId": "F14",
@@ -486204,6 +486204,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw04sv9h_n0t3j",
+      "label": "Ebay Bulk Boxes (batch 23)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 23,
+      "timestamp": "2026-11-03T03:31:50.213Z",
+      "items": [
+        {
+          "partNum": "43898",
+          "color": "Dark Bluish Gray",
+          "desc": "Dish 3 x 3 Inverted [Radar]",
+          "elementId": "4210865",
+          "qty": 1,
+          "drawerId": "F14",
+          "drawerLabel": "F14"
+        }
+      ]
+    },
     {
       "id": "bag_mw04mftm_p5n0v",
       "label": "Ebay Bulk Boxes (batch 22)",
@@ -505326,17 +505345,6 @@
           "sel": false
         },
         {
-          "partNum": "43898",
-          "color": "Dark Bluish Gray",
-          "desc": "Dish 3 x 3 Inverted [Radar]",
-          "elementId": "4210865",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "3829c01",
           "color": "White",
           "desc": "Steering Stand 1 x 2 with Black Steering Wheel",
@@ -505492,11 +505500,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T03:26:50.265Z",
+      "savedAt": "2026-11-03T03:31:50.213Z",
       "moved": {
-        "batches": 22,
-        "pieces": 1490,
-        "last": "2026-11-03T03:26:50.266Z"
+        "batches": 23,
+        "pieces": 1491,
+        "last": "2026-11-03T03:31:50.213Z"
       }
     },
     {
@@ -607204,7 +607212,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T03:31:30.412Z"
+      "at": "2026-11-03T03:31:54.246Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -607225,10 +607233,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T03:26:50.266Z",
+      "bags": "2026-11-03T03:31:50.213Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T03:31:30.412Z",
+    "savedAt": "2026-11-03T03:31:54.246Z",
     "appVersion": "2026.11.02.1"
   }
 }
