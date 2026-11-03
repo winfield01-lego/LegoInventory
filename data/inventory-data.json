@@ -455505,7 +455505,7 @@
       "label": "J16",
       "notes": "1 x 1 x 3 2 clips, 1 x 1 x 2 with Shutter Holder, Shutters",
       "group": "j",
-      "lastEdited": "2026-11-03T05:35:29.907Z"
+      "lastEdited": "2026-11-03T05:35:42.808Z"
     },
     {
       "id": "J17",
@@ -487544,14 +487544,14 @@
       "drawerId": "J16",
       "partNum": "60583b",
       "color": "Red",
-      "qty": 2
+      "qty": 3
     },
     {
       "drawerId": "J16",
       "partNum": "60583b",
       "color": "White",
       "elementId": "4550711",
-      "qty": 5
+      "qty": 6
     }
   ],
   "mocLocations": {
@@ -487964,6 +487964,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw0986fk_ftz0k",
+      "label": "Ebay Bulk Boxes (batch 36)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 36,
+      "timestamp": "2026-11-03T05:35:42.992Z",
+      "items": [
+        {
+          "partNum": "60583b",
+          "color": "Red",
+          "desc": "Brick Special 1 x 1 x 3 with 2 Clips Vertical [Hollow Stud, Open O Clips]",
+          "elementId": "4528132",
+          "qty": 1,
+          "drawerId": "J16",
+          "drawerLabel": "J16"
+        },
+        {
+          "partNum": "60583b",
+          "color": "White",
+          "desc": "Brick Special 1 x 1 x 3 with 2 Clips Vertical [Hollow Stud, Open O Clips]",
+          "elementId": "4550711",
+          "qty": 1,
+          "drawerId": "J16",
+          "drawerLabel": "J16"
+        }
+      ]
+    },
     {
       "id": "bag_mw08zbok_9byys",
       "label": "Ebay Bulk Boxes (batch 35)",
@@ -507317,28 +507345,6 @@
           "sel": false
         },
         {
-          "partNum": "60583b",
-          "color": "Red",
-          "desc": "Brick Special 1 x 1 x 3 with 2 Clips Vertical [Hollow Stud, Open O Clips]",
-          "elementId": "4528132",
-          "qty": 1,
-          "drawerId": "J16",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "60583b",
-          "color": "White",
-          "desc": "Brick Special 1 x 1 x 3 with 2 Clips Vertical [Hollow Stud, Open O Clips]",
-          "elementId": "4550711",
-          "qty": 1,
-          "drawerId": "J16",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "62462",
           "color": "Light Bluish Gray",
           "desc": "Technic Pin Connector Round [Slotted]",
@@ -507395,11 +507401,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T05:35:37.686Z",
+      "savedAt": "2026-11-03T05:35:42.992Z",
       "moved": {
-        "batches": 35,
-        "pieces": 1512,
-        "last": "2026-11-03T05:28:49.892Z"
+        "batches": 36,
+        "pieces": 1514,
+        "last": "2026-11-03T05:35:42.992Z"
       }
     },
     {
@@ -610037,7 +610043,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:35:41.727Z"
+      "at": "2026-11-03T05:35:47.660Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610058,10 +610064,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T05:35:37.686Z",
+      "bags": "2026-11-03T05:35:42.992Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:35:41.727Z",
+    "savedAt": "2026-11-03T05:35:47.660Z",
     "appVersion": "2026.11.02.1"
   }
 }
