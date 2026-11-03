@@ -457386,7 +457386,7 @@
       "label": "O47",
       "notes": "1 x 2 Plate with Wheel Pin and 2 x 4 Plate - 2 Pin Holes on Bottom",
       "group": "O",
-      "lastEdited": "2026-11-03T05:27:57.825Z"
+      "lastEdited": "2026-11-03T05:28:21.346Z"
     },
     {
       "id": "O48",
@@ -487399,6 +487399,18 @@
       "drawerId": "O18",
       "partNum": "41767",
       "color": "White",
+      "qty": 4
+    },
+    {
+      "drawerId": "O47",
+      "partNum": "21445",
+      "color": "Light Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "O47",
+      "partNum": "21445",
+      "color": "Black",
       "qty": 4
     }
   ],
@@ -604688,6 +604700,20 @@
       "d": "Brick Wedged, Angled 4 x 2 Right",
       "e": "4160325",
       "u": 1793683603130
+    },
+    "21445|light bluish gray": {
+      "p": "21445",
+      "c": "Light Bluish Gray",
+      "d": "Plate Special 1 x 2 with Wheel Holder, Single Slit",
+      "e": "6125569",
+      "u": 1793683702547
+    },
+    "21445|black": {
+      "p": "21445",
+      "c": "Black",
+      "d": "Plate Special 1 x 2 with Wheel Holder, Single Slit",
+      "e": "6122656",
+      "u": 1793683702547
     }
   },
   "partKinds": {
@@ -609762,7 +609788,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:28:01.862Z"
+      "at": "2026-11-03T05:28:25.376Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -609786,7 +609812,7 @@
       "bags": "2026-11-03T05:12:48.484Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:28:01.862Z",
+    "savedAt": "2026-11-03T05:28:25.376Z",
     "appVersion": "2026.11.02.1"
   }
 }
