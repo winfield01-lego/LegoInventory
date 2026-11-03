@@ -457160,7 +457160,7 @@
       "label": "O15",
       "notes": "2 x 2 Plate with 2 Wheel Pins",
       "group": "O",
-      "lastEdited": "2026-11-03T04:43:26.061Z"
+      "lastEdited": "2026-11-03T04:44:18.655Z"
     },
     {
       "id": "O16",
@@ -486758,6 +486758,18 @@
       "color": "White",
       "elementId": "4649224",
       "qty": 12
+    },
+    {
+      "drawerId": "O15",
+      "partNum": "4600",
+      "color": "Black",
+      "qty": 8
+    },
+    {
+      "drawerId": "O15",
+      "partNum": "4600",
+      "color": "Light Bluish Gray",
+      "qty": 20
     }
   ],
   "mocLocations": {
@@ -506436,10 +506448,10 @@
           "desc": "Plate Special 2 x 2 with Wheel Holders",
           "elementId": "460026",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "O15",
           "matchCount": 0,
           "suggested": false,
-          "sel": false
+          "sel": true
         },
         {
           "partNum": "4600",
@@ -506447,10 +506459,10 @@
           "desc": "Plate Special 2 x 2 with Wheel Holders",
           "elementId": "4211504",
           "qty": 2,
-          "drawerId": "",
+          "drawerId": "O15",
           "matchCount": 0,
           "suggested": false,
-          "sel": false
+          "sel": true
         },
         {
           "partNum": "14718",
@@ -506575,7 +506587,7 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T04:42:39.503Z",
+      "savedAt": "2026-11-03T04:44:24.360Z",
       "moved": {
         "batches": 31,
         "pieces": 1504,
@@ -608717,7 +608729,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:43:30.097Z"
+      "at": "2026-11-03T04:44:28.391Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -608738,10 +608750,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T04:42:39.503Z",
+      "bags": "2026-11-03T04:44:24.360Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:43:30.097Z",
+    "savedAt": "2026-11-03T04:44:28.391Z",
     "appVersion": "2026.11.02.1"
   }
 }
