@@ -457466,7 +457466,7 @@
       "label": "O58",
       "notes": "8 x 1 x 3 and 6 x 1 x 5 Brick Slope",
       "group": "O",
-      "lastEdited": "2026-11-03T05:45:01.221Z"
+      "lastEdited": "2026-11-03T05:45:52.021Z"
     },
     {
       "id": "O59",
@@ -487668,6 +487668,12 @@
       "drawerId": "O58",
       "partNum": "49618",
       "color": "White",
+      "qty": 3
+    },
+    {
+      "drawerId": "O58",
+      "partNum": "30249",
+      "color": "Tan",
       "qty": 3
     }
   ],
@@ -605165,6 +605171,13 @@
       "d": "Brick Sloped Inverted 45° 3 x 1 Double with 2 Completely Open Studs",
       "e": "4251563",
       "u": 1793684616644
+    },
+    "30249|tan": {
+      "p": "30249",
+      "c": "Tan",
+      "d": "Brick Sloped 55° 1 x 6 x 5",
+      "e": "4243911",
+      "u": 1793684753223
     }
   },
   "partKinds": {
@@ -610239,7 +610252,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:45:05.252Z"
+      "at": "2026-11-03T05:45:56.052Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610263,7 +610276,7 @@
       "bags": "2026-11-03T05:35:42.992Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:45:05.252Z",
+    "savedAt": "2026-11-03T05:45:56.052Z",
     "appVersion": "2026.11.02.1"
   }
 }
