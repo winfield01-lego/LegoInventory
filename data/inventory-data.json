@@ -454381,7 +454381,7 @@
       "label": "F26",
       "notes": "1 x 1 Brick with Axle Hole",
       "group": "F",
-      "lastEdited": "2026-11-03T03:08:37.507Z"
+      "lastEdited": "2026-11-03T03:08:55.321Z"
     },
     {
       "id": "F27",
@@ -485601,7 +485601,7 @@
       "drawerId": "F26",
       "partNum": "73230",
       "color": "Light Bluish Gray",
-      "qty": 26
+      "qty": 30
     },
     {
       "drawerId": "F26",
@@ -486038,6 +486038,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw03zejs_p9j45",
+      "label": "Ebay Bulk Boxes (batch 21)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 21,
+      "timestamp": "2026-11-03T03:08:55.528Z",
+      "items": [
+        {
+          "partNum": "73230",
+          "color": "Light Bluish Gray",
+          "desc": "Technic Brick 1 x 1 with Axle Hole",
+          "elementId": "6336539",
+          "qty": 4,
+          "drawerId": "F26",
+          "drawerLabel": "F26"
+        }
+      ]
+    },
     {
       "id": "bag_mw03vj66_f8gp7",
       "label": "Ebay Bulk Boxes (batch 20)",
@@ -504970,17 +504989,6 @@
           "sel": false
         },
         {
-          "partNum": "73230",
-          "color": "Light Bluish Gray",
-          "desc": "Technic Brick 1 x 1 with Axle Hole",
-          "elementId": "6336539",
-          "qty": 4,
-          "drawerId": "F26",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "6536",
           "color": "Black",
           "desc": "Technic Axle and Pin Connector Perpendicular",
@@ -505312,11 +505320,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T03:08:49.953Z",
+      "savedAt": "2026-11-03T03:08:55.527Z",
       "moved": {
-        "batches": 20,
-        "pieces": 1484,
-        "last": "2026-11-03T03:05:54.894Z"
+        "batches": 21,
+        "pieces": 1488,
+        "last": "2026-11-03T03:08:55.528Z"
       }
     },
     {
@@ -606937,7 +606945,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T03:08:53.984Z"
+      "at": "2026-11-03T03:08:59.561Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -606958,10 +606966,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T03:08:49.953Z",
+      "bags": "2026-11-03T03:08:55.528Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T03:08:53.984Z",
+    "savedAt": "2026-11-03T03:08:59.561Z",
     "appVersion": "2026.11.02.1"
   }
 }
