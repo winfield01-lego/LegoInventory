@@ -457441,7 +457441,7 @@
       "label": "O54",
       "notes": "1 x 6 x 3 1/2 Curved",
       "group": "O",
-      "lastEdited": "2026-11-03T06:06:15.128Z"
+      "lastEdited": "2026-11-03T06:07:03.170Z"
     },
     {
       "id": "O55",
@@ -487991,6 +487991,31 @@
       "partNum": "4445",
       "color": "White",
       "qty": 2
+    },
+    {
+      "drawerId": "O54",
+      "partNum": "6060",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "O54",
+      "partNum": "6060",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "O54",
+      "partNum": "6060",
+      "color": "Red",
+      "elementId": "4116615",
+      "qty": 1
+    },
+    {
+      "drawerId": "O54",
+      "partNum": "6060",
+      "color": "White",
+      "qty": 11
     }
   ],
   "mocLocations": {
@@ -546509,8 +546534,11 @@
       "c": "Red",
       "d": "Brick Arch 1 x 6 x 3 1/3 Curved Top",
       "e": "6297822",
-      "u": 1791916924851,
-      "at": 1791654342636
+      "u": 1793686024373,
+      "at": 1791654342636,
+      "ea": [
+        "4116615"
+      ]
     },
     "93606|red": {
       "p": "93606",
@@ -605696,6 +605724,20 @@
       "d": "Brick Sloped 45° 2 x 8",
       "e": "4163984",
       "u": 1793685930355
+    },
+    "6060|black": {
+      "p": "6060",
+      "c": "Black",
+      "d": "Brick Arch 1 x 6 x 3 1/3 Curved Top",
+      "e": "4100376",
+      "u": 1793686024373
+    },
+    "6060|white": {
+      "p": "6060",
+      "c": "White",
+      "d": "Brick Arch 1 x 6 x 3 1/3 Curved Top",
+      "e": "4143244",
+      "u": 1793686024373
     }
   },
   "partKinds": {
@@ -610770,7 +610812,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T06:06:19.160Z"
+      "at": "2026-11-03T06:07:07.202Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610794,7 +610836,7 @@
       "bags": "2026-11-03T05:58:00.619Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T06:06:19.160Z",
+    "savedAt": "2026-11-03T06:07:07.202Z",
     "appVersion": "2026.11.02.1"
   }
 }
