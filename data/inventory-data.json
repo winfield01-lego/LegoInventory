@@ -456278,7 +456278,7 @@
       "label": "L21",
       "notes": "1 x 2 plate - 2-teeth Vertical, 1 x 1 plate - 1 tooth vertical",
       "group": "L",
-      "lastEdited": "2026-11-03T04:46:23.075Z"
+      "lastEdited": "2026-11-03T04:47:49.855Z"
     },
     {
       "id": "L22",
@@ -486788,6 +486788,49 @@
       "partNum": "15209",
       "color": "White",
       "qty": 12
+    },
+    {
+      "drawerId": "L21",
+      "partNum": "15070",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "L21",
+      "partNum": "15070",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "L21",
+      "partNum": "15070",
+      "color": "Lime",
+      "qty": 3
+    },
+    {
+      "drawerId": "L21",
+      "partNum": "15070",
+      "color": "Pearl Gold",
+      "qty": 8
+    },
+    {
+      "drawerId": "L21",
+      "partNum": "15070",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "L21",
+      "partNum": "15070",
+      "color": "Yellow",
+      "qty": 2
+    },
+    {
+      "drawerId": "L21",
+      "partNum": "15070",
+      "color": "White",
+      "elementId": "6046905",
+      "qty": 24
     }
   ],
   "mocLocations": {
@@ -534198,9 +534241,9 @@
     "15070|black": {
       "p": "15070",
       "c": "Black",
-      "d": "",
-      "e": "",
-      "u": 1791916924851
+      "d": "Plate Special 1 x 1 with Vertical Tooth",
+      "e": "6173959",
+      "u": 1793681271057
     },
     "53451|lime": {
       "p": "53451",
@@ -534495,9 +534538,9 @@
     "15070|lime": {
       "p": "15070",
       "c": "Lime",
-      "d": "",
+      "d": "Plate Special 1 x 1 with Vertical Tooth",
       "e": "6138659",
-      "u": 1793591108047,
+      "u": 1793681271057,
       "i": "https://cdn.rebrickable.com/media/parts/elements/6138659.jpg",
       "ic": 1
     },
@@ -536049,9 +536092,12 @@
       "c": "White",
       "d": "Plate Special 1 x 1 with Vertical Tooth",
       "e": "6615559",
-      "u": 1791916924851,
+      "u": 1793681271057,
       "at": 1791654755320,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6046905.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6046905.jpg",
+      "ea": [
+        "6046905"
+      ]
     },
     "15208|white": {
       "p": "15208",
@@ -603693,6 +603739,20 @@
       "d": "Tile Special 1 x 2 with Two Vertical Teeth / Tooth",
       "e": "6398003",
       "u": 1793681180123
+    },
+    "15070|pearl gold": {
+      "p": "15070",
+      "c": "Pearl Gold",
+      "d": "Plate Special 1 x 1 with Vertical Tooth",
+      "e": "6083975",
+      "u": 1793681271057
+    },
+    "15070|tan": {
+      "p": "15070",
+      "c": "Tan",
+      "d": "Plate Special 1 x 1 with Vertical Tooth",
+      "e": "6143058",
+      "u": 1793681271057
     }
   },
   "partKinds": {
@@ -608767,7 +608827,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:46:29.175Z"
+      "at": "2026-11-03T04:47:55.134Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -608791,7 +608851,7 @@
       "bags": "2026-11-03T04:44:36.960Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:46:29.175Z",
+    "savedAt": "2026-11-03T04:47:55.134Z",
     "appVersion": "2026.11.02.1"
   }
 }
