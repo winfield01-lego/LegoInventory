@@ -456880,7 +456880,7 @@
       "label": "N19",
       "notes": "1 x 1 Brick with horizontal and vertical clips",
       "group": "N",
-      "lastEdited": "2026-11-03T04:33:53.551Z"
+      "lastEdited": "2026-11-03T04:34:38.969Z"
     },
     {
       "id": "N20",
@@ -486559,6 +486559,24 @@
       "color": "White",
       "elementId": "4567891",
       "qty": 4
+    },
+    {
+      "drawerId": "N19",
+      "partNum": "60475a",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "N19",
+      "partNum": "60475a",
+      "color": "Light Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "N19",
+      "partNum": "60475a",
+      "color": "White",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -603333,6 +603351,13 @@
       "d": "Brick Special 1 x 1 with Clip Horizontal",
       "e": "6413261",
       "u": 1793680434754
+    },
+    "60475a|black": {
+      "p": "60475a",
+      "c": "Black",
+      "d": "Brick Special 1 x 1 with Clip Vertical [Thick U Clip, Solid Stud]",
+      "e": "4515356",
+      "u": 1793680480170
     }
   },
   "partKinds": {
@@ -608407,7 +608432,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:33:58.836Z"
+      "at": "2026-11-03T04:34:44.261Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -608431,7 +608456,7 @@
       "bags": "2026-11-03T04:30:10.786Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:33:58.836Z",
+    "savedAt": "2026-11-03T04:34:44.261Z",
     "appVersion": "2026.11.02.1"
   }
 }
