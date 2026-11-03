@@ -456824,7 +456824,7 @@
       "label": "N11",
       "notes": "1 x 2 and 1 x 4 Plate with Bar",
       "group": "N",
-      "lastEdited": "2026-11-03T04:28:42.984Z"
+      "lastEdited": "2026-11-03T04:29:34.649Z"
     },
     {
       "id": "N12",
@@ -486491,6 +486491,20 @@
       "partNum": "4623",
       "color": "Yellow",
       "qty": 2
+    },
+    {
+      "drawerId": "N11",
+      "partNum": "88072",
+      "color": "Green",
+      "elementId": "6073022",
+      "qty": 4
+    },
+    {
+      "drawerId": "N11",
+      "partNum": "88072",
+      "color": "Tan",
+      "elementId": "4655257",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -552814,9 +552828,12 @@
       "c": "Tan",
       "d": "Plate Special 1 x 2 with Bar Up [Horizontal Arm 5mm]",
       "e": "6261357",
-      "u": 1791916924851,
+      "u": 1793680175851,
       "at": 1791654945467,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4655257.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4655257.jpg",
+      "ea": [
+        "4655257"
+      ]
     },
     "87752|trans brown": {
       "p": "87752",
@@ -555785,9 +555802,12 @@
       "c": "Green",
       "d": "Plate Special 1 x 2 with Bar Up [Horizontal Arm 5mm]",
       "e": "6261358",
-      "u": 1791916924851,
+      "u": 1793680175851,
       "at": 1791654696050,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6073022.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6073022.jpg",
+      "ea": [
+        "6073022"
+      ]
     },
     "2489|light bluish gray": {
       "p": "2489",
@@ -608293,7 +608313,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:28:48.267Z"
+      "at": "2026-11-03T04:29:39.942Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -608317,7 +608337,7 @@
       "bags": "2026-11-03T04:24:24.913Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:28:48.267Z",
+    "savedAt": "2026-11-03T04:29:39.942Z",
     "appVersion": "2026.11.02.1"
   }
 }
