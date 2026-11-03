@@ -455505,7 +455505,7 @@
       "label": "J16",
       "notes": "1 x 1 x 3 2 clips, 1 x 1 x 2 with Shutter Holder, Shutters",
       "group": "j",
-      "lastEdited": "2026-11-03T05:34:16.024Z"
+      "lastEdited": "2026-11-03T05:34:41.055Z"
     },
     {
       "id": "J17",
@@ -487514,6 +487514,19 @@
       "partNum": "3581",
       "color": "White",
       "qty": 2
+    },
+    {
+      "drawerId": "J16",
+      "partNum": "3582",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "J16",
+      "partNum": "3582",
+      "color": "White",
+      "elementId": "",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -604887,6 +604900,20 @@
       "d": "Brick Special 1 x 1 x 2 with Shutter Holder",
       "e": "358124",
       "u": 1793684057226
+    },
+    "3582|blue": {
+      "p": "3582",
+      "c": "Blue",
+      "d": "Window 1 x 2 x 2 Shutter",
+      "e": "358223",
+      "u": 1793684082256
+    },
+    "3582|white": {
+      "p": "3582",
+      "c": "White",
+      "d": "Window 1 x 2 x 2 Shutter",
+      "e": "",
+      "u": 1793684082256
     }
   },
   "partKinds": {
@@ -609961,7 +609988,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:34:20.068Z"
+      "at": "2026-11-03T05:34:45.085Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -609985,7 +610012,7 @@
       "bags": "2026-11-03T05:28:49.892Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:34:20.068Z",
+    "savedAt": "2026-11-03T05:34:45.085Z",
     "appVersion": "2026.11.02.1"
   }
 }
