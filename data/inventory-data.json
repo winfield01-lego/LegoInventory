@@ -455863,7 +455863,7 @@
       "label": "K2",
       "notes": "2L and 3L Axle and Pinhole",
       "group": "K",
-      "lastEdited": "2026-11-03T06:56:33.913Z"
+      "lastEdited": "2026-11-03T06:58:46.463Z"
     },
     {
       "id": "K3",
@@ -488566,6 +488566,54 @@
       "partNum": "32068",
       "color": "Light Bluish Gray",
       "qty": 2
+    },
+    {
+      "drawerId": "K2",
+      "partNum": "6536",
+      "color": "Black",
+      "elementId": "4173668",
+      "qty": 22
+    },
+    {
+      "drawerId": "K2",
+      "partNum": "6536",
+      "color": "Blue",
+      "elementId": "4107799",
+      "qty": 1
+    },
+    {
+      "drawerId": "K2",
+      "partNum": "6536",
+      "color": "Dark Bluish Gray",
+      "elementId": "4210851",
+      "qty": 13
+    },
+    {
+      "drawerId": "K2",
+      "partNum": "6536",
+      "color": "Light Bluish Gray",
+      "elementId": "4211775",
+      "qty": 15
+    },
+    {
+      "drawerId": "K2",
+      "partNum": "6536",
+      "color": "Orange",
+      "elementId": "4163629",
+      "qty": 1
+    },
+    {
+      "drawerId": "K2",
+      "partNum": "6536",
+      "color": "Yellow",
+      "elementId": "4107078",
+      "qty": 1
+    },
+    {
+      "drawerId": "K2",
+      "partNum": "6536",
+      "color": "White",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -516648,10 +516696,11 @@
       "c": "Black",
       "d": "Technic Axle and Pin Connector Perpendicular",
       "e": "6261371",
-      "u": 1791916924851,
+      "u": 1793689127665,
       "at": 1791654796747,
       "ea": [
-        "653626"
+        "653626",
+        "4173668"
       ],
       "i": "https://cdn.rebrickable.com/media/parts/elements/4173668.jpg"
     },
@@ -525345,9 +525394,12 @@
       "c": "Light Bluish Gray",
       "d": "Technic Axle and Pin Connector Perpendicular",
       "e": "6261375",
-      "u": 1791916924851,
+      "u": 1793689127665,
       "at": 1791654648834,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4211775.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4211775.jpg",
+      "ea": [
+        "4211775"
+      ]
     },
     "32000|light bluish gray": {
       "p": "32000",
@@ -552521,9 +552573,12 @@
       "c": "Dark Bluish Gray",
       "d": "Technic Axle and Pin Connector Perpendicular",
       "e": "6536199",
-      "u": 1791916924851,
+      "u": 1793689127665,
       "at": 1791654615447,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4210851.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4210851.jpg",
+      "ea": [
+        "4210851"
+      ]
     },
     "32140|dark bluish gray": {
       "p": "32140",
@@ -564253,9 +564308,12 @@
       "c": "Yellow",
       "d": "Technic Axle and Pin Connector Perpendicular",
       "e": "6261367",
-      "u": 1791916924851,
+      "u": 1793689127665,
       "at": 1791654748438,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4107078.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4107078.jpg",
+      "ea": [
+        "4107078"
+      ]
     },
     "32348|yellow": {
       "p": "32348",
@@ -568182,9 +568240,12 @@
       "c": "Orange",
       "d": "Technic Axle and Pin Connector Perpendicular",
       "e": "6261377",
-      "u": 1791916924851,
+      "u": 1793689127665,
       "at": 1791654796747,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4173600.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4173600.jpg",
+      "ea": [
+        "4163629"
+      ]
     },
     "60483|orange": {
       "p": "60483",
@@ -571323,9 +571384,12 @@
       "c": "Blue",
       "d": "Technic Axle and Pin Connector Perpendicular",
       "e": "653623",
-      "u": 1791916924851,
+      "u": 1793689127665,
       "at": 1791654717569,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4107799.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4107799.jpg",
+      "ea": [
+        "4107799"
+      ]
     },
     "32316|blue": {
       "p": "32316",
@@ -606656,6 +606720,13 @@
       "d": "Technic Axle and Pin Connector Perpendicular 3L with Pin Hole",
       "e": "6013936",
       "u": 1793688995115
+    },
+    "6536|white": {
+      "p": "6536",
+      "c": "White",
+      "d": "Technic Axle and Pin Connector Perpendicular",
+      "e": "4173670",
+      "u": 1793689127665
     }
   },
   "partKinds": {
@@ -611730,7 +611801,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T06:56:37.943Z"
+      "at": "2026-11-03T06:58:51.762Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -611754,7 +611825,7 @@
       "bags": "2026-11-03T06:51:45.007Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T06:56:37.943Z",
+    "savedAt": "2026-11-03T06:58:51.762Z",
     "appVersion": "2026.11.02.1"
   }
 }
