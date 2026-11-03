@@ -454381,7 +454381,7 @@
       "label": "F26",
       "notes": "1 x 1 Brick with Axle Hole",
       "group": "F",
-      "lastEdited": "2026-11-03T03:06:46.514Z"
+      "lastEdited": "2026-11-03T03:08:37.507Z"
     },
     {
       "id": "F27",
@@ -485590,6 +485590,42 @@
       "color": "White",
       "elementId": "4143679",
       "qty": 1
+    },
+    {
+      "drawerId": "F26",
+      "partNum": "73230",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "F26",
+      "partNum": "73230",
+      "color": "Light Bluish Gray",
+      "qty": 26
+    },
+    {
+      "drawerId": "F26",
+      "partNum": "73230",
+      "color": "Medium Nougat",
+      "qty": 1
+    },
+    {
+      "drawerId": "F26",
+      "partNum": "73230",
+      "color": "Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "F26",
+      "partNum": "73230",
+      "color": "Dark Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "F26",
+      "partNum": "73230",
+      "color": "White",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -601820,6 +601856,13 @@
       "d": "Brick Round 4 x 4 Centre Hole",
       "e": "6035577",
       "u": 1793675014983
+    },
+    "73230|medium nougat": {
+      "p": "73230",
+      "c": "Medium Nougat",
+      "d": "Technic Brick 1 x 1 with Axle Hole",
+      "e": "6457557",
+      "u": 1793675318709
     }
   },
   "partKinds": {
@@ -606894,7 +606937,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T03:06:50.556Z"
+      "at": "2026-11-03T03:08:41.538Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -606918,7 +606961,7 @@
       "bags": "2026-11-03T03:05:54.894Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T03:06:50.556Z",
+    "savedAt": "2026-11-03T03:08:41.538Z",
     "appVersion": "2026.11.02.1"
   }
 }
