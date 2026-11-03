@@ -457529,7 +457529,7 @@
       "label": "P2",
       "notes": "1 x 1 Beam, 2L Pin Connector",
       "group": "P",
-      "lastEdited": "2026-11-03T06:32:50.085Z"
+      "lastEdited": "2026-11-03T06:45:26.816Z"
     },
     {
       "id": "P3",
@@ -488360,6 +488360,84 @@
       "partNum": "32014",
       "color": "Orange",
       "qty": 1
+    },
+    {
+      "drawerId": "P2",
+      "partNum": "18654",
+      "color": "Black",
+      "qty": 24
+    },
+    {
+      "drawerId": "P2",
+      "partNum": "18654",
+      "color": "Dark Bluish Gray",
+      "qty": 32
+    },
+    {
+      "drawerId": "P2",
+      "partNum": "18654",
+      "color": "Flat Silver",
+      "qty": 10
+    },
+    {
+      "drawerId": "P2",
+      "partNum": "18654",
+      "color": "Light Bluish Gray",
+      "qty": 17
+    },
+    {
+      "drawerId": "P2",
+      "partNum": "18654",
+      "color": "Metallic Silver",
+      "qty": 1
+    },
+    {
+      "drawerId": "P2",
+      "partNum": "18654",
+      "color": "Lime",
+      "qty": 16
+    },
+    {
+      "drawerId": "P2",
+      "partNum": "18654",
+      "color": "Pearl Titanium",
+      "qty": 2
+    },
+    {
+      "drawerId": "P2",
+      "partNum": "18654",
+      "color": "Red",
+      "qty": 4
+    },
+    {
+      "drawerId": "P2",
+      "partNum": "18654",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "P2",
+      "partNum": "18654",
+      "color": "Sand Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "P2",
+      "partNum": "18654",
+      "color": "Tan",
+      "qty": 8
+    },
+    {
+      "drawerId": "P2",
+      "partNum": "18654",
+      "color": "Yellow",
+      "qty": 2
+    },
+    {
+      "drawerId": "P2",
+      "partNum": "18654",
+      "color": "White",
+      "qty": 26
     }
   ],
   "mocLocations": {
@@ -606363,6 +606441,20 @@
       "d": "Technic Axle and Pin Connector Angled #6 - 90°",
       "e": "4163609",
       "u": 1793687490812
+    },
+    "18654|metallic silver": {
+      "p": "18654",
+      "c": "Metallic Silver",
+      "d": "Technic Pin Connector Round 1L [Beam]",
+      "e": "6227958",
+      "u": 1793688328028
+    },
+    "18654|reddish brown": {
+      "p": "18654",
+      "c": "Reddish Brown",
+      "d": "Technic Pin Connector Round 1L [Beam]",
+      "e": "6170813",
+      "u": 1793688328028
     }
   },
   "partKinds": {
@@ -611437,7 +611529,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T06:32:54.120Z"
+      "at": "2026-11-03T06:45:30.870Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -611461,7 +611553,7 @@
       "bags": "2026-11-03T06:29:40.642Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T06:32:54.120Z",
+    "savedAt": "2026-11-03T06:45:30.870Z",
     "appVersion": "2026.11.02.1"
   }
 }
