@@ -455905,7 +455905,7 @@
       "label": "K8",
       "notes": "2 x 4 Brick Top Pin with Cut Outs",
       "group": "K",
-      "lastEdited": "2026-11-03T07:21:54.598Z"
+      "lastEdited": "2026-11-03T07:22:24.013Z"
     },
     {
       "id": "K9",
@@ -488774,6 +488774,24 @@
       "partNum": "6249",
       "color": "Red",
       "qty": 1
+    },
+    {
+      "drawerId": "K8",
+      "partNum": "30592",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "K8",
+      "partNum": "30592",
+      "color": "Dark Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "K8",
+      "partNum": "30592",
+      "color": "Light Bluish Gray",
+      "qty": 7
     }
   ],
   "mocLocations": {
@@ -607068,6 +607086,27 @@
       "d": "Brick Special 2 x 4 with Pins",
       "e": "4100410",
       "u": 1793690397017
+    },
+    "30592|blue": {
+      "p": "30592",
+      "c": "Blue",
+      "d": "Brick Special 2 x 4, with 2 x 2 Brick with Top Pin and 1 x 2 Side Plates",
+      "e": "4143052",
+      "u": 1793690545214
+    },
+    "30592|dark bluish gray": {
+      "p": "30592",
+      "c": "Dark Bluish Gray",
+      "d": "Brick Special 2 x 4, with 2 x 2 Brick with Top Pin and 1 x 2 Side Plates",
+      "e": "4239373",
+      "u": 1793690545214
+    },
+    "30592|light bluish gray": {
+      "p": "30592",
+      "c": "Light Bluish Gray",
+      "d": "Brick Special 2 x 4, with 2 x 2 Brick with Top Pin and 1 x 2 Side Plates",
+      "e": "4211666",
+      "u": 1793690545214
     }
   },
   "partKinds": {
@@ -612142,7 +612181,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T07:21:58.633Z"
+      "at": "2026-11-03T07:22:28.044Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -612166,7 +612205,7 @@
       "bags": "2026-11-03T07:05:17.671Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T07:21:58.633Z",
+    "savedAt": "2026-11-03T07:22:28.044Z",
     "appVersion": "2026.11.02.1"
   }
 }
