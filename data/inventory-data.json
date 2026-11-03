@@ -457630,7 +457630,7 @@
       "label": "R4",
       "notes": "Panels, 1 x 2 x 3, 1 x 4 x 2, and 1 x 4 x 3",
       "group": "R",
-      "lastEdited": "2026-11-03T05:10:08.866Z"
+      "lastEdited": "2026-11-03T05:11:31.595Z"
     },
     {
       "id": "R5",
@@ -487147,6 +487147,24 @@
       "partNum": "2362a",
       "color": "White",
       "elementId": "",
+      "qty": 1
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "14718",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "14718",
+      "color": "Light Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "14718",
+      "color": "Red",
       "qty": 1
     }
   ],
@@ -609352,7 +609370,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:10:14.143Z"
+      "at": "2026-11-03T05:11:35.621Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -609376,7 +609394,7 @@
       "bags": "2026-11-03T04:48:18.759Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:10:14.143Z",
+    "savedAt": "2026-11-03T05:11:35.621Z",
     "appVersion": "2026.11.02.1"
   }
 }
