@@ -457160,7 +457160,7 @@
       "label": "O15",
       "notes": "2 x 2 Plate with 2 Wheel Pins",
       "group": "O",
-      "lastEdited": "2026-11-03T04:44:18.655Z"
+      "lastEdited": "2026-11-03T04:44:36.771Z"
     },
     {
       "id": "O16",
@@ -486763,13 +486763,13 @@
       "drawerId": "O15",
       "partNum": "4600",
       "color": "Black",
-      "qty": 8
+      "qty": 9
     },
     {
       "drawerId": "O15",
       "partNum": "4600",
       "color": "Light Bluish Gray",
-      "qty": 20
+      "qty": 22
     }
   ],
   "mocLocations": {
@@ -487182,6 +487182,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw07ego0_dne2j",
+      "label": "Ebay Bulk Boxes (batch 32)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 32,
+      "timestamp": "2026-11-03T04:44:36.960Z",
+      "items": [
+        {
+          "partNum": "4600",
+          "color": "Black",
+          "desc": "Plate Special 2 x 2 with Wheel Holders",
+          "elementId": "460026",
+          "qty": 1,
+          "drawerId": "O15",
+          "drawerLabel": "O15"
+        },
+        {
+          "partNum": "4600",
+          "color": "Light Bluish Gray",
+          "desc": "Plate Special 2 x 2 with Wheel Holders",
+          "elementId": "4211504",
+          "qty": 2,
+          "drawerId": "O15",
+          "drawerLabel": "O15"
+        }
+      ]
+    },
     {
       "id": "bag_mw07by1b_vjjfm",
       "label": "Ebay Bulk Boxes (batch 31)",
@@ -506443,28 +506471,6 @@
           "sel": false
         },
         {
-          "partNum": "4600",
-          "color": "Black",
-          "desc": "Plate Special 2 x 2 with Wheel Holders",
-          "elementId": "460026",
-          "qty": 1,
-          "drawerId": "O15",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "4600",
-          "color": "Light Bluish Gray",
-          "desc": "Plate Special 2 x 2 with Wheel Holders",
-          "elementId": "4211504",
-          "qty": 2,
-          "drawerId": "O15",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "14718",
           "color": "Red",
           "desc": "Panel 1 x 4 x 2 with Side Supports - Hollow Studs",
@@ -506587,11 +506593,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T04:44:24.360Z",
+      "savedAt": "2026-11-03T04:44:36.960Z",
       "moved": {
-        "batches": 31,
-        "pieces": 1504,
-        "last": "2026-11-03T04:42:39.503Z"
+        "batches": 32,
+        "pieces": 1507,
+        "last": "2026-11-03T04:44:36.960Z"
       }
     },
     {
@@ -608729,7 +608735,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:44:28.391Z"
+      "at": "2026-11-03T04:44:40.988Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -608750,10 +608756,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T04:44:24.360Z",
+      "bags": "2026-11-03T04:44:36.960Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:44:28.391Z",
+    "savedAt": "2026-11-03T04:44:40.988Z",
     "appVersion": "2026.11.02.1"
   }
 }
