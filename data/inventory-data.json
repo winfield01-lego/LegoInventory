@@ -454365,7 +454365,7 @@
       "label": "F23",
       "notes": "Driving Ring Extension - 4 tooth and 8 tooth",
       "group": "F",
-      "lastEdited": "2026-11-03T06:14:15.647Z"
+      "lastEdited": "2026-11-03T06:16:12.037Z"
     },
     {
       "id": "F24",
@@ -488095,6 +488095,19 @@
       "color": "Black",
       "elementId": "331526",
       "qty": 1
+    },
+    {
+      "drawerId": "F23",
+      "partNum": "32187",
+      "color": "Flat Silver",
+      "qty": 5
+    },
+    {
+      "drawerId": "F23",
+      "partNum": "32187",
+      "color": "Light Bluish Gray",
+      "elementId": "4209329",
+      "qty": 15
     }
   ],
   "mocLocations": {
@@ -535507,9 +535520,12 @@
       "c": "Light Bluish Gray",
       "d": "Technic Driving Ring Extension, 4 Ridges",
       "e": "4278756",
-      "u": 1792429579553,
+      "u": 1793686573238,
       "at": 1791672762872,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4209329.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4209329.jpg",
+      "ea": [
+        "4209329"
+      ]
     },
     "2555|light bluish gray": {
       "p": "2555",
@@ -605905,6 +605921,13 @@
       "d": "Hinge Plate 2 x 4 - Female (Digger Bucket Holder)",
       "e": "359721",
       "u": 1793686354804
+    },
+    "32187|flat silver": {
+      "p": "32187",
+      "c": "Flat Silver",
+      "d": "Technic Driving Ring Extension, 4 Ridges",
+      "e": "6123838",
+      "u": 1793686573238
     }
   },
   "partKinds": {
@@ -610979,7 +611002,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T06:14:19.673Z"
+      "at": "2026-11-03T06:16:17.332Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -611003,7 +611026,7 @@
       "bags": "2026-11-03T05:58:00.619Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T06:14:19.673Z",
+    "savedAt": "2026-11-03T06:16:17.332Z",
     "appVersion": "2026.11.02.1"
   }
 }
