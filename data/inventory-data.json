@@ -455930,7 +455930,7 @@
       "label": "K14",
       "notes": "2 x 2 Technic Brick with Cutouts and Pinhole",
       "group": "K",
-      "lastEdited": "2026-11-03T03:00:08.336Z"
+      "lastEdited": "2026-11-03T03:00:22.335Z"
     },
     {
       "id": "K15",
@@ -485517,7 +485517,7 @@
       "drawerId": "K14",
       "partNum": "73109",
       "color": "Light Bluish Gray",
-      "qty": 35
+      "qty": 36
     },
     {
       "drawerId": "K14",
@@ -485937,6 +485937,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw03oeqo_cgli0",
+      "label": "Ebay Bulk Boxes (batch 19)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 19,
+      "timestamp": "2026-11-03T03:00:22.560Z",
+      "items": [
+        {
+          "partNum": "73109",
+          "color": "Light Bluish Gray",
+          "desc": "Technic Brick Special 1 x 2 with Pin Hole and 1 x 2 Plate",
+          "elementId": "6326478",
+          "qty": 1,
+          "drawerId": "K14",
+          "drawerLabel": "K14"
+        }
+      ]
+    },
     {
       "id": "bag_mw03l1jf_6lsyr",
       "label": "Ebay Bulk Boxes (batch 18)",
@@ -504666,17 +504685,6 @@
       "label": "Ebay Bulk Boxes",
       "items": [
         {
-          "partNum": "73109",
-          "color": "Light Bluish Gray",
-          "desc": "Technic Brick Special 1 x 2 with Pin Hole and 1 x 2 Plate",
-          "elementId": "6326478",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "3958",
           "color": "Dark Tan",
           "desc": "Plate 6 x 6",
@@ -505195,11 +505203,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T02:57:45.482Z",
+      "savedAt": "2026-11-03T03:00:22.559Z",
       "moved": {
-        "batches": 18,
-        "pieces": 1482,
-        "last": "2026-11-03T02:57:45.483Z"
+        "batches": 19,
+        "pieces": 1483,
+        "last": "2026-11-03T03:00:22.560Z"
       }
     },
     {
@@ -606790,7 +606798,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T03:00:13.634Z"
+      "at": "2026-11-03T03:00:26.598Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -606811,10 +606819,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T02:57:45.483Z",
+      "bags": "2026-11-03T03:00:22.560Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T03:00:13.634Z",
+    "savedAt": "2026-11-03T03:00:26.598Z",
     "appVersion": "2026.11.02.1"
   }
 }
