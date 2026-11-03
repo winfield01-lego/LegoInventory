@@ -455309,7 +455309,7 @@
       "label": "I31",
       "notes": "5 x 5 Corner with Cutout",
       "group": "I",
-      "lastEdited": "2026-11-03T05:30:28.553Z"
+      "lastEdited": "2026-11-03T05:31:03.047Z"
     },
     {
       "id": "I32",
@@ -487425,6 +487425,30 @@
       "partNum": "26599",
       "color": "Black",
       "qty": 1
+    },
+    {
+      "drawerId": "I31",
+      "partNum": "80015",
+      "color": "Bright Light Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "I31",
+      "partNum": "80015",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "I31",
+      "partNum": "80015",
+      "color": "Medium Nougat",
+      "qty": 1
+    },
+    {
+      "drawerId": "I31",
+      "partNum": "80015",
+      "color": "White",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -604735,6 +604759,27 @@
       "d": "Plate Special 1 x 2 with Wheel Holder, Single Slit",
       "e": "6122656",
       "u": 1793683702547
+    },
+    "80015|bright light blue": {
+      "p": "80015",
+      "c": "Bright Light Blue",
+      "d": "Plate Round Corner 5 x 5 with 4 x 4 Round Cutout",
+      "e": "6383092",
+      "u": 1793683864249
+    },
+    "80015|medium nougat": {
+      "p": "80015",
+      "c": "Medium Nougat",
+      "d": "Plate Round Corner 5 x 5 with 4 x 4 Round Cutout",
+      "e": "6430582",
+      "u": 1793683864249
+    },
+    "80015|white": {
+      "p": "80015",
+      "c": "White",
+      "d": "Plate Round Corner 5 x 5 with 4 x 4 Round Cutout",
+      "e": "6399559",
+      "u": 1793683864249
     }
   },
   "partKinds": {
@@ -609809,7 +609854,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:30:32.586Z"
+      "at": "2026-11-03T05:31:07.082Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -609833,7 +609878,7 @@
       "bags": "2026-11-03T05:28:49.892Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:30:32.586Z",
+    "savedAt": "2026-11-03T05:31:07.082Z",
     "appVersion": "2026.11.02.1"
   }
 }
