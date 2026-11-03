@@ -455505,7 +455505,7 @@
       "label": "J16",
       "notes": "1 x 1 x 3 2 clips, 1 x 1 x 2 with Shutter Holder, Shutters",
       "group": "j",
-      "lastEdited": "2026-11-03T05:33:29.949Z"
+      "lastEdited": "2026-11-03T05:34:16.024Z"
     },
     {
       "id": "J17",
@@ -487484,6 +487484,36 @@
       "color": "White",
       "elementId": "4215470",
       "qty": 6
+    },
+    {
+      "drawerId": "J16",
+      "partNum": "3581",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "J16",
+      "partNum": "3581",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "J16",
+      "partNum": "3581",
+      "color": "Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "J16",
+      "partNum": "3581",
+      "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "J16",
+      "partNum": "3581",
+      "color": "White",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -604829,6 +604859,34 @@
       "d": "Brick Round Corner 4 x 4 Macaroni Wide with 3 Studs",
       "e": "6383094",
       "u": 1793683948732
+    },
+    "3581|black": {
+      "p": "3581",
+      "c": "Black",
+      "d": "Brick Special 1 x 1 x 2 with Shutter Holder",
+      "e": "358126",
+      "u": 1793684057226
+    },
+    "3581|reddish brown": {
+      "p": "3581",
+      "c": "Reddish Brown",
+      "d": "Brick Special 1 x 1 x 2 with Shutter Holder",
+      "e": "4219724",
+      "u": 1793684057226
+    },
+    "3581|red": {
+      "p": "3581",
+      "c": "Red",
+      "d": "Brick Special 1 x 1 x 2 with Shutter Holder",
+      "e": "358121",
+      "u": 1793684057226
+    },
+    "3581|yellow": {
+      "p": "3581",
+      "c": "Yellow",
+      "d": "Brick Special 1 x 1 x 2 with Shutter Holder",
+      "e": "358124",
+      "u": 1793684057226
     }
   },
   "partKinds": {
@@ -609903,7 +609961,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:33:33.987Z"
+      "at": "2026-11-03T05:34:20.068Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -609927,7 +609985,7 @@
       "bags": "2026-11-03T05:28:49.892Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:33:33.987Z",
+    "savedAt": "2026-11-03T05:34:20.068Z",
     "appVersion": "2026.11.02.1"
   }
 }
