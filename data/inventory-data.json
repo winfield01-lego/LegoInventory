@@ -457176,7 +457176,7 @@
       "label": "O17",
       "notes": "4 x 2 Wedge Twist - Left and Right",
       "group": "O",
-      "lastEdited": "2026-11-03T05:18:48.313Z"
+      "lastEdited": "2026-11-03T05:19:22.845Z"
     },
     {
       "id": "O18",
@@ -487231,6 +487231,19 @@
       "partNum": "80796",
       "color": "White",
       "qty": 2
+    },
+    {
+      "drawerId": "O17",
+      "partNum": "43721",
+      "color": "Black",
+      "qty": 2
+    },
+    {
+      "drawerId": "O17",
+      "partNum": "43721",
+      "color": "Dark Bluish Gray",
+      "elementId": "4210870",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -524733,7 +524746,10 @@
       "c": "Dark Bluish Gray",
       "d": "Brick Wedged, Sloped 45° 4 x 2 Left",
       "e": "4298580",
-      "u": 1791916924851
+      "u": 1793683164047,
+      "ea": [
+        "4210870"
+      ]
     },
     "43720|dark bluish gray": {
       "p": "43720",
@@ -604396,6 +604412,13 @@
       "d": "Panel 1 x 4 x 3 [Side Supports / Hollow Studs]",
       "e": "4248244",
       "u": 1793682750117
+    },
+    "43721|black": {
+      "p": "43721",
+      "c": "Black",
+      "d": "Brick Wedged, Sloped 45° 4 x 2 Left",
+      "e": "4180518",
+      "u": 1793683164047
     }
   },
   "partKinds": {
@@ -609470,7 +609493,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:18:52.348Z"
+      "at": "2026-11-03T05:19:26.877Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -609494,7 +609517,7 @@
       "bags": "2026-11-03T05:12:48.484Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:18:52.348Z",
+    "savedAt": "2026-11-03T05:19:26.877Z",
     "appVersion": "2026.11.02.1"
   }
 }
