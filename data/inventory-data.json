@@ -457406,7 +457406,7 @@
       "label": "O49",
       "notes": "2 x 4 Hinges - Parts A and B",
       "group": "O",
-      "lastEdited": "2026-11-03T06:11:59.020Z"
+      "lastEdited": "2026-11-03T06:12:33.603Z"
     },
     {
       "id": "O50",
@@ -488074,6 +488074,19 @@
       "partNum": "3640",
       "color": "Lime",
       "qty": 1
+    },
+    {
+      "drawerId": "O49",
+      "partNum": "3597",
+      "color": "Black",
+      "elementId": "359726",
+      "qty": 2
+    },
+    {
+      "drawerId": "O49",
+      "partNum": "3597",
+      "color": "Red",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -576366,9 +576379,12 @@
       "c": "Black",
       "d": "Hinge Plate 2 x 4 - Female (Digger Bucket Holder)",
       "e": "4187208",
-      "u": 1791916924851,
+      "u": 1793686354804,
       "at": 1791654785010,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/3597.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/3597.png",
+      "ea": [
+        "359726"
+      ]
     },
     "3315|black": {
       "p": "3315",
@@ -605871,6 +605887,13 @@
       "d": "Hinge Plate 2 x 4 with Articulated Joint - Female",
       "e": "6036878",
       "u": 1793686320222
+    },
+    "3597|red": {
+      "p": "3597",
+      "c": "Red",
+      "d": "Hinge Plate 2 x 4 - Female (Digger Bucket Holder)",
+      "e": "359721",
+      "u": 1793686354804
     }
   },
   "partKinds": {
@@ -610945,7 +610968,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T06:12:03.052Z"
+      "at": "2026-11-03T06:12:38.897Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610969,7 +610992,7 @@
       "bags": "2026-11-03T05:58:00.619Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T06:12:03.052Z",
+    "savedAt": "2026-11-03T06:12:38.897Z",
     "appVersion": "2026.11.02.1"
   }
 }
