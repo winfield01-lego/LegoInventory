@@ -455884,7 +455884,7 @@
       "label": "K5",
       "notes": "2 x 2 Plate - 2 Pin Holes on Bottom",
       "group": "K",
-      "lastEdited": "2026-11-03T07:12:45.149Z"
+      "lastEdited": "2026-11-03T07:13:38.386Z"
     },
     {
       "id": "K6",
@@ -488656,6 +488656,30 @@
       "partNum": "2444",
       "color": "Yellow",
       "qty": 5
+    },
+    {
+      "drawerId": "K5",
+      "partNum": "2817",
+      "color": "Black",
+      "qty": 16
+    },
+    {
+      "drawerId": "K5",
+      "partNum": "2817",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "K5",
+      "partNum": "2817",
+      "color": "Light Bluish Gray",
+      "qty": 15
+    },
+    {
+      "drawerId": "K5",
+      "partNum": "2817",
+      "color": "Red",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -606896,6 +606920,13 @@
       "d": "Plate Special 2 x 2 with 1 Pin Hole [Split Underside Ribs]",
       "e": "244424",
       "u": 1793689931290
+    },
+    "2817|blue": {
+      "p": "2817",
+      "c": "Blue",
+      "d": "Plate Special 2 x 2 with 2 Pin Holes",
+      "e": "281723",
+      "u": 1793690019588
     }
   },
   "partKinds": {
@@ -611970,7 +612001,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T07:12:49.183Z"
+      "at": "2026-11-03T07:13:42.420Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -611994,7 +612025,7 @@
       "bags": "2026-11-03T07:05:17.671Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T07:12:49.183Z",
+    "savedAt": "2026-11-03T07:13:42.420Z",
     "appVersion": "2026.11.02.1"
   }
 }
