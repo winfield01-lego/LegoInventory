@@ -454434,7 +454434,7 @@
       "label": "F34",
       "notes": "2 x 2 Bar Frame - Octagonal",
       "group": "F",
-      "lastEdited": "2026-11-02T17:36:05.308Z"
+      "lastEdited": "2026-11-03T02:52:54.396Z"
     },
     {
       "id": "F35",
@@ -485434,6 +485434,12 @@
       "partNum": "75937",
       "color": "White",
       "qty": 25
+    },
+    {
+      "drawerId": "F34",
+      "partNum": "30033",
+      "color": "Dark Bluish Gray",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -601592,6 +601598,13 @@
       "d": "Dish 8 x 8 Inverted [Radar], Solid Studs, Rounded Anti-stud Underside",
       "e": "396101",
       "u": 1793628716544
+    },
+    "30033|dark bluish gray": {
+      "p": "30033",
+      "c": "Dark Bluish Gray",
+      "d": "Plate Special 2 x 2 with Bar Frame Octagonal",
+      "e": "4211025",
+      "u": 1793674375599
     }
   },
   "partKinds": {
@@ -606666,7 +606679,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T02:51:59.545Z"
+      "at": "2026-11-03T02:52:58.445Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -606690,7 +606703,7 @@
       "bags": "2026-11-02T17:36:05.457Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T02:51:59.545Z",
+    "savedAt": "2026-11-03T02:52:58.445Z",
     "appVersion": "2026.11.02.1"
   }
 }
