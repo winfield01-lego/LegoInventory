@@ -454240,7 +454240,7 @@
       "label": "F4",
       "notes": "3L 2-Axle with Center Pin, 1-Axle and 3-Pin",
       "group": "F",
-      "lastEdited": "2026-11-03T06:24:24.894Z"
+      "lastEdited": "2026-11-03T06:24:49.626Z"
     },
     {
       "id": "F5",
@@ -456022,7 +456022,7 @@
       "label": "K25",
       "notes": "3L with 2 Pin Holes and 1-axle and 2 pin holes",
       "group": "K",
-      "lastEdited": "2026-11-03T06:20:58.787Z"
+      "lastEdited": "2026-11-03T06:24:49.627Z"
     },
     {
       "id": "K26",
@@ -488145,7 +488145,7 @@
       "partNum": "32291",
       "color": "Black",
       "elementId": "4140430",
-      "qty": 2
+      "qty": 3
     },
     {
       "drawerId": "K25",
@@ -488179,7 +488179,7 @@
       "partNum": "32184",
       "color": "Black",
       "elementId": "4121667",
-      "qty": 1
+      "qty": 2
     },
     {
       "drawerId": "F4",
@@ -488214,7 +488214,7 @@
       "partNum": "63869",
       "color": "Black",
       "elementId": "6007966",
-      "qty": 9
+      "qty": 10
     },
     {
       "drawerId": "F4",
@@ -488640,6 +488640,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw0azc7u_6z7c1",
+      "label": "Ebay Bulk Boxes (batch 39)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 39,
+      "timestamp": "2026-11-03T06:24:49.818Z",
+      "items": [
+        {
+          "partNum": "63869",
+          "color": "Black",
+          "desc": "Technic Axle and Pin Connector Perpendicular Triple",
+          "elementId": "6007966",
+          "qty": 1,
+          "drawerId": "F4",
+          "drawerLabel": "F4"
+        },
+        {
+          "partNum": "32184",
+          "color": "Black",
+          "desc": "Technic Axle and Pin Connector Perpendicular 3L with Centre Pin Hole",
+          "elementId": "4121667",
+          "qty": 1,
+          "drawerId": "F4",
+          "drawerLabel": "F4"
+        },
+        {
+          "partNum": "32291",
+          "color": "Black",
+          "desc": "Technic Axle and Pin Connector Perpendicular Double",
+          "elementId": "4140430",
+          "qty": 1,
+          "drawerId": "K25",
+          "drawerLabel": "K25"
+        }
+      ]
+    },
     {
       "id": "bag_mw0at7x4_02v2i",
       "label": "Ebay Bulk Boxes (batch 38)",
@@ -507901,17 +507938,6 @@
           "sel": false
         },
         {
-          "partNum": "63869",
-          "color": "Black",
-          "desc": "Technic Axle and Pin Connector Perpendicular Triple",
-          "elementId": "6007966",
-          "qty": 1,
-          "drawerId": "F4",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "42924",
           "color": "Blue",
           "desc": "Technic Pin Long with Friction Ridges Lengthwise, 1 Center Slot",
@@ -508011,17 +508037,6 @@
           "sel": false
         },
         {
-          "partNum": "32184",
-          "color": "Black",
-          "desc": "Technic Axle and Pin Connector Perpendicular 3L with Centre Pin Hole",
-          "elementId": "4121667",
-          "qty": 1,
-          "drawerId": "F4",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "22385",
           "color": "Dark Blue",
           "desc": "Tile Special 2 x 3 Pentagonal",
@@ -508086,25 +508101,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "32291",
-          "color": "Black",
-          "desc": "Technic Axle and Pin Connector Perpendicular Double",
-          "elementId": "4140430",
-          "qty": 1,
-          "drawerId": "K25",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T06:24:36.716Z",
+      "savedAt": "2026-11-03T06:24:49.818Z",
       "moved": {
-        "batches": 38,
-        "pieces": 1518,
-        "last": "2026-11-03T06:20:04.312Z"
+        "batches": 39,
+        "pieces": 1521,
+        "last": "2026-11-03T06:24:49.818Z"
       }
     },
     {
@@ -611193,7 +611197,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T06:24:40.747Z"
+      "at": "2026-11-03T06:24:53.847Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -611214,10 +611218,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T06:24:36.716Z",
+      "bags": "2026-11-03T06:24:49.818Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T06:24:40.747Z",
+    "savedAt": "2026-11-03T06:24:53.847Z",
     "appVersion": "2026.11.02.1"
   }
 }
