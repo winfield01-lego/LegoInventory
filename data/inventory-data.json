@@ -456278,7 +456278,7 @@
       "label": "L21",
       "notes": "1 x 2 plate - 2-teeth Vertical, 1 x 1 plate - 1 tooth vertical",
       "group": "L",
-      "lastEdited": "2026-11-03T04:45:28.717Z"
+      "lastEdited": "2026-11-03T04:46:18.921Z"
     },
     {
       "id": "L22",
@@ -486770,6 +486770,24 @@
       "partNum": "4600",
       "color": "Light Bluish Gray",
       "qty": 22
+    },
+    {
+      "drawerId": "L21",
+      "partNum": "15209",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "L21",
+      "partNum": "15209",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "L21",
+      "partNum": "15209",
+      "color": "White",
+      "qty": 11
     }
   ],
   "mocLocations": {
@@ -603661,6 +603679,20 @@
       "d": "Arm Mechanical with Clip [Thick Support]",
       "e": "6014111",
       "u": 1793680948208
+    },
+    "15209|black": {
+      "p": "15209",
+      "c": "Black",
+      "d": "Tile Special 1 x 2 with Two Vertical Teeth / Tooth",
+      "e": "6127506",
+      "u": 1793681180123
+    },
+    "15209|tan": {
+      "p": "15209",
+      "c": "Tan",
+      "d": "Tile Special 1 x 2 with Two Vertical Teeth / Tooth",
+      "e": "6398003",
+      "u": 1793681180123
     }
   },
   "partKinds": {
@@ -608735,7 +608767,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:45:32.750Z"
+      "at": "2026-11-03T04:46:22.955Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -608759,7 +608791,7 @@
       "bags": "2026-11-03T04:44:36.960Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:45:32.750Z",
+    "savedAt": "2026-11-03T04:46:22.955Z",
     "appVersion": "2026.11.02.1"
   }
 }
