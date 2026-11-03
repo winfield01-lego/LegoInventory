@@ -506009,10 +506009,10 @@
           "desc": "Plate 4 x 10",
           "elementId": "6001001",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "R10",
           "matchCount": 0,
           "suggested": false,
-          "sel": false
+          "sel": true
         },
         {
           "partNum": "3029",
@@ -506020,14 +506020,14 @@
           "desc": "Plate 4 x 12",
           "elementId": "6227258",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "R10",
           "matchCount": 0,
-          "suggested": false,
-          "sel": false
+          "suggested": true,
+          "sel": true
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T04:04:31.423Z",
+      "savedAt": "2026-11-03T04:13:00.213Z",
       "moved": {
         "batches": 26,
         "pieces": 1498,
@@ -607927,7 +607927,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:12:45.379Z"
+      "at": "2026-11-03T04:13:04.238Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -607948,10 +607948,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T04:04:31.424Z",
+      "bags": "2026-11-03T04:13:00.213Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:12:45.379Z",
+    "savedAt": "2026-11-03T04:13:04.238Z",
     "appVersion": "2026.11.02.1"
   }
 }
