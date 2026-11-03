@@ -454536,7 +454536,7 @@
       "label": "G5",
       "notes": "2 x 3 x 2/3 Wing End - 2 Studs, 1 x 2 x 2/3 Wing End",
       "group": "G",
-      "lastEdited": "2026-11-03T05:57:43.700Z"
+      "lastEdited": "2026-11-03T05:58:00.418Z"
     },
     {
       "id": "G6",
@@ -454550,7 +454550,7 @@
       "label": "G7",
       "notes": "2 x 2 Curved with Studs and 2 x 4 Curved without studs",
       "group": "G",
-      "lastEdited": "2026-11-03T05:51:42.672Z"
+      "lastEdited": "2026-11-03T05:58:00.418Z"
     },
     {
       "id": "G8",
@@ -487742,7 +487742,7 @@
       "drawerId": "G7",
       "partNum": "30165",
       "color": "Red",
-      "qty": 4
+      "qty": 5
     },
     {
       "drawerId": "G7",
@@ -487878,6 +487878,12 @@
       "drawerId": "G5",
       "partNum": "47456",
       "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "G5",
+      "partNum": "47456",
+      "color": "Dark Blue",
       "qty": 1
     }
   ],
@@ -488291,6 +488297,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw0a0ujv_acjuv",
+      "label": "Ebay Bulk Boxes (batch 37)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 37,
+      "timestamp": "2026-11-03T05:58:00.619Z",
+      "items": [
+        {
+          "partNum": "47456",
+          "color": "Dark Blue",
+          "desc": "Brick Wedged, Curved 2 x 3 x 2/3 Two Studs, Wing End",
+          "elementId": "4218675",
+          "qty": 1,
+          "drawerId": "G5",
+          "drawerLabel": "G5"
+        },
+        {
+          "partNum": "30165",
+          "color": "Red",
+          "desc": "Brick Curved 2 x 2, Two Top Studs",
+          "elementId": "4142112",
+          "qty": 1,
+          "drawerId": "G7",
+          "drawerLabel": "G7"
+        }
+      ]
+    },
     {
       "id": "bag_mw0986fk_ftz0k",
       "label": "Ebay Bulk Boxes (batch 36)",
@@ -507650,17 +507684,6 @@
           "sel": false
         },
         {
-          "partNum": "47456",
-          "color": "Dark Blue",
-          "desc": "Brick Wedged, Curved 2 x 3 x 2/3 Two Studs, Wing End",
-          "elementId": "4218675",
-          "qty": 1,
-          "drawerId": "G5",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": true
-        },
-        {
           "partNum": "3829c01",
           "color": "White",
           "desc": "Steering Stand 1 x 2 with Black Steering Wheel",
@@ -507714,25 +507737,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "30165",
-          "color": "Red",
-          "desc": "Brick Curved 2 x 2, Two Top Studs",
-          "elementId": "4142112",
-          "qty": 1,
-          "drawerId": "G7",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T05:57:54.852Z",
+      "savedAt": "2026-11-03T05:58:00.619Z",
       "moved": {
-        "batches": 36,
-        "pieces": 1514,
-        "last": "2026-11-03T05:35:42.992Z"
+        "batches": 37,
+        "pieces": 1516,
+        "last": "2026-11-03T05:58:00.619Z"
       }
     },
     {
@@ -605541,6 +605553,13 @@
       "d": "Brick Wedged, Curved 2 x 3 x 2/3 Two Studs, Wing End",
       "e": "4610897",
       "u": 1793685464903
+    },
+    "47456|dark blue": {
+      "p": "47456",
+      "c": "Dark Blue",
+      "d": "Brick Wedged, Curved 2 x 3 x 2/3 Two Studs, Wing End",
+      "e": "4218675",
+      "u": 1793685481820
     }
   },
   "partKinds": {
@@ -610615,7 +610634,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:57:58.893Z"
+      "at": "2026-11-03T05:58:04.649Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610636,10 +610655,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T05:57:54.852Z",
+      "bags": "2026-11-03T05:58:00.619Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:57:58.893Z",
+    "savedAt": "2026-11-03T05:58:04.649Z",
     "appVersion": "2026.11.02.1"
   }
 }
