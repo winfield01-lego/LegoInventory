@@ -456278,7 +456278,7 @@
       "label": "L21",
       "notes": "1 x 2 plate - 2-teeth Vertical, 1 x 1 plate - 1 tooth vertical",
       "group": "L",
-      "lastEdited": "2026-11-03T04:47:49.855Z"
+      "lastEdited": "2026-11-03T04:48:18.572Z"
     },
     {
       "id": "L22",
@@ -486793,7 +486793,7 @@
       "drawerId": "L21",
       "partNum": "15070",
       "color": "Black",
-      "qty": 1
+      "qty": 2
     },
     {
       "drawerId": "L21",
@@ -487243,6 +487243,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw07j7t3_yz1o4",
+      "label": "Ebay Bulk Boxes (batch 33)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 33,
+      "timestamp": "2026-11-03T04:48:18.759Z",
+      "items": [
+        {
+          "partNum": "15070",
+          "color": "Black",
+          "desc": "Plate Special 1 x 1 with Vertical Tooth",
+          "elementId": "6173959",
+          "qty": 1,
+          "drawerId": "L21",
+          "drawerLabel": "L21"
+        }
+      ]
+    },
     {
       "id": "bag_mw07ego0_dne2j",
       "label": "Ebay Bulk Boxes (batch 32)",
@@ -506631,17 +506650,6 @@
           "sel": false
         },
         {
-          "partNum": "15070",
-          "color": "Black",
-          "desc": "Plate Special 1 x 1 with Vertical Tooth",
-          "elementId": "6173959",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
           "partNum": "30165",
           "color": "Red",
           "desc": "Brick Curved 2 x 2, Two Top Studs",
@@ -506654,11 +506662,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T04:44:36.960Z",
+      "savedAt": "2026-11-03T04:48:18.759Z",
       "moved": {
-        "batches": 32,
-        "pieces": 1507,
-        "last": "2026-11-03T04:44:36.960Z"
+        "batches": 33,
+        "pieces": 1508,
+        "last": "2026-11-03T04:48:18.759Z"
       }
     },
     {
@@ -608827,7 +608835,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:47:55.134Z"
+      "at": "2026-11-03T04:48:22.800Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -608848,10 +608856,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T04:44:36.960Z",
+      "bags": "2026-11-03T04:48:18.759Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:47:55.134Z",
+    "savedAt": "2026-11-03T04:48:22.799Z",
     "appVersion": "2026.11.02.1"
   }
 }
