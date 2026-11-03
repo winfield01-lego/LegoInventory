@@ -457487,7 +457487,7 @@
       "label": "O61",
       "notes": "3 x 3 Wedge Slope - Left and Right",
       "group": "O",
-      "lastEdited": "2026-11-03T05:39:12.045Z"
+      "lastEdited": "2026-11-03T05:40:14.022Z"
     },
     {
       "id": "O62",
@@ -487588,6 +487588,31 @@
       "partNum": "4161",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "O61",
+      "partNum": "42862",
+      "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "O61",
+      "partNum": "42862",
+      "color": "Dark Red",
+      "qty": 4
+    },
+    {
+      "drawerId": "O61",
+      "partNum": "42862",
+      "color": "Light Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "O61",
+      "partNum": "42862",
+      "color": "White",
+      "elementId": "6254601",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -555015,9 +555040,12 @@
       "c": "White",
       "d": "Brick Wedged, Sloped 45° 3 x 3 Left",
       "e": "6552173",
-      "u": 1791916924851,
+      "u": 1793684415225,
       "at": 1791654677272,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6254601.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6254601.jpg",
+      "ea": [
+        "6254601"
+      ]
     },
     "48165|white": {
       "p": "48165",
@@ -605040,6 +605068,13 @@
       "d": "Brick Sloped 33° 3 x 3",
       "e": "4112516",
       "u": 1793684316975
+    },
+    "42862|dark blue": {
+      "p": "42862",
+      "c": "Dark Blue",
+      "d": "Brick Wedged, Sloped 45° 3 x 3 Left",
+      "e": "6440475",
+      "u": 1793684415225
     }
   },
   "partKinds": {
@@ -610114,7 +610149,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:39:16.076Z"
+      "at": "2026-11-03T05:40:19.319Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610138,7 +610173,7 @@
       "bags": "2026-11-03T05:35:42.992Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:39:16.076Z",
+    "savedAt": "2026-11-03T05:40:19.319Z",
     "appVersion": "2026.11.02.1"
   }
 }
