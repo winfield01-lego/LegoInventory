@@ -457183,7 +457183,7 @@
       "label": "O18",
       "notes": "4 x 2 Wedge - Left and Right",
       "group": "O",
-      "lastEdited": "2026-11-03T05:26:06.262Z"
+      "lastEdited": "2026-11-03T05:26:41.927Z"
     },
     {
       "id": "O19",
@@ -487368,6 +487368,38 @@
       "partNum": "41768",
       "color": "Yellow",
       "qty": 1
+    },
+    {
+      "drawerId": "O18",
+      "partNum": "41767",
+      "color": "Black",
+      "elementId": "4160334",
+      "qty": 5
+    },
+    {
+      "drawerId": "O18",
+      "partNum": "41767",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "O18",
+      "partNum": "41767",
+      "color": "Dark Bluish Gray",
+      "elementId": "4242123",
+      "qty": 3
+    },
+    {
+      "drawerId": "O18",
+      "partNum": "41767",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "O18",
+      "partNum": "41767",
+      "color": "White",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -529015,9 +529047,12 @@
       "c": "Black",
       "d": "Brick Wedged, Angled 4 x 2 Right",
       "e": "6078886",
-      "u": 1791916924851,
+      "u": 1793683603130,
       "at": 1791660084431,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4160334.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4160334.jpg",
+      "ea": [
+        "4160334"
+      ]
     },
     "47406|black": {
       "p": "47406",
@@ -553345,9 +553380,12 @@
       "c": "Dark Bluish Gray",
       "d": "Brick Wedged, Angled 4 x 2 Right",
       "e": "4287972",
-      "u": 1791916924851,
+      "u": 1793683603130,
       "at": 1791654724601,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4242123.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4242123.jpg",
+      "ea": [
+        "4242123"
+      ]
     },
     "98834|dark bluish gray": {
       "p": "98834",
@@ -604629,6 +604667,27 @@
       "d": "Brick Wedged, Angled 4 x 2 Left",
       "e": "4160348",
       "u": 1793683567465
+    },
+    "41767|blue": {
+      "p": "41767",
+      "c": "Blue",
+      "d": "Brick Wedged, Angled 4 x 2 Right",
+      "e": "4160332",
+      "u": 1793683603130
+    },
+    "41767|tan": {
+      "p": "41767",
+      "c": "Tan",
+      "d": "Brick Wedged, Angled 4 x 2 Right",
+      "e": "4160327",
+      "u": 1793683603130
+    },
+    "41767|white": {
+      "p": "41767",
+      "c": "White",
+      "d": "Brick Wedged, Angled 4 x 2 Right",
+      "e": "4160325",
+      "u": 1793683603130
     }
   },
   "partKinds": {
@@ -609703,7 +609762,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:26:11.560Z"
+      "at": "2026-11-03T05:26:47.219Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -609727,7 +609786,7 @@
       "bags": "2026-11-03T05:12:48.484Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:26:11.560Z",
+    "savedAt": "2026-11-03T05:26:47.219Z",
     "appVersion": "2026.11.02.1"
   }
 }
