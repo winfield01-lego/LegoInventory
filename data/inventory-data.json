@@ -454549,7 +454549,7 @@
       "label": "G7",
       "notes": "2 x 2 Curved with Studs and 2 x 4 Curved without studs",
       "group": "G",
-      "lastEdited": "2026-11-03T05:51:20.173Z"
+      "lastEdited": "2026-11-03T05:51:42.672Z"
     },
     {
       "id": "G8",
@@ -487767,6 +487767,25 @@
       "color": "Light Bluish Gray",
       "elementId": "4182477",
       "qty": 1
+    },
+    {
+      "drawerId": "G7",
+      "partNum": "6192b",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "G7",
+      "partNum": "6192b",
+      "color": "Dark Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "G7",
+      "partNum": "6192b",
+      "color": "Light Bluish Gray",
+      "elementId": "4518653",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -551007,9 +551026,12 @@
       "c": "Light Bluish Gray",
       "d": "Brick Curved 2 x 4 Double, No Studs, with Groove",
       "e": "6655870",
-      "u": 1791916924851,
+      "u": 1793685103874,
       "at": 1791654401152,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4518653.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4518653.jpg",
+      "ea": [
+        "4518653"
+      ]
     },
     "6081|light bluish gray": {
       "p": "6081",
@@ -605322,6 +605344,13 @@
       "d": "Brick Curved 2 x 2, Two Top Studs",
       "e": "4181838",
       "u": 1793685065925
+    },
+    "6192b|black": {
+      "p": "6192b",
+      "c": "Black",
+      "d": "Brick Curved 2 x 4 Double, No Studs, with Groove",
+      "e": "6179181",
+      "u": 1793685103874
     }
   },
   "partKinds": {
@@ -610396,7 +610425,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:51:25.479Z"
+      "at": "2026-11-03T05:51:47.954Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610420,7 +610449,7 @@
       "bags": "2026-11-03T05:35:42.992Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:51:25.479Z",
+    "savedAt": "2026-11-03T05:51:47.954Z",
     "appVersion": "2026.11.02.1"
   }
 }
