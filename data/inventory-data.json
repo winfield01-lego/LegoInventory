@@ -456908,7 +456908,7 @@
       "label": "N23",
       "notes": "Mechnical Arm",
       "group": "N",
-      "lastEdited": "2026-11-03T04:42:27.006Z"
+      "lastEdited": "2026-11-03T04:42:39.321Z"
     },
     {
       "id": "N24",
@@ -486712,7 +486712,7 @@
       "drawerId": "N23",
       "partNum": "98313",
       "color": "Dark Red",
-      "qty": 7
+      "qty": 8
     },
     {
       "drawerId": "N23",
@@ -487170,6 +487170,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw07by1b_vjjfm",
+      "label": "Ebay Bulk Boxes (batch 31)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 31,
+      "timestamp": "2026-11-03T04:42:39.503Z",
+      "items": [
+        {
+          "partNum": "98313",
+          "color": "Dark Red",
+          "desc": "Arm Mechanical with Clip [Thick Support]",
+          "elementId": "6006738",
+          "qty": 1,
+          "drawerId": "N23",
+          "drawerLabel": "N23"
+        }
+      ]
+    },
     {
       "id": "bag_mw06vwbm_05r94",
       "label": "Ebay Bulk Boxes (batch 30)",
@@ -506379,17 +506398,6 @@
           "sel": false
         },
         {
-          "partNum": "98313",
-          "color": "Dark Red",
-          "desc": "Arm Mechanical with Clip [Thick Support]",
-          "elementId": "6006738",
-          "qty": 1,
-          "drawerId": "N23",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
           "partNum": "22385",
           "color": "Dark Blue",
           "desc": "Tile Special 2 x 3 Pentagonal",
@@ -506567,11 +506575,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T04:42:33.440Z",
+      "savedAt": "2026-11-03T04:42:39.503Z",
       "moved": {
-        "batches": 30,
-        "pieces": 1503,
-        "last": "2026-11-03T04:30:10.786Z"
+        "batches": 31,
+        "pieces": 1504,
+        "last": "2026-11-03T04:42:39.503Z"
       }
     },
     {
@@ -608709,7 +608717,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T04:42:37.480Z"
+      "at": "2026-11-03T04:42:43.551Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -608730,10 +608738,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T04:42:33.440Z",
+      "bags": "2026-11-03T04:42:39.503Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T04:42:37.480Z",
+    "savedAt": "2026-11-03T04:42:43.551Z",
     "appVersion": "2026.11.02.1"
   }
 }
