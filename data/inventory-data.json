@@ -457630,7 +457630,7 @@
       "label": "R4",
       "notes": "Panels, 1 x 2 x 3, 1 x 4 x 2, and 1 x 4 x 3",
       "group": "R",
-      "lastEdited": "2026-11-03T05:07:36.748Z"
+      "lastEdited": "2026-11-03T05:09:28.774Z"
     },
     {
       "id": "R5",
@@ -487092,6 +487092,37 @@
       "color": "White",
       "elementId": "",
       "qty": 10
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "87544",
+      "color": "Black",
+      "elementId": "4585452",
+      "qty": 1
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "87544",
+      "color": "Dark Blue",
+      "qty": 3
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "87544",
+      "color": "Light Bluish Gray",
+      "qty": 12
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "87544",
+      "color": "Orange",
+      "qty": 2
+    },
+    {
+      "drawerId": "R4",
+      "partNum": "87544",
+      "color": "White",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -520376,9 +520407,12 @@
       "c": "Black",
       "d": "Panel 1 x 2 x 3 [Side Supports / Hollow Studs]",
       "e": "4614788",
-      "u": 1791916924851,
+      "u": 1793682569977,
       "at": 1791654796747,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4585452.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4585452.jpg",
+      "ea": [
+        "4585452"
+      ]
     },
     "60581|black": {
       "p": "60581",
@@ -604198,6 +604232,20 @@
       "d": "Brick 1 x 1 x 5 with Blocked Open or Hollow Stud",
       "e": "245305",
       "u": 1793682348178
+    },
+    "87544|orange": {
+      "p": "87544",
+      "c": "Orange",
+      "d": "Panel 1 x 2 x 3 [Side Supports / Hollow Studs]",
+      "e": "6129594",
+      "u": 1793682569977
+    },
+    "87544|white": {
+      "p": "87544",
+      "c": "White",
+      "d": "Panel 1 x 2 x 3 [Side Supports / Hollow Studs]",
+      "e": "4585448",
+      "u": 1793682569977
     }
   },
   "partKinds": {
@@ -609272,7 +609320,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:07:40.785Z"
+      "at": "2026-11-03T05:09:34.071Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -609296,7 +609344,7 @@
       "bags": "2026-11-03T04:48:18.759Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:07:40.785Z",
+    "savedAt": "2026-11-03T05:09:34.071Z",
     "appVersion": "2026.11.02.1"
   }
 }
