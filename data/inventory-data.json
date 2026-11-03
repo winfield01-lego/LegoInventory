@@ -454434,7 +454434,7 @@
       "label": "F34",
       "notes": "2 x 2 Bar Frame - Octagonal",
       "group": "F",
-      "lastEdited": "2026-11-03T02:52:54.396Z"
+      "lastEdited": "2026-11-03T02:57:45.272Z"
     },
     {
       "id": "F35",
@@ -455874,7 +455874,7 @@
       "label": "K6",
       "notes": "1 x 2 Plate - Pin Hole on Top",
       "group": "K",
-      "lastEdited": "2026-11-03T02:56:55.891Z"
+      "lastEdited": "2026-11-03T02:57:45.273Z"
     },
     {
       "id": "K7",
@@ -485463,7 +485463,7 @@
       "drawerId": "K6",
       "partNum": "11458",
       "color": "Dark Bluish Gray",
-      "qty": 43
+      "qty": 44
     },
     {
       "drawerId": "K6",
@@ -485481,13 +485481,25 @@
       "drawerId": "K6",
       "partNum": "11458",
       "color": "White",
-      "qty": 22
+      "qty": 24
     },
     {
       "drawerId": "K6",
       "partNum": "11458",
       "color": "Yellow",
       "qty": 3
+    },
+    {
+      "drawerId": "F34",
+      "partNum": "30033",
+      "color": "Flat Silver",
+      "qty": 1
+    },
+    {
+      "drawerId": "K6",
+      "partNum": "11458",
+      "color": "Red",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -485900,6 +485912,52 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw03l1jf_6lsyr",
+      "label": "Ebay Bulk Boxes (batch 18)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 18,
+      "timestamp": "2026-11-03T02:57:45.483Z",
+      "items": [
+        {
+          "partNum": "30033",
+          "color": "Flat Silver",
+          "desc": "Plate Special 2 x 2 with Bar Frame Octagonal",
+          "elementId": "4631264",
+          "qty": 1,
+          "drawerId": "F34",
+          "drawerLabel": "F34"
+        },
+        {
+          "partNum": "11458",
+          "color": "Dark Bluish Gray",
+          "desc": "Plate Special 1 x 2 with Pin Hole on Top",
+          "elementId": "6019987",
+          "qty": 1,
+          "drawerId": "K6",
+          "drawerLabel": "K6"
+        },
+        {
+          "partNum": "11458",
+          "color": "Red",
+          "desc": "Plate Special 1 x 2 with Pin Hole on Top",
+          "elementId": "6099736",
+          "qty": 1,
+          "drawerId": "K6",
+          "drawerLabel": "K6"
+        },
+        {
+          "partNum": "11458",
+          "color": "White",
+          "desc": "Plate Special 1 x 2 with Pin Hole on Top",
+          "elementId": "6057414",
+          "qty": 2,
+          "drawerId": "K6",
+          "drawerLabel": "K6"
+        }
+      ]
+    },
     {
       "id": "bag_mvzjiqfl_zkpp5",
       "label": "Ebay Bulk Boxes (batch 17)",
@@ -504594,17 +504652,6 @@
           "sel": false
         },
         {
-          "partNum": "30033",
-          "color": "Flat Silver",
-          "desc": "Plate Special 2 x 2 with Bar Frame Octagonal",
-          "elementId": "4631264",
-          "qty": 1,
-          "drawerId": "F34",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": true
-        },
-        {
           "partNum": "3958",
           "color": "Dark Tan",
           "desc": "Plate 6 x 6",
@@ -504779,39 +504826,6 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "11458",
-          "color": "Dark Bluish Gray",
-          "desc": "Plate Special 1 x 2 with Pin Hole on Top",
-          "elementId": "6019987",
-          "qty": 1,
-          "drawerId": "K6",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "11458",
-          "color": "Red",
-          "desc": "Plate Special 1 x 2 with Pin Hole on Top",
-          "elementId": "6099736",
-          "qty": 1,
-          "drawerId": "K6",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": true
-        },
-        {
-          "partNum": "11458",
-          "color": "White",
-          "desc": "Plate Special 1 x 2 with Pin Hole on Top",
-          "elementId": "6057414",
-          "qty": 2,
-          "drawerId": "K6",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
         },
         {
           "partNum": "6536",
@@ -505156,11 +505170,11 @@
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-03T02:57:02.793Z",
+      "savedAt": "2026-11-03T02:57:45.482Z",
       "moved": {
-        "batches": 17,
-        "pieces": 1477,
-        "last": "2026-11-02T17:36:05.457Z"
+        "batches": 18,
+        "pieces": 1482,
+        "last": "2026-11-03T02:57:45.483Z"
       }
     },
     {
@@ -601660,6 +601674,13 @@
       "d": "Plate Special 1 x 2 with Pin Hole on Top",
       "e": "6223838",
       "u": 1793674617093
+    },
+    "30033|flat silver": {
+      "p": "30033",
+      "c": "Flat Silver",
+      "d": "Plate Special 2 x 2 with Bar Frame Octagonal",
+      "e": "4631264",
+      "u": 1793674666684
     }
   },
   "partKinds": {
@@ -606734,7 +606755,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T02:57:06.822Z"
+      "at": "2026-11-03T02:57:49.512Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -606755,10 +606776,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-03T02:57:02.793Z",
+      "bags": "2026-11-03T02:57:45.483Z",
       "shopping": "2026-11-02T07:45:33.385Z"
     },
-    "savedAt": "2026-11-03T02:57:06.822Z",
+    "savedAt": "2026-11-03T02:57:49.512Z",
     "appVersion": "2026.11.02.1"
   }
 }
