@@ -454549,7 +454549,7 @@
       "label": "G7",
       "notes": "2 x 2 Curved with Studs and 2 x 4 Curved without studs",
       "group": "G",
-      "lastEdited": "2026-11-03T05:51:04.723Z"
+      "lastEdited": "2026-11-03T05:51:20.173Z"
     },
     {
       "id": "G8",
@@ -487759,6 +487759,13 @@
       "drawerId": "G7",
       "partNum": "30165",
       "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "G7",
+      "partNum": "30165",
+      "color": "Light Bluish Gray",
+      "elementId": "4182477",
       "qty": 1
     }
   ],
@@ -550988,9 +550995,12 @@
       "c": "Light Bluish Gray",
       "d": "Brick Curved 2 x 2, Two Top Studs",
       "e": "6150310",
-      "u": 1791916924851,
+      "u": 1793685081375,
       "at": 1791654401152,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4182477.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4182477.jpg",
+      "ea": [
+        "4182477"
+      ]
     },
     "6192b|light bluish gray": {
       "p": "6192b",
@@ -610386,7 +610396,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:51:08.767Z"
+      "at": "2026-11-03T05:51:25.479Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610410,7 +610420,7 @@
       "bags": "2026-11-03T05:35:42.992Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:51:08.767Z",
+    "savedAt": "2026-11-03T05:51:25.479Z",
     "appVersion": "2026.11.02.1"
   }
 }
