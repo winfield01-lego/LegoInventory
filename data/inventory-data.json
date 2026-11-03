@@ -457494,7 +457494,7 @@
       "label": "O62",
       "notes": "3 x 3 Slope",
       "group": "O",
-      "lastEdited": "2026-11-03T05:38:24.530Z"
+      "lastEdited": "2026-11-03T05:38:35.773Z"
     },
     {
       "id": "O63",
@@ -487570,6 +487570,24 @@
       "partNum": "3688",
       "color": "Blue",
       "qty": 2
+    },
+    {
+      "drawerId": "O62",
+      "partNum": "4161",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "O62",
+      "partNum": "4161",
+      "color": "Dark Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "O62",
+      "partNum": "4161",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -605008,6 +605026,20 @@
       "d": "Brick Sloped 75° 2 x 2 x 2 Quadruple Convex",
       "e": "368823",
       "u": 1793684280108
+    },
+    "4161|dark red": {
+      "p": "4161",
+      "c": "Dark Red",
+      "d": "Brick Sloped 33° 3 x 3",
+      "e": "6052995",
+      "u": 1793684316975
+    },
+    "4161|white": {
+      "p": "4161",
+      "c": "White",
+      "d": "Brick Sloped 33° 3 x 3",
+      "e": "4112516",
+      "u": 1793684316975
     }
   },
   "partKinds": {
@@ -610082,7 +610114,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.02.1",
-      "at": "2026-11-03T05:38:28.562Z"
+      "at": "2026-11-03T05:38:39.819Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -610106,7 +610138,7 @@
       "bags": "2026-11-03T05:35:42.992Z",
       "shopping": "2026-11-03T04:51:26.372Z"
     },
-    "savedAt": "2026-11-03T05:38:28.562Z",
+    "savedAt": "2026-11-03T05:38:39.818Z",
     "appVersion": "2026.11.02.1"
   }
 }
