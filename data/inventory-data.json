@@ -454648,7 +454648,7 @@
       "label": "G15",
       "notes": "2 x 2 Inside and Inverted Corner Slopes",
       "group": "G",
-      "lastEdited": "2026-11-04T07:35:47.708Z"
+      "lastEdited": "2026-11-04T07:36:38.008Z"
     },
     {
       "id": "G16",
@@ -489107,6 +489107,50 @@
       "color": "Light Bluish Gray",
       "elementId": "6071229",
       "qty": 2
+    },
+    {
+      "drawerId": "G15",
+      "partNum": "3046a",
+      "color": "Black",
+      "elementId": "4114522",
+      "qty": 2
+    },
+    {
+      "drawerId": "G15",
+      "partNum": "3046a",
+      "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "G15",
+      "partNum": "3046a",
+      "color": "Dark Bluish Gray",
+      "elementId": "4210702",
+      "qty": 4
+    },
+    {
+      "drawerId": "G15",
+      "partNum": "3046a",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "G15",
+      "partNum": "3046a",
+      "color": "Light Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "G15",
+      "partNum": "3046a",
+      "color": "Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "G15",
+      "partNum": "3046a",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -531399,10 +531443,11 @@
       "c": "Black",
       "d": "Brick Sloped 45° 2 x 2 Double Concave",
       "e": "4218890",
-      "u": 1791916924851,
+      "u": 1793777799210,
       "at": 1791654393808,
       "ea": [
-        "6477383"
+        "6477383",
+        "4114522"
       ],
       "i": "https://cdn.rebrickable.com/media/parts/elements/4114522.jpg"
     },
@@ -573976,9 +574021,12 @@
       "c": "Dark Bluish Gray",
       "d": "Brick Sloped 45° 2 x 2 Double Concave",
       "e": "6477380",
-      "u": 1791916924851,
+      "u": 1793777799210,
       "at": 1791654759952,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4210702.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4210702.jpg",
+      "ea": [
+        "4210702"
+      ]
     },
     "20310|dark bluish gray": {
       "p": "20310",
@@ -613775,6 +613823,34 @@
       "d": "Panel 1 x 2 x 2 [Side Supports / Hollow Studs]",
       "e": "4618541",
       "u": 1793770708767
+    },
+    "3046a|dark blue": {
+      "p": "3046a",
+      "c": "Dark Blue",
+      "d": "Brick Sloped 45° 2 x 2 Double Concave",
+      "e": "4578099",
+      "u": 1793777799210
+    },
+    "3046a|light bluish gray": {
+      "p": "3046a",
+      "c": "Light Bluish Gray",
+      "d": "Brick Sloped 45° 2 x 2 Double Concave",
+      "e": "4211846",
+      "u": 1793777799210
+    },
+    "3046a|red": {
+      "p": "3046a",
+      "c": "Red",
+      "d": "Brick Sloped 45° 2 x 2 Double Concave",
+      "e": "304621",
+      "u": 1793777799210
+    },
+    "3046a|white": {
+      "p": "3046a",
+      "c": "White",
+      "d": "Brick Sloped 45° 2 x 2 Double Concave",
+      "e": "4234155",
+      "u": 1793777799210
     }
   },
   "partKinds": {
@@ -618849,7 +618925,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.03.4",
-      "at": "2026-11-04T07:35:51.741Z"
+      "at": "2026-11-04T07:36:43.295Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -618878,7 +618954,7 @@
       "bags": "2026-11-04T06:59:44.092Z",
       "shopping": "2026-11-03T19:23:14.090Z"
     },
-    "savedAt": "2026-11-04T07:35:51.741Z",
+    "savedAt": "2026-11-04T07:36:43.295Z",
     "appVersion": "2026.11.03.4"
   }
 }
