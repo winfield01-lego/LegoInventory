@@ -453943,7 +453943,7 @@
       "label": "A5",
       "notes": "1 x 1 Bricks",
       "group": "A",
-      "lastEdited": "2026-11-04T04:31:53.733Z"
+      "lastEdited": "2026-11-04T04:32:51.955Z"
     },
     {
       "id": "A6",
@@ -458283,21 +458283,21 @@
       "drawerId": "A5",
       "partNum": "3005",
       "color": "Dark Bluish Gray",
-      "qty": 9
+      "qty": 11
     },
     {
       "drawerId": "A5",
       "partNum": "3005",
       "color": "Dark Tan",
       "elementId": "4497070",
-      "qty": 15
+      "qty": 17
     },
     {
       "drawerId": "A5",
       "partNum": "3005",
       "color": "Dark Red",
       "elementId": "4209383",
-      "qty": 4
+      "qty": 6
     },
     {
       "drawerId": "A5",
@@ -458309,7 +458309,7 @@
       "drawerId": "A5",
       "partNum": "3005",
       "color": "Light Bluish Gray",
-      "qty": 44
+      "qty": 46
     },
     {
       "drawerId": "A5",
@@ -458323,7 +458323,7 @@
       "partNum": "3005",
       "color": "Orange",
       "elementId": "4119645",
-      "qty": 7
+      "qty": 8
     },
     {
       "drawerId": "A5",
@@ -458373,7 +458373,7 @@
       "drawerId": "A5",
       "partNum": "3005",
       "color": "Reddish Brown",
-      "qty": 1
+      "qty": 2
     },
     {
       "drawerId": "A6",
@@ -489401,6 +489401,70 @@
   "mocInstructions": {},
   "bagInventoryLog": [
     {
+      "id": "bag_mw1mf7h8_k4pxi",
+      "label": "Ebay Bulk Boxes (batch 47)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 47,
+      "timestamp": "2026-11-04T04:32:52.124Z",
+      "items": [
+        {
+          "partNum": "3005",
+          "color": "Dark Bluish Gray",
+          "desc": "Brick 1 x 1",
+          "elementId": "4211098",
+          "qty": 2,
+          "drawerId": "A5",
+          "drawerLabel": "A5"
+        },
+        {
+          "partNum": "3005",
+          "color": "Dark Red",
+          "desc": "Brick 1 x 1",
+          "elementId": "4209383",
+          "qty": 2,
+          "drawerId": "A5",
+          "drawerLabel": "A5"
+        },
+        {
+          "partNum": "3005",
+          "color": "Dark Tan",
+          "desc": "Brick 1 x 1",
+          "elementId": "4497070",
+          "qty": 2,
+          "drawerId": "A5",
+          "drawerLabel": "A5"
+        },
+        {
+          "partNum": "3005",
+          "color": "Light Bluish Gray",
+          "desc": "Brick 1 x 1",
+          "elementId": "4211389",
+          "qty": 2,
+          "drawerId": "A5",
+          "drawerLabel": "A5"
+        },
+        {
+          "partNum": "3005",
+          "color": "Orange",
+          "desc": "Brick 1 x 1",
+          "elementId": "4119645",
+          "qty": 1,
+          "drawerId": "A5",
+          "drawerLabel": "A5"
+        },
+        {
+          "partNum": "3005",
+          "color": "Reddish Brown",
+          "desc": "Brick 1 x 1",
+          "elementId": "4211242",
+          "qty": 1,
+          "drawerId": "A5",
+          "drawerLabel": "A5"
+        }
+      ]
+    },
+    {
       "id": "bag_mw1mdyka_sw7l2",
       "label": "Ebay Bulk Boxes (batch 46)",
       "bagId": "bagprog_mvoo1wik_nkx0",
@@ -512632,80 +512696,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "3005",
-          "color": "Dark Bluish Gray",
-          "desc": "Brick 1 x 1",
-          "elementId": "4211098",
-          "qty": 2,
-          "drawerId": "A5",
-          "matchCount": 2,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "3005",
-          "color": "Dark Red",
-          "desc": "Brick 1 x 1",
-          "elementId": "4209383",
-          "qty": 2,
-          "drawerId": "A5",
-          "matchCount": 2,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "3005",
-          "color": "Dark Tan",
-          "desc": "Brick 1 x 1",
-          "elementId": "4497070",
-          "qty": 2,
-          "drawerId": "A5",
-          "matchCount": 2,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "3005",
-          "color": "Light Bluish Gray",
-          "desc": "Brick 1 x 1",
-          "elementId": "4211389",
-          "qty": 2,
-          "drawerId": "A5",
-          "matchCount": 2,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "3005",
-          "color": "Orange",
-          "desc": "Brick 1 x 1",
-          "elementId": "4119645",
-          "qty": 1,
-          "drawerId": "A5",
-          "matchCount": 2,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "3005",
-          "color": "Reddish Brown",
-          "desc": "Brick 1 x 1",
-          "elementId": "4211242",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 2,
-          "suggested": false,
-          "sel": false
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-04T04:32:42.925Z",
+      "savedAt": "2026-11-04T04:32:52.124Z",
       "moved": {
-        "batches": 46,
-        "pieces": 2021,
-        "last": "2026-11-04T04:31:53.914Z"
+        "batches": 47,
+        "pieces": 2031,
+        "last": "2026-11-04T04:32:52.124Z"
       }
     },
     {
@@ -616260,7 +616258,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.03.4",
-      "at": "2026-11-04T04:32:46.959Z"
+      "at": "2026-11-04T04:32:56.157Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -616286,10 +616284,10 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-04T04:32:42.925Z",
+      "bags": "2026-11-04T04:32:52.124Z",
       "shopping": "2026-11-03T19:23:14.090Z"
     },
-    "savedAt": "2026-11-04T04:32:46.959Z",
+    "savedAt": "2026-11-04T04:32:56.157Z",
     "appVersion": "2026.11.03.4"
   }
 }
