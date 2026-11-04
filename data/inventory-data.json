@@ -454648,7 +454648,7 @@
       "label": "G15",
       "notes": "2 x 2 Inside and Inverted Corner Slopes",
       "group": "G",
-      "lastEdited": "2026-11-04T07:36:38.008Z"
+      "lastEdited": "2026-11-04T07:37:34.906Z"
     },
     {
       "id": "G16",
@@ -489151,6 +489151,56 @@
       "partNum": "3046a",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "G15",
+      "partNum": "3676",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "G15",
+      "partNum": "3676",
+      "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "G15",
+      "partNum": "3676",
+      "color": "Dark Bluish Gray",
+      "qty": 10
+    },
+    {
+      "drawerId": "G15",
+      "partNum": "3676",
+      "color": "Dark Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "G15",
+      "partNum": "3676",
+      "color": "Light Bluish Gray",
+      "elementId": "4211817",
+      "qty": 3
+    },
+    {
+      "drawerId": "G15",
+      "partNum": "3676",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "G15",
+      "partNum": "3676",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "G15",
+      "partNum": "3676",
+      "color": "White",
+      "elementId": "367601",
+      "qty": 6
     }
   ],
   "mocLocations": {
@@ -531612,9 +531662,12 @@
       "c": "Light Bluish Gray",
       "d": "Brick Sloped Inverted 45° 2 x 2 Double Convex",
       "e": "6310976",
-      "u": 1791916924851,
+      "u": 1793777856109,
       "at": 1791654319350,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4211817.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4211817.jpg",
+      "ea": [
+        "4211817"
+      ]
     },
     "3070b|dark tan": {
       "p": "3070b",
@@ -584648,9 +584701,12 @@
       "c": "White",
       "d": "Brick Sloped Inverted 45° 2 x 2 Double Convex",
       "e": "6548282",
-      "u": 1791916924851,
+      "u": 1793777856109,
       "at": 1791732234165,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/367601.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/367601.jpg",
+      "ea": [
+        "367601"
+      ]
     },
     "43708|white": {
       "p": "43708",
@@ -613851,6 +613907,41 @@
       "d": "Brick Sloped 45° 2 x 2 Double Concave",
       "e": "4234155",
       "u": 1793777799210
+    },
+    "3676|black": {
+      "p": "3676",
+      "c": "Black",
+      "d": "Brick Sloped Inverted 45° 2 x 2 Double Convex",
+      "e": "367626",
+      "u": 1793777856109
+    },
+    "3676|dark blue": {
+      "p": "3676",
+      "c": "Dark Blue",
+      "d": "Brick Sloped Inverted 45° 2 x 2 Double Convex",
+      "e": "4225576",
+      "u": 1793777856109
+    },
+    "3676|dark red": {
+      "p": "3676",
+      "c": "Dark Red",
+      "d": "Brick Sloped Inverted 45° 2 x 2 Double Convex",
+      "e": "4273358",
+      "u": 1793777856109
+    },
+    "3676|red": {
+      "p": "3676",
+      "c": "Red",
+      "d": "Brick Sloped Inverted 45° 2 x 2 Double Convex",
+      "e": "4185811",
+      "u": 1793777856109
+    },
+    "3676|reddish brown": {
+      "p": "3676",
+      "c": "Reddish Brown",
+      "d": "Brick Sloped Inverted 45° 2 x 2 Double Convex",
+      "e": "4541251",
+      "u": 1793777856109
     }
   },
   "partKinds": {
@@ -618925,7 +619016,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.03.4",
-      "at": "2026-11-04T07:36:43.295Z"
+      "at": "2026-11-04T07:37:40.208Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -618954,7 +619045,7 @@
       "bags": "2026-11-04T06:59:44.092Z",
       "shopping": "2026-11-03T19:23:14.090Z"
     },
-    "savedAt": "2026-11-04T07:36:43.295Z",
+    "savedAt": "2026-11-04T07:37:40.208Z",
     "appVersion": "2026.11.03.4"
   }
 }
