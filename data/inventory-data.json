@@ -460387,28 +460387,28 @@
       "label": "U1",
       "notes": "2 x 2 Brick",
       "group": "U",
-      "lastEdited": "2026-11-05T05:44:04.788Z"
+      "lastEdited": "2026-11-05T07:43:59.382Z"
     },
     {
       "id": "U2",
       "label": "U2",
       "notes": "2 x 3 Brick",
       "group": "U",
-      "lastEdited": "2026-11-05T05:44:04.788Z"
+      "lastEdited": "2026-11-05T07:43:59.383Z"
     },
     {
       "id": "U3",
       "label": "U3",
       "notes": "2 x 4 Brick",
       "group": "U",
-      "lastEdited": "2026-11-05T05:44:04.788Z"
+      "lastEdited": "2026-11-05T07:43:59.384Z"
     },
     {
       "id": "U4",
       "label": "U4",
       "notes": "2 x 6 Bricks",
       "group": "U",
-      "lastEdited": "2026-11-05T05:44:04.789Z"
+      "lastEdited": "2026-11-05T07:43:59.384Z"
     },
     {
       "id": "U5",
@@ -479260,7 +479260,7 @@
       "drawerId": "U1",
       "partNum": "3003",
       "color": "Yellow",
-      "qty": 94
+      "qty": 95
     },
     {
       "drawerId": "U1",
@@ -479327,7 +479327,7 @@
       "partNum": "3003",
       "color": "Medium Blue",
       "elementId": "4162705",
-      "qty": 6
+      "qty": 7
     },
     {
       "drawerId": "U1",
@@ -479415,7 +479415,7 @@
       "partNum": "3002",
       "color": "Tan",
       "elementId": "300205",
-      "qty": 18
+      "qty": 20
     },
     {
       "drawerId": "U2",
@@ -479439,13 +479439,13 @@
       "drawerId": "U3",
       "partNum": "3001",
       "color": "Blue",
-      "qty": 77
+      "qty": 82
     },
     {
       "drawerId": "U3",
       "partNum": "3001",
       "color": "Dark Azure",
-      "qty": 12
+      "qty": 13
     },
     {
       "drawerId": "U3",
@@ -479470,7 +479470,7 @@
       "drawerId": "U3",
       "partNum": "3001",
       "color": "Green",
-      "qty": 21
+      "qty": 23
     },
     {
       "drawerId": "U3",
@@ -479508,7 +479508,7 @@
       "drawerId": "U3",
       "partNum": "3001",
       "color": "Red",
-      "qty": 119
+      "qty": 123
     },
     {
       "drawerId": "U3",
@@ -479527,7 +479527,7 @@
       "drawerId": "U3",
       "partNum": "3001",
       "color": "White",
-      "qty": 118
+      "qty": 119
     },
     {
       "drawerId": "U3",
@@ -479591,14 +479591,14 @@
       "partNum": "2456",
       "color": "Red",
       "elementId": "245621",
-      "qty": 18
+      "qty": 20
     },
     {
       "drawerId": "U4",
       "partNum": "2456",
       "color": "Reddish Brown",
       "elementId": "4216615",
-      "qty": 9
+      "qty": 10
     },
     {
       "drawerId": "U4",
@@ -494298,6 +494298,106 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw38ouhk_htg0s",
+      "label": "Ebay Bulk Boxes (batch 55)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 55,
+      "timestamp": "2026-11-05T07:43:59.576Z",
+      "items": [
+        {
+          "partNum": "3003",
+          "color": "Medium Blue",
+          "desc": "Brick 2 x 2",
+          "elementId": "4162705",
+          "qty": 1,
+          "drawerId": "U1",
+          "drawerLabel": "U1"
+        },
+        {
+          "partNum": "3003",
+          "color": "Yellow",
+          "desc": "Brick 2 x 2",
+          "elementId": "300324",
+          "qty": 1,
+          "drawerId": "U1",
+          "drawerLabel": "U1"
+        },
+        {
+          "partNum": "3002",
+          "color": "Tan",
+          "desc": "Brick 2 x 3",
+          "elementId": "300205",
+          "qty": 2,
+          "drawerId": "U2",
+          "drawerLabel": "U2"
+        },
+        {
+          "partNum": "3001",
+          "color": "Blue",
+          "desc": "Brick 2 x 4",
+          "elementId": "300123",
+          "qty": 5,
+          "drawerId": "U3",
+          "drawerLabel": "U3"
+        },
+        {
+          "partNum": "3001",
+          "color": "Dark Azure",
+          "desc": "Brick 2 x 4",
+          "elementId": "4655172",
+          "qty": 1,
+          "drawerId": "U3",
+          "drawerLabel": "U3"
+        },
+        {
+          "partNum": "3001",
+          "color": "Red",
+          "desc": "Brick 2 x 4",
+          "elementId": "300121",
+          "qty": 4,
+          "drawerId": "U3",
+          "drawerLabel": "U3"
+        },
+        {
+          "partNum": "3001",
+          "color": "Green",
+          "desc": "Brick 2 x 4",
+          "elementId": "300128",
+          "qty": 2,
+          "drawerId": "U3",
+          "drawerLabel": "U3"
+        },
+        {
+          "partNum": "3001",
+          "color": "White",
+          "desc": "Brick 2 x 4",
+          "elementId": "300101",
+          "qty": 1,
+          "drawerId": "U3",
+          "drawerLabel": "U3"
+        },
+        {
+          "partNum": "2456",
+          "color": "Red",
+          "desc": "Brick 2 x 6",
+          "elementId": "245621",
+          "qty": 2,
+          "drawerId": "U4",
+          "drawerLabel": "U4"
+        },
+        {
+          "partNum": "2456",
+          "color": "Reddish Brown",
+          "desc": "Brick 2 x 6",
+          "elementId": "4216615",
+          "qty": 1,
+          "drawerId": "U4",
+          "drawerLabel": "U4"
+        }
+      ]
+    },
     {
       "id": "bag_mw379x2f_6xio6",
       "label": "Ebay Bulk Boxes (batch 54)",
@@ -522663,114 +522763,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "3003",
-          "color": "Medium Blue",
-          "desc": "Brick 2 x 2",
-          "elementId": "4162705",
-          "qty": 1,
-          "drawerId": "U1",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "3003",
-          "color": "Yellow",
-          "desc": "Brick 2 x 2",
-          "elementId": "300324",
-          "qty": 1,
-          "drawerId": "U1",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "3002",
-          "color": "Tan",
-          "desc": "Brick 2 x 3",
-          "elementId": "300205",
-          "qty": 2,
-          "drawerId": "U2",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "3001",
-          "color": "Blue",
-          "desc": "Brick 2 x 4",
-          "elementId": "300123",
-          "qty": 5,
-          "drawerId": "U3",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "3001",
-          "color": "Dark Azure",
-          "desc": "Brick 2 x 4",
-          "elementId": "4655172",
-          "qty": 1,
-          "drawerId": "U3",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "3001",
-          "color": "Red",
-          "desc": "Brick 2 x 4",
-          "elementId": "300121",
-          "qty": 4,
-          "drawerId": "U3",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "3001",
-          "color": "Green",
-          "desc": "Brick 2 x 4",
-          "elementId": "300128",
-          "qty": 2,
-          "drawerId": "U3",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "3001",
-          "color": "White",
-          "desc": "Brick 2 x 4",
-          "elementId": "300101",
-          "qty": 1,
-          "drawerId": "U3",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "2456",
-          "color": "Red",
-          "desc": "Brick 2 x 6",
-          "elementId": "245621",
-          "qty": 2,
-          "drawerId": "U4",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "2456",
-          "color": "Reddish Brown",
-          "desc": "Brick 2 x 6",
-          "elementId": "4216615",
-          "qty": 1,
-          "drawerId": "U4",
-          "matchCount": 0,
-          "suggested": false
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-05T07:43:47.214Z",
+      "savedAt": "2026-11-05T07:43:59.576Z",
       "moved": {
-        "batches": 54,
-        "pieces": 2777,
-        "last": "2026-11-05T07:04:23.463Z"
+        "batches": 55,
+        "pieces": 2797,
+        "last": "2026-11-05T07:43:59.576Z"
       }
     },
     {
@@ -627399,7 +627399,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.04.14",
-      "at": "2026-11-05T07:43:51.252Z"
+      "at": "2026-11-05T07:44:03.621Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -627425,11 +627425,11 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-05T07:43:47.214Z",
+      "bags": "2026-11-05T07:43:59.576Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-05T07:43:51.252Z",
+    "savedAt": "2026-11-05T07:44:03.621Z",
     "appVersion": "2026.11.04.14"
   }
 }
