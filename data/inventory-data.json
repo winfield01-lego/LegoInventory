@@ -526386,7 +526386,7 @@
           "color": "Dark Bluish Gray",
           "desc": "Plate Special 1 x 2 with Door Rail",
           "elementId": "4210944",
-          "qty": 1,
+          "qty": 2,
           "drawerId": "L26",
           "matchCount": 0,
           "suggested": false
@@ -526850,10 +526850,30 @@
           "drawerId": "I19",
           "matchCount": 0,
           "suggested": false
+        },
+        {
+          "partNum": "32028",
+          "color": "Light Bluish Gray",
+          "desc": "Plate Special 1 x 2 with Door Rail",
+          "elementId": "4211568",
+          "qty": 1,
+          "drawerId": "L26",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "32028",
+          "color": "White",
+          "desc": "Plate Special 1 x 2 with Door Rail",
+          "elementId": "320281",
+          "qty": 1,
+          "drawerId": "L26",
+          "matchCount": 0,
+          "suggested": false
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-06T15:32:53.163Z",
+      "savedAt": "2026-11-06T15:33:20.653Z",
       "moved": {
         "batches": 58,
         "pieces": 3244,
@@ -631753,7 +631773,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-06T15:32:57.194Z"
+      "at": "2026-11-06T15:33:24.692Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -631779,11 +631799,11 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-06T15:32:53.163Z",
+      "bags": "2026-11-06T15:33:20.653Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-06T15:32:57.194Z",
+    "savedAt": "2026-11-06T15:33:24.692Z",
     "appVersion": "2026.11.05.1"
   }
 }
