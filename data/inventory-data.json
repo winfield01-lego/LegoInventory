@@ -460037,7 +460037,7 @@
       "label": "J2",
       "notes": "Slope 3 x 1 x 3 1/3 with studs on slope (inverted)",
       "group": "j",
-      "lastEdited": "2026-11-06T23:54:28.662Z"
+      "lastEdited": "2026-11-06T23:54:59.855Z"
     },
     {
       "id": "J3",
@@ -494494,6 +494494,12 @@
       "color": "White",
       "elementId": "4128644",
       "qty": 7
+    },
+    {
+      "drawerId": "J2",
+      "partNum": "6044",
+      "color": "Black",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -627127,6 +627133,13 @@
       "d": "Brick Curved 1 x 3 x 2",
       "e": "4529045",
       "u": 1794009205756
+    },
+    "6044|black": {
+      "p": "6044",
+      "c": "Black",
+      "d": "Brick Sloped 53° 3 x 1 x 3 1/3 with Studs on Slope",
+      "e": "604426",
+      "u": 1794009301057
     }
   },
   "partKinds": {
@@ -632201,7 +632214,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-06T23:54:32.712Z"
+      "at": "2026-11-06T23:55:03.891Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -632231,7 +632244,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-06T23:54:32.712Z",
+    "savedAt": "2026-11-06T23:55:03.891Z",
     "appVersion": "2026.11.05.1"
   }
 }
