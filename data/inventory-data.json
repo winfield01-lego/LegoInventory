@@ -460737,7 +460737,7 @@
       "label": "Z3",
       "notes": "Translucent Plates",
       "group": "Z Rolling Drawer",
-      "lastEdited": "2026-11-06T05:05:03.798Z"
+      "lastEdited": "2026-11-06T05:05:59.681Z"
     },
     {
       "id": "Z4",
@@ -494254,6 +494254,18 @@
       "partNum": "2412b",
       "color": "Trans-Neon Green",
       "qty": 3
+    },
+    {
+      "drawerId": "Z3",
+      "partNum": "49668",
+      "color": "Trans-Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "Z3",
+      "partNum": "49668",
+      "color": "Trans-Orange",
+      "qty": 7
     }
   ],
   "mocLocations": {
@@ -624170,6 +624182,13 @@
       "d": "Tile Special 1 x 2 Grille with Bottom Groove",
       "e": "4109766",
       "u": 1793941505000
+    },
+    "49668|trans orange": {
+      "p": "49668",
+      "c": "Trans-Orange",
+      "d": "Plate Special 1 x 1 with Tooth",
+      "e": "6104014",
+      "u": 1793941560883
     }
   },
   "partKinds": {
@@ -629244,7 +629263,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.04.14",
-      "at": "2026-11-06T05:05:09.082Z"
+      "at": "2026-11-06T05:06:03.726Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -629274,7 +629293,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-06T05:05:09.082Z",
+    "savedAt": "2026-11-06T05:06:03.726Z",
     "appVersion": "2026.11.04.14"
   }
 }
