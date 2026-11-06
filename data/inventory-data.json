@@ -460737,7 +460737,7 @@
       "label": "Z3",
       "notes": "Translucent Plates",
       "group": "Z Rolling Drawer",
-      "lastEdited": "2026-11-06T04:41:44.673Z"
+      "lastEdited": "2026-11-06T04:43:30.905Z"
     },
     {
       "id": "Z4",
@@ -494085,6 +494085,31 @@
       "color": "Trans-Red",
       "elementId": "3005741",
       "qty": 213
+    },
+    {
+      "drawerId": "Z3",
+      "partNum": "24246",
+      "color": "Trans-Black",
+      "qty": 2
+    },
+    {
+      "drawerId": "Z3",
+      "partNum": "24246",
+      "color": "Trans-Green",
+      "elementId": "6482045",
+      "qty": 1
+    },
+    {
+      "drawerId": "Z3",
+      "partNum": "24246",
+      "color": "Trans-Orange",
+      "qty": 6
+    },
+    {
+      "drawerId": "Z3",
+      "partNum": "24246",
+      "color": "Trans-Red",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -571933,9 +571958,12 @@
       "c": "Trans-Green",
       "d": "Tile Round 1 x 1 Half Circle",
       "e": "6507961",
-      "u": 1791916924851,
+      "u": 1793940212107,
       "at": 1791654478524,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6482045.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6482045.jpg",
+      "ea": [
+        "6482045"
+      ]
     },
     "4865b|trans light blue": {
       "p": "4865b",
@@ -623925,6 +623953,13 @@
       "d": "Plate Round 1 x 1 with Solid Stud",
       "e": "4243938",
       "u": 1793940105878
+    },
+    "24246|trans orange": {
+      "p": "24246",
+      "c": "Trans-Orange",
+      "d": "Tile Round 1 x 1 Half Circle",
+      "e": "6147049",
+      "u": 1793940212107
     }
   },
   "partKinds": {
@@ -628999,7 +629034,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.04.14",
-      "at": "2026-11-06T04:41:49.970Z"
+      "at": "2026-11-06T04:43:36.200Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -629029,7 +629064,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-06T04:41:49.970Z",
+    "savedAt": "2026-11-06T04:43:36.200Z",
     "appVersion": "2026.11.04.14"
   }
 }
