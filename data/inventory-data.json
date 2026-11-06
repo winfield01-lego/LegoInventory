@@ -459899,13 +459899,14 @@
       "label": "I26",
       "notes": "2 x 1 2/3 Slope - Forward",
       "group": "I",
-      "lastEdited": "2026-11-06T23:43:47.674Z"
+      "lastEdited": "2026-11-06T23:45:07.607Z"
     },
     {
       "id": "I27",
       "label": "I27",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-11-06T23:47:02.071Z"
     },
     {
       "id": "I28",
@@ -494393,6 +494394,44 @@
       "partNum": "22385",
       "color": "White",
       "qty": 8
+    },
+    {
+      "drawerId": "I26",
+      "partNum": "5404",
+      "color": "Black",
+      "elementId": "6483559",
+      "qty": 13
+    },
+    {
+      "drawerId": "I26",
+      "partNum": "5404",
+      "color": "Blue",
+      "qty": 10
+    },
+    {
+      "drawerId": "I26",
+      "partNum": "5404",
+      "color": "Dark Bluish Gray",
+      "qty": 12
+    },
+    {
+      "drawerId": "I26",
+      "partNum": "5404",
+      "color": "Light Bluish Gray",
+      "qty": 11
+    },
+    {
+      "drawerId": "I26",
+      "partNum": "5404",
+      "color": "White",
+      "elementId": "6485124",
+      "qty": 6
+    },
+    {
+      "drawerId": "I27",
+      "partNum": "5907",
+      "color": "Light Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -533810,9 +533849,12 @@
       "c": "White",
       "d": "Brick Sloped 18° 2 x 1 x 2/3",
       "e": "6513919",
-      "u": 1791916924851,
+      "u": 1794008708809,
       "at": 1791654687645,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6485124.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6485124.jpg",
+      "ea": [
+        "6485124"
+      ]
     },
     "60477|white": {
       "p": "60477",
@@ -544696,9 +544738,12 @@
       "c": "Black",
       "d": "Brick Sloped 18° 2 x 1 x 2/3",
       "e": "6513918",
-      "u": 1791916924851,
+      "u": 1794008708809,
       "at": 1791660084431,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6483559.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6483559.jpg",
+      "ea": [
+        "6483559"
+      ]
     },
     "5404|light bluish gray": {
       "p": "5404",
@@ -626947,6 +626992,20 @@
       "d": "Tile Special 2 x 3 Pentagonal",
       "e": "6343767",
       "u": 1794008578060
+    },
+    "5404|blue": {
+      "p": "5404",
+      "c": "Blue",
+      "d": "Brick Sloped 18° 2 x 1 x 2/3",
+      "e": "6485125",
+      "u": 1794008708809
+    },
+    "5907|light bluish gray": {
+      "p": "5907",
+      "c": "Light Bluish Gray",
+      "d": "Brick Curved 1 x 2 x 1 2/3 with 1 Cutout",
+      "e": "6548933",
+      "u": 1794008823274
     }
   },
   "partKinds": {
@@ -632021,7 +632080,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-06T23:43:51.713Z"
+      "at": "2026-11-06T23:47:06.121Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -632051,7 +632110,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-06T23:43:51.713Z",
+    "savedAt": "2026-11-06T23:47:06.121Z",
     "appVersion": "2026.11.05.1"
   }
 }
