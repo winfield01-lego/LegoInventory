@@ -460207,7 +460207,7 @@
       "label": "J28",
       "notes": "1 x 6 Ski/Landing Gear with Pin Hole",
       "group": "j",
-      "lastEdited": "2026-11-06T23:50:45.295Z"
+      "lastEdited": "2026-11-06T23:51:21.337Z"
     },
     {
       "id": "J29",
@@ -494438,6 +494438,30 @@
       "drawerId": "I27",
       "partNum": "3573",
       "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "J28",
+      "partNum": "15540",
+      "color": "Dark Blue",
+      "qty": 4
+    },
+    {
+      "drawerId": "J28",
+      "partNum": "15540",
+      "color": "Dark Bluish Gray",
+      "qty": 13
+    },
+    {
+      "drawerId": "J28",
+      "partNum": "15540",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "J28",
+      "partNum": "15540",
+      "color": "White",
       "qty": 1
     }
   ],
@@ -627020,6 +627044,27 @@
       "d": "Brick Curved 1 x 4 x 1 2/3 No Studs",
       "e": "6509390",
       "u": 1794008942290
+    },
+    "15540|dark blue": {
+      "p": "15540",
+      "c": "Dark Blue",
+      "d": "Helicopter Landing Ski 1 x 6 with Pin Hole",
+      "e": "6223681",
+      "u": 1794009082538
+    },
+    "15540|red": {
+      "p": "15540",
+      "c": "Red",
+      "d": "Helicopter Landing Ski 1 x 6 with Pin Hole",
+      "e": "6285510",
+      "u": 1794009082538
+    },
+    "15540|white": {
+      "p": "15540",
+      "c": "White",
+      "d": "Helicopter Landing Ski 1 x 6 with Pin Hole",
+      "e": "6253708",
+      "u": 1794009082538
     }
   },
   "partKinds": {
@@ -632094,7 +632139,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-06T23:50:49.327Z"
+      "at": "2026-11-06T23:51:25.377Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -632124,7 +632169,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-06T23:50:49.327Z",
+    "savedAt": "2026-11-06T23:51:25.377Z",
     "appVersion": "2026.11.05.1"
   }
 }
