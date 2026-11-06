@@ -525492,7 +525492,7 @@
           "color": "Red",
           "desc": "Plate Special 1 x 2 Rounded with 2 Open Studs",
           "elementId": "6210269",
-          "qty": 2,
+          "qty": 3,
           "drawerId": "F33",
           "matchCount": 0,
           "suggested": false
@@ -525506,10 +525506,20 @@
           "drawerId": "F33",
           "matchCount": 0,
           "suggested": false
+        },
+        {
+          "partNum": "35480",
+          "color": "Green",
+          "desc": "Plate Special 1 x 2 Rounded with 2 Open Studs",
+          "elementId": "6210271",
+          "qty": 1,
+          "drawerId": "F33",
+          "matchCount": 0,
+          "suggested": false
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-06T06:41:39.058Z",
+      "savedAt": "2026-11-06T06:41:51.007Z",
       "moved": {
         "batches": 57,
         "pieces": 3126,
@@ -630402,7 +630412,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-06T06:41:43.101Z"
+      "at": "2026-11-06T06:41:55.045Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -630428,11 +630438,11 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-06T06:41:39.058Z",
+      "bags": "2026-11-06T06:41:51.007Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-06T06:41:43.101Z",
+    "savedAt": "2026-11-06T06:41:55.045Z",
     "appVersion": "2026.11.05.1"
   }
 }
