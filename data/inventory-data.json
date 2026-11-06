@@ -460737,7 +460737,7 @@
       "label": "Z3",
       "notes": "Translucent Plates",
       "group": "Z Rolling Drawer",
-      "lastEdited": "2026-11-06T01:53:59.602Z"
+      "lastEdited": "2026-11-06T02:13:41.226Z"
     },
     {
       "id": "Z4",
@@ -493926,6 +493926,75 @@
       "color": "Trans-Green",
       "elementId": "4244573",
       "qty": 5
+    },
+    {
+      "drawerId": "Z3",
+      "partNum": "3023",
+      "color": "Trans-Black",
+      "elementId": "6471727",
+      "qty": 5
+    },
+    {
+      "drawerId": "Z3",
+      "partNum": "3023",
+      "color": "Trans-Bright Green",
+      "elementId": "6088652",
+      "qty": 3
+    },
+    {
+      "drawerId": "Z3",
+      "partNum": "3023",
+      "color": "Trans-Clear",
+      "elementId": "302310",
+      "qty": 59
+    },
+    {
+      "drawerId": "Z3",
+      "partNum": "3023",
+      "color": "Trans-Dark Blue",
+      "elementId": "4101694",
+      "qty": 12
+    },
+    {
+      "drawerId": "Z3",
+      "partNum": "3023",
+      "color": "Trans-Dark Pink",
+      "qty": 5
+    },
+    {
+      "drawerId": "Z3",
+      "partNum": "3023",
+      "color": "Trans-Light Blue",
+      "elementId": "302342",
+      "qty": 21
+    },
+    {
+      "drawerId": "Z3",
+      "partNum": "3023",
+      "color": "Trans-Neon Green",
+      "elementId": "4101752",
+      "qty": 14
+    },
+    {
+      "drawerId": "Z3",
+      "partNum": "3023",
+      "color": "Trans-Orange",
+      "elementId": "4262667",
+      "qty": 39
+    },
+    {
+      "drawerId": "Z3",
+      "partNum": "3023",
+      "color": "Trans-Red",
+      "elementId": "4101688",
+      "qty": 149
+    },
+    {
+      "drawerId": "Z3",
+      "partNum": "3023",
+      "color": "Trans-Yellow",
+      "elementId": "4101704",
+      "qty": 42
     }
   ],
   "mocLocations": {
@@ -525364,9 +525433,12 @@
       "c": "Trans-Red",
       "d": "Plate 1 x 2",
       "e": "6514003",
-      "u": 1791916924851,
+      "u": 1793931222429,
       "at": 1792904691991,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4201019.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4201019.jpg",
+      "ea": [
+        "4101688"
+      ]
     },
     "3623|light bluish gray": {
       "p": "3623",
@@ -534622,9 +534694,12 @@
       "c": "Trans-Yellow",
       "d": "Plate 1 x 2",
       "e": "6514002",
-      "u": 1791916924851,
+      "u": 1793931222429,
       "at": 1791671921036,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4194746.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4194746.jpg",
+      "ea": [
+        "4101704"
+      ]
     },
     "11458|dark bluish gray": {
       "p": "11458",
@@ -539936,9 +540011,12 @@
       "c": "Trans-Orange",
       "d": "Plate 1 x 2",
       "e": "6514005",
-      "u": 1791916924851,
+      "u": 1793931222429,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4262667.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4262667.jpg",
+      "ea": [
+        "4262667"
+      ]
     },
     "3623|red": {
       "p": "3623",
@@ -541910,9 +541988,12 @@
       "c": "Trans-Light Blue",
       "d": "Plate 1 x 2",
       "e": "6514007",
-      "u": 1791916924851,
+      "u": 1793931222429,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6051918.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6051918.jpg",
+      "ea": [
+        "302342"
+      ]
     },
     "3623|sand blue": {
       "p": "3623",
@@ -547139,9 +547220,12 @@
       "c": "Trans-Neon Green",
       "d": "Plate 1 x 2",
       "e": "6240224",
-      "u": 1791916924851,
+      "u": 1793931222429,
       "at": 1791846902427,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4286670.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4286670.jpg",
+      "ea": [
+        "4101752"
+      ]
     },
     "6141|trans neon green": {
       "p": "6141",
@@ -550885,9 +550969,12 @@
       "c": "Trans-Clear",
       "d": "Plate 1 x 2",
       "e": "6514001",
-      "u": 1791916924851,
+      "u": 1793931222429,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4167842.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4167842.jpg",
+      "ea": [
+        "302310"
+      ]
     },
     "2431|trans light blue": {
       "p": "2431",
@@ -563479,9 +563566,12 @@
       "c": "Trans-Dark Blue",
       "d": "Plate 1 x 2",
       "e": "6514004",
-      "u": 1791916924851,
+      "u": 1793931222429,
       "at": 1791654346340,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6240215.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6240215.jpg",
+      "ea": [
+        "4101694"
+      ]
     },
     "6141|trans dark blue": {
       "p": "6141",
@@ -569554,9 +569644,12 @@
       "c": "Trans-Bright Green",
       "d": "Plate 1 x 2",
       "e": "6514011",
-      "u": 1791916924851,
+      "u": 1793931222429,
       "at": 1791654697968,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6088652.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6088652.jpg",
+      "ea": [
+        "6088652"
+      ]
     },
     "30000|white": {
       "p": "30000",
@@ -587845,9 +587938,12 @@
       "c": "Trans-Black",
       "d": "Plate 1 x 2",
       "e": "6514010",
-      "u": 1791916924851,
+      "u": 1793931222429,
       "at": 1791654724601,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6471727.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6471727.jpg",
+      "ea": [
+        "6471727"
+      ]
     },
     "3941|trans orange": {
       "p": "3941",
@@ -623691,6 +623787,13 @@
       "d": "Brick Sloped 30° 1 x 1 x 2/3 (Cheese Slope)",
       "e": "6138775",
       "u": 1793930032476
+    },
+    "3023|trans dark pink": {
+      "p": "3023",
+      "c": "Trans-Dark Pink",
+      "d": "Plate 1 x 2",
+      "e": "6172369",
+      "u": 1793931222429
     }
   },
   "partKinds": {
@@ -628765,7 +628868,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.04.14",
-      "at": "2026-11-06T01:54:03.638Z"
+      "at": "2026-11-06T02:13:46.526Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -628795,7 +628898,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-06T01:54:03.638Z",
+    "savedAt": "2026-11-06T02:13:46.526Z",
     "appVersion": "2026.11.04.14"
   }
 }
