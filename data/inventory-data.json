@@ -460737,7 +460737,7 @@
       "label": "Z3",
       "notes": "Translucent Plates",
       "group": "Z Rolling Drawer",
-      "lastEdited": "2026-11-06T05:10:34.753Z"
+      "lastEdited": "2026-11-06T05:11:40.147Z"
     },
     {
       "id": "Z4",
@@ -494278,6 +494278,18 @@
       "partNum": "63868",
       "color": "Trans-Clear",
       "qty": 8
+    },
+    {
+      "drawerId": "Z3",
+      "partNum": "87580",
+      "color": "Trans-Dark Blue",
+      "qty": 6
+    },
+    {
+      "drawerId": "Z3",
+      "partNum": "87580",
+      "color": "Trans-Light Blue",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -624208,6 +624220,20 @@
       "d": "Brick Curved 2 x 1 No Studs [1/2 Bow]",
       "e": "6508253",
       "u": 1793941645731
+    },
+    "87580|trans dark blue": {
+      "p": "87580",
+      "c": "Trans-Dark Blue",
+      "d": "Plate Special 2 x 2 with Groove and Center Stud (Jumper)",
+      "e": "6382531",
+      "u": 1793941901349
+    },
+    "87580|trans light blue": {
+      "p": "87580",
+      "c": "Trans-Light Blue",
+      "d": "Plate Special 2 x 2 with Groove and Center Stud (Jumper)",
+      "e": "6443647",
+      "u": 1793941901349
     }
   },
   "partKinds": {
@@ -629282,7 +629308,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.04.14",
-      "at": "2026-11-06T05:10:38.784Z"
+      "at": "2026-11-06T05:11:44.179Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -629312,7 +629338,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-06T05:10:38.784Z",
+    "savedAt": "2026-11-06T05:11:44.179Z",
     "appVersion": "2026.11.04.14"
   }
 }
