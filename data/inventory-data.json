@@ -459885,7 +459885,8 @@
       "id": "I24",
       "label": "I24",
       "notes": "",
-      "group": "I"
+      "group": "I",
+      "lastEdited": "2026-11-06T23:58:21.303Z"
     },
     {
       "id": "I25",
@@ -494561,6 +494562,18 @@
       "color": "White",
       "elementId": "6034675",
       "qty": 6
+    },
+    {
+      "drawerId": "I24",
+      "partNum": "66857",
+      "color": "Pearl Gold",
+      "qty": 1
+    },
+    {
+      "drawerId": "I24",
+      "partNum": "66857",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -627218,6 +627231,20 @@
       "d": "Brick Curved Inverted 4 x 1",
       "e": "6146298",
       "u": 1794009441074
+    },
+    "66857|pearl gold": {
+      "p": "66857",
+      "c": "Pearl Gold",
+      "d": "Tile Round 2 x 4",
+      "e": "6363132",
+      "u": 1794009502506
+    },
+    "66857|white": {
+      "p": "66857",
+      "c": "White",
+      "d": "Tile Round 2 x 4",
+      "e": "6329902",
+      "u": 1794009502506
     }
   },
   "partKinds": {
@@ -632292,7 +632319,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-06T23:57:25.162Z"
+      "at": "2026-11-06T23:58:25.346Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -632322,7 +632349,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-06T23:57:25.162Z",
+    "savedAt": "2026-11-06T23:58:25.346Z",
     "appVersion": "2026.11.05.1"
   }
 }
