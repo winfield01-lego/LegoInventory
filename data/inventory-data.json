@@ -460863,7 +460863,7 @@
       "label": "L13",
       "notes": "1 x 4 x 2 Fence - Ornamental and Asian",
       "group": "L",
-      "lastEdited": "2026-11-07T02:34:54.879Z"
+      "lastEdited": "2026-11-07T02:35:15.581Z"
     },
     {
       "id": "L14",
@@ -495387,6 +495387,18 @@
       "partNum": "19121",
       "color": "Black",
       "qty": 2
+    },
+    {
+      "drawerId": "L13",
+      "partNum": "32932",
+      "color": "Pearl Gold",
+      "qty": 4
+    },
+    {
+      "drawerId": "L13",
+      "partNum": "32932",
+      "color": "Red",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -628507,6 +628519,20 @@
       "d": "Fence Ornamented 1 x 4 x 2 with 4 Studs",
       "e": "6138726",
       "u": 1794018896081
+    },
+    "32932|pearl gold": {
+      "p": "32932",
+      "c": "Pearl Gold",
+      "d": "Fence 1 x 4 x 2 Ornamental Asian Lattice Square with 4 Studs",
+      "e": "6195089",
+      "u": 1794018916784
+    },
+    "32932|red": {
+      "p": "32932",
+      "c": "Red",
+      "d": "Fence 1 x 4 x 2 Ornamental Asian Lattice Square with 4 Studs",
+      "e": "6309044",
+      "u": 1794018916784
     }
   },
   "partKinds": {
@@ -633581,7 +633607,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T02:34:58.914Z"
+      "at": "2026-11-07T02:35:19.617Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -633611,7 +633637,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T02:34:58.914Z",
+    "savedAt": "2026-11-07T02:35:19.617Z",
     "appVersion": "2026.11.05.1"
   }
 }
