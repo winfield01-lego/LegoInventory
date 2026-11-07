@@ -528213,9 +528213,9 @@
           "desc": "Hinge Cylinder 1 x 3 Locking with 1 Finger and 2 Fingers On Ends, without Hole, 9 Teeth",
           "elementId": "0000022",
           "qty": 1,
-          "drawerId": "",
+          "drawerId": "K29",
           "matchCount": 0,
-          "suggested": false,
+          "suggested": true,
           "sel": false
         },
         {
@@ -528224,7 +528224,7 @@
           "desc": "Technic Pin Connector Hub with 2 Perpendicular Axles",
           "elementId": "6005331",
           "qty": 2,
-          "drawerId": "",
+          "drawerId": "K27",
           "matchCount": 0,
           "suggested": false,
           "sel": false
@@ -528257,7 +528257,7 @@
           "desc": "Technic Beam 1 x 2 Thin",
           "elementId": "4164133",
           "qty": 3,
-          "drawerId": "",
+          "drawerId": "K18",
           "matchCount": 0,
           "suggested": false,
           "sel": false
@@ -528268,7 +528268,7 @@
           "desc": "Plate 4 x 4 Corner",
           "elementId": "4539429",
           "qty": 4,
-          "drawerId": "",
+          "drawerId": "M32",
           "matchCount": 0,
           "suggested": false,
           "sel": false
@@ -529674,10 +529674,30 @@
           "drawerId": "R3",
           "matchCount": 0,
           "suggested": false
+        },
+        {
+          "partNum": "32013",
+          "color": "Lime",
+          "desc": "Technic Axle and Pin Connector Angled #1",
+          "elementId": "4144298",
+          "qty": 1,
+          "drawerId": "K22",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "32013",
+          "color": "Light Bluish Gray",
+          "desc": "Technic Axle and Pin Connector Angled #1",
+          "elementId": "4211550",
+          "qty": 1,
+          "drawerId": "K22",
+          "matchCount": 0,
+          "suggested": false
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-06T23:35:49.631Z",
+      "savedAt": "2026-11-07T07:11:56.346Z",
       "moved": {
         "batches": 58,
         "pieces": 3244,
@@ -636015,7 +636035,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T07:01:13.927Z"
+      "at": "2026-11-07T07:12:00.377Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -636041,11 +636061,11 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-07T07:01:09.894Z",
+      "bags": "2026-11-07T07:11:56.346Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T07:01:13.927Z",
+    "savedAt": "2026-11-07T07:12:00.377Z",
     "appVersion": "2026.11.05.1"
   }
 }
