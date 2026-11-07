@@ -462572,7 +462572,7 @@
       "label": "Q5",
       "notes": "6 x 6, 8 x 8, 10 x 10 45 degree Corner Plates",
       "group": "Q",
-      "lastEdited": "2026-11-07T19:51:40.076Z"
+      "lastEdited": "2026-11-07T19:51:53.627Z"
     },
     {
       "id": "Q6",
@@ -497787,6 +497787,19 @@
       "partNum": "30504",
       "color": "Light Bluish Gray",
       "qty": 4
+    },
+    {
+      "drawerId": "Q5",
+      "partNum": "92584",
+      "color": "Black",
+      "elementId": "4599461",
+      "qty": 3
+    },
+    {
+      "drawerId": "Q5",
+      "partNum": "92584",
+      "color": "Dark Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -591827,9 +591840,12 @@
       "c": "Black",
       "d": "Wedge Plate 10 x 10 Cut Corner [No Centre Studs]",
       "e": "6468015",
-      "u": 1791916924851,
+      "u": 1794081114829,
       "at": 1791654638086,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4599461.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4599461.jpg",
+      "ea": [
+        "4599461"
+      ]
     },
     "36841|bright green": {
       "p": "36841",
@@ -635855,6 +635871,13 @@
       "d": "Wedge Plate 8 x 8 Cut Corner",
       "e": "4210956",
       "u": 1794081101278
+    },
+    "92584|dark bluish gray": {
+      "p": "92584",
+      "c": "Dark Bluish Gray",
+      "d": "Wedge Plate 10 x 10 Cut Corner [No Centre Studs]",
+      "e": "6408298",
+      "u": 1794081114829
     }
   },
   "partKinds": {
@@ -640929,7 +640952,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:51:45.367Z"
+      "at": "2026-11-07T19:51:58.918Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640959,7 +640982,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:51:45.367Z",
+    "savedAt": "2026-11-07T19:51:58.918Z",
     "appVersion": "2026.11.05.1"
   }
 }
