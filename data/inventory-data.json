@@ -461073,7 +461073,7 @@
       "label": "L43",
       "notes": "Girders",
       "group": "L",
-      "lastEdited": "2026-11-07T02:50:17.470Z"
+      "lastEdited": "2026-11-07T02:51:07.001Z"
     },
     {
       "id": "L44",
@@ -495631,6 +495631,12 @@
       "color": "Yellow",
       "elementId": "4501459",
       "qty": 1
+    },
+    {
+      "drawerId": "L43",
+      "partNum": "30517",
+      "color": "Black",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -628885,6 +628891,13 @@
       "d": "Brick Curved 10 x 1 [Symmetric Inside Ridges]",
       "e": "6037668",
       "u": 1794019675689
+    },
+    "30517|black": {
+      "p": "30517",
+      "c": "Black",
+      "d": "Support 2 x 2 x 10 Girder Triangular Vertical - Type 1 - Solid Top, 3 Posts",
+      "e": "4142861",
+      "u": 1794019868204
     }
   },
   "partKinds": {
@@ -633959,7 +633972,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T02:50:21.512Z"
+      "at": "2026-11-07T02:51:11.034Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -633989,7 +634002,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T02:50:21.512Z",
+    "savedAt": "2026-11-07T02:51:11.034Z",
     "appVersion": "2026.11.05.1"
   }
 }
