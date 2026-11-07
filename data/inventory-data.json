@@ -460814,7 +460814,7 @@
       "label": "L6",
       "notes": "Small Lever and Sword / Rapier",
       "group": "L",
-      "lastEdited": "2026-11-07T02:25:49.990Z"
+      "lastEdited": "2026-11-07T02:26:08.092Z"
     },
     {
       "id": "L7",
@@ -495261,6 +495261,25 @@
       "color": "Black",
       "elementId": "",
       "qty": 1
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "298c01",
+      "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "298c01",
+      "color": "Blue",
+      "elementId": "",
+      "qty": 1
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "298c01",
+      "color": "Black",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -628282,6 +628301,20 @@
       "d": "Lever Small Base with White Lever",
       "e": "",
       "u": 1794018351192
+    },
+    "298c01|yellow": {
+      "p": "298c01",
+      "c": "Yellow",
+      "d": "Lever Small Base with Yellow Lever",
+      "e": "4114570",
+      "u": 1794018369295
+    },
+    "298c01|blue": {
+      "p": "298c01",
+      "c": "Blue",
+      "d": "Lever Small Base with Yellow Lever",
+      "e": "",
+      "u": 1794018369295
     }
   },
   "partKinds": {
@@ -633356,7 +633389,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T02:25:55.302Z"
+      "at": "2026-11-07T02:26:13.391Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -633386,7 +633419,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T02:25:55.302Z",
+    "savedAt": "2026-11-07T02:26:13.391Z",
     "appVersion": "2026.11.05.1"
   }
 }
