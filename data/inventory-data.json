@@ -459210,7 +459210,7 @@
       "label": "G13",
       "notes": "2 x 2 Inverted Domes - With and Without Studs",
       "group": "G",
-      "lastEdited": "2026-11-07T01:53:06.180Z"
+      "lastEdited": "2026-11-07T01:53:28.951Z"
     },
     {
       "id": "G14",
@@ -494985,6 +494985,12 @@
       "color": "White",
       "elementId": "4649167",
       "qty": 11
+    },
+    {
+      "drawerId": "G13",
+      "partNum": "24947",
+      "color": "Yellow",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -627848,6 +627854,13 @@
       "d": "Tap 1 x 1 with Hole in Spout",
       "e": "",
       "u": 1794015662393
+    },
+    "24947|yellow": {
+      "p": "24947",
+      "c": "Yellow",
+      "d": "Brick Round 2 x 2 x 1 1/3 Inverted",
+      "e": "6145704",
+      "u": 1794016410153
     }
   },
   "partKinds": {
@@ -632922,7 +632935,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T01:53:10.220Z"
+      "at": "2026-11-07T01:53:33.016Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -632952,7 +632965,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T01:53:10.220Z",
+    "savedAt": "2026-11-07T01:53:33.016Z",
     "appVersion": "2026.11.05.1"
   }
 }
