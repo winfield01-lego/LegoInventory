@@ -461717,7 +461717,7 @@
       "label": "O1",
       "notes": "4 x 4 and 3 x 4 Wedge with Cutouts",
       "group": "O",
-      "lastEdited": "2026-11-07T19:04:49.363Z"
+      "lastEdited": "2026-11-07T19:05:11.646Z"
     },
     {
       "id": "O2",
@@ -497157,6 +497157,31 @@
       "partNum": "93348",
       "color": "Yellow",
       "qty": 1
+    },
+    {
+      "drawerId": "O1",
+      "partNum": "50373",
+      "color": "Black",
+      "elementId": "6146307",
+      "qty": 1
+    },
+    {
+      "drawerId": "O1",
+      "partNum": "50373",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "O1",
+      "partNum": "50373",
+      "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "O1",
+      "partNum": "50373",
+      "color": "White",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -572588,9 +572613,12 @@
       "c": "Black",
       "d": "Brick Wedged 3 x 4 [Stud Notches]",
       "e": "6290416",
-      "u": 1791916924851,
+      "u": 1794078312847,
       "at": 1791654677272,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6146307.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6146307.jpg",
+      "ea": [
+        "6146307"
+      ]
     },
     "95344|black": {
       "p": "95344",
@@ -634787,6 +634815,27 @@
       "d": "Brick Wedged, Sloped 4 x 4 Taper, with Stud Notches",
       "e": "4639696",
       "u": 1794078290564
+    },
+    "50373|blue": {
+      "p": "50373",
+      "c": "Blue",
+      "d": "Brick Wedged 3 x 4 [Stud Notches]",
+      "e": "4622604",
+      "u": 1794078312847
+    },
+    "50373|yellow": {
+      "p": "50373",
+      "c": "Yellow",
+      "d": "Brick Wedged 3 x 4 [Stud Notches]",
+      "e": "4264028",
+      "u": 1794078312847
+    },
+    "50373|white": {
+      "p": "50373",
+      "c": "White",
+      "d": "Brick Wedged 3 x 4 [Stud Notches]",
+      "e": "4264027",
+      "u": 1794078312847
     }
   },
   "partKinds": {
@@ -639861,7 +639910,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:04:53.399Z"
+      "at": "2026-11-07T19:05:16.930Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -639891,7 +639940,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:04:53.398Z",
+    "savedAt": "2026-11-07T19:05:16.930Z",
     "appVersion": "2026.11.05.1"
   }
 }
