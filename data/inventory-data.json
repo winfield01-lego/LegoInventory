@@ -462236,7 +462236,7 @@
       "label": "Q7",
       "notes": "1 x 4 tall frames",
       "group": "Q",
-      "lastEdited": "2026-11-07T21:52:47.841Z"
+      "lastEdited": "2026-11-07T21:55:40.243Z"
     },
     {
       "id": "Q8",
@@ -497938,6 +497938,39 @@
       "partNum": "2493b",
       "color": "Reddish Brown",
       "qty": 4
+    },
+    {
+      "drawerId": "Q7",
+      "partNum": "60596",
+      "color": "Black",
+      "elementId": "4533572",
+      "qty": 5
+    },
+    {
+      "drawerId": "Q7",
+      "partNum": "60596",
+      "color": "Red",
+      "elementId": "4550015",
+      "qty": 3
+    },
+    {
+      "drawerId": "Q7",
+      "partNum": "60596",
+      "color": "Reddish Brown",
+      "qty": 4
+    },
+    {
+      "drawerId": "Q7",
+      "partNum": "60596",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q7",
+      "partNum": "60596",
+      "color": "White",
+      "elementId": "4521254",
+      "qty": 9
     }
   ],
   "mocLocations": {
@@ -568395,9 +568428,12 @@
       "c": "Black",
       "d": "Door Frame 1 x 4 x 6 Type 2",
       "e": "6337273",
-      "u": 1791916924851,
+      "u": 1794088541446,
       "at": 1793834786148,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4533572.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4533572.jpg",
+      "ea": [
+        "4533572"
+      ]
     },
     "64644|black": {
       "p": "64644",
@@ -601291,9 +601327,12 @@
       "c": "White",
       "d": "Door Frame 1 x 4 x 6 Type 2",
       "e": "6262945",
-      "u": 1791916924851,
+      "u": 1794088541446,
       "at": 1791654768078,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4541956.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4541956.jpg",
+      "ea": [
+        "4521254"
+      ]
     },
     "59349|white": {
       "p": "59349",
@@ -604533,9 +604572,12 @@
       "c": "Red",
       "d": "Door Frame 1 x 4 x 6 Type 2",
       "e": "6262946",
-      "u": 1791916924851,
+      "u": 1794088541446,
       "at": 1791654806816,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4550015.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4550015.jpg",
+      "ea": [
+        "4550015"
+      ]
     },
     "32039|red": {
       "p": "32039",
@@ -636114,6 +636156,20 @@
       "d": "Window 1 x 4 x 5 with Hollow Studs",
       "e": "4225470",
       "u": 1794088369054
+    },
+    "60596|reddish brown": {
+      "p": "60596",
+      "c": "Reddish Brown",
+      "d": "Door Frame 1 x 4 x 6 Type 2",
+      "e": "4623513",
+      "u": 1794088541446
+    },
+    "60596|blue": {
+      "p": "60596",
+      "c": "Blue",
+      "d": "Door Frame 1 x 4 x 6 Type 2",
+      "e": "6055101",
+      "u": 1794088541446
     }
   },
   "partKinds": {
@@ -641188,7 +641244,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T21:53:38.000Z"
+      "at": "2026-11-07T21:55:45.538Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -641218,7 +641274,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T21:53:38.000Z",
+    "savedAt": "2026-11-07T21:55:45.538Z",
     "appVersion": "2026.11.05.1"
   }
 }
