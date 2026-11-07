@@ -461759,7 +461759,7 @@
       "label": "O7",
       "notes": "4 x 2 x 2 Tail",
       "group": "O",
-      "lastEdited": "2026-11-07T19:16:26.648Z"
+      "lastEdited": "2026-11-07T19:16:51.862Z"
     },
     {
       "id": "O8",
@@ -497239,6 +497239,34 @@
       "partNum": "50948",
       "color": "Lime",
       "qty": 1
+    },
+    {
+      "drawerId": "O7",
+      "partNum": "3479",
+      "color": "Black",
+      "elementId": "347926",
+      "qty": 4
+    },
+    {
+      "drawerId": "O7",
+      "partNum": "3479",
+      "color": "Blue",
+      "elementId": "347973",
+      "qty": 3
+    },
+    {
+      "drawerId": "O7",
+      "partNum": "3479",
+      "color": "Light Gray",
+      "elementId": "347902",
+      "qty": 1
+    },
+    {
+      "drawerId": "O7",
+      "partNum": "3479",
+      "color": "Red",
+      "elementId": "347921",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -602583,9 +602611,12 @@
       "c": "Black",
       "d": "Tail 4 x 2 x 2",
       "e": "347976",
-      "u": 1791916924851,
+      "u": 1794079013065,
       "at": 1791846897846,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/3479.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/3479.png",
+      "ea": [
+        "347926"
+      ]
     },
     "2412a|black": {
       "p": "2412a",
@@ -613965,9 +613996,12 @@
       "c": "Light Gray",
       "d": "Tail 4 x 2 x 2",
       "e": "347952",
-      "u": 1791916924851,
+      "u": 1794079013065,
       "at": 1791673658842,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/7/3479.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/7/3479.png",
+      "ea": [
+        "347902"
+      ]
     },
     "2401|light gray": {
       "p": "2401",
@@ -614670,9 +614704,12 @@
       "c": "Red",
       "d": "Tail 4 x 2 x 2",
       "e": "347971",
-      "u": 1791916924851,
+      "u": 1794079013065,
       "at": 1791673667179,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/4/3479.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/4/3479.png",
+      "ea": [
+        "347921"
+      ]
     },
     "2569|trans dark blue": {
       "p": "2569",
@@ -618248,9 +618285,12 @@
       "c": "Blue",
       "d": "Tail 4 x 2 x 2",
       "e": "4118824",
-      "u": 1791916924851,
+      "u": 1794079013065,
       "at": 1791846530412,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/1/3479.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/1/3479.png",
+      "ea": [
+        "347973"
+      ]
     },
     "2415|light gray": {
       "p": "2415",
@@ -639990,7 +640030,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:16:30.694Z"
+      "at": "2026-11-07T19:16:57.159Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640020,7 +640060,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:16:30.694Z",
+    "savedAt": "2026-11-07T19:16:57.159Z",
     "appVersion": "2026.11.05.1"
   }
 }
