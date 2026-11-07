@@ -459147,7 +459147,7 @@
       "label": "G4",
       "notes": "1 x 2 Double and Triple Slopes",
       "group": "G",
-      "lastEdited": "2026-11-07T00:07:47.724Z"
+      "lastEdited": "2026-11-07T00:08:27.170Z"
     },
     {
       "id": "G5",
@@ -494769,6 +494769,30 @@
       "color": "Yellow",
       "elementId": "6075085",
       "qty": 14
+    },
+    {
+      "drawerId": "G4",
+      "partNum": "3049d",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "G4",
+      "partNum": "3049d",
+      "color": "Dark Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "G4",
+      "partNum": "3049d",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "G4",
+      "partNum": "3049d",
+      "color": "Red",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -627563,6 +627587,27 @@
       "d": "Brick Sloped 45° 2 x 1 Triple with Inside Stud Holder",
       "e": "6392959",
       "u": 1794010068926
+    },
+    "3049d|black": {
+      "p": "3049d",
+      "c": "Black",
+      "d": "Brick Sloped 45° 2 x 1 Double / Inverted with Bottom Stud Holder",
+      "e": "4220539",
+      "u": 1794010108373
+    },
+    "3049d|light bluish gray": {
+      "p": "3049d",
+      "c": "Light Bluish Gray",
+      "d": "Brick Sloped 45° 2 x 1 Double / Inverted with Bottom Stud Holder",
+      "e": "4223980",
+      "u": 1794010108373
+    },
+    "3049d|red": {
+      "p": "3049d",
+      "c": "Red",
+      "d": "Brick Sloped 45° 2 x 1 Double / Inverted with Bottom Stud Holder",
+      "e": "304921",
+      "u": 1794010108373
     }
   },
   "partKinds": {
@@ -632637,7 +632682,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T00:07:53.020Z"
+      "at": "2026-11-07T00:08:31.205Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -632667,7 +632712,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T00:07:53.020Z",
+    "savedAt": "2026-11-07T00:08:31.205Z",
     "appVersion": "2026.11.05.1"
   }
 }
