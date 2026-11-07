@@ -458847,7 +458847,7 @@
       "label": "F3",
       "notes": "Wider Gears",
       "group": "F",
-      "lastEdited": "2026-11-07T05:51:26.987Z"
+      "lastEdited": "2026-11-07T05:52:46.454Z"
     },
     {
       "id": "F4",
@@ -496622,6 +496622,24 @@
       "partNum": "35185",
       "color": "Blue",
       "qty": 2
+    },
+    {
+      "drawerId": "F3",
+      "partNum": "32269",
+      "color": "Tan",
+      "qty": 4
+    },
+    {
+      "drawerId": "F3",
+      "partNum": "32269",
+      "color": "Light Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "F3",
+      "partNum": "32269",
+      "color": "Black",
+      "qty": 7
     }
   ],
   "mocLocations": {
@@ -630399,6 +630417,27 @@
       "d": "Technic Gear 8 Tooth",
       "e": "3647194",
       "u": 1794030530742
+    },
+    "32269|tan": {
+      "p": "32269",
+      "c": "Tan",
+      "d": "Technic Gear 20 Tooth Double Bevel with Axle Hole Type 2 [X Opening]",
+      "e": "4514555",
+      "u": 1794030767656
+    },
+    "32269|light bluish gray": {
+      "p": "32269",
+      "c": "Light Bluish Gray",
+      "d": "Technic Gear 20 Tooth Double Bevel with Axle Hole Type 2 [X Opening]",
+      "e": "32269194",
+      "u": 1794030767656
+    },
+    "32269|black": {
+      "p": "32269",
+      "c": "Black",
+      "d": "Technic Gear 20 Tooth Double Bevel with Axle Hole Type 2 [X Opening]",
+      "e": "4177430",
+      "u": 1794030767656
     }
   },
   "partKinds": {
@@ -635473,7 +635512,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:51:31.005Z"
+      "at": "2026-11-07T05:52:50.499Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635503,7 +635542,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:51:31.005Z",
+    "savedAt": "2026-11-07T05:52:50.499Z",
     "appVersion": "2026.11.05.1"
   }
 }
