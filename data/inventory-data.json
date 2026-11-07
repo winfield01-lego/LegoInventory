@@ -459103,7 +459103,7 @@
       "label": "F40",
       "notes": "3L Pin",
       "group": "F",
-      "lastEdited": "2026-11-07T06:47:37.681Z"
+      "lastEdited": "2026-11-07T06:48:28.677Z"
     },
     {
       "id": "F41",
@@ -496962,6 +496962,18 @@
       "partNum": "92099",
       "color": "White",
       "qty": 4
+    },
+    {
+      "drawerId": "F40",
+      "partNum": "39888",
+      "color": "Light Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "F40",
+      "partNum": "39888",
+      "color": "Tan",
+      "qty": 28
     }
   ],
   "mocLocations": {
@@ -630910,6 +630922,13 @@
       "d": "Plate Special 4 x 6 with Trap Door Hinge [Long Pins]",
       "e": "4622054",
       "u": 1794033945897
+    },
+    "39888|light bluish gray": {
+      "p": "39888",
+      "c": "Light Bluish Gray",
+      "d": "Technic Pin Long without Friction Ridges, with Anti-Roll Notch",
+      "e": "6569663",
+      "u": 1794034109879
     }
   },
   "partKinds": {
@@ -635984,7 +636003,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T06:47:41.719Z"
+      "at": "2026-11-07T06:48:32.711Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -636014,7 +636033,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T06:47:41.719Z",
+    "savedAt": "2026-11-07T06:48:32.711Z",
     "appVersion": "2026.11.05.1"
   }
 }
