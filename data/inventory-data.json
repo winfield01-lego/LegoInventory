@@ -460601,7 +460601,7 @@
       "label": "K17",
       "notes": "2 x 2 Plate - With Pins",
       "group": "K",
-      "lastEdited": "2026-11-07T05:12:17.661Z"
+      "lastEdited": "2026-11-07T05:14:01.529Z"
     },
     {
       "id": "K18",
@@ -496148,6 +496148,32 @@
       "partNum": "40687",
       "color": "Light Bluish Gray",
       "qty": 18
+    },
+    {
+      "drawerId": "K17",
+      "partNum": "2476a",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "K17",
+      "partNum": "2476a",
+      "color": "Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "K17",
+      "partNum": "2476a",
+      "color": "Light Bluish Gray",
+      "elementId": "4211763",
+      "qty": 10
+    },
+    {
+      "drawerId": "K17",
+      "partNum": "2476a",
+      "color": "White",
+      "elementId": "4170326",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -543849,9 +543875,12 @@
       "c": "White",
       "d": "Plate Special 2 x 2 with Pin on Bottom",
       "e": "6313603",
-      "u": 1791916924851,
+      "u": 1794028442731,
       "at": 1791654638086,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4170326.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4170326.jpg",
+      "ea": [
+        "4170326"
+      ]
     },
     "64799|white": {
       "p": "64799",
@@ -545814,9 +545843,12 @@
       "c": "Light Bluish Gray",
       "d": "Plate Special 2 x 2 with Pin on Bottom",
       "e": "6276848",
-      "u": 1791916924851,
+      "u": 1794028442731,
       "at": 1791654810716,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4237084.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4237084.jpg",
+      "ea": [
+        "4211763"
+      ]
     },
     "64799|light bluish gray": {
       "p": "64799",
@@ -629635,6 +629667,13 @@
       "d": "Plate Special 2 x 4 with Pins, Reinforced",
       "e": "6351292",
       "u": 1794028280615
+    },
+    "2476a|blue": {
+      "p": "2476a",
+      "c": "Blue",
+      "d": "Plate Special 2 x 2 with Pin on Bottom",
+      "e": "247623",
+      "u": 1794028442731
     }
   },
   "partKinds": {
@@ -634709,7 +634748,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:12:21.695Z"
+      "at": "2026-11-07T05:14:06.828Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -634739,7 +634778,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:12:21.695Z",
+    "savedAt": "2026-11-07T05:14:06.828Z",
     "appVersion": "2026.11.05.1"
   }
 }
