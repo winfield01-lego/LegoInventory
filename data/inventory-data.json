@@ -460931,9 +460931,9 @@
     {
       "id": "L23",
       "label": "L23",
-      "notes": "Solid Color Windscreens - 6 x 4 x 1 2/3 and 3 x 6 Slope",
+      "notes": "Solid Color Windscreens - 6 x 4 x 1 1/3 and 3 x 6 Slope",
       "group": "L",
-      "lastEdited": "2026-11-07T02:43:11.864Z"
+      "lastEdited": "2026-11-07T02:43:31.589Z"
     },
     {
       "id": "L24",
@@ -495515,6 +495515,12 @@
       "partNum": "23444",
       "color": "White",
       "elementId": "6208573",
+      "qty": 1
+    },
+    {
+      "drawerId": "L23",
+      "partNum": "6152a",
+      "color": "Black",
       "qty": 1
     }
   ],
@@ -628721,6 +628727,13 @@
       "d": "Bar 1 x 6 [Open Studs]",
       "e": "",
       "u": 1794019261050
+    },
+    "6152a|black": {
+      "p": "6152a",
+      "c": "Black",
+      "d": "Windscreen 6 x 4 x 1 1/3 with Hollow Studs",
+      "e": "615226",
+      "u": 1794019408799
     }
   },
   "partKinds": {
@@ -633795,7 +633808,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T02:43:15.909Z"
+      "at": "2026-11-07T02:43:35.625Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -633825,7 +633838,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T02:43:15.909Z",
+    "savedAt": "2026-11-07T02:43:35.625Z",
     "appVersion": "2026.11.05.1"
   }
 }
