@@ -462236,7 +462236,7 @@
       "label": "Q7",
       "notes": "1 x 4 tall frames",
       "group": "Q",
-      "lastEdited": "2026-11-07T20:23:35.258Z"
+      "lastEdited": "2026-11-07T21:52:47.841Z"
     },
     {
       "id": "Q8",
@@ -497914,6 +497914,30 @@
       "partNum": "64390",
       "color": "Dark Brown",
       "qty": 1
+    },
+    {
+      "drawerId": "Q7",
+      "partNum": "2493b",
+      "color": "Black",
+      "qty": 5
+    },
+    {
+      "drawerId": "Q7",
+      "partNum": "2493b",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q7",
+      "partNum": "2493b",
+      "color": "Red",
+      "qty": 3
+    },
+    {
+      "drawerId": "Q7",
+      "partNum": "2493b",
+      "color": "Reddish Brown",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -636069,6 +636093,27 @@
       "d": "Door 1 x 4 x 6 Round Top with Window and Keyhole, Reinforced Edge",
       "e": "6254792",
       "u": 1794082477881
+    },
+    "2493b|blue": {
+      "p": "2493b",
+      "c": "Blue",
+      "d": "Window 1 x 4 x 5 with Hollow Studs",
+      "e": "4100416",
+      "u": 1794088369054
+    },
+    "2493b|red": {
+      "p": "2493b",
+      "c": "Red",
+      "d": "Window 1 x 4 x 5 with Hollow Studs",
+      "e": "4100415",
+      "u": 1794088369054
+    },
+    "2493b|reddish brown": {
+      "p": "2493b",
+      "c": "Reddish Brown",
+      "d": "Window 1 x 4 x 5 with Hollow Studs",
+      "e": "4225470",
+      "u": 1794088369054
     }
   },
   "partKinds": {
@@ -641143,7 +641188,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T20:23:39.293Z"
+      "at": "2026-11-07T21:52:51.892Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -641173,7 +641218,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T20:23:39.293Z",
+    "savedAt": "2026-11-07T21:52:51.892Z",
     "appVersion": "2026.11.05.1"
   }
 }
