@@ -462187,7 +462187,7 @@
       "label": "P4",
       "notes": "",
       "group": "P",
-      "lastEdited": "2026-11-07T19:44:36.350Z"
+      "lastEdited": "2026-11-07T19:49:31.894Z"
     },
     {
       "id": "P5",
@@ -497749,6 +497749,12 @@
       "drawerId": "P4",
       "partNum": "45301",
       "color": "Black",
+      "qty": 2
+    },
+    {
+      "drawerId": "P4",
+      "partNum": "87611",
+      "color": "Reddish Brown",
       "qty": 2
     }
   ],
@@ -635801,6 +635807,13 @@
       "d": "Brick Wedged, Sloped 2 x 16 Triple",
       "e": "4250403",
       "u": 1794080581069
+    },
+    "87611|reddish brown": {
+      "p": "87611",
+      "c": "Reddish Brown",
+      "d": "Aircraft Fuselage Curved Forward 6 x 10 Bottom",
+      "e": "4625366",
+      "u": 1794080973100
     }
   },
   "partKinds": {
@@ -640875,7 +640888,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:44:40.387Z"
+      "at": "2026-11-07T19:49:35.944Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640905,7 +640918,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:44:40.387Z",
+    "savedAt": "2026-11-07T19:49:35.944Z",
     "appVersion": "2026.11.05.1"
   }
 }
