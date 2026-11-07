@@ -461073,7 +461073,7 @@
       "label": "L43",
       "notes": "Girders",
       "group": "L",
-      "lastEdited": "2026-11-07T02:51:07.001Z"
+      "lastEdited": "2026-11-07T02:51:32.450Z"
     },
     {
       "id": "L44",
@@ -495637,6 +495637,12 @@
       "partNum": "30517",
       "color": "Black",
       "qty": 2
+    },
+    {
+      "drawerId": "L43",
+      "partNum": "30517",
+      "color": "Dark Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -628898,6 +628904,13 @@
       "d": "Support 2 x 2 x 10 Girder Triangular Vertical - Type 1 - Solid Top, 3 Posts",
       "e": "4142861",
       "u": 1794019868204
+    },
+    "30517|dark bluish gray": {
+      "p": "30517",
+      "c": "Dark Bluish Gray",
+      "d": "Support 2 x 2 x 10 Girder Triangular Vertical - Type 1 - Solid Top, 3 Posts",
+      "e": "4210703",
+      "u": 1794019893653
     }
   },
   "partKinds": {
@@ -633972,7 +633985,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T02:51:11.034Z"
+      "at": "2026-11-07T02:51:36.493Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -634002,7 +634015,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T02:51:11.034Z",
+    "savedAt": "2026-11-07T02:51:36.493Z",
     "appVersion": "2026.11.05.1"
   }
 }
