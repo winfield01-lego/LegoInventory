@@ -461745,7 +461745,7 @@
       "label": "O5",
       "notes": "2 x 4 Brick Wedge - Double Slope",
       "group": "O",
-      "lastEdited": "2026-11-07T19:02:43.079Z"
+      "lastEdited": "2026-11-07T19:03:16.014Z"
     },
     {
       "id": "O6",
@@ -497102,6 +497102,37 @@
       "partNum": "3829c01",
       "color": "Yellow",
       "qty": 9
+    },
+    {
+      "drawerId": "O5",
+      "partNum": "47759",
+      "color": "Dark Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "O5",
+      "partNum": "47759",
+      "color": "Dark Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "O5",
+      "partNum": "47759",
+      "color": "Green",
+      "qty": 2
+    },
+    {
+      "drawerId": "O5",
+      "partNum": "47759",
+      "color": "Reddish Brown",
+      "qty": 3
+    },
+    {
+      "drawerId": "O5",
+      "partNum": "47759",
+      "color": "White",
+      "elementId": "4622545",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -583251,9 +583282,12 @@
       "c": "White",
       "d": "Brick Wedged, Sloped 45° 2 x 4 Triple",
       "e": "6160214",
-      "u": 1791916924851,
+      "u": 1794078197216,
       "at": 1791654523244,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4622545.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4622545.jpg",
+      "ea": [
+        "4622545"
+      ]
     },
     "29096|white": {
       "p": "29096",
@@ -634684,6 +634718,27 @@
       "d": "Tile Special 1 x 2 with Handle",
       "e": "243228",
       "u": 1794077922500
+    },
+    "47759|dark red": {
+      "p": "47759",
+      "c": "Dark Red",
+      "d": "Brick Wedged, Sloped 45° 2 x 4 Triple",
+      "e": "4279729",
+      "u": 1794078197216
+    },
+    "47759|green": {
+      "p": "47759",
+      "c": "Green",
+      "d": "Brick Wedged, Sloped 45° 2 x 4 Triple",
+      "e": "6483132",
+      "u": 1794078197216
+    },
+    "47759|reddish brown": {
+      "p": "47759",
+      "c": "Reddish Brown",
+      "d": "Brick Wedged, Sloped 45° 2 x 4 Triple",
+      "e": "4518198",
+      "u": 1794078197216
     }
   },
   "partKinds": {
@@ -639758,7 +639813,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:02:47.110Z"
+      "at": "2026-11-07T19:03:23.052Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -639788,7 +639843,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:02:47.110Z",
+    "savedAt": "2026-11-07T19:03:23.052Z",
     "appVersion": "2026.11.05.1"
   }
 }
