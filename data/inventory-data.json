@@ -460566,7 +460566,7 @@
       "label": "K12",
       "notes": "Axle End Connectors",
       "group": "K",
-      "lastEdited": "2026-11-07T05:24:22.705Z"
+      "lastEdited": "2026-11-07T05:26:39.739Z"
     },
     {
       "id": "K13",
@@ -496375,6 +496375,38 @@
       "drawerId": "K23",
       "partNum": "69819",
       "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "K12",
+      "partNum": "6553",
+      "color": "Black",
+      "elementId": "4107765",
+      "qty": 7
+    },
+    {
+      "drawerId": "K12",
+      "partNum": "6553",
+      "color": "Dark Bluish Gray",
+      "qty": 10
+    },
+    {
+      "drawerId": "K12",
+      "partNum": "6553",
+      "color": "Light Bluish Gray",
+      "qty": 6
+    },
+    {
+      "drawerId": "K12",
+      "partNum": "6553",
+      "color": "Medium Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "K12",
+      "partNum": "6553",
+      "color": "White",
+      "elementId": "4163527",
       "qty": 1
     }
   ],
@@ -579846,9 +579878,12 @@
       "c": "Black",
       "d": "Technic Axle 1.5 with Perpendicular Axle Connector (Technic Pole Reverser Handle)",
       "e": "655326",
-      "u": 1791916924851,
+      "u": 1794029200941,
       "at": 1791654551541,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4107765.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4107765.jpg",
+      "ea": [
+        "4107765"
+      ]
     },
     "43857|black": {
       "p": "43857",
@@ -592635,9 +592670,12 @@
       "c": "White",
       "d": "Technic Axle 1.5 with Perpendicular Axle Connector (Technic Pole Reverser Handle)",
       "e": "6420462",
-      "u": 1791916924851,
+      "u": 1794029200941,
       "at": 1791654717569,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4163527.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4163527.jpg",
+      "ea": [
+        "4163527"
+      ]
     },
     "32184|white": {
       "p": "32184",
@@ -630004,6 +630042,13 @@
       "d": "Technic Axle and Pin Connector Perpendicular Double Split [Reinforced]",
       "e": "6349281",
       "u": 1794029004208
+    },
+    "6553|medium blue": {
+      "p": "6553",
+      "c": "Medium Blue",
+      "d": "Technic Axle 1.5 with Perpendicular Axle Connector (Technic Pole Reverser Handle)",
+      "e": "4144290",
+      "u": 1794029200941
     }
   },
   "partKinds": {
@@ -635078,7 +635123,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:24:26.739Z"
+      "at": "2026-11-07T05:26:45.052Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635108,7 +635153,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:24:26.739Z",
+    "savedAt": "2026-11-07T05:26:45.052Z",
     "appVersion": "2026.11.05.1"
   }
 }
