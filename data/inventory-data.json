@@ -460671,7 +460671,7 @@
       "label": "K27",
       "notes": "Pin Hub with Axles",
       "group": "K",
-      "lastEdited": "2026-11-07T05:07:18.980Z"
+      "lastEdited": "2026-11-07T05:07:58.715Z"
     },
     {
       "id": "K28",
@@ -496063,6 +496063,25 @@
       "partNum": "57585",
       "color": "Light Bluish Gray",
       "qty": 2
+    },
+    {
+      "drawerId": "K27",
+      "partNum": "10197",
+      "color": "Black",
+      "elementId": "6098801",
+      "qty": 1
+    },
+    {
+      "drawerId": "K27",
+      "partNum": "10197",
+      "color": "Dark Bluish Gray",
+      "qty": 5
+    },
+    {
+      "drawerId": "K27",
+      "partNum": "10197",
+      "color": "Orange",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -582472,8 +582491,11 @@
       "c": "Black",
       "d": "Technic Pin Connector Hub with 2 Perpendicular Axles",
       "e": "6099801",
-      "u": 1791916924851,
-      "at": 1791654717569
+      "u": 1794028079918,
+      "at": 1791654717569,
+      "ea": [
+        "6098801"
+      ]
     },
     "90202|black": {
       "p": "90202",
@@ -629491,6 +629513,13 @@
       "d": "Technic Pin Connector Hub with 1 Axle",
       "e": "6373366",
       "u": 1794028025884
+    },
+    "10197|orange": {
+      "p": "10197",
+      "c": "Orange",
+      "d": "Technic Pin Connector Hub with 2 Perpendicular Axles",
+      "e": "6259825",
+      "u": 1794028079918
     }
   },
   "partKinds": {
@@ -634565,7 +634594,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:07:23.012Z"
+      "at": "2026-11-07T05:08:02.767Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -634595,7 +634624,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:07:23.012Z",
+    "savedAt": "2026-11-07T05:08:02.767Z",
     "appVersion": "2026.11.05.1"
   }
 }
