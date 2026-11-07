@@ -460489,7 +460489,7 @@
       "label": "K1",
       "notes": "1 x 4 Plate - Pin on Ends",
       "group": "K",
-      "lastEdited": "2026-11-07T05:10:44.604Z"
+      "lastEdited": "2026-11-07T05:11:19.412Z"
     },
     {
       "id": "K2",
@@ -496130,6 +496130,24 @@
       "partNum": "60208",
       "color": "Light Bluish Gray",
       "qty": 3
+    },
+    {
+      "drawerId": "K1",
+      "partNum": "40687",
+      "color": "Dark Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "K1",
+      "partNum": "40687",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "K1",
+      "partNum": "40687",
+      "color": "Light Bluish Gray",
+      "qty": 19
     }
   ],
   "mocLocations": {
@@ -629603,6 +629621,20 @@
       "d": "Wheel 31 x 15 Technic, 7 Pin Holes",
       "e": "4512751",
       "u": 1794028208333
+    },
+    "40687|dark bluish gray": {
+      "p": "40687",
+      "c": "Dark Bluish Gray",
+      "d": "Plate Special 2 x 4 with Pins, Reinforced",
+      "e": "6351293",
+      "u": 1794028280615
+    },
+    "40687|reddish brown": {
+      "p": "40687",
+      "c": "Reddish Brown",
+      "d": "Plate Special 2 x 4 with Pins, Reinforced",
+      "e": "6351292",
+      "u": 1794028280615
     }
   },
   "partKinds": {
@@ -634677,7 +634709,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:10:48.634Z"
+      "at": "2026-11-07T05:11:23.450Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -634707,7 +634739,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:10:48.634Z",
+    "savedAt": "2026-11-07T05:11:23.450Z",
     "appVersion": "2026.11.05.1"
   }
 }
