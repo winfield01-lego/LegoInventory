@@ -461066,7 +461066,7 @@
       "label": "L42",
       "notes": "10 x 1 and 8 x 2 Curved Slopes",
       "group": "L",
-      "lastEdited": "2026-11-07T02:45:55.174Z"
+      "lastEdited": "2026-11-07T02:47:54.487Z"
     },
     {
       "id": "L43",
@@ -495567,6 +495567,50 @@
       "partNum": "88293",
       "color": "White",
       "qty": 3
+    },
+    {
+      "drawerId": "L42",
+      "partNum": "13731",
+      "color": "Black",
+      "qty": 15
+    },
+    {
+      "drawerId": "L42",
+      "partNum": "13731",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "L42",
+      "partNum": "13731",
+      "color": "Dark Blue",
+      "elementId": "6110034",
+      "qty": 8
+    },
+    {
+      "drawerId": "L42",
+      "partNum": "13731",
+      "color": "Dark Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "L42",
+      "partNum": "13731",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "L42",
+      "partNum": "13731",
+      "color": "White",
+      "qty": 3
+    },
+    {
+      "drawerId": "L42",
+      "partNum": "13731",
+      "color": "Red",
+      "elementId": "6037665",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -567626,9 +567670,12 @@
       "c": "Red",
       "d": "Brick Curved 10 x 1 [Symmetric Inside Ridges]",
       "e": "6208565",
-      "u": 1791916924851,
+      "u": 1794019675689,
       "at": 1791654346340,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6037665.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6037665.jpg",
+      "ea": [
+        "6037665"
+      ]
     },
     "28192|red": {
       "p": "28192",
@@ -587615,9 +587662,12 @@
       "c": "Dark Blue",
       "d": "Brick Curved 10 x 1 [Symmetric Inside Ridges]",
       "e": "6251378",
-      "u": 1791916924851,
+      "u": 1794019675689,
       "at": 1791654657762,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6110034.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6110034.jpg",
+      "ea": [
+        "6110034"
+      ]
     },
     "49307|dark blue": {
       "p": "49307",
@@ -628802,6 +628852,13 @@
       "d": "Brick Round Corner 3 x 3 x 2 Dome Top",
       "e": "6057435",
       "u": 1794019483067
+    },
+    "13731|blue": {
+      "p": "13731",
+      "c": "Blue",
+      "d": "Brick Curved 10 x 1 [Symmetric Inside Ridges]",
+      "e": "6037668",
+      "u": 1794019675689
     }
   },
   "partKinds": {
@@ -633876,7 +633933,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T02:45:59.218Z"
+      "at": "2026-11-07T02:47:59.784Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -633906,7 +633963,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T02:45:59.218Z",
+    "savedAt": "2026-11-07T02:47:59.784Z",
     "appVersion": "2026.11.05.1"
   }
 }
