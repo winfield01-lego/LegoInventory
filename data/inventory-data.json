@@ -460877,7 +460877,7 @@
       "label": "L15",
       "notes": "1 x 4 Railing and 1 x 6 Railing with Open Studs",
       "group": "L",
-      "lastEdited": "2026-11-07T02:38:59.434Z"
+      "lastEdited": "2026-11-07T02:40:23.833Z"
     },
     {
       "id": "L16",
@@ -495434,6 +495434,31 @@
     {
       "drawerId": "L15",
       "partNum": "6187",
+      "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "6140",
+      "color": "Black",
+      "elementId": "614026",
+      "qty": 1
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "6140",
+      "color": "Light Bluish Gray",
+      "qty": 8
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "6140",
+      "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "6140",
       "color": "Yellow",
       "qty": 1
     }
@@ -608988,8 +609013,11 @@
       "c": "Black",
       "d": "Bar 1 x 6 [Closed Studs]",
       "e": "6415609",
-      "u": 1791916924851,
-      "at": 1791846548975
+      "u": 1794019225036,
+      "at": 1791846548975,
+      "ea": [
+        "614026"
+      ]
     },
     "2351|black": {
       "p": "2351",
@@ -628594,6 +628622,27 @@
       "d": "Bar 1 x 4 x 2",
       "e": "618701",
       "u": 1794019140637
+    },
+    "6140|light bluish gray": {
+      "p": "6140",
+      "c": "Light Bluish Gray",
+      "d": "Bar 1 x 6 [Closed Studs]",
+      "e": "4211524",
+      "u": 1794019225036
+    },
+    "6140|white": {
+      "p": "6140",
+      "c": "White",
+      "d": "Bar 1 x 6 [Closed Studs]",
+      "e": "4190939",
+      "u": 1794019225036
+    },
+    "6140|yellow": {
+      "p": "6140",
+      "c": "Yellow",
+      "d": "Bar 1 x 6 [Closed Studs]",
+      "e": "4212408",
+      "u": 1794019225036
     }
   },
   "partKinds": {
@@ -633668,7 +633717,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T02:39:03.478Z"
+      "at": "2026-11-07T02:40:27.864Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -633698,7 +633747,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T02:39:03.478Z",
+    "savedAt": "2026-11-07T02:40:27.864Z",
     "appVersion": "2026.11.05.1"
   }
 }
