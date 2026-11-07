@@ -460884,7 +460884,7 @@
       "label": "L16",
       "notes": "1 x 6 x 3 Bar with Studs, and Fence",
       "group": "L",
-      "lastEdited": "2026-11-07T02:41:28.839Z"
+      "lastEdited": "2026-11-07T02:41:42.397Z"
     },
     {
       "id": "L17",
@@ -495488,6 +495488,13 @@
       "color": "Yellow",
       "elementId": "",
       "qty": 1
+    },
+    {
+      "drawerId": "L16",
+      "partNum": "6079",
+      "color": "White",
+      "elementId": "4184955",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -610722,9 +610729,12 @@
       "c": "White",
       "d": "Fence 1 x 8 x 2 2/3",
       "e": "607901",
-      "u": 1791916924851,
+      "u": 1794019303599,
       "at": 1791846545325,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4184955.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4184955.jpg",
+      "ea": [
+        "4184955"
+      ]
     },
     "3185|white": {
       "p": "3185",
@@ -633758,7 +633768,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T02:41:32.875Z"
+      "at": "2026-11-07T02:41:47.704Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -633788,7 +633798,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T02:41:32.875Z",
+    "savedAt": "2026-11-07T02:41:47.704Z",
     "appVersion": "2026.11.05.1"
   }
 }
