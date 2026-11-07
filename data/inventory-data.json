@@ -460797,7 +460797,7 @@
       "label": "L4",
       "notes": "1 x 1 Tap",
       "group": "L",
-      "lastEdited": "2026-11-07T01:40:36.191Z"
+      "lastEdited": "2026-11-07T01:41:01.191Z"
     },
     {
       "id": "L5",
@@ -494876,6 +494876,34 @@
       "partNum": "4599b",
       "color": "Yellow",
       "qty": 12
+    },
+    {
+      "drawerId": "L4",
+      "partNum": "4599a",
+      "color": "Black",
+      "elementId": "",
+      "qty": 1
+    },
+    {
+      "drawerId": "L4",
+      "partNum": "4599a",
+      "color": "Light Bluish Gray",
+      "elementId": "",
+      "qty": 1
+    },
+    {
+      "drawerId": "L4",
+      "partNum": "4599a",
+      "color": "Red",
+      "elementId": "",
+      "qty": 1
+    },
+    {
+      "drawerId": "L4",
+      "partNum": "4599a",
+      "color": "White",
+      "elementId": "",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -627704,6 +627732,20 @@
       "d": "Dish 4 x 4 with 4 Studs",
       "e": "6381788",
       "u": 1794010207035
+    },
+    "4599a|black": {
+      "p": "4599a",
+      "c": "Black",
+      "d": "Tap 1 x 1 with Hole in Spout",
+      "e": "",
+      "u": 1794015662393
+    },
+    "4599a|light bluish gray": {
+      "p": "4599a",
+      "c": "Light Bluish Gray",
+      "d": "Tap 1 x 1 with Hole in Spout",
+      "e": "",
+      "u": 1794015662393
     }
   },
   "partKinds": {
@@ -632778,7 +632820,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T01:40:41.484Z"
+      "at": "2026-11-07T01:41:06.476Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -632808,7 +632850,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T01:40:41.484Z",
+    "savedAt": "2026-11-07T01:41:06.476Z",
     "appVersion": "2026.11.05.1"
   }
 }
