@@ -458847,7 +458847,7 @@
       "label": "F3",
       "notes": "Wider Gears",
       "group": "F",
-      "lastEdited": "2026-11-07T05:53:40.637Z"
+      "lastEdited": "2026-11-07T05:54:49.388Z"
     },
     {
       "id": "F4",
@@ -496652,6 +496652,12 @@
       "partNum": "32270",
       "color": "Light Bluish Gray",
       "qty": 3
+    },
+    {
+      "drawerId": "F3",
+      "partNum": "41666",
+      "color": "Light Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -630457,6 +630463,13 @@
       "d": "Technic Gear 12 Tooth Double Bevel",
       "e": "32270194",
       "u": 1794030821838
+    },
+    "41666|light gray": {
+      "p": "41666",
+      "c": "Light Gray",
+      "d": "Technic Arm 1 x 7 with 9 Tooth Double Bevel Gear Ends",
+      "e": "4162071",
+      "u": 1794030890591
     }
   },
   "partKinds": {
@@ -635531,7 +635544,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:53:44.681Z"
+      "at": "2026-11-07T05:54:53.431Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635561,7 +635574,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:53:44.681Z",
+    "savedAt": "2026-11-07T05:54:53.431Z",
     "appVersion": "2026.11.05.1"
   }
 }
