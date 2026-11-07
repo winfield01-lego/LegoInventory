@@ -460643,7 +460643,7 @@
       "label": "K23",
       "notes": "3 Pin L-Shape and Split Axle - 2 Pin",
       "group": "K",
-      "lastEdited": "2026-11-07T05:22:32.929Z"
+      "lastEdited": "2026-11-07T05:22:57.589Z"
     },
     {
       "id": "K24",
@@ -496328,6 +496328,30 @@
       "partNum": "30361c",
       "color": "Yellow",
       "qty": 2
+    },
+    {
+      "drawerId": "K23",
+      "partNum": "44809",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "K23",
+      "partNum": "44809",
+      "color": "Dark Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "K23",
+      "partNum": "44809",
+      "color": "Light Bluish Gray",
+      "qty": 5
+    },
+    {
+      "drawerId": "K23",
+      "partNum": "44809",
+      "color": "Yellow",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -629921,6 +629945,34 @@
       "d": "Brick Round 2 x 2 x 2 Robot Body, Axle Holder '+' Orientation",
       "e": "4500586",
       "u": 1794028890926
+    },
+    "44809|black": {
+      "p": "44809",
+      "c": "Black",
+      "d": "Technic Pin Connector Perpendicular 2 x 2 Bent",
+      "e": "4195022",
+      "u": 1794028978792
+    },
+    "44809|dark orange": {
+      "p": "44809",
+      "c": "Dark Orange",
+      "d": "Technic Pin Connector Perpendicular 2 x 2 Bent",
+      "e": "4195020",
+      "u": 1794028978792
+    },
+    "44809|light bluish gray": {
+      "p": "44809",
+      "c": "Light Bluish Gray",
+      "d": "Technic Pin Connector Perpendicular 2 x 2 Bent",
+      "e": "4211880",
+      "u": 1794028978792
+    },
+    "44809|yellow": {
+      "p": "44809",
+      "c": "Yellow",
+      "d": "Technic Pin Connector Perpendicular 2 x 2 Bent",
+      "e": "4195017",
+      "u": 1794028978792
     }
   },
   "partKinds": {
@@ -634995,7 +635047,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:22:36.955Z"
+      "at": "2026-11-07T05:23:01.623Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635025,7 +635077,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:22:36.955Z",
+    "savedAt": "2026-11-07T05:23:01.623Z",
     "appVersion": "2026.11.05.1"
   }
 }
