@@ -528361,7 +528361,7 @@
           "color": "White",
           "desc": "Steering Stand 1 x 2 with Black Steering Wheel",
           "elementId": "4208543",
-          "qty": 1,
+          "qty": 2,
           "drawerId": "O3",
           "matchCount": 0,
           "suggested": false,
@@ -533380,10 +533380,30 @@
           "drawerId": "S4",
           "matchCount": 0,
           "suggested": false
+        },
+        {
+          "partNum": "3829c01",
+          "color": "Light Bluish Gray",
+          "desc": "Steering Stand 1 x 2 with Black Steering Wheel",
+          "elementId": "4226995",
+          "qty": 1,
+          "drawerId": "O3",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "3829c01",
+          "color": "Yellow",
+          "desc": "Steering Stand 1 x 2 with Black Steering Wheel",
+          "elementId": "9553",
+          "qty": 1,
+          "drawerId": "O3",
+          "matchCount": 0,
+          "suggested": false
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-07T18:59:10.305Z",
+      "savedAt": "2026-11-07T19:02:22.607Z",
       "moved": {
         "batches": 58,
         "pieces": 3244,
@@ -639738,7 +639758,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:01:58.291Z"
+      "at": "2026-11-07T19:02:26.649Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -639764,11 +639784,11 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-07T19:01:54.258Z",
+      "bags": "2026-11-07T19:02:22.607Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:01:58.291Z",
+    "savedAt": "2026-11-07T19:02:26.649Z",
     "appVersion": "2026.11.05.1"
   }
 }
