@@ -461934,7 +461934,7 @@
       "label": "O32",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-10-13T17:14:08.108Z"
+      "lastEdited": "2026-11-07T19:23:37.712Z"
     },
     {
       "id": "O33",
@@ -497388,6 +497388,24 @@
       "partNum": "2343",
       "color": "Pearl Gold",
       "qty": 4
+    },
+    {
+      "drawerId": "O32",
+      "partNum": "61072",
+      "color": "Black",
+      "qty": 2
+    },
+    {
+      "drawerId": "O32",
+      "partNum": "61072",
+      "color": "Flat Silver",
+      "qty": 4
+    },
+    {
+      "drawerId": "O32",
+      "partNum": "61072",
+      "color": "Pearl Light Gray",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -635151,6 +635169,20 @@
       "d": "Equipment Goblet / Glass",
       "e": "4261919",
       "u": 1794079349065
+    },
+    "61072|black": {
+      "p": "61072",
+      "c": "Black",
+      "d": "Plate Special 1 x 4 with Angled Tubes",
+      "e": "4516196",
+      "u": 1794079418914
+    },
+    "61072|pearl light gray": {
+      "p": "61072",
+      "c": "Pearl Light Gray",
+      "d": "Plate Special 1 x 4 with Angled Tubes",
+      "e": "4518406",
+      "u": 1794079418914
     }
   },
   "partKinds": {
@@ -640225,7 +640257,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:22:31.898Z"
+      "at": "2026-11-07T19:23:41.746Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640255,7 +640287,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:22:31.897Z",
+    "savedAt": "2026-11-07T19:23:41.746Z",
     "appVersion": "2026.11.05.1"
   }
 }
