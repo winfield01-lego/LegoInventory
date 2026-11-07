@@ -460601,7 +460601,7 @@
       "label": "K17",
       "notes": "2 x 2 Plate - With Pins",
       "group": "K",
-      "lastEdited": "2026-11-07T05:15:28.661Z"
+      "lastEdited": "2026-11-07T05:15:40.627Z"
     },
     {
       "id": "K18",
@@ -496223,6 +496223,13 @@
       "partNum": "2460",
       "color": "Brown",
       "qty": 2
+    },
+    {
+      "drawerId": "K17",
+      "partNum": "15092",
+      "color": "Dark Bluish Gray",
+      "elementId": "6066952",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -573326,9 +573333,12 @@
       "c": "Dark Bluish Gray",
       "d": "Plate Special 2 x 2 with 2 Pins",
       "e": "6284702",
-      "u": 1791916924851,
+      "u": 1794028541829,
       "at": 1791732118013,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6066952.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6066952.jpg",
+      "ea": [
+        "6066952"
+      ]
     },
     "6536|dark bluish gray": {
       "p": "6536",
@@ -634828,7 +634838,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:15:32.701Z"
+      "at": "2026-11-07T05:15:45.916Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -634858,7 +634868,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:15:32.701Z",
+    "savedAt": "2026-11-07T05:15:45.916Z",
     "appVersion": "2026.11.05.1"
   }
 }
