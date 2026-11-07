@@ -461878,7 +461878,7 @@
       "label": "O24",
       "notes": "Goblet (Glass)",
       "group": "O",
-      "lastEdited": "2026-11-07T19:21:44.441Z"
+      "lastEdited": "2026-11-07T19:22:27.863Z"
     },
     {
       "id": "O25",
@@ -497364,6 +497364,30 @@
       "partNum": "4590",
       "color": "Light Gray",
       "qty": 12
+    },
+    {
+      "drawerId": "O24",
+      "partNum": "2343",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "O24",
+      "partNum": "2343",
+      "color": "Flat Silver",
+      "qty": 9
+    },
+    {
+      "drawerId": "O24",
+      "partNum": "2343",
+      "color": "Light Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "O24",
+      "partNum": "2343",
+      "color": "Pearl Gold",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -635113,6 +635137,20 @@
       "d": "Plate Special 1 x 4 Offset with Bar Holes",
       "e": "6185356",
       "u": 1794079277347
+    },
+    "2343|black": {
+      "p": "2343",
+      "c": "Black",
+      "d": "Equipment Goblet / Glass",
+      "e": "4106973",
+      "u": 1794079349065
+    },
+    "2343|light bluish gray": {
+      "p": "2343",
+      "c": "Light Bluish Gray",
+      "d": "Equipment Goblet / Glass",
+      "e": "4261919",
+      "u": 1794079349065
     }
   },
   "partKinds": {
@@ -640187,7 +640225,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:21:48.473Z"
+      "at": "2026-11-07T19:22:31.898Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640217,7 +640255,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:21:48.473Z",
+    "savedAt": "2026-11-07T19:22:31.897Z",
     "appVersion": "2026.11.05.1"
   }
 }
