@@ -461934,7 +461934,7 @@
       "label": "O32",
       "notes": "",
       "group": "O",
-      "lastEdited": "2026-11-07T19:23:37.712Z"
+      "lastEdited": "2026-11-07T19:24:03.878Z"
     },
     {
       "id": "O33",
@@ -497406,6 +497406,24 @@
       "partNum": "61072",
       "color": "Pearl Light Gray",
       "qty": 2
+    },
+    {
+      "drawerId": "O32",
+      "partNum": "50943",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "O32",
+      "partNum": "50943",
+      "color": "Flat Silver",
+      "qty": 1
+    },
+    {
+      "drawerId": "O32",
+      "partNum": "50943",
+      "color": "Light Bluish Gray",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -635183,6 +635201,20 @@
       "d": "Plate Special 1 x 4 with Angled Tubes",
       "e": "4518406",
       "u": 1794079418914
+    },
+    "50943|dark bluish gray": {
+      "p": "50943",
+      "c": "Dark Bluish Gray",
+      "d": "Engine / Air Scoop 2 x 2",
+      "e": "4278424",
+      "u": 1794079445081
+    },
+    "50943|flat silver": {
+      "p": "50943",
+      "c": "Flat Silver",
+      "d": "Engine / Air Scoop 2 x 2",
+      "e": "6076604",
+      "u": 1794079445081
     }
   },
   "partKinds": {
@@ -640257,7 +640289,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:23:41.746Z"
+      "at": "2026-11-07T19:24:07.919Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640287,7 +640319,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:23:41.746Z",
+    "savedAt": "2026-11-07T19:24:07.919Z",
     "appVersion": "2026.11.05.1"
   }
 }
