@@ -461941,7 +461941,7 @@
       "label": "O33",
       "notes": "2 x 3 Windows",
       "group": "O",
-      "lastEdited": "2026-11-07T19:30:41.874Z"
+      "lastEdited": "2026-11-07T19:33:18.707Z"
     },
     {
       "id": "O34",
@@ -497487,6 +497487,55 @@
       "partNum": "4035",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "O33",
+      "partNum": "60593",
+      "color": "Black",
+      "elementId": "4536522",
+      "qty": 10
+    },
+    {
+      "drawerId": "O33",
+      "partNum": "60593",
+      "color": "Bright Light Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "O33",
+      "partNum": "60593",
+      "color": "Dark Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "O33",
+      "partNum": "60593",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "O33",
+      "partNum": "60593",
+      "color": "Reddish Brown",
+      "qty": 3
+    },
+    {
+      "drawerId": "O33",
+      "partNum": "60593",
+      "color": "Red",
+      "qty": 5
+    },
+    {
+      "drawerId": "O33",
+      "partNum": "60593",
+      "color": "Tan",
+      "qty": 3
+    },
+    {
+      "drawerId": "O33",
+      "partNum": "60593",
+      "color": "White",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -603300,9 +603349,12 @@
       "c": "Black",
       "d": "Window 1 x 2 x 3 Flat Front",
       "e": "6468344",
-      "u": 1791916924851,
+      "u": 1794079999910,
       "at": 1791654796747,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4536522.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4536522.jpg",
+      "ea": [
+        "4536522"
+      ]
     },
     "20482|bright light orange": {
       "p": "20482",
@@ -635336,6 +635388,48 @@
       "d": "Window 1 x 2 x 3 Train",
       "e": "403501",
       "u": 1794079843076
+    },
+    "60593|bright light blue": {
+      "p": "60593",
+      "c": "Bright Light Blue",
+      "d": "Window 1 x 2 x 3 Flat Front",
+      "e": "6441764",
+      "u": 1794079999910
+    },
+    "60593|dark brown": {
+      "p": "60593",
+      "c": "Dark Brown",
+      "d": "Window 1 x 2 x 3 Flat Front",
+      "e": "6259766",
+      "u": 1794079999910
+    },
+    "60593|reddish brown": {
+      "p": "60593",
+      "c": "Reddish Brown",
+      "d": "Window 1 x 2 x 3 Flat Front",
+      "e": "6058084",
+      "u": 1794079999910
+    },
+    "60593|red": {
+      "p": "60593",
+      "c": "Red",
+      "d": "Window 1 x 2 x 3 Flat Front",
+      "e": "4536340",
+      "u": 1794079999910
+    },
+    "60593|tan": {
+      "p": "60593",
+      "c": "Tan",
+      "d": "Window 1 x 2 x 3 Flat Front",
+      "e": "6034929",
+      "u": 1794079999910
+    },
+    "60593|white": {
+      "p": "60593",
+      "c": "White",
+      "d": "Window 1 x 2 x 3 Flat Front",
+      "e": "4536521",
+      "u": 1794079999910
     }
   },
   "partKinds": {
@@ -640410,7 +640504,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:30:45.909Z"
+      "at": "2026-11-07T19:33:24.003Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640440,7 +640534,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:30:45.909Z",
+    "savedAt": "2026-11-07T19:33:24.003Z",
     "appVersion": "2026.11.05.1"
   }
 }
