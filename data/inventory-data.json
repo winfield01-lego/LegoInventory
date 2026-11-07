@@ -460814,7 +460814,7 @@
       "label": "L6",
       "notes": "Small Lever and Sword / Rapier",
       "group": "L",
-      "lastEdited": "2026-11-07T02:14:58.666Z"
+      "lastEdited": "2026-11-07T02:15:45.789Z"
     },
     {
       "id": "L7",
@@ -495203,6 +495203,13 @@
       "color": "White",
       "elementId": "265301",
       "qty": 1
+    },
+    {
+      "drawerId": "L6",
+      "partNum": "93550",
+      "color": "Flat Silver",
+      "elementId": "4618270",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -576163,9 +576170,12 @@
       "c": "Flat Silver",
       "d": "Weapon Sword / Foil / Épée",
       "e": "6222063",
-      "u": 1791916924851,
+      "u": 1794017746990,
       "at": 1793834786148,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4618270.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4618270.jpg",
+      "ea": [
+        "4618270"
+      ]
     },
     "85984|lime": {
       "p": "85984",
@@ -633284,7 +633294,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T02:15:02.709Z"
+      "at": "2026-11-07T02:15:51.085Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -633314,7 +633324,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T02:15:02.709Z",
+    "savedAt": "2026-11-07T02:15:51.085Z",
     "appVersion": "2026.11.05.1"
   }
 }
