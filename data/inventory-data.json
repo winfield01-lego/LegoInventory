@@ -460856,7 +460856,7 @@
       "label": "L12",
       "notes": "1 x 4 x 1 Fence - Lattice",
       "group": "L",
-      "lastEdited": "2026-11-07T02:31:26.037Z"
+      "lastEdited": "2026-11-07T02:32:42.688Z"
     },
     {
       "id": "L13",
@@ -495335,6 +495335,52 @@
       "partNum": "95270",
       "color": "Dark Tan",
       "qty": 1
+    },
+    {
+      "drawerId": "L12",
+      "partNum": "3633",
+      "color": "Black",
+      "elementId": "363326",
+      "qty": 10
+    },
+    {
+      "drawerId": "L12",
+      "partNum": "3633",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "L12",
+      "partNum": "3633",
+      "color": "Light Bluish Gray",
+      "elementId": "4295555",
+      "qty": 1
+    },
+    {
+      "drawerId": "L12",
+      "partNum": "3633",
+      "color": "Pearl Gold",
+      "qty": 5
+    },
+    {
+      "drawerId": "L12",
+      "partNum": "3633",
+      "color": "Red",
+      "elementId": "363321",
+      "qty": 11
+    },
+    {
+      "drawerId": "L12",
+      "partNum": "3633",
+      "color": "White",
+      "elementId": "363301",
+      "qty": 1
+    },
+    {
+      "drawerId": "L12",
+      "partNum": "3633",
+      "color": "Yellow",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -559837,9 +559883,12 @@
       "c": "Black",
       "d": "Fence Lattice 1 x 4 x 1",
       "e": "4187209",
-      "u": 1791916924851,
+      "u": 1794018763890,
       "at": 1791846575555,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/363326.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/363326.jpg",
+      "ea": [
+        "363326"
+      ]
     },
     "10190|black": {
       "p": "10190",
@@ -570724,9 +570773,12 @@
       "c": "Light Bluish Gray",
       "d": "Fence Lattice 1 x 4 x 1",
       "e": "6230229",
-      "u": 1791916924851,
+      "u": 1794018763890,
       "at": 1791654724601,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4295555.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4295555.jpg",
+      "ea": [
+        "4295555"
+      ]
     },
     "3031|medium nougat": {
       "p": "3031",
@@ -586858,9 +586910,12 @@
       "c": "White",
       "d": "Fence Lattice 1 x 4 x 1",
       "e": "4550171",
-      "u": 1791916924851,
+      "u": 1794018763890,
       "at": 1791732118013,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/363301.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/363301.jpg",
+      "ea": [
+        "363301"
+      ]
     },
     "54657|white": {
       "p": "54657",
@@ -609427,9 +609482,12 @@
       "c": "Red",
       "d": "Fence Lattice 1 x 4 x 1",
       "e": "4187280",
-      "u": 1791916924851,
+      "u": 1794018763890,
       "at": 1791732100390,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/363321.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/363321.jpg",
+      "ea": [
+        "363321"
+      ]
     },
     "4596|red": {
       "p": "4596",
@@ -628415,6 +628473,27 @@
       "d": "Fence Lattice 1 x 4 x 2",
       "e": "318524",
       "u": 1794018665692
+    },
+    "3633|blue": {
+      "p": "3633",
+      "c": "Blue",
+      "d": "Fence Lattice 1 x 4 x 1",
+      "e": "363323",
+      "u": 1794018763890
+    },
+    "3633|pearl gold": {
+      "p": "3633",
+      "c": "Pearl Gold",
+      "d": "Fence Lattice 1 x 4 x 1",
+      "e": "4536675",
+      "u": 1794018763890
+    },
+    "3633|yellow": {
+      "p": "3633",
+      "c": "Yellow",
+      "d": "Fence Lattice 1 x 4 x 1",
+      "e": "363324",
+      "u": 1794018763890
     }
   },
   "partKinds": {
@@ -633489,7 +633568,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T02:31:40.747Z"
+      "at": "2026-11-07T02:32:47.986Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -633519,7 +633598,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T02:31:40.747Z",
+    "savedAt": "2026-11-07T02:32:47.986Z",
     "appVersion": "2026.11.05.1"
   }
 }
