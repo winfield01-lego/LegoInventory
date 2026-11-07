@@ -460877,7 +460877,7 @@
       "label": "L15",
       "notes": "1 x 4 Railing and 1 x 6 Railing with Open Studs",
       "group": "L",
-      "lastEdited": "2026-11-07T02:37:56.538Z"
+      "lastEdited": "2026-11-07T02:38:59.434Z"
     },
     {
       "id": "L16",
@@ -495405,6 +495405,37 @@
       "partNum": "33303",
       "color": "White",
       "qty": 18
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "6187",
+      "color": "Black",
+      "elementId": "4121537",
+      "qty": 9
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "6187",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "6187",
+      "color": "Light Bluish Gray",
+      "qty": 7
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "6187",
+      "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "6187",
+      "color": "Yellow",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -532610,7 +532641,10 @@
       "c": "Black",
       "d": "Bar 1 x 4 x 2",
       "e": "4141349",
-      "u": 1791916924851
+      "u": 1794019140637,
+      "ea": [
+        "4121537"
+      ]
     },
     "15395|white": {
       "p": "15395",
@@ -628546,6 +628580,20 @@
       "d": "Picket Fence 1 x 4 x 2",
       "e": "4141607",
       "u": 1794018963332
+    },
+    "6187|blue": {
+      "p": "6187",
+      "c": "Blue",
+      "d": "Bar 1 x 4 x 2",
+      "e": "4114188",
+      "u": 1794019140637
+    },
+    "6187|white": {
+      "p": "6187",
+      "c": "White",
+      "d": "Bar 1 x 4 x 2",
+      "e": "618701",
+      "u": 1794019140637
     }
   },
   "partKinds": {
@@ -633620,7 +633668,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T02:38:00.570Z"
+      "at": "2026-11-07T02:39:03.478Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -633650,7 +633698,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T02:38:00.570Z",
+    "savedAt": "2026-11-07T02:39:03.478Z",
     "appVersion": "2026.11.05.1"
   }
 }
