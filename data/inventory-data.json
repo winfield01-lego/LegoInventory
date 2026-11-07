@@ -461304,7 +461304,7 @@
       "label": "M32",
       "notes": "4 x 4 Corner",
       "group": "M",
-      "lastEdited": "2026-11-07T02:54:54.346Z"
+      "lastEdited": "2026-11-07T02:55:46.286Z"
     },
     {
       "id": "M33",
@@ -495667,6 +495667,38 @@
       "partNum": "58827",
       "color": "Yellow",
       "qty": 1
+    },
+    {
+      "drawerId": "M32",
+      "partNum": "2639",
+      "color": "Dark Bluish Gray",
+      "qty": 15
+    },
+    {
+      "drawerId": "M32",
+      "partNum": "2639",
+      "color": "Light Bluish Gray",
+      "elementId": "4211829",
+      "qty": 1
+    },
+    {
+      "drawerId": "M32",
+      "partNum": "2639",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "M32",
+      "partNum": "2639",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "M32",
+      "partNum": "2639",
+      "color": "White",
+      "elementId": "4212128",
+      "qty": 6
     }
   ],
   "mocLocations": {
@@ -570070,8 +570102,11 @@
       "c": "Light Bluish Gray",
       "d": "Plate 4 x 4 Corner",
       "e": "6547155",
-      "u": 1791916924851,
-      "at": 1791654633155
+      "u": 1794020147488,
+      "at": 1791654633155,
+      "ea": [
+        "4211829"
+      ]
     },
     "4596|light bluish gray": {
       "p": "4596",
@@ -578766,9 +578801,12 @@
       "c": "White",
       "d": "Plate 4 x 4 Corner",
       "e": "6552129",
-      "u": 1791916924851,
+      "u": 1794020147488,
       "at": 1791654799757,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4212128.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4212128.jpg",
+      "ea": [
+        "4212128"
+      ]
     },
     "3033|white": {
       "p": "3033",
@@ -628963,6 +629001,20 @@
       "d": "Support 2 x 2 x 10 Girder Triangular Vertical - Type 3 - Axle Hole, 3 Posts",
       "e": "4503101",
       "u": 1794019931356
+    },
+    "2639|reddish brown": {
+      "p": "2639",
+      "c": "Reddish Brown",
+      "d": "Plate 4 x 4 Corner",
+      "e": "6397609",
+      "u": 1794020147488
+    },
+    "2639|red": {
+      "p": "2639",
+      "c": "Red",
+      "d": "Plate 4 x 4 Corner",
+      "e": "4162770",
+      "u": 1794020147488
     }
   },
   "partKinds": {
@@ -634037,7 +634089,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T02:54:58.387Z"
+      "at": "2026-11-07T02:55:51.590Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -634067,7 +634119,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T02:54:58.386Z",
+    "savedAt": "2026-11-07T02:55:51.590Z",
     "appVersion": "2026.11.05.1"
   }
 }
