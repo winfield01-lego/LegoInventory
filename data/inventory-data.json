@@ -460339,7 +460339,7 @@
       "label": "J44",
       "notes": "Curved Wedge - Left and Right - 10 x 3 and 12 x 3",
       "group": "j",
-      "lastEdited": "2026-11-07T19:41:29.934Z"
+      "lastEdited": "2026-11-07T19:41:57.685Z"
     },
     {
       "id": "T9",
@@ -497700,6 +497700,31 @@
       "drawerId": "J44",
       "partNum": "42061",
       "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "J44",
+      "partNum": "42060",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "J44",
+      "partNum": "42060",
+      "color": "Light Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "J44",
+      "partNum": "42060",
+      "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "J44",
+      "partNum": "42060",
+      "color": "White",
+      "elementId": "4162779",
       "qty": 1
     }
   ],
@@ -544224,7 +544249,10 @@
       "c": "White",
       "d": "Wedge Curved 12 x 3 Right",
       "e": "6021071",
-      "u": 1791916924851
+      "u": 1794080518887,
+      "ea": [
+        "4162779"
+      ]
     },
     "47753|white": {
       "p": "47753",
@@ -635714,6 +635742,27 @@
       "d": "Brick Wedged, Curved 12 x 3 Left",
       "e": "4177394",
       "u": 1794080491136
+    },
+    "42060|blue": {
+      "p": "42060",
+      "c": "Blue",
+      "d": "Brick Wedged, Curved 12 x 3 Right",
+      "e": "4177385",
+      "u": 1794080518887
+    },
+    "42060|light bluish gray": {
+      "p": "42060",
+      "c": "Light Bluish Gray",
+      "d": "Brick Wedged, Curved 12 x 3 Right",
+      "e": "4211781",
+      "u": 1794080518887
+    },
+    "42060|reddish brown": {
+      "p": "42060",
+      "c": "Reddish Brown",
+      "d": "Brick Wedged, Curved 12 x 3 Right",
+      "e": "4258081",
+      "u": 1794080518887
     }
   },
   "partKinds": {
@@ -640788,7 +640837,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:41:33.982Z"
+      "at": "2026-11-07T19:42:02.971Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640818,7 +640867,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:41:33.982Z",
+    "savedAt": "2026-11-07T19:42:02.971Z",
     "appVersion": "2026.11.05.1"
   }
 }
