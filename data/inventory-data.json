@@ -459305,7 +459305,7 @@
       "label": "G27",
       "notes": "4 x 4 x 2 Round Brick with Recess",
       "group": "G",
-      "lastEdited": "2026-11-07T00:11:48.923Z"
+      "lastEdited": "2026-11-07T00:12:39.529Z"
     },
     {
       "id": "G28",
@@ -494815,6 +494815,18 @@
       "partNum": "65138",
       "color": "Dark Bluish Gray",
       "qty": 2
+    },
+    {
+      "drawerId": "G27",
+      "partNum": "68325",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "G27",
+      "partNum": "68325",
+      "color": "Light Bluish Gray",
+      "qty": 9
     }
   ],
   "mocLocations": {
@@ -632714,7 +632726,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T00:11:52.954Z"
+      "at": "2026-11-07T00:12:43.569Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -632744,7 +632756,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T00:11:52.954Z",
+    "savedAt": "2026-11-07T00:12:43.569Z",
     "appVersion": "2026.11.05.1"
   }
 }
