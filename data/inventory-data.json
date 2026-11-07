@@ -462340,7 +462340,7 @@
       "label": "S2",
       "notes": "1 x 4 x 2 Spindled Fence",
       "group": "S",
-      "lastEdited": "2026-11-07T19:34:58.283Z"
+      "lastEdited": "2026-11-07T19:36:18.005Z"
     },
     {
       "id": "S3",
@@ -497541,6 +497541,30 @@
       "drawerId": "Q3",
       "partNum": "60592",
       "color": "Bright Light Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "S2",
+      "partNum": "15332",
+      "color": "Black",
+      "qty": 3
+    },
+    {
+      "drawerId": "S2",
+      "partNum": "15332",
+      "color": "White",
+      "qty": 5
+    },
+    {
+      "drawerId": "S2",
+      "partNum": "15332",
+      "color": "Reddish Brown",
+      "qty": 4
+    },
+    {
+      "drawerId": "S2",
+      "partNum": "15332",
+      "color": "Light Bluish Gray",
       "qty": 1
     }
   ],
@@ -635443,6 +635467,27 @@
       "d": "Window 1 x 2 x 2 Flat Front",
       "e": "6441765",
       "u": 1794080038958
+    },
+    "15332|black": {
+      "p": "15332",
+      "c": "Black",
+      "d": "Fence Spindled 1 x 4 x 2 [4 Top Studs]",
+      "e": "6066113",
+      "u": 1794080179207
+    },
+    "15332|white": {
+      "p": "15332",
+      "c": "White",
+      "d": "Fence Spindled 1 x 4 x 2 [4 Top Studs]",
+      "e": "6047813",
+      "u": 1794080179207
+    },
+    "15332|reddish brown": {
+      "p": "15332",
+      "c": "Reddish Brown",
+      "d": "Fence Spindled 1 x 4 x 2 [4 Top Studs]",
+      "e": "6066114",
+      "u": 1794080179207
     }
   },
   "partKinds": {
@@ -640517,7 +640562,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:35:02.321Z"
+      "at": "2026-11-07T19:36:22.039Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640547,7 +640592,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:35:02.321Z",
+    "savedAt": "2026-11-07T19:36:22.039Z",
     "appVersion": "2026.11.05.1"
   }
 }
