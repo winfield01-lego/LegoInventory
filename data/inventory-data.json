@@ -461717,7 +461717,7 @@
       "label": "O1",
       "notes": "4 x 4 and 3 x 4 Wedge with Cutouts",
       "group": "O",
-      "lastEdited": "2026-11-07T19:04:19.729Z"
+      "lastEdited": "2026-11-07T19:04:49.363Z"
     },
     {
       "id": "O2",
@@ -497132,6 +497132,30 @@
       "partNum": "47759",
       "color": "White",
       "elementId": "4622545",
+      "qty": 1
+    },
+    {
+      "drawerId": "O1",
+      "partNum": "93348",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "O1",
+      "partNum": "93348",
+      "color": "White",
+      "qty": 2
+    },
+    {
+      "drawerId": "O1",
+      "partNum": "93348",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "O1",
+      "partNum": "93348",
+      "color": "Yellow",
       "qty": 1
     }
   ],
@@ -634749,6 +634773,20 @@
       "d": "Brick Wedged, Sloped 45° 2 x 4 Triple",
       "e": "4518198",
       "u": 1794078197216
+    },
+    "93348|red": {
+      "p": "93348",
+      "c": "Red",
+      "d": "Brick Wedged, Sloped 4 x 4 Taper, with Stud Notches",
+      "e": "4639697",
+      "u": 1794078290564
+    },
+    "93348|yellow": {
+      "p": "93348",
+      "c": "Yellow",
+      "d": "Brick Wedged, Sloped 4 x 4 Taper, with Stud Notches",
+      "e": "4639696",
+      "u": 1794078290564
     }
   },
   "partKinds": {
@@ -639823,7 +639861,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:04:23.764Z"
+      "at": "2026-11-07T19:04:53.399Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -639853,7 +639891,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:04:23.764Z",
+    "savedAt": "2026-11-07T19:04:53.398Z",
     "appVersion": "2026.11.05.1"
   }
 }
