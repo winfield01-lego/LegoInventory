@@ -462362,7 +462362,7 @@
       "label": "S5",
       "notes": "Doors - Left and Right",
       "group": "S",
-      "lastEdited": "2026-11-07T20:12:51.895Z"
+      "lastEdited": "2026-11-07T20:13:40.563Z"
     },
     {
       "id": "S6",
@@ -497890,6 +497890,24 @@
       "partNum": "92589",
       "color": "Light Bluish Gray",
       "qty": 2
+    },
+    {
+      "drawerId": "S5",
+      "partNum": "6155",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "S5",
+      "partNum": "6155",
+      "color": "Light Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "S5",
+      "partNum": "6155",
+      "color": "White",
+      "qty": 6
     }
   ],
   "mocLocations": {
@@ -636017,6 +636035,27 @@
       "d": "Door 1 x 4 x 5",
       "e": "4521099",
       "u": 1794082353947
+    },
+    "6155|dark bluish gray": {
+      "p": "6155",
+      "c": "Dark Bluish Gray",
+      "d": "Door 1 x 4 x 4 Lift",
+      "e": "6267165",
+      "u": 1794082421765
+    },
+    "6155|light bluish gray": {
+      "p": "6155",
+      "c": "Light Bluish Gray",
+      "d": "Door 1 x 4 x 4 Lift",
+      "e": "4618324",
+      "u": 1794082421765
+    },
+    "6155|white": {
+      "p": "6155",
+      "c": "White",
+      "d": "Door 1 x 4 x 4 Lift",
+      "e": "4262006",
+      "u": 1794082421765
     }
   },
   "partKinds": {
@@ -641091,7 +641130,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T20:12:55.917Z"
+      "at": "2026-11-07T20:13:44.602Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -641121,7 +641160,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T20:12:55.917Z",
+    "savedAt": "2026-11-07T20:13:44.602Z",
     "appVersion": "2026.11.05.1"
   }
 }
