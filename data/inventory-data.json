@@ -460678,7 +460678,7 @@
       "label": "K28",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-11-07T05:32:23.669Z"
+      "lastEdited": "2026-11-07T05:35:18.464Z"
     },
     {
       "id": "K29",
@@ -496495,6 +496495,13 @@
       "partNum": "2852",
       "color": "Light Bluish Gray",
       "qty": 15
+    },
+    {
+      "drawerId": "K28",
+      "partNum": "2850a",
+      "color": "Light Bluish Gray",
+      "elementId": "",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -630201,6 +630208,13 @@
       "d": "Technic Engine Connecting Rod",
       "e": "2852194",
       "u": 1794029544871
+    },
+    "2850a|light bluish gray": {
+      "p": "2850a",
+      "c": "Light Bluish Gray",
+      "d": "Technic Engine Cylinder with Side Slots",
+      "e": "",
+      "u": 1794029719666
     }
   },
   "partKinds": {
@@ -635275,7 +635289,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:32:27.704Z"
+      "at": "2026-11-07T05:35:22.504Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635305,7 +635319,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:32:27.704Z",
+    "savedAt": "2026-11-07T05:35:22.504Z",
     "appVersion": "2026.11.05.1"
   }
 }
