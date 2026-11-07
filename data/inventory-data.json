@@ -462236,7 +462236,7 @@
       "label": "Q7",
       "notes": "10 x 10 Corner Wedge with Sutout - 4x 9 Double Wedge",
       "group": "Q",
-      "lastEdited": "2026-11-07T20:06:35.055Z"
+      "lastEdited": "2026-11-07T20:07:42.972Z"
     },
     {
       "id": "Q8",
@@ -497847,6 +497847,37 @@
       "partNum": "2401",
       "color": "Black",
       "qty": 3
+    },
+    {
+      "drawerId": "Q7",
+      "partNum": "14181",
+      "color": "Black",
+      "elementId": "6048849",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q7",
+      "partNum": "14181",
+      "color": "Dark Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q7",
+      "partNum": "14181",
+      "color": "Light Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "Q7",
+      "partNum": "14181",
+      "color": "White",
+      "qty": 2
+    },
+    {
+      "drawerId": "Q7",
+      "partNum": "14181",
+      "color": "Red",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -573386,9 +573417,12 @@
       "c": "Black",
       "d": "Wedge Plate 4 x 9 with Stud Notches",
       "e": "6290979",
-      "u": 1791916924851,
+      "u": 1794082064175,
       "at": 1791654687645,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6048849.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6048849.jpg",
+      "ea": [
+        "6048849"
+      ]
     },
     "30355|black": {
       "p": "30355",
@@ -635950,6 +635984,20 @@
       "d": "Wedge Plate 10 x 10 Cut Corner [No Centre Studs]",
       "e": "6408298",
       "u": 1794081114829
+    },
+    "14181|dark blue": {
+      "p": "14181",
+      "c": "Dark Blue",
+      "d": "Wedge Plate 4 x 9 with Stud Notches",
+      "e": "6483524",
+      "u": 1794082064175
+    },
+    "14181|red": {
+      "p": "14181",
+      "c": "Red",
+      "d": "Wedge Plate 4 x 9 with Stud Notches",
+      "e": "6376885",
+      "u": 1794082064175
     }
   },
   "partKinds": {
@@ -641024,7 +641072,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T20:06:40.347Z"
+      "at": "2026-11-07T20:07:48.267Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -641054,7 +641102,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T20:06:40.347Z",
+    "savedAt": "2026-11-07T20:07:48.267Z",
     "appVersion": "2026.11.05.1"
   }
 }
