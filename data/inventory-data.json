@@ -460940,7 +460940,7 @@
       "label": "L24",
       "notes": "",
       "group": "L",
-      "lastEdited": "2026-11-07T02:12:11.590Z"
+      "lastEdited": "2026-11-07T02:44:41.866Z"
     },
     {
       "id": "L25",
@@ -495529,6 +495529,44 @@
       "color": "White",
       "elementId": "4569841",
       "qty": 5
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "88293",
+      "color": "Black",
+      "elementId": "4609397",
+      "qty": 1
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "88293",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "88293",
+      "color": "Medium Nougat",
+      "qty": 1
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "88293",
+      "color": "Red",
+      "elementId": "4657913",
+      "qty": 1
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "88293",
+      "color": "Tan",
+      "qty": 5
+    },
+    {
+      "drawerId": "L24",
+      "partNum": "88293",
+      "color": "White",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -590859,9 +590897,12 @@
       "c": "Red",
       "d": "Brick Round Corner 3 x 3 x 2 Dome Top",
       "e": "6334053",
-      "u": 1791916924851,
+      "u": 1794019483067,
       "at": 1791654704338,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4657913.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4657913.jpg",
+      "ea": [
+        "4657913"
+      ]
     },
     "1871|red": {
       "p": "1871",
@@ -596790,9 +596831,12 @@
       "c": "Black",
       "d": "Brick Round Corner 3 x 3 x 2 Dome Top",
       "e": "6600749",
-      "u": 1791916924851,
+      "u": 1794019483067,
       "at": 1791654779264,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4609397.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4609397.jpg",
+      "ea": [
+        "4609397"
+      ]
     },
     "48092|black": {
       "p": "48092",
@@ -628744,6 +628788,20 @@
       "d": "Windscreen 6 x 4 x 1 1/3 with Hollow Studs",
       "e": "615226",
       "u": 1794019408799
+    },
+    "88293|medium nougat": {
+      "p": "88293",
+      "c": "Medium Nougat",
+      "d": "Brick Round Corner 3 x 3 x 2 Dome Top",
+      "e": "6468533",
+      "u": 1794019483067
+    },
+    "88293|tan": {
+      "p": "88293",
+      "c": "Tan",
+      "d": "Brick Round Corner 3 x 3 x 2 Dome Top",
+      "e": "6057435",
+      "u": 1794019483067
     }
   },
   "partKinds": {
@@ -633818,7 +633876,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T02:43:53.362Z"
+      "at": "2026-11-07T02:44:47.178Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -633848,7 +633906,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T02:43:53.362Z",
+    "savedAt": "2026-11-07T02:44:47.178Z",
     "appVersion": "2026.11.05.1"
   }
 }
