@@ -460671,7 +460671,7 @@
       "label": "K27",
       "notes": "Pin Hub with Axles",
       "group": "K",
-      "lastEdited": "2026-11-07T05:05:55.818Z"
+      "lastEdited": "2026-11-07T05:07:04.681Z"
     },
     {
       "id": "K28",
@@ -496021,6 +496021,42 @@
       "partNum": "41529",
       "color": "Light Bluish Gray",
       "qty": 1
+    },
+    {
+      "drawerId": "K27",
+      "partNum": "22961",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "K27",
+      "partNum": "22961",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "K27",
+      "partNum": "22961",
+      "color": "Dark Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "K27",
+      "partNum": "22961",
+      "color": "Light Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "K27",
+      "partNum": "22961",
+      "color": "Medium Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "K27",
+      "partNum": "22961",
+      "color": "White",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -629442,6 +629478,13 @@
       "d": "Hinge 1 x 3 Locking with 2 Fingers and Claw End, 9 Teeth",
       "e": "4211726",
       "u": 1794027922201
+    },
+    "22961|medium blue": {
+      "p": "22961",
+      "c": "Medium Blue",
+      "d": "Technic Pin Connector Hub with 1 Axle",
+      "e": "6373366",
+      "u": 1794028025884
     }
   },
   "partKinds": {
@@ -634516,7 +634559,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:05:59.860Z"
+      "at": "2026-11-07T05:07:08.724Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -634546,7 +634589,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:05:59.860Z",
+    "savedAt": "2026-11-07T05:07:08.724Z",
     "appVersion": "2026.11.05.1"
   }
 }
