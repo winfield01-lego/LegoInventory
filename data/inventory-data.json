@@ -459266,7 +459266,7 @@
       "label": "G21",
       "notes": "2 x 2 Dome",
       "group": "G",
-      "lastEdited": "2026-11-07T01:57:53.935Z"
+      "lastEdited": "2026-11-07T01:58:55.100Z"
     },
     {
       "id": "G22",
@@ -495076,6 +495076,12 @@
       "partNum": "3262",
       "color": "White",
       "qty": 15
+    },
+    {
+      "drawerId": "G21",
+      "partNum": "30367c",
+      "color": "Pearl Gold",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -627995,6 +628001,13 @@
       "d": "Brick Round 2 x 2 Dome Top, Vented Stud",
       "e": "6472019",
       "u": 1794016675138
+    },
+    "30367c|pearl gold": {
+      "p": "30367c",
+      "c": "Pearl Gold",
+      "d": "Brick Round 2 x 2 Dome Top, Hollow Stud",
+      "e": "4569316",
+      "u": 1794016736303
     }
   },
   "partKinds": {
@@ -633069,7 +633082,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T01:57:59.231Z"
+      "at": "2026-11-07T01:58:59.143Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -633099,7 +633112,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T01:57:59.231Z",
+    "savedAt": "2026-11-07T01:58:59.142Z",
     "appVersion": "2026.11.05.1"
   }
 }
