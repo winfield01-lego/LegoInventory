@@ -459210,7 +459210,7 @@
       "label": "G13",
       "notes": "2 x 2 Inverted Domes - With and Without Studs",
       "group": "G",
-      "lastEdited": "2026-11-07T01:53:28.951Z"
+      "lastEdited": "2026-11-07T01:54:10.501Z"
     },
     {
       "id": "G14",
@@ -494991,6 +494991,30 @@
       "partNum": "24947",
       "color": "Yellow",
       "qty": 2
+    },
+    {
+      "drawerId": "G13",
+      "partNum": "15395",
+      "color": "Black",
+      "qty": 2
+    },
+    {
+      "drawerId": "G13",
+      "partNum": "15395",
+      "color": "Flat Silver",
+      "qty": 4
+    },
+    {
+      "drawerId": "G13",
+      "partNum": "15395",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "G13",
+      "partNum": "15395",
+      "color": "White",
+      "qty": 9
     }
   ],
   "mocLocations": {
@@ -627861,6 +627885,13 @@
       "d": "Brick Round 2 x 2 x 1 1/3 Inverted",
       "e": "6145704",
       "u": 1794016410153
+    },
+    "15395|red": {
+      "p": "15395",
+      "c": "Red",
+      "d": "Brick Round 2 x 2 Dome Bottom [Open Stud]",
+      "e": "6065839",
+      "u": 1794016451703
     }
   },
   "partKinds": {
@@ -632935,7 +632966,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T01:53:33.016Z"
+      "at": "2026-11-07T01:54:14.551Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -632965,7 +632996,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T01:53:33.016Z",
+    "savedAt": "2026-11-07T01:54:14.551Z",
     "appVersion": "2026.11.05.1"
   }
 }
