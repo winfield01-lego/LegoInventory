@@ -460954,7 +460954,7 @@
       "label": "L26",
       "notes": "1 x 4 Plate - Dual Finger on Top or Side",
       "group": "L",
-      "lastEdited": "2026-11-07T02:07:01.397Z"
+      "lastEdited": "2026-11-07T02:07:58.067Z"
     },
     {
       "id": "L27",
@@ -495132,6 +495132,24 @@
       "partNum": "20952",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "L26",
+      "partNum": "44822",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "L26",
+      "partNum": "44822",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "L26",
+      "partNum": "44822",
+      "color": "White",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -628113,6 +628131,20 @@
       "d": "Brick Round 1.5 x 1.5 Dome Top [Plain]",
       "e": "6221783",
       "u": 1794017078201
+    },
+    "44822|dark bluish gray": {
+      "p": "44822",
+      "c": "Dark Bluish Gray",
+      "d": "Hinge Tile 1 x 4 Locking Dual 1 Fingers on Top [4 Locking Ridges]",
+      "e": "4193107",
+      "u": 1794017279269
+    },
+    "44822|light bluish gray": {
+      "p": "44822",
+      "c": "Light Bluish Gray",
+      "d": "Hinge Tile 1 x 4 Locking Dual 1 Fingers on Top [4 Locking Ridges]",
+      "e": "4193106",
+      "u": 1794017279269
     }
   },
   "partKinds": {
@@ -633187,7 +633219,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T02:07:05.445Z"
+      "at": "2026-11-07T02:08:02.105Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -633217,7 +633249,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T02:07:05.445Z",
+    "savedAt": "2026-11-07T02:08:02.105Z",
     "appVersion": "2026.11.05.1"
   }
 }
