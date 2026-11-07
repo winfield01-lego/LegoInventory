@@ -458847,7 +458847,7 @@
       "label": "F3",
       "notes": "Wider Gears",
       "group": "F",
-      "lastEdited": "2026-11-07T05:46:17.044Z"
+      "lastEdited": "2026-11-07T05:48:49.540Z"
     },
     {
       "id": "F4",
@@ -496597,6 +496597,18 @@
       "color": "White",
       "elementId": "3200101",
       "qty": 1
+    },
+    {
+      "drawerId": "F3",
+      "partNum": "3647",
+      "color": "Dark Bluish Gray",
+      "qty": 16
+    },
+    {
+      "drawerId": "F3",
+      "partNum": "3647",
+      "color": "Light Bluish Gray",
+      "qty": 14
     }
   ],
   "mocLocations": {
@@ -630357,6 +630369,20 @@
       "d": "Technic Plate 2 x 6 [5 Holes]",
       "e": "3200121",
       "u": 1794030104030
+    },
+    "3647|dark bluish gray": {
+      "p": "3647",
+      "c": "Dark Bluish Gray",
+      "d": "Technic Gear 8 Tooth",
+      "e": "4514559",
+      "u": 1794030530742
+    },
+    "3647|light bluish gray": {
+      "p": "3647",
+      "c": "Light Bluish Gray",
+      "d": "Technic Gear 8 Tooth",
+      "e": "3647194",
+      "u": 1794030530742
     }
   },
   "partKinds": {
@@ -635431,7 +635457,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:46:21.082Z"
+      "at": "2026-11-07T05:48:53.571Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635461,7 +635487,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:46:21.082Z",
+    "savedAt": "2026-11-07T05:48:53.571Z",
     "appVersion": "2026.11.05.1"
   }
 }
