@@ -528620,7 +528620,7 @@
           "color": "Green",
           "desc": "Plate Round 2 x 2 with Axle Hole Type 1 (+ Opening)",
           "elementId": "403228",
-          "qty": 1,
+          "qty": 2,
           "drawerId": "N41",
           "matchCount": 0,
           "suggested": false
@@ -532374,10 +532374,20 @@
           "drawerId": "I36",
           "matchCount": 0,
           "suggested": false
+        },
+        {
+          "partNum": "4032a",
+          "color": "Light Bluish Gray",
+          "desc": "Plate Round 2 x 2 with Axle Hole Type 1 (+ Opening)",
+          "elementId": "4211475",
+          "qty": 1,
+          "drawerId": "N41",
+          "matchCount": 0,
+          "suggested": false
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-07T18:24:01.830Z",
+      "savedAt": "2026-11-07T18:24:52.052Z",
       "moved": {
         "batches": 58,
         "pieces": 3244,
@@ -638715,7 +638725,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T18:24:05.875Z"
+      "at": "2026-11-07T18:24:56.089Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -638741,11 +638751,11 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-07T18:24:01.830Z",
+      "bags": "2026-11-07T18:24:52.052Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T18:24:05.875Z",
+    "savedAt": "2026-11-07T18:24:56.089Z",
     "appVersion": "2026.11.05.1"
   }
 }
