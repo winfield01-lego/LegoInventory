@@ -461752,7 +461752,7 @@
       "label": "O6",
       "notes": "4 x 3 Curve with Cutout",
       "group": "O",
-      "lastEdited": "2026-11-07T19:08:24.112Z"
+      "lastEdited": "2026-11-07T19:15:56.629Z"
     },
     {
       "id": "O7",
@@ -497226,6 +497226,18 @@
       "partNum": "11291",
       "color": "White",
       "elementId": "6019163",
+      "qty": 1
+    },
+    {
+      "drawerId": "O6",
+      "partNum": "50948",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "O6",
+      "partNum": "50948",
+      "color": "Lime",
       "qty": 1
     }
   ],
@@ -634890,6 +634902,20 @@
       "d": "Brick Wedged 3 x 4 [Stud Notches]",
       "e": "4264027",
       "u": 1794078312847
+    },
+    "50948|black": {
+      "p": "50948",
+      "c": "Black",
+      "d": "Brick Wedged, Curved 4 x 3 Recessed Back with Opening, Two Studs [Plain]",
+      "e": "4248537",
+      "u": 1794078957833
+    },
+    "50948|lime": {
+      "p": "50948",
+      "c": "Lime",
+      "d": "Brick Wedged, Curved 4 x 3 Recessed Back with Opening, Two Studs [Plain]",
+      "e": "4567882",
+      "u": 1794078957833
     }
   },
   "partKinds": {
@@ -639964,7 +639990,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:08:28.142Z"
+      "at": "2026-11-07T19:16:00.675Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -639994,7 +640020,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:08:28.142Z",
+    "savedAt": "2026-11-07T19:16:00.675Z",
     "appVersion": "2026.11.05.1"
   }
 }
