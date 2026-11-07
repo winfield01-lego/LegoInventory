@@ -459242,7 +459242,7 @@
       "label": "G18",
       "notes": "6 x 1 Curved - Inverted",
       "group": "G",
-      "lastEdited": "2026-11-07T00:02:26.861Z"
+      "lastEdited": "2026-11-07T00:03:21.321Z"
     },
     {
       "id": "G19",
@@ -494624,6 +494624,56 @@
       "partNum": "42022",
       "color": "White",
       "qty": 6
+    },
+    {
+      "drawerId": "G18",
+      "partNum": "42023",
+      "color": "Black",
+      "elementId": "4160409",
+      "qty": 3
+    },
+    {
+      "drawerId": "G18",
+      "partNum": "42023",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "G18",
+      "partNum": "42023",
+      "color": "Dark Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "G18",
+      "partNum": "42023",
+      "color": "Light Bluish Gray",
+      "elementId": "4211731",
+      "qty": 1
+    },
+    {
+      "drawerId": "G18",
+      "partNum": "42023",
+      "color": "Medium Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "G18",
+      "partNum": "42023",
+      "color": "Reddish Brown",
+      "qty": 4
+    },
+    {
+      "drawerId": "G18",
+      "partNum": "42023",
+      "color": "White",
+      "qty": 2
+    },
+    {
+      "drawerId": "G18",
+      "partNum": "42023",
+      "color": "Yellow",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -553900,9 +553950,12 @@
       "c": "Light Bluish Gray",
       "d": "Brick Curved Inverted 6 x 1",
       "e": "6132260",
-      "u": 1791916924851,
+      "u": 1794009802524,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4211731.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4211731.jpg",
+      "ea": [
+        "4211731"
+      ]
     },
     "22889|light bluish gray": {
       "p": "22889",
@@ -575496,9 +575549,12 @@
       "c": "Black",
       "d": "Brick Curved Inverted 6 x 1",
       "e": "6112323",
-      "u": 1791916924851,
+      "u": 1794009802524,
       "at": 1791654779264,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4160409.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4160409.jpg",
+      "ea": [
+        "4160409"
+      ]
     },
     "23949|dark red": {
       "p": "23949",
@@ -627326,6 +627382,34 @@
       "d": "Brick Curved 6 x 1",
       "e": "4160392",
       "u": 1794009703322
+    },
+    "42023|blue": {
+      "p": "42023",
+      "c": "Blue",
+      "d": "Brick Curved Inverted 6 x 1",
+      "e": "4160407",
+      "u": 1794009802524
+    },
+    "42023|medium blue": {
+      "p": "42023",
+      "c": "Medium Blue",
+      "d": "Brick Curved Inverted 6 x 1",
+      "e": "4160415",
+      "u": 1794009802524
+    },
+    "42023|reddish brown": {
+      "p": "42023",
+      "c": "Reddish Brown",
+      "d": "Brick Curved Inverted 6 x 1",
+      "e": "4224733",
+      "u": 1794009802524
+    },
+    "42023|yellow": {
+      "p": "42023",
+      "c": "Yellow",
+      "d": "Brick Curved Inverted 6 x 1",
+      "e": "4160408",
+      "u": 1794009802524
     }
   },
   "partKinds": {
@@ -632400,7 +632484,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T00:02:30.900Z"
+      "at": "2026-11-07T00:03:26.618Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -632430,7 +632514,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T00:02:30.900Z",
+    "savedAt": "2026-11-07T00:03:26.618Z",
     "appVersion": "2026.11.05.1"
   }
 }
