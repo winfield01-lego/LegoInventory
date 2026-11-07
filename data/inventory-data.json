@@ -458959,7 +458959,7 @@
       "label": "F19",
       "notes": "1/2 Technic Pin",
       "group": "F",
-      "lastEdited": "2026-11-07T06:29:54.363Z"
+      "lastEdited": "2026-11-07T06:31:06.059Z"
     },
     {
       "id": "F20",
@@ -496849,6 +496849,18 @@
       "partNum": "32062",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "F19",
+      "partNum": "89678",
+      "color": "Dark Bluish Gray",
+      "qty": 27
+    },
+    {
+      "drawerId": "F19",
+      "partNum": "89678",
+      "color": "Red",
+      "qty": 42
     }
   ],
   "mocLocations": {
@@ -635846,7 +635858,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T06:29:58.405Z"
+      "at": "2026-11-07T06:31:10.095Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635876,7 +635888,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T06:29:58.405Z",
+    "savedAt": "2026-11-07T06:31:10.095Z",
     "appVersion": "2026.11.05.1"
   }
 }
