@@ -461073,7 +461073,7 @@
       "label": "L43",
       "notes": "Girders",
       "group": "L",
-      "lastEdited": "2026-11-07T02:49:13.535Z"
+      "lastEdited": "2026-11-07T02:50:17.470Z"
     },
     {
       "id": "L44",
@@ -495617,6 +495617,20 @@
       "partNum": "42918",
       "color": "Black",
       "qty": 2
+    },
+    {
+      "drawerId": "L43",
+      "partNum": "95347",
+      "color": "Black",
+      "elementId": "4503258",
+      "qty": 3
+    },
+    {
+      "drawerId": "L43",
+      "partNum": "95347",
+      "color": "Yellow",
+      "elementId": "4501459",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -586666,8 +586680,11 @@
       "c": "Black",
       "d": "Support 2 x 2 x 10 Girder Triangular Vertical - Type 4 - 3 Posts, 3 Sections",
       "e": "6470981",
-      "u": 1791916924851,
-      "at": 1791654642651
+      "u": 1794019818673,
+      "at": 1791654642651,
+      "ea": [
+        "4503258"
+      ]
     },
     "3068bpr9348|black": {
       "p": "3068bpr9348",
@@ -596538,8 +596555,11 @@
       "c": "Yellow",
       "d": "Support 2 x 2 x 10 Girder Triangular Vertical - Type 4 - 3 Posts, 3 Sections",
       "e": "6074687",
-      "u": 1791916924851,
-      "at": 1791654768078
+      "u": 1794019818673,
+      "at": 1791654768078,
+      "ea": [
+        "4501459"
+      ]
     },
     "98284|black": {
       "p": "98284",
@@ -633939,7 +633959,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T02:49:17.574Z"
+      "at": "2026-11-07T02:50:21.512Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -633969,7 +633989,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T02:49:17.574Z",
+    "savedAt": "2026-11-07T02:50:21.512Z",
     "appVersion": "2026.11.05.1"
   }
 }
