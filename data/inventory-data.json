@@ -462200,7 +462200,7 @@
       "label": "P6",
       "notes": "2 x 4 Mudguard",
       "group": "P",
-      "lastEdited": "2026-11-07T19:26:25.118Z"
+      "lastEdited": "2026-11-07T19:28:06.011Z"
     },
     {
       "id": "P7",
@@ -497430,6 +497430,44 @@
       "partNum": "62361",
       "color": "White",
       "elementId": "4523556",
+      "qty": 3
+    },
+    {
+      "drawerId": "P6",
+      "partNum": "60212",
+      "color": "Black",
+      "elementId": "4518608",
+      "qty": 21
+    },
+    {
+      "drawerId": "P6",
+      "partNum": "60212",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "P6",
+      "partNum": "60212",
+      "color": "Medium Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "P6",
+      "partNum": "60212",
+      "color": "Red",
+      "elementId": "4518231",
+      "qty": 12
+    },
+    {
+      "drawerId": "P6",
+      "partNum": "60212",
+      "color": "Yellow",
+      "qty": 4
+    },
+    {
+      "drawerId": "P6",
+      "partNum": "60212",
+      "color": "White",
       "qty": 3
     }
   ],
@@ -541434,9 +541472,12 @@
       "c": "Black",
       "d": "Wheel Arch, Mudguard 2 x 4 Studded with Hole",
       "e": "4600178",
-      "u": 1791916924851,
+      "u": 1794079687213,
       "at": 1791654816894,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4518608.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4518608.jpg",
+      "ea": [
+        "4518608"
+      ]
     },
     "92947|dark bluish gray": {
       "p": "92947",
@@ -572242,9 +572283,12 @@
       "c": "Red",
       "d": "Wheel Arch, Mudguard 2 x 4 Studded with Hole",
       "e": "4600176",
-      "u": 1791916924851,
+      "u": 1794079687213,
       "at": 1791654338255,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4518231.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4518231.jpg",
+      "ea": [
+        "4518231"
+      ]
     },
     "3937|reddish brown": {
       "p": "3937",
@@ -635225,6 +635269,34 @@
       "d": "Engine / Air Scoop 2 x 2",
       "e": "6076604",
       "u": 1794079445081
+    },
+    "60212|blue": {
+      "p": "60212",
+      "c": "Blue",
+      "d": "Wheel Arch, Mudguard 2 x 4 Studded with Hole",
+      "e": "4518605",
+      "u": 1794079687213
+    },
+    "60212|medium blue": {
+      "p": "60212",
+      "c": "Medium Blue",
+      "d": "Wheel Arch, Mudguard 2 x 4 Studded with Hole",
+      "e": "4616698",
+      "u": 1794079687213
+    },
+    "60212|yellow": {
+      "p": "60212",
+      "c": "Yellow",
+      "d": "Wheel Arch, Mudguard 2 x 4 Studded with Hole",
+      "e": "4518607",
+      "u": 1794079687213
+    },
+    "60212|white": {
+      "p": "60212",
+      "c": "White",
+      "d": "Wheel Arch, Mudguard 2 x 4 Studded with Hole",
+      "e": "378801",
+      "u": 1794079687213
     }
   },
   "partKinds": {
@@ -640299,7 +640371,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:26:29.153Z"
+      "at": "2026-11-07T19:28:11.294Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640329,7 +640401,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:26:29.153Z",
+    "savedAt": "2026-11-07T19:28:11.294Z",
     "appVersion": "2026.11.05.1"
   }
 }
