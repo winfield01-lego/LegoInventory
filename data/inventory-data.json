@@ -460135,7 +460135,7 @@
       "label": "J13",
       "notes": "Claws",
       "group": "j",
-      "lastEdited": "2026-10-30T04:34:19.546Z"
+      "lastEdited": "2026-11-07T18:53:38.050Z"
     },
     {
       "id": "J14",
@@ -496986,6 +496986,18 @@
       "partNum": "6558",
       "color": "Black",
       "qty": 186
+    },
+    {
+      "drawerId": "J13",
+      "partNum": "48267",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "J13",
+      "partNum": "48267",
+      "color": "Lime",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -634491,6 +634503,13 @@
       "d": "Technic Pin Long without Friction Ridges, with Anti-Roll Notch",
       "e": "6569663",
       "u": 1794034109879
+    },
+    "48267|lime": {
+      "p": "48267",
+      "c": "Lime",
+      "d": "Technic Tooth 1 x 3 with Axle Hole [Hollow Underside]",
+      "e": "6322197",
+      "u": 1794077619252
     }
   },
   "partKinds": {
@@ -639565,7 +639584,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T18:48:36.191Z"
+      "at": "2026-11-07T18:53:42.085Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -639595,7 +639614,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T18:48:36.191Z",
+    "savedAt": "2026-11-07T18:53:42.085Z",
     "appVersion": "2026.11.05.1"
   }
 }
