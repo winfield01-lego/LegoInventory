@@ -461752,7 +461752,7 @@
       "label": "O6",
       "notes": "4 x 3 Curve with Cutout",
       "group": "O",
-      "lastEdited": "2026-11-07T19:08:05.846Z"
+      "lastEdited": "2026-11-07T19:08:24.112Z"
     },
     {
       "id": "O7",
@@ -497219,6 +497219,13 @@
       "partNum": "47755",
       "color": "Light Bluish Gray",
       "elementId": "6005667",
+      "qty": 1
+    },
+    {
+      "drawerId": "O6",
+      "partNum": "11291",
+      "color": "White",
+      "elementId": "6019163",
       "qty": 1
     }
   ],
@@ -580682,8 +580689,11 @@
       "c": "White",
       "d": "Brick Wedged, Curved 3 x 4 x 2/3 Cutout",
       "e": "6179658",
-      "u": 1791916924851,
-      "at": 1791654731050
+      "u": 1794078505314,
+      "at": 1791654731050,
+      "ea": [
+        "6019163"
+      ]
     },
     "92280|white": {
       "p": "92280",
@@ -639954,7 +639964,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:08:11.151Z"
+      "at": "2026-11-07T19:08:28.142Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -639984,7 +639994,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:08:11.151Z",
+    "savedAt": "2026-11-07T19:08:28.142Z",
     "appVersion": "2026.11.05.1"
   }
 }
