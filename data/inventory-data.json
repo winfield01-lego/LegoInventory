@@ -458896,7 +458896,7 @@
       "label": "F10",
       "notes": "1 x 5 and 1 x 6 Plate with rounded ends",
       "group": "F",
-      "lastEdited": "2026-11-07T06:03:18.642Z"
+      "lastEdited": "2026-11-07T06:03:43.888Z"
     },
     {
       "id": "F11",
@@ -496755,6 +496755,12 @@
       "partNum": "32124",
       "color": "White",
       "qty": 6
+    },
+    {
+      "drawerId": "F10",
+      "partNum": "4442",
+      "color": "Black",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -630617,6 +630623,13 @@
       "d": "Technic Plate 1 x 5 with Smooth Ends, 4 Studs and Centre Axle Hole",
       "e": "6236777",
       "u": 1794031373573
+    },
+    "4442|black": {
+      "p": "4442",
+      "c": "Black",
+      "d": "Technic Plate 1 x 8 with Toothed Ends",
+      "e": "444226",
+      "u": 1794031425090
     }
   },
   "partKinds": {
@@ -635691,7 +635704,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T06:03:22.666Z"
+      "at": "2026-11-07T06:03:47.922Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635721,7 +635734,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T06:03:22.666Z",
+    "savedAt": "2026-11-07T06:03:47.922Z",
     "appVersion": "2026.11.05.1"
   }
 }
