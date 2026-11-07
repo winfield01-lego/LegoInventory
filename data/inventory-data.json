@@ -458945,7 +458945,7 @@
       "label": "F17",
       "notes": "Technic Plate 1 x 3 and 1 x 4 Rounded",
       "group": "F",
-      "lastEdited": "2026-11-07T06:10:23.908Z"
+      "lastEdited": "2026-11-07T06:10:54.459Z"
     },
     {
       "id": "F18",
@@ -496831,6 +496831,24 @@
       "color": "White",
       "elementId": "6450820",
       "qty": 3
+    },
+    {
+      "drawerId": "F17",
+      "partNum": "77845",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "F17",
+      "partNum": "77845",
+      "color": "Light Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "F17",
+      "partNum": "77845",
+      "color": "Reddish Brown",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -635791,7 +635809,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T06:10:29.219Z"
+      "at": "2026-11-07T06:10:58.499Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635821,7 +635839,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T06:10:29.219Z",
+    "savedAt": "2026-11-07T06:10:58.499Z",
     "appVersion": "2026.11.05.1"
   }
 }
