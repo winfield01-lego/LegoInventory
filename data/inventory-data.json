@@ -460601,7 +460601,7 @@
       "label": "K17",
       "notes": "2 x 2 Plate - With Pins",
       "group": "K",
-      "lastEdited": "2026-11-07T05:14:01.529Z"
+      "lastEdited": "2026-11-07T05:15:28.661Z"
     },
     {
       "id": "K18",
@@ -496174,6 +496174,55 @@
       "color": "White",
       "elementId": "4170326",
       "qty": 3
+    },
+    {
+      "drawerId": "K17",
+      "partNum": "2460",
+      "color": "Black",
+      "elementId": "246026",
+      "qty": 6
+    },
+    {
+      "drawerId": "K17",
+      "partNum": "2460",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "K17",
+      "partNum": "2460",
+      "color": "Dark Bluish Gray",
+      "qty": 5
+    },
+    {
+      "drawerId": "K17",
+      "partNum": "2460",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "K17",
+      "partNum": "2460",
+      "color": "Red",
+      "qty": 4
+    },
+    {
+      "drawerId": "K17",
+      "partNum": "2460",
+      "color": "White",
+      "qty": 4
+    },
+    {
+      "drawerId": "K17",
+      "partNum": "2460",
+      "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "K17",
+      "partNum": "2460",
+      "color": "Brown",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -597718,8 +597767,11 @@
       "c": "Black",
       "d": "Tile Special 2 x 2 with Top Pin",
       "e": "4258354",
-      "u": 1791916924851,
-      "at": 1791846548975
+      "u": 1794028529863,
+      "at": 1791846548975,
+      "ea": [
+        "246026"
+      ]
     },
     "4085c|blue": {
       "p": "4085c",
@@ -629674,6 +629726,34 @@
       "d": "Plate Special 2 x 2 with Pin on Bottom",
       "e": "247623",
       "u": 1794028442731
+    },
+    "2460|blue": {
+      "p": "2460",
+      "c": "Blue",
+      "d": "Tile Special 2 x 2 with Top Pin",
+      "e": "246023",
+      "u": 1794028529863
+    },
+    "2460|red": {
+      "p": "2460",
+      "c": "Red",
+      "d": "Tile Special 2 x 2 with Top Pin",
+      "e": "246021",
+      "u": 1794028529863
+    },
+    "2460|yellow": {
+      "p": "2460",
+      "c": "Yellow",
+      "d": "Tile Special 2 x 2 with Top Pin",
+      "e": "246024",
+      "u": 1794028529863
+    },
+    "2460|brown": {
+      "p": "2460",
+      "c": "Brown",
+      "d": "Tile Special 2 x 2 with Top Pin",
+      "e": "246025",
+      "u": 1794028529863
     }
   },
   "partKinds": {
@@ -634748,7 +634828,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:14:06.828Z"
+      "at": "2026-11-07T05:15:32.701Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -634778,7 +634858,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:14:06.828Z",
+    "savedAt": "2026-11-07T05:15:32.701Z",
     "appVersion": "2026.11.05.1"
   }
 }
