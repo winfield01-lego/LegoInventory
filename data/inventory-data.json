@@ -460678,7 +460678,7 @@
       "label": "K28",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-11-07T05:35:18.464Z"
+      "lastEdited": "2026-11-07T05:35:58.163Z"
     },
     {
       "id": "K29",
@@ -496502,6 +496502,18 @@
       "color": "Light Bluish Gray",
       "elementId": "",
       "qty": 2
+    },
+    {
+      "drawerId": "K28",
+      "partNum": "2850b",
+      "color": "Light Bluish Gray",
+      "qty": 8
+    },
+    {
+      "drawerId": "K28",
+      "partNum": "2850b",
+      "color": "Trans-Clear",
+      "qty": 8
     }
   ],
   "mocLocations": {
@@ -630215,6 +630227,20 @@
       "d": "Technic Engine Cylinder with Side Slots",
       "e": "",
       "u": 1794029719666
+    },
+    "2850b|light bluish gray": {
+      "p": "2850b",
+      "c": "Light Bluish Gray",
+      "d": "Technic Engine Cylinder without Side Slots, with Bottom Slots",
+      "e": "4234251",
+      "u": 1794029759365
+    },
+    "2850b|trans clear": {
+      "p": "2850b",
+      "c": "Trans-Clear",
+      "d": "Technic Engine Cylinder without Side Slots, with Bottom Slots",
+      "e": "6353017",
+      "u": 1794029759365
     }
   },
   "partKinds": {
@@ -635289,7 +635315,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:35:22.504Z"
+      "at": "2026-11-07T05:36:02.212Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635319,7 +635345,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:35:22.504Z",
+    "savedAt": "2026-11-07T05:36:02.212Z",
     "appVersion": "2026.11.05.1"
   }
 }
