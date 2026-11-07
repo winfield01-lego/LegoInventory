@@ -461493,7 +461493,7 @@
       "label": "N13",
       "notes": "1 x 4 Offset with 2 Rings and 1 x 2 with 3L Space Wing",
       "group": "N",
-      "lastEdited": "2026-11-07T19:20:21.079Z"
+      "lastEdited": "2026-11-07T19:21:16.146Z"
     },
     {
       "id": "N14",
@@ -497331,6 +497331,39 @@
       "color": "White",
       "elementId": "459601",
       "qty": 1
+    },
+    {
+      "drawerId": "N13",
+      "partNum": "4590",
+      "color": "Black",
+      "elementId": "4277164",
+      "qty": 5
+    },
+    {
+      "drawerId": "N13",
+      "partNum": "4590",
+      "color": "Blue",
+      "elementId": "4113128",
+      "qty": 5
+    },
+    {
+      "drawerId": "N13",
+      "partNum": "4590",
+      "color": "Dark Bluish Gray",
+      "elementId": "4217558",
+      "qty": 1
+    },
+    {
+      "drawerId": "N13",
+      "partNum": "4590",
+      "color": "Medium Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "N13",
+      "partNum": "4590",
+      "color": "Light Gray",
+      "qty": 12
     }
   ],
   "mocLocations": {
@@ -545666,9 +545699,12 @@
       "c": "Black",
       "d": "Plate Special 1 x 4 Offset with Bar Holes",
       "e": "6002559",
-      "u": 1791916924851,
+      "u": 1794079277347,
       "at": 1791846548975,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/459026.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/459026.jpg",
+      "ea": [
+        "4277164"
+      ]
     },
     "4510|black": {
       "p": "4510",
@@ -550971,8 +551007,11 @@
       "c": "Blue",
       "d": "Plate Special 1 x 4 Offset with Bar Holes",
       "e": "4541292",
-      "u": 1791916924851,
-      "at": 1791660732205
+      "u": 1794079277347,
+      "at": 1791660732205,
+      "ea": [
+        "4113128"
+      ]
     },
     "3298pr0013|black": {
       "p": "3298pr0013",
@@ -560193,9 +560232,12 @@
       "c": "Dark Bluish Gray",
       "d": "Plate Special 1 x 4 Offset with Bar Holes",
       "e": "6302647",
-      "u": 1791916924851,
+      "u": 1794079277347,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4217558.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4217558.jpg",
+      "ea": [
+        "4217558"
+      ]
     },
     "10247|dark bluish gray": {
       "p": "10247",
@@ -635064,6 +635106,13 @@
       "d": "Plate Special 1 x 2 with Long Stud Receptacle (Space Wing)",
       "e": "",
       "u": 1794079222281
+    },
+    "4590|medium blue": {
+      "p": "4590",
+      "c": "Medium Blue",
+      "d": "Plate Special 1 x 4 Offset with Bar Holes",
+      "e": "6185356",
+      "u": 1794079277347
     }
   },
   "partKinds": {
@@ -640138,7 +640187,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:20:26.374Z"
+      "at": "2026-11-07T19:21:21.426Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640168,7 +640217,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:20:26.374Z",
+    "savedAt": "2026-11-07T19:21:21.425Z",
     "appVersion": "2026.11.05.1"
   }
 }
