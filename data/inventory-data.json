@@ -462572,7 +462572,7 @@
       "label": "Q5",
       "notes": "6 x 6, 8 x 8, 10 x 10 45 degree Corner Plates",
       "group": "Q",
-      "lastEdited": "2026-11-07T19:50:42.110Z"
+      "lastEdited": "2026-11-07T19:51:40.076Z"
     },
     {
       "id": "Q6",
@@ -497762,6 +497762,31 @@
       "partNum": "6106",
       "color": "Light Bluish Gray",
       "qty": 1
+    },
+    {
+      "drawerId": "Q5",
+      "partNum": "30504",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q5",
+      "partNum": "30504",
+      "color": "Dark Blue",
+      "elementId": "6003093",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q5",
+      "partNum": "30504",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q5",
+      "partNum": "30504",
+      "color": "Light Bluish Gray",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -582350,9 +582375,12 @@
       "c": "Dark Blue",
       "d": "Wedge Plate 8 x 8 Cut Corner",
       "e": "6351760",
-      "u": 1791916924851,
+      "u": 1794081101278,
       "at": 1791654487845,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6003093.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6003093.jpg",
+      "ea": [
+        "6003093"
+      ]
     },
     "18759|dark bluish gray": {
       "p": "18759",
@@ -635820,6 +635848,13 @@
       "d": "Aircraft Fuselage Curved Forward 6 x 10 Bottom",
       "e": "4625366",
       "u": 1794080973100
+    },
+    "30504|dark bluish gray": {
+      "p": "30504",
+      "c": "Dark Bluish Gray",
+      "d": "Wedge Plate 8 x 8 Cut Corner",
+      "e": "4210956",
+      "u": 1794081101278
     }
   },
   "partKinds": {
@@ -640894,7 +640929,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:50:46.147Z"
+      "at": "2026-11-07T19:51:45.367Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640924,7 +640959,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:50:46.147Z",
+    "savedAt": "2026-11-07T19:51:45.367Z",
     "appVersion": "2026.11.05.1"
   }
 }
