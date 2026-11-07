@@ -461822,7 +461822,7 @@
       "label": "O16",
       "notes": "2 x 2 and 4 x 4 Double Slope",
       "group": "O",
-      "lastEdited": "2026-11-07T19:17:36.222Z"
+      "lastEdited": "2026-11-07T19:18:06.912Z"
     },
     {
       "id": "O17",
@@ -497267,6 +497267,25 @@
       "color": "Red",
       "elementId": "347921",
       "qty": 2
+    },
+    {
+      "drawerId": "O16",
+      "partNum": "3300",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "O16",
+      "partNum": "3300",
+      "color": "Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "O16",
+      "partNum": "3300",
+      "color": "White",
+      "elementId": "330001",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -583415,9 +583434,12 @@
       "c": "White",
       "d": "Brick Sloped 33° 2 x 2 Double",
       "e": "4578606",
-      "u": 1791916924851,
+      "u": 1794079088115,
       "at": 1791732118013,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/330001.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/330001.jpg",
+      "ea": [
+        "330001"
+      ]
     },
     "4861|white": {
       "p": "4861",
@@ -634956,6 +634978,13 @@
       "d": "Brick Wedged, Curved 4 x 3 Recessed Back with Opening, Two Studs [Plain]",
       "e": "4567882",
       "u": 1794078957833
+    },
+    "3300|blue": {
+      "p": "3300",
+      "c": "Blue",
+      "d": "Brick Sloped 33° 2 x 2 Double",
+      "e": "330023",
+      "u": 1794079088115
     }
   },
   "partKinds": {
@@ -640030,7 +640059,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:17:40.258Z"
+      "at": "2026-11-07T19:18:12.204Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640060,7 +640089,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:17:40.258Z",
+    "savedAt": "2026-11-07T19:18:12.204Z",
     "appVersion": "2026.11.05.1"
   }
 }
