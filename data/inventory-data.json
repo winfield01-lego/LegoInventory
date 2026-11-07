@@ -462572,7 +462572,7 @@
       "label": "Q5",
       "notes": "6 x 6, 8 x 8, 10 x 10 45 degree Corner Plates",
       "group": "Q",
-      "lastEdited": "2026-11-07T19:50:15.494Z"
+      "lastEdited": "2026-11-07T19:50:42.110Z"
     },
     {
       "id": "Q6",
@@ -497756,6 +497756,12 @@
       "partNum": "87611",
       "color": "Reddish Brown",
       "qty": 2
+    },
+    {
+      "drawerId": "Q5",
+      "partNum": "6106",
+      "color": "Light Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -640888,7 +640894,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:50:19.527Z"
+      "at": "2026-11-07T19:50:46.147Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640918,7 +640924,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:50:19.527Z",
+    "savedAt": "2026-11-07T19:50:46.147Z",
     "appVersion": "2026.11.05.1"
   }
 }
