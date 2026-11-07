@@ -460566,7 +460566,7 @@
       "label": "K12",
       "notes": "Axle End Connectors",
       "group": "K",
-      "lastEdited": "2026-11-07T05:27:12.186Z"
+      "lastEdited": "2026-11-07T05:27:56.236Z"
     },
     {
       "id": "K13",
@@ -496427,6 +496427,36 @@
       "partNum": "32126",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "K12",
+      "partNum": "42135",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "K12",
+      "partNum": "42135",
+      "color": "Dark Bluish Gray",
+      "qty": 5
+    },
+    {
+      "drawerId": "K12",
+      "partNum": "42135",
+      "color": "Light Bluish Gray",
+      "qty": 7
+    },
+    {
+      "drawerId": "K12",
+      "partNum": "42135",
+      "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "K12",
+      "partNum": "42135",
+      "color": "Yellow",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -630085,6 +630115,20 @@
       "d": "Technic Axle and Pin Connector Toggle Joint Smooth",
       "e": "6175556",
       "u": 1794029233388
+    },
+    "42135|white": {
+      "p": "42135",
+      "c": "White",
+      "d": "Technic Axle Connector with Axle Hole [Reinforced]",
+      "e": "6375684",
+      "u": 1794029277437
+    },
+    "42135|yellow": {
+      "p": "42135",
+      "c": "Yellow",
+      "d": "Technic Axle Connector with Axle Hole [Reinforced]",
+      "e": "6375678",
+      "u": 1794029277437
     }
   },
   "partKinds": {
@@ -635159,7 +635203,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:27:17.467Z"
+      "at": "2026-11-07T05:28:00.278Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635189,7 +635233,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:27:17.467Z",
+    "savedAt": "2026-11-07T05:28:00.278Z",
     "appVersion": "2026.11.05.1"
   }
 }
