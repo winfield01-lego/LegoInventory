@@ -458993,7 +458993,7 @@
       "label": "F24",
       "notes": "",
       "group": "F",
-      "lastEdited": "2026-11-07T06:14:19.608Z"
+      "lastEdited": "2026-11-07T06:14:56.794Z"
     },
     {
       "id": "F25",
@@ -496889,6 +496889,13 @@
       "partNum": "87407",
       "color": "Light Bluish Gray",
       "qty": 1
+    },
+    {
+      "drawerId": "F24",
+      "partNum": "3650b",
+      "color": "Light Gray",
+      "elementId": "",
+      "qty": 6
     }
   ],
   "mocLocations": {
@@ -630795,6 +630802,13 @@
       "d": "Technic Gear 12 Tooth Bevel",
       "e": "4211539",
       "u": 1794032041893
+    },
+    "3650b|light gray": {
+      "p": "3650b",
+      "c": "Light Gray",
+      "d": "Technic Gear 24 Tooth Crown with Pointed Teeth",
+      "e": "",
+      "u": 1794032097996
     }
   },
   "partKinds": {
@@ -635869,7 +635883,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T06:14:23.629Z"
+      "at": "2026-11-07T06:15:00.829Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635899,7 +635913,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T06:14:23.629Z",
+    "savedAt": "2026-11-07T06:15:00.829Z",
     "appVersion": "2026.11.05.1"
   }
 }
