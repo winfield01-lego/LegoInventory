@@ -458992,7 +458992,8 @@
       "id": "F24",
       "label": "F24",
       "notes": "",
-      "group": "F"
+      "group": "F",
+      "lastEdited": "2026-11-07T06:12:58.240Z"
     },
     {
       "id": "F25",
@@ -496849,6 +496850,19 @@
       "partNum": "77845",
       "color": "Reddish Brown",
       "qty": 1
+    },
+    {
+      "drawerId": "F24",
+      "partNum": "32198",
+      "color": "Tan",
+      "elementId": "4514557",
+      "qty": 2
+    },
+    {
+      "drawerId": "F24",
+      "partNum": "32198",
+      "color": "Light Bluish Gray",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -537026,9 +537040,12 @@
       "c": "Tan",
       "d": "Technic Gear 20 Tooth Bevel",
       "e": "6031962",
-      "u": 1791916924851,
+      "u": 1794031979442,
       "at": 1791654717569,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4514557.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4514557.jpg",
+      "ea": [
+        "4514557"
+      ]
     },
     "32005a|dark bluish gray": {
       "p": "32005a",
@@ -630735,6 +630752,13 @@
       "d": "Technic Wedge Belt Wheel [aka Pulley]",
       "e": "4211544",
       "u": 1794031529972
+    },
+    "32198|light bluish gray": {
+      "p": "32198",
+      "c": "Light Bluish Gray",
+      "d": "Technic Gear 20 Tooth Bevel",
+      "e": "4211885",
+      "u": 1794031979442
     }
   },
   "partKinds": {
@@ -635809,7 +635833,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T06:10:58.499Z"
+      "at": "2026-11-07T06:13:03.545Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635839,7 +635863,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T06:10:58.499Z",
+    "savedAt": "2026-11-07T06:13:03.545Z",
     "appVersion": "2026.11.05.1"
   }
 }
