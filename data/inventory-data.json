@@ -460685,7 +460685,7 @@
       "label": "K29",
       "notes": "Cylinders with Fingers",
       "group": "K",
-      "lastEdited": "2026-11-07T05:04:28.218Z"
+      "lastEdited": "2026-11-07T05:05:20.999Z"
     },
     {
       "id": "K30",
@@ -496015,6 +496015,12 @@
       "color": "Dark Gray",
       "elementId": "",
       "qty": 2
+    },
+    {
+      "drawerId": "K29",
+      "partNum": "41529",
+      "color": "Light Bluish Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -629429,6 +629435,13 @@
       "d": "Hinge Cylinder 1 x 3 Locking with 1 Finger and 2 Fingers On Ends, without Hole, 9 Teeth",
       "e": "",
       "u": 1794027869421
+    },
+    "41529|light bluish gray": {
+      "p": "41529",
+      "c": "Light Bluish Gray",
+      "d": "Hinge 1 x 3 Locking with 2 Fingers and Claw End, 9 Teeth",
+      "e": "4211726",
+      "u": 1794027922201
     }
   },
   "partKinds": {
@@ -634503,7 +634516,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:04:32.261Z"
+      "at": "2026-11-07T05:05:25.046Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -634533,7 +634546,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:04:32.261Z",
+    "savedAt": "2026-11-07T05:05:25.046Z",
     "appVersion": "2026.11.05.1"
   }
 }
