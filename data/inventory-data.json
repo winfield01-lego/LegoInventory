@@ -460870,7 +460870,7 @@
       "label": "L14",
       "notes": "1 x 4 x 2 Fence - Picket",
       "group": "L",
-      "lastEdited": "2026-11-07T02:35:39.004Z"
+      "lastEdited": "2026-11-07T02:36:02.130Z"
     },
     {
       "id": "L15",
@@ -495399,6 +495399,12 @@
       "partNum": "32932",
       "color": "Red",
       "qty": 4
+    },
+    {
+      "drawerId": "L14",
+      "partNum": "33303",
+      "color": "White",
+      "qty": 18
     }
   ],
   "mocLocations": {
@@ -628533,6 +628539,13 @@
       "d": "Fence 1 x 4 x 2 Ornamental Asian Lattice Square with 4 Studs",
       "e": "6309044",
       "u": 1794018916784
+    },
+    "33303|white": {
+      "p": "33303",
+      "c": "White",
+      "d": "Picket Fence 1 x 4 x 2",
+      "e": "4141607",
+      "u": 1794018963332
     }
   },
   "partKinds": {
@@ -633607,7 +633620,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T02:35:43.034Z"
+      "at": "2026-11-07T02:36:06.162Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -633637,7 +633650,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T02:35:43.034Z",
+    "savedAt": "2026-11-07T02:36:06.162Z",
     "appVersion": "2026.11.05.1"
   }
 }
