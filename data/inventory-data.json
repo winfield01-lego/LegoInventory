@@ -460678,7 +460678,7 @@
       "label": "K28",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-11-07T05:31:57.283Z"
+      "lastEdited": "2026-11-07T05:32:23.669Z"
     },
     {
       "id": "K29",
@@ -496489,6 +496489,12 @@
       "partNum": "2851",
       "color": "Yellow",
       "qty": 12
+    },
+    {
+      "drawerId": "K28",
+      "partNum": "2852",
+      "color": "Light Bluish Gray",
+      "qty": 15
     }
   ],
   "mocLocations": {
@@ -630188,6 +630194,13 @@
       "d": "Technic Engine Piston Round",
       "e": "285124",
       "u": 1794029518485
+    },
+    "2852|light bluish gray": {
+      "p": "2852",
+      "c": "Light Bluish Gray",
+      "d": "Technic Engine Connecting Rod",
+      "e": "2852194",
+      "u": 1794029544871
     }
   },
   "partKinds": {
@@ -635262,7 +635275,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:32:01.308Z"
+      "at": "2026-11-07T05:32:27.704Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635292,7 +635305,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:32:01.308Z",
+    "savedAt": "2026-11-07T05:32:27.704Z",
     "appVersion": "2026.11.05.1"
   }
 }
