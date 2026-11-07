@@ -460699,7 +460699,7 @@
       "label": "K31",
       "notes": "2 x 6 and 2 x 8 Plate Holes",
       "group": "K",
-      "lastEdited": "2026-11-07T05:39:52.311Z"
+      "lastEdited": "2026-11-07T05:40:46.682Z"
     },
     {
       "id": "K32",
@@ -496540,6 +496540,37 @@
       "partNum": "52731",
       "color": "Light Bluish Gray",
       "qty": 1
+    },
+    {
+      "drawerId": "K31",
+      "partNum": "3738",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "K31",
+      "partNum": "3738",
+      "color": "Red",
+      "qty": 3
+    },
+    {
+      "drawerId": "K31",
+      "partNum": "3738",
+      "color": "White",
+      "elementId": "373801",
+      "qty": 1
+    },
+    {
+      "drawerId": "K31",
+      "partNum": "3738",
+      "color": "Dark Bluish Gray",
+      "qty": 2
+    },
+    {
+      "drawerId": "K31",
+      "partNum": "3738",
+      "color": "Light Bluish Gray",
+      "qty": 10
     }
   ],
   "mocLocations": {
@@ -577151,9 +577182,12 @@
       "c": "White",
       "d": "Technic Plate 2 x 8 [7 Holes]",
       "e": "4527945",
-      "u": 1791916924851,
+      "u": 1794030047885,
       "at": 1791654687646,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/373801.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/373801.jpg",
+      "ea": [
+        "373801"
+      ]
     },
     "62885|black": {
       "p": "62885",
@@ -630273,6 +630307,20 @@
       "d": "Technic Engine Cylinder without Side Slots, with Bottom Slots",
       "e": "6353017",
       "u": 1794029759365
+    },
+    "3738|blue": {
+      "p": "3738",
+      "c": "Blue",
+      "d": "Technic Plate 2 x 8 [7 Holes]",
+      "e": "373823",
+      "u": 1794030047885
+    },
+    "3738|red": {
+      "p": "3738",
+      "c": "Red",
+      "d": "Technic Plate 2 x 8 [7 Holes]",
+      "e": "373821",
+      "u": 1794030047885
     }
   },
   "partKinds": {
@@ -635347,7 +635395,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:39:56.344Z"
+      "at": "2026-11-07T05:40:51.982Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635377,7 +635425,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:39:56.343Z",
+    "savedAt": "2026-11-07T05:40:51.982Z",
     "appVersion": "2026.11.05.1"
   }
 }
