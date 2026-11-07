@@ -462396,7 +462396,7 @@
       "label": "S10",
       "notes": "3 x 1 Inverted Slope",
       "group": "S",
-      "lastEdited": "2026-11-07T19:37:36.003Z"
+      "lastEdited": "2026-11-07T19:38:54.052Z"
     },
     {
       "id": "X1",
@@ -497596,6 +497596,62 @@
       "partNum": "30055",
       "color": "Reddish Brown",
       "qty": 3
+    },
+    {
+      "drawerId": "S10",
+      "partNum": "4287b",
+      "color": "Black",
+      "elementId": "",
+      "qty": 18
+    },
+    {
+      "drawerId": "S10",
+      "partNum": "4287b",
+      "color": "Blue",
+      "elementId": "",
+      "qty": 1
+    },
+    {
+      "drawerId": "S10",
+      "partNum": "4287b",
+      "color": "Dark Bluish Gray",
+      "elementId": "",
+      "qty": 12
+    },
+    {
+      "drawerId": "S10",
+      "partNum": "4287b",
+      "color": "Green",
+      "elementId": "",
+      "qty": 2
+    },
+    {
+      "drawerId": "S10",
+      "partNum": "4287b",
+      "color": "Light Bluish Gray",
+      "elementId": "",
+      "qty": 34
+    },
+    {
+      "drawerId": "S10",
+      "partNum": "4287b",
+      "color": "Yellow",
+      "elementId": "",
+      "qty": 4
+    },
+    {
+      "drawerId": "S10",
+      "partNum": "4287b",
+      "color": "White",
+      "elementId": "",
+      "qty": 22
+    },
+    {
+      "drawerId": "S10",
+      "partNum": "4287b",
+      "color": "Reddish Brown",
+      "elementId": "",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -635553,6 +635609,34 @@
       "d": "Fence Spindled 1 x 4 x 2 [2 Top Studs]",
       "e": "4211300",
       "u": 1794080216641
+    },
+    "4287b|black": {
+      "p": "4287b",
+      "c": "Black",
+      "d": "Brick Sloped Inverted 34° 3 x 1 with Internal Stopper",
+      "e": "",
+      "u": 1794080335255
+    },
+    "4287b|green": {
+      "p": "4287b",
+      "c": "Green",
+      "d": "Brick Sloped Inverted 34° 3 x 1 with Internal Stopper",
+      "e": "",
+      "u": 1794080335255
+    },
+    "4287b|yellow": {
+      "p": "4287b",
+      "c": "Yellow",
+      "d": "Brick Sloped Inverted 34° 3 x 1 with Internal Stopper",
+      "e": "",
+      "u": 1794080335255
+    },
+    "4287b|white": {
+      "p": "4287b",
+      "c": "White",
+      "d": "Brick Sloped Inverted 34° 3 x 1 with Internal Stopper",
+      "e": "",
+      "u": 1794080335255
     }
   },
   "partKinds": {
@@ -640627,7 +640711,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:37:40.038Z"
+      "at": "2026-11-07T19:38:59.335Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640657,7 +640741,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:37:40.038Z",
+    "savedAt": "2026-11-07T19:38:59.335Z",
     "appVersion": "2026.11.05.1"
   }
 }
