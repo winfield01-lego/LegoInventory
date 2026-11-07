@@ -462340,7 +462340,7 @@
       "label": "S2",
       "notes": "1 x 4 x 2 Spindled Fence",
       "group": "S",
-      "lastEdited": "2026-11-07T19:36:18.005Z"
+      "lastEdited": "2026-11-07T19:36:55.439Z"
     },
     {
       "id": "S3",
@@ -497566,6 +497566,36 @@
       "partNum": "15332",
       "color": "Light Bluish Gray",
       "qty": 1
+    },
+    {
+      "drawerId": "S2",
+      "partNum": "30055",
+      "color": "Black",
+      "qty": 10
+    },
+    {
+      "drawerId": "S2",
+      "partNum": "30055",
+      "color": "Dark Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "S2",
+      "partNum": "30055",
+      "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "S2",
+      "partNum": "30055",
+      "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "S2",
+      "partNum": "30055",
+      "color": "Reddish Brown",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -635488,6 +635518,41 @@
       "d": "Fence Spindled 1 x 4 x 2 [4 Top Studs]",
       "e": "6066114",
       "u": 1794080179207
+    },
+    "30055|black": {
+      "p": "30055",
+      "c": "Black",
+      "d": "Fence Spindled 1 x 4 x 2 [2 Top Studs]",
+      "e": "3005526",
+      "u": 1794080216641
+    },
+    "30055|dark bluish gray": {
+      "p": "30055",
+      "c": "Dark Bluish Gray",
+      "d": "Fence Spindled 1 x 4 x 2 [2 Top Studs]",
+      "e": "4256495",
+      "u": 1794080216641
+    },
+    "30055|light bluish gray": {
+      "p": "30055",
+      "c": "Light Bluish Gray",
+      "d": "Fence Spindled 1 x 4 x 2 [2 Top Studs]",
+      "e": "4519503",
+      "u": 1794080216641
+    },
+    "30055|white": {
+      "p": "30055",
+      "c": "White",
+      "d": "Fence Spindled 1 x 4 x 2 [2 Top Studs]",
+      "e": "3005501",
+      "u": 1794080216641
+    },
+    "30055|reddish brown": {
+      "p": "30055",
+      "c": "Reddish Brown",
+      "d": "Fence Spindled 1 x 4 x 2 [2 Top Studs]",
+      "e": "4211300",
+      "u": 1794080216641
     }
   },
   "partKinds": {
@@ -640562,7 +640627,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:36:22.039Z"
+      "at": "2026-11-07T19:36:59.477Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640592,7 +640657,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:36:22.039Z",
+    "savedAt": "2026-11-07T19:36:59.477Z",
     "appVersion": "2026.11.05.1"
   }
 }
