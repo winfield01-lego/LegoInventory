@@ -458993,7 +458993,7 @@
       "label": "F24",
       "notes": "",
       "group": "F",
-      "lastEdited": "2026-11-07T06:13:12.407Z"
+      "lastEdited": "2026-11-07T06:14:00.691Z"
     },
     {
       "id": "F25",
@@ -496870,6 +496870,19 @@
       "color": "Light Gray",
       "elementId": "414302",
       "qty": 5
+    },
+    {
+      "drawerId": "F24",
+      "partNum": "6589",
+      "color": "Light Bluish Gray",
+      "qty": 7
+    },
+    {
+      "drawerId": "F24",
+      "partNum": "6589",
+      "color": "Tan",
+      "elementId": "4514556",
+      "qty": 35
     }
   ],
   "mocLocations": {
@@ -630769,6 +630782,13 @@
       "d": "Technic Gear 20 Tooth Bevel",
       "e": "4211885",
       "u": 1794031979442
+    },
+    "6589|light bluish gray": {
+      "p": "6589",
+      "c": "Light Bluish Gray",
+      "d": "Technic Gear 12 Tooth Bevel",
+      "e": "4211539",
+      "u": 1794032041893
     }
   },
   "partKinds": {
@@ -635843,7 +635863,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T06:13:17.690Z"
+      "at": "2026-11-07T06:14:05.994Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635873,7 +635893,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T06:13:17.690Z",
+    "savedAt": "2026-11-07T06:14:05.994Z",
     "appVersion": "2026.11.05.1"
   }
 }
