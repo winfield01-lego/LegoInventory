@@ -459147,7 +459147,7 @@
       "label": "G4",
       "notes": "1 x 2 Double and Triple Slopes",
       "group": "G",
-      "lastEdited": "2026-11-07T00:06:10.794Z"
+      "lastEdited": "2026-11-07T00:07:47.724Z"
     },
     {
       "id": "G5",
@@ -494701,6 +494701,74 @@
       "partNum": "44126",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "G4",
+      "partNum": "15571",
+      "color": "Black",
+      "qty": 10
+    },
+    {
+      "drawerId": "G4",
+      "partNum": "15571",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "G4",
+      "partNum": "15571",
+      "color": "Dark Bluish Gray",
+      "qty": 7
+    },
+    {
+      "drawerId": "G4",
+      "partNum": "15571",
+      "color": "Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "G4",
+      "partNum": "15571",
+      "color": "Light Bluish Gray",
+      "qty": 8
+    },
+    {
+      "drawerId": "G4",
+      "partNum": "15571",
+      "color": "Pearl Gold",
+      "qty": 3
+    },
+    {
+      "drawerId": "G4",
+      "partNum": "15571",
+      "color": "Red",
+      "qty": 4
+    },
+    {
+      "drawerId": "G4",
+      "partNum": "15571",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "G4",
+      "partNum": "15571",
+      "color": "Sand Blue",
+      "qty": 4
+    },
+    {
+      "drawerId": "G4",
+      "partNum": "15571",
+      "color": "White",
+      "elementId": "6097801",
+      "qty": 3
+    },
+    {
+      "drawerId": "G4",
+      "partNum": "15571",
+      "color": "Yellow",
+      "elementId": "6075085",
+      "qty": 14
     }
   ],
   "mocLocations": {
@@ -561316,9 +561384,12 @@
       "c": "White",
       "d": "Brick Sloped 45° 2 x 1 Triple with Inside Stud Holder",
       "e": "6619295",
-      "u": 1791916924851,
+      "u": 1794010068926,
       "at": 1791654657762,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6097801.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6097801.jpg",
+      "ea": [
+        "6097801"
+      ]
     },
     "43710|white": {
       "p": "43710",
@@ -595523,9 +595594,12 @@
       "c": "Yellow",
       "d": "Brick Sloped 45° 2 x 1 Triple with Inside Stud Holder",
       "e": "6381923",
-      "u": 1791916924851,
+      "u": 1794010068926,
       "at": 1791654768078,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6075085.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6075085.jpg",
+      "ea": [
+        "6075085"
+      ]
     },
     "98262|yellow": {
       "p": "98262",
@@ -627447,6 +627521,48 @@
       "d": "Brick Curved 6 x 2",
       "e": "4210873",
       "u": 1794009852790
+    },
+    "15571|blue": {
+      "p": "15571",
+      "c": "Blue",
+      "d": "Brick Sloped 45° 2 x 1 Triple with Inside Stud Holder",
+      "e": "6078456",
+      "u": 1794010068926
+    },
+    "15571|green": {
+      "p": "15571",
+      "c": "Green",
+      "d": "Brick Sloped 45° 2 x 1 Triple with Inside Stud Holder",
+      "e": "6314380",
+      "u": 1794010068926
+    },
+    "15571|light bluish gray": {
+      "p": "15571",
+      "c": "Light Bluish Gray",
+      "d": "Brick Sloped 45° 2 x 1 Triple with Inside Stud Holder",
+      "e": "6075075",
+      "u": 1794010068926
+    },
+    "15571|pearl gold": {
+      "p": "15571",
+      "c": "Pearl Gold",
+      "d": "Brick Sloped 45° 2 x 1 Triple with Inside Stud Holder",
+      "e": "6075079",
+      "u": 1794010068926
+    },
+    "15571|reddish brown": {
+      "p": "15571",
+      "c": "Reddish Brown",
+      "d": "Brick Sloped 45° 2 x 1 Triple with Inside Stud Holder",
+      "e": "6452539",
+      "u": 1794010068926
+    },
+    "15571|sand blue": {
+      "p": "15571",
+      "c": "Sand Blue",
+      "d": "Brick Sloped 45° 2 x 1 Triple with Inside Stud Holder",
+      "e": "6392959",
+      "u": 1794010068926
     }
   },
   "partKinds": {
@@ -632521,7 +632637,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T00:06:14.827Z"
+      "at": "2026-11-07T00:07:53.020Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -632551,7 +632667,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T00:06:14.827Z",
+    "savedAt": "2026-11-07T00:07:53.020Z",
     "appVersion": "2026.11.05.1"
   }
 }
