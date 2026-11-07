@@ -459291,7 +459291,7 @@
       "label": "G25",
       "notes": "4 x 4. Dome with Recess and 4 x 4 Dish",
       "group": "G",
-      "lastEdited": "2026-11-07T00:09:49.569Z"
+      "lastEdited": "2026-11-07T00:10:05.834Z"
     },
     {
       "id": "G26",
@@ -494801,6 +494801,18 @@
       "color": "Light Bluish Gray",
       "elementId": "6394082",
       "qty": 1
+    },
+    {
+      "drawerId": "G25",
+      "partNum": "65138",
+      "color": "Dark Red",
+      "qty": 2
+    },
+    {
+      "drawerId": "G25",
+      "partNum": "65138",
+      "color": "Dark Bluish Gray",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -627619,6 +627631,13 @@
       "d": "Brick Sloped 45° 2 x 1 Double / Inverted with Bottom Stud Holder",
       "e": "304921",
       "u": 1794010108373
+    },
+    "65138|dark bluish gray": {
+      "p": "65138",
+      "c": "Dark Bluish Gray",
+      "d": "Dish 4 x 4 with 4 Studs",
+      "e": "6381788",
+      "u": 1794010207035
     }
   },
   "partKinds": {
@@ -632693,7 +632712,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T00:09:54.868Z"
+      "at": "2026-11-07T00:10:09.875Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -632723,7 +632742,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T00:09:54.868Z",
+    "savedAt": "2026-11-07T00:10:09.874Z",
     "appVersion": "2026.11.05.1"
   }
 }
