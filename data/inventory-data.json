@@ -459042,7 +459042,7 @@
       "label": "F31",
       "notes": "3L with Pin and Axle on ends",
       "group": "F",
-      "lastEdited": "2026-11-07T06:37:57.382Z"
+      "lastEdited": "2026-11-07T06:40:54.378Z"
     },
     {
       "id": "F32",
@@ -496881,6 +496881,18 @@
       "partNum": "4274",
       "color": "Light Bluish Gray",
       "qty": 152
+    },
+    {
+      "drawerId": "F31",
+      "partNum": "11214",
+      "color": "Dark Bluish Gray",
+      "qty": 23
+    },
+    {
+      "drawerId": "F31",
+      "partNum": "11214",
+      "color": "Red",
+      "qty": 24
     }
   ],
   "mocLocations": {
@@ -635879,7 +635891,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T06:38:01.427Z"
+      "at": "2026-11-07T06:40:58.418Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635909,7 +635921,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T06:38:01.427Z",
+    "savedAt": "2026-11-07T06:40:58.418Z",
     "appVersion": "2026.11.05.1"
   }
 }
