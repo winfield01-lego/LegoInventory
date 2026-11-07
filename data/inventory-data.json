@@ -460877,7 +460877,7 @@
       "label": "L15",
       "notes": "1 x 4 Railing and 1 x 6 Railing with Open Studs",
       "group": "L",
-      "lastEdited": "2026-11-07T02:40:23.833Z"
+      "lastEdited": "2026-11-07T02:40:59.848Z"
     },
     {
       "id": "L16",
@@ -495460,6 +495460,33 @@
       "drawerId": "L15",
       "partNum": "6140",
       "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "4873",
+      "color": "Black",
+      "elementId": "",
+      "qty": 1
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "4873",
+      "color": "Light Gray",
+      "elementId": "",
+      "qty": 1
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "4873",
+      "color": "White",
+      "qty": 3
+    },
+    {
+      "drawerId": "L15",
+      "partNum": "4873",
+      "color": "Yellow",
+      "elementId": "",
       "qty": 1
     }
   ],
@@ -628643,6 +628670,20 @@
       "d": "Bar 1 x 6 [Closed Studs]",
       "e": "4212408",
       "u": 1794019225036
+    },
+    "4873|light gray": {
+      "p": "4873",
+      "c": "Light Gray",
+      "d": "Bar 1 x 6 [Open Studs]",
+      "e": "",
+      "u": 1794019261050
+    },
+    "4873|yellow": {
+      "p": "4873",
+      "c": "Yellow",
+      "d": "Bar 1 x 6 [Open Studs]",
+      "e": "",
+      "u": 1794019261050
     }
   },
   "partKinds": {
@@ -633717,7 +633758,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T02:40:27.864Z"
+      "at": "2026-11-07T02:41:05.140Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -633747,7 +633788,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T02:40:27.864Z",
+    "savedAt": "2026-11-07T02:41:05.140Z",
     "appVersion": "2026.11.05.1"
   }
 }
