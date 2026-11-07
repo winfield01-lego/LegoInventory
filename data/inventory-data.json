@@ -460608,7 +460608,7 @@
       "label": "K18",
       "notes": "1 x 2 Technic Beams, Rubber connector and Crankshaft",
       "group": "K",
-      "lastEdited": "2026-11-07T05:18:24.989Z"
+      "lastEdited": "2026-11-07T05:20:15.529Z"
     },
     {
       "id": "K19",
@@ -496236,6 +496236,60 @@
       "partNum": "45590",
       "color": "Black",
       "qty": 13
+    },
+    {
+      "drawerId": "K18",
+      "partNum": "41677",
+      "color": "Black",
+      "elementId": "4164133",
+      "qty": 58
+    },
+    {
+      "drawerId": "K18",
+      "partNum": "41677",
+      "color": "Blue",
+      "elementId": "4163526",
+      "qty": 1
+    },
+    {
+      "drawerId": "K18",
+      "partNum": "41677",
+      "color": "Dark Blue",
+      "qty": 2
+    },
+    {
+      "drawerId": "K18",
+      "partNum": "41677",
+      "color": "Dark Bluish Gray",
+      "elementId": "4210980",
+      "qty": 11
+    },
+    {
+      "drawerId": "K18",
+      "partNum": "41677",
+      "color": "Light Bluish Gray",
+      "elementId": "4211741",
+      "qty": 3
+    },
+    {
+      "drawerId": "K18",
+      "partNum": "41677",
+      "color": "Lime",
+      "qty": 2
+    },
+    {
+      "drawerId": "K18",
+      "partNum": "41677",
+      "color": "Red",
+      "elementId": "4186678",
+      "qty": 2
+    },
+    {
+      "drawerId": "K18",
+      "partNum": "41677",
+      "color": "White",
+      "elementId": "4163533",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -554363,9 +554417,12 @@
       "c": "Dark Bluish Gray",
       "d": "Technic Beam 1 x 2 Thin",
       "e": "6338422",
-      "u": 1791916924851,
+      "u": 1794028816732,
       "at": 1791660732205,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4210980.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4210980.jpg",
+      "ea": [
+        "4210980"
+      ]
     },
     "32000|dark bluish gray": {
       "p": "32000",
@@ -557692,9 +557749,12 @@
       "c": "Black",
       "d": "Technic Beam 1 x 2 Thin",
       "e": "6338428",
-      "u": 1791916924851,
+      "u": 1794028816732,
       "at": 1791654710977,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4164133.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4164133.jpg",
+      "ea": [
+        "4164133"
+      ]
     },
     "32449|black": {
       "p": "32449",
@@ -563100,9 +563160,12 @@
       "c": "Blue",
       "d": "Technic Beam 1 x 2 Thin",
       "e": "6360123",
-      "u": 1791916924851,
+      "u": 1794028816732,
       "at": 1791654615447,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4186834.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4186834.jpg",
+      "ea": [
+        "4163526"
+      ]
     },
     "4274|blue": {
       "p": "4274",
@@ -572897,9 +572960,12 @@
       "c": "Light Bluish Gray",
       "d": "Technic Beam 1 x 2 Thin",
       "e": "6348143",
-      "u": 1791916924851,
+      "u": 1794028816732,
       "at": 1791654523244,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4211741.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4211741.jpg",
+      "ea": [
+        "4211741"
+      ]
     },
     "3005|medium blue": {
       "p": "3005",
@@ -573554,9 +573620,12 @@
       "c": "White",
       "d": "Technic Beam 1 x 2 Thin",
       "e": "6371416",
-      "u": 1791916924851,
+      "u": 1794028816732,
       "at": 1791654633156,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4163533.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4163533.jpg",
+      "ea": [
+        "4163533"
+      ]
     },
     "3678b|black": {
       "p": "3678b",
@@ -579268,9 +579337,12 @@
       "c": "Red",
       "d": "Technic Beam 1 x 2 Thin",
       "e": "6371442",
-      "u": 1791916924851,
+      "u": 1794028816732,
       "at": 1791654530095,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4186678.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4186678.jpg",
+      "ea": [
+        "4186678"
+      ]
     },
     "32526|red": {
       "p": "32526",
@@ -629770,6 +629842,20 @@
       "d": "Tile Special 2 x 2 with Top Pin",
       "e": "246025",
       "u": 1794028529863
+    },
+    "41677|dark blue": {
+      "p": "41677",
+      "c": "Dark Blue",
+      "d": "Technic Beam 1 x 2 Thin",
+      "e": "4165428",
+      "u": 1794028816732
+    },
+    "41677|lime": {
+      "p": "41677",
+      "c": "Lime",
+      "d": "Technic Beam 1 x 2 Thin",
+      "e": "4263132",
+      "u": 1794028816732
     }
   },
   "partKinds": {
@@ -634844,7 +634930,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:18:29.024Z"
+      "at": "2026-11-07T05:20:20.831Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -634874,7 +634960,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:18:29.024Z",
+    "savedAt": "2026-11-07T05:20:20.831Z",
     "appVersion": "2026.11.05.1"
   }
 }
