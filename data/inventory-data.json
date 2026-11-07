@@ -462362,7 +462362,7 @@
       "label": "S5",
       "notes": "Doors - Left and Right",
       "group": "S",
-      "lastEdited": "2026-11-07T20:13:40.563Z"
+      "lastEdited": "2026-11-07T20:14:36.679Z"
     },
     {
       "id": "S6",
@@ -497908,6 +497908,12 @@
       "partNum": "6155",
       "color": "White",
       "qty": 6
+    },
+    {
+      "drawerId": "S5",
+      "partNum": "64390",
+      "color": "Dark Brown",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -636056,6 +636062,13 @@
       "d": "Door 1 x 4 x 4 Lift",
       "e": "4262006",
       "u": 1794082421765
+    },
+    "64390|dark brown": {
+      "p": "64390",
+      "c": "Dark Brown",
+      "d": "Door 1 x 4 x 6 Round Top with Window and Keyhole, Reinforced Edge",
+      "e": "6254792",
+      "u": 1794082477881
     }
   },
   "partKinds": {
@@ -641130,7 +641143,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T20:13:44.602Z"
+      "at": "2026-11-07T20:14:40.719Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -641160,7 +641173,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T20:13:44.602Z",
+    "savedAt": "2026-11-07T20:14:40.718Z",
     "appVersion": "2026.11.05.1"
   }
 }
