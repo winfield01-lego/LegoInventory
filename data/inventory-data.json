@@ -529490,7 +529490,7 @@
           "color": "Green",
           "desc": "Brick Curved 2 x 2 x 2/3",
           "elementId": "6116259",
-          "qty": 1,
+          "qty": 2,
           "drawerId": "I34",
           "matchCount": 0,
           "suggested": false
@@ -532334,10 +532334,30 @@
           "drawerId": "C2",
           "matchCount": 0,
           "suggested": false
+        },
+        {
+          "partNum": "15068",
+          "color": "Light Bluish Gray",
+          "desc": "Brick Curved 2 x 2 x 2/3",
+          "elementId": "6102357",
+          "qty": 1,
+          "drawerId": "I34",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "15068",
+          "color": "Red",
+          "desc": "Brick Curved 2 x 2 x 2/3",
+          "elementId": "6105976",
+          "qty": 1,
+          "drawerId": "I34",
+          "matchCount": 0,
+          "suggested": false
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-07T18:22:07.473Z",
+      "savedAt": "2026-11-07T18:22:41.627Z",
       "moved": {
         "batches": 58,
         "pieces": 3244,
@@ -638675,7 +638695,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T18:22:11.517Z"
+      "at": "2026-11-07T18:22:45.660Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -638701,11 +638721,11 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-07T18:22:07.473Z",
+      "bags": "2026-11-07T18:22:41.628Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T18:22:11.517Z",
+    "savedAt": "2026-11-07T18:22:45.660Z",
     "appVersion": "2026.11.05.1"
   }
 }
