@@ -458896,7 +458896,7 @@
       "label": "F10",
       "notes": "1 x 5 and 1 x 6 Plate with rounded ends",
       "group": "F",
-      "lastEdited": "2026-11-07T05:59:57.361Z"
+      "lastEdited": "2026-11-07T06:01:51.636Z"
     },
     {
       "id": "F11",
@@ -496703,6 +496703,12 @@
       "partNum": "41531",
       "color": "Yellow",
       "qty": 4
+    },
+    {
+      "drawerId": "F10",
+      "partNum": "4262",
+      "color": "Light Bluish Gray",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -630539,6 +630545,13 @@
       "d": "Technic Cylinder 4 x 4 with Pin Holes and Centre Bar, Closed Sides on Bar",
       "e": "4159538",
       "u": 1794031156739
+    },
+    "4262|light bluish gray": {
+      "p": "4262",
+      "c": "Light Bluish Gray",
+      "d": "Technic Plate 1 x 6 with Toothed Ends",
+      "e": "4251567",
+      "u": 1794031312839
     }
   },
   "partKinds": {
@@ -635613,7 +635626,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T06:00:01.406Z"
+      "at": "2026-11-07T06:01:55.676Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635643,7 +635656,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T06:00:01.406Z",
+    "savedAt": "2026-11-07T06:01:55.676Z",
     "appVersion": "2026.11.05.1"
   }
 }
