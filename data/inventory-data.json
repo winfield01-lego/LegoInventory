@@ -462557,7 +462557,7 @@
       "label": "Q3",
       "notes": "Windows - 2 wide",
       "group": "Q",
-      "lastEdited": "2026-11-07T19:33:41.325Z"
+      "lastEdited": "2026-11-07T19:33:57.756Z"
     },
     {
       "id": "Q4",
@@ -497536,6 +497536,12 @@
       "partNum": "60593",
       "color": "White",
       "qty": 4
+    },
+    {
+      "drawerId": "Q3",
+      "partNum": "60592",
+      "color": "Bright Light Blue",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -635430,6 +635436,13 @@
       "d": "Window 1 x 2 x 3 Flat Front",
       "e": "4536521",
       "u": 1794079999910
+    },
+    "60592|bright light blue": {
+      "p": "60592",
+      "c": "Bright Light Blue",
+      "d": "Window 1 x 2 x 2 Flat Front",
+      "e": "6441765",
+      "u": 1794080038958
     }
   },
   "partKinds": {
@@ -640504,7 +640517,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:33:45.369Z"
+      "at": "2026-11-07T19:34:01.794Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640534,7 +640547,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:33:45.369Z",
+    "savedAt": "2026-11-07T19:34:01.794Z",
     "appVersion": "2026.11.05.1"
   }
 }
