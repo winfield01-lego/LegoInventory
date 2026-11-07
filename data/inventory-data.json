@@ -460678,7 +460678,7 @@
       "label": "K28",
       "notes": "",
       "group": "K",
-      "lastEdited": "2026-11-07T05:36:24.380Z"
+      "lastEdited": "2026-11-07T05:37:00.429Z"
     },
     {
       "id": "K29",
@@ -496521,6 +496521,13 @@
       "color": "Light Bluish Gray",
       "elementId": "4525904",
       "qty": 5
+    },
+    {
+      "drawerId": "K28",
+      "partNum": "32494",
+      "color": "Light Bluish Gray",
+      "elementId": "4268659",
+      "qty": 4
     }
   ],
   "mocLocations": {
@@ -592685,9 +592692,12 @@
       "c": "Light Bluish Gray",
       "d": "Technic Steering / CV Joint",
       "e": "6265690",
-      "u": 1791916924851,
+      "u": 1794029821631,
       "at": 1791654717569,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4268659.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4268659.jpg",
+      "ea": [
+        "4268659"
+      ]
     },
     "10104792|[no color/any color]": {
       "p": "10104792",
@@ -635325,7 +635335,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T05:36:29.671Z"
+      "at": "2026-11-07T05:37:05.734Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635355,7 +635365,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T05:36:29.671Z",
+    "savedAt": "2026-11-07T05:37:05.734Z",
     "appVersion": "2026.11.05.1"
   }
 }
