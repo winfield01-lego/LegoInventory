@@ -462579,7 +462579,7 @@
       "label": "Q6",
       "notes": "12 x 6 Wedge - Right and Left",
       "group": "Q",
-      "lastEdited": "2026-11-07T19:53:16.843Z"
+      "lastEdited": "2026-11-07T19:59:51.125Z"
     }
   ],
   "drawerParts": [
@@ -497821,6 +497821,26 @@
       "color": "White",
       "elementId": "4141475",
       "qty": 2
+    },
+    {
+      "drawerId": "Q6",
+      "partNum": "30356",
+      "color": "Black",
+      "elementId": "4143181",
+      "qty": 3
+    },
+    {
+      "drawerId": "Q6",
+      "partNum": "30356",
+      "color": "Dark Blue",
+      "elementId": "4224488",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q6",
+      "partNum": "30356",
+      "color": "Light Bluish Gray",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -573367,9 +573387,12 @@
       "c": "Black",
       "d": "Wedge Plate 6 x 12 Right",
       "e": "6394881",
-      "u": 1791916924851,
+      "u": 1794081592327,
       "at": 1791654346340,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4143181.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4143181.jpg",
+      "ea": [
+        "4143181"
+      ]
     },
     "6081|blue": {
       "p": "6081",
@@ -582409,9 +582432,12 @@
       "c": "Dark Blue",
       "d": "Wedge Plate 6 x 12 Right",
       "e": "6236570",
-      "u": 1791916924851,
+      "u": 1794081592327,
       "at": 1791654487845,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4224488.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4224488.jpg",
+      "ea": [
+        "4224488"
+      ]
     },
     "30504|dark blue": {
       "p": "30504",
@@ -640982,7 +641008,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:57:27.561Z"
+      "at": "2026-11-07T19:59:56.432Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -641012,7 +641038,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:57:27.561Z",
+    "savedAt": "2026-11-07T19:59:56.432Z",
     "appVersion": "2026.11.05.1"
   }
 }
