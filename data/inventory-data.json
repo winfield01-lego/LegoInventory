@@ -462200,7 +462200,7 @@
       "label": "P6",
       "notes": "2 x 4 Mudguard",
       "group": "P",
-      "lastEdited": "2026-11-07T19:28:06.011Z"
+      "lastEdited": "2026-11-07T19:28:26.792Z"
     },
     {
       "id": "P7",
@@ -497469,6 +497469,18 @@
       "partNum": "60212",
       "color": "White",
       "qty": 3
+    },
+    {
+      "drawerId": "P6",
+      "partNum": "3788",
+      "color": "Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "P6",
+      "partNum": "3788",
+      "color": "Light Gray",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -635297,6 +635309,20 @@
       "d": "Wheel Arch, Mudguard 2 x 4 Studded with Hole",
       "e": "378801",
       "u": 1794079687213
+    },
+    "3788|tan": {
+      "p": "3788",
+      "c": "Tan",
+      "d": "Wheel Arch, Mudguard 2 x 4 Studded",
+      "e": "4205531",
+      "u": 1794079707994
+    },
+    "3788|light gray": {
+      "p": "3788",
+      "c": "Light Gray",
+      "d": "Wheel Arch, Mudguard 2 x 4 Studded",
+      "e": "378802",
+      "u": 1794079707994
     }
   },
   "partKinds": {
@@ -640371,7 +640397,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:28:11.294Z"
+      "at": "2026-11-07T19:28:30.827Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640401,7 +640427,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:28:11.294Z",
+    "savedAt": "2026-11-07T19:28:30.827Z",
     "appVersion": "2026.11.05.1"
   }
 }
