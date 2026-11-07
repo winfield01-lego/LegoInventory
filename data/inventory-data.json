@@ -459884,7 +459884,7 @@
       "label": "I22",
       "notes": "2 x 2 Tile with 2 cutouts",
       "group": "I",
-      "lastEdited": "2026-11-07T03:00:54.992Z"
+      "lastEdited": "2026-11-07T03:01:26.626Z"
     },
     {
       "id": "I23",
@@ -495775,6 +495775,18 @@
       "color": "White",
       "elementId": "6494548",
       "qty": 1
+    },
+    {
+      "drawerId": "I22",
+      "partNum": "3396",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "I22",
+      "partNum": "3396",
+      "color": "White",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -629094,6 +629106,13 @@
       "d": "Plate 4 x 4 Corner",
       "e": "4162770",
       "u": 1794020147488
+    },
+    "3396|black": {
+      "p": "3396",
+      "c": "Black",
+      "d": "Tile Special 2 x 2 with 2 Quarter Round Cutouts",
+      "e": "6433936",
+      "u": 1794020487829
     }
   },
   "partKinds": {
@@ -634168,7 +634187,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T03:00:59.023Z"
+      "at": "2026-11-07T03:01:30.659Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -634198,7 +634217,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T03:00:59.023Z",
+    "savedAt": "2026-11-07T03:01:30.659Z",
     "appVersion": "2026.11.05.1"
   }
 }
