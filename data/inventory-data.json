@@ -458993,7 +458993,7 @@
       "label": "F24",
       "notes": "",
       "group": "F",
-      "lastEdited": "2026-11-07T06:12:58.240Z"
+      "lastEdited": "2026-11-07T06:13:12.407Z"
     },
     {
       "id": "F25",
@@ -496863,6 +496863,13 @@
       "partNum": "32198",
       "color": "Light Bluish Gray",
       "qty": 4
+    },
+    {
+      "drawerId": "F24",
+      "partNum": "4143",
+      "color": "Light Gray",
+      "elementId": "414302",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -614370,9 +614377,12 @@
       "c": "Light Gray",
       "d": "Technic Gear 14 Tooth Bevel",
       "e": "414352",
-      "u": 1791916924851,
+      "u": 1794031993610,
       "at": 1791846545325,
-      "i": "https://cdn.rebrickable.com/media/parts/ldraw/7/4143.png"
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/7/4143.png",
+      "ea": [
+        "414302"
+      ]
     },
     "4185|light gray": {
       "p": "4185",
@@ -635833,7 +635843,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T06:13:03.545Z"
+      "at": "2026-11-07T06:13:17.690Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -635863,7 +635873,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T06:13:03.545Z",
+    "savedAt": "2026-11-07T06:13:17.690Z",
     "appVersion": "2026.11.05.1"
   }
 }
