@@ -459103,7 +459103,7 @@
       "label": "F40",
       "notes": "3L Pin",
       "group": "F",
-      "lastEdited": "2026-11-07T06:51:10.776Z"
+      "lastEdited": "2026-11-07T06:53:42.625Z"
     },
     {
       "id": "F41",
@@ -496974,6 +496974,12 @@
       "partNum": "39888",
       "color": "Tan",
       "qty": 28
+    },
+    {
+      "drawerId": "F40",
+      "partNum": "42924",
+      "color": "Blue",
+      "qty": 163
     }
   ],
   "mocLocations": {
@@ -636003,7 +636009,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T06:51:14.813Z"
+      "at": "2026-11-07T06:53:46.670Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -636033,7 +636039,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T06:51:14.813Z",
+    "savedAt": "2026-11-07T06:53:46.670Z",
     "appVersion": "2026.11.05.1"
   }
 }
