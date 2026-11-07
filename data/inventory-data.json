@@ -462362,7 +462362,7 @@
       "label": "S5",
       "notes": "Doors - Left and Right",
       "group": "S",
-      "lastEdited": "2026-11-05T05:40:19.376Z"
+      "lastEdited": "2026-11-07T20:12:32.745Z"
     },
     {
       "id": "S6",
@@ -497878,6 +497878,12 @@
       "partNum": "14181",
       "color": "Red",
       "qty": 4
+    },
+    {
+      "drawerId": "S5",
+      "partNum": "4131",
+      "color": "Yellow",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -635998,6 +636004,13 @@
       "d": "Wedge Plate 4 x 9 with Stud Notches",
       "e": "6376885",
       "u": 1794082064175
+    },
+    "4131|yellow": {
+      "p": "4131",
+      "c": "Yellow",
+      "d": "Door 1 x 4 x 5",
+      "e": "4521099",
+      "u": 1794082353947
     }
   },
   "partKinds": {
@@ -641072,7 +641085,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T20:08:57.937Z"
+      "at": "2026-11-07T20:12:36.791Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -641102,7 +641115,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T20:08:57.937Z",
+    "savedAt": "2026-11-07T20:12:36.791Z",
     "appVersion": "2026.11.05.1"
   }
 }
