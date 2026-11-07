@@ -459266,7 +459266,7 @@
       "label": "G21",
       "notes": "2 x 2 Dome",
       "group": "G",
-      "lastEdited": "2026-11-07T01:55:37.209Z"
+      "lastEdited": "2026-11-07T01:57:53.935Z"
     },
     {
       "id": "G22",
@@ -495016,6 +495016,66 @@
       "partNum": "15395",
       "color": "White",
       "qty": 9
+    },
+    {
+      "drawerId": "G21",
+      "partNum": "3262",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "G21",
+      "partNum": "3262",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "G21",
+      "partNum": "3262",
+      "color": "Dark Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "G21",
+      "partNum": "3262",
+      "color": "Dark Tan",
+      "qty": 5
+    },
+    {
+      "drawerId": "G21",
+      "partNum": "3262",
+      "color": "Light Bluish Gray",
+      "qty": 6
+    },
+    {
+      "drawerId": "G21",
+      "partNum": "3262",
+      "color": "Lime",
+      "qty": 11
+    },
+    {
+      "drawerId": "G21",
+      "partNum": "3262",
+      "color": "Orange",
+      "qty": 2
+    },
+    {
+      "drawerId": "G21",
+      "partNum": "3262",
+      "color": "Red",
+      "qty": 5
+    },
+    {
+      "drawerId": "G21",
+      "partNum": "3262",
+      "color": "Yellow",
+      "qty": 6
+    },
+    {
+      "drawerId": "G21",
+      "partNum": "3262",
+      "color": "White",
+      "qty": 15
     }
   ],
   "mocLocations": {
@@ -627893,6 +627953,48 @@
       "d": "Brick Round 2 x 2 Dome Bottom [Open Stud]",
       "e": "6065839",
       "u": 1794016451703
+    },
+    "3262|black": {
+      "p": "3262",
+      "c": "Black",
+      "d": "Brick Round 2 x 2 Dome Top, Vented Stud",
+      "e": "6429056",
+      "u": 1794016675138
+    },
+    "3262|blue": {
+      "p": "3262",
+      "c": "Blue",
+      "d": "Brick Round 2 x 2 Dome Top, Vented Stud",
+      "e": "6429061",
+      "u": 1794016675138
+    },
+    "3262|dark bluish gray": {
+      "p": "3262",
+      "c": "Dark Bluish Gray",
+      "d": "Brick Round 2 x 2 Dome Top, Vented Stud",
+      "e": "6429051",
+      "u": 1794016675138
+    },
+    "3262|dark tan": {
+      "p": "3262",
+      "c": "Dark Tan",
+      "d": "Brick Round 2 x 2 Dome Top, Vented Stud",
+      "e": "6429067",
+      "u": 1794016675138
+    },
+    "3262|lime": {
+      "p": "3262",
+      "c": "Lime",
+      "d": "Brick Round 2 x 2 Dome Top, Vented Stud",
+      "e": "6429057",
+      "u": 1794016675138
+    },
+    "3262|orange": {
+      "p": "3262",
+      "c": "Orange",
+      "d": "Brick Round 2 x 2 Dome Top, Vented Stud",
+      "e": "6472019",
+      "u": 1794016675138
     }
   },
   "partKinds": {
@@ -632967,7 +633069,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T01:55:41.248Z"
+      "at": "2026-11-07T01:57:59.231Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -632997,7 +633099,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T01:55:41.248Z",
+    "savedAt": "2026-11-07T01:57:59.231Z",
     "appVersion": "2026.11.05.1"
   }
 }
