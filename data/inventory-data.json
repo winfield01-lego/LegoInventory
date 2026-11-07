@@ -460339,7 +460339,7 @@
       "label": "J44",
       "notes": "Curved Wedge - Left and Right - 10 x 3 and 12 x 3",
       "group": "j",
-      "lastEdited": "2026-11-07T19:41:12.852Z"
+      "lastEdited": "2026-11-07T19:41:29.934Z"
     },
     {
       "id": "T9",
@@ -497694,6 +497694,12 @@
       "drawerId": "J44",
       "partNum": "50956",
       "color": "Light Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "J44",
+      "partNum": "42061",
+      "color": "Blue",
       "qty": 1
     }
   ],
@@ -635701,6 +635707,13 @@
       "d": "Brick Wedged, Curved 10 x 3 Right",
       "e": "6250220",
       "u": 1794080474054
+    },
+    "42061|blue": {
+      "p": "42061",
+      "c": "Blue",
+      "d": "Brick Wedged, Curved 12 x 3 Left",
+      "e": "4177394",
+      "u": 1794080491136
     }
   },
   "partKinds": {
@@ -640775,7 +640788,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-07T19:41:16.892Z"
+      "at": "2026-11-07T19:41:33.982Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -640805,7 +640818,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-07T19:41:16.892Z",
+    "savedAt": "2026-11-07T19:41:33.982Z",
     "appVersion": "2026.11.05.1"
   }
 }
