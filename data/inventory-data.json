@@ -462244,7 +462244,7 @@
       "label": "Q8",
       "notes": "2 x 4 x 6 Door Frames",
       "group": "Q",
-      "lastEdited": "2026-11-08T01:36:04.414Z"
+      "lastEdited": "2026-11-08T01:36:23.665Z"
     },
     {
       "id": "Q9",
@@ -498279,6 +498279,12 @@
       "drawerId": "Q8",
       "partNum": "35565",
       "color": "Reddish Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q8",
+      "partNum": "6235",
+      "color": "Blue",
       "qty": 1
     }
   ],
@@ -636099,6 +636105,13 @@
       "d": "Panel 2 x 6 x 6 with Gothic Arch",
       "e": "6525580",
       "u": 1794101765616
+    },
+    "6235|blue": {
+      "p": "6235",
+      "c": "Blue",
+      "d": "Door Frame 2 x 6 x 6 Freestyle",
+      "e": "623523",
+      "u": 1794101784868
     }
   },
   "partKinds": {
@@ -641173,7 +641186,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-08T01:36:08.447Z"
+      "at": "2026-11-08T01:36:27.698Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -641203,7 +641216,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-08T01:36:08.447Z",
+    "savedAt": "2026-11-08T01:36:27.698Z",
     "appVersion": "2026.11.05.1"
   }
 }
