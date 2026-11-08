@@ -462244,7 +462244,7 @@
       "label": "Q8",
       "notes": "2 x 4 x 6 Door Frames",
       "group": "Q",
-      "lastEdited": "2026-11-08T01:35:35.948Z"
+      "lastEdited": "2026-11-08T01:35:43.248Z"
     },
     {
       "id": "Q9",
@@ -498268,6 +498268,12 @@
       "color": "Yellow",
       "elementId": "623224",
       "qty": 12
+    },
+    {
+      "drawerId": "Q8",
+      "partNum": "2443",
+      "color": "Black",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -641154,7 +641160,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-08T01:35:39.991Z"
+      "at": "2026-11-08T01:35:48.556Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -641184,7 +641190,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-08T01:35:39.991Z",
+    "savedAt": "2026-11-08T01:35:48.556Z",
     "appVersion": "2026.11.05.1"
   }
 }
