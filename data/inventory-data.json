@@ -462244,7 +462244,7 @@
       "label": "Q8",
       "notes": "2 x 4 x 6 Door Frames",
       "group": "Q",
-      "lastEdited": "2026-11-08T01:36:52.148Z"
+      "lastEdited": "2026-11-08T01:37:10.282Z"
     },
     {
       "id": "Q9",
@@ -498297,6 +498297,12 @@
       "drawerId": "Q8",
       "partNum": "4130",
       "color": "Yellow",
+      "qty": 2
+    },
+    {
+      "drawerId": "Q8",
+      "partNum": "60599",
+      "color": "White",
       "qty": 2
     }
   ],
@@ -636138,6 +636144,13 @@
       "d": "Door Frame 2 x 4 x 5",
       "e": "4217794",
       "u": 1794101813349
+    },
+    "60599|white": {
+      "p": "60599",
+      "c": "White",
+      "d": "Door Frame 2 x 4 x 6",
+      "e": "4520843",
+      "u": 1794101831485
     }
   },
   "partKinds": {
@@ -641212,7 +641225,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-08T01:36:56.190Z"
+      "at": "2026-11-08T01:37:14.315Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -641242,7 +641255,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-08T01:36:56.190Z",
+    "savedAt": "2026-11-08T01:37:14.315Z",
     "appVersion": "2026.11.05.1"
   }
 }
