@@ -462244,7 +462244,7 @@
       "label": "Q8",
       "notes": "2 x 4 x 6 Door Frames",
       "group": "Q",
-      "lastEdited": "2026-11-08T01:35:43.248Z"
+      "lastEdited": "2026-11-08T01:36:04.414Z"
     },
     {
       "id": "Q9",
@@ -498273,6 +498273,12 @@
       "drawerId": "Q8",
       "partNum": "2443",
       "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q8",
+      "partNum": "35565",
+      "color": "Reddish Brown",
       "qty": 1
     }
   ],
@@ -636086,6 +636092,13 @@
       "d": "Brick Special 2 x 2 with Pin and Axle Hole",
       "e": "4243314",
       "u": 1794101578085
+    },
+    "35565|reddish brown": {
+      "p": "35565",
+      "c": "Reddish Brown",
+      "d": "Panel 2 x 6 x 6 with Gothic Arch",
+      "e": "6525580",
+      "u": 1794101765616
     }
   },
   "partKinds": {
@@ -641160,7 +641173,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-08T01:35:48.556Z"
+      "at": "2026-11-08T01:36:08.447Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -641190,7 +641203,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-08T01:35:48.556Z",
+    "savedAt": "2026-11-08T01:36:08.447Z",
     "appVersion": "2026.11.05.1"
   }
 }
