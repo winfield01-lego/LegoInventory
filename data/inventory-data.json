@@ -460257,7 +460257,7 @@
       "label": "J32",
       "notes": "2 x 2 Brick - Pin 1 side",
       "group": "j",
-      "lastEdited": "2026-11-08T01:32:56.882Z"
+      "lastEdited": "2026-11-08T01:33:09.949Z"
     },
     {
       "id": "J33",
@@ -462258,7 +462258,7 @@
       "label": "Q10",
       "notes": "6 x 8 Plate",
       "group": "Q",
-      "lastEdited": "2026-11-08T01:30:18.498Z"
+      "lastEdited": "2026-11-08T01:33:09.949Z"
     },
     {
       "id": "R1",
@@ -498168,7 +498168,7 @@
       "drawerId": "Q10",
       "partNum": "3036",
       "color": "Dark Bluish Gray",
-      "qty": 10
+      "qty": 11
     },
     {
       "drawerId": "Q10",
@@ -498253,7 +498253,7 @@
       "partNum": "6232",
       "color": "Tan",
       "elementId": "4125228",
-      "qty": 1
+      "qty": 2
     },
     {
       "drawerId": "J32",
@@ -498680,6 +498680,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw75rir6_z80rc",
+      "label": "Ebay Bulk Boxes (batch 60)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 60,
+      "timestamp": "2026-11-08T01:33:10.194Z",
+      "items": [
+        {
+          "partNum": "6232",
+          "color": "Tan",
+          "desc": "Brick, Modified 2 x 2 with Pin and Axle Hole",
+          "elementId": "6347700",
+          "qty": 1,
+          "drawerId": "J32",
+          "drawerLabel": "J32"
+        },
+        {
+          "partNum": "3036",
+          "color": "Dark Bluish Gray",
+          "desc": "Plate 6 x 8",
+          "elementId": "4210794",
+          "qty": 1,
+          "drawerId": "Q10",
+          "drawerLabel": "Q10"
+        }
+      ]
+    },
     {
       "id": "bag_mw75c261_5dlkw",
       "label": "Ebay Bulk Boxes (batch 59)",
@@ -534061,36 +534089,13 @@
     {
       "id": "bagprog_mvoo1wik_nkx0",
       "label": "Ebay Bulk Boxes",
-      "items": [
-        {
-          "partNum": "6232",
-          "color": "Tan",
-          "desc": "Brick, Modified 2 x 2 with Pin and Axle Hole",
-          "elementId": "6347700",
-          "qty": 1,
-          "drawerId": "J32",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3036",
-          "color": "Dark Bluish Gray",
-          "desc": "Plate 6 x 8",
-          "elementId": "4210794",
-          "qty": 1,
-          "drawerId": "Q10",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        }
-      ],
+      "items": [],
       "keepOpen": true,
-      "savedAt": "2026-11-08T01:33:07.731Z",
+      "savedAt": "2026-11-08T01:33:10.194Z",
       "moved": {
-        "batches": 59,
-        "pieces": 3963,
-        "last": "2026-11-08T01:21:08.857Z"
+        "batches": 60,
+        "pieces": 3965,
+        "last": "2026-11-08T01:33:10.194Z"
       }
     },
     {
@@ -641149,7 +641154,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-08T01:33:08.579Z"
+      "at": "2026-11-08T01:33:14.224Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -641175,11 +641180,11 @@
       "build:Galaxy Explorer Alt Build - Modern 924-1": "2026-10-25T05:08:29.860Z"
     },
     "stamps": {
-      "bags": "2026-11-08T01:33:07.731Z",
+      "bags": "2026-11-08T01:33:10.194Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-08T01:33:08.579Z",
+    "savedAt": "2026-11-08T01:33:14.224Z",
     "appVersion": "2026.11.05.1"
   }
 }
