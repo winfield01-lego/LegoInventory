@@ -462244,7 +462244,7 @@
       "label": "Q8",
       "notes": "2 x 4 x 6 Door Frames",
       "group": "Q",
-      "lastEdited": "2026-11-08T01:36:23.665Z"
+      "lastEdited": "2026-11-08T01:36:52.148Z"
     },
     {
       "id": "Q9",
@@ -498286,6 +498286,18 @@
       "partNum": "6235",
       "color": "Blue",
       "qty": 1
+    },
+    {
+      "drawerId": "Q8",
+      "partNum": "4130",
+      "color": "White",
+      "qty": 1
+    },
+    {
+      "drawerId": "Q8",
+      "partNum": "4130",
+      "color": "Yellow",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -636112,6 +636124,20 @@
       "d": "Door Frame 2 x 6 x 6 Freestyle",
       "e": "623523",
       "u": 1794101784868
+    },
+    "4130|white": {
+      "p": "4130",
+      "c": "White",
+      "d": "Door Frame 2 x 4 x 5",
+      "e": "4218637",
+      "u": 1794101813349
+    },
+    "4130|yellow": {
+      "p": "4130",
+      "c": "Yellow",
+      "d": "Door Frame 2 x 4 x 5",
+      "e": "4217794",
+      "u": 1794101813349
     }
   },
   "partKinds": {
@@ -641186,7 +641212,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.05.1",
-      "at": "2026-11-08T01:36:27.698Z"
+      "at": "2026-11-08T01:36:56.190Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -641216,7 +641242,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-04T15:18:40.354Z"
     },
-    "savedAt": "2026-11-08T01:36:27.698Z",
+    "savedAt": "2026-11-08T01:36:56.190Z",
     "appVersion": "2026.11.05.1"
   }
 }
