@@ -130836,7 +130836,7 @@
       "qty": 1,
       "name": "Remote-Controlled Stunt Racer",
       "theme": "Technic",
-      "lastEdited": "2026-11-08T20:31:21.437Z",
+      "lastEdited": "2026-11-08T20:31:34.169Z",
       "figsCheckedAt": 1791673346808,
       "year": 2019
     },
@@ -391905,10 +391905,10 @@
       "partNum": "34076",
       "color": "Black",
       "qtyPerSet": 2,
-      "onHand": 1,
+      "onHand": 2,
       "setNum": "42095-1",
       "_totalQty": 2,
-      "_onHand": 1,
+      "_onHand": 2,
       "rbAt": 1791654809281
     },
     {
@@ -392266,10 +392266,10 @@
       "partNum": "98138pr0047",
       "color": "Flat Silver",
       "qtyPerSet": 5,
-      "onHand": 4,
+      "onHand": 5,
       "setNum": "42095-1",
       "_totalQty": 5,
-      "_onHand": 4,
+      "_onHand": 5,
       "rbAt": 1791654809281
     },
     {
@@ -467278,7 +467278,7 @@
       "label": "N7",
       "notes": "Paint Roller and Phone Handset",
       "group": "N",
-      "lastEdited": "2026-10-30T20:29:50.207Z"
+      "lastEdited": "2026-11-08T20:31:34.161Z"
     },
     {
       "id": "N8",
@@ -496674,12 +496674,6 @@
       "partNum": "6190",
       "color": "Dark Bluish Gray",
       "qty": 11
-    },
-    {
-      "drawerId": "N7",
-      "partNum": "34076",
-      "color": "Black",
-      "qty": 1
     },
     {
       "drawerId": "N7",
@@ -539751,6 +539745,27 @@
     }
   ],
   "pullLog": [
+    {
+      "id": "pull_mw8afifk_56mh",
+      "timestamp": "2026-11-08T20:31:34.160Z",
+      "kind": "set",
+      "key": "42095-1",
+      "name": "42095-1 — Remote-Controlled Stunt Racer",
+      "lines": [
+        {
+          "partNum": "34076",
+          "color": "Black",
+          "desc": "Equipment Paint Roller Brush Handle Smooth Handle",
+          "elementId": "6192778",
+          "qty": 1,
+          "drawerId": "N7",
+          "drawerLabel": "N7",
+          "done": false
+        }
+      ],
+      "stillNeeded": [],
+      "undone": false
+    },
     {
       "id": "pull_mw7havyv_efw5",
       "timestamp": "2026-11-08T06:56:09.559Z",
@@ -648292,7 +648307,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.07.4",
-      "at": "2026-11-08T20:31:25.471Z"
+      "at": "2026-11-08T20:31:38.206Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -648326,9 +648341,9 @@
     "stamps": {
       "bags": "2026-11-08T01:33:10.194Z",
       "shopping": "2026-11-05T00:06:59.065Z",
-      "pull": "2026-11-08T06:58:29.189Z"
+      "pull": "2026-11-08T20:31:34.160Z"
     },
-    "savedAt": "2026-11-08T20:31:25.471Z",
+    "savedAt": "2026-11-08T20:31:38.206Z",
     "appVersion": "2026.11.07.4"
   }
 }
