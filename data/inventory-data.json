@@ -466174,7 +466174,7 @@
       "label": "T6",
       "notes": "2 x 3 Inverted Slope",
       "group": "T",
-      "lastEdited": "2026-11-06T00:35:21.272Z"
+      "lastEdited": "2026-11-09T06:32:29.930Z"
     },
     {
       "id": "T7",
@@ -467680,7 +467680,7 @@
       "label": "O26",
       "notes": "4 x 4 Hinge Roof",
       "group": "O",
-      "lastEdited": "2026-11-09T05:17:06.704Z"
+      "lastEdited": "2026-11-09T06:32:29.930Z"
     },
     {
       "id": "O27",
@@ -504397,6 +504397,18 @@
       "color": "Trans-Clear",
       "elementId": "4162145",
       "qty": 1
+    },
+    {
+      "drawerId": "O26",
+      "partNum": "2873",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "T6",
+      "partNum": "2752",
+      "color": "Tan",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -504809,6 +504821,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw8vwbfp_cpy76",
+      "label": "Wenatchee BAM - 11/08/2026 (batch 5)",
+      "bagId": "bagprog_mw8s20zp_tf0c",
+      "bagLabel": "Wenatchee BAM - 11/08/2026",
+      "batch": 5,
+      "timestamp": "2026-11-09T06:32:30.181Z",
+      "items": [
+        {
+          "partNum": "2873",
+          "color": "Blue",
+          "desc": "Hinge Train Gate 2 x 4",
+          "elementId": "287323",
+          "qty": 1,
+          "drawerId": "O26",
+          "drawerLabel": "O26"
+        },
+        {
+          "partNum": "2752",
+          "color": "Tan",
+          "desc": "Brick Sloped Inverted 33° 3 x 2, Connections between Studs, Round Bottom Pin",
+          "elementId": "6533361",
+          "qty": 1,
+          "drawerId": "T6",
+          "drawerLabel": "T6"
+        }
+      ]
+    },
     {
       "id": "bag_mw8vj4ze_libf2",
       "label": "Wenatchee BAM - 11/08/2026 (batch 4)",
@@ -543691,36 +543731,13 @@
     {
       "id": "bagprog_mw8s20zp_tf0c",
       "label": "Wenatchee BAM - 11/08/2026",
-      "items": [
-        {
-          "partNum": "2873",
-          "color": "Blue",
-          "desc": "Hinge Train Gate 2 x 4",
-          "elementId": "287323",
-          "qty": 1,
-          "drawerId": "O26",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "2752",
-          "color": "Tan",
-          "desc": "Brick Sloped Inverted 33° 3 x 2, Connections between Studs, Round Bottom Pin",
-          "elementId": "6533361",
-          "qty": 1,
-          "drawerId": "T6",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        }
-      ],
+      "items": [],
       "keepOpen": true,
-      "savedAt": "2026-11-09T06:32:23.271Z",
+      "savedAt": "2026-11-09T06:32:30.181Z",
       "moved": {
-        "batches": 4,
-        "pieces": 269,
-        "last": "2026-11-09T06:22:15.290Z"
+        "batches": 5,
+        "pieces": 271,
+        "last": "2026-11-09T06:32:30.181Z"
       }
     },
     {
@@ -646792,6 +646809,20 @@
       "d": "Panel 2 x 2 x 5 Corner",
       "e": "6517013",
       "u": 1794205336491
+    },
+    "2873|blue": {
+      "p": "2873",
+      "c": "Blue",
+      "d": "Hinge Train Gate 2 x 4",
+      "e": "287323",
+      "u": 1794205951382
+    },
+    "2752|tan": {
+      "p": "2752",
+      "c": "Tan",
+      "d": "Brick Sloped Inverted 33° 3 x 2, Connections between Studs, Round Bottom Pin",
+      "e": "6533361",
+      "u": 1794205951382
     }
   },
   "partKinds": {
@@ -651866,7 +651897,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-09T06:32:27.295Z"
+      "at": "2026-11-09T06:32:34.214Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -651898,11 +651929,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-09T06:32:23.271Z",
+      "bags": "2026-11-09T06:32:30.181Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-09T06:32:27.295Z",
+    "savedAt": "2026-11-09T06:32:34.214Z",
     "appVersion": "2026.11.08.1"
   }
 }
