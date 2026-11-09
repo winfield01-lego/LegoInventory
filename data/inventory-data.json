@@ -467715,7 +467715,7 @@
       "label": "O31",
       "notes": "2 x 6 2 Corners and 3 x6 1/2 Circle with Cutout",
       "group": "O",
-      "lastEdited": "2026-11-09T07:01:58.271Z"
+      "lastEdited": "2026-11-09T07:04:58.111Z"
     },
     {
       "id": "O32",
@@ -504521,6 +504521,61 @@
       "partNum": "43045",
       "color": "Light Bluish Gray",
       "qty": 5
+    },
+    {
+      "drawerId": "O31",
+      "partNum": "18980",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "O31",
+      "partNum": "18980",
+      "color": "Blue",
+      "qty": 1
+    },
+    {
+      "drawerId": "O31",
+      "partNum": "18980",
+      "color": "Bright Green",
+      "qty": 1
+    },
+    {
+      "drawerId": "O31",
+      "partNum": "18980",
+      "color": "Dark Tan",
+      "qty": 2
+    },
+    {
+      "drawerId": "O31",
+      "partNum": "18980",
+      "color": "Green",
+      "qty": 2
+    },
+    {
+      "drawerId": "O31",
+      "partNum": "18980",
+      "color": "Light Bluish Gray",
+      "qty": 3
+    },
+    {
+      "drawerId": "O31",
+      "partNum": "18980",
+      "color": "Orange",
+      "elementId": "6173923",
+      "qty": 1
+    },
+    {
+      "drawerId": "O31",
+      "partNum": "18980",
+      "color": "Tan",
+      "qty": 2
+    },
+    {
+      "drawerId": "O31",
+      "partNum": "18980",
+      "color": "White",
+      "qty": 3
     }
   ],
   "mocLocations": {
@@ -604397,9 +604452,12 @@
       "c": "Orange",
       "d": "Plate Round Corners 2 x 6 Double",
       "e": "6301806",
-      "u": 1791916924851,
+      "u": 1794207899316,
       "at": 1791654669028,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/6173923.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/6173923.jpg",
+      "ea": [
+        "6173923"
+      ]
     },
     "6536|orange": {
       "p": "6536",
@@ -646465,6 +646523,20 @@
       "d": "Hinge Plate 2 x 4 with Pin Hole with 3 Holes - Top",
       "e": "6138217",
       "u": 1794207545614
+    },
+    "18980|bright green": {
+      "p": "18980",
+      "c": "Bright Green",
+      "d": "Plate Round Corners 2 x 6 Double",
+      "e": "6134287",
+      "u": 1794207899316
+    },
+    "18980|green": {
+      "p": "18980",
+      "c": "Green",
+      "d": "Plate Round Corners 2 x 6 Double",
+      "e": "6133852",
+      "u": 1794207899316
     }
   },
   "partKinds": {
@@ -651539,7 +651611,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-09T07:02:02.314Z"
+      "at": "2026-11-09T07:05:03.414Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -651575,7 +651647,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-09T07:02:02.314Z",
+    "savedAt": "2026-11-09T07:05:03.414Z",
     "appVersion": "2026.11.08.1"
   }
 }
