@@ -544899,9 +544899,80 @@
     {
       "id": "bagprog_mvoo1wik_nkx0",
       "label": "Ebay Bulk Boxes",
-      "items": [],
+      "items": [
+        {
+          "partNum": "3003",
+          "color": "Blue",
+          "desc": "Brick 2 x 2",
+          "elementId": "300323",
+          "qty": 1,
+          "drawerId": "U1",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "3003",
+          "color": "Dark Tan",
+          "desc": "Brick 2 x 2",
+          "elementId": "4255416",
+          "qty": 1,
+          "drawerId": "U1",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "3003",
+          "color": "Light Bluish Gray",
+          "desc": "Brick 2 x 2",
+          "elementId": "4211387",
+          "qty": 1,
+          "drawerId": "U1",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "3003",
+          "color": "Green",
+          "desc": "Brick 2 x 2",
+          "elementId": "300328",
+          "qty": 2,
+          "drawerId": "U1",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "3003",
+          "color": "Red",
+          "desc": "Brick 2 x 2",
+          "elementId": "300321",
+          "qty": 1,
+          "drawerId": "U1",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "3003",
+          "color": "White",
+          "desc": "Brick 2 x 2",
+          "elementId": "300301",
+          "qty": 1,
+          "drawerId": "U1",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "3003",
+          "color": "Yellow",
+          "desc": "Brick 2 x 2",
+          "elementId": "300324",
+          "qty": 3,
+          "drawerId": "U1",
+          "matchCount": 0,
+          "suggested": false
+        }
+      ],
       "keepOpen": true,
-      "savedAt": "2026-11-09T07:40:45.159Z",
+      "savedAt": "2026-11-09T15:00:49.713Z",
       "moved": {
         "batches": 61,
         "pieces": 4104,
@@ -652527,7 +652598,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-09T07:46:52.921Z"
+      "at": "2026-11-09T15:00:53.755Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -652559,11 +652630,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-09T07:40:45.159Z",
+      "bags": "2026-11-09T15:00:49.713Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-09T07:46:52.921Z",
+    "savedAt": "2026-11-09T15:00:53.755Z",
     "appVersion": "2026.11.08.1"
   }
 }
