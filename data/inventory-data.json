@@ -467672,7 +467672,7 @@
       "label": "O25",
       "notes": "1 x 4 x 2 Hinge - Roof Holder and 4x 4 Hinge sunroof",
       "group": "O",
-      "lastEdited": "2026-11-09T05:13:53.304Z",
+      "lastEdited": "2026-11-09T05:17:06.705Z",
       "pinsTag": true
     },
     {
@@ -467680,7 +467680,7 @@
       "label": "O26",
       "notes": "4 x 4 Hinge Roof",
       "group": "O",
-      "lastEdited": "2026-11-09T05:16:54.339Z"
+      "lastEdited": "2026-11-09T05:17:06.704Z"
     },
     {
       "id": "O27",
@@ -504103,7 +504103,7 @@
       "partNum": "4213",
       "color": "Blue",
       "elementId": "421323",
-      "qty": 1
+      "qty": 3
     },
     {
       "drawerId": "O26",
@@ -504117,6 +504117,12 @@
       "partNum": "4213",
       "color": "White",
       "elementId": "421301",
+      "qty": 1
+    },
+    {
+      "drawerId": "O25",
+      "partNum": "2349b",
+      "color": "Blue",
       "qty": 1
     }
   ],
@@ -504530,6 +504536,34 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mw8t7daf_bbjr4",
+      "label": "Wenatchee BAM - 11/08/2026 (batch 2)",
+      "bagId": "bagprog_mw8s20zp_tf0c",
+      "bagLabel": "Wenatchee BAM - 11/08/2026",
+      "batch": 2,
+      "timestamp": "2026-11-09T05:17:06.951Z",
+      "items": [
+        {
+          "partNum": "4213",
+          "color": "Blue",
+          "desc": "Hinge Vehicle Roof 4 x 4",
+          "elementId": "421323",
+          "qty": 2,
+          "drawerId": "O26",
+          "drawerLabel": "O26"
+        },
+        {
+          "partNum": "2349b",
+          "color": "Blue",
+          "desc": "Hinge Vehicle Roof 4 x 4 Sunroof with Ledges",
+          "elementId": "234923",
+          "qty": 1,
+          "drawerId": "O25",
+          "drawerLabel": "O25"
+        }
+      ]
+    },
     {
       "id": "bag_mw8sphf3_ljnbj",
       "label": "Wenatchee BAM - 11/08/2026 (batch 1)",
@@ -542097,36 +542131,14 @@
           "matchCount": 0,
           "suggested": false,
           "sel": false
-        },
-        {
-          "partNum": "4213",
-          "color": "Blue",
-          "desc": "Hinge Vehicle Roof 4 x 4",
-          "elementId": "421323",
-          "qty": 2,
-          "drawerId": "O26",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": false
-        },
-        {
-          "partNum": "2349b",
-          "color": "Blue",
-          "desc": "Hinge Vehicle Roof 4 x 4 Sunroof with Ledges",
-          "elementId": "234923",
-          "qty": 1,
-          "drawerId": "O25",
-          "matchCount": 0,
-          "suggested": true,
-          "sel": false
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-09T05:03:12.495Z",
+      "savedAt": "2026-11-09T05:17:06.951Z",
       "moved": {
-        "batches": 1,
-        "pieces": 90,
-        "last": "2026-11-09T05:03:12.495Z"
+        "batches": 2,
+        "pieces": 93,
+        "last": "2026-11-09T05:17:06.951Z"
       }
     },
     {
@@ -542780,7 +542792,7 @@
           "drawerId": "O26",
           "matchCount": 0,
           "suggested": false,
-          "sel": false
+          "sel": true
         },
         {
           "partNum": "2349b",
@@ -542791,7 +542803,7 @@
           "drawerId": "O25",
           "matchCount": 0,
           "suggested": true,
-          "sel": false
+          "sel": true
         },
         {
           "partNum": "4217",
@@ -650113,7 +650125,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-09T05:17:03.305Z"
+      "at": "2026-11-09T05:17:10.982Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -650145,11 +650157,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-09T05:16:59.272Z",
+      "bags": "2026-11-09T05:17:06.951Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-09T05:17:03.305Z",
+    "savedAt": "2026-11-09T05:17:10.982Z",
     "appVersion": "2026.11.08.1"
   }
 }
