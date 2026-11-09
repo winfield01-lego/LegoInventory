@@ -543744,9 +543744,20 @@
     {
       "id": "bagprog_mvoo1wik_nkx0",
       "label": "Ebay Bulk Boxes",
-      "items": [],
+      "items": [
+        {
+          "partNum": "37494",
+          "color": "Black",
+          "desc": "Bar, Parallel Angled with 2 Connecting Bars (Train Hinge)",
+          "elementId": "6226706",
+          "qty": 1,
+          "drawerId": "G23",
+          "matchCount": 0,
+          "suggested": false
+        }
+      ],
       "keepOpen": true,
-      "savedAt": "2026-11-09T06:38:06.833Z",
+      "savedAt": "2026-11-09T06:38:26.816Z",
       "moved": {
         "batches": 60,
         "pieces": 3965,
@@ -651226,7 +651237,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-09T06:38:11.427Z"
+      "at": "2026-11-09T06:38:30.847Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -651258,11 +651269,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-09T06:38:06.833Z",
+      "bags": "2026-11-09T06:38:26.816Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-09T06:38:11.427Z",
+    "savedAt": "2026-11-09T06:38:30.847Z",
     "appVersion": "2026.11.08.1"
   }
 }
