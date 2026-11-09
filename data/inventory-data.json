@@ -467743,7 +467743,7 @@
       "label": "O35",
       "notes": "2 x 4 Plate with Pin Hole on Top or Bottom",
       "group": "O",
-      "lastEdited": "2026-11-09T06:59:13.934Z"
+      "lastEdited": "2026-11-09T06:59:55.496Z"
     },
     {
       "id": "O36",
@@ -504509,6 +504509,18 @@
       "partNum": "98286",
       "color": "Light Bluish Gray",
       "qty": 13
+    },
+    {
+      "drawerId": "O35",
+      "partNum": "43045",
+      "color": "Black",
+      "qty": 3
+    },
+    {
+      "drawerId": "O35",
+      "partNum": "43045",
+      "color": "Light Bluish Gray",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -651527,7 +651539,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-09T06:59:17.971Z"
+      "at": "2026-11-09T06:59:59.536Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -651563,7 +651575,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-09T06:59:17.971Z",
+    "savedAt": "2026-11-09T06:59:59.536Z",
     "appVersion": "2026.11.08.1"
   }
 }
