@@ -467757,7 +467757,7 @@
       "label": "O37",
       "notes": "1 x 2 Plate - Claws and Angled Knuckles",
       "group": "O",
-      "lastEdited": "2026-11-09T07:11:17.826Z"
+      "lastEdited": "2026-11-09T07:12:06.145Z"
     },
     {
       "id": "O38",
@@ -504670,6 +504670,24 @@
       "color": "Black",
       "elementId": "",
       "qty": 2
+    },
+    {
+      "drawerId": "O37",
+      "partNum": "92692",
+      "color": "Black",
+      "qty": 14
+    },
+    {
+      "drawerId": "O37",
+      "partNum": "92692",
+      "color": "Pearl Gold",
+      "qty": 1
+    },
+    {
+      "drawerId": "O37",
+      "partNum": "92692",
+      "color": "White",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -646668,6 +646686,27 @@
       "d": "Plate Special 1 x 2 with Long Towball",
       "e": "250824",
       "u": 1794208146648
+    },
+    "92692|black": {
+      "p": "92692",
+      "c": "Black",
+      "d": "Plate Special 1 x 2 with Angled Handles on Side",
+      "e": "4604304",
+      "u": 1794208327347
+    },
+    "92692|pearl gold": {
+      "p": "92692",
+      "c": "Pearl Gold",
+      "d": "Plate Special 1 x 2 with Angled Handles on Side",
+      "e": "6280488",
+      "u": 1794208327347
+    },
+    "92692|white": {
+      "p": "92692",
+      "c": "White",
+      "d": "Plate Special 1 x 2 with Angled Handles on Side",
+      "e": "4622937",
+      "u": 1794208327347
     }
   },
   "partKinds": {
@@ -651742,7 +651781,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-09T07:11:21.877Z"
+      "at": "2026-11-09T07:12:10.181Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -651778,7 +651817,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-09T07:11:21.877Z",
+    "savedAt": "2026-11-09T07:12:10.180Z",
     "appVersion": "2026.11.08.1"
   }
 }
