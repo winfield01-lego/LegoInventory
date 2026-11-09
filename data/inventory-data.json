@@ -467715,7 +467715,7 @@
       "label": "O31",
       "notes": "2 x 6 2 Corners and 3 x6 1/2 Circle with Cutout",
       "group": "O",
-      "lastEdited": "2026-11-09T07:04:58.111Z"
+      "lastEdited": "2026-11-09T07:06:02.280Z"
     },
     {
       "id": "O32",
@@ -504576,6 +504576,48 @@
       "partNum": "18980",
       "color": "White",
       "qty": 3
+    },
+    {
+      "drawerId": "O31",
+      "partNum": "18646",
+      "color": "Blue",
+      "qty": 3
+    },
+    {
+      "drawerId": "O31",
+      "partNum": "18646",
+      "color": "Dark Azure",
+      "qty": 1
+    },
+    {
+      "drawerId": "O31",
+      "partNum": "18646",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "O31",
+      "partNum": "18646",
+      "color": "Dark Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "O31",
+      "partNum": "18646",
+      "color": "Light Bluish Gray",
+      "qty": 4
+    },
+    {
+      "drawerId": "O31",
+      "partNum": "18646",
+      "color": "White",
+      "qty": 4
+    },
+    {
+      "drawerId": "O31",
+      "partNum": "18646",
+      "color": "Tan",
+      "qty": 1
     }
   ],
   "mocLocations": {
@@ -646537,6 +646579,13 @@
       "d": "Plate Round Corners 2 x 6 Double",
       "e": "6133852",
       "u": 1794207899316
+    },
+    "18646|blue": {
+      "p": "18646",
+      "c": "Blue",
+      "d": "Plate Round Half 3 x 6 with 1 x 2 Cutout",
+      "e": "6133564",
+      "u": 1794207963482
     }
   },
   "partKinds": {
@@ -651611,7 +651660,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-09T07:05:03.414Z"
+      "at": "2026-11-09T07:06:06.325Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -651647,7 +651696,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-09T07:05:03.414Z",
+    "savedAt": "2026-11-09T07:06:06.325Z",
     "appVersion": "2026.11.08.1"
   }
 }
