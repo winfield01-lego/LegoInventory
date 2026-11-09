@@ -545548,9 +545548,20 @@
     {
       "id": "bagprog_mvoo1wik_nkx0",
       "label": "Ebay Bulk Boxes",
-      "items": [],
+      "items": [
+        {
+          "partNum": "3009",
+          "color": "Orange",
+          "desc": "Brick 1 x 6",
+          "elementId": "4125974",
+          "qty": 1,
+          "drawerId": "A9",
+          "matchCount": 0,
+          "suggested": false
+        }
+      ],
       "keepOpen": true,
-      "savedAt": "2026-11-09T15:10:05.986Z",
+      "savedAt": "2026-11-09T15:22:58.638Z",
       "moved": {
         "batches": 62,
         "pieces": 4206,
@@ -653176,7 +653187,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-09T15:10:10.057Z"
+      "at": "2026-11-09T15:23:02.685Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -653208,11 +653219,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-09T15:10:05.986Z",
+      "bags": "2026-11-09T15:22:58.638Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-09T15:10:10.057Z",
+    "savedAt": "2026-11-09T15:23:02.685Z",
     "appVersion": "2026.11.08.1"
   }
 }
