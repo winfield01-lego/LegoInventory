@@ -467708,7 +467708,7 @@
       "label": "O30",
       "notes": "Towball Plates - 2 x 2, 1 x 4, 2 x 4 Wedge",
       "group": "O",
-      "lastEdited": "2026-11-09T07:09:05.445Z"
+      "lastEdited": "2026-11-09T07:09:19.345Z"
     },
     {
       "id": "O31",
@@ -504663,6 +504663,13 @@
       "partNum": "2508",
       "color": "Yellow",
       "qty": 1
+    },
+    {
+      "drawerId": "O30",
+      "partNum": "3491",
+      "color": "Black",
+      "elementId": "",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -651735,7 +651742,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-09T07:09:10.730Z"
+      "at": "2026-11-09T07:09:24.634Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -651771,7 +651778,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-09T07:09:10.730Z",
+    "savedAt": "2026-11-09T07:09:24.634Z",
     "appVersion": "2026.11.08.1"
   }
 }
