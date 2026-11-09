@@ -467743,7 +467743,7 @@
       "label": "O35",
       "notes": "2 x 4 Plate with Pin Hole on Top or Bottom",
       "group": "O",
-      "lastEdited": "2026-11-09T06:58:20.161Z"
+      "lastEdited": "2026-11-09T06:59:04.412Z"
     },
     {
       "id": "O36",
@@ -504497,6 +504497,18 @@
       "partNum": "43056",
       "color": "Light Bluish Gray",
       "qty": 2
+    },
+    {
+      "drawerId": "O35",
+      "partNum": "98286",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "O35",
+      "partNum": "98286",
+      "color": "Light Bluish Gray",
+      "qty": 11
     }
   ],
   "mocLocations": {
@@ -646434,6 +646446,13 @@
       "d": "Hinge Plate 2 x 4 with Pin Hole with 3 Holes - Bottom",
       "e": "4646512",
       "u": 1794207417565
+    },
+    "98286|black": {
+      "p": "98286",
+      "c": "Black",
+      "d": "Hinge Plate 2 x 4 with Pin Hole with 3 Holes - Top",
+      "e": "6138217",
+      "u": 1794207545614
     }
   },
   "partKinds": {
@@ -651508,7 +651527,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-09T06:58:24.196Z"
+      "at": "2026-11-09T06:59:08.456Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -651544,7 +651563,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-09T06:58:24.196Z",
+    "savedAt": "2026-11-09T06:59:08.456Z",
     "appVersion": "2026.11.08.1"
   }
 }
