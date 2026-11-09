@@ -467757,7 +467757,7 @@
       "label": "O37",
       "notes": "1 x 2 Plate - Claws and Angled Knuckles",
       "group": "O",
-      "lastEdited": "2026-11-09T07:12:17.164Z"
+      "lastEdited": "2026-11-09T07:13:03.045Z"
     },
     {
       "id": "O38",
@@ -504688,6 +504688,54 @@
       "partNum": "92692",
       "color": "White",
       "qty": 1
+    },
+    {
+      "drawerId": "O37",
+      "partNum": "27261",
+      "color": "Black",
+      "qty": 1
+    },
+    {
+      "drawerId": "O37",
+      "partNum": "27261",
+      "color": "Dark Brown",
+      "qty": 1
+    },
+    {
+      "drawerId": "O37",
+      "partNum": "27261",
+      "color": "Dark Bluish Gray",
+      "qty": 1
+    },
+    {
+      "drawerId": "O37",
+      "partNum": "27261",
+      "color": "Dark Red",
+      "qty": 1
+    },
+    {
+      "drawerId": "O37",
+      "partNum": "27261",
+      "color": "Dark Tan",
+      "qty": 1
+    },
+    {
+      "drawerId": "O37",
+      "partNum": "27261",
+      "color": "Reddish Brown",
+      "qty": 2
+    },
+    {
+      "drawerId": "O37",
+      "partNum": "27261",
+      "color": "Reddish Orange",
+      "qty": 1
+    },
+    {
+      "drawerId": "O37",
+      "partNum": "27261",
+      "color": "White",
+      "qty": 9
     }
   ],
   "mocLocations": {
@@ -646707,6 +646755,34 @@
       "d": "Plate Special 1 x 2 with Angled Handles on Side",
       "e": "4622937",
       "u": 1794208327347
+    },
+    "27261|dark bluish gray": {
+      "p": "27261",
+      "c": "Dark Bluish Gray",
+      "d": "Plate Special 2 x 3 with Rocks",
+      "e": "6168609",
+      "u": 1794208384248
+    },
+    "27261|dark red": {
+      "p": "27261",
+      "c": "Dark Red",
+      "d": "Plate Special 2 x 3 with Rocks",
+      "e": "6212205",
+      "u": 1794208384248
+    },
+    "27261|reddish brown": {
+      "p": "27261",
+      "c": "Reddish Brown",
+      "d": "Plate Special 2 x 3 with Rocks",
+      "e": "6251403",
+      "u": 1794208384248
+    },
+    "27261|reddish orange": {
+      "p": "27261",
+      "c": "Reddish Orange",
+      "d": "Plate Special 2 x 3 with Rocks",
+      "e": "6469092",
+      "u": 1794208384248
     }
   },
   "partKinds": {
@@ -651781,7 +651857,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-09T07:12:21.209Z"
+      "at": "2026-11-09T07:13:07.081Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -651817,7 +651893,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-09T07:12:21.209Z",
+    "savedAt": "2026-11-09T07:13:07.081Z",
     "appVersion": "2026.11.08.1"
   }
 }
