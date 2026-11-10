@@ -545798,9 +545798,30 @@
     {
       "id": "bagprog_mvoo1wik_nkx0",
       "label": "Ebay Bulk Boxes",
-      "items": [],
+      "items": [
+        {
+          "partNum": "3024",
+          "color": "Black",
+          "desc": "Plate 1 x 1",
+          "elementId": "302426",
+          "qty": 1,
+          "drawerId": "L44",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "3024",
+          "color": "Pearl Gold",
+          "desc": "Plate 1 x 1",
+          "elementId": "6069887",
+          "qty": 2,
+          "drawerId": "L44",
+          "matchCount": 0,
+          "suggested": false
+        }
+      ],
       "keepOpen": true,
-      "savedAt": "2026-11-09T15:26:50.764Z",
+      "savedAt": "2026-11-10T01:14:45.019Z",
       "moved": {
         "batches": 63,
         "pieces": 4236,
@@ -653433,7 +653454,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-09T15:28:46.161Z"
+      "at": "2026-11-10T01:14:49.067Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -653465,11 +653486,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-09T15:26:50.764Z",
+      "bags": "2026-11-10T01:14:45.019Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-09T15:28:46.160Z",
+    "savedAt": "2026-11-10T01:14:49.067Z",
     "appVersion": "2026.11.08.1"
   }
 }
