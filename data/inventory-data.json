@@ -547433,9 +547433,20 @@
     {
       "id": "bagprog_mvoo1wik_nkx0",
       "label": "Ebay Bulk Boxes",
-      "items": [],
+      "items": [
+        {
+          "partNum": "44567b",
+          "color": "Black",
+          "desc": "Hinge Plate 1 x 2 Locking with 1 Finger on Side, without Groove",
+          "elementId": "6266244",
+          "qty": 2,
+          "drawerId": "L31",
+          "matchCount": 0,
+          "suggested": false
+        }
+      ],
       "keepOpen": true,
-      "savedAt": "2026-11-10T03:43:54.699Z",
+      "savedAt": "2026-11-10T03:46:57.408Z",
       "moved": {
         "batches": 66,
         "pieces": 4462,
@@ -655089,7 +655100,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-10T03:45:46.269Z"
+      "at": "2026-11-10T03:47:01.461Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -655121,11 +655132,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-10T03:43:54.699Z",
+      "bags": "2026-11-10T03:46:57.410Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-10T03:45:46.269Z",
+    "savedAt": "2026-11-10T03:47:01.461Z",
     "appVersion": "2026.11.08.1"
   }
 }
