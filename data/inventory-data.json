@@ -550525,9 +550525,40 @@
     {
       "id": "bagprog_mvoo1wik_nkx0",
       "label": "Ebay Bulk Boxes",
-      "items": [],
+      "items": [
+        {
+          "partNum": "3009",
+          "color": "Black",
+          "desc": "Brick 1 x 6",
+          "elementId": "300926",
+          "qty": 1,
+          "drawerId": "A9",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "3009",
+          "color": "Red",
+          "desc": "Brick 1 x 6",
+          "elementId": "300921",
+          "qty": 1,
+          "drawerId": "A9",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "3009",
+          "color": "Tan",
+          "desc": "Brick 1 x 6",
+          "elementId": "300905",
+          "qty": 2,
+          "drawerId": "A9",
+          "matchCount": 0,
+          "suggested": false
+        }
+      ],
       "keepOpen": true,
-      "savedAt": "2026-11-10T06:40:14.058Z",
+      "savedAt": "2026-11-10T06:51:55.331Z",
       "moved": {
         "batches": 71,
         "pieces": 5065,
@@ -658231,7 +658262,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-10T06:51:11.998Z"
+      "at": "2026-11-10T06:51:59.359Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -658263,11 +658294,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-10T06:40:14.058Z",
+      "bags": "2026-11-10T06:51:55.331Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-10T06:51:11.998Z",
+    "savedAt": "2026-11-10T06:51:59.359Z",
     "appVersion": "2026.11.08.1"
   }
 }
