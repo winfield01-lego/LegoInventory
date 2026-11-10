@@ -466755,7 +466755,7 @@
       "label": "L25",
       "notes": "1 x 2 with Door Rail",
       "group": "L",
-      "lastEdited": "2026-11-10T01:29:56.979Z"
+      "lastEdited": "2026-11-10T01:48:03.656Z"
     },
     {
       "id": "L26",
@@ -492504,7 +492504,7 @@
       "partNum": "32028",
       "color": "Dark Bluish Gray",
       "elementId": "4210944",
-      "qty": 13
+      "qty": 14
     },
     {
       "drawerId": "L25",
@@ -505208,6 +505208,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mwa16doq_0hd99",
+      "label": "Ebay Bulk Boxes (batch 65)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 65,
+      "timestamp": "2026-11-10T01:48:03.914Z",
+      "items": [
+        {
+          "partNum": "32028",
+          "color": "Dark Bluish Gray",
+          "desc": "Plate Special 1 x 2 with Door Rail",
+          "elementId": "4210944",
+          "qty": 1,
+          "drawerId": "L25",
+          "drawerLabel": "L25"
+        }
+      ]
+    },
     {
       "id": "bag_mwa0j371_eziev",
       "label": "Ebay Bulk Boxes (batch 64)",
@@ -546583,25 +546602,13 @@
     {
       "id": "bagprog_mvoo1wik_nkx0",
       "label": "Ebay Bulk Boxes",
-      "items": [
-        {
-          "partNum": "32028",
-          "color": "Dark Bluish Gray",
-          "desc": "Plate Special 1 x 2 with Door Rail",
-          "elementId": "4210944",
-          "qty": 1,
-          "drawerId": "",
-          "matchCount": 2,
-          "suggested": false,
-          "sel": false
-        }
-      ],
+      "items": [],
       "keepOpen": true,
-      "savedAt": "2026-11-10T01:29:57.229Z",
+      "savedAt": "2026-11-10T01:48:03.914Z",
       "moved": {
-        "batches": 64,
-        "pieces": 4341,
-        "last": "2026-11-10T01:29:57.229Z"
+        "batches": 65,
+        "pieces": 4342,
+        "last": "2026-11-10T01:48:03.914Z"
       }
     },
     {
@@ -654242,7 +654249,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-10T01:30:02.519Z"
+      "at": "2026-11-10T01:48:07.950Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -654274,11 +654281,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-10T01:29:57.229Z",
+      "bags": "2026-11-10T01:48:03.914Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-10T01:30:02.519Z",
+    "savedAt": "2026-11-10T01:48:07.950Z",
     "appVersion": "2026.11.08.1"
   }
 }
