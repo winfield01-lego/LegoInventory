@@ -550436,10 +550436,30 @@
           "drawerId": "U3",
           "matchCount": 0,
           "suggested": false
+        },
+        {
+          "partNum": "2456",
+          "color": "Blue",
+          "desc": "Brick 2 x 6",
+          "elementId": "245623",
+          "qty": 1,
+          "drawerId": "U4",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "2456",
+          "color": "Red",
+          "desc": "Brick 2 x 6",
+          "elementId": "245621",
+          "qty": 2,
+          "drawerId": "U4",
+          "matchCount": 0,
+          "suggested": false
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-10T06:38:52.253Z",
+      "savedAt": "2026-11-10T06:39:26.991Z",
       "moved": {
         "batches": 70,
         "pieces": 5009,
@@ -658140,7 +658160,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-10T06:38:56.293Z"
+      "at": "2026-11-10T06:39:31.021Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -658172,11 +658192,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-10T06:38:52.253Z",
+      "bags": "2026-11-10T06:39:26.991Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-10T06:38:56.293Z",
+    "savedAt": "2026-11-10T06:39:31.021Z",
     "appVersion": "2026.11.08.1"
   }
 }
