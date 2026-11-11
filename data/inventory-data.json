@@ -466266,7 +466266,7 @@
       "label": "Y3",
       "notes": "1x plates 2-12",
       "group": "Y Rolling Drawer",
-      "lastEdited": "2026-11-10T01:29:56.977Z"
+      "lastEdited": "2026-11-11T05:26:58.146Z"
     },
     {
       "id": "Y4",
@@ -486689,13 +486689,13 @@
       "drawerId": "Y3",
       "partNum": "3623",
       "color": "Blue",
-      "qty": 76
+      "qty": 77
     },
     {
       "drawerId": "Y3",
       "partNum": "3623",
       "color": "Red",
-      "qty": 30
+      "qty": 35
     },
     {
       "drawerId": "Y3",
@@ -486716,7 +486716,7 @@
       "partNum": "3623",
       "color": "Tan",
       "elementId": "362305",
-      "qty": 32
+      "qty": 35
     },
     {
       "drawerId": "Y3",
@@ -486742,7 +486742,7 @@
       "drawerId": "Y3",
       "partNum": "3623",
       "color": "Black",
-      "qty": 95
+      "qty": 96
     },
     {
       "drawerId": "Y3",
@@ -486755,13 +486755,13 @@
       "drawerId": "Y3",
       "partNum": "3623",
       "color": "Yellow",
-      "qty": 16
+      "qty": 19
     },
     {
       "drawerId": "Y3",
       "partNum": "3623",
       "color": "Reddish Brown",
-      "qty": 15
+      "qty": 16
     },
     {
       "drawerId": "Y3",
@@ -486775,19 +486775,19 @@
       "partNum": "3623",
       "color": "Light Bluish Gray",
       "elementId": "3623194",
-      "qty": 202
+      "qty": 205
     },
     {
       "drawerId": "Y3",
       "partNum": "3623",
       "color": "Dark Bluish Gray",
-      "qty": 58
+      "qty": 59
     },
     {
       "drawerId": "Y3",
       "partNum": "3623",
       "color": "White",
-      "qty": 62
+      "qty": 63
     },
     {
       "drawerId": "Y3",
@@ -487080,27 +487080,27 @@
       "partNum": "3023",
       "color": "Tan",
       "elementId": "302305",
-      "qty": 110
+      "qty": 115
     },
     {
       "drawerId": "Y3",
       "partNum": "3023",
       "color": "Dark Tan",
       "elementId": "4497082",
-      "qty": 39
+      "qty": 47
     },
     {
       "drawerId": "Y3",
       "partNum": "3023",
       "color": "Dark Red",
       "elementId": "4162582",
-      "qty": 33
+      "qty": 39
     },
     {
       "drawerId": "Y3",
       "partNum": "3023",
       "color": "Reddish Brown",
-      "qty": 41
+      "qty": 44
     },
     {
       "drawerId": "Y3",
@@ -487113,13 +487113,13 @@
       "drawerId": "Y3",
       "partNum": "3023",
       "color": "Dark Brown",
-      "qty": 6
+      "qty": 7
     },
     {
       "drawerId": "Y3",
       "partNum": "3023",
       "color": "White",
-      "qty": 218
+      "qty": 226
     },
     {
       "drawerId": "Y3",
@@ -487133,26 +487133,26 @@
       "partNum": "3023",
       "color": "Medium Nougat",
       "elementId": "4645055",
-      "qty": 6
+      "qty": 8
     },
     {
       "drawerId": "Y3",
       "partNum": "3023",
       "color": "Yellow",
-      "qty": 93
+      "qty": 102
     },
     {
       "drawerId": "Y3",
       "partNum": "3023",
       "color": "Light Bluish Gray",
       "elementId": "3023194",
-      "qty": 449
+      "qty": 463
     },
     {
       "drawerId": "Y3",
       "partNum": "3023",
       "color": "Red",
-      "qty": 107
+      "qty": 110
     },
     {
       "drawerId": "Y3",
@@ -487198,32 +487198,32 @@
       "drawerId": "Y3",
       "partNum": "3023",
       "color": "Black",
-      "qty": 207
+      "qty": 209
     },
     {
       "drawerId": "Y3",
       "partNum": "3023",
       "color": "Dark Bluish Gray",
-      "qty": 214
+      "qty": 224
     },
     {
       "drawerId": "Y3",
       "partNum": "3023",
       "color": "Dark Blue",
       "elementId": "4177737",
-      "qty": 58
+      "qty": 59
     },
     {
       "drawerId": "Y3",
       "partNum": "3023",
       "color": "Green",
-      "qty": 26
+      "qty": 34
     },
     {
       "drawerId": "Y3",
       "partNum": "3023",
       "color": "Dark Azure",
-      "qty": 30
+      "qty": 31
     },
     {
       "drawerId": "Y3",
@@ -505318,6 +505318,232 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mwbofqyj_0w5wt",
+      "label": "Ebay Bulk Boxes (batch 73)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 73,
+      "timestamp": "2026-11-11T05:26:58.363Z",
+      "items": [
+        {
+          "partNum": "3023",
+          "color": "Black",
+          "desc": "Plate 1 x 2",
+          "elementId": "302326",
+          "qty": 2,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3023",
+          "color": "Dark Azure",
+          "desc": "Plate 1 x 2",
+          "elementId": "4653988",
+          "qty": 1,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3023",
+          "color": "Dark Blue",
+          "desc": "Plate 1 x 2",
+          "elementId": "4177737",
+          "qty": 1,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3023",
+          "color": "Dark Bluish Gray",
+          "desc": "Plate 1 x 2",
+          "elementId": "4211063",
+          "qty": 10,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3023",
+          "color": "Dark Brown",
+          "desc": "Plate 1 x 2",
+          "elementId": "6013831",
+          "qty": 1,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3023",
+          "color": "Dark Red",
+          "desc": "Plate 1 x 2",
+          "elementId": "4162582",
+          "qty": 6,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3023",
+          "color": "Dark Tan",
+          "desc": "Plate 1 x 2",
+          "elementId": "4497082",
+          "qty": 8,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3023",
+          "color": "Green",
+          "desc": "Plate 1 x 2",
+          "elementId": "302328",
+          "qty": 8,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3023",
+          "color": "Light Bluish Gray",
+          "desc": "Plate 1 x 2",
+          "elementId": "3023194",
+          "qty": 14,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3023",
+          "color": "Medium Nougat",
+          "desc": "Plate 1 x 2",
+          "elementId": "4645055",
+          "qty": 2,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3023",
+          "color": "Red",
+          "desc": "Plate 1 x 2",
+          "elementId": "302321",
+          "qty": 3,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3023",
+          "color": "Reddish Brown",
+          "desc": "Plate 1 x 2",
+          "elementId": "4211150",
+          "qty": 3,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3023",
+          "color": "Tan",
+          "desc": "Plate 1 x 2",
+          "elementId": "302305",
+          "qty": 5,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3023",
+          "color": "White",
+          "desc": "Plate 1 x 2",
+          "elementId": "302301",
+          "qty": 8,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3023",
+          "color": "Yellow",
+          "desc": "Plate 1 x 2",
+          "elementId": "302324",
+          "qty": 9,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3623",
+          "color": "Black",
+          "desc": "Plate 1 x 3",
+          "elementId": "362326",
+          "qty": 1,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3623",
+          "color": "Blue",
+          "desc": "Plate 1 x 3",
+          "elementId": "362323",
+          "qty": 1,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3623",
+          "color": "Dark Bluish Gray",
+          "desc": "Plate 1 x 3",
+          "elementId": "4211133",
+          "qty": 1,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3623",
+          "color": "Light Bluish Gray",
+          "desc": "Plate 1 x 3",
+          "elementId": "3623194",
+          "qty": 3,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3623",
+          "color": "Red",
+          "desc": "Plate 1 x 3",
+          "elementId": "362321",
+          "qty": 5,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3623",
+          "color": "Reddish Brown",
+          "desc": "Plate 1 x 3",
+          "elementId": "4211152",
+          "qty": 1,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3623",
+          "color": "Tan",
+          "desc": "Plate 1 x 3",
+          "elementId": "362305",
+          "qty": 3,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3623",
+          "color": "White",
+          "desc": "Plate 1 x 3",
+          "elementId": "362301",
+          "qty": 1,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        },
+        {
+          "partNum": "3623",
+          "color": "Yellow",
+          "desc": "Plate 1 x 3",
+          "elementId": "362324",
+          "qty": 3,
+          "drawerId": "Y3",
+          "drawerLabel": "Y3"
+        }
+      ]
+    },
     {
       "id": "bag_mwac8gk8_1g07x",
       "label": "Ebay Bulk Boxes (batch 72)",
@@ -550832,278 +551058,13 @@
     {
       "id": "bagprog_mvoo1wik_nkx0",
       "label": "Ebay Bulk Boxes",
-      "items": [
-        {
-          "partNum": "3023",
-          "color": "Black",
-          "desc": "Plate 1 x 2",
-          "elementId": "302326",
-          "qty": 2,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3023",
-          "color": "Dark Azure",
-          "desc": "Plate 1 x 2",
-          "elementId": "4653988",
-          "qty": 1,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3023",
-          "color": "Dark Blue",
-          "desc": "Plate 1 x 2",
-          "elementId": "4177737",
-          "qty": 1,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3023",
-          "color": "Dark Bluish Gray",
-          "desc": "Plate 1 x 2",
-          "elementId": "4211063",
-          "qty": 10,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3023",
-          "color": "Dark Brown",
-          "desc": "Plate 1 x 2",
-          "elementId": "6013831",
-          "qty": 1,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3023",
-          "color": "Dark Red",
-          "desc": "Plate 1 x 2",
-          "elementId": "4162582",
-          "qty": 6,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3023",
-          "color": "Dark Tan",
-          "desc": "Plate 1 x 2",
-          "elementId": "4497082",
-          "qty": 8,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3023",
-          "color": "Green",
-          "desc": "Plate 1 x 2",
-          "elementId": "302328",
-          "qty": 8,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3023",
-          "color": "Light Bluish Gray",
-          "desc": "Plate 1 x 2",
-          "elementId": "3023194",
-          "qty": 14,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3023",
-          "color": "Medium Nougat",
-          "desc": "Plate 1 x 2",
-          "elementId": "4645055",
-          "qty": 2,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3023",
-          "color": "Red",
-          "desc": "Plate 1 x 2",
-          "elementId": "302321",
-          "qty": 3,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3023",
-          "color": "Reddish Brown",
-          "desc": "Plate 1 x 2",
-          "elementId": "4211150",
-          "qty": 3,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3023",
-          "color": "Tan",
-          "desc": "Plate 1 x 2",
-          "elementId": "302305",
-          "qty": 5,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3023",
-          "color": "White",
-          "desc": "Plate 1 x 2",
-          "elementId": "302301",
-          "qty": 8,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3023",
-          "color": "Yellow",
-          "desc": "Plate 1 x 2",
-          "elementId": "302324",
-          "qty": 9,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3623",
-          "color": "Black",
-          "desc": "Plate 1 x 3",
-          "elementId": "362326",
-          "qty": 1,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3623",
-          "color": "Blue",
-          "desc": "Plate 1 x 3",
-          "elementId": "362323",
-          "qty": 1,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3623",
-          "color": "Dark Bluish Gray",
-          "desc": "Plate 1 x 3",
-          "elementId": "4211133",
-          "qty": 1,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3623",
-          "color": "Light Bluish Gray",
-          "desc": "Plate 1 x 3",
-          "elementId": "3623194",
-          "qty": 3,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3623",
-          "color": "Red",
-          "desc": "Plate 1 x 3",
-          "elementId": "362321",
-          "qty": 5,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3623",
-          "color": "Reddish Brown",
-          "desc": "Plate 1 x 3",
-          "elementId": "4211152",
-          "qty": 1,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3623",
-          "color": "Tan",
-          "desc": "Plate 1 x 3",
-          "elementId": "362305",
-          "qty": 3,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3623",
-          "color": "White",
-          "desc": "Plate 1 x 3",
-          "elementId": "362301",
-          "qty": 1,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        },
-        {
-          "partNum": "3623",
-          "color": "Yellow",
-          "desc": "Plate 1 x 3",
-          "elementId": "362324",
-          "qty": 3,
-          "drawerId": "Y3",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        }
-      ],
+      "items": [],
       "keepOpen": true,
-      "savedAt": "2026-11-11T05:26:53.522Z",
+      "savedAt": "2026-11-11T05:26:58.363Z",
       "moved": {
-        "batches": 72,
-        "pieces": 5107,
-        "last": "2026-11-10T06:57:36.728Z"
+        "batches": 73,
+        "pieces": 5207,
+        "last": "2026-11-11T05:26:58.363Z"
       }
     },
     {
@@ -658803,7 +658764,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-11T05:26:57.559Z"
+      "at": "2026-11-11T05:27:04.264Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -658835,11 +658796,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-11T05:26:53.523Z",
+      "bags": "2026-11-11T05:26:58.363Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-11T05:26:57.559Z",
+    "savedAt": "2026-11-11T05:27:04.264Z",
     "appVersion": "2026.11.08.1"
   }
 }
