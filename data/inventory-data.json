@@ -553415,7 +553415,7 @@
           "color": "Black",
           "desc": "Plate 1 x 1",
           "elementId": "302426",
-          "qty": 7,
+          "qty": 8,
           "drawerId": "L44",
           "matchCount": 0,
           "suggested": false
@@ -553445,7 +553445,7 @@
           "color": "Dark Azure",
           "desc": "Plate 1 x 1",
           "elementId": "6089779",
-          "qty": 3,
+          "qty": 4,
           "drawerId": "L44",
           "matchCount": 0,
           "suggested": false
@@ -553789,10 +553789,20 @@
           "drawerId": "G40",
           "matchCount": 0,
           "suggested": false
+        },
+        {
+          "partNum": "3024",
+          "color": "Dark Red",
+          "desc": "Plate 1 x 1",
+          "elementId": "4183901",
+          "qty": 1,
+          "drawerId": "L44",
+          "matchCount": 0,
+          "suggested": false
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-11T15:33:12.057Z",
+      "savedAt": "2026-11-11T15:39:49.863Z",
       "moved": {
         "batches": 74,
         "pieces": 5731,
@@ -661527,7 +661537,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-11T15:33:21.876Z"
+      "at": "2026-11-11T15:39:53.896Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -661559,11 +661569,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-11T15:33:12.057Z",
+      "bags": "2026-11-11T15:39:49.863Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-11T15:33:21.876Z",
+    "savedAt": "2026-11-11T15:39:53.896Z",
     "appVersion": "2026.11.08.1"
   }
 }
