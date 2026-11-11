@@ -553685,7 +553685,7 @@
           "color": "Black",
           "desc": "Plate Round 1 x 1 with Solid Stud",
           "elementId": "614126",
-          "qty": 1,
+          "qty": 2,
           "drawerId": "G40",
           "matchCount": 0,
           "suggested": false
@@ -553765,7 +553765,7 @@
           "color": "Tan",
           "desc": "Plate Round 1 x 1 with Solid Stud",
           "elementId": "4161734",
-          "qty": 7,
+          "qty": 8,
           "drawerId": "G40",
           "matchCount": 0,
           "suggested": false
@@ -553849,10 +553849,20 @@
           "drawerId": "N31",
           "matchCount": 0,
           "suggested": true
+        },
+        {
+          "partNum": "6141",
+          "color": "Dark Bluish Gray",
+          "desc": "Plate Round 1 x 1 with Solid Stud",
+          "elementId": "4210633",
+          "qty": 1,
+          "drawerId": "G40",
+          "matchCount": 0,
+          "suggested": false
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-11T15:47:25.807Z",
+      "savedAt": "2026-11-11T15:47:39.977Z",
       "moved": {
         "batches": 74,
         "pieces": 5731,
@@ -661587,7 +661597,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-11T15:47:29.840Z"
+      "at": "2026-11-11T15:47:44.012Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -661619,11 +661629,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-11T15:47:25.807Z",
+      "bags": "2026-11-11T15:47:39.977Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-11T15:47:29.840Z",
+    "savedAt": "2026-11-11T15:47:44.012Z",
     "appVersion": "2026.11.08.1"
   }
 }
