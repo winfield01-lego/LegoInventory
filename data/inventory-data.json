@@ -465610,7 +465610,7 @@
       "label": "I11",
       "notes": "2 x 2 Curved Inverted and Corner",
       "group": "I",
-      "lastEdited": "2026-11-13T05:24:24.231Z"
+      "lastEdited": "2026-11-13T05:24:53.197Z"
     },
     {
       "id": "I12",
@@ -505104,6 +505104,24 @@
       "partNum": "5846",
       "color": "Blue",
       "qty": 4
+    },
+    {
+      "drawerId": "I11",
+      "partNum": "67810",
+      "color": "Black",
+      "qty": 4
+    },
+    {
+      "drawerId": "I11",
+      "partNum": "67810",
+      "color": "Yellow",
+      "qty": 1
+    },
+    {
+      "drawerId": "I11",
+      "partNum": "67810",
+      "color": "White",
+      "qty": 5
     }
   ],
   "mocLocations": {
@@ -660206,6 +660224,13 @@
       "d": "Brick Round, Curved 2 x 2 x 1, Corner",
       "e": "6552529",
       "u": 1794547325328
+    },
+    "67810|black": {
+      "p": "67810",
+      "c": "Black",
+      "d": "Brick Round, Curved 2 x 2 x 1 1/3, Corner",
+      "e": "6359039",
+      "u": 1794547494399
     }
   },
   "partKinds": {
@@ -665280,7 +665305,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-13T05:24:28.263Z"
+      "at": "2026-11-13T05:24:57.236Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -665316,7 +665341,7 @@
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-13T05:24:28.263Z",
+    "savedAt": "2026-11-13T05:24:57.236Z",
     "appVersion": "2026.11.08.1"
   }
 }
