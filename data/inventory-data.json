@@ -465285,7 +465285,7 @@
       "label": "H8",
       "notes": "1x2 Tile Corner",
       "group": "H",
-      "lastEdited": "2026-11-13T05:22:03.908Z"
+      "lastEdited": "2026-11-13T05:38:56.550Z"
     },
     {
       "id": "H10",
@@ -465799,7 +465799,7 @@
       "label": "I38",
       "notes": "2 x 1 x 2/3 Curved",
       "group": "I",
-      "lastEdited": "2026-11-13T02:06:57.634Z"
+      "lastEdited": "2026-11-13T05:38:56.550Z"
     },
     {
       "id": "I39",
@@ -466631,7 +466631,7 @@
       "label": "L7",
       "notes": "Flags and Tiles with Clips",
       "group": "L",
-      "lastEdited": "2026-11-10T04:28:19.722Z"
+      "lastEdited": "2026-11-13T05:38:56.548Z"
     },
     {
       "id": "L8",
@@ -467247,7 +467247,7 @@
       "label": "N7",
       "notes": "Paint Roller and Phone Handset",
       "group": "N",
-      "lastEdited": "2026-11-13T05:22:03.907Z"
+      "lastEdited": "2026-11-13T05:38:56.551Z"
     },
     {
       "id": "N8",
@@ -477035,7 +477035,7 @@
       "drawerId": "H8",
       "partNum": "5092",
       "color": "Light Bluish Gray",
-      "qty": 23
+      "qty": 29
     },
     {
       "drawerId": "H8",
@@ -482130,7 +482130,7 @@
       "drawerId": "I38",
       "partNum": "11477",
       "color": "Light Bluish Gray",
-      "qty": 51
+      "qty": 66
     },
     {
       "drawerId": "I38",
@@ -482179,7 +482179,7 @@
       "drawerId": "I38",
       "partNum": "11477",
       "color": "Sand Blue",
-      "qty": 7
+      "qty": 21
     },
     {
       "drawerId": "I38",
@@ -492125,7 +492125,7 @@
       "partNum": "15210",
       "color": "Black",
       "elementId": "6063617",
-      "qty": 2
+      "qty": 9
     },
     {
       "drawerId": "L7",
@@ -505122,6 +505122,12 @@
       "partNum": "67810",
       "color": "White",
       "qty": 5
+    },
+    {
+      "drawerId": "N7",
+      "partNum": "6908",
+      "color": "Black",
+      "qty": 10
     }
   ],
   "mocLocations": {
@@ -505534,6 +505540,61 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mwejqumr_3wfuh",
+      "label": "November LEGO PAB Order (batch 3)",
+      "bagId": "bagprog_mwed5eig_ye4p",
+      "bagLabel": "November LEGO PAB Order",
+      "batch": 3,
+      "timestamp": "2026-11-13T05:38:56.787Z",
+      "items": [
+        {
+          "partNum": "15210",
+          "color": "Black",
+          "desc": "Road Sign Clip-on 2 x 2 Square [Thick Open O Clip]",
+          "elementId": "6063617",
+          "qty": 7,
+          "drawerId": "L7",
+          "drawerLabel": "L7"
+        },
+        {
+          "partNum": "5092",
+          "color": "Light Bluish Gray",
+          "desc": "Tile 1 x 2 with Stud Notch Right",
+          "elementId": "6558799",
+          "qty": 6,
+          "drawerId": "H8",
+          "drawerLabel": "H8"
+        },
+        {
+          "partNum": "11477",
+          "color": "Light Bluish Gray",
+          "desc": "Brick Curved 2 x 1 No Studs [1/2 Bow]",
+          "elementId": "6028813",
+          "qty": 15,
+          "drawerId": "I38",
+          "drawerLabel": "I38"
+        },
+        {
+          "partNum": "11477",
+          "color": "Sand Blue",
+          "desc": "Brick Curved 2 x 1 No Studs [1/2 Bow]",
+          "elementId": "6179812",
+          "qty": 14,
+          "drawerId": "I38",
+          "drawerLabel": "I38"
+        },
+        {
+          "partNum": "6908",
+          "color": "Black",
+          "desc": "Dome 1 x 1 x 2/3",
+          "elementId": "6560654",
+          "qty": 10,
+          "drawerId": "N7",
+          "drawerLabel": "N7"
+        }
+      ]
+    },
     {
       "id": "bag_mwejjr6d_e2ba5",
       "label": "November LEGO PAB Order (batch 2)",
@@ -557182,64 +557243,13 @@
     {
       "id": "bagprog_mwed5eig_ye4p",
       "label": "November LEGO PAB Order",
-      "items": [
-        {
-          "partNum": "15210",
-          "color": "Black",
-          "desc": "Road Sign Clip-on 2 x 2 Square [Thick Open O Clip]",
-          "elementId": "6063617",
-          "qty": 7,
-          "drawerId": "L7",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "5092",
-          "color": "Light Bluish Gray",
-          "desc": "Tile 1 x 2 with Stud Notch Right",
-          "elementId": "6558799",
-          "qty": 6,
-          "drawerId": "H8",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "11477",
-          "color": "Light Bluish Gray",
-          "desc": "Brick Curved 2 x 1 No Studs [1/2 Bow]",
-          "elementId": "6028813",
-          "qty": 15,
-          "drawerId": "I38",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "11477",
-          "color": "Sand Blue",
-          "desc": "Brick Curved 2 x 1 No Studs [1/2 Bow]",
-          "elementId": "6179812",
-          "qty": 14,
-          "drawerId": "I38",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "6908",
-          "color": "Black",
-          "desc": "Dome 1 x 1 x 2/3",
-          "elementId": "6560654",
-          "qty": 10,
-          "drawerId": "N7",
-          "matchCount": 0,
-          "suggested": false
-        }
-      ],
+      "items": [],
       "keepOpen": true,
-      "savedAt": "2026-11-13T05:38:14.209Z",
+      "savedAt": "2026-11-13T05:38:56.787Z",
       "moved": {
-        "batches": 2,
-        "pieces": 705,
-        "last": "2026-11-13T05:33:25.717Z"
+        "batches": 3,
+        "pieces": 757,
+        "last": "2026-11-13T05:38:56.787Z"
       }
     },
     {
@@ -665420,7 +665430,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-13T05:38:18.240Z"
+      "at": "2026-11-13T05:39:00.830Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -665452,11 +665462,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-13T05:38:14.209Z",
+      "bags": "2026-11-13T05:38:56.787Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-13T05:38:18.240Z",
+    "savedAt": "2026-11-13T05:39:00.830Z",
     "appVersion": "2026.11.08.1"
   }
 }
