@@ -464493,7 +464493,7 @@
       "label": "D2",
       "notes": "1 x 3 tile",
       "group": "D",
-      "lastEdited": "2026-11-11T07:33:46.847Z"
+      "lastEdited": "2026-11-13T05:33:25.481Z"
     },
     {
       "id": "D3",
@@ -470723,13 +470723,13 @@
       "drawerId": "D2",
       "partNum": "63864",
       "color": "Light Bluish Gray",
-      "qty": 213
+      "qty": 264
     },
     {
       "drawerId": "D2",
       "partNum": "63864",
       "color": "Dark Bluish Gray",
-      "qty": 61
+      "qty": 101
     },
     {
       "drawerId": "D2",
@@ -470790,7 +470790,7 @@
       "drawerId": "D2",
       "partNum": "63864",
       "color": "Dark Red",
-      "qty": 13
+      "qty": 28
     },
     {
       "drawerId": "D2",
@@ -470822,7 +470822,7 @@
       "drawerId": "D2",
       "partNum": "63864",
       "color": "Red",
-      "qty": 18
+      "qty": 38
     },
     {
       "drawerId": "D2",
@@ -470834,13 +470834,13 @@
       "drawerId": "D2",
       "partNum": "63864",
       "color": "Sand Blue",
-      "qty": 1
+      "qty": 16
     },
     {
       "drawerId": "D2",
       "partNum": "63864",
       "color": "Tan",
-      "qty": 13
+      "qty": 63
     },
     {
       "drawerId": "D2",
@@ -505534,6 +505534,70 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mwejjr6d_e2ba5",
+      "label": "November LEGO PAB Order (batch 2)",
+      "bagId": "bagprog_mwed5eig_ye4p",
+      "bagLabel": "November LEGO PAB Order",
+      "batch": 2,
+      "timestamp": "2026-11-13T05:33:25.717Z",
+      "items": [
+        {
+          "partNum": "63864",
+          "color": "Dark Bluish Gray",
+          "desc": "Tile 1 x 3",
+          "elementId": "4568734",
+          "qty": 40,
+          "drawerId": "D2",
+          "drawerLabel": "D2"
+        },
+        {
+          "partNum": "63864",
+          "color": "Sand Blue",
+          "desc": "Tile 1 x 3",
+          "elementId": "6262031",
+          "qty": 15,
+          "drawerId": "D2",
+          "drawerLabel": "D2"
+        },
+        {
+          "partNum": "63864",
+          "color": "Dark Red",
+          "desc": "Tile 1 x 3",
+          "elementId": "4583299",
+          "qty": 15,
+          "drawerId": "D2",
+          "drawerLabel": "D2"
+        },
+        {
+          "partNum": "63864",
+          "color": "Red",
+          "desc": "Tile 1 x 3",
+          "elementId": "4533742",
+          "qty": 20,
+          "drawerId": "D2",
+          "drawerLabel": "D2"
+        },
+        {
+          "partNum": "63864",
+          "color": "Tan",
+          "desc": "Tile 1 x 3",
+          "elementId": "6131896",
+          "qty": 50,
+          "drawerId": "D2",
+          "drawerLabel": "D2"
+        },
+        {
+          "partNum": "63864",
+          "color": "Light Bluish Gray",
+          "desc": "Tile 1 x 3",
+          "elementId": "4558169",
+          "qty": 51,
+          "drawerId": "D2",
+          "drawerLabel": "D2"
+        }
+      ]
+    },
     {
       "id": "bag_mwej559b_d69tr",
       "label": "November LEGO PAB Order (batch 1)",
@@ -557118,74 +557182,13 @@
     {
       "id": "bagprog_mwed5eig_ye4p",
       "label": "November LEGO PAB Order",
-      "items": [
-        {
-          "partNum": "63864",
-          "color": "Dark Bluish Gray",
-          "desc": "Tile 1 x 3",
-          "elementId": "4568734",
-          "qty": 40,
-          "drawerId": "D2",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "63864",
-          "color": "Sand Blue",
-          "desc": "Tile 1 x 3",
-          "elementId": "6262031",
-          "qty": 15,
-          "drawerId": "D2",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "63864",
-          "color": "Dark Red",
-          "desc": "Tile 1 x 3",
-          "elementId": "4583299",
-          "qty": 15,
-          "drawerId": "D2",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "63864",
-          "color": "Red",
-          "desc": "Tile 1 x 3",
-          "elementId": "4533742",
-          "qty": 20,
-          "drawerId": "D2",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "63864",
-          "color": "Tan",
-          "desc": "Tile 1 x 3",
-          "elementId": "6131896",
-          "qty": 50,
-          "drawerId": "D2",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "63864",
-          "color": "Light Bluish Gray",
-          "desc": "Tile 1 x 3",
-          "elementId": "4558169",
-          "qty": 51,
-          "drawerId": "D2",
-          "matchCount": 0,
-          "suggested": false
-        }
-      ],
+      "items": [],
       "keepOpen": true,
-      "savedAt": "2026-11-13T05:33:02.140Z",
+      "savedAt": "2026-11-13T05:33:25.716Z",
       "moved": {
-        "batches": 1,
-        "pieces": 514,
-        "last": "2026-11-13T05:22:04.127Z"
+        "batches": 2,
+        "pieces": 705,
+        "last": "2026-11-13T05:33:25.717Z"
       }
     },
     {
@@ -665366,7 +665369,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-13T05:33:06.179Z"
+      "at": "2026-11-13T05:33:29.748Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -665398,11 +665401,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-13T05:33:02.140Z",
+      "bags": "2026-11-13T05:33:25.717Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-13T05:33:06.179Z",
+    "savedAt": "2026-11-13T05:33:29.748Z",
     "appVersion": "2026.11.08.1"
   }
 }
