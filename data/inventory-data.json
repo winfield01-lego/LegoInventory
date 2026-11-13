@@ -555177,9 +555177,40 @@
     {
       "id": "bagprog_mvoo1wik_nkx0",
       "label": "Ebay Bulk Boxes",
-      "items": [],
+      "items": [
+        {
+          "partNum": "98313",
+          "color": "Flat Silver",
+          "desc": "Arm Mechanical with Clip [Thick Support]",
+          "elementId": "6008483",
+          "qty": 1,
+          "drawerId": "N23",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "98313",
+          "color": "Dark Bluish Gray",
+          "desc": "Arm Mechanical with Clip [Thick Support]",
+          "elementId": "6000967",
+          "qty": 1,
+          "drawerId": "N23",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "98313",
+          "color": "Pearl Gold",
+          "desc": "Arm Mechanical with Clip [Thick Support]",
+          "elementId": "6006741",
+          "qty": 10,
+          "drawerId": "N23",
+          "matchCount": 0,
+          "suggested": false
+        }
+      ],
       "keepOpen": true,
-      "savedAt": "2026-11-13T01:41:22.143Z",
+      "savedAt": "2026-11-13T01:42:01.583Z",
       "moved": {
         "batches": 76,
         "pieces": 6153,
@@ -662936,7 +662967,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-13T01:41:27.434Z"
+      "at": "2026-11-13T01:42:05.615Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -662968,11 +662999,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-13T01:41:22.143Z",
+      "bags": "2026-11-13T01:42:01.583Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-13T01:41:27.434Z",
+    "savedAt": "2026-11-13T01:42:05.615Z",
     "appVersion": "2026.11.08.1"
   }
 }
