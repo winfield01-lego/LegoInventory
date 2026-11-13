@@ -557182,9 +557182,20 @@
     {
       "id": "bagprog_mwed5eig_ye4p",
       "label": "November LEGO PAB Order",
-      "items": [],
+      "items": [
+        {
+          "partNum": "15210",
+          "color": "Black",
+          "desc": "Road Sign Clip-on 2 x 2 Square [Thick Open O Clip]",
+          "elementId": "6063617",
+          "qty": 7,
+          "drawerId": "L7",
+          "matchCount": 0,
+          "suggested": false
+        }
+      ],
       "keepOpen": true,
-      "savedAt": "2026-11-13T05:33:25.716Z",
+      "savedAt": "2026-11-13T05:34:08.542Z",
       "moved": {
         "batches": 2,
         "pieces": 705,
@@ -665369,7 +665380,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-13T05:33:29.748Z"
+      "at": "2026-11-13T05:34:12.577Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -665401,11 +665412,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-13T05:33:25.717Z",
+      "bags": "2026-11-13T05:34:08.542Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-13T05:33:29.748Z",
+    "savedAt": "2026-11-13T05:34:12.577Z",
     "appVersion": "2026.11.08.1"
   }
 }
