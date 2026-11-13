@@ -557243,9 +557243,30 @@
     {
       "id": "bagprog_mwed5eig_ye4p",
       "label": "November LEGO PAB Order",
-      "items": [],
+      "items": [
+        {
+          "partNum": "7825",
+          "color": "Black",
+          "desc": "Brick Sloped 30° 1 x 3 x 2/3",
+          "elementId": "6573745",
+          "qty": 22,
+          "drawerId": "",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "7825",
+          "color": "Light Bluish Gray",
+          "desc": "Brick Sloped 30° 1 x 3 x 2/3",
+          "elementId": "6594315",
+          "qty": 20,
+          "drawerId": "",
+          "matchCount": 0,
+          "suggested": false
+        }
+      ],
       "keepOpen": true,
-      "savedAt": "2026-11-13T05:38:56.787Z",
+      "savedAt": "2026-11-13T05:42:30.500Z",
       "moved": {
         "batches": 3,
         "pieces": 757,
@@ -665430,7 +665451,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-13T05:39:35.547Z"
+      "at": "2026-11-13T05:42:34.537Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -665462,11 +665483,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-13T05:38:56.787Z",
+      "bags": "2026-11-13T05:42:30.500Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-13T05:39:35.547Z",
+    "savedAt": "2026-11-13T05:42:34.537Z",
     "appVersion": "2026.11.08.1"
   }
 }
