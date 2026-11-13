@@ -466939,7 +466939,7 @@
       "label": "M7",
       "notes": "",
       "group": "M",
-      "lastEdited": "2026-11-13T06:34:52.852Z"
+      "lastEdited": "2026-11-13T06:41:27.137Z"
     },
     {
       "id": "M8",
@@ -505183,6 +505183,13 @@
       "color": "Tan",
       "elementId": "",
       "qty": 2
+    },
+    {
+      "drawerId": "M7",
+      "partNum": "6003",
+      "color": "Green",
+      "elementId": "4240403",
+      "qty": 2
     }
   ],
   "mocLocations": {
@@ -505595,6 +505602,25 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mwelz8lp_setvg",
+      "label": "Ebay Bulk Boxes (batch 81)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 81,
+      "timestamp": "2026-11-13T06:41:27.373Z",
+      "items": [
+        {
+          "partNum": "6003",
+          "color": "Green",
+          "desc": "Plate Round Corner 6 x 6",
+          "elementId": "4240403",
+          "qty": 2,
+          "drawerId": "M7",
+          "drawerLabel": "M7"
+        }
+      ]
+    },
     {
       "id": "bag_mwelmkbg_0m50q",
       "label": "Ebay Bulk Boxes (batch 80)",
@@ -557929,25 +557955,13 @@
     {
       "id": "bagprog_mvoo1wik_nkx0",
       "label": "Ebay Bulk Boxes",
-      "items": [
-        {
-          "partNum": "6003",
-          "color": "Green",
-          "desc": "Plate Round Corner 6 x 6",
-          "elementId": "4240403",
-          "qty": 2,
-          "drawerId": "M7",
-          "matchCount": 0,
-          "suggested": false,
-          "sel": true
-        }
-      ],
+      "items": [],
       "keepOpen": true,
-      "savedAt": "2026-11-13T06:36:58.040Z",
+      "savedAt": "2026-11-13T06:41:27.372Z",
       "moved": {
-        "batches": 80,
-        "pieces": 6485,
-        "last": "2026-11-13T06:31:36.028Z"
+        "batches": 81,
+        "pieces": 6487,
+        "last": "2026-11-13T06:41:27.373Z"
       }
     },
     {
@@ -590280,9 +590294,12 @@
       "c": "Green",
       "d": "Plate Round Corner 6 x 6",
       "e": "6021999",
-      "u": 1791916924851,
+      "u": 1794552088574,
       "at": 1791654710977,
-      "i": "https://cdn.rebrickable.com/media/parts/elements/4240403.jpg"
+      "i": "https://cdn.rebrickable.com/media/parts/elements/4240403.jpg",
+      "ea": [
+        "4240403"
+      ]
     },
     "3069bpr0100|green": {
       "p": "3069bpr0100",
@@ -665771,7 +665788,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-13T06:37:02.674Z"
+      "at": "2026-11-13T06:41:32.659Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -665803,11 +665820,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-13T06:36:58.040Z",
+      "bags": "2026-11-13T06:41:27.373Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-13T06:37:02.674Z",
+    "savedAt": "2026-11-13T06:41:32.659Z",
     "appVersion": "2026.11.08.1"
   }
 }
