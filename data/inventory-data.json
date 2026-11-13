@@ -554385,9 +554385,60 @@
     {
       "id": "bagprog_mvoo1wik_nkx0",
       "label": "Ebay Bulk Boxes",
-      "items": [],
+      "items": [
+        {
+          "partNum": "6141",
+          "color": "Black",
+          "desc": "Plate Round 1 x 1 with Solid Stud",
+          "elementId": "614126",
+          "qty": 1,
+          "drawerId": "G40",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "6141",
+          "color": "Pearl Gold",
+          "desc": "Plate Round 1 x 1 with Solid Stud",
+          "elementId": "4523159",
+          "qty": 1,
+          "drawerId": "G40",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "6141",
+          "color": "Yellow",
+          "desc": "Plate Round 1 x 1 with Solid Stud",
+          "elementId": "614124",
+          "qty": 1,
+          "drawerId": "G40",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "85861",
+          "color": "Lime",
+          "desc": "Plate Round 1 x 1 with Open Stud",
+          "elementId": "6190251",
+          "qty": 1,
+          "drawerId": "N26",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "85861",
+          "color": "Reddish Brown",
+          "desc": "Plate Round 1 x 1 with Open Stud",
+          "elementId": "6215659",
+          "qty": 1,
+          "drawerId": "N26",
+          "matchCount": 0,
+          "suggested": false
+        }
+      ],
       "keepOpen": true,
-      "savedAt": "2026-11-11T16:20:13.981Z",
+      "savedAt": "2026-11-13T01:21:59.599Z",
       "moved": {
         "batches": 75,
         "pieces": 6010,
@@ -662129,7 +662180,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-11T16:20:18.018Z"
+      "at": "2026-11-13T01:22:03.633Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -662161,11 +662212,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-11T16:20:13.981Z",
+      "bags": "2026-11-13T01:21:59.600Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-11T16:20:18.018Z",
+    "savedAt": "2026-11-13T01:22:03.633Z",
     "appVersion": "2026.11.08.1"
   }
 }
