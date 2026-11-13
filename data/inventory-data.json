@@ -465812,7 +465812,7 @@
       "label": "I40",
       "notes": "45 degree 2 x 1 with cutout",
       "group": "I",
-      "lastEdited": "2026-11-11T07:33:46.853Z"
+      "lastEdited": "2026-11-13T02:20:02.464Z"
     },
     {
       "id": "I41",
@@ -482293,7 +482293,7 @@
       "partNum": "15672",
       "color": "Black",
       "elementId": "4653087",
-      "qty": 40
+      "qty": 43
     },
     {
       "drawerId": "I40",
@@ -482325,7 +482325,7 @@
       "partNum": "15672",
       "color": "Dark Bluish Gray",
       "elementId": "4621917",
-      "qty": 30
+      "qty": 31
     },
     {
       "drawerId": "I40",
@@ -482361,7 +482361,7 @@
       "drawerId": "I40",
       "partNum": "15672",
       "color": "White",
-      "qty": 51
+      "qty": 53
     },
     {
       "drawerId": "I40",
@@ -505414,6 +505414,43 @@
   },
   "mocInstructions": {},
   "bagInventoryLog": [
+    {
+      "id": "bag_mwecn27p_0aeev",
+      "label": "Ebay Bulk Boxes (batch 79)",
+      "bagId": "bagprog_mvoo1wik_nkx0",
+      "bagLabel": "Ebay Bulk Boxes",
+      "batch": 79,
+      "timestamp": "2026-11-13T02:20:02.677Z",
+      "items": [
+        {
+          "partNum": "15672",
+          "color": "Black",
+          "desc": "Brick Sloped 45° 2 x 1 with 2/3 Cutout [New Version]",
+          "elementId": "4653087",
+          "qty": 3,
+          "drawerId": "I40",
+          "drawerLabel": "I40"
+        },
+        {
+          "partNum": "15672",
+          "color": "Dark Bluish Gray",
+          "desc": "Brick Sloped 45° 2 x 1 with 2/3 Cutout [New Version]",
+          "elementId": "4621917",
+          "qty": 1,
+          "drawerId": "I40",
+          "drawerLabel": "I40"
+        },
+        {
+          "partNum": "15672",
+          "color": "White",
+          "desc": "Brick Sloped 45° 2 x 1 with 2/3 Cutout [New Version]",
+          "elementId": "6069002",
+          "qty": 2,
+          "drawerId": "I40",
+          "drawerLabel": "I40"
+        }
+      ]
+    },
     {
       "id": "bag_mwech5xq_n0l1o",
       "label": "Ebay Bulk Boxes (batch 78)",
@@ -556676,44 +556713,13 @@
     {
       "id": "bagprog_mvoo1wik_nkx0",
       "label": "Ebay Bulk Boxes",
-      "items": [
-        {
-          "partNum": "15672",
-          "color": "Black",
-          "desc": "Brick Sloped 45° 2 x 1 with 2/3 Cutout [New Version]",
-          "elementId": "4653087",
-          "qty": 3,
-          "drawerId": "I40",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "15672",
-          "color": "Dark Bluish Gray",
-          "desc": "Brick Sloped 45° 2 x 1 with 2/3 Cutout [New Version]",
-          "elementId": "4621917",
-          "qty": 1,
-          "drawerId": "I40",
-          "matchCount": 0,
-          "suggested": false
-        },
-        {
-          "partNum": "15672",
-          "color": "White",
-          "desc": "Brick Sloped 45° 2 x 1 with 2/3 Cutout [New Version]",
-          "elementId": "6069002",
-          "qty": 2,
-          "drawerId": "I40",
-          "matchCount": 0,
-          "suggested": false
-        }
-      ],
+      "items": [],
       "keepOpen": true,
-      "savedAt": "2026-11-13T02:19:53.752Z",
+      "savedAt": "2026-11-13T02:20:02.677Z",
       "moved": {
-        "batches": 78,
-        "pieces": 6394,
-        "last": "2026-11-13T02:15:27.566Z"
+        "batches": 79,
+        "pieces": 6400,
+        "last": "2026-11-13T02:20:02.677Z"
       }
     },
     {
@@ -664466,7 +664472,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-13T02:19:57.796Z"
+      "at": "2026-11-13T02:20:06.708Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -664498,11 +664504,11 @@
       "set:fig-moc-fondor-haulcraft": "2026-11-08T05:35:28.289Z"
     },
     "stamps": {
-      "bags": "2026-11-13T02:19:53.752Z",
+      "bags": "2026-11-13T02:20:02.677Z",
       "shopping": "2026-11-05T00:06:59.065Z",
       "pull": "2026-11-08T21:27:46.998Z"
     },
-    "savedAt": "2026-11-13T02:19:57.795Z",
+    "savedAt": "2026-11-13T02:20:06.708Z",
     "appVersion": "2026.11.08.1"
   }
 }
