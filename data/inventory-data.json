@@ -131167,7 +131167,7 @@
       "qty": 1,
       "name": "Luke Skywalker's Landspeeder",
       "theme": "Star Wars",
-      "lastEdited": "2026-11-15T04:46:03.162Z",
+      "lastEdited": "2026-11-15T04:46:30.069Z",
       "figsCheckedAt": 1791654894165,
       "year": 2020
     },
@@ -170102,10 +170102,10 @@
       "color": "Tan",
       "qtyPerSet": 1,
       "rbAt": 1791654348966,
-      "onHand": 0,
+      "onHand": 1,
       "setNum": "75271-1",
       "_totalQty": 1,
-      "_onHand": 0
+      "_onHand": 1
     },
     {
       "partNum": "2654",
@@ -469680,7 +469680,7 @@
       "label": "Q5",
       "notes": "6 x 6, 8 x 8, 10 x 10 45 degree Corner Plates",
       "group": "Q",
-      "lastEdited": "2026-11-09T15:28:42.120Z"
+      "lastEdited": "2026-11-15T04:46:30.061Z"
     },
     {
       "id": "Q6",
@@ -506448,13 +506448,6 @@
       "partNum": "30504",
       "color": "Dark Tan",
       "qty": 2
-    },
-    {
-      "drawerId": "Q5",
-      "partNum": "6106",
-      "color": "Tan",
-      "elementId": "4218635",
-      "qty": 1
     },
     {
       "drawerId": "Q6",
@@ -557450,6 +557443,70 @@
     }
   ],
   "pullLog": [
+    {
+      "id": "pull_mwhcr3xo_fhjz",
+      "timestamp": "2026-11-15T04:46:30.060Z",
+      "kind": "set",
+      "key": "75271-1",
+      "name": "75271-1 — Luke Skywalker's Landspeeder",
+      "lines": [
+        {
+          "partNum": "6106",
+          "color": "Tan",
+          "desc": "Wedge Plate 6 x 6 Cut Corner",
+          "elementId": "610605",
+          "qty": 1,
+          "drawerId": "Q5",
+          "drawerLabel": "Q5",
+          "done": false
+        }
+      ],
+      "stillNeeded": [
+        {
+          "partNum": "30304",
+          "color": "Dark Bluish Gray",
+          "desc": "Equipment Space Binoculars / Scanner / Electrobinoculars",
+          "elementId": "6359935",
+          "qty": 1
+        },
+        {
+          "partNum": "19119",
+          "color": "Dark Orange",
+          "desc": "Plant, Flower Stem with Bar and 6 Stems",
+          "elementId": "6269941",
+          "qty": 1
+        },
+        {
+          "partNum": "33909",
+          "color": "Dark Red",
+          "desc": "Plate Special 2 x 2 with Only 2 studs",
+          "elementId": "6214309",
+          "qty": 1
+        },
+        {
+          "partNum": "3020",
+          "color": "Nougat",
+          "desc": "Plate 2 x 4",
+          "elementId": "6286500",
+          "qty": 2
+        },
+        {
+          "partNum": "2462",
+          "color": "Tan",
+          "desc": "Brick Wedged 3 x 3 Facet",
+          "elementId": "4598467",
+          "qty": 2
+        },
+        {
+          "partNum": "35299",
+          "color": "Trans-Clear",
+          "desc": "Windscreen 3 x 6 x 1 Curved with Rectangular Stud Holder in Bottom",
+          "elementId": "6507938",
+          "qty": 1
+        }
+      ],
+      "undone": false
+    },
     {
       "id": "pull_mw8cexy0_2fku",
       "timestamp": "2026-11-08T21:27:06.840Z",
@@ -667125,7 +667182,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.08.1",
-      "at": "2026-11-15T04:46:07.205Z"
+      "at": "2026-11-15T04:46:34.113Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -667159,9 +667216,9 @@
     "stamps": {
       "bags": "2026-11-13T06:41:27.373Z",
       "shopping": "2026-11-15T04:41:05.344Z",
-      "pull": "2026-11-08T21:27:46.998Z"
+      "pull": "2026-11-15T04:46:30.060Z"
     },
-    "savedAt": "2026-11-15T04:46:07.205Z",
+    "savedAt": "2026-11-15T04:46:34.113Z",
     "appVersion": "2026.11.08.1"
   }
 }
