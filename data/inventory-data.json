@@ -130168,9 +130168,12 @@
       "qty": 1,
       "name": "Invader",
       "theme": "Blacktron I",
-      "lastEdited": "2026-11-16T00:46:23.329Z",
+      "lastEdited": "2026-11-16T00:46:38.950Z",
       "figsCheckedAt": 1794789986103,
-      "year": 1987
+      "year": 1987,
+      "figsMissing": {
+        "fig-010414": 1
+      }
     },
     {
       "setNum": "fig-010414",
@@ -130183,7 +130186,7 @@
         "6894-1": 1
       },
       "imgUrl": "https://cdn.rebrickable.com/media/sets/fig-010414/73516.jpg",
-      "lastEdited": "2026-11-16T00:46:29.502Z"
+      "lastEdited": "2026-11-16T00:46:38.949Z"
     }
   ],
   "setParts": [
@@ -458329,7 +458332,7 @@
       "qtyPerSet": 2,
       "rbAt": 1794789989499,
       "setNum": "fig-010414",
-      "onHand": 2
+      "onHand": 0
     },
     {
       "partNum": "4733",
@@ -458337,7 +458340,7 @@
       "qtyPerSet": 1,
       "rbAt": 1794789989499,
       "setNum": "fig-010414",
-      "onHand": 1
+      "onHand": 0
     },
     {
       "partNum": "2342",
@@ -458345,7 +458348,7 @@
       "qtyPerSet": 1,
       "rbAt": 1794789989499,
       "setNum": "fig-010414",
-      "onHand": 1
+      "onHand": 0
     },
     {
       "partNum": "3024",
@@ -458353,7 +458356,7 @@
       "qtyPerSet": 1,
       "rbAt": 1794789989499,
       "setNum": "fig-010414",
-      "onHand": 1
+      "onHand": 0
     }
   ],
   "drawers": [
@@ -660005,7 +660008,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.15.6",
-      "at": "2026-11-16T00:46:36.067Z"
+      "at": "2026-11-16T00:46:45.086Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -660042,7 +660045,7 @@
       "shopping": "2026-11-15T04:41:05.344Z",
       "pull": "2026-11-15T04:46:30.060Z"
     },
-    "savedAt": "2026-11-16T00:46:36.067Z",
+    "savedAt": "2026-11-16T00:46:45.086Z",
     "appVersion": "2026.11.15.6"
   }
 }
