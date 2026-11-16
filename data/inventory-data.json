@@ -128802,10 +128802,11 @@
       "kind": "fig",
       "name": "Blacktron I (3626a Head)",
       "theme": "Space Police I",
-      "qty": 1,
+      "qty": 2,
       "manualQty": 0,
       "figSources": {
-        "6886-1": 1
+        "6886-1": 1,
+        "6894-1": 1
       },
       "imgUrl": "https://cdn.rebrickable.com/media/sets/fig-000406/138854.jpg",
       "lastEdited": "2026-10-10T23:07:31.448Z"
@@ -130165,10 +130166,24 @@
     {
       "setNum": "6894-1",
       "qty": 1,
-      "name": "",
+      "name": "Invader",
+      "theme": "Blacktron I",
+      "lastEdited": "2026-11-16T00:46:23.329Z",
+      "figsCheckedAt": 1794789986103,
+      "year": 1987
+    },
+    {
+      "setNum": "fig-010414",
+      "kind": "fig",
+      "name": "Blacktron Droid, Black",
       "theme": "",
-      "lastEdited": "2026-11-16T00:46:17.308Z",
-      "askFigs": true
+      "qty": 1,
+      "manualQty": 0,
+      "figSources": {
+        "6894-1": 1
+      },
+      "imgUrl": "https://cdn.rebrickable.com/media/sets/fig-010414/73516.jpg",
+      "lastEdited": "2026-11-16T00:46:29.502Z"
     }
   ],
   "setParts": [
@@ -418340,7 +418355,7 @@
       "qtyPerSet": 1,
       "rbAt": 1791673651447,
       "setNum": "fig-000406",
-      "onHand": 1
+      "onHand": 2
     },
     {
       "partNum": "2446",
@@ -418348,7 +418363,7 @@
       "qtyPerSet": 1,
       "rbAt": 1791673651447,
       "setNum": "fig-000406",
-      "onHand": 1
+      "onHand": 2
     },
     {
       "partNum": "970c03",
@@ -418356,7 +418371,7 @@
       "qtyPerSet": 1,
       "rbAt": 1791673651447,
       "setNum": "fig-000406",
-      "onHand": 1
+      "onHand": 2
     },
     {
       "partNum": "3838",
@@ -418364,7 +418379,7 @@
       "qtyPerSet": 1,
       "rbAt": 1791673651447,
       "setNum": "fig-000406",
-      "onHand": 1
+      "onHand": 2
     },
     {
       "partNum": "973c03h03pr0052",
@@ -418373,7 +418388,7 @@
       "qtyPerSet": 1,
       "rbAt": 1793727391911,
       "setNum": "fig-000406",
-      "onHand": 1
+      "onHand": 2
     },
     {
       "partNum": "3626apr0001",
@@ -418382,7 +418397,7 @@
       "qtyPerSet": 1,
       "rbAt": 1793727391911,
       "setNum": "fig-000406",
-      "onHand": 1
+      "onHand": 2
     },
     {
       "partNum": "970c27",
@@ -457629,6 +457644,716 @@
       "onHand": 4,
       "_totalQty": 4,
       "_onHand": 4
+    },
+    {
+      "partNum": "3956",
+      "color": "Black",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "3005",
+      "color": "Black",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3004",
+      "color": "Black",
+      "qtyPerSet": 4,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 4,
+      "_totalQty": 4,
+      "_onHand": 4
+    },
+    {
+      "partNum": "3004pr9983",
+      "color": "Black",
+      "elementId": "",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "3622",
+      "color": "Black",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "2357",
+      "color": "Black",
+      "elementId": "235776",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3001",
+      "color": "Black",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "3062b",
+      "color": "Black",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3040b",
+      "color": "Black",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3039",
+      "color": "Black",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3039pr9995",
+      "color": "Black",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "3037",
+      "color": "Black",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "4861",
+      "color": "Black",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "3747a",
+      "color": "Black",
+      "elementId": "",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3660",
+      "color": "Black",
+      "qtyPerSet": 8,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 8,
+      "_totalQty": 8,
+      "_onHand": 8
+    },
+    {
+      "partNum": "4070",
+      "color": "Black",
+      "qtyPerSet": 6,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 6,
+      "_totalQty": 6,
+      "_onHand": 6
+    },
+    {
+      "partNum": "4730",
+      "color": "Black",
+      "qtyPerSet": 4,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 4,
+      "_totalQty": 4,
+      "_onHand": 4
+    },
+    {
+      "partNum": "4858pr0001",
+      "color": "Black",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "3937",
+      "color": "Black",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "4276b",
+      "color": "Black",
+      "qtyPerSet": 4,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 4,
+      "_totalQty": 4,
+      "_onHand": 4
+    },
+    {
+      "partNum": "4275b",
+      "color": "Black",
+      "qtyPerSet": 4,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 4,
+      "_totalQty": 4,
+      "_onHand": 4
+    },
+    {
+      "partNum": "73983",
+      "color": "Black",
+      "elementId": "74011",
+      "qtyPerSet": 4,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 4,
+      "_totalQty": 4,
+      "_onHand": 4
+    },
+    {
+      "partNum": "4625",
+      "color": "Black",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "4213",
+      "color": "Black",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "4315",
+      "color": "Black",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "4865a",
+      "color": "Black",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "2345pr0005",
+      "color": "Black",
+      "elementId": "",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3024",
+      "color": "Black",
+      "qtyPerSet": 6,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 6,
+      "_totalQty": 6,
+      "_onHand": 6
+    },
+    {
+      "partNum": "3023",
+      "color": "Black",
+      "qtyPerSet": 6,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 6,
+      "_totalQty": 6,
+      "_onHand": 6
+    },
+    {
+      "partNum": "3710",
+      "color": "Black",
+      "qtyPerSet": 3,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 3,
+      "_totalQty": 3,
+      "_onHand": 3
+    },
+    {
+      "partNum": "3666",
+      "color": "Black",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3832",
+      "color": "Black",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3022",
+      "color": "Black",
+      "qtyPerSet": 6,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 6,
+      "_totalQty": 6,
+      "_onHand": 6
+    },
+    {
+      "partNum": "3030",
+      "color": "Black",
+      "elementId": "303076",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3031",
+      "color": "Black",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "4081b",
+      "color": "Black",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "4085b",
+      "color": "Black",
+      "elementId": "",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3701",
+      "color": "Black",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3069b",
+      "color": "Black",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3068b",
+      "color": "Black",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "2432",
+      "color": "Black",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "4522",
+      "color": "Black",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "4006",
+      "color": "Black",
+      "elementId": "6034000",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "2419",
+      "color": "Black",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "3933a",
+      "color": "Black",
+      "elementId": "",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "3934a",
+      "color": "Black",
+      "elementId": "",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "4598",
+      "color": "Light Gray",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "3941",
+      "color": "Light Gray",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "3022",
+      "color": "Light Gray",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3024",
+      "color": "Trans-Green",
+      "elementId": "6513967",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3957a",
+      "color": "Trans-Red",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "6141",
+      "color": "Trans-Red",
+      "elementId": "6514051",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3070b",
+      "color": "Trans-Red",
+      "elementId": "6581817",
+      "qtyPerSet": 4,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 4,
+      "_totalQty": 4,
+      "_onHand": 4
+    },
+    {
+      "partNum": "2419",
+      "color": "Trans-Red",
+      "qtyPerSet": 4,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 4,
+      "_totalQty": 4,
+      "_onHand": 4
+    },
+    {
+      "partNum": "4865a",
+      "color": "Trans-Yellow",
+      "elementId": "",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "4474",
+      "color": "Trans-Yellow",
+      "elementId": "4189078",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "3665",
+      "color": "Yellow",
+      "qtyPerSet": 4,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 4,
+      "_totalQty": 4,
+      "_onHand": 4
+    },
+    {
+      "partNum": "3660",
+      "color": "Yellow",
+      "qtyPerSet": 4,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 4,
+      "_totalQty": 4,
+      "_onHand": 4
+    },
+    {
+      "partNum": "3938",
+      "color": "Yellow",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "4477",
+      "color": "Yellow",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3023",
+      "color": "Yellow",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3022",
+      "color": "Yellow",
+      "elementId": "4613978",
+      "qtyPerSet": 2,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 2,
+      "_totalQty": 2,
+      "_onHand": 2
+    },
+    {
+      "partNum": "3021",
+      "color": "Yellow",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "3031",
+      "color": "Yellow",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "3794a",
+      "color": "Yellow",
+      "elementId": "",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "3069bpr0039",
+      "color": "Yellow",
+      "qtyPerSet": 1,
+      "rbAt": 1794789983325,
+      "setNum": "6894-1",
+      "onHand": 1,
+      "_totalQty": 1,
+      "_onHand": 1
+    },
+    {
+      "partNum": "4735",
+      "color": "Black",
+      "elementId": "473576",
+      "qtyPerSet": 2,
+      "rbAt": 1794789989499,
+      "setNum": "fig-010414",
+      "onHand": 2
+    },
+    {
+      "partNum": "4733",
+      "color": "Black",
+      "qtyPerSet": 1,
+      "rbAt": 1794789989499,
+      "setNum": "fig-010414",
+      "onHand": 1
+    },
+    {
+      "partNum": "2342",
+      "color": "Black",
+      "qtyPerSet": 1,
+      "rbAt": 1794789989499,
+      "setNum": "fig-010414",
+      "onHand": 1
+    },
+    {
+      "partNum": "3024",
+      "color": "Trans-Red",
+      "qtyPerSet": 1,
+      "rbAt": 1794789989499,
+      "setNum": "fig-010414",
+      "onHand": 1
     }
   ],
   "drawers": [
@@ -551967,7 +552692,7 @@
       "d": "Brick Special 1 x 1 with Headlight",
       "e": "407026",
       "u": 1791916924851,
-      "at": 1792904988546
+      "at": 1794789983325
     },
     "47905|white": {
       "p": "47905",
@@ -552018,7 +552743,7 @@
       "d": "Plate 1 x 1",
       "e": "302426",
       "u": 1791916924851,
-      "at": 1791847424498
+      "at": 1794789983325
     },
     "3024|reddish brown": {
       "p": "3024",
@@ -552074,7 +552799,7 @@
       "d": "Plate 1 x 4",
       "e": "371026",
       "u": 1791916924851,
-      "at": 1793834786148
+      "at": 1794789983325
     },
     "3710|white": {
       "p": "3710",
@@ -552181,7 +552906,7 @@
       "d": "Plate Special 1 x 1 with Clip Light, Bar Hole [Thick Ring]",
       "e": "6281993",
       "u": 1793419651073,
-      "at": 1791846572021,
+      "at": 1794789983325,
       "i": "https://cdn.rebrickable.com/media/parts/elements/408126.jpg",
       "ea": [
         "408126"
@@ -552354,7 +553079,7 @@
       "d": "Tile 1 x 2 with Groove",
       "e": "306926",
       "u": 1791916924851,
-      "at": 1793834786148
+      "at": 1794789983325
     },
     "3069b|reddish brown": {
       "p": "3069b",
@@ -554485,7 +555210,7 @@
       "d": "Brick Round 1 x 1 Open Stud",
       "e": "306226",
       "u": 1791916924851,
-      "at": 1792904988546
+      "at": 1794789983325
     },
     "3062b|trans green": {
       "p": "3062b",
@@ -554946,7 +555671,7 @@
       "d": "Plate 1 x 1",
       "e": "6252046",
       "u": 1793928887203,
-      "at": 1792904691991,
+      "at": 1794789983325,
       "ea": [
         "6513967",
         "3000848"
@@ -554959,7 +555684,7 @@
       "d": "Plate 1 x 1",
       "e": "6513963",
       "u": 1793928887203,
-      "at": 1791846897846,
+      "at": 1794789989499,
       "i": "https://cdn.rebrickable.com/media/parts/elements/3000841.jpg",
       "ea": [
         "3000841"
@@ -555113,7 +555838,7 @@
       "d": "Plate Round 1 x 1 with Solid Stud",
       "e": "6208450",
       "u": 1793940105878,
-      "at": 1792904691991,
+      "at": 1794789983325,
       "ea": [
         "6514051",
         "3005741"
@@ -556071,7 +556796,7 @@
       "d": "Plate 1 x 2",
       "e": "302326",
       "u": 1791916924851,
-      "at": 1793834786148
+      "at": 1794789983325
     },
     "3021|black": {
       "p": "3021",
@@ -558273,7 +558998,7 @@
       "d": "Brick Sloped Inverted 45° 2 x 2 [Ovoid Bottom Pin, Bar-sized Stud Holes]",
       "e": "366026",
       "u": 1793591106883,
-      "at": 1791732234165,
+      "at": 1794789983325,
       "ea": [
         "6425507"
       ],
@@ -559275,7 +560000,7 @@
       "d": "Hinge Plate 1 x 4 Swivel Top / Base - Solid Clip [Complete Assembly]",
       "e": "6102782",
       "u": 1791916924851,
-      "at": 1792904988546,
+      "at": 1794789983325,
       "ea": [
         "74011"
       ]
@@ -559306,7 +560031,7 @@
       "d": "Plate 1 x 2",
       "e": "302324",
       "u": 1791916924851,
-      "at": 1792904691991
+      "at": 1794789983325
     },
     "3623|yellow": {
       "p": "3623",
@@ -560110,7 +560835,7 @@
       "d": "Brick 1 x 1",
       "e": "300526",
       "u": 1791916924851,
-      "at": 1791846575555
+      "at": 1794789983325
     },
     "3005|dark bluish gray": {
       "p": "3005",
@@ -560213,7 +560938,7 @@
       "d": "Brick 1 x 3",
       "e": "362226",
       "u": 1791916924851,
-      "at": 1791846553338
+      "at": 1794789983325
     },
     "3622|dark bluish gray": {
       "p": "3622",
@@ -560299,7 +561024,7 @@
       "d": "Brick 2 x 2 Corner",
       "e": "235726",
       "u": 1791916924851,
-      "at": 1791732210186,
+      "at": 1794789983325,
       "ea": [
         "235776"
       ]
@@ -560498,7 +561223,7 @@
       "d": "Plate 1 x 10",
       "e": "6079138",
       "u": 1791916924851,
-      "at": 1791660084431,
+      "at": 1794789983325,
       "i": "https://cdn.rebrickable.com/media/parts/elements/447724.jpg",
       "ea": [
         "447724"
@@ -560594,7 +561319,7 @@
       "d": "Plate 2 x 10",
       "e": "383226",
       "u": 1791916924851,
-      "at": 1791846545325
+      "at": 1794789983325
     },
     "3832|dark bluish gray": {
       "p": "3832",
@@ -560618,7 +561343,7 @@
       "d": "Plate 2 x 2",
       "e": "302226",
       "u": 1791916924851,
-      "at": 1791847424498
+      "at": 1794789983325
     },
     "3021|dark bluish gray": {
       "p": "3021",
@@ -561134,7 +561859,7 @@
       "d": "Plate 1 x 6",
       "e": "366626",
       "u": 1791916924851,
-      "at": 1791847424498
+      "at": 1794789983325
     },
     "3832|tan": {
       "p": "3832",
@@ -561165,7 +561890,7 @@
       "d": "Plate 2 x 2",
       "e": "302224",
       "u": 1791916924851,
-      "at": 1794113728665,
+      "at": 1794789983325,
       "ea": [
         "4613978"
       ]
@@ -561368,7 +562093,7 @@
       "d": "Brick Sloped 45° 2 x 1 with Bottom Pin",
       "e": "4121966",
       "u": 1791916924851,
-      "at": 1791847424498,
+      "at": 1794789983325,
       "ea": [
         "304026"
       ]
@@ -561752,7 +562477,7 @@
       "d": "Tile 1 x 1 with Groove",
       "e": "6254248",
       "u": 1791916924851,
-      "at": 1791846553338,
+      "at": 1794789983325,
       "ea": [
         "6581817"
       ],
@@ -562525,7 +563250,7 @@
       "d": "Brick 1 x 2",
       "e": "300426",
       "u": 1791916924851,
-      "at": 1793834786148
+      "at": 1794789983325
     },
     "3002|black": {
       "p": "3002",
@@ -562541,7 +563266,7 @@
       "d": "Brick 2 x 4",
       "e": "300126",
       "u": 1791916924851,
-      "at": 1793834786148
+      "at": 1794789983325
     },
     "77808|dark bluish gray": {
       "p": "77808",
@@ -562668,9 +563393,11 @@
     "3039pr9995|black": {
       "p": "3039pr9995",
       "c": "Black",
-      "d": "Slope 45° 2 x 2 with 12 Buttons, 3 Red Lamps, Yellow Panel Print",
+      "d": "Brick Sloped 45° 2 x 2 with 12 Buttons, 3 Red Lamps, Yellow Panel Print",
       "e": "0000002",
-      "u": 1791916924851
+      "u": 1794789984531,
+      "at": 1794789983325,
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/3039p33.png"
     },
     "60219|black": {
       "p": "60219",
@@ -562748,9 +563475,11 @@
     "4858pr0001|black": {
       "p": "4858pr0001",
       "c": "Black",
-      "d": "Wedge Sloped 4 x 4 Taper with Blacktron I Logo Print",
+      "d": "Brick Wedged, Sloped 4 x 4 Taper with Blacktron I Logo Print",
       "e": "4190701",
-      "u": 1791916924851
+      "u": 1794789984531,
+      "at": 1794789983325,
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/4858p01.png"
     },
     "13349|black": {
       "p": "13349",
@@ -562836,7 +563565,7 @@
       "d": "Brick Special 1 x 1 Studs on 4 Sides",
       "e": "473326",
       "u": 1791916924851,
-      "at": 1791673654995
+      "at": 1794789989499
     },
     "4740|black": {
       "p": "4740",
@@ -562961,7 +563690,7 @@
       "d": "Tile 2 x 2 with Groove",
       "e": "306826",
       "u": 1791916924851,
-      "at": 1793834786148
+      "at": 1794789983325
     },
     "35787|black": {
       "p": "35787",
@@ -563121,7 +563850,7 @@
       "d": "Brick Sloped 45° 2 x 2",
       "e": "303926",
       "u": 1791916924851,
-      "at": 1791847424498
+      "at": 1794789983325
     },
     "4287c|black": {
       "p": "4287c",
@@ -563321,7 +564050,7 @@
       "d": "Plate 4 x 10",
       "e": "303026",
       "u": 1791916924851,
-      "at": 1791672975304,
+      "at": 1794789983325,
       "ea": [
         "303076"
       ]
@@ -563628,7 +564357,7 @@
       "d": "Technic Brick 1 x 4 [3 Pin Holes]",
       "e": "370126",
       "u": 1791916924851,
-      "at": 1791732118013
+      "at": 1794789983325
     },
     "32531|black": {
       "p": "32531",
@@ -563722,7 +564451,7 @@
       "d": "Tile Special 1 x 2 with Handle",
       "e": "243226",
       "u": 1791916924851,
-      "at": 1791846902427
+      "at": 1794789983325
     },
     "4006|black": {
       "p": "4006",
@@ -563730,7 +564459,7 @@
       "d": "Tool Screwdriver and Spanner / Wrench",
       "e": "400626",
       "u": 1791916924851,
-      "at": 1792904691991,
+      "at": 1794789983325,
       "ea": [
         "6034000"
       ]
@@ -564345,7 +565074,7 @@
       "d": "Plate 2 x 3",
       "e": "302124",
       "u": 1791916924851,
-      "at": 1791732141038
+      "at": 1794789983325
     },
     "11212|dark bluish gray": {
       "p": "11212",
@@ -564369,7 +565098,7 @@
       "d": "Plate 4 x 4",
       "e": "4243817",
       "u": 1792993743007,
-      "at": 1791654642651,
+      "at": 1794789983325,
       "i": "https://cdn.rebrickable.com/media/parts/elements/303124.jpg",
       "ea": [
         "303124"
@@ -565463,7 +566192,7 @@
       "d": "Bar 1 x 3 [Clip / Anti-Stud]",
       "e": "4141580",
       "u": 1791916924851,
-      "at": 1792904988546,
+      "at": 1794789989499,
       "ea": [
         "473576"
       ]
@@ -565574,7 +566303,7 @@
       "d": "Plate 4 x 4",
       "e": "4243819",
       "u": 1792993743007,
-      "at": 1791846897846,
+      "at": 1794789983325,
       "ea": [
         "303126"
       ]
@@ -565613,7 +566342,7 @@
       "d": "Brick Sloped Inverted 45° 2 x 1",
       "e": "366524",
       "u": 1791916924851,
-      "at": 1791672975304
+      "at": 1794789983325
     },
     "3068b|dark bluish gray": {
       "p": "3068b",
@@ -565629,7 +566358,7 @@
       "d": "Tool Hammer / Mallet Large",
       "e": "452226",
       "u": 1791916924851,
-      "at": 1791846557289
+      "at": 1794789983325
     },
     "44709|black": {
       "p": "44709",
@@ -565677,7 +566406,7 @@
       "d": "Wedge Plate 3 x 6 Cut Corners",
       "e": "241926",
       "u": 1791916924851,
-      "at": 1791847424498
+      "at": 1794789983325
     },
     "93348|black": {
       "p": "93348",
@@ -567717,7 +568446,7 @@
       "d": "Brick Sloped 45° 2 x 4",
       "e": "303726",
       "u": 1791916924851,
-      "at": 1791673663084
+      "at": 1794789983325
     },
     "5540|light bluish gray": {
       "p": "5540",
@@ -568594,7 +569323,7 @@
       "d": "Antenna 1 x 4 with Rounded Top",
       "e": "6065498",
       "u": 1791916924851,
-      "at": 1791673648311
+      "at": 1794789983325
     },
     "3004pr9978|black": {
       "p": "3004pr9978",
@@ -568622,7 +569351,7 @@
       "d": "Brick Special 2 x 2 with Pin and No Axle Hole",
       "e": "473026",
       "u": 1791916924851,
-      "at": 1791673663084,
+      "at": 1794789983325,
       "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/4730.png"
     },
     "3943b|black": {
@@ -568655,7 +569384,7 @@
       "d": "Hinge Brick 1 x 2 Base",
       "e": "393726",
       "u": 1791916924851,
-      "at": 1791846902427
+      "at": 1794789983325
     },
     "3938|black": {
       "p": "3938",
@@ -573509,7 +574238,7 @@
       "d": "Hinge Plate 1 x 2 with 2 Fingers and Hollow Studs",
       "e": "427626",
       "u": 1794201976275,
-      "at": 1791846553338,
+      "at": 1794789983325,
       "i": "https://cdn.rebrickable.com/media/parts/elements/4256402.jpg",
       "ea": [
         "4256402"
@@ -575943,10 +576672,13 @@
       "c": "Trans-Yellow",
       "d": "Windscreen 6 x 4 x 2 Canopy",
       "e": "3006644",
-      "u": 1793591107777,
-      "at": 1791660732205,
+      "u": 1794789984531,
+      "at": 1794789983325,
       "i": "https://cdn.rebrickable.com/media/parts/ldraw/46/4474.png",
-      "ic": 1
+      "ic": 1,
+      "ea": [
+        "4189078"
+      ]
     },
     "93273|white": {
       "p": "93273",
@@ -578625,8 +579357,9 @@
       "c": "Trans-Yellow",
       "d": "Panel 1 x 2 x 1 [Square Corners]",
       "e": "",
-      "u": 1791916924851,
-      "at": 1793727391911
+      "u": 1794789984531,
+      "at": 1794789983325,
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/46/4865a.png"
     },
     "6238|trans yellow": {
       "p": "6238",
@@ -579345,7 +580078,7 @@
       "d": "Bracket 2 x 2 - 2 x 2",
       "e": "6254808",
       "u": 1791916924851,
-      "at": 1791732109766,
+      "at": 1794789983325,
       "i": "https://cdn.rebrickable.com/media/parts/elements/395626.jpg",
       "ea": [
         "395626"
@@ -598069,7 +598802,7 @@
       "d": "Brick Sloped Inverted 45° 2 x 2 [Ovoid Bottom Pin, Bar-sized Stud Holes]",
       "e": "366024",
       "u": 1791916924851,
-      "at": 1791846557290
+      "at": 1794789983325
     },
     "60481|black": {
       "p": "60481",
@@ -618640,7 +619373,7 @@
       "d": "Hinge Tile 1 x 4",
       "e": "462526",
       "u": 1793311337315,
-      "at": 1791846572021,
+      "at": 1794789983325,
       "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/4625.png",
       "ea": [
         "4280138"
@@ -618652,7 +619385,7 @@
       "d": "Hinge Vehicle Roof Holder 1 x 4",
       "e": "431576",
       "u": 1793311392879,
-      "at": 1791846567871,
+      "at": 1794789983325,
       "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/4315.png",
       "ea": [
         "4250225"
@@ -618664,7 +619397,7 @@
       "d": "Panel 1 x 2 x 1 [Square Corners]",
       "e": "486526",
       "u": 1791916924851,
-      "at": 1791846897846
+      "at": 1794789983325
     },
     "30034|black": {
       "p": "30034",
@@ -618767,7 +619500,7 @@
       "d": "Bracket 3 x 2 - 2 x 2 [aka Space Seat]",
       "e": "459802",
       "u": 1791916924851,
-      "at": 1791654762625,
+      "at": 1794789983325,
       "i": "https://cdn.rebrickable.com/media/parts/elements/4107108.jpg"
     },
     "3001|light gray": {
@@ -618926,7 +619659,7 @@
       "d": "Plate 2 x 2",
       "e": "302202",
       "u": 1791916924851,
-      "at": 1791846548975
+      "at": 1794789983325
     },
     "3020|light gray": {
       "p": "3020",
@@ -620610,7 +621343,7 @@
       "d": "Brick Sloped Inverted 33° 3 x 2, No Connections between Studs, Ovoid Bottom Pin",
       "e": "",
       "u": 1791916924851,
-      "at": 1793727391911,
+      "at": 1794789983325,
       "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/3747a.png"
     },
     "2434|black": {
@@ -620631,7 +621364,7 @@
       "d": "Hinge Plate 1 x 2 with 3 Fingers [Hollow Studs]",
       "e": "427526",
       "u": 1791916924851,
-      "at": 1791846902427
+      "at": 1794789983325
     },
     "4085c|black": {
       "p": "4085c",
@@ -620795,7 +621528,7 @@
       "d": "Plate Special 1 x 1 with Clip Vertical [Thin U Clip]",
       "e": "",
       "u": 1791916924851,
-      "at": 1793727391911,
+      "at": 1794789983325,
       "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/4085b.png"
     },
     "4623|black": {
@@ -620842,7 +621575,7 @@
       "d": "Brick Round 2 x 2 with Axle Hole",
       "e": "614302",
       "u": 1791916924851,
-      "at": 1791732234165
+      "at": 1794789983325
     },
     "4265a|light gray": {
       "p": "4265a",
@@ -629178,7 +629911,7 @@
       "d": "Wedge, Plate 8 x 4 Wing Left without Underside Stud Notch",
       "e": "",
       "u": 1791916924851,
-      "at": 1793727391911,
+      "at": 1794789983325,
       "i": "https://cdn.rebrickable.com/media/parts/photos/0/3933a-0-668b43e7-adfb-4d8d-b5ce-de368072048a.jpg"
     },
     "3934a|black": {
@@ -629187,7 +629920,7 @@
       "d": "Wedge Plate 8 x 4 Wing Right without Stud Notch",
       "e": "",
       "u": 1791916924851,
-      "at": 1793727391911,
+      "at": 1794789983325,
       "i": "https://cdn.rebrickable.com/media/parts/photos/0/3934a-0-e32b9aa4-4bc6-47c2-b777-cf5f1ebb7e31.jpg"
     },
     "4595|light gray": {
@@ -630000,7 +630733,7 @@
       "d": "Hinge Vehicle Roof 4 x 4",
       "e": "421326",
       "u": 1791916924851,
-      "at": 1791846897846,
+      "at": 1794789983325,
       "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/4213.png"
     },
     "4864a|black": {
@@ -630073,7 +630806,7 @@
       "d": "Equipment Control Panel",
       "e": "4164402",
       "u": 1793313854333,
-      "at": 1791846572021,
+      "at": 1794789989499,
       "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/2342.png",
       "ea": [
         "234226"
@@ -633958,7 +634691,7 @@
       "d": "Hinge Brick 1 x 2 Top Plate Thin",
       "e": "6078086",
       "u": 1791916924851,
-      "at": 1791732109766,
+      "at": 1794789983325,
       "i": "https://cdn.rebrickable.com/media/parts/elements/393824.jpg",
       "ea": [
         "393824"
@@ -633988,7 +634721,7 @@
       "d": "Plate Special 1 x 2 with 1 Stud without Groove (Jumper)",
       "e": "",
       "u": 1791916924851,
-      "at": 1791846557290,
+      "at": 1794789983325,
       "i": "https://cdn.rebrickable.com/media/parts/ldraw/14/3794a.png"
     },
     "4079|yellow": {
@@ -654153,6 +654886,51 @@
       "e": "4645089",
       "u": 1794556481042,
       "at": 1794556481036
+    },
+    "3004pr9983|black": {
+      "p": "3004pr9983",
+      "c": "Black",
+      "d": "Brick 1 x 2 with Yellow Down Arrow and Black Border Print",
+      "e": "",
+      "u": 1794789984531,
+      "at": 1794789983325,
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/3004p03.png"
+    },
+    "4861|black": {
+      "p": "4861",
+      "c": "Black",
+      "d": "Brick Sloped 45° 3 x 4 Double / 33°",
+      "e": "4114523",
+      "u": 1794789984531,
+      "at": 1794789983325,
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/4861.png"
+    },
+    "2345pr0005|black": {
+      "p": "2345pr0005",
+      "c": "Black",
+      "d": "Panel 3 x 3 x 6 Corner Wall with Blacktron I Logo Print",
+      "e": "",
+      "u": 1794789984531,
+      "at": 1794789983325,
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/0/2345p44.png"
+    },
+    "2419|trans red": {
+      "p": "2419",
+      "c": "Trans-Red",
+      "d": "Wedge Plate 3 x 6 Cut Corners",
+      "e": "4169258",
+      "u": 1794789984531,
+      "at": 1794789983325,
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/36/2419.png"
+    },
+    "3069bpr0039|yellow": {
+      "p": "3069bpr0039",
+      "c": "Yellow",
+      "d": "Tile 1 x 2 with Space Computer Print",
+      "e": "4189080",
+      "u": 1794789984531,
+      "at": 1794789983325,
+      "i": "https://cdn.rebrickable.com/media/parts/ldraw/14/3069bp25.png"
     }
   },
   "partKinds": {
@@ -659227,7 +660005,7 @@
     "dmv72ojmfkh7pai": {
       "name": "Mac · Safari",
       "v": "2026.11.15.6",
-      "at": "2026-11-16T00:46:21.355Z"
+      "at": "2026-11-16T00:46:36.067Z"
     },
     "dmvefr8o0unzi39": {
       "name": "iPhone · Safari",
@@ -659264,7 +660042,7 @@
       "shopping": "2026-11-15T04:41:05.344Z",
       "pull": "2026-11-15T04:46:30.060Z"
     },
-    "savedAt": "2026-11-16T00:46:21.355Z",
+    "savedAt": "2026-11-16T00:46:36.067Z",
     "appVersion": "2026.11.15.6"
   }
 }
