@@ -554294,7 +554294,7 @@
           "color": "Trans-Red",
           "desc": "Plate 1 x 2",
           "elementId": "4101688",
-          "qty": 1,
+          "qty": 2,
           "drawerId": "Z3",
           "matchCount": 0,
           "suggested": false
@@ -554898,10 +554898,30 @@
           "drawerId": "G13",
           "matchCount": 0,
           "suggested": true
+        },
+        {
+          "partNum": "3023",
+          "color": "Medium Nougat",
+          "desc": "Plate 1 x 2",
+          "elementId": "4645055",
+          "qty": 1,
+          "drawerId": "Y3",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "3023",
+          "color": "Trans-Orange",
+          "desc": "Plate 1 x 2",
+          "elementId": "4262667",
+          "qty": 1,
+          "drawerId": "Z3",
+          "matchCount": 0,
+          "suggested": false
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-19T03:27:53.141Z"
+      "savedAt": "2026-11-19T03:29:06.412Z"
     },
     {
       "id": "bagprog_mwed5eig_ye4p",
@@ -662826,7 +662846,7 @@
     "dmv712kxj4w19rt": {
       "name": "Windows PC · Edge",
       "v": "2026.11.15.7",
-      "at": "2026-11-19T03:27:57.199Z"
+      "at": "2026-11-19T03:29:10.471Z"
     }
   },
   "syncMeta": {
@@ -662844,11 +662864,11 @@
       "build:Millennium Falcon (Kitbash)": "2026-11-15T05:28:18.267Z"
     },
     "stamps": {
-      "bags": "2026-11-19T03:27:53.141Z",
+      "bags": "2026-11-19T03:29:06.412Z",
       "shopping": "2026-11-16T03:35:35.640Z",
       "pull": "2026-11-15T04:46:30.060Z"
     },
-    "savedAt": "2026-11-19T03:27:57.199Z",
+    "savedAt": "2026-11-19T03:29:10.471Z",
     "appVersion": "2026.11.15.7"
   }
 }
