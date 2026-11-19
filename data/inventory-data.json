@@ -553794,7 +553794,7 @@
           "color": "Sand Green",
           "desc": "Brick Special 1 x 1 with Stud on 1 Side",
           "elementId": "6009656",
-          "qty": 1,
+          "qty": 3,
           "drawerId": "H33",
           "matchCount": 0,
           "suggested": true
@@ -554768,10 +554768,30 @@
           "drawerId": "H12",
           "matchCount": 0,
           "suggested": true
+        },
+        {
+          "partNum": "87087",
+          "color": "Dark Orange",
+          "desc": "Brick Special 1 x 1 with Stud on 1 Side",
+          "elementId": "4666322",
+          "qty": 2,
+          "drawerId": "H33",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "87087",
+          "color": "Light Aqua",
+          "desc": "Brick Special 1 x 1 with Stud on 1 Side",
+          "elementId": "4619815",
+          "qty": 1,
+          "drawerId": "H33",
+          "matchCount": 0,
+          "suggested": true
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-19T03:17:55.996Z"
+      "savedAt": "2026-11-19T03:18:38.172Z"
     },
     {
       "id": "bagprog_mwed5eig_ye4p",
@@ -662696,7 +662716,7 @@
     "dmv712kxj4w19rt": {
       "name": "Windows PC · Edge",
       "v": "2026.11.15.7",
-      "at": "2026-11-19T03:18:00.053Z"
+      "at": "2026-11-19T03:18:42.218Z"
     }
   },
   "syncMeta": {
@@ -662714,11 +662734,11 @@
       "build:Millennium Falcon (Kitbash)": "2026-11-15T05:28:18.267Z"
     },
     "stamps": {
-      "bags": "2026-11-19T03:17:55.997Z",
+      "bags": "2026-11-19T03:18:38.172Z",
       "shopping": "2026-11-16T03:35:35.640Z",
       "pull": "2026-11-15T04:46:30.060Z"
     },
-    "savedAt": "2026-11-19T03:18:00.053Z",
+    "savedAt": "2026-11-19T03:18:42.218Z",
     "appVersion": "2026.11.15.7"
   }
 }
