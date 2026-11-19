@@ -555990,7 +555990,7 @@
           "color": "Blue",
           "desc": "Plate 1 x 2",
           "elementId": "302323",
-          "qty": 3,
+          "qty": 7,
           "drawerId": "Y3",
           "matchCount": 0,
           "suggested": false
@@ -556020,7 +556020,7 @@
           "color": "Tan",
           "desc": "Plate 1 x 2",
           "elementId": "302305",
-          "qty": 39,
+          "qty": 53,
           "drawerId": "Y3",
           "matchCount": 0,
           "suggested": false
@@ -556030,7 +556030,7 @@
           "color": "Trans-Red",
           "desc": "Plate 1 x 2",
           "elementId": "4101688",
-          "qty": 4,
+          "qty": 5,
           "drawerId": "Z3",
           "matchCount": 0,
           "suggested": false
@@ -556800,7 +556800,7 @@
           "color": "Bright Light Orange",
           "desc": "Plate 1 x 2",
           "elementId": "4215912",
-          "qty": 5,
+          "qty": 6,
           "drawerId": "Y3",
           "matchCount": 0,
           "suggested": true
@@ -556854,10 +556854,40 @@
           "drawerId": "I36",
           "matchCount": 0,
           "suggested": false
+        },
+        {
+          "partNum": "3023",
+          "color": "Light Gray",
+          "desc": "Plate 1 x 2",
+          "elementId": "302302",
+          "qty": 39,
+          "drawerId": "Y3",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "3023",
+          "color": "Trans-Clear",
+          "desc": "Plate 1 x 2",
+          "elementId": "302310",
+          "qty": 1,
+          "drawerId": "Z3",
+          "matchCount": 0,
+          "suggested": false
+        },
+        {
+          "partNum": "3023",
+          "color": "Trans-Light Blue",
+          "desc": "Plate 1 x 2",
+          "elementId": "302342",
+          "qty": 6,
+          "drawerId": "Z3",
+          "matchCount": 0,
+          "suggested": false
         }
       ],
       "keepOpen": true,
-      "savedAt": "2026-11-19T18:01:23.709Z"
+      "savedAt": "2026-11-19T18:03:38.023Z"
     },
     {
       "id": "bagprog_mwed5eig_ye4p",
@@ -665738,7 +665768,7 @@
     "dmv712kxj4w19rt": {
       "name": "Windows PC · Edge",
       "v": "2026.11.19.1",
-      "at": "2026-11-19T18:01:49.714Z"
+      "at": "2026-11-19T18:03:42.094Z"
     }
   },
   "syncMeta": {
@@ -665756,11 +665786,11 @@
       "build:Millennium Falcon (Kitbash)": "2026-11-15T05:28:18.267Z"
     },
     "stamps": {
-      "bags": "2026-11-19T18:01:23.709Z",
+      "bags": "2026-11-19T18:03:38.023Z",
       "shopping": "2026-11-16T03:35:35.640Z",
       "pull": "2026-11-15T04:46:30.060Z"
     },
-    "savedAt": "2026-11-19T18:01:49.714Z",
+    "savedAt": "2026-11-19T18:03:42.094Z",
     "appVersion": "2026.11.19.1"
   }
 }
